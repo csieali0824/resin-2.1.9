@@ -1,0 +1,294 @@
+<?xml version='1.0'  encoding='UTF-8'?>
+<PurchaseOrderList>
+<CustomerPO name='5500070034'>
+<PackingListNumber>H-180607-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Hella KG Werk 4 Hamm</Department>
+<Street>Roemer Strasse  66</Street>
+<City>Hamm</City>
+<County>null</County>
+<Zip>59075</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Hella KG Hueck &amp; Co.</Department>
+<Street>Rixbecker Strasse 75</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59522</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>2D</CartonNumber>
+<Awb>PEK953771</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072525TSCE</InvoiceNumber>
+<ProductName>S3J-02 R6</ProductName>
+<CustomerProductNumber>716 451-05</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.0412</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>3D</CartonNumber>
+<Awb>PEK953771</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072525TSCE</InvoiceNumber>
+<ProductName>S3J-02 R6</ProductName>
+<CustomerProductNumber>716 451-05</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.0412</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5500079250'>
+<PackingListNumber>H-180607-B</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Hella KG Werk 4 Hamm</Department>
+<Street>Roemer Strasse  66</Street>
+<City>Hamm</City>
+<County>null</County>
+<Zip>59075</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Hella KG Hueck &amp; Co.</Department>
+<Street>Rixbecker Strasse 75</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59522</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>18A</CartonNumber>
+<Awb>PEK950956</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071060TSCE</InvoiceNumber>
+<ProductName>ES3D R6</ProductName>
+<CustomerProductNumber>716 451-08</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.052</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5500069425'>
+<PackingListNumber>H-180607-C</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Hella KG Werk 4 Hamm</Department>
+<Street>Roemer Strasse  66</Street>
+<City>Hamm</City>
+<County>null</County>
+<Zip>59075</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Hella KG Hueck &amp; Co.</Department>
+<Street>Rixbecker Strasse 75</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59522</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>11A</CartonNumber>
+<Awb>49178</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-07783TSCE</InvoiceNumber>
+<ProductName>SS16 R2</ProductName>
+<CustomerProductNumber>716 451-14</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0257</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5500071162'>
+<PackingListNumber>H-180607-D</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Hella KG Werk 4 Hamm</Department>
+<Street>Roemer Strasse  66</Street>
+<City>Hamm</City>
+<County>null</County>
+<Zip>59075</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Hella KG Hueck &amp; Co.</Department>
+<Street>Rixbecker Strasse 75</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59522</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>166AX</CartonNumber>
+<Awb>PEK951720</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071723TSCE</InvoiceNumber>
+<ProductName>1.5SMC51CA R6</ProductName>
+<CustomerProductNumber>724 538-23</CustomerProductNumber>
+<Quantity>6000</Quantity>
+<Price>0.0885</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5500070018'>
+<PackingListNumber>H-180607-E</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Hella KG Werk 4 Hamm</Department>
+<Street>Roemer Strasse  66</Street>
+<City>Hamm</City>
+<County>null</County>
+<Zip>59075</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Hella KG Hueck &amp; Co.</Department>
+<Street>Rixbecker Strasse 75</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59522</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>65A</CartonNumber>
+<Awb>PEK5704492</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072154TSCE</InvoiceNumber>
+<ProductName>1SMA4750 R2</ProductName>
+<CustomerProductNumber>729 501-00</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0305</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5500079450'>
+<PackingListNumber>H-180607-F</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Hella KG Werk 4 Hamm</Department>
+<Street>Roemer Strasse  66</Street>
+<City>Hamm</City>
+<County>null</County>
+<Zip>59075</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Hella KG Hueck &amp; Co.</Department>
+<Street>Rixbecker Strasse 75</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59522</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>1A*</CartonNumber>
+<Awb>56381</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-062245TSCE</InvoiceNumber>
+<ProductName>1SMA4746 R2</ProductName>
+<CustomerProductNumber>729 501-06</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.0305</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5500071184'>
+<PackingListNumber>H-180607-G</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Hella KG Werk 4 Hamm</Department>
+<Street>Roemer Strasse  66</Street>
+<City>Hamm</City>
+<County>null</County>
+<Zip>59075</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Hella KG Hueck &amp; Co.</Department>
+<Street>Rixbecker Strasse 75</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59522</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>53A</CartonNumber>
+<Awb>49021</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-07465TSCE</InvoiceNumber>
+<ProductName>P4SMA39CA R2</ProductName>
+<CustomerProductNumber>741 524-00</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.035</Price>
+</Item>
+</Items>
+</CustomerPO>
+</PurchaseOrderList>

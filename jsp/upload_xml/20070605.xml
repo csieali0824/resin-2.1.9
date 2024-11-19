@@ -1,0 +1,87 @@
+<?xml version='1.0'  encoding='UTF-8'?>
+<PurchaseOrderList>
+<CustomerPO name='EBR250595'>
+<PackingListNumber>23-290507-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>SOLECTRON EUROPE B.V.</CustomerName>
+<CustomerID>6173</CustomerID>
+<ShipmentTerms>FCA MUNICH</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6853</ShipToID>
+<Department>Solectron Europe B.V. c/o Solectron Romania S.R.L.</Department>
+<Street>Calea Torontalului, DN6, KM5,7</Street>
+<City>Timisoara</City>
+<County>null</County>
+<Zip>30000</Zip>
+<Country>Romania</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>6867</BillToID>
+<Department>Solectron Europe B.V.</Department>
+<Street>Dalsteindreef 93-99</Street>
+<City>Diemen</City>
+<County></County>
+<Zip>NL-1112 XC</Zip>
+<Country>Netherlands</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>132</CartonNumber>
+<Awb>PEK934201</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-063983TSCE</InvoiceNumber>
+<ProductName>KBU1005 T0</ProductName>
+<CustomerProductNumber>WMC16300017801</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.26</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>133</CartonNumber>
+<Awb>PEK934201</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-063983TSCE</InvoiceNumber>
+<ProductName>KBU1005 T0</ProductName>
+<CustomerProductNumber>WMC16300017801</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.26</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>129</CartonNumber>
+<Awb>PEK934201</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-063983TSCE</InvoiceNumber>
+<ProductName>KBU1005 T0</ProductName>
+<CustomerProductNumber>WMC16300017801</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.26</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>130</CartonNumber>
+<Awb>PEK934201</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-063983TSCE</InvoiceNumber>
+<ProductName>KBU1005 T0</ProductName>
+<CustomerProductNumber>WMC16300017801</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.26</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>131</CartonNumber>
+<Awb>PEK934201</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-063983TSCE</InvoiceNumber>
+<ProductName>KBU1005 T0</ProductName>
+<CustomerProductNumber>WMC16300017801</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.26</Price>
+</Item>
+</Items>
+</CustomerPO>
+</PurchaseOrderList>

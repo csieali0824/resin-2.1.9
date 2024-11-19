@@ -1,0 +1,87 @@
+<?xml version='1.0'  encoding='UTF-8'?>
+<PurchaseOrderList>
+<CustomerPO name='183671/35'>
+<PackingListNumber>4-220807</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELVAR OY AB</CustomerName>
+<CustomerID>3517</CustomerID>
+<ShipmentTerms>FCA MUNICH</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>3999</ShipToID>
+<Department>Helvar Materials Karkkila</Department>
+<Street>Yrittajantie 30</Street>
+<City>Karkkila</City>
+<County></County>
+<Zip>FIN-03600</Zip>
+<Country>Finland</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>7050</BillToID>
+<Department>Helvar OY AB</Department>
+<Street>PL100</Street>
+<City>Karkkila</City>
+<County></County>
+<Zip>FIN-03601</Zip>
+<Country>Finland</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>83D</CartonNumber>
+<Awb>PEK953771</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072529TSCE</InvoiceNumber>
+<ProductName>HS1J-02 R2</ProductName>
+<CustomerProductNumber>7300051</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.024</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>42</CartonNumber>
+<Awb>PEK957728</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074210TSCE</InvoiceNumber>
+<ProductName>LL4148 L0</ProductName>
+<CustomerProductNumber>73396</CustomerProductNumber>
+<Quantity>100000</Quantity>
+<Price>0.0058</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>43</CartonNumber>
+<Awb>PEK957728</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074210TSCE</InvoiceNumber>
+<ProductName>LL4148 L0</ProductName>
+<CustomerProductNumber>73396</CustomerProductNumber>
+<Quantity>100000</Quantity>
+<Price>0.0058</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>44</CartonNumber>
+<Awb>PEK957728</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074210TSCE</InvoiceNumber>
+<ProductName>LL4148 L0</ProductName>
+<CustomerProductNumber>73396</CustomerProductNumber>
+<Quantity>100000</Quantity>
+<Price>0.0058</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>127A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074640TSCE</InvoiceNumber>
+<ProductName>RS1J R2</ProductName>
+<CustomerProductNumber>7300047</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.024</Price>
+</Item>
+</Items>
+</CustomerPO>
+</PurchaseOrderList>

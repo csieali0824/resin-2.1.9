@@ -1,0 +1,18 @@
+CREATE OR REPLACE PROCEDURE JAVA_CALL_FND_REQUEST_PROC(v_user_id NUMBER,v_resp_id NUMBER,v_resp_app_id NUMBER,
+                                                       v_org_id VARCHAR2) 
+IS 
+nRequest_id NUMBER;  
+BEGIN 
+  APPS.FND_GLOBAL.APPS_INITIALIZE(v_user_id,v_resp_id,401,0);
+  nRequest_id := APPS.FND_REQUEST.SUBMIT_REQUEST('INV','INCOIN','','', FALSE,v_org_id,'1','1','1','1','1',chr(0)); 
+  COMMIT; 
+  dbms_output.put_line(nRequest_id); 
+  
+
+  IF nRequest_ID != 0 THEN 
+     dbms_output.PUT_LINE('Submitted request '|| TO_CHAR(nRequest_ID) ||' to Import Items.'); 
+  ELSE 
+     dbms_output.put_line(nRequest_id||'=DON'T GET REQUEST ID !!!, You Need Import Items By Manual');      
+  END IF; 
+
+END JAVA_CALL_FND_REQUEST_PROC;

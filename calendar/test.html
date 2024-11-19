@@ -1,0 +1,25 @@
+<html>
+<head><title>calendar</title>
+<script>
+// The following script is used to hide the calendar whenever you click the document.
+// NOTE: It doesn't support NN4 well. And if you use document.captureEvents(Event.CLICK), NN4 will drop out all the inline events and thus prevent everything from working. Currently no workaround yet.
+document.onclick=function(e){
+	var t=!e?self.event.srcElement.name:e.target.name;
+	if (t!="popcal") 
+	   gfPop.fHideCal();
+	
+}
+function Cformat(){
+   var a = form1.text1.value;
+   form1.text1.value = a.substring(0,6);
+}
+</script>
+</head>
+<body>
+<!--  PopCalendar(tag name and id must match) Tags should sit at the page bottom -->
+<iframe width=124 height=153 name="gToday:supermini:agenda.js" id="gToday:supermini:agenda.js" src="ipopeng.htm" scrolling="no" frameborder="0" style="visibility:hidden; z-index:65535; position:absolute; top:0px;"></iframe>
+<form name="form1" action="test.html" method="post">
+<input type="text" name="text1"><A href='javascript:void(0)' onclick='gfPop.fPopCalendar(document.form1.text1);return false;'><IMG name='popcal' src='calbtn.gif' width='20' height='20' border=0 alt=''></A>
+</form> 
+</body>
+</html>

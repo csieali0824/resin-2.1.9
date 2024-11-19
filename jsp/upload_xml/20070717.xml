@@ -1,0 +1,320 @@
+<?xml version='1.0'  encoding='UTF-8'?>
+<PurchaseOrderList>
+<CustomerPO name='5500093773'>
+<PackingListNumber>R-130707-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Hella KG Werk 5</Department>
+<Street>Berghaeuser Strasse 30</Street>
+<City>Recklinghausen</City>
+<County>null</County>
+<Zip>45663</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Hella KG Hueck &amp; Co.</Department>
+<Street>Rixbecker Strasse 75</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59522</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>70A</CartonNumber>
+<Awb>PEK946721</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-068555TSCE</InvoiceNumber>
+<ProductName>P6SMB36CA R4</ProductName>
+<CustomerProductNumber>724 538-30</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.0365</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='CF035852'>
+<PackingListNumber>12-120707-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>NOVATECH S.A.</CustomerName>
+<CustomerID>2978</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>3450</ShipToID>
+<Department>Novatech S.A.</Department>
+<Street>Zone d'Activite de la Croix Rouge</Street>
+<City>PLOUMILLIAU</City>
+<County>null</County>
+<Zip>22300</Zip>
+<Country>France</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3212</BillToID>
+<Department>Novatech Industries</Department>
+<Street>1 rue Paul Sabatier</Street>
+<City>LANNION</City>
+<County>null</County>
+<Zip>22300</Zip>
+<Country>France</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>100B</CartonNumber>
+<Awb>PEK600162</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074808TSCE</InvoiceNumber>
+<ProductName>TS15P05G C2</ProductName>
+<CustomerProductNumber>045110[N]</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.29</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>101B</CartonNumber>
+<Awb>PEK600162</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074808TSCE</InvoiceNumber>
+<ProductName>TS15P05G C2</ProductName>
+<CustomerProductNumber>045110[N]</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.29</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>102B</CartonNumber>
+<Awb>PEK600162</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074808TSCE</InvoiceNumber>
+<ProductName>TS15P05G C2</ProductName>
+<CustomerProductNumber>045110[N]</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.29</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>103B</CartonNumber>
+<Awb>PEK600162</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074808TSCE</InvoiceNumber>
+<ProductName>TS15P05G C2</ProductName>
+<CustomerProductNumber>045110[N]</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.29</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>104B</CartonNumber>
+<Awb>PEK600162</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074808TSCE</InvoiceNumber>
+<ProductName>TS15P05G C2</ProductName>
+<CustomerProductNumber>045110[N]</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.29</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>105B</CartonNumber>
+<Awb>PEK600162</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074808TSCE</InvoiceNumber>
+<ProductName>TS15P05G C2</ProductName>
+<CustomerProductNumber>045110[N]</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.29</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>106B</CartonNumber>
+<Awb>PEK600162</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074808TSCE</InvoiceNumber>
+<ProductName>TS15P05G C2</ProductName>
+<CustomerProductNumber>045110[N]</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.29</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>97B</CartonNumber>
+<Awb>PEK600162</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074808TSCE</InvoiceNumber>
+<ProductName>TS15P05G C2</ProductName>
+<CustomerProductNumber>045110[N]</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.29</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='2921073544'>
+<PackingListNumber>49-120707-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>SAGEM COMMUNICATION BAYONNE</CustomerName>
+<CustomerID>7687</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>8708</ShipToID>
+<Department>PLATEFORME GEFCO</Department>
+<Street>7 voie d'Autriche</Street>
+<City>VITROLLES CEDEX</City>
+<County>null</County>
+<Zip>F-13814</Zip>
+<Country>France</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>8837</BillToID>
+<Department>SAGEM Tunisie</Department>
+<Street>Zone Industrielle Borj El Ghorbel</Street>
+<City>BEN AROUS</City>
+<County>null</County>
+<Zip>TN-2013</Zip>
+<Country>Tunisia</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>26A</CartonNumber>
+<Awb>PEK954320</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072701TSCE</InvoiceNumber>
+<ProductName>P4KE550 R0</ProductName>
+<CustomerProductNumber>STT0095695</CustomerProductNumber>
+<Quantity>10000</Quantity>
+<Price>0.065</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='2921072480'>
+<PackingListNumber>49-120707-B</PackingListNumber>
+<Date>0</Date>
+<CustomerName>SAGEM COMMUNICATION BAYONNE</CustomerName>
+<CustomerID>7687</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>8708</ShipToID>
+<Department>PLATEFORME GEFCO</Department>
+<Street>7 voie d'Autriche</Street>
+<City>VITROLLES CEDEX</City>
+<County>null</County>
+<Zip>F-13814</Zip>
+<Country>France</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>8837</BillToID>
+<Department>SAGEM Tunisie</Department>
+<Street>Zone Industrielle Borj El Ghorbel</Street>
+<City>BEN AROUS</City>
+<County>null</County>
+<Zip>TN-2013</Zip>
+<Country>Tunisia</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>331</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073466TSCE</InvoiceNumber>
+<ProductName>SF23 R0</ProductName>
+<CustomerProductNumber>STT0096931</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.031</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='450075685'>
+<PackingListNumber>L-120707-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Hella KGaA Hueck &amp; Co.</Department>
+<Street>Beckumer Strasse 130</Street>
+<City>Lippstadt</City>
+<County></County>
+<Zip>59555</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Hella KG Hueck &amp; Co.</Department>
+<Street>Rixbecker Strasse 75</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59522</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>85B</CartonNumber>
+<Awb>PEK957184 rund</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074046TSCE</InvoiceNumber>
+<ProductName>TS101CT C0</ProductName>
+<CustomerProductNumber>790 941-00</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.102</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5500056501'>
+<PackingListNumber>R-120707-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Hella KG Werk 5</Department>
+<Street>Berghaeuser Strasse 30</Street>
+<City>Recklinghausen</City>
+<County>null</County>
+<Zip>45663</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Hella KG Hueck &amp; Co.</Department>
+<Street>Rixbecker Strasse 75</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59522</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>1A</CartonNumber>
+<Awb>PEK951720</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071723TSCE</InvoiceNumber>
+<ProductName>SS36 R6</ProductName>
+<CustomerProductNumber>716 451-13</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.06</Price>
+</Item>
+</Items>
+</CustomerPO>
+</PurchaseOrderList>

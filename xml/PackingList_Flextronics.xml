@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<PackingList xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Date>2005-11-16</Date>
+  <PackingListNumber>T-056080H</PackingListNumber>
+  <CustomerName>Flextronics</CustomerName>
+  <ShipmentTerms>DDP</ShipmentTerms>
+  <ShipToAddress>
+    <Department>Flextronics Int.Man. Denmark ApS</Department>
+    <Street>Hjortevej 4</Street>
+    <City>Skive</City>
+    <County />
+    <Zip>DK-7800</Zip>
+    <Country>Denmark</Country>
+  </ShipToAddress>
+  <BillToAddress>
+    <Department>Flextronics Int.Man. Denmark ApS</Department>
+    <Street>Hjortevej 4</Street>
+    <City>Skive</City>
+    <County />
+    <Zip>DK-7800</Zip>
+    <Country>Denmark</Country>
+  </BillToAddress>
+  <Comments />
+  <Items>
+    <Item>
+      <CartonNumber>64A</CartonNumber>
+      <Awb>PEK925508</Awb>
+      <SerialNumber />
+      <InvoiceNumber>T-055785TSCE</InvoiceNumber>
+      <ProductName>1.5KE440A-02 X0</ProductName>
+      <CustomerPO>433015124</CustomerPO>
+      <CustomerProductNumber>BLF8301297</CustomerProductNumber>
+      <Quantity>6000</Quantity>
+      <Price>0.158</Price>
+      <Currency>USD</Currency>
+    </Item>
+    <Item>
+      <CartonNumber>121</CartonNumber>
+      <Awb>PEK919038</Awb>
+      <SerialNumber />
+      <InvoiceNumber>T-052940TSCE</InvoiceNumber>
+      <ProductName>GBU406 C2</ProductName>
+      <CustomerPO>433015790</CustomerPO>
+      <CustomerProductNumber>BLF8301202</CustomerProductNumber>
+      <Quantity>2000</Quantity>
+      <Price>0.18</Price>
+      <Currency>USD</Currency>
+    </Item>
+    <Item>
+      <CartonNumber>122</CartonNumber>
+      <Awb>PEK919038</Awb>
+      <SerialNumber />
+      <InvoiceNumber>T-052940TSCE</InvoiceNumber>
+      <ProductName>GBU406 C2</ProductName>
+      <CustomerPO>433015790</CustomerPO>
+      <CustomerProductNumber>BLF8301202</CustomerProductNumber>
+      <Quantity>2000</Quantity>
+      <Price>0.18</Price>
+      <Currency>USD</Currency>
+    </Item>
+    <Item>
+      <CartonNumber>35A</CartonNumber>
+      <Awb>205-39336404</Awb>
+      <SerialNumber />
+      <InvoiceNumber>T-044603TSCE</InvoiceNumber>
+      <ProductName>HS1M  R2</ProductName>
+      <CustomerPO>433015794</CustomerPO>
+      <CustomerProductNumber>BLF8301265</CustomerProductNumber>
+      <Quantity>15000</Quantity>
+      <Price>0.033</Price>
+      <Currency>USD</Currency>
+    </Item>
+    <Item>
+      <CartonNumber>68A</CartonNumber>
+      <Awb>PEK924717</Awb>
+      <SerialNumber />
+      <InvoiceNumber>T-055448TSCE</InvoiceNumber>
+      <ProductName>MBR25100CT C0</ProductName>
+      <CustomerPO>433015791</CustomerPO>
+      <CustomerProductNumber>BLF8301302</CustomerProductNumber>
+      <Quantity>4000</Quantity>
+      <Price>0.35</Price>
+      <Currency>USD</Currency>
+    </Item>
+    <Item>
+      <CartonNumber>1</CartonNumber>
+      <Awb>TPE310577</Awb>
+      <SerialNumber />
+      <InvoiceNumber>T-055389TSCE</InvoiceNumber>
+      <ProductName>SS14 R2</ProductName>
+      <CustomerPO>433015792</CustomerPO>
+      <CustomerProductNumber>BLF8300914</CustomerProductNumber>
+      <Quantity>30000</Quantity>
+      <Price>0.035</Price>
+      <Currency>USD</Currency>
+    </Item>
+    <Item>
+      <CartonNumber>95</CartonNumber>
+      <Awb>PEK919917</Awb>
+      <SerialNumber />
+      <InvoiceNumber>T-053298TSCE</InvoiceNumber>
+      <ProductName>TS15P06G-03 X0</ProductName>
+      <CustomerPO>433015788</CustomerPO>
+      <CustomerProductNumber>BLF8300901</CustomerProductNumber>
+      <Quantity>1200</Quantity>
+      <Price>0.4</Price>
+      <Currency>USD</Currency>
+    </Item>
+  </Items>
+</PackingList>

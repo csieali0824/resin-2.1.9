@@ -1,0 +1,869 @@
+<?xml version='1.0'  encoding='UTF-8'?>
+<PurchaseOrderList>
+<CustomerPO name='1045153886/TV3'>
+<PackingListNumber>53-050607-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>Siemens</CustomerName>
+<CustomerID>5719</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>7174</ShipToID>
+<Department>Nokia Siemens Networks GmbH &amp; Co KG</Department>
+<Street>Siemensallee 1</Street>
+<City>D-17489 Greifswald</City>
+<County>null</County>
+<Zip>null</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>6239</BillToID>
+<Department>Nokia Siemens Networks GmbH &amp; Co KG</Department>
+<Street>Postfach 3351</Street>
+<City>D-17463 Greifswald</City>
+<County>null</County>
+<Zip>null</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>130</CartonNumber>
+<Awb>PEK954320</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072708TSCE</InvoiceNumber>
+<ProductName>RMB2S-02 RC</ProductName>
+<CustomerProductNumber>V5001-B1006-A220</CustomerProductNumber>
+<Quantity>48000</Quantity>
+<Price>0.0622</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='CPT/4501072931'>
+<PackingListNumber>50-040607-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>MIELE &amp; CIE.KG</CustomerName>
+<CustomerID>5318</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>5817</ShipToID>
+<Department>Miele &amp; Cie.KG Wareneingang Geb?ude 41</Department>
+<Street>Carl-Miele-Str. 29</Street>
+<City>G?tersloh</City>
+<County>null</County>
+<Zip>D-33332</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>5813</BillToID>
+<Department>Miele &amp; Cie.KG</Department>
+<Street>Postfach</Street>
+<City>G?tersloh</City>
+<County></County>
+<Zip>D-33325</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>68</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073460TSCE</InvoiceNumber>
+<ProductName>GBU806 C2</ProductName>
+<CustomerProductNumber>06439320</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.245</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>69</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073460TSCE</InvoiceNumber>
+<ProductName>GBU806 C2</ProductName>
+<CustomerProductNumber>06439320</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.245</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>70</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073460TSCE</InvoiceNumber>
+<ProductName>GBU806 C2</ProductName>
+<CustomerProductNumber>06439320</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.245</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>71</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073460TSCE</InvoiceNumber>
+<ProductName>GBU806 C2</ProductName>
+<CustomerProductNumber>06439320</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.245</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>72</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073460TSCE</InvoiceNumber>
+<ProductName>GBU806 C2</ProductName>
+<CustomerProductNumber>06439320</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.245</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>73</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073460TSCE</InvoiceNumber>
+<ProductName>GBU806 C2</ProductName>
+<CustomerProductNumber>06439320</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.245</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>74</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073460TSCE</InvoiceNumber>
+<ProductName>GBU806 C2</ProductName>
+<CustomerProductNumber>06439320</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.245</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>75</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073460TSCE</InvoiceNumber>
+<ProductName>GBU806 C2</ProductName>
+<CustomerProductNumber>06439320</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.245</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>76</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073460TSCE</InvoiceNumber>
+<ProductName>GBU806 C2</ProductName>
+<CustomerProductNumber>06439320</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.245</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>77</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073460TSCE</InvoiceNumber>
+<ProductName>GBU806 C2</ProductName>
+<CustomerProductNumber>06439320</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.245</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>78</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073460TSCE</InvoiceNumber>
+<ProductName>GBU806 C2</ProductName>
+<CustomerProductNumber>06439320</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.245</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>79</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073460TSCE</InvoiceNumber>
+<ProductName>GBU806 C2</ProductName>
+<CustomerProductNumber>06439320</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.245</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>80</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073460TSCE</InvoiceNumber>
+<ProductName>GBU806 C2</ProductName>
+<CustomerProductNumber>06439320</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.245</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>81</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073460TSCE</InvoiceNumber>
+<ProductName>GBU806 C2</ProductName>
+<CustomerProductNumber>06439320</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.245</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>82</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073460TSCE</InvoiceNumber>
+<ProductName>GBU806 C2</ProductName>
+<CustomerProductNumber>06439320</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.245</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>83</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073460TSCE</InvoiceNumber>
+<ProductName>GBU806 C2</ProductName>
+<CustomerProductNumber>06439320</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.245</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>84</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073460TSCE</InvoiceNumber>
+<ProductName>GBU806 C2</ProductName>
+<CustomerProductNumber>06439320</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.245</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>85</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073460TSCE</InvoiceNumber>
+<ProductName>GBU806 C2</ProductName>
+<CustomerProductNumber>06439320</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.245</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>86</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073460TSCE</InvoiceNumber>
+<ProductName>GBU806 C2</ProductName>
+<CustomerProductNumber>06439320</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.245</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>87</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073460TSCE</InvoiceNumber>
+<ProductName>GBU806 C2</ProductName>
+<CustomerProductNumber>06439320</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.245</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>88</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073460TSCE</InvoiceNumber>
+<ProductName>GBU806 C2</ProductName>
+<CustomerProductNumber>06439320</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.245</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>89</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073460TSCE</InvoiceNumber>
+<ProductName>GBU806 C2</ProductName>
+<CustomerProductNumber>06439320</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.245</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>90</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073460TSCE</InvoiceNumber>
+<ProductName>GBU806 C2</ProductName>
+<CustomerProductNumber>06439320</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.245</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>91</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073460TSCE</InvoiceNumber>
+<ProductName>GBU806 C2</ProductName>
+<CustomerProductNumber>06439320</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.245</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>92</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073460TSCE</InvoiceNumber>
+<ProductName>GBU806 C2</ProductName>
+<CustomerProductNumber>06439320</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.245</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>93</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073460TSCE</InvoiceNumber>
+<ProductName>GBU806 C2</ProductName>
+<CustomerProductNumber>06439320</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.245</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>94</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073460TSCE</InvoiceNumber>
+<ProductName>GBU806 C2</ProductName>
+<CustomerProductNumber>06439320</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.245</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>95</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073460TSCE</InvoiceNumber>
+<ProductName>GBU806 C2</ProductName>
+<CustomerProductNumber>06439320</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.245</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>96</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073460TSCE</InvoiceNumber>
+<ProductName>GBU806 C2</ProductName>
+<CustomerProductNumber>06439320</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.245</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>97</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073460TSCE</InvoiceNumber>
+<ProductName>GBU806 C2</ProductName>
+<CustomerProductNumber>06439320</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.245</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>98</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073460TSCE</InvoiceNumber>
+<ProductName>GBU806 C2</ProductName>
+<CustomerProductNumber>06439320</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.245</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>99</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073460TSCE</InvoiceNumber>
+<ProductName>GBU806 C2</ProductName>
+<CustomerProductNumber>06439320</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.245</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>67</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073460TSCE</InvoiceNumber>
+<ProductName>GBU806 C2</ProductName>
+<CustomerProductNumber>06439320</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.245</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>100</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073460TSCE</InvoiceNumber>
+<ProductName>GBU806 C2</ProductName>
+<CustomerProductNumber>06439320</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.245</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>101</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073460TSCE</InvoiceNumber>
+<ProductName>GBU806 C2</ProductName>
+<CustomerProductNumber>06439320</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.245</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>102</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073460TSCE</InvoiceNumber>
+<ProductName>GBU806 C2</ProductName>
+<CustomerProductNumber>06439320</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.245</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>103</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073460TSCE</InvoiceNumber>
+<ProductName>GBU806 C2</ProductName>
+<CustomerProductNumber>06439320</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.245</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>64</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073460TSCE</InvoiceNumber>
+<ProductName>GBU806 C2</ProductName>
+<CustomerProductNumber>06439320</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.245</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>65</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073460TSCE</InvoiceNumber>
+<ProductName>GBU806 C2</ProductName>
+<CustomerProductNumber>06439320</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.245</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>66</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073460TSCE</InvoiceNumber>
+<ProductName>GBU806 C2</ProductName>
+<CustomerProductNumber>06439320</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.245</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5500079722'>
+<PackingListNumber>H-040607-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Hella KG Werk 4 Hamm</Department>
+<Street>Roemer Strasse  66</Street>
+<City>Hamm</City>
+<County>null</County>
+<Zip>59075</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Hella KG Hueck &amp; Co.</Department>
+<Street>Rixbecker Strasse 75</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59522</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>8A</CartonNumber>
+<Awb>46931</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-063755TSCE</InvoiceNumber>
+<ProductName>2M36Z R0</ProductName>
+<CustomerProductNumber>708 301-02</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5500070025'>
+<PackingListNumber>H-040607-B</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Hella KG Werk 4 Hamm</Department>
+<Street>Roemer Strasse  66</Street>
+<City>Hamm</City>
+<County>null</County>
+<Zip>59075</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Hella KG Hueck &amp; Co.</Department>
+<Street>Rixbecker Strasse 75</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59522</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>9A</CartonNumber>
+<Awb>PEK934163</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-063829TSCE</InvoiceNumber>
+<ProductName>2M27Z R0</ProductName>
+<CustomerProductNumber>708 301-28</CustomerProductNumber>
+<Quantity>7000</Quantity>
+<Price>0.03</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5500079250'>
+<PackingListNumber>H-040607-C</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Hella KG Werk 4 Hamm</Department>
+<Street>Roemer Strasse  66</Street>
+<City>Hamm</City>
+<County>null</County>
+<Zip>59075</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Hella KG Hueck &amp; Co.</Department>
+<Street>Rixbecker Strasse 75</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59522</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>90A</CartonNumber>
+<Awb>48820</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-068678TSCE</InvoiceNumber>
+<ProductName>ES3D R6</ProductName>
+<CustomerProductNumber>716 451-08</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.052</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5500070035'>
+<PackingListNumber>H-040607-D</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Hella KG Werk 4 Hamm</Department>
+<Street>Roemer Strasse  66</Street>
+<City>Hamm</City>
+<County>null</County>
+<Zip>59075</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Hella KG Hueck &amp; Co.</Department>
+<Street>Rixbecker Strasse 75</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59522</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>28A</CartonNumber>
+<Awb>49021- 71</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-07465TSCE</InvoiceNumber>
+<ProductName>P6SMB30CA R4</ProductName>
+<CustomerProductNumber>724 538-13</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.0365</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>31A</CartonNumber>
+<Awb>49021- 71</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-07465TSCE</InvoiceNumber>
+<ProductName>P6SMB30CA R4</ProductName>
+<CustomerProductNumber>724 538-13</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.0365</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>70A</CartonNumber>
+<Awb>PEK951276- 73</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071524TSCE</InvoiceNumber>
+<ProductName>P6SMB30CA R4</ProductName>
+<CustomerProductNumber>724 538-13</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.0365</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>24A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073461TSCE</InvoiceNumber>
+<ProductName>P6SMB30CA R4</ProductName>
+<CustomerProductNumber>724 538-13</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.0365</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>25A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073461TSCE</InvoiceNumber>
+<ProductName>P6SMB30CA R4</ProductName>
+<CustomerProductNumber>724 538-13</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.0365</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>24A</CartonNumber>
+<Awb>49021- 71</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-07465TSCE</InvoiceNumber>
+<ProductName>P6SMB30CA R4</ProductName>
+<CustomerProductNumber>724 538-13</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.0365</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>27A</CartonNumber>
+<Awb>49021- 71</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-07465TSCE</InvoiceNumber>
+<ProductName>P6SMB30CA R4</ProductName>
+<CustomerProductNumber>724 538-13</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.0365</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5500089874'>
+<PackingListNumber>H-040607-E</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Hella KG Werk 4 Hamm</Department>
+<Street>Roemer Strasse  66</Street>
+<City>Hamm</City>
+<County>null</County>
+<Zip>59075</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Hella KG Hueck &amp; Co.</Department>
+<Street>Rixbecker Strasse 75</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59522</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>13Exxxx</CartonNumber>
+<Awb>PEK950786</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071301TSCE</InvoiceNumber>
+<ProductName>1SMA4755 R2</ProductName>
+<CustomerProductNumber>729 501-02</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.0305</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5500089875'>
+<PackingListNumber>H-040607-F</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Hella KG Werk 4 Hamm</Department>
+<Street>Roemer Strasse  66</Street>
+<City>Hamm</City>
+<County>null</County>
+<Zip>59075</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Hella KG Hueck &amp; Co.</Department>
+<Street>Rixbecker Strasse 75</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59522</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>43A</CartonNumber>
+<Awb>47500</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-065198TSCE</InvoiceNumber>
+<ProductName>1SMA4754 R2</ProductName>
+<CustomerProductNumber>729 501-04</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.0305</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5500085484'>
+<PackingListNumber>H-040607-G</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Hella KG Werk 4 Hamm</Department>
+<Street>Roemer Strasse  66</Street>
+<City>Hamm</City>
+<County>null</County>
+<Zip>59075</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Hella KG Hueck &amp; Co.</Department>
+<Street>Rixbecker Strasse 75</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59522</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>15E</CartonNumber>
+<Awb>PEK950786</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071301TSCE</InvoiceNumber>
+<ProductName>MBRS6040CT-01 RN</ProductName>
+<CustomerProductNumber>790 212-03</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.278</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>16E</CartonNumber>
+<Awb>PEK950786</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071301TSCE</InvoiceNumber>
+<ProductName>MBRS6040CT-01 RN</ProductName>
+<CustomerProductNumber>790 212-03</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.278</Price>
+</Item>
+</Items>
+</CustomerPO>
+</PurchaseOrderList>

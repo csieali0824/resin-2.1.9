@@ -1,0 +1,62 @@
+# Buttons
+mkDirBtn = Mkdir
+renameBtn = Rename
+deleteBtn = Delete
+refreshBtn = Refresh
+uploadBtn = >>
+downloadBtn = <<
+okBtn = OK
+cancelBtn = Cancel
+connectBtn = Connect
+disconnectBtn = Disconnect
+helpBtn = Help
+aboutBtn = About
+
+# Applet Labels
+localSystemLbl = Local System
+remoteSystemLbl = Remote System
+
+# Dialogs
+deleteLocalFileTitle = Delete local file
+deleteRemoteFileTitle = Delete remote file
+deleteFileLbl = Are you sure you want to delete the selected file(s)?
+createLocalDirTitle = Create local directory
+createRemoteDirTitle = Create remote directory
+createDirLbl = Enter directory name:
+renameLocalFileTitle = Rename local file
+renameRemoteFileTitle = Rename remote file
+renameFileLbl = Enter new name:
+transferStatusTitle = Transfer status
+connectionFailedTitle = Connection failed
+connectionDroppedTitle = Connection dropped
+connectTitle = Connect
+connectUsernameLbl = Username
+connectPasswordLbl = Password
+connectHostLbl = Host
+connectAnonymousLbl = Anonymous
+connectPassiveLbl = Passive
+connectEnableProxyLbl = SOCKS proxy
+connectProxyHostLbl = Host
+browseVolumesLbl = Volumes
+browseVolumesTitle = Browse local
+browseDirsTitle = Browse remote
+browseDirsLbl = Recent directories
+
+# Error Messages
+
+errTitle = Error
+errDeleteLbl = Unable to delete one or more file(s).
+errRenameLbl = Unable to rename one or more file(s).
+errSetDirLbl = Unable to access the specified directory.
+errCreateDir = Unable to create the specified directory.
+errConnection = Unable to connect to FTP server. Try again?
+errConnectionDrop = Connection terminated.  Reconnect?
+errLogin = Invalid username or password.
+errUploadLbl = Unable to upload one or more file(s).
+errDownloadLbl = Unable to download one or more file(s).
+errPermissions = Access denied.
+errProxy = Unable to connect to proxy server.
+
+
+
+

@@ -1,0 +1,54 @@
+<?xml version='1.0'  encoding='UTF-8'?>
+<PurchaseOrderList>
+<CustomerPO name='5800012781'>
+<PackingListNumber>7-080206C</PackingListNumber>
+<Date>5800012781</Date>
+<CustomerName>Kostal</CustomerName>
+<CustomerID>3499</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>7044</ShipToID>
+<Department>Kostal Ireland GmbH</Department>
+<Street>Ballydaniel, Limerick road</Street>
+<City>Mallow-Cork</City>
+<County></County>
+<Zip></Zip>
+<Country>Ireland</Country>
+</ShipToAddress>
+ <BillToAddress>
+<BillToID>4452</BillToID>
+<Department>Kostal Ireland GmbH</Department>
+<Street>Mounthmahon</Street>
+<City>Abbeyfeale Limerick</City>
+<County></County>
+<Zip></Zip>
+<Country>Ireland</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>53A</CartonNumber>
+<Awb>55364</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-056331TSCE</InvoiceNumber>
+<ProductName>P6SMB30A R4</ProductName>
+<CustomerProductNumber>66310301010311-01</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>52A</CartonNumber>
+<Awb>55364</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-056331TSCE</InvoiceNumber>
+<ProductName>P6SMB30A R4</ProductName>
+<CustomerProductNumber>66310301010311-01</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.03</Price>
+</Item>
+</Items>
+</CustomerPO>
+</PurchaseOrderList>

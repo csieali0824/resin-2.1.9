@@ -1,0 +1,83 @@
+<?xml version='1.0'  encoding='UTF-8'?>
+<PurchaseOrderList>
+<CustomerPO name='500037737 '>
+<PackingListNumber>20-310707-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>AMERICAN STANDARD EUROPE BVBA</CustomerName>
+<CustomerID>5662</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>8222</ShipToID>
+<Department>WABCO Polska Sp. z o.o.</Department>
+<Street>ul. Ostrowskiego 34</Street>
+<City>53-238 Wroclaw</City>
+<County>null</County>
+<Zip>null</Zip>
+<Country>Poland</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>8216</BillToID>
+<Department>American Standard Europe BvbA</Department>
+<Street>Poste De BXL 16</Street>
+<City>B-1160 Brussels</City>
+<County></County>
+<Zip></Zip>
+<Country>Belgium</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>123</CartonNumber>
+<Awb>49459</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071635TSCE</InvoiceNumber>
+<ProductName>S1J R2</ProductName>
+<CustomerProductNumber>8869022454</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0123</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='4501106810-122'>
+<PackingListNumber>74-310707-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>Braun</CustomerName>
+<CustomerID>1319</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>4151</ShipToID>
+<Department>Braun GmbH</Department>
+<Street>Waldstr. 9</Street>
+<City>Walld?rn</City>
+<County></County>
+<Zip>D-74731</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>1374</BillToID>
+<Department>Gillette a div of P&amp;G International Operations S.A. c/o Braun GmbH</Department>
+<Street>Frankurter Str. 145</Street>
+<City>Kronberg</City>
+<County>null</County>
+<Zip>D-61476</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>25A</CartonNumber>
+<Awb>56381</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-062246TSCE</InvoiceNumber>
+<ProductName>ES1DL R2</ProductName>
+<CustomerProductNumber>0630623</CustomerProductNumber>
+<Quantity>60000</Quantity>
+<Price>0.0205</Price>
+</Item>
+</Items>
+</CustomerPO>
+</PurchaseOrderList>

@@ -1,0 +1,87 @@
+<?xml version='1.0'  encoding='UTF-8'?>
+<PurchaseOrderList>
+<CustomerPO name='OF496596'>
+<PackingListNumber>52-120607-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>SILVERSTAR S.R.L.</CustomerName>
+<CustomerID>5236</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>5739</ShipToID>
+<Department>Silverstar S.R.L</Department>
+<Street>Via Monzoro 48</Street>
+<City>Cornadero (MI)</City>
+<County></County>
+<Zip>I-20010</Zip>
+<Country>Italy</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>6564</BillToID>
+<Department>Silverstar S.R.L Accounting Dept.</Department>
+<Street>Viale Fulvio Testi 280</Street>
+<City>Milano</City>
+<County></County>
+<Zip>I-20126</Zip>
+<Country>Italy</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>90A</CartonNumber>
+<Awb>PEK929776</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-061042TSCE</InvoiceNumber>
+<ProductName>S1G R2</ProductName>
+<CustomerProductNumber></CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0125</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>91A</CartonNumber>
+<Awb>PEK929776</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-061042TSCE</InvoiceNumber>
+<ProductName>S1G R2</ProductName>
+<CustomerProductNumber></CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0125</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>92A</CartonNumber>
+<Awb>PEK929776</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-061042TSCE</InvoiceNumber>
+<ProductName>S1G R2</ProductName>
+<CustomerProductNumber></CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0125</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>97AXXX</CartonNumber>
+<Awb>PEK929776</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-061042TSCE</InvoiceNumber>
+<ProductName>S1G R2</ProductName>
+<CustomerProductNumber></CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.0125</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>99AXX</CartonNumber>
+<Awb>PEK929776</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-061042TSCE</InvoiceNumber>
+<ProductName>S1G R2</ProductName>
+<CustomerProductNumber></CustomerProductNumber>
+<Quantity>60000</Quantity>
+<Price>0.0125</Price>
+</Item>
+</Items>
+</CustomerPO>
+</PurchaseOrderList>

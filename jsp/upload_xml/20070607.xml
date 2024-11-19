@@ -1,0 +1,83 @@
+<?xml version='1.0'  encoding='UTF-8'?>
+<PurchaseOrderList>
+<CustomerPO name='P051546'>
+<PackingListNumber>Cel-050607-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>Celestica</CustomerName>
+<CustomerID>1319</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>4151</ShipToID>
+<Department>LINEA KONE</Department>
+<Street>VALENCIA ALENCIA-ADEMUZ KM17.6</Street>
+<City>LA POBLA DE VALLBONA</City>
+<County></County>
+<Zip>46185</Zip>
+<Country>Spain</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>1374</BillToID>
+<Department>DPTO. DE CONTABILIDAD CELESTICA VALENCIA S.A.</Department>
+<Street>VALENCIA ADEMUZ-ADEMUZ KM17.6</Street>
+<City>LA POBLA DE VALLBONA</City>
+<County>null</County>
+<Zip>46185</Zip>
+<Country>Spain</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>127x</CartonNumber>
+<Awb>49459</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071635TSCE</InvoiceNumber>
+<ProductName>S1J R2</ProductName>
+<CustomerProductNumber>KE0000264802</CustomerProductNumber>
+<Quantity>45000</Quantity>
+<Price>0.013</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='P051545'>
+<PackingListNumber>Cel-040607-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>Celestica</CustomerName>
+<CustomerID>1319</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>4151</ShipToID>
+<Department>LINEA KONE</Department>
+<Street>VALENCIA ALENCIA-ADEMUZ KM17.6</Street>
+<City>LA POBLA DE VALLBONA</City>
+<County></County>
+<Zip>46185</Zip>
+<Country>Spain</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>1374</BillToID>
+<Department>DPTO. DE CONTABILIDAD CELESTICA VALENCIA S.A.</Department>
+<Street>VALENCIA ADEMUZ-ADEMUZ KM17.6</Street>
+<City>LA POBLA DE VALLBONA</City>
+<County>null</County>
+<Zip>46185</Zip>
+<Country>Spain</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>127</CartonNumber>
+<Awb>49459</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071635TSCE</InvoiceNumber>
+<ProductName>S1J R2</ProductName>
+<CustomerProductNumber>KE0000264802</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.013</Price>
+</Item>
+</Items>
+</CustomerPO>
+</PurchaseOrderList>

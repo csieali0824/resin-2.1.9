@@ -1,0 +1,452 @@
+<?xml version='1.0'  encoding='UTF-8'?>
+<PurchaseOrderList>
+<CustomerPO name='2921065974'>
+<PackingListNumber>49-230507-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>SAGEM COMMUNICATION BAYONNE</CustomerName>
+<CustomerID>7687</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>8708</ShipToID>
+<Department>PLATEFORME GEFCO</Department>
+<Street>7 voie d'Autriche</Street>
+<City>VITROLLES CEDEX</City>
+<County></County>
+<Zip>F-13814</Zip>
+<Country>France</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>8837</BillToID>
+<Department>SAGEM Tunisie</Department>
+<Street>Zone Industrielle Borj El Ghorbel</Street>
+<City>BEN AROUS</City>
+<County>null</County>
+<Zip>TN-2013</Zip>
+<Country>Tunisia</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>51A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073466TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>STT0095682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.15</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>52A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073466TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>STT0095682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.15</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>53A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073466TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>STT0095682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.15</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='2921067850'>
+<PackingListNumber>49-230507-B</PackingListNumber>
+<Date>0</Date>
+<CustomerName>SAGEM COMMUNICATION BAYONNE</CustomerName>
+<CustomerID>7687</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>8708</ShipToID>
+<Department>PLATEFORME GEFCO</Department>
+<Street>7 voie d'Autriche</Street>
+<City>VITROLLES CEDEX</City>
+<County></County>
+<Zip>F-13814</Zip>
+<Country>France</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>8837</BillToID>
+<Department>SAGEM Tunisie</Department>
+<Street>Zone Industrielle Borj El Ghorbel</Street>
+<City>BEN AROUS</City>
+<County>null</County>
+<Zip>TN-2013</Zip>
+<Country>Tunisia</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>54A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073466TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>STT0095682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.15</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>55A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073466TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>STT0095682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.15</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>56A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073466TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>STT0095682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.15</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>57A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073466TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>STT0095682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.15</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>58A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073466TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>STT0095682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.15</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>59A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073466TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>STT0095682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.15</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>60A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073466TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>STT0095682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.15</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>61A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073466TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>STT0095682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.15</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='2921068928'>
+<PackingListNumber>49-230507-C</PackingListNumber>
+<Date>0</Date>
+<CustomerName>SAGEM COMMUNICATION BAYONNE</CustomerName>
+<CustomerID>7687</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>8708</ShipToID>
+<Department>PLATEFORME GEFCO</Department>
+<Street>7 voie d'Autriche</Street>
+<City>VITROLLES CEDEX</City>
+<County></County>
+<Zip>F-13814</Zip>
+<Country>France</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>8837</BillToID>
+<Department>SAGEM Tunisie</Department>
+<Street>Zone Industrielle Borj El Ghorbel</Street>
+<City>BEN AROUS</City>
+<County>null</County>
+<Zip>TN-2013</Zip>
+<Country>Tunisia</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>62A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073466TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>STT0095682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.15</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>63A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073466TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>STT0095682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.15</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>64A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073466TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>STT0095682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.15</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>65A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073466TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>STT0095682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.15</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>66A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073466TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>STT0095682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.15</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>67A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073466TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>STT0095682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.15</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>68A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073466TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>STT0095682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.15</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>69A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073466TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>STT0095682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.15</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='2921068929'>
+<PackingListNumber>49-230507-D</PackingListNumber>
+<Date>0</Date>
+<CustomerName>SAGEM COMMUNICATION BAYONNE</CustomerName>
+<CustomerID>7687</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>8708</ShipToID>
+<Department>PLATEFORME GEFCO</Department>
+<Street>7 voie d'Autriche</Street>
+<City>VITROLLES CEDEX</City>
+<County></County>
+<Zip>F-13814</Zip>
+<Country>France</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>8837</BillToID>
+<Department>SAGEM Tunisie</Department>
+<Street>Zone Industrielle Borj El Ghorbel</Street>
+<City>BEN AROUS</City>
+<County>null</County>
+<Zip>TN-2013</Zip>
+<Country>Tunisia</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>70A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073466TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>STT0095682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.15</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>71A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073466TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>STT0095682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.15</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>72A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073466TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>STT0095682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.15</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='55705248'>
+<PackingListNumber>8-230507-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>TRIDONIC ATCO GMBH &amp; CO.KG</CustomerName>
+<CustomerID>3552</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6106</ShipToID>
+<Department>TridonicAtco GmbH&amp;Co KG</Department>
+<Street>Rohrbach, Schwarz 8</Street>
+<City>A-6850 Dornbirn</City>
+<County></County>
+<Zip></Zip>
+<Country>Austria</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4041</BillToID>
+<Department>Tridonic Atco GmbH &amp; Co. KG</Department>
+<Street>Faerbergasse 15</Street>
+<City>A-6851 Dornbirn</City>
+<County></County>
+<Zip></Zip>
+<Country>Austria</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>18A</CartonNumber>
+<Awb>48231</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-067275TSCE</InvoiceNumber>
+<ProductName>ES3J R6</ProductName>
+<CustomerProductNumber>05503335</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.07</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='55684375'>
+<PackingListNumber>8-230507-B</PackingListNumber>
+<Date>0</Date>
+<CustomerName>TRIDONIC ATCO GMBH &amp; CO.KG</CustomerName>
+<CustomerID>3552</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6106</ShipToID>
+<Department>Tridonic LTD</Department>
+<Street>Merrington Lane Ind.Estate Spennymore</Street>
+<City>CO Durham DL16 7UR</City>
+<County></County>
+<Zip></Zip>
+<Country>United Kingdom</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4041</BillToID>
+<Department>Tridonic LTD</Department>
+<Street>Merrington Lane Ind.Estate Spennymore</Street>
+<City>CO Durham DL16 7UR</City>
+<County></County>
+<Zip></Zip>
+<Country>United Kingdom</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>269B</CartonNumber>
+<Awb>PEK953771</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072522TSCE</InvoiceNumber>
+<ProductName>S1M R2</ProductName>
+<CustomerProductNumber>05503851</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0155</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>270B</CartonNumber>
+<Awb>PEK953771</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072522TSCE</InvoiceNumber>
+<ProductName>S1M R2</ProductName>
+<CustomerProductNumber>05503851</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0155</Price>
+</Item>
+</Items>
+</CustomerPO>
+</PurchaseOrderList>

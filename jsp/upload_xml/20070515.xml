@@ -1,0 +1,1252 @@
+<?xml version='1.0'  encoding='UTF-8'?>
+<PurchaseOrderList>
+<CustomerPO name='5500002227'>
+<PackingListNumber>54-140507-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>ZOLLNER ELEKRONIK AG</CustomerName>
+<CustomerID>5719</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>7174</ShipToID>
+<Department>Zollner Elektronik AG</Department>
+<Street>Industriestrasse 2-14</Street>
+<City>D-93499 Zandt</City>
+<County>Germany</County>
+<Zip></Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>6239</BillToID>
+<Department>Zollner Elektronik AG</Department>
+<Street>Industriestrasse 2-14</Street>
+<City>D-93499 Zandt</City>
+<County>Germany</County>
+<Zip></Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>229D</CartonNumber>
+<Awb>PEK953771</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072521TSCE</InvoiceNumber>
+<ProductName>1.5KE440CA R0</ProductName>
+<CustomerProductNumber>1334251-00</CustomerProductNumber>
+<Quantity>5000</Quantity>
+<Price>0.1</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>230D</CartonNumber>
+<Awb>PEK953771</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072521TSCE</InvoiceNumber>
+<ProductName>1.5KE440CA R0</ProductName>
+<CustomerProductNumber>1334251-00</CustomerProductNumber>
+<Quantity>5000</Quantity>
+<Price>0.1</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>231D</CartonNumber>
+<Awb>PEK953771</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072521TSCE</InvoiceNumber>
+<ProductName>1.5KE440CA R0</ProductName>
+<CustomerProductNumber>1334251-00</CustomerProductNumber>
+<Quantity>5000</Quantity>
+<Price>0.1</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>232D</CartonNumber>
+<Awb>PEK953771</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072521TSCE</InvoiceNumber>
+<ProductName>1.5KE440CA R0</ProductName>
+<CustomerProductNumber>1334251-00</CustomerProductNumber>
+<Quantity>5000</Quantity>
+<Price>0.1</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>233D</CartonNumber>
+<Awb>PEK953771</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072521TSCE</InvoiceNumber>
+<ProductName>1.5KE440CA R0</ProductName>
+<CustomerProductNumber>1334251-00</CustomerProductNumber>
+<Quantity>5000</Quantity>
+<Price>0.1</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>259D</CartonNumber>
+<Awb>PEK953771</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072521TSCE</InvoiceNumber>
+<ProductName>1.5KE440CA R0</ProductName>
+<CustomerProductNumber>1334251-00</CustomerProductNumber>
+<Quantity>5000</Quantity>
+<Price>0.1</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>113A</CartonNumber>
+<Awb>PEK954320</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072703TSCE</InvoiceNumber>
+<ProductName>1.5KE440CA R0</ProductName>
+<CustomerProductNumber>1334251-00</CustomerProductNumber>
+<Quantity>5000</Quantity>
+<Price>0.1</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>114A</CartonNumber>
+<Awb>PEK954320</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072703TSCE</InvoiceNumber>
+<ProductName>1.5KE440CA R0</ProductName>
+<CustomerProductNumber>1334251-00</CustomerProductNumber>
+<Quantity>5000</Quantity>
+<Price>0.1</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>115A</CartonNumber>
+<Awb>PEK954320</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072703TSCE</InvoiceNumber>
+<ProductName>1.5KE440CA R0</ProductName>
+<CustomerProductNumber>1334251-00</CustomerProductNumber>
+<Quantity>5000</Quantity>
+<Price>0.1</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>116A</CartonNumber>
+<Awb>PEK954320</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072703TSCE</InvoiceNumber>
+<ProductName>1.5KE440CA R0</ProductName>
+<CustomerProductNumber>1334251-00</CustomerProductNumber>
+<Quantity>5000</Quantity>
+<Price>0.1</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>12D</CartonNumber>
+<Awb>PEK954929</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072947TSCE</InvoiceNumber>
+<ProductName>1.5KE440CA R0</ProductName>
+<CustomerProductNumber>1334251-00</CustomerProductNumber>
+<Quantity>5000</Quantity>
+<Price>0.1</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>13D</CartonNumber>
+<Awb>PEK954929</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072947TSCE</InvoiceNumber>
+<ProductName>1.5KE440CA R0</ProductName>
+<CustomerProductNumber>1334251-00</CustomerProductNumber>
+<Quantity>5000</Quantity>
+<Price>0.1</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5510011202'>
+<PackingListNumber>7-110507-C</PackingListNumber>
+<Date>0</Date>
+<CustomerName>KOSTAL IRELAND GMBH</CustomerName>
+<CustomerID>3499</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>7044</ShipToID>
+<Department>Kostal Industrie Elektrik GmbH</Department>
+<Street>Lange Eck 11</Street>
+<City>D-58099 Hagen</City>
+<County></County>
+<Zip></Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4452</BillToID>
+<Department>Kostal Industrie Elektrik GmbH</Department>
+<Street>Wiesenstrasse 47</Street>
+<City>D-58507 Luedenscheid</City>
+<County></County>
+<Zip></Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>254E</CartonNumber>
+<Awb>PEK950786</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071305TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>255E</CartonNumber>
+<Awb>PEK950786</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071305TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>256E</CartonNumber>
+<Awb>PEK950786</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071305TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>257E</CartonNumber>
+<Awb>PEK950786</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071305TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>258E</CartonNumber>
+<Awb>PEK950786</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071305TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>259E</CartonNumber>
+<Awb>PEK950786</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071305TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>260E</CartonNumber>
+<Awb>PEK950786</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071305TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>261E</CartonNumber>
+<Awb>PEK950786</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071305TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>262E</CartonNumber>
+<Awb>PEK950786</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071305TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>263E</CartonNumber>
+<Awb>PEK950786</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071305TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>264E</CartonNumber>
+<Awb>PEK950786</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071305TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>265E</CartonNumber>
+<Awb>PEK950786</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071305TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>266E</CartonNumber>
+<Awb>PEK950786</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071305TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5510012180 '>
+<PackingListNumber>7-110507-D</PackingListNumber>
+<Date>0</Date>
+<CustomerName>KOSTAL IRELAND GMBH</CustomerName>
+<CustomerID>3499</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>7044</ShipToID>
+<Department>Kostal Industrie Elektrik GmbH</Department>
+<Street>Lange Eck 11</Street>
+<City>D-58099 Hagen</City>
+<County></County>
+<Zip></Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4452</BillToID>
+<Department>Kostal Industrie Elektrik GmbH</Department>
+<Street>Wiesenstrasse 47</Street>
+<City>D-58507 Luedenscheid</City>
+<County></County>
+<Zip></Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>32A</CartonNumber>
+<Awb>48911</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-07123TSCE</InvoiceNumber>
+<ProductName>P6SMB27A R4</ProductName>
+<CustomerProductNumber>66310271550301-00</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.03</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5510012549'>
+<PackingListNumber>7-110507-H</PackingListNumber>
+<Date>0</Date>
+<CustomerName>KOSTAL IRELAND GMBH</CustomerName>
+<CustomerID>3499</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>7044</ShipToID>
+<Department>Kostal Industrie Elektrik GmbH</Department>
+<Street>Lange Eck 11</Street>
+<City>D-58099 Hagen</City>
+<County></County>
+<Zip></Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4452</BillToID>
+<Department>Kostal Industrie Elektrik GmbH</Department>
+<Street>Wiesenstrasse 47</Street>
+<City>D-58507 Luedenscheid</City>
+<County></County>
+<Zip></Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>1XX</CartonNumber>
+<Awb>TPE346124</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072086TSCE</InvoiceNumber>
+<ProductName>TS809CXC RF</ProductName>
+<CustomerProductNumber>66610002200300-00</CustomerProductNumber>
+<Quantity>6000</Quantity>
+<Price>0.082</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5500070033'>
+<PackingListNumber>H-140507-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Hella KG Werk 4 Hamm</Department>
+<Street>Roemer Strasse  66</Street>
+<City>Hamm</City>
+<County>null</County>
+<Zip>59075</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Hella KG Hueck &amp; Co.</Department>
+<Street>Rixbecker Strasse 75</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59522</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>48A</CartonNumber>
+<Awb>PEK951720</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071723TSCE</InvoiceNumber>
+<ProductName>S1J-03 R2</ProductName>
+<CustomerProductNumber>716 451-03</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0123</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>49A</CartonNumber>
+<Awb>PEK951720</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071723TSCE</InvoiceNumber>
+<ProductName>S1J-03 R2</ProductName>
+<CustomerProductNumber>716 451-03</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0123</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>50A</CartonNumber>
+<Awb>PEK951720</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071723TSCE</InvoiceNumber>
+<ProductName>S1J-03 R2</ProductName>
+<CustomerProductNumber>716 451-03</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0123</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>51A</CartonNumber>
+<Awb>PEK951720</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071723TSCE</InvoiceNumber>
+<ProductName>S1J-03 R2</ProductName>
+<CustomerProductNumber>716 451-03</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0123</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>52A</CartonNumber>
+<Awb>PEK951720</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071723TSCE</InvoiceNumber>
+<ProductName>S1J-03 R2</ProductName>
+<CustomerProductNumber>716 451-03</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0123</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>53A</CartonNumber>
+<Awb>PEK951720</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071723TSCE</InvoiceNumber>
+<ProductName>S1J-03 R2</ProductName>
+<CustomerProductNumber>716 451-03</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0123</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>54A</CartonNumber>
+<Awb>PEK951720</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071723TSCE</InvoiceNumber>
+<ProductName>S1J-03 R2</ProductName>
+<CustomerProductNumber>716 451-03</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0123</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>55A</CartonNumber>
+<Awb>PEK951720</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071723TSCE</InvoiceNumber>
+<ProductName>S1J-03 R2</ProductName>
+<CustomerProductNumber>716 451-03</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0123</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>56A</CartonNumber>
+<Awb>PEK951720</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071723TSCE</InvoiceNumber>
+<ProductName>S1J-03 R2</ProductName>
+<CustomerProductNumber>716 451-03</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0123</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>102A</CartonNumber>
+<Awb>PEK57044492</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072154TSCE</InvoiceNumber>
+<ProductName>S1J-03 R2</ProductName>
+<CustomerProductNumber>716 451-03</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0123</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>103A</CartonNumber>
+<Awb>PEK57044492</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072154TSCE</InvoiceNumber>
+<ProductName>S1J-03 R2</ProductName>
+<CustomerProductNumber>716 451-03</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0123</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>104A</CartonNumber>
+<Awb>PEK57044492</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072154TSCE</InvoiceNumber>
+<ProductName>S1J-03 R2</ProductName>
+<CustomerProductNumber>716 451-03</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0123</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>105A</CartonNumber>
+<Awb>PEK57044492</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072154TSCE</InvoiceNumber>
+<ProductName>S1J-03 R2</ProductName>
+<CustomerProductNumber>716 451-03</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0123</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>106A</CartonNumber>
+<Awb>PEK57044492</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072154TSCE</InvoiceNumber>
+<ProductName>S1J-03 R2</ProductName>
+<CustomerProductNumber>716 451-03</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0123</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>107A</CartonNumber>
+<Awb>PEK57044492</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072154TSCE</InvoiceNumber>
+<ProductName>S1J-03 R2</ProductName>
+<CustomerProductNumber>716 451-03</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0123</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>108A</CartonNumber>
+<Awb>PEK57044492</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072154TSCE</InvoiceNumber>
+<ProductName>S1J-03 R2</ProductName>
+<CustomerProductNumber>716 451-03</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0123</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>109A</CartonNumber>
+<Awb>PEK57044492</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072154TSCE</InvoiceNumber>
+<ProductName>S1J-03 R2</ProductName>
+<CustomerProductNumber>716 451-03</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0123</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5500070034'>
+<PackingListNumber>H-140507-B</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Hella KG Werk 4 Hamm</Department>
+<Street>Roemer Strasse  66</Street>
+<City>Hamm</City>
+<County>null</County>
+<Zip>59075</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Hella KG Hueck &amp; Co.</Department>
+<Street>Rixbecker Strasse 75</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59522</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>5D</CartonNumber>
+<Awb>PEK953771</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072525TSCE</InvoiceNumber>
+<ProductName>S3J-02 R6</ProductName>
+<CustomerProductNumber>716 451-05</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.0412</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>6D</CartonNumber>
+<Awb>PEK953771</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072525TSCE</InvoiceNumber>
+<ProductName>S3J-02 R6</ProductName>
+<CustomerProductNumber>716 451-05</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.0412</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>7D</CartonNumber>
+<Awb>PEK953771</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072525TSCE</InvoiceNumber>
+<ProductName>S3J-02 R6</ProductName>
+<CustomerProductNumber>716 451-05</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.0412</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>8D</CartonNumber>
+<Awb>PEK953771</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072525TSCE</InvoiceNumber>
+<ProductName>S3J-02 R6</ProductName>
+<CustomerProductNumber>716 451-05</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.0412</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5500079250'>
+<PackingListNumber>H-140507-C</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Hella KG Werk 4 Hamm</Department>
+<Street>Roemer Strasse  66</Street>
+<City>Hamm</City>
+<County>null</County>
+<Zip>59075</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Hella KG Hueck &amp; Co.</Department>
+<Street>Rixbecker Strasse 75</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59522</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>12A</CartonNumber>
+<Awb>PEK949783</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-07902TSCE</InvoiceNumber>
+<ProductName>ES3D R6</ProductName>
+<CustomerProductNumber>716 451-08</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.052</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5500071182'>
+<PackingListNumber>H-140507-D</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Hella KG Werk 4 Hamm</Department>
+<Street>Roemer Strasse  66</Street>
+<City>Hamm</City>
+<County>null</County>
+<Zip>59075</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Hella KG Hueck &amp; Co.</Department>
+<Street>Rixbecker Strasse 75</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59522</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>18Ax</CartonNumber>
+<Awb>PEK940803</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-066486TSCE</InvoiceNumber>
+<ProductName>1.5SMC33A R6</ProductName>
+<CustomerProductNumber>724 538-12</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.0785</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>14A</CartonNumber>
+<Awb>48445</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-067979TSCE</InvoiceNumber>
+<ProductName>1.5SMC33A R6</ProductName>
+<CustomerProductNumber>724 538-12</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.0785</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5500071176'>
+<PackingListNumber>H-140507-E</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Hella KG Werk 4 Hamm</Department>
+<Street>Roemer Strasse  66</Street>
+<City>Hamm</City>
+<County>null</County>
+<Zip>59075</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Hella KG Hueck &amp; Co.</Department>
+<Street>Rixbecker Strasse 75</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59522</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>2Ax</CartonNumber>
+<Awb>56381</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-062245TSCE</InvoiceNumber>
+<ProductName>SMBJ24CA R4</ProductName>
+<CustomerProductNumber>724 538-16</CustomerProductNumber>
+<Quantity>6000</Quantity>
+<Price>0.0365</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5500071169'>
+<PackingListNumber>H-140507-F</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Hella KG Werk 4 Hamm</Department>
+<Street>Roemer Strasse  66</Street>
+<City>Hamm</City>
+<County>null</County>
+<Zip>59075</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Hella KG Hueck &amp; Co.</Department>
+<Street>Rixbecker Strasse 75</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59522</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>6A****</CartonNumber>
+<Awb>PEK933445</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-063297TSCE</InvoiceNumber>
+<ProductName>P6SMB62CA R4</ProductName>
+<CustomerProductNumber>724 538-21</CustomerProductNumber>
+<Quantity>6000</Quantity>
+<Price>0.0365</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5500071162'>
+<PackingListNumber>H-140507-G</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Hella KG Werk 4 Hamm</Department>
+<Street>Roemer Strasse  66</Street>
+<City>Hamm</City>
+<County>null</County>
+<Zip>59075</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Hella KG Hueck &amp; Co.</Department>
+<Street>Rixbecker Strasse 75</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59522</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>46A***</CartonNumber>
+<Awb>48027</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-066619TSCE</InvoiceNumber>
+<ProductName>1.5SMC51CA R6</ProductName>
+<CustomerProductNumber>724 538-23</CustomerProductNumber>
+<Quantity>6000</Quantity>
+<Price>0.0885</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5500070018'>
+<PackingListNumber>H-140507-H</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Hella KG Werk 4 Hamm</Department>
+<Street>Roemer Strasse  66</Street>
+<City>Hamm</City>
+<County>null</County>
+<Zip>59075</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Hella KG Hueck &amp; Co.</Department>
+<Street>Rixbecker Strasse 75</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59522</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>67A</CartonNumber>
+<Awb>PEK951276</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071524TSCE</InvoiceNumber>
+<ProductName>1SMA4750 R2</ProductName>
+<CustomerProductNumber>729 501-00</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0305</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>68A</CartonNumber>
+<Awb>PEK951276</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071524TSCE</InvoiceNumber>
+<ProductName>1SMA4750 R2</ProductName>
+<CustomerProductNumber>729 501-00</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0305</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5500071184'>
+<PackingListNumber>H-140507-I</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Hella KG Werk 4 Hamm</Department>
+<Street>Roemer Strasse  66</Street>
+<City>Hamm</City>
+<County>null</County>
+<Zip>59075</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Hella KG Hueck &amp; Co.</Department>
+<Street>Rixbecker Strasse 75</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59522</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>17A</CartonNumber>
+<Awb>PEK948467</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-07364TSCE</InvoiceNumber>
+<ProductName>P4SMA39CA R2</ProductName>
+<CustomerProductNumber>741 524-00</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.035</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5500085484'>
+<PackingListNumber>H-140507-J</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Hella KG Werk 4 Hamm</Department>
+<Street>Roemer Strasse  66</Street>
+<City>Hamm</City>
+<County>null</County>
+<Zip>59075</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Hella KG Hueck &amp; Co.</Department>
+<Street>Rixbecker Strasse 75</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59522</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>161A</CartonNumber>
+<Awb>PEK948082</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-07255TSCE</InvoiceNumber>
+<ProductName>MBRS6040CT-01 RN</ProductName>
+<CustomerProductNumber>790 212-03</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.278</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5500018347'>
+<PackingListNumber>CE-100507-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Compania Electronica del Automovil, S.A.</Department>
+<Street>Poligono Industrial "Los Frailes"</Street>
+<City>Daganzo de Arriba (Madrid)</City>
+<County>null</County>
+<Zip>28814</Zip>
+<Country>Spain</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Compania Electronica del Automovil, S.A.</Department>
+<Street>Apartado de correos 286</Street>
+<City>Torrejon de Ardoz (Madrid)</City>
+<County>null</County>
+<Zip>28850</Zip>
+<Country>Spain</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>17A</CartonNumber>
+<Awb>PEK951720</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071723TSCE</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>18A</CartonNumber>
+<Awb>PEK951720</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071723TSCE</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>19A</CartonNumber>
+<Awb>PEK951720</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071723TSCE</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>20A</CartonNumber>
+<Awb>PEK951720</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071723TSCE</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>21A</CartonNumber>
+<Awb>PEK951720</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071723TSCE</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>22A</CartonNumber>
+<Awb>PEK951720</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071723TSCE</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>23A</CartonNumber>
+<Awb>PEK951720</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071723TSCE</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>24A</CartonNumber>
+<Awb>PEK951720</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071723TSCE</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>25A</CartonNumber>
+<Awb>PEK951720</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071723TSCE</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>26A</CartonNumber>
+<Awb>PEK951720</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071723TSCE</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>27A</CartonNumber>
+<Awb>PEK951720</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071723TSCE</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>70A</CartonNumber>
+<Awb>PEK57044492</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072154TSCE</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>71A</CartonNumber>
+<Awb>PEK57044492</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072154TSCE</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>72A</CartonNumber>
+<Awb>PEK57044492</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072154TSCE</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>73A</CartonNumber>
+<Awb>PEK57044492</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072154TSCE</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>74A</CartonNumber>
+<Awb>PEK57044492</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072154TSCE</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+</Items>
+</CustomerPO>
+</PurchaseOrderList>

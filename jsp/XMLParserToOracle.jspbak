@@ -1,0 +1,344 @@
+<%@ page contentType="text/html; charset=big5" language="java" %>
+<%@ page import="java.io.*" %>
+<%@ page import="java.net.*" %>
+<%@ page import="java.text.*" %>
+<%@ page import="javax.xml.parsers.*" %>  
+<%@ page import="java.sql.*" %>
+<%@ page import="java.lang.*" %>
+ 
+<%@ page import="org.w3c.dom.*" %>
+<%@ page import="org.xml.sax.*" %>
+<!--=============以下區段為安全認證機制==========-->
+<%//@ include file="/jsp/include/AuthenticationPage.jsp"%>
+<%//@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
+<%
+/* XML 抓取 JSP 程式 編號  TU-001 */
+
+java.util.Date datetime = new java.util.Date();
+SimpleDateFormat formatter = new SimpleDateFormat ("yyyy/MM/dd");
+SimpleDateFormat formatter1 = new SimpleDateFormat ("yyyy/MM/dd HH:mm:ss");
+String RevisedTime = (String) formatter.format( datetime );         //2003/01/01
+String RevisedTimes = (String) formatter1.format( datetime );         //2003/01/01
+String xmlname = request.getParameter("xmlname");
+//out.println(xmlname);
+//out.println("RevisedTime = "+RevisedTime);
+//out.println("RevisedTimes = "+RevisedTime);
+%>
+
+<html>
+<head>
+<title>XML Parser Test Page</title>
+<meta http-equiv="Content-Type" content="text/html; charset=big5"></head>
+<body>
+
+<FORM NAME="MYFORM" METHOD="post">
+<%
+//get a new document builder
+
+DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
+DocumentBuilder builder=factory.newDocumentBuilder();
+
+StringBuffer requestURL=HttpUtils.getRequestURL(request);
+URL jspURL=new URL(requestURL.toString());
+URL url=new URL(jspURL,"upload_xml/"+xmlname);
+InputSource is=new InputSource(url.openStream());
+String purchaseOrderList ="";
+String customerPO ="";
+String packingListNumber ="";
+String date ="";
+String customerName ="";
+String customerID ="";
+String shipmentTerms ="";
+String currency ="";
+String comments ="";
+String shipToID ="";
+String billToID ="";
+String department ="";
+String street ="";
+String city ="";
+String county ="";
+String zip ="";
+String country ="";
+String name="name";
+String ID="ID";
+String payterm_ID="";
+String price_List_id="";
+
+String r_Customer_ID ="";
+String r_Customer_Name =""; 
+String r_Party_ID ="";
+String r_Party_Number ="";
+String r_Orig_System_Reference ="";
+String r_Price_List_ID="";
+
+
+
+String item="";
+String tscItemNo ="";
+String cartonNumber ="";
+String awb ="";
+String serialNumber ="";
+String invoiceNumber ="";
+String productName ="";
+String customerProductNumber ="";
+String quantity=""; 
+String price=""; 
+
+
+
+String i_inventory_item = "";
+String i_inventory_item_id ="";
+String i_item ="";
+int i_item_ID =0;
+String i_Item_Description = "";  
+String i_Item_Identifier_Type="";
+int j=1;
+int i=1;
+ 
+	// CallableStatement cs1 = con.prepareCall("{call DBMS_APPLICATION_INFO.SET_CLIENT_INFO('41')}");
+ 	//cs1.execute();
+ 	//cs1.close();
+  
+
+//load the document
+Document doc=builder.parse(is);
+Element root=doc.getDocumentElement();
+NodeList customerPOList = root.getElementsByTagName("CustomerPO");
+int customerPONum =customerPOList.getLength();
+//out.println("customerPONum="+customerPONum);
+// out.println("customerPONum = "+customerPONum); 
+ //計算 cuctomerPO 的數量
+
+for(i=0;i<customerPONum;i++){
+
+	//Element PurchaseOrderListElt = (Element)doc.getElementsByTagName("PurchaseOrderList").item(0);
+	Element custPoElt = (Element)doc.getElementsByTagName("CustomerPO").item(i);
+	if ( custPoElt != null && custPoElt.getAttribute(name) != null){
+		customerPO = custPoElt.getAttribute(name);}
+	
+ 
+					Element PackingPoElt = (Element)custPoElt.getElementsByTagName("PackingListNumber").item(0);
+						if ( PackingPoElt != null && PackingPoElt.getFirstChild() != null){
+							packingListNumber = PackingPoElt.getFirstChild().getNodeValue(); }
+					
+				
+					 
+					Element dateElt = (Element)custPoElt.getElementsByTagName("Date").item(0);
+						if ( dateElt != null && dateElt.getFirstChild() != null){
+							date = dateElt.getFirstChild().getNodeValue(); }
+					
+					
+					Element customerNameElt = (Element)custPoElt.getElementsByTagName("CustomerName").item(0);
+						if ( customerNameElt != null && customerNameElt.getFirstChild() != null){
+							customerName = customerNameElt.getFirstChild().getNodeValue(); }
+					
+					
+					Element customerIDElt = (Element)custPoElt.getElementsByTagName("CustomerID").item(0);
+						if ( customerIDElt != null && customerIDElt.getFirstChild() != null){
+							customerID = customerIDElt.getFirstChild().getNodeValue();}
+
+				
+					Element shipmentTermsElt = (Element)custPoElt.getElementsByTagName("ShipmentTerms").item(0);
+						if ( shipmentTermsElt != null && shipmentTermsElt.getFirstChild() != null){
+							shipmentTerms = shipmentTermsElt.getFirstChild().getNodeValue(); }
+					
+					
+					Element currencyElt = (Element)custPoElt.getElementsByTagName("Currency").item(0);
+						if ( currencyElt != null && currencyElt.getFirstChild() != null){
+							currency = currencyElt.getFirstChild().getNodeValue(); }
+					
+					
+					Element commentsElt = (Element)doc.getElementsByTagName("Comments").item(0);
+						if ( commentsElt != null && commentsElt.getFirstChild() != null){
+							comments = commentsElt.getFirstChild().getNodeValue(); }
+				
+					/*************************************************
+ 
+					**************************************************/
+					out.println("<table width='100%' border='0'>");
+					Element shipElt = (Element)doc.getElementsByTagName("ShipToAddress").item(0);
+					Element shipidElt =  (Element)shipElt.getElementsByTagName("ShipToID").item(0);
+					Element departmentElt =  (Element)shipElt.getElementsByTagName("Department").item(0);
+					Element streetElt =  (Element)shipElt.getElementsByTagName("Street").item(0);
+					Element cityElt =  (Element)shipElt.getElementsByTagName("City").item(0);
+					Element countyElt =  (Element)shipElt.getElementsByTagName("County").item(0);
+					Element zipElt =  (Element)shipElt.getElementsByTagName("Zip").item(0);
+					Element countryElt =  (Element)shipElt.getElementsByTagName("Country").item(0);
+					
+					if ( shipidElt != null && shipidElt.getFirstChild() != null){
+						shipToID = shipidElt.getFirstChild().getNodeValue();}
+				
+					if ( departmentElt != null && departmentElt.getFirstChild() != null){
+						department 	= departmentElt.getFirstChild().getNodeValue(); }
+						
+					if ( streetElt != null && streetElt.getFirstChild() != null){
+						street = streetElt.getFirstChild().getNodeValue(); }
+					
+					if ( cityElt != null && cityElt.getFirstChild() != null){
+						city = cityElt.getFirstChild().getNodeValue(); }
+					
+					if ( zipElt != null && zipElt.getFirstChild() != null){
+						zip = zipElt.getFirstChild().getNodeValue();}
+					
+					if ( countryElt != null && countryElt.getFirstChild() != null){
+						country = countryElt.getFirstChild().getNodeValue();}
+						out.println("<table border='0' cellpadding='0' cellspacing='0' width='100%'>");
+						out.println("<tr valign='top'>");
+						out.println("<td><IMG alt='' src='Images/logo.jpg'></td>");
+						out.println("<td align='right' nowrap><STRONG>Taiwan Semiconductor Co., LTD</STRONG>");
+						out.println("<BR>11 Fl., No. 205, Sec. 3, Beishin Rd., Shindian");
+						out.println("<BR>Taipei, Taiwan 231, R.O.C.");
+						out.println("<BR>Tel.: +886-2-89131588");
+						out.println("<BR>Fax: +866-2-89131788");
+						out.println("</td>");
+						out.println("</tr>");
+						out.println("</table>");
+						out.println("<br>");
+						out.println("<br>");
+						out.println("<table border='0' cellpadding='0' cellspacing='0' width='100%'>");
+  						out.println("<tr >");
+    					out.println("<td>"+department+"<br>"+street+"<br>"+city+"<br>"+zip+"<br>"+country+"<br></td>");
+
+
+				 
+					/*************************************************
+ 
+					**************************************************/
+					Element billElt 	= (Element)doc.getElementsByTagName("BillToAddress").item(0);
+					Element billidElt =  (Element)billElt.getElementsByTagName("BillToID").item(0);
+					Element b_departmentElt =  (Element)billElt.getElementsByTagName("Department").item(0);
+					Element b_streetElt =  (Element)billElt.getElementsByTagName("Street").item(0);
+					Element b_cityElt =  (Element)billElt.getElementsByTagName("City").item(0);
+					Element b_countyElt =  (Element)billElt.getElementsByTagName("County").item(0);
+					Element b_zipElt =  (Element)billElt.getElementsByTagName("Zip").item(0);
+					Element b_countryElt =  (Element)billElt.getElementsByTagName("Country").item(0);
+						
+						 
+				
+						if ( b_departmentElt != null && b_departmentElt.getFirstChild() != null){
+							department 	= b_departmentElt.getFirstChild().getNodeValue(); }
+				
+						if ( b_streetElt != null && b_streetElt.getFirstChild() != null){
+							street 		= b_streetElt.getFirstChild().getNodeValue(); }
+				
+						if ( b_cityElt != null && b_cityElt.getFirstChild() != null){
+							city = b_cityElt.getFirstChild().getNodeValue(); }
+				 
+						if ( countyElt != null && countyElt.getFirstChild() != null){
+							 county =countyElt.getFirstChild().getNodeValue(); }
+				 
+						if ( b_zipElt != null && b_zipElt.getFirstChild() != null){
+							 zip = b_zipElt.getFirstChild().getNodeValue(); }
+				
+						if ( b_countryElt != null && b_countryElt.getFirstChild() != null){
+							 country = b_countryElt.getFirstChild().getNodeValue(); }
+				
+ 
+					
+						out.println("<td><div align ='right'>"+department+"<br>"+street+"<br>"+city+"<br>"+zip+"<br>"+country+"<br></div></td>");
+  						out.println("</tr>");
+						out.println("</table>");
+						out.println("<br>");
+						/****************************
+						****************************/
+						out.println("<table border='0' cellpadding='0' cellspacing='0' width='100%'>");
+						out.println("<td><div align ='left'>Packing List Number:"+packingListNumber+"<br>Shipment Terms:"+shipmentTerms+"<br></div></td>");
+						out.println("<td><div align ='right'>18.01.2006</div></td>");
+						
+						out.println("</table>");
+						
+						
+						
+						out.println("<br>");
+						out.println("<table border='0' cellpadding='0' cellspacing='0' width='100%'><td><div  align='center'><strong>Packing List</strong></div></td></table>");
+ 
+						 
+
+						
+					/********************************************
+					*   以下為計算一個customerPO裡面的Item數量  *
+					********************************************/
+					Element itemsElt = (Element)custPoElt.getElementsByTagName("Items").item(0);
+					NodeList itemList= itemsElt.getElementsByTagName("Item");
+					int itemNum =itemList.getLength();
+					//out.println("itemNum = "+itemNum);
+					/********************************************
+					*   計算Item數量結束                        *
+					********************************************/
+						out.println("<table  bordercolor='#000000' cellpadding='1' border='1' style='width:100%;border-collapse:collapse;'>");
+						out.println("<tr valign='Top' style='background-color:#E7E7FF;font-weight:bold;'>");
+						out.println("<td>Carton Number<br>AWB / Invoice Number</td><td>Product Description</td><td>Customer P/O</td><td>Customer P/N</td><td nowrap='nowrap' align='Right'>Quantity / Price (EUR)</td>");
+						out.println("</tr>");
+					for(j=0;j<itemNum;j++){
+					
+					 
+				
+						Element itemElt =  (Element)itemsElt.getElementsByTagName("Item").item(j);
+						item = itemElt.getAttribute(ID);
+						 
+						Element tscItemNoElt =  (Element)itemElt.getElementsByTagName("TSCItemNo").item(0);
+						Element cartonNumberElt =  (Element)itemElt.getElementsByTagName("CartonNumber").item(0);
+						Element awbElt =  (Element)itemElt.getElementsByTagName("Awb").item(0);
+						Element serialNumberElt =  (Element)itemElt.getElementsByTagName("SerialNumber").item(0);
+						Element invoiceNumberElt =  (Element)itemElt.getElementsByTagName("InvoiceNumber").item(0);
+						Element productNameElt =  (Element)itemElt.getElementsByTagName("ProductName").item(0);
+						Element customerProductNumberElt =  (Element)itemElt.getElementsByTagName("CustomerProductNumber").item(0);
+						Element quantityElt =  (Element)itemElt.getElementsByTagName("Quantity").item(0);
+						Element priceElt =  (Element)itemElt.getElementsByTagName("Price").item(0);
+						
+
+						
+						
+						if ( tscItemNoElt != null && tscItemNoElt.getFirstChild() != null){
+							tscItemNo = tscItemNoElt.getFirstChild().getNodeValue(); }
+							
+						if ( cartonNumberElt != null && cartonNumberElt.getFirstChild() != null){
+							cartonNumber 	= cartonNumberElt.getFirstChild().getNodeValue(); }
+							
+						if ( awbElt != null && awbElt.getFirstChild() != null){
+							awb = awbElt.getFirstChild().getNodeValue(); }
+						
+						if ( serialNumberElt != null && serialNumberElt.getFirstChild() != null){
+							serialNumber = serialNumberElt.getFirstChild().getNodeValue(); }
+						 
+						if ( invoiceNumberElt != null && invoiceNumberElt.getFirstChild() != null){
+							invoiceNumber = invoiceNumberElt.getFirstChild().getNodeValue(); }
+						 
+						 
+						if ( customerProductNumberElt != null && customerProductNumberElt.getFirstChild() != null){
+							customerProductNumber = customerProductNumberElt.getFirstChild().getNodeValue();}
+							
+							if ( productNameElt != null && productNameElt.getFirstChild() != null){
+							productName = productNameElt.getFirstChild().getNodeValue(); }
+				
+ 
+				 
+						if ( quantityElt != null && quantityElt.getFirstChild() != null){
+							quantity = quantityElt.getFirstChild().getNodeValue(); }
+							
+						if ( priceElt != null && priceElt.getFirstChild() != null){
+							price = priceElt.getFirstChild().getNodeValue(); }
+						out.println("<tr>");
+						out.println("<td>"+cartonNumber+"/<br>"+awb+"/<br>"+invoiceNumber+"</td><td>"+productName+"</td><td>"+customerPO+"</td><td>"+customerProductNumber+"</td><td>"+quantity+"/"+price+"</td>");
+						
+						
+						out.println("<tr>");
+							
+							
+							
+					}
+					out.println("</table>");
+					out.println("<table  style='page-break-after:always'></p>");
+						
+ 
+ 
+
+}//FOR
+
+%>
+ 
+</FORM>
+<%//@ include file="/jsp/include/ReleaseConnPage.jsp"%>
+</body>
+</html>
+ 

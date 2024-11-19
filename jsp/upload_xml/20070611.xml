@@ -1,0 +1,83 @@
+<?xml version='1.0'  encoding='UTF-8'?>
+<PurchaseOrderList>
+<CustomerPO name='415133'>
+<PackingListNumber>45-060607-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>SPOERLE ELECTRONIC GMBH</CustomerName>
+<CustomerID>8516</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>9490</ShipToID>
+<Department>Arrow Central Europe GmbH</Department>
+<Street>Im Gefierth 11</Street>
+<City>Dreieich</City>
+<County>null</County>
+<Zip>D-63303</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>9482</BillToID>
+<Department>Arrow Central Europe GmbH</Department>
+<Street>Max-Planck-Str. 1-3</Street>
+<City>Dreieich</City>
+<County>null</County>
+<Zip>D-63303</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>99A</CartonNumber>
+<Awb>PEK956791</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073860TSCE</InvoiceNumber>
+<ProductName>1SMA4740 R2</ProductName>
+<CustomerProductNumber>120583</CustomerProductNumber>
+<Quantity>7500</Quantity>
+<Price>0.0305</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5510011293'>
+<PackingListNumber>7-290507-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>KOSTAL IRELAND GMBH</CustomerName>
+<CustomerID>3499</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>7044</ShipToID>
+<Department>Kostal Industrie Elektrik GmbH</Department>
+<Street>Lange Eck 11</Street>
+<City>D-58099 Hagen</City>
+<County></County>
+<Zip></Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4452</BillToID>
+<Department>Kostal Industrie Elektrik GmbH</Department>
+<Street>Wiesenstrasse 47</Street>
+<City>D-58507 Luedenscheid</City>
+<County></County>
+<Zip></Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>1B</CartonNumber>
+<Awb>TPE349209</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073410TSCE</InvoiceNumber>
+<ProductName>SRD1050 RN</ProductName>
+<CustomerProductNumber>66335010780300-00</CustomerProductNumber>
+<Quantity>5000</Quantity>
+<Price>0.15</Price>
+</Item>
+</Items>
+</CustomerPO>
+</PurchaseOrderList>

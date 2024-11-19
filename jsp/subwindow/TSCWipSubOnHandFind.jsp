@@ -1,0 +1,221 @@
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*"%>
+<!--=============以下區段為安全認證機制==========-->
+<%@ include file="/jsp/include/AuthenticationPage.jsp"%>
+<!--=============以下區段為取得連結池==========-->
+<%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
+<!--===========================================-->
+<%
+ String useCode=request.getParameter("USECODE");
+
+ //String orgID=request.getParameter("ORGID");
+ String organizationID=request.getParameter("ORGANIZATIONID");
+ String searchString=request.getParameter("SEARCHSTRING");
+ 
+ String subInventory=request.getParameter("SUBINVENTORY");
+ String subInvDesc=request.getParameter("SUBINVDESC");
+ String xINDEX=request.getParameter("XINDEX");
+ String invItemID=request.getParameter("INVITEMID"); 
+ 
+ //String subInventory="";
+ 
+ //String moOtherInfo[]=new String[7]; // 宣告一維陣列,將其它設定資訊置入Array
+ 
+ try
+ {
+   if (searchString==null)
+   {     	  
+	 searchString=""; 
+   } 
+    else {  //out.println("NULL input");
+	     }
+	
+	/*
+	  CallableStatement cs1 = con.prepareCall("{call DBMS_APPLICATION_INFO.SET_CLIENT_INFO(?)}");
+	  cs1.setString(1,orgID);
+	  cs1.execute();
+      //out.println("Procedure : Execute Success !!! ");
+      cs1.close();
+    */
+ } 
+ catch (Exception e)
+ {
+   out.println("Exception:"+e.getMessage());
+ }   
+%>
+<html>
+<head>
+<title>Page for choose SubInv OnHand Qty Information List</title>
+</head>
+<script language="JavaScript" type="text/JavaScript">
+function sendToMainWindow(subInventory,subInvDesc,xINDEX,xOnHandQty)
+{         
+   formSUBINVENTORY_Write = "window.opener.document.DISPLAYREPAIR.SUBINVENTORY"+xINDEX+".value";	
+   formONHANDQTY_Write = "window.opener.document.DISPLAYREPAIR.REINVQTY"+xINDEX+".value";
+   if (xINDEX!=null && xINDEX!="" && xINDEX!="null")     
+   {   
+	   window.opener.document.DISPLAYREPAIR.SUBINVENTORY<%=xINDEX%>.value=subInventory;
+	   window.opener.document.DISPLAYREPAIR.REINVQTY<%=xINDEX%>.value=xOnHandQty;
+	   //alert(window.opener.document.getElementById("DISPLAYREPAIR.SUBINVENTORY"+xINDEX).value);	   	   
+	   //window.opener.document.getElementById("DISPLAYREPAIR.SUBINVENTORY"+xINDEX).value=subInventory;
+   } else {
+			  window.opener.document.DISPLAYREPAIR.SUBINVENTORY.value=subInventory;
+		   }
+  //window.opener.document.DISPLAYREPAIR.SUBINVENTORY.value=subInventory; 
+  window.opener.document.DISPLAYREPAIR.SUBINVDESC.value=subInvDesc;
+  this.window.close();
+}
+
+</script>
+<body>  
+<FORM action="TSCWipSubOnHandFind.jsp" METHOD="post" NAME="SUBINVFORM">
+  <font size="-1">Sub-Inventory名稱: 
+  <input type="text" name="SEARCHSTRING" size=30 value=<%=searchString%>>
+  <input type="hidden" name="XINDEX" value="<%=xINDEX%>">
+  </font> 
+  <INPUT TYPE="submit" NAME="button1" value="查詢"><BR>
+  -----Sub Inventory資訊--------------------------------------------     
+  <BR>
+  <%  
+      int queryCount = 0;
+	 
+      Statement statement=con.createStatement();
+	  try
+      { 
+	     String sql = "";
+		 String where =""; 
+		 String order =	"";	
+	   if (searchString=="" || searchString.equals(""))
+	   {
+	               if (organizationID!=null)  // 若有傳入Organization_ID
+				   {
+				      sql ="select MSI.ORGANIZATION_ID, MSI.SECONDARY_INVENTORY_NAME, MSI.DESCRIPTION  "+		                  
+						   "from MTL_SECONDARY_INVENTORIES MSI ";						        		                      									  
+					  where = "where MSI.ORGANIZATION_ID ='"+organizationID+"' ";					          		 													  
+				      order = "order by MSI.SECONDARY_INVENTORY_NAME ";						 
+					  
+					  String sqlCNT = "select count(DISTINCT SECONDARY_INVENTORY_NAME) "+
+					                    "from MTL_SECONDARY_INVENTORIES MSI "+ where;       						 
+					  ResultSet rsCNT = statement.executeQuery(sqlCNT);
+					  if (rsCNT.next()) queryCount = rsCNT.getInt(1);
+		              rsCNT.close();
+					  //out.println(sqlCNT); 				                    
+				   }	
+	   }
+	   else if ( searchString!=null && !searchString.equals("") ) 
+	   {  	
+	     //out.println("1");			        
+				   if (organizationID!=null)  // 若有傳入Organization_ID
+				   {
+				      sql ="select MSI.ORGANIZATION_ID, MSI.SECONDARY_INVENTORY_NAME, MSI.DESCRIPTION  "+		                  
+						   "from MTL_SECONDARY_INVENTORIES MSI ";						        		                      									  
+					  where = "where MSI.ORGANIZATION_ID ='"+organizationID+"' ";					          		 													  
+				      order = "order by MSI.SECONDARY_INVENTORY_NAME ";				  
+					  
+					  where = where + "and MSI.SECONDARY_INVENTORY_NAME like '"+searchString+"%' ";
+					  
+					  String sqlCNT = "select count(DISTINCT SECONDARY_INVENTORY_NAME) "+
+					                    "from MTL_SECONDARY_INVENTORIES MSI "+ where;       						 
+					  ResultSet rsCNT = statement.executeQuery(sqlCNT);
+					  if (rsCNT.next()) queryCount = rsCNT.getInt(1);
+		              rsCNT.close();
+					  //out.println(sqlCNT); 				                    
+				   }	
+	   }//end of else if ( searchString!=null && !searchString.equals("") )  
+		sql = sql + where + order;
+		//out.println("sql="+sql); 
+        ResultSet rs=statement.executeQuery(sql);
+		//out.println("sql="+sql);       		
+		//out.println("1="+"<BR>");
+	    ResultSetMetaData md=rs.getMetaData();
+        int colCount=md.getColumnCount();
+        String colLabel[]=new String[colCount+1];        
+        out.println("<TABLE>");      
+        out.println("<TR><TH BGCOLOR=BLACK><FONT COLOR=WHITE SIZE=1>&nbsp;</TH>");        
+        for (int i=2;i<=colCount;i++) // 不顯示第一欄資料, 故 for 由 2開始
+        {
+         colLabel[i]=md.getColumnLabel(i);
+         out.println("<TH BGCOLOR=BLACK><FONT COLOR=WHITE SIZE=1>"+colLabel[i]+"</TH>");
+        } //end of for 
+		out.println("<TH BGCOLOR=BLACK><FONT COLOR=WHITE SIZE=1>On-hand</TH>"); // 將 OnHand Qty 加入 
+        out.println("</TR>");
+		//out.println("2="+"<BR>");
+		String onHandQty=null;
+      		
+        String buttonContent=null;
+		String trBgColor = "";
+        while (rs.next())
+        {			 
+		 trBgColor = "E3E3CF";
+		 //out.println("Step0");		 
+		 if (organizationID!=null)
+		 {  
+		  subInventory=rs.getString(2);
+		  subInvDesc=rs.getString(3);
+		  
+		  Statement stateOnHand=con.createStatement();
+		  ResultSet rsOnHand=stateOnHand.executeQuery("select sum(PRIMARY_TRANSACTION_QUANTITY), SUBINVENTORY_CODE  from MTL_ONHAND_QUANTITIES_DETAIL where ORGANIZATION_ID="+organizationID+" and INVENTORY_ITEM_ID="+invItemID+" "+
+		                                            "   and SUBINVENTORY_CODE='"+rs.getString("SECONDARY_INVENTORY_NAME")+"' group by SUBINVENTORY_CODE order by SUBINVENTORY_CODE ");
+		  if (rsOnHand.next())
+		  {
+		     onHandQty = rsOnHand.getString(1);
+		  } else {
+		             onHandQty = "0";
+		         }
+		  rsOnHand.close();
+		  stateOnHand.close();	  	
+		  			 
+		  out.println("<input type='hidden' name='SUBINVENTORY' value='"+subInventory+"' >");		 
+		  out.println("<input type='hidden' name='SUBINVDESC' value='"+subInvDesc+"' >");	
+		  out.println("<input type='hidden' name='ONHANDQTY' value='"+onHandQty+"' >");	
+		  buttonContent="this.value=sendToMainWindow("+'"'+subInventory+'"'+","+'"'+subInvDesc+'"'+","+'"'+xINDEX+'"'+","+'"'+onHandQty+'"'+")";	
+		 }	 
+			  
+         out.print("<TR BGCOLOR='"+trBgColor+"'><TD><INPUT TYPE=button NAME='button' VALUE='");%>帶入<%
+		 out.println("' onClick='"+buttonContent+"'></TD>");		
+         for (int i=2;i<=colCount;i++) // 不顯示第一欄資料, 故 for 由 2開始
+         {
+          String s=(String)rs.getString(i);
+          out.println("<TD><FONT SIZE=2>"+s+"</TD>");
+         } //end of for
+		 out.println("<TD><FONT SIZE=2>"+onHandQty+"</TD>"); // 將 OnHand Qty 加入 
+         out.println("</TR>");	
+        } //end of while
+        out.println("</TABLE>");						
+		
+        rs.close();       
+	 
+	   
+	    if (queryCount==1) //若取到的查詢數 == 1, 則直接帶回原視窗
+	    {
+	        %>
+		    <script LANGUAGE="JavaScript">	
+			  //alert("TEST");		
+			    formSUBINVENTORY_Write = "window.opener.document.DISPLAYREPAIR.SUBINVENTORY"+document.SUBINVFORM.XINDEX+".value";	
+				formONHANDQTY_Write = "window.opener.document.DISPLAYREPAIR.REINVQTY"+document.SUBINVFORM.XINDEX+".value";	
+				if (document.SUBINVFORM.XINDEX.value!=null && document.SUBINVFORM.XINDEX.value!="")
+				{
+				  eval(formSUBINVENTORY_Write)=document.SUBINVFORM.SUBINVENTORY.value;
+				  eval(formONHANDQTY_Write)=document.SUBINVFORM.ONHANDQTY.value;
+				} else {
+				          window.opener.document.DISPLAYREPAIR.SUBINVENTORY.value=document.SUBINVFORM.SUBINVENTORY.value;
+						}
+                window.opener.document.DISPLAYREPAIR.SUBINVDESC.value=document.SUBINVFORM.SUBINVDESC.value; 					   	
+				this.window.close(); 			  	
+            </script>
+		   <%
+	     } // end of if (queryCount==1)	   
+      } //end of try
+      catch (Exception e)
+      {
+       out.println("Exception:"+e.getMessage());
+      }
+	  statement.close();
+     %>
+  <BR>
+<!--%表單參數%-->
+</FORM>
+<!--=============以下區段為釋放連結池==========-->
+<%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
+<!--=================================-->
+</body>
+</html>

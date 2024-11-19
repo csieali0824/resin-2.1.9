@@ -1,0 +1,397 @@
+<?xml version='1.0'  encoding='UTF-8'?>
+<PurchaseOrderList>
+<CustomerPO name='CF050263'>
+<PackingListNumber>12-290507-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>NOVATECH S.A.</CustomerName>
+<CustomerID>2978</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>3450</ShipToID>
+<Department>Novatech S.A</Department>
+<Street>Za de La Croix Rouge Ploumillau</Street>
+<City>Lannion</City>
+<County></County>
+<Zip>F-22300</Zip>
+<Country>France</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3212</BillToID>
+<Department>Novatech S.A</Department>
+<Street>Za de La Croix Rouge Ploumillau</Street>
+<City>Lannion</City>
+<County></County>
+<Zip>F-22300</Zip>
+<Country>France</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>64B</CartonNumber>
+<Awb>PEK956418</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073653TSCE</InvoiceNumber>
+<ProductName>TS20P05G C2</ProductName>
+<CustomerProductNumber>041060[N]</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.29</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>65B</CartonNumber>
+<Awb>PEK956418</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073653TSCE</InvoiceNumber>
+<ProductName>TS20P05G C2</ProductName>
+<CustomerProductNumber>041060[N]</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.29</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='40616'>
+<PackingListNumber>AB-290507-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>AB Mikroelektronik GmbH</Department>
+<Street>Josef-Brandstaetter-Str. 2</Street>
+<City>Salzburg</City>
+<County>null</County>
+<Zip>5020</Zip>
+<Country>Austria</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>AB Mikroelektronik GmbH</Department>
+<Street>Josef-Brandstaetter-Str. 2</Street>
+<City>Salzburg</City>
+<County>null</County>
+<Zip>5020</Zip>
+<Country>Austria</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>22D</CartonNumber>
+<Awb>PEK955513</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073283TSCE</InvoiceNumber>
+<ProductName>BZD27C36P R2</ProductName>
+<CustomerProductNumber>790 815-03</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0305</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>23D</CartonNumber>
+<Awb>PEK955513</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073283TSCE</InvoiceNumber>
+<ProductName>BZD27C36P R2</ProductName>
+<CustomerProductNumber>790 815-03</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0305</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>24D</CartonNumber>
+<Awb>PEK955513</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073283TSCE</InvoiceNumber>
+<ProductName>BZD27C36P R2</ProductName>
+<CustomerProductNumber>790 815-03</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0305</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>25D</CartonNumber>
+<Awb>PEK955513</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073283TSCE</InvoiceNumber>
+<ProductName>BZD27C36P R2</ProductName>
+<CustomerProductNumber>790 815-03</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0305</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>26D</CartonNumber>
+<Awb>PEK955513</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073283TSCE</InvoiceNumber>
+<ProductName>BZD27C36P R2</ProductName>
+<CustomerProductNumber>790 815-03</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0305</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>27D</CartonNumber>
+<Awb>PEK955513</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073283TSCE</InvoiceNumber>
+<ProductName>BZD27C36P R2</ProductName>
+<CustomerProductNumber>790 815-03</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0305</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='47495'>
+<PackingListNumber>C-290507-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>C-MAC Electromag B.V.B.A</Department>
+<Street>Industriezone "Klein Frankrijk", 28</Street>
+<City>Ronse</City>
+<County>null</County>
+<Zip>9600</Zip>
+<Country>Belgium</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>C-MAC Electromag B.V.B.A</Department>
+<Street>Industriezone "Klein Frankrijk", 28</Street>
+<City>Ronse</City>
+<County>null</County>
+<Zip>9600</Zip>
+<Country>Belgium</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>359A</CartonNumber>
+<Awb>PEK57044492</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072154TSCE</InvoiceNumber>
+<ProductName>1.5SMC36A R6</ProductName>
+<CustomerProductNumber>724 538-00</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.0785</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>360A</CartonNumber>
+<Awb>PEK57044492</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072154TSCE</InvoiceNumber>
+<ProductName>1.5SMC36A R6</ProductName>
+<CustomerProductNumber>724 538-00</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.0785</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='47532'>
+<PackingListNumber>C-290507-B</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>C-MAC Electromag B.V.B.A</Department>
+<Street>Industriezone "Klein Frankrijk", 28</Street>
+<City>Ronse</City>
+<County>null</County>
+<Zip>9600</Zip>
+<Country>Belgium</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>C-MAC Electromag B.V.B.A</Department>
+<Street>Industriezone "Klein Frankrijk", 28</Street>
+<City>Ronse</City>
+<County>null</County>
+<Zip>9600</Zip>
+<Country>Belgium</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>5A</CartonNumber>
+<Awb>PEK953331</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072366TSCE</InvoiceNumber>
+<ProductName>1SMA4753 R2</ProductName>
+<CustomerProductNumber>729 501-05</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0305</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5500018347'>
+<PackingListNumber>CE-290507-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Compania Electronica del Automovil, S.A.</Department>
+<Street>Poligono Industrial "Los Frailes"</Street>
+<City>Daganzo de Arriba (Madrid)</City>
+<County>null</County>
+<Zip>28814</Zip>
+<Country>Spain</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Compania Electronica del Automovil, S.A.</Department>
+<Street>Apartado de correos 286</Street>
+<City>Torrejon de Ardoz (Madrid)</City>
+<County>null</County>
+<Zip>28850</Zip>
+<Country>Spain</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>28D</CartonNumber>
+<Awb>PEK953771</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072525</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>29D</CartonNumber>
+<Awb>PEK953771</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072525</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>30D</CartonNumber>
+<Awb>PEK953771</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072525</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>31D</CartonNumber>
+<Awb>PEK953771</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072525</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>32D</CartonNumber>
+<Awb>PEK953771</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072525</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>33D</CartonNumber>
+<Awb>PEK953771</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072525</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>34D</CartonNumber>
+<Awb>PEK953771</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072525</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>35D</CartonNumber>
+<Awb>PEK953771</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072525</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5500000747'>
+<PackingListNumber>RO-290507-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>SC Hella Electronics Romania SRL</Department>
+<Street>Hella Str, No. 3</Street>
+<City>Ghiroda, Timisoara </City>
+<County></County>
+<Zip>300375 </Zip>
+<Country>Romania</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>SC Hella Electronics Romania SRL</Department>
+<Street>Hella Str, No. 3</Street>
+<City>Ghiroda, Timisoara </City>
+<County></County>
+<Zip>300375 </Zip>
+<Country>Romania</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>36A</CartonNumber>
+<Awb>PEK57044492</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072154TSCE</InvoiceNumber>
+<ProductName>S1J-03 R2</ProductName>
+<CustomerProductNumber>716 451-03</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0123</Price>
+</Item>
+</Items>
+</CustomerPO>
+</PurchaseOrderList>

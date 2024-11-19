@@ -1,0 +1,852 @@
+<?xml version='1.0'  encoding='UTF-8'?>
+<PurchaseOrderList>
+<CustomerPO name='4500022477 D'>
+<PackingListNumber>25-030807-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HUECO ELECTRONIC GMBH</CustomerName>
+<CustomerID>3121</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>3402</ShipToID>
+<Department>Hueco Electronic GmbH</Department>
+<Street>Von dem Bussche-Muench-Str. 12</Street>
+<City>D-32339 Espelkamp</City>
+<County>Germany</County>
+<Zip>D-32339</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3400</BillToID>
+<Department>Hueco Electronic GmbH</Department>
+<Street>Von dem Bussche-Muench-Str. 12</Street>
+<City>D-32339 Espelkamp</City>
+<County>Germany</County>
+<Zip>D-32339</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>34A</CartonNumber>
+<Awb>48231</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-067275TSCE</InvoiceNumber>
+<ProductName>HS1J-02 R2</ProductName>
+<CustomerProductNumber>002044</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0255</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>35A</CartonNumber>
+<Awb>48231</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-067275TSCE</InvoiceNumber>
+<ProductName>HS1J-02 R2</ProductName>
+<CustomerProductNumber>002044</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0255</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>36A</CartonNumber>
+<Awb>48231</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-067275TSCE</InvoiceNumber>
+<ProductName>HS1J-02 R2</ProductName>
+<CustomerProductNumber>002044</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0255</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='4500022987 Irl'>
+<PackingListNumber>25-030807-B</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HUECO ELECTRONIC GMBH</CustomerName>
+<CustomerID>3121</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>3402</ShipToID>
+<Department>Hueco Lightronic N.I. Ltd.</Department>
+<Street>Aghanloo Road</Street>
+<City>Limavady</City>
+<County>Co. Londonderry (UK)</County>
+<Zip>BT 49 OHE</Zip>
+<Country>United Kingdom</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3400</BillToID>
+<Department>Hueco Electronic GmbH</Department>
+<Street>Von dem Bussche-Muench-Str. 12</Street>
+<City>D-32339 Espelkamp</City>
+<County>Germany</County>
+<Zip>D-32339</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>1A</CartonNumber>
+<Awb>TPE350148</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073808TSCE</InvoiceNumber>
+<ProductName>TS431ACX RF</ProductName>
+<CustomerProductNumber>863964.00</CustomerProductNumber>
+<Quantity>6000</Quantity>
+<Price>0.065</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='4500024170'>
+<PackingListNumber>25-030807-B</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HUECO ELECTRONIC GMBH</CustomerName>
+<CustomerID>3121</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>3402</ShipToID>
+<Department>Hueco Lightronic N.I. Ltd.</Department>
+<Street>Aghanloo Road</Street>
+<City>Limavady</City>
+<County>Co. Londonderry (UK)</County>
+<Zip>BT 49 OHE</Zip>
+<Country>United Kingdom</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3400</BillToID>
+<Department>Hueco Electronic GmbH</Department>
+<Street>Von dem Bussche-Muench-Str. 12</Street>
+<City>D-32339 Espelkamp</City>
+<County>Germany</County>
+<Zip>D-32339</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>1B</CartonNumber>
+<Awb>TPE353642</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075389TSCE</InvoiceNumber>
+<ProductName>TS431ACX RF</ProductName>
+<CustomerProductNumber>863964.00</CustomerProductNumber>
+<Quantity>6000</Quantity>
+<Price>0.065</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>1BX</CartonNumber>
+<Awb>TPE353642</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075389TSCE</InvoiceNumber>
+<ProductName>TS431ACX RF</ProductName>
+<CustomerProductNumber>863964.00</CustomerProductNumber>
+<Quantity>6000</Quantity>
+<Price>0.065</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='667329'>
+<PackingListNumber>35-030807-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>IFM ELECTRONIC GMBH</CustomerName>
+<CustomerID>3961</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>4398</ShipToID>
+<Department>IFM electronic GmbH</Department>
+<Street>Bechlinger Str. 34</Street>
+<City>D-88069 Tettnang</City>
+<County>null</County>
+<Zip>null</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4398</BillToID>
+<Department>IFM electronic GmbH</Department>
+<Street>Postfach 12 62</Street>
+<City>D-88061 Tettnang</City>
+<County>null</County>
+<Zip>null</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>79A</CartonNumber>
+<Awb>PEK602666</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075425TSCE</InvoiceNumber>
+<ProductName>SMAJ36CA R3</ProductName>
+<CustomerProductNumber>602197</CustomerProductNumber>
+<Quantity>32400</Quantity>
+<Price>0.045</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='BEL-1662167'>
+<PackingListNumber>57-030807-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>ARROW NORDIC COMPONENTS AB</CustomerName>
+<CustomerID>2277</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>5998</ShipToID>
+<Department>Arrow Nordic Components AB</Department>
+<Street>Domnarvsgatan 2</Street>
+<City>Spanga</City>
+<County>null</County>
+<Zip>S-1635</Zip>
+<Country>Sweden</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>5998</BillToID>
+<Department>Arrow Nordic Components AB</Department>
+<Street>Kronborgsgrand 19</Street>
+<City>Kista</City>
+<County>null</County>
+<Zip>S-16494</Zip>
+<Country>Sweden</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>15A</CartonNumber>
+<Awb>PEK957728</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074204TSCE</InvoiceNumber>
+<ProductName>US1M R3</ProductName>
+<CustomerProductNumber></CustomerProductNumber>
+<Quantity>36000</Quantity>
+<Price>0.025</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='BEL/1626105'>
+<PackingListNumber>57-030807-B</PackingListNumber>
+<Date>0</Date>
+<CustomerName>ARROW NORDIC COMPONENTS AB</CustomerName>
+<CustomerID>2277</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>5998</ShipToID>
+<Department>Arrow Nordic Components AB</Department>
+<Street>Domnarvsgatan 2</Street>
+<City>Spanga</City>
+<County>null</County>
+<Zip>S-1635</Zip>
+<Country>Sweden</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>5998</BillToID>
+<Department>Arrow Nordic Components AB</Department>
+<Street>Kronborgsgrand 19</Street>
+<City>Kista</City>
+<County>null</County>
+<Zip>S-16494</Zip>
+<Country>Sweden</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>82AXX</CartonNumber>
+<Awb>PEK937199</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-065060TSCE</InvoiceNumber>
+<ProductName>ES1GL R2</ProductName>
+<CustomerProductNumber></CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.0456</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='55731317'>
+<PackingListNumber>8-020807-E</PackingListNumber>
+<Date>0</Date>
+<CustomerName>TRIDONIC ATCO GMBH &amp; CO.KG</CustomerName>
+<CustomerID>3552</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6106</ShipToID>
+<Department>TridonicAtco GmbH&amp;Co KG</Department>
+<Street>Rohrbach, Schwarz 8</Street>
+<City>A-6850 Dornbirn</City>
+<County></County>
+<Zip></Zip>
+<Country>Austria</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4041</BillToID>
+<Department>Tridonic Atco GmbH &amp; Co. KG</Department>
+<Street>Faerbergasse 15</Street>
+<City>A-6851 Dornbirn</City>
+<County></County>
+<Zip></Zip>
+<Country>Austria</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>251Bx</CartonNumber>
+<Awb>PEK953771</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072522TSCE</InvoiceNumber>
+<ProductName>1N4148 A0</ProductName>
+<CustomerProductNumber>09804137</CustomerProductNumber>
+<Quantity>5000</Quantity>
+<Price>0.00425</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>250B</CartonNumber>
+<Awb>PEK953771</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072522TSCE</InvoiceNumber>
+<ProductName>1N4148 A0</ProductName>
+<CustomerProductNumber>09804137</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.00425</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='55712461'>
+<PackingListNumber>8-020807-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>TRIDONIC ATCO GMBH &amp; CO.KG</CustomerName>
+<CustomerID>3552</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6106</ShipToID>
+<Department>TridonicAtco Schweiz AG</Department>
+<Street>Obere Allmeind 2</Street>
+<City>CH-8755 Enennda</City>
+<County></County>
+<Zip></Zip>
+<Country>Switzerland</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4041</BillToID>
+<Department>TridonicAtco Schweiz AG</Department>
+<Street>Obere Allmeind 2</Street>
+<City>CH-8755 Enennda</City>
+<County></County>
+<Zip></Zip>
+<Country>Switzerland</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>268B</CartonNumber>
+<Awb>PEK956418</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073657TSCE</InvoiceNumber>
+<ProductName>DBLS157G RD</ProductName>
+<CustomerProductNumber>05500326</CustomerProductNumber>
+<Quantity>21000</Quantity>
+<Price>0.06</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>269B</CartonNumber>
+<Awb>PEK956418</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073657TSCE</InvoiceNumber>
+<ProductName>DBLS157G RD</ProductName>
+<CustomerProductNumber>05500326</CustomerProductNumber>
+<Quantity>21000</Quantity>
+<Price>0.06</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>270B</CartonNumber>
+<Awb>PEK956418</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073657TSCE</InvoiceNumber>
+<ProductName>DBLS157G RD</ProductName>
+<CustomerProductNumber>05500326</CustomerProductNumber>
+<Quantity>21000</Quantity>
+<Price>0.06</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='55712343'>
+<PackingListNumber>8-020807-B</PackingListNumber>
+<Date>0</Date>
+<CustomerName>TRIDONIC ATCO GMBH &amp; CO.KG</CustomerName>
+<CustomerID>3552</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6106</ShipToID>
+<Department>TridonicAtco Schweiz AG</Department>
+<Street>Obere Allmeind 2</Street>
+<City>CH-8755 Enennda</City>
+<County></County>
+<Zip></Zip>
+<Country>Switzerland</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4041</BillToID>
+<Department>TridonicAtco Schweiz AG</Department>
+<Street>Obere Allmeind 2</Street>
+<City>CH-8755 Enennda</City>
+<County></County>
+<Zip></Zip>
+<Country>Switzerland</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>103A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073462TSCE</InvoiceNumber>
+<ProductName>HS1J-02 R2</ProductName>
+<CustomerProductNumber>03466105</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0245</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>104A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073462TSCE</InvoiceNumber>
+<ProductName>HS1J-02 R2</ProductName>
+<CustomerProductNumber>03466105</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0245</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='55726256'>
+<PackingListNumber>8-020807-F</PackingListNumber>
+<Date>0</Date>
+<CustomerName>TRIDONIC ATCO GMBH &amp; CO.KG</CustomerName>
+<CustomerID>3552</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6106</ShipToID>
+<Department>TridonicAtco GmbH&amp;Co KG</Department>
+<Street>Rohrbach, Schwarz 8</Street>
+<City>A-6850 Dornbirn</City>
+<County></County>
+<Zip></Zip>
+<Country>Austria</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4041</BillToID>
+<Department>Tridonic Atco GmbH &amp; Co. KG</Department>
+<Street>Faerbergasse 15</Street>
+<City>A-6851 Dornbirn</City>
+<County></County>
+<Zip></Zip>
+<Country>Austria</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>272B</CartonNumber>
+<Awb>PEK956418</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073657TSCE</InvoiceNumber>
+<ProductName>DBLS157G RD</ProductName>
+<CustomerProductNumber>05500326</CustomerProductNumber>
+<Quantity>21000</Quantity>
+<Price>0.06</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>273B</CartonNumber>
+<Awb>PEK956418</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073657TSCE</InvoiceNumber>
+<ProductName>DBLS157G RD</ProductName>
+<CustomerProductNumber>05500326</CustomerProductNumber>
+<Quantity>21000</Quantity>
+<Price>0.06</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>274B</CartonNumber>
+<Awb>PEK956418</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073657TSCE</InvoiceNumber>
+<ProductName>DBLS157G RD</ProductName>
+<CustomerProductNumber>05500326</CustomerProductNumber>
+<Quantity>21000</Quantity>
+<Price>0.06</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>275B</CartonNumber>
+<Awb>PEK956418</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073657TSCE</InvoiceNumber>
+<ProductName>DBLS157G RD</ProductName>
+<CustomerProductNumber>05500326</CustomerProductNumber>
+<Quantity>21000</Quantity>
+<Price>0.06</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='55721235'>
+<PackingListNumber>8-020807-G</PackingListNumber>
+<Date>0</Date>
+<CustomerName>TRIDONIC ATCO GMBH &amp; CO.KG</CustomerName>
+<CustomerID>3552</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6106</ShipToID>
+<Department>TridonicAtco GmbH&amp;Co KG</Department>
+<Street>Rohrbach, Schwarz 8</Street>
+<City>A-6850 Dornbirn</City>
+<County></County>
+<Zip></Zip>
+<Country>Austria</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4041</BillToID>
+<Department>Tridonic Atco GmbH &amp; Co. KG</Department>
+<Street>Faerbergasse 15</Street>
+<City>A-6851 Dornbirn</City>
+<County></County>
+<Zip></Zip>
+<Country>Austria</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>262B</CartonNumber>
+<Awb>PEK953771 DC716</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072522TSCE</InvoiceNumber>
+<ProductName>DBLS159G RD</ProductName>
+<CustomerProductNumber>05502828</CustomerProductNumber>
+<Quantity>21000</Quantity>
+<Price>0.073</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>263B</CartonNumber>
+<Awb>PEK953771 DC716</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072522TSCE</InvoiceNumber>
+<ProductName>DBLS159G RD</ProductName>
+<CustomerProductNumber>05502828</CustomerProductNumber>
+<Quantity>21000</Quantity>
+<Price>0.073</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>264B</CartonNumber>
+<Awb>PEK953771 DC716</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072522TSCE</InvoiceNumber>
+<ProductName>DBLS159G RD</ProductName>
+<CustomerProductNumber>05502828</CustomerProductNumber>
+<Quantity>21000</Quantity>
+<Price>0.073</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='55717677'>
+<PackingListNumber>8-020807-H</PackingListNumber>
+<Date>0</Date>
+<CustomerName>TRIDONIC ATCO GMBH &amp; CO.KG</CustomerName>
+<CustomerID>3552</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6106</ShipToID>
+<Department>TridonicAtco GmbH&amp;Co KG</Department>
+<Street>Rohrbach, Schwarz 8</Street>
+<City>A-6850 Dornbirn</City>
+<County></County>
+<Zip></Zip>
+<Country>Austria</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4041</BillToID>
+<Department>Tridonic Atco GmbH &amp; Co. KG</Department>
+<Street>Faerbergasse 15</Street>
+<City>A-6851 Dornbirn</City>
+<County></County>
+<Zip></Zip>
+<Country>Austria</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>265B</CartonNumber>
+<Awb>PEK953771 DC716</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072522TSCE</InvoiceNumber>
+<ProductName>DBLS159G RD</ProductName>
+<CustomerProductNumber>05502828</CustomerProductNumber>
+<Quantity>21000</Quantity>
+<Price>0.073</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='55723007'>
+<PackingListNumber>8-020807-I</PackingListNumber>
+<Date>0</Date>
+<CustomerName>TRIDONIC ATCO GMBH &amp; CO.KG</CustomerName>
+<CustomerID>3552</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6106</ShipToID>
+<Department>TridonicAtco GmbH&amp;Co KG</Department>
+<Street>Rohrbach, Schwarz 8</Street>
+<City>A-6850 Dornbirn</City>
+<County></County>
+<Zip></Zip>
+<Country>Austria</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4041</BillToID>
+<Department>Tridonic Atco GmbH &amp; Co. KG</Department>
+<Street>Faerbergasse 15</Street>
+<City>A-6851 Dornbirn</City>
+<County></County>
+<Zip></Zip>
+<Country>Austria</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>143</CartonNumber>
+<Awb>PEK954320 DC716</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072709TSCE</InvoiceNumber>
+<ProductName>DBLS159G RD</ProductName>
+<CustomerProductNumber>05502828</CustomerProductNumber>
+<Quantity>21000</Quantity>
+<Price>0.073</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>144</CartonNumber>
+<Awb>PEK954320 DC716</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072709TSCE</InvoiceNumber>
+<ProductName>DBLS159G RD</ProductName>
+<CustomerProductNumber>05502828</CustomerProductNumber>
+<Quantity>21000</Quantity>
+<Price>0.073</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='B226027'>
+<PackingListNumber>V-020807-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>SAGEM COMMUNICATION BAYONNE</CustomerName>
+<CustomerID>7687</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>8708</ShipToID>
+<Department>Videoton Holding ZRt.</Department>
+<Street>Berenyi Street 72-100</Street>
+<City>Szekesfehervar</City>
+<County></County>
+<Zip>H-8000</Zip>
+<Country>Hungary</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>8837</BillToID>
+<Department>Videoton Holding ZRt.</Department>
+<Street>Berenyi Street 72-100</Street>
+<City>Szekesfehervar</City>
+<County></County>
+<Zip>H-8000</Zip>
+<Country>Hungary</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>1X</CartonNumber>
+<Awb>TPE343046</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-07870TSCE</InvoiceNumber>
+<ProductName>TS2937CW12 RP</ProductName>
+<CustomerProductNumber>189116942</CustomerProductNumber>
+<Quantity>5000</Quantity>
+<Price>0.18</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='B226078'>
+<PackingListNumber>V-020807-B</PackingListNumber>
+<Date>0</Date>
+<CustomerName>SAGEM COMMUNICATION BAYONNE</CustomerName>
+<CustomerID>7687</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>8708</ShipToID>
+<Department>Videoton Holding ZRt.</Department>
+<Street>Berenyi Street 72-100</Street>
+<City>Szekesfehervar</City>
+<County></County>
+<Zip>H-8000</Zip>
+<Country>Hungary</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>8837</BillToID>
+<Department>Videoton Holding ZRt.</Department>
+<Street>Berenyi Street 72-100</Street>
+<City>Szekesfehervar</City>
+<County></County>
+<Zip>H-8000</Zip>
+<Country>Hungary</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>1A</CartonNumber>
+<Awb>TPE345039</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071694TSCE</InvoiceNumber>
+<ProductName>TS2937CW12 RP</ProductName>
+<CustomerProductNumber>189116942</CustomerProductNumber>
+<Quantity>5000</Quantity>
+<Price>0.18</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='EBR255559'>
+<PackingListNumber>23-020807-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>SOLECTRON EUROPE B.V.</CustomerName>
+<CustomerID>6173</CustomerID>
+<ShipmentTerms>FCA MUNICH</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6853</ShipToID>
+<Department>Solectron Europe B.V. c/o Solectron Romania S.R.L.</Department>
+<Street>Calea Torontalului, DN6, KM5,7</Street>
+<City>Timisoara</City>
+<County>null</County>
+<Zip>30000</Zip>
+<Country>Romania</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>6867</BillToID>
+<Department>Solectron Europe B.V.</Department>
+<Street>Dalsteindreef 93-99</Street>
+<City>Diemen</City>
+<County></County>
+<Zip>NL-1112 XC</Zip>
+<Country>Netherlands</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>237</CartonNumber>
+<Awb>PEK602666</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075422TSCE</InvoiceNumber>
+<ProductName>KBU1005 T0</ProductName>
+<CustomerProductNumber>WMC1630235001</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.26</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>238</CartonNumber>
+<Awb>PEK602666</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075422TSCE</InvoiceNumber>
+<ProductName>KBU1005 T0</ProductName>
+<CustomerProductNumber>WMC1630235001</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.26</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>239</CartonNumber>
+<Awb>PEK602666</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075422TSCE</InvoiceNumber>
+<ProductName>KBU1005 T0</ProductName>
+<CustomerProductNumber>WMC1630235001</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.26</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>240</CartonNumber>
+<Awb>PEK602666</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075422TSCE</InvoiceNumber>
+<ProductName>KBU1005 T0</ProductName>
+<CustomerProductNumber>WMC1630235001</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.26</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>241</CartonNumber>
+<Awb>PEK602666</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075422TSCE</InvoiceNumber>
+<ProductName>KBU1005 T0</ProductName>
+<CustomerProductNumber>WMC1630235001</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.26</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>242</CartonNumber>
+<Awb>PEK602666</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075422TSCE</InvoiceNumber>
+<ProductName>KBU1005 T0</ProductName>
+<CustomerProductNumber>WMC1630235001</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.26</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>243</CartonNumber>
+<Awb>PEK602666</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075422TSCE</InvoiceNumber>
+<ProductName>KBU1005 T0</ProductName>
+<CustomerProductNumber>WMC1630235001</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.26</Price>
+</Item>
+</Items>
+</CustomerPO>
+</PurchaseOrderList>

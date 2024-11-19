@@ -1,0 +1,54 @@
+<?xml version='1.0'  encoding='UTF-8'?>
+<PurchaseOrderList>
+<CustomerPO name='BE045082'>
+<PackingListNumber>29-230507A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>AKTA AG</CustomerName>
+<CustomerID>1159</CustomerID>
+<ShipmentTerms>FCA MUNICH</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>3142</ShipToID>
+<Department>Akta Elektronik AG</Department>
+<Street>Alte Steinhauserstrasse 3</Street>
+<City>CH-6330 CHAM</City>
+<County>null</County>
+<Zip>null</Zip>
+<Country>Switzerland</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>1143</BillToID>
+<Department>Akta Elektronik AG</Department>
+<Street>Alte Steinhauserstrasse 3</Street>
+<City>CH-6330 CHAM</City>
+<County>null</County>
+<Zip>null</Zip>
+<Country>Switzerland</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>84B</CartonNumber>
+<Awb>PEK932769</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-063121TSCE</InvoiceNumber>
+<ProductName>S1G R2</ProductName>
+<CustomerProductNumber>S1G R2</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.015</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>85B</CartonNumber>
+<Awb>PEK932769</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-063121TSCE</InvoiceNumber>
+<ProductName>S1G R2</ProductName>
+<CustomerProductNumber>S1G R2</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.015</Price>
+</Item>
+</Items>
+</CustomerPO>
+</PurchaseOrderList>

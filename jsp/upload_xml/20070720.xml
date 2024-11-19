@@ -1,0 +1,276 @@
+<?xml version='1.0'  encoding='UTF-8'?>
+<PurchaseOrderList>
+<CustomerPO name='5510000017'>
+<PackingListNumber>7-190707-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>KOSTAL IRELAND GMBH</CustomerName>
+<CustomerID>3499</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>7044</ShipToID>
+<Department>Kostal Ireland GmbH</Department>
+<Street>Ballydaniel, Limerick road</Street>
+<City>Mallow-Cork</City>
+<County></County>
+<Zip></Zip>
+<Country>Ireland</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4452</BillToID>
+<Department>Kostal Ireland GmbH</Department>
+<Street>Mounthmahon</Street>
+<City>Abbeyfeale Limerick</City>
+<County></County>
+<Zip></Zip>
+<Country>Ireland</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>74D</CartonNumber>
+<Awb>PEK955513</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073281TSCE</InvoiceNumber>
+<ProductName>ES3D-04 R6</ProductName>
+<CustomerProductNumber>66332020230301-03</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.056</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5510000016 '>
+<PackingListNumber>7-190707-B</PackingListNumber>
+<Date>0</Date>
+<CustomerName>KOSTAL IRELAND GMBH</CustomerName>
+<CustomerID>3499</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>7044</ShipToID>
+<Department>Kostal Ireland GmbH</Department>
+<Street>Ballydaniel, Limerick road</Street>
+<City>Mallow-Cork</City>
+<County></County>
+<Zip></Zip>
+<Country>Ireland</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4452</BillToID>
+<Department>Kostal Ireland GmbH</Department>
+<Street>Mounthmahon</Street>
+<City>Abbeyfeale Limerick</City>
+<County></County>
+<Zip></Zip>
+<Country>Ireland</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>7A</CartonNumber>
+<Awb>PEK954320</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072707TSCE</InvoiceNumber>
+<ProductName>P6SMB30A R4</ProductName>
+<CustomerProductNumber>66310301010311-01</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.03</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5510000015 '>
+<PackingListNumber>7-190707-C</PackingListNumber>
+<Date>0</Date>
+<CustomerName>KOSTAL IRELAND GMBH</CustomerName>
+<CustomerID>3499</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>7044</ShipToID>
+<Department>Kostal Ireland GmbH</Department>
+<Street>Ballydaniel, Limerick road</Street>
+<City>Mallow-Cork</City>
+<County></County>
+<Zip></Zip>
+<Country>Ireland</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4452</BillToID>
+<Department>Kostal Ireland GmbH</Department>
+<Street>Mounthmahon</Street>
+<City>Abbeyfeale Limerick</City>
+<County></County>
+<Zip></Zip>
+<Country>Ireland</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>66A</CartonNumber>
+<Awb>PEK601360</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074985TSCE</InvoiceNumber>
+<ProductName>S1J-08 R2</ProductName>
+<CustomerProductNumber>66334020020331-04</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.01175</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>67A</CartonNumber>
+<Awb>PEK601360</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074985TSCE</InvoiceNumber>
+<ProductName>S1J-08 R2</ProductName>
+<CustomerProductNumber>66334020020331-04</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.01175</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>68A</CartonNumber>
+<Awb>PEK601360</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074985TSCE</InvoiceNumber>
+<ProductName>S1J-08 R2</ProductName>
+<CustomerProductNumber>66334020020331-04</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.01175</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>69A</CartonNumber>
+<Awb>PEK601360</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074985TSCE</InvoiceNumber>
+<ProductName>S1J-08 R2</ProductName>
+<CustomerProductNumber>66334020020331-04</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.01175</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='55712366'>
+<PackingListNumber>8-190707-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>TRIDONIC ATCO GMBH &amp; CO.KG</CustomerName>
+<CustomerID>3552</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6106</ShipToID>
+<Department>TridonicAtco GmbH&amp;Co KG</Department>
+<Street>Rohrbach, Schwarz 8</Street>
+<City>A-6850 Dornbirn</City>
+<County></County>
+<Zip></Zip>
+<Country>Austria</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4041</BillToID>
+<Department>Tridonic Atco GmbH &amp; Co. KG</Department>
+<Street>Faerbergasse 15</Street>
+<City>A-6851 Dornbirn</City>
+<County></County>
+<Zip></Zip>
+<Country>Austria</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>276</CartonNumber>
+<Awb>PEK954929</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072942TSCE</InvoiceNumber>
+<ProductName>MBS6 RC</ProductName>
+<CustomerProductNumber>03427317</CustomerProductNumber>
+<Quantity>48000</Quantity>
+<Price>0.044</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='55706131'>
+<PackingListNumber>8-190707-B</PackingListNumber>
+<Date>0</Date>
+<CustomerName>TRIDONIC ATCO GMBH &amp; CO.KG</CustomerName>
+<CustomerID>3552</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6106</ShipToID>
+<Department>TridonicAtco GmbH&amp;Co KG</Department>
+<Street>Rohrbach, Schwarz 8</Street>
+<City>A-6850 Dornbirn</City>
+<County></County>
+<Zip></Zip>
+<Country>Austria</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4041</BillToID>
+<Department>Tridonic Atco GmbH &amp; Co. KG</Department>
+<Street>Faerbergasse 15</Street>
+<City>A-6851 Dornbirn</City>
+<County></County>
+<Zip></Zip>
+<Country>Austria</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>35A</CartonNumber>
+<Awb>PEK950956</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071062TSCE</InvoiceNumber>
+<ProductName>RS1J-08 R2</ProductName>
+<CustomerProductNumber>03917513</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.02</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='43117'>
+<PackingListNumber>PNE-190707-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>TAIWAN SEMICONDUCTOR EUROPE GMBH</CustomerName>
+<CustomerID>1768</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>7300</ShipToID>
+<Department> Paris Nord Electronics</Department>
+<Street>33 rue des Grosses Pierres</Street>
+<City>DEVILLE-LES-ROUEN</City>
+<County></County>
+<Zip>76250</Zip>
+<Country>France</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>1982</BillToID>
+<Department>Paris Nord Electronics</Department>
+<Street>Parc Technologique des Corvettes</Street>
+<City>COLOMBES</City>
+<County>142/176 avenue de Stalingrad</County>
+<Zip>92700</Zip>
+<Country>France</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>9xx</CartonNumber>
+<Awb>TPE349209</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073416TSCE</InvoiceNumber>
+<ProductName>TS4148 RZ</ProductName>
+<CustomerProductNumber>TS4148-603</CustomerProductNumber>
+<Quantity>40000</Quantity>
+<Price>0.0169</Price>
+</Item>
+</Items>
+</CustomerPO>
+</PurchaseOrderList>

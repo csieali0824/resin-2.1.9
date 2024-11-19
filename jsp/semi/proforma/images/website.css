@@ -1,0 +1,74 @@
+BODY {
+	scrollbar-face-color:#D0D1CB;
+	scrollbar-highlight-color:#FFFFFF;
+	scrollbar-3dlight-color:#C8C9C2;
+	scrollbar-darkshadow-color:#E2E3DF;
+	scrollbar-shadow-color:#B1B3A8;
+	scrollbar-arrow-color:#848778;
+	scrollbar-track-color:#E2E3DF;
+	background-attachment: fixed;
+	font-size: 12px;
+
+}
+a:visited {
+	text-decoration: none;
+	color: #A23400;
+}
+
+a:active {
+	text-decoration: underline;
+	color: #0000FF;
+}
+
+a:link {
+	text-decoration: none;
+	color: #A23400;
+}
+a:hover {
+	text-decoration: underline;
+	color: #0000FF;
+}
+
+.maintable {
+	background-color: #FFFFFF;
+}
+table{
+	font-size: 12px;
+	text-decoration: none;
+	line-height: 160%;
+}
+
+.text-green {
+	font-size: 12px;
+	color: #0592A4;
+	text-decoration: none;
+}
+.input-main{
+	BACKGROUND-COLOR: #F2F7FB;
+	border:1px solid #9CBCDC;
+	height:20px;
+}
+.input-table{
+	BACKGROUND-COLOR: #F3F8FC;
+	border:1px solid #234669;
+	height:20px;
+}
+.input-button{
+	BACKGROUND-COLOR: #6699CC;
+	border:1px solid #3E7BB9;
+	cursor:hand; 
+	height:22px;
+	color: #FFFFFF;
+
+}
+.table-table{
+	color: #34699E;
+}
+.table-table2{
+	color: #00CC00;
+}
+.textarea-table{
+	BACKGROUND-COLOR: #F3F8FC;
+	border:1px solid #234669;
+}
+select {  font-size: 9pt; background-color: #FFFFFF; border: 1px solid; clip:  rect(   ); border-color: #CCCCCC black}

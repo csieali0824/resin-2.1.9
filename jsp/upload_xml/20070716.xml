@@ -1,0 +1,43 @@
+<?xml version='1.0'  encoding='UTF-8'?>
+<PurchaseOrderList>
+<CustomerPO name='15788'>
+<PackingListNumber>B-120707-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Behr Thermocontrol GmbH</Department>
+<Street>Hansastr. 40</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59557</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Behr-Hella Thermocontrol GmbH</Department>
+<Street>Hansastr. 40 </Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59557</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>17Ax</CartonNumber>
+<Awb>PEK57044492</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072154TSCE</InvoiceNumber>
+<ProductName>1.5SMC33CA R6</ProductName>
+<CustomerProductNumber>724 538-33</CustomerProductNumber>
+<Quantity>3000</Quantity>
+<Price>0.0885</Price>
+</Item>
+</Items>
+</CustomerPO>
+</PurchaseOrderList>

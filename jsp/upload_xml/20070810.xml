@@ -1,0 +1,76 @@
+<?xml version='1.0'  encoding='UTF-8'?>
+<PurchaseOrderList>
+<CustomerPO name='5510000015'>
+<PackingListNumber>7-080807-F</PackingListNumber>
+<Date>0</Date>
+<CustomerName>KOSTAL IRELAND GMBH</CustomerName>
+<CustomerID>3499</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>7044</ShipToID>
+<Department>Kostal Ireland GmbH</Department>
+<Street>Ballydaniel, Limerick road</Street>
+<City>Mallow-Cork</City>
+<County></County>
+<Zip></Zip>
+<Country>Ireland</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4452</BillToID>
+<Department>Kostal Ireland GmbH</Department>
+<Street>Mounthmahon</Street>
+<City>Abbeyfeale Limerick</City>
+<County></County>
+<Zip></Zip>
+<Country>Ireland</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>79A</CartonNumber>
+<Awb>PEK601360</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074985TSCE</InvoiceNumber>
+<ProductName>S1J-08 R2</ProductName>
+<CustomerProductNumber>66334020020331-04</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.01175</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>93D</CartonNumber>
+<Awb>PEK954929</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072949TSCE</InvoiceNumber>
+<ProductName>S1J-08 R2</ProductName>
+<CustomerProductNumber>66334020020331-04</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.01175</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>94D</CartonNumber>
+<Awb>PEK954929</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072949TSCE</InvoiceNumber>
+<ProductName>S1J-08 R2</ProductName>
+<CustomerProductNumber>66334020020331-04</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.01175</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>95D</CartonNumber>
+<Awb>PEK954929</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072949TSCE</InvoiceNumber>
+<ProductName>S1J-08 R2</ProductName>
+<CustomerProductNumber>66334020020331-04</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.01175</Price>
+</Item>
+</Items>
+</CustomerPO>
+</PurchaseOrderList>

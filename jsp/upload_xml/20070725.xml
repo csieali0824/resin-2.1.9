@@ -1,0 +1,1507 @@
+<?xml version='1.0'  encoding='UTF-8'?>
+<PurchaseOrderList>
+<CustomerPO name='4531007188'>
+<PackingListNumber>PPS240707A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>PHILIPS LIGHTING BV</CustomerName>
+<CustomerID>3581</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>4117</ShipToID>
+<Department>PHILIPS POWER Solutions Int</Department>
+<Street>Klinanska Cesta 1088</Street>
+<City>Namestovo</City>
+<County>null</County>
+<Zip>SK-029 01 </Zip>
+<Country>Slovakia</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>9256</BillToID>
+<Department>PHILIPS POWER Solutions Int. Accounts</Department>
+<Street>Vavrecka 311</Street>
+<City>Namestovo</City>
+<County>null</County>
+<Zip>SK-029 01</Zip>
+<Country>Slovakia</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>66B</CartonNumber>
+<Awb>PEK956418</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073654TSCE</InvoiceNumber>
+<ProductName>1N5407-04 X0 </ProductName>
+<CustomerProductNumber>9322 250 54682</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.022</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>67B</CartonNumber>
+<Awb>PEK956418</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073654TSCE</InvoiceNumber>
+<ProductName>1N5407-04 X0 </ProductName>
+<CustomerProductNumber>9322 250 54682</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.022</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>202B</CartonNumber>
+<Awb>PEK950398</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071101TSCE</InvoiceNumber>
+<ProductName>GBU606 C2</ProductName>
+<CustomerProductNumber>9322 237 51682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.16</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>203B</CartonNumber>
+<Awb>PEK950398</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071101TSCE</InvoiceNumber>
+<ProductName>GBU606 C2</ProductName>
+<CustomerProductNumber>9322 237 51682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.16</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>204B</CartonNumber>
+<Awb>PEK950398</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071101TSCE</InvoiceNumber>
+<ProductName>GBU606 C2</ProductName>
+<CustomerProductNumber>9322 237 51682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.16</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>205B</CartonNumber>
+<Awb>PEK950398</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071101TSCE</InvoiceNumber>
+<ProductName>GBU606 C2</ProductName>
+<CustomerProductNumber>9322 237 51682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.16</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>206B</CartonNumber>
+<Awb>PEK950398</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071101TSCE</InvoiceNumber>
+<ProductName>GBU606 C2</ProductName>
+<CustomerProductNumber>9322 237 51682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.16</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>99B</CartonNumber>
+<Awb>PEK950398</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071101TSCE</InvoiceNumber>
+<ProductName>GBU606 C2</ProductName>
+<CustomerProductNumber>9322 237 51682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.16</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>237</CartonNumber>
+<Awb>PEK951276</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071508TSCE</InvoiceNumber>
+<ProductName>GBU606 C2</ProductName>
+<CustomerProductNumber>9322 237 51682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.16</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>154B</CartonNumber>
+<Awb>PEK950786</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071306TSCE</InvoiceNumber>
+<ProductName>GBU606 C2</ProductName>
+<CustomerProductNumber>9322 237 51682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.16</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>155B</CartonNumber>
+<Awb>PEK950786</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071306TSCE</InvoiceNumber>
+<ProductName>GBU606 C2</ProductName>
+<CustomerProductNumber>9322 237 51682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.16</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>156B</CartonNumber>
+<Awb>PEK950786</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071306TSCE</InvoiceNumber>
+<ProductName>GBU606 C2</ProductName>
+<CustomerProductNumber>9322 237 51682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.16</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='4531007188'>
+<PackingListNumber>PPS240707B</PackingListNumber>
+<Date>0</Date>
+<CustomerName>PHILIPS LIGHTING BV</CustomerName>
+<CustomerID>3581</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>4117</ShipToID>
+<Department>PHILIPS POWER Solutions Int</Department>
+<Street>Klinanska Cesta 1088</Street>
+<City>Namestovo</City>
+<County>null</County>
+<Zip>SK-029 01 </Zip>
+<Country>Slovakia</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>9256</BillToID>
+<Department>PHILIPS POWER Solutions Int. Accounts</Department>
+<Street>Vavrecka 311</Street>
+<City>Namestovo</City>
+<County>null</County>
+<Zip>SK-029 01</Zip>
+<Country>Slovakia</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>174</CartonNumber>
+<Awb>PEK954929</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072945TSCE</InvoiceNumber>
+<ProductName>MBR20100CT C0</ProductName>
+<CustomerProductNumber>9322 250 12682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.21</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>175</CartonNumber>
+<Awb>PEK954929</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072945TSCE</InvoiceNumber>
+<ProductName>MBR20100CT C0</ProductName>
+<CustomerProductNumber>9322 250 12682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.21</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>176</CartonNumber>
+<Awb>PEK954929</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072945TSCE</InvoiceNumber>
+<ProductName>MBR20100CT C0</ProductName>
+<CustomerProductNumber>9322 250 12682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.21</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>177</CartonNumber>
+<Awb>PEK954929</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072945TSCE</InvoiceNumber>
+<ProductName>MBR20100CT C0</ProductName>
+<CustomerProductNumber>9322 250 12682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.21</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>178</CartonNumber>
+<Awb>PEK954929</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072945TSCE</InvoiceNumber>
+<ProductName>MBR20100CT C0</ProductName>
+<CustomerProductNumber>9322 250 12682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.21</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>179</CartonNumber>
+<Awb>PEK954929</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072945TSCE</InvoiceNumber>
+<ProductName>MBR20100CT C0</ProductName>
+<CustomerProductNumber>9322 250 12682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.21</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>180</CartonNumber>
+<Awb>PEK954929</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072945TSCE</InvoiceNumber>
+<ProductName>MBR20100CT C0</ProductName>
+<CustomerProductNumber>9322 250 12682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.21</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>181</CartonNumber>
+<Awb>PEK954929</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072945TSCE</InvoiceNumber>
+<ProductName>MBR20100CT C0</ProductName>
+<CustomerProductNumber>9322 250 12682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.21</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>182</CartonNumber>
+<Awb>PEK954929</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072945TSCE</InvoiceNumber>
+<ProductName>MBR20100CT C0</ProductName>
+<CustomerProductNumber>9322 250 12682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.21</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>183</CartonNumber>
+<Awb>PEK954929</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072945TSCE</InvoiceNumber>
+<ProductName>MBR20100CT C0</ProductName>
+<CustomerProductNumber>9322 250 12682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.21</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>184</CartonNumber>
+<Awb>PEK954929</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072945TSCE</InvoiceNumber>
+<ProductName>MBR20100CT C0</ProductName>
+<CustomerProductNumber>9322 250 12682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.21</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='4531007188'>
+<PackingListNumber>PPS240707C</PackingListNumber>
+<Date>0</Date>
+<CustomerName>PHILIPS LIGHTING BV</CustomerName>
+<CustomerID>3581</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>4117</ShipToID>
+<Department>PHILIPS POWER Solutions Int</Department>
+<Street>Klinanska Cesta 1088</Street>
+<City>Namestovo</City>
+<County>null</County>
+<Zip>SK-029 01 </Zip>
+<Country>Slovakia</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>9256</BillToID>
+<Department>PHILIPS POWER Solutions Int. Accounts</Department>
+<Street>Vavrecka 311</Street>
+<City>Namestovo</City>
+<County>null</County>
+<Zip>SK-029 01</Zip>
+<Country>Slovakia</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>35A</CartonNumber>
+<Awb>PEK600162</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074810TSCE</InvoiceNumber>
+<ProductName>SRA1030 C0</ProductName>
+<CustomerProductNumber>9322 241 22682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.135</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>36A</CartonNumber>
+<Awb>PEK600162</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074810TSCE</InvoiceNumber>
+<ProductName>SRA1030 C0</ProductName>
+<CustomerProductNumber>9322 241 22682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.135</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>37A</CartonNumber>
+<Awb>PEK600162</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074810TSCE</InvoiceNumber>
+<ProductName>SRA1030 C0</ProductName>
+<CustomerProductNumber>9322 241 22682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.135</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>38A</CartonNumber>
+<Awb>PEK600162</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074810TSCE</InvoiceNumber>
+<ProductName>SRA1030 C0</ProductName>
+<CustomerProductNumber>9322 241 22682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.135</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>39A</CartonNumber>
+<Awb>PEK600162</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074810TSCE</InvoiceNumber>
+<ProductName>SRA1030 C0</ProductName>
+<CustomerProductNumber>9322 241 22682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.135</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>40A</CartonNumber>
+<Awb>PEK600162</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074810TSCE</InvoiceNumber>
+<ProductName>SRA1030 C0</ProductName>
+<CustomerProductNumber>9322 241 22682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.135</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>41A</CartonNumber>
+<Awb>PEK600162</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074810TSCE</InvoiceNumber>
+<ProductName>SRA1030 C0</ProductName>
+<CustomerProductNumber>9322 241 22682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.135</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>42A</CartonNumber>
+<Awb>PEK600162</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074810TSCE</InvoiceNumber>
+<ProductName>SRA1030 C0</ProductName>
+<CustomerProductNumber>9322 241 22682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.135</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>43A</CartonNumber>
+<Awb>PEK600162</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074810TSCE</InvoiceNumber>
+<ProductName>SRA1030 C0</ProductName>
+<CustomerProductNumber>9322 241 22682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.135</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>44A</CartonNumber>
+<Awb>PEK600162</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074810TSCE</InvoiceNumber>
+<ProductName>SRA1030 C0</ProductName>
+<CustomerProductNumber>9322 241 22682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.135</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='CF036735'>
+<PackingListNumber>12-230707-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>NOVATECH S.A.</CustomerName>
+<CustomerID>2978</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>3450</ShipToID>
+<Department>Novatech S.A.</Department>
+<Street>Zone d'Activite de la Croix Rouge</Street>
+<City>PLOUMILLIAU</City>
+<County>null</County>
+<Zip>22300</Zip>
+<Country>France</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3212</BillToID>
+<Department>Novatech Industries</Department>
+<Street>1 rue Paul Sabatier</Street>
+<City>LANNION</City>
+<County>null</County>
+<Zip>22300</Zip>
+<Country>France</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>37D</CartonNumber>
+<Awb>PEK954929</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072950TSCE</InvoiceNumber>
+<ProductName>1.5KE400 R0</ProductName>
+<CustomerProductNumber>041064[N]</CustomerProductNumber>
+<Quantity>5000</Quantity>
+<Price>0.072</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>38D</CartonNumber>
+<Awb>PEK954929</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072950TSCE</InvoiceNumber>
+<ProductName>1.5KE400 R0</ProductName>
+<CustomerProductNumber>041064[N]</CustomerProductNumber>
+<Quantity>5000</Quantity>
+<Price>0.072</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>39D</CartonNumber>
+<Awb>PEK954929</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072950TSCE</InvoiceNumber>
+<ProductName>1.5KE400 R0</ProductName>
+<CustomerProductNumber>041064[N]</CustomerProductNumber>
+<Quantity>5000</Quantity>
+<Price>0.072</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>40D</CartonNumber>
+<Awb>PEK954929</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072950TSCE</InvoiceNumber>
+<ProductName>1.5KE400 R0</ProductName>
+<CustomerProductNumber>041064[N]</CustomerProductNumber>
+<Quantity>5000</Quantity>
+<Price>0.072</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='CF036735'>
+<PackingListNumber>12-230707-B</PackingListNumber>
+<Date>0</Date>
+<CustomerName>NOVATECH S.A.</CustomerName>
+<CustomerID>2978</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>3450</ShipToID>
+<Department>Novatech S.A.</Department>
+<Street>Zone d'Activite de la Croix Rouge</Street>
+<City>PLOUMILLIAU</City>
+<County>null</County>
+<Zip>22300</Zip>
+<Country>France</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3212</BillToID>
+<Department>Novatech Industries</Department>
+<Street>1 rue Paul Sabatier</Street>
+<City>LANNION</City>
+<County>null</County>
+<Zip>22300</Zip>
+<Country>France</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>153B</CartonNumber>
+<Awb>PEK951720</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071520TSCE</InvoiceNumber>
+<ProductName>BA159 R0</ProductName>
+<CustomerProductNumber>041101[N]</CustomerProductNumber>
+<Quantity>5000</Quantity>
+<Price>0.0070</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>69</CartonNumber>
+<Awb>PEK954320</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072704TSCE</InvoiceNumber>
+<ProductName>BA159 R0</ProductName>
+<CustomerProductNumber>041101[N]</CustomerProductNumber>
+<Quantity>20000</Quantity>
+<Price>0.0070</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>71</CartonNumber>
+<Awb>PEK954320</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072704TSCE</InvoiceNumber>
+<ProductName>BA159 R0</ProductName>
+<CustomerProductNumber>041101[N]</CustomerProductNumber>
+<Quantity>20000</Quantity>
+<Price>0.0070</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>185B</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074643TSCE</InvoiceNumber>
+<ProductName>BA159 R0</ProductName>
+<CustomerProductNumber>041101[N]</CustomerProductNumber>
+<Quantity>5000</Quantity>
+<Price>0.0070</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='CF035852'>
+<PackingListNumber>12-230707-C</PackingListNumber>
+<Date>0</Date>
+<CustomerName>NOVATECH S.A.</CustomerName>
+<CustomerID>2978</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>3450</ShipToID>
+<Department>Novatech S.A.</Department>
+<Street>Zone d'Activite de la Croix Rouge</Street>
+<City>PLOUMILLIAU</City>
+<County>null</County>
+<Zip>22300</Zip>
+<Country>France</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3212</BillToID>
+<Department>Novatech Industries</Department>
+<Street>1 rue Paul Sabatier</Street>
+<City>LANNION</City>
+<County>null</County>
+<Zip>22300</Zip>
+<Country>France</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>215A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073466TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>041017[N]</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.12</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>216A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073466TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>041017[N]</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.12</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>217A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073466TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>041017[N]</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.12</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>218A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073466TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>041017[N]</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.12</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>219A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073466TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>041017[N]</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.12</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>220A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073466TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>041017[N]</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.12</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>221A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073466TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>041017[N]</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.12</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>222A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073466TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>041017[N]</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.12</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='CF036865'>
+<PackingListNumber>12-230707-C</PackingListNumber>
+<Date>0</Date>
+<CustomerName>NOVATECH S.A.</CustomerName>
+<CustomerID>2978</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>3450</ShipToID>
+<Department>Novatech S.A.</Department>
+<Street>Zone d'Activite de la Croix Rouge</Street>
+<City>PLOUMILLIAU</City>
+<County>null</County>
+<Zip>22300</Zip>
+<Country>France</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3212</BillToID>
+<Department>Novatech Industries</Department>
+<Street>1 rue Paul Sabatier</Street>
+<City>LANNION</City>
+<County>null</County>
+<Zip>22300</Zip>
+<Country>France</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>75A</CartonNumber>
+<Awb>PEK601940</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075205TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>041017[N]</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.12</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>76A</CartonNumber>
+<Awb>PEK601940</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075205TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>041017[N]</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.12</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>77A</CartonNumber>
+<Awb>PEK601940</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075205TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>041017[N]</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.12</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='CF036735'>
+<PackingListNumber>12-230707-D</PackingListNumber>
+<Date>0</Date>
+<CustomerName>NOVATECH S.A.</CustomerName>
+<CustomerID>2978</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>3450</ShipToID>
+<Department>Novatech S.A.</Department>
+<Street>Zone d'Activite de la Croix Rouge</Street>
+<City>PLOUMILLIAU</City>
+<County>null</County>
+<Zip>22300</Zip>
+<Country>France</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3212</BillToID>
+<Department>Novatech Industries</Department>
+<Street>1 rue Paul Sabatier</Street>
+<City>LANNION</City>
+<County>null</County>
+<Zip>22300</Zip>
+<Country>France</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>80</CartonNumber>
+<Awb>PEK954320</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072704TSCE</InvoiceNumber>
+<ProductName>SF23 R0</ProductName>
+<CustomerProductNumber>041014[N]</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.028</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>81</CartonNumber>
+<Awb>PEK954320</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072704TSCE</InvoiceNumber>
+<ProductName>SF23 R0</ProductName>
+<CustomerProductNumber>041014[N]</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.028</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>113B</CartonNumber>
+<Awb>PEK958347</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074404TSCE</InvoiceNumber>
+<ProductName>SF23 R0</ProductName>
+<CustomerProductNumber>041014[N]</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.028</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>114B</CartonNumber>
+<Awb>PEK958347</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074404TSCE</InvoiceNumber>
+<ProductName>SF23 R0</ProductName>
+<CustomerProductNumber>041014[N]</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.028</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>115B</CartonNumber>
+<Awb>PEK958347</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074404TSCE</InvoiceNumber>
+<ProductName>SF23 R0</ProductName>
+<CustomerProductNumber>041014[N]</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.028</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='CF035852'>
+<PackingListNumber>12-230707-E</PackingListNumber>
+<Date>0</Date>
+<CustomerName>NOVATECH S.A.</CustomerName>
+<CustomerID>2978</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>3450</ShipToID>
+<Department>Novatech S.A.</Department>
+<Street>Zone d'Activite de la Croix Rouge</Street>
+<City>PLOUMILLIAU</City>
+<County>null</County>
+<Zip>22300</Zip>
+<Country>France</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3212</BillToID>
+<Department>Novatech Industries</Department>
+<Street>1 rue Paul Sabatier</Street>
+<City>LANNION</City>
+<County>null</County>
+<Zip>22300</Zip>
+<Country>France</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>98B</CartonNumber>
+<Awb>PEK600162</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074808TSCE</InvoiceNumber>
+<ProductName>TS15P05G C2</ProductName>
+<CustomerProductNumber>045110[N]</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.29</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>99B</CartonNumber>
+<Awb>PEK600162</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074808TSCE</InvoiceNumber>
+<ProductName>TS15P05G C2</ProductName>
+<CustomerProductNumber>045110[N]</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.29</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='CF036735'>
+<PackingListNumber>12-230707-F</PackingListNumber>
+<Date>0</Date>
+<CustomerName>NOVATECH S.A.</CustomerName>
+<CustomerID>2978</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>3450</ShipToID>
+<Department>Novatech S.A.</Department>
+<Street>Zone d'Activite de la Croix Rouge</Street>
+<City>PLOUMILLIAU</City>
+<County>null</County>
+<Zip>22300</Zip>
+<Country>France</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3212</BillToID>
+<Department>Novatech Industries</Department>
+<Street>1 rue Paul Sabatier</Street>
+<City>LANNION</City>
+<County>null</County>
+<Zip>22300</Zip>
+<Country>France</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>60</CartonNumber>
+<Awb>PEK957728</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074202TSCE</InvoiceNumber>
+<ProductName>TS20P05G C2</ProductName>
+<CustomerProductNumber>041060[N]</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.29</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>61</CartonNumber>
+<Awb>PEK957728</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074202TSCE</InvoiceNumber>
+<ProductName>TS20P05G C2</ProductName>
+<CustomerProductNumber>041060[N]</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.29</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>62</CartonNumber>
+<Awb>PEK957728</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074202TSCE</InvoiceNumber>
+<ProductName>TS20P05G C2</ProductName>
+<CustomerProductNumber>041060[N]</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.29</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='CF050289'>
+<PackingListNumber>12-230707-G</PackingListNumber>
+<Date>0</Date>
+<CustomerName>NOVATECH S.A.</CustomerName>
+<CustomerID>2978</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>3450</ShipToID>
+<Department>Novatech S.A.</Department>
+<Street>Zone d'Activite de la Croix Rouge</Street>
+<City>PLOUMILLIAU</City>
+<County>null</County>
+<Zip>22300</Zip>
+<Country>France</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3212</BillToID>
+<Department>Novatech Industries</Department>
+<Street>1 rue Paul Sabatier</Street>
+<City>LANNION</City>
+<County>null</County>
+<Zip>22300</Zip>
+<Country>France</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>193B</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074643TSCE</InvoiceNumber>
+<ProductName>TS25P05G C2</ProductName>
+<CustomerProductNumber>049031</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.34</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>194B</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074643TSCE</InvoiceNumber>
+<ProductName>TS25P05G C2</ProductName>
+<CustomerProductNumber>049031</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.34</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>195B</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074643TSCE</InvoiceNumber>
+<ProductName>TS25P05G C2</ProductName>
+<CustomerProductNumber>049031</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.34</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>196B</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074643TSCE</InvoiceNumber>
+<ProductName>TS25P05G C2</ProductName>
+<CustomerProductNumber>049031</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.34</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>197B</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074643TSCE</InvoiceNumber>
+<ProductName>TS25P05G C2</ProductName>
+<CustomerProductNumber>049031</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.34</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>198B</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074643TSCE</InvoiceNumber>
+<ProductName>TS25P05G C2</ProductName>
+<CustomerProductNumber>049031</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.34</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>199B</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074643TSCE</InvoiceNumber>
+<ProductName>TS25P05G C2</ProductName>
+<CustomerProductNumber>049031</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.34</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='CF050289'>
+<PackingListNumber>12-230707-H</PackingListNumber>
+<Date>0</Date>
+<CustomerName>NOVATECH S.A.</CustomerName>
+<CustomerID>2978</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>3450</ShipToID>
+<Department>Novatech S.A.</Department>
+<Street>Zone d'Activite de la Croix Rouge</Street>
+<City>PLOUMILLIAU</City>
+<County>null</County>
+<Zip>22300</Zip>
+<Country>France</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3212</BillToID>
+<Department>Novatech Industries</Department>
+<Street>1 rue Paul Sabatier</Street>
+<City>LANNION</City>
+<County>null</County>
+<Zip>22300</Zip>
+<Country>France</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>1A</CartonNumber>
+<Awb>TPE352287</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074747TSCE</InvoiceNumber>
+<ProductName>TS432BCX RF </ProductName>
+<CustomerProductNumber>539020</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.1</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='CF050289'>
+<PackingListNumber>12-230707-I</PackingListNumber>
+<Date>0</Date>
+<CustomerName>NOVATECH S.A.</CustomerName>
+<CustomerID>2978</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>3450</ShipToID>
+<Department>Novatech S.A.</Department>
+<Street>Zone d'Activite de la Croix Rouge</Street>
+<City>PLOUMILLIAU</City>
+<County>null</County>
+<Zip>22300</Zip>
+<Country>France</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3212</BillToID>
+<Department>Novatech Industries</Department>
+<Street>1 rue Paul Sabatier</Street>
+<City>LANNION</City>
+<County>null</County>
+<Zip>22300</Zip>
+<Country>France</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>5A</CartonNumber>
+<Awb>PEK600162</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074808TSCE</InvoiceNumber>
+<ProductName>US1M R3</ProductName>
+<CustomerProductNumber>539032[N]</CustomerProductNumber>
+<Quantity>14400</Quantity>
+<Price>0.033</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>84Dx</CartonNumber>
+<Awb>PEK953771</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072528TSCE</InvoiceNumber>
+<ProductName>US1M R3</ProductName>
+<CustomerProductNumber>539032[N]</CustomerProductNumber>
+<Quantity>7200</Quantity>
+<Price>0.033</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='B225865'>
+<PackingListNumber>49-230707-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>SAGEM COMMUNICATION BAYONNE</CustomerName>
+<CustomerID>7687</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>8708</ShipToID>
+<Department>Videoton Holding ZRt.</Department>
+<Street>Berenyi Street 72-100</Street>
+<City>Szekesfehervar</City>
+<County></County>
+<Zip>H-8000</Zip>
+<Country>Hungary</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>8837</BillToID>
+<Department>Videoton Holding ZRt.</Department>
+<Street>Berenyi Street 72-100</Street>
+<City>Szekesfehervar</City>
+<County></County>
+<Zip>H-8000</Zip>
+<Country>Hungary</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>2***</CartonNumber>
+<Awb>TPE343046</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-07870TSCE</InvoiceNumber>
+<ProductName>TS1117CW18 RP</ProductName>
+<CustomerProductNumber>188999941</CustomerProductNumber>
+<Quantity>2500</Quantity>
+<Price>0.065</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>6</CartonNumber>
+<Awb>TPE343046</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-07870TSCE</InvoiceNumber>
+<ProductName>TS1117CW18 RP</ProductName>
+<CustomerProductNumber>188999941</CustomerProductNumber>
+<Quantity>12500</Quantity>
+<Price>0.065</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5500052595'>
+<PackingListNumber>R-240707-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Hella KG Werk 5</Department>
+<Street>Berghaeuser Strasse 30</Street>
+<City>Recklinghausen</City>
+<County>null</County>
+<Zip>45663</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Hella KG Hueck &amp; Co.</Department>
+<Street>Rixbecker Strasse 75</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59522</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>171D</CartonNumber>
+<Awb>PEK954929</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072941TSCE</InvoiceNumber>
+<ProductName>S1J-03 R2</ProductName>
+<CustomerProductNumber>716 451-03</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0123</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>172D</CartonNumber>
+<Awb>PEK954929</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072941TSCE</InvoiceNumber>
+<ProductName>S1J-03 R2</ProductName>
+<CustomerProductNumber>716 451-03</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0123</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>173D</CartonNumber>
+<Awb>PEK954929</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072941TSCE</InvoiceNumber>
+<ProductName>S1J-03 R2</ProductName>
+<CustomerProductNumber>716 451-03</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0123</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>174D</CartonNumber>
+<Awb>PEK954929</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072941TSCE</InvoiceNumber>
+<ProductName>S1J-03 R2</ProductName>
+<CustomerProductNumber>716 451-03</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0123</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5500087519'>
+<PackingListNumber>R-240707-B</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Hella KG Werk 5</Department>
+<Street>Berghaeuser Strasse 30</Street>
+<City>Recklinghausen</City>
+<County>null</County>
+<Zip>45663</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Hella KG Hueck &amp; Co.</Department>
+<Street>Rixbecker Strasse 75</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59522</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>23D</CartonNumber>
+<Awb>49334</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071233TSCE</InvoiceNumber>
+<ProductName>ES1D R2</ProductName>
+<CustomerProductNumber>716 451-04</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.024</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5500079249'>
+<PackingListNumber>R-240707-C</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Hella KG Werk 5</Department>
+<Street>Berghaeuser Strasse 30</Street>
+<City>Recklinghausen</City>
+<County>null</County>
+<Zip>45663</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Hella KG Hueck &amp; Co.</Department>
+<Street>Rixbecker Strasse 75</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59522</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>179A</CartonNumber>
+<Awb>PEK951720</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071723TSCE</InvoiceNumber>
+<ProductName>ES3D R6</ProductName>
+<CustomerProductNumber>716 451-08</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.052</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5500079745'>
+<PackingListNumber>R-240707-D</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Hella KG Werk 5</Department>
+<Street>Berghaeuser Strasse 30</Street>
+<City>Recklinghausen</City>
+<County>null</County>
+<Zip>45663</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Hella KG Hueck &amp; Co.</Department>
+<Street>Rixbecker Strasse 75</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59522</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>45D</CartonNumber>
+<Awb>PEK953771</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072525TSCE</InvoiceNumber>
+<ProductName>HS1J-04 R2</ProductName>
+<CustomerProductNumber>716 451-10</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0329</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5500055012'>
+<PackingListNumber>R-240707-E</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Hella KG Werk 5</Department>
+<Street>Berghaeuser Strasse 30</Street>
+<City>Recklinghausen</City>
+<County>null</County>
+<Zip>45663</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Hella KG Hueck &amp; Co.</Department>
+<Street>Rixbecker Strasse 75</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59522</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>72A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074642TSCE</InvoiceNumber>
+<ProductName>P6SMB39CA R4</ProductName>
+<CustomerProductNumber>724 538-15</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.0365</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>73A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074642TSCE</InvoiceNumber>
+<ProductName>P6SMB39CA R4</ProductName>
+<CustomerProductNumber>724 538-15</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.0365</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='174/161490'>
+<PackingListNumber>T-230707-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Tectron GmbH</Department>
+<Street>Querstrasse 2</Street>
+<City>Worbis</City>
+<County>null</County>
+<Zip>37339</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Tectron GmbH</Department>
+<Street>Querstrasse 2</Street>
+<City>Worbis</City>
+<County>null</County>
+<Zip>37339</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>148A</CartonNumber>
+<Awb>PEK600162</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074806TSCE</InvoiceNumber>
+<ProductName>P6SMB30CA R4</ProductName>
+<CustomerProductNumber>724 538-13</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.0365</Price>
+</Item>
+</Items>
+</CustomerPO>
+</PurchaseOrderList>

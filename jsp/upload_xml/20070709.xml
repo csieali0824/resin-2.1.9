@@ -1,0 +1,1597 @@
+<?xml version='1.0'  encoding='UTF-8'?>
+<PurchaseOrderList>
+<CustomerPO name='OF494455'>
+<PackingListNumber>52-050707-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>SILVERSTAR S.R.L.</CustomerName>
+<CustomerID>5236</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>5739</ShipToID>
+<Department>Silverstar S.R.L</Department>
+<Street>Via Monzoro 48</Street>
+<City>Cornadero (MI)</City>
+<County></County>
+<Zip>I-20010</Zip>
+<Country>Italy</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>6564</BillToID>
+<Department>Silverstar S.R.L Accounting Dept.</Department>
+<Street>Viale Fulvio Testi 280</Street>
+<City>Milano</City>
+<County></County>
+<Zip>I-20126</Zip>
+<Country>Italy</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>1A</CartonNumber>
+<Awb>PEK957728</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074208TSCE</InvoiceNumber>
+<ProductName>S1JL R2</ProductName>
+<CustomerProductNumber></CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0132</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>2A</CartonNumber>
+<Awb>PEK957728</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074208TSCE</InvoiceNumber>
+<ProductName>S1JL R2</ProductName>
+<CustomerProductNumber></CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0132</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='4500079616'>
+<PackingListNumber>7-030707-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>KOSTAL IRELAND GMBH</CustomerName>
+<CustomerID>3499</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>7044</ShipToID>
+<Department>Kostal Industrie Elektrik GmbH</Department>
+<Street>Lange Eck 11</Street>
+<City>D-58099 Hagen</City>
+<County></County>
+<Zip></Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4452</BillToID>
+<Department>Kostal Industrie Elektrik GmbH</Department>
+<Street>Wiesenstrasse 47</Street>
+<City>D-58507 Luedenscheid</City>
+<County></County>
+<Zip></Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>10A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>11A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>12A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>13A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>14A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>15A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>16A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>17A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>18A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>19A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>1A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>20A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>21A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='4500079616'>
+<PackingListNumber>7-030707-A1</PackingListNumber>
+<Date>0</Date>
+<CustomerName>KOSTAL IRELAND GMBH</CustomerName>
+<CustomerID>3499</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>7044</ShipToID>
+<Department>Kostal Industrie Elektrik GmbH</Department>
+<Street>Lange Eck 11</Street>
+<City>D-58099 Hagen</City>
+<County></County>
+<Zip></Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4452</BillToID>
+<Department>Kostal Industrie Elektrik GmbH</Department>
+<Street>Wiesenstrasse 47</Street>
+<City>D-58507 Luedenscheid</City>
+<County></County>
+<Zip></Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>2A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>30A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>31A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>32A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>33A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>34A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>35A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>36A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>37A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>38A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>39A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>3A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>40A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='4500079616'>
+<PackingListNumber>7-030707-A2</PackingListNumber>
+<Date>0</Date>
+<CustomerName>KOSTAL IRELAND GMBH</CustomerName>
+<CustomerID>3499</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>7044</ShipToID>
+<Department>Kostal Industrie Elektrik GmbH</Department>
+<Street>Lange Eck 11</Street>
+<City>D-58099 Hagen</City>
+<County></County>
+<Zip></Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4452</BillToID>
+<Department>Kostal Industrie Elektrik GmbH</Department>
+<Street>Wiesenstrasse 47</Street>
+<City>D-58507 Luedenscheid</City>
+<County></County>
+<Zip></Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>46A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>47A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>48A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>49A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>4A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>50A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>51A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>52A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>5A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>6A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>7A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>8A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>9A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='4500079616'>
+<PackingListNumber>7-030707-A3</PackingListNumber>
+<Date>0</Date>
+<CustomerName>KOSTAL IRELAND GMBH</CustomerName>
+<CustomerID>3499</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>7044</ShipToID>
+<Department>Kostal Industrie Elektrik GmbH</Department>
+<Street>Lange Eck 11</Street>
+<City>D-58099 Hagen</City>
+<County></County>
+<Zip></Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4452</BillToID>
+<Department>Kostal Industrie Elektrik GmbH</Department>
+<Street>Wiesenstrasse 47</Street>
+<City>D-58507 Luedenscheid</City>
+<County></County>
+<Zip></Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>22A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>23A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>24A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>25A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>26A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>27A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>28A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>29A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>41A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>42A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>43A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>44A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>45A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074646TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber>66344510030301-01</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.19</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='48597'>
+<PackingListNumber>C-040707</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>C-MAC Electromag B.V.B.A</Department>
+<Street>Industriezone "Klein Frankrijk", 28</Street>
+<City>Ronse</City>
+<County>null</County>
+<Zip>9600</Zip>
+<Country>Belgium</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>C-MAC Electromag B.V.B.A</Department>
+<Street>Industriezone "Klein Frankrijk", 28</Street>
+<City>Ronse</City>
+<County>null</County>
+<Zip>9600</Zip>
+<Country>Belgium</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>91A</CartonNumber>
+<Awb>PEK952372</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071901TSCE</InvoiceNumber>
+<ProductName>BZD27C15P R2</ProductName>
+<CustomerProductNumber>790 815-01</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.0305</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='4531006607'>
+<PackingListNumber>PPS</PackingListNumber>
+<Date>0</Date>
+<CustomerName>PHILIPS LIGHTING BV</CustomerName>
+<CustomerID>3581</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>4117</ShipToID>
+<Department>PHILIPS POWER Solutions Int</Department>
+<Street>Unit Electronic, Vacrecka 311</Street>
+<City>Namestovo</City>
+<County>null</County>
+<Zip>SK-029 01 </Zip>
+<Country>Slovakia</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>9256</BillToID>
+<Department>PHILIPS POWER Solutions Int. Accounts</Department>
+<Street>Vavrecka 311</Street>
+<City>Namestovo</City>
+<County>null</County>
+<Zip>SK-029 01</Zip>
+<Country>Slovakia</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>187B</CartonNumber>
+<Awb>PEK958347</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074401TSCE</InvoiceNumber>
+<ProductName>TS15P06G C2</ProductName>
+<CustomerProductNumber>9322 243 38682</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.36</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>188B</CartonNumber>
+<Awb>PEK958347</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074401TSCE</InvoiceNumber>
+<ProductName>TS15P06G C2</ProductName>
+<CustomerProductNumber>9322 243 38682</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.36</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>189B</CartonNumber>
+<Awb>PEK958347</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074401TSCE</InvoiceNumber>
+<ProductName>TS15P06G C2</ProductName>
+<CustomerProductNumber>9322 243 38682</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.36</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>190B</CartonNumber>
+<Awb>PEK958347</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074401TSCE</InvoiceNumber>
+<ProductName>TS15P06G C2</ProductName>
+<CustomerProductNumber>9322 243 38682</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.36</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>213B</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074644TSCE</InvoiceNumber>
+<ProductName>TS15P06G C2</ProductName>
+<CustomerProductNumber>9322 243 38682</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.36</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>214B</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074644TSCE</InvoiceNumber>
+<ProductName>TS15P06G C2</ProductName>
+<CustomerProductNumber>9322 243 38682</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.36</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>215B</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074644TSCE</InvoiceNumber>
+<ProductName>TS15P06G C2</ProductName>
+<CustomerProductNumber>9322 243 38682</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.36</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>216B</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074644TSCE</InvoiceNumber>
+<ProductName>TS15P06G C2</ProductName>
+<CustomerProductNumber>9322 243 38682</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.36</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>217B</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074644TSCE</InvoiceNumber>
+<ProductName>TS15P06G C2</ProductName>
+<CustomerProductNumber>9322 243 38682</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.36</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>218B</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074644TSCE</InvoiceNumber>
+<ProductName>TS15P06G C2</ProductName>
+<CustomerProductNumber>9322 243 38682</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.36</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>219B</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074644TSCE</InvoiceNumber>
+<ProductName>TS15P06G C2</ProductName>
+<CustomerProductNumber>9322 243 38682</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.36</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>220B</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074644TSCE</InvoiceNumber>
+<ProductName>TS15P06G C2</ProductName>
+<CustomerProductNumber>9322 243 38682</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.36</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>221B</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074644TSCE</InvoiceNumber>
+<ProductName>TS15P06G C2</ProductName>
+<CustomerProductNumber>9322 243 38682</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.36</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>222B</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074644TSCE</InvoiceNumber>
+<ProductName>TS15P06G C2</ProductName>
+<CustomerProductNumber>9322 243 38682</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.36</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>223B</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074644TSCE</InvoiceNumber>
+<ProductName>TS15P06G C2</ProductName>
+<CustomerProductNumber>9322 243 38682</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.36</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>224B</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074644TSCE</InvoiceNumber>
+<ProductName>TS15P06G C2</ProductName>
+<CustomerProductNumber>9322 243 38682</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.36</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='2921074051'>
+<PackingListNumber>ST-040707</PackingListNumber>
+<Date>0</Date>
+<CustomerName>SAGEM COMMUNICATION BAYONNE</CustomerName>
+<CustomerID>7687</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>8708</ShipToID>
+<Department>PLATEFORME GEFCO</Department>
+<Street>7 voie d'Autriche</Street>
+<City>VITROLLES CEDEX</City>
+<County>null</County>
+<Zip>F-13814</Zip>
+<Country>France</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>8837</BillToID>
+<Department>SAGEM Tunisie</Department>
+<Street>Zone Industrielle Borj El Ghorbel</Street>
+<City>BEN AROUS</City>
+<County>null</County>
+<Zip>TN-2013</Zip>
+<Country>Tunisia</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>151A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074639TSCE</InvoiceNumber>
+<ProductName>1.5KE400 R0</ProductName>
+<CustomerProductNumber>189573100</CustomerProductNumber>
+<Quantity>5000</Quantity>
+<Price>0.09</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>152A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074639TSCE</InvoiceNumber>
+<ProductName>1.5KE400 R0</ProductName>
+<CustomerProductNumber>189573100</CustomerProductNumber>
+<Quantity>5000</Quantity>
+<Price>0.09</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>153A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074639TSCE</InvoiceNumber>
+<ProductName>1.5KE400 R0</ProductName>
+<CustomerProductNumber>189573100</CustomerProductNumber>
+<Quantity>5000</Quantity>
+<Price>0.09</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>154A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074639TSCE</InvoiceNumber>
+<ProductName>1.5KE400 R0</ProductName>
+<CustomerProductNumber>189573100</CustomerProductNumber>
+<Quantity>5000</Quantity>
+<Price>0.09</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>155A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074639TSCE</InvoiceNumber>
+<ProductName>1.5KE400 R0</ProductName>
+<CustomerProductNumber>189573100</CustomerProductNumber>
+<Quantity>5000</Quantity>
+<Price>0.09</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>12A</CartonNumber>
+<Awb>PEK957728</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074202TSCE</InvoiceNumber>
+<ProductName>1.5KE400 R0</ProductName>
+<CustomerProductNumber>189573100</CustomerProductNumber>
+<Quantity>5000</Quantity>
+<Price>0.09</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='1301115314'>
+<PackingListNumber>JP040707</PackingListNumber>
+<Date>0</Date>
+<CustomerName>PHILIPS LIGHTING BV</CustomerName>
+<CustomerID>3581</CustomerID>
+<ShipmentTerms>FCA MUNICH</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>4117</ShipToID>
+<Department>Jabil Circuit Poland</Department>
+<Street>Ul . Lotnicza 2</Street>
+<City>KWIDZYN</City>
+<County>null</County>
+<Zip>PL-82-500</Zip>
+<Country>Poland</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>9256</BillToID>
+<Department>Jabil Circuit Poland</Department>
+<Street>Ul . Lotnicza 2</Street>
+<City>KWIDZYN</City>
+<County>null</County>
+<Zip>PL-82-500</Zip>
+<Country>Poland</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>121</CartonNumber>
+<Awb>PEK957728</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074203TSCE</InvoiceNumber>
+<ProductName>TS6B05G-06 X0</ProductName>
+<CustomerProductNumber>9322 237 00682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.17</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>122</CartonNumber>
+<Awb>PEK957728</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074203TSCE</InvoiceNumber>
+<ProductName>TS6B05G-06 X0</ProductName>
+<CustomerProductNumber>9322 237 00682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.17</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>123</CartonNumber>
+<Awb>PEK957728</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074203TSCE</InvoiceNumber>
+<ProductName>TS6B05G-06 X0</ProductName>
+<CustomerProductNumber>9322 237 00682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.17</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>124</CartonNumber>
+<Awb>PEK957728</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074203TSCE</InvoiceNumber>
+<ProductName>TS6B05G-06 X0</ProductName>
+<CustomerProductNumber>9322 237 00682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.17</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>125</CartonNumber>
+<Awb>PEK957728</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074203TSCE</InvoiceNumber>
+<ProductName>TS6B05G-06 X0</ProductName>
+<CustomerProductNumber>9322 237 00682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.17</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>126</CartonNumber>
+<Awb>PEK957728</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074203TSCE</InvoiceNumber>
+<ProductName>TS6B05G-06 X0</ProductName>
+<CustomerProductNumber>9322 237 00682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.17</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>127</CartonNumber>
+<Awb>PEK957728</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074203TSCE</InvoiceNumber>
+<ProductName>TS6B05G-06 X0</ProductName>
+<CustomerProductNumber>9322 237 00682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.17</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>128</CartonNumber>
+<Awb>PEK957728</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074203TSCE</InvoiceNumber>
+<ProductName>TS6B05G-06 X0</ProductName>
+<CustomerProductNumber>9322 237 00682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.17</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>129</CartonNumber>
+<Awb>PEK957728</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074203TSCE</InvoiceNumber>
+<ProductName>TS6B05G-06 X0</ProductName>
+<CustomerProductNumber>9322 237 00682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.17</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>130</CartonNumber>
+<Awb>PEK957728</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074203TSCE</InvoiceNumber>
+<ProductName>TS6B05G-06 X0</ProductName>
+<CustomerProductNumber>9322 237 00682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.17</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>131</CartonNumber>
+<Awb>PEK957728</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074203TSCE</InvoiceNumber>
+<ProductName>TS6B05G-06 X0</ProductName>
+<CustomerProductNumber>9322 237 00682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.17</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>132</CartonNumber>
+<Awb>PEK957728</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074203TSCE</InvoiceNumber>
+<ProductName>TS6B05G-06 X0</ProductName>
+<CustomerProductNumber>9322 237 00682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.17</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>133</CartonNumber>
+<Awb>PEK957728</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074203TSCE</InvoiceNumber>
+<ProductName>TS6B05G-06 X0</ProductName>
+<CustomerProductNumber>9322 237 00682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.17</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>134</CartonNumber>
+<Awb>PEK957728</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074203TSCE</InvoiceNumber>
+<ProductName>TS6B05G-06 X0</ProductName>
+<CustomerProductNumber>9322 237 00682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.17</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>135</CartonNumber>
+<Awb>PEK957728</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074203TSCE</InvoiceNumber>
+<ProductName>TS6B05G-06 X0</ProductName>
+<CustomerProductNumber>9322 237 00682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.17</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>136</CartonNumber>
+<Awb>PEK957728</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074203TSCE</InvoiceNumber>
+<ProductName>TS6B05G-06 X0</ProductName>
+<CustomerProductNumber>9322 237 00682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.17</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>137</CartonNumber>
+<Awb>PEK957728</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074203TSCE</InvoiceNumber>
+<ProductName>TS6B05G-06 X0</ProductName>
+<CustomerProductNumber>9322 237 00682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.17</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>138</CartonNumber>
+<Awb>PEK957728</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074203TSCE</InvoiceNumber>
+<ProductName>TS6B05G-06 X0</ProductName>
+<CustomerProductNumber>9322 237 00682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.17</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>139</CartonNumber>
+<Awb>PEK957728</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074203TSCE</InvoiceNumber>
+<ProductName>TS6B05G-06 X0</ProductName>
+<CustomerProductNumber>9322 237 00682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.17</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='4531006397'>
+<PackingListNumber>PPS040707</PackingListNumber>
+<Date>0</Date>
+<CustomerName>PHILIPS LIGHTING BV</CustomerName>
+<CustomerID>3581</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>4117</ShipToID>
+<Department>PHILIPS POWER Solutions Int</Department>
+<Street>Unit Electronic, Vacrecka 311</Street>
+<City>Namestovo</City>
+<County>null</County>
+<Zip>SK-029 01 </Zip>
+<Country>Slovakia</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>9256</BillToID>
+<Department>PHILIPS POWER Solutions Int. Accounts</Department>
+<Street>Vavrecka 311</Street>
+<City>Namestovo</City>
+<County>null</County>
+<Zip>SK-029 01</Zip>
+<Country>Slovakia</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>191B</CartonNumber>
+<Awb>PEK956418</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073654TSCE</InvoiceNumber>
+<ProductName>SF14G R0</ProductName>
+<CustomerProductNumber>9322 245 52683</CustomerProductNumber>
+<Quantity>20000</Quantity>
+<Price>0.036</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>192B</CartonNumber>
+<Awb>PEK956418</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073654TSCE</InvoiceNumber>
+<ProductName>SF14G R0</ProductName>
+<CustomerProductNumber>9322 245 52683</CustomerProductNumber>
+<Quantity>20000</Quantity>
+<Price>0.036</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='4531006673'>
+<PackingListNumber>PPS040707</PackingListNumber>
+<Date>0</Date>
+<CustomerName>PHILIPS LIGHTING BV</CustomerName>
+<CustomerID>3581</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>4117</ShipToID>
+<Department>PHILIPS POWER Solutions Int</Department>
+<Street>Unit Electronic, Vacrecka 311</Street>
+<City>Namestovo</City>
+<County>null</County>
+<Zip>SK-029 01 </Zip>
+<Country>Slovakia</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>9256</BillToID>
+<Department>PHILIPS POWER Solutions Int. Accounts</Department>
+<Street>Vavrecka 311</Street>
+<City>Namestovo</City>
+<County>null</County>
+<Zip>SK-029 01</Zip>
+<Country>Slovakia</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>107B</CartonNumber>
+<Awb>PEK957184</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074038TSCE</InvoiceNumber>
+<ProductName>FR106G R0</ProductName>
+<CustomerProductNumber>9322 238 55682</CustomerProductNumber>
+<Quantity>20000</Quantity>
+<Price>0.012</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>108B</CartonNumber>
+<Awb>PEK957184</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074038TSCE</InvoiceNumber>
+<ProductName>FR106G R0</ProductName>
+<CustomerProductNumber>9322 238 55682</CustomerProductNumber>
+<Quantity>20000</Quantity>
+<Price>0.012</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='4531006762'>
+<PackingListNumber>PPS040707</PackingListNumber>
+<Date>0</Date>
+<CustomerName>PHILIPS LIGHTING BV</CustomerName>
+<CustomerID>3581</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>4117</ShipToID>
+<Department>PHILIPS POWER Solutions Int</Department>
+<Street>Unit Electronic, Vacrecka 311</Street>
+<City>Namestovo</City>
+<County>null</County>
+<Zip>SK-029 01 </Zip>
+<Country>Slovakia</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>9256</BillToID>
+<Department>PHILIPS POWER Solutions Int. Accounts</Department>
+<Street>Vavrecka 311</Street>
+<City>Namestovo</City>
+<County>null</County>
+<Zip>SK-029 01</Zip>
+<Country>Slovakia</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>97B</CartonNumber>
+<Awb>PEK957184</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074038TSCE</InvoiceNumber>
+<ProductName>1N4006 R0</ProductName>
+<CustomerProductNumber>9322 238 72682</CustomerProductNumber>
+<Quantity>20000</Quantity>
+<Price>0.0055</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>98B</CartonNumber>
+<Awb>PEK957184</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074038TSCE</InvoiceNumber>
+<ProductName>1N4006 R0</ProductName>
+<CustomerProductNumber>9322 238 72682</CustomerProductNumber>
+<Quantity>20000</Quantity>
+<Price>0.0055</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='4531006848'>
+<PackingListNumber>PPS040707</PackingListNumber>
+<Date>0</Date>
+<CustomerName>PHILIPS LIGHTING BV</CustomerName>
+<CustomerID>3581</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>4117</ShipToID>
+<Department>PHILIPS POWER Solutions Int</Department>
+<Street>Unit Electronic, Vacrecka 311</Street>
+<City>Namestovo</City>
+<County>null</County>
+<Zip>SK-029 01 </Zip>
+<Country>Slovakia</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>9256</BillToID>
+<Department>PHILIPS POWER Solutions Int. Accounts</Department>
+<Street>Vavrecka 311</Street>
+<City>Namestovo</City>
+<County>null</County>
+<Zip>SK-029 01</Zip>
+<Country>Slovakia</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>84</CartonNumber>
+<Awb>PEK935232</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-064355TSCE</InvoiceNumber>
+<ProductName>SR309-03 X0</ProductName>
+<CustomerProductNumber>9322 234 89682</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.0455</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='4531006924'>
+<PackingListNumber>PPS040707</PackingListNumber>
+<Date>0</Date>
+<CustomerName>PHILIPS LIGHTING BV</CustomerName>
+<CustomerID>3581</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>4117</ShipToID>
+<Department>PHILIPS POWER Solutions Int</Department>
+<Street>Unit Electronic, Vacrecka 311</Street>
+<City>Namestovo</City>
+<County>null</County>
+<Zip>SK-029 01 </Zip>
+<Country>Slovakia</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>9256</BillToID>
+<Department>PHILIPS POWER Solutions Int. Accounts</Department>
+<Street>Vavrecka 311</Street>
+<City>Namestovo</City>
+<County>null</County>
+<Zip>SK-029 01</Zip>
+<Country>Slovakia</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>177B</CartonNumber>
+<Awb>PEK950398</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071101TSCE</InvoiceNumber>
+<ProductName>GBU606 C2</ProductName>
+<CustomerProductNumber>9322 237 51682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.16</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>178B</CartonNumber>
+<Awb>PEK950398</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071101TSCE</InvoiceNumber>
+<ProductName>GBU606 C2</ProductName>
+<CustomerProductNumber>9322 237 51682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.16</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>85DXX</CartonNumber>
+<Awb>PEK953771</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072524TSCE</InvoiceNumber>
+<ProductName>RS1K F2</ProductName>
+<CustomerProductNumber>9322 240 21688</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.026</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>29D</CartonNumber>
+<Awb>PEK958347</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074401TSCE</InvoiceNumber>
+<ProductName>RS1K F2</ProductName>
+<CustomerProductNumber>9322 240 21688</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.026</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>114A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073463TSCE</InvoiceNumber>
+<ProductName>SRA1030 C0</ProductName>
+<CustomerProductNumber>9322 241 22682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.135</Price>
+</Item>
+</Items>
+</CustomerPO>
+</PurchaseOrderList>

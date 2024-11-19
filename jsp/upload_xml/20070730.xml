@@ -1,0 +1,378 @@
+<?xml version='1.0'  encoding='UTF-8'?>
+<PurchaseOrderList>
+<CustomerPO name='667329'>
+<PackingListNumber>35-260707-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>IFM ELECTRONIC GMBH</CustomerName>
+<CustomerID>3961</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>4398</ShipToID>
+<Department>IFM electronic GmbH</Department>
+<Street>Bechlinger Str. 34</Street>
+<City>D-88069 Tettnang</City>
+<County>null</County>
+<Zip>null</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4398</BillToID>
+<Department>IFM electronic GmbH</Department>
+<Street>Postfach 12 62</Street>
+<City>D-88061 Tettnang</City>
+<County>null</County>
+<Zip>null</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>81A</CartonNumber>
+<Awb>PEK601940</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075201TSCE</InvoiceNumber>
+<ProductName>SMAJ36CA R3</ProductName>
+<CustomerProductNumber>602197</CustomerProductNumber>
+<Quantity>21600</Quantity>
+<Price>0.045</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='183671/31'>
+<PackingListNumber>4-270707-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELVAR OY AB</CustomerName>
+<CustomerID>3517</CustomerID>
+<ShipmentTerms>FCA MUNICH</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>3999</ShipToID>
+<Department>Helvar Materials Karkkila</Department>
+<Street>Yrittajantie 30</Street>
+<City>Karkkila</City>
+<County></County>
+<Zip>FIN-03600</Zip>
+<Country>Finland</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>7050</BillToID>
+<Department>Helvar OY AB</Department>
+<Street>PL100</Street>
+<City>Karkkila</City>
+<County></County>
+<Zip>FIN-03601</Zip>
+<Country>Finland</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>110B</CartonNumber>
+<Awb>PEK601940</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075206TSCE</InvoiceNumber>
+<ProductName>S1M R2</ProductName>
+<CustomerProductNumber>7300040</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0145</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>111B</CartonNumber>
+<Awb>PEK601940</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075206TSCE</InvoiceNumber>
+<ProductName>S1M R2</ProductName>
+<CustomerProductNumber>7300040</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0145</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>98</CartonNumber>
+<Awb>49459</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071634TSCE</InvoiceNumber>
+<ProductName>LL4148 L0</ProductName>
+<CustomerProductNumber>73396</CustomerProductNumber>
+<Quantity>100000</Quantity>
+<Price>0.0058</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>99</CartonNumber>
+<Awb>49459</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071634TSCE</InvoiceNumber>
+<ProductName>LL4148 L0</ProductName>
+<CustomerProductNumber>73396</CustomerProductNumber>
+<Quantity>100000</Quantity>
+<Price>0.0058</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>136</CartonNumber>
+<Awb>PEK952372</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071909TSCE</InvoiceNumber>
+<ProductName>LL4148 L0</ProductName>
+<CustomerProductNumber>73396</CustomerProductNumber>
+<Quantity>100000</Quantity>
+<Price>0.0058</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5510000017'>
+<PackingListNumber>7-260707-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>KOSTAL IRELAND GMBH</CustomerName>
+<CustomerID>3499</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>7044</ShipToID>
+<Department>Kostal Ireland GmbH</Department>
+<Street>Ballydaniel, Limerick road</Street>
+<City>Mallow-Cork</City>
+<County></County>
+<Zip></Zip>
+<Country>Ireland</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4452</BillToID>
+<Department>Kostal Ireland GmbH</Department>
+<Street>Mounthmahon</Street>
+<City>Abbeyfeale Limerick</City>
+<County></County>
+<Zip></Zip>
+<Country>Ireland</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>10A</CartonNumber>
+<Awb>07063051</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073934TSCE</InvoiceNumber>
+<ProductName>ES3D-04 R6</ProductName>
+<CustomerProductNumber>66332020230301-03</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.056</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5510000012 Abb'>
+<PackingListNumber>7-260707-B</PackingListNumber>
+<Date>0</Date>
+<CustomerName>KOSTAL IRELAND GMBH</CustomerName>
+<CustomerID>3499</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>7044</ShipToID>
+<Department>Kostal Ireland GmbH</Department>
+<Street>Mounthmahon</Street>
+<City>Abbeyfeale Limerick</City>
+<County></County>
+<Zip></Zip>
+<Country>Ireland</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4452</BillToID>
+<Department>Kostal Ireland GmbH</Department>
+<Street>Mounthmahon</Street>
+<City>Abbeyfeale Limerick</City>
+<County></County>
+<Zip></Zip>
+<Country>Ireland</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>44A</CartonNumber>
+<Awb>PEK601940</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075204TSCE</InvoiceNumber>
+<ProductName>P6SMB30A R4</ProductName>
+<CustomerProductNumber>66310301010311-01</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.03</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5510000010'>
+<PackingListNumber>7-260707-C</PackingListNumber>
+<Date>0</Date>
+<CustomerName>KOSTAL IRELAND GMBH</CustomerName>
+<CustomerID>3499</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>7044</ShipToID>
+<Department>Kostal Ireland GmbH</Department>
+<Street>Mounthmahon</Street>
+<City>Abbeyfeale Limerick</City>
+<County></County>
+<Zip></Zip>
+<Country>Ireland</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4452</BillToID>
+<Department>Kostal Ireland GmbH</Department>
+<Street>Mounthmahon</Street>
+<City>Abbeyfeale Limerick</City>
+<County></County>
+<Zip></Zip>
+<Country>Ireland</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>72A</CartonNumber>
+<Awb>PEK601360</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074985TSCE</InvoiceNumber>
+<ProductName>S1J-08 R2</ProductName>
+<CustomerProductNumber>66334020020331-04</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.01175</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>73A</CartonNumber>
+<Awb>PEK601360</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074985TSCE</InvoiceNumber>
+<ProductName>S1J-08 R2</ProductName>
+<CustomerProductNumber>66334020020331-04</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.01175</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='551000014'>
+<PackingListNumber>7-260707-D</PackingListNumber>
+<Date>0</Date>
+<CustomerName>KOSTAL IRELAND GMBH</CustomerName>
+<CustomerID>3499</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>7044</ShipToID>
+<Department>Kostal Ireland GmbH</Department>
+<Street>Ballydaniel, Limerick road</Street>
+<City>Mallow-Cork</City>
+<County></County>
+<Zip></Zip>
+<Country>Ireland</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4452</BillToID>
+<Department>Kostal Ireland GmbH</Department>
+<Street>Mounthmahon</Street>
+<City>Abbeyfeale Limerick</City>
+<County></County>
+<Zip></Zip>
+<Country>Ireland</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>104EXXXX</CartonNumber>
+<Awb>PEK950786</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071305TSCE</InvoiceNumber>
+<ProductName>S1J-09 R2</ProductName>
+<CustomerProductNumber>66336020110301-01</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.01175</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5510000013'>
+<PackingListNumber>7-260707-E</PackingListNumber>
+<Date>0</Date>
+<CustomerName>KOSTAL IRELAND GMBH</CustomerName>
+<CustomerID>3499</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>7044</ShipToID>
+<Department>Kostal Ireland GmbH</Department>
+<Street>Ballydaniel, Limerick road</Street>
+<City>Mallow-Cork</City>
+<County></County>
+<Zip></Zip>
+<Country>Ireland</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4452</BillToID>
+<Department>Kostal Ireland GmbH</Department>
+<Street>Mounthmahon</Street>
+<City>Abbeyfeale Limerick</City>
+<County></County>
+<Zip></Zip>
+<Country>Ireland</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>13A</CartonNumber>
+<Awb>PEK957728</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074204TSCE</InvoiceNumber>
+<ProductName>SMAJ22A R2</ProductName>
+<CustomerProductNumber>66310221820300-00</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.024</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5510000011 '>
+<PackingListNumber>7-260707-F</PackingListNumber>
+<Date>0</Date>
+<CustomerName>KOSTAL IRELAND GMBH</CustomerName>
+<CustomerID>3499</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>7044</ShipToID>
+<Department>Kostal Ireland GmbH</Department>
+<Street>Mounthmahon</Street>
+<City>Abbeyfeale Limerick</City>
+<County></County>
+<Zip></Zip>
+<Country>Ireland</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4452</BillToID>
+<Department>Kostal Ireland GmbH</Department>
+<Street>Mounthmahon</Street>
+<City>Abbeyfeale Limerick</City>
+<County></County>
+<Zip></Zip>
+<Country>Ireland</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>20AXXX</CartonNumber>
+<Awb>235007774</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072047TSCE</InvoiceNumber>
+<ProductName>US1M R3</ProductName>
+<CustomerProductNumber>66337020330301-01</CustomerProductNumber>
+<Quantity>3600</Quantity>
+<Price>0.025</Price>
+</Item>
+</Items>
+</CustomerPO>
+</PurchaseOrderList>

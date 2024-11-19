@@ -1,0 +1,156 @@
+<?xml version='1.0'  encoding='UTF-8'?>
+<PurchaseOrderList>
+<CustomerPO name='263116'>
+<PackingListNumber>38-140607-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>SETRON SERVICE DISTRIBUTION GMBH</CustomerName>
+<CustomerID>3127</CustomerID>
+<ShipmentTerms>FCA MUNICH</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>3420</ShipToID>
+<Department>Setron GmbH</Department>
+<Street>Friedrich-Seele-Str. 3A</Street>
+<City>D-38122 Braunschweig</City>
+<County>Germany</County>
+<Zip></Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3418</BillToID>
+<Department>Setron GmbH</Department>
+<Street>Friedrich-Seele-Str. 3A</Street>
+<City>D-38122 Braunschweig</City>
+<County>Germany</County>
+<Zip></Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>33Axxx</CartonNumber>
+<Awb>56381</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-062246TSCE</InvoiceNumber>
+<ProductName>ES1DL R2</ProductName>
+<CustomerProductNumber>92846</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.0369</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='39369'>
+<PackingListNumber>AB-140607-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>AB Mikroelektronik GmbH</Department>
+<Street>Josef-Brandstaetter-Str. 2</Street>
+<City>Salzburg</City>
+<County>null</County>
+<Zip>5020</Zip>
+<Country>Austria</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>AB Mikroelektronik GmbH</Department>
+<Street>Josef-Brandstaetter-Str. 2</Street>
+<City>Salzburg</City>
+<County>null</County>
+<Zip>5020</Zip>
+<Country>Austria</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>32D</CartonNumber>
+<Awb>PEK955513</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073283TSCE</InvoiceNumber>
+<ProductName>BZD27C39P R2</ProductName>
+<CustomerProductNumber>37600110TA - 790 815-01</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0305</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5500018347'>
+<PackingListNumber>CE-140607-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Compania Electronica del Automovil, S.A.</Department>
+<Street>Poligono Industrial "Los Frailes"</Street>
+<City>Daganzo de Arriba (Madrid)</City>
+<County>null</County>
+<Zip>28814</Zip>
+<Country>Spain</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Compania Electronica del Automovil, S.A.</Department>
+<Street>Apartado de correos 286</Street>
+<City>Torrejon de Ardoz (Madrid)</City>
+<County>null</County>
+<Zip>28850</Zip>
+<Country>Spain</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>12A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073461TSCE</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>13A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073461TSCE</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>14A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073461TSCE</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>15A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073461TSCE</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+</Items>
+</CustomerPO>
+</PurchaseOrderList>

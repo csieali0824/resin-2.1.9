@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+
+Name: oracle/apps/media/wffrmdoc.gif
+SHA1-Digest: nokYycJzGLxgdLBe+u0yJR+vnM4=
+Digest-Algorithms: MD5
+MD5-Digest: N88mlf9xn+Muyhm9AORzyA==
+
+Name: oracle/apps/fnd/wf/WFFormsAppletFrameListener.class
+SHA1-Digest: wpwdmWjN/3nDlz7m2MmdXvQaETE=
+Digest-Algorithms: MD5
+MD5-Digest: szPuETl562LpGxldYw4Gvw==
+
+Name: oracle/apps/fnd/wf/WFForms.class
+SHA1-Digest: wKVuWl6N0FXVtxPcUyrwMyrtvFc=
+Digest-Algorithms: MD5
+MD5-Digest: SJ+psF+nozcjq3Rd8vQn1Q==
+
+Name: oracle/apps/fnd/common/VersionInfo.class
+SHA1-Digest: xB8rXUAhU8r50B/Bh379d+cLwxA=
+Digest-Algorithms: MD5
+MD5-Digest: SBSLtl6/xmCc1bdKVciz+Q==
+
+Name: oracle/apps/fnd/wf/WFFormsApplet.class
+SHA1-Digest: +7ihEAh81QxTLVy3L4ahwXy2SdM=
+Digest-Algorithms: MD5
+MD5-Digest: ozQI/JsNOC30k4EXuLKmsQ==
+

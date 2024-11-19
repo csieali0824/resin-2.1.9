@@ -1,0 +1,77 @@
+Manifest-Version: 1.0
+
+Name: oracle/apps/fnd/wf/WFAttribute.class
+SHA1-Digest: 8rOUZpfschy83pBmIFu2j5xnklw=
+Digest-Algorithms: MD5
+MD5-Digest: rUsWQz9HXcKw5DAJfggwmQ==
+
+Name: oracle/apps/fnd/wf/WFXLoad.class
+SHA1-Digest: wSUHMw2O/J/449m7CWzyqSmZABo=
+Digest-Algorithms: MD5
+MD5-Digest: dbn1Fir2S0VmN6IblxzuIQ==
+
+Name: oracle/apps/fnd/wf/WFAgent.class
+SHA1-Digest: Q6hGvzI/XN/kKRhyLpf1Aynu5MM=
+Digest-Algorithms: MD5
+MD5-Digest: dSeKXdnYkeG3LUC4BgAmVg==
+
+Name: oracle/apps/fnd/wf/WFException.class
+SHA1-Digest: LDy8VA5KOEsz5zHqD6Na5XCkNLI=
+Digest-Algorithms: MD5
+MD5-Digest: 3bPje+8rY6mma4UTatRbpw==
+
+Name: oracle/apps/fnd/wf/WFQueue.class
+SHA1-Digest: WYsq7WjZh+Dlp0vop4iqM1XLn7I=
+Digest-Algorithms: MD5
+MD5-Digest: +e7EoB9RoRSsP8bxOkW9IA==
+
+Name: oracle/apps/fnd/wf/WFEvent.class
+SHA1-Digest: WteFB6UzO2oRralMgv1U8IxCSRk=
+Digest-Algorithms: MD5
+MD5-Digest: a/oJYMyj8PvvdTv8V9e9Xg==
+
+Name: oracle/apps/fnd/wf/WFFALsnr.class
+SHA1-Digest: /c2i39UpXP2dUtcD9lwN0ACHYKg=
+Digest-Algorithms: MD5
+MD5-Digest: 61iiQKsWM8CfPb1fCOBegg==
+
+Name: oracle/apps/fnd/wf/WFPayLoad.class
+SHA1-Digest: rDuHZOfv28Z5GnEOcagvEK8au28=
+Digest-Algorithms: MD5
+MD5-Digest: nqkLwVTw5FVaNXXOpa4XHg==
+
+Name: oracle/apps/fnd/wf/WFFunctionException.class
+SHA1-Digest: e1oIwziZPmlhHIWsQeLDcJUnAKA=
+Digest-Algorithms: MD5
+MD5-Digest: oRtYOHWjj+a09/oMgyAmJA==
+
+Name: oracle/apps/fnd/wf/WFStandardQueue.class
+SHA1-Digest: lGFsUNlnMaU9Qy4gmUMcpQIROpo=
+Digest-Algorithms: MD5
+MD5-Digest: g1xwKGyslJwigs/kA8MUww==
+
+Name: oracle/apps/fnd/wf/WFParameter.class
+SHA1-Digest: YSaKEojPhIPqunPO/XnadKJymH4=
+Digest-Algorithms: MD5
+MD5-Digest: y6mfZLJY10bwuDI9huTdhA==
+
+Name: oracle/apps/fnd/wf/WFFunctionAPI.class
+SHA1-Digest: g1PbXdjqTgLeHZ/4JRDnqKr8keM=
+Digest-Algorithms: MD5
+MD5-Digest: JhaLJgd+g7jj8enOy9NHQQ==
+
+Name: oracle/apps/fnd/wf/WFQueueException.class
+SHA1-Digest: p8c0CKsS9Cxq/kx67PYLCatNeQI=
+Digest-Algorithms: MD5
+MD5-Digest: WFux7sp5QxdTaUH/xiYupg==
+
+Name: oracle/apps/fnd/wf/WFXML.class
+SHA1-Digest: 9VDP0N1Tx3kN2aR3LzPM7wCU6nE=
+Digest-Algorithms: MD5
+MD5-Digest: s7Vk6BywP+2Jf4slstWPUw==
+
+Name: oracle/apps/fnd/wf/WFParamList.class
+SHA1-Digest: 86KKqBq6H3SrQai3uUH/z4pZ01s=
+Digest-Algorithms: MD5
+MD5-Digest: uWZeQBSyeLlnjDI3/ua53w==
+

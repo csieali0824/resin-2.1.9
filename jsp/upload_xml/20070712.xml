@@ -1,0 +1,295 @@
+<?xml version='1.0'  encoding='UTF-8'?>
+<PurchaseOrderList>
+<CustomerPO name='55716280'>
+<PackingListNumber>8-040707-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>TRIDONIC ATCO GMBH &amp; CO.KG</CustomerName>
+<CustomerID>3552</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6106</ShipToID>
+<Department>TridonicAtco GmbH&amp;Co KG</Department>
+<Street>Rohrbach, Schwarz 8</Street>
+<City>A-6850 Dornbirn</City>
+<County></County>
+<Zip></Zip>
+<Country>Austria</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4041</BillToID>
+<Department>Tridonic Atco GmbH &amp; Co. KG</Department>
+<Street>Faerbergasse 15</Street>
+<City>A-6851 Dornbirn</City>
+<County></County>
+<Zip></Zip>
+<Country>Austria</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>200B</CartonNumber>
+<Awb>PEK955513</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073277TSCE</InvoiceNumber>
+<ProductName>DBLS159G RD</ProductName>
+<CustomerProductNumber>05502828</CustomerProductNumber>
+<Quantity>21000</Quantity>
+<Price>0.073</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>201B</CartonNumber>
+<Awb>PEK955513</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073277TSCE</InvoiceNumber>
+<ProductName>DBLS159G RD</ProductName>
+<CustomerProductNumber>05502828</CustomerProductNumber>
+<Quantity>21000</Quantity>
+<Price>0.073</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>202B</CartonNumber>
+<Awb>PEK955513</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073277TSCE</InvoiceNumber>
+<ProductName>DBLS159G RD</ProductName>
+<CustomerProductNumber>05502828</CustomerProductNumber>
+<Quantity>21000</Quantity>
+<Price>0.073</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>203B</CartonNumber>
+<Awb>PEK955513</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073277TSCE</InvoiceNumber>
+<ProductName>DBLS159G RD</ProductName>
+<CustomerProductNumber>05502828</CustomerProductNumber>
+<Quantity>21000</Quantity>
+<Price>0.073</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>333</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073462TSCE</InvoiceNumber>
+<ProductName>DBLS159G RD</ProductName>
+<CustomerProductNumber>05502828</CustomerProductNumber>
+<Quantity>21000</Quantity>
+<Price>0.073</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>334</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073462TSCE</InvoiceNumber>
+<ProductName>DBLS159G RD</ProductName>
+<CustomerProductNumber>05502828</CustomerProductNumber>
+<Quantity>21000</Quantity>
+<Price>0.073</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5500018347'>
+<PackingListNumber>CE-100707-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Compania Electronica del Automovil, S.A.</Department>
+<Street>Poligono Industrial "Los Frailes"</Street>
+<City>Daganzo de Arriba (Madrid)</City>
+<County>null</County>
+<Zip>28814</Zip>
+<Country>Spain</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Compania Electronica del Automovil, S.A.</Department>
+<Street>Apartado de correos 286</Street>
+<City>Torrejon de Ardoz (Madrid)</City>
+<County>null</County>
+<Zip>28850</Zip>
+<Country>Spain</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>41A</CartonNumber>
+<Awb>PEK956791</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073860TSCE</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>42A</CartonNumber>
+<Awb>PEK956791</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073860TSCE</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>43A</CartonNumber>
+<Awb>PEK956791</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073860TSCE</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>44A</CartonNumber>
+<Awb>PEK956791</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073860TSCE</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>45A</CartonNumber>
+<Awb>PEK956791</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073860TSCE</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>46A</CartonNumber>
+<Awb>PEK956791</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073860TSCE</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>47A</CartonNumber>
+<Awb>PEK956791</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073860TSCE</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>48A</CartonNumber>
+<Awb>PEK956791</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073860TSCE</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='1121313'>
+<PackingListNumber>P-100707-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Prettl Elektronik GmbH</Department>
+<Street>Robert-Bosch-Str. 10</Street>
+<City>Radeberg</City>
+<County>null</County>
+<Zip>01454</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Prettl Elektronik GmbH</Department>
+<Street>Robert-Bosch-Str. 10</Street>
+<City>Radeberg</City>
+<County>null</County>
+<Zip>01454</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>146D</CartonNumber>
+<Awb>PEK954929</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072941TSCE</InvoiceNumber>
+<ProductName>S1J-03 R2</ProductName>
+<CustomerProductNumber>AN00945980 - 716 451-03</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0123</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='174/161924'>
+<PackingListNumber>T-100707-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Tectron GmbH</Department>
+<Street>Querstrasse 2</Street>
+<City>Worbis</City>
+<County>null</County>
+<Zip>37339</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Tectron GmbH</Department>
+<Street>Querstrasse 2</Street>
+<City>Worbis</City>
+<County>null</County>
+<Zip>37339</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>44A</CartonNumber>
+<Awb>PEK953331</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072366TSCE</InvoiceNumber>
+<ProductName>1SMA4750 R2</ProductName>
+<CustomerProductNumber>729 501-00</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0305</Price>
+</Item>
+</Items>
+</CustomerPO>
+</PurchaseOrderList>

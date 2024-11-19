@@ -1,0 +1,1298 @@
+<?xml version='1.0'  encoding='UTF-8'?>
+<PurchaseOrderList>
+<CustomerPO name='2921078001'>
+<PackingListNumber>49-280607-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>SAGEM COMMUNICATION BAYONNE</CustomerName>
+<CustomerID>7687</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>8708</ShipToID>
+<Department>PLATEFORME GEFCO</Department>
+<Street>7 voie d'Autriche</Street>
+<City>VITROLLES CEDEX</City>
+<County>null</County>
+<Zip>F-13814</Zip>
+<Country>France</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>8837</BillToID>
+<Department>SAGEM Tunisie</Department>
+<Street>Zone Industrielle Borj El Ghorbel</Street>
+<City>BEN AROUS</City>
+<County>null</County>
+<Zip>TN-2013</Zip>
+<Country>Tunisia</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>58</CartonNumber>
+<Awb>PEK957728</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074202TSCE</InvoiceNumber>
+<ProductName>TS20P05G C2</ProductName>
+<CustomerProductNumber>STT0095674</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.36</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>59</CartonNumber>
+<Awb>PEK957728</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074202TSCE</InvoiceNumber>
+<ProductName>TS20P05G C2</ProductName>
+<CustomerProductNumber>STT0095674</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.36</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='55712471'>
+<PackingListNumber>8-280607-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>TRIDONIC ATCO GMBH &amp; CO.KG</CustomerName>
+<CustomerID>3552</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6106</ShipToID>
+<Department>TridonicAtco GmbH&amp;Co KG</Department>
+<Street>Rohrbach, Schwarz 8</Street>
+<City>A-6850 Dornbirn</City>
+<County></County>
+<Zip></Zip>
+<Country>Austria</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4041</BillToID>
+<Department>Tridonic Atco GmbH &amp; Co. KG</Department>
+<Street>Faerbergasse 15</Street>
+<City>A-6851 Dornbirn</City>
+<County></County>
+<Zip></Zip>
+<Country>Austria</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>252B</CartonNumber>
+<Awb>PEK956418</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073657TSCE</InvoiceNumber>
+<ProductName>DBLS157G RD</ProductName>
+<CustomerProductNumber>05500326</CustomerProductNumber>
+<Quantity>21000</Quantity>
+<Price>0.06</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>253B</CartonNumber>
+<Awb>PEK956418</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073657TSCE</InvoiceNumber>
+<ProductName>DBLS157G RD</ProductName>
+<CustomerProductNumber>05500326</CustomerProductNumber>
+<Quantity>21000</Quantity>
+<Price>0.06</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>254B</CartonNumber>
+<Awb>PEK956418</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073657TSCE</InvoiceNumber>
+<ProductName>DBLS157G RD</ProductName>
+<CustomerProductNumber>05500326</CustomerProductNumber>
+<Quantity>21000</Quantity>
+<Price>0.06</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>255B</CartonNumber>
+<Awb>PEK956418</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073657TSCE</InvoiceNumber>
+<ProductName>DBLS157G RD</ProductName>
+<CustomerProductNumber>05500326</CustomerProductNumber>
+<Quantity>21000</Quantity>
+<Price>0.06</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='55712548'>
+<PackingListNumber>8-280607-B</PackingListNumber>
+<Date>0</Date>
+<CustomerName>TRIDONIC ATCO GMBH &amp; CO.KG</CustomerName>
+<CustomerID>3552</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6106</ShipToID>
+<Department>TridonicAtco GmbH&amp;Co KG</Department>
+<Street>Rohrbach, Schwarz 8</Street>
+<City>A-6850 Dornbirn</City>
+<County></County>
+<Zip></Zip>
+<Country>Austria</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4041</BillToID>
+<Department>Tridonic Atco GmbH &amp; Co. KG</Department>
+<Street>Faerbergasse 15</Street>
+<City>A-6851 Dornbirn</City>
+<County></County>
+<Zip></Zip>
+<Country>Austria</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>456</CartonNumber>
+<Awb>PEK57044492 DC711</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072153TSCE</InvoiceNumber>
+<ProductName>DBLS159G RD</ProductName>
+<CustomerProductNumber>05502828</CustomerProductNumber>
+<Quantity>21000</Quantity>
+<Price>0.073</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>82</CartonNumber>
+<Awb>PEK953331 DC716</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072365TSCE</InvoiceNumber>
+<ProductName>DBLS159G RD</ProductName>
+<CustomerProductNumber>05502828</CustomerProductNumber>
+<Quantity>21000</Quantity>
+<Price>0.073</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>84</CartonNumber>
+<Awb>PEK953331 DC716</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072365TSCE</InvoiceNumber>
+<ProductName>DBLS159G RD</ProductName>
+<CustomerProductNumber>05502828</CustomerProductNumber>
+<Quantity>21000</Quantity>
+<Price>0.073</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='55712549'>
+<PackingListNumber>8-280607-C</PackingListNumber>
+<Date>0</Date>
+<CustomerName>TRIDONIC ATCO GMBH &amp; CO.KG</CustomerName>
+<CustomerID>3552</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6106</ShipToID>
+<Department>TridonicAtco GmbH&amp;Co KG</Department>
+<Street>Rohrbach, Schwarz 8</Street>
+<City>A-6850 Dornbirn</City>
+<County></County>
+<Zip></Zip>
+<Country>Austria</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4041</BillToID>
+<Department>Tridonic Atco GmbH &amp; Co. KG</Department>
+<Street>Faerbergasse 15</Street>
+<City>A-6851 Dornbirn</City>
+<County></County>
+<Zip></Zip>
+<Country>Austria</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>257B</CartonNumber>
+<Awb>PEK953771 DC716</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072522TSCE</InvoiceNumber>
+<ProductName>DBLS159G RD</ProductName>
+<CustomerProductNumber>05502828</CustomerProductNumber>
+<Quantity>21000</Quantity>
+<Price>0.073</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>258B</CartonNumber>
+<Awb>PEK953771 DC716</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072522TSCE</InvoiceNumber>
+<ProductName>DBLS159G RD</ProductName>
+<CustomerProductNumber>05502828</CustomerProductNumber>
+<Quantity>21000</Quantity>
+<Price>0.073</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>259B</CartonNumber>
+<Awb>PEK953771 DC716</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072522TSCE</InvoiceNumber>
+<ProductName>DBLS159G RD</ProductName>
+<CustomerProductNumber>05502828</CustomerProductNumber>
+<Quantity>21000</Quantity>
+<Price>0.073</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>260B</CartonNumber>
+<Awb>PEK953771 DC716</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072522TSCE</InvoiceNumber>
+<ProductName>DBLS159G RD</ProductName>
+<CustomerProductNumber>05502828</CustomerProductNumber>
+<Quantity>21000</Quantity>
+<Price>0.073</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>261B</CartonNumber>
+<Awb>PEK953771 DC716</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072522TSCE</InvoiceNumber>
+<ProductName>DBLS159G RD</ProductName>
+<CustomerProductNumber>05502828</CustomerProductNumber>
+<Quantity>21000</Quantity>
+<Price>0.073</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='55713228'>
+<PackingListNumber>8-280607-D</PackingListNumber>
+<Date>0</Date>
+<CustomerName>TRIDONIC ATCO GMBH &amp; CO.KG</CustomerName>
+<CustomerID>3552</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6106</ShipToID>
+<Department>TridonicAtco GmbH&amp;Co KG</Department>
+<Street>Rohrbach, Schwarz 8</Street>
+<City>A-6850 Dornbirn</City>
+<County></County>
+<Zip></Zip>
+<Country>Austria</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4041</BillToID>
+<Department>Tridonic Atco GmbH &amp; Co. KG</Department>
+<Street>Faerbergasse 15</Street>
+<City>A-6851 Dornbirn</City>
+<County></County>
+<Zip></Zip>
+<Country>Austria</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>226</CartonNumber>
+<Awb>56742</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-063062TSCE</InvoiceNumber>
+<ProductName>DBS157G RD</ProductName>
+<CustomerProductNumber>05001028</CustomerProductNumber>
+<Quantity>21000</Quantity>
+<Price>0.06</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='55707243'>
+<PackingListNumber>8-280607-E</PackingListNumber>
+<Date>0</Date>
+<CustomerName>TRIDONIC ATCO GMBH &amp; CO.KG</CustomerName>
+<CustomerID>3552</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6106</ShipToID>
+<Department>TridonicAtco GmbH&amp;Co KG</Department>
+<Street>Rohrbach, Schwarz 8</Street>
+<City>A-6850 Dornbirn</City>
+<County></County>
+<Zip></Zip>
+<Country>Austria</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4041</BillToID>
+<Department>Tridonic Atco GmbH &amp; Co. KG</Department>
+<Street>Faerbergasse 15</Street>
+<City>A-6851 Dornbirn</City>
+<County></County>
+<Zip></Zip>
+<Country>Austria</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>273</CartonNumber>
+<Awb>PEK954929</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072942TSCE</InvoiceNumber>
+<ProductName>MBS6 RC</ProductName>
+<CustomerProductNumber>03427317</CustomerProductNumber>
+<Quantity>48000</Quantity>
+<Price>0.044</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='55699323'>
+<PackingListNumber>8-280607-F</PackingListNumber>
+<Date>0</Date>
+<CustomerName>TRIDONIC ATCO GMBH &amp; CO.KG</CustomerName>
+<CustomerID>3552</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6106</ShipToID>
+<Department>TridonicAtco GmbH&amp;Co KG</Department>
+<Street>Rohrbach, Schwarz 8</Street>
+<City>A-6850 Dornbirn</City>
+<County></County>
+<Zip></Zip>
+<Country>Austria</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4041</BillToID>
+<Department>Tridonic Atco GmbH &amp; Co. KG</Department>
+<Street>Faerbergasse 15</Street>
+<City>A-6851 Dornbirn</City>
+<County></County>
+<Zip></Zip>
+<Country>Austria</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>268B</CartonNumber>
+<Awb>PEK953771</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072522TSCE</InvoiceNumber>
+<ProductName>RS1J-08 R2</ProductName>
+<CustomerProductNumber>03917513</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.02</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='55712634'>
+<PackingListNumber>8-280607-G</PackingListNumber>
+<Date>0</Date>
+<CustomerName>TRIDONIC ATCO GMBH &amp; CO.KG</CustomerName>
+<CustomerID>3552</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6106</ShipToID>
+<Department>TridonicAtco GmbH&amp;Co KG</Department>
+<Street>Rohrbach, Schwarz 8</Street>
+<City>A-6850 Dornbirn</City>
+<County></County>
+<Zip></Zip>
+<Country>Austria</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4041</BillToID>
+<Department>Tridonic Atco GmbH &amp; Co. KG</Department>
+<Street>Faerbergasse 15</Street>
+<City>A-6851 Dornbirn</City>
+<County></County>
+<Zip></Zip>
+<Country>Austria</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>466</CartonNumber>
+<Awb>PEK57044492</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072153TSCE</InvoiceNumber>
+<ProductName>SK210A R2</ProductName>
+<CustomerProductNumber>05504080</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.045</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='55699327'>
+<PackingListNumber>8-280607-H</PackingListNumber>
+<Date>0</Date>
+<CustomerName>TRIDONIC ATCO GMBH &amp; CO.KG</CustomerName>
+<CustomerID>3552</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6106</ShipToID>
+<Department>TridonicAtco GmbH&amp;Co KG</Department>
+<Street>Rohrbach, Schwarz 8</Street>
+<City>A-6850 Dornbirn</City>
+<County></County>
+<Zip></Zip>
+<Country>Austria</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4041</BillToID>
+<Department>Tridonic Atco GmbH &amp; Co. KG</Department>
+<Street>Faerbergasse 15</Street>
+<City>A-6851 Dornbirn</City>
+<County></County>
+<Zip></Zip>
+<Country>Austria</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>53A</CartonNumber>
+<Awb>PEK929276 re-label</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-060868TSCE</InvoiceNumber>
+<ProductName>SS14 R2</ProductName>
+<CustomerProductNumber>05000070</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.022</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='55700685'>
+<PackingListNumber>8-280607-I</PackingListNumber>
+<Date>0</Date>
+<CustomerName>TRIDONIC ATCO GMBH &amp; CO.KG</CustomerName>
+<CustomerID>3552</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6106</ShipToID>
+<Department>TridonicAtco Schweiz AG</Department>
+<Street>Obere Allmeind 2</Street>
+<City>CH-8755 Enennda</City>
+<County></County>
+<Zip></Zip>
+<Country>Switzerland</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4041</BillToID>
+<Department>TridonicAtco Schweiz AG</Department>
+<Street>Obere Allmeind 2</Street>
+<City>CH-8755 Enennda</City>
+<County></County>
+<Zip></Zip>
+<Country>Switzerland</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>179B</CartonNumber>
+<Awb>PEK951720</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071722TSCE</InvoiceNumber>
+<ProductName>DBLS157G RD</ProductName>
+<CustomerProductNumber>05500326</CustomerProductNumber>
+<Quantity>21000</Quantity>
+<Price>0.06</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>180B</CartonNumber>
+<Awb>PEK951720</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071722TSCE</InvoiceNumber>
+<ProductName>DBLS157G RD</ProductName>
+<CustomerProductNumber>05500326</CustomerProductNumber>
+<Quantity>21000</Quantity>
+<Price>0.06</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>181B</CartonNumber>
+<Awb>PEK951720</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071722TSCE</InvoiceNumber>
+<ProductName>DBLS157G RD</ProductName>
+<CustomerProductNumber>05500326</CustomerProductNumber>
+<Quantity>21000</Quantity>
+<Price>0.06</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='500037737 '>
+<PackingListNumber>20-270607-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>AMERICAN STANDARD EUROPE BVBA</CustomerName>
+<CustomerID>5662</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>8222</ShipToID>
+<Department>WABCO Polska Sp. z o.o.</Department>
+<Street>ul. Ostrowskiego 34</Street>
+<City>53-238 Wroclaw</City>
+<County>null</County>
+<Zip>null</Zip>
+<Country>Poland</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>8216</BillToID>
+<Department>American Standard Europe BvbA</Department>
+<Street>Poste De BXL 16</Street>
+<City>B-1160 Brussels</City>
+<County></County>
+<Zip></Zip>
+<Country>Belgium</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>121</CartonNumber>
+<Awb>49459</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071635TSCE</InvoiceNumber>
+<ProductName>S1J R2</ProductName>
+<CustomerProductNumber>8869022454</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0123</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>122</CartonNumber>
+<Awb>49459</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071635TSCE</InvoiceNumber>
+<ProductName>S1J R2</ProductName>
+<CustomerProductNumber>8869022454</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0123</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='6500047904 '>
+<PackingListNumber>20-270607-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>AMERICAN STANDARD EUROPE BVBA</CustomerName>
+<CustomerID>5662</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>8222</ShipToID>
+<Department>WABCO Polska Sp. z o.o.</Department>
+<Street>ul. Ostrowskiego 34</Street>
+<City>53-238 Wroclaw</City>
+<County>null</County>
+<Zip>null</Zip>
+<Country>Poland</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>8216</BillToID>
+<Department>American Standard Europe BvbA</Department>
+<Street>Poste De BXL 16</Street>
+<City>B-1160 Brussels</City>
+<County></County>
+<Zip></Zip>
+<Country>Belgium</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>111A</CartonNumber>
+<Awb>07053022</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073237TSCE</InvoiceNumber>
+<ProductName>RS2J R4</ProductName>
+<CustomerProductNumber>8869022464</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.026</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>82D</CartonNumber>
+<Awb>PEK954929</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072948TSCE</InvoiceNumber>
+<ProductName>RS2J R4</ProductName>
+<CustomerProductNumber>8869022464</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.026</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='4500022987 '>
+<PackingListNumber>25-270607-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HUECO ELECTRONIC GMBH</CustomerName>
+<CustomerID>3121</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>3402</ShipToID>
+<Department>Hueco Lightronic N.I. Ltd.</Department>
+<Street>Aghanloo Road</Street>
+<City>Limavady</City>
+<County>Co. Londonderry (UK)</County>
+<Zip>BT 49 OHE</Zip>
+<Country>United Kingdom</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3400</BillToID>
+<Department>Hueco Electronic GmbH</Department>
+<Street>Von dem Bussche-Muench-Str. 12</Street>
+<City>D-32339 Espelkamp</City>
+<County>Germany</County>
+<Zip>D-32339</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>1DX</CartonNumber>
+<Awb>PEK958347</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074406TSCE</InvoiceNumber>
+<ProductName>1SMA4741 R2</ProductName>
+<CustomerProductNumber>833954.00</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.041</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='424883'>
+<PackingListNumber>SPOE-270607-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>TAIWAN SEMICONDUCTOR EUROPE GMBH</CustomerName>
+<CustomerID>1768</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>7300</ShipToID>
+<Department>Arrow Central Europe GmbH</Department>
+<Street>Im Gefierth 11</Street>
+<City>Dreieich</City>
+<County></County>
+<Zip>63303</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>1982</BillToID>
+<Department>Arrow Central Europe GmbH</Department>
+<Street>Max-Planck-Str. 1-3</Street>
+<City>Dreieich</City>
+<County></County>
+<Zip>63303</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>110D</CartonNumber>
+<Awb>PEK953771</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072530TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber></CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>19.0</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>111D</CartonNumber>
+<Awb>PEK953771</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072530TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber></CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>19.0</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>112D</CartonNumber>
+<Awb>PEK953771</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072530TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber></CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>19.0</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>113D</CartonNumber>
+<Awb>PEK953771</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072530TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber></CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>19.0</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>114D</CartonNumber>
+<Awb>PEK953771</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072530TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber></CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>19.0</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>115D</CartonNumber>
+<Awb>PEK953771</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072530TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber></CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>19.0</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>116D</CartonNumber>
+<Awb>PEK953771</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072530TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber></CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>19.0</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>97D</CartonNumber>
+<Awb>PEK953771</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072530TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber></CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>19.0</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>98D</CartonNumber>
+<Awb>PEK953771</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072530TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber></CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>19.0</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>99D</CartonNumber>
+<Awb>PEK953771</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072530TSCE</InvoiceNumber>
+<ProductName>MBRS2545CT RN</ProductName>
+<CustomerProductNumber></CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>19.0</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='CF035852'>
+<PackingListNumber>12-260607-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>NOVATECH S.A.</CustomerName>
+<CustomerID>2978</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>3450</ShipToID>
+<Department>Novatech S.A.</Department>
+<Street>Zone d'Activite de la Croix Rouge</Street>
+<City>PLOUMILLIAU</City>
+<County>null</County>
+<Zip>22300</Zip>
+<Country>France</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3212</BillToID>
+<Department>Novatech Industries</Department>
+<Street>1 rue Paul Sabatier</Street>
+<City>LANNION</City>
+<County>null</County>
+<Zip>22300</Zip>
+<Country>France</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>39D</CartonNumber>
+<Awb>PEK955513</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073274TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>041017[N]</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.12</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>40D</CartonNumber>
+<Awb>PEK955513</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073274TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>041017[N]</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.12</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>41D</CartonNumber>
+<Awb>PEK955513</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073274TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>041017[N]</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.12</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>42D</CartonNumber>
+<Awb>PEK955513</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073274TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>041017[N]</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.12</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>206A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073458TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>041017[N]</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.12</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>207A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073458TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>041017[N]</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.12</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>208A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073458TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>041017[N]</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.12</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>209A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073458TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>041017[N]</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.12</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>210A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073458TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>041017[N]</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.12</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>211A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073458TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>041017[N]</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.12</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>212A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073458TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>041017[N]</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.12</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>213A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073458TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>041017[N]</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.12</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>214A</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073458TSCE</InvoiceNumber>
+<ProductName>FRA1605G C0</ProductName>
+<CustomerProductNumber>041017[N]</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.12</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='CF036735'>
+<PackingListNumber>12-260607-B</PackingListNumber>
+<Date>0</Date>
+<CustomerName>NOVATECH S.A.</CustomerName>
+<CustomerID>2978</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>3450</ShipToID>
+<Department>Novatech S.A.</Department>
+<Street>Zone d'Activite de la Croix Rouge</Street>
+<City>PLOUMILLIAU</City>
+<County>null</County>
+<Zip>22300</Zip>
+<Country>France</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3212</BillToID>
+<Department>Novatech Industries</Department>
+<Street>1 rue Paul Sabatier</Street>
+<City>LANNION</City>
+<County>null</County>
+<Zip>22300</Zip>
+<Country>France</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>77</CartonNumber>
+<Awb>PEK954320</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072704TSCE</InvoiceNumber>
+<ProductName>SF23 R0</ProductName>
+<CustomerProductNumber>041014[N]</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.028</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>78</CartonNumber>
+<Awb>PEK954320</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072704TSCE</InvoiceNumber>
+<ProductName>SF23 R0</ProductName>
+<CustomerProductNumber>041014[N]</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.028</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='CF050289'>
+<PackingListNumber>12-260607-B</PackingListNumber>
+<Date>0</Date>
+<CustomerName>NOVATECH S.A.</CustomerName>
+<CustomerID>2978</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>3450</ShipToID>
+<Department>Novatech S.A.</Department>
+<Street>Zone d'Activite de la Croix Rouge</Street>
+<City>PLOUMILLIAU</City>
+<County>null</County>
+<Zip>22300</Zip>
+<Country>France</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3212</BillToID>
+<Department>Novatech Industries</Department>
+<Street>1 rue Paul Sabatier</Street>
+<City>LANNION</City>
+<County>null</County>
+<Zip>22300</Zip>
+<Country>France</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>79</CartonNumber>
+<Awb>PEK954320</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072704TSCE</InvoiceNumber>
+<ProductName>SF23 R0</ProductName>
+<CustomerProductNumber>041014[N]</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.028</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='CF035852'>
+<PackingListNumber>12-260607-C</PackingListNumber>
+<Date>0</Date>
+<CustomerName>NOVATECH S.A.</CustomerName>
+<CustomerID>2978</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>3450</ShipToID>
+<Department>Novatech S.A.</Department>
+<Street>Zone d'Activite de la Croix Rouge</Street>
+<City>PLOUMILLIAU</City>
+<County>null</County>
+<Zip>22300</Zip>
+<Country>France</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3212</BillToID>
+<Department>Novatech Industries</Department>
+<Street>1 rue Paul Sabatier</Street>
+<City>LANNION</City>
+<County>null</County>
+<Zip>22300</Zip>
+<Country>France</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>89</CartonNumber>
+<Awb>PEK956791</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073857TSCE</InvoiceNumber>
+<ProductName>TS15P05G C2</ProductName>
+<CustomerProductNumber>045110[N]</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.29</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>90</CartonNumber>
+<Awb>PEK956791</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073857TSCE</InvoiceNumber>
+<ProductName>TS15P05G C2</ProductName>
+<CustomerProductNumber>045110[N]</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.29</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>91</CartonNumber>
+<Awb>PEK956791</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073857TSCE</InvoiceNumber>
+<ProductName>TS15P05G C2</ProductName>
+<CustomerProductNumber>045110[N]</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.29</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>92</CartonNumber>
+<Awb>PEK956791</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073857TSCE</InvoiceNumber>
+<ProductName>TS15P05G C2</ProductName>
+<CustomerProductNumber>045110[N]</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.29</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>93</CartonNumber>
+<Awb>PEK956791</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073857TSCE</InvoiceNumber>
+<ProductName>TS15P05G C2</ProductName>
+<CustomerProductNumber>045110[N]</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.29</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>94</CartonNumber>
+<Awb>PEK956791</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073857TSCE</InvoiceNumber>
+<ProductName>TS15P05G C2</ProductName>
+<CustomerProductNumber>045110[N]</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.29</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>95</CartonNumber>
+<Awb>PEK956791</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073857TSCE</InvoiceNumber>
+<ProductName>TS15P05G C2</ProductName>
+<CustomerProductNumber>045110[N]</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.29</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>96</CartonNumber>
+<Awb>PEK956791</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073857TSCE</InvoiceNumber>
+<ProductName>TS15P05G C2</ProductName>
+<CustomerProductNumber>045110[N]</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.29</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>97</CartonNumber>
+<Awb>PEK956791</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073857TSCE</InvoiceNumber>
+<ProductName>TS15P05G C2</ProductName>
+<CustomerProductNumber>045110[N]</CustomerProductNumber>
+<Quantity>1200</Quantity>
+<Price>0.29</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='CF050289'>
+<PackingListNumber>12-260607-D</PackingListNumber>
+<Date>0</Date>
+<CustomerName>NOVATECH S.A.</CustomerName>
+<CustomerID>2978</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>3450</ShipToID>
+<Department>Novatech S.A.</Department>
+<Street>Zone d'Activite de la Croix Rouge</Street>
+<City>PLOUMILLIAU</City>
+<County>null</County>
+<Zip>22300</Zip>
+<Country>France</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3212</BillToID>
+<Department>Novatech Industries</Department>
+<Street>1 rue Paul Sabatier</Street>
+<City>LANNION</City>
+<County>null</County>
+<Zip>22300</Zip>
+<Country>France</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>1</CartonNumber>
+<Awb>TPE348736</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073207TSCE</InvoiceNumber>
+<ProductName>TS432BCX RF </ProductName>
+<CustomerProductNumber>539020</CustomerProductNumber>
+<Quantity>6000</Quantity>
+<Price>0.1</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5520001374 '>
+<PackingListNumber>7-260607-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>KOSTAL IRELAND GMBH</CustomerName>
+<CustomerID>3499</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>7044</ShipToID>
+<Department>Leopold Kostal GmbH c/o Rhenus AG  Co.KG</Department>
+<Street>Juchostrasse 42</Street>
+<City>D-44143 Dortmund</City>
+<County></County>
+<Zip></Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4452</BillToID>
+<Department>Leopold Kostal GmbH &amp; Co. KG</Department>
+<Street>Wiesenstrasse 47</Street>
+<City>D-58507 Luedenscheid</City>
+<County></County>
+<Zip></Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>85D</CartonNumber>
+<Awb>PEK954929</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072949TSCE</InvoiceNumber>
+<ProductName>S1J-08 R2</ProductName>
+<CustomerProductNumber>66334020020331-04</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.01175</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>86D</CartonNumber>
+<Awb>PEK954929</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072949TSCE</InvoiceNumber>
+<ProductName>S1J-08 R2</ProductName>
+<CustomerProductNumber>66334020020331-04</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.01175</Price>
+</Item>
+</Items>
+</CustomerPO>
+</PurchaseOrderList>

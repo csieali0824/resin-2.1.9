@@ -1,0 +1,17 @@
+CREATE OR REPLACE PROCEDURE FND_REQUEST_PROC_TEST(v_org_id VARCHAR2) 
+IS 
+nRequest_id NUMBER;  
+BEGIN 
+  APPS.FND_GLOBAL.APPS_INITIALIZE(3077,50264,401,0);
+  nRequest_id := APPS.FND_REQUEST.SUBMIT_REQUEST('INV','INCOIN','','', FALSE,'43','1','1','1','1','1',chr(0)); 
+
+  dbms_output.put_line(nRequest_id); 
+  COMMIT; 
+
+  IF nRequest_ID != 0 THEN 
+     dbms_output.PUT_LINE('Submitted request '|| TO_CHAR(nRequest_ID) ||' to Import Items.'); 
+  ELSE 
+     dbms_output.put_line(nRequest_id||'=GOD DAMN IT ! REQUEST ID');      
+  END IF; 
+
+END TSC_RUN_ITEM_IMPORT;

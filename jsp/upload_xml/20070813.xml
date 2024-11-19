@@ -1,0 +1,44 @@
+<?xml version='1.0'  encoding='UTF-8'?>
+<PurchaseOrderList>
+<CustomerPO name='1045175352/TV3'>
+<PackingListNumber>53-090807-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>Siemens</CustomerName>
+<CustomerID>5719</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>7174</ShipToID>
+<Department>Nokia Siemens Networks GmbH &amp; Co KG</Department>
+<Street>Siemensallee 1</Street>
+<City>D-17489 Greifswald</City>
+<County>null</County>
+<Zip>null</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>6239</BillToID>
+<Department>Nokia Siemens Networks GmbH &amp; Co KG</Department>
+<Street>Postfach 3351</Street>
+<City>D-17463 Greifswald</City>
+<County>null</County>
+<Zip>null</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>283B</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber></InvoiceNumber>
+             MBS2-02 RC
+<ProductName>MBS2-02 RC</ProductName>
+<CustomerProductNumber>V50001-B1001-A220</CustomerProductNumber>
+<Quantity>48000</Quantity>
+<Price>0.0415</Price>
+</Item>
+</Items>
+</CustomerPO>
+</PurchaseOrderList>

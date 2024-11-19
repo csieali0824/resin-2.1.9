@@ -1,0 +1,127 @@
+<?xml version='1.0'  encoding='UTF-8'?>
+<PurchaseOrderList>
+<CustomerPO name='6500047904 '>
+<PackingListNumber>20-230707-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>AMERICAN STANDARD EUROPE BVBA</CustomerName>
+<CustomerID>5662</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>8222</ShipToID>
+<Department>WABCO Polska Sp. z o.o.</Department>
+<Street>ul. Ostrowskiego 34</Street>
+<City>53-238 Wroclaw</City>
+<County>null</County>
+<Zip>null</Zip>
+<Country>Poland</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>8216</BillToID>
+<Department>American Standard Europe BvbA</Department>
+<Street>Poste De BXL 16</Street>
+<City>B-1160 Brussels</City>
+<County></County>
+<Zip></Zip>
+<Country>Belgium</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>66A</CartonNumber>
+<Awb>7053058</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073536TSCE</InvoiceNumber>
+<ProductName>RS2J R4</ProductName>
+<CustomerProductNumber>8869022464</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.026</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>67A</CartonNumber>
+<Awb>7053058</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073536TSCE</InvoiceNumber>
+<ProductName>RS2J R4</ProductName>
+<CustomerProductNumber>8869022464</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.026</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>68A</CartonNumber>
+<Awb>7053058</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073536TSCE</InvoiceNumber>
+<ProductName>RS2J R4</ProductName>
+<CustomerProductNumber>8869022464</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.026</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>69A</CartonNumber>
+<Awb>7053058</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073536TSCE</InvoiceNumber>
+<ProductName>RS2J R4</ProductName>
+<CustomerProductNumber>8869022464</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.026</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>70A</CartonNumber>
+<Awb>7053058</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073536TSCE</InvoiceNumber>
+<ProductName>RS2J R4</ProductName>
+<CustomerProductNumber>8869022464</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.026</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='666107'>
+<PackingListNumber>35-230707-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>IFM ELECTRONIC GMBH</CustomerName>
+<CustomerID>3961</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>4398</ShipToID>
+<Department>IFM electronic GmbH</Department>
+<Street>Bechlinger Str. 34</Street>
+<City>D-88069 Tettnang</City>
+<County>null</County>
+<Zip>null</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4398</BillToID>
+<Department>IFM electronic GmbH</Department>
+<Street>Postfach 12 62</Street>
+<City>D-88061 Tettnang</City>
+<County>null</County>
+<Zip>null</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>129A</CartonNumber>
+<Awb>07053022</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073238TSCE</InvoiceNumber>
+<ProductName>SMAJ54A R3</ProductName>
+<CustomerProductNumber>600332/600333</CustomerProductNumber>
+<Quantity>36000</Quantity>
+<Price>0.039</Price>
+</Item>
+</Items>
+</CustomerPO>
+</PurchaseOrderList>

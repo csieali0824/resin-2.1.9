@@ -1,0 +1,92 @@
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN" "http://java.sun.com/j2ee/dtds/web-app_2_2.dtd">
+
+<!-- $Id: web.xml,v 1.2 2003/02/21 15:48:02 nathaniel_auvil Exp $ -->
+
+<web-app>
+
+  <context-param>
+    <param-name>MAIL_HOST</param-name>
+    <param-value>210.62.146.209</param-value> 
+  </context-param>  
+
+  <context-param>
+    <param-name>DominoDIIOPConnection</param-name> <!--This URL is represent the primary Domino Server-->
+    <param-value>tptest1.dbtel.com.tw</param-value> 
+  </context-param>
+  
+  <context-param>
+    <param-name>DominoSecondaryDIIOPConnection</param-name> <!--This URL is represent the sceondary Domino Server-->
+    <param-value>tpefax.dbtel.com.tw</param-value> 
+  </context-param> 
+  
+  <context-param>
+    <param-name>ORADDS_JDBC_URL</param-name>
+    <param-value>jdbc:oracle:thin:@10.0.1.171:1527:crp</param-value>
+  </context-param>
+  
+  <context-param>
+    <param-name>ORADTST_JDBC_URL</param-name>
+    <param-value>jdbc:oracle:thin:@10.0.1.171:1527:crp</param-value>
+  </context-param>   
+  
+  <context-param>
+    <param-name>ORADTST2_JDBC_URL</param-name>
+    <param-value>jdbc:oracle:thin:@10.0.1.171:1527:crp</param-value>
+  </context-param>
+
+  <context-param>
+    <param-name>ORARFQDB_JDBC_URL</param-name>
+    <param-value>jdbc:oracle:thin:@210.62.146.195:1521:RFQDB</param-value> 
+  </context-param> 
+  
+  <context-param>
+    <param-name>WEB_JDBC_URL</param-name>
+    <param-value>jdbc:microsoft:sqlserver://210.62.146.199:1433;DatabaseName=WEB</param-value> 
+  </context-param>
+
+  <context-param>
+    <param-name>TEW_JDBC_URL</param-name>
+    <param-value>jdbc:odbc:ILAN70</param-value> 
+  </context-param>
+
+  <context-param>
+    <param-name>YEW_JDBC_URL</param-name>
+    <param-value>jdbc:odbc:ILAN70</param-value> 
+  </context-param>
+  
+  <context-param>
+    <param-name>ILNASSIST_JDBC_URL</param-name>
+    <param-value>jdbc:odbc:ILAN70</param-value> 
+  </context-param>
+
+  <context-param>
+    <param-name>ILAN70_JDBC_URL</param-name>
+    <param-value>jdbc:odbc:ILAN70</param-value> 
+  </context-param>   
+
+  <context-param>
+    <param-name>MIS003_JDBC_URL</param-name>
+    <param-value>jdbc:odbc:MIS-003</param-value> 
+  </context-param> 
+   
+  <context-param>
+    <param-name>NOTESSAL(SALARY)_JDBC_URL</param-name>
+    <param-value>jdbc:informix-sqli://dbtah01.dbtel.com.tw:1530/saltst:informixserver=dbtah0172_net</param-value> 
+  </context-param>
+    
+  <mime-mapping><extension>.mmf</extension><mime-type>audio/basic</mime-type></mime-mapping>  
+  
+</web-app>
+
+
+
+
+
+
+
+
+
+
+
+
+

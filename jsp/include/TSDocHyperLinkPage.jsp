@@ -1,0 +1,1 @@
+<A HREF="/oradds/ORADDSMainMenu.jsp"><strong><jsp:getProperty name="rPH" property="pgHOME"/></strong></A><strong>&nbsp;&nbsp;<A HREF="../jsp/TSSalesDRQHistory.jsp?DNDOCNO=<%=dnDocNo%>"><jsp:getProperty name="rPH" property="pgTSDRQNoHistory"/></A></strong>

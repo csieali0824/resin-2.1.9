@@ -1,0 +1,331 @@
+<?xml version='1.0'  encoding='UTF-8'?>
+<PurchaseOrderList>
+<CustomerPO name='BE045131'>
+<PackingListNumber>29-080807-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>AKTA AG</CustomerName>
+<CustomerID>1159</CustomerID>
+<ShipmentTerms>FCA MUNICH</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>3142</ShipToID>
+<Department>Akta Elektronik AG</Department>
+<Street>Alte Steinhauserstrasse 3</Street>
+<City>CH-6330 CHAM</City>
+<County>null</County>
+<Zip>null</Zip>
+<Country>Switzerland</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>1143</BillToID>
+<Department>Akta Elektronik AG</Department>
+<Street>Alte Steinhauserstrasse 3</Street>
+<City>CH-6330 CHAM</City>
+<County>null</County>
+<Zip>null</Zip>
+<Country>Switzerland</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>110B</CartonNumber>
+<Awb>PEK934163</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-063828TSCE</InvoiceNumber>
+<ProductName>SS14 R2</ProductName>
+<CustomerProductNumber>SS14</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.025</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>93Bxx</CartonNumber>
+<Awb>PEK934163</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-063828TSCE</InvoiceNumber>
+<ProductName>SS14 R2</ProductName>
+<CustomerProductNumber>SS14</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.025</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='48639 '>
+<PackingListNumber>C080807</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>C-MAC Electromag B.V.B.A</Department>
+<Street>Industriezone "Klein Frankrijk", 28</Street>
+<City>Ronse</City>
+<County>null</County>
+<Zip>9600</Zip>
+<Country>Belgium</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>C-MAC Electromag B.V.B.A</Department>
+<Street>Industriezone "Klein Frankrijk", 28</Street>
+<City>Ronse</City>
+<County>null</County>
+<Zip>9600</Zip>
+<Country>Belgium</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>13A</CartonNumber>
+<Awb>PEK603365</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075681TSCE</InvoiceNumber>
+<ProductName>1SMA4753 R2</ProductName>
+<CustomerProductNumber>729 501-05</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0305</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5500018347'>
+<PackingListNumber>CD080807</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Compania Electronica del Automovil, S.A.</Department>
+<Street>Poligono Industrial "Los Frailes"</Street>
+<City>Daganzo de Arriba (Madrid)</City>
+<County>null</County>
+<Zip>28814</Zip>
+<Country>Spain</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Compania Electronica del Automovil, S.A.</Department>
+<Street>Apartado de correos 286</Street>
+<City>Torrejon de Ardoz (Madrid)</City>
+<County>null</County>
+<Zip>28850</Zip>
+<Country>Spain</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>80A</CartonNumber>
+<Awb>PEK600162</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074806TSCE</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>81A</CartonNumber>
+<Awb>PEK600162</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074806TSCE</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>82A</CartonNumber>
+<Awb>PEK600162</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074806TSCE</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>83A</CartonNumber>
+<Awb>PEK600162</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074806TSCE</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>84A</CartonNumber>
+<Awb>PEK600162</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074806TSCE</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>85A</CartonNumber>
+<Awb>PEK600162</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074806TSCE</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>86A</CartonNumber>
+<Awb>PEK600162</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074806TSCE</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>87A</CartonNumber>
+<Awb>PEK600162</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074806TSCE</InvoiceNumber>
+<ProductName>BZW06-26B R0</ProductName>
+<CustomerProductNumber>710 558-04</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='174/161925'>
+<PackingListNumber>T-080807</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Tectron GmbH</Department>
+<Street>Querstrasse 2</Street>
+<City>Worbis</City>
+<County>null</County>
+<Zip>37339</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Tectron GmbH</Department>
+<Street>Querstrasse 2</Street>
+<City>Worbis</City>
+<County>null</County>
+<Zip>37339</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>12A</CartonNumber>
+<Awb>PEK603365</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075681TSCE</InvoiceNumber>
+<ProductName>1SMA4753 R2</ProductName>
+<CustomerProductNumber>729 501-05</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0305</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='B225344'>
+<PackingListNumber>V090807</PackingListNumber>
+<Date>0</Date>
+<CustomerName>SAGEM COMMUNICATION BAYONNE</CustomerName>
+<CustomerID>7687</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>8708</ShipToID>
+<Department>Videoton Holding ZRt.</Department>
+<Street>Berenyi Street 72-100</Street>
+<City>Szekesfehervar</City>
+<County></County>
+<Zip>H-8000</Zip>
+<Country>Hungary</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>8837</BillToID>
+<Department>Videoton Holding ZRt.</Department>
+<Street>Berenyi Street 72-100</Street>
+<City>Szekesfehervar</City>
+<County></County>
+<Zip>H-8000</Zip>
+<Country>Hungary</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>1AX</CartonNumber>
+<Awb>TPE345039</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071694TSCE</InvoiceNumber>
+<ProductName>TS2937CW12 RP</ProductName>
+<CustomerProductNumber>189116942</CustomerProductNumber>
+<Quantity>5000</Quantity>
+<Price>0.18</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='B226027'>
+<PackingListNumber>V090807</PackingListNumber>
+<Date>0</Date>
+<CustomerName>SAGEM COMMUNICATION BAYONNE</CustomerName>
+<CustomerID>7687</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>8708</ShipToID>
+<Department>Videoton Holding ZRt.</Department>
+<Street>Berenyi Street 72-100</Street>
+<City>Szekesfehervar</City>
+<County></County>
+<Zip>H-8000</Zip>
+<Country>Hungary</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>8837</BillToID>
+<Department>Videoton Holding ZRt.</Department>
+<Street>Berenyi Street 72-100</Street>
+<City>Szekesfehervar</City>
+<County></County>
+<Zip>H-8000</Zip>
+<Country>Hungary</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>3</CartonNumber>
+<Awb>TPE345378</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071874TSCE</InvoiceNumber>
+<ProductName>TS2937CW12 RP</ProductName>
+<CustomerProductNumber>189116942</CustomerProductNumber>
+<Quantity>10000</Quantity>
+<Price>0.18</Price>
+</Item>
+</Items>
+</CustomerPO>
+</PurchaseOrderList>

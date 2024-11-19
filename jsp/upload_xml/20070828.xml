@@ -1,0 +1,1194 @@
+<?xml version='1.0'  encoding='UTF-8'?>
+<PurchaseOrderList>
+<CustomerPO name='5500069860'>
+<PackingListNumber>H270807A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Hella KG Werk 4 Hamm</Department>
+<Street>Roemer Strasse  66</Street>
+<City>Hamm</City>
+<County>null</County>
+<Zip>59075</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Hella KG Hueck &amp; Co.</Department>
+<Street>Rixbecker Strasse 75</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59522</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>269B</CartonNumber>
+<Awb>PEK601940</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075199TSCE</InvoiceNumber>
+<ProductName>1N4007G R0</ProductName>
+<CustomerProductNumber>707 868-18</CustomerProductNumber>
+<Quantity>20000</Quantity>
+<Price>0.0095</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5500071894'>
+<PackingListNumber>H270807B</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Hella KG Werk 4 Hamm</Department>
+<Street>Roemer Strasse  66</Street>
+<City>Hamm</City>
+<County>null</County>
+<Zip>59075</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Hella KG Hueck &amp; Co.</Department>
+<Street>Rixbecker Strasse 75</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59522</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>50D</CartonNumber>
+<Awb>PEK958347</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074407TSCE</InvoiceNumber>
+<ProductName>2M33Z  R0</ProductName>
+<CustomerProductNumber>708 301-27</CustomerProductNumber>
+<Quantity>14000</Quantity>
+<Price>0.03</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5500070034'>
+<PackingListNumber>H270807C</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Hella KG Werk 4 Hamm</Department>
+<Street>Roemer Strasse  66</Street>
+<City>Hamm</City>
+<County>null</County>
+<Zip>59075</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Hella KG Hueck &amp; Co.</Department>
+<Street>Rixbecker Strasse 75</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59522</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>9A</CartonNumber>
+<Awb>49459</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071636TSCE</InvoiceNumber>
+<ProductName>S3J-02 R6</ProductName>
+<CustomerProductNumber>716 451-05</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.0412</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5500071182'>
+<PackingListNumber>H270807D</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Hella KG Werk 4 Hamm</Department>
+<Street>Roemer Strasse  66</Street>
+<City>Hamm</City>
+<County>null</County>
+<Zip>59075</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Hella KG Hueck &amp; Co.</Department>
+<Street>Rixbecker Strasse 75</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59522</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>165A</CartonNumber>
+<Awb>PEK951720</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071723TSCE</InvoiceNumber>
+<ProductName>1.5SMC33A R6</ProductName>
+<CustomerProductNumber>724 538-12</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.0785</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>14Ax</CartonNumber>
+<Awb>48445</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-067979TSCE</InvoiceNumber>
+<ProductName>1.5SMC33A R6</ProductName>
+<CustomerProductNumber>724 538-12</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.0785</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5500089875'>
+<PackingListNumber>H270807E</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Hella KG Werk 4 Hamm</Department>
+<Street>Roemer Strasse  66</Street>
+<City>Hamm</City>
+<County>null</County>
+<Zip>59075</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Hella KG Hueck &amp; Co.</Department>
+<Street>Rixbecker Strasse 75</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59522</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>43AXX</CartonNumber>
+<Awb>47500</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-065198TSCE</InvoiceNumber>
+<ProductName>1SMA4754 R2</ProductName>
+<CustomerProductNumber>729 501-04</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.0305</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='1301132278'>
+<PackingListNumber>JP280807</PackingListNumber>
+<Date>0</Date>
+<CustomerName>PHILIPS LIGHTING BV</CustomerName>
+<CustomerID>3581</CustomerID>
+<ShipmentTerms>FCA MUNICH</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>4117</ShipToID>
+<Department>Jabil Circuit Poland</Department>
+<Street>Ul . Lotnicza 2</Street>
+<City>KWIDZYN</City>
+<County>null</County>
+<Zip>PL-82-500</Zip>
+<Country>Poland</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>9256</BillToID>
+<Department>Jabil Circuit Poland</Department>
+<Street>Ul . Lotnicza 2</Street>
+<City>KWIDZYN</City>
+<County>null</County>
+<Zip>PL-82-500</Zip>
+<Country>Poland</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>197</CartonNumber>
+<Awb>PEK602666</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075421TSCE</InvoiceNumber>
+<ProductName>TS6B05G-06 X0</ProductName>
+<CustomerProductNumber>9322 237 00682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.17</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>198</CartonNumber>
+<Awb>PEK602666</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075421TSCE</InvoiceNumber>
+<ProductName>TS6B05G-06 X0</ProductName>
+<CustomerProductNumber>9322 237 00682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.17</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>199</CartonNumber>
+<Awb>PEK602666</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075421TSCE</InvoiceNumber>
+<ProductName>TS6B05G-06 X0</ProductName>
+<CustomerProductNumber>9322 237 00682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.17</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>200</CartonNumber>
+<Awb>PEK602666</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075421TSCE</InvoiceNumber>
+<ProductName>TS6B05G-06 X0</ProductName>
+<CustomerProductNumber>9322 237 00682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.17</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>201</CartonNumber>
+<Awb>PEK602666</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075421TSCE</InvoiceNumber>
+<ProductName>TS6B05G-06 X0</ProductName>
+<CustomerProductNumber>9322 237 00682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.17</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>202</CartonNumber>
+<Awb>PEK602666</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075421TSCE</InvoiceNumber>
+<ProductName>TS6B05G-06 X0</ProductName>
+<CustomerProductNumber>9322 237 00682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.17</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>203</CartonNumber>
+<Awb>PEK602666</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075421TSCE</InvoiceNumber>
+<ProductName>TS6B05G-06 X0</ProductName>
+<CustomerProductNumber>9322 237 00682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.17</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>204</CartonNumber>
+<Awb>PEK602666</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075421TSCE</InvoiceNumber>
+<ProductName>TS6B05G-06 X0</ProductName>
+<CustomerProductNumber>9322 237 00682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.17</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>205</CartonNumber>
+<Awb>PEK602666</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075421TSCE</InvoiceNumber>
+<ProductName>TS6B05G-06 X0</ProductName>
+<CustomerProductNumber>9322 237 00682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.17</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>206</CartonNumber>
+<Awb>PEK602666</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075421TSCE</InvoiceNumber>
+<ProductName>TS6B05G-06 X0</ProductName>
+<CustomerProductNumber>9322 237 00682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.17</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>207</CartonNumber>
+<Awb>PEK602666</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075421TSCE</InvoiceNumber>
+<ProductName>TS6B05G-06 X0</ProductName>
+<CustomerProductNumber>9322 237 00682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.17</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>208</CartonNumber>
+<Awb>PEK602666</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075421TSCE</InvoiceNumber>
+<ProductName>TS6B05G-06 X0</ProductName>
+<CustomerProductNumber>9322 237 00682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.17</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>209</CartonNumber>
+<Awb>PEK602666</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075421TSCE</InvoiceNumber>
+<ProductName>TS6B05G-06 X0</ProductName>
+<CustomerProductNumber>9322 237 00682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.17</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>210</CartonNumber>
+<Awb>PEK602666</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075421TSCE</InvoiceNumber>
+<ProductName>TS6B05G-06 X0</ProductName>
+<CustomerProductNumber>9322 237 00682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.17</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>211</CartonNumber>
+<Awb>PEK602666</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075421TSCE</InvoiceNumber>
+<ProductName>TS6B05G-06 X0</ProductName>
+<CustomerProductNumber>9322 237 00682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.17</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>212</CartonNumber>
+<Awb>PEK602666</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075421TSCE</InvoiceNumber>
+<ProductName>TS6B05G-06 X0</ProductName>
+<CustomerProductNumber>9322 237 00682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.17</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>213</CartonNumber>
+<Awb>PEK602666</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075421TSCE</InvoiceNumber>
+<ProductName>TS6B05G-06 X0</ProductName>
+<CustomerProductNumber>9322 237 00682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.17</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='4531007278'>
+<PackingListNumber>PPS290807A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>PHILIPS LIGHTING BV</CustomerName>
+<CustomerID>3581</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>4117</ShipToID>
+<Department>PHILIPS POWER Solutions Int</Department>
+<Street>Klinanska Cesta 1088</Street>
+<City>Namestovo</City>
+<County>null</County>
+<Zip>SK-029 01 </Zip>
+<Country>Slovakia</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>9256</BillToID>
+<Department>PHILIPS POWER Solutions Int. Accounts</Department>
+<Street>Vavrecka 311</Street>
+<City>Namestovo</City>
+<County>null</County>
+<Zip>SK-029 01</Zip>
+<Country>Slovakia</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>75</CartonNumber>
+<Awb>PEK601360</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074986TSCE</InvoiceNumber>
+<ProductName>1N4006 R0</ProductName>
+<CustomerProductNumber>9322 238 72682</CustomerProductNumber>
+<Quantity>20000</Quantity>
+<Price>0.0055</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>76</CartonNumber>
+<Awb>PEK601360</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074986TSCE</InvoiceNumber>
+<ProductName>1N4006 R0</ProductName>
+<CustomerProductNumber>9322 238 72682</CustomerProductNumber>
+<Quantity>20000</Quantity>
+<Price>0.0055</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>114B</CartonNumber>
+<Awb>PEK600162</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074810TSCE</InvoiceNumber>
+<ProductName>1N5407-02 X0</ProductName>
+<CustomerProductNumber>9322 238 75682</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.02</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>136B</CartonNumber>
+<Awb>PEK604731</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-076091TSCE</InvoiceNumber>
+<ProductName>1N5407-04 X0 </ProductName>
+<CustomerProductNumber>9322 250 54682</CustomerProductNumber>
+<Quantity>5000</Quantity>
+<Price>0.022</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>60B</CartonNumber>
+<Awb>PEK603365</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075683TSCE</InvoiceNumber>
+<ProductName>1N5407-04 X0 </ProductName>
+<CustomerProductNumber>9322 250 54682</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.022</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>120</CartonNumber>
+<Awb>PEK601360</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074986TSCE</InvoiceNumber>
+<ProductName>FR106G R0</ProductName>
+<CustomerProductNumber>9322 238 55682</CustomerProductNumber>
+<Quantity>20000</Quantity>
+<Price>0.012</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>121</CartonNumber>
+<Awb>PEK601360</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074986TSCE</InvoiceNumber>
+<ProductName>FR106G R0</ProductName>
+<CustomerProductNumber>9322 238 55682</CustomerProductNumber>
+<Quantity>20000</Quantity>
+<Price>0.012</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>122</CartonNumber>
+<Awb>PEK601360</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074986TSCE</InvoiceNumber>
+<ProductName>FR106G R0</ProductName>
+<CustomerProductNumber>9322 238 55682</CustomerProductNumber>
+<Quantity>20000</Quantity>
+<Price>0.012</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>254B</CartonNumber>
+<Awb>PEK603365</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075683TSCE</InvoiceNumber>
+<ProductName>GBU606 C2</ProductName>
+<CustomerProductNumber>9322 237 51682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.16</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>255B</CartonNumber>
+<Awb>PEK603365</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075683TSCE</InvoiceNumber>
+<ProductName>GBU606 C2</ProductName>
+<CustomerProductNumber>9322 237 51682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.16</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>256B</CartonNumber>
+<Awb>PEK603365</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075683TSCE</InvoiceNumber>
+<ProductName>GBU606 C2</ProductName>
+<CustomerProductNumber>9322 237 51682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.16</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>257B</CartonNumber>
+<Awb>PEK603365</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075683TSCE</InvoiceNumber>
+<ProductName>GBU606 C2</ProductName>
+<CustomerProductNumber>9322 237 51682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.16</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>258B</CartonNumber>
+<Awb>PEK603365</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075683TSCE</InvoiceNumber>
+<ProductName>GBU606 C2</ProductName>
+<CustomerProductNumber>9322 237 51682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.16</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>259B</CartonNumber>
+<Awb>PEK603365</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075683TSCE</InvoiceNumber>
+<ProductName>GBU606 C2</ProductName>
+<CustomerProductNumber>9322 237 51682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.16</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>260B</CartonNumber>
+<Awb>PEK603365</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075683TSCE</InvoiceNumber>
+<ProductName>GBU606 C2</ProductName>
+<CustomerProductNumber>9322 237 51682</CustomerProductNumber>
+<Quantity>2000</Quantity>
+<Price>0.16</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>110</CartonNumber>
+<Awb>PEK954320</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072705TSCE</InvoiceNumber>
+<ProductName>HER107 R0</ProductName>
+<CustomerProductNumber>9322 238 54682</CustomerProductNumber>
+<Quantity>20000</Quantity>
+<Price>0.016</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='4531007379'>
+<PackingListNumber>PPS290807A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>PHILIPS LIGHTING BV</CustomerName>
+<CustomerID>3581</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>4117</ShipToID>
+<Department>PHILIPS POWER Solutions Int</Department>
+<Street>Klinanska Cesta 1088</Street>
+<City>Namestovo</City>
+<County>null</County>
+<Zip>SK-029 01 </Zip>
+<Country>Slovakia</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>9256</BillToID>
+<Department>PHILIPS POWER Solutions Int. Accounts</Department>
+<Street>Vavrecka 311</Street>
+<City>Namestovo</City>
+<County>null</County>
+<Zip>SK-029 01</Zip>
+<Country>Slovakia</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>77</CartonNumber>
+<Awb>PEK601360</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074986TSCE</InvoiceNumber>
+<ProductName>1N4006 R0</ProductName>
+<CustomerProductNumber>9322 238 72682</CustomerProductNumber>
+<Quantity>20000</Quantity>
+<Price>0.0055</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>111</CartonNumber>
+<Awb>PEK954320</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072705TSCE</InvoiceNumber>
+<ProductName>HER107 R0</ProductName>
+<CustomerProductNumber>9322 238 54682</CustomerProductNumber>
+<Quantity>20000</Quantity>
+<Price>0.016</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='4531007278'>
+<PackingListNumber>PPS290807B</PackingListNumber>
+<Date>0</Date>
+<CustomerName>PHILIPS LIGHTING BV</CustomerName>
+<CustomerID>3581</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>4117</ShipToID>
+<Department>PHILIPS POWER Solutions Int</Department>
+<Street>Klinanska Cesta 1088</Street>
+<City>Namestovo</City>
+<County>null</County>
+<Zip>SK-029 01 </Zip>
+<Country>Slovakia</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>9256</BillToID>
+<Department>PHILIPS POWER Solutions Int. Accounts</Department>
+<Street>Vavrecka 311</Street>
+<City>Namestovo</City>
+<County>null</County>
+<Zip>SK-029 01</Zip>
+<Country>Slovakia</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>132B</CartonNumber>
+<Awb>PEK958347</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074401TSCE</InvoiceNumber>
+<ProductName>MBR20100CT C0</ProductName>
+<CustomerProductNumber>9322 250 12682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.21</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>133B</CartonNumber>
+<Awb>PEK958347</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074401TSCE</InvoiceNumber>
+<ProductName>MBR20100CT C0</ProductName>
+<CustomerProductNumber>9322 250 12682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.21</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>134B</CartonNumber>
+<Awb>PEK958347</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074401TSCE</InvoiceNumber>
+<ProductName>MBR20100CT C0</ProductName>
+<CustomerProductNumber>9322 250 12682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.21</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>135B</CartonNumber>
+<Awb>PEK958347</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074401TSCE</InvoiceNumber>
+<ProductName>MBR20100CT C0</ProductName>
+<CustomerProductNumber>9322 250 12682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.21</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>3DXX</CartonNumber>
+<Awb>PEK957184</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074038TSCE</InvoiceNumber>
+<ProductName>RS1K F2</ProductName>
+<CustomerProductNumber>9322 240 21688</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.026</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>180</CartonNumber>
+<Awb>PEK602666</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075421TSCE</InvoiceNumber>
+<ProductName>SR304-21 X0</ProductName>
+<CustomerProductNumber>9322 238 70682</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.035</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>181</CartonNumber>
+<Awb>PEK602666</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075421TSCE</InvoiceNumber>
+<ProductName>SR304-21 X0</ProductName>
+<CustomerProductNumber>9322 238 70682</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.035</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>182</CartonNumber>
+<Awb>PEK602666</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075421TSCE</InvoiceNumber>
+<ProductName>SR304-21 X0</ProductName>
+<CustomerProductNumber>9322 238 70682</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.035</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>183</CartonNumber>
+<Awb>PEK602666</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075421TSCE</InvoiceNumber>
+<ProductName>SR304-21 X0</ProductName>
+<CustomerProductNumber>9322 238 70682</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.035</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>184</CartonNumber>
+<Awb>PEK602666</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075421TSCE</InvoiceNumber>
+<ProductName>SR304-21 X0</ProductName>
+<CustomerProductNumber>9322 238 70682</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.035</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>319B</CartonNumber>
+<Awb>PEK603365</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075683TSCE</InvoiceNumber>
+<ProductName>SR304-21 X0</ProductName>
+<CustomerProductNumber>9322 238 70682</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.035</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>86</CartonNumber>
+<Awb>PEK935232</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-064355TSCE</InvoiceNumber>
+<ProductName>SR309-03 X0</ProductName>
+<CustomerProductNumber>9322 234 89682</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.0455</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>13D</CartonNumber>
+<Awb>PEK958347</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074401TSCE</InvoiceNumber>
+<ProductName>SRA10100 C0</ProductName>
+<CustomerProductNumber>9322 254 09682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.154</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>24A</CartonNumber>
+<Awb>PEK604065</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075849TSCE</InvoiceNumber>
+<ProductName>SRA1030 C0</ProductName>
+<CustomerProductNumber>9322 241 22682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.135</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>25A</CartonNumber>
+<Awb>PEK604065</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075849TSCE</InvoiceNumber>
+<ProductName>SRA1030 C0</ProductName>
+<CustomerProductNumber>9322 241 22682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.135</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>26A</CartonNumber>
+<Awb>PEK604065</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075849TSCE</InvoiceNumber>
+<ProductName>SRA1030 C0</ProductName>
+<CustomerProductNumber>9322 241 22682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.135</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>27A</CartonNumber>
+<Awb>PEK604065</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075849TSCE</InvoiceNumber>
+<ProductName>SRA1030 C0</ProductName>
+<CustomerProductNumber>9322 241 22682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.135</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='4531007379'>
+<PackingListNumber>PPS290807B</PackingListNumber>
+<Date>0</Date>
+<CustomerName>PHILIPS LIGHTING BV</CustomerName>
+<CustomerID>3581</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>4117</ShipToID>
+<Department>PHILIPS POWER Solutions Int</Department>
+<Street>Klinanska Cesta 1088</Street>
+<City>Namestovo</City>
+<County>null</County>
+<Zip>SK-029 01 </Zip>
+<Country>Slovakia</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>9256</BillToID>
+<Department>PHILIPS POWER Solutions Int. Accounts</Department>
+<Street>Vavrecka 311</Street>
+<City>Namestovo</City>
+<County>null</County>
+<Zip>SK-029 01</Zip>
+<Country>Slovakia</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>87</CartonNumber>
+<Awb>PEK935232</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-064355TSCE</InvoiceNumber>
+<ProductName>SR309-03 X0</ProductName>
+<CustomerProductNumber>9322 234 89682</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.0455</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='4531007188'>
+<PackingListNumber>PPS290807C</PackingListNumber>
+<Date>0</Date>
+<CustomerName>PHILIPS LIGHTING BV</CustomerName>
+<CustomerID>3581</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>4117</ShipToID>
+<Department>PHILIPS POWER Solutions Int</Department>
+<Street>Klinanska Cesta 1088</Street>
+<City>Namestovo</City>
+<County>null</County>
+<Zip>SK-029 01 </Zip>
+<Country>Slovakia</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>9256</BillToID>
+<Department>PHILIPS POWER Solutions Int. Accounts</Department>
+<Street>Vavrecka 311</Street>
+<City>Namestovo</City>
+<County>null</County>
+<Zip>SK-029 01</Zip>
+<Country>Slovakia</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>320B</CartonNumber>
+<Awb>PEK603365</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075683TSCE</InvoiceNumber>
+<ProductName>SR304-21 X0</ProductName>
+<CustomerProductNumber>9322 238 70682</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.035</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>321B</CartonNumber>
+<Awb>PEK603365</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075683TSCE</InvoiceNumber>
+<ProductName>SR304-21 X0</ProductName>
+<CustomerProductNumber>9322 238 70682</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.035</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>322B</CartonNumber>
+<Awb>PEK603365</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075683TSCE</InvoiceNumber>
+<ProductName>SR304-21 X0</ProductName>
+<CustomerProductNumber>9322 238 70682</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.035</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>323B</CartonNumber>
+<Awb>PEK603365</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075683TSCE</InvoiceNumber>
+<ProductName>SR304-21 X0</ProductName>
+<CustomerProductNumber>9322 238 70682</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.035</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>324B</CartonNumber>
+<Awb>PEK603365</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075683TSCE</InvoiceNumber>
+<ProductName>SR304-21 X0</ProductName>
+<CustomerProductNumber>9322 238 70682</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.035</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>325B</CartonNumber>
+<Awb>PEK603365</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075683TSCE</InvoiceNumber>
+<ProductName>SR304-21 X0</ProductName>
+<CustomerProductNumber>9322 238 70682</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.035</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>326B</CartonNumber>
+<Awb>PEK603365</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075683TSCE</InvoiceNumber>
+<ProductName>SR304-21 X0</ProductName>
+<CustomerProductNumber>9322 238 70682</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.035</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>327B</CartonNumber>
+<Awb>PEK603365</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075683TSCE</InvoiceNumber>
+<ProductName>SR304-21 X0</ProductName>
+<CustomerProductNumber>9322 238 70682</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.035</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>328B</CartonNumber>
+<Awb>PEK603365</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075683TSCE</InvoiceNumber>
+<ProductName>SR304-21 X0</ProductName>
+<CustomerProductNumber>9322 238 70682</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.035</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>329B</CartonNumber>
+<Awb>PEK603365</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075683TSCE</InvoiceNumber>
+<ProductName>SR304-21 X0</ProductName>
+<CustomerProductNumber>9322 238 70682</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.035</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>249</CartonNumber>
+<Awb>PEK956064</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073463TSCE</InvoiceNumber>
+<ProductName>SRAF1030 C0</ProductName>
+<CustomerProductNumber>9322 251 11682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.149</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='4531007379'>
+<PackingListNumber>PPS290807C</PackingListNumber>
+<Date>0</Date>
+<CustomerName>PHILIPS LIGHTING BV</CustomerName>
+<CustomerID>3581</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>4117</ShipToID>
+<Department>PHILIPS POWER Solutions Int</Department>
+<Street>Klinanska Cesta 1088</Street>
+<City>Namestovo</City>
+<County>null</County>
+<Zip>SK-029 01 </Zip>
+<Country>Slovakia</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>9256</BillToID>
+<Department>PHILIPS POWER Solutions Int. Accounts</Department>
+<Street>Vavrecka 311</Street>
+<City>Namestovo</City>
+<County>null</County>
+<Zip>SK-029 01</Zip>
+<Country>Slovakia</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>7A</CartonNumber>
+<Awb>PEK956791</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073858TSCE</InvoiceNumber>
+<ProductName>SRA1060 C0</ProductName>
+<CustomerProductNumber>9322 248 46682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.14</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>8A</CartonNumber>
+<Awb>PEK956791</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073858TSCE</InvoiceNumber>
+<ProductName>SRA1060 C0</ProductName>
+<CustomerProductNumber>9322 248 46682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.14</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>9A</CartonNumber>
+<Awb>PEK956791</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073858TSCE</InvoiceNumber>
+<ProductName>SRA1060 C0</ProductName>
+<CustomerProductNumber>9322 248 46682</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.14</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5500088143'>
+<PackingListNumber>W270807A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Hella Innenleuchten-Systeme GmbH</Department>
+<Street>Maienbuehlstrasse 7</Street>
+<City>Wembach</City>
+<County>null</County>
+<Zip>79677</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Hella Innenleuchten-Systeme GmbH</Department>
+<Street>Maienbuehlstrasse 7</Street>
+<City>Wembach</City>
+<County>null</County>
+<Zip>79677</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>217DXXXX</CartonNumber>
+<Awb>PEK955513</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073283TSCE</InvoiceNumber>
+<ProductName>SS16 R2</ProductName>
+<CustomerProductNumber>716 451-14</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.0257</Price>
+</Item>
+</Items>
+</CustomerPO>
+</PurchaseOrderList>

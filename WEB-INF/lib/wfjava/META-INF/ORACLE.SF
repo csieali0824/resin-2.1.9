@@ -1,0 +1,49 @@
+Signature-Version: 1.0
+Created-By: 1.4.2_04 (Sun Microsystems Inc.)
+SHA1-Digest-Manifest: DlUhxjnNXzdOuE1ChvVdMh6dxaQ=
+
+Name: oracle/apps/fnd/wf/WFAttribute.class
+SHA1-Digest: l4wWWEyDOiTNxH5+wa4rx2w77wI=
+
+Name: oracle/apps/fnd/wf/WFXLoad.class
+SHA1-Digest: 48R6AiK/3R3w10MAp9ZJibF06QY=
+
+Name: oracle/apps/fnd/wf/WFAgent.class
+SHA1-Digest: wBhH8cIKqocmrb6ZQFzruN+KeF0=
+
+Name: oracle/apps/fnd/wf/WFException.class
+SHA1-Digest: irzIraWC5e7KlGA9lbymvjAL3dk=
+
+Name: oracle/apps/fnd/wf/WFQueue.class
+SHA1-Digest: Mhtuc7jasJlZvKf6GkRARY2LTfE=
+
+Name: oracle/apps/fnd/wf/WFEvent.class
+SHA1-Digest: /H78UA+qWhoTvTZCeDrbmkJfcWA=
+
+Name: oracle/apps/fnd/wf/WFFALsnr.class
+SHA1-Digest: 5w1eSAxsIq2IHwqk4UTPmOmKvEQ=
+
+Name: oracle/apps/fnd/wf/WFPayLoad.class
+SHA1-Digest: TYcuRh6ZimiHh7ftiVBKJUBazCs=
+
+Name: oracle/apps/fnd/wf/WFFunctionException.class
+SHA1-Digest: MYREZLGTKo1i20RfHAWhoKsfjcc=
+
+Name: oracle/apps/fnd/wf/WFStandardQueue.class
+SHA1-Digest: JXyYzgsweUNvZ7l4qjUxJn0Fhkk=
+
+Name: oracle/apps/fnd/wf/WFParameter.class
+SHA1-Digest: Yej/kP/lWkjjqhU9+J9pcyylil4=
+
+Name: oracle/apps/fnd/wf/WFFunctionAPI.class
+SHA1-Digest: 7uF2ncYdY00B7nPvQ5jUds+njuU=
+
+Name: oracle/apps/fnd/wf/WFQueueException.class
+SHA1-Digest: 2gVEMli6qz46KU9reR1CTytwZE4=
+
+Name: oracle/apps/fnd/wf/WFParamList.class
+SHA1-Digest: 7xwfRxpQxRNUUw3iKfySIBGA5Vw=
+
+Name: oracle/apps/fnd/wf/WFXML.class
+SHA1-Digest: Ws4fjMFKWlHnZAUoYQAbhl4jsZk=
+

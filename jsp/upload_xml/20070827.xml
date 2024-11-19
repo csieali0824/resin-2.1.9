@@ -1,0 +1,535 @@
+<?xml version='1.0'  encoding='UTF-8'?>
+<PurchaseOrderList>
+<CustomerPO name='14526'>
+<PackingListNumber>B240807A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Behr Thermocontrol GmbH</Department>
+<Street>Hansastr. 40</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59557</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Behr-Hella Thermocontrol GmbH</Department>
+<Street>Hansastr. 40 </Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59557</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>58A</CartonNumber>
+<Awb>49459</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071636TSCE</InvoiceNumber>
+<ProductName>S1J-03 R2</ProductName>
+<CustomerProductNumber>716 451-03</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0123</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>59A</CartonNumber>
+<Awb>49459</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071636TSCE</InvoiceNumber>
+<ProductName>S1J-03 R2</ProductName>
+<CustomerProductNumber>716 451-03</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0123</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='14189'>
+<PackingListNumber>B240807B</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Behr Thermocontrol GmbH</Department>
+<Street>Hansastr. 40</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59557</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Behr-Hella Thermocontrol GmbH</Department>
+<Street>Hansastr. 40 </Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59557</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>3A</CartonNumber>
+<Awb>235007774</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072044TSCE</InvoiceNumber>
+<ProductName>S3J-02 R6</ProductName>
+<CustomerProductNumber>716 451-05</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.0412</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>4A</CartonNumber>
+<Awb>235007774</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072044TSCE</InvoiceNumber>
+<ProductName>S3J-02 R6</ProductName>
+<CustomerProductNumber>716 451-05</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.0412</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>5A</CartonNumber>
+<Awb>235007774</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072044TSCE</InvoiceNumber>
+<ProductName>S3J-02 R6</ProductName>
+<CustomerProductNumber>716 451-05</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.0412</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>6A</CartonNumber>
+<Awb>235007774</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072044TSCE</InvoiceNumber>
+<ProductName>S3J-02 R6</ProductName>
+<CustomerProductNumber>716 451-05</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.0412</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='15295'>
+<PackingListNumber>B240807C</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Behr Thermocontrol GmbH</Department>
+<Street>Hansastr. 40</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59557</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Behr-Hella Thermocontrol GmbH</Department>
+<Street>Hansastr. 40 </Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59557</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>195A</CartonNumber>
+<Awb>PEK957728</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074211TSCE</InvoiceNumber>
+<ProductName>S2G R4</ProductName>
+<CustomerProductNumber>716 451-09</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.0187</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>196A</CartonNumber>
+<Awb>PEK957728</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074211TSCE</InvoiceNumber>
+<ProductName>S2G R4</ProductName>
+<CustomerProductNumber>716 451-09</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.0187</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>197A</CartonNumber>
+<Awb>PEK957728</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074211TSCE</InvoiceNumber>
+<ProductName>S2G R4</ProductName>
+<CustomerProductNumber>716 451-09</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.0187</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>198A</CartonNumber>
+<Awb>PEK957728</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074211TSCE</InvoiceNumber>
+<ProductName>S2G R4</ProductName>
+<CustomerProductNumber>716 451-09</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.0187</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>199A</CartonNumber>
+<Awb>PEK957728</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074211TSCE</InvoiceNumber>
+<ProductName>S2G R4</ProductName>
+<CustomerProductNumber>716 451-09</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.0187</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='14201'>
+<PackingListNumber>B240807D</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Behr Thermocontrol GmbH</Department>
+<Street>Hansastr. 40</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59557</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Behr-Hella Thermocontrol GmbH</Department>
+<Street>Hansastr. 40 </Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59557</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>54AXXXXX</CartonNumber>
+<Awb>PEK954320</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072699TSCE</InvoiceNumber>
+<ProductName>1.5SMC39CA R6</ProductName>
+<CustomerProductNumber>724 538-14</CustomerProductNumber>
+<Quantity>6000</Quantity>
+<Price>0.0885</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='15777'>
+<PackingListNumber>B240807E</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Behr Thermocontrol GmbH</Department>
+<Street>Hansastr. 40</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59557</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Behr-Hella Thermocontrol GmbH</Department>
+<Street>Hansastr. 40 </Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59557</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>3A</CartonNumber>
+<Awb>PEK604065</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075852TSCE</InvoiceNumber>
+<ProductName>1.5SMC15A R6</ProductName>
+<CustomerProductNumber>724 538-31</CustomerProductNumber>
+<Quantity>6000</Quantity>
+<Price>0.0785</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='15788'>
+<PackingListNumber>B240807F</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Behr Thermocontrol GmbH</Department>
+<Street>Hansastr. 40</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59557</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Behr-Hella Thermocontrol GmbH</Department>
+<Street>Hansastr. 40 </Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59557</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>1A</CartonNumber>
+<Awb>PEK601360</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074989TSCE</InvoiceNumber>
+<ProductName>1.5SMC33CA R6</ProductName>
+<CustomerProductNumber>724 538-33</CustomerProductNumber>
+<Quantity>9000</Quantity>
+<Price>0.0885</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='15310'>
+<PackingListNumber>B240807G</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Behr Thermocontrol GmbH</Department>
+<Street>Hansastr. 40</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59557</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Behr-Hella Thermocontrol GmbH</Department>
+<Street>Hansastr. 40 </Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59557</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>69A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074642TSCE</InvoiceNumber>
+<ProductName>MBRS2045CT RN</ProductName>
+<CustomerProductNumber>729 439-05</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.188</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>70A</CartonNumber>
+<Awb>PEK958918</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074642TSCE</InvoiceNumber>
+<ProductName>MBRS2045CT RN</ProductName>
+<CustomerProductNumber>729 439-05</CustomerProductNumber>
+<Quantity>4000</Quantity>
+<Price>0.188</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='14196'>
+<PackingListNumber>B240807H</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Behr Thermocontrol GmbH</Department>
+<Street>Hansastr. 40</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59557</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Behr-Hella Thermocontrol GmbH</Department>
+<Street>Hansastr. 40 </Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59557</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>40DX</CartonNumber>
+<Awb>PEK958347</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074407TSCE</InvoiceNumber>
+<ProductName>1SMA4750 R2</ProductName>
+<CustomerProductNumber>729 501-00</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.0305</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='14197'>
+<PackingListNumber>B240807I</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Behr Thermocontrol GmbH</Department>
+<Street>Hansastr. 40</Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59557</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Behr-Hella Thermocontrol GmbH</Department>
+<Street>Hansastr. 40 </Street>
+<City>Lippstadt</City>
+<County>null</County>
+<Zip>59557</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>21DX</CartonNumber>
+<Awb>PEK957184</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-074046TSCE</InvoiceNumber>
+<ProductName>1SMA4753 R2</ProductName>
+<CustomerProductNumber>729 501-05</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.0305</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5520001375'>
+<PackingListNumber>7-240807-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>KOSTAL IRELAND GMBH</CustomerName>
+<CustomerID>3499</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>7044</ShipToID>
+<Department>Leopold Kostal GmbH c/o Rhenus AG  Co.KG</Department>
+<Street>Juchostrasse 42</Street>
+<City>D-44143 Dortmund</City>
+<County></County>
+<Zip></Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4452</BillToID>
+<Department>Leopold Kostal GmbH &amp; Co. KG</Department>
+<Street>Wiesenstrasse 47</Street>
+<City>D-58507 Luedenscheid</City>
+<County></County>
+<Zip></Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>33A</CartonNumber>
+<Awb>7063051</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-0739334TSCE</InvoiceNumber>
+<ProductName>P6SMB30A R4</ProductName>
+<CustomerProductNumber>66310301010311-01</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>34A</CartonNumber>
+<Awb>7063051</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-0739334TSCE</InvoiceNumber>
+<ProductName>P6SMB30A R4</ProductName>
+<CustomerProductNumber>66310301010311-01</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>35A</CartonNumber>
+<Awb>7063051</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-0739334TSCE</InvoiceNumber>
+<ProductName>P6SMB30A R4</ProductName>
+<CustomerProductNumber>66310301010311-01</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.03</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>36A</CartonNumber>
+<Awb>7063051</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-0739334TSCE</InvoiceNumber>
+<ProductName>P6SMB30A R4</ProductName>
+<CustomerProductNumber>66310301010311-01</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.03</Price>
+</Item>
+</Items>
+</CustomerPO>
+</PurchaseOrderList>

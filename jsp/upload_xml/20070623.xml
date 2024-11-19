@@ -1,0 +1,43 @@
+<?xml version='1.0'  encoding='UTF-8'?>
+<PurchaseOrderList>
+<CustomerPO name='PBL-2515032981'>
+<PackingListNumber>PLP220607</PackingListNumber>
+<Date>0</Date>
+<CustomerName>PHILIPS LIGHTING BV</CustomerName>
+<CustomerID>3581</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>4117</ShipToID>
+<Department>Philips Lighting Poland S.A</Department>
+<Street>Przemyslowa 29</Street>
+<City>Pila</City>
+<County>null</County>
+<Zip>PL-64-920</Zip>
+<Country>Poland</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>9256</BillToID>
+<Department>Philips Lighting Poland S.A</Department>
+<Street>780040 Ul. Kossaka 150</Street>
+<City>Pila</City>
+<County>null</County>
+<Zip>PL-64 920</Zip>
+<Country>Poland</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>98</CartonNumber>
+<Awb>PEK956791</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073858TSCE</InvoiceNumber>
+<ProductName>RS2JA-01 R2</ProductName>
+<CustomerProductNumber>442240620035</CustomerProductNumber>
+<Quantity>60000</Quantity>
+<Price>0.0265</Price>
+</Item>
+</Items>
+</CustomerPO>
+</PurchaseOrderList>

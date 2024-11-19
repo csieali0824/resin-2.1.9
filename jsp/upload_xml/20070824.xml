@@ -1,0 +1,43 @@
+<?xml version='1.0'  encoding='UTF-8'?>
+<PurchaseOrderList>
+<CustomerPO name='EBR255662'>
+<PackingListNumber>23-210807-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>SOLECTRON EUROPE B.V.</CustomerName>
+<CustomerID>6173</CustomerID>
+<ShipmentTerms>FCA MUNICH</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>6853</ShipToID>
+<Department>Solectron Europe B.V. c/o Solectron Romania S.R.L.</Department>
+<Street>Calea Torontalului, DN6, KM5,7</Street>
+<City>Timisoara</City>
+<County>null</County>
+<Zip>30000</Zip>
+<Country>Romania</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>6867</BillToID>
+<Department>Solectron Europe B.V.</Department>
+<Street>Dalsteindreef 93-99</Street>
+<City>Diemen</City>
+<County></County>
+<Zip>NL-1112 XC</Zip>
+<Country>Netherlands</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>94A</CartonNumber>
+<Awb>PEK602666</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075422TSCE</InvoiceNumber>
+<ProductName>S1JL R2</ProductName>
+<CustomerProductNumber>SCE2D-0004-000</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.019</Price>
+</Item>
+</Items>
+</CustomerPO>
+</PurchaseOrderList>

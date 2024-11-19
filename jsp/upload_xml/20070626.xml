@@ -1,0 +1,116 @@
+<?xml version='1.0'  encoding='UTF-8'?>
+<PurchaseOrderList>
+<CustomerPO name='BE045082'>
+<PackingListNumber>29-270607-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>AKTA AG</CustomerName>
+<CustomerID>1159</CustomerID>
+<ShipmentTerms>FCA MUNICH</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>3142</ShipToID>
+<Department>Akta Elektronik AG</Department>
+<Street>Alte Steinhauserstrasse 3</Street>
+<City>CH-6330 CHAM</City>
+<County>null</County>
+<Zip>null</Zip>
+<Country>Switzerland</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>1143</BillToID>
+<Department>Akta Elektronik AG</Department>
+<Street>Alte Steinhauserstrasse 3</Street>
+<City>CH-6330 CHAM</City>
+<County>null</County>
+<Zip>null</Zip>
+<Country>Switzerland</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>86B</CartonNumber>
+<Awb>PEK932769</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-063121TSCE</InvoiceNumber>
+<ProductName>S1G R2</ProductName>
+<CustomerProductNumber>S1G R2</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.017</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>87B</CartonNumber>
+<Awb>PEK932769</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-063121TSCE</InvoiceNumber>
+<ProductName>S1G R2</ProductName>
+<CustomerProductNumber>S1G R2</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.017</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='PBG-2515035471'>
+<PackingListNumber>PLP270607</PackingListNumber>
+<Date>0</Date>
+<CustomerName>PHILIPS LIGHTING BV</CustomerName>
+<CustomerID>3581</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>4117</ShipToID>
+<Department>Philips Lighting Poland S.A</Department>
+<Street>Przemyslowa 29</Street>
+<City>Pila</City>
+<County>null</County>
+<Zip>PL-64-920</Zip>
+<Country>Poland</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>9256</BillToID>
+<Department>Philips Lighting Poland S.A</Department>
+<Street>780040 Ul. Kossaka 150</Street>
+<City>Pila</City>
+<County>null</County>
+<Zip>PL-64 920</Zip>
+<Country>Poland</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>78DX</CartonNumber>
+<Awb>PEK955513</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073278TSCE</InvoiceNumber>
+<ProductName>RS2JA-01 R2</ProductName>
+<CustomerProductNumber>442240620035</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.0265</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>98AX</CartonNumber>
+<Awb>PEK956791</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073858TSCE</InvoiceNumber>
+<ProductName>RS2JA-01 R2</ProductName>
+<CustomerProductNumber>442240620035</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.0265</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>98X</CartonNumber>
+<Awb>PEK956791</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073858TSCE</InvoiceNumber>
+<ProductName>RS2JA-01 R2</ProductName>
+<CustomerProductNumber>442240620035</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.0265</Price>
+</Item>
+</Items>
+</CustomerPO>
+</PurchaseOrderList>

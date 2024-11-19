@@ -1,0 +1,70 @@
+Signature-Version: 1.0
+Created-By: 1.4.2.09 (Hewlett-Packard Co.)
+SHA1-Digest-Manifest: 6jPwc4NMWLUZWhVkUcw7nqfC5ZI=
+
+Name: oracle/apps/fnd/wf/bes/Utilities$TaskManager.class
+SHA1-Digest: SWBanwL6br7tRbzDTT++e0n12co=
+
+Name: oracle/apps/fnd/wf/bes/Utilities$1.class
+SHA1-Digest: x7nIHqBCiJV13WVvkKbzDRA432U=
+
+Name: oracle/apps/fnd/wf/bes/BusinessEventListener.class
+SHA1-Digest: IXnkYhIPULDz9RcryYrOsgNcKwY=
+
+Name: oracle/apps/fnd/wf/bes/ValueFormatException.class
+SHA1-Digest: XCAX0vPs4QHMeZeSARJq8cDj8Qg=
+
+Name: oracle/apps/fnd/wf/bes/BusinessEvent.class
+SHA1-Digest: yEf8SdS5LHZ1PFEXUQjgtVRIfXw=
+
+Name: oracle/apps/fnd/wf/bes/BusinessEventNotWritableException.class
+SHA1-Digest: Je+uk6syjk5o3gHEDixmfvQFLtw=
+
+Name: oracle/apps/fnd/wf/bes/Subscription.class
+SHA1-Digest: shWUi5o+Micdqc1WfJqUNWyCyHM=
+
+Name: oracle/apps/fnd/wf/bes/BusinessEventException.class
+SHA1-Digest: /7rmlQZzWver7lz9C9HuiwSHpCI=
+
+Name: oracle/apps/fnd/wf/bes/ControlListener.class
+SHA1-Digest: pUoAvNW9VeILewsc/CQKOwBn5Tw=
+
+Name: oracle/apps/fnd/wf/bes/DispatchThread.class
+SHA1-Digest: 45BPhCn28NFLFmqyJQoTWaIwFX4=
+
+Name: oracle/apps/fnd/wf/bes/SubscriptionManager.class
+SHA1-Digest: HImRdgMyRPGZXlLS94zQjTzVRxQ=
+
+Name: oracle/apps/fnd/wf/bes/Utilities.class
+SHA1-Digest: 5YfRTUNBS9U2pTRBdbfwbpi9L1Y=
+
+Name: oracle/apps/fnd/wf/bes/QueueHandlerException.class
+SHA1-Digest: bYh+FSu7aNNFY0W07vlr4wb6wx8=
+
+Name: oracle/apps/fnd/wf/bes/ConnectionManager.class
+SHA1-Digest: 8zbGYgrWWJv9/70/R5iuAlrnlyk=
+
+Name: oracle/apps/fnd/wf/bes/ControlConnection.class
+SHA1-Digest: +p4xUORkEokknCPv9W1BFYO/lPc=
+
+Name: oracle/apps/fnd/wf/bes/Dispatcher.class
+SHA1-Digest: Kb+A81SgLNHwFlb18F73i33LAQ0=
+
+Name: oracle/apps/fnd/wf/bes/ConnectionManager$1.class
+SHA1-Digest: OjwodhoKGkjGdkM2LFyxo4iMTWc=
+
+Name: oracle/apps/fnd/wf/bes/Utilities$TaskRequest.class
+SHA1-Digest: 2UACPk5IOGq831xpnsn27zjvf38=
+
+Name: oracle/apps/fnd/wf/bes/QueueHandlerInvoker.class
+SHA1-Digest: K1uNW+TUSyxp9rg1uUowJqerCH0=
+
+Name: oracle/apps/fnd/wf/bes/BusinessEventSystem.class
+SHA1-Digest: bD6uX4RzWhx3ZAGrDtlt4x+fq/o=
+
+Name: oracle/apps/fnd/wf/bes/ConnectionManager$Agent.class
+SHA1-Digest: alwU1niJJrEpPRjh7Tliauqpaq0=
+
+Name: oracle/apps/fnd/wf/bes/Utilities$Task.class
+SHA1-Digest: UPRI55gnlMgXngbsVa9dZJgQE6o=
+

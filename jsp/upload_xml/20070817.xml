@@ -1,0 +1,94 @@
+<?xml version='1.0'  encoding='UTF-8'?>
+<PurchaseOrderList>
+<CustomerPO name=''>
+<PackingListNumber>54-160807-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>ZOLLNER ELEKRONIK AG</CustomerName>
+<CustomerID>5719</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>7174</ShipToID>
+<Department>Zollner Elektronik AG</Department>
+<Street>Industriestrasse 2-14</Street>
+<City>D-93499 Zandt</City>
+<County>Germany</County>
+<Zip></Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>6239</BillToID>
+<Department>Zollner Elektronik AG</Department>
+<Street>Industriestrasse 2-14</Street>
+<City>D-93499 Zandt</City>
+<County>Germany</County>
+<Zip></Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>55A</CartonNumber>
+<Awb>PEK604065</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075854TSCE</InvoiceNumber>
+<ProductName>1.5KE440CA R0</ProductName>
+<CustomerProductNumber>1334251-00</CustomerProductNumber>
+<Quantity>5000</Quantity>
+<Price>0.1</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>56A</CartonNumber>
+<Awb>PEK604065</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075854TSCE</InvoiceNumber>
+<ProductName>1.5KE440CA R0</ProductName>
+<CustomerProductNumber>1334251-00</CustomerProductNumber>
+<Quantity>5000</Quantity>
+<Price>0.1</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='5500002227'>
+<PackingListNumber>54-160807-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>ZOLLNER ELEKRONIK AG</CustomerName>
+<CustomerID>5719</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>7174</ShipToID>
+<Department>Zollner Elektronik AG</Department>
+<Street>Industriestrasse 2-14</Street>
+<City>D-93499 Zandt</City>
+<County>Germany</County>
+<Zip></Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>6239</BillToID>
+<Department>Zollner Elektronik AG</Department>
+<Street>Industriestrasse 2-14</Street>
+<City>D-93499 Zandt</City>
+<County>Germany</County>
+<Zip></Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>66A</CartonNumber>
+<Awb>PEK604065</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-075854TSCE</InvoiceNumber>
+<ProductName>1.5KE440CA R0</ProductName>
+<CustomerProductNumber>1334251-00</CustomerProductNumber>
+<Quantity>3750</Quantity>
+<Price>0.1</Price>
+</Item>
+</Items>
+</CustomerPO>
+</PurchaseOrderList>

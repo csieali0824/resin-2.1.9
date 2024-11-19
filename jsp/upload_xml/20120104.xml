@@ -1,0 +1,410 @@
+<?xml version='1.0'  encoding='UTF-8'?>
+<PurchaseOrderList>
+<CustomerPO name='7621019529 10'>
+<PackingListNumber>ST030112</PackingListNumber>
+<Date>0</Date>
+<CustomerName>SAGEM COMMUNICATION BAYONNE</CustomerName>
+<CustomerID>7687</CustomerID>
+<ShipmentTerms>DAP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<modelName>186233522-01</modelName>
+<sourceCustID>49</sourceCustID>
+<sourceShipToID>229</sourceShipToID>
+<sourceBillToID>87</sourceBillToID>
+<ShipToAddress>
+<ShipToID>8708</ShipToID>
+<Department>PLATEFORME GEFCO</Department>
+<Street>7 voie d'Autriche</Street>
+<City>VITROLLES CEDEX</City>
+<County></County>
+<Zip>13814</Zip>
+<Country>France</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>8837</BillToID>
+<Department>SAGEMCOM TUNISIE ENERGY &amp; TELECOM -USINE U1</Department>
+<Street>BP No 3 Z.I. Borj El Ghorbel Yasminet</Street>
+<City>BEN AROUS</City>
+<County>TUN</County>
+<Zip>TN-2013</Zip>
+<Country>Tunisia</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>231XXX</CartonNumber>
+<Awb>FL740W</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-1103865TSCE</InvoiceNumber>
+<ProductName>US1M R3</ProductName>
+<CustomerProductNumber>186233522-01</CustomerProductNumber>
+<Quantity>3600</Quantity>
+<Price>0.025</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='7621019529 20'>
+<PackingListNumber>ST030112</PackingListNumber>
+<Date>0</Date>
+<CustomerName>SAGEM COMMUNICATION BAYONNE</CustomerName>
+<CustomerID>7687</CustomerID>
+<ShipmentTerms>DAP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<modelName>STT0200861-01</modelName>
+<sourceCustID>49</sourceCustID>
+<sourceShipToID>229</sourceShipToID>
+<sourceBillToID>87</sourceBillToID>
+<ShipToAddress>
+<ShipToID>8708</ShipToID>
+<Department>PLATEFORME GEFCO</Department>
+<Street>7 voie d'Autriche</Street>
+<City>VITROLLES CEDEX</City>
+<County></County>
+<Zip>13814</Zip>
+<Country>France</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>8837</BillToID>
+<Department>SAGEMCOM TUNISIE ENERGY &amp; TELECOM -USINE U1</Department>
+<Street>BP No 3 Z.I. Borj El Ghorbel Yasminet</Street>
+<City>BEN AROUS</City>
+<County>TUN</County>
+<Zip>TN-2013</Zip>
+<Country>Tunisia</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>303XXXXX</CartonNumber>
+<Awb>FL714W</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-1100332TSCE</InvoiceNumber>
+<ProductName>RS1J R2</ProductName>
+<CustomerProductNumber>STT0200861-01</CustomerProductNumber>
+<Quantity>7500</Quantity>
+<Price>0.019</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='7621019818 10'>
+<PackingListNumber>ST030112</PackingListNumber>
+<Date>0</Date>
+<CustomerName>SAGEM COMMUNICATION BAYONNE</CustomerName>
+<CustomerID>7687</CustomerID>
+<ShipmentTerms>DAP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<modelName>186233522-01</modelName>
+<sourceCustID>49</sourceCustID>
+<sourceShipToID>229</sourceShipToID>
+<sourceBillToID>87</sourceBillToID>
+<ShipToAddress>
+<ShipToID>8708</ShipToID>
+<Department>PLATEFORME GEFCO</Department>
+<Street>7 voie d'Autriche</Street>
+<City>VITROLLES CEDEX</City>
+<County></County>
+<Zip>13814</Zip>
+<Country>France</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>8837</BillToID>
+<Department>SAGEMCOM TUNISIE ENERGY &amp; TELECOM -USINE U1</Department>
+<Street>BP No 3 Z.I. Borj El Ghorbel Yasminet</Street>
+<City>BEN AROUS</City>
+<County>TUN</County>
+<Zip>TN-2013</Zip>
+<Country>Tunisia</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>233</CartonNumber>
+<Awb>FL740W</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-1103865TSCE</InvoiceNumber>
+<ProductName>US1M R3</ProductName>
+<CustomerProductNumber>186233522-01</CustomerProductNumber>
+<Quantity>3600</Quantity>
+<Price>0.025</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='7621019818 20'>
+<PackingListNumber>ST030112</PackingListNumber>
+<Date>0</Date>
+<CustomerName>SAGEM COMMUNICATION BAYONNE</CustomerName>
+<CustomerID>7687</CustomerID>
+<ShipmentTerms>DAP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<modelName>186233522-01</modelName>
+<sourceCustID>49</sourceCustID>
+<sourceShipToID>229</sourceShipToID>
+<sourceBillToID>87</sourceBillToID>
+<ShipToAddress>
+<ShipToID>8708</ShipToID>
+<Department>PLATEFORME GEFCO</Department>
+<Street>7 voie d'Autriche</Street>
+<City>VITROLLES CEDEX</City>
+<County></County>
+<Zip>13814</Zip>
+<Country>France</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>8837</BillToID>
+<Department>SAGEMCOM TUNISIE ENERGY &amp; TELECOM -USINE U1</Department>
+<Street>BP No 3 Z.I. Borj El Ghorbel Yasminet</Street>
+<City>BEN AROUS</City>
+<County>TUN</County>
+<Zip>TN-2013</Zip>
+<Country>Tunisia</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>233X</CartonNumber>
+<Awb>FL740W</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-1103865TSCE</InvoiceNumber>
+<ProductName>US1M R3</ProductName>
+<CustomerProductNumber>186233522-01</CustomerProductNumber>
+<Quantity>3600</Quantity>
+<Price>0.025</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='7621019818 30'>
+<PackingListNumber>ST030112</PackingListNumber>
+<Date>0</Date>
+<CustomerName>SAGEM COMMUNICATION BAYONNE</CustomerName>
+<CustomerID>7687</CustomerID>
+<ShipmentTerms>DAP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<modelName>STT0200861-01</modelName>
+<sourceCustID>49</sourceCustID>
+<sourceShipToID>229</sourceShipToID>
+<sourceBillToID>87</sourceBillToID>
+<ShipToAddress>
+<ShipToID>8708</ShipToID>
+<Department>PLATEFORME GEFCO</Department>
+<Street>7 voie d'Autriche</Street>
+<City>VITROLLES CEDEX</City>
+<County></County>
+<Zip>13814</Zip>
+<Country>France</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>8837</BillToID>
+<Department>SAGEMCOM TUNISIE ENERGY &amp; TELECOM -USINE U1</Department>
+<Street>BP No 3 Z.I. Borj El Ghorbel Yasminet</Street>
+<City>BEN AROUS</City>
+<County>TUN</County>
+<Zip>TN-2013</Zip>
+<Country>Tunisia</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>303XXXX</CartonNumber>
+<Awb>FL714W</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-1100332TSCE</InvoiceNumber>
+<ProductName>RS1J R2</ProductName>
+<CustomerProductNumber>STT0200861-01</CustomerProductNumber>
+<Quantity>7500</Quantity>
+<Price>0.019</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='7621019818 40'>
+<PackingListNumber>ST030112</PackingListNumber>
+<Date>0</Date>
+<CustomerName>SAGEM COMMUNICATION BAYONNE</CustomerName>
+<CustomerID>7687</CustomerID>
+<ShipmentTerms>DAP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<modelName>STT0200861-01</modelName>
+<sourceCustID>49</sourceCustID>
+<sourceShipToID>229</sourceShipToID>
+<sourceBillToID>87</sourceBillToID>
+<ShipToAddress>
+<ShipToID>8708</ShipToID>
+<Department>PLATEFORME GEFCO</Department>
+<Street>7 voie d'Autriche</Street>
+<City>VITROLLES CEDEX</City>
+<County></County>
+<Zip>13814</Zip>
+<Country>France</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>8837</BillToID>
+<Department>SAGEMCOM TUNISIE ENERGY &amp; TELECOM -USINE U1</Department>
+<Street>BP No 3 Z.I. Borj El Ghorbel Yasminet</Street>
+<City>BEN AROUS</City>
+<County>TUN</County>
+<Zip>TN-2013</Zip>
+<Country>Tunisia</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>303XXXXXX</CartonNumber>
+<Awb>FL714W</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-1100332TSCE</InvoiceNumber>
+<ProductName>RS1J R2</ProductName>
+<CustomerProductNumber>STT0200861-01</CustomerProductNumber>
+<Quantity>7500</Quantity>
+<Price>0.019</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='7621020900 50'>
+<PackingListNumber>ST030112</PackingListNumber>
+<Date>0</Date>
+<CustomerName>SAGEM COMMUNICATION BAYONNE</CustomerName>
+<CustomerID>7687</CustomerID>
+<ShipmentTerms>DAP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<modelName>191052177-01</modelName>
+<sourceCustID>49</sourceCustID>
+<sourceShipToID>229</sourceShipToID>
+<sourceBillToID>87</sourceBillToID>
+<ShipToAddress>
+<ShipToID>8708</ShipToID>
+<Department>PLATEFORME GEFCO</Department>
+<Street>7 voie d'Autriche</Street>
+<City>VITROLLES CEDEX</City>
+<County></County>
+<Zip>13814</Zip>
+<Country>France</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>8837</BillToID>
+<Department>SAGEMCOM TUNISIE ENERGY &amp; TELECOM -USINE U1</Department>
+<Street>BP No 3 Z.I. Borj El Ghorbel Yasminet</Street>
+<City>BEN AROUS</City>
+<County>TUN</County>
+<Zip>TN-2013</Zip>
+<Country>Tunisia</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>228</CartonNumber>
+<Awb>FL716W</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-1100621TSCE</InvoiceNumber>
+<ProductName>1SMA5956 R3</ProductName>
+<CustomerProductNumber>191052177-01</CustomerProductNumber>
+<Quantity>10800</Quantity>
+<Price>0.032</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>243XX</CartonNumber>
+<Awb>TSN00106035</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-1100767TSCE</InvoiceNumber>
+<ProductName>1SMA5956 R3</ProductName>
+<CustomerProductNumber>191052177-01</CustomerProductNumber>
+<Quantity>7200</Quantity>
+<Price>0.032</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='7621020900 80'>
+<PackingListNumber>ST030112</PackingListNumber>
+<Date>0</Date>
+<CustomerName>SAGEM COMMUNICATION BAYONNE</CustomerName>
+<CustomerID>7687</CustomerID>
+<ShipmentTerms>DAP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<modelName>186233522-01</modelName>
+<sourceCustID>49</sourceCustID>
+<sourceShipToID>229</sourceShipToID>
+<sourceBillToID>87</sourceBillToID>
+<ShipToAddress>
+<ShipToID>8708</ShipToID>
+<Department>PLATEFORME GEFCO</Department>
+<Street>7 voie d'Autriche</Street>
+<City>VITROLLES CEDEX</City>
+<County></County>
+<Zip>13814</Zip>
+<Country>France</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>8837</BillToID>
+<Department>SAGEMCOM TUNISIE ENERGY &amp; TELECOM -USINE U1</Department>
+<Street>BP No 3 Z.I. Borj El Ghorbel Yasminet</Street>
+<City>BEN AROUS</City>
+<County>TUN</County>
+<Zip>TN-2013</Zip>
+<Country>Tunisia</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>231XX</CartonNumber>
+<Awb>FL740W</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-1103865TSCE</InvoiceNumber>
+<ProductName>US1M R3</ProductName>
+<CustomerProductNumber>186233522-01</CustomerProductNumber>
+<Quantity>14400</Quantity>
+<Price>0.025</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='4500985325-335-021'>
+<PackingListNumber>ZO030112</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HELLA KG HUECK &amp; CO.,</CustomerName>
+<CustomerID>3339</CustomerID>
+<ShipmentTerms>DAP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<modelName>716.451-14</modelName>
+<sourceCustID>3</sourceCustID>
+<sourceShipToID>475</sourceShipToID>
+<sourceBillToID>476</sourceBillToID>
+<ShipToAddress>
+<ShipToID>6094</ShipToID>
+<Department>Zollner Kft.</Department>
+<Street>Deakvari fasor 16-18</Street>
+<City>Vac-Magyarorszag</City>
+<County></County>
+<Zip>2600</Zip>
+<Country>Hungary</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>3740</BillToID>
+<Department>Zollner Kft.</Department>
+<Street>Deakvari fasor</Street>
+<City>Vac</City>
+<County></County>
+<Zip>2600</Zip>
+<Country>Hungary</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>115</CartonNumber>
+<Awb>TSN00127562</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber> T-1113272TSCE</InvoiceNumber>
+<ProductName>SS16 R2</ProductName>
+<CustomerProductNumber>716.451-14</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0182</Price>
+</Item>
+</Items>
+</CustomerPO>
+</PurchaseOrderList>

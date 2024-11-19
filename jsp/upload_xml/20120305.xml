@@ -1,0 +1,47 @@
+<?xml version='1.0'  encoding='UTF-8'?>
+<PurchaseOrderList>
+<CustomerPO name='18223'>
+<PackingListNumber>90-220212</PackingListNumber>
+<Date>0</Date>
+<CustomerName>HI-Q ELECTRONICS</CustomerName>
+<CustomerID>1418</CustomerID>
+<ShipmentTerms>FCA MUNICH</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<modelName></modelName>
+<sourceCustID>90</sourceCustID>
+<sourceShipToID>516</sourceShipToID>
+<sourceBillToID>514</sourceBillToID>
+<ShipToAddress>
+<ShipToID>12744</ShipToID>
+<Department>Hi-Q Electronics (Pty) Ltd.</Department>
+<Street>Bartlett Lake Office Park, Unit 8, Leith Rd, Bartlett</Street>
+<City>Boksburg Jhb</City>
+<County></County>
+<Zip>1459</Zip>
+<Country>South Africa</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>29764</BillToID>
+<Department>Hi-Q Electronics (Pty) Ltd.</Department>
+<Street>PO Box 13215 </Street>
+<City>NI City</City>
+<County></County>
+<Zip>7463</Zip>
+<Country>South Africa</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>72</CartonNumber>
+<Awb>CNR1523</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-1201686</InvoiceNumber>
+<ProductName>S1GL R2</ProductName>
+<CustomerProductNumber></CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.0175</Price>
+</Item>
+</Items>
+</CustomerPO>
+</PurchaseOrderList>

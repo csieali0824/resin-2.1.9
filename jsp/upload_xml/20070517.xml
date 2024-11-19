@@ -1,0 +1,291 @@
+<?xml version='1.0'  encoding='UTF-8'?>
+<PurchaseOrderList>
+<CustomerPO name='76893/762237'>
+<PackingListNumber>20-160507-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>AMERICAN STANDARD EUROPE BVBA</CustomerName>
+<CustomerID>5662</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>8222</ShipToID>
+<Department>Tonfunk GmbH</Department>
+<Street>Anger 20</Street>
+<City>Falkenstein</City>
+<County></County>
+<Zip>D-06463</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>8216</BillToID>
+<Department>Tonfunk GmbH</Department>
+<Street>Anger 20</Street>
+<City>Falkenstein</City>
+<County></County>
+<Zip>D-06463</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>4A</CartonNumber>
+<Awb>PEK942838</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-067163TSCE</InvoiceNumber>
+<ProductName>RS2J R4</ProductName>
+<CustomerProductNumber>8869022464</CustomerProductNumber>
+<Quantity>30000</Quantity>
+<Price>0.026</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='666102'>
+<PackingListNumber>35-160507-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>IFM ELECTRONIC GMBH</CustomerName>
+<CustomerID>3961</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>4398</ShipToID>
+<Department>IFM electronic GmbH</Department>
+<Street>Bechlinger Str. 34</Street>
+<City>D-88069 Tettnang</City>
+<County>null</County>
+<Zip>null</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4398</BillToID>
+<Department>IFM electronic GmbH</Department>
+<Street>Postfach 12 62</Street>
+<City>D-88061 Tettnang</City>
+<County>null</County>
+<Zip>null</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>98Bxx</CartonNumber>
+<Awb>PEK953771</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072526TSCE</InvoiceNumber>
+<ProductName>MBS8 RC</ProductName>
+<CustomerProductNumber>1262/600252</CustomerProductNumber>
+<Quantity>12000</Quantity>
+<Price>0.045</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='665619'>
+<PackingListNumber>35-160507-B</PackingListNumber>
+<Date>0</Date>
+<CustomerName>IFM ELECTRONIC GMBH</CustomerName>
+<CustomerID>3961</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>4398</ShipToID>
+<Department>IFM electronic GmbH</Department>
+<Street>Bechlinger Str. 34</Street>
+<City>D-88069 Tettnang</City>
+<County>null</County>
+<Zip>null</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>4398</BillToID>
+<Department>IFM electronic GmbH</Department>
+<Street>Postfach 12 62</Street>
+<City>D-88061 Tettnang</City>
+<County>null</County>
+<Zip>null</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>212A</CartonNumber>
+<Awb>PEK57044492</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072158TSCE</InvoiceNumber>
+<ProductName>SMAJ36A R2</ProductName>
+<CustomerProductNumber>600399</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.039</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>213A</CartonNumber>
+<Awb>PEK57044492</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072158TSCE</InvoiceNumber>
+<ProductName>SMAJ36A R2</ProductName>
+<CustomerProductNumber>600399</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.039</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>214A</CartonNumber>
+<Awb>PEK57044492</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072158TSCE</InvoiceNumber>
+<ProductName>SMAJ36A R2</ProductName>
+<CustomerProductNumber>600399</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.039</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>215A</CartonNumber>
+<Awb>PEK57044492</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-072158TSCE</InvoiceNumber>
+<ProductName>SMAJ36A R2</ProductName>
+<CustomerProductNumber>600399</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.039</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='1045145805/TV3 '>
+<PackingListNumber>53-160507-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>Siemens</CustomerName>
+<CustomerID>5719</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>EUR</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>7174</ShipToID>
+<Department>Nokia Siemens Networks GmbH &amp; Co KG</Department>
+<Street>Siemensallee 1</Street>
+<City>D-17489 Greifswald</City>
+<County>null</County>
+<Zip>null</Zip>
+<Country>Germany</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>6239</BillToID>
+<Department>Nokia Siemens Networks GmbH &amp; Co KG</Department>
+<Street>Postfach 3351</Street>
+<City>D-17463 Greifswald</City>
+<County>null</County>
+<Zip>null</Zip>
+<Country>Germany</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>247</CartonNumber>
+<Awb>PEK952372</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-071907TSCE</InvoiceNumber>
+<ProductName>RMB2S-02 RC</ProductName>
+<CustomerProductNumber>V5001-B1006-A220</CustomerProductNumber>
+<Quantity>48000</Quantity>
+<Price>0.0622</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='4531006338PPS'>
+<PackingListNumber>PPS160507D</PackingListNumber>
+<Date>0</Date>
+<CustomerName>PHILIPS LIGHTING BV</CustomerName>
+<CustomerID>3581</CustomerID>
+<ShipmentTerms>DDP</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<ShipToAddress>
+<ShipToID>4117</ShipToID>
+<Department>PHILIPS POWER Solutions Int</Department>
+<Street>Unit Electronic, Vacrecka 311</Street>
+<City>Namestovo</City>
+<County>null</County>
+<Zip>SK-029 01 </Zip>
+<Country>Slovakia</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>9256</BillToID>
+<Department>PHILIPS POWER Solutions Int. Accounts</Department>
+<Street>Vavrecka 311</Street>
+<City>Namestovo</City>
+<County>null</County>
+<Zip>SK-029 01</Zip>
+<Country>Slovakia</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>1B</CartonNumber>
+<Awb>8509026934</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073182TSCE</InvoiceNumber>
+<ProductName>SR304-21 X0</ProductName>
+<CustomerProductNumber>9322 238 70682</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.035</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>2B</CartonNumber>
+<Awb>8509026934</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073182TSCE</InvoiceNumber>
+<ProductName>SR304-21 X0</ProductName>
+<CustomerProductNumber>9322 238 70682</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.035</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>3B</CartonNumber>
+<Awb>8509026934</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073182TSCE</InvoiceNumber>
+<ProductName>SR304-21 X0</ProductName>
+<CustomerProductNumber>9322 238 70682</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.035</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>4B</CartonNumber>
+<Awb>8509026934</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073182TSCE</InvoiceNumber>
+<ProductName>SR304-21 X0</ProductName>
+<CustomerProductNumber>9322 238 70682</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.035</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>5B</CartonNumber>
+<Awb>8509026934</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073182TSCE</InvoiceNumber>
+<ProductName>SR304-21 X0</ProductName>
+<CustomerProductNumber>9322 238 70682</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.035</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>6B</CartonNumber>
+<Awb>8509026934</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-073182TSCE</InvoiceNumber>
+<ProductName>SR304-21 X0</ProductName>
+<CustomerProductNumber>9322 238 70682</CustomerProductNumber>
+<Quantity>15000</Quantity>
+<Price>0.035</Price>
+</Item>
+</Items>
+</CustomerPO>
+</PurchaseOrderList>

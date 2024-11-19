@@ -1,0 +1,157 @@
+<?xml version='1.0'  encoding='UTF-8'?>
+<PurchaseOrderList>
+<CustomerPO name='K025483 10'>
+<PackingListNumber>88-140911-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>VIDEOTON EAS KFT.</CustomerName>
+<CustomerID>30641</CustomerID>
+<ShipmentTerms>FCA MUNICH</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<modelName>10086434</modelName>
+<sourceCustID>88</sourceCustID>
+<sourceShipToID>489</sourceShipToID>
+<sourceBillToID>489</sourceBillToID>
+<ShipToAddress>
+<ShipToID>32537</ShipToID>
+<Department>Videoton EAS Kft.</Department>
+<Street>Ber?nyi ?t. 72-100</Street>
+<City>Sz?kesfeh?rv?r </City>
+<County></County>
+<Zip>8000</Zip>
+<Country>Hungary</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>32533</BillToID>
+<Department>Videoton EAS Kft.</Department>
+<Street>Ber?nyi ?t. 72-100</Street>
+<City>Sz?kesfeh?rv?r </City>
+<County></County>
+<Zip>8000</Zip>
+<Country>Hungary</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>167</CartonNumber>
+<Awb>TSN00121446</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-1109089TSCE</InvoiceNumber>
+<ProductName>S2MA-01 R2</ProductName>
+<CustomerProductNumber>10086434</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.021</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>201</CartonNumber>
+<Awb>TSN00123023</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-1110250TSCE</InvoiceNumber>
+<ProductName>S2MA-01 R2</ProductName>
+<CustomerProductNumber>10086434</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.021</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='K025483 110'>
+<PackingListNumber>88-140911-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>VIDEOTON EAS KFT.</CustomerName>
+<CustomerID>30641</CustomerID>
+<ShipmentTerms>FCA MUNICH</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<modelName>189412</modelName>
+<sourceCustID>88</sourceCustID>
+<sourceShipToID>489</sourceShipToID>
+<sourceBillToID>489</sourceBillToID>
+<ShipToAddress>
+<ShipToID>32537</ShipToID>
+<Department>Videoton EAS Kft.</Department>
+<Street>Ber?nyi ?t. 72-100</Street>
+<City>Sz?kesfeh?rv?r </City>
+<County></County>
+<Zip>8000</Zip>
+<Country>Hungary</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>32533</BillToID>
+<Department>Videoton EAS Kft.</Department>
+<Street>Ber?nyi ?t. 72-100</Street>
+<City>Sz?kesfeh?rv?r </City>
+<County></County>
+<Zip>8000</Zip>
+<Country>Hungary</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>259</CartonNumber>
+<Awb>TSN00121785</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-1109382TSCE</InvoiceNumber>
+<ProductName>ES1JL R2</ProductName>
+<CustomerProductNumber>189412</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.027</Price>
+</Item>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>258</CartonNumber>
+<Awb>TSN00121785</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-1109382TSCE</InvoiceNumber>
+<ProductName>ES1JL R2</ProductName>
+<CustomerProductNumber>189412</CustomerProductNumber>
+<Quantity>75000</Quantity>
+<Price>0.027</Price>
+</Item>
+</Items>
+</CustomerPO>
+<CustomerPO name='K025483 50'>
+<PackingListNumber>88-140911-A</PackingListNumber>
+<Date>0</Date>
+<CustomerName>VIDEOTON EAS KFT.</CustomerName>
+<CustomerID>30641</CustomerID>
+<ShipmentTerms>FCA MUNICH</ShipmentTerms>
+<Currency>USD</Currency>
+<Comments></Comments>
+<modelName>164772</modelName>
+<sourceCustID>88</sourceCustID>
+<sourceShipToID>489</sourceShipToID>
+<sourceBillToID>489</sourceBillToID>
+<ShipToAddress>
+<ShipToID>32537</ShipToID>
+<Department>Videoton EAS Kft.</Department>
+<Street>Ber?nyi ?t. 72-100</Street>
+<City>Sz?kesfeh?rv?r </City>
+<County></County>
+<Zip>8000</Zip>
+<Country>Hungary</Country>
+</ShipToAddress>
+<BillToAddress>
+<BillToID>32533</BillToID>
+<Department>Videoton EAS Kft.</Department>
+<Street>Ber?nyi ?t. 72-100</Street>
+<City>Sz?kesfeh?rv?r </City>
+<County></County>
+<Zip>8000</Zip>
+<Country>Hungary</Country>
+</BillToAddress>
+<Items>
+<Item>
+<TSCItemNo></TSCItemNo>
+<CartonNumber>1Z</CartonNumber>
+<Awb>TPE53192123</Awb>
+<SerialNumber></SerialNumber>
+<InvoiceNumber>T-1109341TSCE</InvoiceNumber>
+<ProductName>TS4148 RYG</ProductName>
+<CustomerProductNumber>164772</CustomerProductNumber>
+<Quantity>150000</Quantity>
+<Price>0.0073</Price>
+</Item>
+</Items>
+</CustomerPO>
+</PurchaseOrderList>
