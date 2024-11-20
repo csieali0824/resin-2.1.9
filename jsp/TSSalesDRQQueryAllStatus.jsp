@@ -1158,13 +1158,13 @@ try
    	qryAllChkBoxEditBean.setTableWrapAttr("nowrap");
    	qryAllChkBoxEditBean.setRs(rs);   
    	qryAllChkBoxEditBean.setScrollRowNumber(300);
-	if (statusID.equals("003") || statusID.equals("004"))
-	{
-		qryAllChkBoxEditBean.setOnSortingJS("setSorting"); //add by Peggy 20190812
-		qryAllChkBoxEditBean.setColSortingFlag(true); //add by Peggy 20190812
-		qryAllChkBoxEditBean.setColSorting(SORT_COL); //add by Peggy 20190812
-		qryAllChkBoxEditBean.setColSortingType(SORT_TYPE); //add by Peggy 20190812
-	}
+//	if (statusID.equals("003") || statusID.equals("004"))
+//	{
+//		qryAllChkBoxEditBean.setOnSortingJS("setSorting"); //add by Peggy 20190812
+//		qryAllChkBoxEditBean.setColSortingFlag(true); //add by Peggy 20190812
+//		qryAllChkBoxEditBean.setColSorting(SORT_COL); //add by Peggy 20190812
+//		qryAllChkBoxEditBean.setColSortingType(SORT_TYPE); //add by Peggy 20190812
+//	}
    
    	if (statusID.equals("009")) // 如為訂單生成,則顯示 ToolTip於DNDOCNO
    	{
