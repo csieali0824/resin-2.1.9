@@ -1,8 +1,8 @@
-<!-- 20141008 by Peggy,ccyang¥i¬d¬İ©Ò¦³statuscode=014ªºrfq-->
-<!-- 20141211 by Peggy,EDI«È¤áªºRFQ¤]¶·­n¨D¿é¤JCUSTOMER PO LINE NUMBER-->
-<!-- 20151221 by Peggy,read oe_items_v±`µo¥Ítable lock¥B¤£ª¾¬°¦ó­nÅã¥Ü©Ò¦³«È¤á«~¸¹¬G¥ımark-->
-<!-- 20160629 by Peggy,Åã¥Ücustomer po number-->
-<%@ page language="java" import="java.sql.*,java.text.*"%>
+<!-- 20141008 by Peggy,ccyangå¯æŸ¥çœ‹æ‰€æœ‰statuscode=014çš„rfq-->
+<!-- 20141211 by Peggy,EDIå®¢æˆ¶çš„RFQä¹Ÿé ˆè¦æ±‚è¼¸å…¥CUSTOMER PO LINE NUMBER-->
+<!-- 20151221 by Peggy,read oe_items_vå¸¸ç™¼ç”Ÿtable lockä¸”ä¸çŸ¥ç‚ºä½•è¦é¡¯ç¤ºæ‰€æœ‰å®¢æˆ¶å“è™Ÿæ•…å…ˆmark-->
+<!-- 20160629 by Peggy,é¡¯ç¤ºcustomer po number-->
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.text.*"%>
 <html>
 <%@ page import="DateBean" %>
 <jsp:useBean id="dateBean" scope="page" class="DateBean"/>
@@ -154,10 +154,10 @@
 	String customerNo="",recCenterName="",customerName="",recPersonName="";
 	String preRepMethod="",preRepMethodName="",actRepMethod="",actRepMethodName="",actRepDesc="",isTransmitted="";
 	String preLineType="",swapIMEI="",itemDesc="",recDate="",recItemNo2="",recItemName2="";
-	String isQuoted="N";//?O¡±_|33o?u¡MeRA
+	String isQuoted="N";//?OÂ§_|33o?uï¹eRA
 	String repairingCost="",itemCost="",transCost="",otherCost="";//3o?uAEAU?A
 	String agentName="",agentNo="",recType="",recTypeName="",qty="";
-	String Limited=""; //?OcT¡¦A--
+	String Limited=""; //?OcTâ€™A--
 	String hStatusID ="",hStatus="";
 	String sampleOrder = "",sampleCharge = "";
 	String showSSD ="N"; //add by Peggychen 20110621
@@ -195,7 +195,7 @@
 					" WHERE a.DNDOCNO=b.DNDOCNO and a.DNDOCNO='"+dnDocNo+"'"+
 					" and a.rfq_type=c.a_seq(+) ";
 		}
-		else if (UserRoles.indexOf("SalesPlanner")>=0 || UserRoles.indexOf("CInternal_Planner")>=0) // ¥ø¹ºAssigning?RESPONDING
+		else if (UserRoles.indexOf("SalesPlanner")>=0 || UserRoles.indexOf("CInternal_Planner")>=0) // ä¼åŠƒAssigning?RESPONDING
 		{
 			sqlDocs="select b.assign_manufact,tsc_get_item_coo(b.inventory_item_id) COO," +
 					"tsc_rfq_create_erp_odr_pkg.TSC_GET_ORDER_TYPE(b.inventory_item_id) as ORDER_NUM," +
@@ -212,14 +212,14 @@
 
 			if (UserRegionSet==null || UserRegionSet.equals(""))
 			{
-				sqlDocs += " and (b.ASSIGN_MANUFACT = '"+userProdCenterNo+"' or substr(a.DNDOCNO,3,3) >='"+userActCenterNo+"' ) "; // ­Y¬OªÅªº¦a°Ï¶°,«h¥H¥D­nªº·~°È°Ï
+				sqlDocs += " and (b.ASSIGN_MANUFACT = '"+userProdCenterNo+"' or substr(a.DNDOCNO,3,3) >='"+userActCenterNo+"' ) "; // è‹¥æ˜¯ç©ºçš„åœ°å€é›†,å‰‡ä»¥ä¸»è¦çš„æ¥­å‹™å€
 			}
 			else
 			{
 				sqlDocs += " and ( b.ASSIGN_MANUFACT = '"+userProdCenterNo+"' or substr(a.DNDOCNO,3,3) >='"+userActCenterNo+"' )  ";
 			}
 		}
-		else //·~°È©Î¤u¼tPC
+		else //æ¥­å‹™æˆ–å·¥å» PC
 		{
 			sqlDocs="select b.assign_manufact,tsc_get_item_coo(b.inventory_item_id) COO," +
 					"tsc_rfq_create_erp_odr_pkg.TSC_GET_ORDER_TYPE(b.inventory_item_id) as ORDER_NUM," +
@@ -233,7 +233,7 @@
 					",(SELECT a_seq,a_value  FROM oraddman.tsc_rfq_setup  WHERE A_CODE='RFQ_TYPE') c"+  //add by Peggy 20211119
 					" WHERE a.DNDOCNO=b.DNDOCNO and a.DNDOCNO='"+dnDocNo+"'"+
 					" and a.rfq_type=c.a_seq(+) ";
-			//add by Peggy 20170525,­ìsql¦Ñ¬Oµo¥Ílock,§ï¦¨¥H¤Uwhere¬İ¬O§_¯à¸Ñ¨M
+			//add by Peggy 20170525,åŸsqlè€æ˜¯ç™¼ç”Ÿlock,æ”¹æˆä»¥ä¸‹whereçœ‹æ˜¯å¦èƒ½è§£æ±º
 			if (userProdCenterNo==null || userProdCenterNo.equals(""))
 			{
 				if  (UserRegionSet==null || UserRegionSet.equals(""))
@@ -251,7 +251,7 @@
 			}
 			//if (UserRegionSet==null || UserRegionSet.equals(""))
 			//{
-			//	sqlDocs = sqlDocs + " and (b.ASSIGN_MANUFACT = '"+userProdCenterNo+"' or substr(a.DNDOCNO,3,3) ='"+userActCenterNo+"' ) "; // ­Y¬OªÅªº¦a°Ï¶°,«h¥H¥D­nªº·~°È°Ï
+			//	sqlDocs = sqlDocs + " and (b.ASSIGN_MANUFACT = '"+userProdCenterNo+"' or substr(a.DNDOCNO,3,3) ='"+userActCenterNo+"' ) "; // è‹¥æ˜¯ç©ºçš„åœ°å€é›†,å‰‡ä»¥ä¸»è¦çš„æ¥­å‹™å€
 			//}
 			//else
 			//{
@@ -294,7 +294,7 @@
 		orderNum = docrs.getString("ORDER_NUM");
 		soldToOrg=docrs.getString("SOLD_TO_ORG");
 		priceList=docrs.getString("PRICE_LIST");
-		shipToOrg=docrs.getString("SHIP_TO_ORG");//?a¢Xeou-¡Ñ|?¢Do?£g¢DO
+		shipToOrg=docrs.getString("SHIP_TO_ORG");//?aÂ°eou-Ã—|?ï¿¥o?Î¼ï¿¥O
 		if (shipToOrg == null) shipToOrg = "";
 		salesPerson=docrs.getString("SALESPERSON");
 		sampleOrder =docrs.getString("SAMPLE_ORDER");
@@ -427,7 +427,7 @@
 		<%
      
     String custPOStr = "";
-	if (custPO!=null && custPO.equals("")) custPOStr=custPO.replace("'","");  // §â ' ¦r²´¨ú¥N¦¨ªÅ¦r¦ê(2006/12/12)
+	if (custPO!=null && custPO.equals("")) custPOStr=custPO.replace("'","");  // æŠŠ ' å­—çœ¼å–ä»£æˆç©ºå­—ä¸²(2006/12/12)
 	if (custPOStr!=null && !custPOStr.equals(""))
 	{
 		Statement seqStat=con.createStatement();
@@ -453,7 +453,7 @@
 	&nbsp;&nbsp;&nbsp;&nbsp;<font color='DA70D6' size='2'><A HREF='javaScript:historyByCust("<%=customerNo%>","<%=customer%>","<%=tsCustomerID%>")'><jsp:getProperty name="rPH" property="pgTSDRQNoHistory"/>(by Customer)</A></font>
 		<%
 		}	     
-		//} //END OF DAO/DAP¡±Pcw£g2aGif
+		//} //END OF DAO/DAPÂ§PcwÎ¼2aGif
 		seqRs1.close();
 		seqStat1.close();
 	}
@@ -497,7 +497,7 @@
 				:<%=curr%></td>
 		</tr>
 		<%
-			if (hStatusID.equals("001") || hStatusID.equals("008"))  //add by peggy 2012022,¯ó½Z¤~Åã¥Ü¥X³f¦a§},¥ß±b¦a§},¥I´Ú±ø¥ó,FOB
+			if (hStatusID.equals("001") || hStatusID.equals("008"))  //add by peggy 2012022,è‰ç¨¿æ‰é¡¯ç¤ºå‡ºè²¨åœ°å€,ç«‹å¸³åœ°å€,ä»˜æ¬¾æ¢ä»¶,FOB
 			{
 				if (!PAYTERM_ID.equals("") && !PAYTERM_ID.equals("N/A"))
 				{
@@ -772,7 +772,7 @@
 					String sqlDTL = "";
 					//if (UserRoles.indexOf("admin")>=0) // ???,????????
 					if (UserRoles.indexOf("admin")>=0  || (UserRoles.indexOf("SMCUser")>=0 && (UserName.equals("CCYANG") || UserName.equals("RITA_ZHOU")) && lineStatusID.equals("014")) ) //modif by Peggy 20141008
-					{ // ºŞ²z­û
+					{ // ç®¡ç†å“¡
 						sqlDTL ="select LINE_NO, ITEM_SEGMENT1, ITEM_DESCRIPTION, QUANTITY, UOM, REQUEST_DATE,"+
 								" REMARK,ASSIGN_MANUFACT,substr(PCCFMDATE,1,8) as PCCFMDATE,substr(FTACPDATE,1,8) as FTACPDATE,"+
 								"substr(PCACPDATE,1,8) as PCACPDATE,substr(SASCODATE,1,8) as SASCODATE,SDRQ_EXCEED,"+
@@ -790,7 +790,7 @@
 								" order by LINE_NO";
 					}
 					else if ((statusid.equals("002") || statusid.equals("007")) && ( UserRoles.indexOf("SalesPlanner")>=0) || UserRoles.indexOf("CInternal_Planner")>=0) // ????????Assigning?RESPONDING
-					{ // ¥ø¹º¤H­û(¤º¥~¾P)
+					{ // ä¼åŠƒäººå“¡(å…§å¤–éŠ·)
 						sqlDTL =" select LINE_NO, ITEM_SEGMENT1, ITEM_DESCRIPTION, QUANTITY, UOM, REQUEST_DATE,"+
 								" REMARK,ASSIGN_MANUFACT,substr(PCCFMDATE,1,8) as PCCFMDATE,substr(FTACPDATE,1,8) as FTACPDATE,"+
 								"substr(PCACPDATE,1,8) as PCACPDATE,substr(SASCODATE,1,8) as SASCODATE,SDRQ_EXCEED, ORDERNO,"+
@@ -807,7 +807,7 @@
 								" and a.shipping_method=b.lookup_code(+)";
 						if (UserRegionSet==null || UserRegionSet.equals(""))
 						{
-							sqlDTL += " and ( ASSIGN_MANUFACT = '"+userProdCenterNo+"' or substr(DNDOCNO,3,3) >='"+userActCenterNo+"' ) "; // ­Y¬OªÅªº¦a°Ï¶°,«h¥H¥D­nªº·~°È°Ï
+							sqlDTL += " and ( ASSIGN_MANUFACT = '"+userProdCenterNo+"' or substr(DNDOCNO,3,3) >='"+userActCenterNo+"' ) "; // è‹¥æ˜¯ç©ºçš„åœ°å€é›†,å‰‡ä»¥ä¸»è¦çš„æ¥­å‹™å€
 						}
 						else
 						{
@@ -816,7 +816,7 @@
 						sqlDTL +=" order by LINE_NO";
 					}
 					else
-					{  // ¤u¼t¥ÍºŞ©Î·~°È
+					{  // å·¥å» ç”Ÿç®¡æˆ–æ¥­å‹™
 						sqlDTL ="select LINE_NO, ITEM_SEGMENT1, ITEM_DESCRIPTION, QUANTITY, UOM, REQUEST_DATE,"+
 								" REMARK,ASSIGN_MANUFACT,substr(PCCFMDATE,1,8) as PCCFMDATE,substr(FTACPDATE,1,8) as FTACPDATE,"+
 								"substr(PCACPDATE,1,8) as PCACPDATE,substr(SASCODATE,1,8) as SASCODATE,SDRQ_EXCEED,"+
@@ -833,7 +833,7 @@
 								" and a.shipping_method=b.lookup_code(+)";
 						if (UserRegionSet==null || UserRegionSet.equals(""))
 						{
-							sqlDTL += " and ( ASSIGN_MANUFACT = '"+userProdCenterNo+"' or substr(DNDOCNO,3,3) ='"+userActCenterNo+"' ) "; // ­Y¬OªÅªº¦a°Ï¶°,«h¥H¥D­nªº·~°È°Ï
+							sqlDTL += " and ( ASSIGN_MANUFACT = '"+userProdCenterNo+"' or substr(DNDOCNO,3,3) ='"+userActCenterNo+"' ) "; // è‹¥æ˜¯ç©ºçš„åœ°å€é›†,å‰‡ä»¥ä¸»è¦çš„æ¥­å‹™å€
 						}
 						else
 						{
@@ -874,7 +874,7 @@
 							assignFactory=rs.getString("ASSIGN_MANUFACT");
 						} // ???? "N/A"
 						//out.println("Step1");
-						// 2007/03/29 ¼W¥[Åã¥Ü«È¤á«~¸¹©ó ToolTip_°_
+						// 2007/03/29 å¢åŠ é¡¯ç¤ºå®¢æˆ¶å“è™Ÿæ–¼ ToolTip_èµ·
 
 						//String detailHdr = null;
 						//String detailLot = null;
@@ -894,7 +894,7 @@
 						//ResultSet rsCI=stateCI.executeQuery(sqlCI);
 						//while (rsCI.next())
 						//{
-						//	detailLot = detailLot +"<tr><td>"+rsCI.getString("ITEM_ID")+"</td><td><div align=right>"+rsCI.getString("CUST_ITEM")+"</div></td><td><div align=right>"+rsCI.getString("ITEM_DESCRIPTION")+"</div></td><td><div align=right>"+rsCI.getString("ITEM_IDENTIFIER_TYPE")+"</div></td></tr>";  // ²Õ¦X«e¬q¤©«á¬q»â¥Îªº§å¸¹
+						//	detailLot = detailLot +"<tr><td>"+rsCI.getString("ITEM_ID")+"</td><td><div align=right>"+rsCI.getString("CUST_ITEM")+"</div></td><td><div align=right>"+rsCI.getString("ITEM_DESCRIPTION")+"</div></td><td><div align=right>"+rsCI.getString("ITEM_IDENTIFIER_TYPE")+"</div></td></tr>";  // çµ„åˆå‰æ®µäºˆå¾Œæ®µé ˜ç”¨çš„æ‰¹è™Ÿ
 						//}
 						//rsCI.close();
 						//stateCI.close();
@@ -902,7 +902,7 @@
 						//detailLot = detailLot + "</table>";
 						//detailHdr = detailHdr + detailLot;
 
-						// 2007/03/29 ¼W¥[Åã¥Ü«È¤á«~¸¹©ó ToolTip_¨´
+						// 2007/03/29 å¢åŠ é¡¯ç¤ºå®¢æˆ¶å“è™Ÿæ–¼ ToolTip_è¿„
 						//out.println(assignFactory);
 						//out.println("select MANUFACTORY_NAME from ORADDMAN.TSPROD_MANUFACTORY where MANUFACTORY_NO='"+rs.getString("ASSIGN_MANUFACT")+"'");
 						out.print("<TR onmouseover=bgColor='#FBFE81' onmouseout=bgColor='#FFFFFF'>");
@@ -1022,9 +1022,9 @@ if (frStatID.equals("009"))
 		<%
 } 
 %>
-	<!--3o?u?O¢DI¢XI-->
+	<!--3o?u?Oï¿¥IÂ°I-->
 
-	<!-- ai3a¢XN?A -->
+	<!-- ai3aÂ°N?A -->
 	<input name="FORMID" type="HIDDEN" value="TS" >
 	<input name="FROMSTATUSID" type="HIDDEN" value="<%=frStatID%>" >
 	<input name="PRODFACTORY" type="HIDDEN" value="<%=prodFactory%>">
