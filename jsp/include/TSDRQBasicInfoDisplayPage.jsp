@@ -759,8 +759,8 @@
 								"substr(PCACPDATE,1,8) as PCACPDATE,substr(SASCODATE,1,8) as SASCODATE,SDRQ_EXCEED,"+
 								" ORDERNO, INVENTORY_ITEM_ID,substr(SHIP_DATE,1,8) as SHIP_DATE, "+
 								" cust_request_date,shipping_method,b.meaning shipping_method_name, ORDERED_ITEM"+ //add by Peggychen 20110621
-//								",case when ASSIGN_MANUFACT = '002' and '" + tsAreaNo +"' in('008') and TSC_INV_CATEGORY(a.inventory_item_id,43,23) in ('SMA','SMB','SMC','SOD-123W','SOD-128') then '1141' "+ // Add by Mars 20241107
-								",case when '"+ rfq_Type_Name+"' not in ('EDI') then nvl((select b.order_num from oraddman.tsarea_ordercls b where b.sarea_no ='"+tsAreaNo+"' and  TO_CHAR(a.order_type_id) = b.OTYPE_ID),'N/A')"+//add by Peggy 20120222
+								",case when ASSIGN_MANUFACT = '002' and '" + tsAreaNo +"' in('008') and TSC_INV_CATEGORY(a.inventory_item_id,43,23) in ('SMA','SMB','SMC','SOD-123W','SOD-128') then '1141' "+ // Add by Mars 20241107
+								" when '"+ rfq_Type_Name+"' not in ('EDI') then nvl((select b.order_num from oraddman.tsarea_ordercls b where b.sarea_no ='"+tsAreaNo+"' and  TO_CHAR(a.order_type_id) = b.OTYPE_ID),'N/A')"+//add by Peggy 20120222
 								" else tsc_rfq_create_erp_odr_pkg.TSC_GET_ORDER_TYPE(a.inventory_item_id) end ORDER_TYPE "+
 								",a.CUST_PO_NUMBER"+ //add by Peggy 20160629
 								" from ORADDMAN.TSDELIVERY_NOTICE_DETAIL a "+
@@ -777,8 +777,8 @@
 								"substr(PCACPDATE,1,8) as PCACPDATE,substr(SASCODATE,1,8) as SASCODATE,SDRQ_EXCEED, ORDERNO,"+
 								" INVENTORY_ITEM_ID,substr(SHIP_DATE,1,8) as SHIP_DATE, "+
 								" cust_request_date,shipping_method,b.meaning shipping_method_name, ORDERED_ITEM"+ //add by Peggychen 20110621
-//								",case when ASSIGN_MANUFACT = '002' and '" + tsAreaNo +"' in('008') and TSC_INV_CATEGORY(a.inventory_item_id,43,23) in ('SMA','SMB','SMC','SOD-123W','SOD-128') then '1141' "+ // Add by Mars 20241107
-								",case when '"+ rfq_Type_Name+"' not in ('EDI') then nvl((select b.order_num from oraddman.tsarea_ordercls b where b.sarea_no ='"+tsAreaNo+"' and  TO_CHAR(a.order_type_id) = b.OTYPE_ID),'N/A')"+//add by Peggy 20120222
+								",case when ASSIGN_MANUFACT = '002' and '" + tsAreaNo +"' in('008') and TSC_INV_CATEGORY(a.inventory_item_id,43,23) in ('SMA','SMB','SMC','SOD-123W','SOD-128') then '1141' "+ // Add by Mars 20241107
+								" when '"+ rfq_Type_Name+"' not in ('EDI') then nvl((select b.order_num from oraddman.tsarea_ordercls b where b.sarea_no ='"+tsAreaNo+"' and  TO_CHAR(a.order_type_id) = b.OTYPE_ID),'N/A')"+//add by Peggy 20120222
 								" else tsc_rfq_create_erp_odr_pkg.TSC_GET_ORDER_TYPE(a.inventory_item_id) end ORDER_TYPE "+
 								",a.CUST_PO_NUMBER"+ //add by Peggy 20160629
 								" from ORADDMAN.TSDELIVERY_NOTICE_DETAIL a"+
@@ -803,8 +803,8 @@
 								"substr(PCACPDATE,1,8) as PCACPDATE,substr(SASCODATE,1,8) as SASCODATE,SDRQ_EXCEED,"+
 								" ORDERNO, INVENTORY_ITEM_ID,substr(SHIP_DATE,1,8) as SHIP_DATE, "+
 								" cust_request_date,shipping_method,b.meaning shipping_method_name, ORDERED_ITEM"+ //add by Peggychen 20110621
-//								",case when ASSIGN_MANUFACT = '002' and '" + tsAreaNo +"' in('008') and TSC_INV_CATEGORY(a.inventory_item_id,43,23) in ('SMA','SMB','SMC','SOD-123W','SOD-128') then '1141' "+ // Add by Mars 20241107
-								",case when '"+ rfq_Type_Name+"' not in ('EDI') then nvl((select b.order_num from oraddman.tsarea_ordercls b where b.sarea_no ='"+tsAreaNo+"' and  TO_CHAR(a.order_type_id) = b.OTYPE_ID),'N/A')"+//add by Peggy 20120222
+								",case when ASSIGN_MANUFACT = '002' and '" + tsAreaNo +"' in('008') and TSC_INV_CATEGORY(a.inventory_item_id,43,23) in ('SMA','SMB','SMC','SOD-123W','SOD-128') then '1141' "+ // Add by Mars 20241107
+								" when '"+ rfq_Type_Name+"' not in ('EDI') then nvl((select b.order_num from oraddman.tsarea_ordercls b where b.sarea_no ='"+tsAreaNo+"' and  TO_CHAR(a.order_type_id) = b.OTYPE_ID),'N/A')"+//add by Peggy 20120222
 								" else tsc_rfq_create_erp_odr_pkg.TSC_GET_ORDER_TYPE(a.inventory_item_id) end ORDER_TYPE "+
 								",a.CUST_PO_NUMBER"+ //add by Peggy 20160629
 								"  from ORADDMAN.TSDELIVERY_NOTICE_DETAIL  a"+
