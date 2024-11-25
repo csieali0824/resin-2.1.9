@@ -1,6 +1,6 @@
 <!--modify by Peggy 20140829,added to modify FOB,PAYMENT TERM,SHIP TO CONTACT-->
 <!--modify by Peggy 20150618,add two columns "Hold Shipment" & "Remove Hold"-->
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.io.*" %>
+<%@ page contentType="text/html; charset=utf-8" pageEncoding="big5" language="java" import="java.sql.*,java.io.*" %>
 <%@ page import="QueryAllBean,ComboBoxAllBean,ComboBoxBean,DateBean,ArrayComboBoxBean" %>
 <!--=============To get the Authentication==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
@@ -22,24 +22,24 @@
       <td width="74%"><font size="2">
         <INPUT TYPE="FILE"NAME="UPLOADFILE" size="50">
         <INPUT name="submit" TYPE="submit" value="UPLOAD" >&nbsp;&nbsp;&nbsp;&nbsp;
-      </font><a title="按下此連結，下載excel上傳範本" href='..//jsp/samplefiles/D4-009_OrderRevise_Samplefile.xls'><font style="font-size:14px;font-family:arial">Download Sample File</font></a></td>
+      </font><a title="���U���s���A�U��excel�W�ǽd��" href='..//jsp/samplefiles/D4-009_OrderRevise_Samplefile.xls'><font style="font-size:14px;font-family:arial">Download Sample File</font></a></td>
     </tr>
   </table> 
 <p><font style="color:#000099;font-size:14px;font-family:arial">
-   01.上傳的Excel檔案,請勿開啟。<br>
-   02.上傳EXCEL檔案請依以下格式,第一列為標題列,實際資料由第二列填起。<br>
-   03.欄位依序排列好位置要正確,否則會抓錯資料。<br>
-   04.請確認OM及Line是正確的,此為比對依據。<br>
-   05.Item, Cusomter, Initial SSD參考用,不比對資料是否一致,不修改資料。<br>
-   06.PO No, Qty, Price, Request pull in to, Shipping Method,若有任一資料與原資料不同,即可進行修改line資料,但不修改header資料。<br>
-   07.PO No, Qty, Price, Request pull in to, Shipping Method,若有不填入資料(空值),表示該欄位資料不進行修改。<br>
-   08.若修改成功,Version Number會加1,Remarks加入原REMARKS中。<br>
-   09.Change Reason(O欄位)可輸入的值為:<font color="#ff0000">Related PO change</font>,Customer Require,<font color="#ff0000">Credit problem or insolvency</font>, <font color="#ff0000">Qty and SSD Move</font>, Part NO. Amend, Sales Key In Error六種,請由下拉選單中選擇,若輸入值非前述六項之一,則無法修改訂單。<font color='red'>(2015/5/29修訂)</font><br>
-   10.新增Change Comments(P欄位),可輸入變更原因。<br>
-   11.新增CRD(Q欄位),輸入欲變更的REQUEST DATE。<br>
-   12.上傳修改欄位新增FOB(R欄),PAYMENT TERM(S欄),SHIP TO CONTACT ID(T欄)..等三個欄位。<br>
-   13.新增<font color="#ff0000">Hold Shipment(U欄位),Hold Reason(V欄位)</font>,欲Hold訂單,請選擇Yes_Cancel或Yes_Push out,並於Hold Reason欄位填入原因,欲將Hold訂單取消,請選擇Remove Hold,非上述需求者,此兩欄請保持空白。<font color="#ff0000">(2015/6/22增訂)</font><br>
-   14.範例格式如下所示:</font><br>
+   01.�W�Ǫ�Excel�ɮ�,�ФŶ}�ҡC<br>
+   02.�W��EXCEL�ɮ׽Ш̥H�U�榡,�Ĥ@�C�����D�C,��ڸ�ƥѲĤG�C��_�C<br>
+   03.���̧ǱƦC�n��m�n���T,�_�h�|�����ơC<br>
+   04.�нT�{OM��Line�O���T��,�������̾ڡC<br>
+   05.Item, Cusomter, Initial SSD�Ѧҥ�,������ƬO�_�@�P,���ק��ơC<br>
+   06.PO No, Qty, Price, Request pull in to, Shipping Method,�Y�����@��ƻP���Ƥ��P,�Y�i�i��ק�line���,�����ק�header��ơC<br>
+   07.PO No, Qty, Price, Request pull in to, Shipping Method,�Y������J���(�ŭ�),���ܸ�����Ƥ��i��ק�C<br>
+   08.�Y�ק令�\,Version Number�|�[1,Remarks�[�J��REMARKS���C<br>
+   09.Change Reason(O���)�i��J���Ȭ�:<font color="#ff0000">Related PO change</font>,Customer Require,<font color="#ff0000">Credit problem or insolvency</font>, <font color="#ff0000">Qty and SSD Move</font>, Part NO. Amend, Sales Key In Error����,�ХѤU�Կ�椤���,�Y��J�ȫD�e�z�������@,�h�L�k�ק�q��C<font color='red'>(2015/5/29�׭q)</font><br>
+   10.�s�WChange Comments(P���),�i��J�ܧ��]�C<br>
+   11.�s�WCRD(Q���),��J���ܧ�REQUEST DATE�C<br>
+   12.�W�ǭק����s�WFOB(R��),PAYMENT TERM(S��),SHIP TO CONTACT ID(T��)..���T�����C<br>
+   13.�s�W<font color="#ff0000">Hold Shipment(U���),Hold Reason(V���)</font>,��Hold�q��,�п��Yes_Cancel��Yes_Push out,�é�Hold Reason����J��],���NHold�q�����,�п��Remove Hold,�D�W�z�ݨD��,������ЫO���ťաC<font color="#ff0000">(2015/6/22�W�q)</font><br>
+   14.�d�Ү榡�p�U�ҥ�:</font><br>
    <br>
   <img src="images/salesorderrevise.png" ></p>
 <p>&nbsp;</p>
