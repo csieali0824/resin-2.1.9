@@ -1,7 +1,7 @@
-<%@ page contentType="text/html; charset=utf-8" pageEncoding="big5" language="java" import="java.sql.*,java.util.*,java.math.BigDecimal,java.text.DecimalFormat" %>
-<!--=============¥H¤U°Ï¬q¬°¦w¥ş»{ÃÒ¾÷¨î==========-->
+<%@ page contentType="text/html; charset=utf-8"  language="java" import="java.sql.*,java.util.*,java.math.BigDecimal,java.text.DecimalFormat" %>
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå®‰å…¨èªè­‰æ©Ÿåˆ¶==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
@@ -28,13 +28,13 @@ function alertItemExistsMsg(msItemExists)
 <head>
 <title>MFG System Work Order Process Page</title>
 <jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="arrMFG2DWOExpandBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR ¤u¥O¸ê®Æ­n®i¬yµ{¥d¤Î¥á¤JWIP interface-->
+<jsp:useBean id="arrMFG2DWOExpandBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR å·¥ä»¤è³‡æ–™è¦å±•æµç¨‹å¡åŠä¸Ÿå…¥WIP interface-->
 <jsp:useBean id="arrMFG2DRunCardBean" scope="session" class="Array2DimensionInputBean"/>
-<jsp:useBean id="arrMFGRCExpTransBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR ¬yµ{¥d¤w®i¶}-> ¬yµ{¥d²¾¯¸¤¤ -->
-<jsp:useBean id="arrayLotIssueCheckBean" scope="session" class="ArrayCheckBoxBean"/>   <!--FOR «á¬q¬yµ{¥d«İ§ë²£ Match¹ê»Ú§¹¤u«e¬q§å¸¹-->
-<jsp:useBean id="arrMFGRCMovingBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR ¬yµ{¥d²¾¯¸¤¤-> ¬yµ{¥d²¾¯¸¤¤ -->
-<jsp:useBean id="arrMFGRCCompleteBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR ¬yµ{¥d²¾¯¸¤¤-> ¬yµ{¥d§¹¤u¤J®w -->
-<jsp:useBean id="arrMFGRsUpdateBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR ¬yµ{¥d¤w®i¶}-> ¤u®É²§°Ê liling --> 
+<jsp:useBean id="arrMFGRCExpTransBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR æµç¨‹å¡å·²å±•é–‹-> æµç¨‹å¡ç§»ç«™ä¸­ -->
+<jsp:useBean id="arrayLotIssueCheckBean" scope="session" class="ArrayCheckBoxBean"/>   <!--FOR å¾Œæ®µæµç¨‹å¡å¾…æŠ•ç”¢ Matchå¯¦éš›å®Œå·¥å‰æ®µæ‰¹è™Ÿ-->
+<jsp:useBean id="arrMFGRCMovingBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR æµç¨‹å¡ç§»ç«™ä¸­-> æµç¨‹å¡ç§»ç«™ä¸­ -->
+<jsp:useBean id="arrMFGRCCompleteBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR æµç¨‹å¡ç§»ç«™ä¸­-> æµç¨‹å¡å®Œå·¥å…¥åº« -->
+<jsp:useBean id="arrMFGRsUpdateBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR æµç¨‹å¡å·²å±•é–‹-> å·¥æ™‚ç•°å‹• liling --> 
 <jsp:useBean id="arrMFGResourceBean" scope="session" class="Array2DimensionInputBean"/>
 <jsp:useBean id="sendMailBean" scope="page" class="SendMailBean"/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
@@ -43,25 +43,25 @@ function alertItemExistsMsg(msItemExists)
 <FORM ACTION="TSCMfgWoMProcess.jsp" METHOD="post" NAME="MPROCESSFORM">
 <%
 String serverHostName=request.getServerName();
-String mailHost=application.getInitParameter("MAIL_HOST"); //¥ÑServerªºweb.xml¤¤¨ú¥Xmail serverªºhost name
+String mailHost=application.getInitParameter("MAIL_HOST"); //ç”±Serverçš„web.xmlä¸­å–å‡ºmail serverçš„host name
 String previousPageAddress=request.getParameter("PREVIOUSPAGEADDRESS");
 String inspLotNo=request.getParameter("INSPLOTNO");
 String formID=request.getParameter("FORMID");
 String typeNo=request.getParameter("TYPENO");
-String isTransmitted=request.getParameter("ISTRANSMITTED");//¨ú±o«e¤@­¶³B²z¤§ºû­×®×¥ó¬O§_¤w«á°e¤§FLAG
+String isTransmitted=request.getParameter("ISTRANSMITTED");//å–å¾—å‰ä¸€é è™•ç†ä¹‹ç¶­ä¿®æ¡ˆä»¶æ˜¯å¦å·²å¾Œé€ä¹‹FLAG
 String fromStatusID=request.getParameter("FROMSTATUSID");
 String actionID=request.getParameter("ACTIONID");
 String remark=request.getParameter("REMARK");
 
-// MFG¤u¥O¸ê®Æ_°Ñ¼Æ°_   
-String woNo=request.getParameter("WO_NO");   //¤u³æ¸¹
-String runCardCountI=request.getParameter("RUNCARDCOUNTI");   //±ı®i¤§¬yµ{¥d±i¼Æ
-String runCardQty=request.getParameter("RUNCARDQTY");        //³æ±i¬yµ{¥d¼Æ¶q
-String runCardCountD=request.getParameter("RUNCARDCOUNTD");  //§À±i¬yµ{¥d¼Æ¶q
-String dividedFlag=request.getParameter("DIVIDEDFLAG");      //¬O§_³Q¾ã°£ ¾ã°£='Y' ,¥¼³Q¾ã°£¤§¬yµ{¥d­n¦h¥[¤@±i
-String singleControl=request.getParameter("SINGLECONTROL");   //¬O§_¬°³æ§å±±ºŞ
-String runCardPrffix=request.getParameter("RUNCARDPREFIX");   //¬yµ{¥d«e¸m½X
-String runCardNo=request.getParameter("RUNCARD_NO");   //¬yµ{¥d¸¹
+// MFGå·¥ä»¤è³‡æ–™_åƒæ•¸èµ·   
+String woNo=request.getParameter("WO_NO");   //å·¥å–®è™Ÿ
+String runCardCountI=request.getParameter("RUNCARDCOUNTI");   //æ¬²å±•ä¹‹æµç¨‹å¡å¼µæ•¸
+String runCardQty=request.getParameter("RUNCARDQTY");        //å–®å¼µæµç¨‹å¡æ•¸é‡
+String runCardCountD=request.getParameter("RUNCARDCOUNTD");  //å°¾å¼µæµç¨‹å¡æ•¸é‡
+String dividedFlag=request.getParameter("DIVIDEDFLAG");      //æ˜¯å¦è¢«æ•´é™¤ æ•´é™¤='Y' ,æœªè¢«æ•´é™¤ä¹‹æµç¨‹å¡è¦å¤šåŠ ä¸€å¼µ
+String singleControl=request.getParameter("SINGLECONTROL");   //æ˜¯å¦ç‚ºå–®æ‰¹æ§ç®¡
+String runCardPrffix=request.getParameter("RUNCARDPREFIX");   //æµç¨‹å¡å‰ç½®ç¢¼
+String runCardNo=request.getParameter("RUNCARD_NO");   //æµç¨‹å¡è™Ÿ
 String classID=request.getParameter("CLASSID");
 String woType=request.getParameter("WOTYPE");
 String alternateRouting=request.getParameter("ALTERNATEROUTING");
@@ -90,19 +90,19 @@ String routingRefID      = "0";
 float resourceQty = 0;
 float machine_resourceQty = 0;//add by Peggy 20120604
 
-String runCardCount=String.valueOf(runCardCountI);  //¬yµ{¥d±i¼Æ
-String dateCodeSet = request.getParameter("DATECODE");  // §å¦¸µ¹©wªº§ë²£DateCode
+String runCardCount=String.valueOf(runCardCountI);  //æµç¨‹å¡å¼µæ•¸
+String dateCodeSet = request.getParameter("DATECODE");  // æ‰¹æ¬¡çµ¦å®šçš„æŠ•ç”¢DateCode
 if(woPassFlag==null || woPassFlag.equals("")) woPassFlag="N";   
 
-String aMFGWoExpandCode[][]=arrMFG2DWOExpandBean.getArray2DContent();    // FOR «~ºŞÀËÅç¼Æ¾Ú¿é¤J§¹¦¨§P©w
-String aMFGRCExpTransCode[][]=arrMFGRCExpTransBean.getArray2DContent();  // FOR ¬yµ{¥d¤w®i¶}-> ¬yµ{¥d²¾¯¸¤¤
-String aMFGRCMovingCode[][]=arrMFGRCMovingBean.getArray2DContent();      // FOR ¬yµ{¥d²¾¯¸¤¤-> ¬yµ{¥d²¾¯¸¤¤
-String aMFGRCCompleteCode[][]=arrMFGRCCompleteBean.getArray2DContent();  // FOR ¬yµ{¥d²¾¯¸¤¤-> ¬yµ{¥d§¹¤u¤J®w
-String aMFGRsUpdateCode[][]=arrMFGRsUpdateBean.getArray2DContent();  	// FOR ¬yµ{¥d¤w®i¶}-> ¤u®É²§°Ê liling
-String aMFGLotMatchCode[][]=arrayLotIssueCheckBean.getArray2DContent();  // FOR «á¬q¬yµ{¥d«İ§ë²£ Match¹ê»Ú§¹¤u«e¬q§å¸¹
+String aMFGWoExpandCode[][]=arrMFG2DWOExpandBean.getArray2DContent();    // FOR å“ç®¡æª¢é©—æ•¸æ“šè¼¸å…¥å®Œæˆåˆ¤å®š
+String aMFGRCExpTransCode[][]=arrMFGRCExpTransBean.getArray2DContent();  // FOR æµç¨‹å¡å·²å±•é–‹-> æµç¨‹å¡ç§»ç«™ä¸­
+String aMFGRCMovingCode[][]=arrMFGRCMovingBean.getArray2DContent();      // FOR æµç¨‹å¡ç§»ç«™ä¸­-> æµç¨‹å¡ç§»ç«™ä¸­
+String aMFGRCCompleteCode[][]=arrMFGRCCompleteBean.getArray2DContent();  // FOR æµç¨‹å¡ç§»ç«™ä¸­-> æµç¨‹å¡å®Œå·¥å…¥åº«
+String aMFGRsUpdateCode[][]=arrMFGRsUpdateBean.getArray2DContent();  	// FOR æµç¨‹å¡å·²å±•é–‹-> å·¥æ™‚ç•°å‹• liling
+String aMFGLotMatchCode[][]=arrayLotIssueCheckBean.getArray2DContent();  // FOR å¾Œæ®µæµç¨‹å¡å¾…æŠ•ç”¢ Matchå¯¦éš›å®Œå·¥å‰æ®µæ‰¹è™Ÿ
 
 String changeProdPersonMail="";
-String sendMailOption=request.getParameter("SENDMAILOPTION");//¬O§_­nSEND MAIL
+String sendMailOption=request.getParameter("SENDMAILOPTION");//æ˜¯å¦è¦SEND MAIL
 String oriStatus=null;
 String actionName=null;
 String dateString="";
@@ -122,14 +122,14 @@ String YearFr=dateBean.getYearMonthDay().substring(0,4);
 String MonthFr=dateBean.getYearMonthDay().substring(4,6);
 String DayFr=dateBean.getYearMonthDay().substring(6,8);
 
-// ¬°¦s¤J¤é´Á®æ¦¡¬°US¦Ò¶q,±N»y¨t¥ı³]¬°¬ü°ê
+// ç‚ºå­˜å…¥æ—¥æœŸæ ¼å¼ç‚ºUSè€ƒé‡,å°‡èªç³»å…ˆè¨­ç‚ºç¾åœ‹
 String sqlNLS="alter SESSION set NLS_LANGUAGE = 'AMERICAN' ";     
 PreparedStatement pstmtNLS=con.prepareStatement(sqlNLS);
 pstmtNLS.executeUpdate(); 
 pstmtNLS.close();
-//§¹¦¨¦sÀÉ«á¦^´_	  
+//å®Œæˆå­˜æª”å¾Œå›å¾©	  
 
-//§ì¨ú¨t²Î¤é´Á
+//æŠ“å–ç³»çµ±æ—¥æœŸ
 String systemDate ="";
 Statement statesd=con.createStatement();
 ResultSet sd=statesd.executeQuery("select TO_CHAR(sysdate,'YYYYMMDD') as SYSTEMDATE from dual" );
@@ -140,7 +140,7 @@ if (sd.next())
 sd.close();
 statesd.close();	
 	
-// ¨ú¹ïÀ³ªº organization_code ±qORG°Ñ¼ÆÀÉ
+// å–å°æ‡‰çš„ organization_code å¾ORGåƒæ•¸æª”
 String organCode ="";
 String organizationID = "";
 Statement stateOrgCode=con.createStatement();
@@ -155,14 +155,14 @@ rsOrgCode.close();
 stateOrgCode.close();
 
 
-java.sql.Date processDateTime = null; //±NSYSDATEÂà´«¦¨¤é´Á®æ¦¡¥H²Å¥á¤JAPI®æ¦¡
+java.sql.Date processDateTime = null; //å°‡SYSDATEè½‰æ›æˆæ—¥æœŸæ ¼å¼ä»¥ç¬¦ä¸Ÿå…¥APIæ ¼å¼
 if (systemDate!=null && systemDate.length()>=8)
 {
-	processDateTime = new java.sql.Date(Integer.parseInt(systemDate.substring(0,4))-1900,Integer.parseInt(systemDate.substring(4,6))-1,Integer.parseInt(systemDate.substring(6,8)));  // µ¹Receiving Date
-   	String systemTime = dateBean.getHourMinuteSecond();  // µ¹System Time
+	processDateTime = new java.sql.Date(Integer.parseInt(systemDate.substring(0,4))-1900,Integer.parseInt(systemDate.substring(4,6))-1,Integer.parseInt(systemDate.substring(6,8)));  // çµ¦Receiving Date
+   	String systemTime = dateBean.getHourMinuteSecond();  // çµ¦System Time
    
 	Calendar calendar1 = Calendar.getInstance(); 
-	calendar1.set(dateBean.getYear(),dateBean.getMonth(),dateBean.getDay(),dateBean.getHour(), dateBean.getMinute(), dateBean.getSecond() );  // ³]©w¤é´Áªº®æ¦¡(¦~,¤ë,¤é,®É,¤À,¬í)
+	calendar1.set(dateBean.getYear(),dateBean.getMonth(),dateBean.getDay(),dateBean.getHour(), dateBean.getMinute(), dateBean.getSecond() );  // è¨­å®šæ—¥æœŸçš„æ ¼å¼(å¹´,æœˆ,æ—¥,æ™‚,åˆ†,ç§’)
 	String sqlDate="  select TO_DATE('"+systemDate+ systemTime+"','YYYYMMDDHH24MISS') from DUAL   ";  					
 	Statement stateDate=con.createStatement();
 	ResultSet rsDate=stateDate.executeQuery(sqlDate);
@@ -172,22 +172,22 @@ if (systemDate!=null && systemDate.length()>=8)
 	}
 	rsDate.close();
 	stateDate.close();	   
-}    // ±o¨ì¤J®w°õ¦æ¤é´Á..¤é´Á«¬ºA
+}    // å¾—åˆ°å…¥åº«åŸ·è¡Œæ—¥æœŸ..æ—¥æœŸå‹æ…‹
  
-java.sql.Date orderedDate = new java.sql.Date(Integer.parseInt(YearFr)-1900,Integer.parseInt(MonthFr)-1,Integer.parseInt(DayFr));  // µ¹Ordered Date
-//java.sql.Date shipdate = new java.sql.Date(Integer.parseInt(YearFr)-1900,Integer.parseInt(MonthFr)-1,Integer.parseInt(DayFr));  // µ¹Schedule Ship Date
-//java.sql.Date requestdate = new java.sql.Date(Integer.parseInt(YearFr)-1900,Integer.parseInt(MonthFr)-1,Integer.parseInt(DayFr));  // µ¹Request Date
-java.sql.Date pricedate = new java.sql.Date(Integer.parseInt(YearFr)-1900,Integer.parseInt(MonthFr)-1,Integer.parseInt(DayFr));  // µ¹Pricing Date
-java.sql.Date promisedate = new java.sql.Date(Integer.parseInt(YearFr)-1900,Integer.parseInt(MonthFr)-1,Integer.parseInt(DayFr));  // µ¹Promise Date    
+java.sql.Date orderedDate = new java.sql.Date(Integer.parseInt(YearFr)-1900,Integer.parseInt(MonthFr)-1,Integer.parseInt(DayFr));  // çµ¦Ordered Date
+//java.sql.Date shipdate = new java.sql.Date(Integer.parseInt(YearFr)-1900,Integer.parseInt(MonthFr)-1,Integer.parseInt(DayFr));  // çµ¦Schedule Ship Date
+//java.sql.Date requestdate = new java.sql.Date(Integer.parseInt(YearFr)-1900,Integer.parseInt(MonthFr)-1,Integer.parseInt(DayFr));  // çµ¦Request Date
+java.sql.Date pricedate = new java.sql.Date(Integer.parseInt(YearFr)-1900,Integer.parseInt(MonthFr)-1,Integer.parseInt(DayFr));  // çµ¦Pricing Date
+java.sql.Date promisedate = new java.sql.Date(Integer.parseInt(YearFr)-1900,Integer.parseInt(MonthFr)-1,Integer.parseInt(DayFr));  // çµ¦Promise Date    
 	 
 String dateCurrent = dateBean.getYearMonthDay();	
 
-// formID = °ò¥»¸ê®Æ­¶¶Ç¨Ó©T©w±`¼Æ='TS'
-// fromStatusID = °ò¥»¸ê®Æ­¶¶Ç¨ÓHidden °Ñ¼Æ
-// actionID = «e­¶¨ú±o°Ê§@ ID( Assign = 003 )
+// formID = åŸºæœ¬è³‡æ–™é å‚³ä¾†å›ºå®šå¸¸æ•¸='TS'
+// fromStatusID = åŸºæœ¬è³‡æ–™é å‚³ä¾†Hidden åƒæ•¸
+// actionID = å‰é å–å¾—å‹•ä½œ ID( Assign = 003 )
 try
 { 
-	// ¥ı¨ú±o¤U¤@ª¬ºA¤Îª¬ºA´y­z¨Ã§@¬yµ{ª¬ºA§ó·s   
+	// å…ˆå–å¾—ä¸‹ä¸€ç‹€æ…‹åŠç‹€æ…‹æè¿°ä¸¦ä½œæµç¨‹ç‹€æ…‹æ›´æ–°   
   	dateString=dateBean.getYearMonthDay();
   
   	String sqlStat = "";
@@ -199,7 +199,7 @@ try
   	ResultSet getStatusRs=getStatusStat.executeQuery(sqlStat);  
   	getStatusRs.next();
  
-	//=======¤u®É²§°Ê========================================°_    
+	//=======å·¥æ™‚ç•°å‹•========================================èµ·    
 	if (actionID.equals("022") && fromStatusID.equals("042"))   
 	{  
  		float wipRsQty=0,wipMachineRsQty=0;
@@ -207,15 +207,15 @@ try
     	String runCardID=request.getParameter("RUNCARDID");
   		if (aMFGRsUpdateCode!=null) 
     	{
-     		String r[][]=new String[aMFGRsUpdateCode.length+1][21]; // «Å§i¤@¤Gºû°}¦C,¤À§O¬O(=¦C)X(¸ê®ÆÄæ¼Æ+1= ¦æ)	
+     		String r[][]=new String[aMFGRsUpdateCode.length+1][21]; // å®£å‘Šä¸€äºŒç¶­é™£åˆ—,åˆ†åˆ¥æ˜¯(=åˆ—)X(è³‡æ–™æ¬„æ•¸+1= è¡Œ)	
 	 		for (int i=0;i<aMFGRsUpdateCode.length-1;i++)
 	 		{
 	   			for (int k=0;k<=choice.length-1;k++)    
        			{	  
-		    		// §PÂ_³QCheck ªºLine ¤~°õ¦æ«ü¬£§@·~
+		    		// åˆ¤æ–·è¢«Check çš„Line æ‰åŸ·è¡ŒæŒ‡æ´¾ä½œæ¥­
 	    			if (choice[k]==aMFGRsUpdateCode[i][0] || choice[k].equals(aMFGRsUpdateCode[i][0]))
 	    			{ 	
-						// ############################  WIP Resource Operation API¸ê®Æ¨ú±o _°_ ##############################
+						// ############################  WIP Resource Operation APIè³‡æ–™å–å¾— _èµ· ##############################
            				try
            				{
               				String sqlOPRes = "";
@@ -256,7 +256,7 @@ try
 							             " and a.WIP_ENTITY_ID = "+aMFGRsUpdateCode[i][9]+" "+
 							             " and a.RUNCARD_NO ='"+aMFGRsUpdateCode[i][3]+"' "+
 							             " and a.NEXT_OP_SEQ_NUM = b.OPERATION_SEQ_NUM "+
-							             " and b.RESOURCE_SEQ_NUM != 10 "+   // 10¬°©T©w¤H¤u¸ê·½
+							             " and b.RESOURCE_SEQ_NUM != 10 "+   // 10ç‚ºå›ºå®šäººå·¥è³‡æº
 							             " and d.ORGANIZATION_ID = '"+aMFGRsUpdateCode[i][11]+"' "; 
 			             		if (runCardID==null || runCardID.equals("0")) sqlOPRes = sqlOPRes +" and a.RUNCARD_NO ='"+aMFGRsUpdateCode[i][3]+"' ";
                          		else  sqlOPRes = sqlOPRes + " and a.RUNCAD_ID ='"+aMFGRsUpdateCode[i][1]+"' " ;					
@@ -280,13 +280,13 @@ try
 									icnt++;
 								}
 								//modify by Peggy 20120604
-								if (rsOPRes.getString("RESOURCE_TYPE").equals("2")) //¤H¤u¤u®É
+								if (rsOPRes.getString("RESOURCE_TYPE").equals("2")) //äººå·¥å·¥æ™‚
 								{                 
 									r[k][0]=rsOPRes.getString("RESOURCE_SEQ_NUM");
 									r[k][1]=rsOPRes.getString("RESOURCE_ID");
 									r[k][10]=rsOPRes.getString("UNIT_OF_MEASURE");
 								}
-								else if (rsOPRes.getString("RESOURCE_TYPE").equals("1")) //¾÷¾¹¤u®É
+								else if (rsOPRes.getString("RESOURCE_TYPE").equals("1")) //æ©Ÿå™¨å·¥æ™‚
 								{
 									r[k][18]=rsOPRes.getString("RESOURCE_SEQ_NUM");
 									r[k][19]=rsOPRes.getString("RESOURCE_ID");
@@ -318,15 +318,15 @@ try
           				{
              				out.println("Exception runcard:"+e.getMessage());
           				}	   
-						// ############################  WIP Resource Operation API¸ê®Æ¨ú±o _¨´ ##############################
+						// ############################  WIP Resource Operation APIè³‡æ–™å–å¾— _è¿„ ##############################
 
-	   					// %%%%%%%%%%%%%%%%%%%%%%% ¤u®É¦^³ø WIP Operation Resource API %%%%%%%%%%%%%%%%%%%% _°_
+	   					// %%%%%%%%%%%%%%%%%%%%%%% å·¥æ™‚å›å ± WIP Operation Resource API %%%%%%%%%%%%%%%%%%%% _èµ·
 		    			for (int rr=0;rr<choice.length;rr++)
 						{ 
 			  				if (aMFGRsUpdateCode[i][1]==r[rr][12] || aMFGRsUpdateCode[i][1].equals(r[rr][12]) )  //(runcad_id)
 			  				{ 
-                  				//­pºâ²§°Ê¼Æ¶q____°_   2006/12/28
-               					// ¨úOracle¤w¦^³ø¤H¤u¤u®É²Ö­p  
+                  				//è¨ˆç®—ç•°å‹•æ•¸é‡____èµ·   2006/12/28
+               					// å–Oracleå·²å›å ±äººå·¥å·¥æ™‚ç´¯è¨ˆ  
                 				String wipRs =  "  select "+ aMFGRsUpdateCode[i][14]+"- sum(TRANSACTION_QUANTITY) from wip_transactions "+
 												"  where TRANSACTION_TYPE =1  "+
 												"  and wip_entity_id = "+aMFGRsUpdateCode[i][9]+" "+
@@ -347,8 +347,8 @@ try
 								}
 	            				rsWipRs.close();
                 				stateWipRs.close();
-                				//resourceQty = (Float.parseFloat(aMFGRsUpdateCode[i][14])-wipRsQty) ;  //®t²§­È=¿é¤J­È-­ì³ø¤H¤u¤u®É
- 		           				java.text.DecimalFormat nf = new java.text.DecimalFormat("###,##0.00"); // ¨ú¤p¼Æ«á¤G¦ì 
+                				//resourceQty = (Float.parseFloat(aMFGRsUpdateCode[i][14])-wipRsQty) ;  //å·®ç•°å€¼=è¼¸å…¥å€¼-åŸå ±äººå·¥å·¥æ™‚
+ 		           				java.text.DecimalFormat nf = new java.text.DecimalFormat("###,##0.00"); // å–å°æ•¸å¾ŒäºŒä½ 
 				   				String strResourceQty = nf.format(resourceQty);
 				   				java.math.BigDecimal bd = new java.math.BigDecimal(strResourceQty);
 				   				java.math.BigDecimal rsQty = bd.setScale(2, java.math.BigDecimal.ROUND_HALF_UP);
@@ -375,7 +375,7 @@ try
 								}
 	            				rsWipRss.close();
                 				stateWipRss.close();
-                				//machine_resourceQty = (Float.parseFloat(aMFGRsUpdateCode[i][17])-wipMachineRsQty) ;  //®t²§­È=¿é¤J­È-­ì³ø¾÷¾¹¤u®É
+                				//machine_resourceQty = (Float.parseFloat(aMFGRsUpdateCode[i][17])-wipMachineRsQty) ;  //å·®ç•°å€¼=è¼¸å…¥å€¼-åŸå ±æ©Ÿå™¨å·¥æ™‚
 				   				String strMachineResourceQty = nf.format(machine_resourceQty);
 				   				bd = new java.math.BigDecimal(strMachineResourceQty );
 				   				java.math.BigDecimal rsMachineQty = bd.setScale(2, java.math.BigDecimal.ROUND_HALF_UP);
@@ -416,7 +416,7 @@ try
 									//out.println("resResExist="+resResExist);
 									if (!intResExist && !resResExist) 
 									{
-						       			// ORG_ACCT_PERIODS_V --> ­Y»İ­nAccount Period ID ªºView 
+						       			// ORG_ACCT_PERIODS_V --> è‹¥éœ€è¦Account Period ID çš„View 
 	                          	 		Statement stateACP=con.createStatement();	             
 	                           			ResultSet rsACP=stateACP.executeQuery("select ACCT_PERIOD_ID from ORG_ACCT_PERIODS_V where ORGANIZATION_ID = "+aMFGRsUpdateCode[i][11]+" ");
 				               			if (rsACP.next()) acctPeriodID = rsACP.getInt(1);
@@ -516,7 +516,7 @@ try
 						       			PreparedStatement pstmtResTxn=con.prepareStatement(resTxnSql); 
 		                       			pstmtResTxn.executeUpdate(); 
                                			pstmtResTxn.close(); 
-                              			out.print("<br>¤u¥O:"+woNo+"  ¬yµ{¥d¸¹:"+r[rr][17]+"  ¯¸§O:"+r[rr][13]+"  ¾÷¾¹¤u®É:"+(new java.text.DecimalFormat("###,##0.###")).format(Float.parseFloat(aMFGRsUpdateCode[i][17]))+"    ¤H¤u¤u®É:"+(new java.text.DecimalFormat("###,##0.###")).format(Float.parseFloat(aMFGRsUpdateCode[i][14]))+"");
+                              			out.print("<br>å·¥ä»¤:"+woNo+"  æµç¨‹å¡è™Ÿ:"+r[rr][17]+"  ç«™åˆ¥:"+r[rr][13]+"  æ©Ÿå™¨å·¥æ™‚:"+(new java.text.DecimalFormat("###,##0.###")).format(Float.parseFloat(aMFGRsUpdateCode[i][17]))+"    äººå·¥å·¥æ™‚:"+(new java.text.DecimalFormat("###,##0.###")).format(Float.parseFloat(aMFGRsUpdateCode[i][14]))+"");
 								 	}
 				 				} 	  
 								rsResRowID.close();
@@ -541,8 +541,8 @@ catch (Exception e)
 
 <table width="60%" border="1" cellpadding="0" cellspacing="0" >
   <tr>
-    <td width="278"><font size="2">WIP³æ¾Ú³B²z</font></td>
-    <td width="297"><font size="2">WIP¬d¸ß¤Î³øªí</font></td>    
+    <td width="278"><font size="2">WIPå–®æ“šè™•ç†</font></td>
+    <td width="297"><font size="2">WIPæŸ¥è©¢åŠå ±è¡¨</font></td>    
   </tr>
   <tr>   
     <td>
@@ -596,12 +596,12 @@ catch (Exception e)
     out.println(e.getMessage());
 }
    
-// ­Y«á¬q¤u¥O,¨ä«e¬q¤u¥O§¹¤u§å¸¹(¬yµ{¥d¸¹)½T»{«á°}¦C²M°£
+// è‹¥å¾Œæ®µå·¥ä»¤,å…¶å‰æ®µå·¥ä»¤å®Œå·¥æ‰¹è™Ÿ(æµç¨‹å¡è™Ÿ)ç¢ºèªå¾Œé™£åˆ—æ¸…é™¤
 if (woType.equals("3"))
 {
 	if (aMFGLotMatchCode!=null)
     {
-		arrayLotIssueCheckBean.setArray2DString(null); // §â«á¬q¤u¥O¹ïÀ³ªº»â®Æ§å¸¹¥ç²MªÅ
+		arrayLotIssueCheckBean.setArray2DString(null); // æŠŠå¾Œæ®µå·¥ä»¤å°æ‡‰çš„é ˜æ–™æ‰¹è™Ÿäº¦æ¸…ç©º
 	}
 }
    
@@ -611,7 +611,7 @@ if (woType.equals("3"))
 </FORM>
 </body>
 <!--%@ include file="/jsp/include/ProgressStatusBarStop.jsp"%-->
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 </html>

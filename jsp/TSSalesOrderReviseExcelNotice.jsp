@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=utf-8"  pageEncoding="big5" language="java" import="java.util.*,java.text.*,java.io.*,java.sql.*,jxl.*,jxl.Workbook.*,jxl.write.*,jxl.format.*,javax.mail.*,javax.mail.internet.*,javax.mail.Multipart.*,javax.activation.*"%>  
+<%@ page contentType="text/html;charset=utf-8"   language="java" import="java.util.*,java.text.*,java.io.*,java.sql.*,jxl.*,jxl.Workbook.*,jxl.write.*,jxl.format.*,javax.mail.*,javax.mail.internet.*,javax.mail.Multipart.*,javax.activation.*"%>
 <%@ page import="DateBean"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <jsp:useBean id="dateBean" scope="page" class="DateBean"/>
@@ -114,7 +114,7 @@ try
 		WritableFont font_nobold = new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK);
 		WritableFont font_nobold_b = new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLUE);
 		
-		//≠^§Â§∫§Â§Ù•≠´´™Ω∏m§§-≤ ≈È-ÆÊΩu-©≥¶‚¶«  
+		//Ëã±ÊñáÂÖßÊñáÊ∞¥Âπ≥ÂûÇÁõ¥ÁΩÆ‰∏≠-Á≤óÈ´î-Ê†ºÁ∑ö-Â∫ïËâ≤ÁÅ∞  
 		WritableCellFormat ACenterBL = new WritableCellFormat(font_bold);   
 		ACenterBL.setAlignment(jxl.format.Alignment.CENTRE);
 		ACenterBL.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -122,7 +122,7 @@ try
 		ACenterBL.setBackground(jxl.write.Colour.GRAY_25); 
 		ACenterBL.setWrap(true);	
 	
-		//≠^§Â§∫§Â§Ù•≠´´™Ω∏m§§-≤ ≈È-ÆÊΩu-©≥¶‚¬≈  
+		//Ëã±ÊñáÂÖßÊñáÊ∞¥Âπ≥ÂûÇÁõ¥ÁΩÆ‰∏≠-Á≤óÈ´î-Ê†ºÁ∑ö-Â∫ïËâ≤Ëóç  
 		WritableCellFormat ACenterBLB = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));   
 		ACenterBLB.setAlignment(jxl.format.Alignment.CENTRE);
 		ACenterBLB.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -130,7 +130,7 @@ try
 		ACenterBLB.setBackground(jxl.write.Colour.PALE_BLUE); 
 		ACenterBLB.setWrap(true);
 		
-		//≠^§Â§∫§Â§Ù•≠´´™Ω∏m§§-≤ ≈È-ÆÊΩu-©≥¶‚∂¿  
+		//Ëã±ÊñáÂÖßÊñáÊ∞¥Âπ≥ÂûÇÁõ¥ÁΩÆ‰∏≠-Á≤óÈ´î-Ê†ºÁ∑ö-Â∫ïËâ≤ÈªÉ  
 		WritableCellFormat ACenterBLY = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));   
 		ACenterBLY.setAlignment(jxl.format.Alignment.CENTRE);
 		ACenterBLY.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -138,7 +138,7 @@ try
 		ACenterBLY.setBackground(jxl.write.Colour.YELLOW); 
 		ACenterBLY.setWrap(true);	
 		
-		//≠^§Â§∫§Â§Ù•≠´´™Ω∏m§§-≤ ≈È-ÆÊΩu-©≥¶‚æÔ
+		//Ëã±ÊñáÂÖßÊñáÊ∞¥Âπ≥ÂûÇÁõ¥ÁΩÆ‰∏≠-Á≤óÈ´î-Ê†ºÁ∑ö-Â∫ïËâ≤Ê©ò
 		WritableCellFormat ACenterBLO = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));   
 		ACenterBLO.setAlignment(jxl.format.Alignment.CENTRE);
 		ACenterBLO.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -146,7 +146,7 @@ try
 		ACenterBLO.setBackground(jxl.write.Colour.LIGHT_ORANGE); 
 		ACenterBLO.setWrap(true);	
 		
-		//≠^§Â§∫§Â§Ù•≠´´™Ω∏m§§-≤ ≈È-ÆÊΩu-©≥¶‚∫Ò
+		//Ëã±ÊñáÂÖßÊñáÊ∞¥Âπ≥ÂûÇÁõ¥ÁΩÆ‰∏≠-Á≤óÈ´î-Ê†ºÁ∑ö-Â∫ïËâ≤Á∂†
 		WritableCellFormat ACenterBLG = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));   
 		ACenterBLG.setAlignment(jxl.format.Alignment.CENTRE);
 		ACenterBLG.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -154,7 +154,7 @@ try
 		ACenterBLG.setBackground(jxl.write.Colour.BRIGHT_GREEN); 
 		ACenterBLG.setWrap(true);	
 				
-		//≠^§Â§∫§Â§Ù•≠´´™Ω∏m§§-•ø±`-ÆÊΩu   
+		//Ëã±ÊñáÂÖßÊñáÊ∞¥Âπ≥ÂûÇÁõ¥ÁΩÆ‰∏≠-Ê≠£Â∏∏-Ê†ºÁ∑ö   
 		WritableCellFormat ACenterL = new WritableCellFormat(font_nobold);   
 		ACenterL.setAlignment(jxl.format.Alignment.CENTRE);
 		ACenterL.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -162,42 +162,42 @@ try
 		ACenterL.setWrap(true);
 	
 	
-		//≠^§Â§∫§Â§Ù•≠´´™Ω∏m•k-•ø±`-ÆÊΩu   
+		//Ëã±ÊñáÂÖßÊñáÊ∞¥Âπ≥ÂûÇÁõ¥ÁΩÆÂè≥-Ê≠£Â∏∏-Ê†ºÁ∑ö   
 		WritableCellFormat ARightL = new WritableCellFormat(font_nobold);   
 		ARightL.setAlignment(jxl.format.Alignment.RIGHT);
 		ARightL.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		ARightL.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 		ARightL.setWrap(true);
 	
-		//≠^§Â§∫§Â§Ù•≠´´™Ω∏m•k-•ø±`-ÆÊΩu-¬≈¶r   
+		//Ëã±ÊñáÂÖßÊñáÊ∞¥Âπ≥ÂûÇÁõ¥ÁΩÆÂè≥-Ê≠£Â∏∏-Ê†ºÁ∑ö-ËóçÂ≠ó   
 		WritableCellFormat ARightL_B = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"),9, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLUE));   
 		ARightL_B.setAlignment(jxl.format.Alignment.RIGHT);
 		ARightL_B.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		ARightL_B.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 		ARightL_B.setWrap(true);
 		
-		//≠^§Â§∫§Â§Ù•≠´´™Ω∏m•k-•ø±`-ÆÊΩu-¨ı¶r   
+		//Ëã±ÊñáÂÖßÊñáÊ∞¥Âπ≥ÂûÇÁõ¥ÁΩÆÂè≥-Ê≠£Â∏∏-Ê†ºÁ∑ö-Á¥ÖÂ≠ó   
 		WritableCellFormat ARightL_R = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"),9, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.RED));   
 		ARightL_R.setAlignment(jxl.format.Alignment.RIGHT);
 		ARightL_R.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		ARightL_R.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 		ARightL_R.setWrap(true);
 		
-		//≠^§Â§∫§Â§Ù•≠´´™Ω∏m•k-•ø±`-ÆÊΩu-¨ı¶r∏m§§  
+		//Ëã±ÊñáÂÖßÊñáÊ∞¥Âπ≥ÂûÇÁõ¥ÁΩÆÂè≥-Ê≠£Â∏∏-Ê†ºÁ∑ö-Á¥ÖÂ≠óÁΩÆ‰∏≠  
 		WritableCellFormat ACenter_R = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"),fontsize, WritableFont.BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.RED));   
 		ACenter_R.setAlignment(jxl.format.Alignment.CENTRE);
 		ACenter_R.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		ACenter_R.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 		ACenter_R.setWrap(true);		
 	
-		//≠^§Â§∫§Â§Ù•≠´´™Ω∏m•™-•ø±`-ÆÊΩu   
+		//Ëã±ÊñáÂÖßÊñáÊ∞¥Âπ≥ÂûÇÁõ¥ÁΩÆÂ∑¶-Ê≠£Â∏∏-Ê†ºÁ∑ö   
 		WritableCellFormat ALeftL = new WritableCellFormat(font_nobold);   
 		ALeftL.setAlignment(jxl.format.Alignment.LEFT);
 		ALeftL.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		ALeftL.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 		ALeftL.setWrap(true);
 		
-		//≠^§Â§∫§Â§Ù•≠´´™Ω∏m§§-•ø±`-ÆÊΩu   
+		//Ëã±ÊñáÂÖßÊñáÊ∞¥Âπ≥ÂûÇÁõ¥ÁΩÆ‰∏≠-Ê≠£Â∏∏-Ê†ºÁ∑ö   
 		WritableCellFormat ACenterLB = new WritableCellFormat(font_nobold_b);   
 		ACenterLB.setAlignment(jxl.format.Alignment.CENTRE);
 		ACenterLB.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -205,21 +205,21 @@ try
 		ACenterLB.setWrap(true);
 	
 	
-		//≠^§Â§∫§Â§Ù•≠´´™Ω∏m•k-•ø±`-ÆÊΩu   
+		//Ëã±ÊñáÂÖßÊñáÊ∞¥Âπ≥ÂûÇÁõ¥ÁΩÆÂè≥-Ê≠£Â∏∏-Ê†ºÁ∑ö   
 		WritableCellFormat ARightLB = new WritableCellFormat(font_nobold_b);   
 		ARightLB.setAlignment(jxl.format.Alignment.RIGHT);
 		ARightLB.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		ARightLB.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 		ARightLB.setWrap(true);
 	
-		//≠^§Â§∫§Â§Ù•≠´´™Ω∏m•™-•ø±`-ÆÊΩu   
+		//Ëã±ÊñáÂÖßÊñáÊ∞¥Âπ≥ÂûÇÁõ¥ÁΩÆÂ∑¶-Ê≠£Â∏∏-Ê†ºÁ∑ö   
 		WritableCellFormat ALeftLB = new WritableCellFormat(font_nobold_b);   
 		ALeftLB.setAlignment(jxl.format.Alignment.LEFT);
 		ALeftLB.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		ALeftLB.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 		ALeftLB.setWrap(true);
 			
-		//≠^§Â§∫§Â§Ù•≠´´™Ω∏m§§-•ø±`-ÆÊΩu-©≥¶‚Øª¨ı
+		//Ëã±ÊñáÂÖßÊñáÊ∞¥Âπ≥ÂûÇÁõ¥ÁΩÆ‰∏≠-Ê≠£Â∏∏-Ê†ºÁ∑ö-Â∫ïËâ≤Á≤âÁ¥Ö
 		WritableCellFormat ACenterLP = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"),9, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));   
 		ACenterLP.setAlignment(jxl.format.Alignment.CENTRE);
 		ACenterLP.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -227,7 +227,7 @@ try
 		ACenterLP.setBackground(jxl.write.Colour.PINK); 	
 		ACenterLP.setWrap(true);
 		
-		//≠^§Â§∫§Â§Ù•≠´´™Ω∏m§§-•ø±`-ÆÊΩu-©≥¶‚≤L∫Ò
+		//Ëã±ÊñáÂÖßÊñáÊ∞¥Âπ≥ÂûÇÁõ¥ÁΩÆ‰∏≠-Ê≠£Â∏∏-Ê†ºÁ∑ö-Â∫ïËâ≤Ê∑∫Á∂†
 		WritableCellFormat ACenterLG = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"),9, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));   
 		ACenterLG.setAlignment(jxl.format.Alignment.CENTRE);
 		ACenterLG.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -235,7 +235,7 @@ try
 		ACenterLG.setBackground(jxl.write.Colour.LIGHT_GREEN); 	
 		ACenterLG.setWrap(true);	
 	
-		//≠^§Â§∫§Â§Ù•≠´´™Ω∏m§§-•ø±`-ÆÊΩu-©≥¶‚Øª¨ı-¬≈¶r
+		//Ëã±ÊñáÂÖßÊñáÊ∞¥Âπ≥ÂûÇÁõ¥ÁΩÆ‰∏≠-Ê≠£Â∏∏-Ê†ºÁ∑ö-Â∫ïËâ≤Á≤âÁ¥Ö-ËóçÂ≠ó
 		WritableCellFormat ACenterLPB = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"),9, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLUE));   
 		ACenterLPB.setAlignment(jxl.format.Alignment.CENTRE);
 		ACenterLPB.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -243,7 +243,7 @@ try
 		ACenterLPB.setBackground(jxl.write.Colour.PINK); 	
 		ACenterLPB.setWrap(true);
 		
-		//≠^§Â§∫§Â§Ù•≠´´™Ω∏m§§-•ø±`-ÆÊΩu-©≥¶‚≤L∫Ò-¬≈¶r
+		//Ëã±ÊñáÂÖßÊñáÊ∞¥Âπ≥ÂûÇÁõ¥ÁΩÆ‰∏≠-Ê≠£Â∏∏-Ê†ºÁ∑ö-Â∫ïËâ≤Ê∑∫Á∂†-ËóçÂ≠ó
 		WritableCellFormat ACenterLGB = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"),9, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLUE));   
 		ACenterLGB.setAlignment(jxl.format.Alignment.CENTRE);
 		ACenterLGB.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -251,28 +251,28 @@ try
 		ACenterLGB.setBackground(jxl.write.Colour.LIGHT_GREEN); 	
 		ACenterLGB.setWrap(true);	
 			
-		//§È¥¡ÆÊ¶°
+		//Êó•ÊúüÊ†ºÂºè
 		WritableCellFormat DATE_FORMAT = new WritableCellFormat(font_nobold ,new jxl.write.DateFormat("yyyy/MM/dd")); 
 		DATE_FORMAT.setAlignment(jxl.format.Alignment.CENTRE);
 		DATE_FORMAT.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		DATE_FORMAT.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 		DATE_FORMAT.setWrap(true);
 	
-		//§È¥¡ÆÊ¶°
+		//Êó•ÊúüÊ†ºÂºè
 		WritableCellFormat DATE_FORMAT1 = new WritableCellFormat(font_nobold_b ,new jxl.write.DateFormat("yyyy/MM/dd")); 
 		DATE_FORMAT1.setAlignment(jxl.format.Alignment.CENTRE);
 		DATE_FORMAT1.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		DATE_FORMAT1.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 		DATE_FORMAT1.setWrap(true);
 	
-		//§È¥¡ÆÊ¶°-¨ı¶r
+		//Êó•ÊúüÊ†ºÂºè-Á¥ÖÂ≠ó
 		WritableCellFormat DATE_FORMAT_R = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"),9, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.RED) ,new jxl.write.DateFormat("yyyy/MM/dd")); 
 		DATE_FORMAT_R.setAlignment(jxl.format.Alignment.CENTRE);
 		DATE_FORMAT_R.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		DATE_FORMAT_R.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 		DATE_FORMAT_R.setWrap(true);
 	
-		//§È¥¡ÆÊ¶°-¬≈¶r
+		//Êó•ÊúüÊ†ºÂºè-ËóçÂ≠ó
 		WritableCellFormat DATE_FORMAT_B = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"),9, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLUE) ,new jxl.write.DateFormat("yyyy/MM/dd")); 
 		DATE_FORMAT_B.setAlignment(jxl.format.Alignment.CENTRE);
 		DATE_FORMAT_B.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -398,7 +398,7 @@ try
 			  //"      when NVL(a.schedule_ship_date,a.source_ssd-case when nvl(d.ATTRIBUTE19,'xx')='1' then 0 else NVL(f.TRANSPORTATION_DAYS,0) end) > a.source_ssd then 'Push Out'"+
 			  "      when NVL(a.schedule_ship_date,a.source_ssd-case when nvl(d.ATTRIBUTE19,'xx')='1' then 0 else tsc_get_mo_line_totw_days(d.packing_instructions,c.order_number,d.line_id,trunc(sysdate)) end) < a.source_ssd then 'Pull in'"+ //modify Peggy 20200911
 			  "      when NVL(a.schedule_ship_date,a.source_ssd-case when nvl(d.ATTRIBUTE19,'xx')='1' then 0 else tsc_get_mo_line_totw_days(d.packing_instructions,c.order_number,d.line_id,trunc(sysdate)) end) > a.source_ssd then 'Push Out'"+ //modify Peggy 20200911
-			  "      else '®‰•L' end as revise_remarks"+
+			  "      else 'ÂÖ∂‰ªñ' end as revise_remarks"+
 			  ",rank() over (partition by d.header_id,d.line_id order by a.request_no desc) odr_revise_seq"+  //add by Peggy 20190117
 			  ",to_char(d.schedule_ship_date,'yyyy/mm/dd') erp_ssd"+  //add by Peggy 20190117		  
 			  ",to_char(c.ordered_date,'yyyy/mm/dd') ordered_date"+ //add by Peggy 20190612
@@ -448,7 +448,7 @@ try
 					   " and  wip.wip_entity_id=ywa.wip_entity_id"+
 					   " and wip.organization_id=msi.organization_id"+
 					   " and wip.primary_item_id=msi.inventory_item_id"+
-					   " group by order_line_id) k";  //•[§Jßπ§uº∆∂q,add by Peggy 20180817*/
+					   " group by order_line_id) k";  //Âä†ÂÖ•ÂÆåÂ∑•Êï∏Èáè,add by Peggy 20180817*/
 			}
 		}
 		/*sql += ",(select order_line_id,listagg(wo_no,',') within group (order by wo_no) wip_list"+
@@ -459,7 +459,7 @@ try
 			   " and  wip.wip_entity_id=ywa.wip_entity_id"+
 			   " and wip.organization_id=msi.organization_id"+
 			   " and wip.primary_item_id=msi.inventory_item_id"+
-			   " group by order_line_id) k";  //•[§Jßπ§uº∆∂q,add by Peggy 20180817*/
+			   " group by order_line_id) k";  //Âä†ÂÖ•ÂÆåÂ∑•Êï∏Èáè,add by Peggy 20180817*/
 		/*sql += ",(select order_line_id,listagg(wo_no,',') within group (order by wo_no) wip_list"+
 			   ",sum(ywa.WO_QTY* case when msi.primary_uom_code ='KPC' then 1000 else 1 end ) wip_completed_qty "+
 			   " from yew_workorder_all ywa ,inv.mtl_system_items_b msi"+
@@ -467,7 +467,7 @@ try
 			   " and ywa.order_line_id >0"+
 			   " and ywa.inventory_item_id=msi.inventory_item_id"+
 			   " and ywa.organization_id=msi.organization_id"+
-			   " group by order_line_id) k";  //modify by Peggy 20190618,ªs≥y®t≤Œ¶≥∂}§u≥Ê¥N≈„•‹*/
+			   " group by order_line_id) k";  //modify by Peggy 20190618,Ë£ΩÈÄ†Á≥ªÁµ±ÊúâÈñãÂ∑•ÂñÆÂ∞±È°ØÁ§∫*/
 		sql += ",(select order_line_id,listagg(wo_no,',') within group (order by wo_no) wip_list"+
 			   ",sum(wipp.quantity_completed* case when wipp.primary_uom_code ='KPC' then 1000 else 1 end ) wip_completed_qty "+
 			   ",sum(ywa.WO_QTY * case when ywa.WO_UOM='KPC' THEN 1000 ELSE 1 END) wo_qty"+
@@ -477,7 +477,7 @@ try
 			   " where ywa.statusid<>'050'"+
 			   " and ywa.order_line_id >0"+
 			   " and  wipp.wip_entity_id(+)=ywa.wip_entity_id"+
-			   " group by ywa.order_line_id) k";  //•[§Jßπ§uº∆∂q,add by Peggy 20180817
+			   " group by ywa.order_line_id) k";  //Âä†ÂÖ•ÂÆåÂ∑•Êï∏Èáè,add by Peggy 20180817
 		sql += " "+
 			  //",ORADDMAN.TSC_CHINA_TO_TAIWAN_DAYS f"+  //modify by Peggy 20200911
 			  //",ORADDMAN.TSC_CHINA_TO_TAIWAN_DAYS m"+ //modify by Peggy 20200911
@@ -642,24 +642,24 @@ try
 				sst.setSelected();
 				if (REPORT_TYPE.equals("AWAITING_CONFIRM"))
 				{
-					sst.setVerticalFreeze(1);  //≠·µ≤µ°ÆÊ
+					sst.setVerticalFreeze(1);  //ÂáçÁµêÁ™óÊ†º
 					for (int g =1 ; g <=13+(PLANTCODE.equals("002")?3:0) ;g++ )
 					{
 						sst.setHorizontalFreeze(g);
 					}	
-					//•”Ω–≥Ê∏π
+					//Áî≥Ë´ãÂñÆËôü
 					ws.mergeCells(col, row, col, row); 
 					ws.addCell(new jxl.write.Label(col, row, "Request No" , ACenterBL));
 					ws.setColumnView(col,12);	
 					col++;					
 	
-					//ß«∏π
+					//Â∫èËôü
 					ws.mergeCells(col, row, col, row); 
 					ws.addCell(new jxl.write.Label(col, row, "Seq No" , ACenterBL));
 					ws.setColumnView(col,5);	
 					col++;					
 						
-					//§uºtßO
+					//Â∑•Âª†Âà•
 					ws.mergeCells(col, row, col, row); 
 					ws.addCell(new jxl.write.Label(col, row, "Plant Code" , ACenterBL));
 					ws.setColumnView(col,8);	
@@ -695,23 +695,23 @@ try
 					ws.setColumnView(col,8);	
 					col++;	
 	
-					//≠ÏÆ∆∏π
+					//ÂéüÊñôËôü
 					ws.mergeCells(col, row, col, row); 
 					ws.addCell(new jxl.write.Label(col, row, "Original Item Name" , ACenterBL));
 					ws.setColumnView(col,30);	
 					col++;	
 		
-					//≠Ï´~¶W
+					//ÂéüÂìÅÂêç
 					ws.mergeCells(col, row, col, row); 
 					ws.addCell(new jxl.write.Label(col, row, "Original Item Desc" , ACenterBL));
 					ws.setColumnView(col,25);	
 					col++;	
 	
-					//WAFERÆ∆∏π
+					//WAFERÊñôËôü
 					if (PLANTCODE.equals("002")) //add by Peggy 20210427
 					{
 						ws.mergeCells(col, row, col, row); 
-						ws.addCell(new jxl.write.Label(col, row, "WaferÆ∆∏π" , ACenterBL));
+						ws.addCell(new jxl.write.Label(col, row, "WaferÊñôËôü" , ACenterBL));
 						ws.setColumnView(col,20);	
 						col++;				
 					}
@@ -728,7 +728,7 @@ try
 					ws.setColumnView(col,15);	
 					col++;	
 		
-					//≠Ï≠q≥Ê∂q
+					//ÂéüË®ÇÂñÆÈáè
 					ws.mergeCells(col, row, col, row); 
 					ws.addCell(new jxl.write.Label(col, row, "Original Qty" , ACenterBL));
 					ws.setColumnView(col,10);	
@@ -736,9 +736,9 @@ try
 					
 					if (PLANTCODE.equals("002"))  //add by Peggy 20190618
 					{
-						//§U≥Ê§È¥¡
+						//‰∏ãÂñÆÊó•Êúü
 						ws.mergeCells(col, row, col, row); 
-						ws.addCell(new jxl.write.Label(col, row, "§U≥Ê§È¥¡" , ACenterBL));
+						ws.addCell(new jxl.write.Label(col, row, "‰∏ãÂñÆÊó•Êúü" , ACenterBL));
 						ws.setColumnView(col,10);	
 						col++;	
 		
@@ -749,7 +749,7 @@ try
 						col++;	
 					}
 		
-					//≠Ï•Ê¥¡
+					//Âéü‰∫§Êúü
 					ws.mergeCells(col, row, col, row); 
 					ws.addCell(new jxl.write.Label(col, row, "Original SSD" , ACenterBL));
 					ws.setColumnView(col,10);	
@@ -837,45 +837,45 @@ try
 	
 					if (PLANTCODE.equals("005") || PLANTCODE.equals("008"))
 					{
-						//®—¿≥∞”
+						//‰æõÊáâÂïÜ
 						ws.addCell(new jxl.write.Label(col, row, "Vendor Name" , ACenterBL));
 						ws.setColumnView(col,15);	
 						col++;
 	
-						//±ƒ¡ ≥Ê
+						//Êé°Ë≥ºÂñÆ
 						ws.addCell(new jxl.write.Label(col, row, "PO#" , ACenterBL));
 						ws.setColumnView(col,12);	
 						col++;	
 	
-						//±ƒ¡ ª›®D§È
+						//Êé°Ë≥ºÈúÄÊ±ÇÊó•
 						ws.addCell(new jxl.write.Label(col, row, "PO Need by Date" , ACenterBL));
 						ws.setColumnView(col,12);	
 						col++;
 						
-						//±ƒ¡ º∆∂q
+						//Êé°Ë≥ºÊï∏Èáè
 						ws.addCell(new jxl.write.Label(col, row, "PO Qty(K)" , ACenterBL));
 						ws.setColumnView(col,12);	
 						col++;																	
 					}	
 					else if (PLANTCODE.equals("002"))  //add by Peggy 20171020
 					{	
-						//§u≥Ê∏π
-						ws.addCell(new jxl.write.Label(col, row, "§u≥Ê∏π" , ACenterBL));
+						//Â∑•ÂñÆËôü
+						ws.addCell(new jxl.write.Label(col, row, "Â∑•ÂñÆËôü" , ACenterBL));
 						ws.setColumnView(col,15);	
 						col++;
 	
-						//§u≥Êº∆∂q
-						ws.addCell(new jxl.write.Label(col, row, "§u≥Êº∆∂q" , ACenterBL));
+						//Â∑•ÂñÆÊï∏Èáè
+						ws.addCell(new jxl.write.Label(col, row, "Â∑•ÂñÆÊï∏Èáè" , ACenterBL));
 						ws.setColumnView(col,10);	
 						col++;
 	
-						//ßπ§u§JÆw∂q
-						ws.addCell(new jxl.write.Label(col, row, "ßπ§u§JÆw∂q" , ACenterBL));
+						//ÂÆåÂ∑•ÂÖ•Â∫´Èáè
+						ws.addCell(new jxl.write.Label(col, row, "ÂÆåÂ∑•ÂÖ•Â∫´Èáè" , ACenterBL));
 						ws.setColumnView(col,10);	
 						col++;
 					}
 					//add by Peggy 20200325
-					ws.addCell(new jxl.write.Label(col, row, "¶^T" , ACenterBL));
+					ws.addCell(new jxl.write.Label(col, row, "ÂõûT" , ACenterBL));
 					ws.setColumnView(col,8);	
 					col++;	
 					row++;
@@ -883,11 +883,11 @@ try
 				else if (REPORT_TYPE.equals("CONFIRMED") || REPORT_TYPE.equals("QUERY"))
 				{
 					ws.mergeCells(col, row, col+2, row); 
-					ws.addCell(new jxl.write.Label(col, row, "µ˘:≠q≥Ê∂µ¶∏§¿ßÂ•X≥f•H¬≈¶‚¶r≈Èº–•‹" , ACenterBLY));
+					ws.addCell(new jxl.write.Label(col, row, "Ë®ª:Ë®ÇÂñÆÈ†ÖÊ¨°ÂàÜÊâπÂá∫Ë≤®‰ª•ËóçËâ≤Â≠óÈ´îÊ®ôÁ§∫" , ACenterBLY));
 					row++;						
 				
-					sst.setVerticalFreeze(2);  //≠·µ≤µ°ÆÊ
-					//sst.setVerticalFreeze(2);  //≠·µ≤µ°ÆÊ
+					sst.setVerticalFreeze(2);  //ÂáçÁµêÁ™óÊ†º
+					//sst.setVerticalFreeze(2);  //ÂáçÁµêÁ™óÊ†º
 					for (int g =1 ; g <=14 ;g++ )
 					{
 						sst.setHorizontalFreeze(g);
@@ -929,7 +929,7 @@ try
 					ws.setColumnView(col,8);	
 					col++;	
 		
-					//≠Ï´~¶W
+					//ÂéüÂìÅÂêç
 					//ws.mergeCells(col, row, col, row+1); 
 					ws.addCell(new jxl.write.Label(col, row, "Original Item Desc" , ACenterBL));
 					ws.setColumnView(col,20);	
@@ -941,20 +941,20 @@ try
 					ws.setColumnView(col,15);	
 					col++;	
 
-					//≠ÏCust PO
+					//ÂéüCust PO
 					//ws.mergeCells(col, row, col, row+1); 
 					ws.addCell(new jxl.write.Label(col, row, "Original Cust PO" , ACenterBL));
 					ws.setColumnView(col,15);	
 					col++;	
 					
-					//≠Ï≠q≥Ê∂q
+					//ÂéüË®ÇÂñÆÈáè
 					//ws.mergeCells(col, row, col, row+1); 
 					ws.addCell(new jxl.write.Label(col, row, "Original Qty" , ACenterBL));
 					ws.setColumnView(col,10);	
 					col++;	
 	
-					//§U≥Ê§È¥¡
-					ws.addCell(new jxl.write.Label(col, row, "§U≥Ê§È¥¡" , ACenterBL));
+					//‰∏ãÂñÆÊó•Êúü
+					ws.addCell(new jxl.write.Label(col, row, "‰∏ãÂñÆÊó•Êúü" , ACenterBL));
 					ws.setColumnView(col,10);	
 					col++;	
 	
@@ -963,25 +963,25 @@ try
 					ws.setColumnView(col,10);	
 					col++;	
 		
-					//≠Ï•Ê¥¡
+					//Âéü‰∫§Êúü
 					//ws.mergeCells(col, row, col, row+1); 
 					ws.addCell(new jxl.write.Label(col, row, "Original TW SSD" , ACenterBL));
 					ws.setColumnView(col,10);	
 					col++;	
 					
-					//≠Ï•Ê¥¡
+					//Âéü‰∫§Êúü
 					//ws.mergeCells(col, row, col, row+1); 
 					ws.addCell(new jxl.write.Label(col, row, "Original SSD" , ACenterBL));
 					ws.setColumnView(col,10);	
 					col++;				
 						
-					//≠q≥Ê≠◊ßÔ©˙≤”
+					//Ë®ÇÂñÆ‰øÆÊîπÊòéÁ¥∞
 					//ws.mergeCells(col, row, col+13, row); 
 					//ws.addCell(new jxl.write.Label(col, row, "Order Revise Detail" , ACenterBLB));
 					//ws.setColumnView(col,10);	
 					//col+=14;	
 					
-					//§uºt¶^¬–µ≤™G
+					//Â∑•Âª†ÂõûË¶ÜÁµêÊûú
 					//ws.mergeCells(col, row, col+4, row); 
 					//ws.addCell(new jxl.write.Label(col, row, "PC Replied Detail " , ACenterBLO));
 					//ws.setColumnView(col,10);	
@@ -1068,32 +1068,32 @@ try
 					ws.setColumnView(col,20);	
 					col++;								
 	
-					//§uºtßO
+					//Â∑•Âª†Âà•
 					ws.addCell(new jxl.write.Label(col, row, "Plant Code" , ACenterBLO));
 					ws.setColumnView(col,8);	
 					col++;	
 					
-					//§uºtΩTª{º∆∂q
+					//Â∑•Âª†Á¢∫Ë™çÊï∏Èáè
 					ws.addCell(new jxl.write.Label(col, row, "PC QTY" , ACenterBLO));
 					ws.setColumnView(col,10);	
 					col++;
 		
-					//§uºtΩTª{•Ê¥¡
+					//Â∑•Âª†Á¢∫Ë™ç‰∫§Êúü
 					ws.addCell(new jxl.write.Label(col, row, "PC SSD" , ACenterBLO));
 					ws.setColumnView(col,10);	
 					col++;	
 	
-					//§uºtΩTª{•Ê¥¡TW
+					//Â∑•Âª†Á¢∫Ë™ç‰∫§ÊúüTW
 					ws.addCell(new jxl.write.Label(col, row, "PC TW SSD" , ACenterBLO));
 					ws.setColumnView(col,10);	
 					col++;	
 		
-					//§uºt¶^¬–µ≤™G
+					//Â∑•Âª†ÂõûË¶ÜÁµêÊûú
 					ws.addCell(new jxl.write.Label(col, row, "PC Result" , ACenterBLO));
 					ws.setColumnView(col,10);	
 					col++;		
 		
-					//§uºt≥∆µ˘
+					//Â∑•Âª†ÂÇôË®ª
 					ws.addCell(new jxl.write.Label(col, row, "PC Remarks" , ACenterBLO));
 					ws.setColumnView(col,20);	
 					col++;	
@@ -1156,19 +1156,19 @@ try
 						ws.setColumnView(col,15);	
 						col++;		
 									
-						//∑s≠q≥Ê
+						//Êñ∞Ë®ÇÂñÆ
 						//ws.mergeCells(col, row, col, row+1); 
 						ws.addCell(new jxl.write.Label(col, row, "New MO#" , ACenterBL));
 						ws.setColumnView(col,12);	
 						col++;	
 						
-						//∑s∂µ¶∏
+						//Êñ∞È†ÖÊ¨°
 						//ws.mergeCells(col, row, col, row+1); 
 						ws.addCell(new jxl.write.Label(col, row, "New Line#" , ACenterBL));
 						ws.setColumnView(col,8);	
 						col++;	
 						
-						//™¨∫A
+						//ÁãÄÊÖã
 						//ws.mergeCells(col, row, col, row+1); 
 						ws.addCell(new jxl.write.Label(col, row, "STATUS" , ACenterBL));
 						ws.setColumnView(col,16);	
@@ -1198,23 +1198,23 @@ try
 							
 						//if ((UserRoles.indexOf("MPC_User")>=0 || UserRoles.indexOf("MPC_003")>=0) ||  UserRoles.indexOf("Sale")<0)
 						//{
-							//revise§¿™R
-							ws.addCell(new jxl.write.Label(col, row, "√˛ßO§¿™R" , ACenterBL));
+							//reviseÂàÜÊûê
+							ws.addCell(new jxl.write.Label(col, row, "È°ûÂà•ÂàÜÊûê" , ACenterBL));
 							ws.setColumnView(col,10);	
 							col++;	
 	
-							//§u≥Ê∏π
-							ws.addCell(new jxl.write.Label(col, row, "§u≥Ê∏π" , ACenterBL));
+							//Â∑•ÂñÆËôü
+							ws.addCell(new jxl.write.Label(col, row, "Â∑•ÂñÆËôü" , ACenterBL));
 							ws.setColumnView(col,15);	
 							col++;
 		
-							//ßπ§u§JÆw∂q
-							ws.addCell(new jxl.write.Label(col, row, "ßπ§u§JÆw∂q" , ACenterBL));
+							//ÂÆåÂ∑•ÂÖ•Â∫´Èáè
+							ws.addCell(new jxl.write.Label(col, row, "ÂÆåÂ∑•ÂÖ•Â∫´Èáè" , ACenterBL));
 							ws.setColumnView(col,10);	
 							col++;
 	
-							//¶∏º∆≤Œ≠p
-							ws.addCell(new jxl.write.Label(col, row, "¶∏º∆≤Œ≠p" , ACenterBL));
+							//Ê¨°Êï∏Áµ±Ë®à
+							ws.addCell(new jxl.write.Label(col, row, "Ê¨°Êï∏Áµ±Ë®à" , ACenterBL));
 							ws.setColumnView(col,10);	
 							col++;
 						//}					
@@ -1228,7 +1228,7 @@ try
 						col++;	
 					}
 					//add by Peggy 20200325
-					ws.addCell(new jxl.write.Label(col, row, "¶^T" , ACenterBL));
+					ws.addCell(new jxl.write.Label(col, row, "ÂõûT" , ACenterBL));
 					ws.setColumnView(col,8);	
 					col++;	
 					row++;
@@ -1269,7 +1269,7 @@ try
 					ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1); 	
 					ws.addCell(new jxl.write.Label(col, row, rs.getString("orig_item_desc") , ALeftL));
 					col++;	
-					//WAFERÆ∆∏π
+					//WAFERÊñôËôü
 					if (PLANTCODE.equals("002")) //add by Peggy 20210427
 					{
 						ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1); 	
@@ -1433,10 +1433,10 @@ try
 				}
 				else if (PLANTCODE.equals("002"))  //add by Peggy 20171020
 				{	
-					//§u≥Ê∏π
+					//Â∑•ÂñÆËôü
 					ws.addCell(new jxl.write.Label(col, row, (rs.getString("wip_list")==null?"":rs.getString("wip_list")), ACenterL));
 					col++;	
-					//§u≥Êº∆∂q
+					//Â∑•ÂñÆÊï∏Èáè
 					if (rs.getString("WO_QTY")==null)
 					{
 						ws.addCell(new jxl.write.Label(col, row, "" , ACenterL));
@@ -1446,7 +1446,7 @@ try
 						ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("WO_QTY")).doubleValue(), ARightL));
 					}				
 					col++;	
-					//ßπ§u§JÆw∂q,add by Peggy 20180817
+					//ÂÆåÂ∑•ÂÖ•Â∫´Èáè,add by Peggy 20180817
 					if (rs.getString("wip_completed_qty")==null)
 					{
 						ws.addCell(new jxl.write.Label(col, row, "" , ACenterL));
@@ -1668,14 +1668,14 @@ try
 					col++;	
 					//if ((UserRoles.indexOf("MPC_User")>=0 || UserRoles.indexOf("MPC_003")>=0) ||  UserRoles.indexOf("Sale")<0)
 					//{	
-						//√˛ßO§¿™R
+						//È°ûÂà•ÂàÜÊûê
 						ws.addCell(new jxl.write.Label(col, row, (rs.getString("revise_remarks")==null?"":rs.getString("revise_remarks")), ACenterL));
 						col++;	
 						
-						//§u≥Ê∏π,add by Peggy 20190612
+						//Â∑•ÂñÆËôü,add by Peggy 20190612
 						ws.addCell(new jxl.write.Label(col, row, (rs.getString("wip_list")==null?"":rs.getString("wip_list")), (rs.getInt("partial_cnt")>1?ARightLB:ARightL)));
 						col++;	
-						//ßπ§u§JÆw∂q,add by Peggy 20190612
+						//ÂÆåÂ∑•ÂÖ•Â∫´Èáè,add by Peggy 20190612
 						if (rs.getString("wip_completed_qty")==null)
 						{
 							ws.addCell(new jxl.write.Label(col, row, "" , (rs.getInt("partial_cnt")>1?ARightLB:ARightL)));
@@ -1685,7 +1685,7 @@ try
 							ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("wip_completed_qty")).doubleValue(),(rs.getInt("partial_cnt")>1?ARightLB:ARightL)));
 						}			
 						col++;				
-						//¶∏º∆≤Œ≠p,add by Peggy 20190612
+						//Ê¨°Êï∏Áµ±Ë®à,add by Peggy 20190612
 						if (rs.getString("request_cnt")==null)
 						{
 							ws.addCell(new jxl.write.Label(col, row, "" , (rs.getInt("partial_cnt")>1?ACenterLB:ACenterL)));
@@ -1736,9 +1736,9 @@ try
 			message.setSentDate(new java.util.Date());
 			message.setFrom(new javax.mail.internet.InternetAddress("prodsys@ts.com.tw"));
 			remarks="";
-			if (request.getRequestURL().toString().toLowerCase().indexOf("tsrfq.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("rfq134.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("yewintra.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("10.0.1.134") <0 && request.getRequestURL().toString().toLowerCase().indexOf("10.0.1.135") <0) //¥˙∏’¿Ùπ“
+			if (request.getRequestURL().toString().toLowerCase().indexOf("tsrfq.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("rfq134.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("yewintra.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("10.0.1.134") <0 && request.getRequestURL().toString().toLowerCase().indexOf("10.0.1.135") <0) //Ê∏¨Ë©¶Áí∞Â¢É
 			{
-				remarks="(≥o¨O®”¶€RFQ¥˙∏’∞œ™∫´H•Û)";
+				remarks="(ÈÄôÊòØ‰æÜËá™RFQÊ∏¨Ë©¶ÂçÄÁöÑ‰ø°‰ª∂)";
 				message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("peggy.chen@ts.com.tw"));
 			}
 			else 
@@ -1893,7 +1893,7 @@ try
 			strContent = "Request Notification,<p>Please login at:<a href="+'"'+strProgram+'"'+">"+strUrl+"</a> to confirm order revise.<p>"+
 						 "Include the following customer list in this request..<br>"+V_CUST_LIST;
 			
-			message.setHeader("Subject", MimeUtility.encodeText((ACTTYPE.equals("REMINDER")?"Reminder-":"")+"§uºt§w¶^¬–•”Ω–ßÔ≥Ê≥q™æ"+remarks, "UTF-8", null));	
+			message.setHeader("Subject", MimeUtility.encodeText((ACTTYPE.equals("REMINDER")?"Reminder-":"")+"Â∑•Âª†Â∑≤ÂõûË¶ÜÁî≥Ë´ãÊîπÂñÆÈÄöÁü•"+remarks, "UTF-8", null));	
 			javax.mail.internet.MimeMultipart mp = new javax.mail.internet.MimeMultipart();
 			javax.mail.internet.MimeBodyPart mbp = new javax.mail.internet.MimeBodyPart();
 			mbp.setContent(strContent, "text/html;charset=UTF-8");
@@ -1921,7 +1921,7 @@ catch (Exception e)
 %>
 </FORM>
 </body>
-<!--=============•H§U∞œ¨q¨∞ƒ¿©Ò≥sµ≤¶¿==========-->
+<!--=============‰ª•‰∏ãÂçÄÊÆµÁÇ∫ÈáãÊîæÈÄ£ÁµêÊ±†==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 <%

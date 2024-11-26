@@ -1,11 +1,12 @@
-<!--20170712 Peggy,¶W¹L¤T¤Ñ¥¼Âà³æ­n±Æ°£°²¤é-->
-<%@ page contentType="text/html; charset=utf-8" pageEncoding="big5" language="java" import="java.sql.*"%>
+<!--20170712 Peggy,è¶…éä¸‰å¤©æœªè½‰å–®è¦æ’é™¤å‡æ—¥-->
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*"%>
 <html>
+
 <head>
 <title>Sales Delivery Request Data Edit Page for Confirm</title>
-<!--=============¥H¤U°Ï¬q¬°¦w¥ş»{ÃÒ¾÷¨î==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå®‰å…¨èªè­‰æ©Ÿåˆ¶==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ page import="CheckBoxBean,ComboBoxBean,Array2DimensionInputBean"%>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
@@ -47,7 +48,7 @@ document.onclick=function(e)
 
 function submitCheck(ms1,ms2,ms3,ms4,ms5)
 {     
-	if (document.DISPLAYREPAIR.ACTIONID.value=="004")  //ªí¥Ü¬°CANCE°Ê§@
+	if (document.DISPLAYREPAIR.ACTIONID.value=="004")  //è¡¨ç¤ºç‚ºCANCEå‹•ä½œ
   	{ 
    		flag=confirm(ms1);      
    		if (flag==false)  return(false);
@@ -60,11 +61,11 @@ function submitCheck(ms1,ms2,ms3,ms4,ms5)
   	} 
 	else if (document.DISPLAYREPAIR.ACTIONID.value !="011"  && document.DISPLAYREPAIR.ACTIONID.value !="015"  && document.DISPLAYREPAIR.ACTIONID.value !="013")
     { 
-		// ªí¥Ü¨Ï¥ÎªÌ¦Û¦æ©óºô§}¦C¿é¤JLine_No, ¬G¤£¤¹³\¨äSubmit 
+		// è¡¨ç¤ºä½¿ç”¨è€…è‡ªè¡Œæ–¼ç¶²å€åˆ—è¼¸å…¥Line_No, æ•…ä¸å…è¨±å…¶Submit 
         alert(" Error !!!\n Don't try key-in invalid line No in this page...");  
         return(false);
     }  
-  	// ­Y¥¼¿ï¾Ü¥ô¤@Line §@°Ê§@,«hÄµ§i
+  	// è‹¥æœªé¸æ“‡ä»»ä¸€Line ä½œå‹•ä½œ,å‰‡è­¦å‘Š
    	var chkFlag="FALSE";
    	for (i=0;i<document.DISPLAYREPAIR.CHKFLAG.length;i++)
    	{
@@ -76,7 +77,7 @@ function submitCheck(ms1,ms2,ms3,ms4,ms5)
 			var autocode=document.DISPLAYREPAIR.elements["AutoCreate"+i].value;
 			if (document.DISPLAYREPAIR.ACTIONID.value =="011" && (editcode=="R" || autocode=="R"))
 			{
-				alert("Line"+(i+1)+" ¶µ¥Ø³Q¤u¼t§P°h,½Ğ¿ï¾Ü¥¿·íªº°õ¦æ°Ê§@!");   
+				alert("Line"+(i+1)+" é …ç›®è¢«å·¥å» åˆ¤é€€,è«‹é¸æ“‡æ­£ç•¶çš„åŸ·è¡Œå‹•ä½œ!");   
 				return false;
 			}
 	 	} 
@@ -88,7 +89,7 @@ function submitCheck(ms1,ms2,ms3,ms4,ms5)
     	return(false);
    	}
 
-	if (document.DISPLAYREPAIR.ACTIONID.value=="013")  //½T»{­ì³æ¾Ú²£¥Í·s¥æ´Á¸ß°İ³æ
+	if (document.DISPLAYREPAIR.ACTIONID.value=="013")  //ç¢ºèªåŸå–®æ“šç”¢ç”Ÿæ–°äº¤æœŸè©¢å•å–®
   	{
     	flag=confirm(ms5);      
       	if (flag==false)  return(false);
@@ -106,7 +107,7 @@ function setSubmit1(URL)
 function setSubmit2(URL,LINKREF)
 { 
 	warray=new Array(document.DISPLAYREPAIR.REREQUESTDATE.value); 
-  	// ÀË¬d¤é´Á¬O§_²Å¦X¤é´Á®æ¦¡ 
+  	// æª¢æŸ¥æ—¥æœŸæ˜¯å¦ç¬¦åˆæ—¥æœŸæ ¼å¼ 
    	var datetime;
    	var year,month,day;
    	var gone,gtwo;
@@ -185,15 +186,15 @@ function setSubmit2(URL,LINKREF)
           	return(false);
         }
   	}
-  	// ÀË¬d¤é´Á¬O§_²Å¦X¤é´Á®æ¦¡
-  	document.DISPLAYREPAIR.ACTIONID.value="--"; // Á×§K¨Ï¥ÎªÌ¥ı¿ï°Ê§@¦A³]©w¦U¶µ¥Ø
+  	// æª¢æŸ¥æ—¥æœŸæ˜¯å¦ç¬¦åˆæ—¥æœŸæ ¼å¼
+  	document.DISPLAYREPAIR.ACTIONID.value="--"; // é¿å…ä½¿ç”¨è€…å…ˆé¸å‹•ä½œå†è¨­å®šå„é …ç›®
   	var reRequestDate="&REREQUESTDATE="+document.DISPLAYREPAIR.REREQUESTDATE.value; 
   	var linkURL = "#"+LINKREF;
   	document.DISPLAYREPAIR.action=URL+reRequestDate+linkURL;
   	document.DISPLAYREPAIR.submit();    
 }
 
-// ÀË¬d¶|¦~,§PÂ_¤é´Á¿é¤J¦Xªk©Ê
+// æª¢æŸ¥é–å¹´,åˆ¤æ–·æ—¥æœŸè¼¸å…¥åˆæ³•æ€§
 function isLeapYear(year) 
 { 
 	if((year%4==0&&year%100!=0)||(year%400==0)) 
@@ -225,8 +226,8 @@ String line_No = request.getParameter("LINE_NO");
 String reRequestDate=request.getParameter("REREQUESTDATE");
 String newRequest=request.getParameter("NEWREQUEST");
 String [] check=request.getParameterValues("CHKFLAG");
-String rfqExceedFlag = "N";  // ¹w³]¥¼¶W¹L¤u¼t¦^ÂĞ3¤é;
-String autoCreateFlag = "N";  //¹w³]¤H¤u¥Í¦¨­q³æ
+String rfqExceedFlag = "N";  // é è¨­æœªè¶…éå·¥å» å›è¦†3æ—¥;
+String autoCreateFlag = "N";  //é è¨­äººå·¥ç”Ÿæˆè¨‚å–®
 if (reRequestDate==null) { reRequestDate="";}
 if (remark==null) { remark=""; }
 if (actionID==null) { actionID="--"; }
@@ -236,7 +237,7 @@ if (lineNo==null) { lineNo="";}
 <body>
 <%@ include file="/jsp/include/TSDocHyperLinkPage.jsp"%>
 <FORM NAME="DISPLAYREPAIR" onsubmit='return submitCheck("<jsp:getProperty name="rPH" property="pgAlertCancel"/>","<jsp:getProperty name="rPH" property="pgAlertSubmit"/>","<jsp:getProperty name="rPH" property="pgAlertAssign"/>","<jsp:getProperty name="rPH" property="pgAlertCheckLineFlag"/>","<jsp:getProperty name="rPH" property="pgConfirm"/><jsp:getProperty name="rPH" property="pgAbortToTempDRQ"/>")' ACTION="../jsp/TSSalesDRQMProcess.jsp?DNDOCNO=<%=dnDocNo%>" METHOD="post">
-<!--=============¥H¤U°Ï¬q¬°¨ú±oºû­×°ò¥»¸ê®Æ==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—ç¶­ä¿®åŸºæœ¬è³‡æ–™==========-->
 <%@ include file="/jsp/include/TSDRQBasicInfoDisplayPage.jsp"%>
 <!--=================================-->
 <%
@@ -246,7 +247,7 @@ try
 {          
 	String sqlReject = " select a.DNDOCNO, a.LINE_NO from ORADDMAN.TSDELIVERY_DETAIL_HISTORY a, ORADDMAN.TSDELIVERY_NOTICE_DETAIL b "+
 	                   " where a.DNDOCNO = b.DNDOCNO AND a.LINE_NO = b.LINE_NO AND a.DNDOCNO = '"+dnDocNo+"' "+
-	                   " AND b.LSTATUSID = '008' and a.ORISTATUSID IN ('003','004') and a.ACTIONID='005' "+ // ­Y§ä¨ì«e¤@­Óª¬ºA°Ê§@¬°REJECT,«h¥»­¶­±°Ê§@µLªk¿ï©wAPPLY§@«È¤á½T»{,20110111 ¥[¤J'004'   
+	                   " AND b.LSTATUSID = '008' and a.ORISTATUSID IN ('003','004') and a.ACTIONID='005' "+ // è‹¥æ‰¾åˆ°å‰ä¸€å€‹ç‹€æ…‹å‹•ä½œç‚ºREJECT,å‰‡æœ¬é é¢å‹•ä½œç„¡æ³•é¸å®šAPPLYä½œå®¢æˆ¶ç¢ºèª,20110111 åŠ å…¥'004'   
 					   " union all"+
 					   " select a.DNDOCNO, a.LINE_NO from  ORADDMAN.TSDELIVERY_NOTICE_DETAIL a where a.DNDOCNO = '"+dnDocNo+"' and nvl(a.EDIT_CODE,'')='R' AND a.LSTATUSID = '008'"; //add by Peggy 20120418
     Statement stateRej=con.createStatement();
@@ -263,7 +264,7 @@ catch (Exception e)
 	out.println("Exception1:"+e.getMessage());
 }	
 
-if (frStatID.equals("008")) //  ­Yª¬ºA¬O (008)«È¤á¥æ´Á(·~°È)¤w½T»{_CONFIRMED,¤~Åã¥Ü©ú²Ó¨Ñ¨Ï¥ÎªÌ³]©w¬ÛÃö°Ñ¼Æ,§_«h,¨Ï¥ÎªÌµLªk§@¥ô¦óSubmit...(¨¾¤îUser¦Û¦æ©óºô§}¦C¿é¤JLineNO)
+if (frStatID.equals("008")) //  è‹¥ç‹€æ…‹æ˜¯ (008)å®¢æˆ¶äº¤æœŸ(æ¥­å‹™)å·²ç¢ºèª_CONFIRMED,æ‰é¡¯ç¤ºæ˜ç´°ä¾›ä½¿ç”¨è€…è¨­å®šç›¸é—œåƒæ•¸,å¦å‰‡,ä½¿ç”¨è€…ç„¡æ³•ä½œä»»ä½•Submit...(é˜²æ­¢Userè‡ªè¡Œæ–¼ç¶²å€åˆ—è¼¸å…¥LineNO)
 {
 %>
 <HR>
@@ -282,17 +283,17 @@ if (frStatID.equals("008")) //  ­Yª¬ºA¬O (008)«È¤á¥æ´Á(·~°È)¤w½T»{_CONFIRMED,¤~Å
          	<%
 			try
          	{   
-	       		String oneDArray[]= {"Line no.","Inventory Item","Quantity","UOM", "Request Date","Remark","Product Manufactory"};  // ¥ı±N¤º®e©ú²Óªº¼ĞÀY,µ¹¤@ºû°}¦C		 	     			  
+	       		String oneDArray[]= {"Line no.","Inventory Item","Quantity","UOM", "Request Date","Remark","Product Manufactory"};  // å…ˆå°‡å…§å®¹æ˜ç´°çš„æ¨™é ­,çµ¦ä¸€ç¶­é™£åˆ—		 	     			  
     	   		array2DPromiseFactoryBean.setArrayString(oneDArray);
 		   
-	       		// ¥ı¨ú ¸Ó¸ß°İ³æµ§¼Æ_°_
+	       		// å…ˆå– è©²è©¢å•å–®ç­†æ•¸_èµ·
 	       		int rowLength = 0;
 	       		Statement stateCNT=con.createStatement();
            		ResultSet rsCNT=stateCNT.executeQuery("select count(LINE_NO) from ORADDMAN.TSDELIVERY_NOTICE_DETAIL where DNDOCNO='"+dnDocNo+"' and LSTATUSID = '"+frStatID+"' ");	
 	       		if (rsCNT.next()) rowLength = rsCNT.getInt(1);
 	       		rsCNT.close();
 	       		stateCNT.close();
-	       		String b[][]=new String[rowLength+1][8]; // «Å§i¤@¤Gºû°}¦C,¤À§O¬O(¥¼¤À°t²£¦a=¦C)X(¸ê®ÆÄæ¼Æ+1= ¦æ)
+	       		String b[][]=new String[rowLength+1][8]; // å®£å‘Šä¸€äºŒç¶­é™£åˆ—,åˆ†åˆ¥æ˜¯(æœªåˆ†é…ç”¢åœ°=åˆ—)X(è³‡æ–™æ¬„æ•¸+1= è¡Œ)
 	  
 	       		out.println("<TABLE border='1' cellpadding='0' cellspacing='1' align='center' width='100%'  bordercolor='#999966' bordercolorlight='#999999' bordercolordark='#CCCC99' bgcolor='#CCCC99'>");
 	       		out.println("<tr bgcolor='#D5D8A7'>");
@@ -360,7 +361,7 @@ if (frStatID.equals("008")) //  ­Yª¬ºA¬O (008)«È¤á¥æ´Á(·~°È)¤w½T»{_CONFIRMED,¤~Å
 	       		int k=0;
 	   
 	       		String sqlEst = "";
-	       		if (UserRoles.indexOf("admin")>=0) // ­Y¬OºŞ²z­û,¥i«ü¬£¥ô¤@¼t°Ï¥æ´Á
+	       		if (UserRoles.indexOf("admin")>=0) // è‹¥æ˜¯ç®¡ç†å“¡,å¯æŒ‡æ´¾ä»»ä¸€å» å€äº¤æœŸ
 	       		{ 
 					//sqlEst = "select LINE_NO, ITEM_SEGMENT1,ITEM_DESCRIPTION, QUANTITY, UOM, REQUEST_DATE, REMARK, ASSIGN_MANUFACT,FTACPDATE,REREQUEST_DATE,REASON_CODE,EDIT_CODE from ORADDMAN.TSDELIVERY_NOTICE_DETAIL where DNDOCNO='"+dnDocNo+"' and LSTATUSID = '"+frStatID+"' order by LINE_NO"; 
 					//modify by Peggy 20120301,add autocreate_flag field
@@ -376,13 +377,13 @@ if (frStatID.equals("008")) //  ­Yª¬ºA¬O (008)«È¤á¥æ´Á(·~°È)¤w½T»{_CONFIRMED,¤~Å
            		ResultSet rs=statement.executeQuery(sqlEst);	   
 	       		while (rs.next())
 	       		{
-			  		// ¨ú¥ø¹º¦^ÂĞ¥æ´Á¤Î·~°È½T»{¤é©ó©ú²Ó¾úµ{ÀÉ¤º,§PÂ_¦¹«È¤á½T»{¬O§_¶W¹L¤u¼t¦^ÂĞ¥æ´Á4¤é¥H¤W,«h§ó·sµL®Ä³æ¾ÚFLAG='Y'
+			  		// å–ä¼åŠƒå›è¦†äº¤æœŸåŠæ¥­å‹™ç¢ºèªæ—¥æ–¼æ˜ç´°æ­·ç¨‹æª”å…§,åˆ¤æ–·æ­¤å®¢æˆ¶ç¢ºèªæ˜¯å¦è¶…éå·¥å» å›è¦†äº¤æœŸ4æ—¥ä»¥ä¸Š,å‰‡æ›´æ–°ç„¡æ•ˆå–®æ“šFLAG='Y'
 		            String respondingDate= "0";
 		            String salesCinfirmDate = "0";
 		            String limitSalesDate="0";
 		            String sPlannerRemark = "";
-                    String respDay="";   //20101005 PC¦^ÂĞ¤é¬O¬P´Á´X
-                    int setDay=3;  //20101005 ·s¼W¦¹ÅÜ¼Æ ¼Ğ·Ç¬O3¤Ñ¤º­n¦^ÂĞ
+                    String respDay="";   //20101005 PCå›è¦†æ—¥æ˜¯æ˜ŸæœŸå¹¾
+                    int setDay=3;  //20101005 æ–°å¢æ­¤è®Šæ•¸ æ¨™æº–æ˜¯3å¤©å…§è¦å›è¦†
 		            Statement stateEstDate=con.createStatement();
 	                //ResultSet rsEstDate=stateEstDate.executeQuery("select UPDATEDATE,ORISTATUSID,REMARK ,decode(trim(to_char(to_date(UPDATEDATE,'yyyy/mm/dd'),'day','NLS_DATE_LANGUAGE = American')),'thursday','B','friday','B','saturday','B','sunday','A','C') resp_day from ORADDMAN.TSDELIVERY_DETAIL_HISTORY "+
                     //                                              "  where DNDOCNO='"+dnDocNo+"' and TO_CHAR(LINE_NO)='"+rs.getString("LINE_NO")+"' "+
@@ -417,8 +418,8 @@ if (frStatID.equals("008")) //  ­Yª¬ºA¬O (008)«È¤á¥æ´Á(·~°È)¤w½T»{_CONFIRMED,¤~Å
 					     		sPlannerRemark = rsEstDate.getString("REMARK");
 						 	}
 					   	}
-			           	salesCinfirmDate = dateBean.getYearMonthDay(); // ¨ú·í¤é¬°·~°È½T»{¤é´Á
-					   	if (rsEstDate.getString("ORISTATUSID").equals("008") || rsEstDate.getString("ORISTATUSID").equals("014"))  // ¨ú¥ø¹º¤H­ûªº»¡©ú(REMARK)
+			           	salesCinfirmDate = dateBean.getYearMonthDay(); // å–ç•¶æ—¥ç‚ºæ¥­å‹™ç¢ºèªæ—¥æœŸ
+					   	if (rsEstDate.getString("ORISTATUSID").equals("008") || rsEstDate.getString("ORISTATUSID").equals("014"))  // å–ä¼åŠƒäººå“¡çš„èªªæ˜(REMARK)
 					   	{
 					    	if (sPlannerRemark.equals("") && rsEstDate.getString("REMARK") !=null && !rsEstDate.getString("REMARK").equals(""))
 						 	{   
@@ -450,31 +451,31 @@ if (frStatID.equals("008")) //  ­Yª¬ºA¬O (008)«È¤á¥æ´Á(·~°È)¤w½T»{_CONFIRMED,¤~Å
 						state1.close();
 					}
 									
-		            ////Step1. ³]©w¤u¼t§P©w¤é¬°¥Ø«e¤é´Á, ¥B·~°È¥ç½T»{«È¤á¥æ´Á
+		            ////Step1. è¨­å®šå·¥å» åˆ¤å®šæ—¥ç‚ºç›®å‰æ—¥æœŸ, ä¸”æ¥­å‹™äº¦ç¢ºèªå®¢æˆ¶äº¤æœŸ
 		            //if (respondingDate!="0" && !respondingDate.equals("0") && salesCinfirmDate != "0" && !salesCinfirmDate.equals("0"))
 		            //{
-					//	//if (respDay=="B" || respDay.equals("B")) setDay=setDay+2;  //20101005 Bªí¥Ü¶g¥|¤­¤»¦^ÂĞ ,¦h¤G¤Ñ,¦@5¤Ñ
-					//	//if (respDay=="A" || respDay.equals("A")) setDay=setDay+1;  //20101005 Aªí¥Ü¶g¤é¦^ÂĞ ,¦h1¤Ñ,¦@4¤Ñ
-					//	setDay += Integer.parseInt(respDay);  //20111005 modify by Peggy ª½±µ¥[¤Wselect sql¦^¶Ç¤Ñ¼Æ 
+					//	//if (respDay=="B" || respDay.equals("B")) setDay=setDay+2;  //20101005 Bè¡¨ç¤ºé€±å››äº”å…­å›è¦† ,å¤šäºŒå¤©,å…±5å¤©
+					//	//if (respDay=="A" || respDay.equals("A")) setDay=setDay+1;  //20101005 Aè¡¨ç¤ºé€±æ—¥å›è¦† ,å¤š1å¤©,å…±4å¤©
+					//	setDay += Integer.parseInt(respDay);  //20111005 modify by Peggy ç›´æ¥åŠ ä¸Šselect sqlå›å‚³å¤©æ•¸ 
 					//	
 		             //   dateBean.setVarDate(Integer.parseInt(respondingDate.substring(0,4)),Integer.parseInt(respondingDate.substring(4,6)),Integer.parseInt(respondingDate.substring(6,8)));
-			        // 	//  dateBean.setAdjDate(3);   //20090522 liling ¥Ñ­ì4¤é§ï3¤é,cytsou³qª¾
-			        //    dateBean.setAdjDate(setDay);   //20101005 liling §ï¥ÎÅÜ¼Æ±±¨î
-			        //    limitSalesDate=dateBean.getYearMonthDay(); // ¨ú¦^·~°È­­¨î¶}³æ¤é(¤u¼t½T»{«á3¤é)
+			        // 	//  dateBean.setAdjDate(3);   //20090522 liling ç”±åŸ4æ—¥æ”¹3æ—¥,cytsoué€šçŸ¥
+			        //    dateBean.setAdjDate(setDay);   //20101005 liling æ”¹ç”¨è®Šæ•¸æ§åˆ¶
+			        //    limitSalesDate=dateBean.getYearMonthDay(); // å–å›æ¥­å‹™é™åˆ¶é–‹å–®æ—¥(å·¥å» ç¢ºèªå¾Œ3æ—¥)
 					//   	//out.print("<br>limitSalesDate="+limitSalesDate);
 					//  	//out.print("<br>setDay="+setDay);
-			        //	//dateBean.setAdjDate(-3);//¤é´Á½Õ¾ã¦^¨Ó   //20090522 liling ¥Ñ­ì4¤é§ï3¤é,cytsou³qª¾
-			         //  dateBean.setAdjDate(-setDay);//¤é´Á½Õ¾ã¦^¨Ó   //20101005 liling §ï¥ÎÅÜ¼Æ±±¨î
-			          // dateBean.setVarDate(Integer.parseInt(dateCurrent.substring(0,4)),Integer.parseInt(dateCurrent.substring(4,6)),Integer.parseInt(dateCurrent.substring(6,8))); //¤é´Á½Õ¾ã¦^¨Ó 
-			        //   //if (Integer.parseInt(salesCinfirmDate)>Integer.parseInt(limitSalesDate)) { exceedGenMODateMSG = ""; } // ¤ñ¸û¤u¼t§P©w¤é¤é´Á­Y¤j©ó·~°È½T»{¤é3¤Ñ¥H¤W,«h©óREMARK «áÅã¥Ü°T®§
+			        //	//dateBean.setAdjDate(-3);//æ—¥æœŸèª¿æ•´å›ä¾†   //20090522 liling ç”±åŸ4æ—¥æ”¹3æ—¥,cytsoué€šçŸ¥
+			         //  dateBean.setAdjDate(-setDay);//æ—¥æœŸèª¿æ•´å›ä¾†   //20101005 liling æ”¹ç”¨è®Šæ•¸æ§åˆ¶
+			          // dateBean.setVarDate(Integer.parseInt(dateCurrent.substring(0,4)),Integer.parseInt(dateCurrent.substring(4,6)),Integer.parseInt(dateCurrent.substring(6,8))); //æ—¥æœŸèª¿æ•´å›ä¾† 
+			        //   //if (Integer.parseInt(salesCinfirmDate)>Integer.parseInt(limitSalesDate)) { exceedGenMODateMSG = ""; } // æ¯”è¼ƒå·¥å» åˆ¤å®šæ—¥æ—¥æœŸè‹¥å¤§æ–¼æ¥­å‹™ç¢ºèªæ—¥3å¤©ä»¥ä¸Š,å‰‡æ–¼REMARK å¾Œé¡¯ç¤ºè¨Šæ¯
 			        //   //out.println("limitSalesDate="+limitSalesDate);
 			        //   //out.println("respondingDate="+respondingDate);
 		            //}
 					//out.println("salesCinfirmDate="+salesCinfirmDate+" limitSalesDate="+limitSalesDate);
-					if (Integer.parseInt(salesCinfirmDate)>Integer.parseInt(limitSalesDate)) // §PÂ_­Y¶W¹L,«h§ó·sExceed_Valid Flag --> Y
+					if (Integer.parseInt(salesCinfirmDate)>Integer.parseInt(limitSalesDate)) // åˆ¤æ–·è‹¥è¶…é,å‰‡æ›´æ–°Exceed_Valid Flag --> Y
 					{
 						rfqExceedFlag = "Y";	
-						//20090522 liling ·s¼W­Y¶W¹L¦^ÂĞ¤é,§ó·stable¸Ìflagµù°O
+						//20090522 liling æ–°å¢è‹¥è¶…éå›è¦†æ—¥,æ›´æ–°tableè£¡flagè¨»è¨˜
 	                    String sqlExceed="update ORADDMAN.TSDELIVERY_NOTICE_DETAIL set SDRQ_EXCEED='Y' where DNDOCNO='"+dnDocNo+"' and to_char(LINE_NO)='"+rs.getString("LINE_NO")+"' ";		                                 
 	                    PreparedStatement stmtExceed=con.prepareStatement(sqlExceed);
 						stmtExceed.executeUpdate();  	
@@ -485,8 +486,8 @@ if (frStatID.equals("008")) //  ­Yª¬ºA¬O (008)«È¤á¥æ´Á(·~°È)¤w½T»{_CONFIRMED,¤~Å
 					}
 					
 					//out.print("<br>salesCinfirmDate="+salesCinfirmDate+"  respondingDate="+respondingDate+"  limitSalesDate="+limitSalesDate+" rfqExceedFlag="+rfqExceedFlag);		
-		    		// ¨ú¤u¼t¦^ÂĞ¥æ´Á¤Î·~°È½T»{¤é©ó©ú²Ó¾úµ{ÀÉ¤º	   
-		    		// ­Y¦³§å°h,«h¨ú¥X­ì¦]
+		    		// å–å·¥å» å›è¦†äº¤æœŸåŠæ¥­å‹™ç¢ºèªæ—¥æ–¼æ˜ç´°æ­·ç¨‹æª”å…§	   
+		    		// è‹¥æœ‰æ‰¹é€€,å‰‡å–å‡ºåŸå› 
 	              	String reasonDesc = "(N/A)";
 	              	Statement stateReason=con.createStatement();
 	              	ResultSet rsReason=stateReason.executeQuery("select * from ORADDMAN.TSREASON where TSREASONNO='"+rs.getString("REASON_CODE")+"' ");	
@@ -496,9 +497,9 @@ if (frStatID.equals("008")) //  ­Yª¬ºA¬O (008)«È¤á¥æ´Á(·~°È)¤w½T»{_CONFIRMED,¤~Å
 		          	} 
 		          	rsReason.close();
 		          	stateReason.close();
-	        		// ­Y¦³§å°h,«h¨ú¥X­ì¦]
+	        		// è‹¥æœ‰æ‰¹é€€,å‰‡å–å‡ºåŸå› 
 			
-		   			// §PÂ_­Y¬°§å°h¶µ,«h­I´ºÅÜ¦â_°_
+		   			// åˆ¤æ–·è‹¥ç‚ºæ‰¹é€€é …,å‰‡èƒŒæ™¯è®Šè‰²_èµ·
 		     		if (rs.getString("EDIT_CODE").equals("R"))
 	         		{ 
 						out.print("<TR bgcolor='#FFFF00'>"); 
@@ -507,21 +508,21 @@ if (frStatID.equals("008")) //  ­Yª¬ºA¬O (008)«È¤á¥æ´Á(·~°È)¤w½T»{_CONFIRMED,¤~Å
 					{   
 						out.print("<TR bgcolor='#D5D8A7'>"); 
 					}
-		   			// §PÂ_­Y¬°§å°h¶µ,«h­I´ºÅÜ¦â_¨´
+		   			// åˆ¤æ–·è‹¥ç‚ºæ‰¹é€€é …,å‰‡èƒŒæ™¯è®Šè‰²_è¿„
 		   			out.println("<TD width='1%'><div align='center'>");
 
 					out.println("<input type='checkbox' name='CHKFLAG' value='"+rs.getString("LINE_NO")+"' ");
 					if (!rs.getString("AUTOCREATE_FLAG").equals("Y"))
 					{
-						if (check !=null) // ­Y¥ı«e¥H³]©w¬°¿ï¨ú,«hCheck Box Åã¥Ü checked
+						if (check !=null) // è‹¥å…ˆå‰ä»¥è¨­å®šç‚ºé¸å–,å‰‡Check Box é¡¯ç¤º checked
 						{
 							for (int j=0;j<check.length;j++) 
 							{ 
 								if (check[j]==rs.getString("LINE_NO") || check[j].equals(rs.getString("LINE_NO"))) out.println("checked");  
 							}
-							if (lineNo==rs.getString("LINE_NO") || lineNo.equals(rs.getString("LINE_NO"))) out.println("checked"); // µ¹©w­«·s¥æ´Á§Y³]©w±ıµ²Âà
+							if (lineNo==rs.getString("LINE_NO") || lineNo.equals(rs.getString("LINE_NO"))) out.println("checked"); // çµ¦å®šé‡æ–°äº¤æœŸå³è¨­å®šæ¬²çµè½‰
 						} 
-						else if (lineNo==rs.getString("LINE_NO") || lineNo.equals(rs.getString("LINE_NO"))) out.println("checked"); //²Ä¤@µ§µ¹©w­«·s¥æ´Á§Y³]©w±ıµ²Âà  
+						else if (lineNo==rs.getString("LINE_NO") || lineNo.equals(rs.getString("LINE_NO"))) out.println("checked"); //ç¬¬ä¸€ç­†çµ¦å®šé‡æ–°äº¤æœŸå³è¨­å®šæ¬²çµè½‰  
 						if (rowLength==1) out.println("checked >"); else out.println(" >");
 					}
 					else 
@@ -581,7 +582,7 @@ if (frStatID.equals("008")) //  ­Yª¬ºA¬O (008)«È¤á¥æ´Á(·~°È)¤w½T»{_CONFIRMED,¤~Å
 			  			out.println("<TD nowrap><font color='#FF0000'>");
 			%>
 			<jsp:getProperty name="rPH" property="pgExceedValidDate"/>
-			<%    // ­Y¶W¥X¥»¤u¼t½T»{3¤é¥H¤W,«hÅã¥Ü°T®§´£¥Ü
+			<%    // è‹¥è¶…å‡ºæœ¬å·¥å» ç¢ºèª3æ—¥ä»¥ä¸Š,å‰‡é¡¯ç¤ºè¨Šæ¯æç¤º
 			  			out.println("</font>");
 						out.println("</TD>");			 
 			 		} 
@@ -592,13 +593,13 @@ if (frStatID.equals("008")) //  ­Yª¬ºA¬O (008)«È¤á¥æ´Á(·~°È)¤w½T»{_CONFIRMED,¤~Å
 						out.println("</TD>");
 			        }		
 			 		out.println("<TD width='5%' nowrap><font color='FF3333'>"+sPlannerRemark+"</font>");
-					out.println("</TD>"); 	// 2006/01/23 Åã¥Ü¥ø¹ºµ¹ªº³B²zRemark»¡©ú		          
+					out.println("</TD>"); 	// 2006/01/23 é¡¯ç¤ºä¼åŠƒçµ¦çš„è™•ç†Remarkèªªæ˜		          
 			 		out.println("<TD><font color='#FF0000'>");
 		     		if (rs.getString("REASON_CODE")==null || rs.getString("REASON_CODE").equals("00") || rs.getString("REASON_CODE").equals(""))
 		     		{  
-						// ¥¿±`¥ó,¦LÂÅ¦â
+						// æ­£å¸¸ä»¶,å°è—è‰²
 		       			out.println("<font color='#000099'>"+rs.getString("REASON_CODE")+reasonDesc+"</font>");
-		     		} // §å°h¥ó,¦L¬õ¦â
+		     		} // æ‰¹é€€ä»¶,å°ç´…è‰²
 		     		else 
 					{ 
 						out.println("<font color='#FF0000'>"+rs.getString("REASON_CODE")+reasonDesc+"</font>"); 
@@ -621,7 +622,7 @@ if (frStatID.equals("008")) //  ­Yª¬ºA¬O (008)«È¤á¥æ´Á(·~°È)¤w½T»{_CONFIRMED,¤~Å
 					b[k][4]=rs.getString("REQUEST_DATE");
 					b[k][5]=rs.getString("REMARK");
 					b[k][6]=rs.getString("REREQUEST_DATE");	
-			 		b[k][7]=prodMFG;  // §â«ü¬£ªº¥Í²£¦aµ¹ °}¦C		 
+			 		b[k][7]=prodMFG;  // æŠŠæŒ‡æ´¾çš„ç”Ÿç”¢åœ°çµ¦ é™£åˆ—		 
 		     		array2DPromiseFactoryBean.setArray2DString(b);
 		     		k++;
 	       		}  // End of while   	   	 
@@ -631,7 +632,7 @@ if (frStatID.equals("008")) //  ­Yª¬ºA¬O (008)«È¤á¥æ´Á(·~°È)¤w½T»{_CONFIRMED,¤~Å
 	
 	        	if (lineNo !=null && reRequestDate!=null)
 	        	{
-			    	if (reRequestDate==null || reRequestDate.equals("")) // ­Y¥¼©ó·s»İ¨D¤é¿é¤J¤é´Á¦ıÂIÀ» Set,«h±N­ì»İ¨D¤éµ¹·s»İ¨D¤é
+			    	if (reRequestDate==null || reRequestDate.equals("")) // è‹¥æœªæ–¼æ–°éœ€æ±‚æ—¥è¼¸å…¥æ—¥æœŸä½†é»æ“Š Set,å‰‡å°‡åŸéœ€æ±‚æ—¥çµ¦æ–°éœ€æ±‚æ—¥
 			       	{   
 			        	for (int t=0;t<b.length-1;t++)
 				       	{
@@ -644,7 +645,7 @@ if (frStatID.equals("008")) //  ­Yª¬ºA¬O (008)«È¤á¥æ´Á(·~°È)¤w½T»{_CONFIRMED,¤~Å
 			 
 	          		String sql = "update ORADDMAN.TSDELIVERY_NOTICE_DETAIL set REREQUEST_DATE=? where DNDOCNO='"+dnDocNo+"' and LINE_NO='"+lineNo+"' ";
 	          		PreparedStatement pstmt=con.prepareStatement(sql);  
-              		pstmt.setString(1,reRequestDate+dateBean.getHourMinuteSecond());  // ¤u¼t¥æ´Á¦w±Æ
+              		pstmt.setString(1,reRequestDate+dateBean.getHourMinuteSecond());  // å·¥å» äº¤æœŸå®‰æ’
 		      		pstmt.executeUpdate(); 
               		pstmt.close();
             	}  
@@ -654,7 +655,7 @@ if (frStatID.equals("008")) //  ­Yª¬ºA¬O (008)«È¤á¥æ´Á(·~°È)¤w½T»{_CONFIRMED,¤~Å
             	out.println("Exception3:"+e.getMessage());
            	}
 	   
-	        String a[][]=array2DPromiseFactoryBean.getArray2DContent();//¨ú±o¥Ø«e°}¦C¤º®e 		    		                       		    		  	   
+	        String a[][]=array2DPromiseFactoryBean.getArray2DContent();//å–å¾—ç›®å‰é™£åˆ—å…§å®¹ 		    		                       		    		  	   
             if (a!=null) 
 		    {		  
 		    }	
@@ -695,15 +696,15 @@ if (frStatID.equals("008")) //  ­Yª¬ºA¬O (008)«È¤á¥æ´Á(·~°È)¤w½T»{_CONFIRMED,¤~Å
     {  
 		String sqlAct = "select DISTINCT x1.ACTIONID,x2.ACTIONNAME from ORADDMAN.TSWORKFLOW x1,ORADDMAN.TSWFACTION x2 ";	   
 	   	String whereAct = "WHERE FROMSTATUSID='"+frStatID+"' AND x1.ACTIONID=x2.ACTIONID and  x1.LOCALE='"+locale+"' ";
-		if (UserRoles.equals("admin")) whereAct = whereAct+"";  //­Y¬OºŞ²z­û,«h¥ô¦ó°Ê§@¤£¨ü­­¨î
+		if (UserRoles.equals("admin")) whereAct = whereAct+"";  //è‹¥æ˜¯ç®¡ç†å“¡,å‰‡ä»»ä½•å‹•ä½œä¸å—é™åˆ¶
 		else 
 		{
-			if (userActCenterNo.equals("010") || userActCenterNo.equals("011")) whereAct = whereAct+"and FORMID='SH' "; // ­Y¬O¤W®ü¤º¾P¿ì¨Æ³B
-			else whereAct = whereAct+"and FORMID='TS' "; // §_«h¤@«ß¬Ò¬°¥~¾P¬yµ{
+			if (userActCenterNo.equals("010") || userActCenterNo.equals("011")) whereAct = whereAct+"and FORMID='SH' "; // è‹¥æ˜¯ä¸Šæµ·å…§éŠ·è¾¦äº‹è™•
+			else whereAct = whereAct+"and FORMID='TS' "; // å¦å‰‡ä¸€å¾‹çš†ç‚ºå¤–éŠ·æµç¨‹
 		}
 	   	if (rejectFlag==true)
 	   	{
-	    	whereAct = whereAct+"and x2.ACTIONID !='011' "; // ¤£Åã¥ÜAPPLY
+	    	whereAct = whereAct+"and x2.ACTIONID !='011' "; // ä¸é¡¯ç¤ºAPPLY
 	%>
 	    <script language="javascript">
 	    	alert("<jsp:getProperty name='rPH' property='pgAlertCfmRjtMsg'/>");
@@ -712,7 +713,7 @@ if (frStatID.equals("008")) //  ­Yª¬ºA¬O (008)«È¤á¥æ´Á(·~°È)¤w½T»{_CONFIRMED,¤~Å
 		}   
 	   	if (rfqExceedFlag=="Y" || rfqExceedFlag.equals("Y"))
 	   	{
-	    	whereAct = whereAct+"and x2.ACTIONID !='011' "; // ¤£Åã¥ÜAPPLY
+	    	whereAct = whereAct+"and x2.ACTIONID !='011' "; // ä¸é¡¯ç¤ºAPPLY
 	%>
 		<script language="javascript">
 			alert("Exceed the factory reply for 3 days!");
@@ -740,20 +741,20 @@ if (frStatID.equals("008")) //  ­Yª¬ºA¬O (008)«È¤á¥æ´Á(·~°È)¤w½T»{_CONFIRMED,¤~Å
 	   	out.println("</select>"); 
 	   	String sqlCnt = "select COUNT (*) from ORADDMAN.TSWORKFLOW x1,ORADDMAN.TSWFACTION x2 ";
 	   	String whereCnt = "WHERE FROMSTATUSID='"+frStatID+"' AND x1.ACTIONID=x2.ACTIONID and  x1.LOCALE='"+locale+"'";
-		if (UserRoles.equals("admin")) whereCnt = whereCnt+"";  //­Y¬OºŞ²z­û,«h¥ô¦ó°Ê§@¤£¨ü­­¨î
+		if (UserRoles.equals("admin")) whereCnt = whereCnt+"";  //è‹¥æ˜¯ç®¡ç†å“¡,å‰‡ä»»ä½•å‹•ä½œä¸å—é™åˆ¶
 		else 
 		{
-			if (userActCenterNo.equals("010") || userActCenterNo.equals("011")) whereCnt = whereCnt+"and FORMID='SH' "; // ­Y¬O¤W®ü¤º¾P¿ì¨Æ³B
-			else whereCnt = whereCnt+"and FORMID='TS' "; // §_«h¤@«ß¬Ò¬°¥~¾P¬yµ{
+			if (userActCenterNo.equals("010") || userActCenterNo.equals("011")) whereCnt = whereCnt+"and FORMID='SH' "; // è‹¥æ˜¯ä¸Šæµ·å…§éŠ·è¾¦äº‹è™•
+			else whereCnt = whereCnt+"and FORMID='TS' "; // å¦å‰‡ä¸€å¾‹çš†ç‚ºå¤–éŠ·æµç¨‹
 		}
 	   	if (rejectFlag==true)
 	   	{
-	    	whereCnt = whereCnt+"and x2.ACTIONID !='011' "; // ¤£Åã¥ÜAPPLY
+	    	whereCnt = whereCnt+"and x2.ACTIONID !='011' "; // ä¸é¡¯ç¤ºAPPLY
 	   	}   
 	   	sqlCnt = sqlCnt + whereCnt; 	
 	   	rs=statement.executeQuery(sqlCnt);
 	   	rs.next();
-	   	if (rs.getInt(1)>0) //§PÂ_­Y¨S¦³°Ê§@¥i¿ï¾Ü´N¤£¥X²{submit«ö¶s
+	   	if (rs.getInt(1)>0) //åˆ¤æ–·è‹¥æ²’æœ‰å‹•ä½œå¯é¸æ“‡å°±ä¸å‡ºç¾submitæŒ‰éˆ•
 	   	{
         	out.println("<INPUT TYPE='submit' NAME='submit2' value='Submit'>");
 		 	out.println("<INPUT TYPE='checkBox' NAME='SENDMAILOPTION' VALUE='YES'>");
@@ -780,13 +781,13 @@ if (frStatID.equals("008")) //  ­Yª¬ºA¬O (008)«È¤á¥æ´Á(·~°È)¤w½T»{_CONFIRMED,¤~Å
 		</td>
 	</tr>
 </table>
-<!-- ªí³æ°Ñ¼Æ --> 
+<!-- è¡¨å–®åƒæ•¸ --> 
 <INPUT TYPE="hidden" NAME="LINE_NO" SIZE=60  value="<%=line_No%>">
 <INPUT TYPE="hidden" NAME="NEWREQUEST" SIZE=60  value="<%if (newRequest=="N" || newRequest.equals("N")) out.print("Y"); else out.print("N"); %>">
 <input name="LSTATUSID" type="HIDDEN" value="<%=frStatID%>" >
 </FORM>
 <iframe width=124 height=153 name="gToday:supermini:agenda.js" id="gToday:supermini:agenda.js" src="../calendar/ipopeng.htm" scrolling="no" frameborder="0" style="visibility:hidden; z-index:65535; position:absolute; top:0px;"></iframe>
- <!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========--> 
+ <!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========--> 
  <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 </body>

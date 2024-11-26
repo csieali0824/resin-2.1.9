@@ -1,7 +1,7 @@
-<%@ page contentType="text/html; charset=utf-8" pageEncoding="big5" language="java" import="java.sql.*,java.util.*,java.math.BigDecimal,java.text.DecimalFormat" %>
-<!--=============¥H¤U°Ï¬q¬°¦w¥ş»{ÃÒ¾÷¨î==========-->
+<%@ page contentType="text/html; charset=utf-8"  language="java" import="java.sql.*,java.util.*,java.math.BigDecimal,java.text.DecimalFormat" %>
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå®‰å…¨èªè­‰æ©Ÿåˆ¶==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
@@ -19,27 +19,27 @@
 <%
 String serverHostName=request.getServerName();
 String hostInfo=request.getRequestURL().toString();//REQUEST URL
-String mailHost=application.getInitParameter("MAIL_HOST"); //¥ÑServerªºweb.xml¤¤¨ú¥Xmail serverªºhost name
+String mailHost=application.getInitParameter("MAIL_HOST"); //ç”±Serverçš„web.xmlä¸­å–å‡ºmail serverçš„host name
 String previousPageAddress=request.getParameter("PREVIOUSPAGEADDRESS");
 String inspLotNo=request.getParameter("INSPLOTNO");
 String formID=request.getParameter("FORMID");
 String typeNo=request.getParameter("TYPENO");
-String isTransmitted=request.getParameter("ISTRANSMITTED");//¨ú±o«e¤@­¶³B²z¤§ºû­×®×¥ó¬O§_¤w«á°e¤§FLAG
+String isTransmitted=request.getParameter("ISTRANSMITTED");//å–å¾—å‰ä¸€é è™•ç†ä¹‹ç¶­ä¿®æ¡ˆä»¶æ˜¯å¦å·²å¾Œé€ä¹‹FLAG
 String fromStatusID=request.getParameter("FROMSTATUSID");
 String actionID=request.getParameter("ACTIONID");
 String remark=request.getParameter("REMARK");
 
-String woNo=request.getParameter("WO_NO");   //¤u³æ¸¹
+String woNo=request.getParameter("WO_NO");   //å·¥å–®è™Ÿ
 
 //String changeProdPersonID=request.getParameter("CHANGEREPPERSONID");
 String changeProdPersonMail="";
-String sendMailOption=request.getParameter("SENDMAILOPTION");//¬O§_­nSEND MAIL
+String sendMailOption=request.getParameter("SENDMAILOPTION");//æ˜¯å¦è¦SEND MAIL
 
 String [] choice=request.getParameterValues("CH"); //add by Peggy 20131216
 
 String actionName=null;
 
-//out.println("<BR>¤u¥O¸¹: "+woNo);
+//out.println("<BR>å·¥ä»¤è™Ÿ: "+woNo);
 //out.println("<BR>Update by "+UserName);
 //out.println("<BR>actionID="+actionID+"<br>fromStatusID="+fromStatusID);
 %>
@@ -49,14 +49,14 @@ String actionName=null;
 		<td>
 			<table width="40%" border="1" cellpadding="0" cellspacing="0" style="font-size:12px" bordercolor="#99CCCC" >
 				<tr>
-					<td  width="40%" style="background-color:#CCCCCC;font-family:'·s²Ó©úÅé'" align="center">¤u¥O¸¹</td>
-					<td  width="30%" style="background-color:#CCCCCC;font-family:'·s²Ó©úÅé'" align="center">°õ¦æ°Ê§@</td>
-					<td  width="30%" style="background-color:#CCCCCC;font-family:'·s²Ó©úÅé'" align="center">µ²ªG</td>
+					<td  width="40%" style="background-color:#CCCCCC;font-family:'æ–°ç´°æ˜é«”'" align="center">å·¥ä»¤è™Ÿ</td>
+					<td  width="30%" style="background-color:#CCCCCC;font-family:'æ–°ç´°æ˜é«”'" align="center">åŸ·è¡Œå‹•ä½œ</td>
+					<td  width="30%" style="background-color:#CCCCCC;font-family:'æ–°ç´°æ˜é«”'" align="center">çµæœ</td>
 				</tr>
 <%
 try
 {
-	//¨ú±oERP_USER_ID
+	//å–å¾—ERP_USER_ID
 	String ERPUserID = "";
 	Statement getERPID=con.createStatement();  
 	ResultSet getERPIDRs=getERPID.executeQuery("SELECT ERP_USER_ID FROM oraddman.wsuser WHERE username = '"+UserName+"' ");  
@@ -67,7 +67,7 @@ try
 	getERPIDRs.close();
 	getERPID.close();
 
-	// ¨ú±o°õ¦æ°Ê§@¦WºÙ_°_
+	// å–å¾—åŸ·è¡Œå‹•ä½œåç¨±_èµ·
 	Statement getActionName=con.createStatement();  
 	ResultSet getActionRs=getActionName.executeQuery("select ACTIONNAME from ORADDMAN.TSWFACTION where ACTIONID = '"+actionID+"' ");  
 	if (getActionRs.next())
@@ -76,10 +76,10 @@ try
 	}
 	getActionRs.close();
 	getActionName.close();
-	// ¨ú±o°õ¦æ°Ê§@¦WºÙ_¨´
-	//out.println("<BR>°õ¦æ°Ê§@: "+actionName);
+	// å–å¾—åŸ·è¡Œå‹•ä½œåç¨±_è¿„
+	//out.println("<BR>åŸ·è¡Œå‹•ä½œ: "+actionName);
 
-	// ¥ı¨ú±o¤U¤@ª¬ºA¤Îª¬ºA´y­z¨Ã§@¬yµ{ª¬ºA§ó·s   
+	// å…ˆå–å¾—ä¸‹ä¸€ç‹€æ…‹åŠç‹€æ…‹æè¿°ä¸¦ä½œæµç¨‹ç‹€æ…‹æ›´æ–°   
 	String sqlStat = "";
 	String whereStat = "";
 	//out.println("FORMID="+formID);
@@ -90,7 +90,7 @@ try
 	ResultSet getStatusRs=getStatusStat.executeQuery(sqlStat);  
 	getStatusRs.next();
 
-	//=======¤u¥O¸ê®Æ½T»{...°_	(ACTION=029, 005)   ¤u¥O¸ê®Æ040->¤u¥O¸ê®Æ½T»{041 / ¤u¥O¸ê®Æ°h¦^058   add by SHIN 2009/07/09
+	//=======å·¥ä»¤è³‡æ–™ç¢ºèª...èµ·	(ACTION=029, 005)   å·¥ä»¤è³‡æ–™040->å·¥ä»¤è³‡æ–™ç¢ºèª041 / å·¥ä»¤è³‡æ–™é€€å›058   add by SHIN 2009/07/09
 	if ((actionID.equals("029") && fromStatusID.equals("040")) || (actionID.equals("005") && fromStatusID.equals("040")))   // 
 	{   
 		if (choice==null)
@@ -147,7 +147,7 @@ try
 			}
 		}
 	}
-	//=======¤u¥O¸ê®Æ½T»{...¨´	(ACTION=029, 005)   ¤u¥O¸ê®Æ040->¤u¥O¸ê®Æ½T»{041 / ¤u¥O¸ê®Æ°h¦^058   add by SHIN 2009/07/09
+	//=======å·¥ä»¤è³‡æ–™ç¢ºèª...è¿„	(ACTION=029, 005)   å·¥ä»¤è³‡æ–™040->å·¥ä»¤è³‡æ–™ç¢ºèª041 / å·¥ä»¤è³‡æ–™é€€å›058   add by SHIN 2009/07/09
 	getStatusStat.close();
 	getStatusRs.close();  
   
@@ -169,8 +169,8 @@ catch (Exception e)
 		<td>
 			<table width="60%" border="1" cellpadding="0" cellspacing="0" >
 				<tr>
-			    	<td width="278"><font size="2">WIP³æ¾Ú³B²z</font></td>
-			    	<td width="297"><font size="2">WIP¬d¸ß¤Î³øªí</font></td>    
+			    	<td width="278"><font size="2">WIPå–®æ“šè™•ç†</font></td>
+			    	<td width="297"><font size="2">WIPæŸ¥è©¢åŠå ±è¡¨</font></td>    
 			  	</tr>
 		  		<tr>   
 		    		<td>
@@ -234,7 +234,7 @@ catch (Exception e)
 
 </body>
 <!--%@ include file="/jsp/include/ProgressStatusBarStop.jsp"%-->
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 </html>

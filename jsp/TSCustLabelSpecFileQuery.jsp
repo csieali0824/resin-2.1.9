@@ -1,12 +1,12 @@
-<!-- 20151229 by Peggy,¼W¥[¼ĞÅÒÀÉ¦W¬d¸ß±ø¥ó¤Î§R°£¸ê®Æ¥\¯à-->
-<%@ page contentType="text/html; charset=utf-8" pageEncoding="big5" language="java" import="java.sql.*" %>
+<!-- 20151229 by Peggy,å¢åŠ æ¨™ç±¤æª”åæŸ¥è©¢æ¢ä»¶åŠåˆªé™¤è³‡æ–™åŠŸèƒ½-->
+<%@ page contentType="text/html; charset=utf-8"  language="java" import="java.sql.*" %>
 <%@ page import="DateBean"%>
-<!--=============¥H¤U°Ï¬q¬°¦w¥ş»{ÃÒ¾÷¨î==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå®‰å…¨èªè­‰æ©Ÿåˆ¶==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=================================-->
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<!--=============¥H¤U°Ï¬q¬°µ¥«İµe­±==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºç­‰å¾…ç•«é¢==========-->
 <%@ include file="/jsp/include/MProcessStatusBarStart.jsp"%>
 <%@ page import="QryAllChkBoxEditBean,ComboBoxBean,ArrayComboBoxBean,DateBean,Array2DimensionInputBean"%>
 <!--=================================-->
@@ -71,10 +71,10 @@ function setDelete()
 	}
 	if (chkcnt <=0)
 	{
-		alert("½Ğ¥ı¤Ä¿ï¸ê®Æ!");
+		alert("è«‹å…ˆå‹¾é¸è³‡æ–™!");
 		return false;
 	}
-	else if (confirm("¬O§_½T©w§R°£?"))
+	else if (confirm("æ˜¯å¦ç¢ºå®šåˆªé™¤?"))
 	{
 		document.MYFORM.action="../jsp/TSCustLabelSpecFileQuery.jsp?ACT_TYPE=DELETE";
 		document.MYFORM.submit(); 
@@ -194,15 +194,15 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 12px }
   	if (fromMonth==null || fromMonth.equals("--") || fromMonth.equals("null")) fromMonthString="01"; else fromMonthString=fromMonth; 
   	String fromDay=request.getParameter("FROMDAY");
   	if (fromDay==null || fromDay.equals("--") || fromDay.equals("null")) fromDayString="01"; else fromDayString=fromDay;
-  	queryDateFrom=fromYearString+fromMonthString+fromDayString;//³]¬°·j´M¦¬¥ó°_©l¤é´Áªº±ø¥ó
+  	queryDateFrom=fromYearString+fromMonthString+fromDayString;//è¨­ç‚ºæœå°‹æ”¶ä»¶èµ·å§‹æ—¥æœŸçš„æ¢ä»¶
   	String toYear=request.getParameter("TOYEAR");
   	if (toYear==null || toYear.equals("--") || toYear.equals("null")) toYearString="3000"; else toYearString=toYear;
   	String toMonth=request.getParameter("TOMONTH");
   	if (toMonth==null || toMonth.equals("--") || toMonth.equals("null")) toMonthString="12"; else toMonthString=toMonth; 
   	String toDay=request.getParameter("TODAY");
   	if (toDay==null || toDay.equals("--") || toDay.equals("null")) toDayString="31"; else toDayString=toDay; 
-  	queryDateTo=toYearString+toMonthString+toDayString;//³]¬°·j´M¦¬¥óºI¤î¤é´Áªº±ø¥ó
-  	int maxrow=0;//¬d¸ß¸ê®ÆÁ`µ§¼Æ 
+  	queryDateTo=toYearString+toMonthString+toDayString;//è¨­ç‚ºæœå°‹æ”¶ä»¶æˆªæ­¢æ—¥æœŸçš„æ¢ä»¶
+  	int maxrow=0;//æŸ¥è©¢è³‡æ–™ç¸½ç­†æ•¸ 
   	String marketType=request.getParameter("MARKETTYPE");
   	if (marketType==null || marketType.equals("--")) marketType="";
   
@@ -217,7 +217,7 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 12px }
   	String act_type = request.getParameter("ACT_TYPE");     //add by Peggy 20151229
   	if (act_type==null) act_type="";
   
-    // ¨Ì¿ï©w¤º¥~¾P§O¨M©w Set Client Infor ©ó¨º­ÓParent Org ID (305) YEW 
+    // ä¾é¸å®šå…§å¤–éŠ·åˆ¥æ±ºå®š Set Client Infor æ–¼é‚£å€‹Parent Org ID (305) YEW 
   
    	String orgOU = "";
    	Statement stateOU=con.createStatement();   
@@ -231,7 +231,7 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 12px }
   	
 	CallableStatement cs1 = con.prepareCall("{call DBMS_APPLICATION_INFO.SET_CLIENT_INFO(?)}");
 	//cs1.setString(1,"305"); 
-	cs1.setString(1,orgOU);  /*  41 --> ¬°¥x¥b¥b¾ÉÅé  42 --> ¬°¨Æ°È¾÷   325 --> YEW SEMI  */ 
+	cs1.setString(1,orgOU);  /*  41 --> ç‚ºå°åŠåŠå°é«”  42 --> ç‚ºäº‹å‹™æ©Ÿ   325 --> YEW SEMI  */ 
 	cs1.execute();
     // out.println("Procedure : Execute Success !!! ");
     cs1.close(); 
@@ -301,7 +301,7 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 12px }
 		if (stationNo!=null && !stationNo.equals("--")) sqlRCV += " and a.STATNO = '"+stationNo+"' ";
 		if (marketType!=null && !marketType.equals("") && !marketType.equals("--")) 
 		{
-			sqlRCV += " and a.ORGANIZATION_ID = '"+marketType+"' "; // ¨ú¨ìªºorganizationID
+			sqlRCV += " and a.ORGANIZATION_ID = '"+marketType+"' "; // å–åˆ°çš„organizationID
 		}
 		if (!label_code.equals(""))
 		{
@@ -352,15 +352,15 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 12px }
 
 %>
 <FORM NAME="MYFORM" METHOD="POST" ACTION="../jsp/TSCustLabelSpecFileQuery.jsp" > 
-<span class="style18">TSC</span><span class="style19">«È¤á¯S®í³W®æ¼ĞÅÒ¬d¸ß</span>
-<img src="../image/search.gif"><font color="#003399">¬°¬d¸ß¥²¿ï(¶ñ)Äæ¦ì,»İ¾Ü¤@¿é¤J</font>
+<span class="style18">TSC</span><span class="style19">å®¢æˆ¶ç‰¹æ®Šè¦æ ¼æ¨™ç±¤æŸ¥è©¢</span>
+<img src="../image/search.gif"><font color="#003399">ç‚ºæŸ¥è©¢å¿…é¸(å¡«)æ¬„ä½,éœ€æ“‡ä¸€è¼¸å…¥</font>
 <table width="100%" border="0" cellpadding="0" cellspacing="1" bordercolor="#CCCCCC" bordercolorlight="#999999" bordercolordark="#FFFFFF">
- <tr bgcolor="#D8DEA9"><td width="6%" nowrap>¤º¥~¾P«¬§O</td>
+ <tr bgcolor="#D8DEA9"><td width="6%" nowrap>å…§å¤–éŠ·å‹åˆ¥</td>
    <td width="29%" nowrap>
      <%
 	             try
                  {   
-				   //-----¨ú¤º¥~¾P§O
+				   //-----å–å…§å¤–éŠ·åˆ¥
 		           Statement statement=con.createStatement();
                    ResultSet rs=null;	
 			       String sqlOrgInf = " select ORGANIZATION_ID, CODE_DESC from apps.YEW_MFG_DEFDATA ";
@@ -381,12 +381,12 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 12px }
 				 { out.println("Exception:"+e.getMessage()); }  
 	 %>
    </td>
-   <td width="12%" nowrap>¼ĞÅÒ¦C¦L¯¸</td>
+   <td width="12%" nowrap>æ¨™ç±¤åˆ—å°ç«™</td>
    <td nowrap>
      <%
 	             try
                  {   
-				   //-----¨ú¼È¦¬°Ï¨Ó·½
+				   //-----å–æš«æ”¶å€ä¾†æº
 		           Statement statement=con.createStatement();
                    ResultSet rs=null;	
 			       String sqlOrgInf = " select STATNO, STATNAME from ORADDMAN.TSCUST_LABEL_STATION ";
@@ -407,28 +407,28 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 12px }
 				 { out.println("Exception:"+e.getMessage()); }  
 	 %>
    </td>
-   <td width="12%" nowrap>¼ĞÅÒÀÉ¦W</td>
+   <td width="12%" nowrap>æ¨™ç±¤æª”å</td>
    <td><input type="text" name="LABEL_CODE" size="15" value="<%=label_code%>">
    </td>
  </tr>
- <tr bgcolor="#D8DEA9"><td width="6%" nowrap>«È¤á¸ê°T<img src="../image/search.gif"></td>
+ <tr bgcolor="#D8DEA9"><td width="6%" nowrap>å®¢æˆ¶è³‡è¨Š<img src="../image/search.gif"></td>
      <td width="29%" nowrap>
 	 <input type="hidden" size="5" name="SUPPLYVNDID" maxlength="10" value="<%=supplyVndID%>">
 	 <input type="text" size="5" name="SUPPLYVNDNO" maxlength="10" value="<%=supplyVndNo%>" onKeyDown="setWindowSupplierFind(this.form.SUPPLYVNDNO.value,this.form.SUPPLYVND.value)">
 	 <INPUT TYPE="button" value="..." onClick='subWindowSupplierFind(this.form.SUPPLYVNDNO.value,this.form.SUPPLYVND.value)'>
 	 <input type="text" size="25" name="SUPPLYVND" maxlength="50" value="<%=supplyVnd%>" onKeyDown="setWindowSupplierFind(this.form.SUPPLYVNDNO.value,this.form.SUPPLYVND.value)">	  
     </td>
-     <td width="12%" nowrap>³]©w¤é°_</td>
+     <td width="12%" nowrap>è¨­å®šæ—¥èµ·</td>
      <td width="20%"><input name="RECEPTDATESTR" tabindex="2" type="text" size="8" value="<%=receptDateStr%>" readonly><A href='javascript:void(0)' onclick='gfPop.fPopCalendar(document.MYFORM.RECEPTDATESTR);return false;'><img name='popcal' border='0' src='../image/calbtn.gif'></A></td>
-     <td width="11%" nowrap>³]©w¤é¨´</td>
+     <td width="11%" nowrap>è¨­å®šæ—¥è¿„</td>
 	 <td width="22%"><input name="RECEPTDATEEND" tabindex="3" type="text" size="8" value="<%=receptDateEnd%>" readonly><A href='javascript:void(0)' onclick='gfPop.fPopCalendar(document.MYFORM.RECEPTDATEEND);return false;'><img name='popcal' border='0' src='../image/calbtn.gif'></A></td>
   </tr>
 	 <tr bgcolor="#D8DEA9">	   	   
 	   <td colspan="6" align="center" >
-	       <!--%<INPUT name="button3" tabindex='20' TYPE="button" onClick='setSubmitQuery("../jsp/TSIQCInspectLotInput.jsp?QUERY=Y",this.form.SUPPLYVND.value,this.form.VENDOR.value,this.form.SUPPLYVNDNO.value,this.form.RECEPTDATEBEG.value,this.form.RECEPTDATEEND.value,this.form.PONO.value,this.form.RECEIPTNO.value)'  value='¬d¸ß' >%-->
-		   <INPUT name="button3" tabindex='20' TYPE="button" onClick="setQuery()" value='¬d¸ß' >
+	       <!--%<INPUT name="button3" tabindex='20' TYPE="button" onClick='setSubmitQuery("../jsp/TSIQCInspectLotInput.jsp?QUERY=Y",this.form.SUPPLYVND.value,this.form.VENDOR.value,this.form.SUPPLYVNDNO.value,this.form.RECEPTDATEBEG.value,this.form.RECEPTDATEEND.value,this.form.PONO.value,this.form.RECEIPTNO.value)'  value='æŸ¥è©¢' >%-->
+		   <INPUT name="button3" tabindex='20' TYPE="button" onClick="setQuery()" value='æŸ¥è©¢' >
 		   &nbsp;&nbsp;
-		   <INPUT name="button5"  TYPE="button" onClick="setDelete()" value='§R°£' >
+		   <INPUT name="button5"  TYPE="button" onClick="setDelete()" value='åˆªé™¤' >
 	   </td>
 	 </tr>    
 </table>
@@ -437,10 +437,10 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 12px }
 </FONT><FONT COLOR=BLACK SIZE=2></FONT>
 <table width="100%" border="0">
   <tr>
-    <td width="16%"> <input name="button" type=button onClick="this.value=check(this.form.CH)" value='¿ï¾Ü¥ş³¡'><strong><FONT COLOR=RED SIZE=2 face="Georgia">Á`¦@<%=maxrow%>&nbsp;µ§°O¿ı</FONT> </strong> 
+    <td width="16%"> <input name="button" type=button onClick="this.value=check(this.form.CH)" value='é¸æ“‡å…¨éƒ¨'><strong><FONT COLOR=RED SIZE=2 face="Georgia">ç¸½å…±<%=maxrow%>&nbsp;ç­†è¨˜éŒ„</FONT> </strong> 
 	</td>  
 	<td>  
-<A HREF="../jsp/TSCustLabelSpecFileQuery.jsp?SCROLLROW=FIRST&RECEPTDATESTR=<%=receptDateStr%>&RECEPTDATEEND=<%=receptDateEnd%>&MARKETTYPE=<%=marketType%>&LABEL_CODE=<%=label_code%>"><font size="2"><strong><font color="#FF0080">²Ä¤@­¶</font></strong></font></A>&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="../jsp/TSCustLabelSpecFileQuery.jsp?SCROLLROW=LAST&RECEPTDATESTR=<%=receptDateStr%>&RECEPTDATEEND=<%=receptDateEnd%>&MARKETTYPE=<%=marketType%>&LABEL_CODE=<%=label_code%>"><font size="2"><strong><font color="#FF0080">³Ì²×­¶</font></strong></font></A><font color="#FF0080"><strong><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="../jsp/TSCustLabelSpecFileQuery.jsp?SCROLLROW=300&RECEPTDATESTR=<%=receptDateStr%>&RECEPTDATEEND=<%=receptDateEnd%>&MARKETTYPE=<%=marketType%>&LABEL_CODE=<%=label_code%>">¤U¤@­¶</A>&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="../jsp/../jsp/TSCustLabelSpecFileQuery.jsp?SCROLLROW=-300&RECEPTDATESTR=<%=receptDateStr%>&RECEPTDATEEND=<%=receptDateEnd%>&MARKETTYPE=<%=marketType%>&LABEL_CODE=<%=label_code%>">«e¤@­¶</A>&nbsp;&nbsp;(²Ä<%=currentPageNumber%>&nbsp;­¶/¦@<%=totalPageNumber%>&nbsp;­¶)</font></strong></font>
+<A HREF="../jsp/TSCustLabelSpecFileQuery.jsp?SCROLLROW=FIRST&RECEPTDATESTR=<%=receptDateStr%>&RECEPTDATEEND=<%=receptDateEnd%>&MARKETTYPE=<%=marketType%>&LABEL_CODE=<%=label_code%>"><font size="2"><strong><font color="#FF0080">ç¬¬ä¸€é </font></strong></font></A>&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="../jsp/TSCustLabelSpecFileQuery.jsp?SCROLLROW=LAST&RECEPTDATESTR=<%=receptDateStr%>&RECEPTDATEEND=<%=receptDateEnd%>&MARKETTYPE=<%=marketType%>&LABEL_CODE=<%=label_code%>"><font size="2"><strong><font color="#FF0080">æœ€çµ‚é </font></strong></font></A><font color="#FF0080"><strong><font size="2">&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="../jsp/TSCustLabelSpecFileQuery.jsp?SCROLLROW=300&RECEPTDATESTR=<%=receptDateStr%>&RECEPTDATEEND=<%=receptDateEnd%>&MARKETTYPE=<%=marketType%>&LABEL_CODE=<%=label_code%>">ä¸‹ä¸€é </A>&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="../jsp/../jsp/TSCustLabelSpecFileQuery.jsp?SCROLLROW=-300&RECEPTDATESTR=<%=receptDateStr%>&RECEPTDATEEND=<%=receptDateEnd%>&MARKETTYPE=<%=marketType%>&LABEL_CODE=<%=label_code%>">å‰ä¸€é </A>&nbsp;&nbsp;(ç¬¬<%=currentPageNumber%>&nbsp;é /å…±<%=totalPageNumber%>&nbsp;é )</font></strong></font>
 	</td>
   </tr>
 </table>
@@ -457,10 +457,10 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 12px }
    String whereRCV ="";
    String orderRCV = "";
    
-   //ºŞ²z­û»P¤@¯ëUSER¬İªº¸ê®Æ³£¤@¼Ë,¤£À´¬°¦ó¤À¶}¼g,±NºŞ²z­ûCODE MARK±¼,¥u¯d¤@¯ëUSER,add by Peggy 20151229
-   //if (UserRoles.indexOf("admin")>=0) //­Y¨¤¦â¬°admin«h¥i¬İ¨ì¥ş³¡¦¬®Æ³æ
+   //ç®¡ç†å“¡èˆ‡ä¸€èˆ¬USERçœ‹çš„è³‡æ–™éƒ½ä¸€æ¨£,ä¸æ‡‚ç‚ºä½•åˆ†é–‹å¯«,å°‡ç®¡ç†å“¡CODE MARKæ‰,åªç•™ä¸€èˆ¬USER,add by Peggy 20151229
+   //if (UserRoles.indexOf("admin")>=0) //è‹¥è§’è‰²ç‚ºadminå‰‡å¯çœ‹åˆ°å…¨éƒ¨æ”¶æ–™å–®
    //{  	//out.println("UserRoles="+UserRoles);  
-   //	sqlRCV = " select CUST_NUMBER as CUST_NO, STATNO, TYPE_ID, a.ORGANIZATION_ID as MARKETTYPE, TSC_PACKAGE, CUSTOMER_NAME as «È¤á¦WºÙ, TSC_FAMILY as ²£«~±Ú¸s, STAT_NAME as ¼ĞÃ±¯¸§O, TYPE_DESCRIPTION as ¼ĞÃ±³W®æ, LABEL_TEMPFILE as ¼Ë¥»ÀÉ¦W, ICON_NAME as ¯S®í¹Ï¼Ë, decode(a.ORGANIZATION_ID,'326','¤º¾P','327','¥~¾P',a.ORGANIZATION_ID) as ¤º¥~¾P§O, LABEL_REMARK as ³Æµù»¡©ú "+
+   //	sqlRCV = " select CUST_NUMBER as CUST_NO, STATNO, TYPE_ID, a.ORGANIZATION_ID as MARKETTYPE, TSC_PACKAGE, CUSTOMER_NAME as å®¢æˆ¶åç¨±, TSC_FAMILY as ç”¢å“æ—ç¾¤, STAT_NAME as æ¨™ç°½ç«™åˆ¥, TYPE_DESCRIPTION as æ¨™ç°½è¦æ ¼, LABEL_TEMPFILE as æ¨£æœ¬æª”å, ICON_NAME as ç‰¹æ®Šåœ–æ¨£, decode(a.ORGANIZATION_ID,'326','å…§éŠ·','327','å¤–éŠ·',a.ORGANIZATION_ID) as å…§å¤–éŠ·åˆ¥, LABEL_REMARK as å‚™è¨»èªªæ˜ "+
    //			     " from ORADDMAN.TSCUST_LABEL_SPECS A, APPS.YEW_MFG_DEFDATA B ";							
    //		whereRCV = " where a.ORGANIZATION_ID = b.ORGANIZATION_ID and b.DEF_TYPE = 'MARKETTYPE' ";							 
    //		orderRCV = " order by 6, MARKETTYPE, TSC_PACKAGE, STATNO, TYPE_ID ";
@@ -469,7 +469,7 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 12px }
    //		if (stationNo!=null && !stationNo.equals("--")) sqlRCV = sqlRCV + " and a.STATNO = '"+stationNo+"' ";
    //		if (marketType!=null && !marketType.equals("") && !marketType.equals("--")) 
    //		{ 
-   //			sqlRCV = sqlRCV + " and a.ORGANIZATION_ID = '"+marketType+"' "; // ¨ú¨ìªºorganizationID
+   //			sqlRCV = sqlRCV + " and a.ORGANIZATION_ID = '"+marketType+"' "; // å–åˆ°çš„organizationID
    //		}
    //		sqlRCV = sqlRCV + whereRCV + orderRCV;
    //		//out.println(sqlRCV);
@@ -477,14 +477,14 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 12px }
    //} 
    //else 
    //{
-	sqlRCV = " select CUST_NUMBER as CUST_NO, STATNO, TYPE_ID, a.ORGANIZATION_ID as MARKETTYPE, TSC_PACKAGE, CUSTOMER_NAME as «È¤á¦WºÙ, TSC_FAMILY as ²£«~±Ú¸s, STAT_NAME as ¼ĞÃ±¯¸§O, TYPE_DESCRIPTION as ¼ĞÃ±³W®æ, LABEL_TEMPFILE as ¼Ë¥»ÀÉ¦W, ICON_NAME as ¯S®í¹Ï¼Ë, decode(a.ORGANIZATION_ID,'326','¤º¾P','327','¥~¾P',a.ORGANIZATION_ID) as ¤º¥~¾P§O, LABEL_REMARK as ³Æµù»¡©ú "+
+	sqlRCV = " select CUST_NUMBER as CUST_NO, STATNO, TYPE_ID, a.ORGANIZATION_ID as MARKETTYPE, TSC_PACKAGE, CUSTOMER_NAME as å®¢æˆ¶åç¨±, TSC_FAMILY as ç”¢å“æ—ç¾¤, STAT_NAME as æ¨™ç°½ç«™åˆ¥, TYPE_DESCRIPTION as æ¨™ç°½è¦æ ¼, LABEL_TEMPFILE as æ¨£æœ¬æª”å, ICON_NAME as ç‰¹æ®Šåœ–æ¨£, decode(a.ORGANIZATION_ID,'326','å…§éŠ·','327','å¤–éŠ·',a.ORGANIZATION_ID) as å…§å¤–éŠ·åˆ¥, LABEL_REMARK as å‚™è¨»èªªæ˜ "+
 	         " from ORADDMAN.TSCUST_LABEL_SPECS A, APPS.YEW_MFG_DEFDATA B "+						
 		     " where a.ORGANIZATION_ID = b.ORGANIZATION_ID and b.DEF_TYPE = 'MARKETTYPE' ";						 
 	if (supplyVndID!=null && !supplyVndID.equals("")) sqlRCV += " and a.CUST_NUMBER ='"+supplyVndID+"' ";			
 	if (stationNo!=null && !stationNo.equals("--")) sqlRCV += " and a.STATNO = '"+stationNo+"' ";
 	if (marketType!=null && !marketType.equals("") && !marketType.equals("--")) 
 	{
-		sqlRCV += " and a.ORGANIZATION_ID = '"+marketType+"' "; // ¨ú¨ìªºorganizationID
+		sqlRCV += " and a.ORGANIZATION_ID = '"+marketType+"' "; // å–åˆ°çš„organizationID
 	}
 	if (!label_code.equals(""))
 	{
@@ -493,17 +493,17 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 12px }
 	sqlRCV += " order by 6, MARKETTYPE, TSC_PACKAGE, STATNO, TYPE_ID ";
 	//out.println(sqlRCV);
 	rs=statement.executeQuery(sqlRCV); 		   	 
-	//}   // «DºŞ²z­ûÅv­­ out.println("UserRoles="+UserRoles); 
+	//}   // éç®¡ç†å“¡æ¬Šé™ out.println("UserRoles="+UserRoles); 
 	
 	if (rowNumber==1 || rowNumber<0)
    	{ 
-    	rs.beforeFirst(); //²¾¦Ü²Ä¤@µ§¸ê®Æ¦C  
+    	rs.beforeFirst(); //ç§»è‡³ç¬¬ä¸€ç­†è³‡æ–™åˆ—  
    	} 
 	else 
 	{ 
-    	if (rowNumber<=maxrow) //­Y¤p©óÁ`µ§¼Æ®É¤~Ä~Äò´«­¶
+    	if (rowNumber<=maxrow) //è‹¥å°æ–¼ç¸½ç­†æ•¸æ™‚æ‰ç¹¼çºŒæ›é 
 	  	{
-        	rs.absolute(rowNumber); //²¾¦Ü«ü©w¸ê®Æ¦C	 
+        	rs.absolute(rowNumber); //ç§»è‡³æŒ‡å®šè³‡æ–™åˆ—	 
 	  	}	
    	}
    
@@ -525,7 +525,7 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 12px }
    qryAllChkBoxEditBean.setPageURL2("");     
    qryAllChkBoxEditBean.setHeaderArray(null);   
    //qryAllChkBoxEditBean.setSearchKey("INTERFACE_TRANSACTION_ID");
-   qryAllChkBoxEditBean.setSearchKeyArray(sKeyArray); // ¥HsetSearchKeyArray¨ú¥N¤§, ¦]¥»­¶»İ¶Ç»¼¨â­Óºô­¶°Ñ¼Æ
+   qryAllChkBoxEditBean.setSearchKeyArray(sKeyArray); // ä»¥setSearchKeyArrayå–ä»£ä¹‹, å› æœ¬é éœ€å‚³éå…©å€‹ç¶²é åƒæ•¸
    qryAllChkBoxEditBean.setFieldName("CH");
    qryAllChkBoxEditBean.setHeadColor("#D8DEA9");
    qryAllChkBoxEditBean.setHeadFontColor("#0066CC");
@@ -540,7 +540,7 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 12px }
    statement.close();
    rs.close();   
   //out.println("VVV<BR>");
-   //¨ú±oºû­×³B²zª¬ºA      
+   //å–å¾—ç¶­ä¿®è™•ç†ç‹€æ…‹      
   } //end of try  
   catch (Exception e)
   {
@@ -552,7 +552,7 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 12px }
 </FORM>
 </body>
 <%@ include file="/jsp/include/MProcessStatusBarStop.jsp"%>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 </html>

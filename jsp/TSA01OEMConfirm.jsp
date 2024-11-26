@@ -1,9 +1,9 @@
-<%@ page contentType="text/html; charset=utf-8" pageEncoding="big5" language="java" import="java.sql.*,java.net.*,java.io.*,java.text.*,java.lang.*"%>
+<%@ page contentType="text/html; charset=utf-8"  language="java" import="java.sql.*,java.net.*,java.io.*,java.text.*,java.lang.*"%>
 <%@ page import="ComboBoxBean,DateBean,ArrayComboBoxBean,Array2DimensionInputBean,SalesDRQPageHeaderBean" %>
 <jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
 <jsp:useBean id="dateBean" scope="page" class="DateBean"/>
 <jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
- <!--=============¥H¤U°Ï¬q¬°¦w¥ş»{ÃÒ¾÷¨î==========-->
+ <!--=============ä»¥ä¸‹å€æ®µç‚ºå®‰å…¨èªè­‰æ©Ÿåˆ¶==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 
@@ -24,7 +24,7 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 12px }
   select   {  font-family:  Tahoma,Georgia; color: #000000; font-size: 12px}
 </STYLE>
 <jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<title>A01 OEM ¼f®Ö</title>
+<title>A01 OEM å¯©æ ¸</title>
 <script language="JavaScript" type="text/JavaScript">
 function setSubmit(URL)
 {   
@@ -46,7 +46,7 @@ function setSubmit1(URL)
 		document.MYFORM1.btnSubmit.disabled=false;
 		document.MYFORM1.btnReject.disabled=false;
 		document.MYFORM1.btnExit.disabled=false;
-		alert("³ÆµùÄæ¦ì½Ğ¶ñ¤JReject­ì¦]!");
+		alert("å‚™è¨»æ¬„ä½è«‹å¡«å…¥RejectåŸå› !");
 		document.MYFORM1.REMARKS.focus();
 		return false;
 	}
@@ -58,7 +58,7 @@ function setSubmit2(URL)
 	document.MYFORM1.btnSubmit.disabled=true;
 	document.MYFORM1.btnReject.disabled=true;
 	document.MYFORM1.btnExit.disabled=true;
-	if (confirm("±z½T©w­nÂ÷¶}¦^¨ì­º­¶¶Ü?")==true) 
+	if (confirm("æ‚¨ç¢ºå®šè¦é›¢é–‹å›åˆ°é¦–é å—?")==true) 
 	{
 		document.MYFORM1.action=URL;
 		document.MYFORM1.submit();
@@ -110,7 +110,7 @@ String sql="",straddr="";
 		if (icnt==1)
 		{
 		%>
-			<div id="id_<%=icnt%>" style="text-decoration:underline;font-weight:bold;font-size:16px;font-family:'²Ó©úÅé'">«İ¼f®Ö¥Ó½Ğ³æ</div>
+			<div id="id_<%=icnt%>" style="text-decoration:underline;font-weight:bold;font-size:16px;font-family:'ç´°æ˜é«”'">å¾…å¯©æ ¸ç”³è«‹å–®</div>
 		<%
 			straddr= "../jsp/TSA01OEMConfirmDetail.jsp?REQNO="+rs.getString("REQNO");
 			REQNO=rs.getString("REQNO");
@@ -127,7 +127,7 @@ String sql="",straddr="";
 	{
 	%>
 	<script language="JavaScript" type="text/JavaScript">
-		alert("¤wµL«İ¼f®Ö¸ê®Æ,¨t²Î±NÂà¦^­º­¶!");
+		alert("å·²ç„¡å¾…å¯©æ ¸è³‡æ–™,ç³»çµ±å°‡è½‰å›é¦–é !");
 		location.href="/oradds/ORADDSMainMenu.jsp";
 	</script>	
 	<%
@@ -146,7 +146,7 @@ String sql="",straddr="";
 		<td align="center">
 			<table width="100%">
 				<tr>
-					<td align="center">³Æµù</td>
+					<td align="center">å‚™è¨»</td>
 					<td><textarea cols="160" rows="4" name="REMARKS" style="font-size:11px;font-family:Tahoma,Georgia"></textarea></td>
 				</tr>
 			</table>

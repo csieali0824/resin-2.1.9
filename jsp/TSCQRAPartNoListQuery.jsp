@@ -1,5 +1,5 @@
 <!--20171116 Peggy,show "Recommended Replacement TSC P/N" column when query type=TSC P/N list-->
-<%@ page contentType="text/html;charset=utf-8" pageEncoding="big5" language="java" import="java.util.*,java.text.*,java.io.*,java.sql.*,DateBean,CodeUtil"%>
+<%@ page contentType="text/html;charset=utf-8"  language="java" import="java.util.*,java.text.*,java.io.*,java.sql.*,DateBean,CodeUtil"%>
 <%@ page import="org.w3c.dom.*" %>
 <%@ page import="org.xml.sax.*" %>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
@@ -303,7 +303,7 @@ catch(Exception e)
 %>			
 </table>
 </form>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->  
+<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->  
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 </body>

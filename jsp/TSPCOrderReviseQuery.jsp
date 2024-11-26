@@ -1,15 +1,15 @@
-<%@ page contentType="text/html;charset=utf-8" pageEncoding="big5" language="java" %>
+<%@ page contentType="text/html;charset=utf-8"  language="java" %>
 <%@ page import="java.sql.*"%>
 <%@ page import="java.util.*"%>
 <%@ page import="jxl.*"%>
 <%@ page import="java.lang.Math.*"%>
 <%@ page import="java.text.*"%>
 <%@ page import="java.io.*,DateBean,ComboBoxAllBean"%>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<!--=============¥H¤U°Ï¬q¬°¦w¥þ»{ÃÒ¾÷¨î==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå®‰å…¨èªè­‰æ©Ÿåˆ¶==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—é€£çµæ± ==========-->
 <html>
 <head>
 <title>PC Order Revise for Query</title>
@@ -209,7 +209,7 @@ int rowcnt=0;
 <div id='alpha' class='hidden' style='width:0%;height:0;position:absolute;top:0;left:0;background:#000;filter:alpha(opacity=30);-moz-opacity:0.3;z-index:0;'></div>
 <TABLE border="1" cellpadding="1" cellspacing="0" width="100%" bgcolor="#CFDAC9" bordercolorlight="#333366" bordercolordark="#ffffff">
 	<tr>
-		<td width="6%" style="font-size:11px" align="right" rowspan="4">Request Type¡G</td>
+		<td width="6%" style="font-size:11px" align="right" rowspan="4">Request Typeï¼š</td>
 		<td width="7%" rowspan="4">
 		<!--<select NAME="REQ_TYPE" style="font-family: Tahoma,Georgia;font-size:11px" onChange="setReqType(this.value)">
 		<OPTION VALUE="--" <%=(REQ_TYPE.equals("") || REQ_TYPE.equals("--") ?" selected ":"")%>>
@@ -221,7 +221,7 @@ int rowcnt=0;
 		<input type="checkbox" name="REQ_TYPE_O" value="Overdue" <%=!REQ_TYPE_O.equals("")?"checked":""%>>Overdue<BR>
 		<input type="checkbox" name="REQ_TYPE_E" value="Early Warning" <%=!REQ_TYPE_E.equals("")?"checked":""%>>Early Warning
 		</td>
-		<td width="7%" align="right"><span style="font-size:11px">Plant Name</span>¡G</td>
+		<td width="7%" align="right"><span style="font-size:11px">Plant Name</span>ï¼š</td>
 		<td width="14%">
 		<%
 		try
@@ -253,7 +253,7 @@ int rowcnt=0;
 		}		
 		%>
 		</td>		
-		<td width="10%" align="right">Sales Group¡G</td>
+		<td width="10%" align="right">Sales Groupï¼š</td>
 		<td width="14%">
 		<%
 		try
@@ -291,16 +291,16 @@ int rowcnt=0;
 		} 
 		%>	
 		</td>
-		<td width="6%"align="right" rowspan="2">Customer¡G</td>
+		<td width="6%"align="right" rowspan="2">Customerï¼š</td>
 		<td width="13%" rowspan="2"><textarea cols="30" rows="3" name="CUST_LIST"  style="font-family: Tahoma,Georgia;font-size:11px"><%=CUST_LIST%></textarea></td>
-		<td width="7%"align="right" rowspan="2">ERP MO# ¡G</td>
+		<td width="7%"align="right" rowspan="2">ERP MO# ï¼š</td>
 		<td width="13%" rowspan="2"><textarea cols="30" rows="3" name="MO_LIST"  style="font-family: Tahoma,Georgia;font-size:11px"><%=MO_LIST%></textarea>
 		</td>
 	</tr>
 	<tr>
-		<td align="right">Request No¡G</td>
+		<td align="right">Request Noï¼š</td>
 		<td><input type="text" name="REQUESTNO" value="<%=REQUESTNO%>" style="font-family:Tahoma,Georgia;font-size:11px"></td>	
-		<td align="right">Sales Confirm Result¡G</td> 
+		<td align="right">Sales Confirm Resultï¼š</td> 
 		<td>		
 		<%
 		try
@@ -326,7 +326,7 @@ int rowcnt=0;
 		</td>
 	</tr>
 	<tr>
-		<td align="right">Status¡G</td> 
+		<td align="right">Statusï¼š</td> 
 		<td>		
 		<%
 		try
@@ -350,7 +350,7 @@ int rowcnt=0;
 		} 	
 		%>
 		</td>
-		<td align="right">Sales Confrimed By¡G</td>
+		<td align="right">Sales Confrimed Byï¼š</td>
 		<td>		
 		<%
 		try
@@ -391,19 +391,19 @@ int rowcnt=0;
 		} 	
 		%>	
 		</td>
-		<td align="right" rowspan="2">Item Desc¡G</td>
+		<td align="right" rowspan="2">Item Descï¼š</td>
 		<td rowspan="2"><textarea cols="30" rows="3" name="ITEM_DESC_LIST"  style="font-family: Tahoma,Georgia;font-size:11px"><%=ITEM_DESC_LIST%></textarea></td>
-		<td align="right" rowspan="2">Cust Item¡G</td>
+		<td align="right" rowspan="2">Cust Itemï¼š</td>
 		<td rowspan="2"><textarea cols="30" rows="3" name="CUST_ITEM_LIST"  style="font-family: Tahoma,Georgia;font-size:11px"><%=CUST_ITEM_LIST%></textarea></td>		
 	</tr>
 	<tr>
-		<td align="right">Request Date¡G</td>
+		<td align="right">Request Dateï¼š</td>
 		<td><input type="TEXT" NAME="SDATE" value="<%=SDATE%>" style="font-size:11px;font-family: Tahoma,Georgia;" size="8" onKeyPress="return event.keyCode >= 48 && event.keyCode <=57">						
 		<A href="javascript:void(0)" onClick="gfPop.fPopCalendar(document.MYFORM.SDATE);return false;"><img name="popcal" border="0" src="../image/calbtn.gif"></A>
 		<input type="TEXT" NAME="EDATE" value="<%=EDATE%>" style="font-size:11px;font-family: Tahoma,Georgia;" size="8" onKeyPress="return event.keyCode >= 48 && event.keyCode <=57">						
 		<A href="javascript:void(0)" onClick="gfPop.fPopCalendar(document.MYFORM.EDATE);return false;"><img name="popcal" border="0" src="../image/calbtn.gif"></A>
 		</td>
-		<td align="right">Sales Confirm Date¡G</td>
+		<td align="right">Sales Confirm Dateï¼š</td>
 		<td><input type="TEXT" NAME="SALES_SDATE" value="<%=SALES_SDATE%>" style="font-size:11px;font-family: Tahoma,Georgia;" size="8" onKeyPress="return event.keyCode >= 48 && event.keyCode <=57">						
 		<A href="javascript:void(0)" onClick="gfPop.fPopCalendar(document.MYFORM.SALES_SDATE);return false;"><img name="popcal" border="0" src="../image/calbtn.gif"></A>
 		<input type="TEXT" NAME="SALES_EDATE" value="<%=SALES_EDATE%>" style="font-size:11px;font-family: Tahoma,Georgia;" size="8" onKeyPress="return event.keyCode >= 48 && event.keyCode <=57">						
@@ -675,7 +675,7 @@ try
 		<td align="center" rowspan="<%=rs.getString("line_cnt")%>" style="background-color:<%=rs.getString("request_type").equals("Overdue")?"#FF9999":(rs.getString("request_type").equals("Early Ship")?"#66FF99":"#FFFF33")%>"><%=rs.getString("request_type")%></td>
 		<td align="center" rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("SALES_GROUP")%></td>
 		<td rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("customer")%></td>
-		<td align="center" rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("SO_NO")%><%=(rs.getInt("TO_TW_DAYS")==0?"":"<br><font color='#ff0000'><¦^T></font>")%></td>
+		<td align="center" rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("SO_NO")%><%=(rs.getInt("TO_TW_DAYS")==0?"":"<br><font color='#ff0000'><å›žT></font>")%></td>
 		<td align="center" rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("LINE_NO")%></td>
 		<td rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("SOURCE_ITEM_DESC")%></td>
 		<td rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("SOURCE_CUST_ITEM_NAME")%></td>
@@ -742,7 +742,7 @@ catch(Exception e)
 %>
 </FORM>
 <iframe width=124 height=153 name="gToday:supermini:agenda.js" id="gToday:supermini:agenda.js" src="../calendar/ipopeng.htm" scrolling="no" frameborder="0" style="visibility:hidden; z-index:65535; position:absolute; top:0px;"></iframe>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 </body>

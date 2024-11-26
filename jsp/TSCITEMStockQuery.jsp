@@ -1,15 +1,15 @@
-<%@ page contentType="text/html;charset=utf-8" pageEncoding="big5" language="java" %>
+<%@ page contentType="text/html;charset=utf-8"  language="java" %>
 <%@ page import="java.sql.*"%>
 <%@ page import="java.util.*"%>
 <%@ page import="jxl.*"%>
 <%@ page import="java.lang.Math.*"%>
 <%@ page import="java.text.*"%>
 <%@ page import="java.io.*,DateBean,ComboBoxAllBean,ComboBoxBean,"%>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<!--=============¥H¤U°Ï¬q¬°¦w¥ş»{ÃÒ¾÷¨î==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå®‰å…¨èªè­‰æ©Ÿåˆ¶==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—é€£çµæ± ==========-->
 <html>
 <head>
 <title>TSC Stock Query</title>
@@ -53,7 +53,7 @@ function setSubmit1(xItem,xOrgId)
   	document.MYFORM.submit();
 }
 
-function setSubmit2(URL)  //²M°£µe­±±ø¥ó,­«·s¬d¸ß!
+function setSubmit2(URL)  //æ¸…é™¤ç•«é¢æ¢ä»¶,é‡æ–°æŸ¥è©¢!
 {  
  	document.MYFORM.ITEM.value ="";
  	document.MYFORM.action=URL;
@@ -269,9 +269,9 @@ int rowcnt =0;
 				//out.println(sqlt);
 				while (rs1.next())
 				{
-					//Á`µ§¼Æ
+					//ç¸½ç­†æ•¸
 					dataCnt = Long.parseLong(rs1.getString("rowcnt"));
-					//³Ì«á­¶¼Æ
+					//æœ€å¾Œé æ•¸
 					LastPage = (int)Math.ceil((float)dataCnt / (float)PageSize);
 				}
 				rs1.close();
@@ -288,7 +288,7 @@ int rowcnt =0;
 						if (icnt ==0)
 						{
 							out.println("<tr>");
-							out.println("<td>&nbsp;</td><td><table width='100%'><tr><td width='30%'><font face='²Ó©úÅé' color='#CC0066' size='2'>¬d¸ßµ²ªG¦@"+ dataCnt +"µ§¸ê®Æ¡A¨C­¶Åã¥Ü"+PageSize+"µ§/¦@"+LastPage+"­¶</font></td><td width='40%' align='center'>");
+							out.println("<td>&nbsp;</td><td><table width='100%'><tr><td width='30%'><font face='ç´°æ˜é«”' color='#CC0066' size='2'>æŸ¥è©¢çµæœå…±"+ dataCnt +"ç­†è³‡æ–™ï¼Œæ¯é é¡¯ç¤º"+PageSize+"ç­†/å…±"+LastPage+"é </font></td><td width='40%' align='center'>");
 							if (LastPage==1)
 							{
 								FirBtnStatus = "disabled";PreBtnStatus = "disabled";NxtBtnStatus = "disabled";LstBtnStatus = "disabled";
@@ -308,7 +308,7 @@ int rowcnt =0;
 							out.println("<input type=button name='FPage' id='FPage' value='<<' onClick='sendSubmit("+'"'+"../jsp/TSCITEMStockQuery.jsp?ACODE=Q&QPage=1"+'"'+")' "+ FirBtnStatus+" title='First Page'>");
 							out.println("&nbsp;");
 							out.println("<input type=button name='PPage' id='PPage' value='<' onClick='sendSubmit("+'"'+"../jsp/TSCITEMStockQuery.jsp?ACODE=Q&QPage="+(NowPage-1)+'"'+")' "+ PreBtnStatus+" title='Previous Page'>");
-							out.println("&nbsp;&nbsp;<font face='²Ó©úÅé' color='#CC0066' size='2'>"+"²Ä"+NowPage+"­¶</font>&nbsp;&nbsp;");
+							out.println("&nbsp;&nbsp;<font face='ç´°æ˜é«”' color='#CC0066' size='2'>"+"ç¬¬"+NowPage+"é </font>&nbsp;&nbsp;");
 							out.println("<input type=button name='NPage' id='NPage' value='>' onClick='sendSubmit("+'"'+"../jsp/TSCITEMStockQuery.jsp?ACODE=Q&QPage="+(NowPage+1)+'"'+")' "+ NxtBtnStatus+" title='Next Page'>");
 							out.println("&nbsp;");
 							out.println("<input type=button name='LPage' id='LPage' value='>>' onClick='sendSubmit("+'"'+"../jsp/TSCITEMStockQuery.jsp?ACODE=Q&QPage="+LastPage+'"'+")' "+ LstBtnStatus + " title='Last Page'>");
@@ -446,7 +446,7 @@ int rowcnt =0;
 						out.println("<input type=button name='FPage' id='FPage' value='<<' onClick='sendSubmit("+'"'+"../jsp/TSCITEMStockQuery.jsp?QPage=1"+'"'+")' "+ FirBtnStatus+" title='First Page'>");
 						out.println("&nbsp;");
 						out.println("<input type=button name='PPage' id='PPage' value='<' onClick='sendSubmit("+'"'+"../jsp/TSCITEMStockQuery.jsp?QPage="+(NowPage-1)+'"'+")' "+ PreBtnStatus+" title='Previous Page'>");
-						out.println("&nbsp;&nbsp;<font face='²Ó©úÅé' color='#CC0066' size='2'>"+"²Ä"+NowPage+"­¶</font>&nbsp;&nbsp;");
+						out.println("&nbsp;&nbsp;<font face='ç´°æ˜é«”' color='#CC0066' size='2'>"+"ç¬¬"+NowPage+"é </font>&nbsp;&nbsp;");
 						out.println("<input type=button name='NPage' id='NPage' value='>' onClick='sendSubmit("+'"'+"../jsp/TSCITEMStockQuery.jsp?QPage="+(NowPage+1)+'"'+")' "+ NxtBtnStatus+" title='Next Page'>");
 						out.println("&nbsp;");
 						out.println("<input type=button name='LPage' id='LPage' value='>>' onClick='sendSubmit("+'"'+"../jsp/TSCITEMStockQuery.jsp?QPage="+LastPage+'"'+")' "+ LstBtnStatus + " title='Last Page'>");
@@ -456,17 +456,17 @@ int rowcnt =0;
 				}
 				else
 				{
-					out.println("<tr><td colspan='3' align='center'><font color='red' size='2' face='·s²Ó©úÅé'><strong>¬dµL¸ê®Æ,½Ğ­«·s¿z¿ï¬d¸ß±ø¥ó,ÁÂÁÂ!</strong></font></TD></TR>");
+					out.println("<tr><td colspan='3' align='center'><font color='red' size='2' face='æ–°ç´°æ˜é«”'><strong>æŸ¥ç„¡è³‡æ–™,è«‹é‡æ–°ç¯©é¸æŸ¥è©¢æ¢ä»¶,è¬è¬!</strong></font></TD></TR>");
 				}
 			}
 			catch(Exception e)
 			{
-				out.println("<tr><td align='center'>¸ê®Æ¬d¸ßµo¥Í¿ù»~,½Ğ¬¢¨t²ÎºŞ²z¤H­û!!("+e.getMessage()+")</td></tr>");
+				out.println("<tr><td align='center'>è³‡æ–™æŸ¥è©¢ç™¼ç”ŸéŒ¯èª¤,è«‹æ´½ç³»çµ±ç®¡ç†äººå“¡!!("+e.getMessage()+")</td></tr>");
 			}
 		}
 %>
 </table>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->  
+<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->  
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 </form>

@@ -1,7 +1,7 @@
-<!--add by Peggy 20140822,·s¼WERP END CUSTOMER IDÄæ¦ì-->
-<!--add by Peggy 20160525,¨Ìship to§ì¹w³]sales-->
+<!--add by Peggy 20140822,æ–°å¢žERP END CUSTOMER IDæ¬„ä½-->
+<!--add by Peggy 20160525,ä¾ship toæŠ“é è¨­sales-->
 <!-- 20160929 by Peggy,add customer p/n-->
-<%@ page contentType="text/html; charset=utf-8" pageEncoding="big5" language="java" %>
+<%@ page contentType="text/html; charset=utf-8"  language="java" %>
 <%@ page import="java.io.*" %>
 <%@ page import="java.net.*" %>
 <%@ page import="java.text.*" %>
@@ -17,7 +17,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
-<title>µL¼ÐÃD¤å¥ó</title>
+<title>ç„¡æ¨™é¡Œæ–‡ä»¶</title>
 </head>
 <body>
 <%
@@ -168,43 +168,43 @@ try
 						" AUTOCREATE_FLAG,FOB_POINT,SHIPMETHOD,RFQ_TYPE)"+ //add by Peggy 20120224
 						" values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			PreparedStatement pstmt=con.prepareStatement(sql);  
-			pstmt.setString(1,seqno);  // ¸ß°Ý³æ¸¹\
-			pstmt.setString(2,sales_Area_No); // ·~°È¦a°Ï§O¥N½X
-			pstmt.setString(3,userID);  // ·~°È¤H­û¥N½X
-			pstmt.setString(4,requireReason);  // »Ý¨D­ì¦]»¡©ú
-			pstmt.setString(5,tscCustomerID); // «È¤á¥N½X
-			pstmt.setString(6,customer); //«È¤á¦WºÙ
-			pstmt.setString(7,customerPO_Easy); //«È¤á­qÁÊ³æ¸¹
-			pstmt.setString(8,"USD");  // ¹ô§O
-			pstmt.setInt(9,0);  // Á`ª÷ÃB(amount)
-			pstmt.setString(10,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond());  // »Ý¨D¤é°²³]=¦¬¥ó¤é+ ¦sÀÉ®É¶¡  
-			pstmt.setString(11,"");  // PC ½T»{¤é´Á
-			pstmt.setString(12,""); // ¤u¼t¦^ÂÐ½T»{¤é
-			pstmt.setString(13,""); // ¥Í²£¤u¼t¥N½X
-			pstmt.setString(14,remark); // ªíÀY³Æµù
-			pstmt.setString(15,STATUSID);//¼g¤JSTATUSID    ??
-			pstmt.setString(16,STATUSCODE);//¼g¤Jª¬ºA¦WºÙ    ??
-			pstmt.setString(17,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); //¼g¤J¤é´Á + ®É¶¡
-			pstmt.setString(18,userID); //¼g¤JUser ID
-			pstmt.setString(19,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); //³Ì«á§ó·s¤é´Á
-			pstmt.setString(20,userID); //³Ì«á§ó·sUser
-			pstmt.setString(21,toPersonID); // ©ÒÄÝ«È¤á­t³d·~°È¤H­ûID   100000008
-			pstmt.setInt(22,Integer.parseInt(order_Type_ID));  // ¹w¿ï ­q³æÃþ«¬   1007
+			pstmt.setString(1,seqno);  // è©¢å•å–®è™Ÿ\
+			pstmt.setString(2,sales_Area_No); // æ¥­å‹™åœ°å€åˆ¥ä»£ç¢¼
+			pstmt.setString(3,userID);  // æ¥­å‹™äººå“¡ä»£ç¢¼
+			pstmt.setString(4,requireReason);  // éœ€æ±‚åŽŸå› èªªæ˜Ž
+			pstmt.setString(5,tscCustomerID); // å®¢æˆ¶ä»£ç¢¼
+			pstmt.setString(6,customer); //å®¢æˆ¶åç¨±
+			pstmt.setString(7,customerPO_Easy); //å®¢æˆ¶è¨‚è³¼å–®è™Ÿ
+			pstmt.setString(8,"USD");  // å¹£åˆ¥
+			pstmt.setInt(9,0);  // ç¸½é‡‘é¡(amount)
+			pstmt.setString(10,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond());  // éœ€æ±‚æ—¥å‡è¨­=æ”¶ä»¶æ—¥+ å­˜æª”æ™‚é–“  
+			pstmt.setString(11,"");  // PC ç¢ºèªæ—¥æœŸ
+			pstmt.setString(12,""); // å·¥å» å›žè¦†ç¢ºèªæ—¥
+			pstmt.setString(13,""); // ç”Ÿç”¢å·¥å» ä»£ç¢¼
+			pstmt.setString(14,remark); // è¡¨é ­å‚™è¨»
+			pstmt.setString(15,STATUSID);//å¯«å…¥STATUSID    ??
+			pstmt.setString(16,STATUSCODE);//å¯«å…¥ç‹€æ…‹åç¨±    ??
+			pstmt.setString(17,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); //å¯«å…¥æ—¥æœŸ + æ™‚é–“
+			pstmt.setString(18,userID); //å¯«å…¥User ID
+			pstmt.setString(19,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); //æœ€å¾Œæ›´æ–°æ—¥æœŸ
+			pstmt.setString(20,userID); //æœ€å¾Œæ›´æ–°User
+			pstmt.setString(21,toPersonID); // æ‰€å±¬å®¢æˆ¶è² è²¬æ¥­å‹™äººå“¡ID   100000008
+			pstmt.setInt(22,Integer.parseInt(order_Type_ID));  // é é¸ è¨‚å–®é¡žåž‹   1007
 			pstmt.setInt(23,Integer.parseInt(sold_To_Org)); // Sold To ORG
 			pstmt.setInt(24,Integer.parseInt(price_List)); // Price List
 			pstmt.setInt(25,Integer.parseInt(ship_To_Org)); // Ship To Org 
-			pstmt.setString(26,salesPerson); // ©ÒÄÝ«È¤á­t³d·~°È¤H­ûSALES PERSON
+			pstmt.setString(26,salesPerson); // æ‰€å±¬å®¢æˆ¶è² è²¬æ¥­å‹™äººå“¡SALES PERSON
 			pstmt.setString(27,bill_To_Org);
 			pstmt.setString(28,payterm_ID);
 			pstmt.setString(29,AUTOCREATE_FLAG); //add by Peggy 20120224
 			pstmt.setString(30,FOB_POINT); //fob,add by Peggy 20120224
-			pstmt.setString(31,a[3][1].toUpperCase()); //¥X³f¤è¦¡,add by Peggy 20120224
+			pstmt.setString(31,a[3][1].toUpperCase()); //å‡ºè²¨æ–¹å¼,add by Peggy 20120224
 			pstmt.setString(32,"1"); //add by Peggy 20120327
 			//pstmt.executeUpdate(); 
 			pstmt.executeQuery(); //modify by Peggy 20111202
 			pstmt.close();
  
-			// §PÂ_¤J­Ysession Array ¤º­È¤£¬°null  
+			// åˆ¤æ–·å…¥è‹¥session Array å…§å€¼ä¸ç‚ºnull  
 			String sqlDtl="insert into ORADDMAN.TSDELIVERY_NOTICE_DETAIL(DNDOCNO,"+
 						  "LINE_NO,INVENTORY_ITEM_ID,ITEM_SEGMENT1,QUANTITY,UOM,LIST_PRICE,REQUEST_DATE,SHIP_DATE,"+
 						  "PROMISE_DATE,LINE_TYPE,PRIMARY_UOM,REMARK,CREATION_DATE,CREATED_BY,LAST_UPDATE_DATE,LAST_UPDATED_BY,"+
@@ -296,35 +296,35 @@ try
 				//stateb.close();	
 				
 				PreparedStatement pstmtDtl=con.prepareStatement(sqlDtl);  
-				pstmtDtl.setString(1,seqno);  // ¸ß°Ý³æ¸¹
+				pstmtDtl.setString(1,seqno);  // è©¢å•å–®è™Ÿ
 				String invItemID = "";	
 				String uom = "";
-				pstmtDtl.setInt(2,ac); // Line_No // µ¹®Æ¶µ§Ç¸¹	  
+				pstmtDtl.setInt(2,ac); // Line_No // çµ¦æ–™é …åºè™Ÿ	  
 				pstmtDtl.setString(3,a[4][ac]); // Inventory_Item_ID	 
 				pstmtDtl.setString(4,a[5][ac]); // Inventory_Item_Segment1
 				pstmtDtl.setFloat(5,Float.parseFloat(a[1][ac])/1000); // Order Qty
 				pstmtDtl.setString(6,a[12][ac]); // Primary Unit of Measure
 				pstmtDtl.setFloat(7,Float.parseFloat(a[14][ac])); // List Price
 				pstmtDtl.setString(8,a[10][ac]+dateBean.getHourMinuteSecond()); // Request Date
-				pstmtDtl.setString(9,a[10][ac]+dateBean.getHourMinuteSecond()); // Ship Date( ¹w³]»P»Ý¨D¤é¬Û¦P,¦ý¥i¥Ñ¤u¼t©ó¦w±Æ¥æ´Á,¥ÍºÞ½T»{¥æ´Á¤Î·~°È³Ì«á©ó¥Í¦¨­q³æ®É­×§ï )
-				pstmtDtl.setString(10,a[10][ac]+dateBean.getHourMinuteSecond()); // Promise Date( «È¤á»Ý¨D¤é,¹w³]»P»Ý¨D¤é¬Û¦P,¦ý¥i¥Ñ·~°È³Ì«á©ó¥Í¦¨­q³æ®É­×§ï )
+				pstmtDtl.setString(9,a[10][ac]+dateBean.getHourMinuteSecond()); // Ship Date( é è¨­èˆ‡éœ€æ±‚æ—¥ç›¸åŒ,ä½†å¯ç”±å·¥å» æ–¼å®‰æŽ’äº¤æœŸ,ç”Ÿç®¡ç¢ºèªäº¤æœŸåŠæ¥­å‹™æœ€å¾Œæ–¼ç”Ÿæˆè¨‚å–®æ™‚ä¿®æ”¹ )
+				pstmtDtl.setString(10,a[10][ac]+dateBean.getHourMinuteSecond()); // Promise Date( å®¢æˆ¶éœ€æ±‚æ—¥,é è¨­èˆ‡éœ€æ±‚æ—¥ç›¸åŒ,ä½†å¯ç”±æ¥­å‹™æœ€å¾Œæ–¼ç”Ÿæˆè¨‚å–®æ™‚ä¿®æ”¹ )
 				pstmtDtl.setInt(11,Integer.parseInt(line_Type)); // Default Order Line Type
 				pstmtDtl.setString(12,a[12][ac]); // Primary Unit of Measure
 				pstmtDtl.setString(13,a[15][ac]); // Remark
-				pstmtDtl.setString(14,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); //¼g¤J¤é´Á
-				pstmtDtl.setString(15,userID); //¼g¤JUser ID
-				pstmtDtl.setString(16,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); //³Ì«á§ó·s¤é´Á
-				pstmtDtl.setString(17,userID); //³Ì«á§ó·sUser
+				pstmtDtl.setString(14,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); //å¯«å…¥æ—¥æœŸ
+				pstmtDtl.setString(15,userID); //å¯«å…¥User ID
+				pstmtDtl.setString(16,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); //æœ€å¾Œæ›´æ–°æ—¥æœŸ
+				pstmtDtl.setString(17,userID); //æœ€å¾Œæ›´æ–°User
 				pstmtDtl.setString(18,STATUSID); //Line Status ID
 				pstmtDtl.setString(19,STATUSCODE); //Line Status Name
-				pstmtDtl.setString(20,a[6][ac]); //¥x¥b«~¸¹
-				pstmtDtl.setString(21,"0"); //³Ì¤p¥]¸Ë­qÁÊ¶q	 
-				pstmtDtl.setString(22,a[2][ac]); //³Ì¤p¥]¸Ë­qÁÊ¶q
-				pstmtDtl.setString(23,a[11][ac]); //ITEM¥Í²£¦a 
+				pstmtDtl.setString(20,a[6][ac]); //å°åŠå“è™Ÿ
+				pstmtDtl.setString(21,"0"); //æœ€å°åŒ…è£è¨‚è³¼é‡	 
+				pstmtDtl.setString(22,a[2][ac]); //æœ€å°åŒ…è£è¨‚è³¼é‡
+				pstmtDtl.setString(23,a[11][ac]); //ITEMç”Ÿç”¢åœ° 
 				pstmtDtl.setString(24,a[16][ac]); //LINE CUST_PO_NUMBER 
-				pstmtDtl.setInt(25,Integer.parseInt(order_Type_ID)); //­q³æÃþ«¬id,add by Peggy 20120222
-				pstmtDtl.setString(26,AUTOCREATE_FLAG); //¦Û°Ê¥Í¦¨­q³æ,add by Peggy 20120224
-				pstmtDtl.setString(27,a[3][ac].toUpperCase()); //¥X³f¤è¦¡,add by Peggy 20120224
+				pstmtDtl.setInt(25,Integer.parseInt(order_Type_ID)); //è¨‚å–®é¡žåž‹id,add by Peggy 20120222
+				pstmtDtl.setString(26,AUTOCREATE_FLAG); //è‡ªå‹•ç”Ÿæˆè¨‚å–®,add by Peggy 20120224
+				pstmtDtl.setString(27,a[3][ac].toUpperCase()); //å‡ºè²¨æ–¹å¼,add by Peggy 20120224
 				pstmtDtl.setString(28,"D4-002I"); //programg code,add by Peggy 20120308
 				pstmtDtl.setString(29,a[17][ac]); //TSC_PROD_GROUP,add by Peggy 20120308
 				pstmtDtl.setString(30,lineFob); //FOB,add by Peggy 20120329
@@ -386,6 +386,6 @@ catch(Exception e)
 if (sError_Flag == "N") 
 {
 	//response.sendRedirect("TSSalesDRQTemporaryPage.jsp?DNDOCNO="+seqno+"&LSTATUSID=001");
-	response.sendRedirect("TSSalesDRQTemporaryPage.jsp?DNDOCNO="+seqno+"&LSTATUSID=001&PROGRAMNAME=D4-002I");  //·s¼WPROGRAMNAME°Ñ¼Æ,add by Peggy 20170920
+	response.sendRedirect("TSSalesDRQTemporaryPage.jsp?DNDOCNO="+seqno+"&LSTATUSID=001&PROGRAMNAME=D4-002I");  //æ–°å¢žPROGRAMNAMEåƒæ•¸,add by Peggy 20170920
 }
 %>

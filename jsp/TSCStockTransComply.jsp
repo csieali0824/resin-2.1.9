@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8" pageEncoding="big5" language="java" import="java.sql.*,java.net.*,java.io.*,java.text.*,java.lang.*"%>
+<%@ page contentType="text/html; charset=utf-8"  language="java" import="java.sql.*,java.net.*,java.io.*,java.text.*,java.lang.*"%>
 <%@ page import="ComboBoxBean,DateBean,WorkingDateBean,ArrayComboBoxBean"%>
 <script language="JavaScript" type="text/JavaScript">
 function checkall()
@@ -69,7 +69,7 @@ function setSubmit1(URL)
 
 	if (chkcnt==0)
 	{
-		alert("½Ğ¥ı¤Ä¿ï¸ê®Æ!");
+		alert("è«‹å…ˆå‹¾é¸è³‡æ–™!");
 		document.MYFORM.save.disabled=false;
 		document.MYFORM.exit.disabled=false;
 		return false;
@@ -79,7 +79,7 @@ function setSubmit1(URL)
  	document.MYFORM.submit();
 }
 
-// ÀË¬d¶|¦~,§PÂ_¤é´Á¿é¤J¦Xªk©Ê
+// æª¢æŸ¥é–å¹´,åˆ¤æ–·æ—¥æœŸè¼¸å…¥åˆæ³•æ€§
 function isLeapYear(year) 
 { 
 	if((year%4==0&&year%100!=0)||(year%400==0)) 
@@ -102,7 +102,7 @@ function isLeapYear(year)
   A:visited { color: #990066; text-decoration: underline }
 </STYLE>
 <title></title>
-<!--=============¥H¤U°Ï¬q¬°¦w¥ş»{ÃÒ¾÷¨î==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå®‰å…¨èªè­‰æ©Ÿåˆ¶==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
@@ -143,7 +143,7 @@ if (!rs.next())
 	statement.close();
 %>
 	<script language="JavaScript" type="text/JavaScript">
-		alert("±z©|¥¼³]©w­ÜºŞÅv­­,½Ğ¦V¸ê°T³æ¦ì´£¥X¥Ó½Ğ«á¦A§@·~,ÁÂÁÂ!");
+		alert("æ‚¨å°šæœªè¨­å®šå€‰ç®¡æ¬Šé™,è«‹å‘è³‡è¨Šå–®ä½æå‡ºç”³è«‹å¾Œå†ä½œæ¥­,è¬è¬!");
 		location.href="/oradds/ORADDSMainMenu.jsp";
 	</script>
 <%	
@@ -155,7 +155,7 @@ statement.close();
 <body topmargin="0" bottommargin="0">  
 <FORM ACTION="../jsp/TSCStockTransComply.jsp" METHOD="post" NAME="MYFORM">
 <br>
-<font style="font-weight:bold;font-family:'²Ó©úÅé';color:#666699;font-size:18px">Âà­Ü©Î®Æ¸¹²¾Âà§@·~</font>
+<font style="font-weight:bold;font-family:'ç´°æ˜é«”';color:#666699;font-size:18px">è½‰å€‰æˆ–æ–™è™Ÿç§»è½‰ä½œæ¥­</font>
 <BR>
 <table width="100%">
 	<tr>
@@ -164,7 +164,7 @@ statement.close();
 </table>
 <table cellSpacing="0" bordercolordark="#5C7671"  cellPadding="1" width="100%" align="center" borderColorLight="#CFDAD8" border='1' bgcolor="#DCE6E7">
 	<tr>
-		<td width="7%">¥Ó½Ğ³æ:</td>   
+		<td width="7%">ç”³è«‹å–®:</td>   
 		<td>
 		<%		
 		try
@@ -266,30 +266,30 @@ try
 		{
 	%>
 			<table cellSpacing="0" bordercolordark="#5C7671"  cellPadding="1" width="100%" align="center" borderColorLight="#CFDAD8" border='1'>
-				<tr bgcolor="#C8E3E8" style="font-family:'²Ó©úÅé';font-size:11px" align="center">
+				<tr bgcolor="#C8E3E8" style="font-family:'ç´°æ˜é«”';font-size:11px" align="center">
 				  <td width="2%"><input type="checkbox" name="chkall"  onClick="checkall()"></td>
-					<td width="4%" align="center">¥Ó½Ğ³æ¸¹</td>    
-					<td width="4%" align="center">¥Ó½Ğ¤H</td>            
-					<td width="5%" align="center">¥Ó½Ğ§O</td>            
-					<td width="2%" align="center">¶µ¦¸</td>
-					<td width="5%" align="center">²£«~§O</td>
-					<td width="9%" align="center">®Æ¸¹(22D/30D)</td>
-					<td width="7%" align="center">«~¦W³W®æ</td>            
-					<td width="2%" align="center">²¾¥XOrg</td>
-					<td width="2%" align="center">²¾¥X­Ü§O</td>            
+					<td width="4%" align="center">ç”³è«‹å–®è™Ÿ</td>    
+					<td width="4%" align="center">ç”³è«‹äºº</td>            
+					<td width="5%" align="center">ç”³è«‹åˆ¥</td>            
+					<td width="2%" align="center">é …æ¬¡</td>
+					<td width="5%" align="center">ç”¢å“åˆ¥</td>
+					<td width="9%" align="center">æ–™è™Ÿ(22D/30D)</td>
+					<td width="7%" align="center">å“åè¦æ ¼</td>            
+					<td width="2%" align="center">ç§»å‡ºOrg</td>
+					<td width="2%" align="center">ç§»å‡ºå€‰åˆ¥</td>            
 					<td width="6%" align="center">Lot Number</td>
 					<td width="4%" align="center">Date Code</td>
-					<td width="3%" align="center">¼Æ¶q</td>
-					<td width="3%" align="center">³æ¦ì</td>
-					<td width="9%" align="center">Âà¤J®Æ¸¹(22D/30D)</td>            
-					<td width="7%" align="center">Âà¤J«~¦W³W®æ</td>
-					<td width="2%" align="center">²¾¤JOrg</td>            
-					<td width="2%" align="center">²¾¤J­Ü§O</td>            
-					<td width="6%" align="center">Âà¤J<br>Lot Number</td>
-					<td width="4%" align="center">Âà¤J<br>Date Code</td>
-					<td width="3%" align="center">Âà¤J¼Æ¶q</td>
-					<td width="3%" align="center">Âà¤J³æ¦ì</td>
-					<td width="8%" align="center">²¾Âà­ì¦]</td>            
+					<td width="3%" align="center">æ•¸é‡</td>
+					<td width="3%" align="center">å–®ä½</td>
+					<td width="9%" align="center">è½‰å…¥æ–™è™Ÿ(22D/30D)</td>            
+					<td width="7%" align="center">è½‰å…¥å“åè¦æ ¼</td>
+					<td width="2%" align="center">ç§»å…¥Org</td>            
+					<td width="2%" align="center">ç§»å…¥å€‰åˆ¥</td>            
+					<td width="6%" align="center">è½‰å…¥<br>Lot Number</td>
+					<td width="4%" align="center">è½‰å…¥<br>Date Code</td>
+					<td width="3%" align="center">è½‰å…¥æ•¸é‡</td>
+					<td width="3%" align="center">è½‰å…¥å–®ä½</td>
+					<td width="8%" align="center">ç§»è½‰åŸå› </td>            
 				</tr>
 			
 <%		
@@ -352,7 +352,7 @@ catch(Exception e)
 </FORM>
 <iframe width=124 height=153 name="gToday:supermini:agenda.js" id="gToday:supermini:agenda.js" src="../calendar/ipopeng.htm" scrolling="no" frameborder="0" style="visibility:hidden; z-index:65535; position:absolute; top:0px;"></iframe>
 <BR>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 </body>

@@ -1,16 +1,16 @@
-<%@ page contentType="text/html;charset=utf-8" pageEncoding="big5" language="java" %>
+<%@ page contentType="text/html;charset=utf-8"  language="java" %>
 <%@ page import="java.sql.*"%>
 <%@ page import="java.util.*"%>
 <%@ page import="jxl.*"%>
 <%@ page import="java.lang.Math.*"%>
 <%@ page import="java.text.*"%>
 <%@ page import="java.io.*,DateBean,ComboBoxAllBean"%>
-<!--=============╔H╓U╟о╛q╛╟╗З╠oЁs╣╡╕ю==========-->
+<!--=============Д╩╔Д╦▀Е█─Ф╝╣Г┌╨Е▐√Е╬≈И─ёГ╣░Ф╠═==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<!--=============╔H╓U╟о╛q╛╟╕w╔Ч╩{цр╬В╗Н==========-->
+<!--=============Д╩╔Д╦▀Е█─Ф╝╣Г┌╨Е╝┴Е┘╗Х╙█Х╜┴Ф╘÷Е┬╤==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ page import="SalesDRQPageHeaderBean" %>
-<!--=============╔H╓U╟о╛q╛╟╗З╠oЁs╣╡╕ю==========-->
+<!--=============Д╩╔Д╦▀Е█─Ф╝╣Г┌╨Е▐√Е╬≈И─ёГ╣░Ф╠═==========-->
 <html>
 <head>
 <title>TS YEW Label Query</title>
@@ -103,27 +103,27 @@ if (STATUS.equals("DELETE"))
 <form name="MYFORM"  METHOD="post" ACTION="../jsp/TSYewLabelFilesQuery.jsp">
 <br>
 <div id='alpha' class='hidden' style='width:0%;height:0;position:absolute;top:0;left:0;background:#000;filter:alpha(opacity=30);-moz-opacity:0.3;z-index:0;'></div>
-<strong><font style="font-family:╡с╘ЗеИ;font-size:20px;color:#006666">╪перюи╛d╦ъ</font></strong>
+<strong><font style="font-family:Г╢╟Ф≤▌И╚■;font-size:20px;color:#006666">Ф╗≥Г╠╓Ф╙■Ф÷╔Х╘╒</font></strong>
 <BR>
   <div align="right"><A href="/oradds/ORADDSMainMenu.jsp"><jsp:getProperty name="rPH" property="pgHOME"/></A></div><br>
   <table cellSpacing='0' cellPadding='1' width='100%' align='center' borderColorLight="#CFDAD8"  bordercolordark="#5C7671" border='1'>
      <tr>
- 		<td width="10%" bgcolor="#D3E6F3"  style="font-size:11px;font-weight:bold;color:#006666;">╪пер╔N╫X/╕W╨ы:</td>   
+ 		<td width="10%" bgcolor="#D3E6F3"  style="font-size:11px;font-weight:bold;color:#006666;">Ф╗≥Г╠╓Д╩ёГ╒╪/Е░█Г╗╠:</td>   
 		<td width="15%"><input type="text" name="LABEL" value="" style="font-family:Tahoma,Georgia; font-size: 11px"></td>
-		<td width="8%" bgcolor="#D3E6F3"  style="font-size:11px;font-weight:bold;color:#006666;">╦s╡у╔N╫X/╕W╨ы:</td>   
+		<td width="8%" bgcolor="#D3E6F3"  style="font-size:11px;font-weight:bold;color:#006666;">Г╬╓Г╣└Д╩ёГ╒╪/Е░█Г╗╠:</td>   
 		<td width="12%"><input type="text" name="LABEL_GROUP" value="" style="font-family:Tahoma,Georgia; font-size: 11px"></td> 
-		<td width="8%" bgcolor="#D3E6F3"  style="font-size:11px;font-weight:bold;color:#006666">╠р/╟╠╔н:</td>   
+		<td width="8%" bgcolor="#D3E6F3"  style="font-size:11px;font-weight:bold;color:#006666">Е∙÷/Е│°Г■╗:</td>   
 		<td width="10%">
 		<select NAME="STATUS" style="font-family:Tahoma,Georgia; font-size: 11px ">
 		<OPTION VALUE=-- <%if (STATUS.equals("")) out.println("selected");%>>--</OPTION>
-		<OPTION VALUE="Y" <%if (STATUS.equals("Y")) out.println("selected");%>>╠р╔н</OPTION>
-		<OPTION VALUE="N" <%if (STATUS.equals("N")) out.println("selected");%>>╟╠╔н</OPTION>
+		<OPTION VALUE="Y" <%if (STATUS.equals("Y")) out.println("selected");%>>Е∙÷Г■╗</OPTION>
+		<OPTION VALUE="N" <%if (STATUS.equals("N")) out.println("selected");%>>Е│°Г■╗</OPTION>
 		</select>			
 		</td>
 	   <td width="17%" align="center">
 		    <INPUT TYPE="button" align="middle"  value='<jsp:getProperty name="rPH" property="pgQuery"/>' onClick='setSubmit("../jsp/TSYewLabelFilesQuery.jsp")' > 
 			&nbsp;&nbsp;&nbsp;
-		    <INPUT TYPE="button" align="middle"  value='╥s╪W'  style="font-family:ARIAL" onClick='setAdd("../jsp/TSYewLabelFilesAdd.jsp?STATUS=NEW")' > 
+		    <INPUT TYPE="button" align="middle"  value='Ф√╟Е╒·'  style="font-family:ARIAL" onClick='setAdd("../jsp/TSYewLabelFilesAdd.jsp?STATUS=NEW")' > 
 	    &nbsp;&nbsp;&nbsp;</td>
    </tr>
 </table>  
@@ -178,19 +178,19 @@ try
 		%>
 		<table width="100%" border="1" cellpadding="1" cellspacing="0" borderColorLight="#CFDAD8"  bordercolordark="#5C7671">
 			<tr bgcolor="#D3E6F3"> 
-				<td width="3%" rowspan="2" align="center">╫s©Х</td> 
-				<td width="4%" rowspan="2" style="font-size:11px;color:#006666" align="center">╖г╦╧</td> 
-				<td width="6%" rowspan="2" style="font-size:11px;color:#006666" align="center">╦s╡у╔N╫X</td>
-				<td width="12%" rowspan="2" style="font-size:11px;color:#006666" align="center">╦s╡у╕W╨ы</td>
-				<td width="6%" rowspan="2" style="font-size:11px;color:#006666" align="center">╪пер╔N╫X</td>
-				<td width="8%" rowspan="2" style="font-size:11px;color:#006666" align="center">╪пер╨ьцЧ</td>
-				<td width="13%" rowspan="2" style="font-size:11px;color:#006666" align="center">╪пер╕W╨ы</td>
-				<td width="6%" rowspan="2" style="font-size:11px;color:#006666" align="center">╪перюи</td>
-				<td width="8%" rowspan="2" style="font-size:11px;color:#006666" align="center">Ёф╣Ы</td>
-				<td width="6%" rowspan="2" style="font-size:11px;color:#006666" align="center">╠р╔н╟_╓И</td>            
-				<td width="6%" rowspan="2" style="font-size:11px;color:#006666" align="center">╠р╔н╗╢╓И</td>            
-				<td width="9%" rowspan="2" style="font-size:11px;color:#006666" align="center">Ёл╚А╡╖╟й╓И</td>            
-				<td width="8%" rowspan="2" style="font-size:11px;color:#006666" align="center">Ёл╚А╡╖╟й╙л</td>            
+				<td width="3%" rowspan="2" align="center">Г╥╗Х╪╞</td> 
+				<td width="4%" rowspan="2" style="font-size:11px;color:#006666" align="center">Е╨▐Х≥÷</td> 
+				<td width="6%" rowspan="2" style="font-size:11px;color:#006666" align="center">Г╬╓Г╣└Д╩ёГ╒╪</td>
+				<td width="12%" rowspan="2" style="font-size:11px;color:#006666" align="center">Г╬╓Г╣└Е░█Г╗╠</td>
+				<td width="6%" rowspan="2" style="font-size:11px;color:#006666" align="center">Ф╗≥Г╠╓Д╩ёГ╒╪</td>
+				<td width="8%" rowspan="2" style="font-size:11px;color:#006666" align="center">Ф╗≥Г╠╓Г╗╝И║·</td>
+				<td width="13%" rowspan="2" style="font-size:11px;color:#006666" align="center">Ф╗≥Г╠╓Е░█Г╗╠</td>
+				<td width="6%" rowspan="2" style="font-size:11px;color:#006666" align="center">Ф╗≥Г╠╓Ф╙■</td>
+				<td width="8%" rowspan="2" style="font-size:11px;color:#006666" align="center">Е┌≥Х╗╩</td>
+				<td width="6%" rowspan="2" style="font-size:11px;color:#006666" align="center">Е∙÷Г■╗Х╣╥Ф≈╔</td>            
+				<td width="6%" rowspan="2" style="font-size:11px;color:#006666" align="center">Е∙÷Г■╗Х©└Ф≈╔</td>            
+				<td width="9%" rowspan="2" style="font-size:11px;color:#006666" align="center">Ф°─Е╬▄Г∙╟Е▀∙Ф≈╔</td>            
+				<td width="8%" rowspan="2" style="font-size:11px;color:#006666" align="center">Ф°─Е╬▄Г∙╟Е▀∙Х─┘</td>            
 			</tr>
 			<tr bgcolor="#D3E6F3"> 
 			</tr>
@@ -201,7 +201,7 @@ try
     	%>
 			<tr  id="tr_<%=iCnt%>" bgcolor="#E7F3FE" onMouseOver="this.style.Color='#006666';this.style.backgroundColor='#CAEDAF';this.style.fontWeight='bold'" onMouseOut="style.backgroundColor='#E7F3FE';style.color='#000000';this.style.fontWeight='normal'">
 			<td align="center">
-			<img border="0" src="images/updateicon_enabled.gif" height="20" title="╜в╖О╦Й╝ф" onClick="setUpdate('../jsp/TSYewLabelFilesAdd.jsp?STATUS=UPD&LABEL_CODE=<%=rs.getString("label_code")%>')">&nbsp;&nbsp;&nbsp;<img border="0" src="images/deletion.gif" height="14" title="╖R╟ё╦Й╝ф" onClick="setDelete('../jsp/TSYewLabelFilesQuery.jsp?LABEL_CODE=<%=rs.getString("label_code")%>&STATUS=DELETE')">
+			<img border="0" src="images/updateicon_enabled.gif" height="20" title="Д©╝Ф■╧ХЁ┤Ф√≥" onClick="setUpdate('../jsp/TSYewLabelFilesAdd.jsp?STATUS=UPD&LABEL_CODE=<%=rs.getString("label_code")%>')">&nbsp;&nbsp;&nbsp;<img border="0" src="images/deletion.gif" height="14" title="Е┬╙И≥╓ХЁ┤Ф√≥" onClick="setDelete('../jsp/TSYewLabelFilesQuery.jsp?LABEL_CODE=<%=rs.getString("label_code")%>&STATUS=DELETE')">
 			</td>
 			<td align="center"><%=iCnt%></td>
 			<td><%=rs.getString("label_group_code")%></td>
@@ -209,7 +209,7 @@ try
 			<td><%=rs.getString("label_code")%></td>
 			<td><%=rs.getString("label_type_name")%></td>
 			<td><%=rs.getString("label_name")%></td>
-			<td align="center"><a href="../jsp/download_label/<%=FileName%>" title="╫п╚Ж╥ф╧╚╔kаД,╓U╦Э╪перюи"><%=FileName%></a></td>
+			<td align="center"><a href="../jsp/download_label/<%=FileName%>" title="Х╚▀Ф▄┴Ф╩▒И╪═Е▐ЁИ█╣,Д╦▀Х╪┴Ф╗≥Г╠╓Ф╙■"><%=FileName%></a></td>
 			<td><%=(rs.getString("remARKs")==null?"&nbsp;":rs.getString("reMARKs"))%></td>
 			<% 
 			for (int i = 1 ; i <=area_cnt ; i++)
@@ -244,7 +244,7 @@ try
 	
 	if (iCnt==0)
 	{
-		out.println("<div align='center'><font color='red' size='2' face='╥s╡с╘ЗеИ'><strong>╛d╣L╦Й╝ф,╫п╜╚╥s©z©О╛d╦ъ╠Ь╔С,абаб!</strong></font></div>");
+		out.println("<div align='center'><font color='red' size='2' face='Ф√╟Г╢╟Ф≤▌И╚■'><strong>Ф÷╔Г└║ХЁ┤Ф√≥,Х╚▀И┤█Ф√╟Г╞╘И│╦Ф÷╔Х╘╒Ф╒²Д╩╤,Х╛²Х╛²!</strong></font></div>");
 	}
 	else
 	{
@@ -258,7 +258,7 @@ catch (Exception e)
 	out.println("Exception:"+e.getMessage());
 }
 %>
-<!--=============╔H╓U╟о╛q╛╟дю╘ЯЁs╣╡╕ю==========-->  
+<!--=============Д╩╔Д╦▀Е█─Ф╝╣Г┌╨И┤▀Ф■╬И─ёГ╣░Ф╠═==========-->  
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 </form>

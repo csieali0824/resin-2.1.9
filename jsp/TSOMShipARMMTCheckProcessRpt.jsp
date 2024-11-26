@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8" pageEncoding="big5" language="java" import="java.sql.*" %>
+<%@ page contentType="text/html; charset=utf-8"  language="java" import="java.sql.*" %>
 <%@ page import="ComboBoxAllBean,DateBean,WorkingDateBean,ArrayComboBoxBean"%>
 <script language="JavaScript" type="text/JavaScript">
 function setSubmit(URL)
@@ -112,10 +112,10 @@ function workflowLineDetailQuery(erpURL, itemType,itemKey,xAccessKey)
              
 </STYLE>
 <title>Oracle Add On System Information Query</title>
-<!--=============¥H¤U°Ï¬q¬°¦w¥ş»{ÃÒ¾÷¨î==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå®‰å…¨èªè­‰æ©Ÿåˆ¶==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=================================-->
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
@@ -226,8 +226,8 @@ String organizationCode=request.getParameter("ORGANIZATION_CODE");
   String sWhereGlobal = "";
   String sqlDtl = "";
   
-  if (dnDocNo==null || dnDocNo.equals("")) dnDocNo=""; //¿ï¾Ü®i¶}ªº
-  if (dnDocNoSet==null || dnDocNoSet.equals("")) dnDocNoSet=""; // ¨Ï¥ÎªÌ¿é¤Jªº
+  if (dnDocNo==null || dnDocNo.equals("")) dnDocNo=""; //é¸æ“‡å±•é–‹çš„
+  if (dnDocNoSet==null || dnDocNoSet.equals("")) dnDocNoSet=""; // ä½¿ç”¨è€…è¼¸å…¥çš„
   if (customerId==null || customerId.equals("")) customerId="";
   if (customerNo==null || customerNo.equals("")) customerNo="";
   if (customerName==null || customerName.equals("")) customerName="";
@@ -245,20 +245,20 @@ String organizationCode=request.getParameter("ORGANIZATION_CODE");
   int iDetailRowCount = 0;
 
 
-    // ¦]ÃöÁp ­q³æ¥DÀÉ¤Î©ú²ÓÀÉ,¬G»İ©I¥sSET Client Information Procedure
+    // å› é—œè¯ è¨‚å–®ä¸»æª”åŠæ˜ç´°æª”,æ•…éœ€å‘¼å«SET Client Information Procedure
      String clientID = "";
 	 if (organizationId=="46" || organizationId.equals("46"))
 	 {  clientID = "42"; }
 	 else { clientID = "41"; }
   
      CallableStatement cs1 = con.prepareCall("{call DBMS_APPLICATION_INFO.SET_CLIENT_INFO(?)}");
-	 cs1.setString(1,clientID);  /*  41 --> ¬°¥b¾ÉÅé  42 --> ¬°¨Æ°È¾÷ */
+	 cs1.setString(1,clientID);  /*  41 --> ç‚ºåŠå°é«”  42 --> ç‚ºäº‹å‹™æ©Ÿ */
 	 cs1.execute();
     // out.println("Procedure : Execute Success !!! ");
      cs1.close();
 
 %>
-<% /* «Ø¥ß¥»­¶­±¸ê®Æ®w³s½u  */ %>
+<% /* å»ºç«‹æœ¬é é¢è³‡æ–™åº«é€£ç·š  */ %>
 <style type="text/css">
 <!--
 .style1 {color: #003399}
@@ -268,9 +268,9 @@ String organizationCode=request.getParameter("ORGANIZATION_CODE");
 <body topmargin="0" bottommargin="0">  
 <%@ include file="/jsp/include/TSCMfgDocHyperLinkPage.jsp"%>  
 <FORM ACTION="../jsp/TSRFQFactResponseMOCreateRpt.jsp" METHOD="post" NAME="MYFORM">
-<!--%/20040109/±NExcel Veiw §¨¦bÀÉÀY%-->
+<!--%/20040109/å°‡Excel Veiw å¤¾åœ¨æª”é ­%-->
 <font color="#003366" size="+2" face="Arial"><font size="+3" face="Arial Black"><font color="#3366FF" size="+2" face="Arial"><font size="+3" face="Arial Black"><font face="Courier, MS Sans Serif"><font color="#003366" size="+2" face="Arial Black">TSC</font></font></font></font><font face="Courier, MS Sans Serif"></font></font></font><font color="#006666" size="+2" face="Times New Roman"> 
-<strong>OM¾P°â­q³æ¥X³f+À³¦¬±b+®w¦s¸ê®Æ¬d¸ß</strong></font>
+<strong>OMéŠ·å”®è¨‚å–®å‡ºè²¨+æ‡‰æ”¶å¸³+åº«å­˜è³‡æ–™æŸ¥è©¢</strong></font>
 <%
   String erpURL = "";
 
@@ -288,13 +288,13 @@ String organizationCode=request.getParameter("ORGANIZATION_CODE");
   sWhereGP = " and WND.NAME IS NOT NULL ";
   
   workingDateBean.setAdjWeek(-1); //out.println("workingDateBean.getWeek()="+workingDateBean.getWeek());
-  workingDateBean.setDefineWeekFirstDay(1);  // ³]©w¨C¶g²Ä¤@¤Ñ¬°¬P´Á¤é  
+  workingDateBean.setDefineWeekFirstDay(1);  // è¨­å®šæ¯é€±ç¬¬ä¸€å¤©ç‚ºæ˜ŸæœŸæ—¥  
   
-  String strFirstDayWeek = workingDateBean.getFirstDateOfWorkingWeek();   // ¨ú°_©l¶g²Ä¤@¤Ñ
-  String strLastDayWeek = workingDateBean.getLastDateOfWorkingWeek();  // ¨ú°_©l¶g³Ì«á¤@¤Ñ 
+  String strFirstDayWeek = workingDateBean.getFirstDateOfWorkingWeek();   // å–èµ·å§‹é€±ç¬¬ä¸€å¤©
+  String strLastDayWeek = workingDateBean.getLastDateOfWorkingWeek();  // å–èµ·å§‹é€±æœ€å¾Œä¸€å¤© 
   String currentWeek = workingDateBean.getWeekString();
 
-/*  ÀË¬d¨Ï¥Î¬O§_¦³¬d¸ß¨ä¥¦ºû­×ÂIºû­×³æªºÅv­­ -- ¨Ìµn¤J®Éªº¨Ï¥ÎªÌ¸s²Õ */
+/*  æª¢æŸ¥ä½¿ç”¨æ˜¯å¦æœ‰æŸ¥è©¢å…¶å®ƒç¶­ä¿®é»ç¶­ä¿®å–®çš„æ¬Šé™ -- ä¾ç™»å…¥æ™‚çš„ä½¿ç”¨è€…ç¾¤çµ„ */
 
 if ((dateSetBegin==null || dateSetBegin.equals("")) && (dateSetEnd==null || dateSetEnd.equals("")))
 {
@@ -307,21 +307,21 @@ if ((dateSetBegin==null || dateSetBegin.equals("")) && (dateSetEnd==null || date
 		  "    DECODE(MMT.TRANSACTION_UOM,'KPC',MMT.TRANSACTION_QUANTITY * -1000,MMT.TRANSACTION_QUANTITY * -1) MMT_QTY "+
 		  "  from RA_INTERFACE_LINES_ALL RIL,  RA_CUSTOMER_TRX_LINES_ALL RCT, "+
 		  "       MTL_RESERVATIONS MR,WSH_DELIVERY_DETAILS WDD, "+
-		  " 	  WSH_DELIVERY_ASSIGNMENTS WDA, WSH_NEW_DELIVERIES WND, "+ //­pºâ¥|¤é¹L´ÁLineªºµ§¼Æ
+		  " 	  WSH_DELIVERY_ASSIGNMENTS WDA, WSH_NEW_DELIVERIES WND, "+ //è¨ˆç®—å››æ—¥éæœŸLineçš„ç­†æ•¸
           "       MTL_MATERIAL_TRANSACTIONS MMT ";         
 			   //"ORADDMAN.TSDELIVERY_DETAIL_HISTORY f ";
    sSqlCNT = " select count(WND.NAME) as CaseCount "+
              "  from RA_INTERFACE_LINES_ALL RIL,  RA_CUSTOMER_TRX_LINES_ALL RCT, "+
 		     "       MTL_RESERVATIONS MR,WSH_DELIVERY_DETAILS WDD, "+
-		     " 	  WSH_DELIVERY_ASSIGNMENTS WDA, WSH_NEW_DELIVERIES WND, "+ //­pºâ¥|¤é¹L´ÁLineªºµ§¼Æ
+		     " 	  WSH_DELIVERY_ASSIGNMENTS WDA, WSH_NEW_DELIVERIES WND, "+ //è¨ˆç®—å››æ—¥éæœŸLineçš„ç­†æ•¸
              "       MTL_MATERIAL_TRANSACTIONS MMT ";
    sWhere =  "where WDA.DELIVERY_DETAIL_ID = WDD.DELIVERY_DETAIL_ID "+
 			 "  and WND.DELIVERY_ID = WDA.DELIVERY_ID "+
 			 // "or  d.DOCNO || '-' || d.ASSIGN_LNO in ("+distDnDocNo+") ) "+
 			 "  and RIL.INTERFACE_LINE_ATTRIBUTE6(+) = WDD.SOURCE_LINE_ID "+
 			 "  and RCT.INTERFACE_LINE_ATTRIBUTE6(+) = WDD.SOURCE_LINE_ID "+
-			 "  and MR.ORGANIZATION_ID(+) = WDD.ORGANIZATION_ID and MR.DEMAND_SOURCE_HEADER_ID(+) = WDD.SOURCE_HEADER_ID and MR.DEMAND_SOURCE_LINE_ID(+) = WDD.SOURCE_LINE_ID "+ // §ä²Ä¤@µ§°e¥Xµ¹¤u¼t§P©wªº®É¶¡(ASSIGNING)	
-			 "  and MMT.TRANSACTION_TYPE_ID = 33  "+ //§ä¶}³æ¤é¤j©ó¤u¼t³B²z24¤p®Éªº³æ¾Ú
+			 "  and MR.ORGANIZATION_ID(+) = WDD.ORGANIZATION_ID and MR.DEMAND_SOURCE_HEADER_ID(+) = WDD.SOURCE_HEADER_ID and MR.DEMAND_SOURCE_LINE_ID(+) = WDD.SOURCE_LINE_ID "+ // æ‰¾ç¬¬ä¸€ç­†é€å‡ºçµ¦å·¥å» åˆ¤å®šçš„æ™‚é–“(ASSIGNING)	
+			 "  and MMT.TRANSACTION_TYPE_ID = 33  "+ //æ‰¾é–‹å–®æ—¥å¤§æ–¼å·¥å» è™•ç†24å°æ™‚çš„å–®æ“š
 			 "  and MMT.SOURCE_LINE_ID(+) = WDD.SOURCE_LINE_ID "; 
    sWhereSDRQ = "  ";
    havingGrp = " ";               
@@ -348,7 +348,7 @@ if ((dateSetBegin==null || dateSetBegin.equals("")) && (dateSetEnd==null || date
 		     CaseCountPCT = Math.round((float)(CaseCount/CaseCountORG)*100);
 			 //out.println("CaseCount="+CaseCount);
 			 //out.println("CaseCountPCT="+CaseCountPCT);
-			 // ¨ú¤p¼Æ1¦ì
+			 // å–å°æ•¸1ä½
 			sCSCountPCT = Float.toString(CaseCountPCT);
 			idxCSCount = sCSCountPCT.indexOf('.');
 			sCSCountPCT = sCSCountPCT.substring(0,idxCSCount+1)+sCSCountPCT.substring(idxCSCount+1,idxCSCount+2);
@@ -380,21 +380,21 @@ else
 		  "    DECODE(MMT.TRANSACTION_UOM,'KPC',MMT.TRANSACTION_QUANTITY * -1000,MMT.TRANSACTION_QUANTITY * -1) MMT_QTY "+
 		  "  from RA_INTERFACE_LINES_ALL RIL,  RA_CUSTOMER_TRX_LINES_ALL RCT, "+
 		  "       MTL_RESERVATIONS MR,WSH_DELIVERY_DETAILS WDD, "+
-		  " 	  WSH_DELIVERY_ASSIGNMENTS WDA, WSH_NEW_DELIVERIES WND, "+ //­pºâ¥|¤é¹L´ÁLineªºµ§¼Æ
+		  " 	  WSH_DELIVERY_ASSIGNMENTS WDA, WSH_NEW_DELIVERIES WND, "+ //è¨ˆç®—å››æ—¥éæœŸLineçš„ç­†æ•¸
           "       MTL_MATERIAL_TRANSACTIONS MMT ";         
 			   //"ORADDMAN.TSDELIVERY_DETAIL_HISTORY f ";
    sSqlCNT = " select count(WND.NAME) as CaseCount "+
              "  from RA_INTERFACE_LINES_ALL RIL,  RA_CUSTOMER_TRX_LINES_ALL RCT, "+
 		     "       MTL_RESERVATIONS MR,WSH_DELIVERY_DETAILS WDD, "+
-		     " 	  WSH_DELIVERY_ASSIGNMENTS WDA, WSH_NEW_DELIVERIES WND, "+ //­pºâ¥|¤é¹L´ÁLineªºµ§¼Æ
+		     " 	  WSH_DELIVERY_ASSIGNMENTS WDA, WSH_NEW_DELIVERIES WND, "+ //è¨ˆç®—å››æ—¥éæœŸLineçš„ç­†æ•¸
              "       MTL_MATERIAL_TRANSACTIONS MMT ";
    sWhere =  "where WDA.DELIVERY_DETAIL_ID = WDD.DELIVERY_DETAIL_ID "+
 			 "  and WND.DELIVERY_ID = WDA.DELIVERY_ID "+
 			 // "or  d.DOCNO || '-' || d.ASSIGN_LNO in ("+distDnDocNo+") ) "+
 			 "  and RIL.INTERFACE_LINE_ATTRIBUTE6(+) = WDD.SOURCE_LINE_ID "+
 			 "  and RCT.INTERFACE_LINE_ATTRIBUTE6(+) = WDD.SOURCE_LINE_ID "+
-			 "  and MR.ORGANIZATION_ID(+) = WDD.ORGANIZATION_ID and MR.DEMAND_SOURCE_HEADER_ID(+) = WDD.SOURCE_HEADER_ID and MR.DEMAND_SOURCE_LINE_ID(+) = WDD.SOURCE_LINE_ID "+ // §ä²Ä¤@µ§°e¥Xµ¹¤u¼t§P©wªº®É¶¡(ASSIGNING)	
-			 "  and MMT.TRANSACTION_TYPE_ID = 33  "+ //§ä¶}³æ¤é¤j©ó¤u¼t³B²z24¤p®Éªº³æ¾Ú
+			 "  and MR.ORGANIZATION_ID(+) = WDD.ORGANIZATION_ID and MR.DEMAND_SOURCE_HEADER_ID(+) = WDD.SOURCE_HEADER_ID and MR.DEMAND_SOURCE_LINE_ID(+) = WDD.SOURCE_LINE_ID "+ // æ‰¾ç¬¬ä¸€ç­†é€å‡ºçµ¦å·¥å» åˆ¤å®šçš„æ™‚é–“(ASSIGNING)	
+			 "  and MMT.TRANSACTION_TYPE_ID = 33  "+ //æ‰¾é–‹å–®æ—¥å¤§æ–¼å·¥å» è™•ç†24å°æ™‚çš„å–®æ“š
 			 "  and MMT.SOURCE_LINE_ID(+) = WDD.SOURCE_LINE_ID "; 
    sWhereSDRQ = "   ";
    havingGrp = " ";               
@@ -423,7 +423,7 @@ else
    String sqlOrgCnt = "select count(WND.NAME) as CaseCountORG "+
                       "  from RA_INTERFACE_LINES_ALL RIL,  RA_CUSTOMER_TRX_LINES_ALL RCT, "+
 		              "       MTL_RESERVATIONS MR,WSH_DELIVERY_DETAILS WDD, "+
-		              " 	  WSH_DELIVERY_ASSIGNMENTS WDA, WSH_NEW_DELIVERIES WND, "+ //­pºâ¥|¤é¹L´ÁLineªºµ§¼Æ
+		              " 	  WSH_DELIVERY_ASSIGNMENTS WDA, WSH_NEW_DELIVERIES WND, "+ //è¨ˆç®—å››æ—¥éæœŸLineçš„ç­†æ•¸
                       "       MTL_MATERIAL_TRANSACTIONS MMT ";
    sqlOrgCnt = sqlOrgCnt + sWhere + sWhereGP + havingGrp;
    //out.println("<BR>sqlOrgCnt="+sqlOrgCnt);
@@ -450,7 +450,7 @@ else
 		     CaseCountPCT = (float)(CaseCount/CaseCountORG)*100;
 			 //out.println("CaseCount="+CaseCount);
 			 //out.println("CaseCountPCT="+CaseCountPCT);
-			 // ¨ú¤p¼Æ1¦ì
+			 // å–å°æ•¸1ä½
 			sCSCountPCT = Float.toString(CaseCountPCT);
 			idxCSCount = sCSCountPCT.indexOf('.');
 			sCSCountPCT = sCSCountPCT.substring(0,idxCSCount+1)+sCSCountPCT.substring(idxCSCount+1,idxCSCount+2);
@@ -471,7 +471,7 @@ else
         }
    
 }
-// ·Ç³Æ¤©ºû­×¤è¦¡¨Ï¥ÎªºStatement Con //
+// æº–å‚™äºˆç¶­ä¿®æ–¹å¼ä½¿ç”¨çš„Statement Con //
 //Statement stateAct=con.createStatement();
 //out.println(sSql);
 sqlGlobal = sSql;
@@ -673,7 +673,7 @@ String MM_moveFirst,MM_moveLast,MM_moveNext,MM_movePrev;
 %> 
   <table cellSpacing='0' bordercolordark='#D8DEA9'  cellPadding='1' width='100%' align='center' borderColorLight='#ffffff' border='1'>     	 	 
 	 <tr>
-	    <td width="14%" colspan="2" nowrap><font color="#006666"><strong>µo²¼¸¹½X</strong></font>         
+	    <td width="14%" colspan="2" nowrap><font color="#006666"><strong>ç™¼ç¥¨è™Ÿç¢¼</strong></font>         
         </td> 
 		<td width="47%" colspan="2">
 		   <div align="left">
@@ -684,7 +684,7 @@ String MM_moveFirst,MM_moveLast,MM_moveNext,MM_movePrev;
 		 
 	 </tr>	  
      <tr>	    
-	   <td nowrap colspan="2"><font color="#006666"><strong>¥X³f<jsp:getProperty name="rPH" property="pgDateFr"/></strong></font>
+	   <td nowrap colspan="2"><font color="#006666"><strong>å‡ºè²¨<jsp:getProperty name="rPH" property="pgDateFr"/></strong></font>
         <%
 		  String CurrYear = null;	     		 
 	     try
@@ -840,15 +840,15 @@ String MM_moveFirst,MM_moveLast,MM_moveNext,MM_movePrev;
   <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolorlight="#999999" bordercolordark="#FFFFFF">
     <tr bgcolor="#D8DEA9"> 
 	  <td width="4%" height="22" nowrap><div align="center"><font color="#000000">&nbsp;</font></div></td> 
-	  <td width="11%" height="22" nowrap><div align="center"><font color="#006666">µo²¼¸¹½X</font></div></td>               	  
-	  <td width="10%" nowrap><div align="center"><font color="#006666">¾P°â­q³æ¸¹</font></div></td>
-	  <td width="15%" nowrap><div align="center"><font color="#006666">­q³æ¶µÃÑ§O½X</font></div></td>
-      <td width="13%" nowrap><div align="center"><font color="#006666">À³¦¬±bµo²¼¸¹</font></div></td>  
-	  <td width="15%" nowrap><div align="center"><font color="#006666">¤w¥X³f¼Æ¶q</font></div></td> 
-	  <td width="8%" nowrap><div align="center"><font color="#006666">²§°Ê¼Æ¶q</font></div></td> 
-	  <td width="8%" nowrap><div align="center"><font color="#006666">À³¦¬±b¼Æ¶q</div></td> 
-	  <td width="8%" nowrap><div align="center"><font color="#006666">«O¯d¼Æ¶q</font></div></td>                  	  
-	  <td width="8%" nowrap><div align="center"><font color="#006666">®w¦s²§°Ê¼Æ¶q</font></div></td> 
+	  <td width="11%" height="22" nowrap><div align="center"><font color="#006666">ç™¼ç¥¨è™Ÿç¢¼</font></div></td>               	  
+	  <td width="10%" nowrap><div align="center"><font color="#006666">éŠ·å”®è¨‚å–®è™Ÿ</font></div></td>
+	  <td width="15%" nowrap><div align="center"><font color="#006666">è¨‚å–®é …è­˜åˆ¥ç¢¼</font></div></td>
+      <td width="13%" nowrap><div align="center"><font color="#006666">æ‡‰æ”¶å¸³ç™¼ç¥¨è™Ÿ</font></div></td>  
+	  <td width="15%" nowrap><div align="center"><font color="#006666">å·²å‡ºè²¨æ•¸é‡</font></div></td> 
+	  <td width="8%" nowrap><div align="center"><font color="#006666">ç•°å‹•æ•¸é‡</font></div></td> 
+	  <td width="8%" nowrap><div align="center"><font color="#006666">æ‡‰æ”¶å¸³æ•¸é‡</div></td> 
+	  <td width="8%" nowrap><div align="center"><font color="#006666">ä¿ç•™æ•¸é‡</font></div></td>                  	  
+	  <td width="8%" nowrap><div align="center"><font color="#006666">åº«å­˜ç•°å‹•æ•¸é‡</font></div></td> 
     </tr>
     <% while ((rs_hasDataTC)&&(rs1__numRows-- != 0)) { %>
 	<%//out.println("Step1");
@@ -882,7 +882,7 @@ String MM_moveFirst,MM_moveLast,MM_moveNext,MM_movePrev;
 					 {	 						 
 						 // 
 						  CallableStatement cs4 = con.prepareCall("{? = call WF_MONITOR.GetDiagramURL(?,?,?,?)}");			
-						  cs4.registerOutParameter(1, Types.VARCHAR); //  ¶Ç¦^­È 
+						  cs4.registerOutParameter(1, Types.VARCHAR); //  å‚³å›å€¼ 
 					      cs4.setString(2,"WF_CORE.Translate('WF_WEB_AGENT')");                                         //  Org ID 	
 					      cs4.setString(3,"OEOL");                     // User ID 					 					      
 						  cs4.setString(4,rsTC.getString("LINE_ID"));                                //  RFQ NO 											 
@@ -920,7 +920,7 @@ String MM_moveFirst,MM_moveLast,MM_moveNext,MM_movePrev;
 		  } 
 		  else { out.println("<input type='hidden' name='STRQUERYFLAG' value='Y' size='1'  readonly=''>"); }
 		  
-		  workingDateBean.setAdjWeek(1);  // §â¶g§O½Õ¾ã¦^¨Ó
+		  workingDateBean.setAdjWeek(1);  // æŠŠé€±åˆ¥èª¿æ•´å›ä¾†
 		  
 	 %><input type="hidden" name="CASECOUNT" value=<%=CaseCount%> size="5" readonly="">
 	 <font color='#000066' face="Arial"><strong><%=CaseCount%></strong></font>
@@ -928,7 +928,7 @@ String MM_moveFirst,MM_moveLast,MM_moveNext,MM_movePrev;
 	 </td>      
     </tr>
   </table>
-  <!--%¨C­¶µ§¡´Åã¥Üµ§¨ìµ§Á`¦@¦³¸ê®Æ%-->
+  <!--%æ¯é ç­†â—é¡¯ç¤ºç­†åˆ°ç­†ç¸½å…±æœ‰è³‡æ–™%-->
   <div align="center"> <font color="#993366" size="2">
     <% if (rs_isEmptyTC ) {  %>
     <strong>No Record Found</strong> 
@@ -966,7 +966,7 @@ String MM_moveFirst,MM_moveLast,MM_moveNext,MM_movePrev;
   </tr>
 </table>
 <BR>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 </body>

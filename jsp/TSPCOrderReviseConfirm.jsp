@@ -1,15 +1,15 @@
-<%@ page contentType="text/html;charset=utf-8" pageEncoding="big5" language="java" %>
+<%@ page contentType="text/html;charset=utf-8"  language="java" %>
 <%@ page import="java.sql.*"%>
 <%@ page import="java.util.*"%>
 <%@ page import="jxl.*"%>
 <%@ page import="java.lang.Math.*"%>
 <%@ page import="java.text.*"%>
 <%@ page import="java.io.*,DateBean,ComboBoxAllBean"%>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<!--=============¥H¤U°Ï¬q¬°¦w¥ş»{ÃÒ¾÷¨î==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå®‰å…¨èªè­‰æ©Ÿåˆ¶==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—é€£çµæ± ==========-->
 <html>
 <head>
 <title>PC Order Revise for Query</title>
@@ -450,7 +450,7 @@ function setChkboxPress(Lineno,id)
 		document.MYFORM.elements["salesremark_"+id].style.backgroundColor ="#FFFFFF";
 	}
 }
-// ÀË¬d¶|¦~,§PÂ_¤é´Á¿é¤J¦Xªk©Ê
+// æª¢æŸ¥é–å¹´,åˆ¤æ–·æ—¥æœŸè¼¸å…¥åˆæ³•æ€§
 function isLeapYear(year) 
 { 
 	if((year%4==0&&year%100!=0)||(year%400==0)) 
@@ -555,7 +555,7 @@ int rowcnt=0;
 <div id='alpha' class='hidden' style='width:0%;height:0;position:absolute;top:0;left:0;background:#000;filter:alpha(opacity=30);-moz-opacity:0.3;z-index:0;'></div>
 <TABLE width="100%" border="1" bgcolor="#CFDAC9" bordercolorlight="#333366" bordercolordark="#ffffff" cellPadding="1" cellspacing="0">
 	<tr>
-		<td width="6%" align="right">Sales Group¡G</td>
+		<td width="6%" align="right">Sales Groupï¼š</td>
 		<td width="8%">
 		<%
 		try
@@ -594,7 +594,7 @@ int rowcnt=0;
 		} 	
 		%>	
 		</td>
-		<td width="7%" align="right">Plant Code¡G</td>
+		<td width="7%" align="right">Plant Codeï¼š</td>
 		<td width="8%">
 		<%
 		try
@@ -633,7 +633,7 @@ int rowcnt=0;
 		}		
 		%>
 		</td>
-		<td width="6%" style="font-size:11px" align="right" rowspan="3">Request Type¡G</td>
+		<td width="6%" style="font-size:11px" align="right" rowspan="3">Request Typeï¼š</td>
 		<td width="8%" rowspan="3">
 		<!--<select NAME="REQ_TYPE" style="font-family: Tahoma,Georgia;font-size:11px" onChange="setReqType(this.value)">
 		<OPTION VALUE="--" <%=(REQ_TYPE.equals("") || REQ_TYPE.equals("--") ?" selected ":"")%>>
@@ -645,14 +645,14 @@ int rowcnt=0;
 		<input type="checkbox" name="REQ_TYPE_O" value="Overdue" <%=!REQ_TYPE_O.equals("")?"checked":""%>>Overdue<BR>
 		<input type="checkbox" name="REQ_TYPE_E" value="Early Warning" <%=!REQ_TYPE_E.equals("")?"checked":""%>>Early Warning		
 		</td>	
-		<td width="5%"align="right" rowspan="3">Item Desc¡G</td>
+		<td width="5%"align="right" rowspan="3">Item Descï¼š</td>
 		<td width="12%" rowspan="3"><textarea cols="25" rows="4" name="ITEM_DESC"  style="font-family: Tahoma,Georgia;font-size:11px"><%=ITEM_DESC%></textarea></td>	
-		<td width="5%"align="right" rowspan="3">ERP MO#¡G</td>
+		<td width="5%"align="right" rowspan="3">ERP MO#ï¼š</td>
 		<td width="12%" rowspan="3"><textarea cols="25" rows="4" name="MO_LIST"  style="font-family: Tahoma,Georgia;font-size:11px"><%=MO_LIST%></textarea>
 		</td>
 		</tr>
 		<tr>
-		<td width="7%"align="right">Customer¡G</td>
+		<td width="7%"align="right">Customerï¼š</td>
 		<td width="7%">
 		<%
 		try
@@ -732,7 +732,7 @@ int rowcnt=0;
 		} 	
 		%>
 		</td>
-		<td width="7%"align="right">Request Date¡G</td>
+		<td width="7%"align="right">Request Dateï¼š</td>
 		<td width="7%">
 		<%
 		try
@@ -779,7 +779,7 @@ int rowcnt=0;
 		</td>	
 		</tr>
 		<tr>
-		<td width="7%"align="right">Cust Item¡G</td>
+		<td width="7%"align="right">Cust Itemï¼š</td>
 		<td width="7%">
 		<%
 		try
@@ -824,7 +824,7 @@ int rowcnt=0;
 		} 	
 		%>
 		</td>	
-		<td width="7%"align="right">Request No¡G</td>
+		<td width="7%"align="right">Request Noï¼š</td>
 		<td width="7%">
 		<%
 		try
@@ -944,7 +944,7 @@ try
 			  ",a.SALES_CONFIRMED_RESULT"+
 			  ",case when to_number(to_char(a.source_ssd_tw,'yyyymmdd'))-to_number(to_char(nvl(a.schedule_ship_date_tw,a.source_ssd_tw),'yyyymmdd'))=0 then to_char(nvl(a.schedule_ship_date_tw,a.source_ssd_tw),'yyyymmdd') else "+
 			  //"  case when nvl(a.schedule_ship_date_tw,a.source_ssd_tw)+28>a.source_ssd_tw then to_char(a.source_ssd_tw,'yyyymmdd') else to_char(nvl(a.schedule_ship_date_tw,a.source_ssd_tw)+28,'yyyymmdd') end end as max_new_ssd"+
-			  "  case when nvl(a.schedule_ship_date_tw,a.source_ssd_tw)<a.source_ssd_tw then to_char(a.source_ssd_tw,'yyyymmdd') else to_char(nvl(a.schedule_ship_date_tw,a.source_ssd_tw),'yyyymmdd') end end as max_new_ssd"+ //¨ú®ø28¤Ñ­­¨î,PULL IN¥u­n¦­©ó­ì¥æ´Á§Y¥i BY PEGGY 20230616
+			  "  case when nvl(a.schedule_ship_date_tw,a.source_ssd_tw)<a.source_ssd_tw then to_char(a.source_ssd_tw,'yyyymmdd') else to_char(nvl(a.schedule_ship_date_tw,a.source_ssd_tw),'yyyymmdd') end end as max_new_ssd"+ //å–æ¶ˆ28å¤©é™åˆ¶,PULL INåªè¦æ—©æ–¼åŸäº¤æœŸå³å¯ BY PEGGY 20230616
 			  ",d.attribute20"+ //add by Peggy 20221229
 			  //",tsc_om_check_shipping_advise(a.so_header_id,a.so_line_id) shipping_advise_flag"+//add by Peggy 20231002
 			  ",case when a.plant_code!='002' then tsc_om_check_shipping_advise(a.so_header_id,a.so_line_id) else 'FALSE' end  shipping_advise_flag"+//add by Peggy 20231002
@@ -1076,7 +1076,7 @@ try
 			  " and a.plant_code =b.manufactory_no(+)"+
 			  " and a.SOURCE_CUSTOMER_ID=ar.customer_id(+)"+
 			  " and d.end_customer_id = end_cust.cust_account_id(+)"+ 
-			  " AND NVL(a.ASCRIPTION_BY,'XX') NOT IN ('Sales')"+  //¦]¬°§ï³æ¤£²§°Ê,©Ò¥Hsales hold¤£Åã¥Ü add by Peggy 20221219
+			  " AND NVL(a.ASCRIPTION_BY,'XX') NOT IN ('Sales')"+  //å› ç‚ºæ”¹å–®ä¸ç•°å‹•,æ‰€ä»¥sales holdä¸é¡¯ç¤º add by Peggy 20221219
 			  " order by 2,5,3,12,1,6,to_number(7),13,9,4";
 		//out.println(sql);
 		//out.println(swhere);
@@ -1141,7 +1141,7 @@ try
 			%>
 			<td align="center" rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("SALES_GROUP")%></td>
 			<td align="left" rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("customer")%></td>
-			<td align="center" rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("SO_NO")%><%=(rs.getInt("TO_TW_DAYS")==0?"":"<br><font color='#ff0000'><¦^T></font>")%></td>
+			<td align="center" rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("SO_NO")%><%=(rs.getInt("TO_TW_DAYS")==0?"":"<br><font color='#ff0000'><å›T></font>")%></td>
 			<td rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("line_no")%></td>
 			<td rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("SOURCE_ITEM_DESC")%></td>
 			<td rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("SOURCE_CUST_ITEM_NAME")%></td>
@@ -1185,14 +1185,14 @@ try
 			if (rs.getString("shipping_advise_flag").equals("TRUE") || rs.getString("wms_flag").equals("T"))
 			{
 	
-				out.println("<font color='red'>¤w±Æ¥X³f³qª¾,µLªk§ï³æ</font>");
+				out.println("<font color='red'>å·²æ’å‡ºè²¨é€šçŸ¥,ç„¡æ³•æ”¹å–®</font>");
 			}
 			else
 			{
 			%>		
 			<input type="radio" name="rdo_<%=id%>" value="A" onClick="setRadioPress('<%=rowcnt%>','A','<%=id%>')" <%=(ATYPE.equals("UPD") &&rs.getString("SALES_CONFIRMED_RESULT").equals("A")?" checked":"")%>>
 			Accept<BR>
-				<div id="div_<%=id%>" style="visibility:hidden"><input type="checkbox" name="tsc_odr_nochange_<%=id%>" value="Y">¥x¥b¥æ´Á¤£ÅÜ</div>
+				<div id="div_<%=id%>" style="visibility:hidden"><input type="checkbox" name="tsc_odr_nochange_<%=id%>" value="Y">å°åŠäº¤æœŸä¸è®Š</div>
 				<input type="radio" name="rdo_<%=id%>" value="R" onClick="setRadioPress('<%=rowcnt%>','R','<%=id%>')" <%=(ATYPE.equals("UPD") && rs.getString("SALES_CONFIRMED_RESULT").equals("R")?" checked":"")%>>
 				Reject
 				<input type="text" name="salesremark_<%=id%>" value="<%=(ATYPE.equals("UPD")?(rs.getString("SALES_CONFIRMED_REMARKS")==null?"":rs.getString("SALES_CONFIRMED_REMARKS")):"")%>" style="border-bottom:ridge;border-top:none;border-right:none;border-left:none;font-family:Tahoma,Georgia;font-size:12px;<%=(ATYPE.equals("UPD") && rs.getString("SALES_CONFIRMED_RESULT").equals("A")?"background-color:#C4F8A5;":(ATYPE.equals("UPD") && rs.getString("SALES_CONFIRMED_RESULT").equals("R")?"background-color:#FEA398;":""))%>" size="8">
@@ -1239,7 +1239,7 @@ catch(Exception e)
 %>
 </FORM>
 <iframe width=124 height=153 name="gToday:supermini:agenda.js" id="gToday:supermini:agenda.js" src="../calendar/ipopeng.htm" scrolling="no" frameborder="0" style="visibility:hidden; z-index:65535; position:absolute; top:0px;"></iframe>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 </body>

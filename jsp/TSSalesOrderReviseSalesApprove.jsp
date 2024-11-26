@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=utf-8" pageEncoding="big5" language="java"%>
+<%@ page contentType="text/html;charset=utf-8"  language="java"%>
 <%@ page import="java.sql.*,java.net.*,java.io.*,java.text.*,java.lang.*,java.util.*"%>
 <html>
 <head>
@@ -13,7 +13,7 @@
   A:visited { color: #990066; text-decoration: underline }
 </STYLE>
 <title>Sales Order Confirm for Revise</title>
-<!--=============¥H¤U°Ï¬q¬°¦w¥ş»{ÃÒ¾÷¨î==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå®‰å…¨èªè­‰æ©Ÿåˆ¶==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ page import="SalesDRQPageHeaderBean" %>
@@ -159,7 +159,7 @@ function setChkboxPress(Lineno,id)
 		document.MYFORM.elements["pcremark_"+id].style.backgroundColor ="#FFFFFF";
 	}
 }
-// ÀË¬d¶|¦~,§PÂ_¤é´Á¿é¤J¦Xªk©Ê
+// æª¢æŸ¥é–å¹´,åˆ¤æ–·æ—¥æœŸè¼¸å…¥åˆæ³•æ€§
 function isLeapYear(year) 
 { 
 	if((year%4==0&&year%100!=0)||(year%400==0)) 
@@ -371,7 +371,7 @@ if (ACODE.equals("S"))
 <div id='alpha' class='hidden' style='width:0%;height:0;position:absolute;top:0;left:0;background:#000;filter:alpha(opacity=30);-moz-opacity:0.3;z-index:0;'></div>
 <TABLE width="100%" border='1' bordercolorlight='#426193' bordercolordark='#ffffff' cellPadding='1' cellspacing='0' bgcolor="#DAF0FC">
 	<tr>
-		<td width="6%" align="right">Sales Group¡G</td>
+		<td width="6%" align="right">Sales Groupï¼š</td>
 		<td width="6%">
 		<%
 		try
@@ -400,7 +400,7 @@ if (ACODE.equals("S"))
 		} 	
 		%>	
 		</td>
-		<td width="5%" align="right">Plant Code¡G</td>
+		<td width="5%" align="right">Plant Codeï¼š</td>
 		<td width="5%">
 		<%
 		try
@@ -428,7 +428,7 @@ if (ACODE.equals("S"))
 		}		
 		%>
 		</td>		
-		<td width="5%" align="right">Customer¡G</td>
+		<td width="5%" align="right">Customerï¼š</td>
 		<td width="9%" colspan="3">
 		<%
 		try
@@ -460,7 +460,7 @@ if (ACODE.equals("S"))
 		} 	
 		%>			
 		</td>
-		<td width="6%" align="right">Item Desc¡G</td> 
+		<td width="6%" align="right">Item Descï¼š</td> 
 		<td width="10%">
 		<%
 		try
@@ -489,7 +489,7 @@ if (ACODE.equals("S"))
 		} 	
 		%>		
 		</td>
-		<td width="3%" align="right">MO#¡G</td> 
+		<td width="3%" align="right">MO#ï¼š</td> 
 		<td width="6%">
 		<%
 		try
@@ -517,7 +517,7 @@ if (ACODE.equals("S"))
 		} 	
 		%>		
 		</td>
-		<td width="6%"align="right">Cust PO¡G</td>
+		<td width="6%"align="right">Cust POï¼š</td>
 		<td width="6%">
 		<%
 		try
@@ -761,7 +761,7 @@ try
 		<td align="center" rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("ALENGNAME")%></td>
 		<td align="center" rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("sales_group")%></td>
 		<td align="left" rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("orig_customer")%></td>
-		<td align="center" rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("so_no")%><%=(rs.getInt("TO_TW_DAYS")==0?"":"<br><font color='#ff0000'><¦^T></font>")%></td>
+		<td align="center" rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("so_no")%><%=(rs.getInt("TO_TW_DAYS")==0?"":"<br><font color='#ff0000'><å›T></font>")%></td>
 		<td rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("line_no")%></td>
 		<td rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("SOURCE_CUSTOMER_PO")%></td>
 		<td rowspan="<%=rs.getString("line_cnt")%>" onMouseOver='this.T_ABOVE=false;this.T_WIDTH=100;this.T_OPACITY=80;return escape("<%=rs.getString("created_by")%>")'><%=rs.getString("orig_item_desc")%></td>
@@ -847,7 +847,7 @@ catch(Exception e)
 <input name="SYSDATE" type="hidden" value="<%=dateBean.getYearMonthDay()%>">
 </FORM>
 <iframe width=124 height=153 name="gToday:supermini:agenda.js" id="gToday:supermini:agenda.js" src="../calendar/ipopeng.htm" scrolling="no" frameborder="0" style="visibility:hidden; z-index:65535; position:absolute; top:0px;"></iframe>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 <script language="JavaScript" type="text/javascript" src="../wz_tooltip.js" ></script>

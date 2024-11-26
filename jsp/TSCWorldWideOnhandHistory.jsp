@@ -1,15 +1,15 @@
-<%@ page contentType="text/html;charset=utf-8" pageEncoding="big5" language="java" %>
+<%@ page contentType="text/html;charset=utf-8"  language="java" %>
 <%@ page import="java.sql.*"%>
 <%@ page import="java.util.*"%>
 <%@ page import="jxl.*"%>
 <%@ page import="java.lang.Math.*"%>
 <%@ page import="java.text.*"%>
 <%@ page import="java.io.*,DateBean"%>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<!--=============¥H¤U°Ï¬q¬°¦w¥ş»{ÃÒ¾÷¨î==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå®‰å…¨èªè­‰æ©Ÿåˆ¶==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—é€£çµæ± ==========-->
 <html>
 <head>
 <title>Slow Moving Stock Query</title>
@@ -34,7 +34,7 @@
 <body>
 <form name="form1"  METHOD="post" ENCTYPE="multipart/form-data">
 <p>
-<font  style="font-weight:bold;font-family:'Tahoma,Georgia';color:#003399;font-size:24px" >TSC ®ü¥~®w¦s¾ú¥v¤W¶Ç©ú²Ó</font>
+<font  style="font-weight:bold;font-family:'Tahoma,Georgia';color:#003399;font-size:24px" >TSC æµ·å¤–åº«å­˜æ­·å²ä¸Šå‚³æ˜ç´°</font>
 <br>
 </p>
 <table width="75%" bgcolor="#D8E6E7" cellspacing="0" cellpadding="0" bordercolordark="#990000">
@@ -45,23 +45,23 @@
 					<td width="10%" bgcolor="#FFFFFF">
 						<table>
 							<tr>
-    							<TD width="10%"  height="70%" class="style13" title="¦^­º­¶!">
+    							<TD width="10%"  height="70%" class="style13" title="å›é¦–é !">
 									<A HREF="../ORAddsMainMenu.jsp" style="text-decoration:none;color:#000000">
-									<STRONG>¦^­º­¶</STRONG>
+									<STRONG>å›é¦–é </STRONG>
 									</A>
 								</TD>
 							</tr>
 						</table>
 					</TD>
 					<TD width="10%" class="style15">
-						<STRONG>¤W¶Ç¾úµ{</STRONG>
+						<STRONG>ä¸Šå‚³æ­·ç¨‹</STRONG>
 					</TD>
 					<TD width="10%" bgcolor="#FFFFFF">
 						<table>
 							<tr>
-								<TD width="10%" class="style14" title="½Ğ«ö§Ú¶i¤J®w¦s¬d¸ß¥\¯à!">
+								<TD width="10%" class="style14" title="è«‹æŒ‰æˆ‘é€²å…¥åº«å­˜æŸ¥è©¢åŠŸèƒ½!">
 									<A HREF="TSCWorldWideOnhandQuery.jsp" style="text-decoration:none;color:#000000">
-									<STRONG>®w¦s¬d¸ß</STRONG>
+									<STRONG>åº«å­˜æŸ¥è©¢</STRONG>
 									</A>
 								</TD>
 							</tr>
@@ -70,9 +70,9 @@
 					<TD width="10%" bgcolor="#FFFFFF">
 						<table>
 							<tr>
-								<TD width="10%" class="style14" title="½Ğ«ö§Ú¶i¤J¸ê®Æ¤W¶Ç¥\¯à!">
+								<TD width="10%" class="style14" title="è«‹æŒ‰æˆ‘é€²å…¥è³‡æ–™ä¸Šå‚³åŠŸèƒ½!">
 									<A HREF="TSCWorldWideOnhandUpload.jsp" style="text-decoration:none;color:#000000">
-									<STRONG>¸ê®Æ¤W¶Ç</STRONG>
+									<STRONG>è³‡æ–™ä¸Šå‚³</STRONG>
 									</A>
 								</TD>
 							</tr>
@@ -95,7 +95,7 @@ String pgmName = "D8001_";
 try
 {
 	sql = " SELECT VERSION_ID,UPDATED_BY,TO_CHAR(UPDATE_DATE,'yyyy-mm-dd hh24:mi:ss') UPDATE_DATE"+
-	      ", VERSION_FLAG,case VERSION_FLAG when 'A' then '¦³®Ä' when 'I' then '¥¢®Ä' when 'T' then '¸ê®Æ§ó·s¤¤' else '¸ê®Æ²§±`' end as VERSION_STATUS,SOURCE_FILE "+
+	      ", VERSION_FLAG,case VERSION_FLAG when 'A' then 'æœ‰æ•ˆ' when 'I' then 'å¤±æ•ˆ' when 'T' then 'è³‡æ–™æ›´æ–°ä¸­' else 'è³‡æ–™ç•°å¸¸' end as VERSION_STATUS,SOURCE_FILE "+
 	      ", (select count(1) from  oraddman.TSC_WWS_STOCK_DETAIL b where b.version_id = a.version_id) TRANS_TOT "+
 	      " from oraddman.TSC_WWS_STOCK_HEADER a order by version_id desc";
 	rs = st.executeQuery(sql);
@@ -106,27 +106,27 @@ try
 		{
 			out.println("<tr><td><table cellspacing='0' bordercolordark='#998811' cellpadding='1' width='100%' align='left' bordercolorlight='#ffffff' border='1'>");
 			out.println("<tr style='background-color:#C7DEC8'>");
-			out.println("<td class='style1'>ª©¥»</td>");
-			out.println("<td class='style1' style='text-align:center;'>ª©¥»ª¬ºA</td>");
-			out.println("<td class='style1'>¸ê®Æµ§¼Æ</td>");
-			out.println("<td class='style1' style='text-align:center;'>¤W¶ÇÀÉ®×</td>");
-			out.println("<td class='style1' style='text-align:center;'>§ó·s¤H­û</td>");
-			out.println("<td class='style1' style='text-align:center;'>§ó·s¤é´Á</td>");
+			out.println("<td class='style1'>ç‰ˆæœ¬</td>");
+			out.println("<td class='style1' style='text-align:center;'>ç‰ˆæœ¬ç‹€æ…‹</td>");
+			out.println("<td class='style1'>è³‡æ–™ç­†æ•¸</td>");
+			out.println("<td class='style1' style='text-align:center;'>ä¸Šå‚³æª”æ¡ˆ</td>");
+			out.println("<td class='style1' style='text-align:center;'>æ›´æ–°äººå“¡</td>");
+			out.println("<td class='style1' style='text-align:center;'>æ›´æ–°æ—¥æœŸ</td>");
 			out.println("</tr>");
 		}
 		out.println("<tr style='background-color:#CCCCCC;font-family:Tahoma,Georgia;font-size:13px;'>");
 		out.println("<td>"+rs.getString("VERSION_ID") + "</td>");
 		if (rs.getString("VERSION_FLAG").equals("T"))
 		{
-			out.println("<td title='¸ê®Æ§ó·s¤¤...' style='text-align:center;'><img src='images/lang.gif' border='0' width='20' height='20'></td>");
+			out.println("<td title='è³‡æ–™æ›´æ–°ä¸­...' style='text-align:center;'><img src='images/lang.gif' border='0' width='20' height='20'></td>");
 		}
 		else if (rs.getString("VERSION_FLAG").equals("A"))
 		{
-			out.println("<td title='¦³®Ä¸ê®Æ' style='text-align:center;'><img src='images/not.gif' border='0' width='20' height='20'></td>");
+			out.println("<td title='æœ‰æ•ˆè³‡æ–™' style='text-align:center;'><img src='images/not.gif' border='0' width='20' height='20'></td>");
 		}
 		else
 		{
-			out.println("<td title='¸ê®Æ¤w¥¢®Ä' style='text-align:center;'><img src='images/cross.gif' border='0' width='20' height='20'></td>");
+			out.println("<td title='è³‡æ–™å·²å¤±æ•ˆ' style='text-align:center;'><img src='images/cross.gif' border='0' width='20' height='20'></td>");
 		}
 		out.println("<td>"+rs.getString("TRANS_TOT") + "</td>");
 		out.println("<td style='text-align:center;'><a href='../jsp/upload_exl/"+rs.getString("SOURCE_FILE")+"'><img src='images/Excel_16.gif' border='0' width='20' height='20'></a></td>");
@@ -152,7 +152,7 @@ finally
 %>
 
 </table>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->  
+<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->  
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 </form>

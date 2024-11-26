@@ -1,9 +1,9 @@
-<%@ page contentType="text/html; charset=utf-8" pageEncoding="big5" language="java" import="java.io.*,java.sql.*"  %>
+<%@ page contentType="text/html; charset=utf-8"  language="java" import="java.io.*,java.sql.*"  %>
 <%@ page import="oracle.sql.*,oracle.jdbc.driver.*" %>
-<!--=============¥H¤U°Ï¬q¬°¦w¥ş»{ÃÒ¾÷¨î==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå®‰å…¨èªè­‰æ©Ÿåˆ¶==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=================================-->
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ page import="ComboBoxBean,ComboBoxAllBean,DateBean" %>
 <jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
@@ -139,17 +139,17 @@ function check(field)
  for (i = 0; i < field.length; i++) {
  field[i].checked = true;}
  checkflag = "true";
- return "¨ú®ø¿ï¨ú"; }
+ return "å–æ¶ˆé¸å–"; }
  else {
  for (i = 0; i < field.length; i++) {
  field[i].checked = false; }
  checkflag = "false";
- return "¥ş³¡¿ï¨ú"; }
+ return "å…¨éƒ¨é¸å–"; }
 }
 function NeedConfirm(custNo,organizationID,stationNo,typeID,tscFamily)
 {  //alert(tscFamily);
    var URL = "TSCustLabelSpecFileDelete.jsp?CUST_NO="+custNo+"&MARKETTYPE="+organizationID+"&STATNO="+stationNo+"&TYPE_ID="+typeID+"&ITEMCATE="+tscFamily;
-   flag=confirm("¬O§_½T©w§R°£?");      
+   flag=confirm("æ˜¯å¦ç¢ºå®šåˆªé™¤?");      
    if (flag==false) return(false);
    else {
           document.MYFORM.action=URL;
@@ -178,15 +178,15 @@ function NiceLabelOpener(custNo,stationNo,typeID,organizationID)
 function callNiceLabelOpener(svrLocJobName)
 {
    alert(svrLocJobName);
-   //window.location.href="file://C:\Program Files\EuroPlus\NiceLabel\Bin\nice3.exe "+svrLocJobName+" /s";  //¦AJavaScript µLªk¶Ç»¼À\¼Æ
+   //window.location.href="file://C:\Program Files\EuroPlus\NiceLabel\Bin\nice3.exe "+svrLocJobName+" /s";  //å†JavaScript ç„¡æ³•å‚³éé¤æ•¸
    window.location.href="file://C:\Program Files\EuroPlus\NiceLabel\Bin\nice3.exe /s";
 }
 function submitCheck()
 {
-   // ½T»{¦sÀÉÀË¬d,¬O§_¤w¤W¸ü¼ĞÅÒ¼Ë¥»³W®æÀÉ
+   // ç¢ºèªå­˜æª”æª¢æŸ¥,æ˜¯å¦å·²ä¸Šè¼‰æ¨™ç±¤æ¨£æœ¬è¦æ ¼æª”
    if (document.MYFORM.SPECFILE.value==null || document.MYFORM.SPECFILE.value=="")
    {
-      alert("±z¥¼¤W¸ü¦¹«È¤á¼ĞÅÒ³W®æ¼Ë¥»ÀÉ,½Ğ¦A½T»{!!!");
+      alert("æ‚¨æœªä¸Šè¼‰æ­¤å®¢æˆ¶æ¨™ç±¤è¦æ ¼æ¨£æœ¬æª”,è«‹å†ç¢ºèª!!!");
 	  document.MYFORM.SPECFILE.focus();
 	  return false;
    }
@@ -238,7 +238,7 @@ function submitCheck()
 //out.println("2");	 
 	    try
         {   
-				   //-----¨ú¤º¥~¾P§O
+				   //-----å–å…§å¤–éŠ·åˆ¥
 		           Statement statement=con.createStatement();
                    ResultSet rs=null;	
 			       String sql = " select CUSTOMER_ID, CUST_NUMBER, CUSTOMER_NAME, CUST_DESCRIPTION, STATNO, STAT_NAME, "+
@@ -274,14 +274,14 @@ function submitCheck()
  //out.println("3"); 
 %>
 <FORM NAME="MYFORM" ACTION="TSCustLabelSpecInsert.jsp" METHOD="post" onSubmit='return submitCheck()' ENCTYPE="multipart/form-data" >   
- <font size="+3" face="Arial Black" color="#000099"><em>TSC</em></font><span class="style1 style2">«È¤á¯S®í³W®æ¼ĞÅÒºûÅ@</span><BR>
-<img src="../image/circle.gif"><font color="#009966">¬°¨t²Î¯Á¤Ş­È,¤£¤¹³\ÅÜ§ó</font>
+ <font size="+3" face="Arial Black" color="#000099"><em>TSC</em></font><span class="style1 style2">å®¢æˆ¶ç‰¹æ®Šè¦æ ¼æ¨™ç±¤ç¶­è­·</span><BR>
+<img src="../image/circle.gif"><font color="#009966">ç‚ºç³»çµ±ç´¢å¼•å€¼,ä¸å…è¨±è®Šæ›´</font>
  <table cellspacing="0" bordercolordark="#6699CC" cellpadding="1" width="100%" align="center" bordercolorlight="#ffffff" border="1">
    <tr bgcolor="#D1E2FE">
-    <td width="35%"><font color="#330099"><span class="style1">&nbsp;</span>¤º¾P/¥~¾P<img src="../image/circle.gif"></font>
+    <td width="35%"><font color="#330099"><span class="style1">&nbsp;</span>å…§éŠ·/å¤–éŠ·<img src="../image/circle.gif"></font>
     <% 	         try
                  {   
-				   //-----¨ú¤º¥~¾P§O
+				   //-----å–å…§å¤–éŠ·åˆ¥
 		           Statement stateOrgInf=con.createStatement();
                    ResultSet rsOrgInf=null;	
 			       String sqlOrgInf = " select ORGANIZATION_ID, CODE_DESC from APPS.YEW_MFG_DEFDATA ";
@@ -302,24 +302,24 @@ function submitCheck()
 			
 		%>
      </td>	 
-     <td width="31%"><font color="#330099"><span class="style1">&nbsp;</span>¼ĞÅÒ¯¸§O<img src="../image/circle.gif"></font>
+     <td width="31%"><font color="#330099"><span class="style1">&nbsp;</span>æ¨™ç±¤ç«™åˆ¥<img src="../image/circle.gif"></font>
          <%out.println("<span class='style3'>"+stationInfo+"</span>");%>
      </td>
-	 <td width="34%"><font color="#330099"><span class="style1">&nbsp;</span>¼ĞÅÒÃş«¬<img src="../image/circle.gif"></font>
+	 <td width="34%"><font color="#330099"><span class="style1">&nbsp;</span>æ¨™ç±¤é¡å‹<img src="../image/circle.gif"></font>
          <%out.println("<span class='style3'>"+typeInfo+"</span>");%>
      </td>    
   </tr>
   <tr bgcolor="#D1E2FE">	
-    <td colspan="2"><font color="#330099"><span class="style1">&nbsp;</span>«È¤á¸ê°T<img src="../image/circle.gif"></font>
+    <td colspan="2"><font color="#330099"><span class="style1">&nbsp;</span>å®¢æˆ¶è³‡è¨Š<img src="../image/circle.gif"></font>
 	   <%out.println("<span class='style3'>("+customerNo+")</span>");%>	        
        <%out.println("<span class='style3'>"+customerName+"</span>");%> </font>  
 	</td>
-	<td><font color="#330099"><span class="style1">&nbsp;</span>²£«~±Ú¸s</font>
+	<td><font color="#330099"><span class="style1">&nbsp;</span>ç”¢å“æ—ç¾¤</font>
 	  <%out.println("<span class='style3'>"+tscFamily+"</span>");%>
 	  <!--% 
 	             try
                  {  
-				   //-----¨ú²£«~±Ú¸s  
+				   //-----å–ç”¢å“æ—ç¾¤  
 		           Statement stateCate=con.createStatement();
                    ResultSet rsCate=null;	
 			       String sqlCate = " select DISTINCT SEGMENT1,SEGMENT1 from MTL_ITEM_CATEGORIES_V ";
@@ -344,73 +344,73 @@ function submitCheck()
 	</td>	 
   </tr>
    <tr bgcolor="#D1E2FE">	
-    <td width="35%" nowrap><font color="#330099"><span class="style1">&nbsp;</span>¼ĞÅÒ¼Ë¥»ÀÉ</font>
+    <td width="35%" nowrap><font color="#330099"><span class="style1">&nbsp;</span>æ¨™ç±¤æ¨£æœ¬æª”</font>
 	  <INPUT TYPE="FILE" NAME="SPECFILE" width="10">
 	</td>
-	<td width="31%" nowrap><font color="#330099"><span class="style1">&nbsp;</span>¯S®í¹Ï¼ËÀÉ</font>
+	<td width="31%" nowrap><font color="#330099"><span class="style1">&nbsp;</span>ç‰¹æ®Šåœ–æ¨£æª”</font>
 	  <INPUT TYPE="FILE" NAME="ICONFILE" width="20">
 	</td>
-	<td width="34%" nowrap><font color="#330099"><span class="style1">&nbsp;</span>¼ĞÅÒ¹wÄı¹ÏÀÉ</font>
+	<td width="34%" nowrap><font color="#330099"><span class="style1">&nbsp;</span>æ¨™ç±¤é è¦½åœ–æª”</font>
 	  <INPUT TYPE="FILE" NAME="PREVFILE" width="20">
 	</td>
    </tr>
    <tr bgcolor="#D1E2FE">
-     <td colspan="3"><span class="style3">¼ĞÅÒÅÜ¼Æ(Äİ©Ê)»¡©ú ¡G ¥H¤U°w¹ï¤£¦P«È¤á©ó¦U»sµ{§@·~¶¥¬q¦C¦L¼ĞÅÒ,½Ğµ¹©w¨ä¼ĞÅÒÅÜ¼Æ</span><br>
+     <td colspan="3"><span class="style3">æ¨™ç±¤è®Šæ•¸(å±¬æ€§)èªªæ˜ ï¼š ä»¥ä¸‹é‡å°ä¸åŒå®¢æˆ¶æ–¼å„è£½ç¨‹ä½œæ¥­éšæ®µåˆ—å°æ¨™ç±¤,è«‹çµ¦å®šå…¶æ¨™ç±¤è®Šæ•¸</span><br>
 	                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					 <span class="style3"> ¨Ò¡E«È¤á©ó¥]¸Ë¯¸»İÃB¥~¥[¤W«È¤á«~¸¹,«hµ¹©wÅÜ¼Æ¦W¬° CUSTITEM<br>
+					 <span class="style3"> ä¾‹â€¢å®¢æˆ¶æ–¼åŒ…è£ç«™éœ€é¡å¤–åŠ ä¸Šå®¢æˆ¶å“è™Ÿ,å‰‡çµ¦å®šè®Šæ•¸åç‚º CUSTITEM<br>
 					 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					 ¨t²Î©ó¸Ó»sµ{¯¸¼ĞÅÒ¦C¦L®É,§Y¨ÌÅÜ¼Æ¦W¦ÜERPÂ^¨ú«È¤á«~¸¹¸ê°T¨Ã¦C¦L¼ĞÅÒ¡C
+					 ç³»çµ±æ–¼è©²è£½ç¨‹ç«™æ¨™ç±¤åˆ—å°æ™‚,å³ä¾è®Šæ•¸åè‡³ERPæ“·å–å®¢æˆ¶å“è™Ÿè³‡è¨Šä¸¦åˆ—å°æ¨™ç±¤ã€‚
 					 </span>
 	 </td>
    </tr>
    <tr bgcolor="#D1E2FE">	
-    <td width="35%" nowrap><font color="#330099"><span class="style1">&nbsp;</span>¼ĞÅÒÄİ©Ê¦W&nbsp;1&nbsp;</font>
+    <td width="35%" nowrap><font color="#330099"><span class="style1">&nbsp;</span>æ¨™ç±¤å±¬æ€§å&nbsp;1&nbsp;</font>
 	  <input name="ATTRIBUTE1" tabindex='10' type="text" size="15" value="<%if (attVar1==null || attVar1.equals("")) out.print(""); else out.print(attVar1);%>">
 	</td>
-	<td width="31%" nowrap><font color="#330099"><span class="style1">&nbsp;</span>¼ĞÅÒÄİ©Ê¦W&nbsp;2&nbsp;</font>
+	<td width="31%" nowrap><font color="#330099"><span class="style1">&nbsp;</span>æ¨™ç±¤å±¬æ€§å&nbsp;2&nbsp;</font>
 	  <input name="ATTRIBUTE2" tabindex='11' type="text" size="15" value="<%if (attVar2==null || attVar2.equals("")) out.print(""); else out.print(attVar2);%>">
 	</td>
-	<td width="34%" nowrap><font color="#330099"><span class="style1">&nbsp;</span>¼ĞÅÒÄİ©Ê¦W&nbsp;3&nbsp;</font>
+	<td width="34%" nowrap><font color="#330099"><span class="style1">&nbsp;</span>æ¨™ç±¤å±¬æ€§å&nbsp;3&nbsp;</font>
 	  <input name="ATTRIBUTE3" tabindex='12' type="text" size="15" value="<%if (attVar3==null || attVar3.equals("")) out.print(""); else out.print(attVar3);%>">
 	</td>
    </tr>
    <tr bgcolor="#D1E2FE">	
-    <td width="35%" nowrap><font color="#330099"><span class="style1">&nbsp;</span>¼ĞÅÒÄİ©Ê¦W&nbsp;4&nbsp;</font>
+    <td width="35%" nowrap><font color="#330099"><span class="style1">&nbsp;</span>æ¨™ç±¤å±¬æ€§å&nbsp;4&nbsp;</font>
 	  <input name="ATTRIBUTE4" tabindex='13' type="text" size="15" value="<%if (attVar4==null || attVar4.equals("")) out.print(""); else out.print(attVar4);%>">
 	</td>
-	<td width="31%" nowrap><font color="#330099"><span class="style1">&nbsp;</span>¼ĞÅÒÄİ©Ê¦W&nbsp;5&nbsp;</font>
+	<td width="31%" nowrap><font color="#330099"><span class="style1">&nbsp;</span>æ¨™ç±¤å±¬æ€§å&nbsp;5&nbsp;</font>
 	  <input name="ATTRIBUTE5" tabindex='14' type="text" size="15" value="<%if (attVar5==null || attVar5.equals("")) out.print(""); else out.print(attVar5);%>">
 	</td>
-	<td width="34%" nowrap><font color="#330099"><span class="style1">&nbsp;</span>¼ĞÅÒÄİ©Ê¦W&nbsp;6&nbsp;</font>
+	<td width="34%" nowrap><font color="#330099"><span class="style1">&nbsp;</span>æ¨™ç±¤å±¬æ€§å&nbsp;6&nbsp;</font>
 	  <input name="ATTRIBUTE6" tabindex='15' type="text" size="15" value="<%if (attVar6==null || attVar6.equals("")) out.print(""); else out.print(attVar6);%>">
 	</td>
    </tr>
     <tr bgcolor="#D1E2FE">	
-    <td width="35%" nowrap><font color="#330099"><span class="style1">&nbsp;</span>¼ĞÅÒÄİ©Ê¦W&nbsp;7&nbsp;</font>
+    <td width="35%" nowrap><font color="#330099"><span class="style1">&nbsp;</span>æ¨™ç±¤å±¬æ€§å&nbsp;7&nbsp;</font>
 	  <input name="ATTRIBUTE7" tabindex='16' type="text" size="15" value="<%if (attVar7==null || attVar7.equals("")) out.print(""); else out.print(attVar7);%>">
 	</td>
-	<td width="31%" nowrap><font color="#330099"><span class="style1">&nbsp;</span>¼ĞÅÒÄİ©Ê¦W&nbsp;8&nbsp;</font>
+	<td width="31%" nowrap><font color="#330099"><span class="style1">&nbsp;</span>æ¨™ç±¤å±¬æ€§å&nbsp;8&nbsp;</font>
 	  <input name="ATTRIBUTE8" tabindex='17' type="text" size="15" value="<%if (attVar8==null || attVar8.equals("")) out.print(""); else out.print(attVar8);%>">
 	</td>
-	<td width="34%" nowrap><font color="#330099"><span class="style1">&nbsp;</span>¼ĞÅÒÄİ©Ê¦W&nbsp;9&nbsp;</font>
+	<td width="34%" nowrap><font color="#330099"><span class="style1">&nbsp;</span>æ¨™ç±¤å±¬æ€§å&nbsp;9&nbsp;</font>
 	  <input name="ATTRIBUTE9" tabindex='18' type="text" size="15" value="<%if (attVar9==null || attVar9.equals("")) out.print(""); else out.print(attVar9);%>">
 	</td>
    </tr>
    <tr bgcolor="#D1E2FE">	
-    <td width="35%" nowrap><font color="#330099"><span class="style1">&nbsp;</span>¼ĞÅÒÄİ©Ê¦W10</font>
+    <td width="35%" nowrap><font color="#330099"><span class="style1">&nbsp;</span>æ¨™ç±¤å±¬æ€§å10</font>
 	  <input name="ATTRIBUTE10" tabindex='19' type="text" size="15" value="<%if (attVar10==null || attVar10.equals("")) out.print(""); else out.print(attVar10);%>">
 	</td>
-	<td width="31%" nowrap><font color="#330099"><span class="style1">&nbsp;</span>¼ĞÅÒÄİ©Ê¦W11</font>
+	<td width="31%" nowrap><font color="#330099"><span class="style1">&nbsp;</span>æ¨™ç±¤å±¬æ€§å11</font>
 	  <input name="ATTRIBUTE11" tabindex='20' type="text" size="15" value="<%if (attVar11==null || attVar11.equals("")) out.print(""); else out.print(attVar11);%>">
 	</td>
-	<td width="34%" nowrap><font color="#330099"><span class="style1">&nbsp;</span>¼ĞÅÒÄİ©Ê¦W12</font>
+	<td width="34%" nowrap><font color="#330099"><span class="style1">&nbsp;</span>æ¨™ç±¤å±¬æ€§å12</font>
 	  <input name="ATTRIBUTE12" tabindex='21' type="text" size="15" value="<%if (attVar12==null || attVar12.equals("")) out.print(""); else out.print(attVar12);%>">
 	</td>
    </tr>
    <tr bgcolor="#D1E2FE">
-     <td><span class="style1"><strong>¶}±Ò«È¤á¼ĞÅÒÀÉ¹wÄı</strong></span></td>
-     <td><span class="style1"><strong>«È¤á¼ĞÅÒ¹ÏÀÉ¹wÄı</strong></span></td> 
-	 <td><span class="style1"><strong>«È¤á¯S®í¹Ï¼Ë¹wÄı</strong></span></td>     
+     <td><span class="style1"><strong>é–‹å•Ÿå®¢æˆ¶æ¨™ç±¤æª”é è¦½</strong></span></td>
+     <td><span class="style1"><strong>å®¢æˆ¶æ¨™ç±¤åœ–æª”é è¦½</strong></span></td> 
+	 <td><span class="style1"><strong>å®¢æˆ¶ç‰¹æ®Šåœ–æ¨£é è¦½</strong></span></td>     
    </tr>
    <tr bgcolor="#D1E2FE">
      <td>	 
@@ -438,7 +438,7 @@ function submitCheck()
 	          String front_file=frontFilePath; 
 			  
 	
-	           // ±N¸ê®Æ®w¨ú¥XªºBlobÀÉ¥t¦sO.S ÀÉ®×©óµ¹©w¦ì¸m_By Kerwin
+	           // å°‡è³‡æ–™åº«å–å‡ºçš„Blobæª”å¦å­˜O.S æª”æ¡ˆæ–¼çµ¦å®šä½ç½®_By Kerwin
 	
 	           BLOB myblob=null;
                InputStream instream=null;
@@ -461,16 +461,16 @@ function submitCheck()
 	           }
                instream.close();	 
                outstream.close();		   
-	            // ±N¸ê®Æ®w¨ú¥XªºBlobÀÉ¥t¦sO.S ÀÉ®×©óµ¹©w¦ì¸m_By Kerwin   
+	            // å°‡è³‡æ–™åº«å–å‡ºçš„Blobæª”å¦å­˜O.S æª”æ¡ˆæ–¼çµ¦å®šä½ç½®_By Kerwin   
       
                int specFileNameLngth = rs.getString("LABEL_TEMPFILE").length();
                String specFileExtName = rs.getString("LABEL_TEMPFILE").substring(specFileNameLngth-3,specFileNameLngth);
 	           String jobFileName = rs.getString("LABEL_TEMPFILE").substring(0,specFileNameLngth-4);
 	           //out.println("LBL File Open="+specFileExtName); 
 	           if (specFileExtName=="LBL" || specFileExtName.equals("LBL") || specFileExtName=="lbl" || specFileExtName.equals("lbl"))
-               { // ­Y®æ¦¡¬O±ø½XÀÉ,«h¥HJava©I¥s¥~³¡µ{¦¡©I¥s Nice Label	
+               { // è‹¥æ ¼å¼æ˜¯æ¢ç¢¼æª”,å‰‡ä»¥Javaå‘¼å«å¤–éƒ¨ç¨‹å¼å‘¼å« Nice Label	
 	
-	              // ²£¥ÍNiceLabelªº±ø½XJobÀÉ_°_
+	              // ç”¢ç”ŸNiceLabelçš„æ¢ç¢¼Jobæª”_èµ·
 	              String jobFileNPath = "d:/resin-2.1.9/webapps/oradds/LabPrintJob/"+jobFileName+".JOB";
 	              FileWriter fw = new FileWriter(jobFileNPath);
                   PrintWriter pw = new PrintWriter(fw);
@@ -495,7 +495,7 @@ function submitCheck()
          }//end of catch 	   
 	     
 	   %>    	   
-       <a href="/oradds/LabPrintJob/ts_nolog_out.lbl" onmouseover='this.T_WIDTH=200;this.T_OPACITY=80;return escape("½Ğ½T»{±z¦³¦w¸ËNice Label±ø½X³nÅé<br>ÂùÀ»¦¹¹Ï¹³¥iÀËµø¹wÄı¼ĞÃ±¤º®e")'><img src="images/NiceLabelLogo.gif" align="top" border="0" onDblClick='callNiceLabelOpener("<%=svrJobLocName%>")' width="150"/></a>
+       <a href="/oradds/LabPrintJob/ts_nolog_out.lbl" onmouseover='this.T_WIDTH=200;this.T_OPACITY=80;return escape("è«‹ç¢ºèªæ‚¨æœ‰å®‰è£Nice Labelæ¢ç¢¼è»Ÿé«”<br>é›™æ“Šæ­¤åœ–åƒå¯æª¢è¦–é è¦½æ¨™ç°½å…§å®¹")'><img src="images/NiceLabelLogo.gif" align="top" border="0" onDblClick='callNiceLabelOpener("<%=svrJobLocName%>")' width="150"/></a>
 	 </td>
      <td>
        <img src="/oradds/jsp/TSCustLabelPreviewBlobsContent.jsp?CUST_NO=<%=custNo%>&STATNO=<%=stationNo%>&TYPE_ID=<%=typeID%>&MARKETTYPE=<%=organizationID%>" align="middle" border="1"/>
@@ -507,26 +507,26 @@ function submitCheck()
  </table>  
  <table cellspacing="0" bordercolordark="#6699CC" cellpadding="1" width="100%" align="center" bordercolorlight="#ffffff" border="1">
    <tr bgcolor="#D1E2FE">
-    <td width="10%"><font color="#330099"><span class="style1">&nbsp;</span>ªşµù</font></td>
+    <td width="10%"><font color="#330099"><span class="style1">&nbsp;</span>é™„è¨»</font></td>
 	<td width="90%" colspan="2" bgcolor="#FFFFFF"><input name="REMARK" tabindex='49' type="text" size="80" value="<%if (labelRemark==null || labelRemark.equals("")) out.print(""); else out.print(labelRemark); %>"></td>
    </tr>
  </table>
 <table cellspacing="0" bordercolordark="#6699CC" cellpadding="1" width="100%" align="center" bordercolorlight="#ffffff" border="1">
  <tr bgcolor="#D1E2FE">   
  <td width="12%" align="center">
-  <strong><font color="#330099" face="Arial">³B²z¤H­û</font></strong> 
+  <strong><font color="#330099" face="Arial">è™•ç†äººå“¡</font></strong> 
  </td>
  <td width="15%" bgcolor="#FFFFFF" align="center"> 
     <font color='#000099' face="Arial" ><strong><%=userID+"("+UserName+")"%></strong></font>	 
  </td>
  <td width="10%" bgcolor="#D1E2FE" align="center">
-  <strong><font color="#330099" face="Arial">³B²z¤é´Á</font></strong> 
+  <strong><font color="#330099" face="Arial">è™•ç†æ—¥æœŸ</font></strong> 
  </td>
  <td width="10%" bgcolor="#FFFFFF" align="center"> 
    <font color="#000099" face="Arial"><strong><% out.println(dateBean.getYearMonthDay());%></strong></font>	 
  </td> 
  <td width="10%" bgcolor="#D1E2FE" align="center">
-  <strong><font color="#330099" face="Arial" >³B²z®É¶¡</font></strong> 
+  <strong><font color="#330099" face="Arial" >è™•ç†æ™‚é–“</font></strong> 
  </td>
  <td width="10%" bgcolor="#FFFFFF" align="center"> 
     <font color='#000099' face="Arial" ><strong><%out.println(dateBean.getHourMinuteSecond());%></strong></font>	 
@@ -534,8 +534,8 @@ function submitCheck()
  </tr>
 </table>
 <BR>
-<input type="submit" name="UPDATE" value="­×§ï¨Ã¤W¸ü¼Ë¥»ÀÉ">
-<input type="button" name="DELETE" value="§R°£¦¹µ§³W®æ¸ê®Æ" onClick='NeedConfirm("<%=custNo%>","<%=organizationID%>","<%=stationNo%>","<%=typeID%>","<%=tscFamily%>")'> 
+<input type="submit" name="UPDATE" value="ä¿®æ”¹ä¸¦ä¸Šè¼‰æ¨£æœ¬æª”">
+<input type="button" name="DELETE" value="åˆªé™¤æ­¤ç­†è¦æ ¼è³‡æ–™" onClick='NeedConfirm("<%=custNo%>","<%=organizationID%>","<%=stationNo%>","<%=typeID%>","<%=tscFamily%>")'> 
 <BR>
 <input type="hidden" size="10" name="CUSTOMERID" value="<%=customerId%>">
 <input type="hidden" size="10" name="CUSTOMERNAME" value="<%=customerName%>">
@@ -548,7 +548,7 @@ function submitCheck()
 </form>
 <script language="JavaScript" type="text/javascript" src="../wz_tooltip.js" ></script>
 </body>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 </html>

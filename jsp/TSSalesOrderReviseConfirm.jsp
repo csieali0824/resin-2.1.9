@@ -1,16 +1,16 @@
-<!-- 20180917 Peggy,∑sºWpackageƒÊ¶Ï-->
-<%@ page contentType="text/html;charset=utf-8" pageEncoding="big5" language="java" %>
+<!-- 20180917 Peggy,Êñ∞Â¢ûpackageÊ¨Ñ‰Ωç-->
+<%@ page contentType="text/html;charset=utf-8"  language="java" %>
 <%@ page import="java.sql.*"%>
 <%@ page import="java.util.*"%>
 <%@ page import="jxl.*"%>
 <%@ page import="java.lang.Math.*"%>
 <%@ page import="java.text.*"%>
 <%@ page import="java.io.*,DateBean,ComboBoxAllBean"%>
-<!--=============•H§U∞œ¨q¨∞®˙±o≥sµ≤¶¿==========-->
+<!--=============‰ª•‰∏ãÂçÄÊÆµÁÇ∫ÂèñÂæóÈÄ£ÁµêÊ±†==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<!--=============•H§U∞œ¨q¨∞¶w•˛ª{√“æ˜®Ó==========-->
+<!--=============‰ª•‰∏ãÂçÄÊÆµÁÇ∫ÂÆâÂÖ®Ë™çË≠âÊ©üÂà∂==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<!--=============•H§U∞œ¨q¨∞®˙±o≥sµ≤¶¿==========-->
+<!--=============‰ª•‰∏ãÂçÄÊÆµÁÇ∫ÂèñÂæóÈÄ£ÁµêÊ±†==========-->
 <%@ page import="SalesDRQPageHeaderBean,ComboBoxBean,DateBean" %>
 <html>
 <head>
@@ -287,7 +287,7 @@ int rowcnt=0;
 <div id='alpha' class='hidden' style='width:0%;height:0;position:absolute;top:0;left:0;background:#000;filter:alpha(opacity=30);-moz-opacity:0.3;z-index:0;'></div>
 <TABLE width="100%" border='1' bordercolorlight='#426193' bordercolordark='#ffffff' cellPadding='1' cellspacing='0' bgcolor="#E4F0F1">
 	<tr>
-		<td width="8%" align="right">Sales Group°G</td>
+		<td width="8%" align="right">Sales GroupÔºö</td>
 		<td width="12%">
 		<%
 		try
@@ -345,7 +345,7 @@ int rowcnt=0;
 		} 
 		%>	
 		</td>
-		<td width="8%" align="right">Plant Code°G</td>
+		<td width="8%" align="right">Plant CodeÔºö</td>
 		<td width="12%">
 		<%
 		try
@@ -372,16 +372,16 @@ int rowcnt=0;
 		}		
 		%>
 		</td>
-		<td width="8%" align="right">Customer°G</td>
+		<td width="8%" align="right">CustomerÔºö</td>
 		<td width="12%"><input type="text" name="CUST" value="<%=CUST%>" style="font-family:Tahoma,Georgia;font-size:11px" size="30"></td>
-		<td width="8%" align="right">Item Desc°G</td> 
+		<td width="8%" align="right">Item DescÔºö</td> 
 		<td width="12%"><input type="text" name="ITEMDESC" value="<%=ITEMDESC%>" style="font-family:Tahoma,Georgia;font-size:11px" size="22"></td>
-		<td width="8%"align="right">Request No°G</td>
+		<td width="8%"align="right">Request NoÔºö</td>
 		<td width="12%"><input type="text" name="REQUESTNO" value="<%=REQUESTNO%>" style="font-family:Tahoma,Georgia;font-size:11px"></td>		
 		
 	</tr>
 	<tr>
-		<td align="right">Created By°G</td>
+		<td align="right">Created ByÔºö</td>
 		<td>		
 		<%
 		try
@@ -420,15 +420,15 @@ int rowcnt=0;
 		} 	
 		%>	
 		</td>
-		<td align="right">MO#°G</td> 
+		<td align="right">MO#Ôºö</td> 
 		<td><input type="text" name="MONO" value="<%=MONO%>" style="font-family:Tahoma,Georgia;font-size:11px"></td>
-		<td align="right">Creation Date°G</td>
+		<td align="right">Creation DateÔºö</td>
 		<td colspan="3"><input type="TEXT" NAME="SDATE" value="<%=SDATE%>" style="font-size:11px;font-family: Tahoma,Georgia;" size="8" onKeyPress="return event.keyCode >= 48 && event.keyCode <=57">						
 		<A href="javascript:void(0)" onClick="gfPop.fPopCalendar(document.MYFORM.SDATE);return false;"><img name="popcal" border="0" src="../image/calbtn.gif"></A>
 		<input type="TEXT" NAME="EDATE" value="<%=EDATE%>" style="font-size:11px;font-family: Tahoma,Georgia;" size="8" onKeyPress="return event.keyCode >= 48 && event.keyCode <=57">						
 		<A href="javascript:void(0)" onClick="gfPop.fPopCalendar(document.MYFORM.EDATE);return false;"><img name="popcal" border="0" src="../image/calbtn.gif"></A>
 		</td>
-		<td align="right">PC Replied°G</td> 
+		<td align="right">PC RepliedÔºö</td> 
 		<td>		
 		<%
 		try
@@ -709,8 +709,8 @@ try
 		%>
 		<td rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("request_no")%></td>
 		<td rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("orig_customer")%></td>
-		<td align="center" rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("SO_NO")%><%=((rs.getInt("sg_advise_cnt")>0 || rs.getString("shipping_advise_flag").equals("TRUE") || rs.getString("wms_flag").equals("T"))?"<br><font color='#ff0000'>§uºt§w±∆•X≥f</font>":"")%></td>
-		<td align="center" rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("LINE_NO")%><%=(rs.getString("print_flag").equals("Y")?"<font color='red'>º–≈“§w•¥¶L</font>":"")%></td>
+		<td align="center" rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("SO_NO")%><%=((rs.getInt("sg_advise_cnt")>0 || rs.getString("shipping_advise_flag").equals("TRUE") || rs.getString("wms_flag").equals("T"))?"<br><font color='#ff0000'>Â∑•Âª†Â∑≤ÊéíÂá∫Ë≤®</font>":"")%></td>
+		<td align="center" rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("LINE_NO")%><%=(rs.getString("print_flag").equals("Y")?"<font color='red'>Ê®ôÁ±§Â∑≤ÊâìÂç∞</font>":"")%></td>
 		<td rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("orig_item_desc")%></td>
 		<td rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("tsc_package")%></td>
 		<td rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("source_customer_po")%></td>
@@ -808,7 +808,7 @@ try
 			out.println("Exception2:"+e.getMessage());
 		}			
 		%>
-  &nbsp;&nbsp;<font style="font-family:Tahoma,Georgia;font-size:12px">Hold Reason°G</font>
+  &nbsp;&nbsp;<font style="font-family:Tahoma,Georgia;font-size:12px">Hold ReasonÔºö</font>
   <input type="text"  name="HOLD_REASON"  value="" SIZE="40" style="font-family:Tahoma,Georgia">
             </span>  <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="span2" style="visibility:hidden"><input type="checkbox" name="chkpull" value="Y">
             <font style="font-family:Tahoma,Georgia;font-size:12px">Order request to resend</font></span></td>
@@ -830,7 +830,7 @@ catch(Exception e)
 <input type="hidden" name="queryCount" value="<%=queryCount%>">
 </FORM>
 <iframe width=124 height=153 name="gToday:supermini:agenda.js" id="gToday:supermini:agenda.js" src="../calendar/ipopeng.htm" scrolling="no" frameborder="0" style="visibility:hidden; z-index:65535; position:absolute; top:0px;"></iframe>
-<!--=============•H§U∞œ¨q¨∞ƒ¿©Ò≥sµ≤¶¿==========-->
+<!--=============‰ª•‰∏ãÂçÄÊÆµÁÇ∫ÈáãÊîæÈÄ£ÁµêÊ±†==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 <script language="JavaScript" type="text/javascript" src="../wz_tooltip.js" ></script>

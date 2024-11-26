@@ -1,5 +1,5 @@
-<!--modify by Peggy 20150105,¦~«×¤U©Ô¿ï³æµ{¦¡§ï¼g-->
-<%@ page contentType="text/html; charset=utf-8" pageEncoding="big5" language="java" import="java.sql.*" %>
+<!--modify by Peggy 20150105,å¹´åº¦ä¸‹æ‹‰é¸å–®ç¨‹å¼æ”¹å¯«-->
+<%@ page contentType="text/html; charset=utf-8"  language="java" import="java.sql.*" %>
 <%@ page import="ComboBoxBean,DateBean,WorkingDateBean,ArrayComboBoxBean,MiscellaneousBean,SendMailBean,CodeUtil"%>
 <script language="JavaScript" type="text/JavaScript">
 function setSubmit(URL)
@@ -109,11 +109,11 @@ function workflowLineDetailQuery(itemType,itemKey,xAccessKey)
               padding: 2px;   margin: 1px; text-align: center;}
              
 </STYLE>
-<title>¥x¥_¤sªF­q³æ¹ïÀ³ÀË®Öªí</title>
-<!--=============¥H¤U°Ï¬q¬°¦w¥ş»{ÃÒ¾÷¨î==========-->
+<title>å°åŒ—å±±æ±è¨‚å–®å°æ‡‰æª¢æ ¸è¡¨</title>
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå®‰å…¨èªè­‰æ©Ÿåˆ¶==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=================================-->
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--%@ include file="/jsp/include/ConnILNAssistPoolPage.jsp"%-->
 <!--=================================-->
@@ -150,7 +150,7 @@ String lightStatus ="";
 	String urAddress=null;
 	String getWebID = null;
 	String serverHostName=request.getServerName();
-	String mailHost=application.getInitParameter("MAIL_HOST"); //¥ÑServerªºweb.xml¤¤¨ú¥Xmail serverªºhost name
+	String mailHost=application.getInitParameter("MAIL_HOST"); //ç”±Serverçš„web.xmlä¸­å–å‡ºmail serverçš„host name
 
 
 int CASECOUNT=0;
@@ -232,28 +232,28 @@ String organizationCode=request.getParameter("ORGANIZATION_CODE");
 	 
   //  
 %>
-<% /* «Ø¥ß¥»­¶­±¸ê®Æ®w³s½u  */ %>
+<% /* å»ºç«‹æœ¬é é¢è³‡æ–™åº«é€£ç·š  */ %>
 <meta http-equiv="Content-Type" content="text/html; charset=big5"></head>
 <body topmargin="0" bottommargin="0">  
 <%@ include file="/jsp/include/TSCMfgDocHyperLinkPage.jsp"%>    
 <FORM ACTION="../jsp/TSCMOCpyYEWAuditReport.jsp" METHOD="post" NAME="MYFORM">
-<!--%/20040109/±NExcel Veiw §¨¦bÀÉÀY%-->
+<!--%/20040109/å°‡Excel Veiw å¤¾åœ¨æª”é ­%-->
 <font color="#003366" size="+2" face="Arial"><font size="+3" face="Arial Black"><font color="#3366FF" size="+2" face="Arial"><font size="+3" face="Arial Black"><font face="Courier, MS Sans Serif"><font color="#003366" size="+2" face="Arial Black">TSC</font></font></font></font><font face="Courier, MS Sans Serif"></font></font></font><font color="#006666" size="+2" face="Times New Roman"> 
-<strong>¥x¥_/¤sªF­q³æ¹ïÀ³ÀË®Öªí</strong></font>
+<strong>å°åŒ—/å±±æ±è¨‚å–®å°æ‡‰æª¢æ ¸è¡¨</strong></font>
 <%
  
   sWhereGP = " and ooha.ORDER_NUMBER IS NOT NULL ";
   
   workingDateBean.setAdjWeek(-1); //out.println("workingDateBean.getWeek()="+workingDateBean.getWeek());
-  workingDateBean.setDefineWeekFirstDay(1);  // ³]©w¨C¶g²Ä¤@¤Ñ¬°¬P´Á¤é  
+  workingDateBean.setDefineWeekFirstDay(1);  // è¨­å®šæ¯é€±ç¬¬ä¸€å¤©ç‚ºæ˜ŸæœŸæ—¥  
   
-  String strFirstDayWeek = workingDateBean.getFirstDateOfWorkingWeek();   // ¨ú°_©l¶g²Ä¤@¤Ñ
-  String strLastDayWeek = workingDateBean.getLastDateOfWorkingWeek();  // ¨ú°_©l¶g³Ì«á¤@¤Ñ 
+  String strFirstDayWeek = workingDateBean.getFirstDateOfWorkingWeek();   // å–èµ·å§‹é€±ç¬¬ä¸€å¤©
+  String strLastDayWeek = workingDateBean.getLastDateOfWorkingWeek();  // å–èµ·å§‹é€±æœ€å¾Œä¸€å¤© 
   String currentWeek = workingDateBean.getWeekString();
   
   boolean checkFlag = false;
 
-/*  ÀË¬d¨Ï¥Î¬O§_¦³¬d¸ß¨ä¥¦ºû­×ÂIºû­×³æªºÅv­­ -- ¨Ìµn¤J®Éªº¨Ï¥ÎªÌ¸s²Õ */
+/*  æª¢æŸ¥ä½¿ç”¨æ˜¯å¦æœ‰æŸ¥è©¢å…¶å®ƒç¶­ä¿®é»ç¶­ä¿®å–®çš„æ¬Šé™ -- ä¾ç™»å…¥æ™‚çš„ä½¿ç”¨è€…ç¾¤çµ„ */
 
 //out.print("date="+dateSetBegin+"~"+dateSetEnd);
 //out.print("date="+dateSetBegin+"~"+dateSetEnd);
@@ -295,7 +295,7 @@ if ((dateSetBegin==null || dateSetBegin.equals("")) && (dateSetEnd==null || date
 		     CaseCountPCT = Math.round((float)(CaseCount/CaseCountORG)*100);
 			 //out.println("CaseCount="+CaseCount);
 			 //out.println("CaseCountPCT="+CaseCountPCT);
-			 // ¨ú¤p¼Æ1¦ì
+			 // å–å°æ•¸1ä½
 			sCSCountPCT = Float.toString(CaseCountPCT);
 			idxCSCount = sCSCountPCT.indexOf('.');
 			sCSCountPCT = sCSCountPCT.substring(0,idxCSCount+1)+sCSCountPCT.substring(idxCSCount+1,idxCSCount+2);
@@ -378,7 +378,7 @@ else
 		     CaseCountPCT = (float)(CaseCount/CaseCountORG)*100;
 			 //out.println("CaseCount="+CaseCount);
 			 //out.println("CaseCountPCT="+CaseCountPCT);
-			 // ¨ú¤p¼Æ1¦ì
+			 // å–å°æ•¸1ä½
 			sCSCountPCT = Float.toString(CaseCountPCT);
 			idxCSCount = sCSCountPCT.indexOf('.');
 			sCSCountPCT = sCSCountPCT.substring(0,idxCSCount+1)+sCSCountPCT.substring(idxCSCount+1,idxCSCount+2);
@@ -399,7 +399,7 @@ else
         }
    
 }
-// ·Ç³Æ¤©ºû­×¤è¦¡¨Ï¥ÎªºStatement Con //
+// æº–å‚™äºˆç¶­ä¿®æ–¹å¼ä½¿ç”¨çš„Statement Con //
 //Statement stateAct=con.createStatement();
 //out.println(sSql);
 sqlGlobal = sSql;
@@ -780,7 +780,7 @@ String MM_moveFirst,MM_moveLast,MM_moveNext,MM_movePrev;
          }
        %>
     </td>  
-     <td colspan="1" nowrap><font color="#006666"><strong>¾P°â­q³æ¸¹</strong></font></td> 
+     <td colspan="1" nowrap><font color="#006666"><strong>éŠ·å”®è¨‚å–®è™Ÿ</strong></font></td> 
 	 <td colspan="1">
 		  <input type name="SALESORDERNO" value="<%=salesOrderNo%>">
 	 </td> 
@@ -796,25 +796,25 @@ String MM_moveFirst,MM_moveLast,MM_moveNext,MM_movePrev;
 
   <table width='100%' align='center' border="1" cellpadding="1" cellspacing="0" bordercolorlight="#999999" bordercolordark="#FFFFFF">
     <tr>
-	  <td height="22" nowrap colspan="8" bgcolor="#6699CC"><div align="center"><font color="D8DEA9">¥x¥_¾P°â­q³æ¸ê°T</font></div></td>
-	  <td height="22" nowrap colspan="7" bgcolor="#6699CC"><div align="center"><font color="D8DEA9">¤sªF¾P°â­q³æ¸ê°T</font></div></td>
+	  <td height="22" nowrap colspan="8" bgcolor="#6699CC"><div align="center"><font color="D8DEA9">å°åŒ—éŠ·å”®è¨‚å–®è³‡è¨Š</font></div></td>
+	  <td height="22" nowrap colspan="7" bgcolor="#6699CC"><div align="center"><font color="D8DEA9">å±±æ±éŠ·å”®è¨‚å–®è³‡è¨Š</font></div></td>
 	</tr>
     <tr bgcolor="#D8DEA9"> 
 	  <td width="2%" height="22" nowrap><div align="center"><font color="#000000">&nbsp;</font></div></td> 
-	  <td width="8%" height="22" nowrap><div align="center"><font color="#006666">¾P°â­q³æ¸¹</font></div></td>               	  
-	  <td width="3%" nowrap><div align="center"><font color="#006666">ª©¥»</font></div></td>
-	  <td width="3%" nowrap><div align="center"><font color="#006666">¶µ¦¸</font></div></td>
-      <td width="8%" nowrap><div align="center"><font color="#006666">¥x¥b«~¸¹</font></div></td>  
-	  <td width="8%" nowrap><div align="center"><font color="#006666">¼Æ¶qk</font></div></td> 
-	  <td width="10%" nowrap><div align="center"><font color="#006666">©ú²Ó²§°Ê¤é</font></div></td>
+	  <td width="8%" height="22" nowrap><div align="center"><font color="#006666">éŠ·å”®è¨‚å–®è™Ÿ</font></div></td>               	  
+	  <td width="3%" nowrap><div align="center"><font color="#006666">ç‰ˆæœ¬</font></div></td>
+	  <td width="3%" nowrap><div align="center"><font color="#006666">é …æ¬¡</font></div></td>
+      <td width="8%" nowrap><div align="center"><font color="#006666">å°åŠå“è™Ÿ</font></div></td>  
+	  <td width="8%" nowrap><div align="center"><font color="#006666">æ•¸é‡k</font></div></td> 
+	  <td width="10%" nowrap><div align="center"><font color="#006666">æ˜ç´°ç•°å‹•æ—¥</font></div></td>
 	  <td width="10%" nowrap><div align="center"><font color="#006666">BOOKED_DATE</font></div></td>
-	  <td width="8%" nowrap><div align="center"><font color="#006666">YEW­q³æ¸¹</font></div></td> 	  
-	  <td width="3%" nowrap><div align="center"><font color="#006666">ª©¥»</font></div></td> 
-	  <td width="8%" nowrap><div align="center"><font color="#006666">¥x¥b«~¸¹</font></div></td>                 	  
-	  <td width="10%" nowrap><div align="center"><font color="#006666">«~¦W³W®æ</font></div></td>
-	  <td width="8%" nowrap><div align="center"><font color="#006666">¼Æ¶qk</font></div></td>
-	  <td width="8%" nowrap><div align="center"><font color="#006666">ª¬ºA</font></div></td>
-      <td width="10%" nowrap><div align="center"><font color="#006666">«ØÀÉ¤é</font></div></td>
+	  <td width="8%" nowrap><div align="center"><font color="#006666">YEWè¨‚å–®è™Ÿ</font></div></td> 	  
+	  <td width="3%" nowrap><div align="center"><font color="#006666">ç‰ˆæœ¬</font></div></td> 
+	  <td width="8%" nowrap><div align="center"><font color="#006666">å°åŠå“è™Ÿ</font></div></td>                 	  
+	  <td width="10%" nowrap><div align="center"><font color="#006666">å“åè¦æ ¼</font></div></td>
+	  <td width="8%" nowrap><div align="center"><font color="#006666">æ•¸é‡k</font></div></td>
+	  <td width="8%" nowrap><div align="center"><font color="#006666">ç‹€æ…‹</font></div></td>
+      <td width="10%" nowrap><div align="center"><font color="#006666">å»ºæª”æ—¥</font></div></td>
     </tr>
     <% while ((rs_hasDataTC)&&(rs1__numRows-- != 0)) { %>
 	<%//out.println("Step1");
@@ -888,7 +888,7 @@ String MM_moveFirst,MM_moveLast,MM_moveNext,MM_movePrev;
 					     rsSQL.close();
 					     stmentSQL.close(); 
 					 
-						//	  miscellaneousBean.setRoundDigit(2); ¨ú¤p¼Æ¤G¦ì
+						//	  miscellaneousBean.setRoundDigit(2); å–å°æ•¸äºŒä½
                         //      qty = miscellaneousBean.getFloatRoundStr(qtyF);
 	  %>
 	  <td  nowrap <% if (orderNo==null || orderNo.equals("")) out.println("bgcolor='#FF3333'"); %> >
@@ -962,7 +962,7 @@ String MM_moveFirst,MM_moveLast,MM_moveNext,MM_movePrev;
 		  } 
 		  else { out.println("<input type='hidden' name='STRQUERYFLAG' value='Y' size='1'  readonly=''>"); }
 		  
-		  workingDateBean.setAdjWeek(1);  // §â¶g§O½Õ¾ã¦^¨Ó
+		  workingDateBean.setAdjWeek(1);  // æŠŠé€±åˆ¥èª¿æ•´å›ä¾†
 		  
 	 %><input type="hidden" name="CASECOUNT" value=<%=CaseCount%> size="5" readonly="">
 	 <font color='#000066' face="Arial"><strong><%=CaseCount%></strong></font>
@@ -970,7 +970,7 @@ String MM_moveFirst,MM_moveLast,MM_moveNext,MM_movePrev;
 	 </td>      
     </tr>
   </table>
-  <!--%¨C­¶µ§¡´Åã¥Üµ§¨ìµ§Á`¦@¦³¸ê®Æ%-->
+  <!--%æ¯é ç­†â—é¡¯ç¤ºç­†åˆ°ç­†ç¸½å…±æœ‰è³‡æ–™%-->
   <div align="center"> <font color="#993366" size="2">
     <% if (rs_isEmptyTC ) {  %>
     <strong>No Record Found</strong> 
@@ -1006,7 +1006,7 @@ String MM_moveFirst,MM_moveLast,MM_moveNext,MM_movePrev;
 <BR>
 <%
    
- // §PÂ_checkFlag = true «hªí¥Ü¦³²§±`,¥D°Ê°e¥X¤©¬ÛÃö¤H­û
+ // åˆ¤æ–·checkFlag = true å‰‡è¡¨ç¤ºæœ‰ç•°å¸¸,ä¸»å‹•é€å‡ºäºˆç›¸é—œäººå“¡
  //out.println("checkFlag="+checkFlag);
  if (checkFlag==true)	
  {
@@ -1027,8 +1027,8 @@ String MM_moveFirst,MM_moveLast,MM_moveNext,MM_movePrev;
 		   urAddress = serverHostName+":8080/oradds/jsp/TSCMOImportCNSQLCheckReport.jsp?PRODMANUFACTORY="+prodManufactory;		
            sendMailBean.setReception(userMail);
            sendMailBean.setFrom(UserID);             
-		   sendMailBean.setSubject(CodeUtil.unicodeToBig5("­q³æ©ßÂà¨t²Î¶l¥ó-¥xÆW¤j³°­q³æ©ßÂà¨t²Î²§±`¸ê®Æ³qª¾("+dateSetBegin+"~"+dateSetEnd+")"));         
-		   sendMailBean.setUrlName("Dear "+UserID+",\n"+CodeUtil.unicodeToBig5("   ½ĞÂIÀ»¨Ó¦Û­q³æ©ßÂà¨t²Îªº¶l¥ó:¥xÆW¤j³°­q³æ©ßÂà¨t²Î²§±`¸ê®Æ³qª¾ªí-("+dateSetBegin+"~"+dateSetEnd+")"));     
+		   sendMailBean.setSubject(CodeUtil.unicodeToBig5("è¨‚å–®æ‹‹è½‰ç³»çµ±éƒµä»¶-å°ç£å¤§é™¸è¨‚å–®æ‹‹è½‰ç³»çµ±ç•°å¸¸è³‡æ–™é€šçŸ¥("+dateSetBegin+"~"+dateSetEnd+")"));         
+		   sendMailBean.setUrlName("Dear "+UserID+",\n"+CodeUtil.unicodeToBig5("   è«‹é»æ“Šä¾†è‡ªè¨‚å–®æ‹‹è½‰ç³»çµ±çš„éƒµä»¶:å°ç£å¤§é™¸è¨‚å–®æ‹‹è½‰ç³»çµ±ç•°å¸¸è³‡æ–™é€šçŸ¥è¡¨-("+dateSetBegin+"~"+dateSetEnd+")"));     
 		   System.out.println("UserID="+UserID);
 	       sendMailBean.setUrlAddr(urAddress);
 		   System.out.println("userMail="+userMail);
@@ -1048,7 +1048,7 @@ String MM_moveFirst,MM_moveLast,MM_moveNext,MM_movePrev;
 %>
 
 
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->
 <!--%@ include file="/jsp/include/ReleaseConnILNAssistPage.jsp"%-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->

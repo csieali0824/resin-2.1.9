@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=utf-8"  pageEncoding="big5" language="java" import="java.util.*,java.text.*,java.io.*,java.sql.*,jxl.*,jxl.Workbook.*,jxl.write.*,jxl.format.*,javax.mail.*,javax.mail.internet.*,javax.mail.Multipart.*,javax.activation.*"%>  
+<%@ page contentType="text/html;charset=utf-8"   language="java" import="java.util.*,java.text.*,java.io.*,java.sql.*,jxl.*,jxl.Workbook.*,jxl.write.*,jxl.format.*,javax.mail.*,javax.mail.internet.*,javax.mail.Multipart.*,javax.activation.*"%>
 <%@ page import="DateBean"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <jsp:useBean id="dateBean" scope="page" class="DateBean"/>
@@ -108,7 +108,7 @@ try
 		WritableFont font_nobold = new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK);
 		WritableFont font_nobold_b = new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLUE);
 	
-		//­^¤å¤º¤å¤ô¥­««ª½¸m¤¤-²ÊÅé-®æ½u-©³¦â¦Ç  
+		//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®ä¸­-ç²—é«”-æ ¼ç·š-åº•è‰²ç°  
 		WritableCellFormat ACenterBLGY = new WritableCellFormat(font_bold);   
 		ACenterBLGY.setAlignment(jxl.format.Alignment.CENTRE);
 		ACenterBLGY.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -116,7 +116,7 @@ try
 		ACenterBLGY.setBackground(jxl.write.Colour.ICE_BLUE); 
 		ACenterBLGY.setWrap(true);
 		
-		//­^¤å¤º¤å¤ô¥­««ª½¸m¤¤-²ÊÅé-®æ½u-©³¦âÂÅ  
+		//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®ä¸­-ç²—é«”-æ ¼ç·š-åº•è‰²è—  
 		WritableCellFormat ACenterBL = new WritableCellFormat(font_bold_w);   
 		ACenterBL.setAlignment(jxl.format.Alignment.CENTRE);
 		ACenterBL.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -125,7 +125,7 @@ try
 		//ACenterBL.setBackground(jxl.write.Colour.TEAL2);
 		ACenterBL.setWrap(true);	
 	
-		//­^¤å¤º¤å¤ô¥­««ª½¸m¤¤-²ÊÅé-®æ½u-©³¦âÂÅ  
+		//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®ä¸­-ç²—é«”-æ ¼ç·š-åº•è‰²è—  
 		WritableCellFormat ACenterBLB = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));   
 		ACenterBLB.setAlignment(jxl.format.Alignment.CENTRE);
 		ACenterBLB.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -133,7 +133,7 @@ try
 		ACenterBLB.setBackground(jxl.write.Colour.PALE_BLUE); 
 		ACenterBLB.setWrap(true);
 	
-		//­^¤å¤º¤å¤ô¥­««ª½¸m¤¤-²ÊÅé-®æ½u-©³¦â¶À  
+		//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®ä¸­-ç²—é«”-æ ¼ç·š-åº•è‰²é»ƒ  
 		WritableCellFormat ACenterBLY = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));   
 		ACenterBLY.setAlignment(jxl.format.Alignment.CENTRE);
 		ACenterBLY.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -141,7 +141,7 @@ try
 		ACenterBLY.setBackground(jxl.write.Colour.YELLOW); 
 		ACenterBLY.setWrap(true);	
 		
-		//­^¤å¤º¤å¤ô¥­««ª½¸m¤¤-²ÊÅé-®æ½u-©³¦â¯»¬õ
+		//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®ä¸­-ç²—é«”-æ ¼ç·š-åº•è‰²ç²‰ç´…
 		WritableCellFormat ACenterBLP = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));   
 		ACenterBLP.setAlignment(jxl.format.Alignment.CENTRE);
 		ACenterBLP.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -149,7 +149,7 @@ try
 		ACenterBLP.setBackground(jxl.write.Colour.ROSE); 
 		ACenterBLP.setWrap(true);	
 		
-		//­^¤å¤º¤å¤ô¥­««ª½¸m¤¤-²ÊÅé-®æ½u-©³¦â¾ï
+		//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®ä¸­-ç²—é«”-æ ¼ç·š-åº•è‰²æ©˜
 		WritableCellFormat ACenterBLO = new WritableCellFormat(font_bold_w);   
 		ACenterBLO.setAlignment(jxl.format.Alignment.CENTRE);
 		ACenterBLO.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -158,7 +158,7 @@ try
 		ACenterBLO.setBackground(jxl.write.Colour.LIGHT_ORANGE); 
 		ACenterBLO.setWrap(true);		
 		
-		//­^¤å¤º¤å¤ô¥­««ª½¸m¤¤-²ÊÅé-®æ½u-©³¦âºñ
+		//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®ä¸­-ç²—é«”-æ ¼ç·š-åº•è‰²ç¶ 
 		WritableCellFormat ACenterBLG = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));   
 		ACenterBLG.setAlignment(jxl.format.Alignment.CENTRE);
 		ACenterBLG.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -166,7 +166,7 @@ try
 		ACenterBLG.setBackground(jxl.write.Colour.BRIGHT_GREEN); 
 		ACenterBLG.setWrap(true);	
 				
-		//­^¤å¤º¤å¤ô¥­««ª½¸m¤¤-¥¿±`-®æ½u   
+		//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®ä¸­-æ­£å¸¸-æ ¼ç·š   
 		WritableCellFormat ACenterL = new WritableCellFormat(font_nobold);   
 		ACenterL.setAlignment(jxl.format.Alignment.CENTRE);
 		ACenterL.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -174,21 +174,21 @@ try
 		ACenterL.setWrap(true);
 	
 	
-		//­^¤å¤º¤å¤ô¥­««ª½¸m¥k-¥¿±`-®æ½u   
+		//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®å³-æ­£å¸¸-æ ¼ç·š   
 		WritableCellFormat ARightL = new WritableCellFormat(font_nobold);   
 		ARightL.setAlignment(jxl.format.Alignment.RIGHT);
 		ARightL.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		ARightL.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 		ARightL.setWrap(true);
 	
-		//­^¤å¤º¤å¤ô¥­««ª½¸m¥ª-¥¿±`-®æ½u   
+		//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®å·¦-æ­£å¸¸-æ ¼ç·š   
 		WritableCellFormat ALeftL = new WritableCellFormat(font_nobold);   
 		ALeftL.setAlignment(jxl.format.Alignment.LEFT);
 		ALeftL.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		ALeftL.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 		ALeftL.setWrap(true);
 		
-		//­^¤å¤º¤å¤ô¥­««ª½¸m¤¤-¥¿±`-®æ½u   
+		//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®ä¸­-æ­£å¸¸-æ ¼ç·š   
 		WritableCellFormat ACenterLB = new WritableCellFormat(font_nobold_b);   
 		ACenterLB.setAlignment(jxl.format.Alignment.CENTRE);
 		ACenterLB.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -196,28 +196,28 @@ try
 		ACenterLB.setWrap(true);
 	
 	
-		//­^¤å¤º¤å¤ô¥­««ª½¸m¥k-¥¿±`-®æ½u   
+		//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®å³-æ­£å¸¸-æ ¼ç·š   
 		WritableCellFormat ARightLB = new WritableCellFormat(font_nobold_b);   
 		ARightLB.setAlignment(jxl.format.Alignment.RIGHT);
 		ARightLB.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		ARightLB.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 		ARightLB.setWrap(true);
 	
-		//­^¤å¤º¤å¤ô¥­««ª½¸m¥ª-¥¿±`-®æ½u   
+		//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®å·¦-æ­£å¸¸-æ ¼ç·š   
 		WritableCellFormat ALeftLB = new WritableCellFormat(font_nobold_b);   
 		ALeftLB.setAlignment(jxl.format.Alignment.LEFT);
 		ALeftLB.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		ALeftLB.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 		ALeftLB.setWrap(true);
 			
-		//¤é´Á®æ¦¡
+		//æ—¥æœŸæ ¼å¼
 		WritableCellFormat DATE_FORMAT = new WritableCellFormat(font_nobold ,new jxl.write.DateFormat("yyyy/MM/dd")); 
 		DATE_FORMAT.setAlignment(jxl.format.Alignment.CENTRE);
 		DATE_FORMAT.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		DATE_FORMAT.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 		DATE_FORMAT.setWrap(true);
 	
-		//¤é´Á®æ¦¡
+		//æ—¥æœŸæ ¼å¼
 		WritableCellFormat DATE_FORMAT1 = new WritableCellFormat(font_nobold ,new jxl.write.DateFormat("yyyy/MM/dd HH:mm")); 
 		DATE_FORMAT1.setAlignment(jxl.format.Alignment.CENTRE);
 		DATE_FORMAT1.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -308,7 +308,7 @@ try
 		if (ACTTYPE.equals("AUTO"))
 		{	
 			sql += " and a.PLANT_CODE='"+rs1.getString("plant_code")+"'"+
-			       //" and a.SALES_CONFIRMED_RESULT='A'"+ //esther­n¨D¤£ºŞacc©Îrej³£­n¬İ¨ì,modify by Peggy 20210804
+			       //" and a.SALES_CONFIRMED_RESULT='A'"+ //estherè¦æ±‚ä¸ç®¡accæˆ–rejéƒ½è¦çœ‹åˆ°,modify by Peggy 20210804
 				   " and trunc(a.SALES_CONFIRMED_DATE)=to_date('"+SALES_COM_DATE+"','yyyymmdd')"+
 				   " and a.STATUS='CLOSED'";
 		}
@@ -447,7 +447,7 @@ try
 				ws = wwb.getSheet("Sheet1");
 				SheetSettings sst = ws.getSettings(); 
 				sst.setSelected();
-				sst.setVerticalFreeze(1);  //­áµ²µ¡®æ
+				sst.setVerticalFreeze(1);  //å‡çµçª—æ ¼
 				for (int g =1 ; g <= 15 ;g++ )
 				{
 					sst.setHorizontalFreeze(g);
@@ -673,7 +673,7 @@ try
 				//add by Peggy 20230710
 				if (UserName.startsWith("JUDY") || 	UserName.startsWith("PERRY.JUAN") || UserName.startsWith("JUNE") || UserRoles.indexOf("admin")>=0)
 				{
-					ws.addCell(new jxl.write.Label(col, row, (UserName.startsWith("JUNE")?"¥x¹ôª÷ÃB":"TWD Amount") , ACenterBLGY));
+					ws.addCell(new jxl.write.Label(col, row, (UserName.startsWith("JUNE")?"å°å¹£é‡‘é¡":"TWD Amount") , ACenterBLGY));
 					ws.setColumnView(col,8);	
 					col++;							
 				}									
@@ -882,9 +882,9 @@ try
 			message.setSentDate(new java.util.Date());
 			message.setFrom(new javax.mail.internet.InternetAddress("prodsys@ts.com.tw"));
 			remarks="";
-			if (request.getRequestURL().toString().toLowerCase().indexOf("tsrfq.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("rfq134.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("yewintra.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("10.0.1.134") <0 && request.getRequestURL().toString().toLowerCase().indexOf("10.0.1.135") <0) //´ú¸ÕÀô¹Ò
+			if (request.getRequestURL().toString().toLowerCase().indexOf("tsrfq.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("rfq134.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("yewintra.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("10.0.1.134") <0 && request.getRequestURL().toString().toLowerCase().indexOf("10.0.1.135") <0) //æ¸¬è©¦ç’°å¢ƒ
 			{
-				remarks="(³o¬O¨Ó¦ÛRFQ´ú¸Õ°Ïªº«H¥ó)";
+				remarks="(é€™æ˜¯ä¾†è‡ªRFQæ¸¬è©¦å€çš„ä¿¡ä»¶)";
 				message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("peggy.chen@ts.com.tw"));
 			}
 			else 
@@ -906,7 +906,7 @@ try
 						message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("YQ_Li@MAIL.TSYEW.COM.CN"));
 						message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("maomao@mail.tsyew.com.cn"));
 						message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("yanyan@mail.tsyew.com.cn"));
-						message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("lixia.wang@mail.tsyew.com.cn"));  //add ¥ßÁø by Peggy 20230703
+						message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("lixia.wang@mail.tsyew.com.cn"));  //add ç«‹éœ by Peggy 20230703
 						message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("judy.cho@ts.com.tw"));  //add Judy by Peggy 20240131
 					}					
 					//message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress(rs1.getString("USERMAIL")));
@@ -914,7 +914,7 @@ try
 			}
 			message.addRecipient(Message.RecipientType.BCC, new javax.mail.internet.InternetAddress("peggy.chen@ts.com.tw"));
 
-			message.setHeader("Subject", MimeUtility.encodeText(SALES_COM_DATE+"·~°È¤w½T»{¤u¼tEarly Ship/Overdue/Early warning³qª¾"+remarks, "UTF-8", null));	
+			message.setHeader("Subject", MimeUtility.encodeText(SALES_COM_DATE+"æ¥­å‹™å·²ç¢ºèªå·¥å» Early Ship/Overdue/Early warningé€šçŸ¥"+remarks, "UTF-8", null));	
 			javax.mail.internet.MimeMultipart mp = new javax.mail.internet.MimeMultipart();
 			javax.mail.internet.MimeBodyPart mbp = new javax.mail.internet.MimeBodyPart();
 			mbp = new javax.mail.internet.MimeBodyPart();
@@ -940,7 +940,7 @@ catch (Exception e)
 %>
 </FORM>
 </body>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 <%

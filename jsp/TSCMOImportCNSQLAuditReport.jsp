@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8" pageEncoding="big5" language="java" import="java.sql.*" %>
+<%@ page contentType="text/html; charset=utf-8"  language="java" import="java.sql.*" %>
 <%@ page import="ComboBoxBean,DateBean,WorkingDateBean,ArrayComboBoxBean,MiscellaneousBean,SendMailBean,CodeUtil"%>
 <script language="JavaScript" type="text/JavaScript">
 function setSubmit(URL)
@@ -108,11 +108,11 @@ function workflowLineDetailQuery(itemType,itemKey,xAccessKey)
               padding: 2px;   margin: 1px; text-align: center;}
              
 </STYLE>
-<title>�x�W�q�����j���t���ˮ֪�</title>
-<!--=============�H�U�Ϭq���w���{�Ҿ���==========-->
+<title>台灣訂單拋轉大陸系統檢核表</title>
+<!--=============以下區段為安全認證機制==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=================================-->
-<!--=============�H�U�Ϭq�����o�s����==========-->
+<!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--%@ include file="/jsp/include/ConnILNAssistPoolPage.jsp"%-->
 <!--=================================-->
@@ -149,7 +149,7 @@ String lightStatus ="";
 	String urAddress=null;
 	String getWebID = null;
 	String serverHostName=request.getServerName();
-	String mailHost=application.getInitParameter("MAIL_HOST"); //��Server��web.xml�����Xmail server��host name
+	String mailHost=application.getInitParameter("MAIL_HOST"); //由Server的web.xml中取出mail server的host name
 
 
 int CASECOUNT=0;
@@ -231,28 +231,28 @@ String organizationCode=request.getParameter("ORGANIZATION_CODE");
 	 
   //  
 %>
-<% /* �إߥ�������Ʈw�s�u  */ %>
+<% /* 建立本頁面資料庫連線  */ %>
 <meta http-equiv="Content-Type" content="text/html; charset=big5"></head>
 <body topmargin="0" bottommargin="0">  
 <%@ include file="/jsp/include/TSCMfgDocHyperLinkPage.jsp"%>    
 <FORM ACTION="../jsp/TSCMOImportCNSQLAuditReport.jsp" METHOD="post" NAME="MYFORM">
-<!--%/20040109/�NExcel Veiw ���b���Y%-->
+<!--%/20040109/將Excel Veiw 夾在檔頭%-->
 <font color="#003366" size="+2" face="Arial"><font size="+3" face="Arial Black"><font color="#3366FF" size="+2" face="Arial"><font size="+3" face="Arial Black"><font face="Courier, MS Sans Serif"><font color="#003366" size="+2" face="Arial Black">TSC</font></font></font></font><font face="Courier, MS Sans Serif"></font></font></font><font color="#006666" size="+2" face="Times New Roman"> 
-<strong>�x�W�j���q�����t���ˮ֪�</strong></font>
+<strong>台灣大陸訂單拋轉系統檢核表</strong></font>
 <%
  
   sWhereGP = " and ooha.ORDER_NUMBER IS NOT NULL ";
   
   workingDateBean.setAdjWeek(-1); //out.println("workingDateBean.getWeek()="+workingDateBean.getWeek());
-  workingDateBean.setDefineWeekFirstDay(1);  // �]�w�C�g�Ĥ@�Ѭ��P����  
+  workingDateBean.setDefineWeekFirstDay(1);  // 設定每週第一天為星期日  
   
-  String strFirstDayWeek = workingDateBean.getFirstDateOfWorkingWeek();   // ���_�l�g�Ĥ@��
-  String strLastDayWeek = workingDateBean.getLastDateOfWorkingWeek();  // ���_�l�g�̫�@�� 
+  String strFirstDayWeek = workingDateBean.getFirstDateOfWorkingWeek();   // 取起始週第一天
+  String strLastDayWeek = workingDateBean.getLastDateOfWorkingWeek();  // 取起始週最後一天 
   String currentWeek = workingDateBean.getWeekString();
   
   boolean checkFlag = false;
 
-/*  �ˬd�ϥάO�_���d�ߨ䥦�����I���׳檺�v�� -- �̵n�J�ɪ��ϥΪ̸s�� */
+/*  檢查使用是否有查詢其它維修點維修單的權限 -- 依登入時的使用者群組 */
 
 if ((dateSetBegin==null || dateSetBegin.equals("")) && (dateSetEnd==null || dateSetEnd.equals("")))
 {
@@ -302,7 +302,7 @@ if ((dateSetBegin==null || dateSetBegin.equals("")) && (dateSetEnd==null || date
 		     CaseCountPCT = Math.round((float)(CaseCount/CaseCountORG)*100);
 			 //out.println("CaseCount="+CaseCount);
 			 //out.println("CaseCountPCT="+CaseCountPCT);
-			 // ���p��1��
+			 // 取小數1位
 			sCSCountPCT = Float.toString(CaseCountPCT);
 			idxCSCount = sCSCountPCT.indexOf('.');
 			sCSCountPCT = sCSCountPCT.substring(0,idxCSCount+1)+sCSCountPCT.substring(idxCSCount+1,idxCSCount+2);
@@ -396,7 +396,7 @@ else
 		     CaseCountPCT = (float)(CaseCount/CaseCountORG)*100;
 			 //out.println("CaseCount="+CaseCount);
 			 //out.println("CaseCountPCT="+CaseCountPCT);
-			 // ���p��1��
+			 // 取小數1位
 			sCSCountPCT = Float.toString(CaseCountPCT);
 			idxCSCount = sCSCountPCT.indexOf('.');
 			sCSCountPCT = sCSCountPCT.substring(0,idxCSCount+1)+sCSCountPCT.substring(idxCSCount+1,idxCSCount+2);
@@ -417,7 +417,7 @@ else
         }
    
 }
-// �ǳƤ����פ覡�ϥΪ�Statement Con //
+// 準備予維修方式使用的Statement Con //
 //Statement stateAct=con.createStatement();
 //out.println(sSql);
 sqlGlobal = sSql;
@@ -619,14 +619,14 @@ String MM_moveFirst,MM_moveLast,MM_moveNext,MM_movePrev;
 %> 
   <table cellSpacing='0' bordercolordark='#D8DEA9'  cellPadding='1' width='100%' align='center' borderColorLight='#ffffff' border='1'>     	 	 
 	 <tr>
-	    <td width="21%" colspan="1" nowrap><font color="#006666"><strong>�Ͳ��t��</strong></font>         
+	    <td width="21%" colspan="1" nowrap><font color="#006666"><strong>生產廠區</strong></font>         
         </td> 
 		<td width="28%" colspan="1">
 		   <div align="left">
 		   <font color="#006666"><strong> </strong></font>
 		   <%
 		       try
-               { // �ʺA�h���Ͳ��a��T 						  
+               { // 動態去取生產地資訊 						  
 	               Statement stateGetP=con.createStatement();
                    ResultSet rsGetP=null;				      									  
 				   String sqlGetP = "select ALNAME, MANUFACTORY_NAME as PRODMANUFACTORY "+
@@ -646,14 +646,14 @@ String MM_moveFirst,MM_moveLast,MM_moveNext,MM_movePrev;
 		   %>		   
 		   </div>
 		</td> 
-		<td width="21%" colspan="1" nowrap><font color="#006666"><strong>�P��q�渹</strong></font>         
+		<td width="21%" colspan="1" nowrap><font color="#006666"><strong>銷售訂單號</strong></font>         
         </td> 
 		<td width="30%" colspan="1">
 		  <input type name="SALESORDERNO" value="<%=salesOrderNo%>">
 		</td> 
 	 </tr>	  
      <tr>	    
-	   <td nowrap colspan="2"><font color="#006666"><strong>����<jsp:getProperty name="rPH" property="pgDateFr"/></strong></font>
+	   <td nowrap colspan="2"><font color="#006666"><strong>拋轉<jsp:getProperty name="rPH" property="pgDateFr"/></strong></font>
         <%
 		  String CurrYear = null;	     		 
 	     try
@@ -808,25 +808,25 @@ String MM_moveFirst,MM_moveLast,MM_moveNext,MM_movePrev;
 %>
   <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolorlight="#999999" bordercolordark="#FFFFFF">
     <tr>
-	  <td height="22" nowrap colspan="9" bgcolor="#6699CC"><div align="center"><font color="D8DEA9">�x�W�P��q���T(From Oracle)</font></div></td>
-	  <td height="22" nowrap colspan="6" bgcolor="#6699CC"><div align="center"><font color="D8DEA9">�j����J�q���T(From SQL Server)</font></div></td>
+	  <td height="22" nowrap colspan="9" bgcolor="#6699CC"><div align="center"><font color="D8DEA9">台灣銷售訂單資訊(From Oracle)</font></div></td>
+	  <td height="22" nowrap colspan="6" bgcolor="#6699CC"><div align="center"><font color="D8DEA9">大陸轉入訂單資訊(From SQL Server)</font></div></td>
 	</tr>
     <tr bgcolor="#D8DEA9"> 
 	  <td width="4%" height="22" nowrap><div align="center"><font color="#000000">&nbsp;</font></div></td> 
-	  <td width="8%" height="22" nowrap><div align="center"><font color="#006666">�P��q�渹</font></div></td>               	  
-	  <td width="7%" nowrap><div align="center"><font color="#006666">����</font></div></td>
-	  <td width="5%" nowrap><div align="center"><font color="#006666">�q�涵��</font></div></td>
-      <td width="15%" nowrap><div align="center"><font color="#006666">�x�b�~��</font></div></td>  
-	  <td width="6%" nowrap><div align="center"><font color="#006666">�ƶq</font></div></td> 
-	  <td width="6%" nowrap><div align="center"><font color="#006666">���Ӳ��ʤ�</font></div></td>
-	  <td width="6%" nowrap><div align="center"><font color="#006666">�ͺާP�w</font></div></td>
-	  <td width="11%" nowrap><div align="center"><font color="#006666">������</font></div></td>
-	  <td width="10%" nowrap><div align="center"><font color="#006666">�����q�渹</font></div></td> 	  
-	  <td width="3%" nowrap><div align="center"><font color="#006666">����</font></div></td> 
-	  <td width="10%" nowrap><div align="center"><font color="#006666">�x�b�~��</font></div></td>                 	  
-	  <td width="10%" nowrap><div align="center"><font color="#006666">�~�W�W��</font></div></td>
-	  <td width="6%" nowrap><div align="center"><font color="#006666">�ƶq</font></div></td>
-	  <td width="10%" nowrap><div align="center"><font color="#006666">��J����ɶ�</font></div></td>
+	  <td width="8%" height="22" nowrap><div align="center"><font color="#006666">銷售訂單號</font></div></td>               	  
+	  <td width="7%" nowrap><div align="center"><font color="#006666">版本</font></div></td>
+	  <td width="5%" nowrap><div align="center"><font color="#006666">訂單項次</font></div></td>
+      <td width="15%" nowrap><div align="center"><font color="#006666">台半品號</font></div></td>  
+	  <td width="6%" nowrap><div align="center"><font color="#006666">數量</font></div></td> 
+	  <td width="6%" nowrap><div align="center"><font color="#006666">明細異動日</font></div></td>
+	  <td width="6%" nowrap><div align="center"><font color="#006666">生管判定</font></div></td>
+	  <td width="11%" nowrap><div align="center"><font color="#006666">拋轉日期</font></div></td>
+	  <td width="10%" nowrap><div align="center"><font color="#006666">接收訂單號</font></div></td> 	  
+	  <td width="3%" nowrap><div align="center"><font color="#006666">版本</font></div></td> 
+	  <td width="10%" nowrap><div align="center"><font color="#006666">台半品號</font></div></td>                 	  
+	  <td width="10%" nowrap><div align="center"><font color="#006666">品名規格</font></div></td>
+	  <td width="6%" nowrap><div align="center"><font color="#006666">數量</font></div></td>
+	  <td width="10%" nowrap><div align="center"><font color="#006666">轉入日期時間</font></div></td>
     </tr>
     <% while ((rs_hasDataTC)&&(rs1__numRows-- != 0)) { %>
 	<%//out.println("Step1");
@@ -980,7 +980,7 @@ String MM_moveFirst,MM_moveLast,MM_moveNext,MM_movePrev;
 		  } 
 		  else { out.println("<input type='hidden' name='STRQUERYFLAG' value='Y' size='1'  readonly=''>"); }
 		  
-		  workingDateBean.setAdjWeek(1);  // ��g�O�վ�^��
+		  workingDateBean.setAdjWeek(1);  // 把週別調整回來
 		  
 	 %><input type="hidden" name="CASECOUNT" value=<%=CaseCount%> size="5" readonly="">
 	 <font color='#000066' face="Arial"><strong><%=CaseCount%></strong></font>
@@ -988,7 +988,7 @@ String MM_moveFirst,MM_moveLast,MM_moveNext,MM_movePrev;
 	 </td>      
     </tr>
   </table>
-  <!--%�C��������ܵ��쵧�`�@�����%-->
+  <!--%每頁筆●顯示筆到筆總共有資料%-->
   <div align="center"> <font color="#993366" size="2">
     <% if (rs_isEmptyTC ) {  %>
     <strong>No Record Found</strong> 
@@ -1024,7 +1024,7 @@ String MM_moveFirst,MM_moveLast,MM_moveNext,MM_movePrev;
 <BR>
 <%
    
- // �P�_checkFlag = true �h���ܦ����`,�D�ʰe�X�������H��
+ // 判斷checkFlag = true 則表示有異常,主動送出予相關人員
  //out.println("checkFlag="+checkFlag);
  if (checkFlag==true)	
  {
@@ -1045,8 +1045,8 @@ String MM_moveFirst,MM_moveLast,MM_moveNext,MM_movePrev;
 		   urAddress = serverHostName+":8080/oradds/jsp/TSCMOImportCNSQLCheckReport.jsp?PRODMANUFACTORY="+prodManufactory;		
            sendMailBean.setReception(userMail);
            sendMailBean.setFrom(UserID);             
-		   sendMailBean.setSubject(CodeUtil.unicodeToBig5("�q�����t�ζl��-�x�W�j���q�����t�β��`��Ƴq��("+dateSetBegin+"~"+dateSetEnd+")"));         
-		   sendMailBean.setUrlName("Dear "+UserID+",\n"+CodeUtil.unicodeToBig5("   ���I���Ӧۭq�����t�Ϊ��l��:�x�W�j���q�����t�β��`��Ƴq����-("+dateSetBegin+"~"+dateSetEnd+")"));     
+		   sendMailBean.setSubject(CodeUtil.unicodeToBig5("訂單拋轉系統郵件-台灣大陸訂單拋轉系統異常資料通知("+dateSetBegin+"~"+dateSetEnd+")"));         
+		   sendMailBean.setUrlName("Dear "+UserID+",\n"+CodeUtil.unicodeToBig5("   請點擊來自訂單拋轉系統的郵件:台灣大陸訂單拋轉系統異常資料通知表-("+dateSetBegin+"~"+dateSetEnd+")"));     
 		   System.out.println("UserID="+UserID);
 	       sendMailBean.setUrlAddr(urAddress);
 		   System.out.println("userMail="+userMail);
@@ -1066,7 +1066,7 @@ String MM_moveFirst,MM_moveLast,MM_moveNext,MM_movePrev;
 %>
 
 
-<!--=============�H�U�Ϭq������s����==========-->
+<!--=============以下區段為釋放連結池==========-->
 <!--%@ include file="/jsp/include/ReleaseConnILNAssistPage.jsp"%-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->

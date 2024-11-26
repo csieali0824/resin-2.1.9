@@ -1,22 +1,22 @@
-<!-- 20160325 Peggy,add customer po±ø¥ó-->
+<!-- 20160325 Peggy,add customer poæ¢ä»¶-->
 <!-- 20160330 Peggy,add role-Sales_M-->
-<!-- 20160729 Peggy,²§°ÊÄæ¦ì(°£ssd,qty¥~)¦X¨Ö¦P¤@Äæ¥H»¡©ú¤è¦¡§e²{-->
-<!-- 20170426 Peggy,·s¼Wresend¦¸¼Æ¤Îresend source request no-->
+<!-- 20160729 Peggy,ç•°å‹•æ¬„ä½(é™¤ssd,qtyå¤–)åˆä½µåŒä¸€æ¬„ä»¥èªªæ˜Žæ–¹å¼å‘ˆç¾-->
+<!-- 20170426 Peggy,æ–°å¢žresendæ¬¡æ•¸åŠresend source request no-->
 <!-- 20180809 Peggy,sql performance issue-->
-<!-- 20180917 Peggy,·s¼WpackageÄæ¦ì-->
+<!-- 20180917 Peggy,æ–°å¢žpackageæ¬„ä½-->
 <!-- 20240226 Marvie : Excess Status-->
-<%@ page contentType="text/html;charset=utf-8" pageEncoding="big5" language="java" %>
+<%@ page contentType="text/html;charset=utf-8"  language="java" %>
 <%@ page import="java.sql.*"%>
 <%@ page import="java.util.*"%>
 <%@ page import="jxl.*"%>
 <%@ page import="java.lang.Math.*"%>
 <%@ page import="java.text.*"%>
 <%@ page import="java.io.*,DateBean,ComboBoxAllBean"%>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<!--=============¥H¤U°Ï¬q¬°¦w¥þ»{ÃÒ¾÷¨î==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå®‰å…¨èªè­‰æ©Ÿåˆ¶==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—é€£çµæ± ==========-->
 <html>
 <head>
 <title>Sales Order Revise for Query</title>
@@ -295,7 +295,7 @@ int rowcnt=0;
 <div id='alpha' class='hidden' style='width:0%;height:0;position:absolute;top:0;left:0;background:#000;filter:alpha(opacity=30);-moz-opacity:0.3;z-index:0;'></div>
 <TABLE width="100%" border='1' bordercolorlight='#426193' bordercolordark='#ffffff' cellPadding='1' cellspacing='0' bgcolor="#E2EBBE">
 	<tr>
-		<td width="9%" align="right">Sales Group¡G</td>
+		<td width="9%" align="right">Sales Groupï¼š</td>
 		<td width="9%">
 		<%
 		try
@@ -354,13 +354,13 @@ int rowcnt=0;
 		%>	
 		</td>
 		
-		<td width="7%" align="right">Customer¡G</td>
+		<td width="7%" align="right">Customerï¼š</td>
 		<td width="14%"><input type="text" name="CUST" value="<%=CUST%>" style="font-family:Tahoma,Georgia;font-size:11px" size="30"></td>
-		<td width="7%" align="right">MO#¡G</td> 
+		<td width="7%" align="right">MO#ï¼š</td> 
 		<td width="11%"><input type="text" name="MONO" value="<%=MONO%>" style="font-family:Tahoma,Georgia;font-size:11px"></td>
-		<td width="7%"align="right">Request No¡G</td>
+		<td width="7%"align="right">Request Noï¼š</td>
 		<td width="14%"><input type="text" name="REQUESTNO" value="<%=REQUESTNO%>" style="font-family:Tahoma,Georgia;font-size:11px"></td>		
-		<td width="7%"align="right">Created By¡G</td>
+		<td width="7%"align="right">Created Byï¼š</td>
 		<td width="14%">		
 		<%
 		try
@@ -409,7 +409,7 @@ int rowcnt=0;
 		</td>
 	</tr>
 	<tr>
-		<td align="right">Plant Code¡G</td>
+		<td align="right">Plant Codeï¼š</td>
 		<td>
 		<%
 		try
@@ -441,15 +441,15 @@ int rowcnt=0;
 		}		
 		%>
 		</td>
-		<td align="right">Request Date¡G</td>
+		<td align="right">Request Dateï¼š</td>
 		<td><input type="TEXT" NAME="SDATE" value="<%=SDATE%>" style="font-size:11px;font-family: Tahoma,Georgia;" size="8" onKeyPress="return event.keyCode >= 48 && event.keyCode <=57">						
 		<A href="javascript:void(0)" onClick="gfPop.fPopCalendar(document.MYFORM.SDATE);return false;"><img name="popcal" border="0" src="../image/calbtn.gif"></A>
 		<input type="TEXT" NAME="EDATE" value="<%=EDATE%>" style="font-size:11px;font-family: Tahoma,Georgia;" size="8" onKeyPress="return event.keyCode >= 48 && event.keyCode <=57">						
 		<A href="javascript:void(0)" onClick="gfPop.fPopCalendar(document.MYFORM.EDATE);return false;"><img name="popcal" border="0" src="../image/calbtn.gif"></A>
 		</td>
-		<td align="right">Item Desc¡G</td> 
+		<td align="right">Item Descï¼š</td> 
 		<td><input type="text" name="ITEMDESC" value="<%=ITEMDESC%>" style="font-family:Tahoma,Georgia;font-size:11px" size="22"></td>
-		<td align="right">Status¡G</td> 
+		<td align="right">Statusï¼š</td> 
 		<td>		
 		<%
 		try
@@ -473,7 +473,7 @@ int rowcnt=0;
 		} 	
 		%>
 		</td>
-		<td align="right">PC Result¡G</td> 
+		<td align="right">PC Resultï¼š</td> 
 		<td>		
 		<%
 		try
@@ -499,7 +499,7 @@ int rowcnt=0;
 		</td>
 	</tr>
 	<tr>
-		<td align="right">Sales Confirm Result¡G</td> 
+		<td align="right">Sales Confirm Resultï¼š</td> 
 		<td>		
 		<%
 		try
@@ -523,21 +523,21 @@ int rowcnt=0;
 		} 	
 		%>
 		</td>
-		<td align="right">PC Replied Date¡G</td>
+		<td align="right">PC Replied Dateï¼š</td>
 		<td><input type="TEXT" NAME="PC_SDATE" value="<%=PC_SDATE%>" style="font-size:11px;font-family: Tahoma,Georgia;" size="8" onKeyPress="return event.keyCode >= 48 && event.keyCode <=57">						
 		<A href="javascript:void(0)" onClick="gfPop.fPopCalendar(document.MYFORM.PC_SDATE);return false;"><img name="popcal" border="0" src="../image/calbtn.gif"></A>
 		<input type="TEXT" NAME="PC_EDATE" value="<%=PC_EDATE%>" style="font-size:11px;font-family: Tahoma,Georgia;" size="8" onKeyPress="return event.keyCode >= 48 && event.keyCode <=57">						
 		<A href="javascript:void(0)" onClick="gfPop.fPopCalendar(document.MYFORM.PC_EDATE);return false;"><img name="popcal" border="0" src="../image/calbtn.gif"></A>
 		</td>
-		<td align="right">Customer PO¡G</td> 
+		<td align="right">Customer POï¼š</td> 
 		<td><input type="text" name="CUSTPO" value="<%=CUSTPO%>" style="font-family:Tahoma,Georgia;font-size:11px" size="22"></td>
-		<td align="right">SSD pull in/out¡G</td>
+		<td align="right">SSD pull in/outï¼š</td>
 		<td><input type="TEXT" NAME="PULL_SDATE" value="<%=PULL_SDATE%>" style="font-size:11px;font-family: Tahoma,Georgia;" size="8" onKeyPress="return event.keyCode >= 48 && event.keyCode <=57">						
 		<A href="javascript:void(0)" onClick="gfPop.fPopCalendar(document.MYFORM.PULL_SDATE);return false;"><img name="popcal" border="0" src="../image/calbtn.gif"></A>
 		<input type="TEXT" NAME="PULL_EDATE" value="<%=PULL_EDATE%>" style="font-size:11px;font-family: Tahoma,Georgia;" size="8" onKeyPress="return event.keyCode >= 48 && event.keyCode <=57">						
 		<A href="javascript:void(0)" onClick="gfPop.fPopCalendar(document.MYFORM.PULL_EDATE);return false;"><img name="popcal" border="0" src="../image/calbtn.gif"></A>
 		</td>
-		<td align="right">Sales Revise Date¡G</td>
+		<td align="right">Sales Revise Dateï¼š</td>
 		<td><input type="TEXT" NAME="REVISE_SDATE" value="<%=REVISE_SDATE%>" style="font-size:11px;font-family: Tahoma,Georgia;" size="8" onKeyPress="return event.keyCode >= 48 && event.keyCode <=57">						
 		<A href="javascript:void(0)" onClick="gfPop.fPopCalendar(document.MYFORM.REVISE_SDATE);return false;"><img name="popcal" border="0" src="../image/calbtn.gif"></A>
 		<input type="TEXT" NAME="REVISE_EDATE" value="<%=REVISE_EDATE%>" style="font-size:11px;font-family: Tahoma,Georgia;" size="8" onKeyPress="return event.keyCode >= 48 && event.keyCode <=57">						
@@ -787,7 +787,7 @@ try
 	{
 		sql += " and tsc_inv_category(a.SOURCE_ITEM_ID,43,1100000003) in ('PRD','PRD-Subcon')";
 	}
-	sql += "  order by a.SALES_GROUP,a.request_no,CASE WHEN PC_REMARKS ='PC½Õ¾ã' THEN (SELECT SEQ_ID FROM tsc_om_salesorderrevise_req_v  X where x.temp_id=a.temp_id and x.so_line_id=a.so_line_id and x.seq_id<>a.seq_id and rownum=1) ELSE  (SELECT MIN(SEQ_ID) FROM tsc_om_salesorderrevise_req_v  X where x.temp_id=a.temp_id and x.so_line_id=a.so_line_id) END,a.seq_id,a.SO_NO||'-'||a.LINE_NO";
+	sql += "  order by a.SALES_GROUP,a.request_no,CASE WHEN PC_REMARKS ='PCèª¿æ•´' THEN (SELECT SEQ_ID FROM tsc_om_salesorderrevise_req_v  X where x.temp_id=a.temp_id and x.so_line_id=a.so_line_id and x.seq_id<>a.seq_id and rownum=1) ELSE  (SELECT MIN(SEQ_ID) FROM tsc_om_salesorderrevise_req_v  X where x.temp_id=a.temp_id and x.so_line_id=a.so_line_id) END,a.seq_id,a.SO_NO||'-'||a.LINE_NO";
 	//out.println(sql);
 	Statement statement=con.createStatement(); 
 	ResultSet rs=statement.executeQuery(sql);
@@ -878,7 +878,7 @@ try
 		<td align="center" rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("request_no")%></td>
 		<td align="center" rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("SALES_GROUP")%></td>
 		<td rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("orig_customer")%></td>
-		<td align="center" rowspan="<%=rs.getString("line_cnt")%>" onClick="showRemarks(<%=rs.getString("so_header_id")%>)"><%=rs.getString("SO_NO")%><%=(rs.getInt("TO_TW_DAYS")==0?"":"<br><font color='#ff0000'><¦^T></font>")%></td>
+		<td align="center" rowspan="<%=rs.getString("line_cnt")%>" onClick="showRemarks(<%=rs.getString("so_header_id")%>)"><%=rs.getString("SO_NO")%><%=(rs.getInt("TO_TW_DAYS")==0?"":"<br><font color='#ff0000'><å›žT></font>")%></td>
 		<td align="center" rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("LINE_NO")%></td>
 		<td rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("orig_item_desc")%></td>
 		<td rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("tsc_package")%></td>
@@ -966,7 +966,7 @@ catch(Exception e)
 <input type="hidden" name="TEMP_ID" VALUE="<%=TEMP_ID%>">
 </FORM>
 <iframe width=124 height=153 name="gToday:supermini:agenda.js" id="gToday:supermini:agenda.js" src="../calendar/ipopeng.htm" scrolling="no" frameborder="0" style="visibility:hidden; z-index:65535; position:absolute; top:0px;"></iframe>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 <script language="JavaScript" type="text/javascript" src="../wz_tooltip.js" ></script>

@@ -1,11 +1,11 @@
 <!-- 20180628 Peggy,add new column =customer group-->
-<%@ page contentType="text/html; charset=utf-8"  pageEncoding="big5"  language="java" import="java.sql.*,java.util.*,javax.mail.*,javax.mail.internet.*"%>
+<%@ page contentType="text/html; charset=utf-8"    language="java" import="java.sql.*,java.util.*,javax.mail.*,javax.mail.internet.*"%>
 <%@ page import="java.io.*,DateBean,ArrayComboBoxBean"%>
 <%@ page import="java.lang.Math.*"%>
 <%@ page import="java.text.*"%>
 <%@ page import="jxl.*"%>
 <%@ page import="WorkingDateBean"%>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
 <%@ page import="DateBean" %> 
@@ -162,7 +162,7 @@ try
 		message.setSentDate(new java.util.Date());
 		javax.mail.internet.InternetAddress from = new javax.mail.internet.InternetAddress("salescss@ts.com.tw");
 		message.setFrom(from);
-		if (reqURL.toLowerCase().indexOf("tsrfq.") >=0 || reqURL.toLowerCase().indexOf("rfq134.") >=0 ||reqURL.toLowerCase().indexOf("10.0.1.135") >=0 ||reqURL.toLowerCase().indexOf("10.0.1.134") >=0 ) //¥¿¦¡Àô¹Ò
+		if (reqURL.toLowerCase().indexOf("tsrfq.") >=0 || reqURL.toLowerCase().indexOf("rfq134.") >=0 ||reqURL.toLowerCase().indexOf("10.0.1.135") >=0 ||reqURL.toLowerCase().indexOf("10.0.1.134") >=0 ) //æ­£å¼ç’°å¢ƒ
 		{
 			//if (reqURL.toLowerCase().indexOf("10.0.3.16") >=0 || reqURL.toLowerCase().indexOf("rfq.") >=0)
 			//{		
@@ -209,7 +209,7 @@ this.window.close();
 </form>
 <iframe width=124 height=153 name="gToday:supermini:agenda.js" id="gToday:supermini:agenda.js" src="../calendar/ipopeng.htm" scrolling="no" frameborder="0" style="visibility:hidden; z-index:65535; position:absolute; top:0px;"></iframe>
 </body>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 </html>

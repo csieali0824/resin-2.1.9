@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=utf-8" pageEncoding="big5" language="java" %>
+<%@ page contentType="text/html;charset=utf-8"  language="java" %>
 <%@ page import="java.sql.*"%>
 <%@ page import="java.util.*"%>
 <%@ page import="jxl.*"%>
@@ -9,14 +9,14 @@
 <%@ page import="com.jspsmart.upload.*"%>
 <%@ page errorPage="ExceptionHandler.jsp"%>
 <%@ page import="DateBean,ArrayCheckBoxBean,Array2DimensionInputBean" %>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<!--=============¥H¤U°Ï¬q¬°¦w¥ş»{ÃÒ¾÷¨î==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå®‰å…¨èªè­‰æ©Ÿåˆ¶==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—é€£çµæ± ==========-->
 <html>
 <head>
-<title>TSCC ¤º¥~¾PRFQ Excel Upload</title>
+<title>TSCC å…§å¤–éŠ·RFQ Excel Upload</title>
 <jsp:useBean id="dateBean" scope="page" class="DateBean"/>
 <jsp:useBean id="mySmartUpload" scope="page" class="com.jspsmart.upload.SmartUpload" />
 <jsp:useBean id="arrayRFQDocumentInputBean" scope="session" class="Array2DimensionInputBean"/>
@@ -27,7 +27,7 @@ function setCreate(URL)
 {  
 	if (document.form1.UPLOADFILE.value == "")
 	{
-		alert("½Ğ¿ï¾Ü¤W¶ÇÀÉ®×!");
+		alert("è«‹é¸æ“‡ä¸Šå‚³æª”æ¡ˆ!");
 		document.form1.UPLOADFILE.focus();
 		return false;		
 	}
@@ -35,7 +35,7 @@ function setCreate(URL)
 	filename = filename.substr(filename.length-4);
 	if (filename.toUpperCase() != ".XLS")
 	{
-		alert('¤W¶ÇÀÉ®×¥²¶·¬°office 2003 excelÀÉ!');
+		alert('ä¸Šå‚³æª”æ¡ˆå¿…é ˆç‚ºoffice 2003 excelæª”!');
 		document.form1.UPLOADFILE.focus();
 		return false;	
 	}
@@ -57,7 +57,7 @@ function setCreate(URL)
 	}
 	if (chkflag == false)
 	{
-		alert("½Ğ¿ï¾ÜRFQÃş«¬!");
+		alert("è«‹é¸æ“‡RFQé¡å‹!");
 		return false;		
 	}	
     document.form1.submit1.disabled=true;
@@ -129,7 +129,7 @@ function unfocuscolor(objid)
 }
 function delData(URL)
 { 
-	if (confirm("±z½T©w­n§R°£¦¹µ§¸ê®Æ?"))
+	if (confirm("æ‚¨ç¢ºå®šè¦åˆªé™¤æ­¤ç­†è³‡æ–™?"))
 	{
 		document.form1.action=URL+"&ACTIONCODE=DETAIL";		
 		document.form1.submit();
@@ -221,7 +221,7 @@ try
 	{ 	 
 		%>
 		<script language="JavaScript" type="text/JavaScript">
-			alert("±z¨S¦³¸Ó°Ï°ì¨Ï¥ÎÅv­­,µLªk¨Ï¥Î¦¹¥\¯à,ÁÂÁÂ!");
+			alert("æ‚¨æ²’æœ‰è©²å€åŸŸä½¿ç”¨æ¬Šé™,ç„¡æ³•ä½¿ç”¨æ­¤åŠŸèƒ½,è¬è¬!");
 			location.href="../ORAddsMainMenu.jsp";
 		</script>
 		<%	
@@ -395,7 +395,7 @@ if (DelFlag.equals("Y"))
   <br>
   <table width="350" height="50" border="1" align="center" cellpadding="5" cellspacing="0" bordercolorlight="#CCFFCC" bordercolordark="#336600">
     <tr>
-    <td height="70" bgcolor="#CCCC99"  align="center"><font color="#003399" face="¼Ğ·¢Åé" size="+2">¸ê®Æ¥¿¦b³B²z¤¤,½Ğµy­Ô.....</font> <BR>
+    <td height="70" bgcolor="#CCCC99"  align="center"><font color="#003399" face="æ¨™æ¥·é«”" size="+2">è³‡æ–™æ­£åœ¨è™•ç†ä¸­,è«‹ç¨å€™.....</font> <BR>
       <DIV ID="blockDiv" STYLE="visibility:hidden;position:absolute; width:5px; height:5px; clip:rect(0px 5px 5px 0px); background-color:#567886; layer-background-color:#567886; display=''; left: 50px;"></div>
 	</td>
   </tr>
@@ -408,7 +408,7 @@ if (DelFlag.equals("Y"))
 		<td width="90%">
 			<table width="100%" cellspacing="0" cellpadding="0" bordercolordark="#009933">
 				<tr>
-					<td height="50" align="center"><font style="color:#003399;font-weight:bold;font-family:Tahoma,Georgia;font-size:20px">TSCC ¤º¥~¾PExcel¤W¶Ç</font></td>
+					<td height="50" align="center"><font style="color:#003399;font-weight:bold;font-family:Tahoma,Georgia;font-size:20px">TSCC å…§å¤–éŠ·Excelä¸Šå‚³</font></td>
 				</tr>
 			</table>
 		</td>
@@ -431,9 +431,9 @@ if (DelFlag.equals("Y"))
 							</tr>
 						</table>
 					</TD>
-					<TD align="right" width="10%" title="¦^­º­¶!">
-						<A HREF="../ORAddsMainMenu.jsp" style="font-size:13px;font-family:¼Ğ·¢Åé;text-decoration:none;color:#0000FF">
-						<STRONG>¦^­º­¶</STRONG>
+					<TD align="right" width="10%" title="å›é¦–é !">
+						<A HREF="../ORAddsMainMenu.jsp" style="font-size:13px;font-family:æ¨™æ¥·é«”;text-decoration:none;color:#0000FF">
+						<STRONG>å›é¦–é </STRONG>
 						</A>
 					</TD>
 				</tr>
@@ -442,7 +442,7 @@ if (DelFlag.equals("Y"))
 					<td colspan="2">
 						<table  bordercolordark="#000033" cellspacing="0"  cellpadding="0" width="100%" align="left" bordercolorlight="ffffff" border="1">
 			  				<tr>
-								<td align="right">RFQ Type¡G</td>
+								<td align="right">RFQ Typeï¼š</td>
 								<%
 								v_normal_inactive_flag="";
 								if (!UserName.equals("TSCC JOYCE") && !UserName.equals("SU CS-001") && !UserName.equals("SU SALES-001") && !UserName.equals("SH SALES-011")  && !UserName.equals("SH CS-011"))
@@ -456,11 +456,11 @@ if (DelFlag.equals("Y"))
 								</td>
 		  					</tr>							
 			  				<tr>
-								<td align="right">Upload File¡G</td>
+								<td align="right">Upload Fileï¼š</td>
 								<td width="85%" ><INPUT TYPE="FILE" style="font-family:Tahoma,Georgia;font-size:13px" NAME="UPLOADFILE" size="90"></td>
 			  				</tr>
 			  				<tr>
-								<td align="right">Sample File¡G</td>
+								<td align="right">Sample Fileï¼š</td>
 								<td width="85%" ><A HREF="../jsp/samplefiles/D4-017_SampleFile.xls"><font style="font-size:13px;">Download Sample File</font></A></td>
 			  				</tr>
 						</table>
@@ -470,7 +470,7 @@ if (DelFlag.equals("Y"))
 					<td colspan="2">&nbsp;</td>
 				</tr>
 				<tr>
-					<td colspan="2" title="½Ğ«ö§Ú¡AÁÂÁÂ!" align="center">
+					<td colspan="2" title="è«‹æŒ‰æˆ‘ï¼Œè¬è¬!" align="center">
 					<input type="button" style="font-size:13px;font-family: Tahoma,Georgia;" name="submit1" value='Upload' onClick="setCreate('../jsp/TSCCK3ToRFQUpload.jsp?ACTIONCODE=UPLOAD')">
 					</td>
 				</tr>
@@ -491,9 +491,9 @@ if (DelFlag.equals("Y"))
 							</tr>
 						</table>
 					</TD>
-					<TD align="right" width="10%" title="¦^­º­¶!">
-						<A HREF="../ORAddsMainMenu.jsp" style="font-size:13px;font-family:¼Ğ·¢Åé;text-decoration:none;color:#0000FF">
-						<STRONG>¦^­º­¶</STRONG>
+					<TD align="right" width="10%" title="å›é¦–é !">
+						<A HREF="../ORAddsMainMenu.jsp" style="font-size:13px;font-family:æ¨™æ¥·é«”;text-decoration:none;color:#0000FF">
+						<STRONG>å›é¦–é </STRONG>
 						</A>
 					</TD>
 				</tr>
@@ -528,16 +528,16 @@ if (ACTIONCODE.equals("UPLOAD"))
 		String uploadFile_name=upload_file.getFileName();
 		if (uploadFile_name == null || uploadFile_name.equals("") )
 		{
-			out.println("<script language=javascript>alert('½Ğ¥ı«öÂsÄıÁä¿ï¾Ü±ı¤W¶Çªºoffice 2003 excelÀÉ¡AÁÂÁÂ!')</script>");
+			out.println("<script language=javascript>alert('è«‹å…ˆæŒ‰ç€è¦½éµé¸æ“‡æ¬²ä¸Šå‚³çš„office 2003 excelæª”ï¼Œè¬è¬!')</script>");
 		}
 		else if (!(uploadFile_name.toLowerCase()).endsWith("xls"))
 		{
-			out.println("<script language=javascript>alert('¤W¶ÇÀÉ®×¥²¶·¬°office 2003 excelÀÉ!')</script>");
+			out.println("<script language=javascript>alert('ä¸Šå‚³æª”æ¡ˆå¿…é ˆç‚ºoffice 2003 excelæª”!')</script>");
 		}
 		else
 		{
 			CallableStatement cs1 = con.prepareCall("{call mo_global.set_policy_context('S',?)}");
-			cs1.setString(1,"325");  // ¨ú·~°È­ûÁõÄİParOrgID
+			cs1.setString(1,"325");  // å–æ¥­å‹™å“¡éš¸å±¬ParOrgID
 			cs1.execute();
 			cs1.close();
 		
@@ -556,7 +556,7 @@ if (ACTIONCODE.equals("UPLOAD"))
 			ResultSet rsi = statements.executeQuery(sql);
 				
 			cs1 = con.prepareCall("{call mo_global.set_policy_context('S',?)}");
-			cs1.setString(1,"41");  // ¨ú·~°È­ûÁõÄİParOrgID
+			cs1.setString(1,"41");  // å–æ¥­å‹™å“¡éš¸å±¬ParOrgID
 			cs1.execute();
 			cs1.close();
 		
@@ -574,7 +574,7 @@ if (ACTIONCODE.equals("UPLOAD"))
 			Statement statemento=con.createStatement( ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			ResultSet rso = statemento.executeQuery(sql);
 								
-			//¥X³f¤è¦¡list
+			//å‡ºè²¨æ–¹å¼list
 			Statement statet=con.createStatement();
 			sql = "select a.SHIPPING_METHOD_CODE ,a.SHIPPING_METHOD from ASO_I_SHIPPING_METHODS_V a ";
         	ResultSet rst=statet.executeQuery(sql);
@@ -617,32 +617,32 @@ if (ACTIONCODE.equals("UPLOAD"))
 			{	
 				strCustNo="";strEndCust ="";strEndCustID ="";strEndCustSName="";
 				
-				//K3³æ¾Ú¸¹½X
+				//K3å–®æ“šè™Ÿç¢¼
 				jxl.Cell cellCol1 = sht.getCell(1,i);
 				strK3OrderNo = cellCol1.getContents().trim();
 				if (strK3OrderNo==null || strK3OrderNo.equals("")) continue;
 	
-				//K3³æ¾Ú¦æ¸¹
+				//K3å–®æ“šè¡Œè™Ÿ
 				jxl.Cell cellCol2 = sht.getCell(2, i);          
 				strK3OrderLineNo = (cellCol2.getContents()).trim();
 							
-				//«È¤áPO
+				//å®¢æˆ¶PO
 				jxl.Cell cellCol3 = sht.getCell(3,i);
 				strLineCustPO = cellCol3.getContents();
 				strLineCustPO=strLineCustPO.replace("'",""); //add by Peggy 20220323
-				strLineCustPO=strLineCustPO.replace("¡]","(").replace("¡^",")");  //add by Peggy 20211229
+				strLineCustPO=strLineCustPO.replace("ï¼ˆ","(").replace("ï¼‰",")");  //add by Peggy 20211229
 				strLineCustPO=strLineCustPO.replace("\n","");  //add by Peggy 20240515
 	
-				//¥x¥b®Æ¸¹
+				//å°åŠæ–™è™Ÿ
 				jxl.Cell cellCol4 = sht.getCell(4, i);          
 				strItemName = (cellCol4.getContents()).trim();
 	
-				//¥x¥b«~¦W
+				//å°åŠå“å
 				jxl.Cell cellCol5 = sht.getCell(5, i);          
 				strItemDesc = (cellCol5.getContents());
 				if (strItemDesc == null) strItemDesc= "";
 	
-				//«È¤á«~¸¹
+				//å®¢æˆ¶å“è™Ÿ
 				jxl.Cell cellCol6 = sht.getCell(6, i);          
 				strCustItem = (cellCol6.getContents());
 				if (strCustItem == null) strCustItem= "";
@@ -681,7 +681,7 @@ if (ACTIONCODE.equals("UPLOAD"))
 				}				
 				String  arrayDate1[]=strSSD.split("/");	
 				
-				//¼Æ¶q 
+				//æ•¸é‡ 
 				jxl.Cell cellCol8 = sht.getCell(9, i);  
 				if (cellCol8.getType() == CellType.NUMBER) 
 				{
@@ -690,12 +690,12 @@ if (ACTIONCODE.equals("UPLOAD"))
 				else strQty = (cellCol8.getContents()).trim();
 				if (strQty == null) strQty="0";
 				
-				//³æ¦ì
+				//å–®ä½
 				jxl.Cell cellCol9 = sht.getCell(10, i);  
 				strUom = (cellCol9.getContents()).trim();
 				if (strUom == null) strUom= "";
 			
-				//³æ»ù 
+				//å–®åƒ¹ 
 				jxl.Cell cellCol10 = sht.getCell(11, i);  
 				if (cellCol10.getType() == CellType.NUMBER) 
 				{
@@ -704,23 +704,23 @@ if (ACTIONCODE.equals("UPLOAD"))
 				else strSellingPrice = (cellCol10.getContents()).trim();
 				if (strSellingPrice == null) strSellingPrice="0";		
 			
-				//K3«È¤á¥N½X
+				//K3å®¢æˆ¶ä»£ç¢¼
 				jxl.Cell cellCol11 = sht.getCell(13, i);  
 				strK3CustCode = (cellCol11.getContents()).trim();
 				if (strK3CustCode == null) strK3CustCode= "";
 				
-				//K3³Æµù
+				//K3å‚™è¨»
 				jxl.Cell cellCol111 = sht.getCell(15, i);  
 				strK3Remarks = (cellCol111.getContents()).trim();
 				if (strK3Remarks == null) strK3Remarks= "";
 								
-				//¼Ë«~
+				//æ¨£å“
 				jxl.Cell cellCol12 = sht.getCell(17, i);  
 				strSampleOrder = (cellCol12.getContents()).trim();
 				if (strSampleOrder == null) strSampleOrder= "";			
 				strSampleOrder=strSampleOrder.toUpperCase();
 						
-				//K3Àu¥ı°e³f¦a§}¥N½X		
+				//K3å„ªå…ˆé€è²¨åœ°å€ä»£ç¢¼		
 				jxl.Cell cellCol13 = sht.getCell(20, i);          
 				strK3AddrCode = (cellCol13.getContents()).trim();
 				if (strK3AddrCode==null) strK3AddrCode="";
@@ -729,26 +729,26 @@ if (ACTIONCODE.equals("UPLOAD"))
 				jxl.Cell cellCol14= sht.getCell(23, i);          
 				strBIRegion = (cellCol14.getContents()).trim();
 							
-				strErr ="";strCustID="";strCustName="";strItemID="";rec_cnt=0;strFactory="";strOrderType="";strOrderTypeID="";strEndCust1="";strEndCustShipTo=""; //ªì©l¤Æ
+				strErr ="";strCustID="";strCustName="";strItemID="";rec_cnt=0;strFactory="";strOrderType="";strOrderTypeID="";strEndCust1="";strEndCustShipTo=""; //åˆå§‹åŒ–
 				
 				if (strK3OrderNo.equals(""))
 				{
-					strErr += "K3³æ¾Ú½s¸¹¤£¥iªÅ¥Õ<br>";
+					strErr += "K3å–®æ“šç·¨è™Ÿä¸å¯ç©ºç™½<br>";
 				}
 				
 				if (strK3OrderLineNo.equals(""))
 				{
-					strErr += "K3³æ¾Ú½s¸¹¶µ¦¸¤£¥iªÅ¥Õ<br>";
+					strErr += "K3å–®æ“šç·¨è™Ÿé …æ¬¡ä¸å¯ç©ºç™½<br>";
 				}
 				
-				//ÀË¬dK3³æ¾Ú½s¸¹¬O§_¦³«İ³B²z¸ê®Æ
+				//æª¢æŸ¥K3å–®æ“šç·¨è™Ÿæ˜¯å¦æœ‰å¾…è™•ç†è³‡æ–™
 				if (strK3OrderNo != null && !strK3OrderNo.equals("") && strK3OrderLineNo !=null && !strK3OrderLineNo.equals(""))
 				{
 					Statement statementa=con.createStatement();
 					ResultSet rsa=statementa.executeQuery("select 1 from oraddman.TSC_RFQ_UPLOAD_TEMP where K3_ORDER_NO = '"+strK3OrderNo+"'  and K3_ORDER_LINE_NO ='"+strK3OrderLineNo+"' AND CREATE_FLAG IN ('N','Y')");
 					if(rsa.next())
 					{
-						strErr += "K3³æ¾Ú½s¸¹:"+strK3OrderNo+"  K3³æ¾Ú½s¸¹¶µ¦¸:"+strK3OrderLineNo+"¤w¦s¦b,¤£¥i­«½Æ¤W¶Ç!<br>";
+						strErr += "K3å–®æ“šç·¨è™Ÿ:"+strK3OrderNo+"  K3å–®æ“šç·¨è™Ÿé …æ¬¡:"+strK3OrderLineNo+"å·²å­˜åœ¨,ä¸å¯é‡è¤‡ä¸Šå‚³!<br>";
 					}
 					rsa.close();
 					statementa.close(); 
@@ -760,16 +760,16 @@ if (ACTIONCODE.equals("UPLOAD"))
 						{
 							if (aa[k][27]!=null && aa[k][28]!=null && aa[k][27].equals(strK3OrderNo) && aa[k][28].equals(strK3OrderLineNo))
 							{
-								strErr += "K3³æ¾Ú½s¸¹:"+strK3OrderNo+"  K3³æ¾Ú½s¸¹¶µ¦¸:"+strK3OrderLineNo+"­«½Æ¥Ó½Ğ!<br>";
+								strErr += "K3å–®æ“šç·¨è™Ÿ:"+strK3OrderNo+"  K3å–®æ“šç·¨è™Ÿé …æ¬¡:"+strK3OrderLineNo+"é‡è¤‡ç”³è«‹!<br>";
 							}
 						}
 					}
 				}	
 							
-				//¥x¥b®Æ¸¹
+				//å°åŠæ–™è™Ÿ
 				//if (strItemName == null || strItemName.equals(""))
 				//{
-				//	strErr += "¥x¥b®Æ¸¹¤£¥iªÅ¥Õ<br>";
+				//	strErr += "å°åŠæ–™è™Ÿä¸å¯ç©ºç™½<br>";
 				//}
 				//else
 				if ((strItemName != null && !strItemName.equals("")) || (strItemDesc!=null && !strItemDesc.equals("")))
@@ -791,7 +791,7 @@ if (ACTIONCODE.equals("UPLOAD"))
 							" 'TSM2314CX RFG','TSM2318CX RFG','TSM2323CX RFG','TSM2328CX RFG','TSM9409CS RLG','TSM3443CX6 RFG','TSM3481CX6 RFG','TSM3457CX6 RFG','TSM3911DCX6 RFG') then '8131'\n" +
 						  " else tsc_rfq_create_erp_odr_pkg.tsc_get_order_type (msi.inventory_item_id) end  AS order_type"+
 						  //", count(1) over (partition by msi.description) row_cnt"+
-						  ", count(1) over (partition by msi.description,length(msi.segment1)) row_cnt"+ //¥[¤W22D©Î30Dµ§¼Æ,add by Peggy 20230621
+						  ", count(1) over (partition by msi.description,length(msi.segment1)) row_cnt"+ //åŠ ä¸Š22Dæˆ–30Dç­†æ•¸,add by Peggy 20230621
 						  ",tsc_inv_category(msi.inventory_item_id,msi.organization_id,'1100000003') tsc_prod_group"+
 						  " FROM  inv.mtl_system_items_b msi"+
 						  " WHERE msi.organization_id=49"+
@@ -808,15 +808,15 @@ if (ACTIONCODE.equals("UPLOAD"))
 					{
 						sql += " and msi.segment1 = '"+strItemName+"'";
 					}
-					sql += " order by length(msi.segment1) desc,msi.segment1"; //30DÀu¥ı by Peggy 20230621
+					sql += " order by length(msi.segment1) desc,msi.segment1"; //30Då„ªå…ˆ by Peggy 20230621
 					//out.println(sql);
 					Statement statement=con.createStatement();
 					ResultSet rs = statement.executeQuery(sql);
 					if(rs.next())
 					{
-						if (rs.getInt("row_cnt")>1 && !strK3CustCode.equals("001.0399"))  //¤W®ü¥İÃL¦³Áûvaleo®Æ­n¤UFA6,¨ºÁû®Æ¨S¦³F00,¨ä¥L®Æ¤@«ß¤UF00 BY PEGGY 20230630
+						if (rs.getInt("row_cnt")>1 && !strK3CustCode.equals("001.0399"))  //ä¸Šæµ·ç¦¾é¦¥æœ‰é¡†valeoæ–™è¦ä¸‹FA6,é‚£é¡†æ–™æ²’æœ‰F00,å…¶ä»–æ–™ä¸€å¾‹ä¸‹F00 BY PEGGY 20230630
 						{
-							strErr +="«~¦W¹ïÀ³¨âµ§¥H¤Wªº®Æ¸¹,½Ğ«ü©w®Æ¸¹<br>";
+							strErr +="å“åå°æ‡‰å…©ç­†ä»¥ä¸Šçš„æ–™è™Ÿ,è«‹æŒ‡å®šæ–™è™Ÿ<br>";
 							strItemID ="";
 							
 						}
@@ -828,16 +828,16 @@ if (ACTIONCODE.equals("UPLOAD"))
 							strFactory = rs.getString("ATTRIBUTE3");
 							strOrderType = rs.getString("ORDER_TYPE");
 							
-							//add by Peggy 20200522,YBS3007 RAG&"BAV21W-G RHG¤£¥i¤U¤º¾P­q³æ,²ÎÄw¥H¥~¾P¤U³æ,¨ú±oÀu´f±ÄÁÊ»ù®æ
+							//add by Peggy 20200522,YBS3007 RAG&"BAV21W-G RHGä¸å¯ä¸‹å…§éŠ·è¨‚å–®,çµ±ç±Œä»¥å¤–éŠ·ä¸‹å–®,å–å¾—å„ªæƒ æ¡è³¼åƒ¹æ ¼
 							//if (strOrderType.equals("8131") && (strItemDesc.equals("YBS3007G RAG") || strItemDesc.equals("BAV21W-G RHG")))
-							//if (strOrderType.equals("8131") && (strItemDesc.equals("BAV21W-G RHG"))) //YBS3007G RAG¤£²Î¤@¤U³æ from ava modify by Peggy 20201111
+							//if (strOrderType.equals("8131") && (strItemDesc.equals("BAV21W-G RHG"))) //YBS3007G RAGä¸çµ±ä¸€ä¸‹å–® from ava modify by Peggy 20201111
 							//{
-							//	strErr +=strItemDesc+"²Î¤@¤U¥~¾P­q³æ,¥H¨ú±oÀu´f±ÄÁÊ»ù<br>";
+							//	strErr +=strItemDesc+"çµ±ä¸€ä¸‹å¤–éŠ·è¨‚å–®,ä»¥å–å¾—å„ªæƒ æ¡è³¼åƒ¹<br>";
 							//}
 							
 							if (strOrderType.substring(0,1).equals("4"))
 							{
-								strCustNo="7883";  //¤W®üÃv¬ì°ê»Ú¶T©ö¦³­­¤½¥q
+								strCustNo="7883";  //ä¸Šæµ·ç€šç§‘åœ‹éš›è²¿æ˜“æœ‰é™å…¬å¸
 								if (strOrderType.equals("4121"))
 								{
 									SalesAreaNo="022";
@@ -869,14 +869,14 @@ if (ACTIONCODE.equals("UPLOAD"))
 							}
 							else
 							{
-								strErr +="¥¼¸g©w¸qªº­q³æÃş«¬<br>";
+								strErr +="æœªç¶“å®šç¾©çš„è¨‚å–®é¡å‹<br>";
 							}
 							
 						}
 					}
 					else
 					{
-						strErr +="ERP¥¼©w¸q¥x¥b®Æ¸¹:"+strItemName+"<br>";
+						strErr +="ERPæœªå®šç¾©å°åŠæ–™è™Ÿ:"+strItemName+"<br>";
 					}
 					rs.close();
 					statement.close();
@@ -884,12 +884,12 @@ if (ACTIONCODE.equals("UPLOAD"))
 					if (!strItemID.equals(""))
 					{
 						cs1 = con.prepareCall("{call mo_global.set_policy_context('S',?)}");
-						cs1.setString(1,""+v_org_id);  // ¨ú·~°È­ûÁõÄİParOrgID
+						cs1.setString(1,""+v_org_id);  // å–æ¥­å‹™å“¡éš¸å±¬ParOrgID
 						cs1.execute();
 						cs1.close();	
 										
 									
-						//ÀË¬dÀu¥ı°e³f¦a§}
+						//æª¢æŸ¥å„ªå…ˆé€è²¨åœ°å€
 						strEndCustID1="";strEndCustShipTo="";strSGShipTo="";	
 						if (!strK3AddrCode.equals(""))
 						{
@@ -900,7 +900,7 @@ if (ACTIONCODE.equals("UPLOAD"))
 							rs = statement.executeQuery(sql);
 							if(!rs.next())
 							{
-								strErr +="¥¼©w¸qK3°e³f¦a§}»PERP¦a§}link<br>";
+								strErr +="æœªå®šç¾©K3é€è²¨åœ°å€èˆ‡ERPåœ°å€link<br>";
 								strEndCustShipTo="";strEndCustID1="";strSGShipTo="";		  
 							}
 							else
@@ -914,7 +914,7 @@ if (ACTIONCODE.equals("UPLOAD"))
 							}
 						}
 					
-						//ÀË¬dK3«È¤á¥N½X
+						//æª¢æŸ¥K3å®¢æˆ¶ä»£ç¢¼
 						if (!strK3CustCode.equals(""))
 						{
 							sql = " SELECT b.customer_name,b.customer_number,b.customer_id,a.cust_eng_short_name "+
@@ -932,7 +932,7 @@ if (ACTIONCODE.equals("UPLOAD"))
 							rs = statement.executeQuery(sql);
 							if(!rs.next())
 							{
-								strErr +="¥¼©w¸qK3«È¤á»PERP«È¤álink<br>";
+								strErr +="æœªå®šç¾©K3å®¢æˆ¶èˆ‡ERPå®¢æˆ¶link<br>";
 								strEndCust ="";strEndCustID ="";strEndCustSName="";		  
 							}
 							else
@@ -947,7 +947,7 @@ if (ACTIONCODE.equals("UPLOAD"))
 									}
 									if (strEndCustSName==null || strEndCustSName.equals(""))
 									{
-										strErr +="¥¼©w¸qK3«È¤á­^¤åÂ²ºÙ<br>";
+										strErr +="æœªå®šç¾©K3å®¢æˆ¶è‹±æ–‡ç°¡ç¨±<br>";
 									}
 								}
 								else
@@ -961,7 +961,7 @@ if (ACTIONCODE.equals("UPLOAD"))
 						}
 						else
 						{
-							strErr +="«È¤á¥N½X¤£¥iªÅ¥Õ<br>";	
+							strErr +="å®¢æˆ¶ä»£ç¢¼ä¸å¯ç©ºç™½<br>";	
 						}
 										
 						strShippingMethod="";strFOB="";strShipTo="";strPriceList="";;
@@ -1023,13 +1023,13 @@ if (ACTIONCODE.equals("UPLOAD"))
 						}
 						else
 						{
-							strErr += "«È¤á¸ê°T¥¼©w¸q¦bERP<br>";
+							strErr += "å®¢æˆ¶è³‡è¨Šæœªå®šç¾©åœ¨ERP<br>";
 						}
 						rsa.close();
 						statementa.close(); 
 					
 						cs1 = con.prepareCall("{call mo_global.set_policy_context('S',?)}");
-						cs1.setString(1,"41");  // ¨ú·~°È­ûÁõÄİParOrgID
+						cs1.setString(1,"41");  // å–æ¥­å‹™å“¡éš¸å±¬ParOrgID
 						cs1.execute();
 						cs1.close();
 										
@@ -1058,7 +1058,7 @@ if (ACTIONCODE.equals("UPLOAD"))
 							rs = statement.executeQuery(sql);
 							if (!rs.next())
 							{
-								strErr +="ERP¥¼©w¸q«È¤á«~¸¹:"+strCustItem+"<br>";
+								strErr +="ERPæœªå®šç¾©å®¢æˆ¶å“è™Ÿ:"+strCustItem+"<br>";
 							}
 							rs.close();
 							statement.close();
@@ -1067,7 +1067,7 @@ if (ACTIONCODE.equals("UPLOAD"))
 						//customer po
 						if (strLineCustPO==null || strLineCustPO.equals(""))
 						{
-							strErr += "Customer PO¤£¥iªÅ¥Õ<br>";
+							strErr += "Customer POä¸å¯ç©ºç™½<br>";
 						}
 						else if (strLineCustPO.indexOf("(")>0)
 						{
@@ -1080,7 +1080,7 @@ if (ACTIONCODE.equals("UPLOAD"))
 							}
 							else
 							{
-								if (strCustNo.equals("8103")) //po«á­±ªº²×ºİ«È¤á¥ÑK3«È¥N±a¥X,ADD BY PEGGY 20211229
+								if (strCustNo.equals("8103")) //poå¾Œé¢çš„çµ‚ç«¯å®¢æˆ¶ç”±K3å®¢ä»£å¸¶å‡º,ADD BY PEGGY 20211229
 								{
 									strLineCustPO = strLineCustPO.substring(0,strLineCustPO.lastIndexOf("("));	//modify Peggy 20211229
 								}
@@ -1091,7 +1091,7 @@ if (ACTIONCODE.equals("UPLOAD"))
 							}
 						}
 					
-						//ÀË¬d­q³æÃş«¬¬O§_¥¿½T
+						//æª¢æŸ¥è¨‚å–®é¡å‹æ˜¯å¦æ­£ç¢º
 						Statement stateodrtype=con.createStatement();
 						sql = "SELECT  a.otype_id FROM oraddman.tsarea_ordercls a,oraddman.tsprod_ordertype b"+
 									" where b.order_num=a.order_num and a.order_num='"+strOrderType+"'"+
@@ -1101,7 +1101,7 @@ if (ACTIONCODE.equals("UPLOAD"))
 						ResultSet rsodrtype=stateodrtype.executeQuery(sql);  
 						if (!rsodrtype.next())
 						{
-							strErr += "­q³æÃş«¬¿ù»~<br>";
+							strErr += "è¨‚å–®é¡å‹éŒ¯èª¤<br>";
 						}
 						else
 						{
@@ -1111,11 +1111,11 @@ if (ACTIONCODE.equals("UPLOAD"))
 						stateodrtype.close();
 			
 								
-						//¥X³f¤è¦¡
+						//å‡ºè²¨æ–¹å¼
 						if (strShippingMethod == null || strShippingMethod.equals(""))
 						{
 						//	strShippingMethod = "&nbsp;";
-						//	strErr +="¥X³f¤è¦¡¤£¥iªÅ¥Õ<br>";
+						//	strErr +="å‡ºè²¨æ–¹å¼ä¸å¯ç©ºç™½<br>";
 						}
 						else
 						{
@@ -1130,14 +1130,14 @@ if (ACTIONCODE.equals("UPLOAD"))
 									strShippingMethod = strd[1];
 								}
 							}
-							if (!bolExist) strErr +="¥X³f¤è¦¡¤£¦s¦b<br>";
+							if (!bolExist) strErr +="å‡ºè²¨æ–¹å¼ä¸å­˜åœ¨<br>";
 						}
 						
 						//FOB
 						if (strFOB == null || strFOB.equals(""))
 						{
 							//strFOB = "&nbsp;";
-							//strErr += "FOB¤£¥iªÅ¥Õ<br>";
+							//strErr += "FOBä¸å¯ç©ºç™½<br>";
 						}
 						else
 						{
@@ -1150,14 +1150,14 @@ if (ACTIONCODE.equals("UPLOAD"))
 									bolExist = true;
 								}
 							}
-							if (!bolExist) strErr += "FOB¤£¦s¦b<br>";
+							if (!bolExist) strErr += "FOBä¸å­˜åœ¨<br>";
 						}
 			
 						//END CUSTOMER
 						strEndCust="";strEndCustID1="";
 						if (!strEndCustID.equals(""))
 						{
-							//end customer id¤£¥i»Pcustomer id¬Û¦P
+							//end customer idä¸å¯èˆ‡customer idç›¸åŒ
 							if (strEndCustID.equals(strCustNo))
 							{
 								if (strOrderType.equals("4121"))
@@ -1166,7 +1166,7 @@ if (ACTIONCODE.equals("UPLOAD"))
 								}
 								else
 								{
-									strErr += "End Customer ID¤£¥i»PCustomer ID¬Û¦P<br>";
+									strErr += "End Customer IDä¸å¯èˆ‡Customer IDç›¸åŒ<br>";
 								}
 							}
 							else
@@ -1217,18 +1217,18 @@ if (ACTIONCODE.equals("UPLOAD"))
 									}
 									rsy.close();
 									statementy.close();							
-									if (strEndCust.equals("")) strErr += "End Customer ID¤£¦s¦bERP<br>";
+									if (strEndCust.equals("")) strErr += "End Customer IDä¸å­˜åœ¨ERP<br>";
 								}
 							}
 						}
 					}
 				}
 				
-				//¼Æ¶q	
+				//æ•¸é‡	
 				if (strQty == null || strQty.equals(""))
 				{
 					strQty = "&nbsp;";
-					strErr += "¼Æ¶q¤£¥iªÅ¥Õ<br>";
+					strErr += "æ•¸é‡ä¸å¯ç©ºç™½<br>";
 				}
 				else
 				{
@@ -1237,7 +1237,7 @@ if (ACTIONCODE.equals("UPLOAD"))
 						double qtynum = Double.parseDouble(strQty.replace(",",""));
 						if ( qtynum <= 0)
 						{
-							strErr += "¼Æ¶q¥²¶·¤j©ó¹s<br>";
+							strErr += "æ•¸é‡å¿…é ˆå¤§æ–¼é›¶<br>";
 						}
 						else
 						{
@@ -1247,21 +1247,21 @@ if (ACTIONCODE.equals("UPLOAD"))
 					}
 					catch (Exception e)
 					{
-						strErr += "¼Æ¶q®æ¦¡¿ù»~<br>";
+						strErr += "æ•¸é‡æ ¼å¼éŒ¯èª¤<br>";
 					}
 				}
 
-				//ÀË¬d³æ¦ì,¥²¶·¬°PCS for Ava,add by Peggy 20191214
+				//æª¢æŸ¥å–®ä½,å¿…é ˆç‚ºPCS for Ava,add by Peggy 20191214
 				if (!strUom.equals("PCS") && !strUom.equals("KPC") && !strUom.equals("K"))
 				{
-					strErr +="³æ¦ì¿ù»~<br>";	
+					strErr +="å–®ä½éŒ¯èª¤<br>";	
 				}
 				
-				//³æ»ù
+				//å–®åƒ¹
 				if (strSellingPrice == null || strSellingPrice.equals(""))
 				{
 					strSellingPrice = "";
-					strErr +="Selling Price¤£¥iªÅ¥Õ<br>";
+					strErr +="Selling Priceä¸å¯ç©ºç™½<br>";
 				}
 				else
 				{
@@ -1270,17 +1270,17 @@ if (ACTIONCODE.equals("UPLOAD"))
 						double pricenum = Double.parseDouble(strSellingPrice.replace(",",""));
 						if ( pricenum < 0  )
 						{
-							strErr += "Selling Price¥²¶·¤j©óµ¥©ó¹s<br>";
+							strErr += "Selling Priceå¿…é ˆå¤§æ–¼ç­‰æ–¼é›¶<br>";
 						}
 						else if (!strSampleOrder.equals("Y") &&  pricenum==0)
 						{
-							strErr += "Selling Price¥²¶·¤j©ó¹s<br>";
+							strErr += "Selling Priceå¿…é ˆå¤§æ–¼é›¶<br>";
 						}
 						else if (pricenum>0)
 						{
 							strSellingPrice =(new DecimalFormat("###,##0.000##")).format(pricenum);
 							
-							//ÀË¬d8131­q³æ»ù®æ¬O§_²Å¦X«È¤á»ù®æ,add by Peggy 20200215
+							//æª¢æŸ¥8131è¨‚å–®åƒ¹æ ¼æ˜¯å¦ç¬¦åˆå®¢æˆ¶åƒ¹æ ¼,add by Peggy 20200215
 							if (strOrderType.substring(0,1).equals("8"))
 							{
 								sql = " SELECT TP_PRICE,TP_PRICE_UOM  FROM TABLE(TSC_ORDER_REVISE_PKG.GET_ITEM_TARGET_PRICE_NEW(907,"+strItemID+",'PCE',"+strPriceList+",TRUNC(SYSDATE),'CNY',null,"+strCustID+"))";
@@ -1291,12 +1291,12 @@ if (ACTIONCODE.equals("UPLOAD"))
 								{	
 									if (Float.parseFloat(strSellingPrice)!=rsx.getFloat("TP_PRICE"))
 									{
-										strErr += "­q³æ»ù®æ("+strSellingPrice+")»P«È¤á»ù®æ("+rsx.getFloat("TP_PRICE")+")¤£²Å<br>";	
+										strErr += "è¨‚å–®åƒ¹æ ¼("+strSellingPrice+")èˆ‡å®¢æˆ¶åƒ¹æ ¼("+rsx.getFloat("TP_PRICE")+")ä¸ç¬¦<br>";	
 									}	
 								}	
 								else
 								{
-									strErr += "«È¤á»ù®æ¥¼³]©w<br>";	
+									strErr += "å®¢æˆ¶åƒ¹æ ¼æœªè¨­å®š<br>";	
 								}
 								rsx.close();
 								statementx.close();
@@ -1305,14 +1305,14 @@ if (ACTIONCODE.equals("UPLOAD"))
 					}
 					catch (Exception e)
 					{
-						strErr += "³æ»ù®æ¦¡¿ù»~<br>";
+						strErr += "å–®åƒ¹æ ¼å¼éŒ¯èª¤<br>";
 					}
 				}
 				
-				//¥æ³f¤é´Á	
+				//äº¤è²¨æ—¥æœŸ	
 				if (arrayDate1.length !=3)
 				{
-					strErr +="SSD:"+strSSD+"®æ¦¡¿ù»~<br>";
+					strErr +="SSD:"+strSSD+"æ ¼å¼éŒ¯èª¤<br>";
 				}
 				else
 				{
@@ -1321,15 +1321,15 @@ if (ACTIONCODE.equals("UPLOAD"))
 					v_Days =Integer.parseInt(arrayDate1[2]);
 					if ((""+v_Year).length() !=4)
 					{
-						strErr +="SSD:"+strSSD+"®æ¦¡¿ù»~<br>";
+						strErr +="SSD:"+strSSD+"æ ¼å¼éŒ¯èª¤<br>";
 					}
 					else if (v_Month <1 && v_Month>12)
 					{
-						strErr +="SSD:"+strSSD+"®æ¦¡¿ù»~<br>";
+						strErr +="SSD:"+strSSD+"æ ¼å¼éŒ¯èª¤<br>";
 					}
 					else if	(v_Days <1  || v_Days >31)
 					{
-						strErr +="SSD:"+strSSD+"®æ¦¡¿ù»~<br>";
+						strErr +="SSD:"+strSSD+"æ ¼å¼éŒ¯èª¤<br>";
 					}	
 					strSSD = v_Year+("0"+v_Month).substring(("0"+v_Month).length()-2)+("0"+v_Days).substring(("0"+v_Days).length()-2);
 				}	
@@ -1337,20 +1337,20 @@ if (ACTIONCODE.equals("UPLOAD"))
 				if (strSSD == null || strSSD.equals(""))
 				{
 					strSSD = "";
-					strErr +="SSD¤£¥iªÅ¥Õ<br>";
+					strErr +="SSDä¸å¯ç©ºç™½<br>";
 				}
-				else if (Long.parseLong(strSSD) <= Long.parseLong(strLimitDate))  //sansan»¡¥æ´Á¤p©ó¨t²Î¤é-7­n¥d,by Peggy 20230424 add
+				else if (Long.parseLong(strSSD) <= Long.parseLong(strLimitDate))  //sansanèªªäº¤æœŸå°æ–¼ç³»çµ±æ—¥-7è¦å¡,by Peggy 20230424 add
 				{
-					strErr +="SSD:"+strSSD+"¥²¶·¤j©ó"+strCHKDate+"<br>";
+					strErr +="SSD:"+strSSD+"å¿…é ˆå¤§æ–¼"+strCHKDate+"<br>";
 				}
 				else if (Long.parseLong(strSSD) <= Long.parseLong(strCHKDate))
 				{
-					strSSD=strCHKDate; //ª½±µ§ó·s BY Peggy 20221209
+					strSSD=strCHKDate; //ç›´æ¥æ›´æ–° BY Peggy 20221209
 				}
 				
 				if (strBIRegion ==null || strBIRegion.equals(""))
 				{
-					strErr += "BI Region¤£¥iªÅ¥Õ<br>";				
+					strErr += "BI Regionä¸å¯ç©ºç™½<br>";				
 				}
 				else
 				{
@@ -1363,7 +1363,7 @@ if (ACTIONCODE.equals("UPLOAD"))
 							bolExist = true;
 						}
 					}
-					if (!bolExist) strErr +=  "BI Region¥²¶·¬°"+BIRegionList.replace(";","©Î")+"<br>";				
+					if (!bolExist) strErr +=  "BI Regionå¿…é ˆç‚º"+BIRegionList.replace(";","æˆ–")+"<br>";				
 				}
 				
 				Statement state1=con.createStatement();
@@ -1376,19 +1376,19 @@ if (ACTIONCODE.equals("UPLOAD"))
 				else 
 				{ 
 					strLineType ="0"; 
-					strErr +="Line Type¥N½X¤£¥iªÅ¥Õ<br>";	
+					strErr +="Line Typeä»£ç¢¼ä¸å¯ç©ºç™½<br>";	
 				} 
 				rs1.close();
 				state1.close();
 				
 				//add by Peggy 20230116
 				strLineRemark="";
-				if (strCustID.equals("445296") || strEndCustID1.equals("445296"))  //«C®q¤W®õ¹q¤l¦³­­¤½¥q
+				if (strCustID.equals("445296") || strEndCustID1.equals("445296"))  //é’å³¶ä¸Šæ³°é›»å­æœ‰é™å…¬å¸
 				{
 					//if (strItemDesc.equals("MMBD4148CC-01 RFG") || strItemDesc.equals("MMBD4148CA-01 RFG") || strItemDesc.equals("BZT52B3V9-01 RHG") || strItemDesc.equals("BZT52B3V9S-01 RRG") || strItemDesc.equals("BZX84C11-01 RF") || strItemDesc.equals("BZX84C3V9-01 RF"))
-					if (strItemDesc.equals("MMBD4148CC-01 RFG") || strItemDesc.equals("MMBD4148CA-01 RFG") || strItemDesc.equals("BZT52B3V9-01 RHG") || strItemDesc.equals("BZT52B3V9S-01 RRG")) //nina»¡¨ú®øBZX84C3V9-01 RF,BZX84C11-01 RF by Peggy 20230523
+					if (strItemDesc.equals("MMBD4148CC-01 RFG") || strItemDesc.equals("MMBD4148CA-01 RFG") || strItemDesc.equals("BZT52B3V9-01 RHG") || strItemDesc.equals("BZT52B3V9S-01 RRG")) //ninaèªªå–æ¶ˆBZX84C3V9-01 RF,BZX84C11-01 RF by Peggy 20230523
 					{
-						strLineRemark ="³Æª`¥Îª÷½u";
+						strLineRemark ="å‚™æ³¨ç”¨é‡‘ç·š";
 					}
 				}
 
@@ -1526,7 +1526,7 @@ if (ACTIONCODE.equals("UPLOAD"))
 						
 			if (icnt ==0)
 			{ 
-				throw new Exception("¤W¶Ç¤º®e¿ù»~!");
+				throw new Exception("ä¸Šå‚³å…§å®¹éŒ¯èª¤!");
 			}
 		}
 	
@@ -1535,7 +1535,7 @@ if (ACTIONCODE.equals("UPLOAD"))
 	%>
 		</table>
 	<%				
-			out.println("<table width='90%' align='center'><tr><td align='center'><font style='color:#ff0000;font-family:¼Ğ·¢Åé;font-size:16px'>¤W¶Ç°Ê§@¥¢±Ñ¡A½Ğ¬¢¨t²ÎºŞ²z­û¡AÁÂÁÂ!</font></td></tr></table>");		
+			out.println("<table width='90%' align='center'><tr><td align='center'><font style='color:#ff0000;font-family:æ¨™æ¥·é«”;font-size:16px'>ä¸Šå‚³å‹•ä½œå¤±æ•—ï¼Œè«‹æ´½ç³»çµ±ç®¡ç†å“¡ï¼Œè¬è¬!</font></td></tr></table>");		
 		}
 		else
 		{
@@ -1730,30 +1730,30 @@ else if (ACTIONCODE.equals("DETAIL"))
 				i++;
 	%>
 				<td id="tdq<%=i%>" rowspan="<%=rs.getString("rowcnt")%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-size:11px" align="center">
-				<input type="button" name="btnRFQ<%=i%>" value="RFQ" style="font-size:11px;font-family: Tahoma,Georgia;" title="ÂàRFQ" onClick="toRFQ('../jsp/TSCCK3ToRFQUpload.jsp?TEMP_ID=<%=rs.getString("TEMP_ID")%>&INSERTFLAG=Y')">			
+				<input type="button" name="btnRFQ<%=i%>" value="RFQ" style="font-size:11px;font-family: Tahoma,Georgia;" title="è½‰RFQ" onClick="toRFQ('../jsp/TSCCK3ToRFQUpload.jsp?TEMP_ID=<%=rs.getString("TEMP_ID")%>&INSERTFLAG=Y')">			
 				&nbsp;
-				<input type="button" name="btn<%=i%>" value="Delete" style="font-size:11px;font-family: Tahoma,Georgia;" title="§R°£¸ê®Æ" onClick="delData('../jsp/TSCCK3ToRFQUpload.jsp?DELFLAG=Y&TEMP_ID=<%=rs.getString("TEMP_ID")%>')">
+				<input type="button" name="btn<%=i%>" value="Delete" style="font-size:11px;font-family: Tahoma,Georgia;" title="åˆªé™¤è³‡æ–™" onClick="delData('../jsp/TSCCK3ToRFQUpload.jsp?DELFLAG=Y&TEMP_ID=<%=rs.getString("TEMP_ID")%>')">
 				</td>
-				<td id="tda<%=i%>" rowspan="<%=rs.getString("rowcnt")%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-size:11px" onClick="javascript:location.href='TSCCK3ToRFQUpload.jsp?TEMP_ID=<%=rs.getString("TEMP_ID")%>&INSERTFLAG=Y'" title="«ö¤U·Æ¹«¥ªÁä,¶i¤JDetailµe­±"><%="("+rs.getString("customer_no")+")"+rs.getString("customer_name")%></td>
-				<td id="tdo<%=i%>" rowspan="<%=rs.getString("rowcnt")%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-size:11px" onClick="javascript:location.href='TSCCK3ToRFQUpload.jsp?TEMP_ID=<%=rs.getString("TEMP_ID")%>&INSERTFLAG=Y'" title="«ö¤U·Æ¹«¥ªÁä,¶i¤JDetailµe­±" align="center"><%=rs.getString("ship_to_org_id")%></td>								
-				<td id="tdc<%=i%>" rowspan="<%=rs.getString("rowcnt")%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-size:11px" onClick="javascript:location.href='TSCCK3ToRFQUpload.jsp?TEMP_ID=<%=rs.getString("TEMP_ID")%>&INSERTFLAG=Y'" title="«ö¤U·Æ¹«¥ªÁä,¶i¤JDetailµe­±" align="center"><%=rs.getString("rfq_type")%></td>								
+				<td id="tda<%=i%>" rowspan="<%=rs.getString("rowcnt")%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-size:11px" onClick="javascript:location.href='TSCCK3ToRFQUpload.jsp?TEMP_ID=<%=rs.getString("TEMP_ID")%>&INSERTFLAG=Y'" title="æŒ‰ä¸‹æ»‘é¼ å·¦éµ,é€²å…¥Detailç•«é¢"><%="("+rs.getString("customer_no")+")"+rs.getString("customer_name")%></td>
+				<td id="tdo<%=i%>" rowspan="<%=rs.getString("rowcnt")%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-size:11px" onClick="javascript:location.href='TSCCK3ToRFQUpload.jsp?TEMP_ID=<%=rs.getString("TEMP_ID")%>&INSERTFLAG=Y'" title="æŒ‰ä¸‹æ»‘é¼ å·¦éµ,é€²å…¥Detailç•«é¢" align="center"><%=rs.getString("ship_to_org_id")%></td>								
+				<td id="tdc<%=i%>" rowspan="<%=rs.getString("rowcnt")%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-size:11px" onClick="javascript:location.href='TSCCK3ToRFQUpload.jsp?TEMP_ID=<%=rs.getString("TEMP_ID")%>&INSERTFLAG=Y'" title="æŒ‰ä¸‹æ»‘é¼ å·¦éµ,é€²å…¥Detailç•«é¢" align="center"><%=rs.getString("rfq_type")%></td>								
 	<%
 				tempid=rs.getString("TEMP_ID");				
 			}
 	%>
-				<td id="tdi<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-size:11px" onClick="javascript:location.href='TSCCK3ToRFQUpload.jsp?TEMP_ID=<%=rs.getString("TEMP_ID")%>&INSERTFLAG=Y'" title="«ö¤U·Æ¹«¥ªÁä,¶i¤JDetailµe­±" align="center"><%=rs.getString("order_type")%></td>								
-				<td id="tdb<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-size:11px" onClick="javascript:location.href='TSCCK3ToRFQUpload.jsp?TEMP_ID=<%=rs.getString("TEMP_ID")%>&INSERTFLAG=Y'" title="«ö¤U·Æ¹«¥ªÁä,¶i¤JDetailµe­±"><%=rs.getString("CUSTOMER_PO_LINE_NUMBER")%></td>								
-				<td id="tdd<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-size:11px" onClick="javascript:location.href='TSCCK3ToRFQUpload.jsp?TEMP_ID=<%=rs.getString("TEMP_ID")%>&INSERTFLAG=Y'" title="«ö¤U·Æ¹«¥ªÁä,¶i¤JDetailµe­±"><%=rs.getString("description")%></td>								
-				<td id="tde<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-size:11px" onClick="javascript:location.href='TSCCK3ToRFQUpload.jsp?TEMP_ID=<%=rs.getString("TEMP_ID")%>&INSERTFLAG=Y'" title="«ö¤U·Æ¹«¥ªÁä,¶i¤JDetailµe­±"><%=(rs.getString("cust_item_name")==null?"":rs.getString("cust_item_name").replace("&nbsp;"," "))%></td>								
-				<td id="tdf<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-size:11px" onClick="javascript:location.href='TSCCK3ToRFQUpload.jsp?TEMP_ID=<%=rs.getString("TEMP_ID")%>&INSERTFLAG=Y'" title="«ö¤U·Æ¹«¥ªÁä,¶i¤JDetailµe­±" align="right"><%=(new DecimalFormat("##,##0.######")).format(rs.getDouble("qty"))%></td>								
-				<td id="tdg<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-size:11px" onClick="javascript:location.href='TSCCK3ToRFQUpload.jsp?TEMP_ID=<%=rs.getString("TEMP_ID")%>&INSERTFLAG=Y'" title="«ö¤U·Æ¹«¥ªÁä,¶i¤JDetailµe­±" align="right"><%=(new DecimalFormat("##,##0.######")).format(rs.getDouble("selling_price"))%></td>								
-				<td id="tdh<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-size:11px" onClick="javascript:location.href='TSCCK3ToRFQUpload.jsp?TEMP_ID=<%=rs.getString("TEMP_ID")%>&INSERTFLAG=Y'" title="«ö¤U·Æ¹«¥ªÁä,¶i¤JDetailµe­±" align="center"><%=rs.getString("request_date")%></td>								
-				<td id="tdj<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-size:11px" onClick="javascript:location.href='TSCCK3ToRFQUpload.jsp?TEMP_ID=<%=rs.getString("TEMP_ID")%>&INSERTFLAG=Y'" title="«ö¤U·Æ¹«¥ªÁä,¶i¤JDetailµe­±" align="center"><%=(rs.getString("shipping_method")==null?"":rs.getString("shipping_method"))%></td>								
-				<td id="tdr<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-size:11px" onClick="javascript:location.href='TSCCK3ToRFQUpload.jsp?TEMP_ID=<%=rs.getString("TEMP_ID")%>&INSERTFLAG=Y'" title="«ö¤U·Æ¹«¥ªÁä,¶i¤JDetailµe­±" align="center"><%=(rs.getString("fob")==null?"":rs.getString("fob"))%></td>								
-				<td id="tdm<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-size:11px" onClick="javascript:location.href='TSCCK3ToRFQUpload.jsp?TEMP_ID=<%=rs.getString("TEMP_ID")%>&INSERTFLAG=Y'" title="«ö¤U·Æ¹«¥ªÁä,¶i¤JDetailµe­±" align="center"><%=(rs.getString("end_customer_id")==null?"":rs.getString("end_customer_id"))%></td>								
-				<td id="tdk<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-size:11px" onClick="javascript:location.href='TSCCK3ToRFQUpload.jsp?TEMP_ID=<%=rs.getString("TEMP_ID")%>&INSERTFLAG=Y'" title="«ö¤U·Æ¹«¥ªÁä,¶i¤JDetailµe­±" align="center"><%=(rs.getString("end_customer")==null?"":rs.getString("end_customer"))%></td>								
-				<td id="tdl<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-size:11px" onClick="javascript:location.href='TSCCK3ToRFQUpload.jsp?TEMP_ID=<%=rs.getString("TEMP_ID")%>&INSERTFLAG=Y'" title="«ö¤U·Æ¹«¥ªÁä,¶i¤JDetailµe­±" align="center"><%=rs.getString("upload_by")%></td>								
-				<td id="tdn<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-size:11px" onClick="javascript:location.href='TSCCK3ToRFQUpload.jsp?TEMP_ID=<%=rs.getString("TEMP_ID")%>&INSERTFLAG=Y'" title="«ö¤U·Æ¹«¥ªÁä,¶i¤JDetailµe­±" align="center"><%=rs.getString("upload_date")%></td>								
+				<td id="tdi<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-size:11px" onClick="javascript:location.href='TSCCK3ToRFQUpload.jsp?TEMP_ID=<%=rs.getString("TEMP_ID")%>&INSERTFLAG=Y'" title="æŒ‰ä¸‹æ»‘é¼ å·¦éµ,é€²å…¥Detailç•«é¢" align="center"><%=rs.getString("order_type")%></td>								
+				<td id="tdb<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-size:11px" onClick="javascript:location.href='TSCCK3ToRFQUpload.jsp?TEMP_ID=<%=rs.getString("TEMP_ID")%>&INSERTFLAG=Y'" title="æŒ‰ä¸‹æ»‘é¼ å·¦éµ,é€²å…¥Detailç•«é¢"><%=rs.getString("CUSTOMER_PO_LINE_NUMBER")%></td>								
+				<td id="tdd<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-size:11px" onClick="javascript:location.href='TSCCK3ToRFQUpload.jsp?TEMP_ID=<%=rs.getString("TEMP_ID")%>&INSERTFLAG=Y'" title="æŒ‰ä¸‹æ»‘é¼ å·¦éµ,é€²å…¥Detailç•«é¢"><%=rs.getString("description")%></td>								
+				<td id="tde<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-size:11px" onClick="javascript:location.href='TSCCK3ToRFQUpload.jsp?TEMP_ID=<%=rs.getString("TEMP_ID")%>&INSERTFLAG=Y'" title="æŒ‰ä¸‹æ»‘é¼ å·¦éµ,é€²å…¥Detailç•«é¢"><%=(rs.getString("cust_item_name")==null?"":rs.getString("cust_item_name").replace("&nbsp;"," "))%></td>								
+				<td id="tdf<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-size:11px" onClick="javascript:location.href='TSCCK3ToRFQUpload.jsp?TEMP_ID=<%=rs.getString("TEMP_ID")%>&INSERTFLAG=Y'" title="æŒ‰ä¸‹æ»‘é¼ å·¦éµ,é€²å…¥Detailç•«é¢" align="right"><%=(new DecimalFormat("##,##0.######")).format(rs.getDouble("qty"))%></td>								
+				<td id="tdg<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-size:11px" onClick="javascript:location.href='TSCCK3ToRFQUpload.jsp?TEMP_ID=<%=rs.getString("TEMP_ID")%>&INSERTFLAG=Y'" title="æŒ‰ä¸‹æ»‘é¼ å·¦éµ,é€²å…¥Detailç•«é¢" align="right"><%=(new DecimalFormat("##,##0.######")).format(rs.getDouble("selling_price"))%></td>								
+				<td id="tdh<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-size:11px" onClick="javascript:location.href='TSCCK3ToRFQUpload.jsp?TEMP_ID=<%=rs.getString("TEMP_ID")%>&INSERTFLAG=Y'" title="æŒ‰ä¸‹æ»‘é¼ å·¦éµ,é€²å…¥Detailç•«é¢" align="center"><%=rs.getString("request_date")%></td>								
+				<td id="tdj<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-size:11px" onClick="javascript:location.href='TSCCK3ToRFQUpload.jsp?TEMP_ID=<%=rs.getString("TEMP_ID")%>&INSERTFLAG=Y'" title="æŒ‰ä¸‹æ»‘é¼ å·¦éµ,é€²å…¥Detailç•«é¢" align="center"><%=(rs.getString("shipping_method")==null?"":rs.getString("shipping_method"))%></td>								
+				<td id="tdr<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-size:11px" onClick="javascript:location.href='TSCCK3ToRFQUpload.jsp?TEMP_ID=<%=rs.getString("TEMP_ID")%>&INSERTFLAG=Y'" title="æŒ‰ä¸‹æ»‘é¼ å·¦éµ,é€²å…¥Detailç•«é¢" align="center"><%=(rs.getString("fob")==null?"":rs.getString("fob"))%></td>								
+				<td id="tdm<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-size:11px" onClick="javascript:location.href='TSCCK3ToRFQUpload.jsp?TEMP_ID=<%=rs.getString("TEMP_ID")%>&INSERTFLAG=Y'" title="æŒ‰ä¸‹æ»‘é¼ å·¦éµ,é€²å…¥Detailç•«é¢" align="center"><%=(rs.getString("end_customer_id")==null?"":rs.getString("end_customer_id"))%></td>								
+				<td id="tdk<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-size:11px" onClick="javascript:location.href='TSCCK3ToRFQUpload.jsp?TEMP_ID=<%=rs.getString("TEMP_ID")%>&INSERTFLAG=Y'" title="æŒ‰ä¸‹æ»‘é¼ å·¦éµ,é€²å…¥Detailç•«é¢" align="center"><%=(rs.getString("end_customer")==null?"":rs.getString("end_customer"))%></td>								
+				<td id="tdl<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-size:11px" onClick="javascript:location.href='TSCCK3ToRFQUpload.jsp?TEMP_ID=<%=rs.getString("TEMP_ID")%>&INSERTFLAG=Y'" title="æŒ‰ä¸‹æ»‘é¼ å·¦éµ,é€²å…¥Detailç•«é¢" align="center"><%=rs.getString("upload_by")%></td>								
+				<td id="tdn<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-size:11px" onClick="javascript:location.href='TSCCK3ToRFQUpload.jsp?TEMP_ID=<%=rs.getString("TEMP_ID")%>&INSERTFLAG=Y'" title="æŒ‰ä¸‹æ»‘é¼ å·¦éµ,é€²å…¥Detailç•«é¢" align="center"><%=rs.getString("upload_date")%></td>								
 			</tr>
 	<%
 		}
@@ -1771,7 +1771,7 @@ else if (ACTIONCODE.equals("DETAIL"))
 }
 %>
 
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->  
+<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->  
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <input name="ROWCOLOR" type="HIDDEN" value="<%=rowColor%>">	
 <input name="HIGHLIGHTOLOR" type="HIDDEN" value="<%=highlightColor%>">	

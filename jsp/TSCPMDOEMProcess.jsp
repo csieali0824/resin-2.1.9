@@ -1,15 +1,15 @@
-<!-- 20150209 Peggy,·LøÊ3292,¥_·s¬ì3867,ª@¶§°ê»Ú2012¤T®a¥H¤ù­p»ù-->
-<!-- 20150608 Peggy,µØ®õ¹q¤l3915¥H¤ù­p»ù-->
-<!-- 20160914 Peggy,·s¼Wbill_sequence_id-->
-<!-- 20161107 Peggy,·s¼WPRD¥~¥]-->
-<!-- 20170817 Peggy,·s¼W¼È¤£µo®Æ¿ï¶µ-->
-<!-- 20171012 Peggy,·s¼WRD3¤uµ{¤J®w¥æ©ö-->
-<!-- 20180131 Peggy,Date Code=HOLD,LINE#±q100½s°_,¥H§Q±Æ§Ç-->
-<!-- 20180724 Peggy,·s¼W´¹¤ù¤ù¸¹Äæ¦ìfor4056¤Ñ¤ôµØ¤Ñ¶°¹Î-->
-<%@ page contentType="text/html; charset=utf-8" pageEncoding="big5" language="java" import="java.sql.*,java.util.*,java.text.*" %>
-<!--=============¥H¤U°Ï¬q¬°¦w¥ş»{ÃÒ¾÷¨î==========-->
+<!-- 20150209 Peggy,å¾®é‘«3292,åŒ—æ–°ç§‘3867,æ˜‡é™½åœ‹éš›2012ä¸‰å®¶ä»¥ç‰‡è¨ˆåƒ¹-->
+<!-- 20150608 Peggy,è¯æ³°é›»å­3915ä»¥ç‰‡è¨ˆåƒ¹-->
+<!-- 20160914 Peggy,æ–°å¢bill_sequence_id-->
+<!-- 20161107 Peggy,æ–°å¢PRDå¤–åŒ…-->
+<!-- 20170817 Peggy,æ–°å¢æš«ä¸ç™¼æ–™é¸é …-->
+<!-- 20171012 Peggy,æ–°å¢RD3å·¥ç¨‹å…¥åº«äº¤æ˜“-->
+<!-- 20180131 Peggy,Date Code=HOLD,LINE#å¾100ç·¨èµ·,ä»¥åˆ©æ’åº-->
+<!-- 20180724 Peggy,æ–°å¢æ™¶ç‰‡ç‰‡è™Ÿæ¬„ä½for4056å¤©æ°´è¯å¤©é›†åœ˜-->
+<%@ page contentType="text/html; charset=utf-8"  language="java" import="java.sql.*,java.util.*,java.text.*" %>
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå®‰å…¨èªè­‰æ©Ÿåˆ¶==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
 <%@ page import="SalesDRQPageHeaderBean" %>
@@ -144,7 +144,7 @@ try
 	if (CHANGE_REASON==null) CHANGE_REASON="";	
 	int data_cnt=0,s_week=-1,s_month=-1,e_week=-1,e_month=-1,s_year=-1,e_year=-1;
 	
-	// ¬°¦s¤J¤é´Á®æ¦¡¬°US¦Ò¶q,±N»y¨t¥ı³]¬°¬ü°ê
+	// ç‚ºå­˜å…¥æ—¥æœŸæ ¼å¼ç‚ºUSè€ƒé‡,å°‡èªç³»å…ˆè¨­ç‚ºç¾åœ‹
 	String sqlNLS="alter SESSION set NLS_LANGUAGE = 'AMERICAN' ";     
 	PreparedStatement pstmtNLS=con.prepareStatement(sqlNLS);
 	pstmtNLS.executeUpdate(); 
@@ -166,7 +166,7 @@ try
 						out.println("<tr><td width='30%'>&nbsp;</td>");
 						out.println("<td>");
 						out.println("<table align='center' width='100%' border='1' cellSpacing='0' bordercolordark='#CCCC99'  cellPadding='1'>");
-						out.println("<tr><td style='font-family:¼Ğ·¢Åé;color:'#000000'>¤u³æ¸¹½X</td><td style='font-family:¼Ğ·¢Åé;color:'#000000'>»â®Æ°Ê§@</td></tr>");
+						out.println("<tr><td style='font-family:æ¨™æ¥·é«”;color:'#000000'>å·¥å–®è™Ÿç¢¼</td><td style='font-family:æ¨™æ¥·é«”;color:'#000000'>é ˜æ–™å‹•ä½œ</td></tr>");
 					}
 					INV_DATE = request.getParameter("date"+check[i]);
 					REQUESTNO = request.getParameter("REQUESTNO"+check[i]);
@@ -188,8 +188,8 @@ try
 						" where REQUEST_NO='" + REQUESTNO+"' and VERSION_ID='"+VERSIONID+"'";
 					//out.println(sql);
 					PreparedStatement pstmt=con.prepareStatement(sql);
-					pstmt.setString(1,userID);           //µo®Æ¤H­û
-					pstmt.setString(2,userID);           //³Ì«á²§°ÊªÌ
+					pstmt.setString(1,userID);           //ç™¼æ–™äººå“¡
+					pstmt.setString(2,userID);           //æœ€å¾Œç•°å‹•è€…
 					pstmt.executeUpdate();
 					pstmt.close();
 					con.commit();
@@ -202,15 +202,15 @@ try
 					cs3.execute();
 					String WIP_MISC_Status = cs3.getString(3);
 					cs3.close();
-					out.println("<tr><td>"+WIPNO+"</td><td>"+(WIP_MISC_Status.equals("S")?"<font style='color:#0000ff;font-family:¼Ğ·¢Åé'>¦¨¥\</font>":"<font style='color:#ff0000;font-family:¼Ğ·¢Åé'>¥¢±Ñ</font>")+"</td></tr>");
+					out.println("<tr><td>"+WIPNO+"</td><td>"+(WIP_MISC_Status.equals("S")?"<font style='color:#0000ff;font-family:æ¨™æ¥·é«”'>æˆåŠŸ</font>":"<font style='color:#ff0000;font-family:æ¨™æ¥·é«”'>å¤±æ•—</font>")+"</td></tr>");
 					*/
 				}
 				out.println("</table></td><td width='30%'>&nbsp;</td></tr>");
-				out.println("<tr height='100'><td>&nbsp;</td><td align='center'><A href='/oradds/ORADDSMainMenu.jsp'><font style='font-size:18px;font-family:¼Ğ·¢Åé'>¦^­º­¶</font></A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF='TSCPMDOEMInventoryTransaction.jsp'><font style='font-size:18px;font-family:¼Ğ·¢Åé'>¦^¤u³æ»â®Æ½T»{µe­±</font></A></td><td>&nbsp;</td></table>");
+				out.println("<tr height='100'><td>&nbsp;</td><td align='center'><A href='/oradds/ORADDSMainMenu.jsp'><font style='font-size:18px;font-family:æ¨™æ¥·é«”'>å›é¦–é </font></A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<A HREF='TSCPMDOEMInventoryTransaction.jsp'><font style='font-size:18px;font-family:æ¨™æ¥·é«”'>å›å·¥å–®é ˜æ–™ç¢ºèªç•«é¢</font></A></td><td>&nbsp;</td></table>");
 			}
 			catch(Exception e)
 			{
-				out.println("»â®Æ¥æ©ö¥¢±Ñ,½Ğ¬¢¨t²ÎºŞ²z¤H­û,ÁÂÁÂ!("+e.getMessage()+")");
+				out.println("é ˜æ–™äº¤æ˜“å¤±æ•—,è«‹æ´½ç³»çµ±ç®¡ç†äººå“¡,è¬è¬!("+e.getMessage()+")");
 				con.rollback();
 			}
 		} 
@@ -230,7 +230,7 @@ try
 			{
 				if (!ACTIONID.equals("006") &&  !ACTIONID.equals("007"))
 				{
-					throw new Exception("¬dµLstatus code!!");
+					throw new Exception("æŸ¥ç„¡status code!!");
 				}
 			}
 			rsa.close();
@@ -238,18 +238,18 @@ try
 		}
 		catch(Exception e)
 		{
-			ACTIONID=""; //²M°£ACTIONID
+			ACTIONID=""; //æ¸…é™¤ACTIONID
 			out.println("Exception1:"+e.getMessage());
 		}
 		
-		//§¹¦¨¦sÀÉ«á¦^´_		   
-		//°e¥X¯ó½Z or °e¥X¥Ó½Ğ
+		//å®Œæˆå­˜æª”å¾Œå›å¾©		   
+		//é€å‡ºè‰ç¨¿ or é€å‡ºç”³è«‹
 		if (ACTIONID.equals("001") || ACTIONID.equals("002"))
 		{
 			if (WIPTYPE.equals("01") || WIPTYPE.equals("02"))
 			{
-				//ÀË¬d³æ»ù³æ¦ì add by Peggy 20130522
-				if (WIPTYPE.equals("01"))  //¶q²£
+				//æª¢æŸ¥å–®åƒ¹å–®ä½ add by Peggy 20130522
+				if (WIPTYPE.equals("01"))  //é‡ç”¢
 				{
 					String sourcePriceUom="";
 					sql = " SELECT distinct decode( LOWER(a.uom),'kpcs','k',LOWER(a.uom)) UOM FROM oraddman.tspmd_item_quotation a  "+
@@ -267,27 +267,27 @@ try
 					
 					if (!PRICEUOM.equals(sourcePriceUom) || PRICEUOM.equals(""))
 					{
-						throw new Exception("³æ»ù³æ¦ì¿ù»~,¥¿½TÀ³¬°"+sourcePriceUom+"!!");
+						throw new Exception("å–®åƒ¹å–®ä½éŒ¯èª¤,æ­£ç¢ºæ‡‰ç‚º"+sourcePriceUom+"!!");
 					}
 				}
-				else if (WIPTYPE.equals("02")) //¤uµ{
+				else if (WIPTYPE.equals("02")) //å·¥ç¨‹
 				{
 					if (!PACKAGE.toUpperCase().equals("WAFER"))
 					{
 						//if (CURRENCYCODE.equals("TWD") && !PRICEUOM.toLowerCase().equals("ea"))
-						if (CURRENCYCODE.equals("TWD") && !PRICEUOM.toLowerCase().equals("ea") && !SUPPLIERNO.equals("3292") && !SUPPLIERNO.equals("3867") && !SUPPLIERNO.equals("2012") && !SUPPLIERNO.equals("3915") && !SUPPLIERNO.equals("3212")  && !SUPPLIERNO.equals("4682"))  //add 3212­Zª¿ by Peggy 20201201,add 4682·Lª¿ by Peggy 20220516
+						if (CURRENCYCODE.equals("TWD") && !PRICEUOM.toLowerCase().equals("ea") && !SUPPLIERNO.equals("3292") && !SUPPLIERNO.equals("3867") && !SUPPLIERNO.equals("2012") && !SUPPLIERNO.equals("3915") && !SUPPLIERNO.equals("3212")  && !SUPPLIERNO.equals("4682"))  //add 3212èŒ‚çŸ½ by Peggy 20201201,add 4682å¾®çŸ½ by Peggy 20220516
 						{
-							throw new Exception("³æ»ù³æ¦ì¿ù»~,¥¿½TÀ³¬°ea!!");
+							throw new Exception("å–®åƒ¹å–®ä½éŒ¯èª¤,æ­£ç¢ºæ‡‰ç‚ºea!!");
 						}
 						else if (!CURRENCYCODE.equals("TWD") && PRICEUOM.toLowerCase().equals("ea"))
 						{
-							throw new Exception("³æ»ù³æ¦ì¿ù»~,¥¿½TÀ³¬°k!!");
+							throw new Exception("å–®åƒ¹å–®ä½éŒ¯èª¤,æ­£ç¢ºæ‡‰ç‚ºk!!");
 						}
 					}
 				}
-				//else if (WIPTYPE.equals("03") && !PRICEUOM.toLowerCase().equals("k")) //­«¤u
+				//else if (WIPTYPE.equals("03") && !PRICEUOM.toLowerCase().equals("k")) //é‡å·¥
 				//{
-				//	throw new Exception("³æ»ù³æ¦ì¿ù»~,¥¿½TÀ³¬°k!!");
+				//	throw new Exception("å–®åƒ¹å–®ä½éŒ¯èª¤,æ­£ç¢ºæ‡‰ç‚ºk!!");
 				//}
 				
 				if (!PACKAGE.equals("WAFER"))
@@ -378,17 +378,17 @@ try
 						rs1=pstmt.executeQuery();	
 						if (!rs1.next())
 						{
-							ERR_DC_LIST += DateCode+"¤£²Å¦X"+ITEMDESC+" ªºDate Code Rule<br>";
+							ERR_DC_LIST += DateCode+"ä¸ç¬¦åˆ"+ITEMDESC+" çš„Date Code Rule<br>";
 						}
 						else if (rs1.getInt(2)==0)
 						{
-							ERR_DC_LIST += DateCode+"©P§O¦³»~,½Ğ­«·s½T»{!<br>";
+							ERR_DC_LIST += DateCode+"å‘¨åˆ¥æœ‰èª¤,è«‹é‡æ–°ç¢ºèª!<br>";
 						}
 						else if (rs1.getString(3)!=null)
 						{
 							if (rs1.getString(3).length()!=DateCode.length())
 							{
-								ERR_DC_LIST += ITEMDESC+" ªºDate Code ©³½u¦ì¸m¦³»~<br>";
+								ERR_DC_LIST += ITEMDESC+" çš„Date Code åº•ç·šä½ç½®æœ‰èª¤<br>";
 							}
 							else
 							{
@@ -396,11 +396,11 @@ try
 								{	
 									if (DateCode.substring(x,x+1).equals("_") && !rs1.getString(3).substring(x,x+1).equals("_"))
 									{
-										ERR_DC_LIST += ITEMDESC+" ªºDate Code ©³½u¦ì¸m¦³»~.<br>";
+										ERR_DC_LIST += ITEMDESC+" çš„Date Code åº•ç·šä½ç½®æœ‰èª¤.<br>";
 									}
 									else if (!DateCode.substring(x,x+1).equals("_") && rs1.getString(3).substring(x,x+1).equals("_"))
 									{
-										ERR_DC_LIST += ITEMDESC+" ªºDate Code ©³½u¦ì¸m¦³»~..<br>";
+										ERR_DC_LIST += ITEMDESC+" çš„Date Code åº•ç·šä½ç½®æœ‰èª¤..<br>";
 									}
 								}
 							}
@@ -419,7 +419,7 @@ try
 			{
 				if (PROGRAMNAME.equals("F1-001") && REQUESTNO.equals(""))
 				{
-					//¨ú±o¥Ó½Ğ³æ¸¹
+					//å–å¾—ç”³è«‹å–®è™Ÿ
 					CallableStatement cs3 = con.prepareCall("{call tsc_pmd_get_requestno(?,?)}");
 					cs3.setString(1,"OEM"); 
 					cs3.registerOutParameter(2, Types.VARCHAR);
@@ -432,33 +432,33 @@ try
 					/*
 					sql = " delete from oraddman.tspmd_oem_headers_all a  where a.REQUEST_NO =? and a.VERSION_ID =? and a.status ='Reject'";
 					PreparedStatement pstmt=con.prepareStatement(sql);
-					pstmt.setString(1,REQUESTNO);   //¥Ó½Ğ³æ¸¹
-					pstmt.setString(2,VERSIONID);   //ª©¦¸
+					pstmt.setString(1,REQUESTNO);   //ç”³è«‹å–®è™Ÿ
+					pstmt.setString(2,VERSIONID);   //ç‰ˆæ¬¡
 					if (pstmt.executeUpdate()>0)
 					{
 						sql = " delete from oraddman.tspmd_oem_lines_all a  where a.REQUEST_NO =? and a.VERSION_ID =?";
 						pstmt=con.prepareStatement(sql);
-						pstmt.setString(1,REQUESTNO);   //¥Ó½Ğ³æ¸¹
-						pstmt.setString(2,VERSIONID);   //ª©¦¸
+						pstmt.setString(1,REQUESTNO);   //ç”³è«‹å–®è™Ÿ
+						pstmt.setString(2,VERSIONID);   //ç‰ˆæ¬¡
 						pstmt.executeUpdate();
 					}
 					else
 					{
-						throw new Exception("¥Ó½Ğ³æª¬ºA¤£²Å¦X­×§ï±ø¥ó!!");
+						throw new Exception("ç”³è«‹å–®ç‹€æ…‹ä¸ç¬¦åˆä¿®æ”¹æ¢ä»¶!!");
 					}
 					*/
 					sql = " update oraddman.tspmd_oem_headers_all set LOCK_FLAG='Y' where REQUEST_NO =? and VERSION_ID =? and status ='Reject'";
 					PreparedStatement pstmt=con.prepareStatement(sql);
-					pstmt.setString(1,REQUESTNO);   //¥Ó½Ğ³æ¸¹
-					pstmt.setString(2,ORIGVERSIONID);   //ª©¦¸
+					pstmt.setString(1,REQUESTNO);   //ç”³è«‹å–®è™Ÿ
+					pstmt.setString(2,ORIGVERSIONID);   //ç‰ˆæ¬¡
 					pstmt.executeUpdate();					
 				}
 				else if (PROGRAMNAME.equals(WIPCHANGE) && !REQUESTNO.equals(""))
 				{
 						sql = " update oraddman.tspmd_oem_headers_all set LOCK_FLAG='Y' where REQUEST_NO =? and VERSION_ID =? and status ='Approved'";
 						PreparedStatement pstmt=con.prepareStatement(sql);
-						pstmt.setString(1,REQUESTNO);   //¥Ó½Ğ³æ¸¹
-						pstmt.setString(2,ORIGVERSIONID);   //ª©¦¸
+						pstmt.setString(1,REQUESTNO);   //ç”³è«‹å–®è™Ÿ
+						pstmt.setString(2,ORIGVERSIONID);   //ç‰ˆæ¬¡
 						pstmt.executeUpdate();
 				}
 				sql=" insert into oraddman.tspmd_oem_headers_all(request_no, version_id,wip_type_no, vendor_code, vendor_name,"+
@@ -474,13 +474,13 @@ try
 						  " values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,to_date(?,'yyyy-mm-dd'),?,?,sysdate,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,to_date(?,'yyyymmdd'),?,TSC_PMD_PKG.GET_VENDOR_ITEM(?,?),?,?)";
 				//out.println(sql);
 				PreparedStatement pstmt=con.prepareStatement(sql);
-				pstmt.setString(1,REQUESTNO);         //¥Ó½Ğ³æ¸¹
-				pstmt.setInt(2,Integer.parseInt(VERSIONID));                  //ª©¦¸
-				pstmt.setString(3,WIPTYPE);         //¤u³æÃş«¬
-				pstmt.setString(4,SUPPLIERNO);      //¨ÑÀ³°Ó¥N½X
-				pstmt.setString(5,SUPPLIERNAME);    //¨ÑÀ³°Ó¦WºÙ
-				pstmt.setString(6,SUPPLIERCONTACT); //¨ÑÀ³°Ó¤§Ápµ¸¤H
-				pstmt.setString(7,ISSUEDATE);       //»İ¨D¤é
+				pstmt.setString(1,REQUESTNO);         //ç”³è«‹å–®è™Ÿ
+				pstmt.setInt(2,Integer.parseInt(VERSIONID));                  //ç‰ˆæ¬¡
+				pstmt.setString(3,WIPTYPE);         //å·¥å–®é¡å‹
+				pstmt.setString(4,SUPPLIERNO);      //ä¾›æ‡‰å•†ä»£ç¢¼
+				pstmt.setString(5,SUPPLIERNAME);    //ä¾›æ‡‰å•†åç¨±
+				pstmt.setString(6,SUPPLIERCONTACT); //ä¾›æ‡‰å•†ä¹‹è¯çµ¡äºº
+				pstmt.setString(7,ISSUEDATE);       //éœ€æ±‚æ—¥
 				pstmt.setInt(8,Integer.parseInt(ITEMID));             //ITEMID
 				pstmt.setString(9,ITEMNAME);        //ITEMNAME
 				pstmt.setString(10,ITEMDESC);        //ITEMDESC 
@@ -505,17 +505,17 @@ try
 				pstmt.setString(28,CREATORID);       //created_by
 				pstmt.setString(29,CREATOR);        //USERNAME
 				pstmt.setString(30,userID);         //USERID
-				pstmt.setString(31,SUBINVENTORY);   //§¹¤u¤J®w­Ü
-				pstmt.setString(32,CURRENCYCODE);   //¹ô§O
-				pstmt.setString(33,(ORIGVERSIONID.equals("")||ORIGVERSIONID.equals("null")?null:ORIGVERSIONID));  //­ìª©¦¸
+				pstmt.setString(31,SUBINVENTORY);   //å®Œå·¥å…¥åº«å€‰
+				pstmt.setString(32,CURRENCYCODE);   //å¹£åˆ¥
+				pstmt.setString(33,(ORIGVERSIONID.equals("")||ORIGVERSIONID.equals("null")?null:ORIGVERSIONID));  //åŸç‰ˆæ¬¡
 				pstmt.setString(34,(WIPNO.equals("")||WIPNO.equals("null")?null:WIPNO));          //WIP NO
 				pstmt.setString(35,(PRNO.equals("")||PRNO.equals("null")?null:PRNO));           //PR NO
 				pstmt.setString(36,(WIPID.equals("")||WIPID.equals("null")?null:WIPID));          //WIP ENTITY ID
 				pstmt.setString(37,"N");           //LOCK FLAG
-				pstmt.setString(38,PRICEUOM);      //³æ»ù³æ¦ì
+				pstmt.setString(38,PRICEUOM);      //å–®åƒ¹å–®ä½
 				pstmt.setString(39,VENDOR_SITE_ID); //VENDOR_SITE_ID
 				pstmt.setString(40,(PONO.equals("")||PONO.equals("null")?null:PONO));           //PR NO
-				pstmt.setString(41,totChipQty);    //µo®ÆÁ`¶q
+				pstmt.setString(41,totChipQty);    //ç™¼æ–™ç¸½é‡
 				pstmt.setString(42,(DIE_ID.length >1)?DIE_ID[1]:null);  //DIEID,add by Peggy 20121009
 				pstmt.setString(43,(DIE_NAME.length>1)?DIE_NAME[1]:null);               //DIENAME,add by Peggy 20121009
 				pstmt.setString(44,DIE_QTY);        //add by Peggy 20121009
@@ -524,7 +524,7 @@ try
 				pstmt.setString(47,PROD_GROUP);             //add by Peggy 20161107
 				pstmt.setString(48,COMPLETEDATE);           //add by Peggy 20170817
 				pstmt.setString(49,(WIPNO.equals("")||WIPNO.equals("null")?WIP_ISSUE_FLAG:(WIPNO.startsWith("W-")?"Y":WIP_ISSUE_FLAG)));        //add by Peggy 20170817
-				pstmt.setString(50,SUPPLIERNO);            //¨ÑÀ³°Ó¥N½X
+				pstmt.setString(50,SUPPLIERNO);            //ä¾›æ‡‰å•†ä»£ç¢¼
 				pstmt.setInt(51,Integer.parseInt(ITEMID));  //ITEMID
 				pstmt.setString(52,FSM);      //FSM,ADD BY PEGGY 20230426
 				pstmt.setString(53,RINGCUT);  //RING CUT BY PEGGY 20230426						
@@ -560,10 +560,10 @@ try
 					if (DIE_MODE==null || DIE_MODE.equals("--")) DIE_MODE="";
 									
 					
-					//¦¨«~­«¤u¤u³æ¤£ÀË¬dfrom esther issue by Peggy 20201207
+					//æˆå“é‡å·¥å·¥å–®ä¸æª¢æŸ¥from esther issue by Peggy 20201207
 					if ((!WIPTYPE.equals("03") && !WIPTYPE.equals("05")) || ITEMNAME.length()<22)
 					{
-						//ÀË¬ddate code¬O§_­«½Æ,add by Peggy 20200925
+						//æª¢æŸ¥date codeæ˜¯å¦é‡è¤‡,add by Peggy 20200925
 						sql = " select LISTAGG(a.wip_no,',') WITHIN GROUP (ORDER BY a.wip_no) WIP_NO_LIST"+
 							  " from oraddman.tspmd_oem_headers_all a,oraddman.tspmd_oem_lines_all b"+
 							  " where a.request_no=b.request_no"+
@@ -592,7 +592,7 @@ try
 						{
 							if (rsk.getString(1) != null)
 							{
-								throw new Exception("µo²{¿ù»~=>D/C:"+DateCode+" ¦b¤u³æ"+rsk.getString(1)+"¤w¨Ï¥Î,½Ğ­«·s½T»{!!");
+								throw new Exception("ç™¼ç¾éŒ¯èª¤=>D/C:"+DateCode+" åœ¨å·¥å–®"+rsk.getString(1)+"å·²ä½¿ç”¨,è«‹é‡æ–°ç¢ºèª!!");
 							}
 						}
 						rsk.close();	
@@ -603,18 +603,18 @@ try
 						sql=" insert into oraddman.tspmd_oem_lines_all(request_no,version_id, line_no, lot_number, wafer_qty, chip_qty,date_code, completion_date, creation_date, created_by,last_update_date, last_updated_by,subinventory_code,inventory_item_id,inventory_item_name,transactions_type_id,transaction_source_id,miscellaneous_erp_flag,WIP_ISSUE_PENDING_FLAG,WAFER_NUMBER,DC_YYWW,DIE_MODE)"
 						   +" values(?,?,?,?,?,?,?,?,to_date(?,'yyyy-mm-dd'),?,sysdate,?,?,?,?,(SELECT a.type_no  FROM oraddman.tspmd_data_type_tbl a  WHERE DATA_TYPE=? AND TYPE_NAME=? AND STATUS_FLAG=?),?,?,?,?,?,?)";
 						pstmt=con.prepareStatement(sql);
-						pstmt.setString(1,REQUESTNO);       //¥Ó½Ğ³æ¸¹
-						pstmt.setInt(2,Integer.parseInt(VERSIONID));                  //ª©¦¸
-						//pstmt.setInt(3,i);                //¦æ¸¹
-						pstmt.setInt(3,(DateCode.toUpperCase().equals("HOLD")?i*100:i)); //D/C=HOLD,LINE#±q100°_¸õ,add by Peggy 20180131
+						pstmt.setString(1,REQUESTNO);       //ç”³è«‹å–®è™Ÿ
+						pstmt.setInt(2,Integer.parseInt(VERSIONID));                  //ç‰ˆæ¬¡
+						//pstmt.setInt(3,i);                //è¡Œè™Ÿ
+						pstmt.setInt(3,(DateCode.toUpperCase().equals("HOLD")?i*100:i)); //D/C=HOLD,LINE#å¾100èµ·è·³,add by Peggy 20180131
 						pstmt.setString(4,(WaferLot.equals("")?"":WaferLot));      //LOT
 						pstmt.setFloat(5,Float.parseFloat((WaferQty.equals("")?"0":WaferQty)));      //Wafer Qty
 						pstmt.setFloat(6,Float.parseFloat(ChipQty));       //Chip Qty
 						pstmt.setString(7,(DateCode.equals("")?"":DateCode.toUpperCase()));      //DATECODE
-						//pstmt.setString(8,RequestSD);     //¹w­p§¹¤u¤é
-						pstmt.setString(8,COMPLETEDATE);     //¹w­p§¹¤u¤é
-						//pstmt.setDate(9,java.sql.Date.valueOf(CREATEDATE));    //¶}³æ¤é
-						pstmt.setString(9,CREATEDATE);    //¶}³æ¤é
+						//pstmt.setString(8,RequestSD);     //é è¨ˆå®Œå·¥æ—¥
+						pstmt.setString(8,COMPLETEDATE);     //é è¨ˆå®Œå·¥æ—¥
+						//pstmt.setDate(9,java.sql.Date.valueOf(CREATEDATE));    //é–‹å–®æ—¥
+						pstmt.setString(9,CREATEDATE);    //é–‹å–®æ—¥
 						pstmt.setString(10,CREATORID);    //userID
 						pstmt.setString(11,userID);       //userID
 						pstmt.setString(12,Stock);        //subinventory code
@@ -634,17 +634,17 @@ try
 						insertCnt ++;
 					}
 				}
-				if (insertCnt ==0) throw new Exception("µo®Æ©ú²Ó¥¼¿é¤J!!");
+				if (insertCnt ==0) throw new Exception("ç™¼æ–™æ˜ç´°æœªè¼¸å…¥!!");
 
 				sql=" INSERT INTO oraddman.tspmd_action_history(request_no, version_id, action_name, action_date,actor, remark)"+
 					" VALUES(?,?,?,sysdate,?,?)";
 				//out.println(sql);
 				pstmt=con.prepareStatement(sql);
-				pstmt.setString(1,REQUESTNO);         //¥Ó½Ğ³æ¸¹
-				pstmt.setInt(2,Integer.parseInt(VERSIONID));  //ª©¦¸
-				pstmt.setString(3,statuscode);         //ª¬ºA
-				pstmt.setString(4,UserName);        //¾Ş§@ªÌ¦WºÙ
-				pstmt.setString(5, CHANGE_REASON);              //³Æµù
+				pstmt.setString(1,REQUESTNO);         //ç”³è«‹å–®è™Ÿ
+				pstmt.setInt(2,Integer.parseInt(VERSIONID));  //ç‰ˆæ¬¡
+				pstmt.setString(3,statuscode);         //ç‹€æ…‹
+				pstmt.setString(4,UserName);        //æ“ä½œè€…åç¨±
+				pstmt.setString(5, CHANGE_REASON);              //å‚™è¨»
 				pstmt.executeQuery();
 					
 				con.commit();	
@@ -663,7 +663,7 @@ try
 				}
 				catch(Exception e)
 				{
-					//µL
+					//ç„¡
 				}		
 			}
 			catch(Exception e)
@@ -672,22 +672,22 @@ try
 				strURL="";
 				if (PROGRAMNAME.equals("F1-001"))
 				{
-					out.println("<font color='red'>¥Ó½Ğ°Ê§@¥¢±Ñ!½Ğ³t¬¢¨t²ÎºŞ²z­û,ÁÂÁÂ!<br>µo¥Í¿ù»~¥i¯à­ì¦]:"+e.getMessage().toString()+"</font>");
-					out.println("<p><input type='button' name='goback' value='¦^¥Ó½Ğµe­±' onclick='setSubmit("+'"'+"../jsp/TSCPMDOEMCreate.jsp"+'"'+")'>");
+					out.println("<font color='red'>ç”³è«‹å‹•ä½œå¤±æ•—!è«‹é€Ÿæ´½ç³»çµ±ç®¡ç†å“¡,è¬è¬!<br>ç™¼ç”ŸéŒ¯èª¤å¯èƒ½åŸå› :"+e.getMessage().toString()+"</font>");
+					out.println("<p><input type='button' name='goback' value='å›ç”³è«‹ç•«é¢' onclick='setSubmit("+'"'+"../jsp/TSCPMDOEMCreate.jsp"+'"'+")'>");
 				}
 				else if (PROGRAMNAME.equals(WIPMODIFY))
 				{
-					out.println("<font color='red'>­×§ï°Ê§@¥¢±Ñ!½Ğ³t¬¢¨t²ÎºŞ²z­û,ÁÂÁÂ!<br>µo¥Í¿ù»~¥i¯à­ì¦]:"+e.getMessage().toString()+"</font>");
-					out.println("<p><input type='button' name='goback' value='¦^­×§ïµe­±' onclick='setSubmit("+'"'+"../jsp/TSCPMDOEMModify.jsp?ACTIONTYPE="+WIPMODIFY+"&REQUESTNO="+REQUESTNO+"-"+ORIGVERSIONID+'"'+")'>");
+					out.println("<font color='red'>ä¿®æ”¹å‹•ä½œå¤±æ•—!è«‹é€Ÿæ´½ç³»çµ±ç®¡ç†å“¡,è¬è¬!<br>ç™¼ç”ŸéŒ¯èª¤å¯èƒ½åŸå› :"+e.getMessage().toString()+"</font>");
+					out.println("<p><input type='button' name='goback' value='å›ä¿®æ”¹ç•«é¢' onclick='setSubmit("+'"'+"../jsp/TSCPMDOEMModify.jsp?ACTIONTYPE="+WIPMODIFY+"&REQUESTNO="+REQUESTNO+"-"+ORIGVERSIONID+'"'+")'>");
 				}
 				else if (PROGRAMNAME.equals(WIPCHANGE))
 				{
-					out.println("<font color='red'>¤u³æÅÜ§ó¥¢±Ñ!½Ğ³t¬¢¨t²ÎºŞ²z­û,ÁÂÁÂ!<br>µo¥Í¿ù»~¥i¯à­ì¦]:"+e.getMessage().toString()+"</font>");
-					out.println("<p><input type='button' name='goback' value='¦^¤u³æÅÜ§óµe­±' onclick='setSubmit("+'"'+"../jsp/TSCPMDOEMModify.jsp?ACTIONTYPE="+WIPCHANGE+"&REQUESTNO="+REQUESTNO+"-"+ORIGVERSIONID+'"'+")'>");
+					out.println("<font color='red'>å·¥å–®è®Šæ›´å¤±æ•—!è«‹é€Ÿæ´½ç³»çµ±ç®¡ç†å“¡,è¬è¬!<br>ç™¼ç”ŸéŒ¯èª¤å¯èƒ½åŸå› :"+e.getMessage().toString()+"</font>");
+					out.println("<p><input type='button' name='goback' value='å›å·¥å–®è®Šæ›´ç•«é¢' onclick='setSubmit("+'"'+"../jsp/TSCPMDOEMModify.jsp?ACTIONTYPE="+WIPCHANGE+"&REQUESTNO="+REQUESTNO+"-"+ORIGVERSIONID+'"'+")'>");
 				}
 			}
 		}
-		//®Ö²a or °h¥ó
+		//æ ¸æ·® or é€€ä»¶
 		else if (ACTIONID.equals("003") || ACTIONID.equals("004"))
 		{
 			try
@@ -708,7 +708,7 @@ try
 					{
 						String WIP_Status="",WIP_MISC_Status="",PR_Status="",PO_Status="";
 						
-						//¶}¤uµ{¤Î¶q²£¤u³æ¤ÎºŞ­Ü®w¤SÅÜ¦¨¦P¤@¤H,©Ò¥H¤u³æ»â®Æ§ï¦¨¥DºŞ®Ö²a«á¥Ñ¨t²Î°µ±¼,add by Peggy 20131014
+						//é–‹å·¥ç¨‹åŠé‡ç”¢å·¥å–®åŠç®¡å€‰åº«åˆè®ŠæˆåŒä¸€äºº,æ‰€ä»¥å·¥å–®é ˜æ–™æ”¹æˆä¸»ç®¡æ ¸æ·®å¾Œç”±ç³»çµ±åšæ‰,add by Peggy 20131014
 						//if (!rsx.getString("SUBINVENTORY_CODE").equals("61"))
 						//{
 							CallableStatement cs3 = con.prepareCall("{call TSC_PMD_OEM_PKG.JOB_INITIAL(?,?,?,?,?,?)}");	//add by Peggy 20120704		 
@@ -747,7 +747,7 @@ try
 							{
 								if (ORIGVERSIONID==null)
 								{
-									throw new Exception("¤u³æ²£¥Í¥¢±Ñ");
+									throw new Exception("å·¥å–®ç”¢ç”Ÿå¤±æ•—");
 								}
 								else
 								{
@@ -757,15 +757,15 @@ try
 							//if (!rsx.getString("SUBINVENTORY_CODE").equals("61") && !WIP_MISC_Status.equals("S"))
 							if (!WIP_MISC_Status.equals("S"))
 							{
-								strMessage +="*****¤u³æµo®Æ¥¢±Ñ("+WIP_MISC_Status+")*****<br>";
+								strMessage +="*****å·¥å–®ç™¼æ–™å¤±æ•—("+WIP_MISC_Status+")*****<br>";
 							}
 							if (!PR_Status.equals("S"))
 							{
-								strMessage +="*****½ĞÁÊ³æ¥Í¦¨¥¢±Ñ("+PR_Status+")*****<br>";
+								strMessage +="*****è«‹è³¼å–®ç”Ÿæˆå¤±æ•—("+PR_Status+")*****<br>";
 							}
 							if (!PO_Status.equals("S"))
 							{
-								strMessage +="*****±ÄÁÊ³æ¥Í¦¨¥¢±Ñ("+PO_Status+")*****<br>";
+								strMessage +="*****æ¡è³¼å–®ç”Ÿæˆå¤±æ•—("+PO_Status+")*****<br>";
 							}
 							if (strMessage.equals(""))
 							{
@@ -773,9 +773,9 @@ try
 							}
 							else
 							{
-								strMessage = "®Ö²a°Ê§@¦¨¥\!¦ı¤U¦C¥æ©öµo¥Í¿ù»~,½Ğ³t¬¢¨t²ÎºŞ²z¤H­û,ÁÂÁÂ!<br>"+strMessage;
+								strMessage = "æ ¸æ·®å‹•ä½œæˆåŠŸ!ä½†ä¸‹åˆ—äº¤æ˜“ç™¼ç”ŸéŒ¯èª¤,è«‹é€Ÿæ´½ç³»çµ±ç®¡ç†äººå“¡,è¬è¬!<br>"+strMessage;
 								out.println("<font color='red'>"+strMessage+"</font>");
-								out.println("<p><input type='button' name='goback' value='¦^®Ö²aµe­±' onclick='setSubmit("+'"'+"../jsp/TSCPMDOEMConfirmQuery.jsp"+'"'+")'>");
+								out.println("<p><input type='button' name='goback' value='å›æ ¸æ·®ç•«é¢' onclick='setSubmit("+'"'+"../jsp/TSCPMDOEMConfirmQuery.jsp"+'"'+")'>");
 							}
 						}
 					}
@@ -786,15 +786,15 @@ try
 					{
 						sql = " update oraddman.tspmd_oem_headers_all set status='Inactive' where REQUEST_NO =? and VERSION_ID =? and status ='Approved'";
 						PreparedStatement pstmt=con.prepareStatement(sql);
-						pstmt.setString(1,REQUESTNO);   //¥Ó½Ğ³æ¸¹
-						pstmt.setString(2,ORIGVERSIONID);   //ª©¦¸
+						pstmt.setString(1,REQUESTNO);   //ç”³è«‹å–®è™Ÿ
+						pstmt.setString(2,ORIGVERSIONID);   //ç‰ˆæ¬¡
 						pstmt.executeQuery();
 					}
 					*/
 					
-					//¶}¤uµ{¤Î¶q²£¤u³æ¤ÎºŞ­Ü®w¤SÅÜ¦¨¦P¤@¤H,©Ò¥H¤u³æ»â®Æ§ï¦¨¥DºŞ®Ö²a«á¥Ñ¨t²Î°µ±¼,add by Peggy 20131014
+					//é–‹å·¥ç¨‹åŠé‡ç”¢å·¥å–®åŠç®¡å€‰åº«åˆè®ŠæˆåŒä¸€äºº,æ‰€ä»¥å·¥å–®é ˜æ–™æ”¹æˆä¸»ç®¡æ ¸æ·®å¾Œç”±ç³»çµ±åšæ‰,add by Peggy 20131014
 					//add by Peggy 20130118
-					//if (rsx.getString("SUBINVENTORY_CODE").equals("61")) //61­Ü
+					//if (rsx.getString("SUBINVENTORY_CODE").equals("61")) //61å€‰
 					//{
 					//	String WIP_MISC_Status ="S";
 					//	sql = " select inventory_item_id,inventory_item_name,subinventory_code,LOT_NUMBER,sum(orig_chip_qty) orig_chip_qty ,sum(chip_qty) chip_qty,sum(orig_chip_qty)- Sum(chip_qty) tot_chip_qty"+
@@ -825,7 +825,7 @@ try
 					//		  " and VERSION_ID ="+VERSIONID+""+
 					//		  " and STATUS in (SELECT a.type_name  FROM oraddman.tspmd_data_type_tbl a  where a.DATA_TYPE='ACTION'  and a.TYPE_NO='002')";
 					//	PreparedStatement pstmt=con.prepareStatement(sql);
-					//	pstmt.setString(1,WIP_MISC_Status);    //¤u³æ»â®Æª¬ºA
+					//	pstmt.setString(1,WIP_MISC_Status);    //å·¥å–®é ˜æ–™ç‹€æ…‹
 					//	pstmt.executeQuery();
 					//}
 					
@@ -843,22 +843,22 @@ try
 						  " and VERSION_ID ="+VERSIONID+""+
 						  " and STATUS in (SELECT a.type_name  FROM oraddman.tspmd_data_type_tbl a  where a.DATA_TYPE='ACTION'  and a.TYPE_NO='002')";
 					PreparedStatement pstmt=con.prepareStatement(sql);
-					pstmt.setString(1,statuscode);         //ª¬ºA
+					pstmt.setString(1,statuscode);         //ç‹€æ…‹
 					pstmt.setString(2,userID);             //approve user
 					pstmt.setString(3,UserName);           //approve user name
-					pstmt.setString(4,APPROVE_REMARKS);    //°h¥ó­ì¦]
-					pstmt.setString(5,userID);             //³Ì«á²§°ÊªÌ
+					pstmt.setString(4,APPROVE_REMARKS);    //é€€ä»¶åŸå› 
+					pstmt.setString(5,userID);             //æœ€å¾Œç•°å‹•è€…
 					if ( pstmt.executeUpdate()>0)
 					{
-						//20150904 by Peggy,§â¤£¤p¤ßmarkªºcode¸É¦^¨Ó
+						//20150904 by Peggy,æŠŠä¸å°å¿ƒmarkçš„codeè£œå›ä¾†
 						sql=" INSERT INTO oraddman.tspmd_action_history(request_no, version_id, action_name, action_date,actor, remark)"+
 							" VALUES(?,?,?,sysdate,?,?)";
 						pstmt=con.prepareStatement(sql);
-						pstmt.setString(1,REQUESTNO);         //¥Ó½Ğ³æ¸¹
-						pstmt.setInt(2,Integer.parseInt(VERSIONID));  //ª©¦¸
-						pstmt.setString(3,statuscode);         //ª¬ºA
-						pstmt.setString(4,UserName);        //¾Ş§@ªÌ¦WºÙ
-						pstmt.setString(5,APPROVE_REMARKS);              //³Æµù
+						pstmt.setString(1,REQUESTNO);         //ç”³è«‹å–®è™Ÿ
+						pstmt.setInt(2,Integer.parseInt(VERSIONID));  //ç‰ˆæ¬¡
+						pstmt.setString(3,statuscode);         //ç‹€æ…‹
+						pstmt.setString(4,UserName);        //æ“ä½œè€…åç¨±
+						pstmt.setString(5,APPROVE_REMARKS);              //å‚™è¨»
 						pstmt.executeUpdate();
 										
 						if (ACTIONID.equals("003"))
@@ -871,7 +871,7 @@ try
 						}
 						else if (ACTIONID.equals("004"))
 						{
-							//20150904 by Peggy,§â¤£¤p¤ßmarkªºcode¸É¦^¨Ó
+							//20150904 by Peggy,æŠŠä¸å°å¿ƒmarkçš„codeè£œå›ä¾†
 							CallableStatement cs4 = con.prepareCall("{call APPS.TSC_PMD_PKG.PMD_EMAIL_NOTICE(?,?,?)}");			 
 							cs4.setString(1,REQUESTNO); 
 							cs4.setInt(2,Integer.parseInt(VERSIONID)); 
@@ -918,7 +918,7 @@ try
 					{
 						%>
 						<script language="JavaScript" type="text/JavaScript">
-						if (confirm("<%=(ACTIONID.equals("003")?"®Ö²a":"°h¥ó")%>¦¨¥\!!\n\n­Y­nÄ~Äò®Ö²a¤U¤@µ§¡A½Ğ«ö½T©wÁä¡AÁÂÁÂ!"))
+						if (confirm("<%=(ACTIONID.equals("003")?"æ ¸æ·®":"é€€ä»¶")%>æˆåŠŸ!!\n\nè‹¥è¦ç¹¼çºŒæ ¸æ·®ä¸‹ä¸€ç­†ï¼Œè«‹æŒ‰ç¢ºå®šéµï¼Œè¬è¬!"))
 						{
 							document.location.href="../jsp/TSCPMDOEMConfirmQuery.jsp";
 						}	
@@ -932,15 +932,15 @@ try
 				//}
 				//else
 				//{
-				//	throw new Exception("¦¹¥Ó½Ğª¬ºA«D«İ®Ö²a(Submit)!!!");
+				//	throw new Exception("æ­¤ç”³è«‹ç‹€æ…‹éå¾…æ ¸æ·®(Submit)!!!");
 				//}	
 			}
 			catch(Exception e)
 			{
 				con.rollback();	  
 				strURL="";
-				out.println("<font color='red'>"+(ACTIONID.equals("003")?"®Ö²a":"°h¥ó")+"°Ê§@¥¢±Ñ!½Ğ³t¬¢¨t²ÎºŞ²z­û,ÁÂÁÂ!<br>µo¥Í¿ù»~¥i¯à­ì¦]:"+e.getMessage().toString()+"</font>");
-				out.println("<p><input type='button' name='goback' value='¦^®Ö²aµe­±' onclick='setSubmit("+'"'+"../jsp/TSCPMDOEMConfirmQuery.jsp"+'"'+")'>");
+				out.println("<font color='red'>"+(ACTIONID.equals("003")?"æ ¸æ·®":"é€€ä»¶")+"å‹•ä½œå¤±æ•—!è«‹é€Ÿæ´½ç³»çµ±ç®¡ç†å“¡,è¬è¬!<br>ç™¼ç”ŸéŒ¯èª¤å¯èƒ½åŸå› :"+e.getMessage().toString()+"</font>");
+				out.println("<p><input type='button' name='goback' value='å›æ ¸æ·®ç•«é¢' onclick='setSubmit("+'"'+"../jsp/TSCPMDOEMConfirmQuery.jsp"+'"'+")'>");
 			}
 		}
 		else if (ACTIONID.equals("005"))
@@ -954,7 +954,7 @@ try
 					  " and STATUS ='Reject'";
 				//out.println(sql);			  
 				PreparedStatement pstmt=con.prepareStatement(sql);
-				pstmt.setString(1,statuscode);         //ª¬ºA
+				pstmt.setString(1,statuscode);         //ç‹€æ…‹
 				pstmt.executeQuery();
 				
 				sql=" update oraddman.tspmd_oem_headers_all "+
@@ -974,11 +974,11 @@ try
 			{	  
 				con.rollback();
 				strURL="";
-				out.println("<font color='red'>¨ú®ø°Ê§@¥¢±Ñ!½Ğ³t¬¢¨t²ÎºŞ²z­û,ÁÂÁÂ!<br>µo¥Í¿ù»~¥i¯à­ì¦]:"+e.getMessage().toString()+"</font>");
-				out.println("<p><input type='button' name='goback' value='¦^¬d¸ßµe­±' onclick='setSubmit("+'"'+"../jsp/TSCPMDOEMInformationQuery.jsp"+'"'+")'>");
+				out.println("<font color='red'>å–æ¶ˆå‹•ä½œå¤±æ•—!è«‹é€Ÿæ´½ç³»çµ±ç®¡ç†å“¡,è¬è¬!<br>ç™¼ç”ŸéŒ¯èª¤å¯èƒ½åŸå› :"+e.getMessage().toString()+"</font>");
+				out.println("<p><input type='button' name='goback' value='å›æŸ¥è©¢ç•«é¢' onclick='setSubmit("+'"'+"../jsp/TSCPMDOEMInformationQuery.jsp"+'"'+")'>");
 			}
 		}
-		//¤u³æ¸Éµo®Æ
+		//å·¥å–®è£œç™¼æ–™
 		else if (ACTIONID.equals("006") || ACTIONID.equals("007"))
 		{
 			try
@@ -1003,26 +1003,26 @@ try
 				pstmt.setString(4,totChipQty);          
 				pstmt.setString(5,DIE_QTY);    
 				pstmt.setString(6,REMARKS);
-				pstmt.setString(7,REQUESTNO);  //¥Ó½Ğ³æ¸¹  
-				pstmt.setString(8,VERSIONID);  //ª©¦¸      
+				pstmt.setString(7,REQUESTNO);  //ç”³è«‹å–®è™Ÿ  
+				pstmt.setString(8,VERSIONID);  //ç‰ˆæ¬¡      
 				pstmt.executeQuery();         
 				
 				//sql = " delete oraddman.tspmd_oem_lines_all"+
 				//      " where request_no=?"+
 				//	  " and version_id=?";
 				//pstmt=con.prepareStatement(sql);
-				//pstmt.setString(1,REQUESTNO);  //¥Ó½Ğ³æ¸¹
-				//pstmt.setString(2,VERSIONID);  //ª©¦¸      
+				//pstmt.setString(1,REQUESTNO);  //ç”³è«‹å–®è™Ÿ
+				//pstmt.setString(2,VERSIONID);  //ç‰ˆæ¬¡      
 				//pstmt.executeQuery();				  
 					  
 				sql=" INSERT INTO oraddman.tspmd_action_history(request_no, version_id, action_name, action_date,actor, remark)"+
 					" VALUES(?,?,(select TYPE_NAME from oraddman.tspmd_data_type_tbl where DATA_TYPE='F1-001' AND TYPE_NO=?),sysdate,?,?)";
 				pstmt=con.prepareStatement(sql);
-				pstmt.setString(1,REQUESTNO);         //¥Ó½Ğ³æ¸¹
-				pstmt.setString(2,VERSIONID);         //ª©¦¸
-				pstmt.setString(3,ACTIONID);        //ª¬ºA
-				pstmt.setString(4,UserName);          //¾Ş§@ªÌ¦WºÙ
-				pstmt.setString(5,"");                //³Æµù
+				pstmt.setString(1,REQUESTNO);         //ç”³è«‹å–®è™Ÿ
+				pstmt.setString(2,VERSIONID);         //ç‰ˆæ¬¡
+				pstmt.setString(3,ACTIONID);        //ç‹€æ…‹
+				pstmt.setString(4,UserName);          //æ“ä½œè€…åç¨±
+				pstmt.setString(5,"");                //å‚™è¨»
 				pstmt.executeQuery();
 											
 				for (int i = 1 ; i <= Integer.parseInt(LINENUM) ;i++)
@@ -1054,7 +1054,7 @@ try
 					DIE_MODE=request.getParameter("DIE_MODE"+i); //add by Peggy 20221208
 					if (DIE_MODE==null || DIE_MODE.equals("--")) DIE_MODE="";
 					
-					//ÀË¬ddate code¬O§_­«½Æ,add by Peggy 20200925
+					//æª¢æŸ¥date codeæ˜¯å¦é‡è¤‡,add by Peggy 20200925
 					sql = " select LISTAGG(a.wip_no,',') WITHIN GROUP (ORDER BY a.wip_no) WIP_NO_LIST"+
 						  " from oraddman.tspmd_oem_headers_all a,oraddman.tspmd_oem_lines_all b"+
 						  " where a.request_no=b.request_no"+
@@ -1082,7 +1082,7 @@ try
 					{
 						if (rsk.getString(1) != null)
 						{					
-							throw new Exception("µo²{¿ù»~=>D/C:"+DateCode+" ¦b¤u³æ"+rsk.getString(1)+"¤w¨Ï¥Î,½Ğ­«·s½T»{!!");
+							throw new Exception("ç™¼ç¾éŒ¯èª¤=>D/C:"+DateCode+" åœ¨å·¥å–®"+rsk.getString(1)+"å·²ä½¿ç”¨,è«‹é‡æ–°ç¢ºèª!!");
 						}
 					}
 					rsk.close();		
@@ -1157,15 +1157,15 @@ try
 							   +" values(?,?,?,?,?,?,?,?,to_date(?,'yyyy-mm-dd'),?,sysdate,?,?,?,?,(SELECT a.type_no  FROM oraddman.tspmd_data_type_tbl a  WHERE DATA_TYPE=? AND TYPE_NAME=? AND STATUS_FLAG=?),?,?,?,?,?,?)";
 							   
 							pstmt=con.prepareStatement(sql);
-							pstmt.setString(1,REQUESTNO);       //¥Ó½Ğ³æ¸¹
-							pstmt.setInt(2,Integer.parseInt(VERSIONID));                  //ª©¦¸
-							pstmt.setString(3,LineNo);                //¦æ¸¹
+							pstmt.setString(1,REQUESTNO);       //ç”³è«‹å–®è™Ÿ
+							pstmt.setInt(2,Integer.parseInt(VERSIONID));                  //ç‰ˆæ¬¡
+							pstmt.setString(3,LineNo);                //è¡Œè™Ÿ
 							pstmt.setString(4,(WaferLot.equals("")?"":WaferLot));      //LOT
 							pstmt.setFloat(5,Float.parseFloat((WaferQty.equals("")?"0":WaferQty)));      //Wafer Qty
 							pstmt.setFloat(6,Float.parseFloat(ChipQty));       //Chip Qty
 							pstmt.setString(7,(DateCode.equals("")?"":DateCode.toUpperCase()));      //DATECODE
-							pstmt.setString(8,COMPLETEDATE);     //¹w­p§¹¤u¤é
-							pstmt.setString(9,CREATEDATE);    //¶}³æ¤é
+							pstmt.setString(8,COMPLETEDATE);     //é è¨ˆå®Œå·¥æ—¥
+							pstmt.setString(9,CREATEDATE);    //é–‹å–®æ—¥
 							pstmt.setString(10,CREATORID);    //userID
 							pstmt.setString(11,userID);       //userID
 							pstmt.setString(12,Stock);        //subinventory code
@@ -1185,10 +1185,10 @@ try
 						}
 					}
 				}
-				if (insertCnt ==0) throw new Exception("µo®Æ©ú²Ó¥¼¿é¤J!!");
+				if (insertCnt ==0) throw new Exception("ç™¼æ–™æ˜ç´°æœªè¼¸å…¥!!");
 
 				/*int errcnt=0;
-				//ÀË¬d¦³µL®w¦s,add by Peggy 20171120
+				//æª¢æŸ¥æœ‰ç„¡åº«å­˜,add by Peggy 20171120
 				sql = " SELECT a.INVENTORY_ITEM_ID,A.INVENTORY_ITEM_NAME,A.SUBINVENTORY_CODE,A.LOT_NUMBER,a.CHIP_QTY ,NVL(c.TRANSACTION_QUANTITY,0) ONHAND_QTY"+
 					  " FROM (SELECT a.INVENTORY_ITEM_ID,a.INVENTORY_ITEM_NAME,a.SUBINVENTORY_CODE,a.LOT_NUMBER,b.ORGANIZATION_ID,SUM(a.CHIP_QTY) CHIP_QTY "+
 					  "       FROM oraddman.tspmd_oem_lines_all a,oraddman.tspmd_oem_headers_all b"+
@@ -1206,7 +1206,7 @@ try
 				ResultSet rs11=statement11.executeQuery(sql);
 				while (rs11.next())
 				{
-					out.println(" <font style='font-family::Tahoma,Georgia;font-size:12px'>®Æ¸¹:"+rs11.getString("INVENTORY_ITEM_NAME") + "  "+ rs11.getString("SUBINVENTORY_CODE")+"­Ü LOT:"+rs11.getString("LOT_NUMBER")+ "  ERP®w¦s¤£¨¬</font><br>");
+					out.println(" <font style='font-family::Tahoma,Georgia;font-size:12px'>æ–™è™Ÿ:"+rs11.getString("INVENTORY_ITEM_NAME") + "  "+ rs11.getString("SUBINVENTORY_CODE")+"å€‰ LOT:"+rs11.getString("LOT_NUMBER")+ "  ERPåº«å­˜ä¸è¶³</font><br>");
 					errcnt++;
 				}
 				rs11.close();
@@ -1233,11 +1233,11 @@ try
 			catch(Exception e)
 			{
 				con.rollback();	  
-				out.println("<font color='red'>¥æ©ö¥¢±Ñ,½Ğ³t¬¢¨t²Î¤uµ{®v,ÁÂÁÂ!!<br>"+e.getMessage()+"</font>");
+				out.println("<font color='red'>äº¤æ˜“å¤±æ•—,è«‹é€Ÿæ´½ç³»çµ±å·¥ç¨‹å¸«,è¬è¬!!<br>"+e.getMessage()+"</font>");
 			}				
 		}		
 	}
-	// ¬°¦s¤J¤é´Á®æ¦¡¬°US¦Ò¶q,±N»y¨t¥ı³]¬°¬ü°ê
+	// ç‚ºå­˜å…¥æ—¥æœŸæ ¼å¼ç‚ºUSè€ƒé‡,å°‡èªç³»å…ˆè¨­ç‚ºç¾åœ‹
 	sqlNLS="alter SESSION set NLS_LANGUAGE = 'TRADITIONAL CHINESE' "; 
 	pstmtNLS=con.prepareStatement(sqlNLS);
 	pstmtNLS.executeUpdate(); 
@@ -1248,7 +1248,7 @@ try
 	{
 	%>
 		<script language="JavaScript" type="text/JavaScript">
-		if (confirm("©e¥~¥[¤u³æ¤w°h¥ó!!\n\n­Y­nÄ~Äò®Ö²a¤U¤@µ§¡A½Ğ«ö½T©wÁä¡AÁÂÁÂ!"))
+		if (confirm("å§”å¤–åŠ å·¥å–®å·²é€€ä»¶!!\n\nè‹¥è¦ç¹¼çºŒæ ¸æ·®ä¸‹ä¸€ç­†ï¼Œè«‹æŒ‰ç¢ºå®šéµï¼Œè¬è¬!"))
 		{
 			document.location.href="../jsp/TSCPMDOEMConfirmQuery.jsp";
 		}	
@@ -1263,7 +1263,7 @@ try
 catch(Exception e)
 {
 	con.rollback();
-	out.println("<font color='red'>¥æ©ö¥¢±Ñ,½Ğ³t¬¢¨t²Î¤uµ{®v,ÁÂÁÂ!!<br>"+e.getMessage()+"</font>");
+	out.println("<font color='red'>äº¤æ˜“å¤±æ•—,è«‹é€Ÿæ´½ç³»çµ±å·¥ç¨‹å¸«,è¬è¬!!<br>"+e.getMessage()+"</font>");
 }
 %>
 </FORM>

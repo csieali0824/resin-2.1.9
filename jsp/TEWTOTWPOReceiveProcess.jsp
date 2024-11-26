@@ -1,5 +1,5 @@
-<!-- modify by Peggy 20160614,¦^T­q³æ§ï¥Ñ¤Ñ¬z¥X³fÅç¦¬,1131,1141¤JI1 15­Ü,1121¤JI20 40­ÜµM«áÂà¦^I1 15­Ü-->
-<%@ page contentType="text/html; charset=utf-8" pageEncoding="big5" language="java" import="java.sql.*,java.util.*,java.text.*" %>
+<!-- modify by Peggy 20160614,å›Tè¨‚å–®æ”¹ç”±å¤©æ´¥å‡ºè²¨é©—æ”¶,1131,1141å…¥I1 15å€‰,1121å…¥I20 40å€‰ç„¶å¾Œè½‰å›I1 15å€‰-->
+<%@ page contentType="text/html; charset=utf-8"  language="java" import="java.sql.*,java.util.*,java.text.*" %>
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
@@ -34,7 +34,7 @@ try
 	String chk[]= request.getParameterValues("chk");	
 	if (chk.length <=0)
 	{
-		throw new Exception("µL¦¬³f¸ê®Æ!!");
+		throw new Exception("ç„¡æ”¶è²¨è³‡æ–™!!");
 	}
 	
 	Statement statement1=con.createStatement();
@@ -45,7 +45,7 @@ try
 	}
 	else
 	{
-		throw new Exception("trx no¨ú±o¥¢±Ñ!!");
+		throw new Exception("trx noå–å¾—å¤±æ•—!!");
 	}
 	rs1.close();
 	statement1.close();	
@@ -109,7 +109,7 @@ try
 			  ",sysdate"+
 			  ",?"+
 			  ",to_date(?,'yyyymmdd')"+
-			  ",case when c.RECEIPT_NUM='¦^T­q³æ' then null else c.RECEIPT_NUM end "+ //add by Peggy 20160614
+			  ",case when c.RECEIPT_NUM='å›Tè¨‚å–®' then null else c.RECEIPT_NUM end "+ //add by Peggy 20160614
 			  ",?"+                      //TEW_LOT,add by Peggy 20160614
 			  ",?"+                      //TEW_DATE_CODE,add by Peggy 20160614
 			  ",?"+                      //TEW_QTY,add by Peggy 20160614
@@ -152,19 +152,19 @@ try
 	cs1.close();
 		
 	out.println("<table width='80%' align='center'>");
-	out.println("<tr><td align='center' colspan='2'><div align='cneter' style='font-weight:bold;color:#0000ff;font-size:16px'>¸ê®Æ¼g¤J¦¨¥\!!</DIV></td></tr>");
+	out.println("<tr><td align='center' colspan='2'><div align='cneter' style='font-weight:bold;color:#0000ff;font-size:16px'>è³‡æ–™å¯«å…¥æˆåŠŸ!!</DIV></td></tr>");
 	out.println("<tr><td align='center' colspan='2'><A href="+'"'+"/oradds/ORADDSMainMenu.jsp"+'"'+">");
 	%>
 	<jsp:getProperty name="rPH" property="pgHOME"/>
 	<%
 	out.println("</A>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
-	out.println("<a href='TEWTOTWPOReceiveQuery.jsp'>¦^TÅç¦¬¸ê®Æ¬d¸ß¥\¯à</font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='TEWTOTWPOReceive.jsp'>Ä~ÄòÅç¦¬¤U¤@µ§</a></td></tr>");
+	out.println("<a href='TEWTOTWPOReceiveQuery.jsp'>å›Té©—æ”¶è³‡æ–™æŸ¥è©¢åŠŸèƒ½</font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='TEWTOTWPOReceive.jsp'>ç¹¼çºŒé©—æ”¶ä¸‹ä¸€ç­†</a></td></tr>");
 	out.println("</table>");		
 }
 catch(Exception e)
 {	
 	con.rollback();
-	out.println("<font color='red'>¥æ©ö¥¢±Ñ,½Ğ³t¬¢¨t²ÎºŞ²z¤H­û,ÁÂÁÂ!!<br>"+e.getMessage()+"<br><br><a href='TEWTOTWPOReceive.jsp'>¦^T­q³æÅç¦¬§@·~</a></font>");
+	out.println("<font color='red'>äº¤æ˜“å¤±æ•—,è«‹é€Ÿæ´½ç³»çµ±ç®¡ç†äººå“¡,è¬è¬!!<br>"+e.getMessage()+"<br><br><a href='TEWTOTWPOReceive.jsp'>å›Tè¨‚å–®é©—æ”¶ä½œæ¥­</a></font>");
 }
 
 %>

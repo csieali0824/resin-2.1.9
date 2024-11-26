@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=utf-8"  pageEncoding="big5" language="java" import="java.util.*,java.text.*,java.io.*,java.sql.*,jxl.*,jxl.Workbook.*,jxl.write.*,jxl.format.*,javax.mail.*,javax.mail.internet.*,javax.mail.Multipart.*,javax.activation.*"%>  
+<%@ page contentType="text/html;charset=utf-8"   language="java" import="java.util.*,java.text.*,java.io.*,java.sql.*,jxl.*,jxl.Workbook.*,jxl.write.*,jxl.format.*,javax.mail.*,javax.mail.internet.*,javax.mail.Multipart.*,javax.activation.*"%>
 <%@ page import="DateBean"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
@@ -77,7 +77,7 @@ try
 		WritableFont font_nobold = new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK);
 		WritableFont font_nobold_b = new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLUE);
 	
-		//­^¤å¤º¤å¤ô¥­««ª½¸m¤¤-²ÊÅé-®æ½u-©³¦âÂÅ  
+		//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®ä¸­-ç²—é«”-æ ¼ç·š-åº•è‰²è—  
 		WritableCellFormat ACenterBL = new WritableCellFormat(font_bold);   
 		ACenterBL.setAlignment(jxl.format.Alignment.CENTRE);
 		ACenterBL.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -85,7 +85,7 @@ try
 		ACenterBL.setBackground(jxl.write.Colour.ICE_BLUE); 
 		ACenterBL.setWrap(true);	
 
-		//­^¤å¤º¤å¤ô¥­««ª½¸m¤¤-²ÊÅé-®æ½u-©³¦âÂÅ  
+		//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®ä¸­-ç²—é«”-æ ¼ç·š-åº•è‰²è—  
 		WritableCellFormat ACenterBLB = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));   
 		ACenterBLB.setAlignment(jxl.format.Alignment.CENTRE);
 		ACenterBLB.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -93,7 +93,7 @@ try
 		ACenterBLB.setBackground(jxl.write.Colour.PALE_BLUE); 
 		ACenterBLB.setWrap(true);
 	
-		//­^¤å¤º¤å¤ô¥­««ª½¸m¤¤-²ÊÅé-®æ½u-©³¦â¶À  
+		//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®ä¸­-ç²—é«”-æ ¼ç·š-åº•è‰²é»ƒ  
 		WritableCellFormat ACenterBLY = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));   
 		ACenterBLY.setAlignment(jxl.format.Alignment.CENTRE);
 		ACenterBLY.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -101,7 +101,7 @@ try
 		ACenterBLY.setBackground(jxl.write.Colour.YELLOW); 
 		ACenterBLY.setWrap(true);	
 		
-		//­^¤å¤º¤å¤ô¥­««ª½¸m¤¤-²ÊÅé-®æ½u-©³¦â¾ï
+		//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®ä¸­-ç²—é«”-æ ¼ç·š-åº•è‰²æ©˜
 		WritableCellFormat ACenterBLO = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));   
 		ACenterBLO.setAlignment(jxl.format.Alignment.CENTRE);
 		ACenterBLO.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -109,7 +109,7 @@ try
 		ACenterBLO.setBackground(jxl.write.Colour.LIGHT_ORANGE); 
 		ACenterBLO.setWrap(true);	
 		
-		//­^¤å¤º¤å¤ô¥­««ª½¸m¤¤-²ÊÅé-®æ½u-©³¦âºñ
+		//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®ä¸­-ç²—é«”-æ ¼ç·š-åº•è‰²ç¶ 
 		WritableCellFormat ACenterBLG = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));   
 		ACenterBLG.setAlignment(jxl.format.Alignment.CENTRE);
 		ACenterBLG.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -117,7 +117,7 @@ try
 		ACenterBLG.setBackground(jxl.write.Colour.BRIGHT_GREEN); 
 		ACenterBLG.setWrap(true);	
 				
-		//­^¤å¤º¤å¤ô¥­««ª½¸m¤¤-¥¿±`-®æ½u   
+		//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®ä¸­-æ­£å¸¸-æ ¼ç·š   
 		WritableCellFormat ACenterL = new WritableCellFormat(font_nobold);   
 		ACenterL.setAlignment(jxl.format.Alignment.CENTRE);
 		ACenterL.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -125,21 +125,21 @@ try
 		ACenterL.setWrap(true);
 	
 	
-		//­^¤å¤º¤å¤ô¥­««ª½¸m¥k-¥¿±`-®æ½u   
+		//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®å³-æ­£å¸¸-æ ¼ç·š   
 		WritableCellFormat ARightL = new WritableCellFormat(font_nobold);   
 		ARightL.setAlignment(jxl.format.Alignment.RIGHT);
 		ARightL.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		ARightL.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 		ARightL.setWrap(true);
 	
-		//­^¤å¤º¤å¤ô¥­««ª½¸m¥ª-¥¿±`-®æ½u   
+		//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®å·¦-æ­£å¸¸-æ ¼ç·š   
 		WritableCellFormat ALeftL = new WritableCellFormat(font_nobold);   
 		ALeftL.setAlignment(jxl.format.Alignment.LEFT);
 		ALeftL.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		ALeftL.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 		ALeftL.setWrap(true);
 		
-		//­^¤å¤º¤å¤ô¥­««ª½¸m¤¤-¥¿±`-®æ½u   
+		//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®ä¸­-æ­£å¸¸-æ ¼ç·š   
 		WritableCellFormat ACenterLB = new WritableCellFormat(font_nobold_b);   
 		ACenterLB.setAlignment(jxl.format.Alignment.CENTRE);
 		ACenterLB.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -147,42 +147,42 @@ try
 		ACenterLB.setWrap(true);
 	
 	
-		//­^¤å¤º¤å¤ô¥­««ª½¸m¥k-¥¿±`-®æ½u   
+		//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®å³-æ­£å¸¸-æ ¼ç·š   
 		WritableCellFormat ARightLB = new WritableCellFormat(font_nobold_b);   
 		ARightLB.setAlignment(jxl.format.Alignment.RIGHT);
 		ARightLB.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		ARightLB.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 		ARightLB.setWrap(true);
 	
-		//­^¤å¤º¤å¤ô¥­««ª½¸m¥ª-¥¿±`-®æ½u   
+		//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®å·¦-æ­£å¸¸-æ ¼ç·š   
 		WritableCellFormat ALeftLB = new WritableCellFormat(font_nobold_b);   
 		ALeftLB.setAlignment(jxl.format.Alignment.LEFT);
 		ALeftLB.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		ALeftLB.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 		ALeftLB.setWrap(true);
 			
-		//¤é´Á®æ¦¡
+		//æ—¥æœŸæ ¼å¼
 		WritableCellFormat DATE_FORMAT = new WritableCellFormat(font_nobold ,new jxl.write.DateFormat("yyyy/MM/dd")); 
 		DATE_FORMAT.setAlignment(jxl.format.Alignment.CENTRE);
 		DATE_FORMAT.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		DATE_FORMAT.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 		DATE_FORMAT.setWrap(true);
 	
-		//¤é´Á®æ¦¡
+		//æ—¥æœŸæ ¼å¼
 		WritableCellFormat DATE_FORMAT1 = new WritableCellFormat(font_nobold_b ,new jxl.write.DateFormat("yyyy/MM/dd")); 
 		DATE_FORMAT1.setAlignment(jxl.format.Alignment.CENTRE);
 		DATE_FORMAT1.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		DATE_FORMAT1.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 		DATE_FORMAT1.setWrap(true);
 	
-		//¤é´Á®æ¦¡-¬õ¦r
+		//æ—¥æœŸæ ¼å¼-ç´…å­—
 		WritableCellFormat DATE_FORMAT_R = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"),9, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.RED) ,new jxl.write.DateFormat("yyyy/MM/dd")); 
 		DATE_FORMAT_R.setAlignment(jxl.format.Alignment.CENTRE);
 		DATE_FORMAT_R.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		DATE_FORMAT_R.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 		DATE_FORMAT_R.setWrap(true);
 	
-		//¤é´Á®æ¦¡-ÂÅ¦r
+		//æ—¥æœŸæ ¼å¼-è—å­—
 		WritableCellFormat DATE_FORMAT_B = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"),9, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLUE) ,new jxl.write.DateFormat("yyyy/MM/dd")); 
 		DATE_FORMAT_B.setAlignment(jxl.format.Alignment.CENTRE);
 		DATE_FORMAT_B.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -348,7 +348,7 @@ try
 				ws = wwb.getSheet(sheetArray[sht][1]);
 				SheetSettings sst = ws.getSettings(); 
 				sst.setSelected();
-				sst.setVerticalFreeze(1);  //­áµ²µ¡®æ
+				sst.setVerticalFreeze(1);  //å‡çµçª—æ ¼
 				for (int g =1 ; g <= 12 ;g++ )
 				{
 					sst.setHorizontalFreeze(g);
@@ -660,7 +660,7 @@ catch (Exception e)
 %>
 </FORM>
 </body>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 <%

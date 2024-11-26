@@ -1,7 +1,7 @@
-<%@ page contentType="text/html; charset=utf-8" pageEncoding="big5" language="java" import="java.sql.*,java.util.*,java.math.BigDecimal,java.text.DecimalFormat" %>
-<!--=============¥H¤U°Ï¬q¬°¦w¥ş»{ÃÒ¾÷¨î==========-->
+<%@ page contentType="text/html; charset=utf-8"  language="java" import="java.sql.*,java.util.*,java.math.BigDecimal,java.text.DecimalFormat" %>
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå®‰å…¨èªè­‰æ©Ÿåˆ¶==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
@@ -30,13 +30,13 @@ function alertItemExistsMsg(msItemExists)
 <head>
 <title>MFG System Work Order Process Page</title>
 <jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="arrMFG2DWOExpandBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR ¤u¥O¸ê®Æ­n®i¬yµ{¥d¤Î¥á¤JWIP interface-->
+<jsp:useBean id="arrMFG2DWOExpandBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR å·¥ä»¤è³‡æ–™è¦å±•æµç¨‹å¡åŠä¸Ÿå…¥WIP interface-->
 <jsp:useBean id="arrMFG2DRunCardBean" scope="session" class="Array2DimensionInputBean"/>
-<jsp:useBean id="arrMFGRCExpTransBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR ¬yµ{¥d¤w®i¶}-> ¬yµ{¥d²¾¯¸¤¤ -->
-<jsp:useBean id="arrayLotIssueCheckBean" scope="session" class="ArrayCheckBoxBean"/>   <!--FOR «á¬q¬yµ{¥d«İ§ë²£ Match¹ê»Ú§¹¤u«e¬q§å¸¹-->
-<jsp:useBean id="arrMFGRCMovingBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR ¬yµ{¥d²¾¯¸¤¤-> ¬yµ{¥d²¾¯¸¤¤ -->
-<jsp:useBean id="arrMFGRCCompleteBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR ¬yµ{¥d²¾¯¸¤¤-> ¬yµ{¥d§¹¤u¤J®w -->
-<jsp:useBean id="arrMFGRCDeleteBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR ¬yµ{¥d¤w®i¶}-> ¬yµ{¥d§R°£ liling --> 
+<jsp:useBean id="arrMFGRCExpTransBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR æµç¨‹å¡å·²å±•é–‹-> æµç¨‹å¡ç§»ç«™ä¸­ -->
+<jsp:useBean id="arrayLotIssueCheckBean" scope="session" class="ArrayCheckBoxBean"/>   <!--FOR å¾Œæ®µæµç¨‹å¡å¾…æŠ•ç”¢ Matchå¯¦éš›å®Œå·¥å‰æ®µæ‰¹è™Ÿ-->
+<jsp:useBean id="arrMFGRCMovingBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR æµç¨‹å¡ç§»ç«™ä¸­-> æµç¨‹å¡ç§»ç«™ä¸­ -->
+<jsp:useBean id="arrMFGRCCompleteBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR æµç¨‹å¡ç§»ç«™ä¸­-> æµç¨‹å¡å®Œå·¥å…¥åº« -->
+<jsp:useBean id="arrMFGRCDeleteBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR æµç¨‹å¡å·²å±•é–‹-> æµç¨‹å¡åˆªé™¤ liling --> 
 <jsp:useBean id="sendMailBean" scope="page" class="SendMailBean"/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
 <body>
@@ -44,25 +44,25 @@ function alertItemExistsMsg(msItemExists)
 <FORM ACTION="TSCMfgWoMProcess.jsp" METHOD="post" NAME="MPROCESSFORM">
 <%
 String serverHostName=request.getServerName();
-String mailHost=application.getInitParameter("MAIL_HOST"); //¥ÑServerªºweb.xml¤¤¨ú¥Xmail serverªºhost name
+String mailHost=application.getInitParameter("MAIL_HOST"); //ç”±Serverçš„web.xmlä¸­å–å‡ºmail serverçš„host name
 String previousPageAddress=request.getParameter("PREVIOUSPAGEADDRESS");
 String inspLotNo=request.getParameter("INSPLOTNO");
 String formID=request.getParameter("FORMID");
 String typeNo=request.getParameter("TYPENO");
-String isTransmitted=request.getParameter("ISTRANSMITTED");//¨ú±o«e¤@­¶³B²z¤§ºû­×®×¥ó¬O§_¤w«á°e¤§FLAG
+String isTransmitted=request.getParameter("ISTRANSMITTED");//å–å¾—å‰ä¸€é è™•ç†ä¹‹ç¶­ä¿®æ¡ˆä»¶æ˜¯å¦å·²å¾Œé€ä¹‹FLAG
 String fromStatusID=request.getParameter("FROMSTATUSID");
 String actionID=request.getParameter("ACTIONID");
 String remark=request.getParameter("REMARK");
 
-// MFG¤u¥O¸ê®Æ_°Ñ¼Æ°_   
-String woNo=request.getParameter("WO_NO");   //¤u³æ¸¹
-String runCardCountI=request.getParameter("RUNCARDCOUNTI");   //±ı®i¤§¬yµ{¥d±i¼Æ
-String runCardQty=request.getParameter("RUNCARDQTY");        //³æ±i¬yµ{¥d¼Æ¶q
-String runCardCountD=request.getParameter("RUNCARDCOUNTD");  //§À±i¬yµ{¥d¼Æ¶q
-String dividedFlag=request.getParameter("DIVIDEDFLAG");      //¬O§_³Q¾ã°£ ¾ã°£='Y' ,¥¼³Q¾ã°£¤§¬yµ{¥d­n¦h¥[¤@±i
-String singleControl=request.getParameter("SINGLECONTROL");   //¬O§_¬°³æ§å±±ºŞ
-String runCardPrffix=request.getParameter("RUNCARDPREFIX");   //¬yµ{¥d«e¸m½X
-String runCardNo=request.getParameter("RUNCARD_NO");   //¬yµ{¥d¸¹
+// MFGå·¥ä»¤è³‡æ–™_åƒæ•¸èµ·   
+String woNo=request.getParameter("WO_NO");   //å·¥å–®è™Ÿ
+String runCardCountI=request.getParameter("RUNCARDCOUNTI");   //æ¬²å±•ä¹‹æµç¨‹å¡å¼µæ•¸
+String runCardQty=request.getParameter("RUNCARDQTY");        //å–®å¼µæµç¨‹å¡æ•¸é‡
+String runCardCountD=request.getParameter("RUNCARDCOUNTD");  //å°¾å¼µæµç¨‹å¡æ•¸é‡
+String dividedFlag=request.getParameter("DIVIDEDFLAG");      //æ˜¯å¦è¢«æ•´é™¤ æ•´é™¤='Y' ,æœªè¢«æ•´é™¤ä¹‹æµç¨‹å¡è¦å¤šåŠ ä¸€å¼µ
+String singleControl=request.getParameter("SINGLECONTROL");   //æ˜¯å¦ç‚ºå–®æ‰¹æ§ç®¡
+String runCardPrffix=request.getParameter("RUNCARDPREFIX");   //æµç¨‹å¡å‰ç½®ç¢¼
+String runCardNo=request.getParameter("RUNCARD_NO");   //æµç¨‹å¡è™Ÿ
 String classID=request.getParameter("CLASSID");
 String woType=request.getParameter("WOTYPE");
 String alternateRouting=request.getParameter("ALTERNATEROUTING");
@@ -91,32 +91,32 @@ String nextOpSeqNum	    = "";
 String standardOpDesc    = "";   
 String routingRefID      = "0";
 
-String runCardCount=String.valueOf(runCardCountI);  //¬yµ{¥d±i¼Æ
+String runCardCount=String.valueOf(runCardCountI);  //æµç¨‹å¡å¼µæ•¸
 
-String dateCodeSet = request.getParameter("DATECODE");  // §å¦¸µ¹©wªº§ë²£DateCode
+String dateCodeSet = request.getParameter("DATECODE");  // æ‰¹æ¬¡çµ¦å®šçš„æŠ•ç”¢DateCode
 
 //out.print("woNo="+woNo+"<br>");
-//out.print("§À§å¼Æ¶q="+runCardCountD);
+//out.print("å°¾æ‰¹æ•¸é‡="+runCardCountD);
 
 if(woPassFlag==null || woPassFlag.equals("")) woPassFlag="N";   
 
-// MFG¤u¥O¸ê®Æ_°Ñ¼Æ¨´
+// MFGå·¥ä»¤è³‡æ–™_åƒæ•¸è¿„
 
-// 2005/12/03 ¨úsession ªºBean ªº¿ï¨úªº¥ÍºŞ«ü¬£«ü¹ïÀ³¥N½X // By Kerwin
+// 2005/12/03 å–session çš„Bean çš„é¸å–çš„ç”Ÿç®¡æŒ‡æ´¾æŒ‡å°æ‡‰ä»£ç¢¼ // By Kerwin
 
-String aMFGWoExpandCode[][]=arrMFG2DWOExpandBean.getArray2DContent();    // FOR «~ºŞÀËÅç¼Æ¾Ú¿é¤J§¹¦¨§P©w
-String aMFGRCExpTransCode[][]=arrMFGRCExpTransBean.getArray2DContent();  // FOR ¬yµ{¥d¤w®i¶}-> ¬yµ{¥d²¾¯¸¤¤
-String aMFGRCMovingCode[][]=arrMFGRCMovingBean.getArray2DContent();      // FOR ¬yµ{¥d²¾¯¸¤¤-> ¬yµ{¥d²¾¯¸¤¤
-String aMFGRCCompleteCode[][]=arrMFGRCCompleteBean.getArray2DContent();  // FOR ¬yµ{¥d²¾¯¸¤¤-> ¬yµ{¥d§¹¤u¤J®w
-String aMFGRCDeleteCode[][]=arrMFGRCDeleteBean.getArray2DContent();  	// FOR ¬yµ{¥d¤w®i¶}-> ¬yµ{¥d§R°£ liling
-String aMFGLotMatchCode[][]=arrayLotIssueCheckBean.getArray2DContent();  // FOR «á¬q¬yµ{¥d«İ§ë²£ Match¹ê»Ú§¹¤u«e¬q§å¸¹
+String aMFGWoExpandCode[][]=arrMFG2DWOExpandBean.getArray2DContent();    // FOR å“ç®¡æª¢é©—æ•¸æ“šè¼¸å…¥å®Œæˆåˆ¤å®š
+String aMFGRCExpTransCode[][]=arrMFGRCExpTransBean.getArray2DContent();  // FOR æµç¨‹å¡å·²å±•é–‹-> æµç¨‹å¡ç§»ç«™ä¸­
+String aMFGRCMovingCode[][]=arrMFGRCMovingBean.getArray2DContent();      // FOR æµç¨‹å¡ç§»ç«™ä¸­-> æµç¨‹å¡ç§»ç«™ä¸­
+String aMFGRCCompleteCode[][]=arrMFGRCCompleteBean.getArray2DContent();  // FOR æµç¨‹å¡ç§»ç«™ä¸­-> æµç¨‹å¡å®Œå·¥å…¥åº«
+String aMFGRCDeleteCode[][]=arrMFGRCDeleteBean.getArray2DContent();  	// FOR æµç¨‹å¡å·²å±•é–‹-> æµç¨‹å¡åˆªé™¤ liling
+String aMFGLotMatchCode[][]=arrayLotIssueCheckBean.getArray2DContent();  // FOR å¾Œæ®µæµç¨‹å¡å¾…æŠ•ç”¢ Matchå¯¦éš›å®Œå·¥å‰æ®µæ‰¹è™Ÿ
 
-// 2004/07/08 ¨úsession ªºBean ªº¿ï¨úªºÀËÅç¤è¦¡¹ïÀ³¥N½X // By Kerwin
+// 2004/07/08 å–session çš„Bean çš„é¸å–çš„æª¢é©—æ–¹å¼å°æ‡‰ä»£ç¢¼ // By Kerwin
 
 //String changeProdPersonID=request.getParameter("CHANGEREPPERSONID");
 String changeProdPersonMail="";
-String sendMailOption=request.getParameter("SENDMAILOPTION");//¬O§_­nSEND MAIL
-String adminModeOption=request.getParameter("ADMINMODEOPTION");//¬O§_¬°ºŞ²z­û¼Ò¦¡
+String sendMailOption=request.getParameter("SENDMAILOPTION");//æ˜¯å¦è¦SEND MAIL
+String adminModeOption=request.getParameter("ADMINMODEOPTION");//æ˜¯å¦ç‚ºç®¡ç†å“¡æ¨¡å¼
 
 String oriStatus=null;
 String actionName=null;
@@ -145,14 +145,14 @@ String DayFr=dateBean.getYearMonthDay().substring(6,8);
 
 String errorFlag ="";
 
-// ¬°¦s¤J¤é´Á®æ¦¡¬°US¦Ò¶q,±N»y¨t¥ı³]¬°¬ü°ê
+// ç‚ºå­˜å…¥æ—¥æœŸæ ¼å¼ç‚ºUSè€ƒé‡,å°‡èªç³»å…ˆè¨­ç‚ºç¾åœ‹
 String sqlNLS="alter SESSION set NLS_LANGUAGE = 'AMERICAN' ";     
 PreparedStatement pstmtNLS=con.prepareStatement(sqlNLS);
 pstmtNLS.executeUpdate(); 
 pstmtNLS.close();
-//§¹¦¨¦sÀÉ«á¦^´_	  
+//å®Œæˆå­˜æª”å¾Œå›å¾©	  
 
-//§ì¨ú¨t²Î¤é´Á
+//æŠ“å–ç³»çµ±æ—¥æœŸ
 String systemDate ="";
 Statement statesd=con.createStatement();
 ResultSet sd=statesd.executeQuery("select TO_CHAR(sysdate,'YYYYMMDD') as SYSTEMDATE from dual" );
@@ -163,7 +163,7 @@ if (sd.next())
 sd.close();
 statesd.close();	
 
-// ¨ú¹ïÀ³ªº organization_code ±qORG°Ñ¼ÆÀÉ
+// å–å°æ‡‰çš„ organization_code å¾ORGåƒæ•¸æª”
 String organCode ="";
 String organizationID = "";
 Statement stateOrgCode=con.createStatement();
@@ -178,14 +178,14 @@ rsOrgCode.close();
 stateOrgCode.close();
 
 
-java.sql.Date processDateTime = null; //±NSYSDATEÂà´«¦¨¤é´Á®æ¦¡¥H²Å¥á¤JAPI®æ¦¡
+java.sql.Date processDateTime = null; //å°‡SYSDATEè½‰æ›æˆæ—¥æœŸæ ¼å¼ä»¥ç¬¦ä¸Ÿå…¥APIæ ¼å¼
 if (systemDate!=null && systemDate.length()>=8)
 {
-	processDateTime = new java.sql.Date(Integer.parseInt(systemDate.substring(0,4))-1900,Integer.parseInt(systemDate.substring(4,6))-1,Integer.parseInt(systemDate.substring(6,8)));  // µ¹Receiving Date
-	String systemTime = dateBean.getHourMinuteSecond();  // µ¹System Time
+	processDateTime = new java.sql.Date(Integer.parseInt(systemDate.substring(0,4))-1900,Integer.parseInt(systemDate.substring(4,6))-1,Integer.parseInt(systemDate.substring(6,8)));  // çµ¦Receiving Date
+	String systemTime = dateBean.getHourMinuteSecond();  // çµ¦System Time
 
 	Calendar calendar1 = Calendar.getInstance(); 
-	calendar1.set(dateBean.getYear(),dateBean.getMonth(),dateBean.getDay(),dateBean.getHour(), dateBean.getMinute(), dateBean.getSecond() );  // ³]©w¤é´Áªº®æ¦¡(¦~,¤ë,¤é,®É,¤À,¬í)
+	calendar1.set(dateBean.getYear(),dateBean.getMonth(),dateBean.getDay(),dateBean.getHour(), dateBean.getMinute(), dateBean.getSecond() );  // è¨­å®šæ—¥æœŸçš„æ ¼å¼(å¹´,æœˆ,æ—¥,æ™‚,åˆ†,ç§’)
 	String sqlDate="  select TO_DATE('"+systemDate+ systemTime+"','YYYYMMDDHH24MISS') from DUAL   ";  					
 	Statement stateDate=con.createStatement();
 	ResultSet rsDate=stateDate.executeQuery(sqlDate);
@@ -196,33 +196,33 @@ if (systemDate!=null && systemDate.length()>=8)
 	}
 	rsDate.close();
 	stateDate.close();	   
-}    // ±o¨ì¤J®w°õ¦æ¤é´Á..¤é´Á«¬ºA
+}    // å¾—åˆ°å…¥åº«åŸ·è¡Œæ—¥æœŸ..æ—¥æœŸå‹æ…‹
 
 
-java.sql.Date orderedDate = new java.sql.Date(Integer.parseInt(YearFr)-1900,Integer.parseInt(MonthFr)-1,Integer.parseInt(DayFr));  // µ¹Ordered Date
-//java.sql.Date shipdate = new java.sql.Date(Integer.parseInt(YearFr)-1900,Integer.parseInt(MonthFr)-1,Integer.parseInt(DayFr));  // µ¹Schedule Ship Date
-//java.sql.Date requestdate = new java.sql.Date(Integer.parseInt(YearFr)-1900,Integer.parseInt(MonthFr)-1,Integer.parseInt(DayFr));  // µ¹Request Date
-java.sql.Date pricedate = new java.sql.Date(Integer.parseInt(YearFr)-1900,Integer.parseInt(MonthFr)-1,Integer.parseInt(DayFr));  // µ¹Pricing Date
-java.sql.Date promisedate = new java.sql.Date(Integer.parseInt(YearFr)-1900,Integer.parseInt(MonthFr)-1,Integer.parseInt(DayFr));  // µ¹Promise Date    
+java.sql.Date orderedDate = new java.sql.Date(Integer.parseInt(YearFr)-1900,Integer.parseInt(MonthFr)-1,Integer.parseInt(DayFr));  // çµ¦Ordered Date
+//java.sql.Date shipdate = new java.sql.Date(Integer.parseInt(YearFr)-1900,Integer.parseInt(MonthFr)-1,Integer.parseInt(DayFr));  // çµ¦Schedule Ship Date
+//java.sql.Date requestdate = new java.sql.Date(Integer.parseInt(YearFr)-1900,Integer.parseInt(MonthFr)-1,Integer.parseInt(DayFr));  // çµ¦Request Date
+java.sql.Date pricedate = new java.sql.Date(Integer.parseInt(YearFr)-1900,Integer.parseInt(MonthFr)-1,Integer.parseInt(DayFr));  // çµ¦Pricing Date
+java.sql.Date promisedate = new java.sql.Date(Integer.parseInt(YearFr)-1900,Integer.parseInt(MonthFr)-1,Integer.parseInt(DayFr));  // çµ¦Promise Date    
 
 
 //String sourceTypeCode = "INTERNAL"; 
 int lineType = 0;  
 
-String respID = "50124"; // ¹w³]­È¬° TSC_OM_Semi_SU, §PÂ_­Y¬° Printer Org «h³]©w¬° TSC_OM_Printer_SU = 50125
+String respID = "50124"; // é è¨­å€¼ç‚º TSC_OM_Semi_SU, åˆ¤æ–·è‹¥ç‚º Printer Org å‰‡è¨­å®šç‚º TSC_OM_Printer_SU = 50125
 
 
 String dateCurrent = dateBean.getYearMonthDay();	
 //out.println("fromStatusID="+fromStatusID);
 
 
-// formID = °ò¥»¸ê®Æ­¶¶Ç¨Ó©T©w±`¼Æ='TS'
-// fromStatusID = °ò¥»¸ê®Æ­¶¶Ç¨ÓHidden °Ñ¼Æ
-// actionID = «e­¶¨ú±o°Ê§@ ID( Assign = 003 )
+// formID = åŸºæœ¬è³‡æ–™é å‚³ä¾†å›ºå®šå¸¸æ•¸='TS'
+// fromStatusID = åŸºæœ¬è³‡æ–™é å‚³ä¾†Hidden åƒæ•¸
+// actionID = å‰é å–å¾—å‹•ä½œ ID( Assign = 003 )
 try
 { 
 	errorFlag ="000000";
-	// ¨ú±o°õ¦æ°Ê§@¦WºÙ_°__ByKerwin 2007/02/04
+	// å–å¾—åŸ·è¡Œå‹•ä½œåç¨±_èµ·_ByKerwin 2007/02/04
 	Statement getActionName=con.createStatement();  
 	ResultSet getActionRs=getActionName.executeQuery("select ACTIONNAME from ORADDMAN.TSWFACTION where ACTIONID = '"+actionID+"' ");  
 	if (getActionRs.next())
@@ -231,9 +231,9 @@ try
 	}
 	getActionRs.close();
 	getActionName.close();
-	// ¨ú±o°õ¦æ°Ê§@¦WºÙ_¨´_ByKerwin 2007/02/04
+	// å–å¾—åŸ·è¡Œå‹•ä½œåç¨±_è¿„_ByKerwin 2007/02/04
 
-	// ¥ı¨ú±o¤U¤@ª¬ºA¤Îª¬ºA´y­z¨Ã§@¬yµ{ª¬ºA§ó·s   
+	// å…ˆå–å¾—ä¸‹ä¸€ç‹€æ…‹åŠç‹€æ…‹æè¿°ä¸¦ä½œæµç¨‹ç‹€æ…‹æ›´æ–°   
 	dateString=dateBean.getYearMonthDay();
 
 	String sqlStat = "";
@@ -255,20 +255,20 @@ try
 	// Move TSCMfgWoExpandMProcess.jsp
 	
 	errorFlag ="042>044";
-	//MFG¬yµ{¥d²¾¯¸¤¤_°_	(ACTION=006)   ¬yµ{¥d¤w®i¶}042->¬yµ{¥d²¾¯¸¤¤ 044
-	if (actionID.equals("006") && fromStatusID.equals("042"))   // ¦p¬°n¯¸, §Y ²Ä¤@¯¸ --> ²Ä¤G¯¸ --> ²Ä n-1 ¯¸
+	//MFGæµç¨‹å¡ç§»ç«™ä¸­_èµ·	(ACTION=006)   æµç¨‹å¡å·²å±•é–‹042->æµç¨‹å¡ç§»ç«™ä¸­ 044
+	if (actionID.equals("006") && fromStatusID.equals("042"))   // å¦‚ç‚ºnç«™, å³ ç¬¬ä¸€ç«™ --> ç¬¬äºŒç«™ --> ç¬¬ n-1 ç«™
 	{   //out.println("fromStatusID="+fromStatusID);
-		String fndUserName = "";  //³B²z¤H­û
-		String woUOM = ""; // ¤u¥O²¾¯¸³æ¦ì
-		int primaryItemID = 0; // ®Æ¸¹ID
+		String fndUserName = "";  //è™•ç†äººå“¡
+		String woUOM = ""; // å·¥ä»¤ç§»ç«™å–®ä½
+		int primaryItemID = 0; // æ–™è™ŸID
 		float runCardQtyf=0,overQty=0;
-		entityId = "0"; // ¤u¥Owip_entity_id
-		boolean interfaceErr = false;  // §PÂ_¨ä¤¤ Interface ¦³²§±`ªººX¼Ğ
+		entityId = "0"; // å·¥ä»¤wip_entity_id
+		boolean interfaceErr = false;  // åˆ¤æ–·å…¶ä¸­ Interface æœ‰ç•°å¸¸çš„æ——æ¨™
 		if (aMFGRCExpTransCode!=null)
 		{	  
 			if (aMFGRCExpTransCode.length>0)
 			{    
-				//§ì¨úlogin ªºuser id °µ¬° run "Receiving Transaction Processor"ªº requestor_°_	                     
+				//æŠ“å–login çš„user id åšç‚º run "Receiving Transaction Processor"çš„ requestor_èµ·	                     
 				String sqlfnd = " select USER_NAME from APPS.FND_USER A, ORADDMAN.WSUSER B "+
 							 " where A.USER_NAME = UPPER(B.USERNAME)  and to_char(A.USER_ID) = '"+userMfgUserID+ "'";
 				Statement stateFndId=con.createStatement();
@@ -279,9 +279,9 @@ try
 				}
 				rsFndId.close();
 				stateFndId.close();
-				//§ì¨úlogin ªºuser id °µ¬° run "Receiving Transaction Processor"ªº requestor_¨´ 
+				//æŠ“å–login çš„user id åšç‚º run "Receiving Transaction Processor"çš„ requestor_è¿„ 
 
-				//§ì¨ú²¾¯¸¼Æ¶qªº³æ¦ì_°_	                     
+				//æŠ“å–ç§»ç«™æ•¸é‡çš„å–®ä½_èµ·	                     
 				String sqlUOM = " select DISTINCT a.WO_UOM, b.WIP_ENTITY_ID, b.PRIMARY_ITEM_ID ,a.OE_ORDER_NO  "+
 							"  from APPS.YEW_WORKORDER_ALL a, APPS.YEW_RUNCARD_ALL b "+
 							 " where a.WO_NO = b.WO_NO and a.WO_NO = '"+woNo+ "'";
@@ -297,7 +297,7 @@ try
 				}
 				rsUOM.close();
 				stateUOM.close();
-				//§ì¨ú²¾¯¸¼Æ¶qªº³æ¦ì_¨´   
+				//æŠ“å–ç§»ç«™æ•¸é‡çš„å–®ä½_è¿„   
 
 			} // End of if (aMFGRCExpTransCode.length>0)  
 
@@ -306,26 +306,26 @@ try
 			{
 				for (int k=0;k<=choice.length-1;k++)    
 				{ //out.println("choice[k]="+choice[k]);  
-					// §PÂ_³QCheck ªºLine ¤~°õ¦æ«ü¬£§@·~
-					if (choice[k]==aMFGRCExpTransCode[i][0] || choice[k].equals(aMFGRCExpTransCode[i][0])) // RUNCARD_ID = °}¦C¤º®e
+					// åˆ¤æ–·è¢«Check çš„Line æ‰åŸ·è¡ŒæŒ‡æ´¾ä½œæ¥­
+					if (choice[k]==aMFGRCExpTransCode[i][0] || choice[k].equals(aMFGRCExpTransCode[i][0])) // RUNCARD_ID = é™£åˆ—å…§å®¹
 					{ //out.println("aMFGRCExpTransCode[i][0]="+aMFGRCExpTransCode[i][0]);	   
 						//out.print("woNo2="+woNo+"<br>");
-						if (Float.parseFloat(aMFGRCExpTransCode[i][2])>0) // ­Y³]©w²¾¯¸¼Æ¶q¤j©ó0¤~¶i¦æ²¾¯¸¤Î³ø¼o
+						if (Float.parseFloat(aMFGRCExpTransCode[i][2])>0) // è‹¥è¨­å®šç§»ç«™æ•¸é‡å¤§æ–¼0æ‰é€²è¡Œç§»ç«™åŠå ±å»¢
 						{
 
 							int toIntOpSType = 1; //TO_INTRAOPERATION_STEP_TYPE(1=Queue 2=RUN, 3=TO_MOVE, 5=SCRAP)
 							int transType = 1;    // TRANSACTION_TYPE   1= Move transaction,  2=Move Completion, 3=Move Return 
 							if (aMFGRCExpTransCode[i][5]==null || aMFGRCExpTransCode[i][5]=="0" || aMFGRCExpTransCode[i][5].equals("0")) 
-							{ // ­YµL¤U¤@¯¸§Ç¸¹,«hªí¥Ü¥»¯¸§Y¬°³Ì²×¯¸,¬ÛÃö°Ê§@³]©w¬°§¹¤u
+							{ // è‹¥ç„¡ä¸‹ä¸€ç«™åºè™Ÿ,å‰‡è¡¨ç¤ºæœ¬ç«™å³ç‚ºæœ€çµ‚ç«™,ç›¸é—œå‹•ä½œè¨­å®šç‚ºå®Œå·¥
 								toIntOpSType = 3; 
-								aMFGRCExpTransCode[i][5] = aMFGRCExpTransCode[i][4]; // µL¤U¤@¯¸ªºSeq No,¬Gµ¹¥»¯¸
-								transType = 1; //(§¹¤u¥Ñ¤J®w«á¦Û°Ê°õ¦æ,¬G¤´³]¬°1)
-							}  // ­YµL¤U¤@¯¸,ªí¥Ü¥»¯¸¬O³Ì«á¤@¯¸,toStepType ³]¦¨3	, transaction Type ³]¬°2(Move Completion)
+								aMFGRCExpTransCode[i][5] = aMFGRCExpTransCode[i][4]; // ç„¡ä¸‹ä¸€ç«™çš„Seq No,æ•…çµ¦æœ¬ç«™
+								transType = 1; //(å®Œå·¥ç”±å…¥åº«å¾Œè‡ªå‹•åŸ·è¡Œ,æ•…ä»è¨­ç‚º1)
+							}  // è‹¥ç„¡ä¸‹ä¸€ç«™,è¡¨ç¤ºæœ¬ç«™æ˜¯æœ€å¾Œä¸€ç«™,toStepType è¨­æˆ3	, transaction Type è¨­ç‚º2(Move Completion)
 
-							//§ì¨ú­Ó§O¬yµ{¥d²¾¯¸¼Æ¶qªº³æ¦ì,¨Ã­pºâ¥»¯¸³ø¼o¼Æ¶q_°_	
+							//æŠ“å–å€‹åˆ¥æµç¨‹å¡ç§»ç«™æ•¸é‡çš„å–®ä½,ä¸¦è¨ˆç®—æœ¬ç«™å ±å»¢æ•¸é‡_èµ·	
 							float  rcMQty = 0;   
 							float  rcScrapQty = 0;   
-							java.text.DecimalFormat nf = new java.text.DecimalFormat("###,##0.000"); // ¨ú¤p¼Æ«á¤T¦ì     
+							java.text.DecimalFormat nf = new java.text.DecimalFormat("###,##0.000"); // å–å°æ•¸å¾Œä¸‰ä½     
 
 							String sqlMQty = " select b.QTY_IN_QUEUE from APPS.YEW_WORKORDER_ALL a, APPS.YEW_RUNCARD_ALL b "+
 										 " where a.WO_NO = b.WO_NO and a.WO_NO = '"+woNo+ "' "+
@@ -335,24 +335,24 @@ try
 							if (rsMQty.next())
 							{
 								if (aMFGRCExpTransCode[i][2]==null || aMFGRCExpTransCode[i][2].equals("null")) aMFGRCExpTransCode[i][2]=Float.toString(rcMQty);
-								rcMQty = rsMQty.getFloat("QTY_IN_QUEUE");		//­ì§ë¯¸¼Æ¶q			
-								rcScrapQty = rcMQty - Float.parseFloat(aMFGRCExpTransCode[i][2]);  // ³ø¼o¼Æ¶q = ­ì§ë¯¸¼Æ¶q - ¿é¤J²¾¯¸¼Æ¶q						   
+								rcMQty = rsMQty.getFloat("QTY_IN_QUEUE");		//åŸæŠ•ç«™æ•¸é‡			
+								rcScrapQty = rcMQty - Float.parseFloat(aMFGRCExpTransCode[i][2]);  // å ±å»¢æ•¸é‡ = åŸæŠ•ç«™æ•¸é‡ - è¼¸å…¥ç§»ç«™æ•¸é‡						   
 								String strScrapQty = nf.format(rcScrapQty);
 								java.math.BigDecimal bd = new java.math.BigDecimal(strScrapQty);
 								java.math.BigDecimal scrapQty = bd.setScale(3, java.math.BigDecimal.ROUND_HALF_UP);
 								rcScrapQty =scrapQty.floatValue();
 
-								//out.println("java¥|±Ë¤­¤J«á¨ú¤p¼Æ¤T¦ìrcScrapQty="+rcScrapQty+"<BR>");  
+								//out.println("javaå››æ¨äº”å…¥å¾Œå–å°æ•¸ä¸‰ä½rcScrapQty="+rcScrapQty+"<BR>");  
 							}
 							rsMQty.close();
 							stateMQty.close();
-							//§ì¨ú²¾¯¸¼Æ¶qªº³æ¦ì,¨Ã­pºâ¥»¯¸³ø¼o¼Æ¶q_¨´
+							//æŠ“å–ç§»ç«™æ•¸é‡çš„å–®ä½,ä¸¦è¨ˆç®—æœ¬ç«™å ±å»¢æ•¸é‡_è¿„
 
 							String getErrScrapBuffer = "";
 							int getRetScrapCode = 0;   
-							if (rcScrapQty>0)  // §PÂ_­Y³ø¼o¼Æ¶q¤j©ó¹s,«h©I¥s¼g¤J³ø¼oInterface
+							if (rcScrapQty>0)  // åˆ¤æ–·è‹¥å ±å»¢æ•¸é‡å¤§æ–¼é›¶,å‰‡å‘¼å«å¯«å…¥å ±å»¢Interface
 							{		 
-								// ¥ı¨ú³ø¼o Scrap Account ID_°_// ¨ÌOrganization_id ¨ú¹w³]ªº Scrap Acc ID
+								// å…ˆå–å ±å»¢ Scrap Account ID_èµ·// ä¾Organization_id å–é è¨­çš„ Scrap Acc ID
 								int scrpAccID = 0;
 								String sqlScrp = " select DEFAULT_SCRAP_ACCOUNT_ID from WIP_PARAMETERS_V  "+
 											  " where ORGANIZATION_ID = '"+organizationID+ "' ";										  
@@ -364,11 +364,11 @@ try
 								}
 								rsScrp.close();
 								stateScrp.close();
-								// ¥ı¨ú³ø¼o Scrap Account ID_¨´
+								// å…ˆå–å ±å»¢ Scrap Account ID_è¿„
 
-								// *****%%%%%%%%%%%%%% ²¾¯¸³ø¼o¼Æ¶q %%%%%%%%%%%%**********  °_
-								toIntOpSType = 5;  // ³ø¼oªºto InterOperation Step Type = 5
-								transType = 1; // ³ø¼oªºTransaction Type = 1(Move Transaction)
+								// *****%%%%%%%%%%%%%% ç§»ç«™å ±å»¢æ•¸é‡ %%%%%%%%%%%%**********  èµ·
+								toIntOpSType = 5;  // å ±å»¢çš„to InterOperation Step Type = 5
+								transType = 1; // å ±å»¢çš„Transaction Type = 1(Move Transaction)
 								String SqlScrap="insert into WIP_MOVE_TXN_INTERFACE( "+
 												"            CREATED_BY_NAME, CREATION_DATE, LAST_UPDATE_DATE, LAST_UPDATED_BY_NAME, ORGANIZATION_CODE, ORGANIZATION_ID, "+
 												"            PROCESS_PHASE, PROCESS_STATUS, TRANSACTION_DATE, TRANSACTION_QUANTITY, TRANSACTION_UOM, "+
@@ -385,31 +385,31 @@ try
 								scrapstmt.setString(3,organCode);      //out.println("organCode="+organCode);   // ORGANIZATION_CODE
 								scrapstmt.setInt(4,Integer.parseInt(organizationID)); //out.println("organizationID="+organizationID);   // ORGANIZATION_ID
 								scrapstmt.setInt(5,1);      //PROCESS_PHASE   1=Move Validation, 2=Move Processing, 3= Operation Backflush Setup
-								scrapstmt.setInt(6,2);      //PROCESS_STATUS 1=PENDING , 2=RUNNING , 3=Error	 (2006/12/07 §ï¬° 2, ­ì¬° 1)     
-								scrapstmt.setFloat(7,rcScrapQty); out.println("<BR>¬yµ{¥d:"+aMFGRCExpTransCode[i][1]+"(³ø¼o¼Æ¶q="+rcScrapQty+")<BR>");        	   
+								scrapstmt.setInt(6,2);      //PROCESS_STATUS 1=PENDING , 2=RUNNING , 3=Error	 (2006/12/07 æ”¹ç‚º 2, åŸç‚º 1)     
+								scrapstmt.setFloat(7,rcScrapQty); out.println("<BR>æµç¨‹å¡:"+aMFGRCExpTransCode[i][1]+"(å ±å»¢æ•¸é‡="+rcScrapQty+")<BR>");        	   
 								scrapstmt.setString(8,woUOM);
 								scrapstmt.setInt(9,Integer.parseInt(entityId));  
 								scrapstmt.setString(10,woNo);  
 								scrapstmt.setInt(11,1); // FM_INTRAOPERATION_STEP_TYPE 1=Queue 2=RUN, 3=TO_MOVE, 5=SCRAP
 								//seqstmt.setInt(12,20);
-								scrapstmt.setInt(12,Integer.parseInt(aMFGRCExpTransCode[i][4])); // FM_OPERATION_SEQ_NUM(¥»¯¸)		  
-								scrapstmt.setInt(13,toIntOpSType); // TO_INTRAOPERATION_STEP_TYPE  1=Queue 2=RUN, 3=TO_MOVE(§¹¤u), 5=SCRAP(³ø¼o)
-								scrapstmt.setInt(14,Integer.parseInt(aMFGRCExpTransCode[i][4])); // TO_OPERATION_SEQ_NUM  //³ø¼o§Y¬°From = To
-								scrapstmt.setString(15,aMFGRCExpTransCode[i][1]);	//out.println("¬yµ{¥d¸¹="+aMFGRCExpTransCode[i][1]); // ATTRIBUTE2 ¬yµ{¥d¸¹ 
+								scrapstmt.setInt(12,Integer.parseInt(aMFGRCExpTransCode[i][4])); // FM_OPERATION_SEQ_NUM(æœ¬ç«™)		  
+								scrapstmt.setInt(13,toIntOpSType); // TO_INTRAOPERATION_STEP_TYPE  1=Queue 2=RUN, 3=TO_MOVE(å®Œå·¥), 5=SCRAP(å ±å»¢)
+								scrapstmt.setInt(14,Integer.parseInt(aMFGRCExpTransCode[i][4])); // TO_OPERATION_SEQ_NUM  //å ±å»¢å³ç‚ºFrom = To
+								scrapstmt.setString(15,aMFGRCExpTransCode[i][1]);	//out.println("æµç¨‹å¡è™Ÿ="+aMFGRCExpTransCode[i][1]); // ATTRIBUTE2 æµç¨‹å¡è™Ÿ 
 								scrapstmt.setInt(16,transType);	// TRANSACTION_TYPE   1= Move transaction,  2=Move Completion, 3=Move Return 
-								scrapstmt.setInt(17,scrpAccID);	// SCRAP_ACCOUNT_ID  (I)³ø¼o ( 01-11-000-7650-951-0-000 ) 
-								scrapstmt.setInt(18,7);	// REASON_ID  »sµ{²§±` 
+								scrapstmt.setInt(17,scrpAccID);	// SCRAP_ACCOUNT_ID  (I)å ±å»¢ ( 01-11-000-7650-951-0-000 ) 
+								scrapstmt.setInt(18,7);	// REASON_ID  è£½ç¨‹ç•°å¸¸ 
 								scrapstmt.executeUpdate();
 								scrapstmt.close();	      	
 
-								//§ì¨ú¼g¤JInterfaceªºGroupµ¥¸ê°T_°_
+								//æŠ“å–å¯«å…¥Interfaceçš„Groupç­‰è³‡è¨Š_èµ·
 								int groupID = 0;
 								int opSeqNo = 0;              
 								String sqlGrp = " select GROUP_ID,TO_OPERATION_SEQ_NUM from WIP.WIP_MOVE_TXN_INTERFACE "+
 											 " where WIP_ENTITY_NAME = '"+woNo+ "' and WIP_ENTITY_ID = "+entityId+" "+
 											 "   and ATTRIBUTE2 = '"+aMFGRCExpTransCode[i][1]+"' "+ // 2006/11/17 By RunCardNo
 											 "   and PROCESS_STATUS = 2 "+ // 2006/12/08 -- By Process Status=1
-											 "   and TO_INTRAOPERATION_STEP_TYPE = 5 "; // ¨ú¦¹¦¸³ø¼o
+											 "   and TO_INTRAOPERATION_STEP_TYPE = 5 "; // å–æ­¤æ¬¡å ±å»¢
 								Statement stateGrp=con.createStatement();
 								ResultSet rsGrp=stateGrp.executeQuery(sqlGrp);
 								if (rsGrp.next())
@@ -419,19 +419,19 @@ try
 								}
 								rsGrp.close();
 								stateGrp.close();
-								//§ì¨ú¼g¤JInterfaceªºGroupµ¥¸ê°T_¨´  		
-								//out.println("<BR>³ø¼oªºgroupID ="+groupID+"<BR>");
+								//æŠ“å–å¯«å…¥Interfaceçš„Groupç­‰è³‡è¨Š_è¿„  		
+								//out.println("<BR>å ±å»¢çš„groupID ="+groupID+"<BR>");
 								//out.println("Step1");	 
-								if (groupID>0 && opSeqNo>0)  // ªí¥Ü¨ú¨ì¥¿½TªºgroupID¤ÎopSeqNo
+								if (groupID>0 && opSeqNo>0)  // è¡¨ç¤ºå–åˆ°æ­£ç¢ºçš„groupIDåŠopSeqNo
 								{
-									// §Y®É©I¥s WIP_MOVE PROCESS WORKER		  
+									// å³æ™‚å‘¼å« WIP_MOVE PROCESS WORKER		  
 									int procPhase = 1;
 									int timeOut = 10;
 									try
 									{	        /*
 										CallableStatement cs5 = con.prepareCall("{call WIP_MOVPROC_PRIV.Move_Worker(?,?,?,?,?,?)}");			
-										cs5.registerOutParameter(1, Types.VARCHAR); //  ¶Ç¦^­È        ERROR BUFFER
-										cs5.registerOutParameter(2, Types.INTEGER); //  ¶Ç¦^­È		RETURN CODE				   
+										cs5.registerOutParameter(1, Types.VARCHAR); //  å‚³å›å€¼        ERROR BUFFER
+										cs5.registerOutParameter(2, Types.INTEGER); //  å‚³å›å€¼		RETURN CODE				   
 										cs5.setInt(3,groupID);                                         //  Org ID 	
 										cs5.setInt(4,procPhase);    // 1 Move Validation 2.Move Processing 3.Opeariotn Backflush Setup     
 										cs5.setInt(5,timeOut); 
@@ -446,8 +446,8 @@ try
 										cs5.setInt(1,groupID);                                         //  Org ID 	
 										cs5.setString(2,null);   // BackFlush Setup    
 										cs5.setString(3,"T");	   // FND_API.G_TRUE = "T", FND_API.G_FALSE = "F"
-										cs5.registerOutParameter(4, Types.VARCHAR); //  ¶Ç¦^­È     STATUS
-										cs5.registerOutParameter(5, Types.VARCHAR); //  ¶Ç¦^­È		ERROR MESSAGE					 					      						   	 					     
+										cs5.registerOutParameter(4, Types.VARCHAR); //  å‚³å›å€¼     STATUS
+										cs5.registerOutParameter(5, Types.VARCHAR); //  å‚³å›å€¼		ERROR MESSAGE					 					      						   	 					     
 										cs5.execute();					      
 										String getMoveStatus = cs5.getString(4);		
 										String getMoveErrorMsg = cs5.getString(5);								      				    
@@ -456,8 +456,8 @@ try
 										if (getMoveStatus.equals("U") && getMoveErrorMsg!=null && !getMoveErrorMsg.equals(""))
 										{
 											getRetScrapCode = 77;   // Error Number  
-											getErrScrapBuffer = getMoveErrorMsg; // §â¿ù»~°T®§µ¹­ì¨Ó§PÂ_ªºBuffer
-											out.println("getRetScrapCode="+getRetScrapCode+"&nbsp;"+"³ø¼o¿ù»~­ì¦]="+getErrScrapBuffer+"<BR>");
+											getErrScrapBuffer = getMoveErrorMsg; // æŠŠéŒ¯èª¤è¨Šæ¯çµ¦åŸä¾†åˆ¤æ–·çš„Buffer
+											out.println("getRetScrapCode="+getRetScrapCode+"&nbsp;"+"å ±å»¢éŒ¯èª¤åŸå› ="+getErrScrapBuffer+"<BR>");
 										}
 			  
 
@@ -468,47 +468,47 @@ try
 											"where TRANSACTION_ID=(select TRANSACTION_ID from WIP_MOVE_TXN_INTERFACE where GROUP_ID= "+groupID+") ";
 											Statement stateTxnMsg=con.createStatement();
 											ResultSet rsTxnMsg=stateTxnMsg.executeQuery(sqlTxnMsg);
-											if (rsTxnMsg.next())  // ­Y¦s¦b,ªí¥Ü¦³¿ù»~°T®§,¦ı¤´¦¨¥\¼g
+											if (rsTxnMsg.next())  // è‹¥å­˜åœ¨,è¡¨ç¤ºæœ‰éŒ¯èª¤è¨Šæ¯,ä½†ä»æˆåŠŸå¯«
 											{
 												getErrScrapBuffer = getErrScrapBuffer+"("+rsTxnMsg.getString(1)+")"+"Error Column("+rsTxnMsg.getString(2)+")";
 											}
 											rsTxnMsg.close();
 											stateTxnMsg.close(); 
 										}					  			  	  
-										// ¾÷¨®,°T®§¤£·Ç½T,»İ¦A§PÂ_¬O§_MOVE_TRANSACTION¨Ì¬yµ{¥d¬O§_¥¿½T¥H³Q¼g¤J,¦p¤w¼g¤J,«h¤´°õ¦æ¥¿±`²¾¯¸§@·~ //_°_  
+										// æ©Ÿè»Š,è¨Šæ¯ä¸æº–ç¢º,éœ€å†åˆ¤æ–·æ˜¯å¦MOVE_TRANSACTIONä¾æµç¨‹å¡æ˜¯å¦æ­£ç¢ºä»¥è¢«å¯«å…¥,å¦‚å·²å¯«å…¥,å‰‡ä»åŸ·è¡Œæ­£å¸¸ç§»ç«™ä½œæ¥­ //_èµ·  
 										String sqlGrpMsg = " select GROUP_ID from WIP.WIP_MOVE_TRANSACTIONS "+
 										" where WIP_ENTITY_ID = "+entityId+" and ATTRIBUTE2 = '"+aMFGRCExpTransCode[i][1]+"' "+
 										"   and to_char(FM_OPERATION_SEQ_NUM) = '"+aMFGRCExpTransCode[i][4]+"' "+
-										"   and PRIMARY_QUANTITY = "+rcScrapQty+"  "+  // ³ø¼o¼Æ
-										"   and TO_INTRAOPERATION_STEP_TYPE = 5 and GROUP_ID="+groupID+" ";   // ¨ú¦¹¦¸³ø¼o
+										"   and PRIMARY_QUANTITY = "+rcScrapQty+"  "+  // å ±å»¢æ•¸
+										"   and TO_INTRAOPERATION_STEP_TYPE = 5 and GROUP_ID="+groupID+" ";   // å–æ­¤æ¬¡å ±å»¢
 										Statement stateGrpMsg=con.createStatement();
 										ResultSet rsGrpMsg=stateGrpMsg.executeQuery(sqlGrpMsg);
-										if (rsGrpMsg.next())  // ­Y¦s¦b,ªí¥Ü¦³¿ù»~°T®§,¦ı¤´¦¨¥\¼g¤JMove Transaction, §ó¥¿getRetScrapCode = 0
+										if (rsGrpMsg.next())  // è‹¥å­˜åœ¨,è¡¨ç¤ºæœ‰éŒ¯èª¤è¨Šæ¯,ä½†ä»æˆåŠŸå¯«å…¥Move Transaction, æ›´æ­£getRetScrapCode = 0
 										{
 											getRetScrapCode = 0; 
-											if (getErrScrapBuffer!=null && !getErrScrapBuffer.equals("null")) out.println("§t¿ù»~°T®§,¤´¦¨¥\¼g¤J³ø¼o¼ÆInterface!!!");
+											if (getErrScrapBuffer!=null && !getErrScrapBuffer.equals("null")) out.println("å«éŒ¯èª¤è¨Šæ¯,ä»æˆåŠŸå¯«å…¥å ±å»¢æ•¸Interface!!!");
 										} else {
 
 										}
 										rsGrpMsg.close();
 										stateGrpMsg.close();
-										// ¾÷¨®,°T®§¤£·Ç½T,»İ¦A§PÂ_¬O§_MOVE_TRANSACTION¨Ì¬yµ{¥d¬O§_¥¿½T¥H³Q¼g¤J,¦p¤w¼g¤J,«h¤´°õ¦æ¥¿±`²¾¯¸§@·~ //_¨´ 
+										// æ©Ÿè»Š,è¨Šæ¯ä¸æº–ç¢º,éœ€å†åˆ¤æ–·æ˜¯å¦MOVE_TRANSACTIONä¾æµç¨‹å¡æ˜¯å¦æ­£ç¢ºä»¥è¢«å¯«å…¥,å¦‚å·²å¯«å…¥,å‰‡ä»åŸ·è¡Œæ­£å¸¸ç§»ç«™ä½œæ¥­ //_è¿„ 
 										*/
 									}	  
-									catch (Exception e) { out.println("Exception³ø¼oªºgroupID:"+e.getMessage()); }  
+									catch (Exception e) { out.println("Exceptionå ±å»¢çš„groupID:"+e.getMessage()); }  
 								} // end of if (groupID>0 && opSeqNo>0)			 
-							// *****%%%%%%%%%%%%%% ²¾¯¸³ø¼o¼Æ¶q¼Æ¶q  %%%%%%%%%%%%**********  ¨´
+							// *****%%%%%%%%%%%%%% ç§»ç«™å ±å»¢æ•¸é‡æ•¸é‡  %%%%%%%%%%%%**********  è¿„
 
 							} // End of if (rcScrapQty>0)
 
 							String getErrBuffer = "",overFlag="";
 							int getRetCode = 0;	
 							// float prevQty = 0; 	         
-							if (getRetScrapCode==0) // ­Y°õ¦æ¦P¤@¯¸³ø¼o¦¨¥\,¤~°õ¦æ²¾¤U¤@¯¸°Ê§@_°_
+							if (getRetScrapCode==0) // è‹¥åŸ·è¡ŒåŒä¸€ç«™å ±å»¢æˆåŠŸ,æ‰åŸ·è¡Œç§»ä¸‹ä¸€ç«™å‹•ä½œ_èµ·
 							{ 
 
-								//§PÂ_¬O§_¦³overcompletion
-								//§ì¨ú¬yµ{¥d¼Æ¶q
+								//åˆ¤æ–·æ˜¯å¦æœ‰overcompletion
+								//æŠ“å–æµç¨‹å¡æ•¸é‡
 								Statement stateRc=con.createStatement();
 								ResultSet rsRc=stateRc.executeQuery(" SELECT runcard_qty   FROM yew_runcard_all  WHERE runcard_no = '"+aMFGRCExpTransCode[i][1]+ "'");
 								if (rsRc.next())
@@ -516,15 +516,15 @@ try
 								rsRc.close();
 								stateRc.close();
 
-								if (Float.parseFloat(aMFGRCExpTransCode[i][2]) > runCardQtyf )   //­Y²¾¯¸¼Æ¤j©ó¬yµ{¥d¼Æ,ªí¥Üovercompletion
+								if (Float.parseFloat(aMFGRCExpTransCode[i][2]) > runCardQtyf )   //è‹¥ç§»ç«™æ•¸å¤§æ–¼æµç¨‹å¡æ•¸,è¡¨ç¤ºovercompletion
 								{
-									overQty = Float.parseFloat(aMFGRCExpTransCode[i][2]) - runCardQtyf ;    //²¾¯¸¼Æ-¬yµ{¥d¼Æ=¶W¥X¼Æ¶q
-									overFlag = "Y";   //µ¹©w¶W¦¬ªºflag
+									overQty = Float.parseFloat(aMFGRCExpTransCode[i][2]) - runCardQtyf ;    //ç§»ç«™æ•¸-æµç¨‹å¡æ•¸=è¶…å‡ºæ•¸é‡
+									overFlag = "Y";   //çµ¦å®šè¶…æ”¶çš„flag
 								}else  { overFlag = "N"; }
 								//out.print("overQty="+overQty);    
 								//out.println("Step2");
-								toIntOpSType = 1;  // ²¾¯¸ªºto InterOperation Step Type = 1 
-								// *****%%%%%%%%%%%%%% ¥¿±`²¾¯¸¼Æ¶q  %%%%%%%%%%%%**********  °_
+								toIntOpSType = 1;  // ç§»ç«™çš„to InterOperation Step Type = 1 
+								// *****%%%%%%%%%%%%%% æ­£å¸¸ç§»ç«™æ•¸é‡  %%%%%%%%%%%%**********  èµ·
 								String Sqlrc="";
 								String Sqlrc1="insert into WIP_MOVE_TXN_INTERFACE( "+
 												"            CREATED_BY_NAME, CREATION_DATE, LAST_UPDATE_DATE, LAST_UPDATED_BY_NAME, ORGANIZATION_CODE, ORGANIZATION_ID, "+
@@ -549,35 +549,35 @@ try
 								seqstmt.setString(3,organCode);      //out.println("organCode="+organCode);   // ORGANIZATION_CODE
 								seqstmt.setInt(4,Integer.parseInt(organizationID)); //out.println("organizationID="+organizationID);   // ORGANIZATION_ID
 								seqstmt.setInt(5,1);      //PROCESS_PHASE   1=Move Validation, 2=Move Processing, 3= Operation Backflush Setup
-								seqstmt.setInt(6,2);      //PROCESS_STATUS 1=PENDING , 2=RUNNING , 3=Error (2006/12/07 §ï¬° 2, ­ì¬° 1)    
+								seqstmt.setInt(6,2);      //PROCESS_STATUS 1=PENDING , 2=RUNNING , 3=Error (2006/12/07 æ”¹ç‚º 2, åŸç‚º 1)    
 								//  seqstmt.setDate(9,processDateTime);  // TRANSACTION_DATE
-								seqstmt.setFloat(7,Float.parseFloat(aMFGRCExpTransCode[i][2])); // ²¾¯¸¼Æ¶q
+								seqstmt.setFloat(7,Float.parseFloat(aMFGRCExpTransCode[i][2])); // ç§»ç«™æ•¸é‡
 								//seqstmt.setInt(10,Integer.parseInt(aMFGRCExpTransCode[i][2])); 
-								//out.println("¼Æ¶q="+aMFGRCExpTransCode[i][2]); //queue to Move Qty creation date  dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()
+								//out.println("æ•¸é‡="+aMFGRCExpTransCode[i][2]); //queue to Move Qty creation date  dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()
 								seqstmt.setString(8,woUOM);   //out.println("woUOM="+woUOM);
 								seqstmt.setInt(9,Integer.parseInt(entityId));  
-								seqstmt.setString(10,woNo);  //out.println("¤u¥O¸¹="+woNo);
+								seqstmt.setString(10,woNo);  //out.println("å·¥ä»¤è™Ÿ="+woNo);
 								seqstmt.setInt(11,1); // FM_INTRAOPERATION_STEP_TYPE 1=Queue 2=RUN, 3=TO_MOVE, 5=SCRAP
 								//seqstmt.setInt(12,20);
-								seqstmt.setInt(12,Integer.parseInt(aMFGRCExpTransCode[i][4])); // FM_OPERATION_SEQ_NUM(¥»¯¸)
+								seqstmt.setInt(12,Integer.parseInt(aMFGRCExpTransCode[i][4])); // FM_OPERATION_SEQ_NUM(æœ¬ç«™)
 								//out.println("FM_OPERATION_SEQ_NUM="+aMFGRCExpTransCode[i][4]);
-								seqstmt.setInt(13,toIntOpSType); // TO_INTRAOPERATION_STEP_TYPE  1=Queue 2=RUN, 3=TO_MOVE(§¹¤u), 5=SCRAP(³ø¼o)
+								seqstmt.setInt(13,toIntOpSType); // TO_INTRAOPERATION_STEP_TYPE  1=Queue 2=RUN, 3=TO_MOVE(å®Œå·¥), 5=SCRAP(å ±å»¢)
 								seqstmt.setInt(14,Integer.parseInt(aMFGRCExpTransCode[i][5])); // TO_OPERATION_SEQ_NUM  // Integer.parseInt(aMFGRCExpTransCode[i][5])
-								seqstmt.setString(15,aMFGRCExpTransCode[i][1]);	//out.println("¬yµ{¥d¸¹="+aMFGRCExpTransCode[i][1]); // ATTRIBUTE2 ¬yµ{¥d¸¹ 
+								seqstmt.setString(15,aMFGRCExpTransCode[i][1]);	//out.println("æµç¨‹å¡è™Ÿ="+aMFGRCExpTransCode[i][1]); // ATTRIBUTE2 æµç¨‹å¡è™Ÿ 
 								seqstmt.setInt(16,transType);	// TRANSACTION_TYPE   1= Move transaction,  2=Move Completion, 3=Move Return 
 								if (overFlag == "Y" || overFlag.equals("Y"))
 								{ seqstmt.setFloat(17,overQty); } // OVERCOMPLETION_TRANSACTION_QTY   
 								seqstmt.executeUpdate();
 								seqstmt.close();	      	
 
-								//§ì¨ú¼g¤JInterfaceªºGroupµ¥¸ê°T_°_
+								//æŠ“å–å¯«å…¥Interfaceçš„Groupç­‰è³‡è¨Š_èµ·
 								int groupID = 0;
 								int opSeqNo = 0;              
 								String sqlGrp = " select GROUP_ID, TO_OPERATION_SEQ_NUM  from WIP.WIP_MOVE_TXN_INTERFACE "+
 											 " where WIP_ENTITY_NAME = '"+woNo+ "' and WIP_ENTITY_ID = "+entityId+" "+
 											 "   and ATTRIBUTE2 = '"+aMFGRCExpTransCode[i][1]+"' "+ // 2006/11/17 By RunCardNo
 											 "   and PROCESS_STATUS = 2 "+ // 2006/12/08 -- By Process Status=1
-											 "   and TO_INTRAOPERATION_STEP_TYPE = 1 "; // ¨ú¦¹¦¸²¾¯¸ªºGroup ID
+											 "   and TO_INTRAOPERATION_STEP_TYPE = 1 "; // å–æ­¤æ¬¡ç§»ç«™çš„Group ID
 								Statement stateGrp=con.createStatement();
 								ResultSet rsGrp=stateGrp.executeQuery(sqlGrp);
 								if (rsGrp.next())
@@ -588,20 +588,20 @@ try
 								}
 								rsGrp.close();
 								stateGrp.close();
-								//§ì¨ú¼g¤J²¾¯¸InterfaceªºGroupµ¥¸ê°T_¨´
-								//out.println("<BR>²¾¯¸ªºgroupID ="+groupID+"<BR>");
+								//æŠ“å–å¯«å…¥ç§»ç«™Interfaceçš„Groupç­‰è³‡è¨Š_è¿„
+								//out.println("<BR>ç§»ç«™çš„groupID ="+groupID+"<BR>");
 
-								if (groupID>0 && opSeqNo>0)  // ªí¥Ü¨ú¨ì¥¿½TªºgroupID¤ÎopSeqNo
+								if (groupID>0 && opSeqNo>0)  // è¡¨ç¤ºå–åˆ°æ­£ç¢ºçš„groupIDåŠopSeqNo
 								{
-									// §Y®É©I¥s WIP_MOVE PROCESS WORKER
+									// å³æ™‚å‘¼å« WIP_MOVE PROCESS WORKER
 
 									int procPhase = 1;
 									int timeOut = 10;
 									try
 									{	  /*
 										CallableStatement cs4 = con.prepareCall("{call WIP_MOVPROC_PRIV.Move_Worker(?,?,?,?,?,?)}");			
-										cs4.registerOutParameter(1, Types.VARCHAR); //  ¶Ç¦^­È        ERROR BUFFER
-										cs4.registerOutParameter(2, Types.INTEGER); //  ¶Ç¦^­È		RETURN CODE				   
+										cs4.registerOutParameter(1, Types.VARCHAR); //  å‚³å›å€¼        ERROR BUFFER
+										cs4.registerOutParameter(2, Types.INTEGER); //  å‚³å›å€¼		RETURN CODE				   
 										cs4.setInt(3,groupID);                                         //  Org ID 	
 										cs4.setInt(4,procPhase);    // 1 Move Validation 2.Move Processing 3.Opeariotn Backflush Setup     
 										cs4.setInt(5,timeOut); 
@@ -615,8 +615,8 @@ try
 										cs4.setInt(1,groupID);                                         //  Org ID 	
 										cs4.setString(2,null);   // BackFlush Setup    
 										cs4.setString(3,"T");	   // FND_API.G_TRUE = "T", FND_API.G_FALSE = "F"
-										cs4.registerOutParameter(4, Types.VARCHAR); //  ¶Ç¦^­È     STATUS
-										cs4.registerOutParameter(5, Types.VARCHAR); //  ¶Ç¦^­È		ERROR MESSAGE					 					      						   	 					     
+										cs4.registerOutParameter(4, Types.VARCHAR); //  å‚³å›å€¼     STATUS
+										cs4.registerOutParameter(5, Types.VARCHAR); //  å‚³å›å€¼		ERROR MESSAGE					 					      						   	 					     
 										cs4.execute();					      
 										String getMoveStatus = cs4.getString(4);		
 										String getMoveErrorMsg = cs4.getString(5);								      				    
@@ -625,8 +625,8 @@ try
 										if (getMoveStatus.equals("U") && getMoveErrorMsg!=null && !getMoveErrorMsg.equals(""))
 										{
 											getRetCode = 88;   // Error Number  
-											getErrBuffer = getMoveErrorMsg; // §â¿ù»~°T®§µ¹­ì¨Ó§PÂ_ªºBuffer
-											out.println("getRetCode="+getRetCode+"&nbsp;"+"²¾¯¸¿ù»~­ì¦]="+getErrBuffer+"<BR>");
+											getErrBuffer = getMoveErrorMsg; // æŠŠéŒ¯èª¤è¨Šæ¯çµ¦åŸä¾†åˆ¤æ–·çš„Buffer
+											out.println("getRetCode="+getRetCode+"&nbsp;"+"ç§»ç«™éŒ¯èª¤åŸå› ="+getErrBuffer+"<BR>");
 										}				  
   
 										//out.println("getRetCode="+getRetCode+"&nbsp;"+"getErrBuffer="+getErrBuffer+"<BR>");
@@ -638,44 +638,44 @@ try
 															   "where TRANSACTION_ID=(select TRANSACTION_ID from WIP_MOVE_TXN_INTERFACE where GROUP_ID= "+groupID+") ";
 											Statement stateTxnMsg=con.createStatement();
 											ResultSet rsTxnMsg=stateTxnMsg.executeQuery(sqlTxnMsg);
-											if (rsTxnMsg.next())  // ­Y¦s¦b,ªí¥Ü¦³¿ù»~°T®§,¦ı¤´¦¨¥\¼g
+											if (rsTxnMsg.next())  // è‹¥å­˜åœ¨,è¡¨ç¤ºæœ‰éŒ¯èª¤è¨Šæ¯,ä½†ä»æˆåŠŸå¯«
 											{
 												getErrScrapBuffer = getErrScrapBuffer+"("+rsTxnMsg.getString(1)+")"+"Error Column("+rsTxnMsg.getString(2)+")";
 											}
 											rsTxnMsg.close();
 											stateTxnMsg.close(); 
 										}		
-										// ¾÷¨®,°T®§¤£·Ç½T,»İ¦A§PÂ_¬O§_MOVE_TRANSACTION¨Ì¬yµ{¥d¬O§_¥¿½T¥H³Q¼g¤J,¦p¤w¼g¤J,«h¤´°õ¦æ¥¿±`²¾¯¸§@·~ //_°_  
+										// æ©Ÿè»Š,è¨Šæ¯ä¸æº–ç¢º,éœ€å†åˆ¤æ–·æ˜¯å¦MOVE_TRANSACTIONä¾æµç¨‹å¡æ˜¯å¦æ­£ç¢ºä»¥è¢«å¯«å…¥,å¦‚å·²å¯«å…¥,å‰‡ä»åŸ·è¡Œæ­£å¸¸ç§»ç«™ä½œæ¥­ //_èµ·  
 										String sqlGrpMsg = " select GROUP_ID from WIP.WIP_MOVE_TRANSACTIONS "+
 														 " where WIP_ENTITY_ID = "+entityId+" and ATTRIBUTE2 = '"+aMFGRCExpTransCode[i][1]+"' "+
 														 "   and to_char(FM_OPERATION_SEQ_NUM) = '"+aMFGRCExpTransCode[i][4]+"' "+
-														 "   and PRIMARY_QUANTITY = "+Float.parseFloat(aMFGRCExpTransCode[i][2])+"  "+  // ²¾¯¸¼Æ
-														 "   and TO_INTRAOPERATION_STEP_TYPE = 1 and  GROUP_ID = "+groupID+" ";   // ¨ú¦¹¦¸²¾¯¸
+														 "   and PRIMARY_QUANTITY = "+Float.parseFloat(aMFGRCExpTransCode[i][2])+"  "+  // ç§»ç«™æ•¸
+														 "   and TO_INTRAOPERATION_STEP_TYPE = 1 and  GROUP_ID = "+groupID+" ";   // å–æ­¤æ¬¡ç§»ç«™
 										Statement stateGrpMsg=con.createStatement();
 										ResultSet rsGrpMsg=stateGrpMsg.executeQuery(sqlGrpMsg);
-										if (rsGrpMsg.next())  // ­Y¦s¦b,ªí¥Ü¦³¿ù»~°T®§,¦ı¤´¦¨¥\¼g¤JMove Transaction, §ó¥¿getRetScrapCode = 0
+										if (rsGrpMsg.next())  // è‹¥å­˜åœ¨,è¡¨ç¤ºæœ‰éŒ¯èª¤è¨Šæ¯,ä½†ä»æˆåŠŸå¯«å…¥Move Transaction, æ›´æ­£getRetScrapCode = 0
 										{
 										getRetCode = 0; 
-										if (getErrBuffer!=null && !getErrBuffer.equals("null")) out.println("§t¿ù»~°T®§,¤´¦¨¥\¼g¤J²¾¯¸¼ÆInterface!!!");
+										if (getErrBuffer!=null && !getErrBuffer.equals("null")) out.println("å«éŒ¯èª¤è¨Šæ¯,ä»æˆåŠŸå¯«å…¥ç§»ç«™æ•¸Interface!!!");
 										} else {
 
 										}
 										rsGrpMsg.close();
 										stateGrpMsg.close();
-										// ¾÷¨®,°T®§¤£·Ç½T,»İ¦A§PÂ_¬O§_MOVE_TRANSACTION¨Ì¬yµ{¥d¬O§_¥¿½T¥H³Q¼g¤J,¦p¤w¼g¤J,«h¤´°õ¦æ¥¿±`²¾¯¸§@·~ //_¨´			  	  
+										// æ©Ÿè»Š,è¨Šæ¯ä¸æº–ç¢º,éœ€å†åˆ¤æ–·æ˜¯å¦MOVE_TRANSACTIONä¾æµç¨‹å¡æ˜¯å¦æ­£ç¢ºä»¥è¢«å¯«å…¥,å¦‚å·²å¯«å…¥,å‰‡ä»åŸ·è¡Œæ­£å¸¸ç§»ç«™ä½œæ¥­ //_è¿„			  	  
 										*/
 									}	  
 									catch (Exception e) { out.println("Exception:"+e.getMessage()); }  
 								} // end of if (groupID>0 && opSeqNo>0)			 
-									// *****%%%%%%%%%%%%%% ¥¿±`²¾¯¸¼Æ¶q  %%%%%%%%%%%%**********  ¨´
+									// *****%%%%%%%%%%%%%% æ­£å¸¸ç§»ç«™æ•¸é‡  %%%%%%%%%%%%**********  è¿„
 
 							} // End of if (getRetScrapCode=0) 		 	
 
-							// ­Y³ø¼o¤Î²¾¯¸³£¦¨¥\,«h§ó·sRUNCARD ¸ê®Æªí¬ÛÃöÄæ¦ì
+							// è‹¥å ±å»¢åŠç§»ç«™éƒ½æˆåŠŸ,å‰‡æ›´æ–°RUNCARD è³‡æ–™è¡¨ç›¸é—œæ¬„ä½
 							if (getRetScrapCode==0 && getRetCode==0)
-							{   // ¨ú¦¨¥\²¾¯¸«á,«e¤@¯¸,¥»¯¸,¤U¤@¯¸¬ÛÃö¸ê°TRUNCARD_ALL¸ê®Æªí§ó·s
+							{   // å–æˆåŠŸç§»ç«™å¾Œ,å‰ä¸€ç«™,æœ¬ç«™,ä¸‹ä¸€ç«™ç›¸é—œè³‡è¨ŠRUNCARD_ALLè³‡æ–™è¡¨æ›´æ–°
 								//String operationSeqNum = "",operationSeqId="",standardOpId="",previousOpSeqNum="",nextOpSeqNum="",qtyInQueue="",standardOpDesc="";
-								boolean singleOp = false;  // ¹w³]¥»¯¸¤£¬°³Ì«á¤@¯¸
+								boolean singleOp = false;  // é è¨­æœ¬ç«™ä¸ç‚ºæœ€å¾Œä¸€ç«™
 								String sqlp = " select OPERATION_SEQ_NUM, OPERATION_SEQUENCE_ID, STANDARD_OPERATION_ID,  "+
 											"       DESCRIPTION, PREVIOUS_OPERATION_SEQ_NUM, NEXT_OPERATION_SEQ_NUM   "+
 											"  from WIP_OPERATIONS "+
@@ -697,7 +697,7 @@ try
 									{
 										nextOpSeqNum = "0";		
 										singleOp = true;
-										out.println("¤U¤@¯¸¥N½X="+nextOpSeqNum);
+										out.println("ä¸‹ä¸€ç«™ä»£ç¢¼="+nextOpSeqNum);
 									}	
 								}
 								else
@@ -708,13 +708,13 @@ try
 									standardOpDesc   = "0"; 
 									previousOpSeqNum  = "0"; 
 									nextOpSeqNum	  = "0"; 
-									// ¥»¯¸§Y¬°³Ì«á¤@¯¸,¬G»İ§ó·sª¬ºA¦Ü 046 (§¹¤u¤J®w)					 
+									// æœ¬ç«™å³ç‚ºæœ€å¾Œä¸€ç«™,æ•…éœ€æ›´æ–°ç‹€æ…‹è‡³ 046 (å®Œå·¥å…¥åº«)					 
 									Statement stateMax=con.createStatement();
 									ResultSet rsMax=stateMax.executeQuery("select NEXT_OPERATION_SEQ_NUM from WIP_OPERATIONS where to_char(OPERATION_SEQ_NUM) = '"+aMFGRCExpTransCode[i][4]+"' and WIP_ENTITY_ID ="+entityId+" ");
 									if (rsMax.next() && (rsMax.getString(1)==null || rsMax.getString(1).equals("")) )
 									{
 										singleOp = true;						   			   
-									} else out.println("¤U¤@¯¸¥N½X="+rsMax.getString(1));
+									} else out.println("ä¸‹ä¸€ç«™ä»£ç¢¼="+rsMax.getString(1));
 									rsMax.close();
 									stateMax.close();
 
@@ -723,8 +723,8 @@ try
 								rsp.close();
 								statep.close();				   
 
-								// %%%%%%%%%%%%%%%%%%% ¼g¤JRun card Move Transaction %%%%%%%%%%%%%%%%%%%_°_
-								//¥ı§ìwip_move_transaction¤¤ªº OVERCOMPLETION_PRIMARY_QTY
+								// %%%%%%%%%%%%%%%%%%% å¯«å…¥Run card Move Transaction %%%%%%%%%%%%%%%%%%%_èµ·
+								//å…ˆæŠ“wip_move_transactionä¸­çš„ OVERCOMPLETION_PRIMARY_QTY
 								float overValue=0;
 								if (overFlag=="Y" || overFlag.equals("Y"))
 								{ 
@@ -751,14 +751,14 @@ try
 								queueTransStmt.setInt(3,Integer.parseInt(organizationID));           // ORGANIZATION_ID
 								queueTransStmt.setInt(4,Integer.parseInt(entityId));                 // WIP_ENTITY_ID
 								queueTransStmt.setInt(5,primaryItemID);                              // PRIMARY_ITEM_ID
-								queueTransStmt.setInt(6,Integer.parseInt(aMFGRCExpTransCode[i][4])); //FM_OPERATION_SEQ_NUM(¥»¯¸)    
+								queueTransStmt.setInt(6,Integer.parseInt(aMFGRCExpTransCode[i][4])); //FM_OPERATION_SEQ_NUM(æœ¬ç«™)    
 								queueTransStmt.setString(7,standardOpDesc);                          //  FM_OPERATION_CODE	       	   
-								queueTransStmt.setInt(8,Integer.parseInt(aMFGRCExpTransCode[i][5])); //TO_OPERATION_SEQ_NUM(¤U¤@¯¸) 
-								queueTransStmt.setString(9,"");                                           //TO_OPERATION_CODE(¤U¤@¯¸¥N½X) 
+								queueTransStmt.setInt(8,Integer.parseInt(aMFGRCExpTransCode[i][5])); //TO_OPERATION_SEQ_NUM(ä¸‹ä¸€ç«™) 
+								queueTransStmt.setString(9,"");                                           //TO_OPERATION_CODE(ä¸‹ä¸€ç«™ä»£ç¢¼) 
 								queueTransStmt.setFloat(10,Float.parseFloat(aMFGRCExpTransCode[i][2]));  // Transaction Qty
 								queueTransStmt.setString(11,woUOM);      // Transaction_UOM		   
 								queueTransStmt.setInt(12,1);             // 1=Queue		  
-								queueTransStmt.setString(13,"QUEUE");    // TO_INTRAOPERATION_STEP_TYPE  1=Queue 2=RUN, 3=TO_MOVE(§¹¤u), 5=SCRAP(³ø¼o)
+								queueTransStmt.setString(13,"QUEUE");    // TO_INTRAOPERATION_STEP_TYPE  1=Queue 2=RUN, 3=TO_MOVE(å®Œå·¥), 5=SCRAP(å ±å»¢)
 								queueTransStmt.setString(14,"");         // CUSTOMER_LOT_NO
 								queueTransStmt.setString(15,"042");      // From STATUSID
 								queueTransStmt.setString(16,"GENERATED");	  // From STATUS
@@ -767,11 +767,11 @@ try
 								queueTransStmt.executeUpdate();
 								queueTransStmt.close();	    	 
 								//out.println("Step4");		 
-								// %%%%%%%%%%%%%%%%%%% ¼g¤JRun card Move Transaction %%%%%%%%%%%%%%%%%%%_¨´ 
+								// %%%%%%%%%%%%%%%%%%% å¯«å…¥Run card Move Transaction %%%%%%%%%%%%%%%%%%%_è¿„ 
 
-								if (rcScrapQty>0)  // §PÂ_­Y³ø¼o¼Æ¶q¤j©ó¹s,«h©I¥s¼g¤J³ø¼o RUNCARD Transaction
+								if (rcScrapQty>0)  // åˆ¤æ–·è‹¥å ±å»¢æ•¸é‡å¤§æ–¼é›¶,å‰‡å‘¼å«å¯«å…¥å ±å»¢ RUNCARD Transaction
 								{		 
-									// %%%%%%%%%%%%%%%%%%% ¼g¤JRun card Scrap Transaction %%%%%%%%%%%%%%%%%%%_°_
+									// %%%%%%%%%%%%%%%%%%% å¯«å…¥Run card Scrap Transaction %%%%%%%%%%%%%%%%%%%_èµ·
 									String SqlScrapTrans="insert into APPS.YEW_RUNCARD_TRANSACTIONS( "+
 													"            RUNCAD_ID, RC_TRANSACTION_ID, RUNCARD_NO, ORGANIZATION_ID, WIP_ENTITY_ID, PRIMARY_ITEM_ID, "+
 													"            TRANSACTION_DATE, FM_OPERATION_SEQ_NUM, FM_OPERATION_CODE, TO_OPERATION_SEQ_NUM, TO_OPERATION_CODE, "+
@@ -785,14 +785,14 @@ try
 									scrapTransStmt.setInt(3,Integer.parseInt(organizationID));           // ORGANIZATION_ID
 									scrapTransStmt.setInt(4,Integer.parseInt(entityId));                 // WIP_ENTITY_ID
 									scrapTransStmt.setInt(5,primaryItemID);                              // PRIMARY_ITEM_ID
-									scrapTransStmt.setInt(6,Integer.parseInt(aMFGRCExpTransCode[i][4])); //FM_OPERATION_SEQ_NUM(¥»¯¸)    
+									scrapTransStmt.setInt(6,Integer.parseInt(aMFGRCExpTransCode[i][4])); //FM_OPERATION_SEQ_NUM(æœ¬ç«™)    
 									scrapTransStmt.setString(7,standardOpDesc);                                      //  FM_OPERATION_CODE	       	   
-									scrapTransStmt.setInt(8,Integer.parseInt(aMFGRCExpTransCode[i][4])); //TO_OPERATION_SEQ_NUM(¤U¤@¯¸) 
-									scrapTransStmt.setString(9,standardOpDesc);                                      //TO_OPERATION_CODE(¤U¤@¯¸¥N½X) 
+									scrapTransStmt.setInt(8,Integer.parseInt(aMFGRCExpTransCode[i][4])); //TO_OPERATION_SEQ_NUM(ä¸‹ä¸€ç«™) 
+									scrapTransStmt.setString(9,standardOpDesc);                                      //TO_OPERATION_CODE(ä¸‹ä¸€ç«™ä»£ç¢¼) 
 									scrapTransStmt.setFloat(10,rcScrapQty);  // Transaction Qty 
 									scrapTransStmt.setString(11,woUOM);      // Transaction_UOM		   
-									scrapTransStmt.setInt(12,5);             // 5=SCRAP(³ø¼o)		  
-									scrapTransStmt.setString(13,"SCRAP");    // TO_INTRAOPERATION_STEP_TYPE  1=Queue 2=RUN, 3=TO_MOVE(§¹¤u), 5=SCRAP(³ø¼o)
+									scrapTransStmt.setInt(12,5);             // 5=SCRAP(å ±å»¢)		  
+									scrapTransStmt.setString(13,"SCRAP");    // TO_INTRAOPERATION_STEP_TYPE  1=Queue 2=RUN, 3=TO_MOVE(å®Œå·¥), 5=SCRAP(å ±å»¢)
 									scrapTransStmt.setString(14,"");         // CUSTOMER_LOT_NO
 									scrapTransStmt.setString(15,"042"); // From STATUSID
 									scrapTransStmt.setString(16,"GENERATED");	  // From STATUS		   
@@ -800,7 +800,7 @@ try
 									scrapTransStmt.executeUpdate();
 									scrapTransStmt.close();	    	 
 
-									// %%%%%%%%%%%%%%%%%%% ¼g¤JRun card Scrap Transaction %%%%%%%%%%%%%%%%%%%_¨´ 
+									// %%%%%%%%%%%%%%%%%%% å¯«å…¥Run card Scrap Transaction %%%%%%%%%%%%%%%%%%%_è¿„ 
 
 								}	// End of if (rcScrapQty>0)	 				   
 
@@ -812,11 +812,11 @@ try
 								//out.print("rcSql="+rcSql);           
 								rcStmt.setInt(1,Integer.parseInt(userMfgUserID));
 								rcStmt.setString(2,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); 
-								if (!singleOp) // ­Y¥»¯¸¤£¬°³Ì«á¯¸(Routing¥u¦³¤@¯¸·|µo¥Í¦¹ª¬ªp),«hºû«ù¦b (044) ²¾¯¸¤¤
+								if (!singleOp) // è‹¥æœ¬ç«™ä¸ç‚ºæœ€å¾Œç«™(Routingåªæœ‰ä¸€ç«™æœƒç™¼ç”Ÿæ­¤ç‹€æ³),å‰‡ç¶­æŒåœ¨ (044) ç§»ç«™ä¸­
 								{
 									rcStmt.setString(3,getStatusRs.getString("TOSTATUSID")); 
 									rcStmt.setString(4,getStatusRs.getString("STATUSNAME"));
-								} else { // §_«h,§Y§ó·s¦Ü 046 §¹¤u¤J®w
+								} else { // å¦å‰‡,å³æ›´æ–°è‡³ 046 å®Œå·¥å…¥åº«
 									rcStmt.setString(3,"046"); 
 									rcStmt.setString(4,"COMPLETING");
 								}
@@ -831,7 +831,7 @@ try
 								rcStmt.executeUpdate();   
 								rcStmt.close(); 
 								//out.println("StepMatch 1:");
-								// ­Y¬°«á¬q¤u¥O,«h¦A¼g¤Ç°tªº«e¬q§å¸¹_°_		   
+								// è‹¥ç‚ºå¾Œæ®µå·¥ä»¤,å‰‡å†å¯«åŒ¹é…çš„å‰æ®µæ‰¹è™Ÿ_èµ·		   
 								if (aMFGLotMatchCode!=null)
 								{
 									if (woType.equals("3"))
@@ -858,7 +858,7 @@ try
 												}
 												rsWO.close();
 												stateWO.close();
-												// §R°£­ì¼g¤JªºTemplate
+												// åˆªé™¤åŸå¯«å…¥çš„Template
 
 												PreparedStatement stmtDel=con.prepareStatement("delete from YEW_MFG_TRAVELS_ALL where EXTEND_NO='"+woNo+"' and EXTEND_TYPE ='3' and ( PRIMARY_NO in ('N/A',null) or EXTENDED_QTY = 0 ) "); 
 												stmtDel.executeUpdate();   
@@ -867,100 +867,100 @@ try
 											}
 											rsMId.close();
 											stateMId.close(); 
-											// ¨Ã¼g¤J¤@µ§³sµ²ªí¸ê®Æ_°_
+											// ä¸¦å¯«å…¥ä¸€ç­†é€£çµè¡¨è³‡æ–™_èµ·
 											//out.println("StepMatch 5:");
-											if (Float.parseFloat(orgWoQty)>0) // 2006/12/20 ¥[¤J §å°t«e¬q§å¸¹ >0 ¤~¼g
+											if (Float.parseFloat(orgWoQty)>0) // 2006/12/20 åŠ å…¥ æ‰¹é…å‰æ®µæ‰¹è™Ÿ >0 æ‰å¯«
 											{
 												String seqSqlIns="insert into YEW_MFG_TRAVELS_ALL(PRIMARY_NO, PRIMARY_TYPE, EXTEND_NO, EXTEND_TYPE, EXTENDED_QTY, ORDER_NO, CREATED_BY, LAST_UPDATED_BY, PRIMARY_PARENT_NO, ORDER_LINE_ID, PRIMARY_LOT_QTY ) "+
 													   "values(?,?,?,?,?,?,?,?,?,?,?) ";   
 												PreparedStatement seqstmtIns=con.prepareStatement(seqSqlIns);        
-												seqstmtIns.setString(1,aMFGLotMatchCode[m][0]); //out.println("aMFGLotMatchCode[m][0]="+aMFGLotMatchCode[m][0]); // «e¬q¬yµ{¥d¸¹
-												seqstmtIns.setString(2,"2");   //out.println("2"); // ¤@«ß¥Ñ«e¬q¤u¥O²£¥Í«á¬q¤u¥O
+												seqstmtIns.setString(1,aMFGLotMatchCode[m][0]); //out.println("aMFGLotMatchCode[m][0]="+aMFGLotMatchCode[m][0]); // å‰æ®µæµç¨‹å¡è™Ÿ
+												seqstmtIns.setString(2,"2");   //out.println("2"); // ä¸€å¾‹ç”±å‰æ®µå·¥ä»¤ç”¢ç”Ÿå¾Œæ®µå·¥ä»¤
 												seqstmtIns.setString(3,woNo);  //out.println("woNo="+woNo);
 												seqstmtIns.setString(4,woType); //out.println("woType="+woType);
 												seqstmtIns.setFloat(5,Float.parseFloat(orgWoQty));  //out.println("orgWoQty="+orgWoQty);   	
 												seqstmtIns.setString(6,oeOrderNo);
 												seqstmtIns.setString(7,userMfgUserID);
 												seqstmtIns.setString(8,userMfgUserID);
-												seqstmtIns.setString(9,frontWoNo); // ¥D­n¤÷§Ç¸¹
-												seqstmtIns.setString(10,oeLineId); // ­ì­q³æ¶µ¦¸¸¹
-												seqstmtIns.setString(11,aMFGLotMatchCode[m][1]); // ­ì§¹¤u§å¸¹¼Æ¶q
+												seqstmtIns.setString(9,frontWoNo); // ä¸»è¦çˆ¶åºè™Ÿ
+												seqstmtIns.setString(10,oeLineId); // åŸè¨‚å–®é …æ¬¡è™Ÿ
+												seqstmtIns.setString(11,aMFGLotMatchCode[m][1]); // åŸå®Œå·¥æ‰¹è™Ÿæ•¸é‡
 												seqstmtIns.executeUpdate();   
 												seqstmtIns.close(); 
-												// ¨Ã¼g¤J¤@µ§³sµ²ªí¸ê®Æ_¨´
+												// ä¸¦å¯«å…¥ä¸€ç­†é€£çµè¡¨è³‡æ–™_è¿„
 												//out.println("StepMatch 2.1:");
-											} // End of if (Float.parseFloat(orgWoQty)>0)  //2006/12/20 ¥[¤J §å°t«e¬q§å¸¹ >0 ¤~¼g
+											} // End of if (Float.parseFloat(orgWoQty)>0)  //2006/12/20 åŠ å…¥ æ‰¹é…å‰æ®µæ‰¹è™Ÿ >0 æ‰å¯«
 										} // End of for
 									} // end of if (woType.equals("3")		 
 								} // End o if (aMFGLotMatchCode!=null)           
 								//out.println("StepMatch 3:<BR>");   
-								// ­Y¬°«á¬q¤u¥O,«h¦A¼g¤Ç°tªº«e¬q§å¸¹_¨´
+								// è‹¥ç‚ºå¾Œæ®µå·¥ä»¤,å‰‡å†å¯«åŒ¹é…çš„å‰æ®µæ‰¹è™Ÿ_è¿„
 
 
-							} // end of if (getRetScrapCode==0 && getRetCode==0)  -- ³ø¼o¤Î²¾¯¸³£¦¨¥\°õ¦æ 
+							} // end of if (getRetScrapCode==0 && getRetCode==0)  -- å ±å»¢åŠç§»ç«™éƒ½æˆåŠŸåŸ·è¡Œ 
 							else {
-							interfaceErr = true; // ªí¥Ü²¾¯¸Interface¦³²§±`
+							interfaceErr = true; // è¡¨ç¤ºç§»ç«™Interfaceæœ‰ç•°å¸¸
 							} // End of else
 
-						} // end of if (aMFGRCExpTransCode[i][2]>0) // ­Y³]©w²¾¯¸¼Æ¶q¤j©ó0¤~¶i¦æ²¾¯¸¤Î³ø¼o   
-						out.print("<font color='#0033CC'>¬yµ{¥d("+aMFGRCExpTransCode[i][1]+")¤w§ë²£O.K.</font><font color='#CC3333'>(WO_NO="+woNo+" Wip_Entity_ID="+entityId+")</font><BR>");   
-					} // End of if (choice[k]==aMFGRCExpTransCode[i][0] || choice[k].equals(aMFGRCExpTransCode[i][0])) // RunCardIDµ¥©ó°}¦C¤º®e
-				} // End of for (int k=0;k<choice.length;k++) // §PÂ_¨Ï¥ÎªÌ¦³Check¤~§ó·s
+						} // end of if (aMFGRCExpTransCode[i][2]>0) // è‹¥è¨­å®šç§»ç«™æ•¸é‡å¤§æ–¼0æ‰é€²è¡Œç§»ç«™åŠå ±å»¢   
+						out.print("<font color='#0033CC'>æµç¨‹å¡("+aMFGRCExpTransCode[i][1]+")å·²æŠ•ç”¢O.K.</font><font color='#CC3333'>(WO_NO="+woNo+" Wip_Entity_ID="+entityId+")</font><BR>");   
+					} // End of if (choice[k]==aMFGRCExpTransCode[i][0] || choice[k].equals(aMFGRCExpTransCode[i][0])) // RunCardIDç­‰æ–¼é™£åˆ—å…§å®¹
+				} // End of for (int k=0;k<choice.length;k++) // åˆ¤æ–·ä½¿ç”¨è€…æœ‰Checkæ‰æ›´æ–°
 
 			} // End of for (i=0;i<aMFGRCExpTransCode.length;i++)
 		} // end of if (aMFGRCExpTransCode!=null) 
 
-		//out.print("¬yµ{¥d§ë²£O.K.(WO_NO="+woNo+" Wip_Entity_ID="+entityId+")");
+		//out.print("æµç¨‹å¡æŠ•ç”¢O.K.(WO_NO="+woNo+" Wip_Entity_ID="+entityId+")");
 
 
-		if (!nextOpSeqNum.equals("0") && !interfaceErr) // ­Y¤U¤@¯¸¤£µ¥©ó³Ì«á¤@¯¸¥BInterfaceµL²§±`
+		if (!nextOpSeqNum.equals("0") && !interfaceErr) // è‹¥ä¸‹ä¸€ç«™ä¸ç­‰æ–¼æœ€å¾Œä¸€ç«™ä¸”Interfaceç„¡ç•°å¸¸
 		{
 %>
 <script LANGUAGE="JavaScript">
-// reProcessFormConfirm("¬O§_Ä~Äò°õ¦æ¦¹±i¬yµ{¥d²¾¯¸§@·~?","../jsp/TSCMfgRunCardMoving.jsp","<!--%=woNo%-->","<!--%=runCardNo%-->");
+// reProcessFormConfirm("æ˜¯å¦ç¹¼çºŒåŸ·è¡Œæ­¤å¼µæµç¨‹å¡ç§»ç«™ä½œæ¥­?","../jsp/TSCMfgRunCardMoving.jsp","<!--%=woNo%-->","<!--%=runCardNo%-->");
 </script>
 <%	
 		} else {
 %>
 <script LANGUAGE="JavaScript">
-alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
+alert("Oracleç§»ç«™ç•°å¸¸..è«‹æ´½MISæŸ¥æ˜åŸå› !!!");
 </script>
 <%	
 		}
 
-		// ¨Ï¥Î§¹²¦²MªÅ 2ºû°}¦C
+		// ä½¿ç”¨å®Œç•¢æ¸…ç©º 2ç¶­é™£åˆ—
 		if (aMFGRCExpTransCode!=null)
 		{ 
 			arrMFGRCExpTransBean.setArray2DString(null); 	  
-			if (woType.equals("3")) // «á¬q¤u¥O,»İ©ó§ë²£®É¤Ç°t«e¬q§¹¤u§å¸¹
+			if (woType.equals("3")) // å¾Œæ®µå·¥ä»¤,éœ€æ–¼æŠ•ç”¢æ™‚åŒ¹é…å‰æ®µå®Œå·¥æ‰¹è™Ÿ
 			{
-				arrayLotIssueCheckBean.setArray2DString(null); // §â«á¬q¤u¥O¹ïÀ³ªº»â®Æ§å¸¹¥ç²MªÅ
+				arrayLotIssueCheckBean.setArray2DString(null); // æŠŠå¾Œæ®µå·¥ä»¤å°æ‡‰çš„é ˜æ–™æ‰¹è™Ÿäº¦æ¸…ç©º
 			}
 		}
 
 		//out.println("<BR>Done");
 	}
-	//MFG¬yµ{¥d²¾¯¸¤¤_¨´	(ACTION=006)   ¬yµ{¥d¤w®i¶}042->¬yµ{¥d²¾¯¸¤¤044   // ¦p¬°n¯¸, §Y ²Ä¤@¯¸ --> ²Ä¤G¯¸ --> ²Ä n-1 ¯¸
+	//MFGæµç¨‹å¡ç§»ç«™ä¸­_è¿„	(ACTION=006)   æµç¨‹å¡å·²å±•é–‹042->æµç¨‹å¡ç§»ç«™ä¸­044   // å¦‚ç‚ºnç«™, å³ ç¬¬ä¸€ç«™ --> ç¬¬äºŒç«™ --> ç¬¬ n-1 ç«™
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	errorFlag ="042>046";
-	//MFG¬yµ{¥d¤w§ë²£_°_	(ACTION=012)   ¬yµ{¥d¤w®i¶}042-> ¬yµ{¥d¤J®w 046 ²Ä¤@¯¸§Y¬°§¹¤u¯¸
-	if (actionID.equals("012") && fromStatusID.equals("042"))   // ¦p¬°n¯¸, §Y ²Ä¤@¯¸ --> ²Ä n ¯¸
+	//MFGæµç¨‹å¡å·²æŠ•ç”¢_èµ·	(ACTION=012)   æµç¨‹å¡å·²å±•é–‹042-> æµç¨‹å¡å…¥åº« 046 ç¬¬ä¸€ç«™å³ç‚ºå®Œå·¥ç«™
+	if (actionID.equals("012") && fromStatusID.equals("042"))   // å¦‚ç‚ºnç«™, å³ ç¬¬ä¸€ç«™ --> ç¬¬ n ç«™
 	{   //out.println("fromStatusID="+fromStatusID);
-		String fndUserName = "";  //³B²z¤H­û
-		String woUOM = ""; // ¤u¥O²¾¯¸³æ¦ì
+		String fndUserName = "";  //è™•ç†äººå“¡
+		String woUOM = ""; // å·¥ä»¤ç§»ç«™å–®ä½
 		String altRouting = "1"; //
 		String opSupplierLot = "";
-		int primaryItemID = 0; // ®Æ¸¹ID
+		int primaryItemID = 0; // æ–™è™ŸID
 		float runCardQtyf=0,overQty=0; 
-		entityId = "0"; // ¤u¥Owip_entity_id
-		boolean interfaceErr = false;  // §PÂ_¨ä¤¤ Interface ¦³²§±`ªººX¼Ğ
+		entityId = "0"; // å·¥ä»¤wip_entity_id
+		boolean interfaceErr = false;  // åˆ¤æ–·å…¶ä¸­ Interface æœ‰ç•°å¸¸çš„æ——æ¨™
 		if (aMFGRCExpTransCode!=null)
 		{	  
 			if (aMFGRCExpTransCode.length>0)
 			{    
-				//§ì¨úlogin ªºuser id °µ¬° run "Receiving Transaction Processor"ªº requestor_°_
+				//æŠ“å–login çš„user id åšç‚º run "Receiving Transaction Processor"çš„ requestor_èµ·
 
 				String sqlfnd = " select USER_NAME from APPS.FND_USER A, ORADDMAN.WSUSER B "+
 							 " where A.USER_NAME = UPPER(B.USERNAME)  and to_char(A.USER_ID) = '"+userMfgUserID+ "'";
@@ -972,11 +972,11 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 				}
 				rsFndId.close();
 				stateFndId.close();
-				//§ì¨úlogin ªºuser id °µ¬° run "Receiving Transaction Processor"ªº requestor_¨´ 
+				//æŠ“å–login çš„user id åšç‚º run "Receiving Transaction Processor"çš„ requestor_è¿„ 
 
-				//§ì¨ú²¾¯¸¼Æ¶qªº³æ¦ì_°_	                     
+				//æŠ“å–ç§»ç«™æ•¸é‡çš„å–®ä½_èµ·	                     
 				String sqlUOM = " select DISTINCT a.WO_UOM, b.WIP_ENTITY_ID, b.PRIMARY_ITEM_ID ,a.OE_ORDER_NO, b.QTY_IN_QUEUE, "+
-							 "        a.ALTERNATE_ROUTING, a.SUPPLIER_LOT_NO, a.ORGANIZATION_ID "+ // 2007/01/18 ­Y§PÂ_¬°«á¬q¥~ÁÊ¤u¥O,«h¥H¼t°Ó§å¸¹¼g¤JMMT
+							 "        a.ALTERNATE_ROUTING, a.SUPPLIER_LOT_NO, a.ORGANIZATION_ID "+ // 2007/01/18 è‹¥åˆ¤æ–·ç‚ºå¾Œæ®µå¤–è³¼å·¥ä»¤,å‰‡ä»¥å» å•†æ‰¹è™Ÿå¯«å…¥MMT
 							 "  from APPS.YEW_WORKORDER_ALL a, APPS.YEW_RUNCARD_ALL b "+
 							 " where a.WO_NO = b.WO_NO and a.WO_NO = '"+woNo+ "'";
 				//out.print("sqlUOM="+sqlUOM);
@@ -995,8 +995,8 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 				}
 				rsUOM.close();
 				stateUOM.close();
-				//§ì¨ú²¾¯¸¼Æ¶qªº³æ¦ì_¨´   
-				//out.print("<br>1.²¾¯¸¼Æ="+Float.parseFloat(aMFGRCExpTransCode[i][2]));
+				//æŠ“å–ç§»ç«™æ•¸é‡çš„å–®ä½_è¿„   
+				//out.print("<br>1.ç§»ç«™æ•¸="+Float.parseFloat(aMFGRCExpTransCode[i][2]));
 
 
 			} // End of if (aMFGRCExpTransCode.length>0)  
@@ -1006,30 +1006,30 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 			{
 				for (int k=0;k<=choice.length-1;k++)    
 				{ //out.println("choice[k]="+choice[k]);  
-					// §PÂ_³QCheck ªºLine ¤~°õ¦æ«ü¬£§@·~
-					if (choice[k]==aMFGRCExpTransCode[i][0] || choice[k].equals(aMFGRCExpTransCode[i][0])) // RUNCARD_ID = °}¦C¤º®e
+					// åˆ¤æ–·è¢«Check çš„Line æ‰åŸ·è¡ŒæŒ‡æ´¾ä½œæ¥­
+					if (choice[k]==aMFGRCExpTransCode[i][0] || choice[k].equals(aMFGRCExpTransCode[i][0])) // RUNCARD_ID = é™£åˆ—å…§å®¹
 					{ //out.println("aMFGRCExpTransCode[i][0]="+aMFGRCExpTransCode[i][0]);	   
 						//out.print("woNo2="+woNo+"<br>");
-						if (Float.parseFloat(aMFGRCExpTransCode[i][2])>0) // ­Y³]©w²¾¯¸¼Æ¶q¤j©ó0¤~¶i¦æ²¾¯¸¤Î³ø¼o
+						if (Float.parseFloat(aMFGRCExpTransCode[i][2])>0) // è‹¥è¨­å®šç§»ç«™æ•¸é‡å¤§æ–¼0æ‰é€²è¡Œç§»ç«™åŠå ±å»¢
 						{
 
 							int toIntOpSType = 1; //TO_INTRAOPERATION_STEP_TYPE(1=Queue 2=RUN, 3=TO_MOVE, 5=SCRAP)
 							int transType = 1;    // TRANSACTION_TYPE   1= Move transaction,  2=Move Completion, 3=Move Return 
 							if (aMFGRCExpTransCode[i][5]==null || aMFGRCExpTransCode[i][5]=="0" || aMFGRCExpTransCode[i][5].equals("0")) 
-							{ // ­YµL¤U¤@¯¸§Ç¸¹,«hªí¥Ü¥»¯¸§Y¬°³Ì²×¯¸,¬ÛÃö°Ê§@³]©w¬°§¹¤u
+							{ // è‹¥ç„¡ä¸‹ä¸€ç«™åºè™Ÿ,å‰‡è¡¨ç¤ºæœ¬ç«™å³ç‚ºæœ€çµ‚ç«™,ç›¸é—œå‹•ä½œè¨­å®šç‚ºå®Œå·¥
 								toIntOpSType = 3; 
-								aMFGRCExpTransCode[i][5] = aMFGRCExpTransCode[i][4]; // µL¤U¤@¯¸ªºSeq No,¬Gµ¹¥»¯¸
-								transType = 1; //(§¹¤u¥Ñ¤J®w«á¦Û°Ê°õ¦æ,¬G¤´³]¬°1)
-							}  // ­YµL¤U¤@¯¸,ªí¥Ü¥»¯¸¬O³Ì«á¤@¯¸,toStepType ³]¦¨3	, transaction Type ³]¬°2(Move Completion)
+								aMFGRCExpTransCode[i][5] = aMFGRCExpTransCode[i][4]; // ç„¡ä¸‹ä¸€ç«™çš„Seq No,æ•…çµ¦æœ¬ç«™
+								transType = 1; //(å®Œå·¥ç”±å…¥åº«å¾Œè‡ªå‹•åŸ·è¡Œ,æ•…ä»è¨­ç‚º1)
+							}  // è‹¥ç„¡ä¸‹ä¸€ç«™,è¡¨ç¤ºæœ¬ç«™æ˜¯æœ€å¾Œä¸€ç«™,toStepType è¨­æˆ3	, transaction Type è¨­ç‚º2(Move Completion)
 
-							//§ì¨ú­Ó§O¬yµ{¥d²¾¯¸¼Æ¶qªº³æ¦ì,¨Ã­pºâ¥»¯¸³ø¼o¼Æ¶q_°_	
+							//æŠ“å–å€‹åˆ¥æµç¨‹å¡ç§»ç«™æ•¸é‡çš„å–®ä½,ä¸¦è¨ˆç®—æœ¬ç«™å ±å»¢æ•¸é‡_èµ·	
 							float  rcMQty = 0;   
 							float  rcScrapQty = 0; 
 							String compSubInventory = null;    
 							String supplierLotNo = null; 
-							java.text.DecimalFormat nf = new java.text.DecimalFormat("###,##0.000"); // ¨ú¤p¼Æ«á¤T¦ì 
+							java.text.DecimalFormat nf = new java.text.DecimalFormat("###,##0.000"); // å–å°æ•¸å¾Œä¸‰ä½ 
 								
-							String sqlMQty = " select b.QTY_IN_QUEUE, b.RUNCARD_QTY,"+  // ®i¶}§Y§¹¤u¤J®w,¬G¤£Ãö³sWIP_MOVE_TRANSACTIONS
+							String sqlMQty = " select b.QTY_IN_QUEUE, b.RUNCARD_QTY,"+  // å±•é–‹å³å®Œå·¥å…¥åº«,æ•…ä¸é—œé€£WIP_MOVE_TRANSACTIONS
 										 "         a.COMPLETION_SUBINVENTORY, a.WAFER_LOT_NO  ,a.OE_ORDER_NO "+
 										 "    from APPS.YEW_WORKORDER_ALL a, APPS.YEW_RUNCARD_ALL b "+
 										 "   where a.WO_NO = b.WO_NO and a.WO_NO = '"+woNo+ "' "+	
@@ -1041,38 +1041,38 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 							if (rsMQty.next())
 							{
 								if (aMFGRCExpTransCode[i][2]==null || aMFGRCExpTransCode[i][2].equals("null")) aMFGRCExpTransCode[i][2]=Float.toString(rcMQty);
-								rcMQty = rsMQty.getFloat("QTY_IN_QUEUE");		                  //­ì§ë¯¸¼Æ¶q			
-								rcScrapQty = rcMQty - Float.parseFloat(aMFGRCExpTransCode[i][2]);  // ³ø¼o¼Æ¶q = ­ì§ë¯¸¼Æ¶q - ¿é¤J²¾¯¸¼Æ¶q						   
-								compSubInventory = rsMQty.getString("COMPLETION_SUBINVENTORY");	  // ¤J®wsubInventory
-								supplierLotNo = rsMQty.getString("WAFER_LOT_NO");	              // ¨ÑÀ³°Ó§å¸¹
-								//oeOrderNo = rsMQty.getString("OE_ORDER_NO");	              // ¨ÑÀ³°Ó§å¸¹
+								rcMQty = rsMQty.getFloat("QTY_IN_QUEUE");		                  //åŸæŠ•ç«™æ•¸é‡			
+								rcScrapQty = rcMQty - Float.parseFloat(aMFGRCExpTransCode[i][2]);  // å ±å»¢æ•¸é‡ = åŸæŠ•ç«™æ•¸é‡ - è¼¸å…¥ç§»ç«™æ•¸é‡						   
+								compSubInventory = rsMQty.getString("COMPLETION_SUBINVENTORY");	  // å…¥åº«subInventory
+								supplierLotNo = rsMQty.getString("WAFER_LOT_NO");	              // ä¾›æ‡‰å•†æ‰¹è™Ÿ
+								//oeOrderNo = rsMQty.getString("OE_ORDER_NO");	              // ä¾›æ‡‰å•†æ‰¹è™Ÿ
 
 								String strScrapQty = nf.format(rcScrapQty);
 								java.math.BigDecimal bd = new java.math.BigDecimal(strScrapQty);
 								java.math.BigDecimal scrapQty = bd.setScale(3, java.math.BigDecimal.ROUND_HALF_UP);
 								rcScrapQty =scrapQty.floatValue();
 
-								//out.println("java¥|±Ë¤­¤J«á¨ú¤p¼Æ¤T¦ìrcScrapQty="+rcScrapQty+"<BR>");	
+								//out.println("javaå››æ¨äº”å…¥å¾Œå–å°æ•¸ä¸‰ä½rcScrapQty="+rcScrapQty+"<BR>");	
 								//out.println("adminModeOption="+adminModeOption);
 								if (adminModeOption!=null && adminModeOption.equals("YES") && UserRoles.indexOf("admin")>=0)
 								{
-									rcScrapQty = Float.parseFloat(aMFGRCExpTransCode[i][11]); // ºŞ²z­û¼Ò¦¡,¥B¤â°Êµ¹©w¤F³ø¼o¼Æ,«h¥Hµ¹©wªº³ø¼o¼Æ¤JScrap
-									userMfgUserID = "5753"; // ¤sªF¼t¥]¸Ë¯¸,PANG_LIPING
+									rcScrapQty = Float.parseFloat(aMFGRCExpTransCode[i][11]); // ç®¡ç†å“¡æ¨¡å¼,ä¸”æ‰‹å‹•çµ¦å®šäº†å ±å»¢æ•¸,å‰‡ä»¥çµ¦å®šçš„å ±å»¢æ•¸å…¥Scrap
+									userMfgUserID = "5753"; // å±±æ±å» åŒ…è£ç«™,PANG_LIPING
 								}
 												   
 							}
 							rsMQty.close();
 							stateMQty.close();
-							//§ì¨ú²¾¯¸¼Æ¶qªº³æ¦ì,¨Ã­pºâ¥»¯¸³ø¼o¼Æ¶q_¨´
+							//æŠ“å–ç§»ç«™æ•¸é‡çš„å–®ä½,ä¸¦è¨ˆç®—æœ¬ç«™å ±å»¢æ•¸é‡_è¿„
 
 
 							// out.println("sqlMQty ="+sqlMQty);
 
 							String getErrScrapBuffer = "";
 							int getRetScrapCode = 0;   
-							if (rcScrapQty>0)  // §PÂ_­Y³ø¼o¼Æ¶q¤j©ó¹s,«h©I¥s¼g¤J³ø¼oInterface
+							if (rcScrapQty>0)  // åˆ¤æ–·è‹¥å ±å»¢æ•¸é‡å¤§æ–¼é›¶,å‰‡å‘¼å«å¯«å…¥å ±å»¢Interface
 							{		 
-								// ¥ı¨ú³ø¼o Scrap Account ID_°_// ¨ÌOrganization_id ¨ú¹w³]ªº Scrap Acc ID
+								// å…ˆå–å ±å»¢ Scrap Account ID_èµ·// ä¾Organization_id å–é è¨­çš„ Scrap Acc ID
 								int scrpAccID = 0;
 								String sqlScrp = " select DEFAULT_SCRAP_ACCOUNT_ID from WIP_PARAMETERS_V  "+
 											  " where ORGANIZATION_ID = '"+organizationID+ "' ";										  
@@ -1084,11 +1084,11 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 								}
 								rsScrp.close();
 								stateScrp.close();
-								// ¥ı¨ú³ø¼o Scrap Account ID_¨´
+								// å…ˆå–å ±å»¢ Scrap Account ID_è¿„
 
-								// *****%%%%%%%%%%%%%% ²¾¯¸³ø¼o¼Æ¶q %%%%%%%%%%%%**********  °_
-								toIntOpSType = 5;  // ³ø¼oªºto InterOperation Step Type = 5
-								transType = 1;     // ³ø¼oªºTransaction Type = 1(Move Transaction)
+								// *****%%%%%%%%%%%%%% ç§»ç«™å ±å»¢æ•¸é‡ %%%%%%%%%%%%**********  èµ·
+								toIntOpSType = 5;  // å ±å»¢çš„to InterOperation Step Type = 5
+								transType = 1;     // å ±å»¢çš„Transaction Type = 1(Move Transaction)
 								String SqlScrap="insert into WIP_MOVE_TXN_INTERFACE( "+
 												"            CREATED_BY_NAME, CREATION_DATE, LAST_UPDATE_DATE, LAST_UPDATED_BY_NAME, ORGANIZATION_CODE, ORGANIZATION_ID, "+
 												"            PROCESS_PHASE, PROCESS_STATUS, TRANSACTION_DATE, TRANSACTION_QUANTITY, TRANSACTION_UOM, "+
@@ -1105,31 +1105,31 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 								scrapstmt.setString(3,organCode);      //out.println("organCode="+organCode);   // ORGANIZATION_CODE
 								scrapstmt.setInt(4,Integer.parseInt(organizationID)); //out.println("organizationID="+organizationID);   // ORGANIZATION_ID
 								scrapstmt.setInt(5,1);      //PROCESS_PHASE   1=Move Validation, 2=Move Processing, 3= Operation Backflush Setup
-								scrapstmt.setInt(6,2);      //PROCESS_STATUS 1=PENDING , 2=RUNNING , 3=Error	    (2006/12/07 §ï¬° Running)­ì¬°1   
-								scrapstmt.setFloat(7,rcScrapQty); out.println("<BR>¬yµ{¥d:"+aMFGRCExpTransCode[i][1]+"(³ø¼o¼Æ¶q="+rcScrapQty+")<BR>");  	       	   
+								scrapstmt.setInt(6,2);      //PROCESS_STATUS 1=PENDING , 2=RUNNING , 3=Error	    (2006/12/07 æ”¹ç‚º Running)åŸç‚º1   
+								scrapstmt.setFloat(7,rcScrapQty); out.println("<BR>æµç¨‹å¡:"+aMFGRCExpTransCode[i][1]+"(å ±å»¢æ•¸é‡="+rcScrapQty+")<BR>");  	       	   
 								scrapstmt.setString(8,woUOM);
 								scrapstmt.setInt(9,Integer.parseInt(entityId));  
 								scrapstmt.setString(10,woNo);  
 								scrapstmt.setInt(11,1);     // FM_INTRAOPERATION_STEP_TYPE 1=Queue 2=RUN, 3=TO_MOVE, 5=SCRAP
 								//seqstmt.setInt(12,20);
-								scrapstmt.setInt(12,Integer.parseInt(aMFGRCExpTransCode[i][4])); // FM_OPERATION_SEQ_NUM(¥»¯¸)		  
-								scrapstmt.setInt(13,toIntOpSType); // TO_INTRAOPERATION_STEP_TYPE  1=Queue 2=RUN, 3=TO_MOVE(§¹¤u), 5=SCRAP(³ø¼o)
-								scrapstmt.setInt(14,Integer.parseInt(aMFGRCExpTransCode[i][4])); // TO_OPERATION_SEQ_NUM  //³ø¼o§Y¬°From = To
-								scrapstmt.setString(15,aMFGRCExpTransCode[i][1]);	//out.println("¬yµ{¥d¸¹="+aMFGRCExpTransCode[i][1]); // ATTRIBUTE2 ¬yµ{¥d¸¹ 
+								scrapstmt.setInt(12,Integer.parseInt(aMFGRCExpTransCode[i][4])); // FM_OPERATION_SEQ_NUM(æœ¬ç«™)		  
+								scrapstmt.setInt(13,toIntOpSType); // TO_INTRAOPERATION_STEP_TYPE  1=Queue 2=RUN, 3=TO_MOVE(å®Œå·¥), 5=SCRAP(å ±å»¢)
+								scrapstmt.setInt(14,Integer.parseInt(aMFGRCExpTransCode[i][4])); // TO_OPERATION_SEQ_NUM  //å ±å»¢å³ç‚ºFrom = To
+								scrapstmt.setString(15,aMFGRCExpTransCode[i][1]);	//out.println("æµç¨‹å¡è™Ÿ="+aMFGRCExpTransCode[i][1]); // ATTRIBUTE2 æµç¨‹å¡è™Ÿ 
 								scrapstmt.setInt(16,transType);	// TRANSACTION_TYPE   1= Move transaction,  2=Move Completion, 3=Move Return 
-								scrapstmt.setInt(17,scrpAccID);	// SCRAP_ACCOUNT_ID  (I)³ø¼o ( 01-11-000-7650-951-0-000 ) 
-								scrapstmt.setInt(18,7);	// REASON_ID  »sµ{²§±` 
+								scrapstmt.setInt(17,scrpAccID);	// SCRAP_ACCOUNT_ID  (I)å ±å»¢ ( 01-11-000-7650-951-0-000 ) 
+								scrapstmt.setInt(18,7);	// REASON_ID  è£½ç¨‹ç•°å¸¸ 
 								scrapstmt.executeUpdate();
 								scrapstmt.close();	      	
 
-								//§ì¨ú¼g¤JInterfaceªºGroupµ¥¸ê°T_°_
+								//æŠ“å–å¯«å…¥Interfaceçš„Groupç­‰è³‡è¨Š_èµ·
 								int groupID = 0;
 								int opSeqNo = 0;              
 								String sqlGrp = " select GROUP_ID,TO_OPERATION_SEQ_NUM from WIP.WIP_MOVE_TXN_INTERFACE "+
 											 " where WIP_ENTITY_NAME = '"+woNo+ "' and WIP_ENTITY_ID = "+entityId+" "+
 											 "   and ATTRIBUTE2 = '"+aMFGRCExpTransCode[i][1]+"' "+ // 2006/11/17 By RunCardNo
 											 "   and PROCESS_STATUS = 2 "+ // 2006/11/18 By Process --> Status=1
-											 "   and TO_INTRAOPERATION_STEP_TYPE = 5 "; // ¨ú¦¹¦¸³ø¼o
+											 "   and TO_INTRAOPERATION_STEP_TYPE = 5 "; // å–æ­¤æ¬¡å ±å»¢
 								Statement stateGrp=con.createStatement();
 								ResultSet rsGrp=stateGrp.executeQuery(sqlGrp);
 								if (rsGrp.next())
@@ -1139,12 +1139,12 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 								}
 								rsGrp.close();
 								stateGrp.close();
-								//§ì¨ú¼g¤JInterfaceªºGroupµ¥¸ê°T_¨´  		
-								//out.println("<BR>³ø¼oªºgroupID ="+groupID+"<BR>");
+								//æŠ“å–å¯«å…¥Interfaceçš„Groupç­‰è³‡è¨Š_è¿„  		
+								//out.println("<BR>å ±å»¢çš„groupID ="+groupID+"<BR>");
 
-								if (groupID>0 && opSeqNo>0)  // ªí¥Ü¨ú¨ì¥¿½TªºgroupID¤ÎopSeqNo
+								if (groupID>0 && opSeqNo>0)  // è¡¨ç¤ºå–åˆ°æ­£ç¢ºçš„groupIDåŠopSeqNo
 								{
-									// §Y®É©I¥s WIP_MOVE PROCESS WORKER		  
+									// å³æ™‚å‘¼å« WIP_MOVE PROCESS WORKER		  
 									int procPhase = 1;
 									int timeOut = 10;
 									try
@@ -1153,8 +1153,8 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 										cs5.setInt(1,groupID);                                         //  Org ID 	
 										cs5.setString(2,null);   // BackFlush Setup    
 										cs5.setString(3,"T");	   // FND_API.G_TRUE = "T", FND_API.G_FALSE = "F"
-										cs5.registerOutParameter(4, Types.VARCHAR); //  ¶Ç¦^­È     STATUS
-										cs5.registerOutParameter(5, Types.VARCHAR); //  ¶Ç¦^­È		ERROR MESSAGE					 					      						   	 					     
+										cs5.registerOutParameter(4, Types.VARCHAR); //  å‚³å›å€¼     STATUS
+										cs5.registerOutParameter(5, Types.VARCHAR); //  å‚³å›å€¼		ERROR MESSAGE					 					      						   	 					     
 										cs5.execute();					      
 										String getMoveStatus = cs5.getString(4);		
 										String getMoveErrorMsg = cs5.getString(5);								      				    
@@ -1163,20 +1163,20 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 										if (getMoveStatus.equals("U") && getMoveErrorMsg!=null && !getMoveErrorMsg.equals(""))
 										{
 											getRetScrapCode = 77;   // Error Number  
-											getErrScrapBuffer = getMoveErrorMsg; // §â¿ù»~°T®§µ¹­ì¨Ó§PÂ_ªºBuffer
-											out.println("getRetScrapCode="+getRetScrapCode+"&nbsp;"+"³ø¼o¿ù»~­ì¦]="+getErrScrapBuffer+"<BR>");
+											getErrScrapBuffer = getMoveErrorMsg; // æŠŠéŒ¯èª¤è¨Šæ¯çµ¦åŸä¾†åˆ¤æ–·çš„Buffer
+											out.println("getRetScrapCode="+getRetScrapCode+"&nbsp;"+"å ±å»¢éŒ¯èª¤åŸå› ="+getErrScrapBuffer+"<BR>");
 										}		  	  
 
 									}	  
-									catch (Exception e) { out.println("Exception³ø¼oªºgroupID:"+e.getMessage()); }  
+									catch (Exception e) { out.println("Exceptionå ±å»¢çš„groupID:"+e.getMessage()); }  
 								} // end of if (groupID>0 && opSeqNo>0)			 
-								// *****%%%%%%%%%%%%%% ²¾¯¸³ø¼o¼Æ¶q¼Æ¶q  %%%%%%%%%%%%**********  ¨´
+								// *****%%%%%%%%%%%%%% ç§»ç«™å ±å»¢æ•¸é‡æ•¸é‡  %%%%%%%%%%%%**********  è¿„
 
 							} // End of if (rcScrapQty>0)
 
 							String getErrBuffer = "",overFlag="";
 							int getRetCode = 0;		         
-							if (getRetScrapCode==0) // ­Y°õ¦æ¦P¤@¯¸³ø¼o¦¨¥\,¤~°õ¦æ²¾¤U¤@¯¸°Ê§@_°_
+							if (getRetScrapCode==0) // è‹¥åŸ·è¡ŒåŒä¸€ç«™å ±å»¢æˆåŠŸ,æ‰åŸ·è¡Œç§»ä¸‹ä¸€ç«™å‹•ä½œ_èµ·
 							{  
 								Statement stateRc=con.createStatement();
 								ResultSet rsRc=stateRc.executeQuery(" SELECT runcard_qty FROM yew_runcard_all  WHERE runcard_no = '"+aMFGRCExpTransCode[i][1]+ "'");
@@ -1187,17 +1187,17 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 
 								//out.print("<br>runCardQtyf="+runCardQtyf);
 								// out.print("<br>move qty="+aMFGRCExpTransCode[i][2]); 
-								//§PÂ_¬O§_¦³overcompletion
-								if (Float.parseFloat(aMFGRCExpTransCode[i][2]) > runCardQtyf )   //­Y²¾¯¸¼Æ¤j©ó¬yµ{¥d¼Æ,ªí¥Üovercompletion
+								//åˆ¤æ–·æ˜¯å¦æœ‰overcompletion
+								if (Float.parseFloat(aMFGRCExpTransCode[i][2]) > runCardQtyf )   //è‹¥ç§»ç«™æ•¸å¤§æ–¼æµç¨‹å¡æ•¸,è¡¨ç¤ºovercompletion
 								{
-									overQty = Float.parseFloat(aMFGRCExpTransCode[i][2]) - runCardQtyf ;    //²¾¯¸¼Æ-¬yµ{¥d¼Æ=¶W¥X¼Æ¶q
-									overFlag = "Y";   //µ¹©w¶W¦¬ªºflag
+									overQty = Float.parseFloat(aMFGRCExpTransCode[i][2]) - runCardQtyf ;    //ç§»ç«™æ•¸-æµç¨‹å¡æ•¸=è¶…å‡ºæ•¸é‡
+									overFlag = "Y";   //çµ¦å®šè¶…æ”¶çš„flag
 								}else  { overFlag = "N"; }
 								// out.print("overQty="+overQty);    
-								//toIntOpSType = 1;  // ²¾¯¸ªºto InterOperation Step Type = 1 
-								// *****%%%%%%%%%%%%%% ¥¿±`²¾¯¸¼Æ¶q  %%%%%%%%%%%%**********  °_
-								toIntOpSType = 3;  // §¹¤u²¾¯¸ªºto InterOperation Step Type = 3
-								transType = 1;     // §¹¤uªº Transaction Type(§ï¬° Move Transaction,ÅıMMT¥h¨M©w±N¤u³æComplete)
+								//toIntOpSType = 1;  // ç§»ç«™çš„to InterOperation Step Type = 1 
+								// *****%%%%%%%%%%%%%% æ­£å¸¸ç§»ç«™æ•¸é‡  %%%%%%%%%%%%**********  èµ·
+								toIntOpSType = 3;  // å®Œå·¥ç§»ç«™çš„to InterOperation Step Type = 3
+								transType = 1;     // å®Œå·¥çš„ Transaction Type(æ”¹ç‚º Move Transaction,è®“MMTå»æ±ºå®šå°‡å·¥å–®Complete)
 								String Sqlrc="";
 								String Sqlrc1="insert into WIP_MOVE_TXN_INTERFACE( "+
 												"            CREATED_BY_NAME, CREATION_DATE, LAST_UPDATE_DATE, LAST_UPDATED_BY_NAME, ORGANIZATION_CODE, ORGANIZATION_ID, "+
@@ -1222,36 +1222,36 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 								seqstmt.setString(3,organCode);      //out.println("organCode="+organCode);   // ORGANIZATION_CODE
 								seqstmt.setInt(4,Integer.parseInt(organizationID)); //out.println("organizationID="+organizationID);   // ORGANIZATION_ID
 								seqstmt.setInt(5,1);      //PROCESS_PHASE   1=Move Validation, 2=Move Processing, 3= Operation Backflush Setup
-								seqstmt.setInt(6,2);      //PROCESS_STATUS 1=PENDING , 2=RUNNING , 3=Error (2006/12/07§ï¬° Running) ­ì¬° 1
+								seqstmt.setInt(6,2);      //PROCESS_STATUS 1=PENDING , 2=RUNNING , 3=Error (2006/12/07æ”¹ç‚º Running) åŸç‚º 1
 								//  seqstmt.setDate(9,processDateTime);  // TRANSACTION_DATE
-								seqstmt.setFloat(7,Float.parseFloat(aMFGRCExpTransCode[i][2])); // ²¾¯¸¼Æ¶q
-								//seqstmt.setFloat(7,transactionQty); // ²¾¯¸¼Æ¶q  2006/12/22
+								seqstmt.setFloat(7,Float.parseFloat(aMFGRCExpTransCode[i][2])); // ç§»ç«™æ•¸é‡
+								//seqstmt.setFloat(7,transactionQty); // ç§»ç«™æ•¸é‡  2006/12/22
 								//seqstmt.setInt(10,Integer.parseInt(aMFGRCExpTransCode[i][2])); 
-								//out.println("¼Æ¶q="+aMFGRCExpTransCode[i][2]); //queue to Move Qty creation date  dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()
+								//out.println("æ•¸é‡="+aMFGRCExpTransCode[i][2]); //queue to Move Qty creation date  dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()
 								seqstmt.setString(8,woUOM);
 								seqstmt.setInt(9,Integer.parseInt(entityId));  
-								seqstmt.setString(10,woNo);  //out.println("¤u¥O¸¹="+woNo);
+								seqstmt.setString(10,woNo);  //out.println("å·¥ä»¤è™Ÿ="+woNo);
 								seqstmt.setInt(11,1); // FM_INTRAOPERATION_STEP_TYPE 1=Queue 2=RUN, 3=TO_MOVE, 5=SCRAP
 								//seqstmt.setInt(12,20);
-								seqstmt.setInt(12,Integer.parseInt(aMFGRCExpTransCode[i][4])); // FM_OPERATION_SEQ_NUM(¥»¯¸)
+								seqstmt.setInt(12,Integer.parseInt(aMFGRCExpTransCode[i][4])); // FM_OPERATION_SEQ_NUM(æœ¬ç«™)
 								//out.println("FM_OPERATION_SEQ_NUM="+aMFGRCExpTransCode[i][4]);
-								seqstmt.setInt(13,toIntOpSType); // TO_INTRAOPERATION_STEP_TYPE  1=Queue 2=RUN, 3=TO_MOVE(§¹¤u), 5=SCRAP(³ø¼o)
+								seqstmt.setInt(13,toIntOpSType); // TO_INTRAOPERATION_STEP_TYPE  1=Queue 2=RUN, 3=TO_MOVE(å®Œå·¥), 5=SCRAP(å ±å»¢)
 								seqstmt.setInt(14,Integer.parseInt(aMFGRCExpTransCode[i][5])); // TO_OPERATION_SEQ_NUM  // Integer.parseInt(aMFGRCExpTransCode[i][5])
-								seqstmt.setString(15,aMFGRCExpTransCode[i][1]);	//out.println("¬yµ{¥d¸¹="+aMFGRCExpTransCode[i][1]); // ATTRIBUTE2 ¬yµ{¥d¸¹ 
+								seqstmt.setString(15,aMFGRCExpTransCode[i][1]);	//out.println("æµç¨‹å¡è™Ÿ="+aMFGRCExpTransCode[i][1]); // ATTRIBUTE2 æµç¨‹å¡è™Ÿ 
 								seqstmt.setInt(16,transType);	// TRANSACTION_TYPE   1= Move transaction,  2=Move Completion, 3=Move Return 
 								if (overFlag == "Y" || overFlag.equals("Y"))
 								{ seqstmt.setFloat(17,overQty); } // OVERCOMPLETION_TRANSACTION_QTY   
 								seqstmt.executeUpdate();
 								seqstmt.close();	      	
 
-								//§ì¨ú¼g¤JInterfaceªºGroupµ¥¸ê°T_°_
+								//æŠ“å–å¯«å…¥Interfaceçš„Groupç­‰è³‡è¨Š_èµ·
 								int groupID = 0;
 								int opSeqNo = 0;              
 								String sqlGrp = " select GROUP_ID,TO_OPERATION_SEQ_NUM  from WIP.WIP_MOVE_TXN_INTERFACE "+
 											 " where WIP_ENTITY_NAME = '"+woNo+ "' and WIP_ENTITY_ID = "+entityId+" "+
 											 "   and ATTRIBUTE2 = '"+aMFGRCExpTransCode[i][1]+"' "+ // 2006/11/17 By RunCardNo
 											 "   and PROCESS_STATUS = 2 "+ // 2006/12/08 --> By Process Status=1
-											 "   and TO_INTRAOPERATION_STEP_TYPE = 3 "; // ¨ú¦¹¦¸²¾¯¸ªºGroup ID¬°§¹¤u
+											 "   and TO_INTRAOPERATION_STEP_TYPE = 3 "; // å–æ­¤æ¬¡ç§»ç«™çš„Group IDç‚ºå®Œå·¥
 								Statement stateGrp=con.createStatement();
 								ResultSet rsGrp=stateGrp.executeQuery(sqlGrp);
 								if (rsGrp.next())
@@ -1261,12 +1261,12 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 								}
 								rsGrp.close();
 								stateGrp.close();
-								//§ì¨ú¼g¤J²¾¯¸InterfaceªºGroupµ¥¸ê°T_¨´
-								//out.println("<BR>²¾¯¸ªºgroupID ="+groupID+"<BR>");
+								//æŠ“å–å¯«å…¥ç§»ç«™Interfaceçš„Groupç­‰è³‡è¨Š_è¿„
+								//out.println("<BR>ç§»ç«™çš„groupID ="+groupID+"<BR>");
 
-								if (groupID>0 && opSeqNo>0)  // ªí¥Ü¨ú¨ì¥¿½TªºgroupID¤ÎopSeqNo
+								if (groupID>0 && opSeqNo>0)  // è¡¨ç¤ºå–åˆ°æ­£ç¢ºçš„groupIDåŠopSeqNo
 								{
-									// §Y®É©I¥s WIP_MOVE PROCESS WORKER
+									// å³æ™‚å‘¼å« WIP_MOVE PROCESS WORKER
 
 									int procPhase = 1;
 									int timeOut = 10;
@@ -1276,8 +1276,8 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 										cs4.setInt(1,groupID);                                         //  Org ID 	
 										cs4.setString(2,null);   // BackFlush Setup    
 										cs4.setString(3,"T");	   // FND_API.G_TRUE = "T", FND_API.G_FALSE = "F"
-										cs4.registerOutParameter(4, Types.VARCHAR); //  ¶Ç¦^­È     STATUS
-										cs4.registerOutParameter(5, Types.VARCHAR); //  ¶Ç¦^­È		ERROR MESSAGE					 					      						   	 					     
+										cs4.registerOutParameter(4, Types.VARCHAR); //  å‚³å›å€¼     STATUS
+										cs4.registerOutParameter(5, Types.VARCHAR); //  å‚³å›å€¼		ERROR MESSAGE					 					      						   	 					     
 										cs4.execute();					      
 										String getMoveStatus = cs4.getString(4);		
 										String getMoveErrorMsg = cs4.getString(5);								      				    
@@ -1286,27 +1286,27 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 										if (getMoveStatus.equals("U") && getMoveErrorMsg!=null && !getMoveErrorMsg.equals(""))
 										{
 											getRetCode = 88;   // Error Number  
-											getErrBuffer = getMoveErrorMsg; // §â¿ù»~°T®§µ¹­ì¨Ó§PÂ_ªºBuffer
-											out.println("getRetCode="+getRetCode+"&nbsp;"+"²¾¯¸¿ù»~­ì¦]="+getErrBuffer+"<BR>");
+											getErrBuffer = getMoveErrorMsg; // æŠŠéŒ¯èª¤è¨Šæ¯çµ¦åŸä¾†åˆ¤æ–·çš„Buffer
+											out.println("getRetCode="+getRetCode+"&nbsp;"+"ç§»ç«™éŒ¯èª¤åŸå› ="+getErrBuffer+"<BR>");
 										}	
 
 									}	  
 									catch (Exception e) { out.println("Exception:"+e.getMessage()); }  
 								} // end of if (groupID>0 && opSeqNo>0)			 
-								// *****%%%%%%%%%%%%%% ¥¿±`²¾¯¸¼Æ¶q  %%%%%%%%%%%%**********  ¨´
+								// *****%%%%%%%%%%%%%% æ­£å¸¸ç§»ç«™æ•¸é‡  %%%%%%%%%%%%**********  è¿„
 
 							} // End of if (getRetScrapCode==0) 		 	
 					
-							// ­Y³ø¼o¤Î²¾¯¸³£¦¨¥\,«h§ó·sRUNCARD ¸ê®Æªí¬ÛÃöÄæ¦ì
+							// è‹¥å ±å»¢åŠç§»ç«™éƒ½æˆåŠŸ,å‰‡æ›´æ–°RUNCARD è³‡æ–™è¡¨ç›¸é—œæ¬„ä½
 							if (getRetScrapCode==0 && getRetCode==0)
-							{   // ¨ú¦¨¥\²¾¯¸«á,«e¤@¯¸,¥»¯¸,¤U¤@¯¸¬ÛÃö¸ê°TRUNCARD_ALL¸ê®Æªí§ó·s
+							{   // å–æˆåŠŸç§»ç«™å¾Œ,å‰ä¸€ç«™,æœ¬ç«™,ä¸‹ä¸€ç«™ç›¸é—œè³‡è¨ŠRUNCARD_ALLè³‡æ–™è¡¨æ›´æ–°
 								//String operationSeqNum = "",operationSeqId="",standardOpId="",previousOpSeqNum="",nextOpSeqNum="",qtyInQueue="",standardOpDesc="";
-								boolean singleOp = false;  // ¹w³]¥»¯¸¤£¬°³Ì«á¤@¯¸
+								boolean singleOp = false;  // é è¨­æœ¬ç«™ä¸ç‚ºæœ€å¾Œä¸€ç«™
 								String sqlp = " select OPERATION_SEQ_NUM, OPERATION_SEQUENCE_ID, STANDARD_OPERATION_ID,  "+
 												"       DESCRIPTION, PREVIOUS_OPERATION_SEQ_NUM, NEXT_OPERATION_SEQ_NUM   "+
 												"  from WIP_OPERATIONS "+
-												"  where PREVIOUS_OPERATION_SEQ_NUM is null and WIP_ENTITY_ID ="+entityId+" ";	// §ë²£²¾¯¸§Y§¹¤u(¥u¦³¤@¯¸) 
-								//out.println("¤U¤@¯¸¥N½X="+sqlp);
+												"  where PREVIOUS_OPERATION_SEQ_NUM is null and WIP_ENTITY_ID ="+entityId+" ";	// æŠ•ç”¢ç§»ç«™å³å®Œå·¥(åªæœ‰ä¸€ç«™) 
+								//out.println("ä¸‹ä¸€ç«™ä»£ç¢¼="+sqlp);
 								Statement statep=con.createStatement();
 								ResultSet rsp=statep.executeQuery(sqlp);
 								if (rsp.next())
@@ -1324,7 +1324,7 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 									{
 										nextOpSeqNum = "0";		
 										singleOp = true;
-										//out.println("¤U¤@¯¸¥N½X="+nextOpSeqNum);
+										//out.println("ä¸‹ä¸€ç«™ä»£ç¢¼="+nextOpSeqNum);
 									}	
 								} 
 								else 
@@ -1335,13 +1335,13 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 									standardOpDesc   = "0"; 
 									previousOpSeqNum  = "0"; 
 									nextOpSeqNum	  = "0"; 
-									// ¥»¯¸§Y¬°³Ì«á¤@¯¸,¬G»İ§ó·sª¬ºA¦Ü 046 (§¹¤u¤J®w)					 
+									// æœ¬ç«™å³ç‚ºæœ€å¾Œä¸€ç«™,æ•…éœ€æ›´æ–°ç‹€æ…‹è‡³ 046 (å®Œå·¥å…¥åº«)					 
 									Statement stateMax=con.createStatement();
 									ResultSet rsMax=stateMax.executeQuery("select NEXT_OPERATION_SEQ_NUM from WIP_OPERATIONS where to_char(OPERATION_SEQ_NUM) = '"+aMFGRCExpTransCode[i][4]+"' and WIP_ENTITY_ID ="+entityId+" ");
 									if (rsMax.next() && (rsMax.getString(1)==null || rsMax.getString(1).equals("")) )
 									{
 										singleOp = true;						   			   
-									} //else out.println("¤U¤@¯¸¥N½X="+rsMax.getString(1));
+									} //else out.println("ä¸‹ä¸€ç«™ä»£ç¢¼="+rsMax.getString(1));
 									rsMax.close();
 									stateMax.close();
 
@@ -1349,8 +1349,8 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 								rsp.close();
 								statep.close();				   
 
-								// %%%%%%%%%%%%%%%%%%% ¼g¤JRun card Move Transaction %%%%%%%%%%%%%%%%%%%_°_
-								//¥ı§ìwip_move_transaction¤¤ªº OVERCOMPLETION_PRIMARY_QTY
+								// %%%%%%%%%%%%%%%%%%% å¯«å…¥Run card Move Transaction %%%%%%%%%%%%%%%%%%%_èµ·
+								//å…ˆæŠ“wip_move_transactionä¸­çš„ OVERCOMPLETION_PRIMARY_QTY
 								float overValue=0;
 								if (overFlag=="Y" || overFlag.equals("Y"))
 								{ 
@@ -1377,14 +1377,14 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 								queueTransStmt.setInt(3,Integer.parseInt(organizationID));           // ORGANIZATION_ID
 								queueTransStmt.setInt(4,Integer.parseInt(entityId));                 // WIP_ENTITY_ID
 								queueTransStmt.setInt(5,primaryItemID);                              // PRIMARY_ITEM_ID
-								queueTransStmt.setInt(6,Integer.parseInt(aMFGRCExpTransCode[i][4])); //FM_OPERATION_SEQ_NUM(¥»¯¸)    
+								queueTransStmt.setInt(6,Integer.parseInt(aMFGRCExpTransCode[i][4])); //FM_OPERATION_SEQ_NUM(æœ¬ç«™)    
 								queueTransStmt.setString(7,standardOpDesc);                          //  FM_OPERATION_CODE	       	   
-								queueTransStmt.setInt(8,Integer.parseInt(aMFGRCExpTransCode[i][5])); //TO_OPERATION_SEQ_NUM(¤U¤@¯¸) 
-								queueTransStmt.setString(9,"");                                           //TO_OPERATION_CODE(¤U¤@¯¸¥N½X) 
+								queueTransStmt.setInt(8,Integer.parseInt(aMFGRCExpTransCode[i][5])); //TO_OPERATION_SEQ_NUM(ä¸‹ä¸€ç«™) 
+								queueTransStmt.setString(9,"");                                           //TO_OPERATION_CODE(ä¸‹ä¸€ç«™ä»£ç¢¼) 
 								queueTransStmt.setFloat(10,Float.parseFloat(aMFGRCExpTransCode[i][2]));  // Transaction Qty
 								queueTransStmt.setString(11,woUOM);      // Transaction_UOM		   
 								queueTransStmt.setInt(12,1);             // 1=Queue		  
-								queueTransStmt.setString(13,"QUEUE");    // TO_INTRAOPERATION_STEP_TYPE  1=Queue 2=RUN, 3=TO_MOVE(§¹¤u), 5=SCRAP(³ø¼o)
+								queueTransStmt.setString(13,"QUEUE");    // TO_INTRAOPERATION_STEP_TYPE  1=Queue 2=RUN, 3=TO_MOVE(å®Œå·¥), 5=SCRAP(å ±å»¢)
 								queueTransStmt.setString(14,"");         // CUSTOMER_LOT_NO
 								queueTransStmt.setString(15,"042");      // From STATUSID
 								queueTransStmt.setString(16,"GENERATED");	  // From STATUS
@@ -1392,11 +1392,11 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 								queueTransStmt.setFloat(18,overValue);  // OVERCOMPLETE_QTY 
 								queueTransStmt.executeUpdate();
 								queueTransStmt.close();	    	 
-								// %%%%%%%%%%%%%%%%%%% ¼g¤JRun card Move Transaction %%%%%%%%%%%%%%%%%%%_¨´ 
+								// %%%%%%%%%%%%%%%%%%% å¯«å…¥Run card Move Transaction %%%%%%%%%%%%%%%%%%%_è¿„ 
 
-								if (rcScrapQty>0)  // §PÂ_­Y³ø¼o¼Æ¶q¤j©ó¹s,«h©I¥s¼g¤J³ø¼o RUNCARD Transaction
+								if (rcScrapQty>0)  // åˆ¤æ–·è‹¥å ±å»¢æ•¸é‡å¤§æ–¼é›¶,å‰‡å‘¼å«å¯«å…¥å ±å»¢ RUNCARD Transaction
 								{		 
-									// %%%%%%%%%%%%%%%%%%% ¼g¤JRun card Scrap Transaction %%%%%%%%%%%%%%%%%%%_°_
+									// %%%%%%%%%%%%%%%%%%% å¯«å…¥Run card Scrap Transaction %%%%%%%%%%%%%%%%%%%_èµ·
 									String SqlScrapTrans="insert into APPS.YEW_RUNCARD_TRANSACTIONS( "+
 													"            RUNCAD_ID, RC_TRANSACTION_ID, RUNCARD_NO, ORGANIZATION_ID, WIP_ENTITY_ID, PRIMARY_ITEM_ID, "+
 													"            TRANSACTION_DATE, FM_OPERATION_SEQ_NUM, FM_OPERATION_CODE, TO_OPERATION_SEQ_NUM, TO_OPERATION_CODE, "+
@@ -1410,29 +1410,29 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 									scrapTransStmt.setInt(3,Integer.parseInt(organizationID));           // ORGANIZATION_ID
 									scrapTransStmt.setInt(4,Integer.parseInt(entityId));                 // WIP_ENTITY_ID
 									scrapTransStmt.setInt(5,primaryItemID);                              // PRIMARY_ITEM_ID
-									scrapTransStmt.setInt(6,Integer.parseInt(aMFGRCExpTransCode[i][4])); //FM_OPERATION_SEQ_NUM(¥»¯¸)    
+									scrapTransStmt.setInt(6,Integer.parseInt(aMFGRCExpTransCode[i][4])); //FM_OPERATION_SEQ_NUM(æœ¬ç«™)    
 									scrapTransStmt.setString(7,standardOpDesc);                                      //  FM_OPERATION_CODE	       	   
-									scrapTransStmt.setInt(8,Integer.parseInt(aMFGRCExpTransCode[i][4])); //TO_OPERATION_SEQ_NUM(¤U¤@¯¸) 
-									scrapTransStmt.setString(9,standardOpDesc);                                      //TO_OPERATION_CODE(¤U¤@¯¸¥N½X) 
+									scrapTransStmt.setInt(8,Integer.parseInt(aMFGRCExpTransCode[i][4])); //TO_OPERATION_SEQ_NUM(ä¸‹ä¸€ç«™) 
+									scrapTransStmt.setString(9,standardOpDesc);                                      //TO_OPERATION_CODE(ä¸‹ä¸€ç«™ä»£ç¢¼) 
 									scrapTransStmt.setFloat(10,rcScrapQty);  // Transaction Qty 
 									scrapTransStmt.setString(11,woUOM);      // Transaction_UOM		   
-									scrapTransStmt.setInt(12,5);             // 5=SCRAP(³ø¼o)		  
-									scrapTransStmt.setString(13,"SCRAP");    // TO_INTRAOPERATION_STEP_TYPE  1=Queue 2=RUN, 3=TO_MOVE(§¹¤u), 5=SCRAP(³ø¼o)
+									scrapTransStmt.setInt(12,5);             // 5=SCRAP(å ±å»¢)		  
+									scrapTransStmt.setString(13,"SCRAP");    // TO_INTRAOPERATION_STEP_TYPE  1=Queue 2=RUN, 3=TO_MOVE(å®Œå·¥), 5=SCRAP(å ±å»¢)
 									scrapTransStmt.setString(14,"");         // CUSTOMER_LOT_NO
 									scrapTransStmt.setString(15,"042"); // From STATUSID
 									scrapTransStmt.setString(16,"GENERATED");	  // From STATUS		   
 									scrapTransStmt.setString(17,fndUserName);	  // Update User  
 									scrapTransStmt.executeUpdate();
 									scrapTransStmt.close();	    	 
-									// %%%%%%%%%%%%%%%%%%% ¼g¤JRun card Scrap Transaction %%%%%%%%%%%%%%%%%%%_¨´ 
+									// %%%%%%%%%%%%%%%%%%% å¯«å…¥Run card Scrap Transaction %%%%%%%%%%%%%%%%%%%_è¿„ 
 
 								}	// End of if (rcScrapQty>0)	 	
 
-								// #########################  ¬yµ{¥d§¹¤u«á,©I¥s¼g¤JMMT¤ÎMaterial Transaction Lot Interface§@®w¦s²§°Ê_°_	
+								// #########################  æµç¨‹å¡å®Œå·¥å¾Œ,å‘¼å«å¯«å…¥MMTåŠMaterial Transaction Lot Interfaceä½œåº«å­˜ç•°å‹•_èµ·	
 								try
-								{ //out.println("Step1. ¼g¤JMMT Interface<BR>");	
+								{ //out.println("Step1. å¯«å…¥MMT Interface<BR>");	
 
-									// -- ¨ú¦¹¦¸MMT ªºTransaction ID §@¬°Group ID
+									// -- å–æ­¤æ¬¡MMT çš„Transaction ID ä½œç‚ºGroup ID
 									Statement stateMSEQ=con.createStatement();	             
 									ResultSet rsMSEQ=stateMSEQ.executeQuery("select MTL_MATERIAL_TRANSACTIONS_S.NEXTVAL from dual");
 									if (rsMSEQ.next()) groupId = rsMSEQ.getString(1);
@@ -1443,17 +1443,17 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 									{ 
 										if (altRouting==null || altRouting.equals("") || altRouting.equals("1")) 
 										{
-											opSupplierLot = aMFGRCExpTransCode[i][1];	 // ¤@¯ë¦Û»s¤u¥O,¥H¬yµ{¥d§@¬°§å¸¹
+											opSupplierLot = aMFGRCExpTransCode[i][1];	 // ä¸€èˆ¬è‡ªè£½å·¥ä»¤,ä»¥æµç¨‹å¡ä½œç‚ºæ‰¹è™Ÿ
 										} 
 										else if (altRouting.equals("2")) 
 										{  
-											//opSupplierLot = aMFGRCExpTransCode[i][1]; ¥HPO¦¬®Æ¼t°Ó§å¸¹§@¤J¨t²Îªº§å¸¹		
+											//opSupplierLot = aMFGRCExpTransCode[i][1]; ä»¥POæ”¶æ–™å» å•†æ‰¹è™Ÿä½œå…¥ç³»çµ±çš„æ‰¹è™Ÿ		
 										}  
 									} else {
-										opSupplierLot = aMFGRCExpTransCode[i][1];	 // ¤@¯ë¦Û»s¤u¥O,¥H¬yµ{¥d§@¬°§å¸¹
+										opSupplierLot = aMFGRCExpTransCode[i][1];	 // ä¸€èˆ¬è‡ªè£½å·¥ä»¤,ä»¥æµç¨‹å¡ä½œç‚ºæ‰¹è™Ÿ
 									}  
 
-									//out.println("Stepa.¼g¤JMMT ¤§TRANSACTION_INTERFACE_ID="+groupId+"<BR>");
+									//out.println("Stepa.å¯«å…¥MMT ä¹‹TRANSACTION_INTERFACE_ID="+groupId+"<BR>");
 									//out.println("Step supplierLotNo = "+supplierLotNo+"<BR>");	  
 									String sqlInsMMT = "insert into MTL_TRANSACTIONS_INTERFACE( "+
 												"TRANSACTION_INTERFACE_ID, SOURCE_CODE, SOURCE_HEADER_ID, SOURCE_LINE_ID, PROCESS_FLAG, "+
@@ -1470,7 +1470,7 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 												" ?,SYSDATE, "+                                              // LAST_UPDATE_DATE
 												" -1, "+                                                     // LAST_UPDATED_BY
 												" SYSDATE, "+                                                // CREATION_DATE
-												" ?,?,?,1,MTL_MATERIAL_TRANSACTIONS_S.CURRVAL,'Y',?, 5 ) ";  // CREATION_BY, LOT_NO, MO_NO, LOCK_FLAG = 2(Interface Error¥i¥H­«·s³QRepeocess)
+												" ?,?,?,1,MTL_MATERIAL_TRANSACTIONS_S.CURRVAL,'Y',?, 5 ) ";  // CREATION_BY, LOT_NO, MO_NO, LOCK_FLAG = 2(Interface Errorå¯ä»¥é‡æ–°è¢«Repeocess)
 									// TRANSACTION_SOURCE_TYPE_ID = 5 = WIP
 									PreparedStatement mmtStmt=con.prepareStatement(sqlInsMMT); 	
 									mmtStmt.setInt(1,Integer.parseInt(entityId));   // SOURCE_HEADER_ID(Wip_Entity_id)
@@ -1485,34 +1485,34 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 									mmtStmt.setInt(10,Integer.parseInt(aMFGRCExpTransCode[i][4]));    // OPERATION_SEQ_NUM
 									mmtStmt.setInt(11,Integer.parseInt(userMfgUserID));               // CREATED_BY
 									mmtStmt.setString(12,oeOrderNo);                          //ATTRIBUTE1  MO_NO
-									mmtStmt.setString(13,opSupplierLot);                      //ATTRIBUTE2 LOT_NO (¬yµ{¥d¸¹) 
+									mmtStmt.setString(13,opSupplierLot);                      //ATTRIBUTE2 LOT_NO (æµç¨‹å¡è™Ÿ) 
 									mmtStmt.setString(14,opSupplierLot);                      //VENDOR_LOT_NUMBER  SUPPLIER_LOT_NO
 									mmtStmt.executeUpdate();
 									mmtStmt.close();		
 
-									out.println("Step2. ¼g¤JMMT Lot Interface<BR>");
+									out.println("Step2. å¯«å…¥MMT Lot Interface<BR>");
 									String sqlInsMMTLot = "  insert into MTL_TRANSACTION_LOTS_INTERFACE( "+
 										  "  TRANSACTION_INTERFACE_ID, LOT_NUMBER, TRANSACTION_QUANTITY, PRIMARY_QUANTITY, "+	
 										  "  LAST_UPDATE_DATE, LAST_UPDATED_BY, CREATION_DATE, CREATED_BY, ATTRIBUTE1, ATTRIBUTE2 ) "+ 
 										  "  VALUES (MTL_MATERIAL_TRANSACTIONS_S.CURRVAL,?,?,?,SYSDATE,?,SYSDATE,?,?,?) ";
 									PreparedStatement mmtLotStmt=con.prepareStatement(sqlInsMMTLot); 
-									mmtLotStmt.setString(1,opSupplierLot);    // LOT_NUMBER(¬yµ{¥d¸¹)
+									mmtLotStmt.setString(1,opSupplierLot);    // LOT_NUMBER(æµç¨‹å¡è™Ÿ)
 									mmtLotStmt.setFloat(2,Float.parseFloat(aMFGRCExpTransCode[i][2]));	   // TRANSACTION_QUANTITY
 									mmtLotStmt.setFloat(3,Float.parseFloat(aMFGRCExpTransCode[i][2]));	   // PRIMARY_QUANTITY 
 									mmtLotStmt.setInt(4,Integer.parseInt(userMfgUserID));	       // LAST_UPDATED_BY 								 
 									mmtLotStmt.setInt(5,Integer.parseInt(userMfgUserID));	       // CREATED_BY 
 									mmtLotStmt.setString(6,oeOrderNo);                           //ATTRIBUTE1  MO_NO
-									mmtLotStmt.setString(7,opSupplierLot);                       //ATTRIBUTE2 LOT_NO (¬yµ{¥d¸¹)
+									mmtLotStmt.setString(7,opSupplierLot);                       //ATTRIBUTE2 LOT_NO (æµç¨‹å¡è™Ÿ)
 									mmtLotStmt.executeUpdate();
 									mmtLotStmt.close();
-									out.println("Stepb.¼g¤JMMT LOT ¤§TRANSACTION_INTERFACE_ID="+groupId+"<BR>");
+									out.println("Stepb.å¯«å…¥MMT LOT ä¹‹TRANSACTION_INTERFACE_ID="+groupId+"<BR>");
 
 								} // End of try
 								catch (Exception e)
 								{
 									out.println("Exception MMT & LOT Interface:"+e.getMessage());
 								}	
-								//°õ¦æ MMT¤ÎMMT LOT Interface Submit Request
+								//åŸ·è¡Œ MMTåŠMMT LOT Interface Submit Request
 								String errorMsg = "";
 								try
 								{
@@ -1522,12 +1522,12 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 									{
 										respID = rsResp.getString("RESPONSIBILITY_ID");
 									} else {
-										respID = "50757"; // §ä¤£¨ì«h¹w³] --> YEW INV Super User ¹w³]
+										respID = "50757"; // æ‰¾ä¸åˆ°å‰‡é è¨­ --> YEW INV Super User é è¨­
 									}
 									rsResp.close();
 									stateResp.close();	  			 
 
-									// -- ¨ú¦¹¦¸MMT ªºTransaction Header ID §@¬°Group Header ID
+									// -- å–æ­¤æ¬¡MMT çš„Transaction Header ID ä½œç‚ºGroup Header ID
 									String grpHeaderID = "";
 									String devStatus = "";
 									String devMessage = "";
@@ -1538,40 +1538,40 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 									statGRPID.close();	
 									/*		  		    
 
-									out.println("Step3. ©I¥sTSC WIP_MMT_REQUEST <BR>");	
-									//	Step1. ¼g¤J Schedult Discrete Job API submit request ªºProcedure ¨Ã¨ú¦^ Oracle Request ID	
+									out.println("Step3. å‘¼å«TSC WIP_MMT_REQUEST <BR>");	
+									//	Step1. å¯«å…¥ Schedult Discrete Job API submit request çš„Procedure ä¸¦å–å› Oracle Request ID	
 									CallableStatement cs3 = con.prepareCall("{call TSC_WIP_MMT_REQUEST(?,?,?,?,?,?)}");			 
 									cs3.setString(1,grpHeaderID);     //*  Group ID 	
-									cs3.setString(2,userMfgUserID);    //  user_id ­×§ï¤HID /	
-									cs3.setString(3,respID);  //*  ¨Ï¥ÎªºResponsibility ID --> YEW_INV_Semi_SU /				 
+									cs3.setString(2,userMfgUserID);    //  user_id ä¿®æ”¹äººID /	
+									cs3.setString(3,respID);  //*  ä½¿ç”¨çš„Responsibility ID --> YEW_INV_Semi_SU /				 
 									cs3.registerOutParameter(4, Types.INTEGER); 
-									cs3.registerOutParameter(5, Types.VARCHAR);                  //¦^¶Ç DEV_STATUS
-									cs3.registerOutParameter(6, Types.VARCHAR);                  //¦^¶Ç DEV_MASSAGE
+									cs3.registerOutParameter(5, Types.VARCHAR);                  //å›å‚³ DEV_STATUS
+									cs3.registerOutParameter(6, Types.VARCHAR);                  //å›å‚³ DEV_MASSAGE
 									cs3.execute();
 									out.println("Procedure : Execute Success !!! ");
 									int requestID = cs3.getInt(4);
-									devStatus = cs3.getString(5);   //  ¦^¶Ç REQUEST °õ¦æª¬ªp
-									devMessage = cs3.getString(6);   //  ¦^¶Ç REQUEST °õ¦æª¬ªp°T®§
+									devStatus = cs3.getString(5);   //  å›å‚³ REQUEST åŸ·è¡Œç‹€æ³
+									devMessage = cs3.getString(6);   //  å›å‚³ REQUEST åŸ·è¡Œç‹€æ³è¨Šæ¯
 									cs3.close();
 									*/			 
 									CallableStatement cs3 = con.prepareCall("{call WIP_MTLINTERFACEPROC_PUB.processInterface(?,?,?,?)}");			 
 									cs3.setInt(1,Integer.parseInt(grpHeaderID));     //   p_txnIntID	
 									cs3.setString(2,"T");          //   fnd_api.g_false = "TRUE"					 			 
-									cs3.registerOutParameter(3, Types.VARCHAR);  //¦^¶Ç x_returnStatus
-									cs3.registerOutParameter(4, Types.VARCHAR);  //¦^¶Ç x_errorMsg				
+									cs3.registerOutParameter(3, Types.VARCHAR);  //å›å‚³ x_returnStatus
+									cs3.registerOutParameter(4, Types.VARCHAR);  //å›å‚³ x_errorMsg				
 									cs3.execute();
 									out.println("Procedure : Execute Success !!! ");	             
-									devStatus = cs3.getString(3);    // ¦^¶Ç x_returnStatus
-									devMessage = cs3.getString(4);   // ¦^¶Ç x_errorMsg
+									devStatus = cs3.getString(3);    // å›å‚³ x_returnStatus
+									devMessage = cs3.getString(4);   // å›å‚³ x_errorMsg
 									cs3.close();
 
-									//java.lang.Thread.sleep(5000);	 // ©µ¿ğ¤­¬í,µ¥«İConcurrent°õ¦æ§¹²¦,¨úµ²ªG§PÂ_				 
+									//java.lang.Thread.sleep(5000);	 // å»¶é²äº”ç§’,ç­‰å¾…ConcurrentåŸ·è¡Œå®Œç•¢,å–çµæœåˆ¤æ–·				 
 
 									Statement stateError=con.createStatement();
 									String sqlError= " select ERROR_CODE, ERROR_EXPLANATION from MTL_TRANSACTIONS_INTERFACE where TRANSACTION_INTERFACE_ID= "+groupId+" " ;	
 									//out.println("sqlError="+sqlError+"<BR>");					                                     
 									ResultSet rsError=stateError.executeQuery(sqlError);	
-									if (rsError.next() && rsError.getString("ERROR_CODE")!=null && !rsError.getString("ERROR_CODE").equals("")) // ¦s¦b ERROR ªº¸ê®Æ,¹ïInterface¦Ó¨¥·|¼gErrorCodeÄæ¦ì
+									if (rsError.next() && rsError.getString("ERROR_CODE")!=null && !rsError.getString("ERROR_CODE").equals("")) // å­˜åœ¨ ERROR çš„è³‡æ–™,å°Interfaceè€Œè¨€æœƒå¯«ErrorCodeæ¬„ä½
 									{ 
 										out.println("<TR bgcolor='#FFFFCC'><TD colspan=3><font color='#000099'>MMT Transaction fail!! </FONT></TD><TD colspan=3>"+"</TD></TR>");
 										out.println("<TR bgcolor='#FFFFCC'><TD colspan=1><font color='#000099'>Error Message</FONT></TD><TD colspan=1><font color='#CC3366'>"+rsError.getString("ERROR_CODE")+"</FONT></TD><TD colspan=1><font color='#CC3399'>"+rsError.getString("ERROR_EXPLANATION")+"</FONT></TD></TR>");					   
@@ -1582,12 +1582,12 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 									rsError.close();
 									stateError.close();
 
-									if (errorMsg.equals("")) //­YErrorMessage¬°ªÅ­È,«hªí¥ÜInterface¦¨¥\³Q¼g¤JMMT,¦^À³¦¨¥\Request ID
+									if (errorMsg.equals("")) //è‹¥ErrorMessageç‚ºç©ºå€¼,å‰‡è¡¨ç¤ºInterfaceæˆåŠŸè¢«å¯«å…¥MMT,å›æ‡‰æˆåŠŸRequest ID
 									{	
 										out.println("Success Submit !!! "+"<BR>");
 										out.println("<TR bgcolor='#FFFFCC'><TD colspan=3><font color='#000099'>Processor Request Message </FONT></TD><TD colspan=3>"+devStatus+"("+devMessage+")"+"</TD></TR>");	
-										woPassFlag="Y";	// ¦¨¥\¼g¤JªººX¼Ğ
-										con.commit(); // ­Y¦¨¥\,«h§@Commit,,Åı¨úEntity_IDµL»~				   			  
+										woPassFlag="Y";	// æˆåŠŸå¯«å…¥çš„æ——æ¨™
+										con.commit(); // è‹¥æˆåŠŸ,å‰‡ä½œCommit,,è®“å–Entity_IDç„¡èª¤				   			  
 									}
 
 
@@ -1596,9 +1596,9 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 								{
 									out.println("Exception WIP_MMT_REQUEST:"+e.getMessage());
 								}	
-								// #########################  ¬yµ{¥d§¹¤u«á,©I¥s¼g¤JMMT¤ÎMaterial Transaction Lot Interface§@®w¦s²§°Ê_¨´
+								// #########################  æµç¨‹å¡å®Œå·¥å¾Œ,å‘¼å«å¯«å…¥MMTåŠMaterial Transaction Lot Interfaceä½œåº«å­˜ç•°å‹•_è¿„
 
-								//§ì¤£¨¬Äæ¦ì¸ê®Æ  ORDER NO
+								//æŠ“ä¸è¶³æ¬„ä½è³‡æ–™  ORDER NO
 								String orderHeaderId="",orderLineId=""; 
 								String sqlfnd = " select YWA.OE_ORDER_NO,YWA.ORDER_HEADER_ID,YWA.ORDER_LINE_ID,YWA.INV_ITEM   "+
 												"   from APPS.YEW_WORKORDER_ALL YWA ,APPS.YEW_RUNCARD_ALL YRA   "+
@@ -1617,7 +1617,7 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 								rsFndId.close();
 								stateFndId.close(); 
 
-								if ((woType=="3" || woType.equals("3") || oeOrderNo.length()>1) && (woPassFlag=="Y" || woPassFlag.equals("Y")))  //interface»İ¦¨¥\¼g¤J¤~¼gReservaton
+								if ((woType=="3" || woType.equals("3") || oeOrderNo.length()>1) && (woPassFlag=="Y" || woPassFlag.equals("Y")))  //interfaceéœ€æˆåŠŸå¯«å…¥æ‰å¯«Reservaton
 								{
 									String sourceHeaderId="",rsInterfaceId="",requireDate="",resvFlag="";
 									float  resvQty=0,orderQty=0,avaiResvQty=0,resTxnQty=0;
@@ -1626,7 +1626,7 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 									{ 			
 										//out.println("orderno="+oeOrderNo+"  orderLineId="+orderLineId);
 
-										//§ì¤£¨¬Äæ¦ì¸ê®Æ  mtl_sales_orders HEADER_ID
+										//æŠ“ä¸è¶³æ¬„ä½è³‡æ–™  mtl_sales_orders HEADER_ID
 										String sqlfndb = "SELECT sales_order_id FROM mtl_sales_orders a, oe_order_headers_all b ,oe_transaction_types_tl c  "+
 										" WHERE a.segment1 = b.order_number  and b.order_number='"+oeOrderNo+"' and b.SHIP_FROM_ORG_ID = "+organizationId+" "+
 										"   and a.segment2=c.name  and c.transaction_type_id=b.order_type_id   and c.language='US' ";
@@ -1650,7 +1650,7 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 										rsSplit.close();
 										stateSplit.close(); 
 
-										//§ì¤w¦s¦bªºreservation qty »P­q³æ¬Û¤ñ  mtl_sales_orders HEADER_ID
+										//æŠ“å·²å­˜åœ¨çš„reservation qty èˆ‡è¨‚å–®ç›¸æ¯”  mtl_sales_orders HEADER_ID
 										String sqlfndb1 =" select sum(decode(MTR.RESERVATION_UOM_CODE,'PCE',MTR.RESERVATION_QUANTITY/1000,MTR.RESERVATION_QUANTITY )) RESV_QTY, "+
 														"        sum(decode(OOL.ORDER_QUANTITY_UOM,'PCE',OOL.ORDERED_QUANTITY/1000,OOL.ORDERED_QUANTITY)) ORDER_QTY , "+
 														"        to_char(trunc(SCHEDULE_SHIP_DATE),'YYYYMMDD') SCHEDULE_SHIP_DATE "+
@@ -1662,13 +1662,13 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 										ResultSet rsFndIdb1=stateFndIdb1.executeQuery(sqlfndb1);
 										if (rsFndIdb1.next())
 										{  
-											requireDate = rsFndIdb1.getString("SCHEDULE_SHIP_DATE");     //»İ¨D¤é
-											resvQty = rsFndIdb1.getFloat("RESV_QTY");    //¤v³Q«O¯d¼Æ
-											orderQty = rsFndIdb1.getFloat("ORDER_QTY");  //­q³æ¼Æ
+											requireDate = rsFndIdb1.getString("SCHEDULE_SHIP_DATE");     //éœ€æ±‚æ—¥
+											resvQty = rsFndIdb1.getFloat("RESV_QTY");    //å·±è¢«ä¿ç•™æ•¸
+											orderQty = rsFndIdb1.getFloat("ORDER_QTY");  //è¨‚å–®æ•¸
 											//out.println("requireDate="+requireDate);
 											//out.println("resvQty="+resvQty);
 											//out.println("orderQty="+orderQty);
-											avaiResvQty = orderQty - resvQty ;           //¥i«O¯d¼Æ  
+											avaiResvQty = orderQty - resvQty ;           //å¯ä¿ç•™æ•¸  
 											//out.println("avaiResvQty="+avaiResvQty);
 										}
 										rsFndIdb1.close();
@@ -1679,20 +1679,20 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 										if (avaiResvQty<=0)
 										{
 											resvFlag ="N";
-											out.print("<br>µL­q³æ¶q¥i¨ÑReservation,¤£°õ¦æ­q³æ«O¯d!");
+											out.print("<br>ç„¡è¨‚å–®é‡å¯ä¾›Reservation,ä¸åŸ·è¡Œè¨‚å–®ä¿ç•™!");
 											//out.print("HostTTT");
 										}
-										else if (Float.parseFloat(aMFGRCExpTransCode[i][2]) > avaiResvQty)   //¬yµ{¥d¼Æ>¥i«O¯d¼Æ
+										else if (Float.parseFloat(aMFGRCExpTransCode[i][2]) > avaiResvQty)   //æµç¨‹å¡æ•¸>å¯ä¿ç•™æ•¸
 										{
 											resvFlag ="Y";
-											resTxnQty=avaiResvQty;               //resversion qty=³Ñ¾l¥i«O¯d¼Æ
-											out.print("<br>¤J®w¼Æ¤j©ó­q³æ¼Æ,°õ¦æ­q³æ¼Æ«O¯d!");
+											resTxnQty=avaiResvQty;               //resversion qty=å‰©é¤˜å¯ä¿ç•™æ•¸
+											out.print("<br>å…¥åº«æ•¸å¤§æ–¼è¨‚å–®æ•¸,åŸ·è¡Œè¨‚å–®æ•¸ä¿ç•™!");
 											//out.print("HostQQQ");
 										}
 										else
 										{
-											resTxnQty =  Float.parseFloat(aMFGRCExpTransCode[i][2]) ;   //resversion qty=¬yµ{¥d¼Æ¶q
-											//out.print("<br>°õ¦æ­q³æ¼Æ«O¯d¦¨¥\!");
+											resTxnQty =  Float.parseFloat(aMFGRCExpTransCode[i][2]) ;   //resversion qty=æµç¨‹å¡æ•¸é‡
+											//out.print("<br>åŸ·è¡Œè¨‚å–®æ•¸ä¿ç•™æˆåŠŸ!");
 											resvFlag ="Y";
 											//out.print("HostRRR");
 										}
@@ -1707,7 +1707,7 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 									{
 										try
 										{
-											//§ì¤£¨¬Äæ¦ì¸ê®Æ  RESERVATION_INTERFACE_ID
+											//æŠ“ä¸è¶³æ¬„ä½è³‡æ–™  RESERVATION_INTERFACE_ID
 
 											Statement stateFndIdc=con.createStatement();
 											ResultSet rsFndIdc=stateFndIdc.executeQuery("select MTL_RESERVATIONS_INTERFACE_S.NEXTVAL from dual");
@@ -1721,13 +1721,13 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 											java.sql.Date requirementDate = null;
 											if (requireDate.length()>4)
 											{
-												requirementDate = new java.sql.Date(Integer.parseInt(requireDate.substring(0,4))-1900,Integer.parseInt(requireDate.substring(4,6))-1,Integer.parseInt(requireDate.substring(6,8)));  // µ¹requireDate
+												requirementDate = new java.sql.Date(Integer.parseInt(requireDate.substring(0,4))-1900,Integer.parseInt(requireDate.substring(4,6))-1,Integer.parseInt(requireDate.substring(6,8)));  // çµ¦requireDate
 											} else {
 												requireDate = dateBean.getYearMonthDay(); 
-												requirementDate = new java.sql.Date(Integer.parseInt(requireDate.substring(0,4))-1900,Integer.parseInt(requireDate.substring(4,6))-1,Integer.parseInt(requireDate.substring(6,8)));  // µ¹requireDate  
+												requirementDate = new java.sql.Date(Integer.parseInt(requireDate.substring(0,4))-1900,Integer.parseInt(requireDate.substring(4,6))-1,Integer.parseInt(requireDate.substring(6,8)));  // çµ¦requireDate  
 											}
 
-											out.println("<br>Step4. ¼g¤JReservations Interfac<BR>");	
+											out.println("<br>Step4. å¯«å…¥Reservations Interfac<BR>");	
 											String sqlInsRSIN = "  insert into MTL_RESERVATIONS_INTERFACE( "+
 												" RESERVATION_INTERFACE_ID,RESERVATION_BATCH_ID,REQUIREMENT_DATE  "+
 												" ,ORGANIZATION_ID,TO_ORGANIZATION_ID,INVENTORY_ITEM_ID,ITEM_SEGMENT1 "+
@@ -1783,7 +1783,7 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 											out.println("Exception RESERVATIONS_REQUEST:"+e.getMessage());
 										}	
 
-										//°õ¦æ RESERVATIONS Interface Manager
+										//åŸ·è¡Œ RESERVATIONS Interface Manager
 										try
 										{
 											String grpHeaderID = "";
@@ -1797,31 +1797,31 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 											{
 												respID = rsResp.getString("RESPONSIBILITY_ID");
 											} else {
-												respID = "50776"; // §ä¤£¨ì«h¹w³] --> YEW INV Super User ¹w³]
+												respID = "50776"; // æ‰¾ä¸åˆ°å‰‡é è¨­ --> YEW INV Super User é è¨­
 											}
 											rsResp.close();
 											stateResp.close();	  
 
-											out.println("<br>Step5. ©I¥sTSC_YEW_INVRSVIN_REQUEST <BR>");	
-											//	Step1. ¼g¤J Schedult Discrete Job API submit request ªºProcedure ¨Ã¨ú¦^ Oracle Request ID	
+											out.println("<br>Step5. å‘¼å«TSC_YEW_INVRSVIN_REQUEST <BR>");	
+											//	Step1. å¯«å…¥ Schedult Discrete Job API submit request çš„Procedure ä¸¦å–å› Oracle Request ID	
 											CallableStatement cs3 = con.prepareCall("{call TSC_YEW_INVRSVIN_REQUEST(?,?,?,?,?,?,?)}");			 
-											cs3.setString(1,userMfgUserID);    //  user_id ­×§ï¤HID /	
-											cs3.setString(2,respID);  //*  ¨Ï¥ÎªºResponsibility ID --> YEW_INV_Semi_SU /				 
+											cs3.setString(1,userMfgUserID);    //  user_id ä¿®æ”¹äººID /	
+											cs3.setString(2,respID);  //*  ä½¿ç”¨çš„Responsibility ID --> YEW_INV_Semi_SU /				 
 											cs3.registerOutParameter(3, Types.INTEGER); 
-											cs3.registerOutParameter(4, Types.VARCHAR);                  //¦^¶Ç DEV_STATUS
-											cs3.registerOutParameter(5, Types.VARCHAR);                  //¦^¶Ç DEV_MASSAGE
-											cs3.setString(6,opSupplierLot);  //*  RUNCARD NO (¥i¯à¬O¥~ÁÊ¼t°Ó§å¸¹)	
+											cs3.registerOutParameter(4, Types.VARCHAR);                  //å›å‚³ DEV_STATUS
+											cs3.registerOutParameter(5, Types.VARCHAR);                  //å›å‚³ DEV_MASSAGE
+											cs3.setString(6,opSupplierLot);  //*  RUNCARD NO (å¯èƒ½æ˜¯å¤–è³¼å» å•†æ‰¹è™Ÿ)	
 											cs3.setString(7,rsInterfaceId);  //   Reservation  Id /	
 											cs3.execute();
 											out.println("Procedure : Execute Success !!! ");
 											int requestID = cs3.getInt(3);
-											devStatus = cs3.getString(4);   //  ¦^¶Ç REQUEST °õ¦æª¬ªp
-											devMessage = cs3.getString(5);   //  ¦^¶Ç REQUEST °õ¦æª¬ªp°T®§
+											devStatus = cs3.getString(4);   //  å›å‚³ REQUEST åŸ·è¡Œç‹€æ³
+											devMessage = cs3.getString(5);   //  å›å‚³ REQUEST åŸ·è¡Œç‹€æ³è¨Šæ¯
 											cs3.close();
 
-											//java.lang.Thread.sleep(5000);	 // ©µ¿ğ¤­¬í,µ¥«İConcurrent°õ¦æ§¹²¦,¨úµ²ªG§PÂ_		 	  				 
+											//java.lang.Thread.sleep(5000);	 // å»¶é²äº”ç§’,ç­‰å¾…ConcurrentåŸ·è¡Œå®Œç•¢,å–çµæœåˆ¤æ–·		 	  				 
 
-											/*   // 2007/01/20 §ï¬°¤Ş¥Î Oracle ¼Ğ·Çªº Reservation Processor		 		 	  				 
+											/*   // 2007/01/20 æ”¹ç‚ºå¼•ç”¨ Oracle æ¨™æº–çš„ Reservation Processor		 		 	  				 
 											CallableStatement cs3 = con.prepareCall("{call INV_RESERVATIONS_INTERFACE.rsv_interface_manager(?,?,?,?,?)}");
 											cs3.registerOutParameter(1, Types.VARCHAR);                  // x_errbuf
 											cs3.registerOutParameter(2, Types.INTEGER);                  // x_retcode			 
@@ -1829,10 +1829,10 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 											cs3.setString(4,"F");                           //*  fnd_api.g_false					
 											cs3.setString(5,"N");				             //   p_form_mode
 											cs3.execute();
-											 out.println("Procedure : °õ¦æOracle®w¦s«O¯dProcedure !!! ");					 			 
-											int requestID = cs3.getInt(2);	  // §â Return Code µ¹ Request ID				
-											devMessage = cs3.getString(1);   // ¦^¶Ç x_errbuf °õ¦æª¬ªp ( x_errbuf )	
-											devStatus = Integer.toString(cs3.getInt(2));       // ¦^¶Ç x_retcode ( x_retcode )		
+											 out.println("Procedure : åŸ·è¡ŒOracleåº«å­˜ä¿ç•™Procedure !!! ");					 			 
+											int requestID = cs3.getInt(2);	  // æŠŠ Return Code çµ¦ Request ID				
+											devMessage = cs3.getString(1);   // å›å‚³ x_errbuf åŸ·è¡Œç‹€æ³ ( x_errbuf )	
+											devStatus = Integer.toString(cs3.getInt(2));       // å›å‚³ x_retcode ( x_retcode )		
 											 cs3.close();	  
 											*/	 
 
@@ -1840,7 +1840,7 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 											String sqlError= " select ERROR_CODE, ERROR_EXPLANATION from MTL_RESERVATIONS_INTERFACE where RESERVATION_INTERFACE_ID= "+rsInterfaceId+" " ;	
 											//out.println("sqlError="+sqlError+"<BR>");					                                     
 											ResultSet rsError=stateError.executeQuery(sqlError);	
-											if (rsError.next() && rsError.getString("ERROR_CODE")!=null && !rsError.getString("ERROR_CODE").equals("")) // ¦s¦b ERROR ªº¸ê®Æ,¹ïInterface¦Ó¨¥·|¼gErrorCodeÄæ¦ì
+											if (rsError.next() && rsError.getString("ERROR_CODE")!=null && !rsError.getString("ERROR_CODE").equals("")) // å­˜åœ¨ ERROR çš„è³‡æ–™,å°Interfaceè€Œè¨€æœƒå¯«ErrorCodeæ¬„ä½
 											{ 
 												out.println("<TR bgcolor='#FFFFCC'><TD colspan=3><font color='#000099'>RESERVATIONS Transaction fail!! </FONT></TD><TD colspan=3>"+rsInterfaceId+"</TD></TR>");
 												out.println("<TR bgcolor='#FFFFCC'><TD colspan=1><font color='#000099'>Error Message</FONT></TD><TD colspan=1><font color='#CC3366'>"+rsError.getString("ERROR_CODE")+"</FONT></TD><TD colspan=1><font color='#CC3399'>"+rsError.getString("ERROR_EXPLANATION")+"</FONT></TD></TR>");					   
@@ -1851,12 +1851,12 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 											rsError.close();
 											stateError.close();
 
-											if (errorMsgResv.equals("")) //­YErrorMessage¬°ªÅ­È,«hªí¥ÜInterface¦¨¥\³Q¼g¤JMMT,¦^À³¦¨¥\Request ID
+											if (errorMsgResv.equals("")) //è‹¥ErrorMessageç‚ºç©ºå€¼,å‰‡è¡¨ç¤ºInterfaceæˆåŠŸè¢«å¯«å…¥MMT,å›æ‡‰æˆåŠŸRequest ID
 											{	
 												out.println("Success Submit !!! RequestID = "+requestID);
 												out.println("<TR bgcolor='#FFFFCC'><TD colspan=3><font color='#000099'>Processor Request Message </FONT></TD><TD colspan=3>"+devStatus+"("+devMessage+")"+"</TD></TR>");	
-												woPassFlag="Y";	// ¦¨¥\¼g¤JªººX¼Ğ
-												con.commit(); // ­Y¦¨¥\,«h§@Commit,,Åı¨úEntity_IDµL»~				   			  
+												woPassFlag="Y";	// æˆåŠŸå¯«å…¥çš„æ——æ¨™
+												con.commit(); // è‹¥æˆåŠŸ,å‰‡ä½œCommit,,è®“å–Entity_IDç„¡èª¤				   			  
 											}
 
 										}// end of try
@@ -1868,12 +1868,12 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 								} //end if woType=3 
 
 
-									// ###################### ¼g¤J Reservations Interface Manager  ¨´################### ¨´	
+									// ###################### å¯«å…¥ Reservations Interface Manager  è¿„################### è¿„	
 
-								// §PÂ_§¹¦¨MMT¥ç³Q¼g¤J«á,¤è§ó·s¸Ó¬yµ{¥dª¬ºA¦Ü¤u¥O«İµ²®×	 
+								// åˆ¤æ–·å®ŒæˆMMTäº¦è¢«å¯«å…¥å¾Œ,æ–¹æ›´æ–°è©²æµç¨‹å¡ç‹€æ…‹è‡³å·¥ä»¤å¾…çµæ¡ˆ	 
 								if (errorMsg.equals("") && woPassFlag.equals("Y"))
 								{ 
-									// #########################  ¬yµ{¥d§¹¤u«á,©I¥s¼g¤JMMT¤ÎMaterial Transaction Lot Interface§@®w¦s²§°Ê_¨´	
+									// #########################  æµç¨‹å¡å®Œå·¥å¾Œ,å‘¼å«å¯«å…¥MMTåŠMaterial Transaction Lot Interfaceä½œåº«å­˜ç•°å‹•_è¿„	
 									String rcSql=" update APPS.YEW_RUNCARD_ALL set LAST_UPDATED_BY=?, LAST_UPDATE_DATE=?, STATUSID=?, STATUS=?, "+
 												" QTY_IN_SCRAP=?, "+
 												// " PREVIOUS_OP_SEQ_NUM=?, STANDARD_OP_ID=?, STANDARD_OP_DESC=?, OPERATION_SEQ_ID=?, OPERATION_SEQ_NUM=?, NEXT_OP_SEQ_NUM=?, "+
@@ -1883,12 +1883,12 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 									//out.print("rcSql="+rcSql);           
 									rcStmt.setInt(1,Integer.parseInt(userMfgUserID));
 									rcStmt.setString(2,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); 
-									if (!singleOp) // ­Y¥»¯¸¤£¬°³Ì«á¯¸(Routing¥u¦³¤@¯¸·|µo¥Í¦¹ª¬ªp),«hºû«ù¦b (044) ²¾¯¸¤¤
-									{ //out.println("²Ä¤@¯¸¤£¬°³Ì«á¤@¯¸");
+									if (!singleOp) // è‹¥æœ¬ç«™ä¸ç‚ºæœ€å¾Œç«™(Routingåªæœ‰ä¸€ç«™æœƒç™¼ç”Ÿæ­¤ç‹€æ³),å‰‡ç¶­æŒåœ¨ (044) ç§»ç«™ä¸­
+									{ //out.println("ç¬¬ä¸€ç«™ä¸ç‚ºæœ€å¾Œä¸€ç«™");
 										rcStmt.setString(3,getStatusRs.getString("TOSTATUSID")); 
 										rcStmt.setString(4,getStatusRs.getString("STATUSNAME"));				
-									} else { // §_«h,§Y§ó·s¦Ü 048 §¹¤u¤J®w
-										//out.println("²Ä¤@¯¸¬°³Ì«á¤@¯¸");
+									} else { // å¦å‰‡,å³æ›´æ–°è‡³ 048 å®Œå·¥å…¥åº«
+										//out.println("ç¬¬ä¸€ç«™ç‚ºæœ€å¾Œä¸€ç«™");
 										rcStmt.setString(3,"048"); 
 										rcStmt.setString(4,"CLOSING");					   
 									}
@@ -1899,7 +1899,7 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 									rcStmt.executeUpdate();   
 									rcStmt.close(); 
 
-									// §ä°l·¹ªí¥À¬yµ{¥dªº¬yµ{¥d¸¹±NWIP_USED_QTYÄæ¦ì§@²Ö¥[_°_
+									// æ‰¾è¿½æº¯è¡¨æ¯æµç¨‹å¡çš„æµç¨‹å¡è™Ÿå°‡WIP_USED_QTYæ¬„ä½ä½œç´¯åŠ _èµ·
 									Statement stateParRC=con.createStatement();
 									//String sqlParRC= " select ERROR_CODE, ERROR_EXPLANATION from MTL_RESERVATIONS_INTERFACE where RESERVATION_INTERFACE_ID= "+rsInterfaceId+" " ;	
 									//out.println("sqlParRC="+sqlParRC+"<BR>");					                                     
@@ -1912,7 +1912,7 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 									}
 									rsParRC.close();
 											
-									// §ä°l·¹ªí¥À¬yµ{¥dªº¬yµ{¥d¸¹±NWIP_USED_QTYÄæ¦ì§@²Ö¥[_°_
+									// æ‰¾è¿½æº¯è¡¨æ¯æµç¨‹å¡çš„æµç¨‹å¡è™Ÿå°‡WIP_USED_QTYæ¬„ä½ä½œç´¯åŠ _èµ·
 
 									String woSql=" update APPS.YEW_WORKORDER_ALL set LAST_UPDATED_BY=?, LAST_UPDATE_DATE=?, STATUSID=?, STATUS=?, "+		                  
 												// " PREVIOUS_OP_SEQ_NUM=?, STANDARD_OP_ID=?, STANDARD_OP_DESC=?, OPERATION_SEQ_ID=?, OPERATION_SEQ_NUM=?, NEXT_OP_SEQ_NUM=?, "+
@@ -1928,7 +1928,7 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 									woStmt.executeUpdate();   
 									woStmt.close();
 
-									//§ä°l·¹ªí¥À¬yµ{¥dªº¤u¥O¸¹±NWO_USED_QTYÄæ¦ì§@²Ö¥[_°_
+									//æ‰¾è¿½æº¯è¡¨æ¯æµç¨‹å¡çš„å·¥ä»¤è™Ÿå°‡WO_USED_QTYæ¬„ä½ä½œç´¯åŠ _èµ·
 									//Statement stateParRC=con.createStatement();
 									//String sqlParRC= " select ERROR_CODE, ERROR_EXPLANATION from MTL_RESERVATIONS_INTERFACE where RESERVATION_INTERFACE_ID= "+rsInterfaceId+" " ;	
 									//out.println("sqlParRC="+sqlParRC+"<BR>");					                                     
@@ -1941,43 +1941,43 @@ alert("Oracle²¾¯¸²§±`..½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 									}
 									rsParRC.close();
 									stateParRC.close();				
-									// §ä°l·¹ªí¥À¬yµ{¥dªº¤u¥O¸¹±NWO_USED_QTYÄæ¦ì§@²Ö¥[_¨´
+									// æ‰¾è¿½æº¯è¡¨æ¯æµç¨‹å¡çš„å·¥ä»¤è™Ÿå°‡WO_USED_QTYæ¬„ä½ä½œç´¯åŠ _è¿„
 
 								}  // End of if (errorMsg.equals(""))			  
 
 							} // end of if (getRetScrapCode==0 && getRetCode==0)   
 							else {
-								interfaceErr = true; // ªí¥Ü²¾¯¸Interface¦³²§±`
+								interfaceErr = true; // è¡¨ç¤ºç§»ç«™Interfaceæœ‰ç•°å¸¸
 							} // End of else
 
-						} // end of if (aMFGRCExpTransCode[i][2]>0) // ­Y³]©w²¾¯¸¼Æ¶q¤j©ó0¤~¶i¦æ²¾¯¸¤Î³ø¼o   
-						out.print("<BR><font color='#0033CC'>¬yµ{¥d("+aMFGRCExpTransCode[i][1]+")¤w¤J®wO.K.</font><font color='#CC3333'>(WO_NO="+woNo+" Wip_Entity_ID="+entityId+")</font>");   
-					} // End of if (choice[k]==aMFGRCExpTransCode[i][0] || choice[k].equals(aMFGRCExpTransCode[i][0])) // RunCardIDµ¥©ó°}¦C¤º®e
-				} // End of for (int k=0;k<choice.length;k++) // §PÂ_¨Ï¥ÎªÌ¦³Check¤~§ó·s
+						} // end of if (aMFGRCExpTransCode[i][2]>0) // è‹¥è¨­å®šç§»ç«™æ•¸é‡å¤§æ–¼0æ‰é€²è¡Œç§»ç«™åŠå ±å»¢   
+						out.print("<BR><font color='#0033CC'>æµç¨‹å¡("+aMFGRCExpTransCode[i][1]+")å·²å…¥åº«O.K.</font><font color='#CC3333'>(WO_NO="+woNo+" Wip_Entity_ID="+entityId+")</font>");   
+					} // End of if (choice[k]==aMFGRCExpTransCode[i][0] || choice[k].equals(aMFGRCExpTransCode[i][0])) // RunCardIDç­‰æ–¼é™£åˆ—å…§å®¹
+				} // End of for (int k=0;k<choice.length;k++) // åˆ¤æ–·ä½¿ç”¨è€…æœ‰Checkæ‰æ›´æ–°
 
 			} // End of for (i=0;i<aMFGRCExpTransCode.length;i++)
 		} // end of if (aMFGRCExpTransCode!=null) 
 
-		//out.print("¬yµ{¥d§ë²£O.K.(WO_NO="+woNo+" Wip_Entity_ID="+entityId+")");
+		//out.print("æµç¨‹å¡æŠ•ç”¢O.K.(WO_NO="+woNo+" Wip_Entity_ID="+entityId+")");
 
 
-		if (!nextOpSeqNum.equals("0") && !interfaceErr) // ­Y¤U¤@¯¸¤£µ¥©ó³Ì«á¤@¯¸¥BInterfaceµL²§±`
+		if (!nextOpSeqNum.equals("0") && !interfaceErr) // è‹¥ä¸‹ä¸€ç«™ä¸ç­‰æ–¼æœ€å¾Œä¸€ç«™ä¸”Interfaceç„¡ç•°å¸¸
 		{
 %>
 <script LANGUAGE="JavaScript">
-alert("¦¹¬yµ{¥d¤w¦Ü»sµ{³Ì²×¯¸");
-//reProcessFormConfirm("¦¹¬yµ{¥d¤w¦Ü»sµ{³Ì²×¯¸,¬O§_Ä~Äò°õ¦æ¦¹±i¬yµ{¥d²¾¯¸§@·~?","../jsp/TSCMfgRunCardComplete.jsp","<!--%=woNo%>","<!--%=runCardNo%-->");
+alert("æ­¤æµç¨‹å¡å·²è‡³è£½ç¨‹æœ€çµ‚ç«™");
+//reProcessFormConfirm("æ­¤æµç¨‹å¡å·²è‡³è£½ç¨‹æœ€çµ‚ç«™,æ˜¯å¦ç¹¼çºŒåŸ·è¡Œæ­¤å¼µæµç¨‹å¡ç§»ç«™ä½œæ¥­?","../jsp/TSCMfgRunCardComplete.jsp","<!--%=woNo%>","<!--%=runCardNo%-->");
 </script>
 <%	
 		} else {
 %>
 <script LANGUAGE="JavaScript">
-alert("¦¹¬yµ{¥d¤w§¹¤u¨Ã¤J®w(CLOSING)..½ĞÄ~Äò°õ¦æ¦¹±i¤u¥O©Î¬yµ{¥dµ²®×§@·~!!!");
+alert("æ­¤æµç¨‹å¡å·²å®Œå·¥ä¸¦å…¥åº«(CLOSING)..è«‹ç¹¼çºŒåŸ·è¡Œæ­¤å¼µå·¥ä»¤æˆ–æµç¨‹å¡çµæ¡ˆä½œæ¥­!!!");
 </script>
 <%	
 		}
 
-		// ¨Ï¥Î§¹²¦²MªÅ 2ºû°}¦C
+		// ä½¿ç”¨å®Œç•¢æ¸…ç©º 2ç¶­é™£åˆ—
 		if (aMFGRCExpTransCode!=null)
 		{ 
 			arrMFGRCExpTransBean.setArray2DString(null); 
@@ -1985,25 +1985,25 @@ alert("¦¹¬yµ{¥d¤w§¹¤u¨Ã¤J®w(CLOSING)..½ĞÄ~Äò°õ¦æ¦¹±i¤u¥O©Î¬yµ{¥dµ²®×§@·~!!!");
 
 		//out.println("<BR>Done");
 	}
-	//MFG¬yµ{¥d§ë²£¤¤_¨´ (ACTION=012)   ¬yµ{¥d¤w®i¶}042 --> ¬yµ{¥d²¾¯¸¤¤046 // ¦p¬°n¯¸, §Y ²Ä¤@¯¸ -->  ²Ä n ¯¸
+	//MFGæµç¨‹å¡æŠ•ç”¢ä¸­_è¿„ (ACTION=012)   æµç¨‹å¡å·²å±•é–‹042 --> æµç¨‹å¡ç§»ç«™ä¸­046 // å¦‚ç‚ºnç«™, å³ ç¬¬ä¸€ç«™ -->  ç¬¬ n ç«™
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	errorFlag ="044>044";
-	//MFG¬yµ{¥d²¾¯¸¤¤_°_	(ACTION=006)   ¬yµ{¥d²¾¯¸¤¤044 --> ¬yµ{¥d²¾¯¸¤¤044
-	if (actionID.equals("006") && fromStatusID.equals("044"))   // ¦p¬°n¯¸, ²Ä2¯¸ --> ²Ä n-1 ¯¸
+	//MFGæµç¨‹å¡ç§»ç«™ä¸­_èµ·	(ACTION=006)   æµç¨‹å¡ç§»ç«™ä¸­044 --> æµç¨‹å¡ç§»ç«™ä¸­044
+	if (actionID.equals("006") && fromStatusID.equals("044"))   // å¦‚ç‚ºnç«™, ç¬¬2ç«™ --> ç¬¬ n-1 ç«™
 	{   //out.println("fromStatusID="+fromStatusID);
-		String fndUserName = "";  //³B²z¤H­û
-		String woUOM = ""; // ¤u¥O²¾¯¸³æ¦ì
+		String fndUserName = "";  //è™•ç†äººå“¡
+		String woUOM = ""; // å·¥ä»¤ç§»ç«™å–®ä½
 		int primaryItemID = 0;
 		float runCardQtyf=0,overQty=0; 
-		entityId = "0"; // ¤u¥Owip_entity_id
-		boolean interfaceErr = false;  // §PÂ_¨ä¤¤ Interface ¦³²§±`ªººX¼Ğ
+		entityId = "0"; // å·¥ä»¤wip_entity_id
+		boolean interfaceErr = false;  // åˆ¤æ–·å…¶ä¸­ Interface æœ‰ç•°å¸¸çš„æ——æ¨™
 		if (aMFGRCMovingCode!=null)
 		{	  
 			if (aMFGRCMovingCode.length>0)
 			{    
-				//§ì¨úlogin ªºuser id °µ¬° run "Receiving Transaction Processor"ªº requestor_°_
+				//æŠ“å–login çš„user id åšç‚º run "Receiving Transaction Processor"çš„ requestor_èµ·
 
 				String sqlfnd = " select USER_NAME from APPS.FND_USER A, ORADDMAN.WSUSER B "+
 							 " where A.USER_NAME = UPPER(B.USERNAME)  and to_char(A.USER_ID) = '"+userMfgUserID+ "'";
@@ -2015,9 +2015,9 @@ alert("¦¹¬yµ{¥d¤w§¹¤u¨Ã¤J®w(CLOSING)..½ĞÄ~Äò°õ¦æ¦¹±i¤u¥O©Î¬yµ{¥dµ²®×§@·~!!!");
 				}
 				rsFndId.close();
 				stateFndId.close();
-				//§ì¨úlogin ªºuser id °µ¬° run "Receiving Transaction Processor"ªº requestor_¨´ 
+				//æŠ“å–login çš„user id åšç‚º run "Receiving Transaction Processor"çš„ requestor_è¿„ 
 
-				//§ì¨ú²¾¯¸¼Æ¶qªº³æ¦ì_°_	                     
+				//æŠ“å–ç§»ç«™æ•¸é‡çš„å–®ä½_èµ·	                     
 				String sqlUOM = " select DISTINCT a.WO_UOM, b.WIP_ENTITY_ID, b.PRIMARY_ITEM_ID, a.OE_ORDER_NO from APPS.YEW_WORKORDER_ALL a, APPS.YEW_RUNCARD_ALL b "+
 							 " where a.WO_NO = b.WO_NO and a.WO_NO = '"+woNo+ "'";
 				Statement stateUOM=con.createStatement();
@@ -2031,7 +2031,7 @@ alert("¦¹¬yµ{¥d¤w§¹¤u¨Ã¤J®w(CLOSING)..½ĞÄ~Äò°õ¦æ¦¹±i¤u¥O©Î¬yµ{¥dµ²®×§@·~!!!");
 				}
 				rsUOM.close();
 				stateUOM.close();
-				//§ì¨ú²¾¯¸¼Æ¶qªº³æ¦ì_¨´   
+				//æŠ“å–ç§»ç«™æ•¸é‡çš„å–®ä½_è¿„   
 
 			} // End of if (aMFGRCMovingCode.length>0) 	  
 
@@ -2039,32 +2039,32 @@ alert("¦¹¬yµ{¥d¤w§¹¤u¨Ã¤J®w(CLOSING)..½ĞÄ~Äò°õ¦æ¦¹±i¤u¥O©Î¬yµ{¥dµ²®×§@·~!!!");
 			{
 				for (int k=0;k<=choice.length-1;k++)    
 				{ //out.println("choice[k]="+choice[k]);  
-					// §PÂ_³QCheck ªºLine ¤~°õ¦æ«ü¬£§@·~
+					// åˆ¤æ–·è¢«Check çš„Line æ‰åŸ·è¡ŒæŒ‡æ´¾ä½œæ¥­
 					if (choice[k]==aMFGRCMovingCode[i][0] || choice[k].equals(aMFGRCMovingCode[i][0]))
 					{ //out.println("aMFGRCMovingCode[i][0]="+aMFGRCMovingCode[i][0]);	   
 						//out.print("woNo2="+woNo+"<br>");
 
-						if (Float.parseFloat(aMFGRCMovingCode[i][2])>0) // ­Y³]©w²¾¯¸¼Æ¶q¤j©ó0¤~¶i¦æ²¾¯¸¤Î³ø¼o 
+						if (Float.parseFloat(aMFGRCMovingCode[i][2])>0) // è‹¥è¨­å®šç§»ç«™æ•¸é‡å¤§æ–¼0æ‰é€²è¡Œç§»ç«™åŠå ±å»¢ 
 						{
 
 							int toIntOpSType = 1; //TO_INTRAOPERATION_STEP_TYPE(1=Queue 2=RUN, 3=TO_MOVE, 5=SCRAP)
 							int transType = 1;    // TRANSACTION_TYPE   1= Move transaction,  2=Move Completion, 3=Move Return 
 							if (aMFGRCMovingCode[i][5]==null || aMFGRCMovingCode[i][5]=="0" || aMFGRCMovingCode[i][5].equals("0")) 
-							{ // ­YµL¤U¤@¯¸§Ç¸¹,«hªí¥Ü¥»¯¸§Y¬°³Ì²×¯¸,¬ÛÃö°Ê§@³]©w¬°§¹¤u
+							{ // è‹¥ç„¡ä¸‹ä¸€ç«™åºè™Ÿ,å‰‡è¡¨ç¤ºæœ¬ç«™å³ç‚ºæœ€çµ‚ç«™,ç›¸é—œå‹•ä½œè¨­å®šç‚ºå®Œå·¥
 								toIntOpSType = 3; 
-								aMFGRCMovingCode[i][5] = aMFGRCMovingCode[i][4]; // µL¤U¤@¯¸ªºSeq No,¬Gµ¹¥»¯¸
+								aMFGRCMovingCode[i][5] = aMFGRCMovingCode[i][4]; // ç„¡ä¸‹ä¸€ç«™çš„Seq No,æ•…çµ¦æœ¬ç«™
 								transType = 2;
-							}  // ­YµL¤U¤@¯¸,ªí¥Ü¥»¯¸¬O³Ì«á¤@¯¸,toStepType ³]¦¨3	, transaction Type ³]¬°2(Move Completion)
+							}  // è‹¥ç„¡ä¸‹ä¸€ç«™,è¡¨ç¤ºæœ¬ç«™æ˜¯æœ€å¾Œä¸€ç«™,toStepType è¨­æˆ3	, transaction Type è¨­ç‚º2(Move Completion)
 
-							//§ì¨ú­Ó§O¬yµ{¥d²¾¯¸¼Æ¶qªº³æ¦ì,¨Ã­pºâ¥»¯¸³ø¼o¼Æ¶q_°_	
+							//æŠ“å–å€‹åˆ¥æµç¨‹å¡ç§»ç«™æ•¸é‡çš„å–®ä½,ä¸¦è¨ˆç®—æœ¬ç«™å ±å»¢æ•¸é‡_èµ·	
 							float  rcMQty = 0;   
 							float  rcScrapQty = 0;    
-							java.text.DecimalFormat nf = new java.text.DecimalFormat("###,##0.000"); // ¨ú¤p¼Æ«á¤T¦ì 
+							java.text.DecimalFormat nf = new java.text.DecimalFormat("###,##0.000"); // å–å°æ•¸å¾Œä¸‰ä½ 
 
 							String sqlMQty = " select b.QTY_IN_QUEUE, TRANSACTION_QUANTITY as PREVCOMPQTY "+
 										 "    from APPS.YEW_WORKORDER_ALL a, APPS.YEW_RUNCARD_ALL b, WIP_MOVE_TRANSACTIONS c "+
 										 "   where b.WIP_ENTITY_ID = c.WIP_ENTITY_ID and a.WO_NO = b.WO_NO and a.WO_NO = '"+woNo+ "' "+
-										 "     and b.RUNCARD_NO= c.ATTRIBUTE2 and c.TO_INTRAOPERATION_STEP_TYPE = 1 "+ // ¨úQUEUE²¾¯¸¼Æ¶q
+										 "     and b.RUNCARD_NO= c.ATTRIBUTE2 and c.TO_INTRAOPERATION_STEP_TYPE = 1 "+ // å–QUEUEç§»ç«™æ•¸é‡
 										 "     and b.RUNCARD_NO='"+aMFGRCMovingCode[i][1]+"' and to_char(c.FM_OPERATION_SEQ_NUM) = '"+aMFGRCMovingCode[i][3]+"' ";
 							//out.println("sqlMQty ="+sqlMQty);				 
 							Statement stateMQty=con.createStatement();
@@ -2073,22 +2073,22 @@ alert("¦¹¬yµ{¥d¤w§¹¤u¨Ã¤J®w(CLOSING)..½ĞÄ~Äò°õ¦æ¦¹±i¤u¥O©Î¬yµ{¥dµ²®×§@·~!!!");
 							{
 
 								if (aMFGRCMovingCode[i][2]==null || aMFGRCMovingCode[i][2].equals("null")) aMFGRCMovingCode[i][2]=Float.toString(rcMQty);
-								rcMQty = rsMQty.getFloat("PREVCOMPQTY");		//­ì«e¯¸§¹¤u¼Æ¶q	
+								rcMQty = rsMQty.getFloat("PREVCOMPQTY");		//åŸå‰ç«™å®Œå·¥æ•¸é‡	
 								//out.println("rcMQty ="+rcMQty);		
-								rcScrapQty = rcMQty - Float.parseFloat(aMFGRCMovingCode[i][2]);  // ³ø¼o¼Æ¶q = ­ì§ë¯¸¼Æ¶q - ¿é¤J²¾¯¸¼Æ¶q						   
+								rcScrapQty = rcMQty - Float.parseFloat(aMFGRCMovingCode[i][2]);  // å ±å»¢æ•¸é‡ = åŸæŠ•ç«™æ•¸é‡ - è¼¸å…¥ç§»ç«™æ•¸é‡						   
 
 								String strScrapQty = nf.format(rcScrapQty);
 								java.math.BigDecimal bd = new java.math.BigDecimal(strScrapQty);
 								java.math.BigDecimal scrapQty = bd.setScale(3, java.math.BigDecimal.ROUND_HALF_UP);
 								rcScrapQty =scrapQty.floatValue();
 
-								//out.println("java¥|±Ë¤­¤J«á¨ú¤p¼Æ¤T¦ìrcScrapQty="+rcScrapQty+"<BR>");
+								//out.println("javaå››æ¨äº”å…¥å¾Œå–å°æ•¸ä¸‰ä½rcScrapQty="+rcScrapQty+"<BR>");
 							}
 							rsMQty.close();
 							stateMQty.close();
-							//§ì¨ú²¾¯¸¼Æ¶qªº³æ¦ì,¨Ã­pºâ¥»¯¸³ø¼o¼Æ¶q_¨´	
+							//æŠ“å–ç§»ç«™æ•¸é‡çš„å–®ä½,ä¸¦è¨ˆç®—æœ¬ç«™å ±å»¢æ•¸é‡_è¿„	
 
-							// ¥ı¨ú³ø¼o Scrap Account ID_°_//  ¨ÌOrganization_id ¨ú¹w³]ªº Scrap Acc ID
+							// å…ˆå–å ±å»¢ Scrap Account ID_èµ·//  ä¾Organization_id å–é è¨­çš„ Scrap Acc ID
 							int scrpAccID = 0;
 							String sqlScrp = " select DEFAULT_SCRAP_ACCOUNT_ID from WIP_PARAMETERS_V  "+
 										  " where ORGANIZATION_ID = '"+organizationID+ "' ";										  
@@ -2100,15 +2100,15 @@ alert("¦¹¬yµ{¥d¤w§¹¤u¨Ã¤J®w(CLOSING)..½ĞÄ~Äò°õ¦æ¦¹±i¤u¥O©Î¬yµ{¥dµ²®×§@·~!!!");
 							}
 							rsScrp.close();
 							stateScrp.close();
-							// ¥ı¨ú³ø¼o Scrap Account ID_¨´	
+							// å…ˆå–å ±å»¢ Scrap Account ID_è¿„	
 
 							String getErrScrapBuffer = "";
 							int getRetScrapCode = 0;
-							if (rcScrapQty>0)  // §PÂ_­Y³ø¼o¼Æ¶q¤j©ó¹s,«h©I¥s¼g¤J³ø¼o RUNCARD Transaction
+							if (rcScrapQty>0)  // åˆ¤æ–·è‹¥å ±å»¢æ•¸é‡å¤§æ–¼é›¶,å‰‡å‘¼å«å¯«å…¥å ±å»¢ RUNCARD Transaction
 							{	
-								// *****%%%%%%%%%%%%%% ²¾¯¸³ø¼o¼Æ¶q  %%%%%%%%%%%%**********  °_
-								toIntOpSType = 5;  // ³ø¼oªºto InterOperation Step Type = 5
-								transType = 1; // ³ø¼oªºTransaction Type = 1(Move Transaction)
+								// *****%%%%%%%%%%%%%% ç§»ç«™å ±å»¢æ•¸é‡  %%%%%%%%%%%%**********  èµ·
+								toIntOpSType = 5;  // å ±å»¢çš„to InterOperation Step Type = 5
+								transType = 1; // å ±å»¢çš„Transaction Type = 1(Move Transaction)
 								String SqlScrap="insert into WIP_MOVE_TXN_INTERFACE( "+
 											"            CREATED_BY_NAME, CREATION_DATE, LAST_UPDATE_DATE, LAST_UPDATED_BY_NAME, ORGANIZATION_CODE, ORGANIZATION_ID, "+
 											"            PROCESS_PHASE, PROCESS_STATUS, TRANSACTION_DATE, TRANSACTION_QUANTITY, TRANSACTION_UOM, "+
@@ -2125,31 +2125,31 @@ alert("¦¹¬yµ{¥d¤w§¹¤u¨Ã¤J®w(CLOSING)..½ĞÄ~Äò°õ¦æ¦¹±i¤u¥O©Î¬yµ{¥dµ²®×§@·~!!!");
 								scrapstmt.setString(3,organCode);      //out.println("organCode="+organCode);   // ORGANIZATION_CODE
 								scrapstmt.setInt(4,Integer.parseInt(organizationID)); //out.println("organizationID="+organizationID);   // ORGANIZATION_ID
 								scrapstmt.setInt(5,1);      //PROCESS_PHASE   1=Move Validation, 2=Move Processing, 3= Operation Backflush Setup
-								scrapstmt.setInt(6,2);      //PROCESS_STATUS 1=PENDING , 2=RUNNING , 3=Error	  ( 2006/12/08 §ï¬° RUNNING )   
-								scrapstmt.setFloat(7,rcScrapQty); out.println("<BR>¬yµ{¥d:"+aMFGRCMovingCode[i][1]+"(³ø¼o¼Æ¶q="+rcScrapQty+")<BR>");	       	   
+								scrapstmt.setInt(6,2);      //PROCESS_STATUS 1=PENDING , 2=RUNNING , 3=Error	  ( 2006/12/08 æ”¹ç‚º RUNNING )   
+								scrapstmt.setFloat(7,rcScrapQty); out.println("<BR>æµç¨‹å¡:"+aMFGRCMovingCode[i][1]+"(å ±å»¢æ•¸é‡="+rcScrapQty+")<BR>");	       	   
 								scrapstmt.setString(8,woUOM);
 								scrapstmt.setInt(9,Integer.parseInt(entityId));  
 								scrapstmt.setString(10,woNo);  
 								scrapstmt.setInt(11,1); // FM_INTRAOPERATION_STEP_TYPE 1=Queue 2=RUN, 3=TO_MOVE, 5=SCRAP
 								//seqstmt.setInt(12,20);
-								scrapstmt.setInt(12,Integer.parseInt(aMFGRCMovingCode[i][4])); //out.println("FMOPSEQ="+aMFGRCMovingCode[i][4]); // LAST_UPDATE_DATE// FM_OPERATION_SEQ_NUM(¥»¯¸)		  
-								scrapstmt.setInt(13,toIntOpSType); // TO_INTRAOPERATION_STEP_TYPE  1=Queue 2=RUN, 3=TO_MOVE(§¹¤u), 5=SCRAP(³ø¼o)
-								scrapstmt.setInt(14,Integer.parseInt(aMFGRCMovingCode[i][4])); // TO_OPERATION_SEQ_NUM  //³ø¼o§Y¬°From = To
-								scrapstmt.setString(15,aMFGRCMovingCode[i][1]);	//out.println("¬yµ{¥d¸¹="+aMFGRCMovingCode[i][1]); // ATTRIBUTE2 ¬yµ{¥d¸¹ 
+								scrapstmt.setInt(12,Integer.parseInt(aMFGRCMovingCode[i][4])); //out.println("FMOPSEQ="+aMFGRCMovingCode[i][4]); // LAST_UPDATE_DATE// FM_OPERATION_SEQ_NUM(æœ¬ç«™)		  
+								scrapstmt.setInt(13,toIntOpSType); // TO_INTRAOPERATION_STEP_TYPE  1=Queue 2=RUN, 3=TO_MOVE(å®Œå·¥), 5=SCRAP(å ±å»¢)
+								scrapstmt.setInt(14,Integer.parseInt(aMFGRCMovingCode[i][4])); // TO_OPERATION_SEQ_NUM  //å ±å»¢å³ç‚ºFrom = To
+								scrapstmt.setString(15,aMFGRCMovingCode[i][1]);	//out.println("æµç¨‹å¡è™Ÿ="+aMFGRCMovingCode[i][1]); // ATTRIBUTE2 æµç¨‹å¡è™Ÿ 
 								scrapstmt.setInt(16,transType);	// TRANSACTION_TYPE   1= Move transaction,  2=Move Completion, 3=Move Return 
-								scrapstmt.setInt(17,scrpAccID);	// SCRAP_ACCOUNT_ID  (I)³ø¼o  ( 01-11-000-7650-951-0-000 ) 
-								scrapstmt.setInt(18,7);	// REASON_ID  »sµ{²§±`
+								scrapstmt.setInt(17,scrpAccID);	// SCRAP_ACCOUNT_ID  (I)å ±å»¢  ( 01-11-000-7650-951-0-000 ) 
+								scrapstmt.setInt(18,7);	// REASON_ID  è£½ç¨‹ç•°å¸¸
 								scrapstmt.executeUpdate();
 								scrapstmt.close();	      	
 
-								//§ì¨ú¼g¤JInterfaceªºGroupµ¥¸ê°T_°_
+								//æŠ“å–å¯«å…¥Interfaceçš„Groupç­‰è³‡è¨Š_èµ·
 								int groupID = 0;
 								int opSeqNo = 0;              
 								String sqlGrp = " select GROUP_ID,TO_OPERATION_SEQ_NUM  from WIP.WIP_MOVE_TXN_INTERFACE "+
 											 " where WIP_ENTITY_NAME = '"+woNo+ "' and WIP_ENTITY_ID = "+entityId+" "+
 											 "   and ATTRIBUTE2 = '"+aMFGRCMovingCode[i][1]+"' "+ // 2006/11/17 By RunCardNo
 											 "   and PROCESS_STATUS = 2 "+ // 2006/12/08 By Process Status=1
-											 "   and TO_INTRAOPERATION_STEP_TYPE = 5 "; // ¨ú¦¹¦¸³ø¼oªºgroup
+											 "   and TO_INTRAOPERATION_STEP_TYPE = 5 "; // å–æ­¤æ¬¡å ±å»¢çš„group
 								Statement stateGrp=con.createStatement();
 								ResultSet rsGrp=stateGrp.executeQuery(sqlGrp);
 								if (rsGrp.next())
@@ -2159,20 +2159,20 @@ alert("¦¹¬yµ{¥d¤w§¹¤u¨Ã¤J®w(CLOSING)..½ĞÄ~Äò°õ¦æ¦¹±i¤u¥O©Î¬yµ{¥dµ²®×§@·~!!!");
 								}
 								rsGrp.close();
 								stateGrp.close();
-								//§ì¨ú¼g¤JInterfaceªºGroupµ¥¸ê°T_¨´  
-								//out.println("<BR>³ø¼oªºgroupID ="+groupID+"<BR>");
+								//æŠ“å–å¯«å…¥Interfaceçš„Groupç­‰è³‡è¨Š_è¿„  
+								//out.println("<BR>å ±å»¢çš„groupID ="+groupID+"<BR>");
 
-								if (groupID>0 && opSeqNo>0)  // ªí¥Ü¨ú¨ì¥¿½TªºgroupID¤ÎopSeqNo
+								if (groupID>0 && opSeqNo>0)  // è¡¨ç¤ºå–åˆ°æ­£ç¢ºçš„groupIDåŠopSeqNo
 								{
-									// §Y®É©I¥s WIP_MOVE PROCESS WORKER
+									// å³æ™‚å‘¼å« WIP_MOVE PROCESS WORKER
 
 									int procPhase = 1;
 									int timeOut = 10;
 									try
 									{	     /*
 										CallableStatement cs5 = con.prepareCall("{call WIP_MOVPROC_PRIV.Move_Worker(?,?,?,?,?,?)}");			
-										cs5.registerOutParameter(1, Types.VARCHAR); //  ¶Ç¦^­È        ERROR BUFFER
-										cs5.registerOutParameter(2, Types.INTEGER); //  ¶Ç¦^­È		RETURN CODE				   
+										cs5.registerOutParameter(1, Types.VARCHAR); //  å‚³å›å€¼        ERROR BUFFER
+										cs5.registerOutParameter(2, Types.INTEGER); //  å‚³å›å€¼		RETURN CODE				   
 										cs5.setInt(3,groupID);                                         //  Org ID 	
 										cs5.setInt(4,procPhase);    // 1 Move Validation 2.Move Processing 3.Opeariotn Backflush Setup     
 										cs5.setInt(5,timeOut); 
@@ -2186,8 +2186,8 @@ alert("¦¹¬yµ{¥d¤w§¹¤u¨Ã¤J®w(CLOSING)..½ĞÄ~Äò°õ¦æ¦¹±i¤u¥O©Î¬yµ{¥dµ²®×§@·~!!!");
 										cs5.setInt(1,groupID);                                         //  Org ID 	
 										cs5.setString(2,null);   // BackFlush Setup    
 										cs5.setString(3,"T");	   // FND_API.G_TRUE = "T", FND_API.G_FALSE = "F"
-										cs5.registerOutParameter(4, Types.VARCHAR); //  ¶Ç¦^­È     STATUS
-										cs5.registerOutParameter(5, Types.VARCHAR); //  ¶Ç¦^­È		ERROR MESSAGE					 					      						   	 					     
+										cs5.registerOutParameter(4, Types.VARCHAR); //  å‚³å›å€¼     STATUS
+										cs5.registerOutParameter(5, Types.VARCHAR); //  å‚³å›å€¼		ERROR MESSAGE					 					      						   	 					     
 										cs5.execute();					      
 										String getMoveStatus = cs5.getString(4);		
 										String getMoveErrorMsg = cs5.getString(5);								      				    
@@ -2195,8 +2195,8 @@ alert("¦¹¬yµ{¥d¤w§¹¤u¨Ã¤J®w(CLOSING)..½ĞÄ~Äò°õ¦æ¦¹±i¤u¥O©Î¬yµ{¥dµ²®×§@·~!!!");
 										if (getMoveStatus.equals("U") && getMoveErrorMsg!=null && !getMoveErrorMsg.equals(""))
 										{
 											getRetScrapCode = 77;   // Error Number  
-											getErrScrapBuffer = getMoveErrorMsg; // §â¿ù»~°T®§µ¹­ì¨Ó§PÂ_ªºBuffer
-											out.println("getRetScrapCode="+getRetScrapCode+"&nbsp;"+"³ø¼o¿ù»~­ì¦]="+getErrScrapBuffer+"<BR>");
+											getErrScrapBuffer = getMoveErrorMsg; // æŠŠéŒ¯èª¤è¨Šæ¯çµ¦åŸä¾†åˆ¤æ–·çš„Buffer
+											out.println("getRetScrapCode="+getRetScrapCode+"&nbsp;"+"å ±å»¢éŒ¯èª¤åŸå› ="+getErrScrapBuffer+"<BR>");
 										}						  					  
 
 										/*	   						 
@@ -2206,45 +2206,45 @@ alert("¦¹¬yµ{¥d¤w§¹¤u¨Ã¤J®w(CLOSING)..½ĞÄ~Äò°õ¦æ¦¹±i¤u¥O©Î¬yµ{¥dµ²®×§@·~!!!");
 														   "where TRANSACTION_ID=(select TRANSACTION_ID from WIP_MOVE_TXN_INTERFACE where GROUP_ID= "+groupID+") ";
 											Statement stateTxnMsg=con.createStatement();
 											ResultSet rsTxnMsg=stateTxnMsg.executeQuery(sqlTxnMsg);
-											if (rsTxnMsg.next())  // ­Y¦s¦b,ªí¥Ü¦³¿ù»~°T®§,¦ı¤´¦¨¥\¼g
+											if (rsTxnMsg.next())  // è‹¥å­˜åœ¨,è¡¨ç¤ºæœ‰éŒ¯èª¤è¨Šæ¯,ä½†ä»æˆåŠŸå¯«
 											{
 												getErrScrapBuffer = getErrScrapBuffer+"("+rsTxnMsg.getString(1)+")"+"Error Column("+rsTxnMsg.getString(2)+")";
 											}
 											rsTxnMsg.close();
 											stateTxnMsg.close(); 
 										}		
-										// ¾÷¨®,°T®§¤£·Ç½T,»İ¦A§PÂ_¬O§_MOVE_TRANSACTION¨Ì¬yµ{¥d¬O§_¥¿½T¥H³Q¼g¤J,¦p¤w¼g¤J,«h¤´°õ¦æ¥¿±`²¾¯¸§@·~ //_°_  
+										// æ©Ÿè»Š,è¨Šæ¯ä¸æº–ç¢º,éœ€å†åˆ¤æ–·æ˜¯å¦MOVE_TRANSACTIONä¾æµç¨‹å¡æ˜¯å¦æ­£ç¢ºä»¥è¢«å¯«å…¥,å¦‚å·²å¯«å…¥,å‰‡ä»åŸ·è¡Œæ­£å¸¸ç§»ç«™ä½œæ¥­ //_èµ·  
 										String sqlGrpMsg = " select GROUP_ID from WIP.WIP_MOVE_TRANSACTIONS "+
 														 " where WIP_ENTITY_ID = "+entityId+" and ATTRIBUTE2 = '"+aMFGRCMovingCode[i][1]+"' "+
 														 "   and to_char(FM_OPERATION_SEQ_NUM) = '"+aMFGRCMovingCode[i][4]+"' "+
-														 "   and PRIMARY_QUANTITY = "+rcScrapQty+"  "+  // ³ø¼o¼Æ
-														 "   and TO_INTRAOPERATION_STEP_TYPE = 5 and GROUP_ID="+groupID+" ";   // ¨ú¦¹¦¸³ø¼o
+														 "   and PRIMARY_QUANTITY = "+rcScrapQty+"  "+  // å ±å»¢æ•¸
+														 "   and TO_INTRAOPERATION_STEP_TYPE = 5 and GROUP_ID="+groupID+" ";   // å–æ­¤æ¬¡å ±å»¢
 										Statement stateGrpMsg=con.createStatement();
 										ResultSet rsGrpMsg=stateGrpMsg.executeQuery(sqlGrpMsg);
-										if (rsGrpMsg.next())  // ­Y¦s¦b,ªí¥Ü¦³¿ù»~°T®§,¦ı¤´¦¨¥\¼g¤JMove Transaction, §ó¥¿getRetScrapCode = 0
+										if (rsGrpMsg.next())  // è‹¥å­˜åœ¨,è¡¨ç¤ºæœ‰éŒ¯èª¤è¨Šæ¯,ä½†ä»æˆåŠŸå¯«å…¥Move Transaction, æ›´æ­£getRetScrapCode = 0
 										{
 											getRetScrapCode = 0; 
-											if (getErrScrapBuffer!=null && !getErrScrapBuffer.equals("null")) out.println("§t¿ù»~°T®§,¤´¦¨¥\¼g¤J³ø¼o¼ÆInterface!!!");
+											if (getErrScrapBuffer!=null && !getErrScrapBuffer.equals("null")) out.println("å«éŒ¯èª¤è¨Šæ¯,ä»æˆåŠŸå¯«å…¥å ±å»¢æ•¸Interface!!!");
 										} else {
 												
 										}
 										rsGrpMsg.close();
 										stateGrpMsg.close();
-										// ¾÷¨®,°T®§¤£·Ç½T,»İ¦A§PÂ_¬O§_MOVE_TRANSACTION¨Ì¬yµ{¥d¬O§_¥¿½T¥H³Q¼g¤J,¦p¤w¼g¤J,«h¤´°õ¦æ¥¿±`²¾¯¸§@·~ //_¨´			  	  
+										// æ©Ÿè»Š,è¨Šæ¯ä¸æº–ç¢º,éœ€å†åˆ¤æ–·æ˜¯å¦MOVE_TRANSACTIONä¾æµç¨‹å¡æ˜¯å¦æ­£ç¢ºä»¥è¢«å¯«å…¥,å¦‚å·²å¯«å…¥,å‰‡ä»åŸ·è¡Œæ­£å¸¸ç§»ç«™ä½œæ¥­ //_è¿„			  	  
 										*/
 									}	  
 									catch (Exception e) { out.println("Exception:"+e.getMessage()); }  
 								} // end of if (groupID>0 && opSeqNo>0)			 
-								// *****%%%%%%%%%%%%%% ²¾¯¸³ø¼o¼Æ¶q¼Æ¶q  %%%%%%%%%%%%**********  ¨´	
+								// *****%%%%%%%%%%%%%% ç§»ç«™å ±å»¢æ•¸é‡æ•¸é‡  %%%%%%%%%%%%**********  è¿„	
 
 							} // End of if (rcScrapQty>0)	
 
 							String getErrBuffer = "",overFlag="";
 							int getRetCode = 0;  
 							float prevQty = 0;		   		     
-							if (getRetScrapCode==0)   // ­Y¥»¯¸³ø¼o¦¨¥\,«h¶i¦æ²¾¯¸Interface
-							{  // *****%%%%%%%%%%%%%% ¥¿±`²¾¯¸¼Æ¶q  %%%%%%%%%%%%**********  °_
-								//§PÂ_¬O§_¦³overcompletion
+							if (getRetScrapCode==0)   // è‹¥æœ¬ç«™å ±å»¢æˆåŠŸ,å‰‡é€²è¡Œç§»ç«™Interface
+							{  // *****%%%%%%%%%%%%%% æ­£å¸¸ç§»ç«™æ•¸é‡  %%%%%%%%%%%%**********  èµ·
+								//åˆ¤æ–·æ˜¯å¦æœ‰overcompletion
 								String sqlpre=" select TRANSACTION_QUANTITY from yew_runcard_transactions "+
 								"  where step_type=1 and FM_OPERATION_SEQ_NUM  = '"+aMFGRCMovingCode[i][3]+"' "+
 								"    and runcard_no = '"+aMFGRCMovingCode[i][1]+"' ";
@@ -2253,19 +2253,19 @@ alert("¦¹¬yµ{¥d¤w§¹¤u¨Ã¤J®w(CLOSING)..½ĞÄ~Äò°õ¦æ¦¹±i¤u¥O©Î¬yµ{¥dµ²®×§@·~!!!");
 								ResultSet rspre=statepre.executeQuery(sqlpre);
 								if (rspre.next())
 								{
-									prevQty = rspre.getFloat(1);  //«e¦¸²¾¯¸¼Æ
+									prevQty = rspre.getFloat(1);  //å‰æ¬¡ç§»ç«™æ•¸
 								}
 								rspre.close();
 								statepre.close();
 
-								//§PÂ_¬O§_¦³overcompletion
-								if (Float.parseFloat(aMFGRCMovingCode[i][2]) > prevQty )   //­Y²¾¯¸¼Æ¤j©ó¬yµ{¥d¼Æ,ªí¥Üovercompletion
-								{   //out.print("<br>«e¯¸²¾¯¸¼Æ="+prevQty);
-									overQty = Float.parseFloat(aMFGRCMovingCode[i][2]) - prevQty ;    //²¾¯¸¼Æ-¬yµ{¥d¼Æ=¶W¥X¼Æ¶q
-									overFlag = "Y";   //µ¹©w¶W¦¬ªºflag
+								//åˆ¤æ–·æ˜¯å¦æœ‰overcompletion
+								if (Float.parseFloat(aMFGRCMovingCode[i][2]) > prevQty )   //è‹¥ç§»ç«™æ•¸å¤§æ–¼æµç¨‹å¡æ•¸,è¡¨ç¤ºovercompletion
+								{   //out.print("<br>å‰ç«™ç§»ç«™æ•¸="+prevQty);
+									overQty = Float.parseFloat(aMFGRCMovingCode[i][2]) - prevQty ;    //ç§»ç«™æ•¸-æµç¨‹å¡æ•¸=è¶…å‡ºæ•¸é‡
+									overFlag = "Y";   //çµ¦å®šè¶…æ”¶çš„flag
 								}else  { overFlag = "N"; }
 								//out.print("<br>overQty="+overQty);    
-								toIntOpSType = 1;  // ²¾¯¸ªºto InterOperation Step Type = 1
+								toIntOpSType = 1;  // ç§»ç«™çš„to InterOperation Step Type = 1
 								String Sqlrc="";
 								String Sqlrc1="insert into WIP_MOVE_TXN_INTERFACE( "+
 											"            CREATED_BY_NAME, CREATION_DATE, LAST_UPDATE_DATE, LAST_UPDATED_BY_NAME, ORGANIZATION_CODE, ORGANIZATION_ID, "+
@@ -2291,35 +2291,35 @@ alert("¦¹¬yµ{¥d¤w§¹¤u¨Ã¤J®w(CLOSING)..½ĞÄ~Äò°õ¦æ¦¹±i¤u¥O©Î¬yµ{¥dµ²®×§@·~!!!");
 								seqstmt.setString(3,organCode);      //out.println("organCode="+organCode);   // ORGANIZATION_CODE
 								seqstmt.setInt(4,Integer.parseInt(organizationID)); //out.println("organizationID="+organizationID);   // ORGANIZATION_ID
 								seqstmt.setInt(5,1);      //PROCESS_PHASE   1=Move Validation, 2=Move Processing, 3= Operation Backflush Setup
-								seqstmt.setInt(6,2);      //PROCESS_STATUS 1=PENDING , 2=RUNNING , 3=Error (2006/12/08 §ï¬° 2)
+								seqstmt.setInt(6,2);      //PROCESS_STATUS 1=PENDING , 2=RUNNING , 3=Error (2006/12/08 æ”¹ç‚º 2)
 								//  seqstmt.setDate(9,processDateTime);  // TRANSACTION_DATE
-								seqstmt.setFloat(7,Float.parseFloat(aMFGRCMovingCode[i][2])); // ²¾¯¸¼Æ¶q
+								seqstmt.setFloat(7,Float.parseFloat(aMFGRCMovingCode[i][2])); // ç§»ç«™æ•¸é‡
 								//seqstmt.setInt(10,Integer.parseInt(aMFGRCMovingCode[i][2])); 
-								//out.println("¼Æ¶q="+aMFGRCMovingCode[i][2]); //queue to Move Qty creation date  dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()
+								//out.println("æ•¸é‡="+aMFGRCMovingCode[i][2]); //queue to Move Qty creation date  dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()
 								seqstmt.setString(8,woUOM);
 								seqstmt.setInt(9,Integer.parseInt(entityId));  
-								seqstmt.setString(10,woNo);  //out.println("¤u¥O¸¹="+woNo);
+								seqstmt.setString(10,woNo);  //out.println("å·¥ä»¤è™Ÿ="+woNo);
 								seqstmt.setInt(11,1); // FM_INTRAOPERATION_STEP_TYPE 1=Queue 2=RUN, 3=TO_MOVE, 5=SCRAP
 								//seqstmt.setInt(12,20);
-								seqstmt.setInt(12,Integer.parseInt(aMFGRCMovingCode[i][4])); // FM_OPERATION_SEQ_NUM(¥»¯¸)
+								seqstmt.setInt(12,Integer.parseInt(aMFGRCMovingCode[i][4])); // FM_OPERATION_SEQ_NUM(æœ¬ç«™)
 								//out.println("FM_OPERATION_SEQ_NUM="+aMFGRCMovingCode[i][4]);
-								seqstmt.setInt(13,toIntOpSType); // TO_INTRAOPERATION_STEP_TYPE  1=Queue 2=RUN, 3=TO_MOVE(§¹¤u), 5=SCRAP(³ø¼o)
+								seqstmt.setInt(13,toIntOpSType); // TO_INTRAOPERATION_STEP_TYPE  1=Queue 2=RUN, 3=TO_MOVE(å®Œå·¥), 5=SCRAP(å ±å»¢)
 								seqstmt.setInt(14,Integer.parseInt(aMFGRCMovingCode[i][5])); // TO_OPERATION_SEQ_NUM  // Integer.parseInt(aMFGRCMovingCode[i][5])
-								seqstmt.setString(15,aMFGRCMovingCode[i][1]);	//out.println("¬yµ{¥d¸¹="+aMFGRCMovingCode[i][1]); // ATTRIBUTE2 ¬yµ{¥d¸¹ 
+								seqstmt.setString(15,aMFGRCMovingCode[i][1]);	//out.println("æµç¨‹å¡è™Ÿ="+aMFGRCMovingCode[i][1]); // ATTRIBUTE2 æµç¨‹å¡è™Ÿ 
 								seqstmt.setInt(16,transType);	// TRANSACTION_TYPE   1= Move transaction,  2=Move Completion, 3=Move Return 
 								if (overFlag == "Y" || overFlag.equals("Y"))
 								{ seqstmt.setFloat(17,overQty); } // OVERCOMPLETION_TRANSACTION_QTY   
 								seqstmt.executeUpdate();
 								seqstmt.close();	      	
 
-								//§ì¨ú¼g¤JInterfaceªºGroupµ¥¸ê°T_°_
+								//æŠ“å–å¯«å…¥Interfaceçš„Groupç­‰è³‡è¨Š_èµ·
 								int groupID = 0;
 								int opSeqNo = 0;              
 								String sqlGrp = " select GROUP_ID,TO_OPERATION_SEQ_NUM  from WIP.WIP_MOVE_TXN_INTERFACE "+
 											 " where WIP_ENTITY_NAME = '"+woNo+ "' and WIP_ENTITY_ID = "+entityId+" "+
 											 "   and ATTRIBUTE2 = '"+aMFGRCMovingCode[i][1]+"' "+ // 2006/11/17 By RunCardNo
 											 "   and PROCESS_STATUS = 2 "+ // 2006/12/08 By Process Status=2
-											 "   and TO_INTRAOPERATION_STEP_TYPE = 1 "; // ¨ú¦¹¦¸²¾¯¸ªºGroup ID
+											 "   and TO_INTRAOPERATION_STEP_TYPE = 1 "; // å–æ­¤æ¬¡ç§»ç«™çš„Group ID
 								Statement stateGrp=con.createStatement();
 								ResultSet rsGrp=stateGrp.executeQuery(sqlGrp);
 								if (rsGrp.next())
@@ -2330,13 +2330,13 @@ alert("¦¹¬yµ{¥d¤w§¹¤u¨Ã¤J®w(CLOSING)..½ĞÄ~Äò°õ¦æ¦¹±i¤u¥O©Î¬yµ{¥dµ²®×§@·~!!!");
 								rsGrp.close();
 								stateGrp.close();
 
-								//out.println("<BR>²¾¯¸ªºgroupID ="+groupID+"<BR>");	 
+								//out.println("<BR>ç§»ç«™çš„groupID ="+groupID+"<BR>");	 
 
-								//§ì¨ú¼g¤JInterfaceªºGroupµ¥¸ê°T_¨´		
+								//æŠ“å–å¯«å…¥Interfaceçš„Groupç­‰è³‡è¨Š_è¿„		
 
-								if (groupID>0 && opSeqNo>0)  // ªí¥Ü¨ú¨ì¥¿½TªºgroupID¤ÎopSeqNo
+								if (groupID>0 && opSeqNo>0)  // è¡¨ç¤ºå–åˆ°æ­£ç¢ºçš„groupIDåŠopSeqNo
 								{
-									// §Y®É©I¥s WIP_MOVE PROCESS WORKER
+									// å³æ™‚å‘¼å« WIP_MOVE PROCESS WORKER
 
 									int procPhase = 1;
 									int timeOut = 10;
@@ -2344,8 +2344,8 @@ alert("¦¹¬yµ{¥d¤w§¹¤u¨Ã¤J®w(CLOSING)..½ĞÄ~Äò°õ¦æ¦¹±i¤u¥O©Î¬yµ{¥dµ²®×§@·~!!!");
 									{	
 										/*
 										CallableStatement cs4 = con.prepareCall("{call WIP_MOVPROC_PRIV.Move_Worker(?,?,?,?,?,?)}");			
-										cs4.registerOutParameter(1, Types.VARCHAR); //  ¶Ç¦^­È        ERROR BUFFER
-										cs4.registerOutParameter(2, Types.INTEGER); //  ¶Ç¦^­È		RETURN CODE				   
+										cs4.registerOutParameter(1, Types.VARCHAR); //  å‚³å›å€¼        ERROR BUFFER
+										cs4.registerOutParameter(2, Types.INTEGER); //  å‚³å›å€¼		RETURN CODE				   
 										cs4.setInt(3,groupID);                                         //  Org ID 	
 										cs4.setInt(4,procPhase);    // 1 Move Validation 2.Move Processing 3.Opeariotn Backflush Setup     
 										cs4.setInt(5,timeOut); 
@@ -2360,8 +2360,8 @@ alert("¦¹¬yµ{¥d¤w§¹¤u¨Ã¤J®w(CLOSING)..½ĞÄ~Äò°õ¦æ¦¹±i¤u¥O©Î¬yµ{¥dµ²®×§@·~!!!");
 										cs4.setInt(1,groupID);                                         //  Org ID 	
 										cs4.setString(2,null);   // BackFlush Setup    
 										cs4.setString(3,"T");	   // FND_API.G_TRUE = "T", FND_API.G_FALSE = "F"
-										cs4.registerOutParameter(4, Types.VARCHAR); //  ¶Ç¦^­È     STATUS
-										cs4.registerOutParameter(5, Types.VARCHAR); //  ¶Ç¦^­È		ERROR MESSAGE					 					      						   	 					     
+										cs4.registerOutParameter(4, Types.VARCHAR); //  å‚³å›å€¼     STATUS
+										cs4.registerOutParameter(5, Types.VARCHAR); //  å‚³å›å€¼		ERROR MESSAGE					 					      						   	 					     
 										cs4.execute();					      
 										String getMoveStatus = cs4.getString(4);		
 										String getMoveErrorMsg = cs4.getString(5);								      				    
@@ -2370,8 +2370,8 @@ alert("¦¹¬yµ{¥d¤w§¹¤u¨Ã¤J®w(CLOSING)..½ĞÄ~Äò°õ¦æ¦¹±i¤u¥O©Î¬yµ{¥dµ²®×§@·~!!!");
 										if (getMoveStatus.equals("U") && getMoveErrorMsg!=null && !getMoveErrorMsg.equals(""))
 										{
 											getRetCode = 88;   // Error Number  
-											getErrBuffer = getMoveErrorMsg; // §â¿ù»~°T®§µ¹­ì¨Ó§PÂ_ªºBuffer
-											out.println("getRetCode="+getRetCode+"&nbsp;"+"²¾¯¸¿ù»~­ì¦]="+getErrBuffer+"<BR>");
+											getErrBuffer = getMoveErrorMsg; // æŠŠéŒ¯èª¤è¨Šæ¯çµ¦åŸä¾†åˆ¤æ–·çš„Buffer
+											out.println("getRetCode="+getRetCode+"&nbsp;"+"ç§»ç«™éŒ¯èª¤åŸå› ="+getErrBuffer+"<BR>");
 										}							  
 
 										/*	  
@@ -2381,45 +2381,45 @@ alert("¦¹¬yµ{¥d¤w§¹¤u¨Ã¤J®w(CLOSING)..½ĞÄ~Äò°õ¦æ¦¹±i¤u¥O©Î¬yµ{¥dµ²®×§@·~!!!");
 															   "where TRANSACTION_ID=(select TRANSACTION_ID from WIP_MOVE_TXN_INTERFACE where GROUP_ID= "+groupID+") ";
 											Statement stateTxnMsg=con.createStatement();
 											ResultSet rsTxnMsg=stateTxnMsg.executeQuery(sqlTxnMsg);
-											if (rsTxnMsg.next())  // ­Y¦s¦b,ªí¥Ü¦³¿ù»~°T®§,¦ı¤´¦¨¥\¼g
+											if (rsTxnMsg.next())  // è‹¥å­˜åœ¨,è¡¨ç¤ºæœ‰éŒ¯èª¤è¨Šæ¯,ä½†ä»æˆåŠŸå¯«
 											{
 												getErrScrapBuffer = getErrScrapBuffer+"("+rsTxnMsg.getString(1)+")"+"Error Column("+rsTxnMsg.getString(2)+")";
 											}
 											rsTxnMsg.close();
 											stateTxnMsg.close(); 
 										}		
-										// ¾÷¨®,°T®§¤£·Ç½T,»İ¦A§PÂ_¬O§_MOVE_TRANSACTION¨Ì¬yµ{¥d¬O§_¥¿½T¥H³Q¼g¤J,¦p¤w¼g¤J,«h¤´°õ¦æ¥¿±`²¾¯¸§@·~ //_°_  
+										// æ©Ÿè»Š,è¨Šæ¯ä¸æº–ç¢º,éœ€å†åˆ¤æ–·æ˜¯å¦MOVE_TRANSACTIONä¾æµç¨‹å¡æ˜¯å¦æ­£ç¢ºä»¥è¢«å¯«å…¥,å¦‚å·²å¯«å…¥,å‰‡ä»åŸ·è¡Œæ­£å¸¸ç§»ç«™ä½œæ¥­ //_èµ·  
 										String sqlGrpMsg = " select GROUP_ID from WIP.WIP_MOVE_TRANSACTIONS "+
 														 " where WIP_ENTITY_ID = "+entityId+" and ATTRIBUTE2 = '"+aMFGRCMovingCode[i][1]+"' "+
 														 "   and to_char(FM_OPERATION_SEQ_NUM) = '"+aMFGRCMovingCode[i][4]+"' "+
-														 "   and PRIMARY_QUANTITY = "+Float.parseFloat(aMFGRCMovingCode[i][2])+"  "+  // ²¾¯¸¼Æ
-														 "   and TO_INTRAOPERATION_STEP_TYPE = 1 and  GROUP_ID = "+groupID+" ";   // ¨ú¦¹¦¸²¾¯¸
+														 "   and PRIMARY_QUANTITY = "+Float.parseFloat(aMFGRCMovingCode[i][2])+"  "+  // ç§»ç«™æ•¸
+														 "   and TO_INTRAOPERATION_STEP_TYPE = 1 and  GROUP_ID = "+groupID+" ";   // å–æ­¤æ¬¡ç§»ç«™
 										Statement stateGrpMsg=con.createStatement();
 										ResultSet rsGrpMsg=stateGrpMsg.executeQuery(sqlGrpMsg);
-										if (rsGrpMsg.next())  // ­Y¦s¦b,ªí¥Ü¦³¿ù»~°T®§,¦ı¤´¦¨¥\¼g¤JMove Transaction, §ó¥¿getRetCode = 0
+										if (rsGrpMsg.next())  // è‹¥å­˜åœ¨,è¡¨ç¤ºæœ‰éŒ¯èª¤è¨Šæ¯,ä½†ä»æˆåŠŸå¯«å…¥Move Transaction, æ›´æ­£getRetCode = 0
 										{
 											getRetCode = 0; 
-											if (getErrBuffer!=null && !getErrBuffer.equals("null")) out.println("§t¿ù»~°T®§,¤´¦¨¥\¼g¤J²¾¯¸¼ÆInterface!!!");
+											if (getErrBuffer!=null && !getErrBuffer.equals("null")) out.println("å«éŒ¯èª¤è¨Šæ¯,ä»æˆåŠŸå¯«å…¥ç§»ç«™æ•¸Interface!!!");
 										} else {
 											   
 										}
 										rsGrpMsg.close();
 										stateGrpMsg.close();
-										// ¾÷¨®,°T®§¤£·Ç½T,»İ¦A§PÂ_¬O§_MOVE_TRANSACTION¨Ì¬yµ{¥d¬O§_¥¿½T¥H³Q¼g¤J,¦p¤w¼g¤J,«h¤´°õ¦æ¥¿±`²¾¯¸§@·~ //_¨´			  	  
+										// æ©Ÿè»Š,è¨Šæ¯ä¸æº–ç¢º,éœ€å†åˆ¤æ–·æ˜¯å¦MOVE_TRANSACTIONä¾æµç¨‹å¡æ˜¯å¦æ­£ç¢ºä»¥è¢«å¯«å…¥,å¦‚å·²å¯«å…¥,å‰‡ä»åŸ·è¡Œæ­£å¸¸ç§»ç«™ä½œæ¥­ //_è¿„			  	  
 										*/
 									}	  
 									catch (Exception e) { out.println("Exception:"+e.getMessage()); }  
 								} // end of if (groupID>0 && opSeqNo>0)			 
-								// *****%%%%%%%%%%%%%% ¥¿±`²¾¯¸¼Æ¶q  %%%%%%%%%%%%**********  ¨´
+								// *****%%%%%%%%%%%%%% æ­£å¸¸ç§»ç«™æ•¸é‡  %%%%%%%%%%%%**********  è¿„
 
-							} // End of if (getRetScrapCode==0)   // ­Y¥»¯¸³ø¼o¦¨¥\,«h¶i¦æ²¾¯¸Interface
+							} // End of if (getRetScrapCode==0)   // è‹¥æœ¬ç«™å ±å»¢æˆåŠŸ,å‰‡é€²è¡Œç§»ç«™Interface
 
-							if (getRetScrapCode==0 && getRetCode==0) // ­Y³ø¼o¤Î²¾¯¸³£°õ¦æ¦¨¥\,«h°õ¦æ¨t²Î¬yµ{¤Î²§°Ê§ó·s
+							if (getRetScrapCode==0 && getRetCode==0) // è‹¥å ±å»¢åŠç§»ç«™éƒ½åŸ·è¡ŒæˆåŠŸ,å‰‡åŸ·è¡Œç³»çµ±æµç¨‹åŠç•°å‹•æ›´æ–°
 							{ 
-								// ­Y¦¨¥\,«h§ó·sRUNCARD ¸ê®Æªí¬ÛÃöÄæ¦ì
-								// ¨ú¦¨¥\²¾¯¸«á,«e¤@¯¸,¥»¯¸,¤U¤@¯¸¬ÛÃö¸ê°TRUNCARD_ALL¸ê®Æªí§ó·s
+								// è‹¥æˆåŠŸ,å‰‡æ›´æ–°RUNCARD è³‡æ–™è¡¨ç›¸é—œæ¬„ä½
+								// å–æˆåŠŸç§»ç«™å¾Œ,å‰ä¸€ç«™,æœ¬ç«™,ä¸‹ä¸€ç«™ç›¸é—œè³‡è¨ŠRUNCARD_ALLè³‡æ–™è¡¨æ›´æ–°
 								//String operationSeqNum = "",operationSeqId="",standardOpId="",previousOpSeqNum="",nextOpSeqNum="",qtyInQueue="",standardOpDesc="";
-								boolean singleOp = false;  // ¹w³]¥»¯¸¤£¬°³Ì«á¤@¯¸
+								boolean singleOp = false;  // é è¨­æœ¬ç«™ä¸ç‚ºæœ€å¾Œä¸€ç«™
 								String sqlp = " select OPERATION_SEQ_NUM, OPERATION_SEQUENCE_ID, STANDARD_OPERATION_ID,  "+
 												"       DESCRIPTION, PREVIOUS_OPERATION_SEQ_NUM, NEXT_OPERATION_SEQ_NUM   "+
 												"  from WIP_OPERATIONS "+
@@ -2441,7 +2441,7 @@ alert("¦¹¬yµ{¥d¤w§¹¤u¨Ã¤J®w(CLOSING)..½ĞÄ~Äò°õ¦æ¦¹±i¤u¥O©Î¬yµ{¥dµ²®×§@·~!!!");
 									{ 
 										nextOpSeqNum = "0";		
 										singleOp = true;
-										out.println("¤U¤@¯¸¥N½X="+nextOpSeqNum);
+										out.println("ä¸‹ä¸€ç«™ä»£ç¢¼="+nextOpSeqNum);
 									}  	
 								} else {
 									operationSeqNum   = "0";
@@ -2450,13 +2450,13 @@ alert("¦¹¬yµ{¥d¤w§¹¤u¨Ã¤J®w(CLOSING)..½ĞÄ~Äò°õ¦æ¦¹±i¤u¥O©Î¬yµ{¥dµ²®×§@·~!!!");
 									standardOpDesc   = "0"; 
 									previousOpSeqNum  = "0"; 
 									nextOpSeqNum	  = "0"; 
-									// ¥»¯¸§Y¬°³Ì«á¤@¯¸,¬G»İ§ó·sª¬ºA¦Ü 046 (§¹¤u¤J®w)					 
+									// æœ¬ç«™å³ç‚ºæœ€å¾Œä¸€ç«™,æ•…éœ€æ›´æ–°ç‹€æ…‹è‡³ 046 (å®Œå·¥å…¥åº«)					 
 									Statement stateMax=con.createStatement();
 									ResultSet rsMax=stateMax.executeQuery("select NEXT_OPERATION_SEQ_NUM from WIP_OPERATIONS where to_char(OPERATION_SEQ_NUM) = '"+aMFGRCMovingCode[i][4]+"'  and WIP_ENTITY_ID ="+entityId+" ");
 									if (rsMax.next() && (rsMax.getString(1)==null || rsMax.getString(1).equals("")) )
 									{
 										singleOp = true;					   
-									} else out.println("¤U¤@¯¸¥N½X="+rsMax.getString(1));
+									} else out.println("ä¸‹ä¸€ç«™ä»£ç¢¼="+rsMax.getString(1));
 									rsMax.close();
 									stateMax.close();
 
@@ -2464,7 +2464,7 @@ alert("¦¹¬yµ{¥d¤w§¹¤u¨Ã¤J®w(CLOSING)..½ĞÄ~Äò°õ¦æ¦¹±i¤u¥O©Î¬yµ{¥dµ²®×§@·~!!!");
 								rsp.close();
 								statep.close(); 				   
 
-								// %%%%%%%%%%%%%%%%%%% ¼g¤JRun card Move Transaction %%%%%%%%%%%%%%%%%%%_°_
+								// %%%%%%%%%%%%%%%%%%% å¯«å…¥Run card Move Transaction %%%%%%%%%%%%%%%%%%%_èµ·
 								float overValue=0;
 
 								if (overFlag =="Y" || overFlag.equals("Y"))
@@ -2492,14 +2492,14 @@ alert("¦¹¬yµ{¥d¤w§¹¤u¨Ã¤J®w(CLOSING)..½ĞÄ~Äò°õ¦æ¦¹±i¤u¥O©Î¬yµ{¥dµ²®×§@·~!!!");
 								queueTransStmt.setInt(3,Integer.parseInt(organizationID));           // ORGANIZATION_ID
 								queueTransStmt.setInt(4,Integer.parseInt(entityId));                 // WIP_ENTITY_ID
 								queueTransStmt.setInt(5,primaryItemID);                              // PRIMARY_ITEM_ID
-								queueTransStmt.setInt(6,Integer.parseInt(aMFGRCMovingCode[i][4])); //FM_OPERATION_SEQ_NUM(¥»¯¸)    
+								queueTransStmt.setInt(6,Integer.parseInt(aMFGRCMovingCode[i][4])); //FM_OPERATION_SEQ_NUM(æœ¬ç«™)    
 								queueTransStmt.setString(7,standardOpDesc);                          //  FM_OPERATION_CODE	       	   
-								queueTransStmt.setInt(8,Integer.parseInt(aMFGRCMovingCode[i][5])); //TO_OPERATION_SEQ_NUM(¤U¤@¯¸) 
-								queueTransStmt.setString(9,"");                                           //TO_OPERATION_CODE(¤U¤@¯¸¥N½X) 
+								queueTransStmt.setInt(8,Integer.parseInt(aMFGRCMovingCode[i][5])); //TO_OPERATION_SEQ_NUM(ä¸‹ä¸€ç«™) 
+								queueTransStmt.setString(9,"");                                           //TO_OPERATION_CODE(ä¸‹ä¸€ç«™ä»£ç¢¼) 
 								queueTransStmt.setFloat(10,Float.parseFloat(aMFGRCMovingCode[i][2]));  // Transaction Qty
 								queueTransStmt.setString(11,woUOM);      // Transaction_UOM		   
 								queueTransStmt.setInt(12,1);             // 1=Queue		  
-								queueTransStmt.setString(13,"QUEUE");    // TO_INTRAOPERATION_STEP_TYPE  1=Queue 2=RUN, 3=TO_MOVE(§¹¤u), 5=SCRAP(³ø¼o)
+								queueTransStmt.setString(13,"QUEUE");    // TO_INTRAOPERATION_STEP_TYPE  1=Queue 2=RUN, 3=TO_MOVE(å®Œå·¥), 5=SCRAP(å ±å»¢)
 								queueTransStmt.setString(14,"");         // CUSTOMER_LOT_NO
 								queueTransStmt.setString(15,"044"); // From STATUSID
 								queueTransStmt.setString(16,"MOVING");	  // From STATUS
@@ -2507,11 +2507,11 @@ alert("¦¹¬yµ{¥d¤w§¹¤u¨Ã¤J®w(CLOSING)..½ĞÄ~Äò°õ¦æ¦¹±i¤u¥O©Î¬yµ{¥dµ²®×§@·~!!!");
 								queueTransStmt.setFloat(18,overValue);    //OVERCOMPLETE_QTY
 								queueTransStmt.executeUpdate();
 								queueTransStmt.close();	    	 
-								// %%%%%%%%%%%%%%%%%%% ¼g¤JRun card Move Transaction %%%%%%%%%%%%%%%%%%%_¨´ 	
+								// %%%%%%%%%%%%%%%%%%% å¯«å…¥Run card Move Transaction %%%%%%%%%%%%%%%%%%%_è¿„ 	
 
-								if (rcScrapQty>0)  // §PÂ_­Y³ø¼o¼Æ¶q¤j©ó¹s,«h©I¥s¼g¤J³ø¼o RUNCARD Transaction
+								if (rcScrapQty>0)  // åˆ¤æ–·è‹¥å ±å»¢æ•¸é‡å¤§æ–¼é›¶,å‰‡å‘¼å«å¯«å…¥å ±å»¢ RUNCARD Transaction
 								{ 		 
-									// %%%%%%%%%%%%%%%%%%% ¼g¤JRun card Scrap Transaction %%%%%%%%%%%%%%%%%%%_°_
+									// %%%%%%%%%%%%%%%%%%% å¯«å…¥Run card Scrap Transaction %%%%%%%%%%%%%%%%%%%_èµ·
 									String SqlScrapTrans="insert into APPS.YEW_RUNCARD_TRANSACTIONS( "+
 															"            RUNCAD_ID, RC_TRANSACTION_ID, RUNCARD_NO, ORGANIZATION_ID, WIP_ENTITY_ID, PRIMARY_ITEM_ID, "+
 															"            TRANSACTION_DATE, FM_OPERATION_SEQ_NUM, FM_OPERATION_CODE, TO_OPERATION_SEQ_NUM, TO_OPERATION_CODE, "+
@@ -2525,14 +2525,14 @@ alert("¦¹¬yµ{¥d¤w§¹¤u¨Ã¤J®w(CLOSING)..½ĞÄ~Äò°õ¦æ¦¹±i¤u¥O©Î¬yµ{¥dµ²®×§@·~!!!");
 									scrapTransStmt.setInt(3,Integer.parseInt(organizationID));           // ORGANIZATION_ID
 									scrapTransStmt.setInt(4,Integer.parseInt(entityId));                 // WIP_ENTITY_ID
 									scrapTransStmt.setInt(5,primaryItemID);                              // PRIMARY_ITEM_ID
-									scrapTransStmt.setInt(6,Integer.parseInt(aMFGRCMovingCode[i][4])); //FM_OPERATION_SEQ_NUM(¥»¯¸)    
+									scrapTransStmt.setInt(6,Integer.parseInt(aMFGRCMovingCode[i][4])); //FM_OPERATION_SEQ_NUM(æœ¬ç«™)    
 									scrapTransStmt.setString(7,standardOpDesc);                                           //  FM_OPERATION_CODE	       	   
-									scrapTransStmt.setInt(8,Integer.parseInt(aMFGRCMovingCode[i][4])); //TO_OPERATION_SEQ_NUM(¤U¤@¯¸) 
-									scrapTransStmt.setString(9,standardOpDesc);                                           //TO_OPERATION_CODE(¤U¤@¯¸¥N½X) 
+									scrapTransStmt.setInt(8,Integer.parseInt(aMFGRCMovingCode[i][4])); //TO_OPERATION_SEQ_NUM(ä¸‹ä¸€ç«™) 
+									scrapTransStmt.setString(9,standardOpDesc);                                           //TO_OPERATION_CODE(ä¸‹ä¸€ç«™ä»£ç¢¼) 
 									scrapTransStmt.setFloat(10,rcScrapQty);  // Transaction Qty
 									scrapTransStmt.setString(11,woUOM);      // Transaction_UOM		   
-									scrapTransStmt.setInt(12,5);             // 5=SCRAP(³ø¼o)		  
-									scrapTransStmt.setString(13,"SCRAP");    // TO_INTRAOPERATION_STEP_TYPE  1=Queue 2=RUN, 3=TO_MOVE(§¹¤u), 5=SCRAP(³ø¼o)
+									scrapTransStmt.setInt(12,5);             // 5=SCRAP(å ±å»¢)		  
+									scrapTransStmt.setString(13,"SCRAP");    // TO_INTRAOPERATION_STEP_TYPE  1=Queue 2=RUN, 3=TO_MOVE(å®Œå·¥), 5=SCRAP(å ±å»¢)
 									scrapTransStmt.setString(14,"");         // CUSTOMER_LOT_NO
 									scrapTransStmt.setString(15,"044"); // From STATUSID
 									scrapTransStmt.setString(16,"MOVING");	  // From STATUS
@@ -2540,7 +2540,7 @@ alert("¦¹¬yµ{¥d¤w§¹¤u¨Ã¤J®w(CLOSING)..½ĞÄ~Äò°õ¦æ¦¹±i¤u¥O©Î¬yµ{¥dµ²®×§@·~!!!");
 									scrapTransStmt.executeUpdate();
 									scrapTransStmt.close();	    	 
 
-									// %%%%%%%%%%%%%%%%%%% ¼g¤JRun card Scrap Transaction %%%%%%%%%%%%%%%%%%%_¨´ 
+									// %%%%%%%%%%%%%%%%%%% å¯«å…¥Run card Scrap Transaction %%%%%%%%%%%%%%%%%%%_è¿„ 
 								}  // End of if (rcScrapQty>0)					    
 
 								String rcSql=" update APPS.YEW_RUNCARD_ALL set LAST_UPDATED_BY=?, LAST_UPDATE_DATE=?, STATUSID=?, STATUS=?, "+
@@ -2551,11 +2551,11 @@ alert("¦¹¬yµ{¥d¤w§¹¤u¨Ã¤J®w(CLOSING)..½ĞÄ~Äò°õ¦æ¦¹±i¤u¥O©Î¬yµ{¥dµ²®×§@·~!!!");
 								//out.print("rcSql="+rcSql);           
 								rcStmt.setInt(1,Integer.parseInt(userMfgUserID));
 								rcStmt.setString(2,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); 
-								if (!singleOp) // ­Y¥»¯¸¤£¬°³Ì«á¯¸(Routing¥u¦³¤@¯¸·|µo¥Í¦¹ª¬ªp),«hºû«ù¦b (044) ²¾¯¸¤¤
+								if (!singleOp) // è‹¥æœ¬ç«™ä¸ç‚ºæœ€å¾Œç«™(Routingåªæœ‰ä¸€ç«™æœƒç™¼ç”Ÿæ­¤ç‹€æ³),å‰‡ç¶­æŒåœ¨ (044) ç§»ç«™ä¸­
 								{
 									rcStmt.setString(3,getStatusRs.getString("TOSTATUSID")); 
 									rcStmt.setString(4,getStatusRs.getString("STATUSNAME"));
-								} else { // §_«h,§Y§ó·s¦Ü 046 §¹¤u¤J®w
+								} else { // å¦å‰‡,å³æ›´æ–°è‡³ 046 å®Œå·¥å…¥åº«
 									rcStmt.setString(3,"046"); 
 									rcStmt.setString(4,"COMPLETING");
 								}
@@ -2570,75 +2570,75 @@ alert("¦¹¬yµ{¥d¤w§¹¤u¨Ã¤J®w(CLOSING)..½ĞÄ~Äò°õ¦æ¦¹±i¤u¥O©Î¬yµ{¥dµ²®×§@·~!!!");
 								rcStmt.executeUpdate();   
 								rcStmt.close(); 
 
-							} // End of if (getRetScrapCode==0 && getRetCode==0) // ­Y³ø¼o¤Î²¾¯¸³£°õ¦æ¦¨¥\,«h°õ¦æ¨t²Î¬yµ{¤Î²§°Ê§ó·s  
+							} // End of if (getRetScrapCode==0 && getRetCode==0) // è‹¥å ±å»¢åŠç§»ç«™éƒ½åŸ·è¡ŒæˆåŠŸ,å‰‡åŸ·è¡Œç³»çµ±æµç¨‹åŠç•°å‹•æ›´æ–°  
 							else {
-								interfaceErr = true; //  ³ø¼o©Î²¾¯¸¦³²§±`,«hJavaScript§iª¾¨Ï¥ÎªÌ
+								interfaceErr = true; //  å ±å»¢æˆ–ç§»ç«™æœ‰ç•°å¸¸,å‰‡JavaScriptå‘ŠçŸ¥ä½¿ç”¨è€…
 							}
 
-						} // End of if (aMFGRCMovingCode[i][2]>0) // ­Y³]©w²¾¯¸¼Æ¶q¤j©ó0¤~¶i¦æ²¾¯¸¤Î³ø¼o
-						out.print("<font color='#0033CC'>¬yµ{¥d("+aMFGRCMovingCode[i][1]+")²¾¯¸O.K.</font><font color='#CC3333'>(WO_NO="+woNo+" Wip_Entity_ID="+entityId+")</font><BR>");   
+						} // End of if (aMFGRCMovingCode[i][2]>0) // è‹¥è¨­å®šç§»ç«™æ•¸é‡å¤§æ–¼0æ‰é€²è¡Œç§»ç«™åŠå ±å»¢
+						out.print("<font color='#0033CC'>æµç¨‹å¡("+aMFGRCMovingCode[i][1]+")ç§»ç«™O.K.</font><font color='#CC3333'>(WO_NO="+woNo+" Wip_Entity_ID="+entityId+")</font><BR>");   
 					} // End of if (choice[k]==aMFGRCMovingCode[i][0] || choice[k].equals(aMFGRCMovingCode[i][0]))
-				} // End of for (int k=0;k<choice.length;k++) // §PÂ_¨Ï¥ÎªÌ¦³Check¤~§ó·s
+				} // End of for (int k=0;k<choice.length;k++) // åˆ¤æ–·ä½¿ç”¨è€…æœ‰Checkæ‰æ›´æ–°
 
 			} // End of for (i=0;i<aMFGRCMovingCode.length;i++)
 		} // end of if (aMFGRCMovingCode!=null) 
 
-		if (!interfaceErr)  // ¦pªG³ø¼o©Î²¾¯¸³£µL²§±`,«h¦A§PÂ_¬O§_¬°³Ì«á¯¸
+		if (!interfaceErr)  // å¦‚æœå ±å»¢æˆ–ç§»ç«™éƒ½ç„¡ç•°å¸¸,å‰‡å†åˆ¤æ–·æ˜¯å¦ç‚ºæœ€å¾Œç«™
 		{
 			if (!nextOpSeqNum.equals("0"))
 			{
 %>
 <script LANGUAGE="JavaScript">
 alert("MOVING");
-//reProcessFormConfirm("¬O§_Ä~Äò°õ¦æ¦¹±i¬yµ{¥d²¾¯¸§@·~?","../jsp/TSCMfgRunCardMoving.jsp","<!--%=woNo%-->","<!--%=runCardNo%-->");
+//reProcessFormConfirm("æ˜¯å¦ç¹¼çºŒåŸ·è¡Œæ­¤å¼µæµç¨‹å¡ç§»ç«™ä½œæ¥­?","../jsp/TSCMfgRunCardMoving.jsp","<!--%=woNo%-->","<!--%=runCardNo%-->");
 </script>
 <%	
 			} else {
 %>
 <script LANGUAGE="JavaScript">
-alert("¤w¹FRounting³Ì«á¤@¯¸");
-//reProcessFormConfirm("         ¤w¹FRounting³Ì«á¤@¯¸\n ¬O§_Ä~Äò°õ¦æ¦¹±i¬yµ{¥d§¹¤u¤J®w§@·~?","../jsp/TSCMfgRunCardComplete.jsp","<!--%=woNo%-->","<!--%=runCardNo%-->");
+alert("å·²é”Rountingæœ€å¾Œä¸€ç«™");
+//reProcessFormConfirm("         å·²é”Rountingæœ€å¾Œä¸€ç«™\n æ˜¯å¦ç¹¼çºŒåŸ·è¡Œæ­¤å¼µæµç¨‹å¡å®Œå·¥å…¥åº«ä½œæ¥­?","../jsp/TSCMfgRunCardComplete.jsp","<!--%=woNo%-->","<!--%=runCardNo%-->");
 </script>
 <%
 			}
-		}	else {  // §_«h,Java Script §iª¾¨Ï¥ÎªÌInterface²§±`
+		}	else {  // å¦å‰‡,Java Script å‘ŠçŸ¥ä½¿ç”¨è€…Interfaceç•°å¸¸
 %>
 <script LANGUAGE="JavaScript">
-alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
+alert("Oracleå ±å»¢æˆ–ç§»ç«™ç•°å¸¸,è«‹æ´½MISæŸ¥æ˜åŸå› !!!");
 </script>
 <%  
 		}
 
 
-		// ¨Ï¥Î§¹²¦²MªÅ 2ºû°}¦C
+		// ä½¿ç”¨å®Œç•¢æ¸…ç©º 2ç¶­é™£åˆ—
 		if (aMFGRCMovingCode!=null)
 		{ 
 			arrMFGRCMovingBean.setArray2DString(null); 
 		}
 
 	} 
-	//MFG¬yµ{¥d²¾¯¸¤¤_¨´	(ACTION=006)   ¬yµ{¥d²¾¯¸¤¤044 --> ¬yµ{¥d²¾¯¸¤¤044
+	//MFGæµç¨‹å¡ç§»ç«™ä¸­_è¿„	(ACTION=006)   æµç¨‹å¡ç§»ç«™ä¸­044 --> æµç¨‹å¡ç§»ç«™ä¸­044
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	errorFlag ="044>046";
-	//MFG¬yµ{¥d§¹¤u¤J®w_°_	(ACTION=012)   ¬yµ{¥d²¾¯¸¤¤044 --> ¬yµ{¥d§¹¤u¤J®w046(»İ§PÂ_¬O§_¥»¯¸¬°³Ì«á¤@¯¸)
-	if (actionID.equals("012") && fromStatusID.equals("046"))   // ¦p¬° n¯¸, §Y²Ä n-1¯¸ --> ²Ä n ¯¸
+	//MFGæµç¨‹å¡å®Œå·¥å…¥åº«_èµ·	(ACTION=012)   æµç¨‹å¡ç§»ç«™ä¸­044 --> æµç¨‹å¡å®Œå·¥å…¥åº«046(éœ€åˆ¤æ–·æ˜¯å¦æœ¬ç«™ç‚ºæœ€å¾Œä¸€ç«™)
+	if (actionID.equals("012") && fromStatusID.equals("046"))   // å¦‚ç‚º nç«™, å³ç¬¬ n-1ç«™ --> ç¬¬ n ç«™
 	{  
-		String fndUserName = "";  //³B²z¤H­û
-		String woUOM = ""; // ¤u¥O²¾¯¸³æ¦ì
+		String fndUserName = "";  //è™•ç†äººå“¡
+		String woUOM = ""; // å·¥ä»¤ç§»ç«™å–®ä½
 		String compSubInventory = null;
 		String altRouting = "1"; //
 		String opSupplierLot = "";
 		int primaryItemID = 0;
 		float runCardQtyf=0,overQty=0; 
-		entityId = "0"; // ¤u¥Owip_entity_id
-		boolean interfaceErr = false;  // §PÂ_¨ä¤¤ Interface ¦³²§±`ªººX¼Ğ
+		entityId = "0"; // å·¥ä»¤wip_entity_id
+		boolean interfaceErr = false;  // åˆ¤æ–·å…¶ä¸­ Interface æœ‰ç•°å¸¸çš„æ——æ¨™
 		if (aMFGRCCompleteCode!=null)
 		{	  
 			if (aMFGRCCompleteCode.length>0)
 			{    
-				//§ì¨úlogin ªºuser id °µ¬° run "Receiving Transaction Processor"ªº requestor_°_
+				//æŠ“å–login çš„user id åšç‚º run "Receiving Transaction Processor"çš„ requestor_èµ·
 
 				String sqlfnd = " select USER_NAME from APPS.FND_USER A, ORADDMAN.WSUSER B "+
 							 " where A.USER_NAME = UPPER(B.USERNAME)  and to_char(A.USER_ID) = '"+userMfgUserID+ "'";
@@ -2650,9 +2650,9 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 				}
 				rsFndId.close();
 				stateFndId.close();
-				//§ì¨úlogin ªºuser id °µ¬° run "Receiving Transaction Processor"ªº requestor_¨´ 
+				//æŠ“å–login çš„user id åšç‚º run "Receiving Transaction Processor"çš„ requestor_è¿„ 
 
-				//§ì¨ú²¾¯¸¼Æ¶qªº³æ¦ì_°_	                     
+				//æŠ“å–ç§»ç«™æ•¸é‡çš„å–®ä½_èµ·	                     
 				String sqlUOM = " select DISTINCT a.WO_UOM, b.WIP_ENTITY_ID, b.PRIMARY_ITEM_ID ,a.OE_ORDER_NO,a.COMPLETION_SUBINVENTORY, "+
 							 "                 a.ALTERNATE_ROUTING, a.SUPPLIER_LOT_NO, a.ORGANIZATION_ID "+
 							 "   from APPS.YEW_WORKORDER_ALL a, APPS.YEW_RUNCARD_ALL b "+
@@ -2665,47 +2665,47 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 					entityId =  rsUOM.getString("WIP_ENTITY_ID");
 					primaryItemID = rsUOM.getInt("PRIMARY_ITEM_ID");
 					oeOrderNo = rsUOM.getString("OE_ORDER_NO");
-					compSubInventory = rsUOM.getString("COMPLETION_SUBINVENTORY");	  // ¤J®wsubInventory
+					compSubInventory = rsUOM.getString("COMPLETION_SUBINVENTORY");	  // å…¥åº«subInventory
 					altRouting = rsUOM.getString("ALTERNATE_ROUTING");
 					opSupplierLot = rsUOM.getString("SUPPLIER_LOT_NO");
 					organizationId = rsUOM.getString("ORGANIZATION_ID");
 				}
 				rsUOM.close();
 				stateUOM.close();
-				//§ì¨ú²¾¯¸¼Æ¶qªº³æ¦ì_¨´   	  
+				//æŠ“å–ç§»ç«™æ•¸é‡çš„å–®ä½_è¿„   	  
 			} // End of if (aMFGRCCompleteCode.length>0) 	
 			for (int i=0;i<aMFGRCCompleteCode.length-1;i++)
 			{
 				for (int k=0;k<=choice.length-1;k++)    
 				{ //out.println("choice[k]="+choice[k]);  
-				// §PÂ_³QCheck ªºLine ¤~°õ¦æ«ü¬£§@·~
+				// åˆ¤æ–·è¢«Check çš„Line æ‰åŸ·è¡ŒæŒ‡æ´¾ä½œæ¥­
 					if (choice[k]==aMFGRCCompleteCode[i][0] || choice[k].equals(aMFGRCCompleteCode[i][0]))
 					{ //out.println("aMFGRCCompleteCode[i][0]="+aMFGRCCompleteCode[i][0]);	   
 						//out.print("woNo2="+woNo+"<br>");  
 
-						if (Float.parseFloat(aMFGRCCompleteCode[i][2])>=0) // ­Y³]©w²¾¯¸¼Æ¶q¤j©ó0¤~¶i¦æ²¾¯¸¤Î³ø¼o
+						if (Float.parseFloat(aMFGRCCompleteCode[i][2])>=0) // è‹¥è¨­å®šç§»ç«™æ•¸é‡å¤§æ–¼0æ‰é€²è¡Œç§»ç«™åŠå ±å»¢
 						{
 							int toIntOpSType = 1; //TO_INTRAOPERATION_STEP_TYPE(1=Queue 2=RUN, 3=TO_MOVE, 5=SCRAP)
 							int transType = 1;    // TRANSACTION_TYPE   1= Move transaction,  2=Move Completion, 3=Move Return 
 							if (aMFGRCCompleteCode[i][5]==null || aMFGRCCompleteCode[i][5]=="0" || aMFGRCCompleteCode[i][5].equals("0")) 
-							{ // ­YµL¤U¤@¯¸§Ç¸¹,«hªí¥Ü¥»¯¸§Y¬°³Ì²×¯¸,¬ÛÃö°Ê§@³]©w¬°§¹¤u
+							{ // è‹¥ç„¡ä¸‹ä¸€ç«™åºè™Ÿ,å‰‡è¡¨ç¤ºæœ¬ç«™å³ç‚ºæœ€çµ‚ç«™,ç›¸é—œå‹•ä½œè¨­å®šç‚ºå®Œå·¥
 								toIntOpSType = 3; 
-								aMFGRCCompleteCode[i][5] = aMFGRCCompleteCode[i][4]; // µL¤U¤@¯¸ªºSeq No,¬Gµ¹¥»¯¸
+								aMFGRCCompleteCode[i][5] = aMFGRCCompleteCode[i][4]; // ç„¡ä¸‹ä¸€ç«™çš„Seq No,æ•…çµ¦æœ¬ç«™
 								transType = 2;
-							}  // ­YµL¤U¤@¯¸,ªí¥Ü¥»¯¸¬O³Ì«á¤@¯¸,toStepType ³]¦¨3	, transaction Type ³]¬°2(Move Completion)
+							}  // è‹¥ç„¡ä¸‹ä¸€ç«™,è¡¨ç¤ºæœ¬ç«™æ˜¯æœ€å¾Œä¸€ç«™,toStepType è¨­æˆ3	, transaction Type è¨­ç‚º2(Move Completion)
 
-							//§ì¨ú­Ó§O¬yµ{¥d²¾¯¸¼Æ¶qªº³æ¦ì,¨Ã­pºâ¥»¯¸³ø¼o¼Æ¶q_°_	
+							//æŠ“å–å€‹åˆ¥æµç¨‹å¡ç§»ç«™æ•¸é‡çš„å–®ä½,ä¸¦è¨ˆç®—æœ¬ç«™å ±å»¢æ•¸é‡_èµ·	
 							float  rcMQty = 0;   
 							float  rcScrapQty = 0;  
 							String supplierLotNo = null;   
-							java.text.DecimalFormat nf = new java.text.DecimalFormat("###,##0.000"); // ¨ú¤p¼Æ«á¤T¦ì 
+							java.text.DecimalFormat nf = new java.text.DecimalFormat("###,##0.000"); // å–å°æ•¸å¾Œä¸‰ä½ 
 
 							String sqlMQty = " select b.QTY_IN_QUEUE, TRANSACTION_QUANTITY as PREVCOMPQTY, "+
 										 "         a.COMPLETION_SUBINVENTORY, a.WAFER_LOT_NO "+
 										 "    from APPS.YEW_WORKORDER_ALL a, APPS.YEW_RUNCARD_ALL b, WIP_MOVE_TRANSACTIONS c "+
 										 "   where b.WIP_ENTITY_ID = c.WIP_ENTITY_ID and a.WO_NO = b.WO_NO and a.WO_NO = '"+woNo+ "' "+
 										 "     and b.RUNCARD_NO= c.ATTRIBUTE2 "+
-										 "     and c.TO_INTRAOPERATION_STEP_TYPE = 1 "+ // ¨úQUEUE²¾¯¸¼Æ¶q­Y«e¤@¯¸¬°¥~¥]¯¸,¤´¬°1
+										 "     and c.TO_INTRAOPERATION_STEP_TYPE = 1 "+ // å–QUEUEç§»ç«™æ•¸é‡è‹¥å‰ä¸€ç«™ç‚ºå¤–åŒ…ç«™,ä»ç‚º1
 										 "     and b.RUNCARD_NO='"+aMFGRCCompleteCode[i][1]+"' and to_char(c.FM_OPERATION_SEQ_NUM) = '"+aMFGRCCompleteCode[i][3]+"' ";        
 							/* 
 							String sqlMQty = " select b.QTY_IN_QUEUE, (c.QUANTITY_COMPLETED-c.QUANTITY_SCRAPPED) as PREVCOMPQTY, "+
@@ -2720,14 +2720,14 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 							if (rsMQty.next())
 							{
 								if (aMFGRCCompleteCode[i][2]==null || aMFGRCCompleteCode[i][2].equals("null")) aMFGRCCompleteCode[i][2]=Float.toString(rcMQty);
-								rcMQty = rsMQty.getFloat("PREVCOMPQTY");		//­ì«e¯¸§¹¤u¼Æ¶q	
-								rcScrapQty = rcMQty - Float.parseFloat(aMFGRCCompleteCode[i][2]);  // ³ø¼o¼Æ¶q = ­ì§ë¯¸¼Æ¶q - ¿é¤J²¾¯¸¼Æ¶q						   
-								supplierLotNo = rsMQty.getString("WAFER_LOT_NO");	              // ¨ÑÀ³°Ó§å¸¹
+								rcMQty = rsMQty.getFloat("PREVCOMPQTY");		//åŸå‰ç«™å®Œå·¥æ•¸é‡	
+								rcScrapQty = rcMQty - Float.parseFloat(aMFGRCCompleteCode[i][2]);  // å ±å»¢æ•¸é‡ = åŸæŠ•ç«™æ•¸é‡ - è¼¸å…¥ç§»ç«™æ•¸é‡						   
+								supplierLotNo = rsMQty.getString("WAFER_LOT_NO");	              // ä¾›æ‡‰å•†æ‰¹è™Ÿ
 								String strScrapQty = nf.format(rcScrapQty);
 								java.math.BigDecimal bd = new java.math.BigDecimal(strScrapQty);
 								java.math.BigDecimal scrapQty = bd.setScale(3, java.math.BigDecimal.ROUND_HALF_UP);
 								rcScrapQty =scrapQty.floatValue();
-								//out.println("java¥|±Ë¤­¤J«á¨ú¤p¼Æ¤T¦ìrcScrapQty="+rcScrapQty+"<BR>");
+								//out.println("javaå››æ¨äº”å…¥å¾Œå–å°æ•¸ä¸‰ä½rcScrapQty="+rcScrapQty+"<BR>");
 								if (fndUserName.equals("kerwin"))
 								{
 									//rcScrapQty = 0;
@@ -2735,16 +2735,16 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 								//out.println("adminModeOption="+adminModeOption);
 								if (adminModeOption!=null && adminModeOption.equals("YES") && UserRoles.indexOf("admin")>=0)
 								{
-									rcScrapQty = Float.parseFloat(aMFGRCCompleteCode[i][11]); // ºŞ²z­û¼Ò¦¡,¥B¤â°Êµ¹©w¤F³ø¼o¼Æ,«h¥Hµ¹©wªº³ø¼o¼Æ¤JScrap
+									rcScrapQty = Float.parseFloat(aMFGRCCompleteCode[i][11]); // ç®¡ç†å“¡æ¨¡å¼,ä¸”æ‰‹å‹•çµ¦å®šäº†å ±å»¢æ•¸,å‰‡ä»¥çµ¦å®šçš„å ±å»¢æ•¸å…¥Scrap
 
-									userMfgUserID = "5753"; // ¤sªF¥]¸Ë¯¸,PANG_LIPING
+									userMfgUserID = "5753"; // å±±æ±åŒ…è£ç«™,PANG_LIPING
 								}
 							}
 							rsMQty.close();
 							stateMQty.close();
-							//§ì¨ú²¾¯¸¼Æ¶qªº³æ¦ì,¨Ã­pºâ¥»¯¸³ø¼o¼Æ¶q_¨´	
+							//æŠ“å–ç§»ç«™æ•¸é‡çš„å–®ä½,ä¸¦è¨ˆç®—æœ¬ç«™å ±å»¢æ•¸é‡_è¿„	
 
-							// ¥ı¨ú³ø¼o Scrap Account ID_°_//  ¨ÌOrganization_id ¨ú¹w³]ªº Scrap Acc ID
+							// å…ˆå–å ±å»¢ Scrap Account ID_èµ·//  ä¾Organization_id å–é è¨­çš„ Scrap Acc ID
 							int scrpAccID = 0;
 							String sqlScrp = " select DEFAULT_SCRAP_ACCOUNT_ID from WIP_PARAMETERS_V  "+
 										  " where ORGANIZATION_ID = '"+organizationID+ "' ";										  
@@ -2756,15 +2756,15 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 							}
 							rsScrp.close();
 							stateScrp.close();
-							// ¥ı¨ú³ø¼o Scrap Account ID_¨´	
+							// å…ˆå–å ±å»¢ Scrap Account ID_è¿„	
 
 							String getErrScrapBuffer = "";
 							int getRetScrapCode = 0;
-							if (rcScrapQty>0)  // §PÂ_­Y³ø¼o¼Æ¶q¤j©ó¹s,«h©I¥s¼g¤J³ø¼o RUNCARD Transaction
+							if (rcScrapQty>0)  // åˆ¤æ–·è‹¥å ±å»¢æ•¸é‡å¤§æ–¼é›¶,å‰‡å‘¼å«å¯«å…¥å ±å»¢ RUNCARD Transaction
 							{	
-								//out.println("// *****%%%%%%%%%%%%%% ²¾¯¸³ø¼o¼Æ¶q  %%%%%%%%%%%%**********  °_");
-								toIntOpSType = 5;  // ³ø¼oªºto InterOperation Step Type = 5
-								transType = 1; // ³ø¼oªºTransaction Type = 1(Move Transaction)
+								//out.println("// *****%%%%%%%%%%%%%% ç§»ç«™å ±å»¢æ•¸é‡  %%%%%%%%%%%%**********  èµ·");
+								toIntOpSType = 5;  // å ±å»¢çš„to InterOperation Step Type = 5
+								transType = 1; // å ±å»¢çš„Transaction Type = 1(Move Transaction)
 								String SqlScrap="insert into WIP_MOVE_TXN_INTERFACE( "+
 												"            CREATED_BY_NAME, CREATION_DATE, LAST_UPDATE_DATE, LAST_UPDATED_BY_NAME, ORGANIZATION_CODE, ORGANIZATION_ID, "+
 												"            PROCESS_PHASE, PROCESS_STATUS, TRANSACTION_DATE, TRANSACTION_QUANTITY, TRANSACTION_UOM, "+
@@ -2781,30 +2781,30 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 								scrapstmt.setString(3,organCode);      //out.println("organCode="+organCode);   // ORGANIZATION_CODE
 								scrapstmt.setInt(4,Integer.parseInt(organizationID)); //out.println("organizationID="+organizationID);   // ORGANIZATION_ID
 								scrapstmt.setInt(5,1);      //PROCESS_PHASE   1=Move Validation, 2=Move Processing, 3= Operation Backflush Setup
-								scrapstmt.setInt(6,2);      //PROCESS_STATUS 1=PENDING , 2=RUNNING , 3=Error	  (2006/12/08 §ï¬° Running )     
-								scrapstmt.setFloat(7,rcScrapQty); out.println("<BR>¬yµ{¥d:"+aMFGRCCompleteCode[i][1]+"(³ø¼o¼Æ¶q="+rcScrapQty+")<BR>");       	   
+								scrapstmt.setInt(6,2);      //PROCESS_STATUS 1=PENDING , 2=RUNNING , 3=Error	  (2006/12/08 æ”¹ç‚º Running )     
+								scrapstmt.setFloat(7,rcScrapQty); out.println("<BR>æµç¨‹å¡:"+aMFGRCCompleteCode[i][1]+"(å ±å»¢æ•¸é‡="+rcScrapQty+")<BR>");       	   
 								scrapstmt.setString(8,woUOM);
 								scrapstmt.setInt(9,Integer.parseInt(entityId));  
 								scrapstmt.setString(10,woNo);  
 								scrapstmt.setInt(11,1); // FM_INTRAOPERATION_STEP_TYPE 1=Queue 2=RUN, 3=TO_MOVE, 5=SCRAP
 								//seqstmt.setInt(12,20);
-								scrapstmt.setInt(12,Integer.parseInt(aMFGRCCompleteCode[i][4])); //out.println("FMOPSEQ="+aMFGRCMovingCode[i][4]); // LAST_UPDATE_DATE// FM_OPERATION_SEQ_NUM(¥»¯¸)		  
-								scrapstmt.setInt(13,toIntOpSType); // TO_INTRAOPERATION_STEP_TYPE  1=Queue 2=RUN, 3=TO_MOVE(§¹¤u), 5=SCRAP(³ø¼o)
-								scrapstmt.setInt(14,Integer.parseInt(aMFGRCCompleteCode[i][4])); // TO_OPERATION_SEQ_NUM  //³ø¼o§Y¬°From = To
-								scrapstmt.setString(15,aMFGRCCompleteCode[i][1]);	//out.println("¬yµ{¥d¸¹="+aMFGRCMovingCode[i][1]); // ATTRIBUTE2 ¬yµ{¥d¸¹ 
+								scrapstmt.setInt(12,Integer.parseInt(aMFGRCCompleteCode[i][4])); //out.println("FMOPSEQ="+aMFGRCMovingCode[i][4]); // LAST_UPDATE_DATE// FM_OPERATION_SEQ_NUM(æœ¬ç«™)		  
+								scrapstmt.setInt(13,toIntOpSType); // TO_INTRAOPERATION_STEP_TYPE  1=Queue 2=RUN, 3=TO_MOVE(å®Œå·¥), 5=SCRAP(å ±å»¢)
+								scrapstmt.setInt(14,Integer.parseInt(aMFGRCCompleteCode[i][4])); // TO_OPERATION_SEQ_NUM  //å ±å»¢å³ç‚ºFrom = To
+								scrapstmt.setString(15,aMFGRCCompleteCode[i][1]);	//out.println("æµç¨‹å¡è™Ÿ="+aMFGRCMovingCode[i][1]); // ATTRIBUTE2 æµç¨‹å¡è™Ÿ 
 								scrapstmt.setInt(16,transType);	// TRANSACTION_TYPE   1= Move transaction,  2=Move Completion, 3=Move Return 
-								scrapstmt.setInt(17,scrpAccID);	// SCRAP_ACCOUNT_ID  (I)³ø¼o  ( 01-11-000-7650-951-0-000 ) 
-								scrapstmt.setInt(18,7);	// REASON_ID  »sµ{²§±`
+								scrapstmt.setInt(17,scrpAccID);	// SCRAP_ACCOUNT_ID  (I)å ±å»¢  ( 01-11-000-7650-951-0-000 ) 
+								scrapstmt.setInt(18,7);	// REASON_ID  è£½ç¨‹ç•°å¸¸
 								scrapstmt.executeUpdate();
 								scrapstmt.close();	      	
 
-								//§ì¨ú¼g¤JInterfaceªºGroupµ¥¸ê°T_°_
+								//æŠ“å–å¯«å…¥Interfaceçš„Groupç­‰è³‡è¨Š_èµ·
 								int groupID = 0;
 								int opSeqNo = 0;              
 								String sqlGrp = " select GROUP_ID,TO_OPERATION_SEQ_NUM  from WIP.WIP_MOVE_TXN_INTERFACE "+
 											 " where WIP_ENTITY_NAME = '"+woNo+ "' and WIP_ENTITY_ID = "+entityId+" "+
 											 "   and PROCESS_STATUS = 2 "+ // 2006/12/08 By Process Status=2
-											 "   and TO_INTRAOPERATION_STEP_TYPE = 5 "; // ¨ú¦¹¦¸³ø¼oªºgroup
+											 "   and TO_INTRAOPERATION_STEP_TYPE = 5 "; // å–æ­¤æ¬¡å ±å»¢çš„group
 								Statement stateGrp=con.createStatement();
 								ResultSet rsGrp=stateGrp.executeQuery(sqlGrp);
 								if (rsGrp.next())
@@ -2814,12 +2814,12 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 								}
 								rsGrp.close();
 								stateGrp.close();
-								//§ì¨ú¼g¤JInterfaceªºGroupµ¥¸ê°T_¨´  
-								//out.println("<BR>³ø¼oªºgroupID ="+groupID+"<BR>");	 
+								//æŠ“å–å¯«å…¥Interfaceçš„Groupç­‰è³‡è¨Š_è¿„  
+								//out.println("<BR>å ±å»¢çš„groupID ="+groupID+"<BR>");	 
 
-								if (groupID>0 && opSeqNo>0)  // ªí¥Ü¨ú¨ì¥¿½TªºgroupID¤ÎopSeqNo
+								if (groupID>0 && opSeqNo>0)  // è¡¨ç¤ºå–åˆ°æ­£ç¢ºçš„groupIDåŠopSeqNo
 								{
-									// §Y®É©I¥s WIP_MOVE PROCESS WORKER
+									// å³æ™‚å‘¼å« WIP_MOVE PROCESS WORKER
 
 									int procPhase = 1;
 									int timeOut = 10;
@@ -2827,8 +2827,8 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 									{	
 										/*
 										CallableStatement cs5 = con.prepareCall("{call WIP_MOVPROC_PRIV.Move_Worker(?,?,?,?,?,?)}");			
-										cs5.registerOutParameter(1, Types.VARCHAR); //  ¶Ç¦^­È        ERROR BUFFER
-										cs5.registerOutParameter(2, Types.INTEGER); //  ¶Ç¦^­È		RETURN CODE				   
+										cs5.registerOutParameter(1, Types.VARCHAR); //  å‚³å›å€¼        ERROR BUFFER
+										cs5.registerOutParameter(2, Types.INTEGER); //  å‚³å›å€¼		RETURN CODE				   
 										cs5.setInt(3,groupID);                                         //  Org ID 	
 										cs5.setInt(4,procPhase);    // 1 Move Validation 2.Move Processing 3.Opeariotn Backflush Setup     
 										cs5.setInt(5,timeOut); 
@@ -2842,8 +2842,8 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 										cs5.setInt(1,groupID);                                         //  Org ID 	
 										cs5.setString(2,null);   // BackFlush Setup    
 										cs5.setString(3,"T");	   // FND_API.G_TRUE = "T", FND_API.G_FALSE = "F"
-										cs5.registerOutParameter(4, Types.VARCHAR); //  ¶Ç¦^­È     STATUS
-										cs5.registerOutParameter(5, Types.VARCHAR); //  ¶Ç¦^­È		ERROR MESSAGE					 					      						   	 					     
+										cs5.registerOutParameter(4, Types.VARCHAR); //  å‚³å›å€¼     STATUS
+										cs5.registerOutParameter(5, Types.VARCHAR); //  å‚³å›å€¼		ERROR MESSAGE					 					      						   	 					     
 										cs5.execute();					      
 										String getMoveStatus = cs5.getString(4);		
 										String getMoveErrorMsg = cs5.getString(5);								      				    
@@ -2851,22 +2851,22 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 										if (getMoveStatus.equals("U") && getMoveErrorMsg!=null && !getMoveErrorMsg.equals(""))
 										{
 											getRetScrapCode = 77;   // Error Number  
-											getErrScrapBuffer = getMoveErrorMsg; // §â¿ù»~°T®§µ¹­ì¨Ó§PÂ_ªºBuffer
-											out.println("getRetScrapCode="+getRetScrapCode+"&nbsp;"+"³ø¼o¿ù»~­ì¦]="+getErrScrapBuffer+"<BR>");
+											getErrScrapBuffer = getMoveErrorMsg; // æŠŠéŒ¯èª¤è¨Šæ¯çµ¦åŸä¾†åˆ¤æ–·çš„Buffer
+											out.println("getRetScrapCode="+getRetScrapCode+"&nbsp;"+"å ±å»¢éŒ¯èª¤åŸå› ="+getErrScrapBuffer+"<BR>");
 										}						  					  
 									}	  
 									catch (Exception e) { out.println("Exception:"+e.getMessage()); }  
 								} // end of if (groupID>0 && opSeqNo>0)			 
-								// *****%%%%%%%%%%%%%% ²¾¯¸³ø¼o¼Æ¶q¼Æ¶q  %%%%%%%%%%%%**********  ¨´	
+								// *****%%%%%%%%%%%%%% ç§»ç«™å ±å»¢æ•¸é‡æ•¸é‡  %%%%%%%%%%%%**********  è¿„	
 
 							} // End of if (rcScrapQty>0)	
 
 							String getErrBuffer = "",overFlag="";
 							int getRetCode = 0; 
 							float prevQty = 0; 		   		     
-							if (getRetScrapCode==0)   // ­Y¥»¯¸³ø¼o¦¨¥\,«h¶i¦æ²¾¯¸Interface
-							{  // *****%%%%%%%%%%%%%% ¥¿±`§¹¤u¼Æ¶q  %%%%%%%%%%%%**********  °_
-								//§PÂ_¬O§_¦³overcompletion
+							if (getRetScrapCode==0)   // è‹¥æœ¬ç«™å ±å»¢æˆåŠŸ,å‰‡é€²è¡Œç§»ç«™Interface
+							{  // *****%%%%%%%%%%%%%% æ­£å¸¸å®Œå·¥æ•¸é‡  %%%%%%%%%%%%**********  èµ·
+								//åˆ¤æ–·æ˜¯å¦æœ‰overcompletion
 								String sqlpre=" select TRANSACTION_QUANTITY from yew_runcard_transactions "+
 												"  where step_type=1 and FM_OPERATION_SEQ_NUM  = '"+aMFGRCCompleteCode[i][3]+"' "+
 												"    and runcard_no = '"+aMFGRCCompleteCode[i][1]+"' ";
@@ -2874,22 +2874,22 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 								ResultSet rspre=statepre.executeQuery(sqlpre);
 								if (rspre.next())
 								{
-									prevQty = rspre.getFloat(1);  //«e¦¸²¾¯¸¼Æ¶q
+									prevQty = rspre.getFloat(1);  //å‰æ¬¡ç§»ç«™æ•¸é‡
 								}
 								rspre.close();
 								statepre.close();
 								//out.print("<br>prevQty="+prevQty);
 
-								if (Float.parseFloat(aMFGRCCompleteCode[i][2]) > prevQty )   //­Y²¾¯¸¼Æ¤j©ó«e¦¸²¾¯¸¼Æ,ªí¥Üovercompletion
+								if (Float.parseFloat(aMFGRCCompleteCode[i][2]) > prevQty )   //è‹¥ç§»ç«™æ•¸å¤§æ–¼å‰æ¬¡ç§»ç«™æ•¸,è¡¨ç¤ºovercompletion
 								{
-									overQty = Float.parseFloat(aMFGRCCompleteCode[i][2]) - prevQty ;    //²¾¯¸¼Æ-¬yµ{¥d¼Æ=¶W¥X¼Æ¶q
-									overFlag = "Y";   //µ¹©w¶W¦¬ªºflag
+									overQty = Float.parseFloat(aMFGRCCompleteCode[i][2]) - prevQty ;    //ç§»ç«™æ•¸-æµç¨‹å¡æ•¸=è¶…å‡ºæ•¸é‡
+									overFlag = "Y";   //çµ¦å®šè¶…æ”¶çš„flag
 								}else  { overFlag = "N"; }
 								//out.print("<br>overQty="+overQty);    
 
-								toIntOpSType = 3;  // §¹¤u²¾¯¸ªºto InterOperation Step Type = 3
-								transType = 1;     // §¹¤uªº Transaction Type(§ï¬° Move Transaction,ÅıMMT¥h¨M©w±N¤u³æComplete)
-								//out.println("<BR>//1. *****%%%%%%%%%%%%%% ¥¿±`²¾¯¸¼Æ¶q  %%%%%%%%%%%%**********  °_");
+								toIntOpSType = 3;  // å®Œå·¥ç§»ç«™çš„to InterOperation Step Type = 3
+								transType = 1;     // å®Œå·¥çš„ Transaction Type(æ”¹ç‚º Move Transaction,è®“MMTå»æ±ºå®šå°‡å·¥å–®Complete)
+								//out.println("<BR>//1. *****%%%%%%%%%%%%%% æ­£å¸¸ç§»ç«™æ•¸é‡  %%%%%%%%%%%%**********  èµ·");
 								String Sqlrc="";
 								String Sqlrc1="insert into WIP_MOVE_TXN_INTERFACE( "+
 												"            CREATED_BY_NAME, CREATION_DATE, LAST_UPDATE_DATE, LAST_UPDATED_BY_NAME, ORGANIZATION_CODE, ORGANIZATION_ID, "+
@@ -2914,35 +2914,35 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 								seqstmt.setString(3,organCode);      //out.println("organCode="+organCode);   // ORGANIZATION_CODE
 								seqstmt.setInt(4,Integer.parseInt(organizationID)); //out.println("organizationID="+organizationID);   // ORGANIZATION_ID
 								seqstmt.setInt(5,1);      //PROCESS_PHASE   1=Move Validation, 2=Move Processing, 3= Operation Backflush Setup
-								seqstmt.setInt(6,2);      //PROCESS_STATUS 1=PENDING , 2=RUNNING , 3=Error ( 2006/12/08 §ï¬° Running )
+								seqstmt.setInt(6,2);      //PROCESS_STATUS 1=PENDING , 2=RUNNING , 3=Error ( 2006/12/08 æ”¹ç‚º Running )
 								//  seqstmt.setDate(9,processDateTime);  // TRANSACTION_DATE
-								seqstmt.setFloat(7,Float.parseFloat(aMFGRCCompleteCode[i][2])); // ²¾¯¸¼Æ¶q
+								seqstmt.setFloat(7,Float.parseFloat(aMFGRCCompleteCode[i][2])); // ç§»ç«™æ•¸é‡
 								//seqstmt.setInt(10,Integer.parseInt(aMFGRCMovingCode[i][2])); 
-								//out.println("¼Æ¶q="+aMFGRCMovingCode[i][2]); //queue to Move Qty creation date  dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()
+								//out.println("æ•¸é‡="+aMFGRCMovingCode[i][2]); //queue to Move Qty creation date  dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()
 								seqstmt.setString(8,woUOM);
 								seqstmt.setInt(9,Integer.parseInt(entityId));  
-								seqstmt.setString(10,woNo);  //out.println("¤u¥O¸¹="+woNo);
+								seqstmt.setString(10,woNo);  //out.println("å·¥ä»¤è™Ÿ="+woNo);
 								seqstmt.setInt(11,1); // FM_INTRAOPERATION_STEP_TYPE 1=Queue 2=RUN, 3=TO_MOVE, 5=SCRAP
 								//seqstmt.setInt(12,20);
-								seqstmt.setInt(12,Integer.parseInt(aMFGRCCompleteCode[i][4])); // FM_OPERATION_SEQ_NUM(¥»¯¸)
+								seqstmt.setInt(12,Integer.parseInt(aMFGRCCompleteCode[i][4])); // FM_OPERATION_SEQ_NUM(æœ¬ç«™)
 								//out.println("FM_OPERATION_SEQ_NUM="+aMFGRCMovingCode[i][4]);
-								seqstmt.setInt(13,toIntOpSType); // TO_INTRAOPERATION_STEP_TYPE  1=Queue 2=RUN, 3=TO_MOVE(§¹¤u), 5=SCRAP(³ø¼o)
+								seqstmt.setInt(13,toIntOpSType); // TO_INTRAOPERATION_STEP_TYPE  1=Queue 2=RUN, 3=TO_MOVE(å®Œå·¥), 5=SCRAP(å ±å»¢)
 								seqstmt.setInt(14,Integer.parseInt(aMFGRCCompleteCode[i][5])); // TO_OPERATION_SEQ_NUM  // Integer.parseInt(aMFGRCMovingCode[i][5])
-								seqstmt.setString(15,aMFGRCCompleteCode[i][1]);	//out.println("¬yµ{¥d¸¹="+aMFGRCMovingCode[i][1]); // ATTRIBUTE2 ¬yµ{¥d¸¹ 
+								seqstmt.setString(15,aMFGRCCompleteCode[i][1]);	//out.println("æµç¨‹å¡è™Ÿ="+aMFGRCMovingCode[i][1]); // ATTRIBUTE2 æµç¨‹å¡è™Ÿ 
 								seqstmt.setInt(16,transType);	// TRANSACTION_TYPE   1= Move transaction,  2=Move Completion, 3=Move Return 
 								if (overFlag == "Y" || overFlag.equals("Y"))
 								{ seqstmt.setFloat(17,overQty); } // OVERCOMPLETION_TRANSACTION_QTY   
 								seqstmt.executeUpdate();
 								seqstmt.close();	      	
 
-								//§ì¨ú¼g¤JInterfaceªºGroupµ¥¸ê°T_°_
+								//æŠ“å–å¯«å…¥Interfaceçš„Groupç­‰è³‡è¨Š_èµ·
 								int groupID = 0;
 								int opSeqNo = 0;              
 								String sqlGrp = " select GROUP_ID,TO_OPERATION_SEQ_NUM  from WIP.WIP_MOVE_TXN_INTERFACE "+
 											 " where WIP_ENTITY_NAME = '"+woNo+ "' and WIP_ENTITY_ID = "+entityId+" "+
 											 "   and ATTRIBUTE2 = '"+aMFGRCCompleteCode[i][1]+"' "+ // 2006/11/17 By RunCardNo
 											 "   and PROCESS_STATUS = 2 "+ // 2006/12/08 By Process Status=2
-											 "   and TO_INTRAOPERATION_STEP_TYPE = 3 "; // ¨ú¦¹¦¸²¾¯¸ªºGroup ID
+											 "   and TO_INTRAOPERATION_STEP_TYPE = 3 "; // å–æ­¤æ¬¡ç§»ç«™çš„Group ID
 								Statement stateGrp=con.createStatement();
 								ResultSet rsGrp=stateGrp.executeQuery(sqlGrp);
 								if (rsGrp.next())
@@ -2953,13 +2953,13 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 								rsGrp.close();
 								stateGrp.close();
 
-								out.println("<BR>§¹¤uªºgroupID ="+groupID+"<BR>");	 
+								out.println("<BR>å®Œå·¥çš„groupID ="+groupID+"<BR>");	 
 
-								//§ì¨ú¼g¤JInterfaceªºGroupµ¥¸ê°T_¨´		
+								//æŠ“å–å¯«å…¥Interfaceçš„Groupç­‰è³‡è¨Š_è¿„		
 
-								if (groupID>0 && opSeqNo>0)  // ªí¥Ü¨ú¨ì¥¿½TªºgroupID¤ÎopSeqNo
+								if (groupID>0 && opSeqNo>0)  // è¡¨ç¤ºå–åˆ°æ­£ç¢ºçš„groupIDåŠopSeqNo
 								{
-									// §Y®É©I¥s WIP_MOVE PROCESS WORKER
+									// å³æ™‚å‘¼å« WIP_MOVE PROCESS WORKER
 
 									int procPhase = 1;
 									int timeOut = 10;
@@ -2969,8 +2969,8 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 										cs4.setInt(1,groupID);                                         //  Org ID 	
 										cs4.setString(2,null);   // BackFlush Setup    
 										cs4.setString(3,"T");	   // FND_API.G_TRUE = "T", FND_API.G_FALSE = "F"
-										cs4.registerOutParameter(4, Types.VARCHAR); //  ¶Ç¦^­È     STATUS
-										cs4.registerOutParameter(5, Types.VARCHAR); //  ¶Ç¦^­È		ERROR MESSAGE					 					      						   	 					     
+										cs4.registerOutParameter(4, Types.VARCHAR); //  å‚³å›å€¼     STATUS
+										cs4.registerOutParameter(5, Types.VARCHAR); //  å‚³å›å€¼		ERROR MESSAGE					 					      						   	 					     
 										cs4.execute();					      
 										String getMoveStatus = cs4.getString(4);		
 										String getMoveErrorMsg = cs4.getString(5);								      				    
@@ -2978,27 +2978,27 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 										if (getMoveStatus.equals("U") && getMoveErrorMsg!=null && !getMoveErrorMsg.equals(""))
 										{
 											getRetCode = 88;   // Error Number  
-											getErrBuffer = getMoveErrorMsg; // §â¿ù»~°T®§µ¹­ì¨Ó§PÂ_ªºBuffer
-											out.println("getRetCode="+getRetCode+"&nbsp;"+"²¾¯¸¿ù»~­ì¦]="+getErrBuffer+"<BR>");
+											getErrBuffer = getMoveErrorMsg; // æŠŠéŒ¯èª¤è¨Šæ¯çµ¦åŸä¾†åˆ¤æ–·çš„Buffer
+											out.println("getRetCode="+getRetCode+"&nbsp;"+"ç§»ç«™éŒ¯èª¤åŸå› ="+getErrBuffer+"<BR>");
 										}						  
 
 									}	  
 									catch (Exception e) { out.println("Exception:"+e.getMessage()); }  
 								} // end of if (groupID>0 && opSeqNo>0)			 
-								// *****%%%%%%%%%%%%%% ¥¿±`§¹¤u¼Æ¶q  %%%%%%%%%%%%**********  ¨´
+								// *****%%%%%%%%%%%%%% æ­£å¸¸å®Œå·¥æ•¸é‡  %%%%%%%%%%%%**********  è¿„
 
-							} // End of if (getRetScrapCode==0)   // ­Y¥»¯¸³ø¼o¦¨¥\,«h¶i¦æ²¾¯¸Interface
+							} // End of if (getRetScrapCode==0)   // è‹¥æœ¬ç«™å ±å»¢æˆåŠŸ,å‰‡é€²è¡Œç§»ç«™Interface
 
-							if (getRetScrapCode==0 && getRetCode==0) // ­Y³ø¼o¤Î²¾¯¸³£°õ¦æ¦¨¥\,«h°õ¦æ¨t²Î¬yµ{¤Î²§°Ê§ó·s
+							if (getRetScrapCode==0 && getRetCode==0) // è‹¥å ±å»¢åŠç§»ç«™éƒ½åŸ·è¡ŒæˆåŠŸ,å‰‡åŸ·è¡Œç³»çµ±æµç¨‹åŠç•°å‹•æ›´æ–°
 							{ 
-								// ­Y¦¨¥\,«h§ó·sRUNCARD ¸ê®Æªí¬ÛÃöÄæ¦ì
-								// ¨ú¦¨¥\²¾¯¸«á,«e¤@¯¸,¥»¯¸,¤U¤@¯¸¬ÛÃö¸ê°TRUNCARD_ALL¸ê®Æªí§ó·s
+								// è‹¥æˆåŠŸ,å‰‡æ›´æ–°RUNCARD è³‡æ–™è¡¨ç›¸é—œæ¬„ä½
+								// å–æˆåŠŸç§»ç«™å¾Œ,å‰ä¸€ç«™,æœ¬ç«™,ä¸‹ä¸€ç«™ç›¸é—œè³‡è¨ŠRUNCARD_ALLè³‡æ–™è¡¨æ›´æ–°
 								//String operationSeqNum = "",operationSeqId="",standardOpId="",previousOpSeqNum="",nextOpSeqNum="",qtyInQueue="",standardOpDesc="";
-								boolean singleOp = false;  // ¹w³]¥»¯¸¤£¬°³Ì«á¤@¯¸
+								boolean singleOp = false;  // é è¨­æœ¬ç«™ä¸ç‚ºæœ€å¾Œä¸€ç«™
 								String sqlp = " select OPERATION_SEQ_NUM, OPERATION_SEQUENCE_ID, STANDARD_OPERATION_ID,  "+
 												"       DESCRIPTION, PREVIOUS_OPERATION_SEQ_NUM, NEXT_OPERATION_SEQ_NUM   "+
 												"  from WIP_OPERATIONS "+
-												"  where PREVIOUS_OPERATION_SEQ_NUM = '"+aMFGRCCompleteCode[i][4]+"' "+ // ¦]¤w¦¨¥\(getRetScrapCode==0 && getRetCode==0.¬G«e¤@¯¸¬°¥»¯¸)
+												"  where PREVIOUS_OPERATION_SEQ_NUM = '"+aMFGRCCompleteCode[i][4]+"' "+ // å› å·²æˆåŠŸ(getRetScrapCode==0 && getRetCode==0.æ•…å‰ä¸€ç«™ç‚ºæœ¬ç«™)
 												"    and WIP_ENTITY_ID ="+entityId+" ";	 
 								Statement statep=con.createStatement();
 								ResultSet rsp=statep.executeQuery(sqlp);
@@ -3017,24 +3017,24 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 									{ 
 										nextOpSeqNum = "0";		
 										singleOp = true;
-										out.println("¤U¤@¯¸¥N½X="+nextOpSeqNum);
+										out.println("ä¸‹ä¸€ç«™ä»£ç¢¼="+nextOpSeqNum);
 									}  	
-								} else { // ¨ú¤£¨ì,ªí¥ÜµL¤U¤@¯¸,¥»¯¸§Y¬°¤U¤@¯¸,¬G«O¯d¦¹¬yµ{¥d³Ì«á¯¸¸ê°T
+								} else { // å–ä¸åˆ°,è¡¨ç¤ºç„¡ä¸‹ä¸€ç«™,æœ¬ç«™å³ç‚ºä¸‹ä¸€ç«™,æ•…ä¿ç•™æ­¤æµç¨‹å¡æœ€å¾Œç«™è³‡è¨Š
 
-									// ¥»¯¸§Y¬°³Ì«á¤@¯¸,¬G»İ§ó·sª¬ºA¦Ü 046 (§¹¤u¤J®w)					 
+									// æœ¬ç«™å³ç‚ºæœ€å¾Œä¸€ç«™,æ•…éœ€æ›´æ–°ç‹€æ…‹è‡³ 046 (å®Œå·¥å…¥åº«)					 
 									Statement stateMax=con.createStatement();
 									ResultSet rsMax=stateMax.executeQuery("select NEXT_OPERATION_SEQ_NUM from WIP_OPERATIONS where to_char(OPERATION_SEQ_NUM) = '"+aMFGRCCompleteCode[i][4]+"' and WIP_ENTITY_ID ="+entityId+" ");
 									if (rsMax.next() && (rsMax.getString(1)==null || rsMax.getString(1).equals("")) )
 									{
 										singleOp = true;					   
-									} else out.println("¤U¤@¯¸¥N½X="+rsMax.getString(1));
+									} else out.println("ä¸‹ä¸€ç«™ä»£ç¢¼="+rsMax.getString(1));
 									rsMax.close();
 									stateMax.close();					 
 								}
 								rsp.close();
 								statep.close(); 				   
 
-								// %%%%%%%%%%%%%%%%%%% ¼g¤JRun card Move Transaction %%%%%%%%%%%%%%%%%%%_°_
+								// %%%%%%%%%%%%%%%%%%% å¯«å…¥Run card Move Transaction %%%%%%%%%%%%%%%%%%%_èµ·
 								float overValue=0;
 								if (overFlag=="Y" || overFlag.equals("Y"))
 								{ 
@@ -3061,14 +3061,14 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 								queueTransStmt.setInt(3,Integer.parseInt(organizationID));           // ORGANIZATION_ID
 								queueTransStmt.setInt(4,Integer.parseInt(entityId));                 // WIP_ENTITY_ID
 								queueTransStmt.setInt(5,primaryItemID);                              // PRIMARY_ITEM_ID
-								queueTransStmt.setInt(6,Integer.parseInt(aMFGRCCompleteCode[i][4])); //FM_OPERATION_SEQ_NUM(¥»¯¸)    
+								queueTransStmt.setInt(6,Integer.parseInt(aMFGRCCompleteCode[i][4])); //FM_OPERATION_SEQ_NUM(æœ¬ç«™)    
 								queueTransStmt.setString(7,standardOpDesc);                          //  FM_OPERATION_CODE	       	   
-								queueTransStmt.setInt(8,Integer.parseInt(aMFGRCCompleteCode[i][5])); //TO_OPERATION_SEQ_NUM(¤U¤@¯¸) 
-								queueTransStmt.setString(9,"");                                           //TO_OPERATION_CODE(¤U¤@¯¸¥N½X) 
+								queueTransStmt.setInt(8,Integer.parseInt(aMFGRCCompleteCode[i][5])); //TO_OPERATION_SEQ_NUM(ä¸‹ä¸€ç«™) 
+								queueTransStmt.setString(9,"");                                           //TO_OPERATION_CODE(ä¸‹ä¸€ç«™ä»£ç¢¼) 
 								queueTransStmt.setFloat(10,Float.parseFloat(aMFGRCCompleteCode[i][2]));  // Transaction Qty
 								queueTransStmt.setString(11,woUOM);      // Transaction_UOM		   
 								queueTransStmt.setInt(12,1);             // 1=Queue		  
-								queueTransStmt.setString(13,"QUEUE");    // TO_INTRAOPERATION_STEP_TYPE  1=Queue 2=RUN, 3=TO_MOVE(§¹¤u), 5=SCRAP(³ø¼o)
+								queueTransStmt.setString(13,"QUEUE");    // TO_INTRAOPERATION_STEP_TYPE  1=Queue 2=RUN, 3=TO_MOVE(å®Œå·¥), 5=SCRAP(å ±å»¢)
 								queueTransStmt.setString(14,"");         // CUSTOMER_LOT_NO
 								queueTransStmt.setString(15,"046"); // From STATUSID
 								queueTransStmt.setString(16,"COMPLETING");	  // From STATUS
@@ -3076,11 +3076,11 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 								queueTransStmt.setFloat(18,overValue);
 								queueTransStmt.executeUpdate();
 								queueTransStmt.close();	    	 
-								// %%%%%%%%%%%%%%%%%%% ¼g¤JRun card Move Transaction %%%%%%%%%%%%%%%%%%%_¨´ 	
+								// %%%%%%%%%%%%%%%%%%% å¯«å…¥Run card Move Transaction %%%%%%%%%%%%%%%%%%%_è¿„ 	
 
-								if (rcScrapQty>0)  // §PÂ_­Y³ø¼o¼Æ¶q¤j©ó¹s,«h©I¥s¼g¤J³ø¼o RUNCARD Transaction
+								if (rcScrapQty>0)  // åˆ¤æ–·è‹¥å ±å»¢æ•¸é‡å¤§æ–¼é›¶,å‰‡å‘¼å«å¯«å…¥å ±å»¢ RUNCARD Transaction
 								{ 		 
-									// %%%%%%%%%%%%%%%%%%% ¼g¤JRun card Scrap Transaction %%%%%%%%%%%%%%%%%%%_°_
+									// %%%%%%%%%%%%%%%%%%% å¯«å…¥Run card Scrap Transaction %%%%%%%%%%%%%%%%%%%_èµ·
 									String SqlScrapTrans="insert into APPS.YEW_RUNCARD_TRANSACTIONS( "+
 											"            RUNCAD_ID, RC_TRANSACTION_ID, RUNCARD_NO, ORGANIZATION_ID, WIP_ENTITY_ID, PRIMARY_ITEM_ID, "+
 											"            TRANSACTION_DATE, FM_OPERATION_SEQ_NUM, FM_OPERATION_CODE, TO_OPERATION_SEQ_NUM, TO_OPERATION_CODE, "+
@@ -3094,30 +3094,30 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 									scrapTransStmt.setInt(3,Integer.parseInt(organizationID));           // ORGANIZATION_ID
 									scrapTransStmt.setInt(4,Integer.parseInt(entityId));                 // WIP_ENTITY_ID
 									scrapTransStmt.setInt(5,primaryItemID);                              // PRIMARY_ITEM_ID
-									scrapTransStmt.setInt(6,Integer.parseInt(aMFGRCCompleteCode[i][4])); //FM_OPERATION_SEQ_NUM(¥»¯¸)    
+									scrapTransStmt.setInt(6,Integer.parseInt(aMFGRCCompleteCode[i][4])); //FM_OPERATION_SEQ_NUM(æœ¬ç«™)    
 									scrapTransStmt.setString(7,standardOpDesc);                                           //  FM_OPERATION_CODE	       	   
-									scrapTransStmt.setInt(8,Integer.parseInt(aMFGRCCompleteCode[i][4])); //TO_OPERATION_SEQ_NUM(¤U¤@¯¸) 
-									scrapTransStmt.setString(9,standardOpDesc);                                           //TO_OPERATION_CODE(¤U¤@¯¸¥N½X) 
+									scrapTransStmt.setInt(8,Integer.parseInt(aMFGRCCompleteCode[i][4])); //TO_OPERATION_SEQ_NUM(ä¸‹ä¸€ç«™) 
+									scrapTransStmt.setString(9,standardOpDesc);                                           //TO_OPERATION_CODE(ä¸‹ä¸€ç«™ä»£ç¢¼) 
 									scrapTransStmt.setFloat(10,rcScrapQty);  // Transaction Qty
 									scrapTransStmt.setString(11,woUOM);      // Transaction_UOM		   
-									scrapTransStmt.setInt(12,5);             // 5=SCRAP(³ø¼o)		  
-									scrapTransStmt.setString(13,"SCRAP");    // TO_INTRAOPERATION_STEP_TYPE  1=Queue 2=RUN, 3=TO_MOVE(§¹¤u), 5=SCRAP(³ø¼o)
+									scrapTransStmt.setInt(12,5);             // 5=SCRAP(å ±å»¢)		  
+									scrapTransStmt.setString(13,"SCRAP");    // TO_INTRAOPERATION_STEP_TYPE  1=Queue 2=RUN, 3=TO_MOVE(å®Œå·¥), 5=SCRAP(å ±å»¢)
 									scrapTransStmt.setString(14,"");         // CUSTOMER_LOT_NO
 									scrapTransStmt.setString(15,"046"); // From STATUSID
 									scrapTransStmt.setString(16,"COMPLETING");	  // From STATUS
 									scrapTransStmt.setString(17,fndUserName);	  // Update User  
 									scrapTransStmt.executeUpdate();
 									scrapTransStmt.close();	    	 
-									// %%%%%%%%%%%%%%%%%%% ¼g¤JRun card Scrap Transaction %%%%%%%%%%%%%%%%%%%_¨´ 
+									// %%%%%%%%%%%%%%%%%%% å¯«å…¥Run card Scrap Transaction %%%%%%%%%%%%%%%%%%%_è¿„ 
 								}  // End of if (rcScrapQty>0)	
 
-								// ###################### ¼g¤J Reservations Interface  ################### °_   liling add 2006/10/30
+								// ###################### å¯«å…¥ Reservations Interface  ################### èµ·   liling add 2006/10/30
 
-								// #########################  ¬yµ{¥d§¹¤u«á,©I¥s¼g¤JMMT¤ÎMaterial Transaction Lot Interface§@®w¦s²§°Ê_°_		  
+								// #########################  æµç¨‹å¡å®Œå·¥å¾Œ,å‘¼å«å¯«å…¥MMTåŠMaterial Transaction Lot Interfaceä½œåº«å­˜ç•°å‹•_èµ·		  
 								try
-								{ //out.println("Step1. ¼g¤JMMT Interface<BR>");			 
+								{ //out.println("Step1. å¯«å…¥MMT Interface<BR>");			 
 
-									// -- ¨ú¦¹¦¸MMT ªºTransaction ID §@¬°Group ID
+									// -- å–æ­¤æ¬¡MMT çš„Transaction ID ä½œç‚ºGroup ID
 									Statement stateMSEQ=con.createStatement();	             
 									ResultSet rsMSEQ=stateMSEQ.executeQuery("select MTL_MATERIAL_TRANSACTIONS_S.NEXTVAL from dual");
 									if (rsMSEQ.next()) groupId = rsMSEQ.getString(1);
@@ -3126,15 +3126,15 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 
 									if (woType.equals("3"))	
 									{   
-										if (altRouting.equals("2")) { opSupplierLot=opSupplierLot; } // ¦pªG«á¬q¤u¥O¥B¬°¥~ÁÊ,«h¥H¼t°Ó§å¸¹§@¬°¼g¤JMMT ¤ÎLOT¤Î RESERVATION¨Ì¾Ú	
-										else { // «á¬q¤u¥O¦Û»s
-											opSupplierLot=aMFGRCCompleteCode[i][1]; // ¬yµ{¥d¸¹¬°§å¸¹
+										if (altRouting.equals("2")) { opSupplierLot=opSupplierLot; } // å¦‚æœå¾Œæ®µå·¥ä»¤ä¸”ç‚ºå¤–è³¼,å‰‡ä»¥å» å•†æ‰¹è™Ÿä½œç‚ºå¯«å…¥MMT åŠLOTåŠ RESERVATIONä¾æ“š	
+										else { // å¾Œæ®µå·¥ä»¤è‡ªè£½
+											opSupplierLot=aMFGRCCompleteCode[i][1]; // æµç¨‹å¡è™Ÿç‚ºæ‰¹è™Ÿ
 										}
-									}	else { // ¤Á³Î¤Î«e¬q¤u¥O
+									}	else { // åˆ‡å‰²åŠå‰æ®µå·¥ä»¤
 										//supplierLotNo = opSupplierLot; 
 										opSupplierLot=aMFGRCCompleteCode[i][1];
 									}  		  
-									//out.println("Stepa.¼g¤JMMT ¤§TRANSACTION_INTERFACE_ID="+groupId+"<BR>");
+									//out.println("Stepa.å¯«å…¥MMT ä¹‹TRANSACTION_INTERFACE_ID="+groupId+"<BR>");
 									//out.println("Step compSubInventory = "+compSubInventory+"<BR>");	  
 									String sqlInsMMT = "insert into MTL_TRANSACTIONS_INTERFACE( "+
 										 "TRANSACTION_INTERFACE_ID, SOURCE_CODE, SOURCE_HEADER_ID, SOURCE_LINE_ID, PROCESS_FLAG, "+
@@ -3151,7 +3151,7 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 										 " ?,SYSDATE, "+                                              // LAST_UPDATE_DATE
 										 " -1, "+                                                     // LAST_UPDATED_BY
 										 " SYSDATE, "+                                                // CREATION_DATE
-										 " ?,?,?,1,MTL_MATERIAL_TRANSACTIONS_S.CURRVAL,'Y',?, 5 ) ";   // CREATION_BY, LOT_NO, MO_NO, LOCK_FLAG = 2(Interface Error¥i¥H­«·s³QRepeocess)
+										 " ?,?,?,1,MTL_MATERIAL_TRANSACTIONS_S.CURRVAL,'Y',?, 5 ) ";   // CREATION_BY, LOT_NO, MO_NO, LOCK_FLAG = 2(Interface Errorå¯ä»¥é‡æ–°è¢«Repeocess)
 															   // TRANSACTION_SOURCE_TYPE_ID = 5 = WIP
 									PreparedStatement mmtStmt=con.prepareStatement(sqlInsMMT); 	
 									mmtStmt.setInt(1,Integer.parseInt(entityId));   // SOURCE_HEADER_ID(Wip_Entity_id)
@@ -3166,34 +3166,34 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 									mmtStmt.setInt(10,Integer.parseInt(aMFGRCCompleteCode[i][4]));   //out.println("OPERATION_SEQ_NUM aMFGRCCompleteCode[i][4]="+aMFGRCCompleteCode[i][4]+"<BR>");  // OPERATION_SEQ_NUM
 									mmtStmt.setInt(11,Integer.parseInt(userMfgUserID));               // CREATED_BY
 									mmtStmt.setString(12,oeOrderNo);                                   //ATTRIBUTE1  MO_NO
-									mmtStmt.setString(13,opSupplierLot);                              //ATTRIBUTE2  LOT_NO (¬yµ{¥d¸¹)
+									mmtStmt.setString(13,opSupplierLot);                              //ATTRIBUTE2  LOT_NO (æµç¨‹å¡è™Ÿ)
 									mmtStmt.setString(14,opSupplierLot);                              //VENDOR_LOT_NUMBER  SUPPLIER_LOT_NO
 									mmtStmt.executeUpdate();
 									mmtStmt.close();		
 
-									//out.println("Step2. ¼g¤JMMT Lot Interface<BR>");
+									//out.println("Step2. å¯«å…¥MMT Lot Interface<BR>");
 									String sqlInsMMTLot = "  insert into MTL_TRANSACTION_LOTS_INTERFACE( "+
 										  "  TRANSACTION_INTERFACE_ID, LOT_NUMBER, TRANSACTION_QUANTITY, PRIMARY_QUANTITY, "+	
 										  "  LAST_UPDATE_DATE, LAST_UPDATED_BY, CREATION_DATE, CREATED_BY ,ATTRIBUTE1, ATTRIBUTE2 ) "+ 
 										  "  VALUES (MTL_MATERIAL_TRANSACTIONS_S.CURRVAL,?,?,?,SYSDATE,?,SYSDATE,?,?,?) ";
 									PreparedStatement mmtLotStmt=con.prepareStatement(sqlInsMMTLot); 
-									mmtLotStmt.setString(1,opSupplierLot);                                 // LOT_NUMBER(¬yµ{¥d¸¹)
+									mmtLotStmt.setString(1,opSupplierLot);                                 // LOT_NUMBER(æµç¨‹å¡è™Ÿ)
 									mmtLotStmt.setFloat(2,Float.parseFloat(aMFGRCCompleteCode[i][2])); 	   // TRANSACTION_QUANTITY
 									mmtLotStmt.setFloat(3,Float.parseFloat(aMFGRCCompleteCode[i][2]));	   // PRIMARY_QUANTITY 
 									mmtLotStmt.setInt(4,Integer.parseInt(userMfgUserID));	//out.println("userMfgUserID"+userMfgUserID);    // LAST_UPDATED_BY 								 
 									mmtLotStmt.setInt(5,Integer.parseInt(userMfgUserID));	       // CREATED_BY 
 									mmtLotStmt.setString(6,oeOrderNo);                             //ATTRIBUTE1  MO_NO
-									mmtLotStmt.setString(7,opSupplierLot);                         //ATTRIBUTE2  LOT_NO (¬yµ{¥d¸¹)
+									mmtLotStmt.setString(7,opSupplierLot);                         //ATTRIBUTE2  LOT_NO (æµç¨‹å¡è™Ÿ)
 									mmtLotStmt.executeUpdate();
 									mmtLotStmt.close();
-									//out.println("Stepb.¼g¤JMMT LOT ¤§TRANSACTION_INTERFACE_ID="+groupId+"<BR>");	
+									//out.println("Stepb.å¯«å…¥MMT LOT ä¹‹TRANSACTION_INTERFACE_ID="+groupId+"<BR>");	
 
 								} // End of try
 								catch (Exception e)
 								{
 									out.println("Exception MMT & LOT Interface:"+e.getMessage());
 								}	
-								//°õ¦æ MMT¤ÎMMT LOT Interface Submit Request
+								//åŸ·è¡Œ MMTåŠMMT LOT Interface Submit Request
 								String errorMsg = "";
 								try
 								{
@@ -3203,13 +3203,13 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 									{
 										respID = rsResp.getString("RESPONSIBILITY_ID");
 									} else {
-										respID = "50776"; // §ä¤£¨ì«h¹w³] --> YEW INV Super User ¹w³]
+										respID = "50776"; // æ‰¾ä¸åˆ°å‰‡é è¨­ --> YEW INV Super User é è¨­
 									}
 									rsResp.close();
 									stateResp.close();	  
 
 
-									// -- ¨ú¦¹¦¸MMT ªºTransaction Header ID §@¬°Group Header ID
+									// -- å–æ­¤æ¬¡MMT çš„Transaction Header ID ä½œç‚ºGroup Header ID
 									String grpHeaderID = "";
 									String devStatus = "";
 									String devMessage = "";
@@ -3220,40 +3220,40 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 									statGRPID.close();		  
 
 									/*			  
-									//out.println("Step3. ©I¥sTSC WIP_MMT_REQUEST <BR>");	
-									//	Step1. ¼g¤J Schedult Discrete Job API submit request ªºProcedure ¨Ã¨ú¦^ Oracle Request ID	
+									//out.println("Step3. å‘¼å«TSC WIP_MMT_REQUEST <BR>");	
+									//	Step1. å¯«å…¥ Schedult Discrete Job API submit request çš„Procedure ä¸¦å–å› Oracle Request ID	
 									CallableStatement cs3 = con.prepareCall("{call TSC_WIP_MMT_REQUEST(?,?,?,?,?,?)}");			 
 									cs3.setString(1,grpHeaderID);     //*  Group ID 	
-									cs3.setString(2,userMfgUserID);    //  user_id ­×§ï¤HID /	
-									cs3.setString(3,respID);  //*  ¨Ï¥ÎªºResponsibility ID --> YEW_INV_Semi_SU /				 
+									cs3.setString(2,userMfgUserID);    //  user_id ä¿®æ”¹äººID /	
+									cs3.setString(3,respID);  //*  ä½¿ç”¨çš„Responsibility ID --> YEW_INV_Semi_SU /				 
 									cs3.registerOutParameter(4, Types.INTEGER); 
-									cs3.registerOutParameter(5, Types.VARCHAR);                  //¦^¶Ç DEV_STATUS
-									cs3.registerOutParameter(6, Types.VARCHAR);                  //¦^¶Ç DEV_MASSAGE
+									cs3.registerOutParameter(5, Types.VARCHAR);                  //å›å‚³ DEV_STATUS
+									cs3.registerOutParameter(6, Types.VARCHAR);                  //å›å‚³ DEV_MASSAGE
 									cs3.execute();
 									out.println("Procedure : Execute Success !!! ");
 									int requestID = cs3.getInt(4);
-									devStatus = cs3.getString(5);   //  ¦^¶Ç REQUEST °õ¦æª¬ªp
-									devMessage = cs3.getString(6);   //  ¦^¶Ç REQUEST °õ¦æª¬ªp°T®§
+									devStatus = cs3.getString(5);   //  å›å‚³ REQUEST åŸ·è¡Œç‹€æ³
+									devMessage = cs3.getString(6);   //  å›å‚³ REQUEST åŸ·è¡Œç‹€æ³è¨Šæ¯
 									cs3.close();
 									*/			 
-									//java.lang.Thread.sleep(5000);	 // ©µ¿ğ¤­¬í,µ¥«İConcurrent°õ¦æ§¹²¦,¨úµ²ªG§PÂ_		 	  				 
+									//java.lang.Thread.sleep(5000);	 // å»¶é²äº”ç§’,ç­‰å¾…ConcurrentåŸ·è¡Œå®Œç•¢,å–çµæœåˆ¤æ–·		 	  				 
 
 									CallableStatement cs3 = con.prepareCall("{call WIP_MTLINTERFACEPROC_PUB.processInterface(?,?,?,?)}");			 
 									cs3.setInt(1,Integer.parseInt(grpHeaderID));     //   p_txnIntID	
 									cs3.setString(2,"T");          //   fnd_api.g_false = "TRUE"					 			 
-									cs3.registerOutParameter(3, Types.VARCHAR);  //¦^¶Ç x_returnStatus
-									cs3.registerOutParameter(4, Types.VARCHAR);  //¦^¶Ç x_errorMsg				
+									cs3.registerOutParameter(3, Types.VARCHAR);  //å›å‚³ x_returnStatus
+									cs3.registerOutParameter(4, Types.VARCHAR);  //å›å‚³ x_errorMsg				
 									cs3.execute();
 									out.println("Procedure : Execute Success !!! ");	             
-									devStatus = cs3.getString(3);    // ¦^¶Ç x_returnStatus
-									devMessage = cs3.getString(4);   // ¦^¶Ç x_errorMsg
+									devStatus = cs3.getString(3);    // å›å‚³ x_returnStatus
+									devMessage = cs3.getString(4);   // å›å‚³ x_errorMsg
 									cs3.close(); 
  
 									Statement stateError=con.createStatement();
 									String sqlError= " select ERROR_CODE, ERROR_EXPLANATION from MTL_TRANSACTIONS_INTERFACE where TRANSACTION_INTERFACE_ID= "+groupId+" " ;	
 									//out.println("sqlError="+sqlError+"<BR>");					                                     
 									ResultSet rsError=stateError.executeQuery(sqlError);	
-									if (rsError.next() && rsError.getString("ERROR_CODE")!=null && !rsError.getString("ERROR_CODE").equals("")) // ¦s¦b ERROR ªº¸ê®Æ,¹ïInterface¦Ó¨¥·|¼gErrorCodeÄæ¦ì
+									if (rsError.next() && rsError.getString("ERROR_CODE")!=null && !rsError.getString("ERROR_CODE").equals("")) // å­˜åœ¨ ERROR çš„è³‡æ–™,å°Interfaceè€Œè¨€æœƒå¯«ErrorCodeæ¬„ä½
 									{ 
 										out.println("<TR bgcolor='#FFFFCC'><TD colspan=3><font color='#000099'>MMT Transaction fail!! </FONT></TD><TD colspan=3>"+"</TD></TR>");
 										out.println("<TR bgcolor='#FFFFCC'><TD colspan=1><font color='#000099'>Error Message</FONT></TD><TD colspan=1><font color='#CC3366'>"+rsError.getString("ERROR_CODE")+"</FONT></TD><TD colspan=1><font color='#CC3399'>"+rsError.getString("ERROR_EXPLANATION")+"</FONT></TD></TR>");					   
@@ -3264,12 +3264,12 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 									rsError.close();
 									stateError.close();
 
-									if (errorMsg.equals("")) //­YErrorMessage¬°ªÅ­È,«hªí¥ÜInterface¦¨¥\³Q¼g¤JMMT,¦^À³¦¨¥\Request ID
+									if (errorMsg.equals("")) //è‹¥ErrorMessageç‚ºç©ºå€¼,å‰‡è¡¨ç¤ºInterfaceæˆåŠŸè¢«å¯«å…¥MMT,å›æ‡‰æˆåŠŸRequest ID
 									{	
 										out.println("Success Submit !!! <BR>");
 										out.println("<TR bgcolor='#FFFFCC'><TD colspan=3><font color='#000099'>Processor Request Message </FONT></TD><TD colspan=3>"+devStatus+"("+devMessage+")"+"</TD></TR>");	
-										woPassFlag="Y";	// ¦¨¥\¼g¤JªººX¼Ğ
-										con.commit(); // ­Y¦¨¥\,«h§@Commit,,Åı¨úEntity_IDµL»~				   			  
+										woPassFlag="Y";	// æˆåŠŸå¯«å…¥çš„æ——æ¨™
+										con.commit(); // è‹¥æˆåŠŸ,å‰‡ä½œCommit,,è®“å–Entity_IDç„¡èª¤				   			  
 									}
 
 								}// end of try
@@ -3277,9 +3277,9 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 								{
 									out.println("Exception WIP_MMT_REQUEST:"+e.getMessage());
 								}	
-								// #########################  ¬yµ{¥d§¹¤u«á,©I¥s¼g¤JMMT¤ÎMaterial Transaction Lot Interface§@®w¦s²§°Ê_¨´		
+								// #########################  æµç¨‹å¡å®Œå·¥å¾Œ,å‘¼å«å¯«å…¥MMTåŠMaterial Transaction Lot Interfaceä½œåº«å­˜ç•°å‹•_è¿„		
 
-								//§ì¤£¨¬Äæ¦ì¸ê®Æ  ORDER NO
+								//æŠ“ä¸è¶³æ¬„ä½è³‡æ–™  ORDER NO
 								String orderHeaderId="",orderLineId=""; 
 								String sqlfnd = " select YWA.OE_ORDER_NO,YWA.ORDER_HEADER_ID,YWA.ORDER_LINE_ID,YWA.INV_ITEM   "+
 										"   from APPS.YEW_WORKORDER_ALL YWA ,APPS.YEW_RUNCARD_ALL YRA   "+
@@ -3300,8 +3300,8 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 
 								//out.println("oeOrderNo="+oeOrderNo);	
 
-								// 2007/01/30 °£ «á¬q¤u¥O ¥~,­«¤u©Î¤uµ{¹êÅç¦p¦³MO¸¹,¤´»İ§@ Reservation_By Kerwin
-								if ((woType=="3" || woType.equals("3") || oeOrderNo.length()>1) && (woPassFlag=="Y" || woPassFlag.equals("Y")))  //interface»İ¦¨¥\¼g¤J¤~¼gReservaton
+								// 2007/01/30 é™¤ å¾Œæ®µå·¥ä»¤ å¤–,é‡å·¥æˆ–å·¥ç¨‹å¯¦é©—å¦‚æœ‰MOè™Ÿ,ä»éœ€ä½œ Reservation_By Kerwin
+								if ((woType=="3" || woType.equals("3") || oeOrderNo.length()>1) && (woPassFlag=="Y" || woPassFlag.equals("Y")))  //interfaceéœ€æˆåŠŸå¯«å…¥æ‰å¯«Reservaton
 								{
 									String sourceHeaderId="",rsInterfaceId="",requireDate="",resvFlag="";
 									float  resvQty=0,orderQty=0,avaiResvQty=0,resTxnQty=0;
@@ -3310,7 +3310,7 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 									{ 
 										//out.println("orderno="+oeOrderNo+"  orderLineId="+orderLineId);
 
-										//§ì¤£¨¬Äæ¦ì¸ê®Æ  mtl_sales_orders HEADER_ID
+										//æŠ“ä¸è¶³æ¬„ä½è³‡æ–™  mtl_sales_orders HEADER_ID
 										String sqlfndb = "SELECT sales_order_id FROM mtl_sales_orders a, oe_order_headers_all b ,oe_transaction_types_tl c  "+
 										" WHERE a.segment1 = b.order_number  and b.order_number='"+oeOrderNo+"' and b.SHIP_FROM_ORG_ID = "+organizationId+" "+
 										"   and a.segment2=c.name   and c.transaction_type_id=b.order_type_id   and c.language='US' ";
@@ -3336,7 +3336,7 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 
 										//out.println("  orderLineId="+orderLineId);		
 
-										//§ì¤w¦s¦bªºreservation qty »P­q³æ¬Û¤ñ  mtl_sales_orders HEADER_ID
+										//æŠ“å·²å­˜åœ¨çš„reservation qty èˆ‡è¨‚å–®ç›¸æ¯”  mtl_sales_orders HEADER_ID
 										String sqlfndb1 =" select sum(decode(MTR.RESERVATION_UOM_CODE,'PCE',MTR.RESERVATION_QUANTITY/1000,MTR.RESERVATION_QUANTITY )) RESV_QTY, "+
 												"        sum(decode(OOL.ORDER_QUANTITY_UOM,'PCE',OOL.ORDERED_QUANTITY/1000,OOL.ORDERED_QUANTITY)) ORDER_QTY , "+
 												"        to_char(trunc(SCHEDULE_SHIP_DATE),'YYYYMMDD') SCHEDULE_SHIP_DATE "+
@@ -3348,30 +3348,30 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 										ResultSet rsFndIdb1=stateFndIdb1.executeQuery(sqlfndb1);
 										if (rsFndIdb1.next())
 										{
-											requireDate = rsFndIdb1.getString("SCHEDULE_SHIP_DATE");     //»İ¨D¤é
-											resvQty = rsFndIdb1.getFloat("RESV_QTY");    //¤v³Q«O¯d¼Æ			  
-											orderQty = rsFndIdb1.getFloat("ORDER_QTY");  //­q³æ¼Æ
+											requireDate = rsFndIdb1.getString("SCHEDULE_SHIP_DATE");     //éœ€æ±‚æ—¥
+											resvQty = rsFndIdb1.getFloat("RESV_QTY");    //å·±è¢«ä¿ç•™æ•¸			  
+											orderQty = rsFndIdb1.getFloat("ORDER_QTY");  //è¨‚å–®æ•¸
 											//out.println("resvQty="+resvQty);
-											//if (resvQty==null) resvQty = 0; // 2007/01/07 «O¯dªº¼Æ¶q­Y¬°¨ú¨ì,«hµ¹0, By Kerwin			  
-											avaiResvQty = orderQty - resvQty ;           //¥i«O¯d¼Æ  = ­q³æ¼Æ¶q - ¤w«O¯d¼Æ
+											//if (resvQty==null) resvQty = 0; // 2007/01/07 ä¿ç•™çš„æ•¸é‡è‹¥ç‚ºå–åˆ°,å‰‡çµ¦0, By Kerwin			  
+											avaiResvQty = orderQty - resvQty ;           //å¯ä¿ç•™æ•¸  = è¨‚å–®æ•¸é‡ - å·²ä¿ç•™æ•¸
 										}
 										rsFndIdb1.close();
 										stateFndIdb1.close(); 
 										if (avaiResvQty<=0)
 										{
 											resvFlag ="N";
-											out.print("<br>µL­q³æ¶q¥i¨ÑReservation,µL»İ¦A°õ¦æ­q³æ«O¯d!");
+											out.print("<br>ç„¡è¨‚å–®é‡å¯ä¾›Reservation,ç„¡éœ€å†åŸ·è¡Œè¨‚å–®ä¿ç•™!");
 										}
-										else if (Float.parseFloat(aMFGRCCompleteCode[i][2]) > avaiResvQty)   //¬yµ{¥d¼Æ>¥i«O¯d¼Æ
+										else if (Float.parseFloat(aMFGRCCompleteCode[i][2]) > avaiResvQty)   //æµç¨‹å¡æ•¸>å¯ä¿ç•™æ•¸
 										{
 											resvFlag ="Y";
-											resTxnQty=avaiResvQty;               //resversion qty=³Ñ¾l¥i«O¯d¼Æ
-											out.print("<br>¤J®w¼Æ¤j©ó­q³æ¼Æ,°õ¦æ­q³æ¼Æ«O¯d!");
+											resTxnQty=avaiResvQty;               //resversion qty=å‰©é¤˜å¯ä¿ç•™æ•¸
+											out.print("<br>å…¥åº«æ•¸å¤§æ–¼è¨‚å–®æ•¸,åŸ·è¡Œè¨‚å–®æ•¸ä¿ç•™!");
 										}
 										else
 										{
-											resTxnQty =  Float.parseFloat(aMFGRCCompleteCode[i][2]) ;   //resversion qty=¬yµ{¥d¼Æ¶q
-											out.print("<br>°õ¦æ­q³æ¼Æ«O¯d¦¨¥\!");
+											resTxnQty =  Float.parseFloat(aMFGRCCompleteCode[i][2]) ;   //resversion qty=æµç¨‹å¡æ•¸é‡
+											out.print("<br>åŸ·è¡Œè¨‚å–®æ•¸ä¿ç•™æˆåŠŸ!");
 											resvFlag ="Y";
 										} 	 
 									}// end of try
@@ -3385,7 +3385,7 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 									{
 										try
 										{
-											//§ì¤£¨¬Äæ¦ì¸ê®Æ  RESERVATION_INTERFACE_ID
+											//æŠ“ä¸è¶³æ¬„ä½è³‡æ–™  RESERVATION_INTERFACE_ID
 											Statement stateFndIdc=con.createStatement();
 											ResultSet rsFndIdc=stateFndIdc.executeQuery("select MTL_RESERVATIONS_INTERFACE_S.NEXTVAL from dual");
 											if (rsFndIdc.next())
@@ -3396,10 +3396,10 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 											stateFndIdc.close();	
 
 											java.sql.Date requirementDate = null;
-											requirementDate = new java.sql.Date(Integer.parseInt(requireDate.substring(0,4))-1900,Integer.parseInt(requireDate.substring(4,6))-1,Integer.parseInt(requireDate.substring(6,8)));  // µ¹requireDate
+											requirementDate = new java.sql.Date(Integer.parseInt(requireDate.substring(0,4))-1900,Integer.parseInt(requireDate.substring(4,6))-1,Integer.parseInt(requireDate.substring(6,8)));  // çµ¦requireDate
 											//out.println("<br>requirementDate="+requirementDate);		  
 
-											//out.println("<br>Step4. ¼g¤JReservations Interface ");	
+											//out.println("<br>Step4. å¯«å…¥Reservations Interface ");	
 											String sqlInsRSIN = "  insert into MTL_RESERVATIONS_INTERFACE( "+
 												"  RESERVATION_INTERFACE_ID,RESERVATION_BATCH_ID,REQUIREMENT_DATE  "+
 												" ,ORGANIZATION_ID,TO_ORGANIZATION_ID,INVENTORY_ITEM_ID,ITEM_SEGMENT1 "+
@@ -3440,7 +3440,7 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 											rsInStmt.setInt(20,2);	       //TO_DEMAND_SOURCE_TYPE_ID 2:sales order
 											rsInStmt.setInt(21,13);	       //TO_SUPPLY_SOURCE_TYPE_ID 13:inventory
 											//  out.print("<br>lot number="+aMFGRCCompleteCode[i][1]); 
-											rsInStmt.setString(22,opSupplierLot);	                      //lot number...­Y¬°«á¬q¥~ÁÊ,«h¬°¼t°Ó§å¸¹,§_«h¬Ò¬°¬yµ{¥d¸¹
+											rsInStmt.setString(22,opSupplierLot);	                      //lot number...è‹¥ç‚ºå¾Œæ®µå¤–è³¼,å‰‡ç‚ºå» å•†æ‰¹è™Ÿ,å¦å‰‡çš†ç‚ºæµç¨‹å¡è™Ÿ
 											//  out.print("<br>sourceHeaderId="+sourceHeaderId);	
 											rsInStmt.setInt(23,Integer.parseInt(sourceHeaderId));	     //DEMAND_SOURCE_HEADER_ID  sourceHeaderId
 											rsInStmt.setInt(24,Integer.parseInt(orderLineId));           //DEMAND_SOURCE_LINE_ID   order_line_id
@@ -3454,7 +3454,7 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 											out.println("Exception RESERVATIONS_REQUEST:"+e.getMessage());
 										}	
 
-										//°õ¦æ RESERVATIONS Interface Manager
+										//åŸ·è¡Œ RESERVATIONS Interface Manager
 
 										try
 										{	  
@@ -3469,31 +3469,31 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 											{
 												respID = rsResp.getString("RESPONSIBILITY_ID");
 											} else {
-												respID = "50776"; // §ä¤£¨ì«h¹w³] --> YEW INV Super User ¹w³]
+												respID = "50776"; // æ‰¾ä¸åˆ°å‰‡é è¨­ --> YEW INV Super User é è¨­
 											}
 											rsResp.close();
 											stateResp.close();	  
 
-											//out.println("<br>Step5. ©I¥sTSC_YEW_INVRSVIN_REQUEST <BR>");	
-											//	Step1. ¼g¤J Schedult Discrete Job API submit request ªºProcedure ¨Ã¨ú¦^ Oracle Request ID	
+											//out.println("<br>Step5. å‘¼å«TSC_YEW_INVRSVIN_REQUEST <BR>");	
+											//	Step1. å¯«å…¥ Schedult Discrete Job API submit request çš„Procedure ä¸¦å–å› Oracle Request ID	
 											CallableStatement cs3 = con.prepareCall("{call TSC_YEW_INVRSVIN_REQUEST(?,?,?,?,?,?,?)}");			 
-											cs3.setString(1,userMfgUserID);    //  user_id ­×§ï¤HID /	
-											cs3.setString(2,respID);  //*  ¨Ï¥ÎªºResponsibility ID --> YEW_INV_Semi_SU /				 
+											cs3.setString(1,userMfgUserID);    //  user_id ä¿®æ”¹äººID /	
+											cs3.setString(2,respID);  //*  ä½¿ç”¨çš„Responsibility ID --> YEW_INV_Semi_SU /				 
 											cs3.registerOutParameter(3, Types.INTEGER); 
-											cs3.registerOutParameter(4, Types.VARCHAR);                  //¦^¶Ç DEV_STATUS
-											cs3.registerOutParameter(5, Types.VARCHAR);                  //¦^¶Ç DEV_MASSAGE
-											cs3.setString(6,opSupplierLot);  //*  RUNCARD NO (¥i¯à¬O¥~ÁÊ¼t°Ó§å¸¹«á¬q¦Û»s¬°¼t°Ó§å¸¹)	
+											cs3.registerOutParameter(4, Types.VARCHAR);                  //å›å‚³ DEV_STATUS
+											cs3.registerOutParameter(5, Types.VARCHAR);                  //å›å‚³ DEV_MASSAGE
+											cs3.setString(6,opSupplierLot);  //*  RUNCARD NO (å¯èƒ½æ˜¯å¤–è³¼å» å•†æ‰¹è™Ÿå¾Œæ®µè‡ªè£½ç‚ºå» å•†æ‰¹è™Ÿ)	
 											cs3.setString(7,rsInterfaceId);  //   Reservation  Id /	
 											cs3.execute();
 											//out.println("Procedure : Execute Success !!! ");
 											int requestID = cs3.getInt(3);
-											devStatus = cs3.getString(4);   //  ¦^¶Ç REQUEST °õ¦æª¬ªp
-											devMessage = cs3.getString(5);   //  ¦^¶Ç REQUEST °õ¦æª¬ªp°T®§
+											devStatus = cs3.getString(4);   //  å›å‚³ REQUEST åŸ·è¡Œç‹€æ³
+											devMessage = cs3.getString(5);   //  å›å‚³ REQUEST åŸ·è¡Œç‹€æ³è¨Šæ¯
 											cs3.close();
 
-											//java.lang.Thread.sleep(5000);	 // ©µ¿ğ¤­¬í,µ¥«İConcurrent°õ¦æ§¹²¦,¨úµ²ªG§PÂ_		 	  				 
+											//java.lang.Thread.sleep(5000);	 // å»¶é²äº”ç§’,ç­‰å¾…ConcurrentåŸ·è¡Œå®Œç•¢,å–çµæœåˆ¤æ–·		 	  				 
 
-											/*   // 2007/01/20 §ï¬°¤Ş¥Î Oracle ¼Ğ·Çªº Reservation Processor		 		 	  				 
+											/*   // 2007/01/20 æ”¹ç‚ºå¼•ç”¨ Oracle æ¨™æº–çš„ Reservation Processor		 		 	  				 
 											CallableStatement cs3 = con.prepareCall("{call INV_RESERVATIONS_INTERFACE.rsv_interface_manager(?,?,?,?,?)}");
 											cs3.registerOutParameter(1, Types.VARCHAR);                  // x_errbuf
 											cs3.registerOutParameter(2, Types.INTEGER);                  // x_retcode			 
@@ -3501,10 +3501,10 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 											cs3.setString(4,"F");                           //*  fnd_api.g_false					
 											cs3.setString(5,"N");				             //   p_form_mode
 											cs3.execute();
-											 out.println("Procedure : °õ¦æOracle®w¦s«O¯dProcedure !!! ");					 			 
-											int requestID = cs3.getInt(2);	  // §â Return Code µ¹ Request ID				
-											devMessage = cs3.getString(1);   // ¦^¶Ç x_errbuf °õ¦æª¬ªp ( x_errbuf )	
-											devStatus = Integer.toString(cs3.getInt(2));       // ¦^¶Ç x_retcode ( x_retcode )		
+											 out.println("Procedure : åŸ·è¡ŒOracleåº«å­˜ä¿ç•™Procedure !!! ");					 			 
+											int requestID = cs3.getInt(2);	  // æŠŠ Return Code çµ¦ Request ID				
+											devMessage = cs3.getString(1);   // å›å‚³ x_errbuf åŸ·è¡Œç‹€æ³ ( x_errbuf )	
+											devStatus = Integer.toString(cs3.getInt(2));       // å›å‚³ x_retcode ( x_retcode )		
 											 cs3.close();	  
 											*/ 
 	 
@@ -3512,7 +3512,7 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 											String sqlError= " select ERROR_CODE, ERROR_EXPLANATION from MTL_RESERVATIONS_INTERFACE where RESERVATION_INTERFACE_ID= "+rsInterfaceId+" " ;	
 											//out.println("sqlError="+sqlError+"<BR>");					                                     
 											ResultSet rsError=stateError.executeQuery(sqlError);	
-											if (rsError.next() && rsError.getString("ERROR_CODE")!=null && !rsError.getString("ERROR_CODE").equals("")) // ¦s¦b ERROR ªº¸ê®Æ,¹ïInterface¦Ó¨¥·|¼gErrorCodeÄæ¦ì
+											if (rsError.next() && rsError.getString("ERROR_CODE")!=null && !rsError.getString("ERROR_CODE").equals("")) // å­˜åœ¨ ERROR çš„è³‡æ–™,å°Interfaceè€Œè¨€æœƒå¯«ErrorCodeæ¬„ä½
 											{ 
 												out.println("<TR bgcolor='#FFFFCC'><TD colspan=3><font color='#000099'>RESERVATIONS Transaction fail!! </FONT></TD><TD colspan=3>"+rsInterfaceId+"</TD></TR>");
 												out.println("<TR bgcolor='#FFFFCC'><TD colspan=1><font color='#000099'>Error Message</FONT></TD><TD colspan=1><font color='#CC3366'>"+rsError.getString("ERROR_CODE")+"</FONT></TD><TD colspan=1><font color='#CC3399'>"+rsError.getString("ERROR_EXPLANATION")+"</FONT></TD></TR>");					   
@@ -3523,12 +3523,12 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 											rsError.close();
 											stateError.close();
 
-											if (errorMsgResv.equals("")) //­YErrorMessage¬°ªÅ­È,«hªí¥ÜInterface¦¨¥\³Q¼g¤JMMT,¦^À³¦¨¥\Request ID
+											if (errorMsgResv.equals("")) //è‹¥ErrorMessageç‚ºç©ºå€¼,å‰‡è¡¨ç¤ºInterfaceæˆåŠŸè¢«å¯«å…¥MMT,å›æ‡‰æˆåŠŸRequest ID
 											{	
 												out.println("Success Submit !!! RequestID = "+requestID);
 												out.println("<TR bgcolor='#FFFFCC'><TD colspan=3><font color='#000099'>Processor Request Message </FONT></TD><TD colspan=3>"+devStatus+"("+devMessage+")"+"</TD></TR>");	
-												woPassFlag="Y";	// ¦¨¥\¼g¤JªººX¼Ğ
-												con.commit(); // ­Y¦¨¥\,«h§@Commit,,Åı¨úEntity_IDµL»~				   			  
+												woPassFlag="Y";	// æˆåŠŸå¯«å…¥çš„æ——æ¨™
+												con.commit(); // è‹¥æˆåŠŸ,å‰‡ä½œCommit,,è®“å–Entity_IDç„¡èª¤				   			  
 											}
 
 										}// end of try
@@ -3538,12 +3538,12 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 										}	
 									}//resvFlag!="N"		 
 								} //end if woType=3 
-								// ###################### ¼g¤J Reservations Interface Manager  ¨´################### ¨´		  
+								// ###################### å¯«å…¥ Reservations Interface Manager  è¿„################### è¿„		  
 
-								// §PÂ_§¹¦¨MMT¥ç³Q¼g¤J«á,¤è§ó·s¸Ó¬yµ{¥dª¬ºA¦Ü¤u¥O«İµ²®×	 
+								// åˆ¤æ–·å®ŒæˆMMTäº¦è¢«å¯«å…¥å¾Œ,æ–¹æ›´æ–°è©²æµç¨‹å¡ç‹€æ…‹è‡³å·¥ä»¤å¾…çµæ¡ˆ	 
 								if (errorMsg.equals(""))
 								{ 
-									// #########################  ¬yµ{¥d§¹¤u«á,©I¥s¼g¤JMMT¤ÎMaterial Transaction Lot Interface§@®w¦s²§°Ê_¨´		  
+									// #########################  æµç¨‹å¡å®Œå·¥å¾Œ,å‘¼å«å¯«å…¥MMTåŠMaterial Transaction Lot Interfaceä½œåº«å­˜ç•°å‹•_è¿„		  
 
 									String rcSql=" update APPS.YEW_RUNCARD_ALL set LAST_UPDATED_BY=?, LAST_UPDATE_DATE=?, STATUSID=?, STATUS=?, "+
 												 " QTY_IN_SCRAP=?, CLOSED_DATE=?, COMPLETION_QTY=?, QTY_IN_COMPLETE=?  "+
@@ -3553,19 +3553,19 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 									//out.print("rcSql="+rcSql);           
 									rcStmt.setInt(1,Integer.parseInt(userMfgUserID));
 									rcStmt.setString(2,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); 
-									if (!singleOp) // ­Y¥»¯¸¤£¬°³Ì«á¯¸(Routing¥u¦³¤@¯¸·|µo¥Í¦¹ª¬ªp),«hºû«ù¦b (044) ²¾¯¸¤¤
+									if (!singleOp) // è‹¥æœ¬ç«™ä¸ç‚ºæœ€å¾Œç«™(Routingåªæœ‰ä¸€ç«™æœƒç™¼ç”Ÿæ­¤ç‹€æ³),å‰‡ç¶­æŒåœ¨ (044) ç§»ç«™ä¸­
 									{
 										rcStmt.setString(3,getStatusRs.getString("TOSTATUSID")); 
 										rcStmt.setString(4,getStatusRs.getString("STATUSNAME"));
 										//rcStmt.setString(3,"048"); 
 										//rcStmt.setString(4,"CLOSING");
 										// rcStmt.setFloat(5,Float.parseFloat(aMFGRCCompleteCode[i][2]));
-										rcStmt.setFloat(5,rcScrapQty);	 //2006/12/11 liling ­×¥¿¦¹¬°³ø¼o¼ÆÄæ¦ì,¦Ó«D²¾Âà¼Æ			  
-									} else { // §_«h,§Y§ó·s¦Ü 048¤u¥Oµ²®×¤¤
+										rcStmt.setFloat(5,rcScrapQty);	 //2006/12/11 liling ä¿®æ­£æ­¤ç‚ºå ±å»¢æ•¸æ¬„ä½,è€Œéç§»è½‰æ•¸			  
+									} else { // å¦å‰‡,å³æ›´æ–°è‡³ 048å·¥ä»¤çµæ¡ˆä¸­
 										rcStmt.setString(3,"048"); 
 										rcStmt.setString(4,"CLOSING");
 										//rcStmt.setFloat(5,Float.parseFloat(aMFGRCCompleteCode[i][2]));
-										rcStmt.setFloat(5,rcScrapQty);	 //2006/12/11 liling ­×¥¿¦¹¬°³ø¼o¼ÆÄæ¦ì,¦Ó«D²¾Âà¼Æ			  
+										rcStmt.setFloat(5,rcScrapQty);	 //2006/12/11 liling ä¿®æ­£æ­¤ç‚ºå ±å»¢æ•¸æ¬„ä½,è€Œéç§»è½‰æ•¸			  
 									}
 									rcStmt.setString(6,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); 
 									rcStmt.setFloat(7,Float.parseFloat(aMFGRCCompleteCode[i][2])); 	
@@ -3573,7 +3573,7 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 									rcStmt.executeUpdate();   
 									rcStmt.close(); 
 
-									// §ä°l·¹ªí¥À¬yµ{¥dªº¬yµ{¥d¸¹±NWIP_USED_QTYÄæ¦ì§@²Ö¥[_°_
+									// æ‰¾è¿½æº¯è¡¨æ¯æµç¨‹å¡çš„æµç¨‹å¡è™Ÿå°‡WIP_USED_QTYæ¬„ä½ä½œç´¯åŠ _èµ·
 									Statement stateParRC=con.createStatement();
 									//String sqlParRC= " select ERROR_CODE, ERROR_EXPLANATION from MTL_RESERVATIONS_INTERFACE where RESERVATION_INTERFACE_ID= "+rsInterfaceId+" " ;	
 									//out.println("sqlParRC="+sqlParRC+"<BR>");					                                     
@@ -3586,7 +3586,7 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 									}
 									rsParRC.close();
 									//stateParRC.close();				
-									// §ä°l·¹ªí¥À¬yµ{¥dªº¬yµ{¥d¸¹±NWIP_USED_QTYÄæ¦ì§@²Ö¥[_°_
+									// æ‰¾è¿½æº¯è¡¨æ¯æµç¨‹å¡çš„æµç¨‹å¡è™Ÿå°‡WIP_USED_QTYæ¬„ä½ä½œç´¯åŠ _èµ·
 
 									String woSql=" update APPS.YEW_WORKORDER_ALL set LAST_UPDATED_BY=?, LAST_UPDATE_DATE=?, STATUSID=?, STATUS=?, "+		                  
 									// " PREVIOUS_OP_SEQ_NUM=?, STANDARD_OP_ID=?, STANDARD_OP_DESC=?, OPERATION_SEQ_ID=?, OPERATION_SEQ_NUM=?, NEXT_OP_SEQ_NUM=?, "+
@@ -3602,7 +3602,7 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 									woStmt.executeUpdate();   
 									woStmt.close();
 
-									//§ä°l·¹ªí¥À¬yµ{¥dªº¤u¥O¸¹±NWO_USED_QTYÄæ¦ì§@²Ö¥[_°_
+									//æ‰¾è¿½æº¯è¡¨æ¯æµç¨‹å¡çš„å·¥ä»¤è™Ÿå°‡WO_USED_QTYæ¬„ä½ä½œç´¯åŠ _èµ·
 									//Statement stateParRC=con.createStatement();
 									//String sqlParRC= " select ERROR_CODE, ERROR_EXPLANATION from MTL_RESERVATIONS_INTERFACE where RESERVATION_INTERFACE_ID= "+rsInterfaceId+" " ;	
 									//out.println("sqlParRC="+sqlParRC+"<BR>");					                                     
@@ -3615,39 +3615,39 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 									}
 									rsParRC.close();
 									stateParRC.close();				
-									// §ä°l·¹ªí¥À¬yµ{¥dªº¤u¥O¸¹±NWO_USED_QTYÄæ¦ì§@²Ö¥[_¨´
+									// æ‰¾è¿½æº¯è¡¨æ¯æµç¨‹å¡çš„å·¥ä»¤è™Ÿå°‡WO_USED_QTYæ¬„ä½ä½œç´¯åŠ _è¿„
 
 								}  // End of if (errorMsg.equals(""))	   
 
-							} // End of if (getRetScrapCode==0 && getRetCode==0) // ­Y³ø¼o¤Î²¾¯¸³£°õ¦æ¦¨¥\,«h°õ¦æ¨t²Î¬yµ{¤Î²§°Ê§ó·s 
+							} // End of if (getRetScrapCode==0 && getRetCode==0) // è‹¥å ±å»¢åŠç§»ç«™éƒ½åŸ·è¡ŒæˆåŠŸ,å‰‡åŸ·è¡Œç³»çµ±æµç¨‹åŠç•°å‹•æ›´æ–° 
 							else {
-								interfaceErr = true;   // ªí¥Ü³ø¼o©Î§¹¤u¤J®wInterface¦³²§±`
+								interfaceErr = true;   // è¡¨ç¤ºå ±å»¢æˆ–å®Œå·¥å…¥åº«Interfaceæœ‰ç•°å¸¸
 							}   
 
-						} //End of if (aMFGRCCompleteCode[i][2]>0) // ­Y³]©w²¾¯¸¼Æ¶q¤j©ó0¤~¶i¦æ²¾¯¸¤Î³ø¼o	
-						out.print("<BR><font color='#0033CC'>¬yµ{¥d("+aMFGRCCompleteCode[i][1]+")§¹¤u¤J®wO.K.</font><font color='#CC3333'>(WO_NO="+woNo+" Wip_Entity_ID="+entityId+")</font>"); 
+						} //End of if (aMFGRCCompleteCode[i][2]>0) // è‹¥è¨­å®šç§»ç«™æ•¸é‡å¤§æ–¼0æ‰é€²è¡Œç§»ç«™åŠå ±å»¢	
+						out.print("<BR><font color='#0033CC'>æµç¨‹å¡("+aMFGRCCompleteCode[i][1]+")å®Œå·¥å…¥åº«O.K.</font><font color='#CC3333'>(WO_NO="+woNo+" Wip_Entity_ID="+entityId+")</font>"); 
 					} // End of if (choice[k]==aMFGRCMovingCode[i][0] || choice[k].equals(aMFGRCMovingCode[i][0]))
-				} // End of for (int k=0;k<choice.length;k++) // §PÂ_¨Ï¥ÎªÌ¦³Check¤~§ó·s
+				} // End of for (int k=0;k<choice.length;k++) // åˆ¤æ–·ä½¿ç”¨è€…æœ‰Checkæ‰æ›´æ–°
 
 			} // End of for (i=0;i<aMFGRCMovingCode.length;i++)
 
 		} // end of if (aMFGRCCompleteCode!=null) 
-		//out.print("¬yµ{¥d§¹¤u¤J®wO.K.(WO_NO="+woNo+" Wip_Entity_ID="+entityId+")");
+		//out.print("æµç¨‹å¡å®Œå·¥å…¥åº«O.K.(WO_NO="+woNo+" Wip_Entity_ID="+entityId+")");
 
 
-		// ¨Ï¥Î§¹²¦²MªÅ2ºû°}¦C
+		// ä½¿ç”¨å®Œç•¢æ¸…ç©º2ç¶­é™£åˆ—
 		if (aMFGRCCompleteCode!=null)
 		{ 
 			arrMFGRCCompleteBean.setArray2DString(null); 
 		}
 
 	} // End of if (actionID.equals("012") && fromStatusID.equals("046"))
-	//MFG¬yµ{¥d§¹¤u¤J®w_¨´	(ACTION=012)   ¬yµ{¥d²¾¯¸¤¤044 --> ¬yµ{¥d§¹¤u¤J®w046(»İ§PÂ_¬O§_¥»¯¸¬°³Ì«á¤@¯¸)
+	//MFGæµç¨‹å¡å®Œå·¥å…¥åº«_è¿„	(ACTION=012)   æµç¨‹å¡ç§»ç«™ä¸­044 --> æµç¨‹å¡å®Œå·¥å…¥åº«046(éœ€åˆ¤æ–·æ˜¯å¦æœ¬ç«™ç‚ºæœ€å¾Œä¸€ç«™)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	errorFlag ="040>050";
-	//=======¥¼®i¬yµ{¥d¤u¥O§R°£...°_	(ACTION=021)   ¤u¥O¥Í¦¨040 --> ¤u¥O§R°£¤¤050   add by liling 2006/10/19
+	//=======æœªå±•æµç¨‹å¡å·¥ä»¤åˆªé™¤...èµ·	(ACTION=021)   å·¥ä»¤ç”Ÿæˆ040 --> å·¥ä»¤åˆªé™¤ä¸­050   add by liling 2006/10/19
 	if (actionID.equals("021") && fromStatusID.equals("040"))
 	{   
 		errorFlag ="040>050:000";
@@ -3693,12 +3693,12 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 		travelsStmt.close();	  
 
 	}
-	//========¥¼®i¬yµ{¥d¤u¥O§R°£....¨´	(ACTION=021)   ¤u¥O¥Í¦¨040 --> ¤u¥O§R°£¤¤050
+	//========æœªå±•æµç¨‹å¡å·¥ä»¤åˆªé™¤....è¿„	(ACTION=021)   å·¥ä»¤ç”Ÿæˆ040 --> å·¥ä»¤åˆªé™¤ä¸­050
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	errorFlag ="042>050";
-	//=======¥¼§ë²£¬yµ{¥d§R°£,¤u¥O¼Æ¶q´î¤Ö...°_	(ACTION=021)   ¬yµ{¥d®i¶}042 -->¬yµ{¥d§R°£¤¤050   add by liling 2006/10/31
+	//=======æœªæŠ•ç”¢æµç¨‹å¡åˆªé™¤,å·¥ä»¤æ•¸é‡æ¸›å°‘...èµ·	(ACTION=021)   æµç¨‹å¡å±•é–‹042 -->æµç¨‹å¡åˆªé™¤ä¸­050   add by liling 2006/10/31
 	if (actionID.equals("021") && fromStatusID.equals("042"))   // 
 	{  
 		if (aMFGRCDeleteCode!=null) 
@@ -3724,23 +3724,23 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 				{ //out.println("choice[k]="+choice[k]);  
 					if (choice[k]==aMFGRCDeleteCode[j][0] || choice[k].equals(aMFGRCDeleteCode[j][0]))
 					{
-						tot_del_qty=tot_del_qty+(Float.parseFloat(aMFGRCDeleteCode[j][6]));  //¿ï¾Ü­n§R°£ªº¬yµ{¥d¼Æ¶q
-						//out.print("<br>¥¼Âà«etot_del_qty="+tot_del_qty); 
+						tot_del_qty=tot_del_qty+(Float.parseFloat(aMFGRCDeleteCode[j][6]));  //é¸æ“‡è¦åˆªé™¤çš„æµç¨‹å¡æ•¸é‡
+						//out.print("<br>æœªè½‰å‰tot_del_qty="+tot_del_qty); 
 
-						//¨ú¤p¼Æ¤T¦ì   20070316 liling
-						java.text.DecimalFormat nf = new java.text.DecimalFormat("###,##0.000"); // ¨ú¤p¼Æ«á¤T¦ì
+						//å–å°æ•¸ä¸‰ä½   20070316 liling
+						java.text.DecimalFormat nf = new java.text.DecimalFormat("###,##0.000"); // å–å°æ•¸å¾Œä¸‰ä½
 						String strTotDelQty = nf.format(tot_del_qty);
 						java.math.BigDecimal bd = new java.math.BigDecimal(strTotDelQty);
 						java.math.BigDecimal delQty = bd.setScale(3, java.math.BigDecimal.ROUND_HALF_UP);
 						tot_del_qty =delQty.floatValue();
-						//out.print("<br>Âà´««átot_del_qty="+tot_del_qty);
+						//out.print("<br>è½‰æ›å¾Œtot_del_qty="+tot_del_qty);
 					} 
 				} 
 			}
 			//=================  insert into WIP_JOB_SCHEDULE_INTERFACE  , begin =================
 			try
 			{
-				//======¨ú¤£¨¬Äæ¦ì
+				//======å–ä¸è¶³æ¬„ä½
 				//out.print("Step1");
 				String sqla = " select YWA.DEPT_NO,YWA.JOB_TYPE,YWA.INVENTORY_ITEM_ID,YWA.INV_ITEM,YWA.ITEM_DESC,YWA.WO_QTY,YWA.SCHEDULE_STRART_DATE STARTDATE, "+
 				"        YWA.WIP_ENTITY_ID,YWA.SCHEDULE_END_DATE ENDDATE,YWA.CREATE_BY,YWA.ORGANIZATION_ID,YWA.COMPLETION_SUBINVENTORY,YWA.ROUTING_REFERENCE_ID,  "+
@@ -3771,7 +3771,7 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 				rsa.close();
 				statea.close(); 
 
-				//¨ú¤u¥O²Ä¤@¯¸³Ñ¾lqueue¼Æ¶q
+				//å–å·¥ä»¤ç¬¬ä¸€ç«™å‰©é¤˜queueæ•¸é‡
 				String sqlb = " select QUANTITY_IN_QUEUE from wip_operations  where wip_entity_id = "+entityId+" and organization_id = "+organizationId+" and OPERATION_SEQ_NUM="+minOpNum+"  ";
 				// out.print("<br>sqlb="+sqlb);
 				Statement stateb=con.createStatement();
@@ -3783,7 +3783,7 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 
 
 					//out.print("<br>wipQueueQty="+wipQueueQty+"  tot_del_qty="+tot_del_qty);
-					if (wipQueueQty < tot_del_qty)   //­Y¤u¥O­º¯¸queue³Ñ¾l¼Æ¤£¨¬,­×§ïqueue¼Æ¶q=Á`§R¥d¼Æ,¥H¨¾¤î§R¥d¥¢±Ñ
+					if (wipQueueQty < tot_del_qty)   //è‹¥å·¥ä»¤é¦–ç«™queueå‰©é¤˜æ•¸ä¸è¶³,ä¿®æ”¹queueæ•¸é‡=ç¸½åˆªå¡æ•¸,ä»¥é˜²æ­¢åˆªå¡å¤±æ•—
 					{
 						String woSqlq=" update wip_operations  set QUANTITY_IN_QUEUE = "+tot_del_qty+" "+
 						"   where wip_entity_id = "+entityId+" and organization_id = "+organizationId+" and OPERATION_SEQ_NUM="+minOpNum+"  ";
@@ -3794,25 +3794,25 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 					}
 
 					java.sql.Date startdate = null;
-					startdate = new java.sql.Date(Integer.parseInt(startDate.substring(0,4))-1900,Integer.parseInt(startDate.substring(4,6))-1,Integer.parseInt(startDate.substring(6,8)));  // µ¹startDate
+					startdate = new java.sql.Date(Integer.parseInt(startDate.substring(0,4))-1900,Integer.parseInt(startDate.substring(4,6))-1,Integer.parseInt(startDate.substring(6,8)));  // çµ¦startDate
 
-					newWoQty=(Float.parseFloat(woQty)-tot_del_qty);   //¨ú±o§R°£¬yµ{¥d¼Æ¶q
+					newWoQty=(Float.parseFloat(woQty)-tot_del_qty);   //å–å¾—åˆªé™¤æµç¨‹å¡æ•¸é‡
 					//out.print("<br>new qty="+newWoQty);
 
-					//¨ú¤p¼Æ¤T¦ì   20070316 liling
-					java.text.DecimalFormat nf = new java.text.DecimalFormat("###,##0.000"); // ¨ú¤p¼Æ«á¤T¦ì
+					//å–å°æ•¸ä¸‰ä½   20070316 liling
+					java.text.DecimalFormat nf = new java.text.DecimalFormat("###,##0.000"); // å–å°æ•¸å¾Œä¸‰ä½
 					String strNewWoQty = nf.format(newWoQty);
 					java.math.BigDecimal bd = new java.math.BigDecimal(strNewWoQty);
 					java.math.BigDecimal newQty = bd.setScale(3, java.math.BigDecimal.ROUND_HALF_UP);
 					newWoQty =newQty.floatValue();
-					//out.print("<br>Âà´««ánewWoQty="+newWoQty+"<br>");
+					//out.print("<br>è½‰æ›å¾ŒnewWoQty="+newWoQty+"<br>");
 
 
 
 					//out.print("interfaceId="+interfaceId);
 					PreparedStatement instmt=null;
 
-					//­Y¼Æ¶q¬°'0',§PÂ_¬O§_¦³»â®Æ,­YµL»â®Æ«h°µcanceled
+					//è‹¥æ•¸é‡ç‚º'0',åˆ¤æ–·æ˜¯å¦æœ‰é ˜æ–™,è‹¥ç„¡é ˜æ–™å‰‡åšcanceled
 					if (newWoQty==0)
 					{
 						String sqlfa = "select sum(QUANTITY_ISSUED) qty_issued from WIP_REQUIREMENT_OPERATIONS where WIP_ENTITY_ID = "+entityId+" ";	 			 
@@ -3829,7 +3829,7 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 						if (qtyIssued==null || qtyIssued.equals("") || qtyIssued=="0" || qtyIssued.equals("0"))
 						{
 							statusType=4 ;                       //2007/04/05 liling update  7->4  
-							newWoQty=Float.parseFloat(woQty);    //­Y§R°£ªº¼Æ¶q=¤u¥O¼Æ¶q,«h¤u¥O¼Æ¶q¤£ÅÜ,¦ıª¬ºA§ï¬°'canceled'
+							newWoQty=Float.parseFloat(woQty);    //è‹¥åˆªé™¤çš„æ•¸é‡=å·¥ä»¤æ•¸é‡,å‰‡å·¥ä»¤æ•¸é‡ä¸è®Š,ä½†ç‹€æ…‹æ”¹ç‚º'canceled'
 							woPassFlag="Y";
 							//out.print("statusType="+statusType);
 							//out.print("woPassFlag="+woPassFlag);
@@ -3837,7 +3837,7 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 						else
 						{
 							%><script LANGUAGE="JavaScript">
-							alert("­ìª«®Æ¥¼°h®Æ,½Ğ¥ı°õ¦æ°h®Æ!!");
+							alert("åŸç‰©æ–™æœªé€€æ–™,è«‹å…ˆåŸ·è¡Œé€€æ–™!!");
 							</script>
 							<%	
 							woPassFlag="N";    //2007/04/05 liling update 
@@ -3863,7 +3863,7 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 						rsf.close();
 						statef.close(); 	
 
-						// Äİ¼Ğ·Ç¤u³æ
+						// å±¬æ¨™æº–å·¥å–®
 						inSql="insert into WIP_JOB_SCHEDULE_INTERFACE (   "+
 								"       FIRST_UNIT_START_DATE,GROUP_ID,LAST_UPDATE_DATE,LAST_UPDATED_BY,CREATION_DATE,CREATED_BY,  "+
 								"       WIP_ENTITY_ID,LOAD_TYPE,NET_QUANTITY,ORGANIZATION_ID,PRIMARY_ITEM_ID,  "+
@@ -3871,7 +3871,7 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 								"values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) "; 
 						//out.print("inSql="+inSql);				
 						instmt=con.prepareStatement(inSql);     
-						instmt.setDate(1,startdate);    //FIRST_UNIT_START_DATE ¹w­p§ë¤J¤é	  
+						instmt.setDate(1,startdate);    //FIRST_UNIT_START_DATE é è¨ˆæŠ•å…¥æ—¥	  
 						instmt.setInt(2,Integer.parseInt(groupId)); 
 						instmt.setDate(3,processDateTime);         //lastupdate date
 						instmt.setInt(4,Integer.parseInt(userMfgUserID));    //lastupdate by
@@ -3900,7 +3900,7 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 					out.println("Exception WIP_JOB_SCHEDULE_INTERFACE:"+e.getMessage());
 				}	
 
-				//°õ¦æ WIP_MASS_LOAD
+				//åŸ·è¡Œ WIP_MASS_LOAD
 				try
 				{
 					if (interfaceFlag=="Y" || interfaceFlag.equals("Y"))
@@ -3916,8 +3916,8 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 					{
 						respID = rsResp.getString("RESPONSIBILITY_ID");
 					} else {
-						//respID = "50146"; // §ä¤£¨ì«h¹w³] --> TSC WIP Super User ¹w³]
-						respID = "50777"; // §ä¤£¨ì«h¹w³] --> YEW WIP Super User ¹w³]
+						//respID = "50146"; // æ‰¾ä¸åˆ°å‰‡é è¨­ --> TSC WIP Super User é è¨­
+						respID = "50777"; // æ‰¾ä¸åˆ°å‰‡é è¨­ --> YEW WIP Super User é è¨­
 					}
 					rsResp.close();
 					stateResp.close();	 
@@ -3926,39 +3926,39 @@ alert("Oracle³ø¼o©Î²¾¯¸²§±`,½Ğ¬¢MIS¬d©ú­ì¦]!!!");
 					{
 %>
 <script language="javascript">		
-alert("½Ğ¿é¤JGroupID !!!\n xxx.jsp?GROUPID=xxx");
+alert("è«‹è¼¸å…¥GroupID !!!\n xxx.jsp?GROUPID=xxx");
 </script>
 <%
 					} 
 					else 
 					{
-						//	Step1. ¼g¤J Schedult Discrete Job API submit request ªºProcedure ¨Ã¨ú¦^ Oracle Request ID
+						//	Step1. å¯«å…¥ Schedult Discrete Job API submit request çš„Procedure ä¸¦å–å› Oracle Request ID
 						/*	 	
 						CallableStatement cs3 = con.prepareCall("{call TSC_WIP_MASSLOAD_REQUEST(?,?,?,?)}");			 
 						cs3.setString(1,groupId);  //*  Group ID 	
-						cs3.setString(2,userMfgUserID);    //  user_id ­×§ï¤HID /	
-						cs3.setString(3,respID);  //*  ¨Ï¥ÎªºResponsibility ID --> TSC_INV_Semi_SU /				 
+						cs3.setString(2,userMfgUserID);    //  user_id ä¿®æ”¹äººID /	
+						cs3.setString(3,respID);  //*  ä½¿ç”¨çš„Responsibility ID --> TSC_INV_Semi_SU /				 
 						cs3.registerOutParameter(4, Types.INTEGER); 
 						cs3.execute();
 						// out.println("Procedure : Execute Success !!! ");
 						int requestID = cs3.getInt(4);
 						cs3.close();
 
-						java.lang.Thread.sleep(5000);	 // ©µ¿ğ¤­¬í,µ¥«İConcurrent°õ¦æ§¹²¦,¨úµ²ªG§PÂ_	
+						java.lang.Thread.sleep(5000);	 // å»¶é²äº”ç§’,ç­‰å¾…ConcurrentåŸ·è¡Œå®Œç•¢,å–çµæœåˆ¤æ–·	
 						*/
 
 						CallableStatement cs3 = con.prepareCall("{call TSC_WIP_MASSLOAD_REQUEST(?,?,?,?,?,?)}");			 
 						cs3.setString(1,groupId);  //*  Group ID 	
-						cs3.setString(2,userMfgUserID);    //  user_id ­×§ï¤HID /	
-						cs3.setString(3,respID);  //*  ¨Ï¥ÎªºResponsibility ID --> TSC_INV_Semi_SU /				 
+						cs3.setString(2,userMfgUserID);    //  user_id ä¿®æ”¹äººID /	
+						cs3.setString(3,respID);  //*  ä½¿ç”¨çš„Responsibility ID --> TSC_INV_Semi_SU /				 
 						cs3.registerOutParameter(4, Types.INTEGER);
-						cs3.registerOutParameter(5, Types.VARCHAR);                  //¦^¶Ç DEV_STATUS
-						cs3.registerOutParameter(6, Types.VARCHAR);                  //¦^¶Ç DEV_MASSAGE
+						cs3.registerOutParameter(5, Types.VARCHAR);                  //å›å‚³ DEV_STATUS
+						cs3.registerOutParameter(6, Types.VARCHAR);                  //å›å‚³ DEV_MASSAGE
 						cs3.execute();
 						// out.println("Procedure : Execute Success !!! ");
 						int requestID = cs3.getInt(4);
-						devStatus = cs3.getString(5);   //  ¦^¶Ç REQUEST °õ¦æª¬ªp
-						devMessage = cs3.getString(6);   //  ¦^¶Ç REQUEST °õ¦æª¬ªp°T®§
+						devStatus = cs3.getString(5);   //  å›å‚³ REQUEST åŸ·è¡Œç‹€æ³
+						devMessage = cs3.getString(6);   //  å›å‚³ REQUEST åŸ·è¡Œç‹€æ³è¨Šæ¯
 						cs3.close(); 
 
 						String sqlf1 = " select INTERFACE_ID from WIP_JOB_SCHEDULE_INTERFACE where group_id= "+groupId;
@@ -3980,7 +3980,7 @@ alert("½Ğ¿é¤JGroupID !!!\n xxx.jsp?GROUPID=xxx");
 						//out.println("Step3"+"<BR>");					            
 						out.println("<TABLE width='70%'>");                         
 						ResultSet rsError=stateError.executeQuery(sqlError);				 
-						while (rsError.next()) // ¦s¦b ERROR ªº¸ê®Æ
+						while (rsError.next()) // å­˜åœ¨ ERROR çš„è³‡æ–™
 						{ 
 							errorMsg = errorMsg+"&nbsp;"+ rsError.getString("ERROR");
 							out.println("<TR bgcolor='#FFFFCC'><TD colspan=1 nowrap><font color='#000099'>WIP_INTERFACE Transaction fail!! </FONT></TD><TD colspan=1>"+requestID+"</TD></TR>");
@@ -3988,15 +3988,15 @@ alert("½Ğ¿é¤JGroupID !!!\n xxx.jsp?GROUPID=xxx");
 							out.println("<TR bgcolor='#FFFFCC'><TD colspan=3><font color='#000099'>Processor Request Message </FONT></TD><TD colspan=3>"+devStatus+"("+devMessage+")"+"</TD></TR>");	
 							woPassFlag="N";	
 							out.println("<BR>rsError="+woPassFlag);	   
-							// ¦pªG¿ù»~ªº°T®§³QÄÀ¥X,»İ¦A»POracle½T»{¬O§_¯uªº¤u³æ¥¼²£¥Í,¦p¤´²£¥Í,«h±N²£¥ÍªºPassFlag³]¦¨ Y ,Åı¬yµ{¥d¤´¥i®i¶}
+							// å¦‚æœéŒ¯èª¤çš„è¨Šæ¯è¢«é‡‹å‡º,éœ€å†èˆ‡Oracleç¢ºèªæ˜¯å¦çœŸçš„å·¥å–®æœªç”¢ç”Ÿ,å¦‚ä»ç”¢ç”Ÿ,å‰‡å°‡ç”¢ç”Ÿçš„PassFlagè¨­æˆ Y ,è®“æµç¨‹å¡ä»å¯å±•é–‹
 							//   String sqlOp = " select WIP_ENTITY_ID from WIP.WIP_ENTITIES where WIP_ENTITY_NAME='"+woNo+"' " ;
-							//out.print("sqlOp ¸É¤£¨¬¸ê®ÆÄæ¦ì="+sqlOp);
+							//out.print("sqlOp è£œä¸è¶³è³‡æ–™æ¬„ä½="+sqlOp);
 							//    Statement stateOp=con.createStatement();
 							//    ResultSet rsOp=stateOp.executeQuery(sqlOp);
 							//     if (rsOp.next())
 							//      {
 							// 	  	 woPassFlag="N"; //2007/04/05 liling update 
-							//		 out.println("<BR><font color='#993366'>¤u¥O­×§ï§¹¦¨,¦ı§t²§±`°T®§!!!</font><BR>");
+							//		 out.println("<BR><font color='#993366'>å·¥ä»¤ä¿®æ”¹å®Œæˆ,ä½†å«ç•°å¸¸è¨Šæ¯!!!</font><BR>");
 							//       }
 							//       rsOp.close();
 							//       stateOp.close(); 
@@ -4009,8 +4009,8 @@ alert("½Ğ¿é¤JGroupID !!!\n xxx.jsp?GROUPID=xxx");
 						{	
 							out.println("<BR><font color='#993366'>Success Submit WIP_MASSLOAD_REQUEST!!!</font><font color='#3333FF'>RequestID = "+requestID+"</font><BR>");
 							out.println("<TR bgcolor='#FFFFCC'><TD colspan=3><font color='#000099'>Processor Request Message </FONT></TD><TD colspan=3>"+devStatus+"("+devMessage+")"+"</TD></TR>");	
-							woPassFlag="Y";	// ¦¨¥\¼g¤JªººX¼Ğ
-							con.commit(); // ­Y¦¨¥\,«h§@Commit,,Åı¨úEntity_IDµL»~				   			  
+							woPassFlag="Y";	// æˆåŠŸå¯«å…¥çš„æ——æ¨™
+							con.commit(); // è‹¥æˆåŠŸ,å‰‡ä½œCommit,,è®“å–Entity_IDç„¡èª¤				   			  
 						}
 
 					}//end of else
@@ -4035,7 +4035,7 @@ alert("½Ğ¿é¤JGroupID !!!\n xxx.jsp?GROUPID=xxx");
 
 				PreparedStatement woStmta=con.prepareStatement(woSqla);
 				//out.print("woSqla="+woSqla); 
-				woStmta.setFloat(1,newWoQty);   //­×§ï«á¤u¥O¼Æ¶q
+				woStmta.setFloat(1,newWoQty);   //ä¿®æ”¹å¾Œå·¥ä»¤æ•¸é‡
 				woStmta.setString(2,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond());
 				woStmta.setInt(3,Integer.parseInt(userMfgUserID));
 				if ( statusType==4 )
@@ -4048,7 +4048,7 @@ alert("½Ğ¿é¤JGroupID !!!\n xxx.jsp?GROUPID=xxx");
 					String woSqlb=" delete YEW_MFG_TRAVELS_ALL  where EXTEND_NO = '"+woNo+"' ";
 					PreparedStatement woStmtb=con.prepareStatement(woSqlb);
 					//out.print("woSqla="+woSqla); 
-					// woStmtc.setFloat(1,newWoQty);   //­×§ï«á¤u¥O¼Æ¶q
+					// woStmtc.setFloat(1,newWoQty);   //ä¿®æ”¹å¾Œå·¥ä»¤æ•¸é‡
 					woStmtb.executeUpdate();   
 					woStmtb.close(); 		
 
@@ -4061,7 +4061,7 @@ alert("½Ğ¿é¤JGroupID !!!\n xxx.jsp?GROUPID=xxx");
 					"    where EXTEND_NO = '"+woNo+"' "; 	
 					PreparedStatement woStmtc=con.prepareStatement(woSqlc);
 					//out.print("woSqla="+woSqla); 
-					woStmtc.setFloat(1,newWoQty);   //­×§ï«á¤u¥O¼Æ¶q
+					woStmtc.setFloat(1,newWoQty);   //ä¿®æ”¹å¾Œå·¥ä»¤æ•¸é‡
 					woStmtc.executeUpdate();   
 					woStmtc.close(); 		
 				}     
@@ -4078,7 +4078,7 @@ alert("½Ğ¿é¤JGroupID !!!\n xxx.jsp?GROUPID=xxx");
 							//out.print("woSqlb="+woSqlb); 
 							woStmtb.setString(1,aMFGRCDeleteCode[i][1]);   //wono
 							woStmtb.setFloat(2,Float.parseFloat(woQty));   //ORGANIAL_QTY 
-							woStmtb.setString(3,"RUNCARD CANCELED");   //­×§ï«á¤u¥O¼Æ¶q
+							woStmtb.setString(3,"RUNCARD CANCELED");   //ä¿®æ”¹å¾Œå·¥ä»¤æ•¸é‡
 							woStmtb.setString(4,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond());
 							woStmtb.setInt(5,Integer.parseInt(userMfgUserID));
 							woStmtb.setFloat(6,newWoQty);   // newWoQty		   
@@ -4099,7 +4099,7 @@ alert("½Ğ¿é¤JGroupID !!!\n xxx.jsp?GROUPID=xxx");
 							woStmt.executeUpdate();   
 							woStmt.close(); 
 
-							// %%%%%%%%%%%%%%%%%%% ¼g¤JRun card Move Transaction %%%%%%%%%%%%%%%%%%%_°_
+							// %%%%%%%%%%%%%%%%%%% å¯«å…¥Run card Move Transaction %%%%%%%%%%%%%%%%%%%_èµ·
 							String SqlQueueTrans="insert into APPS.YEW_RUNCARD_TRANSACTIONS( "+
 												"            RUNCAD_ID, RC_TRANSACTION_ID, RUNCARD_NO, ORGANIZATION_ID, WIP_ENTITY_ID, PRIMARY_ITEM_ID, "+
 												"            TRANSACTION_DATE,TRANSACTION_QUANTITY, RCSTATUSID, RCSTATUS, LASTUPDATE_BY,LASTUPDATE_DATE, ACTIONID, ACTIONNAME )  "+
@@ -4119,20 +4119,20 @@ alert("½Ğ¿é¤JGroupID !!!\n xxx.jsp?GROUPID=xxx");
 							queueTransStmt.close();	
 
 							//out.print("insert into APPS.YEW_RUNCARD_TRANSACTIONS completed!!");
-							out.print("<br>  ¤u¥O:"+woNo+"     ¬yµ{¥d¸¹:"+aMFGRCDeleteCode[i][2]+"    ¼Æ¶q:"+aMFGRCDeleteCode[i][6]+"  ¤v§R°£!!"); 
+							out.print("<br>  å·¥ä»¤:"+woNo+"     æµç¨‹å¡è™Ÿ:"+aMFGRCDeleteCode[i][2]+"    æ•¸é‡:"+aMFGRCDeleteCode[i][6]+"  å·±åˆªé™¤!!"); 
 						}//end if
 					}//end for y  	 
 				} //end for
 			} //if (( woPassFlag =="Y" || woPassFlag.equals("Y")) && (interfaceFlag=="Y" || interfaceFlag.equals("Y")) )
-			// %%%%%%%%%%%%%%%%%%% ¼g¤JRun card Move Transaction %%%%%%%%%%%%%%%%%%%_¨´ 
+			// %%%%%%%%%%%%%%%%%%% å¯«å…¥Run card Move Transaction %%%%%%%%%%%%%%%%%%%_è¿„ 
 
 		}//arrMFGRCDeleteBean !=null	 	  
 	}
-	//========¥¼§ë²£¬yµ{¥d§R°£,¤u¥O¼Æ¶q´î¤Ö...¨´	(ACTION=021)   ¬yµ{¥d®i¶}042 -->¬yµ{¥d§R°£¤¤050   add by liling 2006/10/31
+	//========æœªæŠ•ç”¢æµç¨‹å¡åˆªé™¤,å·¥ä»¤æ•¸é‡æ¸›å°‘...è¿„	(ACTION=021)   æµç¨‹å¡å±•é–‹042 -->æµç¨‹å¡åˆªé™¤ä¸­050   add by liling 2006/10/31
 
 	errorFlag ="99999";
 	out.println("<BR>");
-	//out.println("<A HREF='../ORADDSMainMenu.jsp'>");%><font size="2">¦^­º­¶</font><%out.println("</A>");
+	//out.println("<A HREF='../ORADDSMainMenu.jsp'>");%><font size="2">å›é¦–é </font><%out.println("</A>");
 
 	getStatusStat.close();
 	getStatusRs.close();  
@@ -4149,8 +4149,8 @@ catch (Exception e)
 
 <table width="60%" border="1" cellpadding="0" cellspacing="0" >
 <tr>
-<td width="278"><font size="2">WIP³æ¾Ú³B²z</font></td>
-<td width="297"><font size="2">WIP¬d¸ß¤Î³øªí</font></td>    
+<td width="278"><font size="2">WIPå–®æ“šè™•ç†</font></td>
+<td width="297"><font size="2">WIPæŸ¥è©¢åŠå ±è¡¨</font></td>    
 </tr>
 <tr>   
 <td>
@@ -4203,12 +4203,12 @@ catch (Exception e)
 	out.println(e.getMessage());
 }//end of catch   
 
-// ­Y«á¬q¤u¥O,¨ä«e¬q¤u¥O§¹¤u§å¸¹(¬yµ{¥d¸¹)½T»{«á°}¦C²M°£
+// è‹¥å¾Œæ®µå·¥ä»¤,å…¶å‰æ®µå·¥ä»¤å®Œå·¥æ‰¹è™Ÿ(æµç¨‹å¡è™Ÿ)ç¢ºèªå¾Œé™£åˆ—æ¸…é™¤
 if (woType.equals("3"))
 {
 	if (aMFGLotMatchCode!=null)
 	{
-		arrayLotIssueCheckBean.setArray2DString(null); // §â«á¬q¤u¥O¹ïÀ³ªº»â®Æ§å¸¹¥ç²MªÅ
+		arrayLotIssueCheckBean.setArray2DString(null); // æŠŠå¾Œæ®µå·¥ä»¤å°æ‡‰çš„é ˜æ–™æ‰¹è™Ÿäº¦æ¸…ç©º
 	}
 }
 
@@ -4218,7 +4218,7 @@ if (woType.equals("3"))
 </FORM>
 </body>
 <!--%@ include file="/jsp/include/ProgressStatusBarStop.jsp"%-->
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 </html>

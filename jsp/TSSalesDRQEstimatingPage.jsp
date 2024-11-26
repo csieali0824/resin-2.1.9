@@ -1,24 +1,24 @@
-<!-- 20101112 liling §â­«·s«ü¬£©Î§å°h»¡©ú¥[¨ìhistory -->
-<!-- 20101203 liling ·s¼WPC_COMMENT,­ìREMARK§ïUPDATE¦ÜPC_COMMENT,Á×§K»\±¼SALES¥´ªº -->
-<!-- 20141013 Peggy,¥[¤JD1-010 CCYANGÂàSLOW MOVING³Æµù-->
-<!-- 20141210 Peggy,¨ÑÀ³°Ó¥æ´Á¤£¥i¤p©ó¨t²Î¤é-->
-<!-- 20150123 Peggy,­×¥¿«È¤á«~¸¹Åã¥ÜÀ³§ìraddman.tsdelivery_notice_detail.ordered_item-->
-<!-- 20150813 Peggy,·íTSCE ORDER PC¥æ´Á±ß©óSSD¥B¬°SEA(C)­pºâ¤u¼t¥æ´Á+FOB TERM¬O§_¦bCRD«e«á¨â¤Ñ,­Y¬O,«hPASS,§_«h¦Û°ÊUPDATE SHIPPING METHOD=AIR(C),­«·s­pºâSSD-->
-<!-- 20160825 Peggy,¤u¼tCONFIRM SEA(UC)µLªkº¡¨¬«È¤áCRD,¹B¿é¤è¦¡¥ÑSEA(UC)§ï¦¨AIR(UC),¨t²Î­«·s­pºâAIR(UC)¥æ´Á¨Ñ¤u¼t½T»{
-<!-- 20160913 Peggy,check customer:GE tsch rfq yew 1156 ¦^ÂĞ¥æ´Á¬O§_²Å¦X«È¤á¥X³f¤é-->
-<!-- 20161019 Peggy,°±¥Îfunction:TSC_RFQ_GET_TSCA_SSD,§ï¥ÎTSCA_GET_ORDER_SSD-->
-<!-- 20170510 Peggy,yew¦^T¥æ´Á²Î¤@¬°¶g¤@-->
-<!-- 20170711 Peggy,TSCA¹J20990101¥æ´Á,¤£­«ºâSSD¤ÎSHIPPING METHOD-->
-<!-- 20180207 Peggy,¨ÑÀ³°Ó=Ä¬©T¥B­q³æÃş«¬=1142,­q³æÃş«¬¦Û°ÊÂà´«¬°1141, FOB³]©w¬°FOB TAIWAN-->
-<!-- 20181113 Peggy,MUSTARD©T©w¶g¤@¥X³f(BY SEA),¦ı«æ®Æ±Æ¥~-->
-<!-- 20181221 Peggy,Åã¥Üpackage-->
-<%@ page  contentType="text/html; charset=utf-8" pageEncoding="big5" language="java" import="java.sql.*,java.text.*"%>
+<!-- 20101112 liling æŠŠé‡æ–°æŒ‡æ´¾æˆ–æ‰¹é€€èªªæ˜åŠ åˆ°history -->
+<!-- 20101203 liling æ–°å¢PC_COMMENT,åŸREMARKæ”¹UPDATEè‡³PC_COMMENT,é¿å…è“‹æ‰SALESæ‰“çš„ -->
+<!-- 20141013 Peggy,åŠ å…¥D1-010 CCYANGè½‰SLOW MOVINGå‚™è¨»-->
+<!-- 20141210 Peggy,ä¾›æ‡‰å•†äº¤æœŸä¸å¯å°æ–¼ç³»çµ±æ—¥-->
+<!-- 20150123 Peggy,ä¿®æ­£å®¢æˆ¶å“è™Ÿé¡¯ç¤ºæ‡‰æŠ“raddman.tsdelivery_notice_detail.ordered_item-->
+<!-- 20150813 Peggy,ç•¶TSCE ORDER PCäº¤æœŸæ™šæ–¼SSDä¸”ç‚ºSEA(C)è¨ˆç®—å·¥å» äº¤æœŸ+FOB TERMæ˜¯å¦åœ¨CRDå‰å¾Œå…©å¤©,è‹¥æ˜¯,å‰‡PASS,å¦å‰‡è‡ªå‹•UPDATE SHIPPING METHOD=AIR(C),é‡æ–°è¨ˆç®—SSD-->
+<!-- 20160825 Peggy,å·¥å» CONFIRM SEA(UC)ç„¡æ³•æ»¿è¶³å®¢æˆ¶CRD,é‹è¼¸æ–¹å¼ç”±SEA(UC)æ”¹æˆAIR(UC),ç³»çµ±é‡æ–°è¨ˆç®—AIR(UC)äº¤æœŸä¾›å·¥å» ç¢ºèª
+<!-- 20160913 Peggy,check customer:GE tsch rfq yew 1156 å›è¦†äº¤æœŸæ˜¯å¦ç¬¦åˆå®¢æˆ¶å‡ºè²¨æ—¥-->
+<!-- 20161019 Peggy,åœç”¨function:TSC_RFQ_GET_TSCA_SSD,æ”¹ç”¨TSCA_GET_ORDER_SSD-->
+<!-- 20170510 Peggy,yewå›Täº¤æœŸçµ±ä¸€ç‚ºé€±ä¸€-->
+<!-- 20170711 Peggy,TSCAé‡20990101äº¤æœŸ,ä¸é‡ç®—SSDåŠSHIPPING METHOD-->
+<!-- 20180207 Peggy,ä¾›æ‡‰å•†=è˜‡å›ºä¸”è¨‚å–®é¡å‹=1142,è¨‚å–®é¡å‹è‡ªå‹•è½‰æ›ç‚º1141, FOBè¨­å®šç‚ºFOB TAIWAN-->
+<!-- 20181113 Peggy,MUSTARDå›ºå®šé€±ä¸€å‡ºè²¨(BY SEA),ä½†æ€¥æ–™æ’å¤–-->
+<!-- 20181221 Peggy,é¡¯ç¤ºpackage-->
+<%@ page  contentType="text/html; charset=utf-8"  language="java" import="java.sql.*,java.text.*"%>
 <html>
 <head>
 	<title>Sales Delivery Request Data Edit Page for Assign</title>
-	<!--=============¥H¤U°Ï¬q¬°¦w¥ş»{ÃÒ¾÷¨î==========-->
+	<!--=============ä»¥ä¸‹å€æ®µç‚ºå®‰å…¨èªè­‰æ©Ÿåˆ¶==========-->
 	<%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-	<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+	<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—é€£çµæ± ==========-->
 	<%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 	<%@ page import="CheckBoxBean,ComboBoxBean,Array2DimensionInputBean"%>
 	<%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
@@ -61,10 +61,10 @@
 		function submitCheck(ms1,ms2,ms3,ms4,ms5,ms6)
 		{
 			var ship_frequency ="";
-			var chinese_day = ["¤é","¤@","¤G","¤T","¥|","¤­","¤»"];
+			var chinese_day = ["æ—¥","ä¸€","äºŒ","ä¸‰","å››","äº”","å…­"];
 			var rec_year="",rec_month="",rec_day="",pc_date="",sysdate="";
 			document.DISPLAYREPAIR.submit2.disabled=true;
-			if (document.DISPLAYREPAIR.ACTIONID.value=="004")  //ªí¥Ü¬°CANCE°Ê§@
+			if (document.DISPLAYREPAIR.ACTIONID.value=="004")  //è¡¨ç¤ºç‚ºCANCEå‹•ä½œ
 			{
 				flag=confirm(ms1);
 				if (flag==false)
@@ -81,13 +81,13 @@
 				return(false);
 			}
 			else if (document.DISPLAYREPAIR.ACTIONID.value!="008" && document.DISPLAYREPAIR.ACTIONID.value!="005" && document.DISPLAYREPAIR.ACTIONID.value!="006" && document.DISPLAYREPAIR.ACTIONID.value!="007")
-			{   //ªí¥Ü°Ê§@²M³æ¤£¬°CONFIRM¡Bcancel¡BTransfer¡BReassign ,¥i¯à¬O¦Û¦æ¿é¤JLINE_ID,¦]¦¹»İ¥d¦íºô­¶°Ê§@
+			{   //è¡¨ç¤ºå‹•ä½œæ¸…å–®ä¸ç‚ºCONFIRMã€cancelã€Transferã€Reassign ,å¯èƒ½æ˜¯è‡ªè¡Œè¼¸å…¥LINE_ID,å› æ­¤éœ€å¡ä½ç¶²é å‹•ä½œ
 				alert(" Error Action Process!!!\n Don't try key-in invalid line No in this page...");
 				document.DISPLAYREPAIR.submit2.disabled=false;
 				return(false);
 			}
 
-			// ­Y¥¼¿ï¾Ü¥ô¤@Line §@°Ê§@,«hÄµ§i
+			// è‹¥æœªé¸æ“‡ä»»ä¸€Line ä½œå‹•ä½œ,å‰‡è­¦å‘Š
 			var lineid="";
 			var iLen=0,chkcnt=0;
 			var chkvalue=false;
@@ -179,7 +179,7 @@
 							var pc_date = new Date(Date.parse(rec_month+"-"+rec_day+"-"+ rec_year));
 							if ((ship_frequency-1) != pc_date.getDay())
 							{
-								alert("line"+lineid+":«È¤á¥æ´Á¬°©P"+chinese_day[(ship_frequency-1)]+",½ĞConfirm©P"+chinese_day[(ship_frequency-1)]+"¥æ´Á!!");
+								alert("line"+lineid+":å®¢æˆ¶äº¤æœŸç‚ºå‘¨"+chinese_day[(ship_frequency-1)]+",è«‹Confirmå‘¨"+chinese_day[(ship_frequency-1)]+"äº¤æœŸ!!");
 								document.DISPLAYREPAIR.elements["FACTORYDATE_"+lineid].focus();
 								document.DISPLAYREPAIR.ACTIONID.value=="--";
 								document.DISPLAYREPAIR.submit2.disabled=false;
@@ -187,18 +187,18 @@
 							}
 						}
 					}
-					else if (document.DISPLAYREPAIR.ACTIONID.value=="005") //§å°h
+					else if (document.DISPLAYREPAIR.ACTIONID.value=="005") //æ‰¹é€€
 					{
 						document.DISPLAYREPAIR.elements["REASONCODE_"+lineid].style.backgroundColor="#FFFFFF";
 						document.DISPLAYREPAIR.elements["REASON_"+lineid].style.backgroundColor="#FFFFFF";
-						if (document.DISPLAYREPAIR.elements["REASONCODE_"+lineid].value=="00" || document.DISPLAYREPAIR.elements["REASONCODE_"+lineid].value=="--" || document.DISPLAYREPAIR.elements["REASONCODE_"+lineid].value=="") //§å°h
+						if (document.DISPLAYREPAIR.elements["REASONCODE_"+lineid].value=="00" || document.DISPLAYREPAIR.elements["REASONCODE_"+lineid].value=="--" || document.DISPLAYREPAIR.elements["REASONCODE_"+lineid].value=="") //æ‰¹é€€
 						{
 							alert("Please choose a reject reason code!!");
 							document.DISPLAYREPAIR.elements["REASONCODE_"+lineid].style.backgroundColor="#FFCCCC";
 							document.DISPLAYREPAIR.submit2.disabled=false;
 							return false;
 						}
-						else if (document.DISPLAYREPAIR.elements["REASONCODE_"+lineid].value=="07") //§å°h-¨ä¥L
+						else if (document.DISPLAYREPAIR.elements["REASONCODE_"+lineid].value=="07") //æ‰¹é€€-å…¶ä»–
 						{
 							if (document.DISPLAYREPAIR.elements["REASON_"+lineid].value=="" || document.DISPLAYREPAIR.elements["REASON_"+lineid].value=="null")
 							{
@@ -265,12 +265,12 @@
 		/*function setSubmit2(URL,LINKREF,DATECURR)
         {
             warray=new Array(document.DISPLAYREPAIR.FACTORYDATE.value);
-              // ÀË¬d¤é´Á¬O§_²Å¦X¤é´Á®æ¦¡
+              // æª¢æŸ¥æ—¥æœŸæ˜¯å¦ç¬¦åˆæ—¥æœŸæ ¼å¼
                var datetime;
                var year,month,day;
                var gone,gtwo;
             var ship_frequency = document.DISPLAYREPAIR.elements["SHIP_FREQUENCY_"+LINKREF].value;
-            var chinese_day = ["¤é","¤@","¤G","¤T","¥|","¤­","¤»"];
+            var chinese_day = ["æ—¥","ä¸€","äºŒ","ä¸‰","å››","äº”","å…­"];
                if(warray[0]!="")
                {
                 datetime=warray[0];
@@ -342,7 +342,7 @@
                         var pc_date = new Date(Date.parse(month+"-"+day+"-"+ year));
                         if ((ship_frequency-1) != pc_date.getDay())
                         {
-                            alert("«È¤á¥æ´Á¬°©P"+chinese_day[(ship_frequency-1)]+",½ĞConfirm©P"+chinese_day[(ship_frequency-1)]+"¥æ´Á!!");
+                            alert("å®¢æˆ¶äº¤æœŸç‚ºå‘¨"+chinese_day[(ship_frequency-1)]+",è«‹Confirmå‘¨"+chinese_day[(ship_frequency-1)]+"äº¤æœŸ!!");
                             return false;
                         }
                     }
@@ -355,7 +355,7 @@
                 }
             }
 
-               if(document.DISPLAYREPAIR.REMARK.value=="" && document.DISPLAYREPAIR.ACTIONID.value=="007") // ­Y¬O¿ï¾ÜREASIGN¦ıRemark ¥¼¿é¤J,«h¤£¤¹³\
+               if(document.DISPLAYREPAIR.REMARK.value=="" && document.DISPLAYREPAIR.ACTIONID.value=="007") // è‹¥æ˜¯é¸æ“‡REASIGNä½†Remark æœªè¼¸å…¥,å‰‡ä¸å…è¨±
                {
                 alert("Please Input Re-Assign Reason before you Set this item...");
                  document.DISPLAYREPAIR.ACTIONID.value="--";
@@ -363,7 +363,7 @@
                  return (false);
                }
 
-               if(document.DISPLAYREPAIR.TSREASONNO.value=="--" && (document.DISPLAYREPAIR.ACTIONID.value=="007" || document.DISPLAYREPAIR.ACTIONID.value=="005")) // ­Y¬O¿ï¾ÜREASIGN©ÎREJECT¦ı ¥¼¿ï¾Ü­ì¦],«h¤£¤¹³\ Set
+               if(document.DISPLAYREPAIR.TSREASONNO.value=="--" && (document.DISPLAYREPAIR.ACTIONID.value=="007" || document.DISPLAYREPAIR.ACTIONID.value=="005")) // è‹¥æ˜¯é¸æ“‡REASIGNæˆ–REJECTä½† æœªé¸æ“‡åŸå› ,å‰‡ä¸å…è¨± Set
                {
                 alert("Please choose Re-Assign/Reject Reason before you Set this item...");
                  document.DISPLAYREPAIR.ACTIONID.value="--";
@@ -371,14 +371,14 @@
                  return (false);
                }
 
-               if(document.DISPLAYREPAIR.FACTORYDATE.value=="" && document.DISPLAYREPAIR.TSREASONNO.value=="--") // ­Y¬O¥¼µ¹©w±Æ©w¤é´Á,¥B¥ç¥¼¿ï©w§å°h­ì¦],«h¤£¤¹³\ Set
+               if(document.DISPLAYREPAIR.FACTORYDATE.value=="" && document.DISPLAYREPAIR.TSREASONNO.value=="--") // è‹¥æ˜¯æœªçµ¦å®šæ’å®šæ—¥æœŸ,ä¸”äº¦æœªé¸å®šæ‰¹é€€åŸå› ,å‰‡ä¸å…è¨± Set
                {
                 alert("Please Input Factory Delivery Date before you Set this item...");
                  document.DISPLAYREPAIR.ACTIONID.value="--";
                  document.DISPLAYREPAIR.FACTORYDATE.focus();
                  return (false);
                }
-              // ÀË¬d¤é´Á¬O§_²Å¦X¤é´Á®æ¦¡
+              // æª¢æŸ¥æ—¥æœŸæ˜¯å¦ç¬¦åˆæ—¥æœŸæ ¼å¼
 
               if (document.DISPLAYREPAIR.FACTORYDATE.value < DATECURR && document.DISPLAYREPAIR.FACTORYDATE.value!= "")
               {
@@ -408,7 +408,7 @@
 		}
 	}
 
-  	document.DISPLAYREPAIR.ACTIONID.value="--"; // Á×§K¨Ï¥ÎªÌ¥ı¿ï°Ê§@¦A³]©w¦U¶µ¥Ø
+  	document.DISPLAYREPAIR.ACTIONID.value="--"; // é¿å…ä½¿ç”¨è€…å…ˆé¸å‹•ä½œå†è¨­å®šå„é …ç›®
 
   	var factoryDate="&FACTORYDATE="+document.DISPLAYREPAIR.FACTORYDATE.value; 
   	var linkURL = "#"+LINKREF;
@@ -417,7 +417,7 @@
 }
 */
 
-		// ÀË¬d¶|¦~,§PÂ_¤é´Á¿é¤J¦Xªk©Ê
+		// æª¢æŸ¥é–å¹´,åˆ¤æ–·æ—¥æœŸè¼¸å…¥åˆæ³•æ€§
 		function isLeapYear(year)
 		{
 			if((year%4==0&&year%100!=0)||(year%400==0))
@@ -518,7 +518,7 @@
 		function chkDate(lineid,dndocno)
 		{
 			var ship_frequency = document.DISPLAYREPAIR.elements["SHIP_FREQUENCY_"+lineid].value;
-			var chinese_day = ["¤é","¤@","¤G","¤T","¥|","¤­","¤»"];
+			var chinese_day = ["æ—¥","ä¸€","äºŒ","ä¸‰","å››","äº”","å…­"];
 			var rec_year="",rec_month="",rec_day="",pc_date="",sysdate="";
 
 			if (document.DISPLAYREPAIR.elements["FACTORYDATE_"+lineid].value.length>8)
@@ -580,7 +580,7 @@
 					var pc_date = new Date(Date.parse(rec_month+"-"+rec_day+"-"+ rec_year));
 					if ((ship_frequency-1) != pc_date.getDay())
 					{
-						alert("line"+lineid+":«È¤á¥æ´Á¬°©P"+chinese_day[(ship_frequency-1)]+",½ĞConfirm©P"+chinese_day[(ship_frequency-1)]+"¥æ´Á!!");
+						alert("line"+lineid+":å®¢æˆ¶äº¤æœŸç‚ºå‘¨"+chinese_day[(ship_frequency-1)]+",è«‹Confirmå‘¨"+chinese_day[(ship_frequency-1)]+"äº¤æœŸ!!");
 						document.DISPLAYREPAIR.elements["FACTORYDATE_"+lineid].focus();
 						document.DISPLAYREPAIR.elements["FACTORYDATE_"+lineid].value="";
 						return false;
@@ -604,7 +604,7 @@
 			var qty=document.DISPLAYREPAIR.elements["QTY"+lineid].value;
 			if (eval(slowmovingqty) > eval(qty))
 			{
-				alert("®ø®w¦s¼Æ¶q¤£¥i¤j©ó­ì¥Ó½Ğ¼Æ¶q!");
+				alert("æ¶ˆåº«å­˜æ•¸é‡ä¸å¯å¤§æ–¼åŸç”³è«‹æ•¸é‡!");
 				document.DISPLAYREPAIR.elements["ALLOTQTY_"+lineid].focus();
 				return false;
 			}
@@ -648,7 +648,7 @@
 	String sDate=request.getParameter("SDATE");
 	String remark=request.getParameter("REMARK");
 	String processRemark=request.getParameter("PROC_REMARK");
-	String tsReasonNo=request.getParameter("TSREASONNO");// ­«·s«ü¬£©Î§å°h­ì¦]
+	String tsReasonNo=request.getParameter("TSREASONNO");// é‡æ–°æŒ‡æ´¾æˆ–æ‰¹é€€åŸå› 
 	String line_No=request.getParameter("LINE_NO");
 	String processFocus=request.getParameter("PROCESSFOCUS");
 //String [] check=request.getParameterValues("CHKFLAG");
@@ -680,7 +680,7 @@
 	}
 //out.println("choiceLine="+choiceLine);
 	boolean checkflag=false;
-	String factoryDate=request.getParameter("FACTORYDATE_"+lineNo);//·s¥æ´Á¹w³]±apc¦^ÂĞ¤é.
+	String factoryDate=request.getParameter("FACTORYDATE_"+lineNo);//æ–°äº¤æœŸé è¨­å¸¶pcå›è¦†æ—¥.
 	if (factoryDate==null) factoryDate="";
 	String newShipDate=factoryDate;
 	String totwdays=request.getParameter("totw_days_"+lineNo);
@@ -693,7 +693,7 @@
 		FIRTIME="2";
 	}
 
-// ¨ú¥»¦¸²M³æ¦C¼Æ 
+// å–æœ¬æ¬¡æ¸…å–®åˆ—æ•¸ 
 //int rowLength = 0;
 //String sqlCount = null;
 //Statement stateCNT=con.createStatement();
@@ -703,9 +703,9 @@
 //if (rsCNT.next()) rowLength = rsCNT.getInt(1);
 //rsCNT.close();
 //stateCNT.close();
-//pageResultRow = rowLength; //µ¹¥»­¶ªº¶µ¼Æ,¥Î©ó§PÂ_¬O§_¦³¥ô¦ó«ü¬£°j°é
+//pageResultRow = rowLength; //çµ¦æœ¬é çš„é …æ•¸,ç”¨æ–¼åˆ¤æ–·æ˜¯å¦æœ‰ä»»ä½•æŒ‡æ´¾è¿´åœˆ
 
-//²Î¤@¦b²Ä¤GÃöconfirm¨ÑÀ³°Ó
+//çµ±ä¸€åœ¨ç¬¬äºŒé—œconfirmä¾›æ‡‰å•†
 //add by Peggy 20140328
 	if (vendor_flag.equals(""))
 	{
@@ -730,7 +730,7 @@
 		//	rsFACT.close();
 		//	stateFACT.close();
 		//}
-		//String newShipDate=""; //·s¥æ´Á¹w³]±apc¦^ÂĞ¤é.
+		//String newShipDate=""; //æ–°äº¤æœŸé è¨­å¸¶pcå›è¦†æ—¥.
 		//Statement stateFACT=con.createStatement();
 		//String sqlFACT=" select  b.TSAREANO,TO_CHAR(TO_DATE(SUBSTR(nvl('"+factoryDate+"',REQUEST_DATE),1,8),'YYYYMMDD')+NVL((SELECT TRANSPORTATION_DAYS FROM ORADDMAN.TSC_CHINA_TO_TAIWAN_DAYS d WHERE a.ASSIGN_MANUFACT=d.PLANT_CODE"+
 		//			   " and c.ORDER_NUM=d.ORDER_NUM),0),'yyyymmdd') TOTW_DATE from ORADDMAN.TSDELIVERY_NOTICE_DETAIL a,  ORADDMAN.TSDELIVERY_NOTICE b,ORADDMAN.TSAREA_ORDERCLS c"+
@@ -748,7 +748,7 @@
 		//rsFACT.close();
 		//stateFACT.close();
 
-		////¨ÑÀ³°Ó=Ä¬©T,³f­n¦^¥x,add by Peggy 20180207
+		////ä¾›æ‡‰å•†=è˜‡å›º,è²¨è¦å›å°,add by Peggy 20180207
 		//if (TEWTOTW.equals("Y"))
 		//{
 		//	sql = " select  b.TSAREANO,a.ASSIGN_MANUFACT,a.CUST_REQUEST_DATE,a.SHIPPING_METHOD,b.TSCUSTOMERID "+
@@ -792,7 +792,7 @@
 		//
 %>
 <!--			<script language="JavaScript" type="text/JavaScript">
-					alert("¨ÑÀ³°ÓÄ¬©T¥X³f¶·¬°1141­q³æ,¨t²Î¤w­«·s­pºâSSD,½Ğ½T»{¥æ´Á,ÁÂÁÂ!");
+					alert("ä¾›æ‡‰å•†è˜‡å›ºå‡ºè²¨é ˆç‚º1141è¨‚å–®,ç³»çµ±å·²é‡æ–°è¨ˆç®—SSD,è«‹ç¢ºèªäº¤æœŸ,è¬è¬!");
 				</script> 
 	
 	//			<%	
@@ -810,13 +810,13 @@
 	//				   " ,SLOW_MOVING_ALLOT_QTY="+(tsReasonNo!=null && !tsReasonNo.equals("")?(tsReasonNo.equals("--")?"0":allotQty):"SLOW_MOVING_ALLOT_QTY")+
 	//				   " where DNDOCNO='"+dnDocNo+"' and to_char(LINE_NO)='"+lineNo+"' ";
 	//				PreparedStatement pstmt=con.prepareStatement(sql);  		  
-	//				pstmt.setString(1,factoryDate);  // ¤u¼t¥æ´Á¦w±Æ
+	//				pstmt.setString(1,factoryDate);  // å·¥å» äº¤æœŸå®‰æ’
 	//				pstmt.setString(2,"1022");  
 	//				pstmt.executeUpdate(); 
 	//				pstmt.close();	
 					%>
 					<!--<script language="JavaScript" type="text/JavaScript">
-						alert("¨ÑÀ³°ÓÄ¬©T¥X³f¶·¬°1141­q³æ,¨t²Î¤w±N­q³æÃş«¬±q1142½Õ¾ã¬°1141,½Ğ½T»{¥æ´Á,ÁÂÁÂ!");
+						alert("ä¾›æ‡‰å•†è˜‡å›ºå‡ºè²¨é ˆç‚º1141è¨‚å–®,ç³»çµ±å·²å°‡è¨‚å–®é¡å‹å¾1142èª¿æ•´ç‚º1141,è«‹ç¢ºèªäº¤æœŸ,è¬è¬!");
 					</script>-->
 <%
 	//			}
@@ -829,7 +829,7 @@
 	//	rsx.close();
 	//	statex.close();				
 	//}
-	//add by Peggy 20150812,TSCE ORDER PC¥æ´Á±ß©óSSD¥B¬°SEA(C)­pºâ¤u¼t¥æ´Á+FOB TERM¬O§_¦bCRD«e«á¨â¤Ñ,­Y¬O,«hPASS,§_«h¦Û°ÊUPDATE SHIPPING METHOD=AIR(C),­«·s­pºâSSD
+	//add by Peggy 20150812,TSCE ORDER PCäº¤æœŸæ™šæ–¼SSDä¸”ç‚ºSEA(C)è¨ˆç®—å·¥å» äº¤æœŸ+FOB TERMæ˜¯å¦åœ¨CRDå‰å¾Œå…©å¤©,è‹¥æ˜¯,å‰‡PASS,å¦å‰‡è‡ªå‹•UPDATE SHIPPING METHOD=AIR(C),é‡æ–°è¨ˆç®—SSD
 	//else if (salesarea.equals("001"))
 	if (salesarea.equals("001"))
 	{
@@ -895,7 +895,7 @@
 
 %>
 <script language="JavaScript" type="text/JavaScript">
-	alert("¦]¤u¼t¥æ´Á+®ü¹B²î´ÁµLªkmeet«È¤áCRD,¹B¿é¤è¦¡±N±qSEA(C)§ï¬°AIR(C)¥B­«·s­pºâSSD,½Ğ½T»{AIR(C)¥æ´Á,ÁÂÁÂ!");
+	alert("å› å·¥å» äº¤æœŸ+æµ·é‹èˆ¹æœŸç„¡æ³•meetå®¢æˆ¶CRD,é‹è¼¸æ–¹å¼å°‡å¾SEA(C)æ”¹ç‚ºAIR(C)ä¸”é‡æ–°è¨ˆç®—SSD,è«‹ç¢ºèªAIR(C)äº¤æœŸ,è¬è¬!");
 </script>
 <%
 	}
@@ -915,7 +915,7 @@
 	//		   " ,SLOW_MOVING_ALLOT_QTY="+(tsReasonNo!=null && !tsReasonNo.equals("")?(tsReasonNo.equals("--")?"0":allotQty):"SLOW_MOVING_ALLOT_QTY")+
 	//		   " where DNDOCNO='"+dnDocNo+"' and to_char(LINE_NO)='"+lineNo+"' ";
 	//		PreparedStatement pstmt=con.prepareStatement(sql);
-	//		pstmt.setString(1,factoryDate);  // ¤u¼t¥æ´Á¦w±Æ
+	//		pstmt.setString(1,factoryDate);  // å·¥å» äº¤æœŸå®‰æ’
 	//		pstmt.executeUpdate();
 	//		pstmt.close();
 	//	}
@@ -927,7 +927,7 @@
 	rsx.close();
 	statex.close();
 }
-else if (salesarea.equals("008") && !newShipDate.startsWith("2099")) //add by Peggy 20160825,¤u¼tCONFIRM SEA(UC)µLªkº¡¨¬«È¤áCRD,¹B¿é¤è¦¡¥ÑSEA(UC)§ï¦¨AIR(UC),¨t²Î­«·s­pºâAIR(UC)¥æ´Á¨Ñ¤u¼t½T»{
+else if (salesarea.equals("008") && !newShipDate.startsWith("2099")) //add by Peggy 20160825,å·¥å» CONFIRM SEA(UC)ç„¡æ³•æ»¿è¶³å®¢æˆ¶CRD,é‹è¼¸æ–¹å¼ç”±SEA(UC)æ”¹æˆAIR(UC),ç³»çµ±é‡æ–°è¨ˆç®—AIR(UC)äº¤æœŸä¾›å·¥å» ç¢ºèª
 {
 	sql = " select '1' as data_type, b.TSAREANO,a.ASSIGN_MANUFACT,a.CUST_REQUEST_DATE,f.meaning SHIPPING_METHOD,c.ORDER_NUM,b.TSCUSTOMERID ,tsc_om_category(e.inventory_item_id,49,'TSC_Package') tsc_package,tsc_om_category(e.inventory_item_id,49,'TSC_Family') tsc_family"+
 			//",TSC_RFQ_GET_TSCA_SSD(c.ORDER_NUM,'AIR(UC)',SUBSTR(a.CUST_REQUEST_DATE,1,8)) NEW_SSD"+
@@ -955,7 +955,7 @@ else if (salesarea.equals("008") && !newShipDate.startsWith("2099")) //add by Pe
 			//"    and x.SALES_AREA_NO=b.TSAREANO"+
 			//"    and x.tsc_package=tsc_om_category(e.inventory_item_id,49,'TSC_Package') "+
 			//"    and x.TSC_FAMILY=tsc_om_category(e.inventory_item_id,49,'TSC_Family'))>0"+
-			//°w¹ï¥X³f¤è¦¡¥u¦³®ü¹Bªº§÷®Æ,¤u¼t½T»{¥æ´Á«á¤£­n³s°Ê¥æ´Á»İ¨D¤éªº­«·s­pºâ,ºû«ù­ì¥ı¥æ´Á»İ¨D¤é for cindy 20190627 issue,add by Peggy 20190628
+			//é‡å°å‡ºè²¨æ–¹å¼åªæœ‰æµ·é‹çš„ææ–™,å·¥å» ç¢ºèªäº¤æœŸå¾Œä¸è¦é€£å‹•äº¤æœŸéœ€æ±‚æ—¥çš„é‡æ–°è¨ˆç®—,ç¶­æŒåŸå…ˆäº¤æœŸéœ€æ±‚æ—¥ for cindy 20190627 issue,add by Peggy 20190628
 			// " union all"+
 			// " select '2' as  data_type,b.TSAREANO,a.ASSIGN_MANUFACT,a.CUST_REQUEST_DATE,d.meaning SHIPPING_METHOD,c.ORDER_NUM,b.TSCUSTOMERID ,tsc_om_category(a.inventory_item_id,49,'TSC_Package') tsc_package,tsc_om_category(a.inventory_item_id,49,'TSC_Family') tsc_family,"+
 			// " TSCA_GET_ORDER_SSD(c.ORDER_NUM,d.meaning,'"+newShipDate+"','SSD',trunc(sysdate),null) NEW_SSD,d.lookup_code new_shipping_method "+
@@ -993,13 +993,13 @@ else if (salesarea.equals("008") && !newShipDate.startsWith("2099")) //add by Pe
     if (rsx.getString("data_type").equals("1"))
     {
     %>
-	alert("¦]¤u¼t¥æ´Á+®ü¹B²î´ÁµLªkmeet«È¤áCRD,¹B¿é¤è¦¡±N±qSEA(UC)§ï¬°AIR(UC)¥B­«·s­pºâSSD,½Ğ½T»{AIR(UC)¥æ´Á,ÁÂÁÂ!");
+	alert("å› å·¥å» äº¤æœŸ+æµ·é‹èˆ¹æœŸç„¡æ³•meetå®¢æˆ¶CRD,é‹è¼¸æ–¹å¼å°‡å¾SEA(UC)æ”¹ç‚ºAIR(UC)ä¸”é‡æ–°è¨ˆç®—SSD,è«‹ç¢ºèªAIR(UC)äº¤æœŸ,è¬è¬!");
 	<%
     }
     else
     {
     %>
-	alert("¦]¤u¼t¥æ´ÁµLªkmeet TSCA²î´Á,¨t²Î±N¨Ì¤u¼t¥æ´Á­pºâ²Å¦XTSCA²î´ÁªºSSD,½Ğ­«·s½T»{·s¥æ´Á,ÁÂÁÂ!");
+	alert("å› å·¥å» äº¤æœŸç„¡æ³•meet TSCAèˆ¹æœŸ,ç³»çµ±å°‡ä¾å·¥å» äº¤æœŸè¨ˆç®—ç¬¦åˆTSCAèˆ¹æœŸçš„SSD,è«‹é‡æ–°ç¢ºèªæ–°äº¤æœŸ,è¬è¬!");
 	<%
     }
     %>
@@ -1022,7 +1022,7 @@ else if (salesarea.equals("008") && !newShipDate.startsWith("2099")) //add by Pe
 			//		   " ,SLOW_MOVING_ALLOT_QTY="+(tsReasonNo!=null && !tsReasonNo.equals("")?(tsReasonNo.equals("--")?"0":allotQty):"SLOW_MOVING_ALLOT_QTY")+
 			//		   " where DNDOCNO='"+dnDocNo+"' and to_char(LINE_NO)='"+lineNo+"' ";
 			//		PreparedStatement pstmt=con.prepareStatement(sql);
-			//		pstmt.setString(1,factoryDate);  // ¤u¼t¥æ´Á¦w±Æ
+			//		pstmt.setString(1,factoryDate);  // å·¥å» äº¤æœŸå®‰æ’
 			//		pstmt.executeUpdate();
 			//		pstmt.close();
 			//	}
@@ -1046,7 +1046,7 @@ else if (salesarea.equals("008") && !newShipDate.startsWith("2099")) //add by Pe
 		//			   " where DNDOCNO='"+dnDocNo+"' and to_char(LINE_NO)='"+lineNo+"' ";
 		//		//out.println(sql);
 		//		PreparedStatement pstmt=con.prepareStatement(sql);
-		//		pstmt.setString(1,factoryDate);  // ¤u¼t¥æ´Á¦w±Æ
+		//		pstmt.setString(1,factoryDate);  // å·¥å» äº¤æœŸå®‰æ’
 		//		pstmt.executeUpdate();
 		//		pstmt.close();
 		//	}
@@ -1063,8 +1063,8 @@ else if (salesarea.equals("008") && !newShipDate.startsWith("2099")) //add by Pe
 		{
 			String sql = "update ORADDMAN.TSDELIVERY_NOTICE_DETAIL set REASON_CODE=?,REASONDESC=?, PC_COMMENT=PC_COMMENT||?,SLOW_MOVING_ALLOT_QTY=0 where DNDOCNO='"+dnDocNo+"' and to_char(LINE_NO)='"+lineNo+"' ";
 			PreparedStatement pstmt=con.prepareStatement(sql);  
-			pstmt.setString(1,"00");  // ­«·s«ü¬£©Î§å°h­ì¦]½X 
-			pstmt.setString(2,"N/A");  // §å°h­ì¦]
+			pstmt.setString(1,"00");  // é‡æ–°æŒ‡æ´¾æˆ–æ‰¹é€€åŸå› ç¢¼ 
+			pstmt.setString(2,"N/A");  // æ‰¹é€€åŸå› 
 			pstmt.setString(3,remark);  //add by Peggy 20140402
 			pstmt.executeUpdate(); 
 			pstmt.close();	
@@ -1073,8 +1073,8 @@ else if (salesarea.equals("008") && !newShipDate.startsWith("2099")) //add by Pe
 		{		
 			String sql = "update ORADDMAN.TSDELIVERY_NOTICE_DETAIL set REASON_CODE=?,REASONDESC=?, PC_COMMENT=PC_COMMENT||?,SLOW_MOVING_ALLOT_QTY=? where DNDOCNO='"+dnDocNo+"' and to_char(LINE_NO)='"+lineNo+"' ";
 			PreparedStatement pstmt=con.prepareStatement(sql);  
-			pstmt.setString(1,tsReasonNo);  // ­«·s«ü¬£©Î§å°h­ì¦]½X 
-			pstmt.setString(2,remark);  // §å°h­ì¦]
+			pstmt.setString(1,tsReasonNo);  // é‡æ–°æŒ‡æ´¾æˆ–æ‰¹é€€åŸå› ç¢¼ 
+			pstmt.setString(2,remark);  // æ‰¹é€€åŸå› 
 			pstmt.setString(3,remark);  // 20101203
 			pstmt.setString(4,allotQty);  //add by Peggy 20130422
 			pstmt.executeUpdate(); 
@@ -1085,7 +1085,7 @@ else if (salesarea.equals("008") && !newShipDate.startsWith("2099")) //add by Pe
 	{
 		String sql = "update ORADDMAN.TSDELIVERY_NOTICE_DETAIL set PC_COMMENT=PC_COMMENT||? where DNDOCNO='"+dnDocNo+"' and to_char(LINE_NO)='"+lineNo+"' ";
 		PreparedStatement pstmt=con.prepareStatement(sql);  
-		pstmt.setString(1,remark);  // ¸ß°İ³æ¸¹	 20101112	
+		pstmt.setString(1,remark);  // è©¢å•å–®è™Ÿ	 20101112	
 		pstmt.executeUpdate(); 
 		pstmt.close();
 	}*/
@@ -1095,7 +1095,7 @@ else if (salesarea.equals("008") && !newShipDate.startsWith("2099")) //add by Pe
 %>
 <%@ include file="/jsp/include/TSDocHyperLinkPage.jsp"%>
 <FORM NAME="DISPLAYREPAIR" onsubmit='return submitCheck("<jsp:getProperty name="rPH" property="pgAlertCancel"/>","<jsp:getProperty name="rPH" property="pgAlertSubmit"/>","<jsp:getProperty name="rPH" property="pgAlertAssign"/>","<jsp:getProperty name="rPH" property="pgAlertCheckLineFlag"/>","<jsp:getProperty name="rPH" property="pgAlertReassign"/>","<jsp:getProperty name="rPH" property="pgAlertRPReason"/>")' ACTION="../jsp/TSSalesDRQMProcessNew.jsp?DNDOCNO=<%=dnDocNo%>" METHOD="post">
-	<!--=============¥H¤U°Ï¬q¬°¨ú±oºû­×°ò¥»¸ê®Æ==========-->
+	<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—ç¶­ä¿®åŸºæœ¬è³‡æ–™==========-->
 	<%@ include file="/jsp/include/TSDRQBasicInfoDisplayPage.jsp"%>
 	<!--=================================-->
 	<HR>
@@ -1107,9 +1107,9 @@ else if (salesarea.equals("008") && !newShipDate.startsWith("2099")) //add by Pe
 					<%
 try
 {   
-	//String oneDArray[]= {"Line no.","Inventory Item","Quantity","UOM", "Request Date","Remark","Product Manufactory"};  // ¥ı±N¤º®e©ú²Óªº¼ĞÀY,µ¹¤@ºû°}¦C		 	     			  
+	//String oneDArray[]= {"Line no.","Inventory Item","Quantity","UOM", "Request Date","Remark","Product Manufactory"};  // å…ˆå°‡å…§å®¹æ˜ç´°çš„æ¨™é ­,çµ¦ä¸€ç¶­é™£åˆ—		 	     			  
     //array2DEstimateFactoryBean.setArrayString(oneDArray);
-	//String b[][]=new String[rowLength+1][9]; // «Å§i¤@¤Gºû°}¦C,¤À§O¬O(¥¼¤À°t²£¦a=¦C)X(¸ê®ÆÄæ¼Æ+1= ¦æ)
+	//String b[][]=new String[rowLength+1][9]; // å®£å‘Šä¸€äºŒç¶­é™£åˆ—,åˆ†åˆ¥æ˜¯(æœªåˆ†é…ç”¢åœ°=åˆ—)X(è³‡æ–™æ¬„æ•¸+1= è¡Œ)
 	  
    	out.println("<TABLE border='1' cellpadding='0' cellspacing='1' align='center' width='100%'  bordercolor='#999966' bordercolorlight='#999999' bordercolordark='#CCCC99' bgcolor='#CCCC99'>");
 	out.println("<tr bgcolor='#D5D8A7'>");
@@ -1131,10 +1131,10 @@ try
 %>
 				<!--< <jsp:getProperty name="rPH" property="pgReturnTWN"/> > -->
 					<%
-	//} // ­Y¬O­q³æÃş«¬Äİ©ó1131©Î1141«hÅã¥Ü<¦^T> 
+	//} // è‹¥æ˜¯è¨‚å–®é¡å‹å±¬æ–¼1131æˆ–1141å‰‡é¡¯ç¤º<å›T> 
 %>
 					<%
-	//§ï©ñ¦Ü¨C¤@­Óline,modify by Peggy 20191024
+	//æ”¹æ”¾è‡³æ¯ä¸€å€‹line,modify by Peggy 20191024
 	/*out.println("</div>");
 	try
     { 
@@ -1155,10 +1155,10 @@ try
 				Slow Moving/<jsp:getProperty name="rPH" property="pgASResActInput"/>
 					<%
 	out.println("</div>");
-	//§ï©ñ¦Ü¨C¤@­Óline,modify by Peggy 20191024
+	//æ”¹æ”¾è‡³æ¯ä¸€å€‹line,modify by Peggy 20191024
 	/*out.println("<div align='center'>");
 	try
-    { // °ÊºA¥h¨ú­«·s¤À¬£©Î§å°h­ì¦]¸ê°T 						  
+    { // å‹•æ…‹å»å–é‡æ–°åˆ†æ´¾æˆ–æ‰¹é€€åŸå› è³‡è¨Š 						  
 		Statement stateGetP=con.createStatement();
         ResultSet rsGetP=null;				      									  
 		String sqlGetP = "select TSREASONNO, REASONCODE||'('||REASONDESC||')' as RREASON "+
@@ -1185,7 +1185,7 @@ try
 %>
 				Slow Moving<jsp:getProperty name="rPH" property="pgOR"/><jsp:getProperty name="rPH" property="pgReAssign"/><br><jsp:getProperty name="rPH" property="pgOR"/><jsp:getProperty name="rPH" property="pgReject"/><jsp:getProperty name="rPH" property="pgDesc"/>
 					<%
-	//§ï©ñ¦Ü¨C¤@­Óline,modify by Peggy 20191024
+	//æ”¹æ”¾è‡³æ¯ä¸€å€‹line,modify by Peggy 20191024
 	/*out.println("<div align='center'>");
 	try
     { 
@@ -1251,12 +1251,12 @@ try
 			 " from (SELECT a.dndocno,a.line_no,a.item_segment1,a.item_description, a.quantity,a.uom, a.request_date,a.remark, a.pc_comment, a.assign_manufact,a.ftacpdate, a.reasondesc, a.reason_code,a.inventory_item_id,a.slow_moving_allot_qty,"+
 			 " CASE WHEN INSTR (a.item_description, '-') > 0 THEN SUBSTR (a.item_description,0,INSTR (a.item_description, '-') - 1) ELSE SUBSTR (a.item_description,0, LENGTH (a.item_description)- LENGTH (apps.tsc_get_item_packing_code (49,inventory_item_id)) - 1) END AS TSC_desc"+
 			 ",a.vendor_site_id,nvl(c.vendor_site_code,'') vendor_site_code "+ //add by Peggy 20140328
-			 ",'­ì­q³æ'|| (NVL(a.SMC_QTY,0)+nvl(a.QUANTITY,0)) ||'K<BR>®ø®w¦s'||(NVL(a.SMC_QTY,0)+nvl(a.SLOW_MOVING_ALLOT_QTY,0))||'K' AS SMC_REMARKS,(NVL(a.SMC_QTY,0)+nvl(a.SLOW_MOVING_ALLOT_QTY,0)) SMC_QTY"+ //add by Peggy 20141013
+			 ",'åŸè¨‚å–®'|| (NVL(a.SMC_QTY,0)+nvl(a.QUANTITY,0)) ||'K<BR>æ¶ˆåº«å­˜'||(NVL(a.SMC_QTY,0)+nvl(a.SLOW_MOVING_ALLOT_QTY,0))||'K' AS SMC_REMARKS,(NVL(a.SMC_QTY,0)+nvl(a.SLOW_MOVING_ALLOT_QTY,0)) SMC_QTY"+ //add by Peggy 20141013
 			 ",a.ORDERED_ITEM"+ //add by Peggy 20150123
 			 ",case when a.ORDER_TYPE_ID=1175 and instr(a.CUST_PO_NUMBER, '(GE)')>0 then TSCH_GET_CUST_SHIP_FREQUENCY(a.orig_so_line_id) "+
 			 " when a.order_type_id = 1175 AND '"+tsAreaNo+"'='003' THEN tsc_get_cust_ship_frequency (a.SHIP_TO_ORG) "+
-			 " when a.assign_manufact ='002' and nvl(a.order_type_id,a.order_type_id1) in ('1021','1022') then 2 "+ //yew¦^t²Î¤@¬°©P¤@,add by Peggy 20170510
-			 " when a.tscustomerid=4985 and a.assign_manufact ='002' and a.shipping_method='SEA' and instr(a.remark,'«æ®Æ')<=0 then 2"+  //add by Peggy 20181113,MUSTARD©T©w¶g¤@¥X³f(BY SEA),¦ı«æ®Æ±Æ¥~
+			 " when a.assign_manufact ='002' and nvl(a.order_type_id,a.order_type_id1) in ('1021','1022') then 2 "+ //yewå›tçµ±ä¸€ç‚ºå‘¨ä¸€,add by Peggy 20170510
+			 " when a.tscustomerid=4985 and a.assign_manufact ='002' and a.shipping_method='SEA' and instr(a.remark,'æ€¥æ–™')<=0 then 2"+  //add by Peggy 20181113,MUSTARDå›ºå®šé€±ä¸€å‡ºè²¨(BY SEA),ä½†æ€¥æ–™æ’å¤–
 			 " else 0 end SHIP_FREQUENCY"+ //add by Peggy 20160913
 			 ",nvl(a.order_type_id,a.order_type_id1) order_type_id"+  //add by Peggy 20180207
 			 ",TSC_INV_Category(a.inventory_item_id, 49, 23)  tsc_package"+ //add by Peggy 20181221
@@ -1315,15 +1315,15 @@ try
 			checkflag=false;
 		}
 		out.println("<input type='checkbox' name='CHKFLAG' value='"+rs.getString("LINE_NO")+"' onClick='setCheck("+(linecnt++)+")' "+(checkflag?"checked":"")+">");
-		//if (check !=null) // ­Y¥ı«e¥H³]©w¬°¿ï¨ú,«hCheck Box Åã¥Ü checked
+		//if (check !=null) // è‹¥å…ˆå‰ä»¥è¨­å®šç‚ºé¸å–,å‰‡Check Box é¡¯ç¤º checked
 		//{  //out.println("111");
 		//	for (int j=0;j<check.length;j++)
 		//	{
 		//		if (check[j]==rs.getString("LINE_NO") || check[j].equals(rs.getString("LINE_NO"))) out.println("checked");
 		//	}
-		// 	if (lineNo==rs.getString("LINE_NO") || lineNo.equals(rs.getString("LINE_NO"))) out.println("checked"); // µ¹©w¥Í²£¤é´Á§Y³]©w±ıµ²Âà
+		// 	if (lineNo==rs.getString("LINE_NO") || lineNo.equals(rs.getString("LINE_NO"))) out.println("checked"); // çµ¦å®šç”Ÿç”¢æ—¥æœŸå³è¨­å®šæ¬²çµè½‰
 		//}
-		//else if (lineNo==rs.getString("LINE_NO") || lineNo.equals(rs.getString("LINE_NO"))) out.println("checked"); //²Ä¤@µ§µ¹©w¥Í²£¤é´Á§Y³]©w±ıµ²Âà
+		//else if (lineNo==rs.getString("LINE_NO") || lineNo.equals(rs.getString("LINE_NO"))) out.println("checked"); //ç¬¬ä¸€ç­†çµ¦å®šç”Ÿç”¢æ—¥æœŸå³è¨­å®šæ¬²çµè½‰
 		//if (rowLength==1) out.println("checked >"); else out.println(" >");
 		out.println("</TD>");
 		//out.println("<TD width='1%' nowrap><font color='#000000'>");
@@ -1360,9 +1360,9 @@ try
 
 		out.println("<input name='FACTORYDATE_"+rs.getString("LINE_NO")+"'"+" type='text' size='8' value='"+(request.getParameter("FACTORYDATE_"+rs.getString("LINE_NO"))==null || rs.getString("LINE_NO").equals(lineNo)?rs.getString("REQUEST_DATE").substring(0,8):request.getParameter("FACTORYDATE_"+rs.getString("LINE_NO")))+"' style='font-size:11px;font-family: Tahoma,Georgia' onKeyPress='return (event.keyCode >=48 && event.keyCode <=57)'  onBlur='chkDate("+'"'+rs.getString("LINE_NO")+'"'+","+'"'+dnDocNo+'"'+")' "+(checkflag?"":" ")+">");
 		out.println("<A href='javascript:void(0)' onclick='gfPop.fPopCalendar(document.DISPLAYREPAIR.FACTORYDATE_"+rs.getString("LINE_NO")+");return false;'><img name='img_"+rs.getString("LINE_NO")+"' border='0' src='../image/calbtn.gif'></A>");
-		out.println((rs.getInt("totw_days")>0?"<font color='#0000ff'><¦^T></font>":""));
+		out.println((rs.getInt("totw_days")>0?"<font color='#0000ff'><å›T></font>":""));
 		out.println("<input type='text' name='ORIG_REQUESTDATE_"+rs.getString("LINE_NO")+"' value='"+(request.getParameter("FACTORYDATE_"+rs.getString("LINE_NO"))==null || rs.getString("LINE_NO").equals(lineNo)?rs.getString("REQUEST_DATE").substring(0,8):request.getParameter("FACTORYDATE_"+rs.getString("LINE_NO")))+"' style='width:1'></TD>");
-		// ­«·s«ü¬£©Î§å°h¥N½X¿ï¾Ü
+		// é‡æ–°æŒ‡æ´¾æˆ–æ‰¹é€€ä»£ç¢¼é¸æ“‡
 		out.println("<TD width='10%' nowrap><font color='#000000'>");
 		/*if (rs.getString("REASON_CODE")==null || rs.getString("REASON_CODE").equals("00"))
 		{
@@ -1388,7 +1388,7 @@ try
 				out.println(tsReasonNo+reasonDesc+"</font>");
 			}
 		}
-		out.println("<INPUT TYPE='hidden' NAME='REASONCODE"+k+"' value='"+rs.getString("REASON_CODE")+"'>"); // ÁôÂÃ³Q«ü¬£¤u¼tª«¥ó,¥H«K¥Ñ java _script§PÂ_¬O§_¨Ï¥ÎªÌ¥¼«ü¬£§Y°e¥Xºô­¶
+		out.println("<INPUT TYPE='hidden' NAME='REASONCODE"+k+"' value='"+rs.getString("REASON_CODE")+"'>"); // éš±è—è¢«æŒ‡æ´¾å·¥å» ç‰©ä»¶,ä»¥ä¾¿ç”± java _scriptåˆ¤æ–·æ˜¯å¦ä½¿ç”¨è€…æœªæŒ‡æ´¾å³é€å‡ºç¶²é 
 		*/
 		Statement stateGetP=con.createStatement();
 		String sqlGetP = " select TSREASONNO, REASONCODE||'('||REASONDESC||')' as RREASON,rownum ,count(1) over (partition by 1) tot_row"+
@@ -1424,8 +1424,8 @@ try
 		}
 		stateGetP.close();
 		rsGetP.close();
-		out.println("</TD>"); // // ­«·s«ü¬£©Î§å°h¥N½X¿ï¾Ü
-		// ­«·s«ü¬£¨Ï¥ÎªÌ¦Û¦æ¿é¤J»¡©ú
+		out.println("</TD>"); // // é‡æ–°æŒ‡æ´¾æˆ–æ‰¹é€€ä»£ç¢¼é¸æ“‡
+		// é‡æ–°æŒ‡æ´¾ä½¿ç”¨è€…è‡ªè¡Œè¼¸å…¥èªªæ˜
 		out.println("<TD width='10%' align='center' nowrap>");
 		/*if (rs.getString("REASONDESC")==null || rs.getString("REASONDESC").equals("") || rs.getString("REASONDESC").equals("N/A"))
 		{
@@ -1454,9 +1454,9 @@ try
 				out.println(remark+"</font>");
 			}
 		}
-		out.println("<INPUT TYPE='hidden' NAME='REASON"+k+"' value='"+rs.getString("REASONDESC")+"'>"); // ÁôÂÃ³Q«ü¬£¤u¼tª«¥ó,¥H«K¥Ñ java _script§PÂ_¬O§_¨Ï¥ÎªÌ¥¼«ü¬£§Y°e¥Xºô­¶
+		out.println("<INPUT TYPE='hidden' NAME='REASON"+k+"' value='"+rs.getString("REASONDESC")+"'>"); // éš±è—è¢«æŒ‡æ´¾å·¥å» ç‰©ä»¶,ä»¥ä¾¿ç”± java _scriptåˆ¤æ–·æ˜¯å¦ä½¿ç”¨è€…æœªæŒ‡æ´¾å³é€å‡ºç¶²é 
 		*/
-		out.println("<INPUT TYPE='text' NAME='REASON_"+rs.getString("LINE_NO")+"' value='"+(request.getParameter("REASON_"+rs.getString("LINE_NO"))!=null?request.getParameter("REASON_"+rs.getString("LINE_NO")):"")+"' size='15'  style='font-size:11px;font-family: Tahoma,Georgia' "+(checkflag?"":"")+">"); // ÁôÂÃ³Q«ü¬£¤u¼tª«¥ó,¥H«K¥Ñ java _script§PÂ_¬O§_¨Ï¥ÎªÌ¥¼«ü¬£§Y°e¥Xºô­¶
+		out.println("<INPUT TYPE='text' NAME='REASON_"+rs.getString("LINE_NO")+"' value='"+(request.getParameter("REASON_"+rs.getString("LINE_NO"))!=null?request.getParameter("REASON_"+rs.getString("LINE_NO")):"")+"' size='15'  style='font-size:11px;font-family: Tahoma,Georgia' "+(checkflag?"":"")+">"); // éš±è—è¢«æŒ‡æ´¾å·¥å» ç‰©ä»¶,ä»¥ä¾¿ç”± java _scriptåˆ¤æ–·æ˜¯å¦ä½¿ç”¨è€…æœªæŒ‡æ´¾å³é€å‡ºç¶²é 
 		out.println("</TD>");
 		out.println("<td align='center'>");//add by Peggy 20130419
 		/*
@@ -1511,7 +1511,7 @@ try
 			out.println("</td>");
 		}
 
-		// ­«·s«ü¬£¨Ï¥ÎªÌ¦Û¦æ¿é¤J»¡©ú
+		// é‡æ–°æŒ‡æ´¾ä½¿ç”¨è€…è‡ªè¡Œè¼¸å…¥èªªæ˜
 		out.println("<TD width='1%'><font color='#000000'><a name="+rs.getString("LINE_NO")+">");
 		//out.println(rs.getString("LINE_NO")+"</a></font></TD>");
 		out.println(rs.getString("LINE_NO")+"</a></font><input type='hidden' name='SHIP_FREQUENCY_"+rs.getString("LINE_NO")+"' value='"+rs.getString("SHIP_FREQUENCY")+"'></TD>"); //modify by Peggy 20160913
@@ -1548,7 +1548,7 @@ catch (Exception e)
 	out.println("Exception1:"+e.getMessage());
 }
 
-String a[][]=array2DEstimateFactoryBean.getArray2DContent();//¨ú±o¥Ø«e°}¦C¤º®e 		    		                       		    		  	   
+String a[][]=array2DEstimateFactoryBean.getArray2DContent();//å–å¾—ç›®å‰é™£åˆ—å…§å®¹ 		    		                       		    		  	   
 if (a!=null) 
 {		  
 }	//enf of a!=null if		
@@ -1599,10 +1599,10 @@ if (a!=null)
 
 					rs=statement.executeQuery("select COUNT (*) from ORADDMAN.TSWORKFLOW x1,ORADDMAN.TSWFACTION x2 WHERE FORMID='TS' AND FROMSTATUSID='"+frStatID+"' AND x1.ACTIONID=x2.ACTIONID and  x1.LOCALE='"+locale+"'");
 					rs.next();
-					if (rs.getInt(1)>0) //§PÂ_­Y¨S¦³°Ê§@¥i¿ï¾Ü´N¤£¥X²{submit«ö¶s
+					if (rs.getInt(1)>0) //åˆ¤æ–·è‹¥æ²’æœ‰å‹•ä½œå¯é¸æ“‡å°±ä¸å‡ºç¾submitæŒ‰éˆ•
 					{
 						out.println("<INPUT TYPE='submit' NAME='submit2' value='Submit'>");
-						if (actionID.equals("006") || actionID.equals("007")) // ²£¦a²¾Âà©Î­n¨D¥ø¹º­«·s«ü¬£,«hE-Mail ¥\¯à enable
+						if (actionID.equals("006") || actionID.equals("007")) // ç”¢åœ°ç§»è½‰æˆ–è¦æ±‚ä¼åŠƒé‡æ–°æŒ‡æ´¾,å‰‡E-Mail åŠŸèƒ½ enable
 						{
 							out.println("<INPUT TYPE='checkBox' NAME='SENDMAILOPTION' VALUE='YES'>");%><jsp:getProperty name="rPH" property="pgMailNotice"/><%
 					}
@@ -1616,7 +1616,7 @@ if (a!=null)
 			}
 		%>
 		</a></td></tr></table>
-	<!-- ªí³æ°Ñ¼Æ -->
+	<!-- è¡¨å–®åƒæ•¸ -->
 	<input name="SDATE" type="hidden" value="<%=factoryDate%>">
 	<input name="LSTATUSID" type="HIDDEN" value="<%=frStatID%>" >
 	<input name="VENDOR_FLAG" type="hidden" value="<%=vendor_flag%>">
@@ -1626,7 +1626,7 @@ if (a!=null)
 	<input name="FIRTIME" type="hidden" value="<%=FIRTIME%>">
 </FORM>
 <iframe width=124 height=153 name="gToday:supermini:agenda.js" id="gToday:supermini:agenda.js" src="../calendar/ipopeng.htm" scrolling="no" frameborder="0" style="visibility:hidden; z-index:65535; position:absolute; top:0px;"></iframe>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 </body>

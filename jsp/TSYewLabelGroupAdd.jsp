@@ -1,7 +1,7 @@
-<%@ page contentType="text/html;charset=utf-8" pageEncoding="big5" language="java" import="java.sql.*,java.text.*,java.lang.*" %>
-<!--=============¥H¤U°Ï¬q¬°¦w¥ş»{ÃÒ¾÷¨î==========-->
+<%@ page contentType="text/html;charset=utf-8"  language="java" import="java.sql.*,java.text.*,java.lang.*" %>
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå®‰å…¨èªè­‰æ©Ÿåˆ¶==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ page import="ComboBoxBean,DateBean"%>
 <!--=================================-->
@@ -44,13 +44,13 @@ function setSubmit(URL)
 { 
 	if (document.MYFORMD.LABEL_GROUP_NAME.value=="")
 	{
-		alert("½Ğ¿é¤J¼ĞÅÒ¸s²Õ¦WºÙ!!");
+		alert("è«‹è¼¸å…¥æ¨™ç±¤ç¾¤çµ„åç¨±!!");
 		document.MYFORMD.LABEL_GROUP_NAME.focus();
 		return false;
 	}
 	if (document.MYFORMD.CUST_SHIPPING_MARKS=="")
 	{
-		alert("½Ğ¿é¤J«È¤ááMÀY!!");
+		alert("è«‹è¼¸å…¥å®¢æˆ¶å˜œé ­!!");
 		document.MYFORMD.CUST_SHIPPING_MARKS.focus();
 		return false;	
 	}
@@ -65,13 +65,13 @@ function setSubmit(URL)
 	}	
 	if (LABEL_KIND=="")
 	{
-		alert("½Ğ¿é¤J¼ĞÅÒºØÃş!!");
+		alert("è«‹è¼¸å…¥æ¨™ç±¤ç¨®é¡!!");
 		document.MYFORMD.LABEL_KIND.focus();
 		return false;		
 	}
 	if (document.MYFORMD.EFFECTIVE_FROM.value !="" &&  document.MYFORMD.EFFECTIVE_TO.value!="" && eval(document.MYFORMD.EFFECTIVE_TO.value)<eval(document.MYFORMD.EFFECTIVE_FROM.value))
 	{
-		alert("±Ò¥Î¨´¤é¥²¶·¤j©óµ¥©ó±Ò¥Î°_¤é!!");
+		alert("å•Ÿç”¨è¿„æ—¥å¿…é ˆå¤§æ–¼ç­‰æ–¼å•Ÿç”¨èµ·æ—¥!!");
 		document.MYFORMD.EFFECTIVE_TO.focus();
 		return false;
 	}			
@@ -206,7 +206,7 @@ try
 			{
 			%>
 				<script language="JavaScript" type="text/JavaScript">
-					alert("¬dµL¸ê®Æ,½Ğ­«·s½T»{,ÁÂÁÂ!");
+					alert("æŸ¥ç„¡è³‡æ–™,è«‹é‡æ–°ç¢ºèª,è¬è¬!");
 					setCancel();
 				</script>
 			<%				
@@ -221,7 +221,7 @@ try
 <table align="center" width="70%">
 	<tr>
 		<td align="center">
-			<strong><font style="font-family:²Ó©úÅé;font-size:20px;color:#006666">¼ĞÅÒ¸s²Õ</font><font style="font-size:20px;color:#006666">ºûÅ@</font></strong>		</td>
+			<strong><font style="font-family:ç´°æ˜é«”;font-size:20px;color:#006666">æ¨™ç±¤ç¾¤çµ„</font><font style="font-size:20px;color:#006666">ç¶­è­·</font></strong>		</td>
 	</tr>
 	<tr>
 		<td align="right">&nbsp;</td>
@@ -230,62 +230,62 @@ try
 		<td>
 			<table width="100%"  align="CENTER" border="1" cellpadding="0" cellspacing="0" bordercolorlight="#999999" bordercolordark="#99CC99">
 				<tr>
-					<td width="35%" height="25" bgcolor="#C9E2D0" nowrap><span style="font-size:12px;color:#006666">¸s²Õ¦WºÙ</span>¡G</td>
+					<td width="35%" height="25" bgcolor="#C9E2D0" nowrap><span style="font-size:12px;color:#006666">ç¾¤çµ„åç¨±</span>ï¼š</td>
 					<td nowrap><INPUT TYPE="TEXT" name="LABEL_GROUP_NAME" value="<%=LABEL_GROUP_NAME%>" size="20" style="font-family: Tahoma,Georgia;"><input type="hidden" name="LABEL_GROUP_CODE" value="<%=LABEL_GROUP_CODE%>"></td>
 				</tr>
 				<tr>
-					<td width="35%" height="25" bgcolor="#C9E2D0" nowrap><span style="font-size:12px;color:#006666">¸s²Õ»¡©ú</span>¡G</td>
+					<td width="35%" height="25" bgcolor="#C9E2D0" nowrap><span style="font-size:12px;color:#006666">ç¾¤çµ„èªªæ˜</span>ï¼š</td>
 					<td nowrap><INPUT TYPE="TEXT" name="LABEL_GROUP_DESC" value="<%=LABEL_GROUP_DESC%>" size="50" style="font-family: Tahoma,Georgia;"></td>
 				</tr>				
 				<tr>
-					<td width="35%" height="25" bgcolor="#C9E2D0" nowrap><span style="font-size:12px;color:#006666">¤å¥ó¥N½X</span>¡G</td>
+					<td width="35%" height="25" bgcolor="#C9E2D0" nowrap><span style="font-size:12px;color:#006666">æ–‡ä»¶ä»£ç¢¼</span>ï¼š</td>
 					<td nowrap><INPUT TYPE="TEXT" name="LABEL_FORM_CODE" value="<%=LABEL_FORM_CODE%>" size="50" style="font-family: Tahoma,Georgia;"></td>
 				</tr>				
 				<tr>
-					<td width="35%" height="25" bgcolor="#C9E2D0" nowrap><span style="font-size:12px;color:#006666">¤å¥óª©¦¸</span>¡G</td>
+					<td width="35%" height="25" bgcolor="#C9E2D0" nowrap><span style="font-size:12px;color:#006666">æ–‡ä»¶ç‰ˆæ¬¡</span>ï¼š</td>
 					<td nowrap><INPUT TYPE="TEXT" name="LABEL_FORM_VERSION" value="<%=LABEL_FORM_VERSION%>" size="50" style="font-family: Tahoma,Georgia;"></td>
 				</tr>				
 				<tr>
-					<td width="35%" height="25" bgcolor="#C9E2D0" nowrap><span style="font-size:12px;color:#006666">¼ĞÅÒÃş§O</span>¡G</td>
+					<td width="35%" height="25" bgcolor="#C9E2D0" nowrap><span style="font-size:12px;color:#006666">æ¨™ç±¤é¡åˆ¥</span>ï¼š</td>
 					<td nowrap>
 				    <input type="radio" name="LABEL_KIND" value="TSC" <%=(LABEL_KIND.equals("TSC")?"CHECKED":"")%>>
-				    ¥x¥b¼Ğ·Ç¼ĞÅÒ
+				    å°åŠæ¨™æº–æ¨™ç±¤
 				    &nbsp;&nbsp;&nbsp;&nbsp;
 				    <input type="radio" name="LABEL_KIND" value="CUST" <%=(LABEL_KIND.equals("CUST")?"CHECKED":"")%>>
-				    «È¤á¼ĞÅÒ
+				    å®¢æˆ¶æ¨™ç±¤
 				    &nbsp;&nbsp;&nbsp;&nbsp;
 				    <input type="radio" name="LABEL_KIND" value="SHIPPING MARK" <%=(LABEL_KIND.equals("MARK")?"CHECKED":"")%>>
-				    áMÀY¼ĞÅÒ</td>
+				    å˜œé ­æ¨™ç±¤</td>
 				</tr>
 				<tr>
-					<td width="35%" height="25" bgcolor="#C9E2D0" nowrap><span style="font-size:12px;color:#006666">±Ò¥Î°_¤é</span>¡G</td>
+					<td width="35%" height="25" bgcolor="#C9E2D0" nowrap><span style="font-size:12px;color:#006666">å•Ÿç”¨èµ·æ—¥</span>ï¼š</td>
 					<td nowrap><input type="text" name="EFFECTIVE_FROM" style="font-family: Tahoma,Georgia;" value="<%=EFFECTIVE_FROM%>" onKeypress="return event.keyCode >= 48 && event.keyCode <=57" size="12"><A href='javascript:void(0)' onclick='gfPop.fPopCalendar(document.MYFORMD.EFFECTIVE_FROM);return false;'><img name='popcal' border='0' src='../image/calbtn.gif'></A>
 					</td>
 				</tr>	
 				<tr>
-					<td width="35%" height="25" bgcolor="#C9E2D0" nowrap><span style="font-size:12px;color:#006666">±Ò¥Î¨´¤é</span>¡G</td>
+					<td width="35%" height="25" bgcolor="#C9E2D0" nowrap><span style="font-size:12px;color:#006666">å•Ÿç”¨è¿„æ—¥</span>ï¼š</td>
 					<td nowrap><input type="text" name="EFFECTIVE_TO" style="font-family: Tahoma,Georgia;" value="<%=EFFECTIVE_TO%>" onKeypress="return event.keyCode >= 48 && event.keyCode <=57" size="12"><A href='javascript:void(0)' onclick='gfPop.fPopCalendar(document.MYFORMD.EFFECTIVE_TO);return false;'><img name='popcal' border='0' src='../image/calbtn.gif'></A>
 				</tr>	
 				<tr>
-					<td width="35%" height="25" bgcolor="#C9E2D0" nowrap><span style="font-size:12px;color:#006666">«È¤ááMÀY</span>¡G</td>
+					<td width="35%" height="25" bgcolor="#C9E2D0" nowrap><span style="font-size:12px;color:#006666">å®¢æˆ¶å˜œé ­</span>ï¼š</td>
 					<td nowrap>
 					<textarea cols="50" rows="5" name="CUST_SHIPPING_MARKS" style="text-align:left;font-family:Arial" tabindex="20"><%=CUST_SHIPPING_MARKS%></textarea>
 					</td>
 				</tr>	
 				<tr>
-					<td width="35%" height="25" bgcolor="#C9E2D0" nowrap><span style="font-size:12px;color:#006666">«~¦W</span>¡G</td>
+					<td width="35%" height="25" bgcolor="#C9E2D0" nowrap><span style="font-size:12px;color:#006666">å“å</span>ï¼š</td>
 					<td nowrap>
 					<textarea cols="50" rows="5" name="TSC_PARTNO" style="text-align:left;font-family:Arial" tabindex="20"><%=TSC_PARTNO%></textarea>
 					</td>
 				</tr>	
 				<tr>
-					<td width="35%" height="25" bgcolor="#C9E2D0" nowrap><span style="font-size:12px;color:#006666">ERP Function</span>¡G</td>
+					<td width="35%" height="25" bgcolor="#C9E2D0" nowrap><span style="font-size:12px;color:#006666">ERP Function</span>ï¼š</td>
 					<td nowrap>
 					<textarea cols="50" rows="3" name="ERP_FUNC" style="text-align:left;font-family:Arial" tabindex="21"><%=ERP_FUNC%></textarea>
 					</td>
 				</tr>	
 				<tr>
-					<td width="35%" height="25" bgcolor="#C9E2D0" nowrap><span style="font-size:12px;color:#006666">¨ä¥L</span>¡G</td>
+					<td width="35%" height="25" bgcolor="#C9E2D0" nowrap><span style="font-size:12px;color:#006666">å…¶ä»–</span>ï¼š</td>
 					<td nowrap>
 					<textarea cols="50" rows="5" name="OTHERS_RULE" style="text-align:left;font-family:Arial" tabindex="22"><%=OTHERS_RULE%></textarea>
 					</td>
@@ -300,8 +300,8 @@ try
 		<td>
 			<table width="100%" border="0">
   				<tr align=center>
-    				<td width="16%"> <input type="button"  name="btnSubmit" onClick='setSubmit("../jsp/TSYewLabelGroupAdd.jsp?STATUS=<%=STATUS%>&ACODE=SAVE")' value="¦sÀÉ" style="font-family:'Tahoma,Georgia';font-size:12px">&nbsp;&nbsp;&nbsp;
-     								<input type="button" name="btnCancel" onClick='setCancel()' value="Ãö³¬µøµ¡" style="font-family:'Tahoma,Georgia';font-size:12px">
+    				<td width="16%"> <input type="button"  name="btnSubmit" onClick='setSubmit("../jsp/TSYewLabelGroupAdd.jsp?STATUS=<%=STATUS%>&ACODE=SAVE")' value="å­˜æª”" style="font-family:'Tahoma,Georgia';font-size:12px">&nbsp;&nbsp;&nbsp;
+     								<input type="button" name="btnCancel" onClick='setCancel()' value="é—œé–‰è¦–çª—" style="font-family:'Tahoma,Georgia';font-size:12px">
 					</td>    
   				</tr>
 			</table>
@@ -324,7 +324,7 @@ try
 				ResultSet rs=statement.executeQuery();
 				if (rs.next())
 				{	
-					throw new Exception("¸s²Õ¦WºÙ¤w¦s¦b,¤£¥i­«ÂĞ!");
+					throw new Exception("ç¾¤çµ„åç¨±å·²å­˜åœ¨,ä¸å¯é‡è¦†!");
 				}
 				else
 				{			
@@ -477,7 +477,7 @@ try
 					con.commit();			
 				%>
 					<script language = "JavaScript">
-						alert('­×§ï¦¨¥\!');
+						alert('ä¿®æ”¹æˆåŠŸ!');
 						window.opener.MYFORM.submit();
 						setCancel();
 					</script>
@@ -496,7 +496,7 @@ try
 				ResultSet rs=statement.executeQuery();
 				if (rs.next())
 				{	
-					throw new Exception("¸s²Õ¦WºÙ¤w¦s¦b,¤£¥i­«ÂĞ!");
+					throw new Exception("ç¾¤çµ„åç¨±å·²å­˜åœ¨,ä¸å¯é‡è¦†!");
 				}
 				else
 				{	
@@ -669,7 +669,7 @@ try
 					}						
 					con.commit();					
 	
-					out.println("<div align='center' style='color:#0000ff'>·s¼W¦¨¥\!!</div>");
+					out.println("<div align='center' style='color:#0000ff'>æ–°å¢æˆåŠŸ!!</div>");
 			%>
 					<script language="javascript">
 						setClear();
@@ -683,7 +683,7 @@ try
 		catch(Exception e)
 		{
 			con.rollback();
-			out.println("<div align='center' style='color:#ff0000'>¥æ©ö¥¢±Ñ:"+e.getMessage()+"</div>");
+			out.println("<div align='center' style='color:#ff0000'>äº¤æ˜“å¤±æ•—:"+e.getMessage()+"</div>");
 		}
 	}
 }
@@ -695,7 +695,7 @@ catch(Exception e)
 </FORM>
 <iframe width=124 height=153 name="gToday:supermini:agenda.js" id="gToday:supermini:agenda.js" src="../calendar/ipopeng.htm" scrolling="no" frameborder="0" style="visibility:hidden; z-index:65535; position:absolute; top:0px;"></iframe>
 </body>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 </html>

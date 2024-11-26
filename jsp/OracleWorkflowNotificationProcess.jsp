@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8" pageEncoding="big5" language="java" import="java.sql.*" %>
+<%@ page contentType="text/html; charset=utf-8"  language="java" import="java.sql.*" %>
 <%@ page import="ComboBoxBean,DateBean,WorkingDateBean,ArrayComboBoxBean"%>
 <script language="JavaScript" type="text/JavaScript">
 function setSubmit(URL)
@@ -98,10 +98,10 @@ function workflowDetailQuery(notificationID)
              
 </STYLE>
 <title>Oracle Workflow Notification Transfer</title>
-<!--=============¥H¤U°Ï¬q¬°¦w¥ş»{ÃÒ¾÷¨î==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå®‰å…¨èªè­‰æ©Ÿåˆ¶==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=================================-->
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
@@ -135,7 +135,7 @@ String organizationId=request.getParameter("ORGANIZATION_ID");
 
   if (organizationId==null || organizationId.equals("")) { organizationId="49"; }
   
-     // ¦]ÃöÁp ­q³æ¥DÀÉ¤Î©ú²ÓÀÉ,¬G»İ©I¥sSET Client Information Procedure
+     // å› é—œè¯ è¨‚å–®ä¸»æª”åŠæ˜ç´°æª”,æ•…éœ€å‘¼å«SET Client Information Procedure
      String clientID = "";
 	 if (organizationId=="46" || organizationId.equals("46"))
 	 {  clientID = "42"; }
@@ -143,7 +143,7 @@ String organizationId=request.getParameter("ORGANIZATION_ID");
   
      //CallableStatement cs1 = con.prepareCall("{call DBMS_APPLICATION_INFO.SET_CLIENT_INFO(?)}");
 	 CallableStatement cs1 = con.prepareCall("{call mo_global.set_policy_context('S', ?)}");
-	 cs1.setString(1,clientID);  /*  41 --> ¬°¥b¾ÉÅé  42 --> ¬°¨Æ°È¾÷ */
+	 cs1.setString(1,clientID);  /*  41 --> ç‚ºåŠå°é«”  42 --> ç‚ºäº‹å‹™æ©Ÿ */
 	 cs1.execute();
     // out.println("Procedure : Execute Success !!! ");
      cs1.close();
@@ -151,22 +151,22 @@ String organizationId=request.getParameter("ORGANIZATION_ID");
   //  
 
 %>
-<% /* «Ø¥ß¥»­¶­±¸ê®Æ®w³s½u  */ %>
+<% /* å»ºç«‹æœ¬é é¢è³‡æ–™åº«é€£ç·š  */ %>
 <meta http-equiv="Content-Type" content="text/html; charset=big5"></head>
 <body topmargin="0" bottommargin="0">    
 <%@ include file="/jsp/include/TSCMfgDocHyperLinkPage.jsp"%>  
 <FORM ACTION="../jsp/OracleWorkflowNotifyTransferSubmit.jsp" METHOD="post" NAME="MYFORM">
-<!--%/20040109/±NExcel Veiw §¨¦bÀÉÀY%-->
+<!--%/20040109/å°‡Excel Veiw å¤¾åœ¨æª”é ­%-->
 <font color="#003366" size="+2" face="Arial"><font size="+3" face="Arial Black"><font color="#3366FF" size="+2" face="Arial"><font size="+3" face="Arial Black"><font face="Courier, MS Sans Serif"><font color="#003366" size="+2" face="Arial"></font></font></font></font><font face="Courier, MS Sans Serif"></font></font></font><font color="#006666" size="+2" face="Times New Roman"> 
 <strong>Workflow Notification API Transfer</strong></font>
   <A href="/oradds/jsp/OracleWorkflowNotificationQuery.jsp">Workflow Notification Query</A>
 <%
  
   workingDateBean.setAdjWeek(-1); //out.println("workingDateBean.getWeek()="+workingDateBean.getWeek());
-  workingDateBean.setDefineWeekFirstDay(1);  // ³]©w¨C¶g²Ä¤@¤Ñ¬°¬P´Á¤é  
+  workingDateBean.setDefineWeekFirstDay(1);  // è¨­å®šæ¯é€±ç¬¬ä¸€å¤©ç‚ºæ˜ŸæœŸæ—¥  
   
-  String strFirstDayWeek = workingDateBean.getFirstDateOfWorkingWeek();   // ¨ú°_©l¶g²Ä¤@¤Ñ
-  String strLastDayWeek = workingDateBean.getLastDateOfWorkingWeek();  // ¨ú°_©l¶g³Ì«á¤@¤Ñ 
+  String strFirstDayWeek = workingDateBean.getFirstDateOfWorkingWeek();   // å–èµ·å§‹é€±ç¬¬ä¸€å¤©
+  String strLastDayWeek = workingDateBean.getLastDateOfWorkingWeek();  // å–èµ·å§‹é€±æœ€å¾Œä¸€å¤© 
   String currentWeek = workingDateBean.getWeekString();
 
    sSql = "SELECT NOTIFICATION_ID, FROM_USER,ORIGINAL_RECIPIENT, "+
@@ -205,7 +205,7 @@ String organizationId=request.getParameter("ORGANIZATION_ID");
 		   <input name="NOTIFYID" type="HIDDEN" value="<%=notificationID%>" >
 		   <input name="NOTIFYTYPE" type="HIDDEN" value="<%="transfer"%>" >
 		</td> 
-		<td width="14%" colspan="1" nowrap><font color="#006666"><strong>­ì³æ¾Ú³B²z¤H­û</strong></font></td> 
+		<td width="14%" colspan="1" nowrap><font color="#006666"><strong>åŸå–®æ“šè™•ç†äººå“¡</strong></font></td> 
 		<td width="47%" colspan="1">
 		   <div align="left">
 		   <font color="#006666"><strong> </strong></font>		   
@@ -215,7 +215,7 @@ String organizationId=request.getParameter("ORGANIZATION_ID");
 	 </tr>	  
      <tr>	    
 	   <td nowrap colspan="1">
-	      <font color="#006666"><strong>Âà³æ¾Ú±µ¦¬¤H­û</strong></font>
+	      <font color="#006666"><strong>è½‰å–®æ“šæ¥æ”¶äººå“¡</strong></font>
 	   </td>
 	   <td nowrap colspan="3">
         <%
@@ -248,7 +248,7 @@ String organizationId=request.getParameter("ORGANIZATION_ID");
    </tr>
    <tr>	    
 	   <td nowrap colspan="1">
-	      <font color="#006666"><strong>Âà³æ¾Ú³B²z»¡©ú</strong></font>
+	      <font color="#006666"><strong>è½‰å–®æ“šè™•ç†èªªæ˜</strong></font>
 	   </td>
 	   <td nowrap colspan="3">
          <textarea name="TRANSCOMMENT" cols="80" rows="3"></textarea>
@@ -266,7 +266,7 @@ String organizationId=request.getParameter("ORGANIZATION_ID");
     statementTC.close(); 
   %>
 <BR>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 </form>

@@ -1,16 +1,16 @@
-<!-- 20141008 by Peggy,Åã¥ÜRFQ«È¤á¥i±µ¨üªºD/C¦~­­-->
-<%@ page contentType="text/html;charset=utf-8" pageEncoding="big5" language="java" %>
+<!-- 20141008 by Peggy,é¡¯ç¤ºRFQå®¢æˆ¶å¯æ¥å—çš„D/Cå¹´é™-->
+<%@ page contentType="text/html;charset=utf-8"  language="java" %>
 <%@ page import="java.sql.*"%>
 <%@ page import="java.util.*"%>
 <%@ page import="jxl.*"%>
 <%@ page import="java.lang.Math.*"%>
 <%@ page import="java.text.*"%>
 <%@ page import="java.io.*,DateBean,ComboBoxAllBean"%>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<!--=============¥H¤U°Ï¬q¬°¦w¥ş»{ÃÒ¾÷¨î==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå®‰å…¨èªè­‰æ©Ÿåˆ¶==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—é€£çµæ± ==========-->
 <html>
 <head>
 <title>Slow Moving Stock Query</title>
@@ -83,15 +83,15 @@ function setCheck(chkline,itemid,slowseqid,idleqty)
 }
 </script>
 <STYLE TYPE='text/css'> 
- .style1   {font-family:¼Ğ·¢Åé; font-size:13px; background-color:#CCFF66; color:#000000; text-align:left;}
+ .style1   {font-family:æ¨™æ¥·é«”; font-size:13px; background-color:#CCFF66; color:#000000; text-align:left;}
  .style2   {font-family:arial; font-size:13px; background-color:#CCFF66; color:#000000; text-align:left;}
- .style3   {font-family:¼Ğ·¢Åé; font-size:14px; background-color:#FFFFFF; color:#000000; text-align:left;}
+ .style3   {font-family:æ¨™æ¥·é«”; font-size:14px; background-color:#FFFFFF; color:#000000; text-align:left;}
  .style4   {font-family:Arial; font-size:12px; color: #000000; text-align:center}
  .style7   {font-family:Arial; font-size:12px; background-color:#FFFFFF; color:#CC0000; text-align:right;}
  .style9   {font-family:Arial; font-size:12px; background-color:#CCFFFF; color:#000000; text-align:left;}
- .style13  {font-family:¼Ğ·¢Åé; font-size:14px; background-color:#AAAAAA; color:#FFFFFF; text-align:left;}
- .style14  {font-family:¼Ğ·¢Åé; font-size:14px; background-color:#AAAAAA; color:#FFFFFF; text-align:center;}
- .style15  {font-family:¼Ğ·¢Åé; font-size:16px; background-color:#6699CC; color:#FFFFFF; text-align:center;}
+ .style13  {font-family:æ¨™æ¥·é«”; font-size:14px; background-color:#AAAAAA; color:#FFFFFF; text-align:left;}
+ .style14  {font-family:æ¨™æ¥·é«”; font-size:14px; background-color:#AAAAAA; color:#FFFFFF; text-align:center;}
+ .style15  {font-family:æ¨™æ¥·é«”; font-size:16px; background-color:#6699CC; color:#FFFFFF; text-align:center;}
  .style16  {font-family:Arial; font-size:12px; background-color:#FFFFFF; color:#000000; text-align:right;}
  .style17  {font-family:Arial; font-size:14px; background-color:#FFFFFF; color:#000000; text-align:LEFT;}
  td {word-break:break-all}
@@ -140,9 +140,9 @@ if (CHKLINE==null) CHKLINE="";
 						%>
 						<table>
 							<tr>
-    							<TD width="10%"  height="70%" class="style13" title="¦^­º­¶!">
+    							<TD width="10%"  height="70%" class="style13" title="å›é¦–é !">
 									<A HREF="../ORAddsMainMenu.jsp" style="text-decoration:none;color:#FFFFFF">
-									<STRONG>¦^­º­¶</STRONG>
+									<STRONG>å›é¦–é </STRONG>
 									</A>
 								</TD>
 							</tr>
@@ -152,7 +152,7 @@ if (CHKLINE==null) CHKLINE="";
 						%>
 					</TD>
 					<TD width="10%" class="style15">
-						<STRONG>®w¦s¬d¸ß</STRONG>
+						<STRONG>åº«å­˜æŸ¥è©¢</STRONG>
 					</TD>
 					<TD width="10%" bgcolor="#FFFFFF">
 						<%
@@ -167,9 +167,9 @@ if (CHKLINE==null) CHKLINE="";
 						%>
 						<table>
 							<tr>
-								<TD width="10%" class="style14" title="½Ğ«ö§Ú¶i¤J¤W¶Ç¾úµ{¬d¸ß¥\¯à!">
+								<TD width="10%" class="style14" title="è«‹æŒ‰æˆ‘é€²å…¥ä¸Šå‚³æ­·ç¨‹æŸ¥è©¢åŠŸèƒ½!">
 									<A HREF="TscSlowMovingQueryHistory.jsp" style="text-decoration:none;color:#FFFFFF">
-									<STRONG>¤W¶Ç¾úµ{</STRONG>
+									<STRONG>ä¸Šå‚³æ­·ç¨‹</STRONG>
 									</A>
 								</TD>
 							</tr>
@@ -191,9 +191,9 @@ if (CHKLINE==null) CHKLINE="";
 						%>
 						<table>
 							<tr>
-								<TD width="10%" class="style14" title="½Ğ«ö§Ú¶i¤J¸ê®Æ¤W¶Ç¥\¯à!">
+								<TD width="10%" class="style14" title="è«‹æŒ‰æˆ‘é€²å…¥è³‡æ–™ä¸Šå‚³åŠŸèƒ½!">
 									<A HREF="TscSlowMovingQtyUpload.jsp" style="text-decoration:none;color:#FFFFFF">
-									<STRONG>¸ê®Æ¤W¶Ç</STRONG>
+									<STRONG>è³‡æ–™ä¸Šå‚³</STRONG>
 									</A>
 								</TD>
 							</tr>
@@ -228,7 +228,7 @@ if (CHKLINE==null) CHKLINE="";
 		<td>
 			<table  border="1" bordercolor="#99FF99" cellspacing="0" bordercolordark="#996699" cellpadding="1" width="100%" height="15" align="left">
 				<tr>
-					<td width="15%" style="font-family:¼Ğ·¢Åé;font-size:14px;color:#000000">·~°È°Ï°ì:</td>
+					<td width="15%" style="font-family:æ¨™æ¥·é«”;font-size:14px;color:#000000">æ¥­å‹™å€åŸŸ:</td>
 					<td width="20%">
 				<%		 
 					try
@@ -252,9 +252,9 @@ if (CHKLINE==null) CHKLINE="";
 					}		   
 				%>					
 					</td>
-					<td width="15%" style="font-family:¼Ğ·¢Åé;font-size:14px;color:#000000">¥x¥b®Æ¸¹©Î«~¦W:</td>
+					<td width="15%" style="font-family:æ¨™æ¥·é«”;font-size:14px;color:#000000">å°åŠæ–™è™Ÿæˆ–å“å:</td>
 					<td width="20%"><input type="text" name="ITEMNAME" value="<%=sitem%>"></td>
-					<td align="center"><input type="button" name="Query" value="¬d¸ß" onClick="setSubmit('../jsp/TscSlowMovingQueryAll.jsp')"></td>
+					<td align="center"><input type="button" name="Query" value="æŸ¥è©¢" onClick="setSubmit('../jsp/TscSlowMovingQueryAll.jsp')"></td>
 				</tr>	
 			</table>
 		</td>
@@ -271,7 +271,7 @@ try
 {
 	sql = " SELECT a.version_id, a.area, a.inventory_item_id, a.item_name,a.item_desc, a.date_code, a.idle_qty, a.sales, a.customer,a.remarks"+
 		  ", nvl((select attribute4 from ar_customers  where customer_id='"+CUSTNO+"'),'N/A') attribute4,region,a.seq_no"+	  
-		  ",'¦P·N®ø¤Æ«È¤á:'||a.customer||' «¬¸¹:'||a.item_desc||' ¦b'||a.area||'ªº®w¦s' as stock_info"+ //add by Peggy 20230208    
+		  ",'åŒæ„æ¶ˆåŒ–å®¢æˆ¶:'||a.customer||' å‹è™Ÿ:'||a.item_desc||' åœ¨'||a.area||'çš„åº«å­˜' as stock_info"+ //add by Peggy 20230208    
           " FROM oraddman.tsc_idle_stock_detail a"+
 		  " where a.version_id in (select max(version_id) FROM oraddman.tsc_idle_stock_header b where b.version_id = a.version_id and b.VERSION_FLAG='A')";
 	if (!sarea.equals("") && !sarea.equals("ALL") && !sarea.equals("--")) sql += " and a.area ='"+ sarea +"'";
@@ -293,19 +293,19 @@ try
 			{
 				out.println("<td class='style1'>&nbsp;</td>");
 			}
-			out.println("<td class='style1'>ª©¥»</td>");
-			out.println("<td class='style1'>·~°È°Ï°ì</td>");
-			out.println("<td class='style1'>³f·½¦a</td>");
-			out.println("<td class='style1'>¥x¥b¸¹½X</td>");
-			out.println("<td class='style1'>¥x¥b«~¦W</td>");
+			out.println("<td class='style1'>ç‰ˆæœ¬</td>");
+			out.println("<td class='style1'>æ¥­å‹™å€åŸŸ</td>");
+			out.println("<td class='style1'>è²¨æºåœ°</td>");
+			out.println("<td class='style1'>å°åŠè™Ÿç¢¼</td>");
+			out.println("<td class='style1'>å°åŠå“å</td>");
 			out.println("<td class='style2'>Date Code</td>");
-			out.println("<td class='style1'>¼Æ¶q</td>");
-			out.println("<td class='style1'>·~°È¤H­û</td>");
-			out.println("<td class='style1'>«È¤á</td>");
-			out.println("<td class='style1'>³Æµù</td>");
+			out.println("<td class='style1'>æ•¸é‡</td>");
+			out.println("<td class='style1'>æ¥­å‹™äººå“¡</td>");
+			out.println("<td class='style1'>å®¢æˆ¶</td>");
+			out.println("<td class='style1'>å‚™è¨»</td>");
 			if (!CUSTNO.equals(""))
 			{
-				out.println("<td style='font-size:13px;background-color:#FFCCCC;font-family:¼Ğ·¢Åé;'>«È¤áD/C­­¨î</td>");
+				out.println("<td style='font-size:13px;background-color:#FFCCCC;font-family:æ¨™æ¥·é«”;'>å®¢æˆ¶D/Cé™åˆ¶</td>");
 			}
 			out.println("</tr>");
 		}
@@ -337,7 +337,7 @@ try
 		
 		if (!CUSTNO.equals(""))
 		{
-			out.println("<td width='10%' style='font-size:11px;font-family:arial;background-color:#ffffff;'>"+(rs.getString("attribute4").equals("N/A")?"N/A":rs.getString("attribute4")+"¤ë")+"</td>");
+			out.println("<td width='10%' style='font-size:11px;font-family:arial;background-color:#ffffff;'>"+(rs.getString("attribute4").equals("N/A")?"N/A":rs.getString("attribute4")+"æœˆ")+"</td>");
 		}
 		out.println("</tr>");
 		firCnt ++;
@@ -361,7 +361,7 @@ finally
 <input type="hidden" name="QTYPE" value="<%=qtype%>">
 <input type="hidden" name="CHKLINE" value="<%=CHKLINE%>">
 </form>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->  
+<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->  
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 </body>

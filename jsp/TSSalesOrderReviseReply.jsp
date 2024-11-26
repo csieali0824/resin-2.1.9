@@ -1,6 +1,6 @@
-<!-- 20151130 Peggy,requeste date¨d∏ﬂ±¯•Û-->
-<!-- 20181016 Peggy,∑sºWpackageƒÊ¶Ï-->
-<%@ page contentType="text/html; charset=utf-8" pageEncoding="big5" language="java" %>
+<!-- 20151130 Peggy,requeste dateÊü•Ë©¢Ê¢ù‰ª∂-->
+<!-- 20181016 Peggy,Êñ∞Â¢ûpackageÊ¨Ñ‰Ωç-->
+<%@ page contentType="text/html; charset=utf-8"  language="java" %>
 <%@ page import="java.sql.*,java.net.*,java.io.*,java.text.*,java.lang.*,java.util.*"%>
 <html>
 <head>
@@ -15,7 +15,7 @@
   A:visited { color: #990066; text-decoration: underline }
 </STYLE>
 <title>Sales Order Confirm for Revise</title>
-<!--=============•H§U∞œ¨q¨∞¶w•˛ª{√“æ˜®Ó==========-->
+<!--=============‰ª•‰∏ãÂçÄÊÆµÁÇ∫ÂÆâÂÖ®Ë™çË≠âÊ©üÂà∂==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
@@ -183,30 +183,30 @@ function setSubmit(URL)
 					
 					if (document.MYFORM.PLANTCODE.value=="005" || document.MYFORM.PLANTCODE.value=="008")
 					{
-						if (document.MYFORM.elements["pcremark_"+id].value!=null && document.MYFORM.elements["pcremark_"+id].value!="" && document.MYFORM.elements["pcremark_"+id].value.indexOf("´˘")>=0 && document.MYFORM.elements["pcremark_"+id].value.length==2)
+						if (document.MYFORM.elements["pcremark_"+id].value!=null && document.MYFORM.elements["pcremark_"+id].value!="" && document.MYFORM.elements["pcremark_"+id].value.indexOf("ÊåÅ")>=0 && document.MYFORM.elements["pcremark_"+id].value.length==2)
 						{
-							alert("Line"+(i+1)+":∫˚´˘≠Ï•Ê¥¡™Ã,Ω–ßPRej!!");
+							alert("Line"+(i+1)+":Á∂≠ÊåÅÂéü‰∫§ÊúüËÄÖ,Ë´ãÂà§Rej!!");
 							document.MYFORM.elements["pcremark_"+id].style.backgroundColor="#FFCCCC";  
 							return false;	
 						}
 					}
 					
-					//pull in/push out¿À¨d,add by Peggy 20211130
+					//pull in/push outÊ™¢Êü•,add by Peggy 20211130
 					if (eval(document.MYFORM.elements["sales_ssd_"+id].value)>eval(document.MYFORM.elements["orig_so_ssd_"+id].value)) //push out
 					{
 						if (eval(document.MYFORM.elements["ssd_"+id].value)<eval(document.MYFORM.elements["orig_so_ssd_"+id].value)) //pull in
 						{
-							alert("Line"+(i+1)+":∑~∞»≠npush out•Ê¥¡,≠YµL™kPush out,Ω–ßPRej!!");
+							alert("Line"+(i+1)+":Ê•≠ÂãôË¶Åpush out‰∫§Êúü,Ëã•ÁÑ°Ê≥ïPush out,Ë´ãÂà§Rej!!");
 							document.MYFORM.elements["ssd_"+id].style.backgroundColor="#FFCCCC";  
 							return false;						
 						}
 					}
-					//pull in/push out¿À¨d,add by Peggy 20211130
+					//pull in/push outÊ™¢Êü•,add by Peggy 20211130
 					if (eval(document.MYFORM.elements["sales_ssd_"+id].value)<eval(document.MYFORM.elements["orig_so_ssd_"+id].value)) //pull in
 					{
 						if (eval(document.MYFORM.elements["ssd_"+id].value)>eval(document.MYFORM.elements["orig_so_ssd_"+id].value)) //push out
 						{
-							alert("Line"+(i+1)+":∑~∞»≠npull in •Ê¥¡,≠YµL™kpull in,Ω–ßPRej!!");
+							alert("Line"+(i+1)+":Ê•≠ÂãôË¶Åpull in ‰∫§Êúü,Ëã•ÁÑ°Ê≥ïpull in,Ë´ãÂà§Rej!!");
 							document.MYFORM.elements["ssd_"+id].style.backgroundColor="#FFCCCC";  
 							return false;						
 						}
@@ -326,7 +326,7 @@ function setChkboxPress(Lineno,id)
 		document.MYFORM.elements["pcremark_"+id].style.backgroundColor ="#FFFFFF";
 	}
 }
-// ¿À¨d∂|¶~,ßP¬_§È¥¡øÈ§J¶X™k© 
+// Ê™¢Êü•ÈñèÂπ¥,Âà§Êñ∑Êó•ÊúüËº∏ÂÖ•ÂêàÊ≥ïÊÄß
 function isLeapYear(year) 
 { 
 	if((year%4==0&&year%100!=0)||(year%400==0)) 
@@ -394,7 +394,7 @@ int rowcnt=0, show_maxcnt=250,chkline=0;
 <div id='alpha' class='hidden' style='width:0%;height:0;position:absolute;top:0;left:0;background:#000;filter:alpha(opacity=30);-moz-opacity:0.3;z-index:0;'></div>
 <TABLE width="100%" border='1' bordercolorlight='#426193' bordercolordark='#ffffff' cellPadding='1' cellspacing='0' bgcolor="#DAF0FC">
 	<tr>
-		<td width="5%" align="right">Plant Code°G</td>
+		<td width="5%" align="right">Plant CodeÔºö</td>
 		<td width="5%">
 		<%
 		try
@@ -426,7 +426,7 @@ int rowcnt=0, show_maxcnt=250,chkline=0;
 		}		
 		%>
 		</td>
-		<td width="4%" align="right">ORG°G</td>
+		<td width="4%" align="right">ORGÔºö</td>
 		<td width="4%">
 		<%
 		try
@@ -450,7 +450,7 @@ int rowcnt=0, show_maxcnt=250,chkline=0;
 		} 				
 		%>
 		</td>
-		<td width="6%" align="right">Sales Group°G</td>
+		<td width="6%" align="right">Sales GroupÔºö</td>
 		<td width="6%">
 		<%
 		try
@@ -479,7 +479,7 @@ int rowcnt=0, show_maxcnt=250,chkline=0;
 		} 	
 		%>	
 		</td>
-		<td width="5%" align="right">Customer°G</td>
+		<td width="5%" align="right">CustomerÔºö</td>
 		<td width="9%" colspan="3">
 		<%
 		try
@@ -513,7 +513,7 @@ int rowcnt=0, show_maxcnt=250,chkline=0;
 		</td>
 	</tr>
 	<tr>
-		<td width="6%" align="right">Item Desc°G</td> 
+		<td width="6%" align="right">Item DescÔºö</td> 
 		<td width="10%">
 		<%
 		try
@@ -542,11 +542,11 @@ int rowcnt=0, show_maxcnt=250,chkline=0;
 		} 	
 		%>		
 		</td>
-		<td width="3%" align="right">MO#°G</td> 
+		<td width="3%" align="right">MO#Ôºö</td> 
 		<td width="6%"><input type="text" name="MONO" value="<%=MONO%>" style="font-family:Tahoma,Georgia;font-size:11px" size="10"></td>
-		<td width="6%"align="right">Request No°G</td>
+		<td width="6%"align="right">Request NoÔºö</td>
 		<td width="6%"><input type="text" name="REQUESTNO" value="<%=REQUESTNO%>" style="font-family:Tahoma,Georgia;font-size:11px" size="14"></td>		
-		<td width="6%"align="right">Request Date°G</td>
+		<td width="6%"align="right">Request DateÔºö</td>
 		<td width="6%">
 		<%
 		try
@@ -583,8 +583,8 @@ int rowcnt=0, show_maxcnt=250,chkline=0;
 		<td width="3%">
 		<select NAME="TOTW1" style="font-family: Tahoma,Georgia;font-size:11px" >
 		<OPTION VALUE="--" <%=(TOTW1.equals("") || TOTW1.equals("--") ?" selected ":"")%>>
-        <OPTION VALUE="N" <%=(TOTW1.equals("N")?" selected ":"")%>>ß_
-        <OPTION VALUE="Y" <%=(TOTW1.equals("Y")?" selected ":"")%>>¨O
+        <OPTION VALUE="N" <%=(TOTW1.equals("N")?" selected ":"")%>>Âê¶
+        <OPTION VALUE="Y" <%=(TOTW1.equals("Y")?" selected ":"")%>>ÊòØ
 		</select>
 		</td>			
 	</tr>
@@ -635,7 +635,7 @@ try
           ",(select f.description  from inv.mtl_system_items_b f where  a.SOURCE_ITEM_ID=f.inventory_item_id  and a.SOURCE_SHIP_FROM_ORG_ID=f.organization_id) orig_item_desc"+
 		  ",to_char(CASE WHEN a.packing_instructions IN ('Y','T') AND (SUBSTR(a.so_no,1,4) IN ('1131','1141','1121') OR (SUBSTR(a.so_no,1,4) IN ('1214') and nvl(a.TO_TW_DAYS,0)<>0)) and instr(NVL(a.remarks,' '),'NEW MO')=0 THEN TO_DATE(TSC_GET_YEW_TOTW_ORDER_INFO(a.so_line_id,'TSC','SSD',NULL),'YYYYMMDD')"+ //modify by Peggy 20201102 delta 1214 totw
 		  //"  ELSE a.source_ssd END ,'yyyymmdd') AS  orig_schedule_ship_date"+
-		  "  ELSE a.source_ssd-nvl(a.TO_TW_DAYS,0) END ,'yyyymmdd') AS  orig_schedule_ship_date"+ //¶^T®Ã§uºtSSD¨∞∑«,MODIFY BY PEGGY 20220511
+		  "  ELSE a.source_ssd-nvl(a.TO_TW_DAYS,0) END ,'yyyymmdd') AS  orig_schedule_ship_date"+ //ÂõûT‰æùÂ∑•Âª†SSDÁÇ∫Ê∫ñ,MODIFY BY PEGGY 20220511
 		  //",case when a.sales_group='TSCH-HK' then case when instr(a.SOURCE_CUSTOMER_PO,'(')>0  then substr(a.SOURCE_CUSTOMER_PO,instr(a.SOURCE_CUSTOMER_PO,'(')+1,instr(a.SOURCE_CUSTOMER_PO,')')-instr(a.SOURCE_CUSTOMER_PO,'(')-1) else a.SOURCE_CUSTOMER_PO end  "+
 		  //" else nvl(e.CUSTOMER_NAME_PHONETIC,e.customer_name) ||case when a.source_customer_id=14980 then nvl2(end_cust.account_name,'('||end_cust.account_name ||')','') else '' end end as orig_customer"+
 		  ",case when a.sales_group='TSCH-HK' then case when instr(a.SOURCE_CUSTOMER_PO,'(')>0  then substr(a.SOURCE_CUSTOMER_PO,instr(a.SOURCE_CUSTOMER_PO,'(')+1,instr(a.SOURCE_CUSTOMER_PO,')')-instr(a.SOURCE_CUSTOMER_PO,'(')-1) else a.SOURCE_CUSTOMER_PO end "+ 
@@ -824,9 +824,9 @@ try
 		else
 		{
 			pc_remarks = (rs.getString("rej_reason")==null?"":(rs.getString("rej_reason").indexOf("/")>0?rs.getString("rej_reason").substring(0,rs.getString("rej_reason").indexOf("/")):rs.getString("rej_reason")));
-			if (pc_remarks.indexOf("´˘")>0 && pc_remarks.length()==2)
+			if (pc_remarks.indexOf("ÊåÅ")>0 && pc_remarks.length()==2)
 			{
-				pc_remarks = "∫˚´˘";
+				pc_remarks = "Á∂≠ÊåÅ";
 			}
 		}
 		%>
@@ -841,7 +841,7 @@ try
 		<td align="center" rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("ALENGNAME")%></td>
 		<td align="center" rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("sales_group")%></td>
 		<td align="left" rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("orig_customer")%></td>
-		<td align="center" rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("so_no")%><%=(rs.getInt("TO_TW_DAYS")==0?"":"<br><font color='#ff0000'><¶^T></font>")%></td>
+		<td align="center" rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("so_no")%><%=(rs.getInt("TO_TW_DAYS")==0?"":"<br><font color='#ff0000'><ÂõûT></font>")%></td>
 		<td rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("line_no")%></td>
 		<td rowspan="<%=rs.getString("line_cnt")%>" onMouseOver='this.T_ABOVE=false;this.T_WIDTH=100;this.T_OPACITY=80;return escape("<%=rs.getString("created_by")%>")'><%=rs.getString("orig_item_desc")%></td>
 		<td rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("tsc_package")%></td>
@@ -850,9 +850,9 @@ try
 		<%
 		}
 		%>
-		<td><input type="text" name="qty_<%=id%>" value="<%=(so_qty==null?"":so_qty)%>" style="font-weight:bold;font-family: Tahoma,Georgia; font-size:10px;text-align:right;<%=(rs.getInt("change_qty")==0?"color:#000000;":(rs.getInt("change_qty")>0?"color:#0000ff;":"color:#ff0000;"))%>" size="5" onKeyPress="return (event.keyCode >= 48 && event.keyCode <=57)" title="<%=(rs.getInt("change_qty")==0?"":(rs.getInt("change_qty")>0?"º∆∂qºW•[":"º∆∂q¥Ó§÷"))%>"><input type="hidden" name="sales_qty_<%=id%>" value="<%=(rs.getString("so_qty")==null?"":rs.getString("so_qty"))%>"><input type="hidden" name="source_qty_<%=id%>" value="<%=(rs.getString("orig_so_qty")==null?"":rs.getString("orig_so_qty"))%>"><input type="hidden" name="so_<%=id%>" value="<%=rs.getString("so_no")%>">
+		<td><input type="text" name="qty_<%=id%>" value="<%=(so_qty==null?"":so_qty)%>" style="font-weight:bold;font-family: Tahoma,Georgia; font-size:10px;text-align:right;<%=(rs.getInt("change_qty")==0?"color:#000000;":(rs.getInt("change_qty")>0?"color:#0000ff;":"color:#ff0000;"))%>" size="5" onKeyPress="return (event.keyCode >= 48 && event.keyCode <=57)" title="<%=(rs.getInt("change_qty")==0?"":(rs.getInt("change_qty")>0?"Êï∏ÈáèÂ¢ûÂä†":"Êï∏ÈáèÊ∏õÂ∞ë"))%>"><input type="hidden" name="sales_qty_<%=id%>" value="<%=(rs.getString("so_qty")==null?"":rs.getString("so_qty"))%>"><input type="hidden" name="source_qty_<%=id%>" value="<%=(rs.getString("orig_so_qty")==null?"":rs.getString("orig_so_qty"))%>"><input type="hidden" name="so_<%=id%>" value="<%=rs.getString("so_no")%>">
 		</td>
-		<td><input type="text" name="ssd_<%=id%>" value="<%=(so_ssd==null?"":so_ssd)%>" style="font-weight:bold;font-family: Tahoma,Georgia; font-size:10px;text-align:right;<%=(rs.getInt("change_ssd")==0?"color:#000000;":(rs.getInt("change_ssd")>0?"color:#0000ff;":"color:#ff0000;"))%>" size="7" onKeyPress="return (event.keyCode >= 48 && event.keyCode <=57)" title="<%=(rs.getInt("change_ssd")==0?"":(rs.getInt("change_ssd")>0?"•Ê¥¡¥£´e":"•Ê¥¡©µ´·"))%>"><input type="hidden" name="sales_ssd_<%=id%>" value="<%=(rs.getString("schedule_ship_date")==null?"":rs.getString("schedule_ship_date"))%>"></td>
+		<td><input type="text" name="ssd_<%=id%>" value="<%=(so_ssd==null?"":so_ssd)%>" style="font-weight:bold;font-family: Tahoma,Georgia; font-size:10px;text-align:right;<%=(rs.getInt("change_ssd")==0?"color:#000000;":(rs.getInt("change_ssd")>0?"color:#0000ff;":"color:#ff0000;"))%>" size="7" onKeyPress="return (event.keyCode >= 48 && event.keyCode <=57)" title="<%=(rs.getInt("change_ssd")==0?"":(rs.getInt("change_ssd")>0?"‰∫§ÊúüÊèêÂâç":"‰∫§ÊúüÂª∂Âæå"))%>"><input type="hidden" name="sales_ssd_<%=id%>" value="<%=(rs.getString("schedule_ship_date")==null?"":rs.getString("schedule_ship_date"))%>"></td>
 		<td width="10" id="tda_<%=id%>" align="center" <%=(pc_result.equals("A")?"style="+'"'+"background-color:#C4F8A5;"+'"':(pc_result.equals("R")?"style="+'"'+"background-color:#FEA398;"+'"':""))%>>
 		<% if (rs.getString("STATUS").equals(ACTIONTYPE))
 		{
@@ -953,7 +953,7 @@ catch(Exception e)
 <input name="batchid" type="hidden" value="<%=BID%>">
 </FORM>
 <iframe width=124 height=153 name="gToday:supermini:agenda.js" id="gToday:supermini:agenda.js" src="../calendar/ipopeng.htm" scrolling="no" frameborder="0" style="visibility:hidden; z-index:65535; position:absolute; top:0px;"></iframe>
-<!--=============•H§U∞œ¨q¨∞ƒ¿©Ò≥sµ≤¶¿==========-->
+<!--=============‰ª•‰∏ãÂçÄÊÆµÁÇ∫ÈáãÊîæÈÄ£ÁµêÊ±†==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 <script language="JavaScript" type="text/javascript" src="../wz_tooltip.js" ></script>

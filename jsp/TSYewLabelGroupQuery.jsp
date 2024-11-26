@@ -1,16 +1,16 @@
-<%@ page contentType="text/html;charset=utf-8" pageEncoding="big5" language="java" %>
+<%@ page contentType="text/html;charset=utf-8"  language="java" %>
 <%@ page import="java.sql.*"%>
 <%@ page import="java.util.*"%>
 <%@ page import="jxl.*"%>
 <%@ page import="java.lang.Math.*"%>
 <%@ page import="java.text.*"%>
 <%@ page import="java.io.*,DateBean,ComboBoxAllBean"%>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<!--=============¥H¤U°Ï¬q¬°¦w¥ş»{ÃÒ¾÷¨î==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå®‰å…¨èªè­‰æ©Ÿåˆ¶==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ page import="SalesDRQPageHeaderBean" %>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—é€£çµæ± ==========-->
 <html>
 <head>
 <title>TS YEW Label Query</title>
@@ -85,27 +85,27 @@ pstmt1.close();
 <form name="MYFORM"  METHOD="post" ACTION="../jsp/TSYewLabelGroupQuery.jsp">
 <br>
 <div id='alpha' class='hidden' style='width:0%;height:0;position:absolute;top:0;left:0;background:#000;filter:alpha(opacity=30);-moz-opacity:0.3;z-index:0;'></div>
-<strong><font style="font-family:²Ó©úÅé;font-size:20px;color:#006666">¼ĞÅÒ¸s²Õ¬d¸ß</font></strong>
+<strong><font style="font-family:ç´°æ˜é«”;font-size:20px;color:#006666">æ¨™ç±¤ç¾¤çµ„æŸ¥è©¢</font></strong>
 <BR>
   <div align="right"><A href="/oradds/ORADDSMainMenu.jsp"><jsp:getProperty name="rPH" property="pgHOME"/></A></div><br>
   <table cellSpacing='0' cellPadding='1' width='100%' align='center' borderColorLight="#CFDAD8"  bordercolordark="#5C7671" border='1'>
      <tr>
-		<td width="8%" bgcolor="#D3E6F3"  style="font-size:12px;font-weight:bold;color:#006666;">¸s²Õ¥N½X/¦WºÙ:</td>   
+		<td width="8%" bgcolor="#D3E6F3"  style="font-size:12px;font-weight:bold;color:#006666;">ç¾¤çµ„ä»£ç¢¼/åç¨±:</td>   
 		<td width="15%"><INPUT TYPE="TEXT" NAME="LABEL_GROUP_CODE" VALUE="<%=LABEL_GROUP_CODE%>" 	 style="font-family: Tahoma,Georgia;"></td> 
-		<td width="8%" bgcolor="#D3E6F3"  style="font-size:12px;font-weight:bold;color:#006666">±Ò/°±¥Î:</td>   
+		<td width="8%" bgcolor="#D3E6F3"  style="font-size:12px;font-weight:bold;color:#006666">å•Ÿ/åœç”¨:</td>   
 		<td width="15%">
 		<select NAME="STATUS" style="font-family:Tahoma,Georgia; font-size: 12px ">
 		<OPTION VALUE=-- <%if (STATUS.equals("")) out.println("selected");%>>--</OPTION>
-		<OPTION VALUE="Y" <%if (STATUS.equals("Y")) out.println("selected");%>>±Ò¥Î</OPTION>
-		<OPTION VALUE="N" <%if (STATUS.equals("N")) out.println("selected");%>>°±¥Î</OPTION>
+		<OPTION VALUE="Y" <%if (STATUS.equals("Y")) out.println("selected");%>>å•Ÿç”¨</OPTION>
+		<OPTION VALUE="N" <%if (STATUS.equals("N")) out.println("selected");%>>åœç”¨</OPTION>
 		</select>			
 		</td>
 		<td width="31%" align="center">
 		    <INPUT TYPE="button" align="middle"  value='<jsp:getProperty name="rPH" property="pgQuery"/>' onClick='setSubmit("../jsp/TSYewLabelGroupQuery.jsp")' > 
 			&nbsp;&nbsp;&nbsp;
-		    <INPUT TYPE="button" align="middle"  value='·s¼W'  style="font-family:ARIAL" onClick='setAdd("../jsp/TSYewLabelGroupAdd.jsp?STATUS=NEW")' > 
+		    <INPUT TYPE="button" align="middle"  value='æ–°å¢'  style="font-family:ARIAL" onClick='setAdd("../jsp/TSYewLabelGroupAdd.jsp?STATUS=NEW")' > 
 			&nbsp;&nbsp;&nbsp;
-		    <INPUT TYPE="button" align="middle"  value='¶×¥XExcel'  style="font-family:ARIAL" onClick='setExportXLS("../jsp/TSYewLabelGroupExcel.jsp")' > 
+		    <INPUT TYPE="button" align="middle"  value='åŒ¯å‡ºExcel'  style="font-family:ARIAL" onClick='setExportXLS("../jsp/TSYewLabelGroupExcel.jsp")' > 
 		</td>
    </tr>
 </table>  
@@ -123,7 +123,7 @@ try
           ",a.created_by"+
 		  ",to_char(a.last_update_date,'yyyy-mm-dd hh24:mi') last_update_date"+
 		  ",a.last_updated_by"+
-          ",case a.label_kind when 'TSC' then '¥x¥b¼Ğ·Ç¼ĞÅÒ' when 'CUST' then '«È¤á¼ĞÅÒ' when 'SHIPPING MARK' then 'áMÀY¼ĞÅÒ' else a.label_kind end as label_kind"+
+          ",case a.label_kind when 'TSC' then 'å°åŠæ¨™æº–æ¨™ç±¤' when 'CUST' then 'å®¢æˆ¶æ¨™ç±¤' when 'SHIPPING MARK' then 'å˜œé ­æ¨™ç±¤' else a.label_kind end as label_kind"+
 		  ",a.label_form_code, a.label_form_version"+ //add by Peggy 20200505
           " FROM oraddman.tsyew_label_groups a"+
 		  " where 1=1";
@@ -152,24 +152,24 @@ try
 		<table width="100%" border="1" cellpadding="1" cellspacing="0" borderColorLight="#CFDAD8"  bordercolordark="#5C7671">
 			<tr bgcolor="#D3E6F3"> 
 				<td width="3%" >&nbsp;&nbsp;&nbsp;</td> 
-				<td width="3%" style="font-size:12px;color:#006666" align="center">§Ç¸¹</td> 
-				<td width="6%" style="font-size:12px;color:#006666" align="center">¼ĞÅÒÃş§O</td>
-				<td width="6%" style="font-size:12px;color:#006666" align="center">¸s²Õ¥N½X</td>
-				<td width="13%" style="font-size:12px;color:#006666" align="center">¸s²Õ¦WºÙ</td>
-				<td width="15%" style="font-size:12px;color:#006666" align="center">¸s²Õ»¡©ú</td>
-				<td width="8%" style="font-size:12px;color:#006666" align="center">¤å¥ó¥N½X</td>
-				<td width="3%" style="font-size:12px;color:#006666" align="center">¤å¥óª©¦¸</td>
-				<td width="7%" style="font-size:12px;color:#006666" align="center">±Ò¥Î°_¤é</td>            
-				<td width="7%" style="font-size:12px;color:#006666" align="center">±Ò¥Î¨´¤é</td>            
-				<td width="7%" style="font-size:12px;color:#006666" align="center">³Ì«á²§°Ê¤é</td>            
-				<td width="7%" style="font-size:12px;color:#006666" align="center">³Ì«á²§°ÊªÌ</td>            
+				<td width="3%" style="font-size:12px;color:#006666" align="center">åºè™Ÿ</td> 
+				<td width="6%" style="font-size:12px;color:#006666" align="center">æ¨™ç±¤é¡åˆ¥</td>
+				<td width="6%" style="font-size:12px;color:#006666" align="center">ç¾¤çµ„ä»£ç¢¼</td>
+				<td width="13%" style="font-size:12px;color:#006666" align="center">ç¾¤çµ„åç¨±</td>
+				<td width="15%" style="font-size:12px;color:#006666" align="center">ç¾¤çµ„èªªæ˜</td>
+				<td width="8%" style="font-size:12px;color:#006666" align="center">æ–‡ä»¶ä»£ç¢¼</td>
+				<td width="3%" style="font-size:12px;color:#006666" align="center">æ–‡ä»¶ç‰ˆæ¬¡</td>
+				<td width="7%" style="font-size:12px;color:#006666" align="center">å•Ÿç”¨èµ·æ—¥</td>            
+				<td width="7%" style="font-size:12px;color:#006666" align="center">å•Ÿç”¨è¿„æ—¥</td>            
+				<td width="7%" style="font-size:12px;color:#006666" align="center">æœ€å¾Œç•°å‹•æ—¥</td>            
+				<td width="7%" style="font-size:12px;color:#006666" align="center">æœ€å¾Œç•°å‹•è€…</td>            
 			</tr>
 		<% 
 		}
     	%>
 			<tr id="tr_<%=iCnt%>" bgcolor="#E7F3FE" onMouseOver="this.style.Color='#006666';this.style.backgroundColor='#CAEDAF';this.style.fontWeight='bold'" onMouseOut="style.backgroundColor='#E7F3FE';style.color='#000000';this.style.fontWeight='normal'">
 			<td align="center">
-			<img border="0" src="images/updateicon_enabled.gif" height="18" title="­×§ï¸ê®Æ" onClick="setUpdate('../jsp/TSYewLabelGroupAdd.jsp?STATUS=UPD&LABEL_GROUP_CODE=<%=rs.getString("label_group_code")%>')">
+			<img border="0" src="images/updateicon_enabled.gif" height="18" title="ä¿®æ”¹è³‡æ–™" onClick="setUpdate('../jsp/TSYewLabelGroupAdd.jsp?STATUS=UPD&LABEL_GROUP_CODE=<%=rs.getString("label_group_code")%>')">
 			</td>
 			<td align="center"><%=iCnt%></td>
 			<td><%=rs.getString("label_kind")%></td>
@@ -190,7 +190,7 @@ try
 	
 	if (iCnt==0)
 	{
-		out.println("<div align='center'><font color='red' size='2' face='·s²Ó©úÅé'><strong>¬dµL¸ê®Æ,½Ğ­«·s¿z¿ï¬d¸ß±ø¥ó,ÁÂÁÂ!</strong></font></div>");
+		out.println("<div align='center'><font color='red' size='2' face='æ–°ç´°æ˜é«”'><strong>æŸ¥ç„¡è³‡æ–™,è«‹é‡æ–°ç¯©é¸æŸ¥è©¢æ¢ä»¶,è¬è¬!</strong></font></div>");
 	}
 	else
 	{
@@ -204,7 +204,7 @@ catch (Exception e)
 	out.println("Exception:"+e.getMessage());
 }
 %>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->  
+<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->  
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 </form>

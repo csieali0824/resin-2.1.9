@@ -1,9 +1,9 @@
-<!-- 20160705 by Peggy,±Æ°£ORG ID:807®w¦s-->
-<!-- 20170210 by Peggy,³æ»ù½Õ¾ãAWAITING_APPROVE¤]­n¥[¤J-->
+<!-- 20160705 by Peggy,æ’é™¤ORG ID:807åº«å­˜-->
+<!-- 20170210 by Peggy,å–®åƒ¹èª¿æ•´AWAITING_APPROVEä¹Ÿè¦åŠ å…¥-->
 <!-- 20170426 by Peggy,add tsc_package field for matrix SMA,Matrix SMB-->
-<!-- 20170829 by Peggy,Ä¬¦{/¤W®ü/²`¦`·~°È³æ¦ìÅÜ§ó¶l¥ódomain¥Ñmail.tew.com.cn§ï¬°ts-china.com.cn-->
-<!-- 20171128 by Peggy,Åã¥Ü®ü¥~®w¦s¸ê°T-->
-<%@ page contentType="text/html;charset=utf-8" pageEncoding="big5" language="java" import="java.util.*,java.text.*,java.io.*,java.sql.*,jxl.*,jxl.Workbook.*,jxl.write.*,jxl.format.*,javax.mail.*,javax.mail.internet.*,javax.mail.Multipart.*,javax.activation.*"%>  
+<!-- 20170829 by Peggy,è˜‡å·/ä¸Šæµ·/æ·±åœ³æ¥­å‹™å–®ä½è®Šæ›´éƒµä»¶domainç”±mail.tew.com.cnæ”¹ç‚ºts-china.com.cn-->
+<!-- 20171128 by Peggy,é¡¯ç¤ºæµ·å¤–åº«å­˜è³‡è¨Š-->
+<%@ page contentType="text/html;charset=utf-8"  language="java" import="java.util.*,java.text.*,java.io.*,java.sql.*,jxl.*,jxl.Workbook.*,jxl.write.*,jxl.format.*,javax.mail.*,javax.mail.internet.*,javax.mail.Multipart.*,javax.activation.*"%>
 <%@ page import="DateBean"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <jsp:useBean id="dateBean" scope="page" class="DateBean"/>
@@ -29,7 +29,7 @@ int fontsize=9,colcnt=0;
 int row =0,col=0,reccnt=0;
 try  
 { 	
-	//­^¤å¤º¤å¤ô¥­««ª½¸m¤¤-²ÊÅé-®æ½u   
+	//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®ä¸­-ç²—é«”-æ ¼ç·š   
 	WritableCellFormat ACenterBL = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));   
 	ACenterBL.setAlignment(jxl.format.Alignment.CENTRE);
 	ACenterBL.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -37,21 +37,21 @@ try
 	ACenterBL.setBackground(jxl.write.Colour.GRAY_25); 
 	ACenterBL.setWrap(true);
 
-	//­^¤å¤º¤å¤ô¥­««ª½¸m¤¤-¥¿±`-®æ½u   
+	//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®ä¸­-æ­£å¸¸-æ ¼ç·š   
 	WritableCellFormat ACenterL = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));   
 	ACenterL.setAlignment(jxl.format.Alignment.CENTRE);
 	ACenterL.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 	ACenterL.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 	ACenterL.setWrap(true);
 
-	//­^¤å¤º¤å¤ô¥­««ª½¸m¥k-¥¿±`-®æ½u   
+	//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®å³-æ­£å¸¸-æ ¼ç·š   
 	WritableCellFormat ARightL = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"), fontsize,  WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));   
 	ARightL.setAlignment(jxl.format.Alignment.RIGHT);
 	ARightL.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 	ARightL.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 	ARightL.setWrap(true);
 
-	//­^¤å¤º¤å¤ô¥­««ª½¸m¥ª-¥¿±`-®æ½u   
+	//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®å·¦-æ­£å¸¸-æ ¼ç·š   
 	WritableCellFormat ALeftL = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"), fontsize,  WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));   
 	ALeftL.setAlignment(jxl.format.Alignment.LEFT);
 	ALeftL.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -226,9 +226,9 @@ try
 		javax.mail.internet.MimeMessage message = new javax.mail.internet.MimeMessage(s);
 		message.setSentDate(new java.util.Date());
 		message.setFrom(new javax.mail.internet.InternetAddress("prodsys@ts.com.tw"));
-		if (request.getRequestURL().toString().toLowerCase().indexOf("tsrfq.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("rfq134.") <0 &&  request.getRequestURL().toString().toLowerCase().indexOf("yewintra.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("10.0.1.134") <0 && request.getRequestURL().toString().toLowerCase().indexOf("10.0.1.135") <0) //´ú¸ÕÀô¹Ò
+		if (request.getRequestURL().toString().toLowerCase().indexOf("tsrfq.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("rfq134.") <0 &&  request.getRequestURL().toString().toLowerCase().indexOf("yewintra.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("10.0.1.134") <0 && request.getRequestURL().toString().toLowerCase().indexOf("10.0.1.135") <0) //æ¸¬è©¦ç’°å¢ƒ
 		{
-			remarks="(¦¹¬°´ú¸Õ«H¥ó¡A½Ğ¤Å²z·|)";
+			remarks="(æ­¤ç‚ºæ¸¬è©¦ä¿¡ä»¶ï¼Œè«‹å‹¿ç†æœƒ)";
 			message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("peggy.chen@ts.com.tw"));
 		}
 		else
@@ -243,8 +243,8 @@ try
 		javax.mail.internet.MimeMultipart mp = new javax.mail.internet.MimeMultipart();
 		javax.mail.internet.MimeBodyPart mbp = new javax.mail.internet.MimeBodyPart();
 		String str_d = "<font style='font-size:14px;font-family:Times New Roman;'>Dear All:<p>"+
-					   "ªşÀÉ¬°SSD Onhand > Unshipªºitem©ú²Ó,½Ğª¾±x!<p>"+
-					   "P.S¦¹¬°¨t²Î¦Û°Êµo°eªºEMAIL«H¥ó¡A½Ğ¤Åª½±µ¦^«H¡AÁÂÁÂ!";
+					   "é™„æª”ç‚ºSSD Onhand > Unshipçš„itemæ˜ç´°,è«‹çŸ¥æ‚‰!<p>"+
+					   "P.Sæ­¤ç‚ºç³»çµ±è‡ªå‹•ç™¼é€çš„EMAILä¿¡ä»¶ï¼Œè«‹å‹¿ç›´æ¥å›ä¿¡ï¼Œè¬è¬!";
 		mbp.setContent(str_d,"text/html;charset=UTF-8");
 		mp.addBodyPart(mbp);
 		mbp = new javax.mail.internet.MimeBodyPart();
@@ -279,7 +279,7 @@ catch(Exception e)
 }
 %>
 </body>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 </html>

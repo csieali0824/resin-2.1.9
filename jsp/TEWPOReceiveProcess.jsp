@@ -1,6 +1,6 @@
-<!--modify by Peggy 20170920,·s¼WremarksÄæ¦ì-->
-<!--modify by Peggy 20171205,ÀË¬d¨ÑÀ³°Ó¨Ó³fD/C¬O§_²ÅFIFO,¤£²ÅªÌ»İ¶ñ¤J­ì¦]-->
-<%@ page contentType="text/html; charset=utf-8" pageEncoding="big5" language="java" import="java.sql.*,java.util.*,java.text.*" %>
+<!--modify by Peggy 20170920,æ–°å¢remarksæ¬„ä½-->
+<!--modify by Peggy 20171205,æª¢æŸ¥ä¾›æ‡‰å•†ä¾†è²¨D/Cæ˜¯å¦ç¬¦FIFO,ä¸ç¬¦è€…éœ€å¡«å…¥åŸå› -->
+<%@ page contentType="text/html; charset=utf-8"  language="java" import="java.sql.*,java.util.*,java.text.*" %>
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
@@ -40,7 +40,7 @@ if (TRANSTYPE.equals("INSERT"))
 		String chk[]= request.getParameterValues("chk");	
 		if (chk.length <=0)
 		{
-			throw new Exception("µL¦¬®Æ¥æ©ö!!");
+			throw new Exception("ç„¡æ”¶æ–™äº¤æ˜“!!");
 		}
 		for(int i=0; i< chk.length ;i++)
 		{
@@ -207,7 +207,7 @@ if (TRANSTYPE.equals("INSERT"))
 		POReceivingBean.setArray2DString(null);	
 	%>
 		<script language="JavaScript" type="text/JavaScript">
-			alert("¦¬³f°Ê§@¦¨¥\!!");
+			alert("æ”¶è²¨å‹•ä½œæˆåŠŸ!!");
 			setSubmit("../jsp/TEWPOReceive.jsp");
 		</script>
 	<%		
@@ -216,7 +216,7 @@ if (TRANSTYPE.equals("INSERT"))
 	{	
 		con.rollback();
 		POReceivingBean.setArray2DString(null);	
-		out.println("<font color='red'>¥æ©ö¥¢±Ñ,½Ğ³t¬¢¨t²ÎºŞ²z¤H­û,ÁÂÁÂ!!<br>"+e.getMessage()+"("+sql+")<br><br><a href='TEWPOReceive.jsp'>¦^¼t°Ó¨Ó³f¦¬®Æ¥\¯à</a></font>");
+		out.println("<font color='red'>äº¤æ˜“å¤±æ•—,è«‹é€Ÿæ´½ç³»çµ±ç®¡ç†äººå“¡,è¬è¬!!<br>"+e.getMessage()+"("+sql+")<br><br><a href='TEWPOReceive.jsp'>å›å» å•†ä¾†è²¨æ”¶æ–™åŠŸèƒ½</a></font>");
 	}
 }
 else if (TRANSTYPE.equals("UPDATE"))
@@ -230,7 +230,7 @@ else if (TRANSTYPE.equals("UPDATE"))
 		String chk[]= request.getParameterValues("chk");	
 		if (chk.length <=0)
 		{
-			throw new Exception("µL³B²z¥æ©ö!!");
+			throw new Exception("ç„¡è™•ç†äº¤æ˜“!!");
 		}
 		for(int i=0; i< chk.length ;i++)
 		{
@@ -368,7 +368,7 @@ else if (TRANSTYPE.equals("UPDATE"))
 		con.commit();
 	%>
 		<script language="JavaScript" type="text/JavaScript">
-			alert("°Ê§@¦¨¥\!!");
+			alert("å‹•ä½œæˆåŠŸ!!");
 			setSubmit("../jsp/TEWPOReviseConfirm.jsp");
 		</script>
 	<%			
@@ -376,7 +376,7 @@ else if (TRANSTYPE.equals("UPDATE"))
 	catch(Exception e)
 	{	
 		con.rollback();
-		out.println("<font color='red'>¥æ©ö¥¢±Ñ,½Ğ³t¬¢¨t²ÎºŞ²z¤H­û,ÁÂÁÂ!!<br>"+e.getMessage()+"("+sql+")<br><br><a href='TEWPOReviseConfirm.jsp'>¦^¦¬®Æ­×§ï½T»{¥\¯à</a></font>");
+		out.println("<font color='red'>äº¤æ˜“å¤±æ•—,è«‹é€Ÿæ´½ç³»çµ±ç®¡ç†äººå“¡,è¬è¬!!<br>"+e.getMessage()+"("+sql+")<br><br><a href='TEWPOReviseConfirm.jsp'>å›æ”¶æ–™ä¿®æ”¹ç¢ºèªåŠŸèƒ½</a></font>");
 	}	
 }
 %>

@@ -1,15 +1,15 @@
-<%@ page contentType="text/html;charset=utf-8" pageEncoding="big5" language="java" %>
+<%@ page contentType="text/html;charset=utf-8"  language="java" %>
 <%@ page import="java.sql.*"%>
 <%@ page import="java.util.*"%>
 <%@ page import="jxl.*"%>
 <%@ page import="java.lang.Math.*"%>
 <%@ page import="java.text.*"%>
 <%@ page import="java.io.*,DateBean,ComboBoxAllBean"%>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<!--=============¥H¤U°Ï¬q¬°¦w¥ş»{ÃÒ¾÷¨î==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå®‰å…¨èªè­‰æ©Ÿåˆ¶==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—é€£çµæ± ==========-->
 <html>
 <head>
 <title>Slow Moving Stock Query</title>
@@ -48,7 +48,7 @@ if (CUSTNO == null) CUSTNO ="";
 <body>
 <form name="MYFORM"  METHOD="post" ACTION="../jsp/TSCWorldWideOnhandQuery.jsp">
 <p>
-<font  style="font-weight:bold;font-family:'Tahoma,Georgia';color:#003399;font-size:24px" >TSC ®ü¥~®w¦s©ú²Ó¬d¸ß</font>
+<font  style="font-weight:bold;font-family:'Tahoma,Georgia';color:#003399;font-size:24px" >TSC æµ·å¤–åº«å­˜æ˜ç´°æŸ¥è©¢</font>
 <br>
 </p>
 <table width="100%" bgcolor="#D8E6E7" cellspacing="0" cellpadding="0" bordercolordark="#990000">
@@ -69,9 +69,9 @@ if (CUSTNO == null) CUSTNO ="";
 						%>
 						<table>
 							<tr>
-    							<TD width="10%"  height="70%" class="style13" title="¦^­º­¶!">
+    							<TD width="10%"  height="70%" class="style13" title="å›é¦–é !">
 									<A HREF="../ORAddsMainMenu.jsp" style="text-decoration:none;color:#000000">
-									<STRONG>¦^­º­¶</STRONG>
+									<STRONG>å›é¦–é </STRONG>
 									</A>
 								</TD>
 							</tr>
@@ -81,7 +81,7 @@ if (CUSTNO == null) CUSTNO ="";
 						%>
 					</TD>
 					<TD width="10%" class="style15">
-						<STRONG>®w¦s¬d¸ß</STRONG>
+						<STRONG>åº«å­˜æŸ¥è©¢</STRONG>
 					</TD>
 					<TD width="10%" bgcolor="#FFFFFF">
 						<%
@@ -96,9 +96,9 @@ if (CUSTNO == null) CUSTNO ="";
 						%>
 						<table>
 							<tr>
-								<TD width="10%" class="style14" title="½Ğ«ö§Ú¶i¤J¤W¶Ç¾úµ{¬d¸ß¥\¯à!">
+								<TD width="10%" class="style14" title="è«‹æŒ‰æˆ‘é€²å…¥ä¸Šå‚³æ­·ç¨‹æŸ¥è©¢åŠŸèƒ½!">
 									<A HREF="TSCWorldWideOnhandHistory.jsp" style="text-decoration:none;color:#000000">
-									<STRONG>¤W¶Ç¾úµ{</STRONG>
+									<STRONG>ä¸Šå‚³æ­·ç¨‹</STRONG>
 									</A>
 								</TD>
 							</tr>
@@ -120,9 +120,9 @@ if (CUSTNO == null) CUSTNO ="";
 						%>
 						<table>
 							<tr>
-								<TD width="10%" class="style14" title="½Ğ«ö§Ú¶i¤J¸ê®Æ¤W¶Ç¥\¯à!">
+								<TD width="10%" class="style14" title="è«‹æŒ‰æˆ‘é€²å…¥è³‡æ–™ä¸Šå‚³åŠŸèƒ½!">
 									<A HREF="TSCWorldWideOnhandUpload.jsp" style="text-decoration:none;color:#000000">
-									<STRONG>¸ê®Æ¤W¶Ç</STRONG>
+									<STRONG>è³‡æ–™ä¸Šå‚³</STRONG>
 									</A>
 								</TD>
 							</tr>
@@ -157,7 +157,7 @@ if (CUSTNO == null) CUSTNO ="";
 		<td>
 			<table  border="1" bordercolor="#99FF99" cellspacing="0" bordercolordark="#996699" cellpadding="1" width="100%" height="15" align="left">
 				<tr style="background-color:#C7DEC8">
-					<td width="15%" style="font-family:Tahoma,Georgia;font-size:13px;color:#000000">·~°È°Ï°ì:</td>
+					<td width="15%" style="font-family:Tahoma,Georgia;font-size:13px;color:#000000">æ¥­å‹™å€åŸŸ:</td>
 					<td width="20%">
 				<%		 
 					try
@@ -181,9 +181,9 @@ if (CUSTNO == null) CUSTNO ="";
 					}		   
 				%>					
 					</td>
-					<td width="15%" style="font-family:Tahoma,Georgia;font-size:13px;color:#000000">¥x¥b®Æ¸¹©Î«~¦W:</td>
+					<td width="15%" style="font-family:Tahoma,Georgia;font-size:13px;color:#000000">å°åŠæ–™è™Ÿæˆ–å“å:</td>
 					<td width="20%"><input type="text" name="ITEMNAME" value="<%=sitem%>" style="font-family:Tahoma,Georgia;font-size:12px"></td>
-					<td align="center"><input type="button" name="Query" value="¬d¸ß" onClick="setSubmit('../jsp/TSCWorldWideOnhandQuery.jsp')"></td>
+					<td align="center"><input type="button" name="Query" value="æŸ¥è©¢" onClick="setSubmit('../jsp/TSCWorldWideOnhandQuery.jsp')"></td>
 				</tr>	
 			</table>
 		</td>
@@ -213,19 +213,19 @@ try
 		{
 			out.println("<tr><td><table cellspacing='0' bordercolordark='#998811' cellpadding='1' width='100%' align='left' bordercolorlight='#ffffff' border='1'>");
 			out.println("<tr style='font-size:11px;font-family:Tahoma,Georgia'>");
-			out.println("<td class='style1'>ª©¥»</td>");
-			out.println("<td class='style1'>·~°È°Ï°ì</td>");
-			out.println("<td class='style1'>¥x¥b¸¹½X</td>");
-			out.println("<td class='style1'>¥x¥b«~¦W</td>");
-			out.println("<td class='style1'>¼Æ¶q</td>");
+			out.println("<td class='style1'>ç‰ˆæœ¬</td>");
+			out.println("<td class='style1'>æ¥­å‹™å€åŸŸ</td>");
+			out.println("<td class='style1'>å°åŠè™Ÿç¢¼</td>");
+			out.println("<td class='style1'>å°åŠå“å</td>");
+			out.println("<td class='style1'>æ•¸é‡</td>");
 			out.println("<td class='style2'>Date Code</td>");
 			out.println("<td class='style2'>Lot Number</td>");
-			out.println("<td class='style1'>·~°È¤H­û</td>");
-			out.println("<td class='style1'>«È¤á</td>");
-			out.println("<td class='style1'>³Æµù</td>");
+			out.println("<td class='style1'>æ¥­å‹™äººå“¡</td>");
+			out.println("<td class='style1'>å®¢æˆ¶</td>");
+			out.println("<td class='style1'>å‚™è¨»</td>");
 			//if (!CUSTNO.equals(""))
 			//{
-			//	out.println("<td style='font-size:13px;background-color:#FFCCCC;font-family:Tahoma,Georgia;'>«È¤áD/C­­¨î</td>");
+			//	out.println("<td style='font-size:13px;background-color:#FFCCCC;font-family:Tahoma,Georgia;'>å®¢æˆ¶D/Cé™åˆ¶</td>");
 			//}
 			out.println("</tr>");
 		}
@@ -249,7 +249,7 @@ try
 		out.println("<td width='12%'>"+(rs.getString("remarks")==null?"&nbsp;":rs.getString("remarks")) + "</td>");
 		if (!CUSTNO.equals(""))
 		{
-			out.println("<td width='10%' style='font-size:11px;font-family:Tahoma,Georgia;background-color:#ffffff;'>"+(rs.getString("attribute4").equals("N/A")?"N/A":rs.getString("attribute4")+"¤ë")+"</td>");
+			out.println("<td width='10%' style='font-size:11px;font-family:Tahoma,Georgia;background-color:#ffffff;'>"+(rs.getString("attribute4").equals("N/A")?"N/A":rs.getString("attribute4")+"æœˆ")+"</td>");
 		}
 		out.println("</tr>");
 		firCnt ++;
@@ -270,7 +270,7 @@ finally
 }
 %>
 </table>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->  
+<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->  
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 </form>

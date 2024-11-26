@@ -1,11 +1,11 @@
 <!--modify by Peggy 20140829,added to modify FOB,PAYMENT TERM,SHIP TO CONTACT-->
 <!--modify by Peggy 20150618,add two columns "Hold Shipment" & "Remove Hold"-->
-<%@ page contentType="text/html; charset=utf-8" pageEncoding="big5" language="java" import="java.sql.*,java.io.*" %>
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.io.*" %>
 <%@ page import="QueryAllBean,ComboBoxAllBean,ComboBoxBean,DateBean,ArrayComboBoxBean" %>
 <!--=============To get the Authentication==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============To get the Authentication==========-->
-<html> 
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
 <title>Sales Order Revise Upload</title>
@@ -22,24 +22,24 @@
       <td width="74%"><font size="2">
         <INPUT TYPE="FILE"NAME="UPLOADFILE" size="50">
         <INPUT name="submit" TYPE="submit" value="UPLOAD" >&nbsp;&nbsp;&nbsp;&nbsp;
-      </font><a title="«ö¤U¦¹³sµ²¡A¤U¸üexcel¤W¶Ç½d¥»" href='..//jsp/samplefiles/D4-009_OrderRevise_Samplefile.xls'><font style="font-size:14px;font-family:arial">Download Sample File</font></a></td>
+      </font><a title="æŒ‰ä¸‹æ­¤é€£çµï¼Œä¸‹è¼‰excelä¸Šå‚³ç¯„æœ¬" href='..//jsp/samplefiles/D4-009_OrderRevise_Samplefile.xls'><font style="font-size:14px;font-family:arial">Download Sample File</font></a></td>
     </tr>
   </table> 
 <p><font style="color:#000099;font-size:14px;font-family:arial">
-   01.¤W¶ÇªºExcelÀÉ®×,½Ğ¤Å¶}±Ò¡C<br>
-   02.¤W¶ÇEXCELÀÉ®×½Ğ¨Ì¥H¤U®æ¦¡,²Ä¤@¦C¬°¼ĞÃD¦C,¹ê»Ú¸ê®Æ¥Ñ²Ä¤G¦C¶ñ°_¡C<br>
-   03.Äæ¦ì¨Ì§Ç±Æ¦C¦n¦ì¸m­n¥¿½T,§_«h·|§ì¿ù¸ê®Æ¡C<br>
-   04.½Ğ½T»{OM¤ÎLine¬O¥¿½Tªº,¦¹¬°¤ñ¹ï¨Ì¾Ú¡C<br>
-   05.Item, Cusomter, Initial SSD°Ñ¦Ò¥Î,¤£¤ñ¹ï¸ê®Æ¬O§_¤@­P,¤£­×§ï¸ê®Æ¡C<br>
-   06.PO No, Qty, Price, Request pull in to, Shipping Method,­Y¦³¥ô¤@¸ê®Æ»P­ì¸ê®Æ¤£¦P,§Y¥i¶i¦æ­×§ïline¸ê®Æ,¦ı¤£­×§ïheader¸ê®Æ¡C<br>
-   07.PO No, Qty, Price, Request pull in to, Shipping Method,­Y¦³¤£¶ñ¤J¸ê®Æ(ªÅ­È),ªí¥Ü¸ÓÄæ¦ì¸ê®Æ¤£¶i¦æ­×§ï¡C<br>
-   08.­Y­×§ï¦¨¥\,Version Number·|¥[1,Remarks¥[¤J­ìREMARKS¤¤¡C<br>
-   09.Change Reason(OÄæ¦ì)¥i¿é¤Jªº­È¬°:<font color="#ff0000">Related PO change</font>,Customer Require,<font color="#ff0000">Credit problem or insolvency</font>, <font color="#ff0000">Qty and SSD Move</font>, Part NO. Amend, Sales Key In Error¤»ºØ,½Ğ¥Ñ¤U©Ô¿ï³æ¤¤¿ï¾Ü,­Y¿é¤J­È«D«e­z¤»¶µ¤§¤@,«hµLªk­×§ï­q³æ¡C<font color='red'>(2015/5/29­×­q)</font><br>
-   10.·s¼WChange Comments(PÄæ¦ì),¥i¿é¤JÅÜ§ó­ì¦]¡C<br>
-   11.·s¼WCRD(QÄæ¦ì),¿é¤J±ıÅÜ§óªºREQUEST DATE¡C<br>
-   12.¤W¶Ç­×§ïÄæ¦ì·s¼WFOB(RÄæ),PAYMENT TERM(SÄæ),SHIP TO CONTACT ID(TÄæ)..µ¥¤T­ÓÄæ¦ì¡C<br>
-   13.·s¼W<font color="#ff0000">Hold Shipment(UÄæ¦ì),Hold Reason(VÄæ¦ì)</font>,±ıHold­q³æ,½Ğ¿ï¾ÜYes_Cancel©ÎYes_Push out,¨Ã©óHold ReasonÄæ¦ì¶ñ¤J­ì¦],±ı±NHold­q³æ¨ú®ø,½Ğ¿ï¾ÜRemove Hold,«D¤W­z»İ¨DªÌ,¦¹¨âÄæ½Ğ«O«ùªÅ¥Õ¡C<font color="#ff0000">(2015/6/22¼W­q)</font><br>
-   14.½d¨Ò®æ¦¡¦p¤U©Ò¥Ü:</font><br>
+   01.ä¸Šå‚³çš„Excelæª”æ¡ˆ,è«‹å‹¿é–‹å•Ÿã€‚<br>
+   02.ä¸Šå‚³EXCELæª”æ¡ˆè«‹ä¾ä»¥ä¸‹æ ¼å¼,ç¬¬ä¸€åˆ—ç‚ºæ¨™é¡Œåˆ—,å¯¦éš›è³‡æ–™ç”±ç¬¬äºŒåˆ—å¡«èµ·ã€‚<br>
+   03.æ¬„ä½ä¾åºæ’åˆ—å¥½ä½ç½®è¦æ­£ç¢º,å¦å‰‡æœƒæŠ“éŒ¯è³‡æ–™ã€‚<br>
+   04.è«‹ç¢ºèªOMåŠLineæ˜¯æ­£ç¢ºçš„,æ­¤ç‚ºæ¯”å°ä¾æ“šã€‚<br>
+   05.Item, Cusomter, Initial SSDåƒè€ƒç”¨,ä¸æ¯”å°è³‡æ–™æ˜¯å¦ä¸€è‡´,ä¸ä¿®æ”¹è³‡æ–™ã€‚<br>
+   06.PO No, Qty, Price, Request pull in to, Shipping Method,è‹¥æœ‰ä»»ä¸€è³‡æ–™èˆ‡åŸè³‡æ–™ä¸åŒ,å³å¯é€²è¡Œä¿®æ”¹lineè³‡æ–™,ä½†ä¸ä¿®æ”¹headerè³‡æ–™ã€‚<br>
+   07.PO No, Qty, Price, Request pull in to, Shipping Method,è‹¥æœ‰ä¸å¡«å…¥è³‡æ–™(ç©ºå€¼),è¡¨ç¤ºè©²æ¬„ä½è³‡æ–™ä¸é€²è¡Œä¿®æ”¹ã€‚<br>
+   08.è‹¥ä¿®æ”¹æˆåŠŸ,Version NumberæœƒåŠ 1,RemarksåŠ å…¥åŸREMARKSä¸­ã€‚<br>
+   09.Change Reason(Oæ¬„ä½)å¯è¼¸å…¥çš„å€¼ç‚º:<font color="#ff0000">Related PO change</font>,Customer Require,<font color="#ff0000">Credit problem or insolvency</font>, <font color="#ff0000">Qty and SSD Move</font>, Part NO. Amend, Sales Key In Errorå…­ç¨®,è«‹ç”±ä¸‹æ‹‰é¸å–®ä¸­é¸æ“‡,è‹¥è¼¸å…¥å€¼éå‰è¿°å…­é …ä¹‹ä¸€,å‰‡ç„¡æ³•ä¿®æ”¹è¨‚å–®ã€‚<font color='red'>(2015/5/29ä¿®è¨‚)</font><br>
+   10.æ–°å¢Change Comments(Pæ¬„ä½),å¯è¼¸å…¥è®Šæ›´åŸå› ã€‚<br>
+   11.æ–°å¢CRD(Qæ¬„ä½),è¼¸å…¥æ¬²è®Šæ›´çš„REQUEST DATEã€‚<br>
+   12.ä¸Šå‚³ä¿®æ”¹æ¬„ä½æ–°å¢FOB(Ræ¬„),PAYMENT TERM(Sæ¬„),SHIP TO CONTACT ID(Tæ¬„)..ç­‰ä¸‰å€‹æ¬„ä½ã€‚<br>
+   13.æ–°å¢<font color="#ff0000">Hold Shipment(Uæ¬„ä½),Hold Reason(Væ¬„ä½)</font>,æ¬²Holdè¨‚å–®,è«‹é¸æ“‡Yes_Cancelæˆ–Yes_Push out,ä¸¦æ–¼Hold Reasonæ¬„ä½å¡«å…¥åŸå› ,æ¬²å°‡Holdè¨‚å–®å–æ¶ˆ,è«‹é¸æ“‡Remove Hold,éä¸Šè¿°éœ€æ±‚è€…,æ­¤å…©æ¬„è«‹ä¿æŒç©ºç™½ã€‚<font color="#ff0000">(2015/6/22å¢è¨‚)</font><br>
+   14.ç¯„ä¾‹æ ¼å¼å¦‚ä¸‹æ‰€ç¤º:</font><br>
    <br>
   <img src="images/salesorderrevise.png" ></p>
 <p>&nbsp;</p>

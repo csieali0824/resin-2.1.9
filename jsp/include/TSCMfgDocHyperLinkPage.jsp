@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=utf-8"%>
 <html>
-<A HREF="/oradds/ORADDSMainMenu.jsp"><strong>¦^­º­¶</strong></A>
+<A HREF="/oradds/ORADDSMainMenu.jsp"><strong>å›žé¦–é </strong></A>
 </html>
