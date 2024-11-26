@@ -1,14 +1,15 @@
-<!--add by Peggy 20140826,∑sºWERP END CUSTOMER IDƒÊ¶Ï-->
-<!--add by Peggy 20150326,≠◊•ø§W∂«´»§·√˛ßO-->
+<!--add by Peggy 20140826,Êñ∞Â¢ûERP END CUSTOMER IDÊ¨Ñ‰Ωç-->
+<!--add by Peggy 20150326,‰øÆÊ≠£‰∏äÂÇ≥ÂÆ¢Êà∂È°ûÂà•-->
 <!--add by Peggy 20150519,add column "tsch orderl line id" for tsch case-->
 <!--add by Peggy 20160408,add sample order direct ship to cust flag-->
 <!--20170216 by Peggy,add sales region for bi-->
 <!--20170512 by Peggy,add end cust ship to id-->
-<!--20191128 Peggy,TSCT-DAªPTSCT-Disty¶X®÷¶®TSCT,RFQ∑~∞»∞œ≤æ∞£006,≤Œ§@¶b005-->
+<!--20191128 Peggy,TSCT-DAËàáTSCT-DistyÂêà‰ΩµÊàêTSCT,RFQÊ•≠ÂãôÂçÄÁßªÈô§006,Áµ±‰∏ÄÂú®005-->
+<%@ page contentType="text/html; charset=utf-8" language="java" %>
 <html>
 <head>
 <title>TSCT Mustard Order Import </title>
-
+<meta http-equiv="Content-Type" content="text/html; charset=big5">
 </head>
 <!--=============To get the Authentication==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
@@ -149,12 +150,12 @@ try
 					//if (Integer.parseInt(dateBean.getYearMonthDay())>=20200101)
 					//{
 					//	session.setAttribute("SALESAREANO","005");
-					//	session.setAttribute("PROCESSAREA","005(•bæ…≈È∑~∞»≥°-•x∆W∞œ)");
+					//	session.setAttribute("PROCESSAREA","005(ÂçäÂ∞éÈ´îÊ•≠ÂãôÈÉ®-Âè∞ÁÅ£ÂçÄ)");
 					//}
 					//else
 					//{
 						session.setAttribute("SALESAREANO","006");
-						session.setAttribute("PROCESSAREA","006(•bæ…≈È∑~∞»≥°-•x∆W∞œ(Disty))");
+						session.setAttribute("PROCESSAREA","006(ÂçäÂ∞éÈ´îÊ•≠ÂãôÈÉ®-Âè∞ÁÅ£ÂçÄ(Disty))");
 					//}
          		}
          		else
@@ -162,7 +163,7 @@ try
          			session.setAttribute("SPQCHECKED","N");
          			session.setAttribute("CUSTOMERID","4824");
          			session.setAttribute("CUSTOMERNO","2462");
-         			session.setAttribute("CUSTOMERNAME","≠ZØ˛™—•˜¶≥≠≠§Ω•q");
+         			session.setAttribute("CUSTOMERNAME","ËåÇËçÉËÇ°‰ªΩÊúâÈôêÂÖ¨Âè∏");
          			session.setAttribute("CUSTOMERPO", BufferOrderNo);
          			session.setAttribute("CURR", BufferCurrency);
          			session.setAttribute("CUSTACTIVE","A");
@@ -174,12 +175,12 @@ try
 					//if (Integer.parseInt(dateBean.getYearMonthDay())>=20200101)
 					//{
 					//	session.setAttribute("SALESAREANO","005");
-					//	session.setAttribute("PROCESSAREA","005(•bæ…≈È∑~∞»≥°-•x∆W∞œ");
+					//	session.setAttribute("PROCESSAREA","005(ÂçäÂ∞éÈ´îÊ•≠ÂãôÈÉ®-Âè∞ÁÅ£ÂçÄ");
 					//}
 					//else
 					//{
 						session.setAttribute("SALESAREANO","006");
-						session.setAttribute("PROCESSAREA","006(•bæ…≈È∑~∞»≥°-•x∆W∞œ(Disty))");
+						session.setAttribute("PROCESSAREA","006(ÂçäÂ∞éÈ´îÊ•≠ÂãôÈÉ®-Âè∞ÁÅ£ÂçÄ(Disty))");
 					//}
          		}
          
@@ -359,7 +360,7 @@ try
 						}				
 					}											
 
-					//¿À¨d´»§·´~∏π
+					//Ê™¢Êü•ÂÆ¢Êà∂ÂìÅËôü
 					if (CustPart!= null && !CustPart.equals(""))
 					{						  
 						sql = " select  DISTINCT a.item,a.ITEM_DESCRIPTION,a.INVENTORY_ITEM_ID"+
@@ -435,7 +436,9 @@ try
              			try
               			{
                 			String sqlUOM = "";
+							String order_type = "";
                 			sqlUOM = "select INVENTORY_ITEM_ID,SEGMENT1,DESCRIPTION,PRIMARY_UOM_CODE ,NVL(ATTRIBUTE3,'N/A') ATTRIBUTE3"+
+							 ", tsc_rfq_create_erp_odr_pkg.tsc_get_order_type (a.inventory_item_id) as order_type\n"+
 							 " from APPS.MTL_SYSTEM_ITEMS a"+
 							 " where ORGANIZATION_ID = '49'"+
 							 " AND DESCRIPTION = '"+BufferPartDesc[1][i]+"' "+
@@ -454,7 +457,8 @@ try
                    				BufferUOM[1][i]         = rsUOM.getString("PRIMARY_UOM_CODE");   
                    				BufferPartNumber[1][i]  = rsUOM.getString("SEGMENT1"); 
 	           					BufferPartDescNew[1][i] = rsUOM.getString("DESCRIPTION");
-								itemFactory = rsUOM.getString("ATTRIBUTE3");	
+								itemFactory = rsUOM.getString("ATTRIBUTE3");
+								order_type = rsUOM.getString("ORDER_TYPE");
 
                 				// Set into ArrayBean for TSSalesDRQCreateImport.jsp page
                 				if (BufferPartNumber[1][i].trim() !=null && BufferPartNumber[1][i].trim() !=null && BufferPartDescNew[1][i].trim() !=null && BufferPartDescNew[1][i].trim() !=null)
@@ -469,16 +473,16 @@ try
 									b[j][5]=""; //add by Peggy 20110729
 									b[j][6]=ship_via; //add by Peggy 20110729
                   					b[j][7]=BufferRequestDate[2][i];
-				  					b[j][8]=(BufferOrderNo.equals("")?"":BufferOrderNo)+"("+RemarkDesc+")";   //add by Peggy 20180719,•[¨A∏πfor Kristin issue  //add by Peggy •[customer po¶bline 20210127
+				  					b[j][8]=(BufferOrderNo.equals("")?"":BufferOrderNo)+"("+RemarkDesc+")";   //add by Peggy 20180719,Âä†Êã¨Ëôüfor Kristin issue  //add by Peggy Âä†customer poÂú®line 20210127
                   					if (itemCNTsub[i]==1) b[j][9]=strRemark;  //add by Peggy 20150707
                   					else b[j][9]="*DUPLICATED*("+RemarkDesc+")";
 				  					b[j][10]="N";
                   					b[j][11]="0";
 				  					b[j][12]="0";
-									b[j][13]=itemFactory;   //•Õ≤£ºtßO add by Peggy 20120316
-									b[j][14]=CustPart;    //´»§·Æ∆∏π add by Peggy 20210811
-									b[j][15]=""+BufferUnitPrice[7][i];  ///•[§JEXCEL¿…™∫≥Êª˘,modify by Peggy 20140626
-									b[j][16]="";      //≠q≥Ê√˛´¨ add by Peggy 20120316
+									b[j][13]=itemFactory;   //ÁîüÁî¢Âª†Âà• add by Peggy 20120316
+									b[j][14]=CustPart;    //ÂÆ¢Êà∂ÊñôËôü add by Peggy 20210811
+									b[j][15]=""+BufferUnitPrice[7][i];  ///Âä†ÂÖ•EXCELÊ™îÁöÑÂñÆÂÉπ,modify by Peggy 20140626
+									b[j][16]=order_type;      //Ë®ÇÂñÆÈ°ûÂûã add by Peggy 20120316
 									b[j][17]="";       //LineType add by Peggy 20120316
 									b[j][18]="";      //FOB add by Peggy 20120329
 									b[j][19]="";      //CUST PO LINE NO,add by Peggy 20120601
@@ -518,10 +522,10 @@ try
 				  				b[j][10]="N";
                   				b[j][11]="0";
 				  				b[j][12]="0";
-								b[j][13]="";      //•Õ≤£ºtßO add by Peggy 20120303
-								b[j][14]="";      //´»§·Æ∆∏π add by Peggy 20120303
-								b[j][15]="";      //≥Êª˘ add by Peggy 20120303
-								b[j][16]="";      //≠q≥Ê√˛´¨ add by Peggy 20120303
+								b[j][13]="";      //ÁîüÁî¢Âª†Âà• add by Peggy 20120303
+								b[j][14]="";      //ÂÆ¢Êà∂ÊñôËôü add by Peggy 20120303
+								b[j][15]="";      //ÂñÆÂÉπ add by Peggy 20120303
+								b[j][16]="";      //Ë®ÇÂñÆÈ°ûÂûã add by Peggy 20120303
 								b[j][17]="";      //LineType add by Peggy 20120303								
 								b[j][18]="";      //FOB add by Peggy 201203029							
      							b[j][19]="";      //CUST PO LINE NO,add by Peggy 20120601
@@ -665,19 +669,19 @@ try
 	String CustomerIdTmp   = (String)session.getAttribute("CUSTOMERIDTMP");
 	String Insert          = (String)session.getAttribute("INSERT");
 	//String fromPage        = (String)session.getAttribute("FROMPAGE");
-  	String q[][]=arrayRFQDocumentInputBean.getArray2DContent();//®˙±o•ÿ´e∞}¶C§∫Æe 		
+  	String q[][]=arrayRFQDocumentInputBean.getArray2DContent();//ÂèñÂæóÁõÆÂâçÈô£ÂàóÂÖßÂÆπ 		
         
   	if (uploadFlag == null) 
   	{  
 	}
   	else if (uploadFlag == "Y" || uploadFlag.equals("Y"))
-  	{ 
+  	{
    		// 20110217 Marvie Update : Add field  PROGRAM_NAME
    		//String urlDir = "TSSalesDRQCreateImport.jsp?"+"CUSTOMERID="+CustomerId+"&SPQCHECKED="+SPQChecked+"&CUSTOMERNO="+CustomerNo+"&CUSTOMERNAME="+CustomerName+"&CUSTACTIVE="+CustActive+"&SALESAREANO="+SalesAreaNo+"&SALESPERSON="+SalesPerson+"&SALESPERSONID="+SalesPersonId+"&CUSTOMERPO="+CustomerPo+"&CURR="+Curr+"&REMARK="+Remark+"&PREORDERTYPE="+PreOrderType+"&ISMODELSELECTED="+IsModelSelected+"&PROCESSAREA="+ProcessArea+"&CUSTOMERIDTMP="+CustomerIdTmp+"&INSERT="+Insert;
    		String urlDir = "TSSalesDRQCreateImport.jsp?"+"CUSTOMERID="+CustomerId+"&SPQCHECKED="+SPQChecked+"&CUSTOMERNO="+CustomerNo+
                    "&CUSTOMERNAME="+CustomerName+"&CUSTACTIVE="+CustActive+"&SALESAREANO="+SalesAreaNo+"&SALESPERSON="+SalesPerson+
 				   "&SALESPERSONID="+SalesPersonId+"&CUSTOMERPO="+CustomerPo+"&CURR="+Curr+"&REMARK="+Remark+
-				   "&PREORDERTYPE="+PreOrderType+"&ISMODELSELECTED="+IsModelSelected+"&PROCESSAREA="+ProcessArea+
+				   "&PREORDERTYPE="+PreOrderType+"&ISMODELSELECTED="+IsModelSelected+"&PROCESSAREA="+java.net.URLEncoder.encode(ProcessArea)+
 				   "&CUSTOMERIDTMP="+CustomerIdTmp+"&INSERT="+Insert+"&PROGRAMNAME=D4-008";
    		response.sendRedirect(urlDir);
   	}		

@@ -1,6 +1,15 @@
 target/
 !.mvn/wrapper/maven-wrapper.jar
-/
+**/jsp/upload_exl/
+**/jsp/upload_label/
+**/TSCABuffer/
+**/TSCEBuffer/
+**/TSCTMustard/
+**/TSCT-Disty2/
+**/TSCTCHTMustard/
+/TSCEPriceBook/
+/TSCItemList/
+/TSCItemListUser/
 
 
 ### IntelliJ IDEA ###
