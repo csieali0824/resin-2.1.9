@@ -20,6 +20,7 @@
 <jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
 <%@ include file="/jsp/include/ProgressStatusBarStart.jsp"%>
 <%
+String UserRoles=(String)session.getAttribute("USERROLES");
 String invItem=request.getParameter("INVITEM");
 if (invItem==null) invItem="";
 String invItem1=request.getParameter("INVITEM1");
@@ -517,8 +518,13 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 10px }
 					" or upper(DESCRIPTION) like '"+searchString.toUpperCase()+"%') ";		   
 		  		}    
 			}  // End of if (queryCount==0)
-		
-			sql = sql + where+" ORDER BY CASE WHEN SUBSTR(tsc_get_item_packing_code(ORGANIZATION_ID ,INVENTORY_ITEM_ID),1,2)='QQ' THEN 1 ELSE 2 END,DESCRIPTION"; //20201005 packing code=QQ Priority 1
+
+			String filterCoo = (salesAreaNo.equals("008") || UserRoles.contains("admin")) ? "" :
+					"and tsc_get_item_coo(a.inventory_item_id) =(\n" +
+							"case when TSC_INV_CATEGORY(INVENTORY_ITEM_ID,43,23) IN ('SMA', 'SMB', 'SMC', 'SOD-123W', 'SOD-128')\n" +
+							"then 'CN' else tsc_get_item_coo(a.inventory_item_id) end)";
+
+			sql = sql + where + filterCoo +" ORDER BY CASE WHEN SUBSTR(tsc_get_item_packing_code(ORGANIZATION_ID ,INVENTORY_ITEM_ID),1,2)='QQ' THEN 1 ELSE 2 END,DESCRIPTION"; //20201005 packing code=QQ Priority 1
 			//out.println(sql);
         	ResultSet rs=statement.executeQuery(sql);
 		    
