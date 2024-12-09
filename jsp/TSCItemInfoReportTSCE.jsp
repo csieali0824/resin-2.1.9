@@ -30,7 +30,7 @@ try
 	pstmt1.close();
 
 	OutputStream os = null;	
-	RPTName = "TSCE distribution price book";
+	RPTName = "TSC Distribution Price Book";
 	FileName = RPTName+"-"+dateBean.getYearMonthDay()+dateBean.getHourMinute()+(SYSDATE.equals("")?"":"(price date"+SYSDATE+")")+".xls";
 	strPath ="\\resin-2.1.9\\webapps\\oradds\\TSCEPriceBook\\"+FileName;
 	os = new FileOutputStream(strPath);
@@ -887,7 +887,7 @@ try
 		}
 		message.addRecipient(Message.RecipientType.BCC, new javax.mail.internet.InternetAddress("mars.wang@ts.com.tw"));
 			
-		message.setSubject("TSCE Item Price Report - "+dateBean.getYearMonthDay()+(SYSDATE.equals("")?"":"(price date"+SYSDATE+")")+remarks);
+		message.setSubject("TSC Distribution Price Book - "+dateBean.getYearMonthDay()+(SYSDATE.equals("")?"":"(price date"+SYSDATE+")")+remarks);
 		javax.mail.internet.MimeMultipart mp = new javax.mail.internet.MimeMultipart();
 		javax.mail.internet.MimeBodyPart mbp = new javax.mail.internet.MimeBodyPart();
 		if (request.getRequestURL().toString().toLowerCase().indexOf("10.0.3.16")>=0)
