@@ -5,7 +5,7 @@
 <html>
 <head>
 <title>PCN X-out Customer List</title>
-<meta http-equiv="Content-Type" content="text/html; charset=Big5">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
 <FORM ACTION="../jsp/TSCQRAXoutCustomerList" METHOD="post" name="MYFORM">
@@ -189,6 +189,7 @@ try
 		  ",b.CUST_SHORT_NAME customer"+
 		  ",b.date_code"+
 		  ",b.sales_issue_date"+
+		  ",c.CREATION_DATE"+		//add by JB 20241210 - GLOBAL_CONTACT_FLAG issue
 		  " from oraddman.tsqra_pcn_item_detail b ,oraddman.tsqra_pcn_item_header c"+
 		  " where b.PCN_NUMBER(+)=c.PCN_NUMBER"+
 		  " and b.SOURCE_TYPE='1'"; //add by Peggy 20220505
@@ -440,6 +441,7 @@ try
 		    " FROM ("+sql+where+") x"+
 		    ",oraddman.tsqra_handling_global_cust y"+
 		    " where upper(x.customer) like '%'||upper(y.end_cust)||'%'"+
+			" and ((GLOBAL_CONTACT_FLAG = 'Y' AND to_char(x.CREATION_DATE, 'yyyymmdd') >= '20241210') OR (to_char(x.CREATION_DATE, 'yyyymmdd') < '20241210'))"+		//add by JB 20241210 - GLOBAL_CONTACT_FLAG issue
 			" order by x.pcn_number ,x.TERRITORY,x.CUSTOMER,x.TSC_PART_NO";
 	sql_x =" SELECT y.cust_group_name,row_number() over (partition by y.cust_group_name order by x.pcn_number,x.territory,x.customer,x.tsc_part_no) row_seq"+
 		   ",x.TERRITORY,x.CUSTOMER,x.CUST_PART_NO,x.TSC_PART_NO,x.MARKET_GROUP,x.PCN_NUMBER,x.PCN_CREATION_DATE ISSUE_DATE"+

@@ -1,6 +1,6 @@
-<%@ page language="java" import="java.sql.*"%>
+ï»¿<%@ page language="java" import="java.sql.*"%>
 <%@ page import="java.text.*"%>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
@@ -21,6 +21,7 @@ String v_trans_flag="",v_pcetok_flag="";
 %>
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=big5">
 <script language="JavaScript" type="text/JavaScript">
 function sendToMainWindow(i_row)
 { 
@@ -31,7 +32,7 @@ function sendToMainWindow(i_row)
 		window.opener.document.MYFORM.ITEMDESC.value=document.SITEFORM.elements["COL2_"+i_row].value;
 		window.opener.document.MYFORM.PACKAGE.value=document.SITEFORM.elements["COL3_"+i_row].value;
 		//if (document.SITEFORM.WIP_TYPE.value=="BGBM" || (document.SITEFORM.ITEMNAME.value !="MQ-W033NB0408DVN" && document.SITEFORM.ITEMNAME.value !="MQ-W050NB0608DVN" && document.SITEFORM.ITEMNAME.value !="MQ-W070NB0408DVN"))
-		if (document.SITEFORM.WIP_TYPE.value=="BGBM" || document.SITEFORM.KPCTOK_FLAG.value=="N")  //§ï¥ÎÅÜ¼Æ§PÂ_ BY PEGGY 20240612
+		if (document.SITEFORM.WIP_TYPE.value=="BGBM" || document.SITEFORM.KPCTOK_FLAG.value=="N")  //æ”¹ç”¨è®Šæ•¸åˆ¤æ–· BY PEGGY 20240612
 		{
 			window.opener.document.MYFORM.DIEID.value=document.SITEFORM.elements["COL11_"+i_row].value;
 			window.opener.document.MYFORM.DIENAME.value=document.SITEFORM.elements["COL12_"+i_row].value;
@@ -57,6 +58,20 @@ function sendToMainWindow(i_row)
 			window.opener.document.MYFORM.NEWITEMDESC.value=document.SITEFORM.elements["COL17_"+i_row].value;
 			window.opener.document.MYFORM.NEWITEMID.value=document.SITEFORM.elements["COL18_"+i_row].value;
 		}
+		
+		if (document.SITEFORM.WIP_TYPE.value=="CP"){
+			if (document.SITEFORM.elements["COL2_"+i_row].value.substring(0,3) == "SGT"){
+				let CP_REMARKS = `1. å¾…å®œéŒ¦å‡ºè²¨
+2. LOT:
+3. CP Report and MAP
+4. OQC Report
+5. Shipment location : PPT å®œéŒ¦ç§‘æŠ€`;
+				window.opener.document.MYFORM.REMARKS.value = CP_REMARKS;		  
+			}				
+		}
+
+			
+		
 		window.opener.document.MYFORM.BILLSEQID.value=document.SITEFORM.elements["COL14_"+i_row].value;
 		window.opener.document.MYFORM.QTY.value="";
 		window.opener.document.MYFORM.UNITPRICE.value=document.SITEFORM.elements["COL5_"+i_row].value;
@@ -167,7 +182,7 @@ function sendToMainWindow(i_row)
 					 "   ,INV.MTL_SYSTEM_ITEMS_B F"+
                      "  WHERE  F.ORGANIZATION_ID=?";
 			//if (WIP_TYPE.equals("BGBM") || (!ITEMNAME.equals("MQ-W033NB0408DVN") && !ITEMNAME.equals("MQ-W050NB0608DVN") && !ITEMNAME.equals("MQ-W070NB0408DVN")))
-			if (WIP_TYPE.equals("BGBM") || v_pcetok_flag.equals("N")) //§ï¥ÎÅÜ¼Æ§PÂ_ BY PEGGY 20240612
+			if (WIP_TYPE.equals("BGBM") || v_pcetok_flag.equals("N")) //æ”¹ç”¨è®Šæ•¸åˆ¤æ–· BY PEGGY 20240612
 			{					 
 				sql +="  AND F.SEGMENT1=NVL(?,F.SEGMENT1)"+
 				 	  "  AND F.DESCRIPTION=NVL(?,F.DESCRIPTION)";
@@ -200,6 +215,7 @@ function sendToMainWindow(i_row)
                      " and bom.organization_id=msii.organization_id"+
                      " and bom.assembly_item_id=aoem.inventory_item_id(+)"+
                      " and bom.organization_id=aoem.organization_id(+)"+
+					 " and bom.assembly_item_id = po.NEW_ITEM_ID(+)"+		//20241126 - JB ADD
 					 " and msi.segment1=NVL(?,msi.SEGMENT1)"+
                      " and msi.description=NVL(?,msi.description)";
 			//out.println(sql);
@@ -214,7 +230,7 @@ function sendToMainWindow(i_row)
 			statement.setString(8,VSID);
 			statement.setInt(9,606);
 			//if (WIP_TYPE.equals("BGBM") || (!ITEMNAME.equals("MQ-W033NB0408DVN") && !ITEMNAME.equals("MQ-W050NB0608DVN") && !ITEMNAME.equals("MQ-W070NB0408DVN")))
-			if (WIP_TYPE.equals("BGBM") || v_pcetok_flag.equals("N"))  //§ï¥ÎÅÜ¼Æ§PÂ_ BY PEGGY 20240612
+			if (WIP_TYPE.equals("BGBM") || v_pcetok_flag.equals("N"))  //æ”¹ç”¨è®Šæ•¸åˆ¤æ–· BY PEGGY 20240612
 			{	
 				statement.setString(10,ITEMNAME);
 				statement.setString(11,ITEMDESC);
@@ -302,7 +318,7 @@ function sendToMainWindow(i_row)
 			//out.println(buttonContent);
 			out.println("<TR BGCOLOR='E3E3CF'><TD><INPUT TYPE=button NAME='button' VALUE='");%><jsp:getProperty name="rPH" property="pgFetch"/><%
 			out.println("' onClick='"+buttonContent+"'></TD>");		
-			for (int i=1;i<=colCount;i++) // ¤£Åã¥Ü²Ä¤@Äæ¸ê®Æ, ¬G for ¥Ñ 2¶}©l
+			for (int i=1;i<=colCount;i++) // ä¸é¡¯ç¤ºç¬¬ä¸€æ¬„è³‡æ–™, æ•… for ç”± 2é–‹å§‹
 			{
 				String s=(String)rs.getString(i);
 				if (i<=colCount-(ITYPE.equals("NEW")?1:5))out.println("<TD align='left'><FONT SIZE=2  color='black'>"+((s==null)?"&nbsp;":s)+"</FONT>");
@@ -316,7 +332,7 @@ function sendToMainWindow(i_row)
 		rs.close();  
 		statement.close();
 
-	    if (queryCount==1) //­Y¨ú¨ìªº¬d¸ß¼Æ == 1
+	    if (queryCount==1) //è‹¥å–åˆ°çš„æŸ¥è©¢æ•¸ == 1
 	    {
 	     %>
 		    <script LANGUAGE="JavaScript">	
@@ -332,12 +348,12 @@ function sendToMainWindow(i_row)
     }
 %>
  <BR>
-<!--%ªí³æ°Ñ¼Æ%-->
+<!--%è¡¨å–®åƒæ•¸%-->
 <input type="hidden" name="KPCTOK_FLAG" value="<%=v_pcetok_flag%>">
 </FORM>
 <!--=================================-->
 <%@ include file="/jsp/include/ProgressStatusBarStop.jsp"%>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 </body>
 </html>

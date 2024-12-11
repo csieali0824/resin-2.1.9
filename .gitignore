@@ -7,9 +7,10 @@ target/
 **/TSCTMustard/
 **/TSCT-Disty2/
 **/TSCTCHTMustard/
-/TSCEPriceBook/
-/TSCItemList/
-/TSCItemListUser/
+TSCEPriceBook/
+TSCItemList/
+TSCItemListUser/
+report/
 
 
 ### IntelliJ IDEA ###

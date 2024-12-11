@@ -6,7 +6,7 @@
 <html>
 <head>
 <title>Export excel file</title>
-<meta http-equiv="Content-Type" content="text/html; charset=Big5">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
 <FORM ACTION="../jsp/TSA01OEMMSECExcel.jsp" METHOD="post" name="MYFORM">
@@ -430,7 +430,7 @@ try
 		ws.mergeCells(col+1, row, col+1, row); 
     	ws.addCell(new jxl.write.Label(col+1, row ,"Foundry：" , ARight));
 		ws.mergeCells(col+2, row, col+3,row);
-		if (rs.getString("inventory_item_name").equals("MQ-WSGT45CLH8ANN"))
+		if (rs.getString("inventory_item_name").equals("MQ-WSGT45CLH8ANN") || rs.getString("inventory_item_name").equals("MQ-WSGT46CLH8ANN") || rs.getString("inventory_item_name").equals("MQ-WSGT44CLH8ANN") || rs.getString("inventory_item_name").equals("MQ-WSGT43CLH8ANN"))  //20241209 JB ADD ITEM
 		{
 			ws.addCell(new jxl.write.Label(col+2, row ,"UMC", ALeftUL));
 		}
@@ -457,7 +457,7 @@ try
 		ws.mergeCells(col+1, row, col+1, row); 
     	ws.addCell(new jxl.write.Label(col+1, row ,"eMap：" , ARight));
 		ws.mergeCells(col+2, row, col+3,row);
-		if (rs.getString("inventory_item_name").equals("MQ-WSGT45CLH8ANN"))
+		if (rs.getString("inventory_item_name").equals("MQ-WSGT45CLH8ANN") || rs.getString("inventory_item_name").equals("MQ-WSGT46CLH8ANN") || rs.getString("inventory_item_name").equals("MQ-WSGT44CLH8ANN") || rs.getString("inventory_item_name").equals("MQ-WSGT43CLH8ANN"))  //20241209 JB ADD ITEM
 		{
 			ws.addCell(new jxl.write.Label(col+2, row ,"Yes", ALeftUL));
 		}
