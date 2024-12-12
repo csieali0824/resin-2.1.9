@@ -972,14 +972,9 @@ catch(Exception e)
 				 ",TSC_INV_Category(a.inventory_item_id, 43, 23)  tsc_package"+ //add by Peggy 20170412
 				 ",nvl(a.order_type_id,a.order_type_id1) order_type_id"+  //add by Peggy 20180207
 			     ",tsc_get_china_to_tw_days("+
-				 "    case when a.assign_manufact in ('011') and a.item_segment1 in (\n" +
-				 "        'S08G-MFBRLTS4925D0000000000F00', 'S08G-MFBRLTS4953D0000000000F00', 'S08G-MFBRLTS4936D0000000000F00', 'S08G-MFBRLTS940900000000000F00',\n" +
-				 "        'X06G-MFERFTS344300000000000F00', 'X06G-MFBRFTS342810000000000F00', 'X06G-MFBRFTS345700000000000F00', 'X06G-MFBRFTS3911D0000000000F00',\n" +
-				 "        'X03G-MFERFTS230200000000000F00', 'X03G-MFBRFTS230500000000000F00', 'X03G-MFBRFTS230600000000000F00', 'X03G-MFBRFTS230700000000000F00',\n" +
-				 "        'X03G-MFBRFTS230800000000000F00', 'X03G-MFBRFTS231200000000000F00', 'X03G-MFBRFTS231400000000000F00', 'X03G-MFERFTS231800000000000F00',\n" +
-				 "        'X03G-MFBRFTS232300000000000F00', 'X03G-MFBRFTS232800000000000F00')\n" +
-				 "        then 'T' else (SELECT ALNAME FROM ORADDMAN.TSPROD_MANUFACTORY WHERE MANUFACTORY_NO=a.assign_manufact) end \n" +
-				 "		,e.order_num,a.inventory_item_id,a.assign_manufact,a.tscustomerid,to_char(sysdate,'yyyymmdd'),a.CUST_PO_NUMBER)* CASE"+
+				 "        case when a.assign_manufact in ('011') and exists(select 1 from TSC_PROD_ITEM_CHANGE where inventory_item_id = a.inventory_item_id)\n" +
+				 "             then 'T' else (SELECT ALNAME FROM ORADDMAN.TSPROD_MANUFACTORY WHERE MANUFACTORY_NO=a.assign_manufact) end\n" +
+				 ",e.order_num,a.inventory_item_id,a.assign_manufact,a.tscustomerid,to_char(sysdate,'yyyymmdd'),a.CUST_PO_NUMBER)* CASE"+
 				 "  WHEN a.direct_ship_to_cust =1 and a.assign_manufact='002' THEN 0 ELSE 1 END TOTW_DAYS"+
 	             ",count(1) over (partition by a.dndocno) line_cnt"+ //add by Peggy 20191025
 				 //",(select NVL(msi.attribute16,'N') from inv.mtl_system_items_b msi where a.inventory_item_id=msi.inventory_item_id and msi.organization_id=mp.organization_Id) forecastitem_flag"+ //add by Peggy 20191031

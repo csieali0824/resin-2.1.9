@@ -89,23 +89,13 @@ try
 		  " ,b.item_segment1 item_name,tsc_inv_category(b.inventory_item_id,43,23) tsc_package,tsc_inv_category(b.inventory_item_id,43,21) tsc_family"+ //add by 20200325
           //",tsc_get_china_to_tw_days(null,NVL(decode(b.orderno,'N/A',null,b.orderno),(SELECT order_num from oraddman.tsarea_ordercls oto where oto.sarea_no=a.tsareano and oto.otype_id=nvl(b.ORDER_TYPE_ID,a.ORDER_TYPE_ID))),b.inventory_item_id,b.assign_manufact,a.tscustomerid,null) * CASE WHEN b.direct_ship_to_cust =1  and b.assign_manufact='002' THEN 0 ELSE 1 END as totw_days"+ //add by Peggy 20200325			  
 		  ",tsc_get_china_to_tw_days(\n" +
-		  "case when b.assign_manufact in ('011') and b.item_segment1 in (\n" +
-		  "        'S08G-MFBRLTS4925D0000000000F00', 'S08G-MFBRLTS4953D0000000000F00', 'S08G-MFBRLTS4936D0000000000F00', 'S08G-MFBRLTS940900000000000F00',\n" +
-		  "        'X06G-MFERFTS344300000000000F00', 'X06G-MFBRFTS342810000000000F00', 'X06G-MFBRFTS345700000000000F00', 'X06G-MFBRFTS3911D0000000000F00',\n" +
-		  "        'X03G-MFERFTS230200000000000F00', 'X03G-MFBRFTS230500000000000F00', 'X03G-MFBRFTS230600000000000F00', 'X03G-MFBRFTS230700000000000F00',\n" +
-		  "        'X03G-MFBRFTS230800000000000F00', 'X03G-MFBRFTS231200000000000F00', 'X03G-MFBRFTS231400000000000F00', 'X03G-MFERFTS231800000000000F00',\n" +
-		  "        'X03G-MFBRFTS232300000000000F00', 'X03G-MFBRFTS232800000000000F00')\n" +
-		  "        then 'T' else (SELECT ALNAME FROM ORADDMAN.TSPROD_MANUFACTORY WHERE MANUFACTORY_NO=b.assign_manufact) end \n" +
-			",NVL(decode(b.orderno,'N/A',null,b.orderno),(SELECT order_num from oraddman.tsarea_ordercls oto where oto.sarea_no=a.tsareano and oto.otype_id=nvl(b.ORDER_TYPE_ID,a.ORDER_TYPE_ID))),b.inventory_item_id,b.assign_manufact,a.tscustomerid,case when b.SASCODATE<>'N/A' then substr(b.SASCODATE,1,8) else to_char(sysdate,'yyyymmdd') end,nvl(b.CUST_PO_NUMBER,a.CUST_PO)) * CASE WHEN b.direct_ship_to_cust =1  and b.assign_manufact='002' THEN 0 ELSE 1 END as totw_days"+ //add by Peggy 20200916
+		  "    case when b.assign_manufact in ('011') and exists(select 1 from TSC_PROD_ITEM_CHANGE where inventory_item_id = b.inventory_item_id)\n" +
+		  "         then 'T' else (SELECT ALNAME FROM ORADDMAN.TSPROD_MANUFACTORY WHERE MANUFACTORY_NO=b.assign_manufact) end \n" +
+		  ",NVL(decode(b.orderno,'N/A',null,b.orderno),(SELECT order_num from oraddman.tsarea_ordercls oto where oto.sarea_no=a.tsareano and oto.otype_id=nvl(b.ORDER_TYPE_ID,a.ORDER_TYPE_ID))),b.inventory_item_id,b.assign_manufact,a.tscustomerid,case when b.SASCODATE<>'N/A' then substr(b.SASCODATE,1,8) else to_char(sysdate,'yyyymmdd') end,nvl(b.CUST_PO_NUMBER,a.CUST_PO)) * CASE WHEN b.direct_ship_to_cust =1  and b.assign_manufact='002' THEN 0 ELSE 1 END as totw_days"+ //add by Peggy 20200916
 		  ",to_char(to_date(b.creation_date,'yyyymmddhh24miss'),'yyyy/mm/dd hh24:mi') creation_date"+//add by Peggy 20200326
 		  ",to_char(to_date(substr(b.request_date,1,8),'yyyymmdd')-tsc_get_china_to_tw_days(\n" +
-		  "case when b.assign_manufact in ('011') and b.item_segment1 in (\n" +
-		  "        'S08G-MFBRLTS4925D0000000000F00', 'S08G-MFBRLTS4953D0000000000F00', 'S08G-MFBRLTS4936D0000000000F00', 'S08G-MFBRLTS940900000000000F00',\n" +
-		  "        'X06G-MFERFTS344300000000000F00', 'X06G-MFBRFTS342810000000000F00', 'X06G-MFBRFTS345700000000000F00', 'X06G-MFBRFTS3911D0000000000F00',\n" +
-		  "        'X03G-MFERFTS230200000000000F00', 'X03G-MFBRFTS230500000000000F00', 'X03G-MFBRFTS230600000000000F00', 'X03G-MFBRFTS230700000000000F00',\n" +
-		  "        'X03G-MFBRFTS230800000000000F00', 'X03G-MFBRFTS231200000000000F00', 'X03G-MFBRFTS231400000000000F00', 'X03G-MFERFTS231800000000000F00',\n" +
-		  "        'X03G-MFBRFTS232300000000000F00', 'X03G-MFBRFTS232800000000000F00')\n" +
-		  "        then 'T' else (SELECT ALNAME FROM ORADDMAN.TSPROD_MANUFACTORY WHERE MANUFACTORY_NO=b.assign_manufact) end \n" +
+		  "    case when b.assign_manufact in ('011') and exists(select 1 from TSC_PROD_ITEM_CHANGE where inventory_item_id = b.inventory_item_id)\n" +
+		  "         then 'T' else (SELECT ALNAME FROM ORADDMAN.TSPROD_MANUFACTORY WHERE MANUFACTORY_NO=b.assign_manufact) end\n" +
 	      ",NVL(decode(b.orderno,'N/A',null,b.orderno),(SELECT order_num from oraddman.tsarea_ordercls oto where oto.sarea_no=a.tsareano and oto.otype_id=nvl(b.ORDER_TYPE_ID,a.ORDER_TYPE_ID))),b.inventory_item_id,b.assign_manufact,a.tscustomerid,case when b.SASCODATE<>'N/A' then substr(b.SASCODATE,1,8) else to_char(sysdate,'yyyymmdd') end,nvl(b.CUST_PO_NUMBER,a.CUST_PO)) * CASE WHEN b.direct_ship_to_cust =1  and b.assign_manufact='002' THEN 0 ELSE 1 END,'yyyy/mm/dd') as factory_ssd"+
 		  ",moq.moq/1000 moq"+ //add by Peggy 20211206
 		  ",nvl(moq.vendor_moq,moq.moq)/1000 vendor_moq"+ //add by Peggy 20211206
