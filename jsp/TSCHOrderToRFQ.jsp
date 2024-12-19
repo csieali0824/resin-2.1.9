@@ -385,6 +385,11 @@ if (!HEADER_ID.equals(""))
 					bb[i][6]="DHL";
 					bb[i][18]="DAP PHILIPPINES";  
 				}
+				else if (rs.getString("TSCH_CUSTOMER_NUMBER").equals("33652")) //Conti Philippines ,ADD BY Mars 20241219
+				{
+					bb[i][6]="DHL";
+					bb[i][18]="DAP PHILIPPINES";
+				}
 				else if (rs.getString("TSCH_CUSTOMER_NUMBER").equals("31912") || rs.getString("TSCH_CUSTOMER_NUMBER").equals("32932")) //GPV ,ADD BY PEGGY 20230406, GPV(THAILAND) add by Peggy 20240304
 				{
 					bb[i][6]="DHL";
