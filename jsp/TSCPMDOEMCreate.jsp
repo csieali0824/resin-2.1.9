@@ -1402,8 +1402,6 @@ String strRemarks="Marking 後三碼LYW 請按訂單D/C執行";
 String strRemarks1="D/C 加註底線時，標籤底線請執行於末碼XXX_";
 String strRemarks2="D/C欄位三碼皆有底線時，標籤D/C欄位不需加註底線"; //add by Peggy 20210527
 String REMARKS=request.getParameter("REMARKS");
-	System.out.println("SUPPLIERNO="+SUPPLIERNO);
-	System.out.println("REMARKS="+REMARKS);
 
 if ("4746".equals(SUPPLIERNO)) { // 華羿微電子
 	REMARKS = "1.晶片於" + ISSUEDATE + "出貨至華羿微電子\n" +
