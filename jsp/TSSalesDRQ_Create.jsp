@@ -27,6 +27,7 @@
 <!--=================================-->
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
 <%@ page import="SalesDRQPageHeaderBean" %>
+<%@ page import="java.util.Arrays" %>
 <html>
 <head>
 <title>Sales Delivery Request Questionnaire Input Form</title>
@@ -1846,7 +1847,7 @@ String customerId=request.getParameter("CUSTOMERID");
 String customerNo=request.getParameter("CUSTOMERNO");
 String customerName=request.getParameter("CUSTOMERNAME");
 String custActive=request.getParameter("CUSTACTIVE");
-String salesAreaNo=request.getParameter("SALESAREANO"); 
+String salesAreaNo=request.getParameter("SALESAREANO");
 String salesPersonID=request.getParameter("SALESPERSONID"); 
 String customerPO=request.getParameter("CUSTOMERPO"); 
 String receptDate=request.getParameter("RECEPTDATE");
@@ -1859,7 +1860,7 @@ String processArea=request.getParameter("PROCESSAREA");
 String salesPerson=request.getParameter("SALESPERSON"); 
 String toPersonID=request.getParameter("TOPERSONID"); 
 String customerIdTmp=request.getParameter("CUSTOMERIDTMP");
-String insertPage=request.getParameter("INSERT"); 
+String insertPage=request.getParameter("INSERT");
 String preSeqNo=request.getParameter("PREDNDOCNO");
 String repeatInput=request.getParameter("REPEATINPUT");
 String custAROverdue=request.getParameter("CUSTOMERAROVERDUE");
@@ -2213,7 +2214,8 @@ else
 		}
 	}
 	
-	String sp[][]=arrayRFQDocumentInputBean.getArray2DContent();//若為輸入模式,且內容不為null,則將陣列entity給全域變數 inpLen     
+	String sp[][]=arrayRFQDocumentInputBean.getArray2DContent();//若為輸入模式,且內容不為null,則將陣列entity給全域變數 inpLen
+					System.out.println("xxx="+ Arrays.deepToString(sp));
 	if (sp != null)
 	{
 		inpLen = sp.length; // 把已輸入的內容個數傳給此全域變數,做為判斷是否可重選樣本訂單依據

@@ -1,25 +1,25 @@
-<!-- 20150209 Peggy,å¾®é‘«3292,åŒ—æ–°ç§‘3867,æ˜‡é™½åœ‹éš›2012ä¸‰å®¶ä»¥ç‰‡è¨ˆåƒ¹-->
-<!-- 20150317 Peggy,åŒ—æ–°ç§‘3867åªåšæ¸¬è©¦-->
-<!-- 20150506 Peggy,remarkå¢åŠ 5. Wafer lot : -->
-<!-- 20150317 Peggy,3864è–©æ‘©äºå•†æ·æ•ç§‘æœ‰é™å…¬å¸å°ç£åˆ†å…¬å¸æ”¹ä»¥kpcsè¨ˆåƒ¹-->
-<!-- 20150608 Peggy,ç§€æ­¦é›»å­3967ä»¥ç‰‡è¨ˆåƒ¹-->
-<!-- 20150608 Peggy,è¯æ³°é›»å­3915ä»¥ç‰‡è¨ˆåƒ¹-->
-<!-- 20150616 Peggy,è–©æ‘©äºå•†æ·æ•3864ä»¥ç‰‡è¨ˆåƒ¹-->
-<!-- 20150702 Peggy,æ·æ•3979ä»¥ç‰‡è¨ˆåƒ¹-->
-<!-- 20150812 Peggy,æ·æ•3979é‡ç”¢ä»¥Kè¨ˆåƒ¹-->
-<!-- 20160914 Peggy,æ–°å¢bill_sequence_id-->
-<!-- 20161104 Peggy,æ–°å¢prd å¤–åŒ…-->
-<!-- 20170817 Peggy,é è¨ˆå®Œå·¥æ—¥ç§»è‡³è¡¨é ­,å–æ¶ˆline request date,æ–°å¢æš«ä¸ç™¼æ–™é¸é …-->
-<!-- 20171012 Peggy,æ–°å¢RD3å·¥ç¨‹å…¥åº«äº¤æ˜“-->
-<!-- 20171027 Peggy,æ–°å¢RD5å·¥ç¨‹å…¥åº«äº¤æ˜“-->
-<!-- 20180124 Peggy,æ™¶ç‰‡ç™¼å¾€å°è£å» å¯„å­˜,D/Cè¼¸å…¥HOLDè¡¨å·¥å–®æœªä¸‹ç·šæ•¸-->
-<!-- 20180724 Peggy,æ–°å¢æ™¶ç‰‡ç‰‡è™ŸFOR 4056å¤©æ°´è¯å¤©-->
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.net.*,java.io.*,java.text.*,java.lang.*"%>
+<!-- 20150209 Peggy,·LøÊ3292,¥_·s¬ì3867,ª@¶§°ê»Ú2012¤T®a¥H¤ù­p»ù-->
+<!-- 20150317 Peggy,¥_·s¬ì3867¥u°µ´ú¸Õ-->
+<!-- 20150506 Peggy,remark¼W¥[5. Wafer lot : -->
+<!-- 20150317 Peggy,3864ÂÄ¼¯¨È°Ó±¶±Ó¬ì¦³­­¤½¥q¥xÆW¤À¤½¥q§ï¥Hkpcs­p»ù-->
+<!-- 20150608 Peggy,¨qªZ¹q¤l3967¥H¤ù­p»ù-->
+<!-- 20150608 Peggy,µØ®õ¹q¤l3915¥H¤ù­p»ù-->
+<!-- 20150616 Peggy,ÂÄ¼¯¨È°Ó±¶±Ó3864¥H¤ù­p»ù-->
+<!-- 20150702 Peggy,±¶±Ó3979¥H¤ù­p»ù-->
+<!-- 20150812 Peggy,±¶±Ó3979¶q²£¥HK­p»ù-->
+<!-- 20160914 Peggy,·s¼Wbill_sequence_id-->
+<!-- 20161104 Peggy,·s¼Wprd ¥~¥]-->
+<!-- 20170817 Peggy,¹w­p§¹¤u¤é²¾¦ÜªíÀY,¨ú®øline request date,·s¼W¼È¤£µo®Æ¿ï¶µ-->
+<!-- 20171012 Peggy,·s¼WRD3¤uµ{¤J®w¥æ©ö-->
+<!-- 20171027 Peggy,·s¼WRD5¤uµ{¤J®w¥æ©ö-->
+<!-- 20180124 Peggy,´¹¤ùµo©¹«Ê¸Ë¼t±H¦s,D/C¿é¤JHOLDªí¤u³æ¥¼¤U½u¼Æ-->
+<!-- 20180724 Peggy,·s¼W´¹¤ù¤ù¸¹FOR 4056¤Ñ¤ôµØ¤Ñ-->
+<%@ page contentType="text/html; charset=big5" language="java" import="java.sql.*,java.net.*,java.io.*,java.text.*,java.lang.*"%>
 <%@ page import="ComboBoxBean,DateBean,ArrayComboBoxBean" %>
 <jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
 <jsp:useBean id="dateBean" scope="page" class="DateBean"/>
 <jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
- <!--=============ä»¥ä¸‹å€æ®µç‚ºå®‰å…¨èªè­‰æ©Ÿåˆ¶==========-->
+ <!--=============¥H¤U°Ï¬q¬°¦w¥ş»{ÃÒ¾÷¨î==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ page import="SalesDRQPageHeaderBean,Array2DimensionInputBean"%>
@@ -29,14 +29,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
 <jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
 <jsp:useBean id="WIPShipBean" scope="session" class="Array2DimensionInputBean"/>
-<title>PMDå§”å¤–åŠ å·¥å–®-æ–°å¢</title>
+<title>PMD©e¥~¥[¤u³æ-·s¼W</title>
 <script language="JavaScript" type="text/JavaScript">
 function setAddLine(URL)
 {
 	var TXTLINE = document.MYFORM.txtLine.value;
 	if (TXTLINE == "" || TXTLINE == null || TXTLINE == "null")
 	{
-		alert("è«‹è¼¸å…¥è¡Œæ•¸!");
+		alert("½Ğ¿é¤J¦æ¼Æ!");
 		document.MYFORM.txtLine.focus();
 		return false;
 	}	
@@ -45,13 +45,13 @@ function setAddLine(URL)
 		var regex = /^-?\d+$/;
 		if (TXTLINE.match(regex)==null) 
 		{ 
-    		alert("æ•¸é‡å¿…é ˆæ˜¯æ•´æ•¸æ•¸å€¼å‹æ…‹!"); 
+    		alert("¼Æ¶q¥²¶·¬O¾ã¼Æ¼Æ­È«¬ºA!"); 
 			document.MYFORM.txtLine.focus();
 			return false;
 		} 
 		else if (parseInt(TXTLINE)<1 || parseInt(TXTLINE)>10)
 		{
-    		alert("è¡Œæ•¸æ–°å¢ç¯„åœ1~10!"); 
+    		alert("¦æ¼Æ·s¼W½d³ò1~10!"); 
 			document.MYFORM.txtLine.focus();
 			return false;		
 		}
@@ -63,7 +63,7 @@ function setAddLine(URL)
 
 function setDelete(objLine)
 {
-	if (confirm("æ‚¨ç¢ºå®šè¦åˆªé™¤è¡Œè™Ÿ"+objLine+"æ‰€æœ‰è³‡æ–™å—?"))
+	if (confirm("±z½T©w­n§R°£¦æ¸¹"+objLine+"©Ò¦³¸ê®Æ¶Ü?"))
 	{
 		for (var i = objLine ; i <= document.MYFORM.LINENUM.value ; i++)
 		{
@@ -109,9 +109,9 @@ function setDelete(objLine)
 function CheckDataCode(chooseLine)
 {
 	var wiptype = document.MYFORM.WIPTYPE.value;
-	if (wiptype !="03" && wiptype !="05")  //é‡å·¥
+	if (wiptype !="03" && wiptype !="05")  //­«¤u
 	{
-		//PRDæ’é™¤åœ¨åŒå‹è™ŸD/Cä¸é‡è¤‡ä¹‹é™åˆ¶å¤–,add by Peggy 20170609
+		//PRD±Æ°£¦b¦P«¬¸¹D/C¤£­«½Æ¤§­­¨î¥~,add by Peggy 20170609
 		if (document.MYFORM.PROD_GROUP.value.indexOf("PRD")<0)
 		{
 			var useDateCode = document.MYFORM.elements["UseDateCode"+chooseLine].value;
@@ -122,7 +122,7 @@ function CheckDataCode(chooseLine)
 				//if (DateCode != null && DateCode != "" && strlen[i] == DateCode)
 				if (DateCode != null && DateCode != "" && DateCode != "HOLD" && DateCode != "NA" && DateCode != "N/A" && strlen[i] == DateCode)
 				{
-					alert("DateCode:"+DateCode+"å·²ä½¿ç”¨é,è«‹é‡æ–°è¼¸å…¥!!");
+					alert("DateCode:"+DateCode+"¤w¨Ï¥Î¹L,½Ğ­«·s¿é¤J!!");
 					document.MYFORM.elements["DateCode"+chooseLine].value="";
 					document.MYFORM.elements["DateCode"+chooseLine].focus();
 					return false;
@@ -143,18 +143,18 @@ function CheckDataCode(chooseLine)
 }
 
 function subWindowSupplierFind(supplierNo,supplierName,itemID,Qty,supplierSite)
-{   
+{
 	//add by Peggy 20130719
 	if (document.MYFORM.WIPTYPE.value=="--" || document.MYFORM.WIPTYPE.value==null || document.MYFORM.WIPTYPE.value=="")
 	{
-		alert("è«‹é¸æ“‡å·¥å–®é¡å‹!");
+		alert("½Ğ¿ï¾Ü¤u³æÃş«¬!");
 		document.MYFORM.WIPTYPE.focus();
 		return false;
 	}
 	//add by Peggy 20130719
 	if ((document.MYFORM.WIPTYPE.value=="01" || document.MYFORM.WIPTYPE.value=="04") && document.MYFORM.ITEMID.value=="")
 	{
-		alert("è«‹å…ˆè¼¸å…¥æ–™è™Ÿ!");
+		alert("½Ğ¥ı¿é¤J®Æ¸¹!");
 		document.MYFORM.ITEMNAME.focus();
 		return false;
 	}
@@ -172,7 +172,7 @@ function subWindowItemFind(itemName,itemDesc,Vendor,Qty,supplierSite)
 	var WIPTYPE=document.MYFORM.WIPTYPE.value;
 	if (WIPTYPE=="--" || WIPTYPE==null || WIPTYPE=="")
 	{
-		alert("è«‹é¸æ“‡å·¥å–®é¡å‹!");
+		alert("½Ğ¿ï¾Ü¤u³æÃş«¬!");
 		document.MYFORM.WIPTYPE.focus();
 		return false;
 	}
@@ -200,7 +200,7 @@ function setValue(wipType)
 	document.MYFORM.CHKOTHERS.checked=false;
 	document.MYFORM.OTHERS.value="";
 	document.MYFORM.WIP_ISSUE_FLAG.checked = false;
-	if (wipType =="03" || wipType =="05") //é‡å·¥
+	if (wipType =="03" || wipType =="05") //­«¤u
 	{
 		status ="visible";
 		status1 = false;
@@ -250,7 +250,7 @@ function setValue(wipType)
 		//document.MYFORM.btnStock.disabled = true;
 		document.MYFORM.btnStock.disabled = false;  //modify by Peggy 20230714
 		
-		if (wipType =="01" ) //é‡ç”¢,add by Peggy 20120704,å·¥ç¨‹ä¹ŸåŒé‡ç”¢for nono issue
+		if (wipType =="01" ) //¶q²£,add by Peggy 20120704,¤uµ{¤]¦P¶q²£for nono issue
 		{
 			document.MYFORM.UNITPRICE.readOnly = true;
 			price_uom = document.MYFORM.PRICE_SOURCE_UOM.value;  //modify by Peggy 20130522
@@ -288,21 +288,21 @@ function setValue(wipType)
 					document.MYFORM.SUBINVENTORY.value ="83";  
 				}
 			}			
-			if (document.MYFORM.SUPPLIERNO.value =="3867")  //åŒ—æ–°ç§‘åªæœ‰æ¸¬è©¦,add by Peggy 20150317
+			if (document.MYFORM.SUPPLIERNO.value =="3867")  //¥_·s¬ì¥u¦³´ú¸Õ,add by Peggy 20150317
 			{
 				document.MYFORM.CHKTESTING.checked = true;
 			}
 			else
 			{			
-				//if (document.MYFORM.SUPPLIERNO.value !="2012")  //æ˜‡é™½ç§‘ç„¡å°è£,add by Peggy 20141110
-				if (document.MYFORM.SUPPLIERNO.value !="2012" && document.MYFORM.PACKAGE.value.toUpperCase() !="WAFER")  //å°è£å½¢å¼=WAFERä¸å‹¾å°è£ For Nono issue,add by Peggy 20180126
+				//if (document.MYFORM.SUPPLIERNO.value !="2012")  //ª@¶§¬ìµL«Ê¸Ë,add by Peggy 20141110
+				if (document.MYFORM.SUPPLIERNO.value !="2012" && document.MYFORM.PACKAGE.value.toUpperCase() !="WAFER")  //«Ê¸Ë§Î¦¡=WAFER¤£¤Ä«Ê¸Ë For Nono issue,add by Peggy 20180126
 				{
 					document.MYFORM.CHKASSEMBLY.checked =true; //add by Peggy 20130725
 				}
 				document.MYFORM.CHKTESTING.checked =true;  //add by Peggy 20130725
 				//add by Peggy 20130726
 				//if (document.MYFORM.PACKING.value =="AMMO" || document.MYFORM.PACKING.value=="TAPE & REEL")
-				if ((document.MYFORM.PACKING.value =="AMMO" || document.MYFORM.PACKING.value=="TAPE & REEL") && document.MYFORM.PACKAGE.value.toUpperCase() !="WAFER")  //å°è£å½¢å¼=WAFERä¸å‹¾ç·¨å¸¶ For Nono issue,add by Peggy 20180126 
+				if ((document.MYFORM.PACKING.value =="AMMO" || document.MYFORM.PACKING.value=="TAPE & REEL") && document.MYFORM.PACKAGE.value.toUpperCase() !="WAFER")  //«Ê¸Ë§Î¦¡=WAFER¤£¤Ä½s±a For Nono issue,add by Peggy 20180126 
 				{
 					document.MYFORM.CHKTAPING.checked = true;
 				}
@@ -317,17 +317,17 @@ function setValue(wipType)
 		{
 			document.MYFORM.WIP_ISSUE_FLAG.checked = true;
 			document.MYFORM.CHKOTHERS.checked = true;
-			document.MYFORM.OTHERS.value = "æ™¶åœ“è£½ç¨‹ç”Ÿç”¢";
+			document.MYFORM.OTHERS.value = "´¹¶ê»sµ{¥Í²£";
 			document.MYFORM.REMARKS.value ="";
 			document.MYFORM.PACKAGESPEC.value="N/A";
 			document.MYFORM.TESTSPEC.value="N/A";
 			document.MYFORM.MARKING.value="N/A";
 			document.MYFORM.SUBINVENTORY.value ="61"; 
-			document.MYFORM.PRICE_UOM.value="ç‰‡";
+			document.MYFORM.PRICE_UOM.value="¤ù";
 			document.getElementById("td2").innerHTML="Q'ty("+document.MYFORM.PRICE_UOM.value+")";
 			document.MYFORM.QTY.value=document.MYFORM.totWaferQty.value;
 		}
-		else  //å·¥ç¨‹
+		else  //¤uµ{
 		{
 			document.MYFORM.UNITPRICE.readOnly = false;
 			if (document.MYFORM.PROD_GROUP.value.indexOf("PRD")>=0)
@@ -342,7 +342,7 @@ function setValue(wipType)
 			{
 				document.MYFORM.SUBINVENTORY.value ="84";  
 			}						
-			if (document.MYFORM.SUPPLIERNO.value =="3867")  //åŒ—æ–°ç§‘åªæœ‰æ¸¬è©¦,add by Peggy 20150317
+			if (document.MYFORM.SUPPLIERNO.value =="3867")  //¥_·s¬ì¥u¦³´ú¸Õ,add by Peggy 20150317
 			{
 				document.MYFORM.CHKTESTING.checked = true;
 			}			
@@ -395,14 +395,14 @@ function subWindowItemLotFind(chooseLine)
 	var wiptype = document.MYFORM.WIPTYPE.value;
 	if (wiptype == null || wiptype =="--")
 	{
-		alert("è«‹å…ˆé¸æ“‡å·¥å–®é¡å‹!!");
+		alert("½Ğ¥ı¿ï¾Ü¤u³æÃş«¬!!");
 		document.MYFORM.WIPTYPE.focus();
 		return false;
 	}
 	var GoodsItemID = "";
 	var itemID = "";
-	//if (wiptype =="03") //é‡å·¥
-	if (wiptype =="03" || wiptype =="05") //é‡å·¥
+	//if (wiptype =="03") //­«¤u
+	if (wiptype =="03" || wiptype =="05") //­«¤u
 	{
 		itemID =document.MYFORM.elements["INVITEMID"+chooseLine].value;
 	}
@@ -414,7 +414,7 @@ function subWindowItemLotFind(chooseLine)
 	
 	if (itemID ==null || itemID =="")
 	{
-		alert("è«‹å…ˆè¼¸å…¥æ–™è™Ÿå¾Œ,å†é¸æ“‡Lot!!");
+		alert("½Ğ¥ı¿é¤J®Æ¸¹«á,¦A¿ï¾ÜLot!!");
 		if (wiptype =="03" || wiptype =="05")
 		{
 			document.MYFORM.elements["INVITEM"+chooseLine].focus();
@@ -468,7 +468,7 @@ function setSubmit()
 	var ACTIONID = document.MYFORM.ACTIONID.value;
 	if (ACTIONID == "--" || ACTIONID == null || ACTIONID == "" || ACTIONID=="null")
 	{
-		alert("è«‹é¸æ“‡åŸ·è¡Œå‹•ä½œ!");
+		alert("½Ğ¿ï¾Ü°õ¦æ°Ê§@!");
 		document.MYFORM.ACTIONID.focus();
 		return false;
 	}
@@ -476,7 +476,7 @@ function setSubmit()
 	var WIPTYPE = document.MYFORM.WIPTYPE.value;
 	if (WIPTYPE == "--" || WIPTYPE == null || WIPTYPE =="" || WIPTYPE == "null")
 	{
-		alert("è«‹é¸æ“‡å·¥å–®é¡å‹!");
+		alert("½Ğ¿ï¾Ü¤u³æÃş«¬!");
 		document.MYFORM.WIPTYPE.focus();
 		return false;
 	}
@@ -488,21 +488,21 @@ function setSubmit()
 	var ISSUEDATE = document.MYFORM.ISSUEDATE.value;
 	if (ISSUEDATE =="" || ISSUEDATE == null || ISSUEDATE == "null")
 	{
-		alert("è«‹è¼¸å…¥ISSUE DATE!");
+		alert("½Ğ¿é¤JISSUE DATE!");
 		document.MYFORM.ISSUEDATE.focus();
 		return false;
 	}
 	var COMPLETEDATE = document.MYFORM.COMPLETEDATE.value;
 	if (COMPLETEDATE <= ISSUEDATE)
 	{
-		alert("é è¨ˆå®Œæˆæ—¥("+COMPLETEDATE+")å¿…é ˆå¤§æ–¼ISSUE DATE("+ISSUEDATE+")!"); 
+		alert("¹w­p§¹¦¨¤é("+COMPLETEDATE+")¥²¶·¤j©óISSUE DATE("+ISSUEDATE+")!"); 
 		document.MYFORM.COMPLETEDATE.focus();
 		return false;
 	}
 	var SUPPLIERNO = document.MYFORM.SUPPLIERNO.value;
 	if (SUPPLIERNO =="" || SUPPLIERNO == null || SUPPLIERNO =="null")
 	{
-		alert("è«‹è¼¸å…¥ä¾›æ‡‰å•†ä»£ç¢¼!");
+		alert("½Ğ¿é¤J¨ÑÀ³°Ó¥N½X!");
 		document.MYFORM.SUPPLIERNO.focus();
 		return false;	
 	}
@@ -510,7 +510,7 @@ function setSubmit()
 	var SUPPLIERNAME = document.MYFORM.SUPPLIERNAME.value;
 	if (SUPPLIERNAME =="" || SUPPLIERNAME == null || SUPPLIERNAME =="null")
 	{
-		alert("è«‹è¼¸å…¥ä¾›æ‡‰å•†åç¨±!");
+		alert("½Ğ¿é¤J¨ÑÀ³°Ó¦WºÙ!");
 		document.MYFORM.SUPPLIERNAME.focus();
 		return false;	
 	}	
@@ -518,7 +518,7 @@ function setSubmit()
 	var VENDOR_SITE_ID = document.MYFORM.VENDOR_SITE_ID.value;
 	if (VENDOR_SITE_ID =="" || VENDOR_SITE_ID == null || VENDOR_SITE_ID =="null")
 	{
-		alert("ä¾›æ‡‰å•†Siteä¸å¯ç©ºç™½!");
+		alert("¨ÑÀ³°ÓSite¤£¥iªÅ¥Õ!");
 		document.MYFORM.SUPPLIERNAME.focus();
 		return false;	
 	}
@@ -526,7 +526,7 @@ function setSubmit()
 	var SUPPLIERCONTACT = document.MYFORM.SUPPLIERCONTACT.value;
 	if (SUPPLIERCONTACT == "" || SUPPLIERCONTACT == null || SUPPLIERCONTACT == "null")
 	{
-		alert("è«‹è¼¸å…¥ä¾›æ‡‰å•†ä¹‹è¯çµ¡äºº!");
+		alert("½Ğ¿é¤J¨ÑÀ³°Ó¤§Ápµ¸¤H!");
 		document.MYFORM.SUPPLIERCONTACT.focus();
 		return false;		
 	}
@@ -534,14 +534,14 @@ function setSubmit()
 	var CURRENCYCODE = document.MYFORM.CURRENCYCODE.value;
 	if (CURRENCYCODE == "" || CURRENCYCODE == null || CURRENCYCODE == "null")
 	{
-		alert("å¹£åˆ¥ä¸å¯ç©ºç™½!");
+		alert("¹ô§O¤£¥iªÅ¥Õ!");
 		document.MYFORM.CURRENCYCODE.focus();
 		return false;		
 	}
 	
 	if (document.MYFORM.SUBINVENTORY.value == null || document.MYFORM.SUBINVENTORY.value == "" || document.MYFORM.SUBINVENTORY.value == "null")
 	{
-		alert("è«‹æŒ‡å®šå…¥åº«å€‰!");
+		alert("½Ğ«ü©w¤J®w­Ü!");
 		document.MYFORM.SUBINVENTORY.focus();
 		return false;		
 	}
@@ -554,19 +554,19 @@ function setSubmit()
 	var OTHERS = document.MYFORM.OTHERS.value;
 	if (CHKASSEMBLY == false && CHKTESTING == false && CHKTAPING ==false && CHKLAPPING ==false && CHKOTHERS ==false)
 	{
-		alert("æ¸¬è©¦é …ç›®è«‹è‡³å°‘å‹¾é¸ä¸€é …!");
+		alert("´ú¸Õ¶µ¥Ø½Ğ¦Ü¤Ö¤Ä¿ï¤@¶µ!");
 		return false;
 	}
 	if (SUPPLIERNO=="4056")
 	{
 		if (CHKOTHERS==false)
 		{
-			alert("ä¾›æ‡‰å•†=4056å¤©æ°´è¯å¤©å¿…é ˆæŒ‡å®šå…¶ä»–!");
+			alert("¨ÑÀ³°Ó=4056¤Ñ¤ôµØ¤Ñ¥²¶·«ü©w¨ä¥L!");
 			return false;		
 		}
 		else if (OTHERS == "" || OTHERS == null || OTHERS == "null")
 		{
-			alert("ä¾›æ‡‰å•†=4056å¤©æ°´è¯å¤©å¿…é ˆå¡«å¯«å…¶ä»–èªªæ˜!");
+			alert("¨ÑÀ³°Ó=4056¤Ñ¤ôµØ¤Ñ¥²¶·¶ñ¼g¨ä¥L»¡©ú!");
 			document.MYFORM.OTHERS.focus();
 			return false;		
 		}
@@ -575,19 +575,19 @@ function setSubmit()
 	{
 		if (CHKOTHERS==false)
 		{
-			alert("ä¾›æ‡‰å•†=4746è¯ç¾¿å¾®å¿…é ˆæŒ‡å®šå…¶ä»–!");
+			alert("¨ÑÀ³°Ó=4746µØ¬ı·L¥²¶·«ü©w¨ä¥L!");
 			return false;		
 		}
 		else if (OTHERS == "" || OTHERS == null || OTHERS == "null")
 		{
-			alert("ä¾›æ‡‰å•†=4746è¯ç¾¿å¾®å¿…é ˆå¡«å¯«å…¶ä»–èªªæ˜!");
+			alert("¨ÑÀ³°Ó=4746µØ¬ı·L¥²¶·¶ñ¼g¨ä¥L»¡©ú!");
 			document.MYFORM.OTHERS.focus();
 			return false;		
 		}
 	}	
 	if (CHKOTHERS==true && (OTHERS == "" || OTHERS == null || OTHERS == "null"))
 	{
-		alert("ç•¶å‹¾é¸[å…¶ä»–]æ™‚ï¼Œè«‹å¡«å¯«å…¶ä»–èªªæ˜!");
+		alert("·í¤Ä¿ï[¨ä¥L]®É¡A½Ğ¶ñ¼g¨ä¥L»¡©ú!");
 		document.MYFORM.OTHERS.focus();
 		return false;
 	}
@@ -596,7 +596,7 @@ function setSubmit()
 	var ITEMNAME = document.MYFORM.ITEMNAME.value;
 	if (ITEMNAME == "" || ITEMNAME == null || ITEMNAME == "null")
 	{
-		alert("è«‹è¼¸å…¥æ–™è™Ÿ!");
+		alert("½Ğ¿é¤J®Æ¸¹!");
 		document.MYFORM.ITEMNAME.focus();
 		return false;
 	}
@@ -604,12 +604,12 @@ function setSubmit()
 	var ITEMDESC = document.MYFORM.ITEMDESC.value;
 	if (ITEMDESC == "" || ITEMDESC == null || ITEMDESC == "null")
 	{
-		alert("è«‹è¼¸å…¥å“å!");
+		alert("½Ğ¿é¤J«~¦W!");
 		document.MYFORM.ITEMDESC.focus();
 		return false;
 	}	
 	
-	if (WIPTYPE=="01") //é‡ç”¢
+	if (WIPTYPE=="01") //¶q²£
 	{
 		var AVL = document.MYFORM.AVL.value;
 		var AVLARY = AVL.split(",");
@@ -624,14 +624,14 @@ function setSubmit()
 		}
 		if (avail_flag=="N")
 		{
-			alert("æ­¤ä¾›æ‡‰å•†ä¸æ˜¯åˆæ³•ä¾›æ‡‰å•†!!");
+			alert("¦¹¨ÑÀ³°Ó¤£¬O¦Xªk¨ÑÀ³°Ó!!");
 			return false;
 		}
 	}	
 	//var PACKAGE = document.MYFORM.PACKAGE.value;
 	//if (PACKAGE == "" || PACKAGE == null || PACKAGE == "null")
 	//{
-	//	alert("è«‹è¼¸å…¥å°è£å‹å¼!");
+	//	alert("½Ğ¿é¤J«Ê¸Ë«¬¦¡!");
 	//	document.MYFORM.PACKAGE.focus();
 	//	return false;
 	//}
@@ -641,7 +641,7 @@ function setSubmit()
 	var DIENAME = document.MYFORM.DIENAME.value;
 	if (DIENAME == "" || DIENAME == null || DIENAME == "null")
 	{
-		alert("è«‹è¼¸å…¥èŠ¯ç‰‡åç¨±!");
+		alert("½Ğ¿é¤Jªä¤ù¦WºÙ!");
 		document.MYFORM.DIENAME.focus();
 		return false;
 	}	
@@ -649,7 +649,7 @@ function setSubmit()
 	var QTY = document.MYFORM.QTY.value;
 	if (QTY == "" || QTY == null || QTY == "null" || eval(QTY)<=0)
 	{
-		alert("è«‹è¼¸å…¥æ•¸é‡!");
+		alert("½Ğ¿é¤J¼Æ¶q!");
 		document.MYFORM.QTY.focus();
 		return false;
 	}	
@@ -658,7 +658,7 @@ function setSubmit()
 		var regex = /^-?\d+\.?\d*?$/;
 		if (QTY.match(regex)==null) 
 		{ 
-    		alert("æ•¸é‡å¿…é ˆæ˜¯æ•¸å€¼å‹æ…‹!"); 
+    		alert("¼Æ¶q¥²¶·¬O¼Æ­È«¬ºA!"); 
 			document.MYFORM.QTY.focus();
 			return false;
 		} 
@@ -666,7 +666,7 @@ function setSubmit()
 	var PRICEUOM = document.MYFORM.PRICE_UOM.value;
 	if (PRICEUOM == "" || PRICEUOM == null || PRICEUOM =="null")
 	{
-		alert("å–®åƒ¹å–®ä½ä¸å¯ç©ºç™½!");
+		alert("³æ»ù³æ¦ì¤£¥iªÅ¥Õ!");
 		document.MYFORM.PRICE_UOM.focus();
 		return false;	
 	}
@@ -675,7 +675,7 @@ function setSubmit()
 	var ST_UNITPRICE = document.MYFORM.ST_UNITPRICE.value;  //add by Peggy 20210608
 	if (UNITPRICE == "" || UNITPRICE == null || UNITPRICE == "null")
 	{
-		alert("è«‹è¼¸å…¥å–®åƒ¹!");
+		alert("½Ğ¿é¤J³æ»ù!");
 		document.MYFORM.UNITPRICE.focus();
 		return false;
 	}	
@@ -684,21 +684,21 @@ function setSubmit()
 		var regex = /^-?\d+\.?\d*?$/;
 		if (UNITPRICE.match(regex)==null) 
 		{ 
-    		alert("å–®åƒ¹å¿…é ˆæ˜¯æ•¸å€¼å‹æ…‹!"); 
+    		alert("³æ»ù¥²¶·¬O¼Æ­È«¬ºA!"); 
 			document.MYFORM.UNITPRICE.focus();
 			return false;
 		} 
-		if (WIPTYPE=="01") //é‡ç”¢å·¥å–®é–‹æ”¾èª¿é™åƒ¹æ ¼(ä¸‹å–®é‡é”æ¨™),é™åˆ¶æ¨™æº–åƒ¹*0.97å…§,add by Peggy 20210608
+		if (WIPTYPE=="01") //¶q²£¤u³æ¶}©ñ½Õ­°»ù®æ(¤U³æ¶q¹F¼Ğ),­­¨î¼Ğ·Ç»ù*0.97¤º,add by Peggy 20210608
 		{		
 			if (eval(UNITPRICE)>eval(ST_UNITPRICE))
 			{
-				alert("å–®åƒ¹ä¸å¯è¶…éæ¨™æº–åƒ¹("+UNITPRICE+")!"); 
+				alert("³æ»ù¤£¥i¶W¹L¼Ğ·Ç»ù("+UNITPRICE+")!"); 
 				document.MYFORM.UNITPRICE.focus();
 				return false;
 			}
 			else if ((1-(Math.round(eval(UNITPRICE)/eval(ST_UNITPRICE)*1000)/1000))>0.030)
 			{
-				alert("èª¿é™æ¯”ç‡å¿…é ˆåœ¨æ¨™æº–åƒ¹3%å…§!"); 
+				alert("½Õ­°¤ñ²v¥²¶·¦b¼Ğ·Ç»ù3%¤º!"); 
 				document.MYFORM.UNITPRICE.focus();
 				return false;
 			}
@@ -708,7 +708,7 @@ function setSubmit()
 	var PACKING = document.MYFORM.PACKING.value;
 	if (ITEMNAME.length >=22 && (PACKING == "--" || PACKING == "" || PACKING == null || PACKING == "null"))
 	{
-		alert("è«‹è¼¸å…¥åŒ…è£!");
+		alert("½Ğ¿é¤J¥]¸Ë!");
 		document.MYFORM.PACKING.focus();
 		return false;
 	}	
@@ -716,7 +716,7 @@ function setSubmit()
 	var PACKAGESPEC = document.MYFORM.PACKAGESPEC.value;
 	if (PACKAGESPEC == "" || PACKAGESPEC == null || PACKAGESPEC == "null")
 	{
-		alert("è«‹è¼¸å…¥å°è£è¦æ ¼!");
+		alert("½Ğ¿é¤J«Ê¸Ë³W®æ!");
 		document.MYFORM.PACKAGESPEC.focus();
 		return false;
 	}	
@@ -724,14 +724,14 @@ function setSubmit()
 	var TESTSPEC = document.MYFORM.TESTSPEC.value;
 	if (TESTSPEC == "" || TESTSPEC == null || TESTSPEC == "null")
 	{
-		alert("è«‹è¼¸å…¥æ¸¬è©¦è¦æ ¼!");
+		alert("½Ğ¿é¤J´ú¸Õ³W®æ!");
 		document.MYFORM.TESTSPEC.focus();
 		return false;
 	}	
 	var REMARKS	 = document.MYFORM.REMARKS.value;
 	if (REMARKS == "" || REMARKS == null || REMARKS == "null")
 	{
-		alert("è«‹è¼¸å…¥å‚™è¨»è³‡è¨Š!");
+		alert("½Ğ¿é¤J³Æµù¸ê°T!");
 		document.MYFORM.REMARKS.focus();
 		return false;
 	}	
@@ -739,7 +739,7 @@ function setSubmit()
 	var MARKING = document.MYFORM.MARKING.value;
 	if (MARKING == "" || MARKING == null || MARKING == "null")
 	{
-		alert("è«‹è¼¸å…¥MARKING!");
+		alert("½Ğ¿é¤JMARKING!");
 		document.MYFORM.MARKING.focus();
 		return false;
 	}	
@@ -766,19 +766,19 @@ function setSubmit()
 		{
 			//for (var j = i ; j <= LINENUM ; j++)
 			//{
-				//ä¸å¡äº†,add by Peggy 20120606
+				//¤£¥d¤F,add by Peggy 20120606
 				/*
 				if (WaferLot != "" && WaferLot!=null)
 				{
 					if (WIPTYPE !="03" && WaferLot == document.MYFORM.elements["WaferLot"+j].value && DateCode != document.MYFORM.elements["DateCode"+j].value)
 					{
-						alert("Wafer Lot:"+WaferLot+" ä¸å…è¨±æœ‰å…©å€‹ä»¥ä¸Šçš„DataCode!"); 
+						alert("Wafer Lot:"+WaferLot+" ¤£¤¹³\¦³¨â­Ó¥H¤WªºDataCode!"); 
 						document.MYFORM.elements["WaferLot"+j].focus();
 						return false;
 					}
 					else if (WIPTYPE !="03" && i != j && WaferLot == document.MYFORM.elements["WaferLot"+j].value && DateCode == document.MYFORM.elements["DateCode"+j].value)
 					{
-						alert("Wafer Lot:"+WaferLot+" + Date Code:"+ DateCode + "ä¸å¯é‡è¤‡!"); 
+						alert("Wafer Lot:"+WaferLot+" + Date Code:"+ DateCode + "¤£¥i­«½Æ!"); 
 						document.MYFORM.elements["WaferLot"+j].focus();
 						return false;
 					}
@@ -787,7 +787,7 @@ function setSubmit()
 			//}
 			if (!document.MYFORM.WIP_ISSUE_FLAG.checked && (Stock ==null || Stock ==""))
 			{
-				alert("è«‹é¸æ“‡å€‰!"); 
+				alert("½Ğ¿ï¾Ü­Ü!"); 
 				document.MYFORM.elements["WaferLot"+i].focus();
 				return false;
 			}
@@ -804,7 +804,7 @@ function setSubmit()
 				}
 				if (okcnt ==0)
 				{
-					alert("ç™¼æ–™é …ç›®ä¸æ­£ç¢º!"); 
+					alert("µo®Æ¶µ¥Ø¤£¥¿½T!"); 
 					document.MYFORM.elements["INVITEM"+i].focus();
 					return false;
 				}
@@ -814,20 +814,20 @@ function setSubmit()
 				//add by Peggy 20210810
 				if (invitemid!=ITEMID)
 				{
-					alert("ç™¼æ–™é …ç›®ä¸æ­£ç¢º!"); 
+					alert("µo®Æ¶µ¥Ø¤£¥¿½T!"); 
 					document.MYFORM.elements["INVITEM"+i].focus();
 					return false;
 				}
 			}
 			if (SUPPLIERNO=="4056" && (WaferNumber==null || WaferNumber==""))
 			{	
-				alert("ä¾›æ‡‰å•†=4056å¤©æ°´è¯å¤©å¿…é ˆæŒ‡å®šWaferç‰‡è™Ÿ!"); 
+				alert("¨ÑÀ³°Ó=4056¤Ñ¤ôµØ¤Ñ¥²¶·«ü©wWafer¤ù¸¹!"); 
 				document.MYFORM.elements["WaferNumber"+i].focus();
 				return false;			
 			}
 			if (SUPPLIERNO=="4746" && (WaferNumber==null || WaferNumber==""))
 			{	
-				alert("ä¾›æ‡‰å•†=4746è¯ç¾¿å¾®å¿…é ˆæŒ‡å®šWaferç‰‡è™Ÿ!"); 
+				alert("¨ÑÀ³°Ó=4746µØ¬ı·L¥²¶·«ü©wWafer¤ù¸¹!"); 
 				document.MYFORM.elements["WaferNumber"+i].focus();
 				return false;			
 			}			
@@ -835,32 +835,32 @@ function setSubmit()
 			var regex = /^-?\d+\.?\d*?$/;
 			if (!document.MYFORM.WIP_ISSUE_FLAG.checked && WIPTYPE !="03" && WIPTYPE !="05" && WaferQty.match(regex)==null) 
 			{ 
-				alert("Wafer Qtyå¿…é ˆæ˜¯æ•¸å€¼å‹æ…‹!"); 
+				alert("Wafer Qty¥²¶·¬O¼Æ­È«¬ºA!"); 
 				document.MYFORM.elements["WaferQty"+i].focus();
 				return false;
 			} 
 			if (ChipQty.match(regex)==null) 
 			{ 
-				alert("Chip Qtyå¿…é ˆæ˜¯æ•¸å€¼å‹æ…‹!"); 
+				alert("Chip Qty¥²¶·¬O¼Æ­È«¬ºA!"); 
 				document.MYFORM.elements["ChipQty"+i].focus();
 				return false;
 			}
 			else if (ChipQty ==0)
 			{
-				alert("Chip Qtyå¿…é ˆå¤§æ–¼0!"); 
+				alert("Chip Qty¥²¶·¤j©ó0!"); 
 				document.MYFORM.elements["ChipQty"+i].focus();
 				return false;
 			}
 			if (!document.MYFORM.WIP_ISSUE_FLAG.checked && (parseFloat(ChipQty) > parseFloat(LotOnhand)))
 			{ 
-				alert("Chip Qtyä¸å¯å¤§æ–¼ç›®å‰åº«å­˜é‡("+LotOnhand+")!"); 
+				alert("Chip Qty¤£¥i¤j©ó¥Ø«e®w¦s¶q("+LotOnhand+")!"); 
 				document.MYFORM.elements["ChipQty"+i].focus();
 				return false;
 			}
 			//if (WIPTYPE !="03" && (DateCode==null || DateCode=="")) 
 			if (!document.MYFORM.WIP_ISSUE_FLAG.checked && (DateCode==null || DateCode=="")) 
 			{ 
-				alert("Date Codeä¸å¯ç©ºç™½!"); 
+				alert("Date Code¤£¥iªÅ¥Õ!"); 
 				document.MYFORM.elements["DateCode"+i].focus();
 				return false;
 			}
@@ -872,23 +872,23 @@ function setSubmit()
 				}
 				if (WIPTYPE !="03" && WIPTYPE !="04" && WIPTYPE !="05")
 				{
-					if (DateCode.toUpperCase()!="HOLD" && DateCode.toUpperCase()!="N/A" && DateCode.toUpperCase()!="NA") //HOLDè¡¨å¯„æ”¾å°è£å» çš„æ™¶ç‰‡æ•¸é‡,N/A,NAè¡¨WAFERç”Ÿç”¢ä¸ç”¨D/C,add by Peggy 20180124
+					if (DateCode.toUpperCase()!="HOLD" && DateCode.toUpperCase()!="N/A" && DateCode.toUpperCase()!="NA") //HOLDªí±H©ñ«Ê¸Ë¼tªº´¹¤ù¼Æ¶q,N/A,NAªíWAFER¥Í²£¤£¥ÎD/C,add by Peggy 20180124
 					{
 						if (document.MYFORM.PROD_GROUP.value=="PMD")
 						{
-							//add by Peggy 20140324,check date ruleæ˜¯å¦æ­£ç¢º
+							//add by Peggy 20140324,check date rule¬O§_¥¿½T
 							if (ITEMNAME.substr(3,1)=="G" && (ITEMDESC!="TS19705CX6 RFG" && ITEMDESC !="TS19720CX6 RFG"))
 							{
 								if (DateCode.length ==3 && (DateCode.substr(1,1).toUpperCase().charCodeAt(0) < 79 || DateCode.substr(1,1).toUpperCase().charCodeAt(0) > 90))
 								{
-									alert("Date Codeç¬¬äºŒç¢¼ä¸ç¬¦è¦å®š!");
+									alert("Date Code²Ä¤G½X¤£²Å³W©w!");
 									return false;
 								}
 							}
 							//add by Peggy 20191009,check datecode
 							if (DateCode.length >5)
 							{
-								alert("Date Codeé•·åº¦ä¸ç¬¦è¦å®š!");
+								alert("Date Codeªø«×¤£²Å³W©w!");
 								return false;
 							}
 							else if (DateCode.length ==5)
@@ -897,14 +897,14 @@ function setSubmit()
 								|| (DateCode.substr(2,1).toUpperCase().charCodeAt(0) < 48 || DateCode.substr(2,1).toUpperCase().charCodeAt(0) > 57)
 								|| (DateCode.substr(3,1).toUpperCase().charCodeAt(0) < 48 || DateCode.substr(3,1).toUpperCase().charCodeAt(0) > 57)))
 								{
-									alert("Date Codeä¸ç¬¦è¦å®š(G)!");
+									alert("Date Code¤£²Å³W©w(G)!");
 									return false;
 								}
 								else if (DateCode.substr(0,1)!="G" && ((DateCode.substr(0,1).toUpperCase().charCodeAt(0) < 48 || DateCode.substr(0,1).toUpperCase().charCodeAt(0) > 57)
 								|| (DateCode.substr(1,1).toUpperCase().charCodeAt(0) < 48 || DateCode.substr(1,1).toUpperCase().charCodeAt(0) > 57)
 								|| (DateCode.substr(2,1).toUpperCase().charCodeAt(0) < 48 || DateCode.substr(2,1).toUpperCase().charCodeAt(0) > 57)))
 								{
-									alert("Date Codeä¸ç¬¦è¦å®š(Non G)!");
+									alert("Date Code¤£²Å³W©w(Non G)!");
 									return false;									
 								}
 							}
@@ -914,7 +914,7 @@ function setSubmit()
 								|| (DateCode.substr(1,1).toUpperCase().charCodeAt(0) < 48 || DateCode.substr(1,1).toUpperCase().charCodeAt(0) > 57)
 								|| (DateCode.substr(2,1).toUpperCase().charCodeAt(0) < 48 || DateCode.substr(2,1).toUpperCase().charCodeAt(0) > 57)) 
 								{
-									alert("Date Codeä¸ç¬¦è¦å®š!");
+									alert("Date Code¤£²Å³W©w!");
 									return false;									
 								}								
 							}
@@ -926,7 +926,7 @@ function setSubmit()
 									|| (DateCode.substr(1,1).toUpperCase().charCodeAt(0) < 65 || DateCode.substr(1,1).toUpperCase().charCodeAt(0) > 90)
 									|| (DateCode.substr(2,1).toUpperCase().charCodeAt(0) < 65 || DateCode.substr(2,1).toUpperCase().charCodeAt(0) > 90)) 
 									{
-										alert("Date Codeä¸ç¬¦è¦å®š!");
+										alert("Date Code¤£²Å³W©w!");
 										return false;									
 									}	
 								
@@ -936,7 +936,7 @@ function setSubmit()
 									if ((DateCode.substr(0,1).toUpperCase().charCodeAt(0) < 48 || DateCode.substr(0,1).toUpperCase().charCodeAt(0) > 57)
 									|| (DateCode.substr(1,1).toUpperCase().charCodeAt(0) < 65 || DateCode.substr(1,1).toUpperCase().charCodeAt(0) > 90)) 
 									{
-										alert("Date Codeä¸ç¬¦è¦å®š!");
+										alert("Date Code¤£²Å³W©w!");
 										return false;									
 									}	
 								}							
@@ -948,21 +948,21 @@ function setSubmit()
 							{
 								if (isNaN(DateCode.substr(0,1)) || DateCode.substr(1,1).charCodeAt(0)<65 || DateCode.substr(1,1).charCodeAt(0)>90 || DateCode.length !=3)  //SPMC DATECODE RULE,add by Peggy 20170831
 								{
-									alert("Date Codeä¸ç¬¦è¦å®š(æ­£ç¢ºæ ¼å¼=YWF)!!");
+									alert("Date Code¤£²Å³W©w(¥¿½T®æ¦¡=YWF)!!");
 									return false;
 								}
 							}
 							//else
 							//{
-							//	if (isNaN(DateCode) || DateCode.length !=3)  //PRDå¤–è³¼ Datecode check,add by Peggy 20161201
+							//	if (isNaN(DateCode) || DateCode.length !=3)  //PRD¥~ÁÊ Datecode check,add by Peggy 20161201
 							//	{
-							//		alert("Date Codeä¸ç¬¦è¦å®š(æ­£ç¢ºæ ¼å¼=YWW)!!");
+							//		alert("Date Code¤£²Å³W©w(¥¿½T®æ¦¡=YWW)!!");
 							//		return false;
 							//	}
 							//}
 						}
 						
-						//æª¢æŸ¥å» å•†ä»£ç¢¼æ˜¯å¦æ­£ç¢º,add by Peggy 20190910			
+						//ÀË¬d¼t°Ó¥N½X¬O§_¥¿½T,add by Peggy 20190910			
 						if (DateCode.substr(0,1)=="G")
 						{
 							v_dc=DateCode.substr(1,DateCode.length-1);
@@ -971,13 +971,13 @@ function setSubmit()
 						{
 							v_dc=DateCode;
 						}
-						if (v_dc.substr(1,1).charCodeAt(0)>=48 && v_dc.substr(1,1).charCodeAt(0)<=53)  //å‘¨datecode
+						if (v_dc.substr(1,1).charCodeAt(0)>=48 && v_dc.substr(1,1).charCodeAt(0)<=53)  //©Pdatecode
 						{
 							if (v_dc.substr(v_dc.length-1,1).toUpperCase()=="N")
 							{	
 								if (document.MYFORM.PROD_GROUP.value.indexOf("PRD")<0)
 								{
-									alert("Date Codeå» å•†ç¢¼éŒ¯èª¤!!");
+									alert("Date Code¼t°Ó½X¿ù»~!!");
 									return false;
 								}
 							}
@@ -985,7 +985,7 @@ function setSubmit()
 							{
 								if (document.MYFORM.PROD_GROUP.value.indexOf("PMD")<0)
 								{
-									alert("Date Codeå» å•†ç¢¼éŒ¯èª¤!!");
+									alert("Date Code¼t°Ó½X¿ù»~!!");
 									return false;
 								}
 							}
@@ -993,25 +993,25 @@ function setSubmit()
 					}
 				}
 				
-				//égreençš„ç”¢å“,è£½ç¨‹å¯èƒ½èµ°green,æ•…å‡ºç”¢çš„ç”¢å“é›–å“åä¸æ˜¯green,ä½†å¯¦éš›å»æ˜¯green,æ‰€ä»¥datecodeä¸æª¢æŸ¥,modify by Peggy 20140924
+				//«Dgreenªº²£«~,»sµ{¥i¯à¨«green,¬G¥X²£ªº²£«~Áö«~¦W¤£¬Ogreen,¦ı¹ê»Ú«o¬Ogreen,©Ò¥Hdatecode¤£ÀË¬d,modify by Peggy 20140924
 				//else
 				//{
 				//	if (DateCode.substr(1,1).toUpperCase().charCodeAt(0) < 65 || DateCode.substr(1,1).toUpperCase().charCodeAt(0) > 76)
 				//	{
-				//		alert("Date Codeç¬¬äºŒç¢¼ä¸ç¬¦è¦å®š!");
+				//		alert("Date Code²Ä¤G½X¤£²Å³W©w!");
 				//		return false;
 				//	}				
 				//}
 			} 	
 			if (!document.MYFORM.WIP_ISSUE_FLAG.checked && DateCode!="HOLD" && DateCode!="NA" && DateCode!="N/A" && (DC_YYWW==null || DC_YYWW=="")) 
 			{ 
-				alert("DC YYWWä¸å¯ç©ºç™½!"); 
+				alert("DC YYWW¤£¥iªÅ¥Õ!"); 
 				document.MYFORM.elements["DC_YYWW"+i].focus();
 				return false;
 			}					
 			//if (RequestSD <= ISSUEDATE)
 			//{
-			//	alert("Requeset S/D("+RequestSD+")å¿…é ˆå¤§æ–¼ISSUE DATE("+ISSUEDATE+")!"); 
+			//	alert("Requeset S/D("+RequestSD+")¥²¶·¤j©óISSUE DATE("+ISSUEDATE+")!"); 
 			//	document.MYFORM.elements["RequestSD"+i].focus();
 			//	return false;
 			//}
@@ -1019,7 +1019,7 @@ function setSubmit()
 		}
 		if (rec_cnt ==0)
 		{
-			alert("è«‹è¼¸å…¥å·¥å–®ç™¼æ–™è³‡è¨Š!");
+			alert("½Ğ¿é¤J¤u³æµo®Æ¸ê°T!");
 			document.MYFORM.elements["WaferLot1"].focus;
 			return false;
 		}
@@ -1031,20 +1031,20 @@ function setSubmit()
 		//var maxQty = (((QTY *1.1) * 10000)/10000);
 		//if ( totChipQty > maxQty)
 		//{
-		//	if (confirm("ç™¼æ–™æ•¸é‡("+totChipQty+")è¶…éé–‹å·¥æ•¸é‡("+QTY+")çš„10%ï¼Œæ‚¨ç¢ºå®šå—?")==false)
+		//	if (confirm("µo®Æ¼Æ¶q("+totChipQty+")¶W¹L¶}¤u¼Æ¶q("+QTY+")ªº10%¡A±z½T©w¶Ü?")==false)
 		//	{
 		//		return false;
 		//	}
 		//}
-		if ( document.MYFORM.PRICE_UOM.value !="ç‰‡" && totChipQty != QTY)
+		if ( document.MYFORM.PRICE_UOM.value !="¤ù" && totChipQty != QTY)
 		{
-			alert("ç™¼æ–™æ•¸é‡("+totChipQty+")ä¸ç­‰æ–¼é–‹å·¥æ•¸é‡("+QTY+")");
+			alert("µo®Æ¼Æ¶q("+totChipQty+")¤£µ¥©ó¶}¤u¼Æ¶q("+QTY+")");
 			document.MYFORM.QTY.focus;
 			return false;
 		}
-		else if (document.MYFORM.PRICE_UOM.value =="ç‰‡" && totWaferQty != QTY)
+		else if (document.MYFORM.PRICE_UOM.value =="¤ù" && totWaferQty != QTY)
 		{
-			alert("ç‰‡æ•¸("+totWaferQty+")ä¸ç­‰æ–¼é–‹å·¥ç‰‡æ•¸("+QTY+")");
+			alert("¤ù¼Æ("+totWaferQty+")¤£µ¥©ó¶}¤u¤ù¼Æ("+QTY+")");
 			document.MYFORM.QTY.focus;
 			return false;
 		}
@@ -1158,7 +1158,7 @@ function computeTotal(objName)
 	document.MYFORM.elements["tot"+objName].value = totQty;
 	if (objName =="ChipQty")
 	{
-		if (document.MYFORM.PRICE_UOM.value !="ç‰‡")
+		if (document.MYFORM.PRICE_UOM.value !="¤ù")
 		{
 			//add by Peggy 20121009
 			var DIEQTY = document.MYFORM.DIEQTY.value;
@@ -1170,7 +1170,7 @@ function computeTotal(objName)
 	}
 	else
 	{
-		if (document.MYFORM.PRICE_UOM.value =="ç‰‡")
+		if (document.MYFORM.PRICE_UOM.value =="¤ù")
 		{
 			document.MYFORM.QTY.value = totQty;
 			getUnitPrice();
@@ -1183,7 +1183,7 @@ function subWindowHistory()
 	var VENDOR = document.MYFORM.SUPPLIERNO.value;
 	if (VENDOR =="" || VENDOR == null || VENDOR =="null")
 	{
-		alert("è«‹è¼¸å…¥ä¾›æ‡‰å•†ä»£ç¢¼!");
+		alert("½Ğ¿é¤J¨ÑÀ³°Ó¥N½X!");
 		document.MYFORM.SUPPLIERNO.focus();
 		return false;	
 	}
@@ -1191,7 +1191,7 @@ function subWindowHistory()
 	var	ITEMID = document.MYFORM.ITEMID.value;
 	if (ITEMID == null || ITEMID == "")
 	{
-		alert("è«‹å…ˆè¼¸å…¥æ–™è™Ÿ");
+		alert("½Ğ¥ı¿é¤J®Æ¸¹");
 		document.MYFORM.ITEMID.focus();
 		return false;
 	}
@@ -1218,7 +1218,7 @@ function getUnitPrice()
 				break;
 			}
 		}	
-		if (document.MYFORM.UNITPRICE.value==null || document.MYFORM.UNITPRICE.value=="") //20210608é–‹æ”¾useræ‰‹å‹•é™èª¿å–®åƒ¹
+		if (document.MYFORM.UNITPRICE.value==null || document.MYFORM.UNITPRICE.value=="") //20210608¶}©ñuser¤â°Ê­°½Õ³æ»ù
 		{
 			document.MYFORM.UNITPRICE.value = price;
 		}
@@ -1230,12 +1230,12 @@ function subWindowEVAList()
 {   
 	if (document.MYFORM.WIPTYPE.value!="02")
 	{
-		alert("å·¥ç¨‹å·¥å–®æ‰èƒ½é»é¸æ­¤åŠŸèƒ½!");
+		alert("¤uµ{¤u³æ¤~¯àÂI¿ï¦¹¥\¯à!");
 		return false;
 	}
 	if (document.MYFORM.ITEMDESC.value=="")
 	{
-		alert("è«‹å…ˆè¼¸å…¥æ–™è™Ÿ!");
+		alert("½Ğ¥ı¿é¤J®Æ¸¹!");
 		return false;
 	}
 	var	ITEMDESC = document.MYFORM.ITEMDESC.value;
@@ -1244,18 +1244,18 @@ function subWindowEVAList()
 //add by Peggy 20150814
 function setUnit()
 {
-	//if ((document.MYFORM.WIPTYPE.value=="02" || document.MYFORM.WIPTYPE.value=="03") && document.MYFORM.CURRENCYCODE.value=="USD")  //å·¥ç¨‹,é‡å·¥USDå…è¨±æ‰‹å‹•èª¿æ•´å–®åƒ¹å–®ä½
-	if ((document.MYFORM.WIPTYPE.value=="02" || document.MYFORM.WIPTYPE.value=="03" || document.MYFORM.WIPTYPE.value=="05"))  //å·¥ç¨‹,é‡å·¥å…è¨±æ‰‹å‹•èª¿æ•´å–®åƒ¹å–®ä½,modify by Peggy 20170823
+	//if ((document.MYFORM.WIPTYPE.value=="02" || document.MYFORM.WIPTYPE.value=="03") && document.MYFORM.CURRENCYCODE.value=="USD")  //¤uµ{,­«¤uUSD¤¹³\¤â°Ê½Õ¾ã³æ»ù³æ¦ì
+	if ((document.MYFORM.WIPTYPE.value=="02" || document.MYFORM.WIPTYPE.value=="03" || document.MYFORM.WIPTYPE.value=="05"))  //¤uµ{,­«¤u¤¹³\¤â°Ê½Õ¾ã³æ»ù³æ¦ì,modify by Peggy 20170823
 	{
 		if (document.MYFORM.CURRENCYCODE.value=="USD" && document.MYFORM.PRICE_UOM.value.toUpperCase()=="K")
 		{
-			document.MYFORM.PRICE_UOM.value="ç‰‡";
+			document.MYFORM.PRICE_UOM.value="¤ù";
 			document.getElementById("td2").innerHTML="Q'ty("+document.MYFORM.PRICE_UOM.value+")";
 			document.MYFORM.QTY.value=document.MYFORM.totWaferQty.value;
 		}
 		else if (document.MYFORM.CURRENCYCODE.value=="TWD" && document.MYFORM.PRICE_UOM.value.toUpperCase()=="EA")
 		{
-			document.MYFORM.PRICE_UOM.value="ç‰‡";
+			document.MYFORM.PRICE_UOM.value="¤ù";
 			document.getElementById("td2").innerHTML="Q'ty("+document.MYFORM.PRICE_UOM.value+")";
 			document.MYFORM.QTY.value=document.MYFORM.totWaferQty.value;
 		}
@@ -1309,12 +1309,12 @@ function chkObj()
 
 </script>
 <STYLE TYPE='text/css'> 
- .style3   {font-family:ç´°æ˜é«”; font-size:12px; background-color:#FFFFFF; text-align:center}
- .style4   {font-family:ç´°æ˜é«”; font-size:12px; background-color:#BBDDEE; text-align:center}
- .style1   {font-family:ç´°æ˜é«”; font-size:12px; background-color:#FFFFFF; text-align:left}
- .style2   {font-family:ç´°æ˜é«”; font-size:12px; background-color:#BBDDEE; text-align:left}
- .style5   {font-family:ç´°æ˜é«”; font-size:12px; background-color:#FFFFFF; text-align:right}
- .style6   {font-family:ç´°æ˜é«”; font-size:12px; background-color:#BBDDEE; text-align:right}
+ .style3   {font-family:²Ó©úÅé; font-size:12px; background-color:#FFFFFF; text-align:center}
+ .style4   {font-family:²Ó©úÅé; font-size:12px; background-color:#BBDDEE; text-align:center}
+ .style1   {font-family:²Ó©úÅé; font-size:12px; background-color:#FFFFFF; text-align:left}
+ .style2   {font-family:²Ó©úÅé; font-size:12px; background-color:#BBDDEE; text-align:left}
+ .style5   {font-family:²Ó©úÅé; font-size:12px; background-color:#FFFFFF; text-align:right}
+ .style6   {font-family:²Ó©úÅé; font-size:12px; background-color:#BBDDEE; text-align:right}
  </STYLE>
 </head>
 <body>
@@ -1395,19 +1395,37 @@ if (ITEM_TYPE==null) ITEM_TYPE=""; //add by Peggy 20220817
 String REMARKS_LIST = "1. Wafer will be delivered "+"on "+ISSUEDATE+"\n"
             + "2. Each date code has to be provided a yield report."+"\n"
             + "3. Each date code has to be provided 100 pcs EQC Data Log."+"\n"
-			//+ "4. Testing yield has been required to equal or larger than 97% ; as low yield appears please highlight to TSC immediately."+"\n"
 			+ "4. Testing yield has been required to as test SPEC.; as low yield appears please highlight to TSC immediately."+"\n"
 			+ "5. Wafer lot : ";
 			
-String strRemarks="Marking å¾Œä¸‰ç¢¼LYW è«‹æŒ‰è¨‚å–®D/CåŸ·è¡Œ";
-String strRemarks1="D/C åŠ è¨»åº•ç·šæ™‚ï¼Œæ¨™ç±¤åº•ç·šè«‹åŸ·è¡Œæ–¼æœ«ç¢¼XXX_";
-String strRemarks2="D/Cæ¬„ä½ä¸‰ç¢¼çš†æœ‰åº•ç·šæ™‚ï¼Œæ¨™ç±¤D/Cæ¬„ä½ä¸éœ€åŠ è¨»åº•ç·š"; //add by Peggy 20210527
+String strRemarks="Marking «á¤T½XLYW ½Ğ«ö­q³æD/C°õ¦æ";
+String strRemarks1="D/C ¥[µù©³½u®É¡A¼ĞÅÒ©³½u½Ğ°õ¦æ©ó¥½½XXXX_";
+String strRemarks2="D/CÄæ¦ì¤T½X¬Ò¦³©³½u®É¡A¼ĞÅÒD/CÄæ¦ì¤£»İ¥[µù©³½u"; //add by Peggy 20210527
 String REMARKS=request.getParameter("REMARKS");
+	System.out.println("SUPPLIERNO="+SUPPLIERNO);
+	System.out.println("REMARKS="+REMARKS);
+
+if ("4746".equals(SUPPLIERNO)) { // µØ¬ı·L¹q¤l
+	REMARKS = "1.´¹¤ù©ó" + ISSUEDATE + "¥X³f¦ÜµØ¬ı·L¹q¤l\n" +
+			"2.¨C§ådate code³£¥²¶·´£¨Ñ¨}²v³ø§i\n" +
+			"3.¨C§ådate code¥²¶·´£¨Ñ100 pcs EQC Data Log\n" +
+			"4.´ú¸Õ¨}²v¶·²Å¦XTest SPEC»İ¨D¡F­Y¥X²{§C¨}²v¡A½Ğ¥ß§Y¦VTSC¤ÏõX\n" +
+			"5.´¹¤ù§å¦¸¡G";
+} else if ("1253".equals(SUPPLIERNO)) { // ´I¦N¯S¥b¾ÉÅé
+	REMARKS = "1. Wafer will be delivered on " + ISSUEDATE + "\n" +
+			"2. Each date code has to be provided a yield report.\n" +
+			"3. Each date code has to be provided 10000 pcs FT Data Log.\n" +
+			"4. Testing yield has been required to as test SPEC.; as low yield appears please highlight to TSC immediately.\n" +
+			"5. Wafer lot :";
+} else {
+	REMARKS = REMARKS_LIST;
+}
+
 if (REMARKS==null && !WIPTYPE.equals("04"))
 {
 	REMARKS =REMARKS_LIST;
 }
-//add by Peggy 20200114 for NONO=>Marking å¾Œä¸‰ç¢¼LYW è«‹æŒ‰è¨‚å–®D/CåŸ·è¡Œ
+//add by Peggy 20200114 for NONO=>Marking «á¤T½XLYW ½Ğ«ö­q³æD/C°õ¦æ
 if (WIPTYPE.equals("01") && (ITEMDESC.equals("TS19705CX6 RFG") || ITEMDESC.equals("TS19720CX6 RFG")))
 {
 	if (REMARKS.indexOf(strRemarks)<0)
@@ -1456,8 +1474,8 @@ else
 }
 
 /*
-//nonoèªªæ‹¿æ‰,add by Peggy 20191015
-String packingruleno ="åŒ…è£è¦ç¯„ç·¨è™Ÿ  BAT32DFN006RL000X03";
+//nono»¡®³±¼,add by Peggy 20191015
+String packingruleno ="¥]¸Ë³W½d½s¸¹  BAT32DFN006RL000X03";
 if (ITEMDESC.indexOf("TSM500P02DCQ")>=0|| ITEMDESC.indexOf("TSM250N02DCQ")>=0)  //add by Peggy 20160627
 {
 	if (REMARKS.indexOf(packingruleno)<0)
@@ -1475,7 +1493,7 @@ else
 String MARKING= request.getParameter("MARKING");
 if (MARKING ==null) MARKING="";
 String LINENUM=request.getParameter("LINENUM");
-if (LINENUM == null || LINENUM.equals("")) LINENUM ="10"; //é è¨­10è¡Œ
+if (LINENUM == null || LINENUM.equals("")) LINENUM ="10"; //¹w³]10¦æ
 String ADDLINE=request.getParameter("txtLine");
 if (ADDLINE == null || ADDLINE.equals("")) ADDLINE = "2";
 if (!ACTIONCODE.equals("AddLine")) ADDLINE="0";
@@ -1499,30 +1517,30 @@ if (SUBINVENTORY ==null || SUBINVENTORY.equals(""))
 	{
 		if (PACKAGE!=null && PACKAGE.equals("WAFER"))
 		{
-			SUBINVENTORY="71"; //é è¨­71å€‰
+			SUBINVENTORY="71"; //¹w³]71­Ü
 		}
-		else if (WIPTYPE=="01")  //å·¥ç¨‹
+		else if (WIPTYPE=="01")  //¤uµ{
 		{
-			SUBINVENTORY="74"; //é è¨­74å€‰
+			SUBINVENTORY="74"; //¹w³]74­Ü
 		}
 		else
 		{
-			SUBINVENTORY="73"; //é è¨­73å€‰
+			SUBINVENTORY="73"; //¹w³]73­Ü
 		}
 	}
 	else if (PROD_GROUP.equals("PMD"))
 	{	
 		if (PACKAGE!=null && PACKAGE.equals("WAFER"))
 		{	
-			SUBINVENTORY="61"; //é è¨­61å€‰	
+			SUBINVENTORY="61"; //¹w³]61­Ü	
 		}
-		else if (WIPTYPE=="01")  //å·¥ç¨‹
+		else if (WIPTYPE=="01")  //¤uµ{
 		{
-			SUBINVENTORY="64"; //é è¨­64å€‰
+			SUBINVENTORY="64"; //¹w³]64­Ü
 		}		
 		else
 		{
-			SUBINVENTORY="63"; //é è¨­63å€‰
+			SUBINVENTORY="63"; //¹w³]63­Ü
 		}
 	}
 	else if (PROD_GROUP.equals("SDD"))
@@ -1531,7 +1549,7 @@ if (SUBINVENTORY ==null || SUBINVENTORY.equals(""))
 		{	
 			SUBINVENTORY="81"; 
 		}
-		else if (WIPTYPE=="01")  //å·¥ç¨‹
+		else if (WIPTYPE=="01")  //¤uµ{
 		{
 			SUBINVENTORY="84"; 
 		}		
@@ -1552,11 +1570,11 @@ if (AVL==null) AVL="";
 String WaferLot="",ChipQty="",WaferQty="",DateCode="",RequestSD="",LotOnhand="",Stock="",INVITEMID="",INVITEM="",UseDateCode="",trans_source_id="",WaferNumber="",DC_YYWW="",DIE_MODE="";
 //if (SUPPLIERNO.equals("3864"))
 //if (SUPPLIERNO.equals("3864") || SUPPLIERNO.equals("3292") || SUPPLIERNO.equals("3867") || SUPPLIERNO.equals("2012"))
-//if (SUPPLIERNO.equals("3292") || SUPPLIERNO.equals("3867") || SUPPLIERNO.equals("2012")) //modify by Peggy 20150507,3864è–©æ‘©äºå•†æ·æ•ç§‘æœ‰é™å…¬å¸å°ç£åˆ†å…¬å¸æ”¹kpcsè¨ˆåƒ¹
+//if (SUPPLIERNO.equals("3292") || SUPPLIERNO.equals("3867") || SUPPLIERNO.equals("2012")) //modify by Peggy 20150507,3864ÂÄ¼¯¨È°Ó±¶±Ó¬ì¦³­­¤½¥q¥xÆW¤À¤½¥q§ïkpcs­p»ù
 //if (SUPPLIERNO.equals("3292") || SUPPLIERNO.equals("3867") || SUPPLIERNO.equals("2012") || SUPPLIERNO.equals("3967")) 
-if (SUPPLIERNO.equals("3292") || SUPPLIERNO.equals("3867") || SUPPLIERNO.equals("2012") || SUPPLIERNO.equals("3967") || SUPPLIERNO.equals("4009") || SUPPLIERNO.equals("4682") || PACKAGE.equals("WAFER")||ITEM_TYPE.equals("WAFER"))  //é€¸æ˜Œä»¥ç‰‡è¨ˆåƒ¹,add by Peggy 20160727 //å¾®çŸ½ for å·¥å–®é¡å‹=CP BY PEGGY 20210730
+if (SUPPLIERNO.equals("3292") || SUPPLIERNO.equals("3867") || SUPPLIERNO.equals("2012") || SUPPLIERNO.equals("3967") || SUPPLIERNO.equals("4009") || SUPPLIERNO.equals("4682") || PACKAGE.equals("WAFER")||ITEM_TYPE.equals("WAFER"))  //¶h©÷¥H¤ù­p»ù,add by Peggy 20160727 //·Lª¿ for ¤u³æÃş«¬=CP BY PEGGY 20210730
 {
-	PRICEUOM ="ç‰‡";PRICESOURCEUOM="ç‰‡";
+	PRICEUOM ="¤ù";PRICESOURCEUOM="¤ù";
 }
 String ST_UNITPRICE=request.getParameter("ST_UNITPRICE"); //add by Peggy 20210608
 if (ST_UNITPRICE==null) ST_UNITPRICE="";
@@ -1567,16 +1585,16 @@ String sql="";
   <br>
   <table width="350" height="50" border="1" align="center" cellpadding="5" cellspacing="0" bordercolorlight="#CCFFCC" bordercolordark="#336600">
     <tr>
-    <td height="70" bgcolor="#CCCC99"  align="center"><font color="#003399" face="æ¨™æ¥·é«”" size="+2">è³‡æ–™æ–°å¢ä¸­,è«‹ç¨å€™.....</font> <BR>
+    <td height="70" bgcolor="#CCCC99"  align="center"><font color="#003399" face="¼Ğ·¢Åé" size="+2">¸ê®Æ·s¼W¤¤,½Ğµy­Ô.....</font> <BR>
       <DIV ID="blockDiv" STYLE="visibility:hidden;position:absolute; width:5px; height:5px; clip:rect(0px 5px 5px 0px); background-color:#567886; layer-background-color:#567886; display=''; left: 50px;"></div>
 	</td>
   </tr>
 </table>
 </div>
 <div id='alpha' class='hidden' style='width:0%;height:0;position:absolute;top:0;left:0;background:#000;filter:alpha(opacity=30);-moz-opacity:0.3;z-index:0;'></div>
- <font color="#000000" size="+2" face="æ¨™æ¥·é«”"> <strong>å§”å¤–åŠ å·¥å–®-æ–°å¢</strong></font>
+ <font color="#000000" size="+2" face="¼Ğ·¢Åé"> <strong>©e¥~¥[¤u³æ-·s¼W</strong></font>
 <br>
-<A HREF="/oradds/ORADDSMainMenu.jsp">å›é¦–é </A>&nbsp;&nbsp;&nbsp;
+<A HREF="/oradds/ORADDSMainMenu.jsp">¦^­º­¶</A>&nbsp;&nbsp;&nbsp;
 <%
 try
 {   
@@ -1602,10 +1620,10 @@ catch (Exception e)
 %>
 <table cellspacing="0"  bordercolordark="#9999CC" cellpadding="1" width="100%" align="left" bordercolorlight="#FFFFFF" border="1">
 	<tr>
-		<td  width="100%" bgcolor="#BBDDEE" colspan="10"><FONT color="#000000" size="2" class="style4">è¨‚å–®è³‡è¨Šï¼š</FONT></td>
+		<td  width="100%" bgcolor="#BBDDEE" colspan="10"><FONT color="#000000" size="2" class="style4">­q³æ¸ê°T¡G</FONT></td>
 	</tr>
 	<tr>
-		<td class="style2" width="8%">å·¥å–®é¡å‹:</td>
+		<td class="style2" width="8%">¤u³æÃş«¬:</td>
 		<td class="style1" width="24%">
 		<%
 		try
@@ -1641,43 +1659,43 @@ catch (Exception e)
 		} 		
 		%>
 		&nbsp;&nbsp;
-		<input type="checkbox" name="WIP_ISSUE_FLAG" value="Y" <%=WIP_ISSUE_FLAG.equals("Y")?"checked":""%> onClick="chkObj()"><span id="span1" style="background-color:<%=WIP_ISSUE_FLAG.equals("Y")?"#FFFF33":"#FFFFFF"%>">é é–‹å·¥å–®åŠæ¡è³¼å–®,æš«ä¸ç™¼æ–™</span>
+		<input type="checkbox" name="WIP_ISSUE_FLAG" value="Y" <%=WIP_ISSUE_FLAG.equals("Y")?"checked":""%> onClick="chkObj()"><span id="span1" style="background-color:<%=WIP_ISSUE_FLAG.equals("Y")?"#FFFF33":"#FFFFFF"%>">¹w¶}¤u³æ¤Î±ÄÁÊ³æ,¼È¤£µo®Æ</span>
 		</td>
 		<td class="style2" width="6%"><font style="font-family:ARIAL">Issue Date:</font></td>
 		<td class="style1" width="12%"><input type="text" size="10" name="ISSUEDATE" style="font-family:Arial;text-align:center" value="<%=ISSUEDATE%>" tabindex="2" readonly><A href='javascript:void(0)' onclick='gfPop.fPopCalendar(document.MYFORM.ISSUEDATE);return false;'><img name='popcal' border='0' src='../image/calbtn.gif'></A></td>
-		<td class="style2" width="6%" style="font-family:Arial">é è¨ˆå®Œå·¥æ—¥:</td>
+		<td class="style2" width="6%" style="font-family:Arial">¹w­p§¹¤u¤é:</td>
 		<td class="style1" width="12%"><input type="text" size="8" name="COMPLETEDATE" style="font-family:Arial;text-align:LEFT" value="<%=COMPLETEDATE%>" readonly><A href="javascript:void(0)" onclick="gfPop.fPopCalendar(document.MYFORM.COMPLETEDATE);return false;"><img name="popcal" border="0" src="../image/calbtn.gif"></A><input type="hidden"name="CREATEDATE" style="font-family:Arial;text-align:LEFT" value="<%=CREATEDATE%>" readonly></td>
-		<td class="style2" width="6%" style="font-family:Arial">é–‹å–®äºº:</td>
+		<td class="style2" width="6%" style="font-family:Arial">¶}³æ¤H:</td>
 		<td class="style1" width="12%"><input type="hidden" name="CREATORID" value="<%=CREATORID%>"><input type="text" size="12" name="CREATOR" style="font-family:Arial;text-align:LEFT" value="<%=CREATOR%>" readonly></td>
-		<td class="style2" width="6%" style="font-family:Arial">ç‰ˆæ¬¡:</td>
+		<td class="style2" width="6%" style="font-family:Arial">ª©¦¸:</td>
 		<td class="style1" width="10%"><input type="text" size="3" name="VERSIONID" style="font-family:Arial;text-align:LEFT" value="<%=VERSIONID%>" readonly></td>
 	</tr>    		   
 	<tr>
-		<td class="style2">å» å•†åç¨±:</td>
+		<td class="style2">¼t°Ó¦WºÙ:</td>
 		<td class="style1" colspan="3">
 		<INPUT TYPE="text" SIZE="5" name="SUPPLIERNO" value="<%=SUPPLIERNO%>" style="font-family:ARIAL">
 		<INPUT TYPE="button" name="btnSupplier" value=".." style="font-family:ARIAL" onClick='subWindowSupplierFind(this.form.SUPPLIERNO.value,this.form.SUPPLIERNAME.value,this.form.ITEMID.value,this.form.QTY.value,this.form.VENDOR_SITE_ID.value)' tabindex="4">
 		<INPUT TYPE="text" SIZE="40" name="SUPPLIERNAME" value="<%=SUPPLIERNAME%>" style="font-family:ARIAL">
 		<INPUT TYPE="hidden" NAME="VENDOR_SITE_ID" value="<%=VENDOR_SITE_ID%>">
 		</td> 	
-		<td class="style2">è¯çµ¡äºº:</td>
+		<td class="style2">Ápµ¸¤H:</td>
 		<td class="style1"><INPUT TYPE="text" size="12" name="SUPPLIERCONTACT" value="<%=SUPPLIERCONTACT%>" style="font-family:ARIAL" tabindex="5"></td> 
-		<td class="style2">å¹£åˆ¥:</td>
+		<td class="style2">¹ô§O:</td>
 		<td class="style1"><INPUT TYPE="text" size="8" name="CURRENCYCODE" value="<%=CURRENCYCODE%>" style="font-family:ARIAL" onchange="setCurrType(this.form.CURRENCYCODE.value)" readonly></td> 
-		<td class="style2" style="font-family:Arial">å®Œå·¥å…¥åº«å€‰:</td>
+		<td class="style2" style="font-family:Arial">§¹¤u¤J®w­Ü:</td>
 		<td class="style1"><input type="text" size="3" name="SUBINVENTORY" style="font-family:Arial;text-align:LEFT" value="<%=SUBINVENTORY%>"  onkeydown="return (event.keyCode!=8);" readonly><INPUT TYPE="button" name="btnStock" value=".." style="font-family:ARIAL" onClick="subWindowSubinventoryFind();"></td>
 	</tr>
 	<TR>
 		<td colspan="10">
 			<table width="100%">
 				<tr>			
-					<TD class="style1" width="10%" style="border-style:double;border-color:#CCCCCC"><input type="checkbox" name="CHKASSEMBLY" value="Y" <%=CHKASSEMBLY%> tabindex="6">å°è£ <font style="font-family:Arial">Assembly</font></TD>
-					<TD class="style1" width="10%" style="border-style:double;border-color:#CCCCCC"><input type="checkbox" name="CHKTESTING" value="Y" <%=CHKTESTING%> tabindex="7">æ¸¬è©¦ <font style="font-family:Arial">Testing</font></TD>
-					<TD class="style1" width="10%" style="border-style:double;border-color:#CCCCCC"><input type="checkbox" name="CHKTAPING" value="Y" <%=CHKTAPING%> tabindex="8">ç·¨å¸¶ <font style="font-family:Arial">Tï¼†R</font></TD>
-					<TD class="style1" width="10%" style="border-style:double;border-color:#CCCCCC"><input type="checkbox" name="CHKLAPPING" value="Y" <%=CHKLAPPING%> tabindex="9">æ¸›è–„ <font style="font-family:Arial">Lapping</font></TD>
-					<TD class="style1" width="10%" style="border-style:double;border-color:#CCCCCC"><input type="checkbox" name="FSM" value="Y" <%=FSM%> tabindex="9">æ­£é¢é‡‘å±¬æ¿ºéæ²ˆç© <font style="font-family:Arial">FSM</font></TD>
-					<TD class="style1" width="10%" style="border-style:double;border-color:#CCCCCC"><input type="checkbox" name="RINGCUT" value="Y" <%=RINGCUT%> tabindex="9">ç’°åˆ‡ <font style="font-family:Arial">Ring Cut</font></TD>
-					<TD class="style1" width="20%" style="border-style:double;border-color:#CCCCCC"><input type="checkbox" name="CHKOTHERS" value="Y" onClick="selectCheckBox(this);" <%=CHKOTHERS%> tabindex="10">å…¶ä»–&nbsp;&nbsp;<input type="text" name="OTHERS" size="37" style="border-bottom-style:double;border-left:none;border-right:none;border-top:none;font-family:Arial" value=<%=OTHERS%>></td>
+					<TD class="style1" width="10%" style="border-style:double;border-color:#CCCCCC"><input type="checkbox" name="CHKASSEMBLY" value="Y" <%=CHKASSEMBLY%> tabindex="6">«Ê¸Ë <font style="font-family:Arial">Assembly</font></TD>
+					<TD class="style1" width="10%" style="border-style:double;border-color:#CCCCCC"><input type="checkbox" name="CHKTESTING" value="Y" <%=CHKTESTING%> tabindex="7">´ú¸Õ <font style="font-family:Arial">Testing</font></TD>
+					<TD class="style1" width="10%" style="border-style:double;border-color:#CCCCCC"><input type="checkbox" name="CHKTAPING" value="Y" <%=CHKTAPING%> tabindex="8">½s±a <font style="font-family:Arial">T¡®R</font></TD>
+					<TD class="style1" width="10%" style="border-style:double;border-color:#CCCCCC"><input type="checkbox" name="CHKLAPPING" value="Y" <%=CHKLAPPING%> tabindex="9">´îÁ¡ <font style="font-family:Arial">Lapping</font></TD>
+					<TD class="style1" width="10%" style="border-style:double;border-color:#CCCCCC"><input type="checkbox" name="FSM" value="Y" <%=FSM%> tabindex="9">¥¿­±ª÷ÄİÂqÁá¨H¿n <font style="font-family:Arial">FSM</font></TD>
+					<TD class="style1" width="10%" style="border-style:double;border-color:#CCCCCC"><input type="checkbox" name="RINGCUT" value="Y" <%=RINGCUT%> tabindex="9">Àô¤Á <font style="font-family:Arial">Ring Cut</font></TD>
+					<TD class="style1" width="20%" style="border-style:double;border-color:#CCCCCC"><input type="checkbox" name="CHKOTHERS" value="Y" onClick="selectCheckBox(this);" <%=CHKOTHERS%> tabindex="10">¨ä¥L&nbsp;&nbsp;<input type="text" name="OTHERS" size="37" style="border-bottom-style:double;border-left:none;border-right:none;border-top:none;font-family:Arial" value=<%=OTHERS%>></td>
 				</tr>
 			</table>
 		</td>
@@ -1687,15 +1705,15 @@ catch (Exception e)
 			<table>
 				<tr>
 					<td class="style4" style="font-family:Arial">Prod Group</td>
-					<td class="style4">æ–™è™Ÿ<br><font style="font-family:Arial">Item No</font></td>
-					<td class="style4">å“å<br><font style="font-family:Arial">Device Name</font></td>
-					<td class="style4">å°è£å‹å¼<br><font style="font-family:Arial">Package</font></td>
-					<td class="style4">èŠ¯ç‰‡åç¨±<br><font style="font-family:Arial">Die Name</font></td>
-					<td class="style4">æ•¸é‡<br><font style="font-family:Arial"><div id="td2"><%if (!PRICEUOM.equals("ç‰‡")) out.println("Q'ty(KPC)"); else out.println("Q'ty("+PRICEUOM+")");%></div></font></td>
-					<td class="style4">å–®åƒ¹<font style="font-family:Arial">U/P</font><br><font style="font-family:Arial"><div id="td1" onClick="setUnit();"><%if (!CURRENCYCODE.equals("") && !PRICEUOM.equals("")) out.println(CURRENCYCODE+"/"+PRICEUOM); else out.println("");%></div></font></td>
-					<td class="style4">åŒ…è£<br><font style="font-family:Arial">Packing</font></td>
-					<td class="style4">å°è£è¦æ ¼<br><font style="font-family:Arial">D/B No.</font></td>
-					<td class="style4">æ¸¬è©¦è¦æ ¼<br><font style="font-family:Arial">Test Spec</font></td>
+					<td class="style4">®Æ¸¹<br><font style="font-family:Arial">Item No</font></td>
+					<td class="style4">«~¦W<br><font style="font-family:Arial">Device Name</font></td>
+					<td class="style4">«Ê¸Ë«¬¦¡<br><font style="font-family:Arial">Package</font></td>
+					<td class="style4">ªä¤ù¦WºÙ<br><font style="font-family:Arial">Die Name</font></td>
+					<td class="style4">¼Æ¶q<br><font style="font-family:Arial"><div id="td2"><%if (!PRICEUOM.equals("¤ù")) out.println("Q'ty(KPC)"); else out.println("Q'ty("+PRICEUOM+")");%></div></font></td>
+					<td class="style4">³æ»ù<font style="font-family:Arial">U/P</font><br><font style="font-family:Arial"><div id="td1" onClick="setUnit();"><%if (!CURRENCYCODE.equals("") && !PRICEUOM.equals("")) out.println(CURRENCYCODE+"/"+PRICEUOM); else out.println("");%></div></font></td>
+					<td class="style4">¥]¸Ë<br><font style="font-family:Arial">Packing</font></td>
+					<td class="style4">«Ê¸Ë³W®æ<br><font style="font-family:Arial">D/B No.</font></td>
+					<td class="style4">´ú¸Õ³W®æ<br><font style="font-family:Arial">Test Spec</font></td>
 				</tr>
 				<tr>
 					<td class="style1"><input type="text" name="PROD_GROUP" style="font-size:11px;font-family:Arial" value="<%=PROD_GROUP%>" size="7" readonly></td>
@@ -1750,7 +1768,7 @@ catch (Exception e)
 		</td>
 	</tr>
 	<TR>
-		<TD class="style4">å‚™è¨»<A href="javascript:void(0)" title="æŒ‰ä¸‹æ»‘é¼ å·¦éµï¼Œé–‹å•ŸEVAé …ç›®é¸å–®" onClick="subWindowEVAList()"><img src="images/search.gif" border="0"></A></TD>
+		<TD class="style4">³Æµù<A href="javascript:void(0)" title="«ö¤U·Æ¹«¥ªÁä¡A¶}±ÒEVA¶µ¥Ø¿ï³æ" onClick="subWindowEVAList()"><img src="images/search.gif" border="0"></A></TD>
 		<TD class="style1" colspan="9">
 		<textarea cols="170" rows="6" name="REMARKS" style="text-align:left;font-family:Arial" tabindex="20"><%=REMARKS%></textarea></TD>
 	</TR>
@@ -1762,16 +1780,16 @@ catch (Exception e)
 		<TD colspan="10" width="100%" >
 			<table width="100%" bordercolorlight="#FFFFFF" border="1" cellspacing="0"  bordercolordark="#9999CC" cellpadding="1">
 				<tr>
-					<td width="100%" bgcolor="#BBDDEE" colspan="13"><FONT color="#000000" size="2" face="Arial">Producton Controlï¼š</FONT></td>
+					<td width="100%" bgcolor="#BBDDEE" colspan="13"><FONT color="#000000" size="2" face="Arial">Producton Control¡G</FONT></td>
 				</tr>	
 				<TR>
 					<TD width="3%" class="style4" rowspan="<%=Integer.parseInt(LINENUM)+1%>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 					<TD width="2%" class="style4">&nbsp;&nbsp;&nbsp;</TD>
-					<TD width="3%" class="style4"><font style="font-family:ç´°æ˜é«”">è¡Œè™Ÿ</font></td>
+					<TD width="3%" class="style4"><font style="font-family:²Ó©úÅé">¦æ¸¹</font></td>
 					<TD width="23%" class="style4"><font style="font-family:Arial">Item Name</font></td>
 					<TD width="6%" class="style4"><font style="font-family:Arial">Wafer Subinventory</font></td>
 					<TD width="23%" class="style4"><font style="font-family:Arial">Wafer Lot#</font></td>
-					<TD width="10%" class="style4"><font style="font-family:Arial">Waferç‰‡è™Ÿ</font></td>
+					<TD width="10%" class="style4"><font style="font-family:Arial">Wafer¤ù¸¹</font></td>
 					<TD width="5%" class="style4"><font style="font-family:Arial">Wafer Qty</font></TD>
 					<TD width="5%" class="style4"><font style="font-family:Arial">Chip Qty</font></td>
 					<TD width="5%" class="style4"><font style="font-family:Arial">Date Code</font></td>
@@ -1836,11 +1854,11 @@ catch (Exception e)
 					
 				%>
 					<TR>
-						<TD class="style3"><input type="button" name="<%="BtnDel"+i%>"   size="5" value="åˆªé™¤" onClick='setDelete(<%=i%>)'></td>
+						<TD class="style3"><input type="button" name="<%="BtnDel"+i%>"   size="5" value="§R°£" onClick='setDelete(<%=i%>)'></td>
 						<TD class="style3"><input type="text" name="<%="LineNo"+i%>"     size="2"  value="<%=i%>" style="font-family:Arial" readonly></td>
-						<TD class="style3"><input type="hidden" name ="<%="INVITEMID"+i%>" value="<%=INVITEMID%>"><input type="text" name="<%="INVITEM"+i%>" size="24" tabindex="<%=(idx_num++)%>" value="<%=INVITEM%>" style="font-family:Arial;text-align:center" <%if (WIPTYPE.equals("03") || WIPTYPE.equals("05")) out.println(""); else out.println(" readonly");%>><input type="button" name="<%="btnInvItem"+i%>"  value="..." title="è«‹æŒ‰æˆ‘!" onClick="subWindowInvItemFind(<%=i%>)" <%if (WIPTYPE.equals("03") || WIPTYPE.equals("05")) out.println("style='visibility:visible;font-family:arial'"); else out.println("style='visibility:hidden;font-family:arial'");%> tabindex="<%=(idx_num++)%>"></td>
+						<TD class="style3"><input type="hidden" name ="<%="INVITEMID"+i%>" value="<%=INVITEMID%>"><input type="text" name="<%="INVITEM"+i%>" size="24" tabindex="<%=(idx_num++)%>" value="<%=INVITEM%>" style="font-family:Arial;text-align:center" <%if (WIPTYPE.equals("03") || WIPTYPE.equals("05")) out.println(""); else out.println(" readonly");%>><input type="button" name="<%="btnInvItem"+i%>"  value="..." title="½Ğ«ö§Ú!" onClick="subWindowInvItemFind(<%=i%>)" <%if (WIPTYPE.equals("03") || WIPTYPE.equals("05")) out.println("style='visibility:visible;font-family:arial'"); else out.println("style='visibility:hidden;font-family:arial'");%> tabindex="<%=(idx_num++)%>"></td>
 						<TD class="style3"><input type="text" name ="<%="Stock"+i%>" value="<%=Stock%>" size="4" style="font-family:Arial;text-align:center" readonly></TD>
-						<TD class="style3"><input type="text" name="<%="WaferLot"+i%>"  size="14" tabindex="<%=(idx_num++)%>" value="<%=WaferLot%>" style="font-size:11px;font-family:Arial;text-align:center" readonly><input type="button" name="<%="btnLot"+i%>" style="font-family:arial" value="..." title="è«‹æŒ‰æˆ‘!" onClick="subWindowItemLotFind(<%=i%>)" tabindex="<%=(idx_num++)%>"><input type="hidden" name="<%="trans_source_id_"+i%>" value="<%=trans_source_id%>"></td>
+						<TD class="style3"><input type="text" name="<%="WaferLot"+i%>"  size="14" tabindex="<%=(idx_num++)%>" value="<%=WaferLot%>" style="font-size:11px;font-family:Arial;text-align:center" readonly><input type="button" name="<%="btnLot"+i%>" style="font-family:arial" value="..." title="½Ğ«ö§Ú!" onClick="subWindowItemLotFind(<%=i%>)" tabindex="<%=(idx_num++)%>"><input type="hidden" name="<%="trans_source_id_"+i%>" value="<%=trans_source_id%>"></td>
 						<TD class="style3"><input type="text" name="<%="WaferNumber"+i%>"  size="8" tabindex="<%=(idx_num++)%>" value="<%=WaferNumber%>" style="font-family:Arial;text-align:center"></td>
 						<TD class="style3"><input type="text" name="<%="WaferQty"+i%>"   size="5" tabindex="<%=(idx_num++)%>" value="<%=WaferQty%>" style="font-family:Arial;text-align:right" onchange="computeTotal('WaferQty')"></TD>
 						<TD class="style3"><input type="hidden" name="<%="LotOnhand"+i%>" value="<%=LotOnhand%>"><input type="text" name="<%="ChipQty"+i%>"  size="5" tabindex="<%=(idx_num++)%>" value="<%=ChipQty%>" style="font-family:Arial;text-align:right"  onFocus="getUnitPrice()" onchange="computeTotal('ChipQty')"></td>
@@ -1877,13 +1895,13 @@ catch (Exception e)
 				}
 				%>
 					<tr>
-						<TD class="style6" colspan="7"><font style="font-family:arial;text-align:Right">Totalï¼š</font></td>
+						<TD class="style6" colspan="7"><font style="font-family:arial;text-align:Right">Total¡G</font></td>
 						<TD class="style4" style="border-left-color:#BBDDEE"><input type="text" name="totWaferQty" value="<%=totWaferQty%>" size="15" style="font-family:arial; text-align:right; background-color:#BBDDEE; border-bottom-style: none; border-left-style: none; border-right-style: none; border-top-style: none;"></TD>
 						<TD class="style4" style="border-left-color:#BBDDEE"><input type="text" name="totChipQty" value="<%=totChipQty%>" size="15" style="font-family:arial; text-align:right; background-color:#BBDDEE; border-bottom-style: none; border-left-style: none; border-right-style: none; border-top-style: none;"></td>
 						<TD class="style4"colspan="4" style="border-left-color:#BBDDEE">&nbsp;&nbsp;&nbsp;</td>
 					</tr>
 					<tr>
-						<TD colspan="9"><font style="font-size:12px;font-family:æ¨™æ¥·é«”;color:#0011FF"><strong><jsp:getProperty name="rPH" property="pgAction"/>=></strong></font>						
+						<TD colspan="9"><font style="font-size:12px;font-family:¼Ğ·¢Åé;color:#0011FF"><strong><jsp:getProperty name="rPH" property="pgAction"/>=></strong></font>						
 						<%
 						try
 						{       
@@ -1915,7 +1933,7 @@ catch (Exception e)
 <input type="hidden" name="AVL" value="<%=AVL%>">
 <input type="hidden" name="ORGANIZATION_ID" value="<%=ORGANIZATION_ID%>">
 <input type="hidden" name="ACTIONTYPE" value="NEW">
-<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->  
+<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->  
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 </form>
