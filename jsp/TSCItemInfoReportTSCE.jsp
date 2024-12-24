@@ -291,565 +291,564 @@ try
 //	out.println(sql);
 	Statement statement=con.createStatement(); 
 	ResultSet rs=statement.executeQuery(sql);
-	while (rs.next())
-		while (rs.next()) {
-			//if (rs.getString("PACKAGE_CODE") ==null || rs.getString("part_spec")==null || rs.getInt("ITEM_CNT")!=1 || (rs.getString("TSC_PROD_GROUP").equals("PMD") && rs.getString("bottom_price")==null)) continue;
-			if (rs.getString("PACKAGE_CODE") == null || rs.getString("part_spec") == null || rs.getInt("ITEM_CNT") != 1)
-				continue;  //20230720 by Peggy 取消沒提供salse bottom 價格的條件 from Mabel 20230717 mail
-			if (rs.getString("TSC_PROD_GROUP").equals("PMD") && rs.getString("SEGMENT1").length() == 30 && rs.getString("SEGMENT1").substring(21, 22).equals("V"))
-				continue;  //20230720 by Peggy 在PROD GROUP下PMD的30D第22碼若為V，也屬於HsNr from Mabel 20230717 mail
-			if (reccnt == 0) {
-				col = 0;
-				row = 0;
-
-				//資料日期
-				ws.mergeCells(col, row, col + 2, row);
-				ws.addCell(new jxl.write.Label(col, row, "Data Date:" + dateBean.getDate(), LeftBLY));
-				row++;
-
-				//22/30-Digit-Code
-				ws.addCell(new jxl.write.Label(col, row, "22/30-Digit-Code", ACenterBLB));
-				ws.setColumnView(col, 30);
-				col++;
-
-				//PART ID--add by Peggy 20180718
-				ws.addCell(new jxl.write.Label(col, row, "PART ID", ACenterBLB));
-				ws.setColumnView(col, 20);
-				col++;
-
-				//PACKAGE CODE
-				ws.addCell(new jxl.write.Label(col, row, "PACKAGE CODE", ACenterBLB));
-				ws.setColumnView(col, 15);
-				col++;
-
-				//TSC Ordering Code
-				ws.addCell(new jxl.write.Label(col, row, "TSC Ordering Code", ACenterBLB));
-				ws.setColumnView(col, 25);
-				col++;
-
-				//PL CATEGORY
-				ws.addCell(new jxl.write.Label(col, row, "PL Category", ACenterBLB));
-				ws.setColumnView(col, 10);
-				col++;
-
-				//PROD GROUP
-				ws.addCell(new jxl.write.Label(col, row, "PROD GROUP", ACenterBLB));
-				ws.setColumnView(col, 15);
-				col++;
-
-				//TSC PROD CATEGORY
-				ws.addCell(new jxl.write.Label(col, row, "TSC Prod Category", ACenterBLB));
-				ws.setColumnView(col, 15);
-				col++;
-
-				//FAMILY
-				ws.addCell(new jxl.write.Label(col, row, "FAMILY", ACenterBLB));
-				ws.setColumnView(col, 20);
-				col++;
-
-				//PROD FAMILY
-				ws.addCell(new jxl.write.Label(col, row, "PROD FAMILY", ACenterBLB));
-				ws.setColumnView(col, 20);
-				col++;
-
-				//PACKAGE
-				ws.addCell(new jxl.write.Label(col, row, "PACKAGE", ACenterBLB));
-				ws.setColumnView(col, 20);
-				col++;
-
-				//SPQ
-				ws.addCell(new jxl.write.Label(col, row, "SPQ", ACenterBLB));
-				ws.setColumnView(col, 15);
-				col++;
-
-				//MOQ
-				ws.addCell(new jxl.write.Label(col, row, "MOQ", ACenterBLB));
-				ws.setColumnView(col, 15);
-				col++;
-
-				////SAMPLE SPQ
-				//ws.addCell(new jxl.write.Label(col, row, "SAMPLE SPQ" , ACenterBLB));
-				//ws.setColumnView(col,15);
-				//col++;
-
-				//Lead Time(Week)
-				ws.addCell(new jxl.write.Label(col, row, "Standard Lead Time(Week)", ACenterBLB));
-				ws.setColumnView(col, 15);
-				col++;
-
-				//No Wafer Lead Time(Week)
-				//ws.addCell(new jxl.write.Label(col, row, "No Wafer Lead Time(Week)" , ACenterBLB));
-				//ws.setColumnView(col,15);
-				//col++;
-
-				//TP (USD/PCS)
-				ws.addCell(new jxl.write.Label(col, row, "TP (USD/PCS)", ACenterBLB));
-				ws.setColumnView(col, 15);
-				col++;
-
-				////TSCE_PRICE(USD/PCS)
-				//ws.addCell(new jxl.write.Label(col, row, "TSCE_PRICE" , ACenterBLB));
-				//ws.setColumnView(col,15);
-				//col++;
-
-				//PRICE last update date
-				ws.addCell(new jxl.write.Label(col, row, "PRICE LAST UPDATE DATE", ACenterBLB));
-				ws.setColumnView(col, 15);
-				col++;
-
-				//22D
-				ws.addCell(new jxl.write.Label(col, row, "22D Creation Date", ACenterBLB));
-				ws.setColumnView(col, 15);
-				col++;
-
-				//Bottom price (USD/PCS)
-				ws.addCell(new jxl.write.Label(col, row, " Bottom Price (USD/PCS)", ACenterBLB));
-				ws.setColumnView(col, 15);
-				col++;
-
-				//Sales Head price (USD/PCS)
-				ws.addCell(new jxl.write.Label(col, row, " Sales Head price (USD/PCS)", ACenterBLB));
-				ws.setColumnView(col, 15);
-				col++;
-
-				//Recommended to Stock in Channel,add by Peggy 20231002
-				ws.addCell(new jxl.write.Label(col, row, "Recommended to Stock in Channel", ACenterBLB));
-				ws.setColumnView(col, 15);
-				col++;
-
-				//Price book Code,add by Peggy 20231002
-				ws.addCell(new jxl.write.Label(col, row, "Price book Code", ACenterBLB));
-				ws.setColumnView(col, 15);
-				col++;
-
-				//Distribution Book Price,add by Peggy 20231002
-				ws.addCell(new jxl.write.Label(col, row, "Distribution Book Price", ACenterBLB));
-				ws.setColumnView(col, 15);
-				col++;
-
-				//Distribution MPP Price,add by Peggy 20231002
-				ws.addCell(new jxl.write.Label(col, row, "Distribution MPP Price", ACenterBLB));
-				ws.setColumnView(col, 15);
-				col++;
-
-				//Design Registration,add by Peggy 20231002
-				ws.addCell(new jxl.write.Label(col, row, "Design Registration", ACenterBLB));
-				ws.setColumnView(col, 15);
-				col++;
-
-				//Design Registration Price,add by Peggy 20231002
-				ws.addCell(new jxl.write.Label(col, row, "Design Registration Price", ACenterBLB));
-				ws.setColumnView(col, 15);
-				col++;
-
-				//Recommended Replacement,add by Peggy 20231002
-				ws.addCell(new jxl.write.Label(col, row, "Recommended Replacement", ACenterBLB));
-				ws.setColumnView(col, 15);
-				col++;
-
-
-				//Factory
-				ws.addCell(new jxl.write.Label(col, row, "Factory", ACenterBLB));
-				ws.setColumnView(col, 15);
-				col++;
-
-				//Factory
-				ws.addCell(new jxl.write.Label(col, row, "RFQ Factory Code", ACenterBLB));
-				ws.setColumnView(col, 12);
-				col++;
-
-				//COO,add by Peggy 20180810
-				ws.addCell(new jxl.write.Label(col, row, "COO", ACenterBLB));
-				ws.setColumnView(col, 7);
-				col++;
-
-				ws.addCell(new jxl.write.Label(col, row, "COO(TSCA use only)", ACenterBLB));
-				ws.setColumnView(col, 7);
-				col++;
-
-				//Description
-				ws.addCell(new jxl.write.Label(col, row, "Description", ACenterBLB));
-				ws.setColumnView(col, 35);
-				col++;
-
-				//Series AECQ
-				ws.addCell(new jxl.write.Label(col, row, "AEC-Q101", ACenterBLB)); //rename to AEC-Q101,add by Peggy 2
-				ws.setColumnView(col, 10);
-				col++;
-				ws.addCell(new jxl.write.Label(col, row, "MSL", ACenterBLB));
-				ws.setColumnView(col, 5);
-				col++;
-
-				//website status
-				ws.addCell(new jxl.write.Label(col, row, "Website Status", ACenterBLB));
-				ws.setColumnView(col, 12);
-				col++;
-
-				//Packaging Description
-				ws.addCell(new jxl.write.Label(col, row, "Packaging Description", ACenterBLB));
-				ws.setColumnView(col, 20);
-				col++;
-
-				//Reel(PC)
-				ws.addCell(new jxl.write.Label(col, row, "Reel/Box (PC)", ACenterBLB));
-				ws.setColumnView(col, 12);
-				col++;
-
-				//Inner Box(PC)
-				ws.addCell(new jxl.write.Label(col, row, "Inner Box(PC)", ACenterBLB));
-				ws.setColumnView(col, 12);
-				col++;
-
-				//Carton(PC)
-				ws.addCell(new jxl.write.Label(col, row, "Carton(PC)", ACenterBLB));
-				ws.setColumnView(col, 12);
-				col++;
-
-				//Carton Size
-				ws.addCell(new jxl.write.Label(col, row, "Carton Size(mm)", ACenterBLB));
-				ws.setColumnView(col, 16);
-				col++;
-
-				//Carton Weight
-				ws.addCell(new jxl.write.Label(col, row, "Gross Weight(kg/Carton)", ACenterBLB));
-				ws.setColumnView(col, 12);
-				col++;
-
-				//PCN/PDN
-				ws.addCell(new jxl.write.Label(col, row, "PCN/PDN", ACenterBLB));
-				ws.setColumnView(col, 25);
-				col++;
-
-				//TARIC Code
-				ws.addCell(new jxl.write.Label(col, row, "TARIC Code", ACenterBLB));
-				ws.setColumnView(col, 10);
-				col++;
-
-				//HTS Code
-				ws.addCell(new jxl.write.Label(col, row, "HTS Code(TSCA local use)", ACenterBLB));
-				ws.setColumnView(col, 10);
-				col++;
-
-				//Part Name create Date,add by Peggy 20200507
-				ws.addCell(new jxl.write.Label(col, row, "Part Name create Date", ACenterBLB));
-				ws.setColumnView(col, 15);
-				col++;
-
-				//TW_VENDOR_FLAG,add by Peggy 20200130
-				ws.addCell(new jxl.write.Label(col, row, "TW Vendor", ACenterBLB));
-				ws.setColumnView(col, 8);
-				col++;
-
-				//NPI released to Web,add by Peggy 20211130
-				ws.addCell(new jxl.write.Label(col, row, "NPI released to Web", ACenterBLB));
-				ws.setColumnView(col, 12);
-				col++;
-
-				//F400 PRODUCT,ADD BY PEGGY 20230214
-				ws.addCell(new jxl.write.Label(col, row, "F400 PRODUCT", ACenterBLB));
-				ws.setColumnView(col, 12);
-				col++;
-
-				//SPG STATUS,ADD BY PEGGY 20230214
-				ws.addCell(new jxl.write.Label(col, row, "SPG STATUS", ACenterBLB));
-				ws.setColumnView(col, 12);
-				col++;
-
-				//TSC PROD HIERARCHY1
-				ws.addCell(new jxl.write.Label(col, row, "PROD HIERARCHY 1", ACenterBLB));
-				ws.setColumnView(col, 20);
-				col++;
-
-				//TSC PROD HIERARCHY2
-				ws.addCell(new jxl.write.Label(col, row, "PROD HIERARCHY 2", ACenterBLB));
-				ws.setColumnView(col, 20);
-				col++;
-
-				//TSC PROD HIERARCHY3
-				ws.addCell(new jxl.write.Label(col, row, "PROD HIERARCHY 3", ACenterBLB));
-				ws.setColumnView(col, 20);
-				col++;
-
-				///TSC PROD HIERARCHY3
-				ws.addCell(new jxl.write.Label(col, row, "PROD HIERARCHY 4", ACenterBLB));
-				ws.setColumnView(col, 20);
-				col++;
-				row++;
-
-			}
+	while (rs.next()) {
+		//if (rs.getString("PACKAGE_CODE") ==null || rs.getString("part_spec")==null || rs.getInt("ITEM_CNT")!=1 || (rs.getString("TSC_PROD_GROUP").equals("PMD") && rs.getString("bottom_price")==null)) continue;
+		if (rs.getString("PACKAGE_CODE") == null || rs.getString("part_spec") == null || rs.getInt("ITEM_CNT") != 1)
+			continue;  //20230720 by Peggy 取消沒提供salse bottom 價格的條件 from Mabel 20230717 mail
+		if (rs.getString("TSC_PROD_GROUP").equals("PMD") && rs.getString("SEGMENT1").length() == 30 && rs.getString("SEGMENT1").substring(21, 22).equals("V"))
+			continue;  //20230720 by Peggy 在PROD GROUP下PMD的30D第22碼若為V，也屬於HsNr from Mabel 20230717 mail
+		if (reccnt == 0) {
 			col = 0;
-			// 22/30-Digit-Code
-			ws.addCell(new jxl.write.Label(col, row, rs.getString("SEGMENT1"), ALeftL));
+			row = 0;
+
+			//資料日期
+			ws.mergeCells(col, row, col + 2, row);
+			ws.addCell(new jxl.write.Label(col, row, "Data Date:" + dateBean.getDate(), LeftBLY));
+			row++;
+
+			//22/30-Digit-Code
+			ws.addCell(new jxl.write.Label(col, row, "22/30-Digit-Code", ACenterBLB));
+			ws.setColumnView(col, 30);
 			col++;
-			// PART ID
-			if (rs.getString("fairchild_cpn") != null)  //add by Peggy 20181221
-			{
-				ws.addCell(new jxl.write.Label(col, row, rs.getString("fairchild_cpn"), ALeftL));
-			} else {
-				//ws.addCell(new jxl.write.Label(col, row, rs.getString("DESCRIPTION").substring(0, rs.getString("DESCRIPTION").length()-rs.getString("PACKAGE_CODE").length()).trim()  , ALeftL)); //add by Peggy 20180718
-				//ws.addCell(new jxl.write.Label(col, row, strPartName, ALeftL));
-				ws.addCell(new jxl.write.Label(col, row, rs.getString("part_id"), ALeftL));  //modify by Peggy 20210729
+
+			//PART ID--add by Peggy 20180718
+			ws.addCell(new jxl.write.Label(col, row, "PART ID", ACenterBLB));
+			ws.setColumnView(col, 20);
+			col++;
+
+			//PACKAGE CODE
+			ws.addCell(new jxl.write.Label(col, row, "PACKAGE CODE", ACenterBLB));
+			ws.setColumnView(col, 15);
+			col++;
+
+			//TSC Ordering Code
+			ws.addCell(new jxl.write.Label(col, row, "TSC Ordering Code", ACenterBLB));
+			ws.setColumnView(col, 25);
+			col++;
+
+			//PL CATEGORY
+			ws.addCell(new jxl.write.Label(col, row, "PL Category", ACenterBLB));
+			ws.setColumnView(col, 10);
+			col++;
+
+			//PROD GROUP
+			ws.addCell(new jxl.write.Label(col, row, "PROD GROUP", ACenterBLB));
+			ws.setColumnView(col, 15);
+			col++;
+
+			//TSC PROD CATEGORY
+			ws.addCell(new jxl.write.Label(col, row, "TSC Prod Category", ACenterBLB));
+			ws.setColumnView(col, 15);
+			col++;
+
+			//FAMILY
+			ws.addCell(new jxl.write.Label(col, row, "FAMILY", ACenterBLB));
+			ws.setColumnView(col, 20);
+			col++;
+
+			//PROD FAMILY
+			ws.addCell(new jxl.write.Label(col, row, "PROD FAMILY", ACenterBLB));
+			ws.setColumnView(col, 20);
+			col++;
+
+			//PACKAGE
+			ws.addCell(new jxl.write.Label(col, row, "PACKAGE", ACenterBLB));
+			ws.setColumnView(col, 20);
+			col++;
+
+			//SPQ
+			ws.addCell(new jxl.write.Label(col, row, "SPQ", ACenterBLB));
+			ws.setColumnView(col, 15);
+			col++;
+
+			//MOQ
+			ws.addCell(new jxl.write.Label(col, row, "MOQ", ACenterBLB));
+			ws.setColumnView(col, 15);
+			col++;
+
+			////SAMPLE SPQ
+			//ws.addCell(new jxl.write.Label(col, row, "SAMPLE SPQ" , ACenterBLB));
+			//ws.setColumnView(col,15);
+			//col++;
+
+			//Lead Time(Week)
+			ws.addCell(new jxl.write.Label(col, row, "Standard Lead Time(Week)", ACenterBLB));
+			ws.setColumnView(col, 15);
+			col++;
+
+			//No Wafer Lead Time(Week)
+			//ws.addCell(new jxl.write.Label(col, row, "No Wafer Lead Time(Week)" , ACenterBLB));
+			//ws.setColumnView(col,15);
+			//col++;
+
+			//TP (USD/PCS)
+			ws.addCell(new jxl.write.Label(col, row, "TP (USD/PCS)", ACenterBLB));
+			ws.setColumnView(col, 15);
+			col++;
+
+			////TSCE_PRICE(USD/PCS)
+			//ws.addCell(new jxl.write.Label(col, row, "TSCE_PRICE" , ACenterBLB));
+			//ws.setColumnView(col,15);
+			//col++;
+
+			//PRICE last update date
+			ws.addCell(new jxl.write.Label(col, row, "PRICE LAST UPDATE DATE", ACenterBLB));
+			ws.setColumnView(col, 15);
+			col++;
+
+			//22D
+			ws.addCell(new jxl.write.Label(col, row, "22D Creation Date", ACenterBLB));
+			ws.setColumnView(col, 15);
+			col++;
+
+			//Bottom price (USD/PCS)
+			ws.addCell(new jxl.write.Label(col, row, " Bottom Price (USD/PCS)", ACenterBLB));
+			ws.setColumnView(col, 15);
+			col++;
+
+			//Sales Head price (USD/PCS)
+			ws.addCell(new jxl.write.Label(col, row, " Sales Head price (USD/PCS)", ACenterBLB));
+			ws.setColumnView(col, 15);
+			col++;
+
+			//Recommended to Stock in Channel,add by Peggy 20231002
+			ws.addCell(new jxl.write.Label(col, row, "Recommended to Stock in Channel", ACenterBLB));
+			ws.setColumnView(col, 15);
+			col++;
+
+			//Price book Code,add by Peggy 20231002
+			ws.addCell(new jxl.write.Label(col, row, "Price book Code", ACenterBLB));
+			ws.setColumnView(col, 15);
+			col++;
+
+			//Distribution Book Price,add by Peggy 20231002
+			ws.addCell(new jxl.write.Label(col, row, "Distribution Book Price", ACenterBLB));
+			ws.setColumnView(col, 15);
+			col++;
+
+			//Distribution MPP Price,add by Peggy 20231002
+			ws.addCell(new jxl.write.Label(col, row, "Distribution MPP Price", ACenterBLB));
+			ws.setColumnView(col, 15);
+			col++;
+
+			//Design Registration,add by Peggy 20231002
+			ws.addCell(new jxl.write.Label(col, row, "Design Registration", ACenterBLB));
+			ws.setColumnView(col, 15);
+			col++;
+
+			//Design Registration Price,add by Peggy 20231002
+			ws.addCell(new jxl.write.Label(col, row, "Design Registration Price", ACenterBLB));
+			ws.setColumnView(col, 15);
+			col++;
+
+			//Recommended Replacement,add by Peggy 20231002
+			ws.addCell(new jxl.write.Label(col, row, "Recommended Replacement", ACenterBLB));
+			ws.setColumnView(col, 15);
+			col++;
+
+
+			//Factory
+			ws.addCell(new jxl.write.Label(col, row, "Factory", ACenterBLB));
+			ws.setColumnView(col, 15);
+			col++;
+
+			//Factory
+			ws.addCell(new jxl.write.Label(col, row, "RFQ Factory Code", ACenterBLB));
+			ws.setColumnView(col, 12);
+			col++;
+
+			//COO,add by Peggy 20180810
+			ws.addCell(new jxl.write.Label(col, row, "COO", ACenterBLB));
+			ws.setColumnView(col, 7);
+			col++;
+
+			ws.addCell(new jxl.write.Label(col, row, "COO(TSCA use only)", ACenterBLB));
+			ws.setColumnView(col, 7);
+			col++;
+
+			//Description
+			ws.addCell(new jxl.write.Label(col, row, "Description", ACenterBLB));
+			ws.setColumnView(col, 35);
+			col++;
+
+			//Series AECQ
+			ws.addCell(new jxl.write.Label(col, row, "AEC-Q101", ACenterBLB)); //rename to AEC-Q101,add by Peggy 2
+			ws.setColumnView(col, 10);
+			col++;
+			ws.addCell(new jxl.write.Label(col, row, "MSL", ACenterBLB));
+			ws.setColumnView(col, 5);
+			col++;
+
+			//website status
+			ws.addCell(new jxl.write.Label(col, row, "Website Status", ACenterBLB));
+			ws.setColumnView(col, 12);
+			col++;
+
+			//Packaging Description
+			ws.addCell(new jxl.write.Label(col, row, "Packaging Description", ACenterBLB));
+			ws.setColumnView(col, 20);
+			col++;
+
+			//Reel(PC)
+			ws.addCell(new jxl.write.Label(col, row, "Reel/Box (PC)", ACenterBLB));
+			ws.setColumnView(col, 12);
+			col++;
+
+			//Inner Box(PC)
+			ws.addCell(new jxl.write.Label(col, row, "Inner Box(PC)", ACenterBLB));
+			ws.setColumnView(col, 12);
+			col++;
+
+			//Carton(PC)
+			ws.addCell(new jxl.write.Label(col, row, "Carton(PC)", ACenterBLB));
+			ws.setColumnView(col, 12);
+			col++;
+
+			//Carton Size
+			ws.addCell(new jxl.write.Label(col, row, "Carton Size(mm)", ACenterBLB));
+			ws.setColumnView(col, 16);
+			col++;
+
+			//Carton Weight
+			ws.addCell(new jxl.write.Label(col, row, "Gross Weight(kg/Carton)", ACenterBLB));
+			ws.setColumnView(col, 12);
+			col++;
+
+			//PCN/PDN
+			ws.addCell(new jxl.write.Label(col, row, "PCN/PDN", ACenterBLB));
+			ws.setColumnView(col, 25);
+			col++;
+
+			//TARIC Code
+			ws.addCell(new jxl.write.Label(col, row, "TARIC Code", ACenterBLB));
+			ws.setColumnView(col, 10);
+			col++;
+
+			//HTS Code
+			ws.addCell(new jxl.write.Label(col, row, "HTS Code(TSCA local use)", ACenterBLB));
+			ws.setColumnView(col, 10);
+			col++;
+
+			//Part Name create Date,add by Peggy 20200507
+			ws.addCell(new jxl.write.Label(col, row, "Part Name create Date", ACenterBLB));
+			ws.setColumnView(col, 15);
+			col++;
+
+			//TW_VENDOR_FLAG,add by Peggy 20200130
+			ws.addCell(new jxl.write.Label(col, row, "TW Vendor", ACenterBLB));
+			ws.setColumnView(col, 8);
+			col++;
+
+			//NPI released to Web,add by Peggy 20211130
+			ws.addCell(new jxl.write.Label(col, row, "NPI released to Web", ACenterBLB));
+			ws.setColumnView(col, 12);
+			col++;
+
+			//F400 PRODUCT,ADD BY PEGGY 20230214
+			ws.addCell(new jxl.write.Label(col, row, "F400 PRODUCT", ACenterBLB));
+			ws.setColumnView(col, 12);
+			col++;
+
+			//SPG STATUS,ADD BY PEGGY 20230214
+			ws.addCell(new jxl.write.Label(col, row, "SPG STATUS", ACenterBLB));
+			ws.setColumnView(col, 12);
+			col++;
+
+			//TSC PROD HIERARCHY1
+			ws.addCell(new jxl.write.Label(col, row, "PROD HIERARCHY 1", ACenterBLB));
+			ws.setColumnView(col, 20);
+			col++;
+
+			//TSC PROD HIERARCHY2
+			ws.addCell(new jxl.write.Label(col, row, "PROD HIERARCHY 2", ACenterBLB));
+			ws.setColumnView(col, 20);
+			col++;
+
+			//TSC PROD HIERARCHY3
+			ws.addCell(new jxl.write.Label(col, row, "PROD HIERARCHY 3", ACenterBLB));
+			ws.setColumnView(col, 20);
+			col++;
+
+			///TSC PROD HIERARCHY3
+			ws.addCell(new jxl.write.Label(col, row, "PROD HIERARCHY 4", ACenterBLB));
+			ws.setColumnView(col, 20);
+			col++;
+			row++;
+
+		}
+		col = 0;
+		// 22/30-Digit-Code
+		ws.addCell(new jxl.write.Label(col, row, rs.getString("SEGMENT1"), ALeftL));
+		col++;
+		// PART ID
+		if (rs.getString("fairchild_cpn") != null)  //add by Peggy 20181221
+		{
+			ws.addCell(new jxl.write.Label(col, row, rs.getString("fairchild_cpn"), ALeftL));
+		} else {
+			//ws.addCell(new jxl.write.Label(col, row, rs.getString("DESCRIPTION").substring(0, rs.getString("DESCRIPTION").length()-rs.getString("PACKAGE_CODE").length()).trim()  , ALeftL)); //add by Peggy 20180718
+			//ws.addCell(new jxl.write.Label(col, row, strPartName, ALeftL));
+			ws.addCell(new jxl.write.Label(col, row, rs.getString("part_id"), ALeftL));  //modify by Peggy 20210729
+		}
+		col++;
+		// PACKAGE CODE
+		if (rs.getString("fairchild_cpn") != null || rs.getString("PACKAGE_CODE").indexOf("QQ") >= 0)  //add by Peggy 20181221
+		{
+			ws.addCell(new jxl.write.Label(col, row, "", ALeftL));
+		} else {
+			ws.addCell(new jxl.write.Label(col, row, rs.getString("PACKAGE_CODE"), (rs.getString("prefeered_packing_code_flag").equals("Y") ? ALeftLR : ALeftL)));
+		}
+		col++;
+		// TSC Ordering Code
+		if (rs.getString("fairchild_cpn") != null)  //add by Peggy 20181221
+		{
+			ws.addCell(new jxl.write.Label(col, row, rs.getString("fairchild_cpn"), ALeftL));
+		} else {
+			ws.addCell(new jxl.write.Label(col, row, rs.getString("DESCRIPTION"), ALeftL));
+		}
+		col++;
+		// PL Category
+		ws.addCell(new jxl.write.Label(col, row, (rs.getString("PL_CATEGORY") == null ? "" : rs.getString("PL_CATEGORY")), ALeftL)); //add by Peggy 20221108
+		col++;
+		// PROD GROUP
+		ws.addCell(new jxl.write.Label(col, row, (rs.getString("TSC_PROD_GROUP") == null ? "" : rs.getString("TSC_PROD_GROUP")), ALeftL));
+		col++;
+		// TSC Prod Category
+		ws.addCell(new jxl.write.Label(col, row, (rs.getString("TSC_PROD_CATEGORY") == null ? "" : rs.getString("TSC_PROD_CATEGORY")), ALeftL));
+		col++;
+		// FAMILY
+		ws.addCell(new jxl.write.Label(col, row, (rs.getString("TSC_FAMILY") == null ? "" : rs.getString("TSC_FAMILY")), ALeftL));
+		col++;
+		// PROD FAMILY
+		ws.addCell(new jxl.write.Label(col, row, (rs.getString("TSC_PROD_FAMILY") == null ? "" : rs.getString("TSC_PROD_FAMILY")), ALeftL));
+		col++;
+		// PACKAGE
+		ws.addCell(new jxl.write.Label(col, row, (rs.getString("TSC_PACKAGE") == null ? "" : rs.getString("TSC_PACKAGE")), ALeftL));
+		col++;
+		// SPQ
+		if (rs.getString("SPQ") == null) {
+			ws.addCell(new jxl.write.Label(col, row, "", ACenterL));
+		} else {
+			ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("SPQ")).doubleValue(), ARightL));
+		}
+		col++;
+		// MOQ
+		if (rs.getString("MOQ") == null) {
+			ws.addCell(new jxl.write.Label(col, row, "", ACenterL));
+		} else {
+			ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("MOQ")).doubleValue(), ARightL));
+		}
+		col++;
+		// Standard Lead Time(Week)
+		if (rs.getString("LEAD_TIME") == null) {
+			ws.addCell(new jxl.write.Label(col, row, "", ACenterL));
+		} else {
+			ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("LEAD_TIME")).doubleValue(), ARightL));
+		}
+		col++;
+		//if (rs.getString("NO_WAFER_LEAD_TIME")==null)
+		//{
+		//	ws.addCell(new jxl.write.Label(col, row, "" , ACenterL));
+		//}
+		//else
+		//{
+		//	ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("NO_WAFER_LEAD_TIME")).doubleValue(), ARightL));
+		//}
+		//col++;
+
+		// TP (USD/PCS)
+		if (rs.getString("PRICE") == null) {
+			ws.addCell(new jxl.write.Label(col, row, "", ACenterL));
+		} else {
+			ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("PRICE")).doubleValue(), ARightL));
+		}
+		col++;
+		//if (rs.getString("TSCE_PRICE")==null)
+		//{
+		//	ws.addCell(new jxl.write.Label(col, row, "" , ACenterL));
+		//}
+		//else
+		//{
+		//	ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("TSCE_PRICE")).doubleValue(), ARightL));
+		//}
+		//col++;
+
+		// PRICE LAST UPDATE DATE
+		ws.addCell(new jxl.write.Label(col, row, rs.getString("price_last_update_date"), ACenterL));
+		col++;
+		// 22D Creation Date
+		ws.addCell(new jxl.write.Label(col, row, rs.getString("item_creation_date"), ACenterL));
+		col++;
+
+		//  Bottom Price (USD/PCS)
+		if (rs.getString("bottom_price_usd_pcs") == null) {
+			ws.addCell(new jxl.write.Label(col, row, "", ACenterL));
+		} else {
+			//ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("BOTTOM_PRICE")).doubleValue(), ARightL));
+			ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("bottom_price_usd_pcs")).doubleValue(), ARightL));
+		}
+		col++;
+		// Sales Head price (USD/PCS)
+		if (rs.getString("sales_head_price_usd_pcs") == null) {
+			ws.addCell(new jxl.write.Label(col, row, "", ACenterL));
+		} else {
+			//ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("SALES_HEAD_PRICE")).doubleValue(), ARightL));
+			ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("sales_head_price_usd_pcs")).doubleValue(), ARightL));
+		}
+		col++;
+		// Recommended to Stock in Channel
+		ws.addCell(new jxl.write.Label(col, row, (rs.getString("recommend_stock_in_channel") == null ? "" : rs.getString("recommend_stock_in_channel")), ACenterL));
+		col++;
+		// Price book Code
+		ws.addCell(new jxl.write.Label(col, row, (rs.getString("price_book_code") == null ? "" : rs.getString("price_book_code")), ACenterL));
+		col++;
+		// Distribution Book Price
+		if (rs.getString("price1") == null) {
+			ws.addCell(new jxl.write.Label(col, row, "", ACenterL));
+		} else {
+			ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("price1")).doubleValue(), ARightL));
+		}
+		col++;
+		// Distribution MPP Price
+		if (rs.getString("price2") == null) {
+			ws.addCell(new jxl.write.Label(col, row, "", ACenterL));
+		} else {
+			ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("price2")).doubleValue(), ARightL));
+		}
+		col++;
+		// Design Registration
+		ws.addCell(new jxl.write.Label(col, row, (rs.getString("design_registration") == null ? "" : rs.getString("design_registration")), ACenterL));
+		col++;
+		// Design Registration Price
+		if (rs.getString("price3") == null) {
+			ws.addCell(new jxl.write.Label(col, row, "", ACenterL));
+		} else {
+			ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("price3")).doubleValue(), ARightL));
+		}
+		col++;
+		// Recommended Replacement
+		ws.addCell(new jxl.write.Label(col, row, (rs.getString("recommend_replacement") == null ? "" : rs.getString("recommend_replacement")), ACenterL));
+		col++;
+		// Factory
+		ws.addCell(new jxl.write.Label(col, row, rs.getString("factory_code"), ACenterL));
+		col++;
+		// RFQ Factory Code
+		ws.addCell(new jxl.write.Label(col, row, rs.getString("attribute3"), ACenterL));
+		col++;
+		// COO
+		ws.addCell(new jxl.write.Label(col, row, rs.getString("coo"), ACenterL));
+		col++;
+		// COO(TSCA use only)
+		ws.addCell(new jxl.write.Label(col, row, (rs.getString("coo_code") == null ? "" : rs.getString("coo_code")), ACenterL)); //add by Peggy 20200203
+		col++;
+		// Description
+		ws.addCell(new jxl.write.Label(col, row, (rs.getString("part_spec") == null ? "" : rs.getString("part_spec")), ALeftL));
+		col++;
+		//ws.addCell(new jxl.write.Label(col, row, (rs.getString("series_aecq")==null?"":rs.getString("series_aecq")), ACenterL));
+		//AEC-Q101
+		ws.addCell(new jxl.write.Label(col, row, (rs.getString("AEC_Q101") == null ? "" : rs.getString("AEC_Q101")), ACenterL));
+		col++;
+		// MSL
+		ws.addCell(new jxl.write.Label(col, row, (rs.getString("msl") == null || rs.getString("msl").equals("0") ? "" : rs.getString("msl")), ALeftL));
+		col++;
+		// Website Status
+		if (rs.getString("TSC_PROD_GROUP") != null && rs.getString("TSC_PROD_GROUP").equals("PRD") && rs.getString("PACKAGE_CODE").indexOf("QQ") < 0)//add by Peggy 20200421
+		{
+			//if (rs.getString("TSC_PACKAGE")!=null && (rs.getString("TSC_PACKAGE").equals("C-SMA") || rs.getString("TSC_PACKAGE").equals("Folded SMA") || rs.getString("TSC_PACKAGE").equals("SMA") || rs.getString("TSC_PACKAGE").equals("SMB") || rs.getString("TSC_PACKAGE").equals("SMC")))
+			if (rs.getString("TSC_PACKAGE") != null && ((rs.getString("TSC_PACKAGE").equals("C-SMA") && rs.getString("TSC_FAMILY") != null && !rs.getString("TSC_FAMILY").equals("Trench SKY")) || rs.getString("TSC_PACKAGE").equals("Folded SMA") || rs.getString("TSC_PACKAGE").equals("SMA") || rs.getString("TSC_PACKAGE").equals("SMB") || (rs.getString("TSC_PACKAGE").equals("SMC") && !rs.getString("DESCRIPTION").startsWith("5.0SMDJ")))) {
+				if (rs.getString("website_status") != null && rs.getString("website_status").equals("Active")) {
+					ws.addCell(new jxl.write.Label(col, row, "NRND", ACenterL));
+				}
 			}
-			col++;
-			// PACKAGE CODE
-			if (rs.getString("fairchild_cpn") != null || rs.getString("PACKAGE_CODE").indexOf("QQ") >= 0)  //add by Peggy 20181221
-			{
-				ws.addCell(new jxl.write.Label(col, row, "", ALeftL));
-			} else {
-				ws.addCell(new jxl.write.Label(col, row, rs.getString("PACKAGE_CODE"), (rs.getString("prefeered_packing_code_flag").equals("Y") ? ALeftLR : ALeftL)));
-			}
-			col++;
-			// TSC Ordering Code
-			if (rs.getString("fairchild_cpn") != null)  //add by Peggy 20181221
-			{
-				ws.addCell(new jxl.write.Label(col, row, rs.getString("fairchild_cpn"), ALeftL));
-			} else {
-				ws.addCell(new jxl.write.Label(col, row, rs.getString("DESCRIPTION"), ALeftL));
-			}
-			col++;
-			// PL Category
-			ws.addCell(new jxl.write.Label(col, row, (rs.getString("PL_CATEGORY") == null ? "" : rs.getString("PL_CATEGORY")), ALeftL)); //add by Peggy 20221108
-			col++;
-			// PROD GROUP
-			ws.addCell(new jxl.write.Label(col, row, (rs.getString("TSC_PROD_GROUP") == null ? "" : rs.getString("TSC_PROD_GROUP")), ALeftL));
-			col++;
-			// TSC Prod Category
-			ws.addCell(new jxl.write.Label(col, row, (rs.getString("TSC_PROD_CATEGORY") == null ? "" : rs.getString("TSC_PROD_CATEGORY")), ALeftL));
-			col++;
-			// FAMILY
-			ws.addCell(new jxl.write.Label(col, row, (rs.getString("TSC_FAMILY") == null ? "" : rs.getString("TSC_FAMILY")), ALeftL));
-			col++;
-			// PROD FAMILY
-			ws.addCell(new jxl.write.Label(col, row, (rs.getString("TSC_PROD_FAMILY") == null ? "" : rs.getString("TSC_PROD_FAMILY")), ALeftL));
-			col++;
-			// PACKAGE
-			ws.addCell(new jxl.write.Label(col, row, (rs.getString("TSC_PACKAGE") == null ? "" : rs.getString("TSC_PACKAGE")), ALeftL));
-			col++;
-			// SPQ
+		} else {
+			ws.addCell(new jxl.write.Label(col, row, (rs.getString("website_status") == null ? "" : rs.getString("website_status")), ACenterL));
+		}
+		col++;
+		// Packaging Description
+		ws.addCell(new jxl.write.Label(col, row, rs.getString("PACKAGINGDESCRIPTION"), ACenterL));
+		col++;
+		// Reel/Box (PC)
+		if (rs.getString("reel_pc") == null) {
+			//ws.addCell(new jxl.write.Label(col, row, "" , ACenterL));
 			if (rs.getString("SPQ") == null) {
 				ws.addCell(new jxl.write.Label(col, row, "", ACenterL));
 			} else {
 				ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("SPQ")).doubleValue(), ARightL));
 			}
-			col++;
-			// MOQ
-			if (rs.getString("MOQ") == null) {
-				ws.addCell(new jxl.write.Label(col, row, "", ACenterL));
-			} else {
-				ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("MOQ")).doubleValue(), ARightL));
-			}
-			col++;
-			// Standard Lead Time(Week)
-			if (rs.getString("LEAD_TIME") == null) {
-				ws.addCell(new jxl.write.Label(col, row, "", ACenterL));
-			} else {
-				ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("LEAD_TIME")).doubleValue(), ARightL));
-			}
-			col++;
-			//if (rs.getString("NO_WAFER_LEAD_TIME")==null)
-			//{
-			//	ws.addCell(new jxl.write.Label(col, row, "" , ACenterL));
-			//}
-			//else
-			//{
-			//	ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("NO_WAFER_LEAD_TIME")).doubleValue(), ARightL));
-			//}
-			//col++;
-
-			// TP (USD/PCS)
-			if (rs.getString("PRICE") == null) {
-				ws.addCell(new jxl.write.Label(col, row, "", ACenterL));
-			} else {
-				ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("PRICE")).doubleValue(), ARightL));
-			}
-			col++;
-			//if (rs.getString("TSCE_PRICE")==null)
-			//{
-			//	ws.addCell(new jxl.write.Label(col, row, "" , ACenterL));
-			//}
-			//else
-			//{
-			//	ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("TSCE_PRICE")).doubleValue(), ARightL));
-			//}
-			//col++;
-
-			// PRICE LAST UPDATE DATE
-			ws.addCell(new jxl.write.Label(col, row, rs.getString("price_last_update_date"), ACenterL));
-			col++;
-			// 22D Creation Date
-			ws.addCell(new jxl.write.Label(col, row, rs.getString("item_creation_date"), ACenterL));
-			col++;
-
-			//  Bottom Price (USD/PCS)
-			if (rs.getString("bottom_price_usd_pcs") == null) {
-				ws.addCell(new jxl.write.Label(col, row, "", ACenterL));
-			} else {
-				//ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("BOTTOM_PRICE")).doubleValue(), ARightL));
-				ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("bottom_price_usd_pcs")).doubleValue(), ARightL));
-			}
-			col++;
-			// Sales Head price (USD/PCS)
-			if (rs.getString("sales_head_price_usd_pcs") == null) {
-				ws.addCell(new jxl.write.Label(col, row, "", ACenterL));
-			} else {
-				//ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("SALES_HEAD_PRICE")).doubleValue(), ARightL));
-				ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("sales_head_price_usd_pcs")).doubleValue(), ARightL));
-			}
-			col++;
-			// Recommended to Stock in Channel
-			ws.addCell(new jxl.write.Label(col, row, (rs.getString("recommend_stock_in_channel") == null ? "" : rs.getString("recommend_stock_in_channel")), ACenterL));
-			col++;
-			// Price book Code
-			ws.addCell(new jxl.write.Label(col, row, (rs.getString("price_book_code") == null ? "" : rs.getString("price_book_code")), ACenterL));
-			col++;
-			// Distribution Book Price
-			if (rs.getString("price1") == null) {
-				ws.addCell(new jxl.write.Label(col, row, "", ACenterL));
-			} else {
-				ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("price1")).doubleValue(), ARightL));
-			}
-			col++;
-			// Distribution MPP Price
-			if (rs.getString("price2") == null) {
-				ws.addCell(new jxl.write.Label(col, row, "", ACenterL));
-			} else {
-				ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("price2")).doubleValue(), ARightL));
-			}
-			col++;
-			// Design Registration
-			ws.addCell(new jxl.write.Label(col, row, (rs.getString("design_registration") == null ? "" : rs.getString("design_registration")), ACenterL));
-			col++;
-			// Design Registration Price
-			if (rs.getString("price3") == null) {
-				ws.addCell(new jxl.write.Label(col, row, "", ACenterL));
-			} else {
-				ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("price3")).doubleValue(), ARightL));
-			}
-			col++;
-			// Recommended Replacement
-			ws.addCell(new jxl.write.Label(col, row, (rs.getString("recommend_replacement") == null ? "" : rs.getString("recommend_replacement")), ACenterL));
-			col++;
-			// Factory
-			ws.addCell(new jxl.write.Label(col, row, rs.getString("factory_code"), ACenterL));
-			col++;
-			// RFQ Factory Code
-			ws.addCell(new jxl.write.Label(col, row, rs.getString("attribute3"), ACenterL));
-			col++;
-			// COO
-			ws.addCell(new jxl.write.Label(col, row, rs.getString("coo"), ACenterL));
-			col++;
-			// COO(TSCA use only)
-			ws.addCell(new jxl.write.Label(col, row, (rs.getString("coo_code") == null ? "" : rs.getString("coo_code")), ACenterL)); //add by Peggy 20200203
-			col++;
-			// Description
-			ws.addCell(new jxl.write.Label(col, row, (rs.getString("part_spec") == null ? "" : rs.getString("part_spec")), ALeftL));
-			col++;
-			//ws.addCell(new jxl.write.Label(col, row, (rs.getString("series_aecq")==null?"":rs.getString("series_aecq")), ACenterL));
-			//AEC-Q101
-			ws.addCell(new jxl.write.Label(col, row, (rs.getString("AEC_Q101") == null ? "" : rs.getString("AEC_Q101")), ACenterL));
-			col++;
-			// MSL
-			ws.addCell(new jxl.write.Label(col, row, (rs.getString("msl") == null || rs.getString("msl").equals("0") ? "" : rs.getString("msl")), ALeftL));
-			col++;
-			// Website Status
-			if (rs.getString("TSC_PROD_GROUP") != null && rs.getString("TSC_PROD_GROUP").equals("PRD") && rs.getString("PACKAGE_CODE").indexOf("QQ") < 0)//add by Peggy 20200421
-			{
-				//if (rs.getString("TSC_PACKAGE")!=null && (rs.getString("TSC_PACKAGE").equals("C-SMA") || rs.getString("TSC_PACKAGE").equals("Folded SMA") || rs.getString("TSC_PACKAGE").equals("SMA") || rs.getString("TSC_PACKAGE").equals("SMB") || rs.getString("TSC_PACKAGE").equals("SMC")))
-				if (rs.getString("TSC_PACKAGE") != null && ((rs.getString("TSC_PACKAGE").equals("C-SMA") && rs.getString("TSC_FAMILY") != null && !rs.getString("TSC_FAMILY").equals("Trench SKY")) || rs.getString("TSC_PACKAGE").equals("Folded SMA") || rs.getString("TSC_PACKAGE").equals("SMA") || rs.getString("TSC_PACKAGE").equals("SMB") || (rs.getString("TSC_PACKAGE").equals("SMC") && !rs.getString("DESCRIPTION").startsWith("5.0SMDJ")))) {
-					if (rs.getString("website_status") != null && rs.getString("website_status").equals("Active")) {
-						ws.addCell(new jxl.write.Label(col, row, "NRND", ACenterL));
-					}
-				}
-			} else {
-				ws.addCell(new jxl.write.Label(col, row, (rs.getString("website_status") == null ? "" : rs.getString("website_status")), ACenterL));
-			}
-			col++;
-			// Packaging Description
-			ws.addCell(new jxl.write.Label(col, row, rs.getString("PACKAGINGDESCRIPTION"), ACenterL));
-			col++;
-			// Reel/Box (PC)
-			if (rs.getString("reel_pc") == null) {
-				//ws.addCell(new jxl.write.Label(col, row, "" , ACenterL));
-				if (rs.getString("SPQ") == null) {
-					ws.addCell(new jxl.write.Label(col, row, "", ACenterL));
-				} else {
-					ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("SPQ")).doubleValue(), ARightL));
-				}
-			} else {
-				ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("reel_pc")).doubleValue(), ARightL));
-			}
-			col++;
-			// Inner Box(PC)
-			if (rs.getString("innerbox_pc") == null) {
-				//ws.addCell(new jxl.write.Label(col, row, "0" , ACenterL));
-				ws.addCell(new jxl.write.Number(col, row, Double.valueOf("0").doubleValue(), ARightL));
-			} else {
-				ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("innerbox_pc")).doubleValue(), ARightL));
-			}
-			col++;
-			// Carton(PC)
-			if (rs.getString("carton_pc") == null) {
-				ws.addCell(new jxl.write.Label(col, row, "", ACenterL));
-			} else {
-				ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("carton_pc")).doubleValue(), ARightL));
-			}
-			col++;
-			// Carton Size(mm)
-			ws.addCell(new jxl.write.Label(col, row, (rs.getString("CartonSize_mm") == null ? "" : rs.getString("CartonSize_mm")), ACenterL));
-			col++;
-			// Gross Weight(kg/Carton)
-			ws.addCell(new jxl.write.Label(col, row, (rs.getString("GW_KG_CARTON") == null ? "" : rs.getString("GW_KG_CARTON")), ARightL));
-			col++;
-			// PCN/PDN
-			ws.addCell(new jxl.write.Label(col, row, rs.getString("pcn_list"), ALeftL));
-			col++;
-			// TARIC Code
-			ws.addCell(new jxl.write.Label(col, row, (rs.getString("cccode") == null ? "" : rs.getString("cccode")), ACenterL));
-			col++;
-			// HTS Code(TSCA local use)
-			ws.addCell(new jxl.write.Label(col, row, (rs.getString("HTS_CODE") == null ? "" : rs.getString("HTS_CODE")), ALeftL));
-			col++;
-			// Part Name create Date
-			ws.addCell(new jxl.write.Label(col, row, rs.getString("NEW_PARTS_RELEASE_DATE"), ACenterL));  //add by Peggy 20230421
-			col++;
-			// TW Vendor
-			ws.addCell(new jxl.write.Label(col, row, rs.getString("TW_VENDOR_FLAG"), ACenterL));  //add by Peggy 20200130
-			col++;
-			// NPI released to Web
-			ws.addCell(new jxl.write.Label(col, row, (rs.getString("first_on_website_date") == null ? "" : rs.getString("first_on_website_date")), ACenterL)); //add by Peggy 20211130
-			col++;
-			// F400 PRODUCT
-			ws.addCell(new jxl.write.Label(col, row, (rs.getString("F400_PRODUCT") == null ? "" : rs.getString("F400_PRODUCT")), ACenterL)); //add by Peggy 20230214
-			col++;
-			// SPG STATUS
-			if ((rs.getString("F400_PRODUCT") != null && rs.getString("F400_PRODUCT").equals("YES")) || rs.getString("TSC_FAMILY").toUpperCase().equals("MOSFET-HV") || rs.getString("TSC_FAMILY").toUpperCase().equals("MOSFET-MV") || rs.getString("TSC_FAMILY").toUpperCase().equals("MOSFET-LV") || rs.getString("TSC_FAMILY").toUpperCase().equals("TVS LOAD DUMP") || ((rs.getString("TSC_FAMILY").toUpperCase().equals("TRENCH SKY") || rs.getString("TSC_FAMILY").toUpperCase().equals("LIGHTING IC")) && rs.getString("AEC_Q101") != null && rs.getString("AEC_Q101").equals("Yes"))) {
-				if (rs.getString("website_status") != null && rs.getString("website_status").equals("Active")) {
-					ws.addCell(new jxl.write.Label(col, row, "SPG", ACenterL)); //add by Peggy 20230214
-				} else {
-					ws.addCell(new jxl.write.Label(col, row, "Standard", ACenterL)); //add by Peggy 20230214
-				}
+		} else {
+			ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("reel_pc")).doubleValue(), ARightL));
+		}
+		col++;
+		// Inner Box(PC)
+		if (rs.getString("innerbox_pc") == null) {
+			//ws.addCell(new jxl.write.Label(col, row, "0" , ACenterL));
+			ws.addCell(new jxl.write.Number(col, row, Double.valueOf("0").doubleValue(), ARightL));
+		} else {
+			ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("innerbox_pc")).doubleValue(), ARightL));
+		}
+		col++;
+		// Carton(PC)
+		if (rs.getString("carton_pc") == null) {
+			ws.addCell(new jxl.write.Label(col, row, "", ACenterL));
+		} else {
+			ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("carton_pc")).doubleValue(), ARightL));
+		}
+		col++;
+		// Carton Size(mm)
+		ws.addCell(new jxl.write.Label(col, row, (rs.getString("CartonSize_mm") == null ? "" : rs.getString("CartonSize_mm")), ACenterL));
+		col++;
+		// Gross Weight(kg/Carton)
+		ws.addCell(new jxl.write.Label(col, row, (rs.getString("GW_KG_CARTON") == null ? "" : rs.getString("GW_KG_CARTON")), ARightL));
+		col++;
+		// PCN/PDN
+		ws.addCell(new jxl.write.Label(col, row, rs.getString("pcn_list"), ALeftL));
+		col++;
+		// TARIC Code
+		ws.addCell(new jxl.write.Label(col, row, (rs.getString("cccode") == null ? "" : rs.getString("cccode")), ACenterL));
+		col++;
+		// HTS Code(TSCA local use)
+		ws.addCell(new jxl.write.Label(col, row, (rs.getString("HTS_CODE") == null ? "" : rs.getString("HTS_CODE")), ALeftL));
+		col++;
+		// Part Name create Date
+		ws.addCell(new jxl.write.Label(col, row, rs.getString("NEW_PARTS_RELEASE_DATE"), ACenterL));  //add by Peggy 20230421
+		col++;
+		// TW Vendor
+		ws.addCell(new jxl.write.Label(col, row, rs.getString("TW_VENDOR_FLAG"), ACenterL));  //add by Peggy 20200130
+		col++;
+		// NPI released to Web
+		ws.addCell(new jxl.write.Label(col, row, (rs.getString("first_on_website_date") == null ? "" : rs.getString("first_on_website_date")), ACenterL)); //add by Peggy 20211130
+		col++;
+		// F400 PRODUCT
+		ws.addCell(new jxl.write.Label(col, row, (rs.getString("F400_PRODUCT") == null ? "" : rs.getString("F400_PRODUCT")), ACenterL)); //add by Peggy 20230214
+		col++;
+		// SPG STATUS
+		if ((rs.getString("F400_PRODUCT") != null && rs.getString("F400_PRODUCT").equals("YES")) || rs.getString("TSC_FAMILY").toUpperCase().equals("MOSFET-HV") || rs.getString("TSC_FAMILY").toUpperCase().equals("MOSFET-MV") || rs.getString("TSC_FAMILY").toUpperCase().equals("MOSFET-LV") || rs.getString("TSC_FAMILY").toUpperCase().equals("TVS LOAD DUMP") || ((rs.getString("TSC_FAMILY").toUpperCase().equals("TRENCH SKY") || rs.getString("TSC_FAMILY").toUpperCase().equals("LIGHTING IC")) && rs.getString("AEC_Q101") != null && rs.getString("AEC_Q101").equals("Yes"))) {
+			if (rs.getString("website_status") != null && rs.getString("website_status").equals("Active")) {
+				ws.addCell(new jxl.write.Label(col, row, "SPG", ACenterL)); //add by Peggy 20230214
 			} else {
 				ws.addCell(new jxl.write.Label(col, row, "Standard", ACenterL)); //add by Peggy 20230214
 			}
-			col++;
-			//ws.addCell(new jxl.write.Label(col, row, (rs.getString("recommend_stock_item")==null?"":"Y") , ACenterL)); //add by Peggy 20230807
-			//col++;
-			// PROD HIERARCHY 1
-			ws.addCell(new jxl.write.Label(col, row, (rs.getString("TSC_prod_hierarchy_1") == null ? "" : rs.getString("TSC_prod_hierarchy_1")), ALeftL));
-			col++;
-			// PROD HIERARCHY 2
-			ws.addCell(new jxl.write.Label(col, row, (rs.getString("TSC_prod_hierarchy_2") == null ? "" : rs.getString("TSC_prod_hierarchy_2")), ALeftL));
-			col++;
-			// PROD HIERARCHY 3
-			ws.addCell(new jxl.write.Label(col, row, (rs.getString("TSC_prod_hierarchy_3") == null ? "" : rs.getString("TSC_prod_hierarchy_3")), ALeftL));
-			col++;
-			// PROD HIERARCHY 4
-			ws.addCell(new jxl.write.Label(col, row, (rs.getString("TSC_prod_hierarchy_4") == null ? "" : rs.getString("TSC_prod_hierarchy_4")), ALeftL));
-			col++;
-
-			row++;
-			reccnt++;
+		} else {
+			ws.addCell(new jxl.write.Label(col, row, "Standard", ACenterL)); //add by Peggy 20230214
 		}
+		col++;
+		//ws.addCell(new jxl.write.Label(col, row, (rs.getString("recommend_stock_item")==null?"":"Y") , ACenterL)); //add by Peggy 20230807
+		//col++;
+		// PROD HIERARCHY 1
+		ws.addCell(new jxl.write.Label(col, row, (rs.getString("TSC_prod_hierarchy_1") == null ? "" : rs.getString("TSC_prod_hierarchy_1")), ALeftL));
+		col++;
+		// PROD HIERARCHY 2
+		ws.addCell(new jxl.write.Label(col, row, (rs.getString("TSC_prod_hierarchy_2") == null ? "" : rs.getString("TSC_prod_hierarchy_2")), ALeftL));
+		col++;
+		// PROD HIERARCHY 3
+		ws.addCell(new jxl.write.Label(col, row, (rs.getString("TSC_prod_hierarchy_3") == null ? "" : rs.getString("TSC_prod_hierarchy_3")), ALeftL));
+		col++;
+		// PROD HIERARCHY 4
+		ws.addCell(new jxl.write.Label(col, row, (rs.getString("TSC_prod_hierarchy_4") == null ? "" : rs.getString("TSC_prod_hierarchy_4")), ALeftL));
+		col++;
+
+		row++;
+		reccnt++;
+	}
 
 	wwb.write(); 
 	wwb.close();
