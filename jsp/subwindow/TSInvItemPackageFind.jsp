@@ -450,14 +450,24 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 10px }
 					 "  and NVL(a.CUSTOMER_ORDER_FLAG,'N')='Y'"+  //add by Peggy 20151008
 					 "  and NVL(a.CUSTOMER_ORDER_ENABLED_FLAG,'N')='Y'"+  //add by Peggy 20151008
 					 "  and tsc_item_pcn_flag(43,a.inventory_item_id,trunc(sysdate))='N'";  //add by Peggy 20230116
+
 			if (searchString=="%" || searchString.equals("%"))			
-			{  
+			{
 		 		where = where + "and (SEGMENT1 like '%') ";
 			}
 			else 
-			{ 
-		 		where = where + "and (upper(SEGMENT1) like '"+searchString.toUpperCase()+"' "+
-				" or upper(DESCRIPTION) like '"+searchString.toUpperCase()+"%') ";
+			{
+				if (!invItem.equals("")) {
+
+					where = where + " and SEGMENT1 like '"+invItem.toUpperCase()+"%' ";
+				} else if (!itemDesc.equals("")) {
+					where = where + " and DESCRIPTION like '"+itemDesc.toUpperCase()+"%' ";
+				} else {
+					where = where + "and (upper(SEGMENT1) like '"+searchString.toUpperCase()+"%' "+
+					" or upper(DESCRIPTION) like '"+searchString.toUpperCase()+"%') ";
+				}
+//		   			where = where + "and (upper(a.SEGMENT1) like '"+searchString.toUpperCase()+"'"+
+//					" or upper(DESCRIPTION) like '"+searchString.toUpperCase()+"%') ";
 			}    
 		 	
 			Statement stateCNT=con.createStatement();
@@ -507,15 +517,23 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 10px }
 					  " and NVL(a.CUSTOMER_ORDER_FLAG,'N')='Y'"+  //add by Peggy 20151008
 					  " and NVL(a.CUSTOMER_ORDER_ENABLED_FLAG,'N')='Y'"+  //add by Peggy 20151008
 					  " and tsc_item_pcn_flag(43,a.inventory_item_id,trunc(sysdate))='N'";  //add by Peggy 20230116
-				
-		  		if (searchString=="%" || searchString.equals("%"))			
-		  		{  
-		   			where = where + "and (a.SEGMENT1 like '%') ";		   
+
+		  		if (searchString=="%" || searchString.equals("%"))
+		  		{
+		   			where = where + "and (a.SEGMENT1 like '%') ";
 		  		}
-		  		else 
-		  		{ 
-		   			where = where + "and (upper(a.SEGMENT1) like '"+searchString.toUpperCase()+"'"+
-					" or upper(DESCRIPTION) like '"+searchString.toUpperCase()+"%') ";		   
+		  		else
+		  		{
+					if (!invItem.equals("")) {
+						where = where + " and SEGMENT1 like '"+searchString.toUpperCase()+"%' ";
+					} else if (!invItem.equals("")) {
+						where = where + " and DESCRIPTION like '"+searchString.toUpperCase()+"%' ";
+					} else {
+						where = where + "and (upper(SEGMENT1) like '"+searchString.toUpperCase()+"%' "+
+								" or upper(DESCRIPTION) like '"+searchString.toUpperCase()+"%') ";
+					}
+//		   			where = where + "and (upper(a.SEGMENT1) like '"+searchString.toUpperCase()+"'"+
+//					" or upper(DESCRIPTION) like '"+searchString.toUpperCase()+"%') ";
 		  		}    
 			}  // End of if (queryCount==0)
 
