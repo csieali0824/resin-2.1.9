@@ -1,13 +1,13 @@
-<!-- 20140825 by Peggy,æ–°å¢ERP END CUSTOMER IDæ¬„ä½-->
+<!-- 20140825 by Peggy,·s¼WERP END CUSTOMER IDÄæ¦ì-->
 <!-- 20150519 by Peggy,add column "tsch orderl line id" for tsch case-->
-<!-- 20151008 by Peggy,mtl_system_items_båŠ å…¥CUSTOMER_ORDER_FLAG=Y AND CUSTOMER_ORDER_ENABLED_FLAG=Yåˆ¤æ–·-->
+<!-- 20151008 by Peggy,mtl_system_items_b¥[¤JCUSTOMER_ORDER_FLAG=Y AND CUSTOMER_ORDER_ENABLED_FLAG=Y§PÂ_-->
 <!-- 20160313 by Peggy,add sample order direct ship to cust flag-->
 <!-- 20160930 by Peggy,check shipping method value -->
 <!-- 20161214 by Peggy,add tsc 22D field-->
 <!-- 20170216 by Peggy,add sales region for bi-->
 <!-- 20170512 by Peggy,add end cust ship to id-->
 <!-- 20190225 by Peggy,add End customer part name-->
-<%@ page contentType="text/html; charset=utf-8" language="java" %>
+<%@ page contentType="text/html; charset=big5" language="java" %>
 <%@ page import="java.sql.*"%>
 <%@ page import="java.util.*"%>
 <%@ page import="jxl.*"%>
@@ -18,11 +18,11 @@
 <%@ page import="com.jspsmart.upload.*"%>
 <%@ page errorPage="ExceptionHandler.jsp"%>
 <%@ page import="DateBean,ArrayCheckBoxBean,Array2DimensionInputBean" %>
-<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—é€£çµæ± ==========-->
+<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<!--=============ä»¥ä¸‹å€æ®µç‚ºå®‰å…¨èªè­‰æ©Ÿåˆ¶==========-->
+<!--=============¥H¤U°Ï¬q¬°¦w¥ş»{ÃÒ¾÷¨î==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—é€£çµæ± ==========-->
+<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
 <html>
 <head>
 <title>TSCK Excel Upload</title>
@@ -36,7 +36,7 @@ function setCreate(URL)
 {  
 	if (document.form1.UPLOADFILE.value == "")
 	{
-		alert("è«‹é¸æ“‡ä¸Šå‚³æª”æ¡ˆ!");
+		alert("½Ğ¿ï¾Ü¤W¶ÇÀÉ®×!");
 		document.form1.UPLOADFILE.focus();
 		return false;		
 	}
@@ -44,7 +44,7 @@ function setCreate(URL)
 	filename = filename.substr(filename.length-4);
 	if (filename.toUpperCase() != ".XLS")
 	{
-		alert('ä¸Šå‚³æª”æ¡ˆå¿…é ˆç‚ºoffice 2003 excelæª”!');
+		alert('¤W¶ÇÀÉ®×¥²¶·¬°office 2003 excelÀÉ!');
 		document.form1.UPLOADFILE.focus();
 		return false;	
 	}
@@ -61,12 +61,12 @@ function setCreate(URL)
 	}
 	if (M_TYPE=="")
 	{
-		alert("è«‹é¸æ“‡Merge Type!");
+		alert("½Ğ¿ï¾ÜMerge Type!");
 		return false;
 	}
 	if (chkcnt >1)
 	{
-		alert("Merge Typeåªå…è¨±æ“‡ä¸€!");
+		alert("Merge Type¥u¤¹³\¾Ü¤@!");
 		return false;
 	}
     document.form1.submit1.disabled=true;
@@ -130,7 +130,7 @@ function unfocuscolor(objid)
 }
 function delData(URL)
 { 
-	if (confirm("æ‚¨ç¢ºå®šè¦åˆªé™¤æ­¤ç­†è³‡æ–™?"))
+	if (confirm("±z½T©w­n§R°£¦¹µ§¸ê®Æ?"))
 	{
 		document.form1.action=URL+"&ACTIONCODE=DETAIL";		
 		document.form1.submit();
@@ -202,7 +202,7 @@ try
 	{ 	
 		%>
 		<script language="JavaScript" type="text/JavaScript">
-			alert("æ‚¨æ²’æœ‰è©²å€åŸŸä½¿ç”¨æ¬Šé™,ç„¡æ³•ä½¿ç”¨æ­¤åŠŸèƒ½,è¬è¬!");
+			alert("±z¨S¦³¸Ó°Ï°ì¨Ï¥ÎÅv­­,µLªk¨Ï¥Î¦¹¥\¯à,ÁÂÁÂ!");
 			location.href="../ORAddsMainMenu.jsp";
 			//closeWindow();
 		</script>
@@ -345,7 +345,7 @@ if (DelFlag.equals("Y"))
   <br>
   <table width="350" height="50" border="1" align="center" cellpadding="5" cellspacing="0" bordercolorlight="#CCFFCC" bordercolordark="#336600">
     <tr>
-    <td height="70" bgcolor="#CCCC99"  align="center"><font color="#003399" face="æ¨™æ¥·é«”" size="+2">è³‡æ–™æ­£åœ¨è™•ç†ä¸­,è«‹ç¨å€™.....</font> <BR>
+    <td height="70" bgcolor="#CCCC99"  align="center"><font color="#003399" face="¼Ğ·¢Åé" size="+2">¸ê®Æ¥¿¦b³B²z¤¤,½Ğµy­Ô.....</font> <BR>
       <DIV ID="blockDiv" STYLE="visibility:hidden;position:absolute; width:5px; height:5px; clip:rect(0px 5px 5px 0px); background-color:#567886; layer-background-color:#567886; display=''; left: 50px;"></div>
 	</td>
   </tr>
@@ -385,9 +385,9 @@ if (DelFlag.equals("Y"))
 							</tr>
 						</table>
 					</TD>
-					<TD align="right" width="10%" title="å›é¦–é !">
-						<A HREF="../ORAddsMainMenu.jsp" style="font-size:13px;font-family:æ¨™æ¥·é«”;text-decoration:none;color:#0000FF">
-						<STRONG>å›é¦–é </STRONG>
+					<TD align="right" width="10%" title="¦^­º­¶!">
+						<A HREF="../ORAddsMainMenu.jsp" style="font-size:13px;font-family:¼Ğ·¢Åé;text-decoration:none;color:#0000FF">
+						<STRONG>¦^­º­¶</STRONG>
 						</A>
 					</TD>
 				</tr>
@@ -396,31 +396,31 @@ if (DelFlag.equals("Y"))
 					<td colspan="2">
 						<table  bordercolordark="#000033" cellspacing="0"  cellpadding="0" width="100%" align="left" bordercolorlight="ffffff" border="1">
 			  				<tr>
-								<td width="15%" style="color:#ffffff;font-size:13px;font-family:arial;background-color:#69A2B4">Sales Areaï¼š</td>
+								<td width="15%" style="color:#ffffff;font-size:13px;font-family:arial;background-color:#69A2B4">Sales Area¡G</td>
 								<td ><input type="text" style="color:#000000;border:none;font-family:ARIAL;font-size:13px" size="80" name="SalesArea" value="<%=SalesArea%>" onKeyDown="return (event.keyCode!=8);" readonly>
 			  				</tr>
 			  				<tr>
-								<td style="color:#ffffff;font-size:13px;font-family:ARIAL;background-color:#69A2B4">Group Byï¼š</td>
-								<td width="85%" ><input type="checkbox" name="checkbox1" value="<%=IDTYPE%>" <% if (MTYPE.equals(IDTYPE)) out.println("CHECKED");%> onClick="setchk('<%=IDTYPE%>');"><font style="font-size:13px;font-family:arial">By Customer IDç”¢ç”ŸRFQ</font>&nbsp;&nbsp;&nbsp;&nbsp;
-								                 <input type="checkbox" name="checkbox1" value="<%=POTYPE%>" <% if (MTYPE.equals(POTYPE)) out.println("CHECKED");%> onClick="setchk('<%=POTYPE%>');"><font style="font-size:13px;font-family:arial">By Customer POç”¢ç”ŸRFQ</font></td>
+								<td style="color:#ffffff;font-size:13px;font-family:ARIAL;background-color:#69A2B4">Group By¡G</td>
+								<td width="85%" ><input type="checkbox" name="checkbox1" value="<%=IDTYPE%>" <% if (MTYPE.equals(IDTYPE)) out.println("CHECKED");%> onClick="setchk('<%=IDTYPE%>');"><font style="font-size:13px;font-family:arial">By Customer ID²£¥ÍRFQ</font>&nbsp;&nbsp;&nbsp;&nbsp;
+								                 <input type="checkbox" name="checkbox1" value="<%=POTYPE%>" <% if (MTYPE.equals(POTYPE)) out.println("CHECKED");%> onClick="setchk('<%=POTYPE%>');"><font style="font-size:13px;font-family:arial">By Customer PO²£¥ÍRFQ</font></td>
 			  				</tr>
 			  				<tr>
-								<td style="color:#ffffff;font-size:13px;font-family:ARIAL;background-color:#69A2B4">Upload Fileï¼š</td>
+								<td style="color:#ffffff;font-size:13px;font-family:ARIAL;background-color:#69A2B4">Upload File¡G</td>
 								<td width="85%" ><INPUT TYPE="FILE" style="font-family:ARIAL;font-size:13px" NAME="UPLOADFILE" size="90"></td>
 			  				</tr>
 			  				<tr>
-								<td style="color:#ffffff;font-size:13px;font-family:ARIAL;background-color:#69A2B4">Sample Fileï¼š</td>
+								<td style="color:#ffffff;font-size:13px;font-family:ARIAL;background-color:#69A2B4">Sample File¡G</td>
 								<td width="85%" ><A HREF="../jsp/samplefiles/D4-013_SampleFile.xls"><font style="font-size:13px;font-family:arial">Download Sample File</font></A></td>
 			  				</tr>
 			  				<tr>
-								<td style="color:#ffffff;font-size:13px;font-family:ARIAL;background-color:#69A2B4">User Guideï¼š</td>
+								<td style="color:#ffffff;font-size:13px;font-family:ARIAL;background-color:#69A2B4">User Guide¡G</td>
 								<td width="85%" ><A HREF="../jsp/samplefiles/D4-013_FuncSpc.doc"><font style="font-size:13px;font-family:arial">Download User Guide</font></A></td>
 			  				</tr>
 						</table>
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2" title="è«‹æŒ‰æˆ‘ï¼Œè¬è¬!">
+					<td colspan="2" title="½Ğ«ö§Ú¡AÁÂÁÂ!">
 					<input type="button" style="font-size:13px;font-family:arial" name="submit1" value='Upload' onClick="setCreate('../jsp/TSCKBufferImport.jsp?ACTIONCODE=UPLOAD')">
 					</td>
 				</tr>
@@ -441,9 +441,9 @@ if (DelFlag.equals("Y"))
 							</tr>
 						</table>
 					</TD>
-					<TD align="right" width="10%" title="å›é¦–é !">
-						<A HREF="../ORAddsMainMenu.jsp" style="font-size:13px;font-family:æ¨™æ¥·é«”;text-decoration:none;color:#0000FF">
-						<STRONG>å›é¦–é </STRONG>
+					<TD align="right" width="10%" title="¦^­º­¶!">
+						<A HREF="../ORAddsMainMenu.jsp" style="font-size:13px;font-family:¼Ğ·¢Åé;text-decoration:none;color:#0000FF">
+						<STRONG>¦^­º­¶</STRONG>
 						</A>
 					</TD>
 				</tr>
@@ -488,16 +488,16 @@ if (ACTIONCODE.equals("UPLOAD"))
 		String uploadFile_name=upload_file.getFileName();
 		if (uploadFile_name == null || uploadFile_name.equals("") )
 		{
-			out.println("<script language=javascript>alert('è«‹å…ˆæŒ‰ç€è¦½éµé¸æ“‡æ¬²ä¸Šå‚³çš„office 2003 excelæª”ï¼Œè¬è¬!')</script>");
+			out.println("<script language=javascript>alert('½Ğ¥ı«öÂsÄıÁä¿ï¾Ü±ı¤W¶Çªºoffice 2003 excelÀÉ¡AÁÂÁÂ!')</script>");
 		}
 		else if (!(uploadFile_name.toLowerCase()).endsWith("xls"))
 		{
-			out.println("<script language=javascript>alert('ä¸Šå‚³æª”æ¡ˆå¿…é ˆç‚ºoffice 2003 excelæª”!')</script>");
+			out.println("<script language=javascript>alert('¤W¶ÇÀÉ®×¥²¶·¬°office 2003 excelÀÉ!')</script>");
 		}
 		else
 		{
 			CallableStatement cs1 = con.prepareCall("{call mo_global.set_policy_context('S',?)}");
-			cs1.setString(1,"41");  // å–æ¥­å‹™å“¡éš¸å±¬ParOrgID
+			cs1.setString(1,"41");  // ¨ú·~°È­ûÁõÄİParOrgID
 			cs1.execute();
 			cs1.close();
 		
@@ -526,7 +526,7 @@ if (ACTIONCODE.equals("UPLOAD"))
 			jxl.Sheet sht = wb.getSheet(0);
 
 
-			//RFQé¡å‹
+			//RFQÃş«¬
 			jxl.Cell cellRFQType = sht.getCell(1,0); 
 			strRFQType = cellRFQType.getContents();
 				
@@ -537,11 +537,11 @@ if (ACTIONCODE.equals("UPLOAD"))
 			//line detail
 			for (int i = sRow; i < sht.getRows(); i++) 
 			{
-				//å®¢æˆ¶ID
+				//«È¤áID
 				jxl.Cell cellCustNo = sht.getCell(0,i);
 				strCustNo = cellCustNo.getContents();
 
-				//è¨‚å–®é¡å‹
+				//­q³æÃş«¬
 				jxl.Cell cellOrderType = sht.getCell(1, i);          
 				strLineOrderType = (cellOrderType.getContents()).trim();
 				if (strLineOrderType==null) strLineOrderType="";
@@ -550,19 +550,19 @@ if (ACTIONCODE.equals("UPLOAD"))
 				jxl.Cell cellLineCustPO = sht.getCell(2, i);          
 				strLineCustPO = (cellLineCustPO.getContents()).trim();
 
-				//å°åŠå“å
+				//¥x¥b«~¦W
 				jxl.Cell cellItemDesc = sht.getCell(3, i);          
 				strItemDesc = (cellItemDesc.getContents()).trim();
 				if (strItemDesc == null) strItemDesc= "";
 
-				//å®¢æˆ¶å“è™Ÿ
+				//«È¤á«~¸¹
 				jxl.Cell cellCustItem = sht.getCell(4, i);          
 				strCustItem = (cellCustItem.getContents()).trim();
 				if (strCustItem == null) strCustItem= "";
 
 				if (strItemDesc.equals("") && strCustItem.equals("")) continue;
 				
-				//æ•¸é‡
+				//¼Æ¶q
 				jxl.Cell cellQty = sht.getCell(5, i);  
 				if (cellQty.getType() == CellType.NUMBER) 
 				{
@@ -571,7 +571,7 @@ if (ACTIONCODE.equals("UPLOAD"))
 				else strQty = (cellQty.getContents()).trim();
 				if (strQty == null) strQty="0";
 				
-				//å–®åƒ¹
+				//³æ»ù
 				jxl.Cell cellSellingPrice = sht.getCell(6, i);  
 				if (cellSellingPrice.getType() == CellType.NUMBER) 
 				{
@@ -582,7 +582,7 @@ if (ACTIONCODE.equals("UPLOAD"))
 			
 				SimpleDateFormat sy1=new SimpleDateFormat("yyyyMMdd");
 				
-				//äº¤è²¨æ—¥æœŸ
+				//¥æ³f¤é´Á
 				try
 				{
 					jxl.Cell cellRequestDate = sht.getCell(7, i);
@@ -625,12 +625,12 @@ if (ACTIONCODE.equals("UPLOAD"))
 
 				
 							
-				strErr ="";strCustID="";strCustName="";strItemID="";rec_cnt=0;strFactory="";strOrderType="";strOrderTypeID="";strFOB="";strShippingMethodcode="";//åˆå§‹åŒ–
+				strErr ="";strCustID="";strCustName="";strItemID="";rec_cnt=0;strFactory="";strOrderType="";strOrderTypeID="";strFOB="";strShippingMethodcode="";//ªì©l¤Æ
 				
-				//å®¢æˆ¶ä»£è™Ÿ
+				//«È¤á¥N¸¹
 				if (strCustNo == null || strCustNo.equals(""))
 				{
-					strErr += "å®¢æˆ¶ä»£è™Ÿä¸å¯ç©ºç™½<br>";
+					strErr += "«È¤á¥N¸¹¤£¥iªÅ¥Õ<br>";
 				}
 				else
 				{
@@ -641,7 +641,7 @@ if (ACTIONCODE.equals("UPLOAD"))
 						strCustID = rsa.getString("CUSTOMER_ID"); 
 						strCustName=rsa.getString("CUSTOMER_NAME"); 
 						
-						sql =" select case when upper(a.site_use_code)='BILL_TO' then 1 when upper(a.site_use_code)='SHIP_TO' then 2 else 3 end as segno,"+ //fob å…ˆä¾ship_toç‚ºä¸»,è‹¥ç„¡,å†ä¾deliver_toç‚ºä¸»,modify by Peggy 20121026
+						sql =" select case when upper(a.site_use_code)='BILL_TO' then 1 when upper(a.site_use_code)='SHIP_TO' then 2 else 3 end as segno,"+ //fob ¥ı¨Ìship_to¬°¥D,­YµL,¦A¨Ìdeliver_to¬°¥D,modify by Peggy 20121026
 					          " a.SITE_USE_CODE, a.PRIMARY_FLAG, a.SITE_USE_ID, loc.COUNTRY, loc.ADDRESS1,"+       
 							  " a.PAYMENT_TERM_ID, a.PAYMENT_TERM_NAME || '('||c.DESCRIPTION ||')' PAYMENT_TERM_NAME, a.SHIP_VIA, a.FOB_POINT, a.PRICE_LIST_ID, c.DESCRIPTION,nvl(d.CURRENCY_CODE,'') CURRENCY_CODE"+ 
 							  " ,a.tax_code" + 
@@ -675,7 +675,7 @@ if (ACTIONCODE.equals("UPLOAD"))
 					}
 					else
 					{
-						strErr += "ERPæŸ¥ç„¡å®¢æˆ¶è³‡è¨Š<br>";
+						strErr += "ERP¬dµL«È¤á¸ê°T<br>";
 					}
 					rsa.close();
 					statementa.close(); 
@@ -684,29 +684,29 @@ if (ACTIONCODE.equals("UPLOAD"))
 				//customer po
 				if (strLineCustPO==null || strLineCustPO.equals(""))
 				{
-					strErr += "Customer POä¸å¯ç©ºç™½<br>";
+					strErr += "Customer PO¤£¥iªÅ¥Õ<br>";
 				}
 				
-				//æª¢æŸ¥å®¢æˆ¶+customer poæ˜¯å¦æœ‰å¾…è™•ç†è³‡æ–™
+				//ÀË¬d«È¤á+customer po¬O§_¦³«İ³B²z¸ê®Æ
 				if (strCustNo != null && !strCustNo.equals("") && strLineCustPO !=null && !strLineCustPO.equals(""))
 				{
 					Statement statementa=con.createStatement();
 					ResultSet rsa=statementa.executeQuery("select 1 from oraddman.TSC_RFQ_UPLOAD_TEMP where SALESAREANO = '"+SalesAreaNo+"'  and CUSTOMER_NO ='"+strCustNo+"' AND CUSTOMER_PO='"+ strLineCustPO+"' AND CREATE_FLAG='N'");
 					if(rsa.next())
 					{
-						strErr += "Pending Detailå·²å­˜åœ¨æ­¤å®¢æˆ¶+POè³‡æ–™!<br>";
+						strErr += "Pending Detail¤w¦s¦b¦¹«È¤á+PO¸ê®Æ!<br>";
 					}
 					rsa.close();
 					statementa.close(); 
 				}
 				
-				//å“å	
+				//«~¦W	
 				if ((strItemDesc  == null || strItemDesc.equals("")) && (strCustItem == null && strCustItem.equals("")) && (strItemName  == null || strItemName.equals("")))
 				{
 					strItemName = "&nbsp;";
 					strItemDesc = "&nbsp;";
 					strCustItem = "&nbsp;";
-					strErr += "å°åŠå“ååŠå®¢æˆ¶å“åä¸å¯åŒæ™‚ç©ºç™½<br>";
+					strErr += "¥x¥b«~¦W¤Î«È¤á«~¦W¤£¥i¦P®ÉªÅ¥Õ<br>";
 				}
 				else
 				{ 
@@ -730,6 +730,9 @@ if (ACTIONCODE.equals("UPLOAD"))
 							  " and a.CROSS_REF_STATUS='ACTIVE'"+
 						      " and msi.inventory_item_status_code <> 'Inactive'"+
 							  " and tsc_item_pcn_flag(43,msi.inventory_item_id,trunc(sysdate))='N'"+ //add by Peggy 20230202
+	 						  " and tsc_get_item_coo(msi.inventory_item_id) =(\n" + //add by Mars 20250108
+							  "     case when TSC_INV_CATEGORY(msi.inventory_item_id,43,23) IN ('SMA', 'SMB', 'SMC', 'SOD-123W', 'SOD-128')\n" + //add by Mars 20250108
+							  "     then 'CN' else tsc_get_item_coo(msi.inventory_item_id) end) \n"+ //add by Mars 20250108
 							  " and a.ITEM = '"+strCustItem+"'";
 						if (strItemDesc != null && !strItemDesc.equals(""))
 						{
@@ -776,6 +779,9 @@ if (ACTIONCODE.equals("UPLOAD"))
 								  " AND msi.inventory_item_status_code <> 'Inactive'"+
 								  " AND NVL(msi.CUSTOMER_ORDER_FLAG,'N')='Y'"+           //add by Peggy 20151008
          						  " AND NVL(msi.CUSTOMER_ORDER_ENABLED_FLAG,'N')='Y'"+	 //add by Peggy 20151008
+								  " and tsc_get_item_coo(msi.inventory_item_id) =(\n" + //add by Mars 20250108
+								  "     case when TSC_INV_CATEGORY(msi.inventory_item_id,43,23) IN ('SMA', 'SMB', 'SMC', 'SOD-123W', 'SOD-128')\n" + //add by Mars 20250108
+								  "     then 'CN' else tsc_get_item_coo(msi.inventory_item_id) end) \n"+ //add by Mars 20250108
 								  " AND tsc_item_pcn_flag(43,msi.inventory_item_id,trunc(sysdate))='N'";  //add by Peggy 20230202
 							if (strItemDesc != null && !strItemDesc.equals(""))
 							{								  							  
@@ -812,15 +818,15 @@ if (ACTIONCODE.equals("UPLOAD"))
 					}
 					if (rec_cnt==0)
 					{
-						strErr += "æŸ¥ç„¡å°æ‡‰çš„ERPæ–™è™Ÿ<br>";
+						strErr += "¬dµL¹ïÀ³ªºERP®Æ¸¹<br>";
 					}
 					else if (rec_cnt >1)
 					{
-						strErr += "å°æ‡‰çš„å°åŠæ–™è™Ÿè¶…éä¸€å€‹ä»¥ä¸Š,è«‹é¸æ“‡æ­£ç¢ºå°åŠæ–™è™Ÿ<br>";
+						strErr += "¹ïÀ³ªº¥x¥b®Æ¸¹¶W¹L¤@­Ó¥H¤W,½Ğ¿ï¾Ü¥¿½T¥x¥b®Æ¸¹<br>";
 					}	
 				}
 				
-				//æª¢æŸ¥è¨‚å–®é¡å‹æ˜¯å¦æ­£ç¢º
+				//ÀË¬d­q³æÃş«¬¬O§_¥¿½T
 				Statement stateodrtype=con.createStatement();
 				sql = "SELECT  a.otype_id FROM oraddman.tsarea_ordercls a,oraddman.tsprod_ordertype b"+
 							" where b.order_num=a.order_num and a.order_num='"+strOrderType+"' and a.SAREA_NO ='"+SalesAreaNo+"' and a.active='Y'"+
@@ -829,7 +835,7 @@ if (ACTIONCODE.equals("UPLOAD"))
 				ResultSet rsodrtype=stateodrtype.executeQuery(sql);  
 				if (!rsodrtype.next())
 				{
-					strErr += "è¨‚å–®é¡å‹éŒ¯èª¤<br>";
+					strErr += "­q³æÃş«¬¿ù»~<br>";
 				}
 				else
 				{
@@ -843,11 +849,11 @@ if (ACTIONCODE.equals("UPLOAD"))
 				rsodrtype.close();
 				stateodrtype.close();
 
-				//æ•¸é‡	
+				//¼Æ¶q	
 				if (strQty == null || strQty.equals(""))
 				{
 					strQty = "&nbsp;";
-					strErr += "æ•¸é‡ä¸å¯ç©ºç™½<br>";
+					strErr += "¼Æ¶q¤£¥iªÅ¥Õ<br>";
 				}
 				else
 				{
@@ -856,7 +862,7 @@ if (ACTIONCODE.equals("UPLOAD"))
 						float qtynum = Float.parseFloat(strQty.replace(",",""));
 						if ( qtynum <= 0)
 						{
-							strErr += "æ•¸é‡å¿…é ˆå¤§æ–¼é›¶<br>";
+							strErr += "¼Æ¶q¥²¶·¤j©ó¹s<br>";
 						}
 						else
 						{
@@ -865,15 +871,15 @@ if (ACTIONCODE.equals("UPLOAD"))
 					}
 					catch (Exception e)
 					{
-						strErr += "æ•¸é‡æ ¼å¼éŒ¯èª¤<br>";
+						strErr += "¼Æ¶q®æ¦¡¿ù»~<br>";
 					}
 				}
 
-				//å–®åƒ¹
+				//³æ»ù
 				if (strSellingPrice == null || strSellingPrice.equals(""))
 				{
 					strSellingPrice = "&nbsp;";
-					strErr +="Selling Priceä¸å¯ç©ºç™½<br>";
+					strErr +="Selling Price¤£¥iªÅ¥Õ<br>";
 				}
 				else
 				{
@@ -882,7 +888,7 @@ if (ACTIONCODE.equals("UPLOAD"))
 						float pricenum = Float.parseFloat(strSellingPrice.replace(",",""));
 						if ( pricenum <= 0)
 						{
-							strErr += "Selling Priceå¿…é ˆå¤§æ–¼é›¶<br>";
+							strErr += "Selling Price¥²¶·¤j©ó¹s<br>";
 						}
 						else
 						{
@@ -891,26 +897,26 @@ if (ACTIONCODE.equals("UPLOAD"))
 					}
 					catch (Exception e)
 					{
-						strErr += "å–®åƒ¹æ ¼å¼éŒ¯èª¤<br>";
+						strErr += "³æ»ù®æ¦¡¿ù»~<br>";
 					}
 				}
 				
-				//äº¤è²¨æ—¥æœŸ	
+				//¥æ³f¤é´Á	
 				if (strRequestDate == null || strRequestDate.equals(""))
 				{
 					strRequestDate = "&nbsp;";
-					strErr +="Request Dateä¸å¯ç©ºç™½<br>";
+					strErr +="Request Date¤£¥iªÅ¥Õ<br>";
 				}
 				else if (Long.parseLong(strRequestDate) <= Long.parseLong(strCHKDate))
 				{
-					strErr +="Request Date"+strRequestDate+"å¿…é ˆå¤§æ–¼"+strCHKDate+"<br>";
+					strErr +="Request Date"+strRequestDate+"¥²¶·¤j©ó"+strCHKDate+"<br>";
 				}
 						
-				//å‡ºè²¨æ–¹å¼
+				//¥X³f¤è¦¡
 				if ((strShippingMethod == null || strShippingMethod.equals("")) && (strShippingMethodcode == null || strShippingMethodcode.equals("")))
 				{
 					strShippingMethod = "&nbsp;";
-					strErr +="å‡ºè²¨æ–¹å¼ä¸å¯ç©ºç™½<br>";
+					strErr +="¥X³f¤è¦¡¤£¥iªÅ¥Õ<br>";
 				}
 				else
 				{
@@ -931,7 +937,7 @@ if (ACTIONCODE.equals("UPLOAD"))
 					}
 					if (strShippingMethodcode.equals("") || strShippingMethod.equals(""))
 					{
-						strErr +=("ERPæœªå®šç¾©é‹è¼¸æ–¹å¼("+(strShippingMethod==null?"":strShippingMethod)+")<br>");
+						strErr +=("ERP¥¼©w¸q¹B¿é¤è¦¡("+(strShippingMethod==null?"":strShippingMethod)+")<br>");
 					}				
 				}
 				
@@ -939,7 +945,7 @@ if (ACTIONCODE.equals("UPLOAD"))
 				if (strFOB == null || strFOB.equals(""))
 				{
 					strFOB = "&nbsp;";
-					strErr += "FOBä¸å¯ç©ºç™½<br>";
+					strErr += "FOB¤£¥iªÅ¥Õ<br>";
 				}
 				
 				//REMARK
@@ -952,10 +958,10 @@ if (ACTIONCODE.equals("UPLOAD"))
 				strEndCust="";strEndCustID1="";
 				if (!strEndCustID.equals(""))
 				{
-					//end customer idä¸å¯èˆ‡customer idç›¸åŒ
+					//end customer id¤£¥i»Pcustomer id¬Û¦P
 					if (strEndCustID.equals(strCustNo))
 					{
-						 strErr += "End Customer IDä¸å¯èˆ‡Customer IDç›¸åŒ<br>";
+						 strErr += "End Customer ID¤£¥i»PCustomer ID¬Û¦P<br>";
 					}
 					else
 					{
@@ -969,7 +975,7 @@ if (ACTIONCODE.equals("UPLOAD"))
 								break;
 							}
 						}
-						if (strEndCust.equals("")) strErr += "End Customer IDä¸å­˜åœ¨ERP<br>";
+						if (strEndCust.equals("")) strErr += "End Customer ID¤£¦s¦bERP<br>";
 					}
 				}
 								
@@ -1090,7 +1096,7 @@ if (ACTIONCODE.equals("UPLOAD"))
 						
 			if (icnt ==0)
 			{ 
-				throw new Exception("ä¸Šå‚³å…§å®¹éŒ¯èª¤!");
+				throw new Exception("¤W¶Ç¤º®e¿ù»~!");
 			}
 		}
 
@@ -1099,7 +1105,7 @@ if (ACTIONCODE.equals("UPLOAD"))
 %>
 		</table>
 <%				
-			out.println("<table width='90%' align='center'><tr><td align='center'><font style='color:#ff0000;font-family:æ¨™æ¥·é«”;font-size:16px'>ä¸Šå‚³å‹•ä½œå¤±æ•—ï¼Œè«‹æ´½ç³»çµ±ç®¡ç†å“¡ï¼Œè¬è¬!</font></td></tr></table>");		
+			out.println("<table width='90%' align='center'><tr><td align='center'><font style='color:#ff0000;font-family:¼Ğ·¢Åé;font-size:16px'>¤W¶Ç°Ê§@¥¢±Ñ¡A½Ğ¬¢¨t²ÎºŞ²z­û¡AÁÂÁÂ!</font></td></tr></table>");		
 		}
 		else
 		{
@@ -1263,25 +1269,25 @@ else if (ACTIONCODE.equals("DETAIL"))
 			{
 				i++;
 	%>
-				<td rowspan="<%=rs.getString("rowcnt")%>" style="color:#000000;font-family:Arial;font-size:11px"><input type="button" name="btn<%=i%>" value="Delete" style="font-family:arial;font-size:11px" title="åˆªé™¤è³‡æ–™" onClick="delData('../jsp/TSCKBufferImport.jsp?DELFLAG=Y&CUSTOMERID=<%=rs.getString("customer_id")%>&CUSTOMERPO=<%=rs.getString("customer_po")%>&UPLOADBY=<%=rs.getString("upload_by")%>')"></td>
-				<td id="tda<%=i%>" rowspan="<%=rs.getString("rowcnt")%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-family:Arial;font-size:11px" onClick="javascript:location.href='TSCKBufferImport.jsp?CUSTOMERID=<%=rs.getString("customer_id")%>&CUSTOMERNO=<%=rs.getString("customer_no")%>&CUSTOMERNAME=<%=rs.getString("customer_name").replace("'","")%>&CUSTOMERPO=<%=rs.getString("customer_po")%>&ODRTYPE=<%=rs.getString("OTYPE_ID")%>&RFQTYPE=<%=rs.getString("rfq_type")%>&UPLOADBY=<%=rs.getString("upload_by")%>&INSERTFLAG=Y'" title="æŒ‰ä¸‹æ»‘é¼ å·¦éµ,é€²å…¥Detailç•«é¢"><%="("+rs.getString("customer_no")+")"+rs.getString("customer_name")%></td>
-				<td id="tdc<%=i%>" rowspan="<%=rs.getString("rowcnt")%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-family:Arial;font-size:11px" onClick="javascript:location.href='TSCKBufferImport.jsp?CUSTOMERID=<%=rs.getString("customer_id")%>&CUSTOMERNO=<%=rs.getString("customer_no")%>&CUSTOMERNAME=<%=rs.getString("customer_name").replace("'","")%>&CUSTOMERPO=<%=rs.getString("customer_po")%>&ODRTYPE=<%=rs.getString("OTYPE_ID")%>&RFQTYPE=<%=rs.getString("rfq_type")%>&UPLOADBY=<%=rs.getString("upload_by")%>&INSERTFLAG=Y'" title="æŒ‰ä¸‹æ»‘é¼ å·¦éµ,é€²å…¥Detailç•«é¢" align="center"><%=rs.getString("rfq_type")%></td>								
+				<td rowspan="<%=rs.getString("rowcnt")%>" style="color:#000000;font-family:Arial;font-size:11px"><input type="button" name="btn<%=i%>" value="Delete" style="font-family:arial;font-size:11px" title="§R°£¸ê®Æ" onClick="delData('../jsp/TSCKBufferImport.jsp?DELFLAG=Y&CUSTOMERID=<%=rs.getString("customer_id")%>&CUSTOMERPO=<%=rs.getString("customer_po")%>&UPLOADBY=<%=rs.getString("upload_by")%>')"></td>
+				<td id="tda<%=i%>" rowspan="<%=rs.getString("rowcnt")%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-family:Arial;font-size:11px" onClick="javascript:location.href='TSCKBufferImport.jsp?CUSTOMERID=<%=rs.getString("customer_id")%>&CUSTOMERNO=<%=rs.getString("customer_no")%>&CUSTOMERNAME=<%=rs.getString("customer_name").replace("'","")%>&CUSTOMERPO=<%=rs.getString("customer_po")%>&ODRTYPE=<%=rs.getString("OTYPE_ID")%>&RFQTYPE=<%=rs.getString("rfq_type")%>&UPLOADBY=<%=rs.getString("upload_by")%>&INSERTFLAG=Y'" title="«ö¤U·Æ¹«¥ªÁä,¶i¤JDetailµe­±"><%="("+rs.getString("customer_no")+")"+rs.getString("customer_name")%></td>
+				<td id="tdc<%=i%>" rowspan="<%=rs.getString("rowcnt")%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-family:Arial;font-size:11px" onClick="javascript:location.href='TSCKBufferImport.jsp?CUSTOMERID=<%=rs.getString("customer_id")%>&CUSTOMERNO=<%=rs.getString("customer_no")%>&CUSTOMERNAME=<%=rs.getString("customer_name").replace("'","")%>&CUSTOMERPO=<%=rs.getString("customer_po")%>&ODRTYPE=<%=rs.getString("OTYPE_ID")%>&RFQTYPE=<%=rs.getString("rfq_type")%>&UPLOADBY=<%=rs.getString("upload_by")%>&INSERTFLAG=Y'" title="«ö¤U·Æ¹«¥ªÁä,¶i¤JDetailµe­±" align="center"><%=rs.getString("rfq_type")%></td>								
 	<%
 				customerpo=rs.getString("customer_po");
 				customerno=rs.getString("customer_no");
 				upload_by=rs.getString("upload_by");
 			}
 	%>
-				<td id="tdb<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-family:Arial;font-size:11px" onClick="javascript:location.href='TSCKBufferImport.jsp?CUSTOMERID=<%=rs.getString("customer_id")%>&CUSTOMERNO=<%=rs.getString("customer_no")%>&CUSTOMERNAME=<%=rs.getString("customer_name").replace("'","")%>&CUSTOMERPO=<%=rs.getString("customer_po")%>&ODRTYPE=<%=rs.getString("OTYPE_ID")%>&RFQTYPE=<%=rs.getString("rfq_type")%>&UPLOADBY=<%=rs.getString("upload_by")%>&INSERTFLAG=Y'" title="æŒ‰ä¸‹æ»‘é¼ å·¦éµ,é€²å…¥Detailç•«é¢"><%=rs.getString("CUSTOMER_PO_LINE_NUMBER")%></td>								
-				<td id="tdd<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-family:Arial;font-size:11px" onClick="javascript:location.href='TSCKBufferImport.jsp?CUSTOMERID=<%=rs.getString("customer_id")%>&CUSTOMERNO=<%=rs.getString("customer_no")%>&CUSTOMERNAME=<%=rs.getString("customer_name").replace("'","")%>&CUSTOMERPO=<%=rs.getString("customer_po")%>&ODRTYPE=<%=rs.getString("OTYPE_ID")%>&RFQTYPE=<%=rs.getString("rfq_type")%>&UPLOADBY=<%=rs.getString("upload_by")%>&INSERTFLAG=Y'" title="æŒ‰ä¸‹æ»‘é¼ å·¦éµ,é€²å…¥Detailç•«é¢"><%=rs.getString("description")%></td>								
-				<td id="tde<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-family:Arial;font-size:11px" onClick="javascript:location.href='TSCKBufferImport.jsp?CUSTOMERID=<%=rs.getString("customer_id")%>&CUSTOMERNO=<%=rs.getString("customer_no")%>&CUSTOMERNAME=<%=rs.getString("customer_name").replace("'","")%>&CUSTOMERPO=<%=rs.getString("customer_po")%>&ODRTYPE=<%=rs.getString("OTYPE_ID")%>&RFQTYPE=<%=rs.getString("rfq_type")%>&UPLOADBY=<%=rs.getString("upload_by")%>&INSERTFLAG=Y'" title="æŒ‰ä¸‹æ»‘é¼ å·¦éµ,é€²å…¥Detailç•«é¢"><%=(rs.getString("cust_item_name")==null?"&nbsp;":rs.getString("cust_item_name"))%></td>								
-				<td id="tdf<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-family:Arial;font-size:11px" onClick="javascript:location.href='TSCKBufferImport.jsp?CUSTOMERID=<%=rs.getString("customer_id")%>&CUSTOMERNO=<%=rs.getString("customer_no")%>&CUSTOMERNAME=<%=rs.getString("customer_name").replace("'","")%>&CUSTOMERPO=<%=rs.getString("customer_po")%>&ODRTYPE=<%=rs.getString("OTYPE_ID")%>&RFQTYPE=<%=rs.getString("rfq_type")%>&UPLOADBY=<%=rs.getString("upload_by")%>&INSERTFLAG=Y'" title="æŒ‰ä¸‹æ»‘é¼ å·¦éµ,é€²å…¥Detailç•«é¢" align="right"><%=(new DecimalFormat("##,##0.######")).format(Float.parseFloat(rs.getString("qty")))%></td>								
-				<td id="tdg<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-family:Arial;font-size:11px" onClick="javascript:location.href='TSCKBufferImport.jsp?CUSTOMERID=<%=rs.getString("customer_id")%>&CUSTOMERNO=<%=rs.getString("customer_no")%>&CUSTOMERNAME=<%=rs.getString("customer_name").replace("'","")%>&CUSTOMERPO=<%=rs.getString("customer_po")%>&ODRTYPE=<%=rs.getString("OTYPE_ID")%>&RFQTYPE=<%=rs.getString("rfq_type")%>&UPLOADBY=<%=rs.getString("upload_by")%>&INSERTFLAG=Y'" title="æŒ‰ä¸‹æ»‘é¼ å·¦éµ,é€²å…¥Detailç•«é¢" align="right"><%=(new DecimalFormat("##,##0.######")).format(Float.parseFloat(rs.getString("selling_price")))%></td>								
-				<td id="tdh<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-family:Arial;font-size:11px" onClick="javascript:location.href='TSCKBufferImport.jsp?CUSTOMERID=<%=rs.getString("customer_id")%>&CUSTOMERNO=<%=rs.getString("customer_no")%>&CUSTOMERNAME=<%=rs.getString("customer_name").replace("'","")%>&CUSTOMERPO=<%=rs.getString("customer_po")%>&ODRTYPE=<%=rs.getString("OTYPE_ID")%>&RFQTYPE=<%=rs.getString("rfq_type")%>&UPLOADBY=<%=rs.getString("upload_by")%>&INSERTFLAG=Y'" title="æŒ‰ä¸‹æ»‘é¼ å·¦éµ,é€²å…¥Detailç•«é¢" align="center"><%=rs.getString("request_date")%></td>								
-				<td id="tdi<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-family:Arial;font-size:11px" onClick="javascript:location.href='TSCKBufferImport.jsp?CUSTOMERID=<%=rs.getString("customer_id")%>&CUSTOMERNO=<%=rs.getString("customer_no")%>&CUSTOMERNAME=<%=rs.getString("customer_name").replace("'","")%>&CUSTOMERPO=<%=rs.getString("customer_po")%>&ODRTYPE=<%=rs.getString("OTYPE_ID")%>&RFQTYPE=<%=rs.getString("rfq_type")%>&UPLOADBY=<%=rs.getString("upload_by")%>&INSERTFLAG=Y'" title="æŒ‰ä¸‹æ»‘é¼ å·¦éµ,é€²å…¥Detailç•«é¢" align="center"><%=rs.getString("order_type")%></td>								
-				<td id="tdj<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-family:Arial;font-size:11px" onClick="javascript:location.href='TSCKBufferImport.jsp?CUSTOMERID=<%=rs.getString("customer_id")%>&CUSTOMERNO=<%=rs.getString("customer_no")%>&CUSTOMERNAME=<%=rs.getString("customer_name").replace("'","")%>&CUSTOMERPO=<%=rs.getString("customer_po")%>&ODRTYPE=<%=rs.getString("OTYPE_ID")%>&RFQTYPE=<%=rs.getString("rfq_type")%>&UPLOADBY=<%=rs.getString("upload_by")%>&INSERTFLAG=Y'" title="æŒ‰ä¸‹æ»‘é¼ å·¦éµ,é€²å…¥Detailç•«é¢" align="center"><%=(rs.getString("end_customer_id")==null?"&nbsp;":rs.getString("end_customer_id"))%></td>								
-				<td id="tdk<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-family:Arial;font-size:11px" onClick="javascript:location.href='TSCKBufferImport.jsp?CUSTOMERID=<%=rs.getString("customer_id")%>&CUSTOMERNO=<%=rs.getString("customer_no")%>&CUSTOMERNAME=<%=rs.getString("customer_name").replace("'","")%>&CUSTOMERPO=<%=rs.getString("customer_po")%>&ODRTYPE=<%=rs.getString("OTYPE_ID")%>&RFQTYPE=<%=rs.getString("rfq_type")%>&UPLOADBY=<%=rs.getString("upload_by")%>&INSERTFLAG=Y'" title="æŒ‰ä¸‹æ»‘é¼ å·¦éµ,é€²å…¥Detailç•«é¢" align="center"><%=(rs.getString("end_customer")==null?"&nbsp;":rs.getString("end_customer"))%></td>								
-				<td id="tdl<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-family:Arial;font-size:11px" onClick="javascript:location.href='TSCKBufferImport.jsp?CUSTOMERID=<%=rs.getString("customer_id")%>&CUSTOMERNO=<%=rs.getString("customer_no")%>&CUSTOMERNAME=<%=rs.getString("customer_name").replace("'","")%>&CUSTOMERPO=<%=rs.getString("customer_po")%>&ODRTYPE=<%=rs.getString("OTYPE_ID")%>&RFQTYPE=<%=rs.getString("rfq_type")%>&UPLOADBY=<%=rs.getString("upload_by")%>&INSERTFLAG=Y'" title="æŒ‰ä¸‹æ»‘é¼ å·¦éµ,é€²å…¥Detailç•«é¢" align="center"><%=rs.getString("upload_by")%></td>								
+				<td id="tdb<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-family:Arial;font-size:11px" onClick="javascript:location.href='TSCKBufferImport.jsp?CUSTOMERID=<%=rs.getString("customer_id")%>&CUSTOMERNO=<%=rs.getString("customer_no")%>&CUSTOMERNAME=<%=rs.getString("customer_name").replace("'","")%>&CUSTOMERPO=<%=rs.getString("customer_po")%>&ODRTYPE=<%=rs.getString("OTYPE_ID")%>&RFQTYPE=<%=rs.getString("rfq_type")%>&UPLOADBY=<%=rs.getString("upload_by")%>&INSERTFLAG=Y'" title="«ö¤U·Æ¹«¥ªÁä,¶i¤JDetailµe­±"><%=rs.getString("CUSTOMER_PO_LINE_NUMBER")%></td>								
+				<td id="tdd<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-family:Arial;font-size:11px" onClick="javascript:location.href='TSCKBufferImport.jsp?CUSTOMERID=<%=rs.getString("customer_id")%>&CUSTOMERNO=<%=rs.getString("customer_no")%>&CUSTOMERNAME=<%=rs.getString("customer_name").replace("'","")%>&CUSTOMERPO=<%=rs.getString("customer_po")%>&ODRTYPE=<%=rs.getString("OTYPE_ID")%>&RFQTYPE=<%=rs.getString("rfq_type")%>&UPLOADBY=<%=rs.getString("upload_by")%>&INSERTFLAG=Y'" title="«ö¤U·Æ¹«¥ªÁä,¶i¤JDetailµe­±"><%=rs.getString("description")%></td>								
+				<td id="tde<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-family:Arial;font-size:11px" onClick="javascript:location.href='TSCKBufferImport.jsp?CUSTOMERID=<%=rs.getString("customer_id")%>&CUSTOMERNO=<%=rs.getString("customer_no")%>&CUSTOMERNAME=<%=rs.getString("customer_name").replace("'","")%>&CUSTOMERPO=<%=rs.getString("customer_po")%>&ODRTYPE=<%=rs.getString("OTYPE_ID")%>&RFQTYPE=<%=rs.getString("rfq_type")%>&UPLOADBY=<%=rs.getString("upload_by")%>&INSERTFLAG=Y'" title="«ö¤U·Æ¹«¥ªÁä,¶i¤JDetailµe­±"><%=(rs.getString("cust_item_name")==null?"&nbsp;":rs.getString("cust_item_name"))%></td>								
+				<td id="tdf<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-family:Arial;font-size:11px" onClick="javascript:location.href='TSCKBufferImport.jsp?CUSTOMERID=<%=rs.getString("customer_id")%>&CUSTOMERNO=<%=rs.getString("customer_no")%>&CUSTOMERNAME=<%=rs.getString("customer_name").replace("'","")%>&CUSTOMERPO=<%=rs.getString("customer_po")%>&ODRTYPE=<%=rs.getString("OTYPE_ID")%>&RFQTYPE=<%=rs.getString("rfq_type")%>&UPLOADBY=<%=rs.getString("upload_by")%>&INSERTFLAG=Y'" title="«ö¤U·Æ¹«¥ªÁä,¶i¤JDetailµe­±" align="right"><%=(new DecimalFormat("##,##0.######")).format(Float.parseFloat(rs.getString("qty")))%></td>								
+				<td id="tdg<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-family:Arial;font-size:11px" onClick="javascript:location.href='TSCKBufferImport.jsp?CUSTOMERID=<%=rs.getString("customer_id")%>&CUSTOMERNO=<%=rs.getString("customer_no")%>&CUSTOMERNAME=<%=rs.getString("customer_name").replace("'","")%>&CUSTOMERPO=<%=rs.getString("customer_po")%>&ODRTYPE=<%=rs.getString("OTYPE_ID")%>&RFQTYPE=<%=rs.getString("rfq_type")%>&UPLOADBY=<%=rs.getString("upload_by")%>&INSERTFLAG=Y'" title="«ö¤U·Æ¹«¥ªÁä,¶i¤JDetailµe­±" align="right"><%=(new DecimalFormat("##,##0.######")).format(Float.parseFloat(rs.getString("selling_price")))%></td>								
+				<td id="tdh<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-family:Arial;font-size:11px" onClick="javascript:location.href='TSCKBufferImport.jsp?CUSTOMERID=<%=rs.getString("customer_id")%>&CUSTOMERNO=<%=rs.getString("customer_no")%>&CUSTOMERNAME=<%=rs.getString("customer_name").replace("'","")%>&CUSTOMERPO=<%=rs.getString("customer_po")%>&ODRTYPE=<%=rs.getString("OTYPE_ID")%>&RFQTYPE=<%=rs.getString("rfq_type")%>&UPLOADBY=<%=rs.getString("upload_by")%>&INSERTFLAG=Y'" title="«ö¤U·Æ¹«¥ªÁä,¶i¤JDetailµe­±" align="center"><%=rs.getString("request_date")%></td>								
+				<td id="tdi<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-family:Arial;font-size:11px" onClick="javascript:location.href='TSCKBufferImport.jsp?CUSTOMERID=<%=rs.getString("customer_id")%>&CUSTOMERNO=<%=rs.getString("customer_no")%>&CUSTOMERNAME=<%=rs.getString("customer_name").replace("'","")%>&CUSTOMERPO=<%=rs.getString("customer_po")%>&ODRTYPE=<%=rs.getString("OTYPE_ID")%>&RFQTYPE=<%=rs.getString("rfq_type")%>&UPLOADBY=<%=rs.getString("upload_by")%>&INSERTFLAG=Y'" title="«ö¤U·Æ¹«¥ªÁä,¶i¤JDetailµe­±" align="center"><%=rs.getString("order_type")%></td>								
+				<td id="tdj<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-family:Arial;font-size:11px" onClick="javascript:location.href='TSCKBufferImport.jsp?CUSTOMERID=<%=rs.getString("customer_id")%>&CUSTOMERNO=<%=rs.getString("customer_no")%>&CUSTOMERNAME=<%=rs.getString("customer_name").replace("'","")%>&CUSTOMERPO=<%=rs.getString("customer_po")%>&ODRTYPE=<%=rs.getString("OTYPE_ID")%>&RFQTYPE=<%=rs.getString("rfq_type")%>&UPLOADBY=<%=rs.getString("upload_by")%>&INSERTFLAG=Y'" title="«ö¤U·Æ¹«¥ªÁä,¶i¤JDetailµe­±" align="center"><%=(rs.getString("end_customer_id")==null?"&nbsp;":rs.getString("end_customer_id"))%></td>								
+				<td id="tdk<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-family:Arial;font-size:11px" onClick="javascript:location.href='TSCKBufferImport.jsp?CUSTOMERID=<%=rs.getString("customer_id")%>&CUSTOMERNO=<%=rs.getString("customer_no")%>&CUSTOMERNAME=<%=rs.getString("customer_name").replace("'","")%>&CUSTOMERPO=<%=rs.getString("customer_po")%>&ODRTYPE=<%=rs.getString("OTYPE_ID")%>&RFQTYPE=<%=rs.getString("rfq_type")%>&UPLOADBY=<%=rs.getString("upload_by")%>&INSERTFLAG=Y'" title="«ö¤U·Æ¹«¥ªÁä,¶i¤JDetailµe­±" align="center"><%=(rs.getString("end_customer")==null?"&nbsp;":rs.getString("end_customer"))%></td>								
+				<td id="tdl<%=i%>" onMouseOver="focuscolor(<%=i%>)" onMouseOut="unfocuscolor(<%=i%>)" style="color:#000000;font-family:Arial;font-size:11px" onClick="javascript:location.href='TSCKBufferImport.jsp?CUSTOMERID=<%=rs.getString("customer_id")%>&CUSTOMERNO=<%=rs.getString("customer_no")%>&CUSTOMERNAME=<%=rs.getString("customer_name").replace("'","")%>&CUSTOMERPO=<%=rs.getString("customer_po")%>&ODRTYPE=<%=rs.getString("OTYPE_ID")%>&RFQTYPE=<%=rs.getString("rfq_type")%>&UPLOADBY=<%=rs.getString("upload_by")%>&INSERTFLAG=Y'" title="«ö¤U·Æ¹«¥ªÁä,¶i¤JDetailµe­±" align="center"><%=rs.getString("upload_by")%></td>								
 			</tr>
 	<%
 		}
@@ -1298,7 +1304,7 @@ else if (ACTIONCODE.equals("DETAIL"))
 }
 %>
 
-<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->  
+<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->  
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <input name="ROWCOLOR" type="HIDDEN" value="<%=rowColor%>">	
 <input name="HIGHLIGHTOLOR" type="HIDDEN" value="<%=highlightColor%>">	

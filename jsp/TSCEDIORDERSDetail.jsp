@@ -1,15 +1,15 @@
-<!--20140801 Peggy,jabil order amount < USD200,é ˆæç¤ºä½¿ç”¨è€…-->
-<!--20150417 Peggy,å®¢æˆ¶å“è™Ÿä¸å¯ç•°å‹•-->
+<!--20140801 Peggy,jabil order amount < USD200,¶·´£¥Ü¨Ï¥ÎªÌ-->
+<!--20150417 Peggy,«È¤á«~¸¹¤£¥i²§°Ê-->
 <!--20150625 Peggy,qp_secu_list_headers_v change to qp_list_headers_v -->
-<!--20150721 Peggy,shipping method&sqp&moqæ”¹ä»¥call tsc_edi_pkg.get_shipping_method&tsc_edi_pkg.GET_SPQ_MOQå–å¾—-->
+<!--20150721 Peggy,shipping method&sqp&moq§ï¥Hcall tsc_edi_pkg.get_shipping_method&tsc_edi_pkg.GET_SPQ_MOQ¨ú±o-->
 <!--20151209 Peggy,TSC_PROD_GROUP Issue-->
 <!--20160127 Peggy,arrow end customer delphi cust part no-->
-<!--20160513 Peggy,for TSC_EDI_PKG.GET_SHIPPING_METHODæ–°å¢customer_idè€Œä¿®æ”¹-->
-<!--20170425 Peggy,market group=AU & product package=SMA,ç•¶å‹è™Ÿæœ‰assignåˆ°YEW,å¿…é ˆåˆ¤002,å¦å‰‡ä¾é è¨­å·¥å» åˆ¥é¡¯ç¤º(èˆ‡CELINEè¨è«–)-->
-<!--20171220 Peggy,Schukat EDI/ RFQ é™åˆ¶ä¸‹SMA SMB  Matrix-->
-<!--20181207 Peggy,-ONå‹è™Ÿæª¢æŸ¥-->
+<!--20160513 Peggy,for TSC_EDI_PKG.GET_SHIPPING_METHOD·s¼Wcustomer_id¦Ó­×§ï-->
+<!--20170425 Peggy,market group=AU & product package=SMA,·í«¬¸¹¦³assign¨ìYEW,¥²¶·§P002,§_«h¨Ì¹w³]¤u¼t§OÅã¥Ü(»PCELINE°Q½×)-->
+<!--20171220 Peggy,Schukat EDI/ RFQ ­­¨î¤USMA SMB  Matrix-->
+<!--20181207 Peggy,-ON«¬¸¹ÀË¬d-->
 <!--20190225 Peggy,add End customer part name-->
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.lang.*,java.text.*,java.io.*,java.util.*" %>
+<%@ page contentType="text/html; charset=big5" language="java" import="java.sql.*,java.lang.*,java.text.*,java.io.*,java.util.*" %>
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ page import="ComboBoxBean,DateBean,ArrayComboBoxBean,Array2DimensionInputBean"%>
@@ -25,11 +25,11 @@
 <jsp:useBean id="dateBeans" scope="page" class="DateBean"/>
 <jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
 <!--=================================-->
-<STYLE TYPE='text/css'>  
+<STYLE TYPE='text/css'>
   BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 11px }
-  P         { font-family: Tahoma,Georgia; color: #000000; font-size: 11px } 
+  P         { font-family: Tahoma,Georgia; color: #000000; font-size: 11px }
   TEXTAREA  { font-family: Tahoma,Georgia; font-size: 11px }
-  TD        { font-family: Tahoma,Georgia; color: #000000; font-size: 11px ;table-layout:fixed; word-break :break-all}  
+  TD        { font-family: Tahoma,Georgia; color: #000000; font-size: 11px ;table-layout:fixed; word-break :break-all}
   A         { text-decoration: underline ; font-size: 11px}
   A:link    { color: #003399; text-decoration: underline; font-size: 11px }
   A:visited { color: #990066; text-decoration: underline; font-size: 11px }
@@ -55,70 +55,70 @@ function chkall()
 	}
 }
 function subWindowPayTermFind(primaryFlag)
-{	    
-	subWin=window.open("../jsp/subwindow/TSDRQPaymentTermFind.jsp?PRIMARYFLAG="+primaryFlag+"&FUNC=D9002","subwin","width=640,height=480,scrollbars=yes,menubar=no");  
-} 
+{
+	subWin=window.open("../jsp/subwindow/TSDRQPaymentTermFind.jsp?PRIMARYFLAG="+primaryFlag+"&FUNC=D9002","subwin","width=640,height=480,scrollbars=yes,menubar=no");
+}
 function subWindowFOBPointFind(lineNo,primaryFlag,fieldType)
-{    
-	subWin=window.open("../jsp/subwindow/TSDRQFOBPointFind.jsp?LINENO="+lineNo+"&PRIMARYFLAG="+primaryFlag+"&FUNC=D9002&FTYPE="+fieldType,"subwin","width=640,height=480,scrollbars=yes,menubar=no");  
-} 
+{
+	subWin=window.open("../jsp/subwindow/TSDRQFOBPointFind.jsp?LINENO="+lineNo+"&PRIMARYFLAG="+primaryFlag+"&FUNC=D9002&FTYPE="+fieldType,"subwin","width=640,height=480,scrollbars=yes,menubar=no");
+}
 function subWindowShipToContactFind()
-{    
+{
 	var CUSTOMERID=document.MYFORM.ERPCUSTOMERID.value;
 	var customerName=document.MYFORM.CUSTOMER_NAME.value;
 	var SHIPTOCONTACT=document.MYFORM.SHIPTOCONTACTID.value;
-	subWin=window.open("../jsp/subwindow/TscShipToContact.jsp?PROGRAMID=D9002&CUSTOMERNUMBER="+CUSTOMERID+"&CUSTOMERNAME="+customerName+"&SHIPTOCONTACT="+SHIPTOCONTACT,"subwin","top=200,left=400,width=550,height=300,scrollbars=yes,menubar=no"); 
-}	
+	subWin=window.open("../jsp/subwindow/TscShipToContact.jsp?PROGRAMID=D9002&CUSTOMERNUMBER="+CUSTOMERID+"&CUSTOMERNAME="+customerName+"&SHIPTOCONTACT="+SHIPTOCONTACT,"subwin","top=200,left=400,width=550,height=300,scrollbars=yes,menubar=no");
+}
 function subWindowTaxCodeFind()
-{	    
-	subWin=window.open("../jsp/subwindow/TSDRQTaxCodeFind.jsp","subwin","width=500,height=480,scrollbars=yes,menubar=no");  
-} 
+{
+	subWin=window.open("../jsp/subwindow/TSDRQTaxCodeFind.jsp","subwin","width=500,height=480,scrollbars=yes,menubar=no");
+}
 function subWindowShipToFind(EDICODE,siteUseCode,customerID,shipToOrg,salesAreaNo)
-{   
+{
 	if (salesAreaNo == null || salesAreaNo =="")
 	{
-		alert("è«‹å…ˆé¸æ“‡æ¥­å‹™å€åŸŸ!!");
+		alert("½Ğ¥ı¿ï¾Ü·~°È°Ï°ì!!");
 		return false;
 	}
 
 	if (customerID == null || customerID =="")
 	{
-		alert("è«‹å…ˆé¸æ“‡å®¢æˆ¶!!");
+		alert("½Ğ¥ı¿ï¾Ü«È¤á!!");
 		return false;
 	}
-		
-	subWin=window.open("../jsp/subwindow/TSDRQSiteUseInfoFind.jsp?EDICODE="+EDICODE+"&SITEUSECODE="+siteUseCode+"&CUSTOMERID="+customerID+"&SHIPTOORG="+shipToOrg+"&SALESAREANO="+salesAreaNo+"&FUNC=D9002","subwin","width=640,height=480,scrollbars=yes,menubar=no");  
+
+	subWin=window.open("../jsp/subwindow/TSDRQSiteUseInfoFind.jsp?EDICODE="+EDICODE+"&SITEUSECODE="+siteUseCode+"&CUSTOMERID="+customerID+"&SHIPTOORG="+shipToOrg+"&SALESAREANO="+salesAreaNo+"&FUNC=D9002","subwin","width=640,height=480,scrollbars=yes,menubar=no");
 }
 function subWindowCustItemFind(LINENO,CUSTOMERID,TSCITEMDESC,CUSTITEMDESC,salesAreaNo,orderType,marketGroup,CRD,customerID,FOB)
 {
 	if (CUSTOMERID == null || CUSTOMERID =="")
 	{
-		alert("å®¢æˆ¶ä¸å¯ç©ºç™½!");
+		alert("«È¤á¤£¥iªÅ¥Õ!");
 		return false;
 	}
 	if ((TSCITEMDESC == null || TSCITEMDESC == "") && (CUSTITEMDESC == null || CUSTITEMDESC == ""))
 	{
-		alert("å°åŠæ–™è™Ÿæˆ–å®¢æˆ¶å“è™Ÿä¸å¯ç©ºç™½!");
+		alert("¥x¥b®Æ¸¹©Î«È¤á«~¸¹¤£¥iªÅ¥Õ!");
 		return false;
 	}
 	if (CUSTOMERID==7147 && TSCITEMDESC==CUSTITEMDESC)
 	{
-		subWin=window.open("../jsp/subwindow/TSInvItemPackageFind.jsp?LINENO="+LINENO+"&ITEMDESC="+TSCITEMDESC+"&SAMPLEORDCH=N&CUSTOMERID="+CUSTOMERID+"&sType=D9002&SALESAREA="+salesAreaNo+"&ORDERTYPE="+orderType+"&MARKETGROUP="+marketGroup+"&CRD="+CRD+"&CUSTOMERID="+customerID+"&FOB="+FOB+"&deliverid="+document.MYFORM.DELIVERYTOID.value,"subwin","width=640,height=480,scrollbars=yes,menubar=no");  
+		subWin=window.open("../jsp/subwindow/TSInvItemPackageFind.jsp?LINENO="+LINENO+"&ITEMDESC="+TSCITEMDESC+"&SAMPLEORDCH=N&CUSTOMERID="+CUSTOMERID+"&sType=D9002&SALESAREA="+salesAreaNo+"&ORDERTYPE="+orderType+"&MARKETGROUP="+marketGroup+"&CRD="+CRD+"&CUSTOMERID="+customerID+"&FOB="+FOB+"&deliverid="+document.MYFORM.DELIVERYTOID.value,"subwin","width=640,height=480,scrollbars=yes,menubar=no");
 	}
 	else
 	{
-		subWin=window.open("../jsp/subwindow/TSDRQCustomerItemFind.jsp?PROGID=D9002&LINENO="+LINENO+"&INVDESC="+TSCITEMDESC+"&CUSTOMERID="+CUSTOMERID+"&CUSTITEM="+CUSTITEMDESC,"subwin","width=640,height=480,scrollbars=yes,menubar=no");  
+		subWin=window.open("../jsp/subwindow/TSDRQCustomerItemFind.jsp?PROGID=D9002&LINENO="+LINENO+"&INVDESC="+TSCITEMDESC+"&CUSTOMERID="+CUSTOMERID+"&CUSTITEM="+CUSTITEMDESC,"subwin","width=640,height=480,scrollbars=yes,menubar=no");
 	}
 }
-function subWindowItemFind(LineNO,invItem,itemDesc,sampleOrdCh,sCustomerId,salesAreaNo,orderType,marketGroup,CRD,customerID,FOB)  
-{  
-	subWin=window.open("../jsp/subwindow/TSInvItemPackageFind.jsp?LINENO="+LineNO+"&ITEMDESC="+itemDesc+"&SAMPLEORDCH="+sampleOrdCh+"&CUSTOMERID="+sCustomerId+"&sType=D9002&SALESAREA="+salesAreaNo+"&ORDERTYPE="+orderType+"&MARKETGROUP="+marketGroup+"&CRD="+CRD+"&CUSTOMERID="+customerID+"&FOB="+FOB+"&deliverid="+document.MYFORM.DELIVERYTOID.value,"subwin","width=640,height=480,scrollbars=yes,menubar=no");  
-} 
+function subWindowItemFind(LineNO,invItem,itemDesc,sampleOrdCh,sCustomerId,salesAreaNo,orderType,marketGroup,CRD,customerID,FOB)
+{
+	subWin=window.open("../jsp/subwindow/TSInvItemPackageFind.jsp?LINENO="+LineNO+"&ITEMDESC="+itemDesc+"&SAMPLEORDCH="+sampleOrdCh+"&CUSTOMERID="+sCustomerId+"&sType=D9002&SALESAREA="+salesAreaNo+"&ORDERTYPE="+orderType+"&MARKETGROUP="+marketGroup+"&CRD="+CRD+"&CUSTOMERID="+customerID+"&FOB="+FOB+"&deliverid="+document.MYFORM.DELIVERYTOID.value,"subwin","width=640,height=480,scrollbars=yes,menubar=no");
+}
 function subWindowSSDFind(lineNo,sKind,plant)
-{    
+{
 	var itemdesc = document.MYFORM.elements["TSC_ITEM_DESC_"+lineNo].value;
 	var crdate = document.MYFORM.elements["CRD_"+lineNo].value;
-	var odrtype = document.MYFORM.elements["ORDER_TYPE_"+lineNo].value; 
+	var odrtype = document.MYFORM.elements["ORDER_TYPE_"+lineNo].value;
 	var region = document.MYFORM.SALESAREANO.value;
 	var createdt = document.MYFORM.SYSTEMDATE.value;
 	var shippingMethod = document.MYFORM.elements["SHIPPINGMETHOD_"+lineNo].value;
@@ -135,14 +135,14 @@ function subWindowSSDFind(lineNo,sKind,plant)
 			document.MYFORM.elements["TSC_ITEM_DESC_"+lineNo].focus();
 			return false;
 		}
-	
+
 		if (odrtype == "--" || odrtype == ""  || odrtype == null)
 		{
 			alert("Please choice the Order Type !!! ");
 			document.MYFORM.elements["ORDER_TYPE_"+lineNo].focus();
 			return false;
 		}
-	
+
 		if (crdate=="" || crdate==null)
 		{
 			alert("Please input a value on CRD field !!! ");
@@ -154,7 +154,7 @@ function subWindowSSDFind(lineNo,sKind,plant)
 			alert("The format of CRD field must be yyyymmdd !!! ");
 			document.MYFORM.elements["CRD_"+lineNo].focus();
 			return false;
-		}	
+		}
 		else
 		{
 			var year = crdate.substring(0,4);
@@ -178,9 +178,9 @@ function subWindowSSDFind(lineNo,sKind,plant)
 				document.MYFORM.elements["CRD_"+lineNo].focus();
 				return false;
 			}
-			else 
+			else
 			{
-				if (((mon == 4 || mon == 6 || mon == 9 || mon == 11) && dd >30) 
+				if (((mon == 4 || mon == 6 || mon == 9 || mon == 11) && dd >30)
 				|| ((mon == 1 || mon == 3 || mon == 5 || mon == 7 || mon == 8 || mon == 10 || mon == 12) && dd >31)
 				|| (isLeapYear(year) && mon == 2 && dd>29)
 				|| (!isLeapYear(year) && mon == 2 && dd>28))
@@ -193,24 +193,24 @@ function subWindowSSDFind(lineNo,sKind,plant)
 		}
 		if (plant=="" || plant==null)
 		{
-			alert("è«‹é¸æ“‡ç”Ÿç”¢å» å€!!");
+			alert("½Ğ¿ï¾Ü¥Í²£¼t°Ï!!");
 			document.MYFORM.elements["PLANTCODE_"+lineNo].focus();
 			return false;
 		}
 		subWin=window.open("../jsp/subwindow/TSDRQSSDFind.jsp?PROGID=D9002&LINENO="+lineNo+"&CRD="+crdate+"&plant="+plant+"&odrtype="+odrtype+"&region="+region+"&createdt="+createdt+"&shippingMethod="+shippingMethod+"&itemname="+itemdesc+"&custid="+custid+"&fob="+fob.replace("&","\"")+"&deliver_id="+deliver_to_id,"subwin","width=640,height=480,scrollbars=yes,menubar=no");
 	}
 }
-// æª¢æŸ¥é–å¹´,åˆ¤æ–·æ—¥æœŸè¼¸å…¥åˆæ³•æ€§
-function isLeapYear(year) 
-{ 
-	if((year%4==0&&year%100!=0)||(year%400==0)) 
-	{ 
-		return true; 
-	}  
-	return false; 
+// ÀË¬d¶|¦~,§PÂ_¤é´Á¿é¤J¦Xªk©Ê
+function isLeapYear(year)
+{
+	if((year%4==0&&year%100!=0)||(year%400==0))
+	{
+		return true;
+	}
+	return false;
 }
 function subWindowOrderTypeFind(lineNo,primaryFlag,salesAreaNo,plantCode)
-{	
+{
 	if (salesAreaNo == null || salesAreaNo =="")
 	{
 		alert("please choose the sales area!");
@@ -221,11 +221,11 @@ function subWindowOrderTypeFind(lineNo,primaryFlag,salesAreaNo,plantCode)
 	{
 		alert("please choose the manufacture factory!");
 		return false;
-	}	    
-	subWin=window.open("../jsp/subwindow/TSDRQOrderTypeFind.jsp?PROGID=D9002&LINENO="+lineNo+"&PRIMARYFLAG="+primaryFlag+"&SalesAreaNo="+salesAreaNo+"&MANUFACTORY="+plantCode,"subwin","width=640,height=480,scrollbars=yes,menubar=no");  
-} 
+	}
+	subWin=window.open("../jsp/subwindow/TSDRQOrderTypeFind.jsp?PROGID=D9002&LINENO="+lineNo+"&PRIMARYFLAG="+primaryFlag+"&SalesAreaNo="+salesAreaNo+"&MANUFACTORY="+plantCode,"subwin","width=640,height=480,scrollbars=yes,menubar=no");
+}
 function subWindowLineTypeFind(lineNo,primaryFlag,salesAreaNo,orderType)
-{	    
+{
 	if (salesAreaNo == null || salesAreaNo =="")
 	{
 		alert("please choose the sales area!");
@@ -236,12 +236,12 @@ function subWindowLineTypeFind(lineNo,primaryFlag,salesAreaNo,orderType)
 	{
 		alert("please choose the order type!");
 		return false;
-	}	
-	subWin=window.open("../jsp/subwindow/TSDRQLineTypeFind.jsp?PROGID=D9002&LINENO="+lineNo+"&PRIMARYFLAG="+primaryFlag+"&SalesAreaNo="+salesAreaNo+"&orderType="+orderType,"subwin","width=640,height=480,scrollbars=yes,menubar=no");  
-} 
+	}
+	subWin=window.open("../jsp/subwindow/TSDRQLineTypeFind.jsp?PROGID=D9002&LINENO="+lineNo+"&PRIMARYFLAG="+primaryFlag+"&SalesAreaNo="+salesAreaNo+"&orderType="+orderType,"subwin","width=640,height=480,scrollbars=yes,menubar=no");
+}
 function subWindowPlantFind(lineNo,primaryFlag)
 {
-	subWin=window.open("../jsp/subwindow/TSDRQPlantCodeFind.jsp?LINENO="+lineNo+"&PRIMARYFLAG="+primaryFlag,"subwin","width=640,height=480,scrollbars=yes,menubar=no");  
+	subWin=window.open("../jsp/subwindow/TSDRQPlantCodeFind.jsp?LINENO="+lineNo+"&PRIMARYFLAG="+primaryFlag,"subwin","width=640,height=480,scrollbars=yes,menubar=no");
 }
 
 function setSubmit(URL,URL1)
@@ -249,7 +249,7 @@ function setSubmit(URL,URL1)
 	//add by Peggy 20140604
 	if (document.MYFORM.ACTION_TYPE.value==null || document.MYFORM.ACTION_TYPE.value=="")
 	{
-		alert("è«‹é¸æ“‡åŸ·è¡Œå‹•ä½œ!!");
+		alert("½Ğ¿ï¾Ü°õ¦æ°Ê§@!!");
 		return false;
 	}
 	//add by Peggy 20140604
@@ -259,80 +259,80 @@ function setSubmit(URL,URL1)
 		{
 			if (document.MYFORM.ACTION_TYPE.value=="CANCELLED")
 			{
-				alert("è«‹è¼¸å…¥å–æ¶ˆåŸå› !");
+				alert("½Ğ¿é¤J¨ú®ø­ì¦]!");
 			}
 			else
 			{
-				alert("è«‹è¼¸å…¥PassåŸå› !");			
+				alert("½Ğ¿é¤JPass­ì¦]!");
 			}
 			document.MYFORM.cancel_remark.focus();
-			return false;	
+			return false;
 		}
 	}
 	else if (document.MYFORM.ACTION_TYPE.value=="RFQ")
 	{
 		if (document.MYFORM.SALESAREANO.value==null || document.MYFORM.SALESAREANO.value=="")
 		{
-			alert("æ¥­å‹™å€åŸŸä¸å¯ç©ºç™½!!");
+			alert("·~°È°Ï°ì¤£¥iªÅ¥Õ!!");
 			return false;
 		}
 		if (document.MYFORM.CUSTPO.value==null || document.MYFORM.CUSTPO.value=="")
 		{
-			alert("å®¢æˆ¶è¨‚å–®è™Ÿç¢¼ä¸å¯ç©ºç™½!!");
+			alert("«È¤á­q³æ¸¹½X¤£¥iªÅ¥Õ!!");
 			return false;
 		}
 		if (document.MYFORM.ERPCUSTOMERID.value==null || document.MYFORM.ERPCUSTOMERID.value=="")
 		{
-			alert("å®¢æˆ¶ä¸å¯ç©ºç™½!!");
+			alert("«È¤á¤£¥iªÅ¥Õ!!");
 			return false;
 		}
 		if (document.MYFORM.CURRENCY.value==null || document.MYFORM.CURRENCY.value=="")
 		{
-			alert("å¹£åˆ¥ä¸å¯ç©ºç™½!!");
+			alert("¹ô§O¤£¥iªÅ¥Õ!!");
 			return false;
 		}
 		if (document.MYFORM.PAYTERMID.value==null || document.MYFORM.PAYTERMID.value=="")
 		{
-			alert("ä»˜æ¬¾æ¢ä»¶ä¸å¯ç©ºç™½!!");
+			alert("¥I´Ú±ø¥ó¤£¥iªÅ¥Õ!!");
 			return false;
 		}
 		if (document.MYFORM.SHIPTOID.value==null || document.MYFORM.SHIPTOID.value=="")
 		{
-			alert("å‡ºè²¨åœ°ä¸å¯ç©ºç™½!!");
+			alert("¥X³f¦a¤£¥iªÅ¥Õ!!");
 			return false;
 		}
 		if (document.MYFORM.FOB.value==null || document.MYFORM.FOB.value=="")
 		{
-			alert("FOBä¸å¯ç©ºç™½!!");
+			alert("FOB¤£¥iªÅ¥Õ!!");
 			return false;
 		}
 		if (document.MYFORM.TAXCODE.value==null || document.MYFORM.TAXCODE.value=="")
 		{
-			alert("Tax Codeä¸å¯ç©ºç™½!!");
+			alert("Tax Code¤£¥iªÅ¥Õ!!");
 			return false;
 		}
 		if (document.MYFORM.BILLTOID.value==null || document.MYFORM.BILLTOID.value=="")
 		{
-			alert("ç™¼ç¥¨åœ°ä¸å¯ç©ºç™½!!");
+			alert("µo²¼¦a¤£¥iªÅ¥Õ!!");
 			return false;
 		}
 		if (document.MYFORM.SHIPTOCONTACTID.value==null || document.MYFORM.SHIPTOCONTACTID.value=="")
 		{
-			alert("ship to contactä¸å¯ç©ºç™½!!");
+			alert("ship to contact¤£¥iªÅ¥Õ!!");
 			return false;
 		}
 		if (document.MYFORM.DELIVERYTOID.value==null || document.MYFORM.DELIVERYTOID.value=="")
 		{
-			alert("äº¤è²¨åœ°ä¸å¯ç©ºç™½!!");
+			alert("¥æ³f¦a¤£¥iªÅ¥Õ!!");
 			return false;
 		}
 		if (document.MYFORM.PRICELIST.value==null || document.MYFORM.PRICELIST.value=="")
 		{
-			alert("åƒ¹æ ¼è¡¨ä¸å¯ç©ºç™½!!");
+			alert("»ù®æªí¤£¥iªÅ¥Õ!!");
 			return false;
 		}
 	}
-	
+
 	var iLen = document.MYFORM.MAXLINE.value;
 	var LineNo = "";
 	var chkvalue = false;
@@ -353,7 +353,7 @@ function setSubmit(URL,URL1)
 		}
 		else
 		{
-			chkvalue = document.MYFORM.CHKBOX[i-1].checked 
+			chkvalue = document.MYFORM.CHKBOX[i-1].checked
 		}
 		if (chkvalue==true)
 		{
@@ -364,7 +364,7 @@ function setSubmit(URL,URL1)
 			{
 				if (document.MYFORM.elements["CUST_PO_LINE_NO_"+i].value==null || document.MYFORM.elements["CUST_PO_LINE_NO_"+i].value=="")
 				{
-					alert("è¡Œè™Ÿ"+LineNo+":å®¢æˆ¶è¨‚å–®é …æ¬¡ä¸å¯ç©ºç™½!!");
+					alert("¦æ¸¹"+LineNo+":«È¤á­q³æ¶µ¦¸¤£¥iªÅ¥Õ!!");
 					document.MYFORM.elements["CUST_PO_LINE_NO_"+i].focus();
 					return false;
 				}
@@ -372,17 +372,17 @@ function setSubmit(URL,URL1)
 				{
 					if (document.MYFORM.ERPCUSTOMERID.value !=7147 || document.MYFORM.elements["CUST_ITEM_"+i].value != document.MYFORM.elements["TSC_ITEM_DESC_"+i].value) //add by Peggy 20210825
 					{
-						alert("è¡Œè™Ÿ"+LineNo+":æŸ¥ç„¡å®¢æˆ¶å“è™Ÿ!!");
+						alert("¦æ¸¹"+LineNo+":¬dµL«È¤á«~¸¹!!");
 						document.MYFORM.elements["CUST_ITEM_"+i].focus();
 						return false;
 					}
 				}
-				//if ((document.MYFORM.ERPCUSTOMERID.value !=690290 && document.MYFORM.ERPCUSTOMERID.value !=702294) && document.MYFORM.elements["CUST_ITEM_"+i].value != document.MYFORM.elements["ORIG_CUST_ITEM_"+i].value)  //æª¢æŸ¥å®¢æˆ¶å“è™Ÿæ˜¯å¦è¢«æ”¹æ‰,add by Peggy 20150417
-				if (document.MYFORM.elements["CUST_ITEM_"+i].value != document.MYFORM.elements["ORIG_CUST_ITEM_"+i].value && document.MYFORM.elements["ORIG_CUST_ITEM_"+i].value == document.MYFORM.elements["END_CUST_ITEM_"+i].value && document.MYFORM.elements["END_CUST_ITEM_"+i].value!="")  //æª¢æŸ¥å®¢æˆ¶å“è™Ÿæ˜¯å¦è¢«æ”¹æ‰,add by Peggy 20150417
+				//if ((document.MYFORM.ERPCUSTOMERID.value !=690290 && document.MYFORM.ERPCUSTOMERID.value !=702294) && document.MYFORM.elements["CUST_ITEM_"+i].value != document.MYFORM.elements["ORIG_CUST_ITEM_"+i].value)  //ÀË¬d«È¤á«~¸¹¬O§_³Q§ï±¼,add by Peggy 20150417
+				if (document.MYFORM.elements["CUST_ITEM_"+i].value != document.MYFORM.elements["ORIG_CUST_ITEM_"+i].value && document.MYFORM.elements["ORIG_CUST_ITEM_"+i].value == document.MYFORM.elements["END_CUST_ITEM_"+i].value && document.MYFORM.elements["END_CUST_ITEM_"+i].value!="")  //ÀË¬d«È¤á«~¸¹¬O§_³Q§ï±¼,add by Peggy 20150417
 				{
-					alert("è¡Œè™Ÿ"+LineNo+":å®¢æˆ¶å“è™Ÿä¸å¯ç•°å‹•!!");
+					alert("¦æ¸¹"+LineNo+":«È¤á«~¸¹¤£¥i²§°Ê!!");
 					document.MYFORM.elements["CUST_ITEM_"+i].focus();
-					return false;				
+					return false;
 				}
 				//add by Peggy 20190306
 				//if ((document.MYFORM.ERPCUSTOMERID.value ==690290 || document.MYFORM.ERPCUSTOMERID.value ==702294) && document.MYFORM.elements["END_CUST_ITEM_"+i].value=="")
@@ -390,43 +390,43 @@ function setSubmit(URL,URL1)
 				{
 					if (document.MYFORM.elements["TSC_ITEM_DESC_"+i].value.indexOf("-ON")>=0 &&  document.MYFORM.elements["END_CUST_ITEM_"+i].value=="" && document.MYFORM.elements["ORIG_CUST_ITEM_"+i].value != document.MYFORM.elements["END_CUST_ITEM_"+i].value)
 					{
-						alert("è¡Œè™Ÿ"+LineNo+":è«‹è¼¸å…¥çµ‚ç«¯å®¢æˆ¶å“è™Ÿä¸å¯ç©ºç™½!!");
-						return false;					
+						alert("¦æ¸¹"+LineNo+":½Ğ¿é¤J²×ºİ«È¤á«~¸¹¤£¥iªÅ¥Õ!!");
+						return false;
 					}
 				}
 				if (document.MYFORM.elements["TSC_ITEM_ID_"+i].value==null || document.MYFORM.elements["TSC_ITEM_ID_"+i].value=="")
 				{
-					alert("è¡Œè™Ÿ"+LineNo+":å°åŠæ–™è™Ÿä¸å¯ç©ºç™½!!");
+					alert("¦æ¸¹"+LineNo+":¥x¥b®Æ¸¹¤£¥iªÅ¥Õ!!");
 					document.MYFORM.elements["TSC_ITEM_ID_"+i].focus();
 					return false;
 				}
 				else
 				{
 					try //add  by Peggy 20140430
-					{  
-						if (document.MYFORM.elements["TSC_ITEM_ID_"+i].value=="undefined" || parseFloat(document.MYFORM.elements["TSC_ITEM_ID_"+i].value)<=0) 
+					{
+						if (document.MYFORM.elements["TSC_ITEM_ID_"+i].value=="undefined" || parseFloat(document.MYFORM.elements["TSC_ITEM_ID_"+i].value)<=0)
 						{
-							alert("è¡Œè™Ÿ"+LineNo+":å°åŠæ–™è™ŸéŒ¯èª¤!!");
+							alert("¦æ¸¹"+LineNo+":¥x¥b®Æ¸¹¿ù»~!!");
 							document.MYFORM.elements["TSC_ITEM_"+i].focus();
 							return false;
-						}			
+						}
 					}
 					catch(e)
 					{
-						alert("è¡Œè™Ÿ"+LineNo+":å°åŠæ–™è™Ÿç•°å¸¸!!");
+						alert("¦æ¸¹"+LineNo+":¥x¥b®Æ¸¹²§±`!!");
 						document.MYFORM.elements["TSC_ITEM_"+i].focus();
 						return false;
 					}
 				}
 				if (document.MYFORM.elements["QUANTITY_"+i].value==null || document.MYFORM.elements["QUANTITY_"+i].value=="")
 				{
-					alert("è¡Œè™Ÿ"+LineNo+":æ•¸é‡ä¸å¯ç©ºç™½!!");
+					alert("¦æ¸¹"+LineNo+":¼Æ¶q¤£¥iªÅ¥Õ!!");
 					document.MYFORM.elements["QUANTITY_"+i].focus();
 					return false;
 				}
 				else if (parseFloat(document.MYFORM.elements["QUANTITY_"+i].value)<=0)
 				{
-					alert("è¡Œè™Ÿ"+LineNo+":æ•¸é‡å¿…é ˆå¤§æ–¼é›¶!!");
+					alert("¦æ¸¹"+LineNo+":¼Æ¶q¥²¶·¤j©ó¹s!!");
 					document.MYFORM.elements["QUANTITY_"+i].focus();
 					return false;
 				}
@@ -436,10 +436,10 @@ function setSubmit(URL,URL1)
 					var MOQ = document.MYFORM.elements["MOQ_"+i].value;
 					if ((SPQ ==null || SPQ==0) && (MOQ==null || MOQ==0))
 					{
-						alert("æ­¤æ–™è™Ÿå°šæœªè¨­å®šSPQåŠMOQ,è«‹æ´½ç³»çµ±ç®¡ç†äººå“¡è™•ç†!!");
-						document.MYFORM.elements["QUANTITY_"+i].focus();  
+						alert("¦¹®Æ¸¹©|¥¼³]©wSPQ¤ÎMOQ,½Ğ¬¢¨t²ÎºŞ²z¤H­û³B²z!!");
+						document.MYFORM.elements["QUANTITY_"+i].focus();
 						return false;
-					} 
+					}
 					else
 					{
 						var SPQ_PCS = eval(SPQ) * 1000;
@@ -449,12 +449,12 @@ function setSubmit(URL,URL1)
 						var QTY_PCS = Math.round(QTY_PCS1 * 1000);
 						if (QTY_PCS < MOQ_PCS && document.MYFORM.elements["ORDER_TYPE_"+i].value != document.MYFORM.ONHAND_ORDER_TYPE.value && document.MYFORM.elements["ORDER_TYPE_"+i].value != document.MYFORM.ONHAND_ORDER_TYPE_HQ.value)
 						{
-							alert("è¨‚å–®é‡å¿…é ˆå¤§æ–¼ç­‰æ–¼MOQ:"+MOQ+"!!");
+							alert("­q³æ¶q¥²¶·¤j©óµ¥©óMOQ:"+MOQ+"!!");
 							return false;
 						}
 						else if ( (QTY_PCS%SPQ_PCS) != 0 && document.MYFORM.elements["ORDER_TYPE_"+i].value != document.MYFORM.ONHAND_ORDER_TYPE_HQ.value)
 						{
-							alert("è¨‚å–®é‡å¿…ç‚ºSPQ:"+SPQ+"çš„å€æ•¸!!");
+							alert("­q³æ¶q¥²¬°SPQ:"+SPQ+"ªº­¿¼Æ!!");
 							return false;
 						}
 					}
@@ -462,68 +462,68 @@ function setSubmit(URL,URL1)
 				//add by Peggy 20130910
 				if (document.MYFORM.elements["UOM_"+i].value==null || document.MYFORM.elements["UOM_"+i].value=="")
 				{
-					alert("è¡Œè™Ÿ"+LineNo+":UOMä¸å¯ç©ºç™½!!");
+					alert("¦æ¸¹"+LineNo+":UOM¤£¥iªÅ¥Õ!!");
 					return false;
 				}
 				if (document.MYFORM.elements["CRD_"+i].value==null || document.MYFORM.elements["CRD_"+i].value=="")
 				{
-					alert("è¡Œè™Ÿ"+LineNo+":CRDä¸å¯ç©ºç™½!!");
+					alert("¦æ¸¹"+LineNo+":CRD¤£¥iªÅ¥Õ!!");
 					document.MYFORM.elements["CRD_"+i].focus();
 					return false;
 				}
 				else if (eval(document.MYFORM.elements["CRD_"+i].value)<eval(document.MYFORM.SYSTEMDATE.value))  //add by Peggy 20210311
 				{
-					alert("è¡Œè™Ÿ"+LineNo+":CRDå¿…é ˆå¤§æ–¼ç­‰æ–¼ä»Šå¤©!!");
+					alert("¦æ¸¹"+LineNo+":CRD¥²¶·¤j©óµ¥©ó¤µ¤Ñ!!");
 					document.MYFORM.elements["CRD_"+i].focus();
-					return false;				
+					return false;
 				}
 				if (document.MYFORM.elements["SHIPPINGMETHOD_"+i].value==null || document.MYFORM.elements["SHIPPINGMETHOD_"+i].value=="")
 				{
-					alert("è¡Œè™Ÿ"+LineNo+":å‡ºè²¨æ–¹å¼ä¸å¯ç©ºç™½!!");
+					alert("¦æ¸¹"+LineNo+":¥X³f¤è¦¡¤£¥iªÅ¥Õ!!");
 					document.MYFORM.elements["SHIPPINGMETHOD_"+i].focus();
 					return false;
 				}
 				if (document.MYFORM.elements["SSD_"+i].value==null || document.MYFORM.elements["SSD_"+i].value=="")
 				{
-					alert("è¡Œè™Ÿ"+LineNo+":SSDä¸å¯ç©ºç™½!!");
+					alert("¦æ¸¹"+LineNo+":SSD¤£¥iªÅ¥Õ!!");
 					document.MYFORM.elements["SSD_"+i].focus();
 					return false;
 				}
 				else if ((document.MYFORM.elements["SSD_"+i].value).length !=8)
 				{
-					alert("è¡Œè™Ÿ"+LineNo+":SSDæ—¥æœŸæ ¼å¼æœ‰èª¤!!");
+					alert("¦æ¸¹"+LineNo+":SSD¤é´Á®æ¦¡¦³»~!!");
 					document.MYFORM.elements["SSD_"+i].focus();
 					return false;
 				}
 				else if (document.MYFORM.elements["SSD_"+i].value <= document.MYFORM.SYSTEMDATE.value)
 				{
-					alert("è¡Œè™Ÿ"+LineNo+":SSDå¿…é ˆå¤§æ–¼ç­‰æ–¼ç³»çµ±æ—¥("+document.MYFORM.SYSTEMDATE.value+")!!");
+					alert("¦æ¸¹"+LineNo+":SSD¥²¶·¤j©óµ¥©ó¨t²Î¤é("+document.MYFORM.SYSTEMDATE.value+")!!");
 					document.MYFORM.elements["SSD_"+i].focus();
 					return false;
 				}
-		
+
 				if (document.MYFORM.elements["PLANTCODE_"+i].value==null || document.MYFORM.elements["PLANTCODE_"+i].value=="")
 				{
-					alert("è¡Œè™Ÿ"+LineNo+":ç”Ÿç”¢å» å€ä¸å¯ç©ºç™½!!");
+					alert("¦æ¸¹"+LineNo+":¥Í²£¼t°Ï¤£¥iªÅ¥Õ!!");
 					document.MYFORM.elements["PLANTCODE_"+i].focus();
 					return false;
 				}
 				if (document.MYFORM.elements["ORDER_TYPE_"+i].value==null || document.MYFORM.elements["ORDER_TYPE_"+i].value=="")
 				{
-					alert("è¡Œè™Ÿ"+LineNo+":è¨‚å–®é¡å‹ä¸å¯ç©ºç™½!!");
+					alert("¦æ¸¹"+LineNo+":­q³æÃş«¬¤£¥iªÅ¥Õ!!");
 					document.MYFORM.elements["ORDER_TYPE_"+i].focus();
 					return false;
 				}
 				if (document.MYFORM.elements["LINE_TYPE_"+i].value==null || document.MYFORM.elements["LINE_TYPE_"+i].value=="")
 				{
-					alert("è¡Œè™Ÿ"+LineNo+":Line Typeä¸å¯ç©ºç™½!!");
+					alert("¦æ¸¹"+LineNo+":Line Type¤£¥iªÅ¥Õ!!");
 					document.MYFORM.elements["LINE_TYPE_"+i].focus();
 					return false;
 				}
 				//if ((document.MYFORM.CUSTMARKETGROUP.value =="AU" || document.MYFORM.SALESAREANO.value=="001") && document.MYFORM.elements["TSC_ITEM_PACKAGE_"+i].value=="SMA" && document.MYFORM.elements["PLANTCODE_"+i].value=="008")
 				if ((document.MYFORM.CUSTMARKETGROUP.value =="AU" || document.MYFORM.SALESAREANO.value=="001") && document.MYFORM.elements["TSC_ITEM_PACKAGE_"+i].value=="SMA" && document.MYFORM.elements["PLANTCODE_"+i].value=="008" && document.MYFORM.elements["YEW_FLAG_"+i].value=="1")
 				{
-					alert("è¡Œè™Ÿ"+LineNo+":SMAç”¢å“ä¸å…è¨±å¤–è³¼,è«‹é‡æ–°é¸æ“‡ç”Ÿç”¢å» åˆ¥!!");
+					alert("¦æ¸¹"+LineNo+":SMA²£«~¤£¤¹³\¥~ÁÊ,½Ğ­«·s¿ï¾Ü¥Í²£¼t§O!!");
 					document.MYFORM.elements["PLANTCODE_"+i].focus();
 					return false;
 				}
@@ -532,25 +532,25 @@ function setSubmit(URL,URL1)
 	}
 	if (chkcnt ==0)
 	{
-		alert("è«‹å…ˆå‹¾é¸è™•ç†é …ç›®!!");
+		alert("½Ğ¥ı¤Ä¿ï³B²z¶µ¥Ø!!");
 		return false;
 	}
-	if (document.MYFORM.ACTION_TYPE.value!="MAIL_TO_CUST")	
+	if (document.MYFORM.ACTION_TYPE.value!="MAIL_TO_CUST")
 	{
 		document.MYFORM.btn1.disabled=true;
 		document.MYFORM.action=URL;
-		document.MYFORM.submit();	
+		document.MYFORM.submit();
 	}
 	else
 	{
 		document.MYFORM.btn1.disabled=true;
 		document.MYFORM.action=URL1;
-		document.MYFORM.submit();	
+		document.MYFORM.submit();
 	}
 }
 //function setClose(URL)
 //{
-//	if (confirm("æ‚¨ç¢ºå®šè¦ä¸å­˜æª”é›¢é–‹å—?"))
+//	if (confirm("±z½T©w­n¤£¦sÀÉÂ÷¶}¶Ü?"))
 //	{
 //		location.href=URL;
 //	}
@@ -562,15 +562,15 @@ function subAction()
 		document.MYFORM.cancel_remark.value="";
 		if (document.MYFORM.ACTION_TYPE.value=="CANCELLED")
 		{
-			document.MYFORM.reason.value="å–æ¶ˆåŸå› ";
+			document.MYFORM.reason.value="¨ú®ø­ì¦]";
 		}
 		else
 		{
-			document.MYFORM.reason.value="PassåŸå› ";
+			document.MYFORM.reason.value="Pass­ì¦]";
 		}
 		document.MYFORM.reason.style.visibility="visible";
 		document.MYFORM.cancel_remark.style.visibility="visible";
-		
+
 	}
 	else
 	{
@@ -640,13 +640,13 @@ function setCRD(objLine)
 	String ERPCUSTOMERID = request.getParameter("ERPCUSTOMERID");
 	if (ERPCUSTOMERID ==null) ERPCUSTOMERID="";
 	String CUSTMARKETGROUP=request.getParameter("CUSTMARKETGROUP");
-	if (CUSTMARKETGROUP ==null) CUSTMARKETGROUP = ""; 
+	if (CUSTMARKETGROUP ==null) CUSTMARKETGROUP = "";
 	String BY_CODE=request.getParameter("BY_CODE");
 	if (BY_CODE==null) BY_CODE="";
 	String DP_CODE=request.getParameter("DP_CODE");
 	if (DP_CODE==null) DP_CODE="";
 	String MAIL_TO_CUST_FLAG=request.getParameter("MAIL_TO_CUST_FLAG");
-	if (MAIL_TO_CUST_FLAG==null) MAIL_TO_CUST_FLAG="";	
+	if (MAIL_TO_CUST_FLAG==null) MAIL_TO_CUST_FLAG="";
 	String MIN_ORDER_FLAG="",MIN_ORDER_AMT="",MIN_ORDER_CURR="";
 	float TOT_ORDER_AMT=0;
 	String SYSTEMDATE = dateBeans.getYearMonthDay();
@@ -656,9 +656,9 @@ function setCRD(objLine)
 	String sql = "",CREATED_BY="",parOrgID="";
 	int iMaxLine = 0,v_loop_cnt=0,v_order_loop=0;  //add v_loop_cnt by Peggy 20181207
 	String v_onhand="0",V_ERP_ORDER_TYPE="",ONHAND_ORDER_TYPE="1215",ONHAND_ORDER_TYPE_HQ="1151";
-	Hashtable hashtb = new Hashtable();	
+	Hashtable hashtb = new Hashtable();
 	float v_used_qty =0;
-	
+
 	try
 	{
 		iMaxLine = Integer.parseInt(request.getParameter("MAXLINE"));
@@ -667,22 +667,22 @@ function setCRD(objLine)
 	{
 		iMaxLine = 0;
 	}
-	
-	
+
+
 	boolean bNotFound = false;
-	
+
 	try
 	{
-		
-		String sql1="alter SESSION set NLS_LANGUAGE = 'AMERICAN' ";     
+
+		String sql1="alter SESSION set NLS_LANGUAGE = 'AMERICAN' ";
 		PreparedStatement pstmt1=con.prepareStatement(sql1);
-		pstmt1.executeUpdate(); 
+		pstmt1.executeUpdate();
 		pstmt1.close();
-			
+
 		CallableStatement cs1 = con.prepareCall("{call mo_global.set_policy_context('S',?)}");
-		cs1.setString(1,"41"); 
+		cs1.setString(1,"41");
 		cs1.execute();
-		cs1.close();		
+		cs1.close();
 
 		sql = " select a.by_code,a.dp_code,a.currency_code,b.sales_area_no,CASE WHEN a.currency_code='USD' AND a.erp_customer_id=7147 THEN b.SHIP_TO_SITE_ID1 ELSE  b.SHIP_TO_SITE_ID END as SHIP_TO_SITE_ID,'('||c.sales_area_no||')'||c.sales_area_name as SALESAREA,"+
               "'('||d.customer_number||')'||d.customer_name as CUSTNAME,d.ATTRIBUTE2 market_group,d.customer_name,c.PAR_ORG_ID"+
@@ -724,24 +724,24 @@ function setCRD(objLine)
        		sql = "select b.PRIMARY_SALESREP_ID, c.NAME from APPS.HZ_CUST_ACCT_SITES_ALL a, AR.HZ_CUST_SITE_USES_ALL b,jtf_rs_salesreps c "+
 		              "where a.CUST_ACCT_SITE_ID = b.CUST_ACCT_SITE_ID and a.CUST_ACCOUNT_ID ='"+ERPCUSTOMERID+"' "+
 					  "and a.STATUS = 'A' and a.ORG_ID = b.ORG_ID "+
-					  "and a.ORG_ID ='"+parOrgID+"' and a.SHIP_TO_FLAG='P' "+ 
+					  "and a.ORG_ID ='"+parOrgID+"' and a.SHIP_TO_FLAG='P' "+
 					  "and c.SALESREP_ID  = b.PRIMARY_SALESREP_ID";
-        	ResultSet rsSalsPs=statement1.executeQuery(sql);	 
+        	ResultSet rsSalsPs=statement1.executeQuery(sql);
 	    	if (rsSalsPs.next()==true)
-			{  
+			{
 				if (!SALESAREANO.equals("020") && !SALESAREANO.equals("021") &&  !SALESAREANO.equals("022"))
 				{
 					SALES = rsSalsPs.getString("NAME");
-					SALESID = rsSalsPs.getString("PRIMARY_SALESREP_ID");		
+					SALESID = rsSalsPs.getString("PRIMARY_SALESREP_ID");
 				}
-			} 
-			else 
-			{
-				SALESID=userSalesResID; // æ‰¾ä¸åˆ°å®¢æˆ¶è² è²¬çš„æ¥­å‹™äººå“¡,å‰‡ä»¥æ¥­å‹™åœ°å€ä¸»è¦è² è²¬æ¥­å‹™å“¡
 			}
-			rsSalsPs.close();	
+			else
+			{
+				SALESID=userSalesResID; // §ä¤£¨ì«È¤á­t³dªº·~°È¤H­û,«h¥H·~°È¦a°Ï¥D­n­t³d·~°È­û
+			}
+			rsSalsPs.close();
 			statement1.close();
-				
+
 			Statement statementy=con.createStatement();
 			sql = " select LAST_NAME || DECODE(FIRST_NAME, NULL,NULL, ', '||FIRST_NAME)|| DECODE(TITLE,NULL, NULL, ' '||TITLE) contact_name,con.contact_id"+
 					  " from ar_contacts_v con,hz_cust_site_uses su "+
@@ -749,13 +749,13 @@ function setCRD(objLine)
 					  " and con.status='A'"+
 					  " AND con.address_id=su.cust_acct_site_id"+
 					  " AND su.site_use_code='SHIP_TO'"+
-					  " AND su.SITE_USE_ID ='"+ SHIPTOID+"'";  //modify by Peggy 20140718 
-					  //" ORDER BY DECODE(LAST_NAME || DECODE(FIRST_NAME, NULL,NULL, ', '||FIRST_NAME)|| DECODE(TITLE,NULL, NULL, ' '||TITLE),'"+ERPCUSTOMERID+"',1,2)";		
-			ResultSet rsy=statementy.executeQuery(sql);	  			  				     
+					  " AND su.SITE_USE_ID ='"+ SHIPTOID+"'";  //modify by Peggy 20140718
+					  //" ORDER BY DECODE(LAST_NAME || DECODE(FIRST_NAME, NULL,NULL, ', '||FIRST_NAME)|| DECODE(TITLE,NULL, NULL, ' '||TITLE),'"+ERPCUSTOMERID+"',1,2)";
+			ResultSet rsy=statementy.executeQuery(sql);
 			if (rsy.next())
 			{
 				SHIPTOCONTACT = rsy.getString("contact_name");
-				SHIPTOCONTACTID= rsy.getString("contact_id");			
+				SHIPTOCONTACTID= rsy.getString("contact_id");
 			}
 			rsy.close();
 			statementy.close();
@@ -783,10 +783,10 @@ function setCRD(objLine)
 					FOB = rsb.getString("FOB_POINT");
 					BILLTOID = rsb.getString("site_use_id");
 					PRICELIST = rsb.getString("PRICE_LIST_ID");
-					
+
 					sql = " select a.NAME  from RA_TERMS_VL a where a.IN_USE ='Y' AND a.TERM_ID='"+PAYTERMID+"'";
 					Statement state1=con.createStatement();
-					ResultSet rs1=state1.executeQuery(sql);	  			  				     
+					ResultSet rs1=state1.executeQuery(sql);
 					if (rs1.next())
 					{
 						PAYMENTTERM  = rs1.getString("NAME");
@@ -801,14 +801,14 @@ function setCRD(objLine)
 				else if (rsb.getString("SITE_USE_CODE").equals("DELIVER_TO"))
 				{
 					DELIVERYTOID = rsb.getString("site_use_id");
-					TAXCODE = rsb.getString("TAX_CODE"); //æŠ“DELIVER_TOçš„TAX CODE,add by Peggy 20140414
+					TAXCODE = rsb.getString("TAX_CODE"); //§ìDELIVER_TOªºTAX CODE,add by Peggy 20140414
 				}
 			}
 			rsb.close();
-			statementb.close();  
-				  
-			sql =" select a.SITE_USE_CODE, a.PRIMARY_FLAG, a.SITE_USE_ID, loc.COUNTRY, loc.ADDRESS1,"+       
-				 " a.PAYMENT_TERM_ID, a.SHIP_VIA, a.FOB_POINT, a.PRICE_LIST_ID"+ 
+			statementb.close();
+
+			sql =" select a.SITE_USE_CODE, a.PRIMARY_FLAG, a.SITE_USE_ID, loc.COUNTRY, loc.ADDRESS1,"+
+				 " a.PAYMENT_TERM_ID, a.SHIP_VIA, a.FOB_POINT, a.PRICE_LIST_ID"+
 				 " from ar_site_uses_v a,HZ_CUST_ACCT_SITES b, hz_party_sites party_site, hz_locations loc"+
 				 " where  a.ADDRESS_ID = b.cust_acct_site_id"+
 				 " AND b.party_site_id = party_site.party_site_id"+
@@ -835,27 +835,27 @@ function setCRD(objLine)
 			}
 			rsa.close();
 			statementa.close();
-			
+
 		}
 		else
 		{
 			bNotFound = true;
 		}
 		rs.close();
-		statement.close();	
-	
+		statement.close();
+
 	}
 	catch(Exception e)
 	{
 		out.println(e.getMessage()+sql);
 		//bNotFound = true;
-	}	
-	
+	}
+
 	if (bNotFound)
 	{
 		%>
 		<script language="JavaScript" type="text/JavaScript">
-			alert("æŸ¥ç„¡è³‡æ–™!!ç”³è«‹å–®ç‹€æ…‹å¯èƒ½ä¸ç¬¦åˆæ¢ä»¶,è«‹é‡æ–°ç¢ºèª,è¬è¬!");
+			alert("¬dµL¸ê®Æ!!¥Ó½Ğ³æª¬ºA¥i¯à¤£²Å¦X±ø¥ó,½Ğ­«·s½T»{,ÁÂÁÂ!");
 			closeWindow();
 		</script>
 		<%
@@ -869,7 +869,7 @@ function setCRD(objLine)
 <table width="100%">
 	<tr>
 		<td align="left"><font style="font-weight:bold;font-size:20px;color:#003366;font-family:Tahoma,Georgia">RFQ</font>
-			<font style="font-size:20px;color:#000000;font-family:ç´°æ˜é«”"><strong>è³‡æ–™ç•°å¸¸ç¢ºèª</strong></font>
+			<font style="font-size:20px;color:#000000;font-family:²Ó©úÅé"><strong>¸ê®Æ²§±`½T»{</strong></font>
 		</td>
 	</tr>
 	<tr>
@@ -917,38 +917,38 @@ function setCRD(objLine)
 					<td colspan="3">
 					<%
 					try
-					{   
+					{
 						Statement statementx=con.createStatement();
 						sql = " select LIST_HEADER_ID, LIST_HEADER_ID||'('||NAME||')' as LIST_CODE, CURRENCY_CODE "+
 			                  //" from qp_secu_list_headers_v "+
-                	          " from qp_list_headers_v "+ //å› åƒ¹æ ¼è¡¨æ”¹ç‚º User æ¬Šé™ , å–æ¶ˆæ‰€æœ‰ OU æ¬Šé™,æ•…æ”¹ç”¨qp_list_headers_v by Peggy 20150625
+                	          " from qp_list_headers_v "+ //¦]»ù®æªí§ï¬° User Åv­­ , ¨ú®ø©Ò¦³ OU Åv­­,¬G§ï¥Îqp_list_headers_v by Peggy 20150625
 							  " where ACTIVE_FLAG = 'Y' and TO_CHAR(LIST_HEADER_ID) > '0' "+
-							  "  AND (ORIG_ORG_ID =41 or ORIG_ORG_ID IS NULL ) "; 
+							  "  AND (ORIG_ORG_ID =41 or ORIG_ORG_ID IS NULL ) ";
 						ResultSet rsx=statementx.executeQuery(sql);
 						out.println("<select NAME='PRICELIST' tabindex='16' class='style5'" + ((PRICELIST==null||PRICELIST=="")?"style='background-color:#FFFF66'":"style='background-color:#FFFFFF'>"));
-						out.println("<OPTION VALUE=-->--");     
+						out.println("<OPTION VALUE=-->--");
 						while (rsx.next())
-						{            
-							String s1=(String)rsx.getString(1); 
-							String s2=(String)rsx.getString(2); 
+						{
+							String s1=(String)rsx.getString(1);
+							String s2=(String)rsx.getString(2);
 							String s3=(String)rsx.getString(3);
-							if (s1==PRICELIST || s1.equals(PRICELIST)) 
+							if (s1==PRICELIST || s1.equals(PRICELIST))
 							{
-								out.println("<OPTION VALUE='"+s1+"' SELECTED>"+s2);					   
-							} 
-							else 
+								out.println("<OPTION VALUE='"+s1+"' SELECTED>"+s2);
+							}
+							else
 							{
 								out.println("<OPTION VALUE='"+s1+"'>"+s2);
-							}        
-						} 
-						out.println("</select>"); 
-						statementx.close();		  		  
-						rsx.close();        	 
-					} 
-					catch (Exception e) 
-					{ 
-						out.println("Exception3:"+e.getMessage()); 
-					} 		
+							}
+						}
+						out.println("</select>");
+						statementx.close();
+						rsx.close();
+					}
+					catch (Exception e)
+					{
+						out.println("Exception3:"+e.getMessage());
+					}
 					%>
 					</td>
 				</tr>
@@ -1039,13 +1039,13 @@ function setCRD(objLine)
 						item_cnt=0;
 						ORDER_ITEM_ID="";INVENTORY_ITEM_ID="";TSC_ITEM_NAME="";UOM="";ASSIGN_MANUFACT="";ORDER_TYPE="";PACKAGE_CODE="";FAMILY_CODE="";TSC_PROD_GROUP="";CATEGORY_ITEM="";ITEM_ID_TYPE="";YEW_FLAG="";
 						v_loop_cnt =0;  //add by Peggy 20181207
-						
-						//-ONå‹è™ŸCHECK,add by Peggy 20181207
+
+						//-ON«¬¸¹CHECK,add by Peggy 20181207
 						while(v_loop_cnt <4)
 						{
 							if (v_loop_cnt!=0)
 							{
-								//æª¢æŸ¥å®¢æˆ¶å“è™Ÿæ˜¯å¦ç‚º-ONå‹è™Ÿ
+								//ÀË¬d«È¤á«~¸¹¬O§_¬°-ON«¬¸¹
 								sql = " SELECT DISTINCT msi.DESCRIPTION,a.cust_partno "+
 									  " FROM INV.MTL_SYSTEM_ITEMS_B msi"+
 									  ",oraddman.ts_label_onsemi_item A"+
@@ -1071,27 +1071,27 @@ function setCRD(objLine)
 								{
 									ORDER_ITEM=rsc.getString("cust_partno");
 									TSC_ITEM_DESC=rsc.getString("description");
-									
+
 									sql = " update tsc_edi_orders_his_d a"+
 										  " set TSC_ITEM_NAME =?"+
 										  " ,CUST_ITEM_NAME=?"+
 										  " where a.erp_customer_id=?"+
 										  " and a.REQUEST_NO=?"+
 										  " and a.SEQ_NO=?";
-									PreparedStatement pstmtDt2=con.prepareStatement(sql);  
-									pstmtDt2.setString(1,TSC_ITEM_DESC); 
-									pstmtDt2.setString(2,ORDER_ITEM); 
-									pstmtDt2.setString(3,ERPCUSTOMERID); 
+									PreparedStatement pstmtDt2=con.prepareStatement(sql);
+									pstmtDt2.setString(1,TSC_ITEM_DESC);
+									pstmtDt2.setString(2,ORDER_ITEM);
+									pstmtDt2.setString(3,ERPCUSTOMERID);
 									pstmtDt2.setString(4,REQUESTNO);
-									pstmtDt2.setString(5,rsb.getString("SEQ_NO")); 
+									pstmtDt2.setString(5,rsb.getString("SEQ_NO"));
 									pstmtDt2.executeUpdate();
-									pstmtDt2.close();							
-								}	  
+									pstmtDt2.close();
+								}
 								rsc.close();
-								statementc.close();								
+								statementc.close();
 							}
 							v_loop_cnt++;
-							
+
 							PreparedStatement statementc =null;
 							if (ORDER_ITEM.equals(TSC_ITEM_DESC) && ERPCUSTOMERID.equals("7147"))
 							{
@@ -1119,8 +1119,11 @@ function setCRD(objLine)
 									  " and c.CATEGORY_SET_ID = 6"+
 									  " and msi.inventory_item_status_code <> 'Inactive'"+
 									  " and msi.description = ?"+
-									  " and msi.segment1 not like '%FA2'"+ //æ’é™¤contiæ–™è™Ÿ,add by Peggy 20210911
+									  " and msi.segment1 not like '%FA2'"+ //±Æ°£conti®Æ¸¹,add by Peggy 20210911
 									  " and tsc_item_pcn_flag(43,msi.inventory_item_id,trunc(sysdate))='N'"+ //add by Peggy 20230215
+									  " and tsc_get_item_coo(msi.inventory_item_id) =(\n" + //add by Mars 20250108
+									  "     case when TSC_INV_CATEGORY(msi.inventory_item_id,43,23) IN ('SMA', 'SMB', 'SMC', 'SOD-123W', 'SOD-128')\n" + //add by Mars 20250108
+									  "     then 'CN' else tsc_get_item_coo(msi.inventory_item_id) end) \n"+ //add by Mars 20250108
 									  " order by msi.creation_date desc";
 						 			statementc = con.prepareStatement(sql);
 									statementc.setString(1,TSC_ITEM_DESC);
@@ -1160,8 +1163,11 @@ function setCRD(objLine)
 									  " and msi.inventory_item_status_code <> 'Inactive'"+
 									  " and a.item = ?"+
 									  " and tsc_item_pcn_flag(43,msi.inventory_item_id,trunc(sysdate))='N'"+ //add by Peggy 20230215
+									  " and tsc_get_item_coo(msi.inventory_item_id) =(\n" + //add by Mars 20250108
+									  "     case when TSC_INV_CATEGORY(msi.inventory_item_id,43,23) IN ('SMA', 'SMB', 'SMC', 'SOD-123W', 'SOD-128')\n" + //add by Mars 20250108
+									  "     then 'CN' else tsc_get_item_coo(msi.inventory_item_id) end) \n"+ //add by Mars 20250108
 									  " and case when ?='' OR ? IS NULL then 'XXX' ELSE a.item_description END = case when ?='' or ? IS NULL then 'XXX' ELSE ? END) x where row_rank=1";
-									  //" order by msi.creation_date DESC"; //20130820 add by Peggy,ç•¶å®¢æˆ¶å“å+å°åŠå“åå°æ‡‰ä¸€å€‹ä»¥ä¸Šå°åŠæ–™è™Ÿæ™‚,ä»¥æœ€è¿‘createçš„æ–™è™Ÿç‚ºå„ªå…ˆ
+									  //" order by msi.creation_date DESC"; //20130820 add by Peggy,·í«È¤á«~¦W+¥x¥b«~¦W¹ïÀ³¤@­Ó¥H¤W¥x¥b®Æ¸¹®É,¥H³Ìªñcreateªº®Æ¸¹¬°Àu¥ı
 						 			statementc = con.prepareStatement(sql);
 									statementc.setString(1,ERPCUSTOMERID);
 									statementc.setString(2,ORDER_ITEM );
@@ -1183,7 +1189,7 @@ function setCRD(objLine)
 							ResultSet rsc=statementc.executeQuery();
 							while(rsc.next())
 							{
-								//æ‹¿æ‰from emily by Peggy 20220425 
+								//®³±¼from emily by Peggy 20220425
 								//add by Peggy 20171220
 								//if (ERPCUSTOMERID.equals("1889"))
 								//{
@@ -1194,7 +1200,7 @@ function setCRD(objLine)
 								//}
 								item_cnt++;
 								//if (item_cnt ==1)
-								if (item_cnt ==1 && rsc.getInt("ROW_CNT")==1) //åŠ ROW_CNT=1 by Peggy 20210911
+								if (item_cnt ==1 && rsc.getInt("ROW_CNT")==1) //¥[ROW_CNT=1 by Peggy 20210911
 								{
 									ORDER_ITEM_ID=rsc.getString("item_id");
 									INVENTORY_ITEM_ID=rsc.getString("INVENTORY_ITEM_ID");
@@ -1215,28 +1221,28 @@ function setCRD(objLine)
 							rsc.close();
 							statementc.close();
 						}
-						
-						//add by Peggy 20190307,end cust partno=cust partnoæ™‚,end cust partnoé¡¯ç¤ºç©ºç™½
+
+						//add by Peggy 20190307,end cust partno=cust partno®É,end cust partnoÅã¥ÜªÅ¥Õ
 						if (END_CUSTOMER_ITEM.equals(ORDER_ITEM))
 						{
 							END_CUSTOMER_ITEM="";
 						}
-							
+
 						//modify by Peggy 20150721
 						CallableStatement cse = con.prepareCall("{call tsc_edi_pkg.GET_SPQ_MOQ(?,?,?,?)}");
 						cse.setString(1,INVENTORY_ITEM_ID);
-						cse.setString(2,ASSIGN_MANUFACT);      
-						cse.registerOutParameter(3, Types.VARCHAR);  
-						cse.registerOutParameter(4, Types.VARCHAR);  
+						cse.setString(2,ASSIGN_MANUFACT);
+						cse.registerOutParameter(3, Types.VARCHAR);
+						cse.registerOutParameter(4, Types.VARCHAR);
 						cse.execute();
-						SPQ = ""+(cse.getFloat(3)/1000);                     
-						MOQ = ""+(cse.getFloat(4)/1000); 						            
+						SPQ = ""+(cse.getFloat(3)/1000);
+						MOQ = ""+(cse.getFloat(4)/1000);
 						cse.close();
-							
+
 						v_order_loop=1;
-						while(v_order_loop <=2)  //check I6 14å€‰onhand,add by Peggy 20190520
+						while(v_order_loop <=2)  //check I6 14­Üonhand,add by Peggy 20190520
 						{
-							if (v_order_loop ==1) 
+							if (v_order_loop ==1)
 							{
 								//add by Peggy 20190520,check onhand
 								sql = " SELECT TSC_EDI_PKG.GET_ONSEMI_ONHAND(?,?) from dual";
@@ -1250,8 +1256,8 @@ function setCRD(objLine)
 								}
 								rsd.close();
 								statementd.close();
-								
-								//æª¢æŸ¥å·²è¢«bookçš„åº«å­˜ start
+
+								//ÀË¬d¤w³Qbookªº®w¦s start
 								if ((String)hashtb.get(INVENTORY_ITEM_ID)==null)
 								{
 									v_used_qty =0;
@@ -1262,14 +1268,14 @@ function setCRD(objLine)
 								}
 								v_onhand = ""+((Float.parseFloat(v_onhand)*1000)-v_used_qty);
 								v_onhand = ""+(Float.parseFloat(v_onhand)/1000);
-								//æª¢æŸ¥å·²è¢«bookçš„åº«å­˜ end
-								
+								//ÀË¬d¤w³Qbookªº®w¦s end
+
 								if (Float.parseFloat(v_onhand)>0)
 								{
 									ORDER_TYPE = ONHAND_ORDER_TYPE;
 									if (Float.parseFloat(QUANTITY) > Float.parseFloat(v_onhand))
 									{
-										QUANTITY = v_onhand;		
+										QUANTITY = v_onhand;
 									}
 									hashtb.put(INVENTORY_ITEM_ID,""+(v_used_qty+(Float.parseFloat(QUANTITY)*1000)));
 								}
@@ -1279,13 +1285,13 @@ function setCRD(objLine)
 								}
 							}
 							else
-							{	
+							{
 								iMaxLine++;
 								ORDER_TYPE = V_ERP_ORDER_TYPE;
 								QUANTITY =(rsb.getString("UOM").equals("PCE")?""+((rsb.getFloat("QUANTITY")-(Float.parseFloat(v_onhand)*1000))/1000):""+(rsb.getFloat("QUANTITY")-(Float.parseFloat(v_onhand)*1000)));
 								if (Float.parseFloat(QUANTITY)<0) QUANTITY="0"; //add by Peggy 20190618
 							}
-								
+
 							sql = " SELECT DISTINCT  a.OTYPE_ID,a.DEFAULT_ORDER_LINE_TYPE"+
 								  " FROM ORADDMAN.TSAREA_ORDERCLS  A"+
 								  " WHERE A.ACTIVE =?"+
@@ -1299,7 +1305,7 @@ function setCRD(objLine)
 							if(rsd.next())
 							{
 								ORDER_TYPE_ID = rsd.getString("OTYPE_ID");
-								LINE_TYPE = rsd.getString("DEFAULT_ORDER_LINE_TYPE"); 
+								LINE_TYPE = rsd.getString("DEFAULT_ORDER_LINE_TYPE");
 							}
 							else
 							{
@@ -1307,38 +1313,38 @@ function setCRD(objLine)
 							}
 							rsd.close();
 							statementd.close();
-							
+
 							CallableStatement csf = con.prepareCall("{call tsc_edi_pkg.GET_SHIPPING_METHOD(?,?,?,?,?,?,?,sysdate,?,?,?,?)}");  //modify by Peggy 20160513
 							csf.setString(1,SALESAREANO);
-							csf.setString(2,PACKAGE_CODE);      
-							csf.setString(3,FAMILY_CODE);                   
-							csf.setString(4,TSC_ITEM_DESC);    
-							csf.setString(5,CRD);   
-							csf.registerOutParameter(6, Types.VARCHAR);  
-							csf.setString(7,ORDER_TYPE);   
-							csf.setString(8,ASSIGN_MANUFACT);   
+							csf.setString(2,PACKAGE_CODE);
+							csf.setString(3,FAMILY_CODE);
+							csf.setString(4,TSC_ITEM_DESC);
+							csf.setString(5,CRD);
+							csf.registerOutParameter(6, Types.VARCHAR);
+							csf.setString(7,ORDER_TYPE);
+							csf.setString(8,ASSIGN_MANUFACT);
 							csf.setString(9,ERPCUSTOMERID);     //add by Peggy 20160513
 							csf.setString(10,FOB);       //add by Peggy 20190319
 							csf.setString(11,DELIVERYTOID);        //add by Peggy 20190319
-							
-							csf.execute();						
-							SHIPPING_METHOD = csf.getString(6);                
+
+							csf.execute();
+							SHIPPING_METHOD = csf.getString(6);
 							csf.close();
-	
+
 							CallableStatement csg = con.prepareCall("{call tsc_edi_pkg.GET_SSD(?,?,?,?,?,?,?,sysdate,?,?)}");
 							csg.setString(1,SALESAREANO);
-							csg.setString(2,ASSIGN_MANUFACT);      
-							csg.setString(3,CRD);                   
-							csg.setString(4,SHIPPING_METHOD);    
-							csg.setString(5,ORDER_TYPE);   
-							csg.registerOutParameter(6, Types.VARCHAR);  
-							csg.setString(7,ERPCUSTOMERID);   
-							csg.setString(8,FOB);   //add by Peggy 20210207 
+							csg.setString(2,ASSIGN_MANUFACT);
+							csg.setString(3,CRD);
+							csg.setString(4,SHIPPING_METHOD);
+							csg.setString(5,ORDER_TYPE);
+							csg.registerOutParameter(6, Types.VARCHAR);
+							csg.setString(7,ERPCUSTOMERID);
+							csg.setString(8,FOB);   //add by Peggy 20210207
 							csg.setString(9,DELIVERYTOID);   //add by Peggy 20210217
 							csg.execute();
-							SSD = csg.getString(6);                
+							SSD = csg.getString(6);
 							csg.close();
-							
+
 							if (v_order_loop==2)
 							{
 								if (SPQ.equals("0") || MOQ.equals("0") || ((Float.parseFloat(QUANTITY)*1000)%(Float.parseFloat(SPQ)*1000)) !=0 || Float.parseFloat(QUANTITY)<Float.parseFloat(MOQ))
@@ -1369,7 +1375,7 @@ function setCRD(objLine)
 							<input type="hidden" name="UOM_<%=iMaxLine%>" value="<%=UOM%>"><input type="hidden" name="YEW_FLAG_<%=iMaxLine%>" value="<%=YEW_FLAG%>"></td>
 							<td><input type="text" name="END_CUST_ITEM_<%=iMaxLine%>" value="<%=(END_CUSTOMER_ITEM==null?"":END_CUSTOMER_ITEM)%>"  size="14" class="style4" onKeypress="return event.keyCode=-1"></td>
 							<td><input type="text" name="QUANTITY_<%=iMaxLine%>" value="<%=QUANTITY%>" size="3" class="style4"  <%if (exp_flag){out.println("style='background-color:#FFFF66'");}else{if(ORDER_TYPE.equals(ONHAND_ORDER_TYPE)){out.println("style='color:#0000ff;font-weight:bold;background-color:#FFCCCC'");}else{out.println("style='background-color:#FFFFFF'");}}%> >
-							<% 
+							<%
 							if (ORDER_TYPE.equals(ONHAND_ORDER_TYPE))
 							{
 							%>
@@ -1417,14 +1423,14 @@ function setCRD(objLine)
 	if (MIN_ORDER_FLAG.equals("Y") && (TOT_ORDER_AMT < Float.parseFloat(MIN_ORDER_AMT) || !CURRENCY.equals(MIN_ORDER_CURR)))
 	{
 		String str_notice ="";
-		out.println("<tr><td align='center'><font style='font-size:12px;color:#ff0000;font-weight:bold'>æ³¨æ„:");
+		out.println("<tr><td align='center'><font style='font-size:12px;color:#ff0000;font-weight:bold'>ª`·N:");
 		if (TOT_ORDER_AMT < Float.parseFloat(MIN_ORDER_AMT))
 		{
-			str_notice +=" è¨‚å–®ç¸½é‡‘é¡:"+TOT_ORDER_AMT+" < "+MIN_ORDER_AMT +" "+MIN_ORDER_CURR;
+			str_notice +=" ­q³æÁ`ª÷ÃB:"+TOT_ORDER_AMT+" < "+MIN_ORDER_AMT +" "+MIN_ORDER_CURR;
 		}
 		if (!CURRENCY.equals(MIN_ORDER_CURR))
 		{
-			str_notice +=" å¹£åˆ¥ä¸ç¬¦("+CURRENCY+" <> "+ MIN_ORDER_CURR+")";
+			str_notice +=" ¹ô§O¤£²Å("+CURRENCY+" <> "+ MIN_ORDER_CURR+")";
 		}
 		out.println(str_notice+"</font></td></tr>");
 	}
@@ -1436,7 +1442,7 @@ function setCRD(objLine)
 					<td width="10%" class="style1"><jsp:getProperty name="rPH" property="pgProcessUser"/></td>
 					<td width="15%"><font color='#000099' face="Arial"><%=userID+"("+UserName+")"%></font> </td>
 					<td width="10%" class="style1"><jsp:getProperty name="rPH" property="pgProcessDate"/></td>
-					<td width="15%"><font color="#000099" face="Arial"><%=dateBean.getYearMonthDay()%></font></td> 
+					<td width="15%"><font color="#000099" face="Arial"><%=dateBean.getYearMonthDay()%></font></td>
  					<td width="10%" class="style1"><jsp:getProperty name="rPH" property="pgAction"/></td>
 					<td width="40%">
 					<select name="ACTION_TYPE" style="font-family:Tahoma" onChange="subAction()">
@@ -1454,7 +1460,7 @@ function setCRD(objLine)
 					%>
 					</select>
 					<INPUT TYPE="button" tabindex="41" value="Submit" name="btn1" onClick='setSubmit("../jsp/TSCEDIMProcess.jsp","../jsp/TSCEDIORDERSMail.jsp")' style="font-family:Tahoma,Georgia" >
-					<INPUT TYPE="text" name="reason"  value="å–æ¶ˆåŸå› :"  size="8" style="border-left:none;border-top:none;border-bottom:none;border-right:none;visibility:hidden;font-family:Tahoma,Georgia;color:#FF0000;font-size:11px;" readonly>
+					<INPUT TYPE="text" name="reason"  value="¨ú®ø­ì¦]:"  size="8" style="border-left:none;border-top:none;border-bottom:none;border-right:none;visibility:hidden;font-family:Tahoma,Georgia;color:#FF0000;font-size:11px;" readonly>
 					<input typ="text" name="cancel_remark" value="" size="30" style="visibility:hidden;font-family:Tahoma,Georgia;font-size:11px;">
 					</td>
 				</tr>
@@ -1474,7 +1480,7 @@ function setCRD(objLine)
 </FORM>
 </body>
 <iframe width=124 height=153 name="gToday:supermini:agenda.js" id="gToday:supermini:agenda.js" src="../calendar/ipopeng.htm" scrolling="no" frameborder="0" style="visibility:hidden; z-index:65535; position:absolute; top:0px;"></iframe>
-<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->
+<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 </html>
