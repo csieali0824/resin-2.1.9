@@ -182,6 +182,7 @@
 	String sql = "",strOtypeID ="",strUOM="KPC",strFactory="",strHeaderOrderType="",strItemID="";
 	String strLineType="",strItemName ="",strOrderType="",strOrderTypeID="",strCustName="",strCustPO="",strRFQType="",strItemDesc="",strLineOrderType="";
 	String strQty="",strCustItem="",strSellingPrice="",strCRD="",strSSD="",strRequestDate="",strShippingMethod="",strFOB="",strEndCust="",strErr="";
+	String strSellingPrice_Q="", strEndCustName="",strQuoteNumber="",strItemNoPacking="";
 	String rowColor="#ffffff",highlightColor="#EEDDCC";
 	String bkcolor="#C6D1E6";
 	String strEndCustID ="",strEndCustID1 ="";
@@ -225,7 +226,7 @@
 				" a.cust_item_name, a.qty, a.selling_price, a.crd, a.request_date,b.PRIMARY_UOM_CODE uom,a.crd,a.factory,a.fob,"+
 				" a.shipping_method, a.fob, a.remarks, d.ORDER_NUM order_type, a.line_type,UTL_I18N.UNESCAPE_REFERENCE(a.customer_po_line_number) customer_po_line_number ,"+
 				" (select count(1) from oraddman.tsc_rfq_upload_temp c where  c.create_flag='N' and c.salesareano=a.salesareano and c.customer_no= a.customer_no and c.customer_po=a.customer_po and c.upload_by=a.upload_by) rowcnt"+
-				",e.customer_number END_CUSTOMER_ID,a.END_CUSTOMER"+
+				",e.customer_number END_CUSTOMER_ID,a.END_CUSTOMER, a.QUOTE_NUMBER"+
 				" FROM oraddman.tsc_rfq_upload_temp a,inv.mtl_system_items_b b,ORADDMAN.TSAREA_ORDERCLS d"+
 				",ar_customers e"+
 				" where a.create_flag=?"+
@@ -272,7 +273,7 @@
 			aa[icnt][17]=rs.getString("line_type");
 			aa[icnt][18]=rs.getString("fob");
 			aa[icnt][19]="&nbsp;";
-			aa[icnt][20]="&nbsp;";
+			aa[icnt][20]=(rs.getString("QUOTE_NUMBER")==null?"&nbsp;":rs.getString("QUOTE_NUMBER"));
 			aa[icnt][21]=(rs.getString("end_customer_id")==null?"&nbsp;":rs.getString("end_customer_id"));
 			aa[icnt][22]="&nbsp;";
 			aa[icnt][23]="&nbsp;";
@@ -611,6 +612,11 @@
 						strEndCustID = (cellEndCustID.getContents()).trim();
 						if (strEndCustID==null) strEndCustID="";
 
+						//Quote Number,add by Mars 20250120
+						jxl.Cell cellQuoteNumber = sht.getCell(12, i);
+						strQuoteNumber = (cellQuoteNumber.getContents()).trim();
+						if (strQuoteNumber==null) strQuoteNumber="";
+
 						strErr ="";strCustID="";strCustName="";strItemID="";rec_cnt=0;strFactory="";strOrderType="";strOrderTypeID="";strFOB="";//初始化
 
 						//客戶代號
@@ -724,6 +730,9 @@
 										" and c.CATEGORY_SET_ID = 6"+
 										" and a.CROSS_REF_STATUS='ACTIVE'"+
 										" and msi.inventory_item_status_code <> 'Inactive'"+
+										"and tsc_get_item_coo(msi.inventory_item_id) =(\n" +
+										"     case when TSC_INV_CATEGORY(msi.inventory_item_id,43,23) IN ('SMA', 'SMB', 'SMC', 'SOD-123W', 'SOD-128')\n" +
+										"     then 'CN' else tsc_get_item_coo(msi.inventory_item_id) end) \n"+
 										" and a.ITEM = '"+strCustItem+"'";
 								if (strItemDesc != null && !strItemDesc.equals(""))
 								{
@@ -776,6 +785,9 @@
 											" AND NVL(msi.CUSTOMER_ORDER_FLAG,'N')='Y'"+
 											" AND NVL(msi.CUSTOMER_ORDER_ENABLED_FLAG,'N')='Y'"+
 											" AND msi.description =  nvl('"+strItemDesc+"',msi.description)"+
+											"and tsc_get_item_coo(msi.inventory_item_id) =(\n" +
+											"     case when TSC_INV_CATEGORY(msi.inventory_item_id,43,23) IN ('SMA', 'SMB', 'SMC', 'SOD-123W', 'SOD-128')\n" +
+											"     then 'CN' else tsc_get_item_coo(msi.inventory_item_id) end) \n"+
 											" AND msi.segment1 = nvl('"+strItemName+"',msi.segment1)";
 									Statement statement=con.createStatement();
 									//out.println(sql);
@@ -812,6 +824,44 @@
 							if (rec_cnt >1)
 							{
 								strErr += "對應的台半料號超過一個以上,請選擇正確台半料號<br>";
+							} else {
+								if (!strQuoteNumber.equals("") && !strItemDesc.equals(""))
+								{
+									strSellingPrice_Q="";strEndCustName="";
+									Statement state1=con.createStatement();
+									//sql = " SELECT a.quoteid, a.partnumber,a.currency, TO_CHAR(a.pricekusd/1000,'FM99990.0999999') price_usd, case when INSTR(UPPER(a.createdby),'LISA')>0 THEN '(TSCR)' when INSTR(UPPER(a.createdby),'JUNE')>0 THEN '(TSCR)' when INSTR(UPPER(a.createdby),'JWANG')>0 THEN '(TSCR)' ELSE '(TSCI)' END || a.endcustomer end_customer"+
+									sql = " SELECT a.quoteid, a.partnumber,a.currency, TO_CHAR(a.pricekusd/1000,'FM99990.0999999') price_usd, '('|| a.region ||')'|| a.endcustomer end_customer"+	 //add by Peggy 20240217
+											" FROM tsc_om_ref_quotenet a "+
+											" where a.quoteid='"+strQuoteNumber+"'"+
+											" and a.partnumber='"+strItemDesc+"'"+
+											" order by a.quoteid, a.partnumber";
+									//out.println(sql);
+									ResultSet rs1=state1.executeQuery(sql);
+									if (rs1.next())
+									{
+										strSellingPrice_Q = rs1.getString("PRICE_USD");
+										strEndCustName = rs1.getString("END_CUSTOMER");
+									}
+									rs1.close();
+									state1.close();
+									if (strSellingPrice_Q.equals(""))
+									{
+										state1=con.createStatement();
+										sql = " SELECT a.quoteid, a.partnumber,a.currency, TO_CHAR(a.pricekusd/1000,'FM99990.0999999') price_usd, '('|| a.region ||')'|| a.endcustomer end_customer"+	 //add by Peggy 20240217
+												" FROM tsc_om_ref_quotenet a "+
+												" where a.quoteid='"+strQuoteNumber+"'"+
+												" and a.partnumber like '"+strItemNoPacking+"%'"+
+												" order by a.quoteid, a.partnumber";
+										rs1=state1.executeQuery(sql);
+										if (rs1.next())
+										{
+											strSellingPrice_Q = rs1.getString("PRICE_USD");
+											strEndCustName = rs1.getString("END_CUSTOMER");
+										}
+										rs1.close();
+										state1.close();
+									}
+								}
 							}
 						}
 
@@ -863,17 +913,27 @@
 						//單價
 						if (strSellingPrice == null || strSellingPrice.equals(""))
 						{
-							strSellingPrice = "&nbsp;";
-							strErr +="Selling Price不可空白<br>";
-						}
-						else
+							if (strSellingPrice_Q == null || strSellingPrice_Q.equals(""))
+							{
+								strSellingPrice = "";
+								strErr +="Selling Price不可空白<br>";
+							}
+							else
+							{
+								strSellingPrice=strSellingPrice_Q;
+							}
+						} 				else
 						{
 							try
 							{
-								double pricenum = Double.parseDouble(strSellingPrice.replace(",",""));
+								float pricenum = Float.parseFloat(strSellingPrice.replace(",",""));
 								if ( pricenum <= 0)
 								{
 									strErr += "Selling Price必須大於零<br>";
+								}
+								else if (!strSellingPrice.equals(strSellingPrice_Q)) //add by Peggy 20231229
+								{
+									strErr += "Selling Price not match quote price("+strSellingPrice_Q+")<br>";
 								}
 								else
 								{
@@ -940,6 +1000,8 @@
 								}
 								if (strEndCust.equals("")) strErr += "End Customer ID不存在ERP<br>";
 							}
+						} else if (!strEndCustName.equals("")) {
+							strEndCust=strEndCustName;
 						}
 
 						if (strErr.length() > 0)
@@ -1043,6 +1105,7 @@
 					aa[icnt][20]=strLineCustPO;
 					aa[icnt][21]=strEndCustID1;
 					aa[icnt][22]=strEndCust;
+					aa[icnt][23]=strQuoteNumber; //Quote Number,add by Peggy 20190227
 					//out.println("strLineCustPO="+strLineCustPO);
 					icnt++;
 				}
@@ -1093,7 +1156,8 @@
 							"customer_po_line_number,"+ //21
 							"line_no,"+            //22
 							"END_CUSTOMER_ID,"+    //23
-							"END_CUSTOMER)"+       //24
+							"END_CUSTOMER,"+       //24
+							"QUOTE_NUMBER)"+       //25
 							" values("+
 							"?,"+                  //0
 							"SYSDATE,"+            //1
@@ -1119,7 +1183,8 @@
 							"?,"+                  //21
 							"?,"+                  //22
 							"?,"+                  //23
-							"?)";                  //24
+							"?,"+                  //24
+							"?)";                  //25
 					PreparedStatement pstmt=con.prepareStatement(sql);
 					pstmt.setString(1,SalesAreaNo);          //salesareano
 					pstmt.setString(2,UserName);             //upload_by
@@ -1145,6 +1210,7 @@
 					pstmt.setInt(22,(insert_cnt+1));         //line_no
 					pstmt.setString(23,aa[i][21]);           //END CUSTOMER ID,add by Peggy 20140825
 					pstmt.setString(24,aa[i][22]);           //END CUSTOMER,add by Peggy 20140825
+					pstmt.setString(25,aa[i][23]);           //END CUSTOMER,add by Peggy 20140825
 					pstmt.executeQuery();
 					pstmt.close();
 					insert_cnt++;
