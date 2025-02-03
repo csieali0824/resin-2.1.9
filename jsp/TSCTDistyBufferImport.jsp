@@ -308,8 +308,10 @@
 		urlDir = "TSSalesDRQ_Create.jsp?CUSTOMERID="+java.net.URLEncoder.encode(CustomerID)+
 				"&SPQCHECKED=N"+
 				"&CUSTOMERNO="+java.net.URLEncoder.encode(CustomerNo)+
+				"&CUSTOMERNAME= "+java.net.URLEncoder.encode(CustomerName, "UTF-8").replace("+", "%20") +
 				"&CUSTACTIVE=A"+
 				"&SALESAREANO="+java.net.URLEncoder.encode(SalesAreaNo)+
+				"&CUSTOMERPO="+java.net.URLEncoder.encode(CustomerPO, "UTF-8").replace("+", "%20") +
 				"&CURR="+java.net.URLEncoder.encode(strCurr)+
 				"&REMARK="+java.net.URLEncoder.encode(strRemark)+
 				"&PREORDERTYPE="+java.net.URLEncoder.encode(ODRTYPE)+
@@ -318,9 +320,7 @@
 				//"&CUSTOMERIDTMP="+java.net.URLEncoder.encode(CustomerID)+
 				"&INSERT=Y"+
 				"&RFQTYPE="+java.net.URLEncoder.encode(RFQTYPE)+
-				"&PROGRAMNAME=D4-019"+
-				"&CUSTOMERPO="+java.net.URLEncoder.encode(CustomerPO)+
-				"&CUSTOMERNAME= "+java.net.URLEncoder.encode(CustomerName);
+				"&PROGRAMNAME=D4-019";
 		try
 		{
 			response.sendRedirect(urlDir);
