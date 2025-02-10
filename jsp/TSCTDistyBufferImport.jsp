@@ -922,8 +922,7 @@
 							{
 								strSellingPrice=strSellingPrice_Q;
 							}
-						} 				else
-						{
+						} else {
 							try
 							{
 								float pricenum = Float.parseFloat(strSellingPrice.replace(",",""));
