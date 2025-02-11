@@ -459,9 +459,9 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 10px }
 			{
 				if (!invItem.equals("")) {
 
-					where = where + " and SEGMENT1 like '"+invItem.toUpperCase()+"%' ";
+					where = where + " and upper(SEGMENT1) like '"+invItem.toUpperCase()+"%' ";
 				} else if (!itemDesc.equals("")) {
-					where = where + " and DESCRIPTION like '"+itemDesc.toUpperCase()+"%' ";
+					where = where + " and upper(DESCRIPTION) like '"+itemDesc.toUpperCase()+"%' ";
 				} else {
 					where = where + "and (upper(SEGMENT1) like '"+searchString.toUpperCase()+"%' "+
 					" or upper(DESCRIPTION) like '"+searchString.toUpperCase()+"%') ";
@@ -525,9 +525,9 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 10px }
 		  		else
 		  		{
 					if (!invItem.equals("")) {
-						where = where + " and SEGMENT1 like '"+searchString.toUpperCase()+"%' ";
+						where = where + " and upper(SEGMENT1) like '"+searchString.toUpperCase()+"%' ";
 					} else if (!invItem.equals("")) {
-						where = where + " and DESCRIPTION like '"+searchString.toUpperCase()+"%' ";
+						where = where + " and upper(DESCRIPTION) like '"+searchString.toUpperCase()+"%' ";
 					} else {
 						where = where + "and (upper(SEGMENT1) like '"+searchString.toUpperCase()+"%' "+
 								" or upper(DESCRIPTION) like '"+searchString.toUpperCase()+"%') ";
