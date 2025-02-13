@@ -1051,7 +1051,7 @@
 											" and tsc_item_pcn_flag(43,msi.inventory_item_id,trunc(sysdate))='N'";  //add by Peggy 20230118
 									if (strItemDesc != null && !strItemDesc.equals(""))
 									{
-										sql += " and a.ITEM_DESCRIPTION = '"+strItemDesc+"'";
+										sql += " and msi.DESCRIPTION = '"+strItemDesc+"'";
 									}
 									if (strItemName != null && !strItemName.equals(""))
 									{
