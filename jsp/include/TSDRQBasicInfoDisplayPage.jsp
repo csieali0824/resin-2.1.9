@@ -182,7 +182,7 @@
 		//if (UserRoles.indexOf("admin")>=0) // ???,???????
 		if (UserRoles.indexOf("admin")>=0  || (UserRoles.indexOf("SMCUser")>=0 && (UserName.equals("CCYANG") || UserName.equals("RITA_ZHOU")) && lineStatusID.equals("014")) ) //modif by Peggy 20141008
 		{
-			sqlDocs="select a.*,b.order_type_id as dtl_order_type_id,b.LSTATUSID,b.LSTATUS,TO_CHAR(to_date(b.LAST_UPDATE_DATE,'YYYYMMDDHH24MISS'),'YYYY/MM/DD ') as LUPDATE, "+
+			sqlDocs="select a.*,b.LSTATUSID,b.LSTATUS,TO_CHAR(to_date(b.LAST_UPDATE_DATE,'YYYYMMDDHH24MISS'),'YYYY/MM/DD ') as LUPDATE, "+
 					"TO_CHAR(to_date(b.LAST_UPDATE_DATE,'YYYYMMDDHH24MISS'),'HH24:MI:SS') as LUPTIME, "+
 					"TO_CHAR(to_date(b.CREATION_DATE,'YYYYMMDDHH24MISS'),'YYYY/MM/DD ') as CREATEDATE, "+
 					"TO_CHAR(to_date(b.CREATION_DATE,'YYYYMMDDHH24MISS'),'HH24:MI:SS') as CREATETIME "+
@@ -195,7 +195,7 @@
 		}
 		else if (UserRoles.indexOf("SalesPlanner")>=0 || UserRoles.indexOf("CInternal_Planner")>=0) // 企劃Assigning?RESPONDING
 		{
-			sqlDocs="select a.*,b.order_type_id as dtl_order_type_id,b.LSTATUSID,b.LSTATUS,TO_CHAR(to_date(b.LAST_UPDATE_DATE,'YYYYMMDDHH24MISS'),'YYYY/MM/DD ') as LUPDATE, "+
+			sqlDocs="select a.*,b.LSTATUSID,b.LSTATUS,TO_CHAR(to_date(b.LAST_UPDATE_DATE,'YYYYMMDDHH24MISS'),'YYYY/MM/DD ') as LUPDATE, "+
 					"TO_CHAR(to_date(b.LAST_UPDATE_DATE,'YYYYMMDDHH24MISS'),'HH24:MI:SS') as LUPTIME, "+
 					"TO_CHAR(to_date(b.CREATION_DATE,'YYYYMMDDHH24MISS'),'YYYY/MM/DD ') as CREATEDATE, "+
 					"TO_CHAR(to_date(b.CREATION_DATE,'YYYYMMDDHH24MISS'),'HH24:MI:SS') as CREATETIME "+
@@ -217,7 +217,7 @@
 		}
 		else //業務或工廠PC
 		{
-			sqlDocs="select a.*,b.order_type_id as dtl_order_type_id,b.LSTATUSID,b.LSTATUS,TO_CHAR(to_date(b.LAST_UPDATE_DATE,'YYYYMMDDHH24MISS'),'YYYY/MM/DD ') as LUPDATE, "+
+			sqlDocs="select a.*,b.LSTATUSID,b.LSTATUS,TO_CHAR(to_date(b.LAST_UPDATE_DATE,'YYYYMMDDHH24MISS'),'YYYY/MM/DD ') as LUPDATE, "+
 					"TO_CHAR(to_date(b.LAST_UPDATE_DATE,'YYYYMMDDHH24MISS'),'HH24:MI:SS') as LUPTIME, "+
 					"TO_CHAR(to_date(b.CREATION_DATE,'YYYYMMDDHH24MISS'),'YYYY/MM/DD ') as CREATEDATE, "+
 					"TO_CHAR(to_date(b.CREATION_DATE,'YYYYMMDDHH24MISS'),'HH24:MI:SS') as CREATETIME "+
@@ -281,7 +281,7 @@
 		lastUpdateTime=docrs.getString("LUPTIME");
 		lastUpdateBy=docrs.getString("LAST_UPDATED_BY");
 		toPersonID=docrs.getString("TOPERSONID");
-		orderTypeID=docrs.getString("DTL_ORDER_TYPE_ID");
+		orderTypeID=docrs.getString("ORDER_TYPE_ID");
 		soldToOrg=docrs.getString("SOLD_TO_ORG");
 		priceList=docrs.getString("PRICE_LIST");
 		shipToOrg=docrs.getString("SHIP_TO_ORG");//?a°eou-×|?￥o?μ￥O
@@ -758,10 +758,10 @@
 								" REMARK,ASSIGN_MANUFACT,substr(PCCFMDATE,1,8) as PCCFMDATE,substr(FTACPDATE,1,8) as FTACPDATE,"+
 								"substr(PCACPDATE,1,8) as PCACPDATE,substr(SASCODATE,1,8) as SASCODATE,SDRQ_EXCEED,"+
 								" ORDERNO, INVENTORY_ITEM_ID,substr(SHIP_DATE,1,8) as SHIP_DATE, "+
-								" cust_request_date,shipping_method,b.meaning shipping_method_name, ORDERED_ITEM"+ //add by Peggychen 20110621
+								" cust_request_date,shipping_method,b.meaning shipping_method_name, ORDERED_ITEM "+ //add by Peggychen 20110621
 								",case when ASSIGN_MANUFACT = '002' and '" + tsAreaNo +"' in('008') and TSC_INV_CATEGORY(a.inventory_item_id,43,23) in ('SMA','SMB','SMC','SOD-123W','SOD-128') then '1141' "+ // Add by Mars 20241107
-								" when '"+ rfq_Type_Name+"' not in ('EDI') then nvl((select b.order_num from oraddman.tsarea_ordercls b where b.sarea_no ='"+tsAreaNo+"' and  TO_CHAR(a.order_type_id) = b.OTYPE_ID),'N/A')"+//add by Peggy 20120222
-								" else tsc_rfq_create_erp_odr_pkg.TSC_GET_ORDER_TYPE(a.inventory_item_id) end ORDER_TYPE "+
+								" else nvl((select b.order_num from oraddman.tsarea_ordercls b where b.sarea_no ='"+tsAreaNo+"' and  TO_CHAR(a.order_type_id) = b.OTYPE_ID),'N/A') end ORDER_TYPE"+//add by Peggy 20120222
+								//",ORDERED_ITEM,tsc_rfq_create_erp_odr_pkg.TSC_GET_ORDER_TYPE(a.inventory_item_id) ORDER_TYPE"+//add by mars 20241016
 								",a.CUST_PO_NUMBER"+ //add by Peggy 20160629
 								" from ORADDMAN.TSDELIVERY_NOTICE_DETAIL a "+
 								",(SELECT lookup_code, meaning,description,enabled_flag,start_date_active,end_date_active FROM fnd_lookup_values lv"+
@@ -776,10 +776,10 @@
 								" REMARK,ASSIGN_MANUFACT,substr(PCCFMDATE,1,8) as PCCFMDATE,substr(FTACPDATE,1,8) as FTACPDATE,"+
 								"substr(PCACPDATE,1,8) as PCACPDATE,substr(SASCODATE,1,8) as SASCODATE,SDRQ_EXCEED, ORDERNO,"+
 								" INVENTORY_ITEM_ID,substr(SHIP_DATE,1,8) as SHIP_DATE, "+
-								" cust_request_date,shipping_method,b.meaning shipping_method_name, ORDERED_ITEM"+ //add by Peggychen 20110621
+								" cust_request_date,shipping_method,b.meaning shipping_method_name,ORDERED_ITEM "+ //add by Peggychen 20110621
 								",case when ASSIGN_MANUFACT = '002' and '" + tsAreaNo +"' in('008') and TSC_INV_CATEGORY(a.inventory_item_id,43,23) in ('SMA','SMB','SMC','SOD-123W','SOD-128') then '1141' "+ // Add by Mars 20241107
-								" when '"+ rfq_Type_Name+"' not in ('EDI') then nvl((select b.order_num from oraddman.tsarea_ordercls b where b.sarea_no ='"+tsAreaNo+"' and  TO_CHAR(a.order_type_id) = b.OTYPE_ID),'N/A')"+//add by Peggy 20120222
-								" else tsc_rfq_create_erp_odr_pkg.TSC_GET_ORDER_TYPE(a.inventory_item_id) end ORDER_TYPE "+
+								" else nvl((select b.order_num from oraddman.tsarea_ordercls b where b.sarea_no ='"+tsAreaNo+"' and  TO_CHAR(a.order_type_id) = b.OTYPE_ID),'N/A') end ORDER_TYPE"+//add by Peggy 20120222
+								//",ORDERED_ITEM,tsc_rfq_create_erp_odr_pkg.TSC_GET_ORDER_TYPE(a.inventory_item_id) ORDER_TYPE"+//add by mars 20241016
 								",a.CUST_PO_NUMBER"+ //add by Peggy 20160629
 								" from ORADDMAN.TSDELIVERY_NOTICE_DETAIL a"+
 								",(SELECT lookup_code, meaning,description,enabled_flag,start_date_active,end_date_active FROM fnd_lookup_values lv"+
@@ -802,10 +802,10 @@
 								" REMARK,ASSIGN_MANUFACT,substr(PCCFMDATE,1,8) as PCCFMDATE,substr(FTACPDATE,1,8) as FTACPDATE,"+
 								"substr(PCACPDATE,1,8) as PCACPDATE,substr(SASCODATE,1,8) as SASCODATE,SDRQ_EXCEED,"+
 								" ORDERNO, INVENTORY_ITEM_ID,substr(SHIP_DATE,1,8) as SHIP_DATE, "+
-								" cust_request_date,shipping_method,b.meaning shipping_method_name, ORDERED_ITEM"+ //add by Peggychen 20110621
+								" cust_request_date,shipping_method,b.meaning shipping_method_name,ORDERED_ITEM "+ //add by Peggychen 20110621
 								",case when ASSIGN_MANUFACT = '002' and '" + tsAreaNo +"' in('008') and TSC_INV_CATEGORY(a.inventory_item_id,43,23) in ('SMA','SMB','SMC','SOD-123W','SOD-128') then '1141' "+ // Add by Mars 20241107
-								" when '"+ rfq_Type_Name+"' not in ('EDI') then nvl((select b.order_num from oraddman.tsarea_ordercls b where b.sarea_no ='"+tsAreaNo+"' and  TO_CHAR(a.order_type_id) = b.OTYPE_ID),'N/A')"+//add by Peggy 20120222
-								" else tsc_rfq_create_erp_odr_pkg.TSC_GET_ORDER_TYPE(a.inventory_item_id) end ORDER_TYPE "+
+								" else nvl((select b.order_num from oraddman.tsarea_ordercls b where b.sarea_no ='"+tsAreaNo+"' and  TO_CHAR(a.order_type_id) = b.OTYPE_ID),'N/A') end ORDER_TYPE"+//add by Peggy 20120222
+								//",ORDERED_ITEM,tsc_rfq_create_erp_odr_pkg.TSC_GET_ORDER_TYPE(a.inventory_item_id) ORDER_TYPE"+//add by mars 20241016
 								",a.CUST_PO_NUMBER"+ //add by Peggy 20160629
 								"  from ORADDMAN.TSDELIVERY_NOTICE_DETAIL  a"+
 								",(SELECT lookup_code, meaning,description,enabled_flag,start_date_active,end_date_active FROM fnd_lookup_values lv"+
@@ -822,7 +822,7 @@
 						}
 						sqlDTL += " order by LINE_NO";
 					} // ENd of else
-					//out.println(sqlDTL);
+//	   		out.println(sqlDTL);
 					ResultSet rs=statement.executeQuery(sqlDTL);
 					while (rs.next())
 					{
