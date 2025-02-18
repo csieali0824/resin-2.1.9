@@ -1,28 +1,28 @@
-<!-- 20101112 liling æŠŠé‡æ–°æŒ‡æ´¾æˆ–æ‰¹é€€èªªæ˜åŠ åˆ°history -->
-<!-- 20101203 liling æ–°å¢PC_COMMENT,åŸREMARKæ”¹UPDATEè‡³PC_COMMENT,é¿å…è“‹æ‰SALESæ‰“çš„ -->
-<!-- 20110304 å¤©æ´¥/å±±æ±/å¤©æ´¥å¤–è³¼ æ›forward æ”¹ç‚º18 å¤© from CYTSOU 20110304 -->
-<!-- 20141022 Peggy,æ–°å¢Slow Moving é™„è¨»æ¬„ä½-->
-<!-- 20141210 Peggy,ä¾›æ‡‰å•†äº¤æœŸä¸å¯å°æ–¼ç³»çµ±æ—¥-->
+<!-- 20101112 liling §â­«·s«ü¬£©Î§å°h»¡©ú¥[¨ìhistory -->
+<!-- 20101203 liling ·s¼WPC_COMMENT,­ìREMARK§ïUPDATE¦ÜPC_COMMENT,Á×§K»\±¼SALES¥´ªº -->
+<!-- 20110304 ¤Ñ¬z/¤sªF/¤Ñ¬z¥~ÁÊ ´«forward §ï¬°18 ¤Ñ from CYTSOU 20110304 -->
+<!-- 20141022 Peggy,·s¼WSlow Moving ªşµùÄæ¦ì-->
+<!-- 20141210 Peggy,¨ÑÀ³°Ó¥æ´Á¤£¥i¤p©ó¨t²Î¤é-->
 <!-- 20150114 Peggy,Lead Time check-->
-<!-- 20150318 Peggy,å±±æ±èˆ¹æœŸæ”¹18å¤©-->
-<!-- 20150722 Peggy,ç•¶TSCE ORDER PCäº¤æœŸæ™šæ–¼SSDä¸”ç‚ºSEA(C)è¨ˆç®—å·¥å» äº¤æœŸ+FOB TERMæ˜¯å¦åœ¨CRDå‰å¾Œå…©å¤©,è‹¥æ˜¯,å‰‡PASS,å¦å‰‡è‡ªå‹•UPDATE SHIPPING METHOD=AIR(C),é‡æ–°è¨ˆç®—SSD-->
+<!-- 20150318 Peggy,¤sªF²î´Á§ï18¤Ñ-->
+<!-- 20150722 Peggy,·íTSCE ORDER PC¥æ´Á±ß©óSSD¥B¬°SEA(C)­pºâ¤u¼t¥æ´Á+FOB TERM¬O§_¦bCRD«e«á¨â¤Ñ,­Y¬O,«hPASS,§_«h¦Û°ÊUPDATE SHIPPING METHOD=AIR(C),­«·s­pºâSSD--> 
 <!-- 20160313 Peggy,for sample order add direct_ship_to_cust column-->
-<!-- 20160825 Peggy,å·¥å» CONFIRM SEA(UC)ç„¡æ³•æ»¿è¶³å®¢æˆ¶CRD,é‹è¼¸æ–¹å¼ç”±SEA(UC)æ”¹æˆAIR(UC),ç³»çµ±é‡æ–°è¨ˆç®—AIR(UC)äº¤æœŸä¾›å·¥å» ç¢ºèª-->
-<!-- 20160913 Peggy,check customer:GE tsch rfq yew 1156 å›è¦†äº¤æœŸæ˜¯å¦ç¬¦åˆå®¢æˆ¶å‡ºè²¨æ—¥-->
-<!-- 20161019 Peggy,åœç”¨function:TSC_RFQ_GET_TSCA_SSD,æ”¹ç”¨TSCA_GET_ORDER_SSD-->
+<!-- 20160825 Peggy,¤u¼tCONFIRM SEA(UC)µLªkº¡¨¬«È¤áCRD,¹B¿é¤è¦¡¥ÑSEA(UC)§ï¦¨AIR(UC),¨t²Î­«·s­pºâAIR(UC)¥æ´Á¨Ñ¤u¼t½T»{-->
+<!-- 20160913 Peggy,check customer:GE tsch rfq yew 1156 ¦^ÂĞ¥æ´Á¬O§_²Å¦X«È¤á¥X³f¤é-->
+<!-- 20161019 Peggy,°±¥Îfunction:TSC_RFQ_GET_TSCA_SSD,§ï¥ÎTSCA_GET_ORDER_SSD-->
 <!-- 20170412 Peggy,add tsc_package for yew-->
 <!-- 20170503 Peggy,tscj add Shipping  Frequency-->
-<!-- 20170510 Peggy,yewå›Täº¤æœŸçµ±ä¸€ç‚ºé€±ä¸€-->
-<!-- 20170711 Peggy,TSCAé‡20990101äº¤æœŸ,ä¸é‡ç®—SSDåŠSHIPPING METHOD-->
-<!-- 20180207 Peggy,ä¾›æ‡‰å•†=è˜‡å›ºä¸”è¨‚å–®é¡å‹=1142,è¨‚å–®é¡å‹è‡ªå‹•è½‰æ›ç‚º1141, FOBè¨­å®šç‚ºFOB TAIWAN-->
-<!-- 20181113 Peggy,MUSTARDå›ºå®šé€±ä¸€å‡ºè²¨(BY SEA),ä½†æ€¥æ–™æ’å¤–-->
-<%@ page contentType="text/html; charset=utf-8"  language="java" import="java.sql.*"%>
+<!-- 20170510 Peggy,yew¦^T¥æ´Á²Î¤@¬°¶g¤@-->
+<!-- 20170711 Peggy,TSCA¹J20990101¥æ´Á,¤£­«ºâSSD¤ÎSHIPPING METHOD-->
+<!-- 20180207 Peggy,¨ÑÀ³°Ó=Ä¬©T¥B­q³æÃş«¬=1142,­q³æÃş«¬¦Û°ÊÂà´«¬°1141, FOB³]©w¬°FOB TAIWAN-->
+<!-- 20181113 Peggy,MUSTARD©T©w¶g¤@¥X³f(BY SEA),¦ı«æ®Æ±Æ¥~-->
+<%@ page contentType="text/html; charset=big5" language="java" import="java.sql.*"%>
 <html>
 <head>
 <title>Sales Delivery Request Data Edit Page for Assign</title>
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<%@ page import="ComboBoxBean,Array2DimensionInputBean"%>
+<%@ page import="CheckBoxBean,ComboBoxBean,Array2DimensionInputBean"%>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
 <%@ page import="SalesDRQPageHeaderBean" %>
 <jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
@@ -35,57 +35,57 @@ document.onclick=function(e)
 	//if (t!="popcal") gfPop.fHideCal();
 }
 var checkflag = "false";
-function check(field)
+function check(field) 
 {
-	if (checkflag == "false")
+	if (checkflag == "false") 
 	{
- 		for (i = 0; i < field.length; i++)
+ 		for (i = 0; i < field.length; i++) 
 		{
  			field[i].checked = true;
 		}
  		checkflag = "true";
-		return "Cancel Selected";
+		return "Cancel Selected"; 
 	}
- 	else
+ 	else 
 	{
- 		for (i = 0; i < field.length; i++)
+ 		for (i = 0; i < field.length; i++) 
 		{
- 			field[i].checked = false;
+ 			field[i].checked = false; 
 		}
  		checkflag = "false";
- 		return "Select All";
+ 		return "Select All"; 
 	}
 }
 
 function submitCheck(ms1,ms2,ms3,ms4,ms5,ms6,pgRow)
-{
-	document.DISPLAYREPAIR.submit2.disabled=true;
+{   
+	document.DISPLAYREPAIR.submit2.disabled=true;  
 	var ship_frequency ="";
-	var mon_cnt=0,mon_cnt1=0;
-	var chinese_day = ["æ—¥","ä¸€","äºŒ","ä¸‰","å››","äº”","å…­"];
-	if (document.DISPLAYREPAIR.ACTIONID.value=="004")  //è¡¨ç¤ºç‚ºCANCEå‹•ä½œ
-  	{
-   		flag=confirm(ms1);
+	var mon_cnt=0,mon_cnt1=0; 
+	var chinese_day = ["¤é","¤@","¤G","¤T","¥|","¤­","¤»"];	
+	if (document.DISPLAYREPAIR.ACTIONID.value=="004")  //ªí¥Ü¬°CANCE°Ê§@
+  	{ 
+   		flag=confirm(ms1);      
    		if (flag==false)
 		{
 			document.DISPLAYREPAIR.submit2.disabled=false;
 			return(false);
 		}
-  	}
-
+  	} 
+ 
  	if (document.DISPLAYREPAIR.ACTIONID.value=="--" || document.DISPLAYREPAIR.ACTIONID.value==null)
-  	{
-   		alert(ms2);
+  	{ 
+   		alert(ms2);   
 		document.DISPLAYREPAIR.submit2.disabled=false;
    		return(false);
-  	}
+  	} 
 	else if (document.DISPLAYREPAIR.ACTIONID.value!="009" && document.DISPLAYREPAIR.ACTIONID.value!="005" )
-    {
-    	alert("                    Error Action Process!!!\n Don't try key-in invalid line No in this page...");
+    { 
+    	alert("                    Error Action Process!!!\n Don't try key-in invalid line No in this page...");   
 		document.DISPLAYREPAIR.submit2.disabled=false;
         return(false);
-    }
-
+    }    
+  
 	var ltcust ="";
 	var ltpc="";
 	var lineid="";
@@ -110,7 +110,7 @@ function submitCheck(ms1,ms2,ms3,ms4,ms5,ms6,pgRow)
 		{
 			chkvalue =document.DISPLAYREPAIR.CHKFLAG[i].checked;
 			lineid = document.DISPLAYREPAIR.CHKFLAG[i].value;
-		}
+		}		
 		if (chkvalue==true)
 		{
 			chkcnt ++;
@@ -122,39 +122,39 @@ function submitCheck(ms1,ms2,ms3,ms4,ms5,ms6,pgRow)
 				rec_month= document.DISPLAYREPAIR.elements["FACTORYDATE_"+lineid].value.substr(4,2);
 				rec_day  = document.DISPLAYREPAIR.elements["FACTORYDATE_"+lineid].value.substr(6,2);
 				ship_frequency =document.DISPLAYREPAIR.elements["SHIP_FREQUENCY_"+lineid].value;
-
+				
 				if (document.DISPLAYREPAIR.elements["FACTORYDATE_"+lineid].value.length!=8)
 				{
 					alert("line"+lineid+":The date value error!!");
 					document.DISPLAYREPAIR.elements["FACTORYDATE_"+lineid].focus();
 					document.DISPLAYREPAIR.ACTIONID.value="--";
 					document.DISPLAYREPAIR.submit2.disabled=false;
-					return false;
-				}
+					return false;			
+				}	
 				else if (rec_month <1 || rec_month >12)
 				{
 					alert("line"+lineid+":The month value error!!");
 					document.DISPLAYREPAIR.elements["FACTORYDATE_"+lineid].focus();
 					document.DISPLAYREPAIR.ACTIONID.value="--";
 					document.DISPLAYREPAIR.submit2.disabled=false;
-					return false;
-				}
+					return false;			
+				}	
 				else if ((rec_month ==1 || rec_month==3 || rec_month == 5 || rec_month ==7 || rec_month==8 || rec_month==10 || rec_month ==12)	 && rec_day > 31)
 				{
 					alert("line"+lineid+":The date value error!!");
 					document.DISPLAYREPAIR.elements["FACTORYDATE_"+lineid].focus();
 					document.DISPLAYREPAIR.ACTIONID.value="--";
 					document.DISPLAYREPAIR.submit2.disabled=false;
-					return false;
-				}
+					return false;			
+				} 
 				else if ((rec_month == 4 || rec_month==6 || rec_month == 9 || rec_month ==11)	 && rec_day > 30)
 				{
 					alert("line"+lineid+":The date value error!!");
 					document.DISPLAYREPAIR.elements["FACTORYDATE_"+lineid].focus();
 					document.DISPLAYREPAIR.ACTIONID.value="--";
 					document.DISPLAYREPAIR.submit2.disabled=false;
-					return false;
-				}
+					return false;			
+				} 
 				else if (rec_month == 2)
 				{
 					if ((isLeapYear(rec_year) && rec_day > 29) || (!isLeapYear(rec_year) && rec_day > 28))
@@ -163,24 +163,24 @@ function submitCheck(ms1,ms2,ms3,ms4,ms5,ms6,pgRow)
 						document.DISPLAYREPAIR.elements["FACTORYDATE_"+lineid].focus();
 						document.DISPLAYREPAIR.ACTIONID.value="--";
 						document.DISPLAYREPAIR.submit2.disabled=false;
-						return false;
-					}
+						return false;	
+					}		
 				}
-
+				
 				if (eval(document.DISPLAYREPAIR.elements["FACTORYDATE_"+lineid].value)<eval(document.DISPLAYREPAIR.SYSDATE.value))
 				{
 					alert("line"+lineid+":The date value error!!");
 					document.DISPLAYREPAIR.elements["FACTORYDATE_"+lineid].focus();
 					document.DISPLAYREPAIR.ACTIONID.value="--";
 					document.DISPLAYREPAIR.submit2.disabled=false;
-					return false;
-				}
+					return false;		
+				}				
 				if (ship_frequency!=0)
 				{
 					var pc_date = new Date(Date.parse(rec_month+"-"+rec_day+"-"+ rec_year));
 					if ((ship_frequency-1) != pc_date.getDay())
 					{
-						alert("line"+lineid+":å®¢æˆ¶äº¤æœŸç‚ºå‘¨"+chinese_day[(ship_frequency-1)]+",è«‹Confirmå‘¨"+chinese_day[(ship_frequency-1)]+"äº¤æœŸ!!");
+						alert("line"+lineid+":«È¤á¥æ´Á¬°©P"+chinese_day[(ship_frequency-1)]+",½ĞConfirm©P"+chinese_day[(ship_frequency-1)]+"¥æ´Á!!");
 						document.DISPLAYREPAIR.elements["FACTORYDATE_"+lineid].focus();
 						document.DISPLAYREPAIR.ACTIONID.value="--";
 						document.DISPLAYREPAIR.submit2.disabled=false;
@@ -194,30 +194,30 @@ function submitCheck(ms1,ms2,ms3,ms4,ms5,ms6,pgRow)
 						if ( document.DISPLAYREPAIR.elements["SUPPLY_SOURCE_"+lineid].value == ""||document.DISPLAYREPAIR.elements["SUPPLY_SOURCE_"+lineid].value == null)
 						{
 							if (document.DISPLAYREPAIR.elements["VENDOR_SITE_ID_"+lineid].value=="null" || document.DISPLAYREPAIR.elements["VENDOR_SITE_ID_"+lineid].value=="")
-							{
+							{	
 								alert("please choose approval supplier!!");
-								document.DISPLAYREPAIR.elements["VENDOR_CODE_"+lineid].style.backgroundColor="#FFCCCC";
+								document.DISPLAYREPAIR.elements["VENDOR_CODE_"+lineid].style.backgroundColor="#FFCCCC";  
 								document.DISPLAYREPAIR.submit2.disabled=false;
 								return(false);
 							}
 							//add by Peggy 20140423
 							else if (document.DISPLAYREPAIR.elements["VENDOR_SSD_"+lineid].value==null || document.DISPLAYREPAIR.elements["VENDOR_SSD_"+lineid].value=="")
-							{
+							{	
 								alert("Please input the vendor delivery date!");
-								document.DISPLAYREPAIR.elements["VENDOR_SSD_"+lineid].style.backgroundColor="#FFCCCC";
-								document.DISPLAYREPAIR.submit2.disabled=false;
+								document.DISPLAYREPAIR.elements["VENDOR_SSD_"+lineid].style.backgroundColor="#FFCCCC"; 
+								document.DISPLAYREPAIR.submit2.disabled=false; 
 								return(false);
 							}
 						}
-
+						
 						if (document.DISPLAYREPAIR.elements["VENDOR_SSD_"+lineid].value!=null && document.DISPLAYREPAIR.elements["VENDOR_SSD_"+lineid].value!="")
 						{
 							if (document.DISPLAYREPAIR.elements["VENDOR_SSD_"+lineid].value.length!=8)
 							{
 								alert("Date format error(invalid format:YYYYMMDD)!!");
-								document.DISPLAYREPAIR.elements["VENDOR_SSD_"+lineid].style.backgroundColor="#FFCCCC";
-								document.DISPLAYREPAIR.submit2.disabled=false;
-								return false;
+								document.DISPLAYREPAIR.elements["VENDOR_SSD_"+lineid].style.backgroundColor="#FFCCCC"; 
+								document.DISPLAYREPAIR.submit2.disabled=false; 
+								return false;			
 							}
 							else
 							{
@@ -231,61 +231,61 @@ function submitCheck(ms1,ms2,ms3,ms4,ms5,ms6,pgRow)
 								if (mon_cnt>12)
 								{
 									alert("Year format error!!");
-									document.DISPLAYREPAIR.elements["VENDOR_SSD_"+lineid].style.backgroundColor="#FFCCCC";
+									document.DISPLAYREPAIR.elements["VENDOR_SSD_"+lineid].style.backgroundColor="#FFCCCC";  
 									document.DISPLAYREPAIR.submit2.disabled=false;
-									return false;
+									return false;			
 								}
 								else if (rec_month <1 || rec_month >12)
 								{
 									alert("Month format error(invalid format:YYYYMMDD)!!");
-									document.DISPLAYREPAIR.elements["VENDOR_SSD_"+lineid].style.backgroundColor="#FFCCCC";
+									document.DISPLAYREPAIR.elements["VENDOR_SSD_"+lineid].style.backgroundColor="#FFCCCC";  
 									document.DISPLAYREPAIR.submit2.disabled=false;
-									return false;
-								}
+									return false;			
+								}	
 								else if ((rec_month ==1 || rec_month==3 || rec_month == 5 || rec_month ==7 || rec_month==8 || rec_month==10 || rec_month ==12)	 && rec_day > 31)
 								{
 									alert("Days format error(invalid format:YYYYMMDD)!!");
-									document.DISPLAYREPAIR.elements["VENDOR_SSD_"+lineid].style.backgroundColor="#FFCCCC";
+									document.DISPLAYREPAIR.elements["VENDOR_SSD_"+lineid].style.backgroundColor="#FFCCCC";  
 									document.DISPLAYREPAIR.submit2.disabled=false;
-									return false;
-								}
+									return false;			
+								} 
 								else if ((rec_month == 4 || rec_month==6 || rec_month == 9 || rec_month ==11)	 && rec_day > 30)
 								{
 									alert("Days format error(invalid format:YYYYMMDD)!!");
-									document.DISPLAYREPAIR.elements["VENDOR_SSD_"+lineid].style.backgroundColor="#FFCCCC";
+									document.DISPLAYREPAIR.elements["VENDOR_SSD_"+lineid].style.backgroundColor="#FFCCCC";  
 									document.DISPLAYREPAIR.submit2.disabled=false;
-									return false;
-								}
+									return false;			
+								} 
 								else if (rec_month == 2)
 								{
 									if ((isLeapYear(rec_year) && rec_day > 29) || (!isLeapYear(rec_year) && rec_day > 28))
 									{
 										alert("Days format error(invalid format:YYYYMMDD)!!");
-										document.DISPLAYREPAIR.elements["VENDOR_SSD_"+lineid].style.backgroundColor="#FFCCCC";
+										document.DISPLAYREPAIR.elements["VENDOR_SSD_"+lineid].style.backgroundColor="#FFCCCC";  
 										document.DISPLAYREPAIR.submit2.disabled=false;
-										return false;
-									}
+										return false;	
+									}		
 								}
 								if (eval(document.DISPLAYREPAIR.elements["VENDOR_SSD_"+lineid].value) < eval(document.DISPLAYREPAIR.SYSDATE.value)) //add by Peggy 20141210
 								{
 									alert("The supplier schedule date must greater than  today!!");
-									document.DISPLAYREPAIR.elements["VENDOR_SSD_"+lineid].style.backgroundColor="#FFCCCC";
+									document.DISPLAYREPAIR.elements["VENDOR_SSD_"+lineid].style.backgroundColor="#FFCCCC";  
 									document.DISPLAYREPAIR.submit2.disabled=false;
-									return false;
+									return false;	
 								}
 								else if (eval(document.DISPLAYREPAIR.elements["VENDOR_SSD_"+lineid].value) >= eval(document.DISPLAYREPAIR.elements["FACTORYDATE_"+lineid].value))
 								{
-									if (!confirm("Line:"+lineid+"  ä¾›æ‡‰å•†äº¤æœŸ("+document.DISPLAYREPAIR.elements["VENDOR_SSD_"+lineid].value+")ç­‰æ–¼æ™šæ–¼å·¥å» äº¤è²¨æ—¥("+document.DISPLAYREPAIR.elements["FACTORYDATE_"+lineid].value+"),æ‚¨ç¢ºå®šå—?(Y/N)"))
+									if (!confirm("Line:"+lineid+"  ¨ÑÀ³°Ó¥æ´Á("+document.DISPLAYREPAIR.elements["VENDOR_SSD_"+lineid].value+")µ¥©ó±ß©ó¤u¼t¥æ³f¤é("+document.DISPLAYREPAIR.elements["FACTORYDATE_"+lineid].value+"),±z½T©w¶Ü?(Y/N)"))
 									{
 										document.DISPLAYREPAIR.submit2.disabled=false;
 										return false;
 									}
 								}
 							}
-						}
+						}	
 					}
-				}
-
+				}				
+				
 				//add by Peggy 20150114
 				ltcust = document.DISPLAYREPAIR.elements["ltd_"+lineid].value;
 				//ltpc = document.DISPLAYREPAIR.elements["ltp_"+lineid].value;
@@ -293,109 +293,109 @@ function submitCheck(ms1,ms2,ms3,ms4,ms5,ms6,pgRow)
 				if (eval(ltcust) >=0 && eval(ltcust)<=6 && eval(document.getElementById("lt_"+lineid).innerHTML)<eval(document.DISPLAYREPAIR.elements["FACTORYDATE_"+lineid].value) && (document.DISPLAYREPAIR.elements["OVER_LT_"+lineid].value==null || document.DISPLAYREPAIR.elements["OVER_LT_"+lineid].value==""))
 				{
 					alert("Please input over lead time reason!!");
-					document.DISPLAYREPAIR.elements["OVER_LT_"+lineid].style.backgroundColor="#FFCCCC";
+					document.DISPLAYREPAIR.elements["OVER_LT_"+lineid].style.backgroundColor="#FFCCCC";  
 					document.DISPLAYREPAIR.submit2.disabled=false;
-					return false;
+					return false;	
 				}
 			}
-			else if (document.DISPLAYREPAIR.ACTIONID.value=="005") //æ‰¹é€€
+			else if (document.DISPLAYREPAIR.ACTIONID.value=="005") //§å°h
 			{
 				document.DISPLAYREPAIR.elements["REASONCODE_"+lineid].style.backgroundColor="#FFFFFF";
 				document.DISPLAYREPAIR.elements["REASON_"+lineid].style.backgroundColor="#FFFFFF";
-				if (document.DISPLAYREPAIR.elements["REASONCODE_"+lineid].value=="00" || document.DISPLAYREPAIR.elements["REASONCODE_"+lineid].value=="--" || document.DISPLAYREPAIR.elements["REASONCODE_"+lineid].value=="") //æ‰¹é€€
+				if (document.DISPLAYREPAIR.elements["REASONCODE_"+lineid].value=="00" || document.DISPLAYREPAIR.elements["REASONCODE_"+lineid].value=="--" || document.DISPLAYREPAIR.elements["REASONCODE_"+lineid].value=="") //§å°h
 				{
 					alert("Please choose a reject reason code!!");
-					document.DISPLAYREPAIR.elements["REASONCODE_"+lineid].style.backgroundColor="#FFCCCC";
+					document.DISPLAYREPAIR.elements["REASONCODE_"+lineid].style.backgroundColor="#FFCCCC";  
 					document.DISPLAYREPAIR.submit2.disabled=false;
-					return false;
+					return false;	
 				}
-				else if (document.DISPLAYREPAIR.elements["REASONCODE_"+lineid].value=="07") //æ‰¹é€€-å…¶ä»–
+				else if (document.DISPLAYREPAIR.elements["REASONCODE_"+lineid].value=="07") //§å°h-¨ä¥L
 				{
 					if (document.DISPLAYREPAIR.elements["REASON_"+lineid].value=="" || document.DISPLAYREPAIR.elements["REASON_"+lineid].value=="null")
 					{
 						alert("Please enter a reason!!");
-						document.DISPLAYREPAIR.elements["REASON_"+lineid].style.backgroundColor="#FFCCCC";
+						document.DISPLAYREPAIR.elements["REASON_"+lineid].style.backgroundColor="#FFCCCC";  
 						document.DISPLAYREPAIR.submit2.disabled=false;
-						return false;
+						return false;	
 					}
-				}
+				}			
 			}
-		}
-   	}
+		} 
+   	}	
    	if (chkcnt<=0 && document.DISPLAYREPAIR.CHKFLAG.length!=null)
    	{
-    	alert(ms4);
+    	alert(ms4);   
 		document.DISPLAYREPAIR.submit2.disabled=false;
     	return(false);
    	}
   	var setFlag="FALSE";
-
+ 
   	for (k=0;k<pgRow;k++)
   	{
     	if (document.DISPLAYREPAIR.elements["REASONCODE"+k].value !=null && document.DISPLAYREPAIR.elements["REASONCODE"+k].value != "00"  && document.DISPLAYREPAIR.elements["REASONCODE"+k].value != "--" && document.DISPLAYREPAIR.elements["REASONCODE"+k].value != "null")
 	 	{
 	   		setFlag="TRUE";
 	 	}
- 	}
-
+ 	} 
+  
   	for (j=0;j<pgRow;j++)
-  	{
+  	{  
     	if (document.DISPLAYREPAIR.elements["REASON"+j].value !=null && document.DISPLAYREPAIR.elements["REASON"+j].value != "N/A" && document.DISPLAYREPAIR.elements["REASON"+j].value != "null")
 	 	{
 	 		setFlag="TRUE";
 		}
-	}
-
+	} 
+  
   	if (setFlag=="FALSE")
   	{
     	if (document.DISPLAYREPAIR.ACTIONID.value=="007")
-		{
+		{  
 	   		alert(ms5);
 			document.DISPLAYREPAIR.submit2.disabled=false;
 	   		return(false);
 		}
 		else if (document.DISPLAYREPAIR.ACTIONID.value=="005")
-		{
-	 		alert(ms6);
+		{ 
+	 		alert(ms6); 
 			document.DISPLAYREPAIR.submit2.disabled=false;
-	 		return(false);
+	 		return(false); 
 		}
   	}
 	//else
 	//{
 	//	document.DISPLAYREPAIR.submit2.disabled=false;
 	//}
-  	return(true);
+  	return(true);  
 }
 
 function setSubmit1(URL)
-{
+{ 
 	var linkURL = "#ACTION";
   	document.DISPLAYREPAIR.action=URL+linkURL;
-  	document.DISPLAYREPAIR.submit();
+  	document.DISPLAYREPAIR.submit();    
 }
 
-function isLeapYear(year)
-{
-	if((year%4==0&&year%100!=0)||(year%400==0))
- 	{
- 		return true;
- 	}
- 	return false;
-}
+function isLeapYear(year) 
+{ 
+	if((year%4==0&&year%100!=0)||(year%400==0)) 
+ 	{ 
+ 		return true; 
+ 	}  
+ 	return false; 
+} 
 //add by Peggy 20140328
 function setVendorInfo(itemid,lineno,rfqno,ORGCODE)
-{
-	subWin=window.open("../jsp/subwindow/TSCApprovalSupplierFind.jsp?ITEMID="+itemid+"&LINENO="+lineno+"&rfqno="+rfqno+"&ORG="+ORGCODE+"&PG=D1004","subwin","location=no,left=450,top=300,width=500,height=300,scrollbars=no,menubar=no");
+{    
+	subWin=window.open("../jsp/subwindow/TSCApprovalSupplierFind.jsp?ITEMID="+itemid+"&LINENO="+lineno+"&rfqno="+rfqno+"&ORG="+ORGCODE+"&PG=D1004","subwin","location=no,left=450,top=300,width=500,height=300,scrollbars=no,menubar=no");  
 }
 //add by Peggy 20150114
 function setOverInfo(lineno)
 {
-	subWin=window.open("../jsp/subwindow/TSCOverLeadTimeReasonFind.jsp?LINENO="+lineno,"subwin","location=no,left=450,top=300,width=400,height=300,scrollbars=no,menubar=no");
+	subWin=window.open("../jsp/subwindow/TSCOverLeadTimeReasonFind.jsp?LINENO="+lineno,"subwin","location=no,left=450,top=300,width=400,height=300,scrollbars=no,menubar=no");  
 }
 function setStockInfo(dndocno,lineno,itemid,qty,reqdate,ordertype)
-{
-	subWin=window.open("../jsp/subwindow/TSDRQItemSupplyInfo.jsp?DNDOCNO="+dndocno+"&LINENO="+lineno+"&ITEMID="+itemid+"&REQQTY="+qty+"&REQDATE="+reqdate+"&ORDERTYPE="+ordertype+"&PGCODE=D1004","subwin","location=no,left=450,top=300,width=700,height=300,scrollbars=yes,menubar=yes");
+{    
+	subWin=window.open("../jsp/subwindow/TSDRQItemSupplyInfo.jsp?DNDOCNO="+dndocno+"&LINENO="+lineno+"&ITEMID="+itemid+"&REQQTY="+qty+"&REQDATE="+reqdate+"&ORDERTYPE="+ordertype+"&PGCODE=D1004","subwin","location=no,left=450,top=300,width=700,height=300,scrollbars=yes,menubar=yes");  
 }
 function checkall()
 {
@@ -425,12 +425,12 @@ function setCheck(irow)
 	var lineid="";
 	if (document.DISPLAYREPAIR.CHKFLAG.length != undefined)
 	{
-		chkflag = document.DISPLAYREPAIR.CHKFLAG[irow].checked;
+		chkflag = document.DISPLAYREPAIR.CHKFLAG[irow].checked; 
 		lineid = document.DISPLAYREPAIR.CHKFLAG[irow].value;
 	}
 	else
 	{
-		chkflag = document.DISPLAYREPAIR.CHKFLAG.checked;
+		chkflag = document.DISPLAYREPAIR.CHKFLAG.checked; 
 		lineid = document.DISPLAYREPAIR.CHKFLAG.value;
 	}
 	if (chkflag == true)
@@ -476,42 +476,42 @@ function setCheck(irow)
 function chkDate(lineid,dndocno)
 {
 	var ship_frequency = document.DISPLAYREPAIR.elements["SHIP_FREQUENCY_"+lineid].value;
-	var chinese_day = ["æ—¥","ä¸€","äºŒ","ä¸‰","å››","äº”","å…­"];
+	var chinese_day = ["¤é","¤@","¤G","¤T","¥|","¤­","¤»"];	
 	var rec_year="",rec_month="",rec_day=""
 	if (document.DISPLAYREPAIR.elements["FACTORYDATE_"+lineid].value.length>8)
 	{
 		alert("line"+lineid+":The date value error!!");
 		document.DISPLAYREPAIR.elements["FACTORYDATE_"+lineid].focus();
 		document.DISPLAYREPAIR.elements["FACTORYDATE_"+lineid].value="";
-		return false;
-	}
+		return false;			
+	}	
 	else if (document.DISPLAYREPAIR.elements["FACTORYDATE_"+lineid].value.length==8)
 	{
 		rec_year = document.DISPLAYREPAIR.elements["FACTORYDATE_"+lineid].value.substr(0,4);
 		rec_month= document.DISPLAYREPAIR.elements["FACTORYDATE_"+lineid].value.substr(4,2);
 		rec_day  = document.DISPLAYREPAIR.elements["FACTORYDATE_"+lineid].value.substr(6,2);
-
+	
 		if (rec_month <1 || rec_month >12)
 		{
 			alert("line"+lineid+":The month value error!!");
 			document.DISPLAYREPAIR.elements["FACTORYDATE_"+lineid].focus();
 			document.DISPLAYREPAIR.elements["FACTORYDATE_"+lineid].value="";
-			return false;
-		}
+			return false;			
+		}	
 		else if ((rec_month ==1 || rec_month==3 || rec_month == 5 || rec_month ==7 || rec_month==8 || rec_month==10 || rec_month ==12)	 && rec_day > 31)
 		{
 			alert("line"+lineid+":The date value error!!");
 			document.DISPLAYREPAIR.elements["FACTORYDATE_"+lineid].focus();
 			document.DISPLAYREPAIR.elements["FACTORYDATE_"+lineid].value="";
-			return false;
-		}
+			return false;			
+		} 
 		else if ((rec_month == 4 || rec_month==6 || rec_month == 9 || rec_month ==11)	 && rec_day > 30)
 		{
 			alert("line"+lineid+":The date value error!!");
 			document.DISPLAYREPAIR.elements["FACTORYDATE_"+lineid].focus();
 			document.DISPLAYREPAIR.elements["FACTORYDATE_"+lineid].value="";
-			return false;
-		}
+			return false;			
+		} 
 		else if (rec_month == 2)
 		{
 			if ((isLeapYear(rec_year) && rec_day > 29) || (!isLeapYear(rec_year) && rec_day > 28))
@@ -519,33 +519,33 @@ function chkDate(lineid,dndocno)
 				alert("line"+lineid+":The date value error!!");
 				document.DISPLAYREPAIR.elements["FACTORYDATE_"+lineid].focus();
 				document.DISPLAYREPAIR.elements["FACTORYDATE_"+lineid].value="";
-				return false;
-			}
+				return false;	
+			}		
 		}
-
+		
 		if (eval(document.DISPLAYREPAIR.elements["FACTORYDATE_"+lineid].value)<eval(document.DISPLAYREPAIR.SYSDATE.value))
 		{
 				alert("line"+lineid+":The date value error!!");
 				document.DISPLAYREPAIR.elements["FACTORYDATE_"+lineid].focus();
 				document.DISPLAYREPAIR.elements["FACTORYDATE_"+lineid].value="";
-				return false;
-		}
+				return false;	
+		}		
 		if (ship_frequency!=0)
 		{
 			var pc_date = new Date(Date.parse(rec_month+"-"+rec_day+"-"+ rec_year));
 			if ((ship_frequency-1) != pc_date.getDay())
 			{
-				alert("line"+lineid+":å®¢æˆ¶äº¤æœŸç‚ºå‘¨"+chinese_day[(ship_frequency-1)]+",è«‹Confirmå‘¨"+chinese_day[(ship_frequency-1)]+"äº¤æœŸ!!");
+				alert("line"+lineid+":«È¤á¥æ´Á¬°©P"+chinese_day[(ship_frequency-1)]+",½ĞConfirm©P"+chinese_day[(ship_frequency-1)]+"¥æ´Á!!");
 				document.DISPLAYREPAIR.elements["FACTORYDATE_"+lineid].focus();
 				document.DISPLAYREPAIR.elements["FACTORYDATE_"+lineid].value="";
 				return false;
 			}
 		}
-
+		
 		if (((document.DISPLAYREPAIR.salesarea.value=="001" && document.DISPLAYREPAIR.elements["SHIPPING_METHOD_"+lineid].value=="SEA(C)") || (document.DISPLAYREPAIR.salesarea.value=="008" && document.DISPLAYREPAIR.elements["SHIPPING_METHOD_"+lineid].value=="SEA(UC)")) && document.DISPLAYREPAIR.elements["ORIG_SHIPPING_METHOD_"+lineid].value=="NULL")
 		{
 			document.DISPLAYREPAIR.action="../jsp/TSSalesDRQArrangedPage.jsp?LINENO="+lineid+"&DNDOCNO="+dndocno+"&salesarea="+document.DISPLAYREPAIR.salesarea.value;
-			document.DISPLAYREPAIR.submit();
+			document.DISPLAYREPAIR.submit(); 
 		}
 		else
 		{
@@ -568,28 +568,30 @@ function chkDate1(lineid,dndocno)
 	return true;
 }
 </script>
+<jsp:useBean id="checkBoxBean" scope="page" class="CheckBoxBean"/>
 <jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
 </head>
 <%
 String dnDocNo=request.getParameter("DNDOCNO");
-String prodManufactory=request.getParameter("PRODMANUFACTORY");
+String prodManufactory=request.getParameter("PRODMANUFACTORY");   
 String lineNo=request.getParameter("LINENO");
-//String factoryDate=request.getParameter("FACTORYDATE");
-String actionID = request.getParameter("ACTIONID");
+//String factoryDate=request.getParameter("FACTORYDATE"); 
+String actionID = request.getParameter("ACTIONID");   
 String sDate=request.getParameter("SDATE");
 String remark=request.getParameter("REMARK");
 String processRemark=request.getParameter("PROC_REMARK");
-String tsReasonNo=request.getParameter("TSREASONNO");// é‡æ–°æŒ‡æ´¾æˆ–æ‰¹é€€åŸå› 
+String tsReasonNo=request.getParameter("TSREASONNO");// ­«·s«ü¬£©Î§å°h­ì¦]
 String line_No=request.getParameter("LINE_NO");
 String processFocus=request.getParameter("PROCESSFOCUS");
 String [] check=request.getParameterValues("CHKFLAG");
 String vendor_flag = request.getParameter("VENDOR_FLAG");
-String salesarea=request.getParameter("salesarea");
+String salesarea=request.getParameter("salesarea"); 
 if (vendor_flag==null) vendor_flag="";//add by Peggy 20140328
 String vendor_site_code ="",vendor_site_id =""; //add by Peggy 20140328
 String over_lt_reason=""; //add by Peggy 20150114
 int pageResultRow = 0;
 if (lineNo==null) { lineNo="";}
+//if (factoryDate==null) { factoryDate="";}
 if (remark==null) { remark=""; }
 if (processRemark==null) { processRemark=""; }
 if (processFocus==null) { processFocus="";  }
@@ -602,15 +604,15 @@ String [] choice=request.getParameterValues("CHKFLAG");
 String choiceLine="";
 if (choice!=null)
 {
-	for (int i=0;i<choice.length;i++)
+	for (int i=0;i<choice.length;i++)    
 	{
-		choiceLine +=(choice[i]+",");
+		choiceLine +=(choice[i]+",");	
 	}
 	if (choiceLine.length()>0) choiceLine =","+choiceLine;
 }
 //out.println("choiceLine="+choiceLine);
 boolean checkflag=false;
-String factoryDate=request.getParameter("FACTORYDATE_"+lineNo);//æ–°äº¤æœŸé è¨­å¸¶pcå›è¦†æ—¥.
+String factoryDate=request.getParameter("FACTORYDATE_"+lineNo);//·s¥æ´Á¹w³]±apc¦^ÂĞ¤é. 
 if (factoryDate==null) factoryDate="";
 String newShipDate=factoryDate;
 String totwdays=request.getParameter("totw_days_"+lineNo);
@@ -620,21 +622,21 @@ String FIRTIME=request.getParameter("FIRTIME");
 if (FIRTIME==null) FIRTIME="1";
 if (FIRTIME.equals("1"))
 {
-	StockInfoBean.setArray2DString(null);
+	StockInfoBean.setArray2DString(null); 
 	FIRTIME="2";
 }
-// å–æœ¬æ¬¡æ¸…å–®åˆ—æ•¸
+// ¨ú¥»¦¸²M³æ¦C¼Æ 
 int rowLength = 0;
 String sqlCount = null;
 Statement stateCNT=con.createStatement();
 if (UserRoles.indexOf("admin")>=0) { sqlCount = "select count(LINE_NO) from ORADDMAN.TSDELIVERY_NOTICE_DETAIL where DNDOCNO='"+dnDocNo+"' and LSTATUSID = '004' ";  }
 else { sqlCount = "select count(LINE_NO) from ORADDMAN.TSDELIVERY_NOTICE_DETAIL where DNDOCNO='"+dnDocNo+"' and ASSIGN_MANUFACT = '"+userProdCenterNo+"' and LSTATUSID = '004' "; }
 //out.println(sqlCount);
-ResultSet rsCNT=stateCNT.executeQuery(sqlCount);
+ResultSet rsCNT=stateCNT.executeQuery(sqlCount);	
 if (rsCNT.next()) rowLength = rsCNT.getInt(1);
 rsCNT.close();
 stateCNT.close();
-pageResultRow = rowLength; //çµ¦æœ¬é çš„é …æ•¸,ç”¨æ–¼åˆ¤æ–·æ˜¯å¦æœ‰ä»»ä½•æŒ‡æ´¾è¿´åœˆ
+pageResultRow = rowLength; //µ¹¥»­¶ªº¶µ¼Æ,¥Î©ó§PÂ_¬O§_¦³¥ô¦ó«ü¬£°j°é
 //add by Peggy 20140328
 if (vendor_flag.equals(""))
 {
@@ -643,33 +645,141 @@ if (vendor_flag.equals(""))
 	ResultSet rsx=statex.executeQuery(sqlx);
 	if (rsx.next()) vendor_flag = rsx.getString("vendor_flag");
 	rsx.close();
-	statex.close();
-}
+	statex.close();	
+} 
 try
 {
-	if (lineNo !=null && !lineNo.equals("")) { %>
-<script language="JavaScript" type="text/JavaScript">
-    alert("ä¾›æ‡‰å•†è˜‡å›ºå‡ºè²¨é ˆç‚º1141è¨‚å–®,ç³»çµ±å·²é‡æ–°è¨ˆç®—SSD,è«‹ç¢ºèªäº¤æœŸ,è¬è¬!");
-</script>
-<% } else {
-            sql = " update ORADDMAN.TSDELIVERY_NOTICE_DETAIL a "+
-                  " set FTACPDATE=null"+
-                  //" ,SHIP_DATE=?"+
-                  " ,ORDER_TYPE_ID=?"+
-                  " ,REASON_CODE="+(tsReasonNo!=null && !tsReasonNo.equals("")?(tsReasonNo.equals("--")?"00":"'"+tsReasonNo+"'"):"REASON_CODE")+""+
-                  " ,REASONDESC="+(tsReasonNo!=null && !tsReasonNo.equals("")?(tsReasonNo.equals("--")?"N/A":"'"+remark+"'"):"REASONDESC")+""+
-                  " ,PC_COMMENT=PC_COMMENT||'1142=>1141 For Vendor Issue'||"+((tsReasonNo!=null && !tsReasonNo.equals("")) || (remark!=null && !remark.equals(""))?"'"+remark+"'":"''")+""+
-                  " where DNDOCNO='"+dnDocNo+"' and to_char(LINE_NO)='"+lineNo+"' ";
-					//out.println(sql);
-					PreparedStatement pstmt=con.prepareStatement(sql);
-					pstmt.setString(1,"1022");
-					pstmt.executeUpdate();
-					pstmt.close();
+	//if (lineNo !=null && !lineNo.equals("") && factoryDate!=null)
+	if (lineNo !=null && !lineNo.equals(""))	
+	{ 
+		/*String orderTypeId="",plantNo="";
+		//String travelDay="0"; //²î´Á¤Ñ¼Æ
+		String newShipDate=""; //·s¥æ´Á¹w³]±apc¦^ÂĞ¤é.
+		Statement stateFACT=con.createStatement();
+		//ResultSet rsFACT=stateFACT.executeQuery("select REQUEST_DATE from ORADDMAN.TSDELIVERY_NOTICE_DETAIL where DNDOCNO='"+dnDocNo+"' and LINE_NO='"+lineNo+"' ");
+		String sqlFACT=" select REQUEST_DATE"+
+		               ",a.ASSIGN_MANUFACT"+
+					   ", nvl(a.ORDER_TYPE_ID,b.ORDER_TYPE_ID) ORDER_TYPE_ID "+
+					   ",b.TSAREANO,"+
+                  	   " TO_CHAR(TO_DATE(SUBSTR(nvl('"+factoryDate+"',REQUEST_DATE),1,8),'YYYYMMDD')+"+
+					   " (NVL((SELECT TRANSPORTATION_DAYS FROM ORADDMAN.TSC_CHINA_TO_TAIWAN_DAYS d WHERE a.ASSIGN_MANUFACT=d.PLANT_CODE"+
+					   " and c.ORDER_NUM=d.ORDER_NUM),0) * CASE WHEN a.direct_ship_to_cust =1  and a.assign_manufact='002' THEN 0 ELSE 1 END ),'yyyymmdd') TOTW_DATE "+ //yew ª½±H¤~¤£¥Î¥[7¤Ñ,add by Peggy 20190828
+					   " from ORADDMAN.TSDELIVERY_NOTICE_DETAIL a,  ORADDMAN.TSDELIVERY_NOTICE b,ORADDMAN.TSAREA_ORDERCLS c"+
+					   " where a.DNDOCNO='"+dnDocNo+"' and a.LINE_NO='"+lineNo+"' "+
+					   " and a.DNDOCNO = b.DNDOCNO "+
+					   " and b.TSAREANO=c.SAREA_NO"+
+					   " and nvl(a.ORDER_TYPE_ID,b.ORDER_TYPE_ID) = c.OTYPE_ID";
+		//out.println(sqlFACT);
+		ResultSet rsFACT=stateFACT.executeQuery(sqlFACT);
+		if (rsFACT.next()) 
+		{ 
+			if (factoryDate==null || factoryDate.equals("")) 
+			{	 
+				factoryDate= rsFACT.getString(1).substring(0,8); 
+			}
+			plantNo= rsFACT.getString(2);
+			orderTypeId= rsFACT.getString(3);
+			salesarea =rsFACT.getString(4);
+			newShipDate= rsFACT.getString(5);			 
+		} 
+		rsFACT.close(); 
+		stateFACT.close();
+		*/
+		
+
+		//Âà´«SG¥æ©ö«á,¨ÑÀ³°Ó=Ä¬©T¤£¥Î¦^T,ª½¤U1142§Y¥i,add by Peggy 20200310
+		//¨ÑÀ³°Ó=Ä¬©T,³f­n¦^¥x,add by Peggy 20180207
+		/*if (TEWTOTW.equals("Y"))
+		{
+			sql = " select  b.TSAREANO,a.ASSIGN_MANUFACT,a.CUST_REQUEST_DATE,a.SHIPPING_METHOD,b.TSCUSTOMERID "+
+				  " from ORADDMAN.TSDELIVERY_NOTICE_DETAIL a"+
+				  ",oraddman.TSDELIVERY_NOTICE b"+
+				  " where a.DNDOCNO='"+dnDocNo+"' "+
+				  " and to_char(a.LINE_NO)="+lineNo+""+
+				  " and a.dndocno=b.dndocno"+
+				  " and a.ASSIGN_MANUFACT='008'"+
+				  " and NVL(a.ORDER_TYPE_ID,b.ORDER_TYPE_ID) ='1322'";
+			//out.println(sql);
+			Statement statex=con.createStatement();  
+			ResultSet rsx=statex.executeQuery(sql);
+			if (rsx.next())
+			{
+				if (salesarea.equals("001"))
+				{
+					CallableStatement csg = con.prepareCall("{call tsc_edi_pkg.GET_SSD(?,?,?,?,?,?,?,sysdate)}");
+					csg.setString(1,rsx.getString("TSAREANO"));
+					csg.setString(2,rsx.getString("ASSIGN_MANUFACT"));      
+					csg.setString(3,rsx.getString("CUST_REQUEST_DATE"));                   
+					csg.setString(4,rsx.getString("SHIPPING_METHOD"));    
+					csg.setString(5,"1141");   
+					csg.registerOutParameter(6, Types.VARCHAR);  
+					csg.setString(7,rsx.getString("TSCUSTOMERID"));   
+					csg.execute();
+					newShipDate = (csg.getString(6)==null?"":csg.getString(6)); 
+					csg.close();
+					
+					sql = " update ORADDMAN.TSDELIVERY_NOTICE_DETAIL "+
+					      " set ORIG_SSD=NVL(ORIG_SSD,REQUEST_DATE)"+
+						  ",FTACPDATE=?"+
+						  ",SHIP_DATE=?"+
+						  ",PROMISE_DATE=?"+
+						  ",REQUEST_DATE=?"+
+						  ",ORDER_TYPE_ID=?"+
+						  " where DNDOCNO=?"+
+						  " and LINE_NO=? ";
+					PreparedStatement pstmt=con.prepareStatement(sql);  		  
+					pstmt.setString(1,newShipDate);
+					pstmt.setString(2,newShipDate);  
+					pstmt.setString(3,newShipDate);  
+					pstmt.setString(4,newShipDate);  
+					pstmt.setString(5,"1022"); 
+					pstmt.setString(6,dnDocNo); 
+					pstmt.setString(7,lineNo); 
+					pstmt.executeUpdate(); 
+					pstmt.close();		
 					lineNo="";
-        }
+					
+					%>
+					<script language="JavaScript" type="text/JavaScript">
+						alert("¨ÑÀ³°ÓÄ¬©T¥X³f¶·¬°1141­q³æ,¨t²Î¤w­«·s­pºâSSD,½Ğ½T»{¥æ´Á,ÁÂÁÂ!");
+					</script>
+					<%						
+				}
+				else
+				{
+					//sql = "update ORADDMAN.TSDELIVERY_NOTICE_DETAIL set FTACPDATE=to_char(to_date(?,'yyyymmdd')+0.99999,'yyyymmddhh24miss'),SHIP_DATE=?,ORDER_TYPE_ID=?,PC_COMMENT=PC_COMMENT||'1142=>1141 For Vendor Issue'  where DNDOCNO='"+dnDocNo+"' and to_char(LINE_NO)='"+lineNo+"' ";
+					//PreparedStatement pstmt=con.prepareStatement(sql);  		  
+					//pstmt.setString(1,factoryDate);  // ¤u¼t¥æ´Á¦w±Æ
+					//pstmt.setString(2,newShipDate);  // ¤u¼t¥æ´Á¦w±Æ
+					//pstmt.setString(3,"1022"); 
+					//pstmt.executeUpdate(); 
+					//pstmt.close();
+					//add by Peggy 20190322
+					sql = " update ORADDMAN.TSDELIVERY_NOTICE_DETAIL a "+
+					      " set FTACPDATE=null"+
+					      //" ,SHIP_DATE=?"+
+					      " ,ORDER_TYPE_ID=?"+
+					      " ,REASON_CODE="+(tsReasonNo!=null && !tsReasonNo.equals("")?(tsReasonNo.equals("--")?"00":"'"+tsReasonNo+"'"):"REASON_CODE")+""+
+					      " ,REASONDESC="+(tsReasonNo!=null && !tsReasonNo.equals("")?(tsReasonNo.equals("--")?"N/A":"'"+remark+"'"):"REASONDESC")+""+
+					      " ,PC_COMMENT=PC_COMMENT||'1142=>1141 For Vendor Issue'||"+((tsReasonNo!=null && !tsReasonNo.equals("")) || (remark!=null && !remark.equals(""))?"'"+remark+"'":"''")+""+
+					      " where DNDOCNO='"+dnDocNo+"' and to_char(LINE_NO)='"+lineNo+"' ";
+					//out.println(sql);
+					PreparedStatement pstmt=con.prepareStatement(sql);  		  
+					//pstmt.setString(1,factoryDate);  // ¤u¼t¥æ´Á¦w±Æ
+					//pstmt.setString(1,newShipDate);  // ¤u¼t¥æ´Á¦w±Æ
+					pstmt.setString(1,"1022");  
+					pstmt.executeUpdate(); 
+					pstmt.close();						
+					lineNo="";				
+				}
+			}
+			rsx.close();
+			statex.close();				
+				
+		}
+		*/
 
-
-		//add by Peggy 20150722,TSCE ORDER PCäº¤æœŸæ™šæ–¼SSDä¸”ç‚ºSEA(C)è¨ˆç®—å·¥å» äº¤æœŸ+FOB TERMæ˜¯å¦åœ¨CRDå‰å¾Œå…©å¤©,è‹¥æ˜¯,å‰‡PASS,å¦å‰‡è‡ªå‹•UPDATE SHIPPING METHOD=AIR(C),é‡æ–°è¨ˆç®—SSD
+		//add by Peggy 20150722,TSCE ORDER PC¥æ´Á±ß©óSSD¥B¬°SEA(C)­pºâ¤u¼t¥æ´Á+FOB TERM¬O§_¦bCRD«e«á¨â¤Ñ,­Y¬O,«hPASS,§_«h¦Û°ÊUPDATE SHIPPING METHOD=AIR(C),­«·s­pºâSSD
 		if (salesarea.equals("001"))
 		{
 			sql = " select  b.TSAREANO,a.ASSIGN_MANUFACT,a.CUST_REQUEST_DATE,a.SHIPPING_METHOD,c.ORDER_NUM,b.TSCUSTOMERID,nvl(a.fob,b.FOB_POINT) FOB_POINT,b.delivery_to_org "+
@@ -686,24 +796,29 @@ try
 				  " and a.inventory_item_id=e.inventory_item_id"+
 				  " and e.organization_id=49"+
 				  " and tsc_freight_rule_chk(b.TSAREANO, e.inventory_item_id,'AIR(C)','CHKFLAG')='1'"; //modify by Peggy 20200930
-			Statement statex=con.createStatement();
+				  //" and (select COUNT(1) from oraddman.tsce_air_sea_freight_rule x "+
+				  //"      where x.FREIGHT='AIR(C)' "+
+				  //"      and x.tsc_package=tsc_om_category(e.inventory_item_id,49,'TSC_Package') "+
+				  //"      and x.TSC_FAMILY=tsc_om_category(e.inventory_item_id,49,'TSC_Family'))>0";
+			//out.println(sql);
+			Statement statex=con.createStatement();  
 			ResultSet rsx=statex.executeQuery(sql);
 			if (rsx.next())
 			{
 				CallableStatement csg = con.prepareCall("{call tsc_edi_pkg.GET_SSD(?,?,?,?,?,?,?,sysdate,?,?)}");
 				csg.setString(1,rsx.getString("TSAREANO"));
-				csg.setString(2,rsx.getString("ASSIGN_MANUFACT"));
-				csg.setString(3,rsx.getString("CUST_REQUEST_DATE"));
-				csg.setString(4,"AIR(C)");
-				csg.setString(5,rsx.getString("ORDER_NUM"));
-				csg.registerOutParameter(6, Types.VARCHAR);
-				csg.setString(7,rsx.getString("TSCUSTOMERID"));
-				csg.setString(8,rsx.getString("FOB_POINT"));   //add by Peggy 20210207
-				csg.setString(9,rsx.getString("delivery_to_org"));   //add by Peggy 20210207
+				csg.setString(2,rsx.getString("ASSIGN_MANUFACT"));      
+				csg.setString(3,rsx.getString("CUST_REQUEST_DATE"));                   
+				csg.setString(4,"AIR(C)");    
+				csg.setString(5,rsx.getString("ORDER_NUM"));   
+				csg.registerOutParameter(6, Types.VARCHAR);  
+				csg.setString(7,rsx.getString("TSCUSTOMERID"));   
+				csg.setString(8,rsx.getString("FOB_POINT"));   //add by Peggy 20210207 
+				csg.setString(9,rsx.getString("delivery_to_org"));   //add by Peggy 20210207 
 				csg.execute();
-				newShipDate = (csg.getString(6)==null?"":csg.getString(6));
+				newShipDate = (csg.getString(6)==null?"":csg.getString(6)); 
 				csg.close();
-
+								
 				sql = " update ORADDMAN.TSDELIVERY_NOTICE_DETAIL "+
 				      " set ORIG_SHIPPING_METHOD=NVL(ORIG_SHIPPING_METHOD,SHIPPING_METHOD)"+
 					  ",ORIG_SSD=NVL(ORIG_SSD,REQUEST_DATE)"+
@@ -715,30 +830,55 @@ try
 					  ",ORIG_PC_SSD=? "+
 					  " where DNDOCNO='"+dnDocNo+"' "+
 					  " and LINE_NO='"+lineNo+"' ";
-				PreparedStatement pstmt=con.prepareStatement(sql);
-				pstmt.setString(1,newShipDate);
+				PreparedStatement pstmt=con.prepareStatement(sql);  		  
+				pstmt.setString(1,newShipDate);  
 				pstmt.setString(2,newShipDate);
-				pstmt.setString(3,newShipDate);
-				pstmt.setString(4,newShipDate);
-				pstmt.setString(5,"AIR(C)");
-				pstmt.setString(6,factoryDate);
-				pstmt.executeUpdate();
-				pstmt.close();
+				pstmt.setString(3,newShipDate);  
+				pstmt.setString(4,newShipDate);  
+				pstmt.setString(5,"AIR(C)"); 
+				pstmt.setString(6,factoryDate); 
+				pstmt.executeUpdate(); 
+				pstmt.close();		
+				//lineNo="";
+				//factoryDate = "";            
+				
 				%>
 				<script language="JavaScript" type="text/JavaScript">
-					alert("å› å·¥å» äº¤æœŸ+æµ·é‹èˆ¹æœŸç„¡æ³•meetå®¢æˆ¶CRD,é‹è¼¸æ–¹å¼å°‡å¾SEA(C)æ”¹ç‚ºAIR(C)ä¸”é‡æ–°è¨ˆç®—SSD,è«‹ç¢ºèªAIR(C)äº¤æœŸ,è¬è¬!");
+					alert("¦]¤u¼t¥æ´Á+®ü¹B²î´ÁµLªkmeet«È¤áCRD,¹B¿é¤è¦¡±N±qSEA(C)§ï¬°AIR(C)¥B­«·s­pºâSSD,½Ğ½T»{AIR(C)¥æ´Á,ÁÂÁÂ!");
 				</script>
-				<%
+				<%								
 			}
 			else
 			{
 				lineNo="";
+			}			
+			/*else
+			{	
+				//sql = "update ORADDMAN.TSDELIVERY_NOTICE_DETAIL set FTACPDATE=to_char(to_date(?,'yyyymmdd')+0.99999,'yyyymmddhh24miss'),SHIP_DATE=? where DNDOCNO='"+dnDocNo+"' and to_char(LINE_NO)='"+lineNo+"' ";
+				//PreparedStatement pstmt=con.prepareStatement(sql);  		  
+				//pstmt.setString(1,factoryDate);  // ¤u¼t¥æ´Á¦w±Æ
+				//pstmt.setString(2,newShipDate);  // ¤u¼t¥æ´Á¦w±Æ
+				//pstmt.executeUpdate(); 
+				//pstmt.close();				
+				sql = "update ORADDMAN.TSDELIVERY_NOTICE_DETAIL a set FTACPDATE=to_char(to_date(?,'yyyymmdd')+0.99999,'yyyymmddhh24miss')"+
+				   " ,SHIP_DATE=?"+
+				   " ,REASON_CODE='"+(tsReasonNo!=null && !tsReasonNo.equals("")?(tsReasonNo.equals("--")?"00":tsReasonNo):"REASON_CODE")+"'"+
+				   " ,REASONDESC='"+(tsReasonNo!=null && !tsReasonNo.equals("")?(tsReasonNo.equals("--")?"N/A":remark):"REASONDESC")+"'"+
+				   " ,PC_COMMENT=PC_COMMENT||'"+((tsReasonNo!=null && !tsReasonNo.equals("")) || (remark!=null && !remark.equals(""))?remark:"")+"'"+
+				   " where DNDOCNO='"+dnDocNo+"' and to_char(LINE_NO)='"+lineNo+"' ";
+				//out.println(sql);				   
+				PreparedStatement pstmt=con.prepareStatement(sql);  		  
+				pstmt.setString(1,factoryDate);  // ¤u¼t¥æ´Á¦w±Æ
+				pstmt.setString(2,newShipDate);  // ¤u¼t¥æ´Á¦w±Æ
+				pstmt.executeUpdate(); 
+				pstmt.close();					
 			}
+			*/
 			rsx.close();
-			statex.close();
+			statex.close();		
 		}
-		else if (salesarea.equals("008") && !newShipDate.startsWith("2099")) //add by Peggy 20160825,å·¥å» CONFIRM SEA(UC)ç„¡æ³•æ»¿è¶³å®¢æˆ¶CRD,é‹è¼¸æ–¹å¼ç”±SEA(UC)æ”¹æˆAIR(UC),ç³»çµ±é‡æ–°è¨ˆç®—AIR(UC)äº¤æœŸä¾›å·¥å» ç¢ºèª
-		{
+		else if (salesarea.equals("008") && !newShipDate.startsWith("2099")) //add by Peggy 20160825,¤u¼tCONFIRM SEA(UC)µLªkº¡¨¬«È¤áCRD,¹B¿é¤è¦¡¥ÑSEA(UC)§ï¦¨AIR(UC),¨t²Î­«·s­pºâAIR(UC)¥æ´Á¨Ñ¤u¼t½T»{
+		{		
 			sql = " select '1' as  data_type, b.TSAREANO,a.ASSIGN_MANUFACT,a.CUST_REQUEST_DATE,f.meaning SHIPPING_METHOD,c.ORDER_NUM,b.TSCUSTOMERID ,tsc_om_category(e.inventory_item_id,49,'TSC_Package') tsc_package,tsc_om_category(e.inventory_item_id,49,'TSC_Family') tsc_family"+
 				  //",TSC_RFQ_GET_TSCA_SSD(c.ORDER_NUM,'AIR(UC)',SUBSTR(a.CUST_REQUEST_DATE,1,8)) NEW_SSD"+
 				  ",TSCA_GET_ORDER_SSD(c.ORDER_NUM,'AIR(UC)',SUBSTR(a.CUST_REQUEST_DATE,1,8),'CRD',trunc(sysdate),null) NEW_SSD"+  //modify by Peggy 20161019
@@ -747,7 +887,7 @@ try
 				  " (SELECT lookup_code, meaning,description,enabled_flag,start_date_active,end_date_active FROM fnd_lookup_values lv"+
 				  " WHERE  language ='US' AND view_application_id = 3   AND lookup_type = 'SHIP_METHOD' AND security_group_id = 0) f"+
 				  " where a.DNDOCNO='"+dnDocNo+"' "+
-				  " and to_char(a.LINE_NO)="+lineNo+""+
+				  " and to_char(a.LINE_NO)="+lineNo+""+ 
 				  " and a.SHIPPING_METHOD=f.lookup_code"+
 				  " and f.meaning='SEA(UC)'"+
 				  " and to_date('"+newShipDate+"','yyyymmdd')+"+totwdays+"  > to_date(substr(a.REQUEST_DATE,1,8),'yyyymmdd') "+
@@ -758,77 +898,168 @@ try
 				  " and a.ORDER_TYPE_ID=c.OTYPE_ID"+
                   " and TO_DATE(SUBSTR(a.CUST_REQUEST_DATE,1,8),'yyyymmdd')-to_date('"+newShipDate+"','yyyymmdd') +"+totwdays+" < tsc_freight_rule_chk(b.TSAREANO, e.inventory_item_id,f.meaning,'START_DAY')"+  //modify by Peggy 20200930
 			      " and tsc_freight_rule_chk(b.TSAREANO, e.inventory_item_id,'AIR(UC)','CHKFLAG')='1'"+ //modify by Peggy 20200930
+				  //" and TO_DATE(SUBSTR(a.CUST_REQUEST_DATE,1,8),'yyyymmdd')-to_date('"+newShipDate+"','yyyymmdd') +"+totwdays+" < (select  SDAYS from oraddman.tsce_air_sea_freight_rule m where m.tsc_package=tsc_om_category(e.inventory_item_id,49,'TSC_Package') "+
+				  //" and m.TSC_FAMILY=tsc_om_category(e.inventory_item_id,49,'TSC_Family') and m.SALES_AREA_NO=b.TSAREANO and m.FREIGHT=f.meaning)"+
+				  //" and (select COUNT(1) from oraddman.tsce_air_sea_freight_rule x "+
+				  //"    where x.FREIGHT='AIR(UC)' "+
+				  //"    and x.SALES_AREA_NO=b.TSAREANO"+
+				  //"    and x.tsc_package=tsc_om_category(e.inventory_item_id,49,'TSC_Package') "+
+				  //"    and x.TSC_FAMILY=tsc_om_category(e.inventory_item_id,49,'TSC_Family'))>0"+
+				  //°w¹ï¥X³f¤è¦¡¥u¦³®ü¹Bªº§÷®Æ,¤u¼t½T»{¥æ´Á«á¤£­n³s°Ê¥æ´Á»İ¨D¤éªº­«·s­pºâ,ºû«ù­ì¥ı¥æ´Á»İ¨D¤é for cindy 20190627 issue,add by Peggy 20190628
+			      //" union all"+
+                  //" select '2' as  data_type,b.TSAREANO,a.ASSIGN_MANUFACT,a.CUST_REQUEST_DATE,d.meaning SHIPPING_METHOD,c.ORDER_NUM,b.TSCUSTOMERID ,tsc_om_category(a.inventory_item_id,49,'TSC_Package') tsc_package,tsc_om_category(a.inventory_item_id,49,'TSC_Family') tsc_family,"+
+			      //" TSCA_GET_ORDER_SSD(c.ORDER_NUM,d.meaning,'"+newShipDate+"','SSD',trunc(sysdate),null) NEW_SSD,d.lookup_code new_shipping_method "+
+                  //" from ORADDMAN.TSDELIVERY_NOTICE_DETAIL a,oraddman.TSDELIVERY_NOTICE b, oraddman.tsarea_ordercls c,(SELECT lookup_code,meaning FROM fnd_lookup_values lv WHERE  language ='US' AND view_application_id = 3  AND lookup_type = 'SHIP_METHOD' AND security_group_id = 0) d"+
+                  //" where a.DNDOCNO='"+dnDocNo+"' "+
+                  //" and to_char(a.LINE_NO)="+lineNo+""+ 
+                  //" and a.dndocno=b.dndocno "+
+                  //" and b.TSAREANO=c.SAREA_NO"+
+                  //" and a.ORDER_TYPE_ID=c.OTYPE_ID"+
+                  //" and a.shipping_method=d.lookup_code"+
+				  //" and d.meaning='SEA(UC)'"+
+                  //" and to_date('"+newShipDate+"','yyyymmdd') > to_date(substr(a.REQUEST_DATE,1,8),'yyyymmdd')	"+
 			      " order by 1";
 			//out.println(sql);
-			Statement statex=con.createStatement();
+			Statement statex=con.createStatement();  
 			ResultSet rsx=statex.executeQuery(sql);
 			if (rsx.next())
 			{
-				newShipDate = rsx.getString("new_ssd");
-
+				newShipDate = rsx.getString("new_ssd"); 
+								
 				sql = "update ORADDMAN.TSDELIVERY_NOTICE_DETAIL set ORIG_SHIPPING_METHOD=NVL(ORIG_SHIPPING_METHOD,SHIPPING_METHOD),ORIG_SSD=NVL(ORIG_SSD,REQUEST_DATE),FTACPDATE=?,SHIP_DATE=?,PROMISE_DATE=?,REQUEST_DATE=?,SHIPPING_METHOD=? ,ORIG_PC_SSD=? where DNDOCNO='"+dnDocNo+"' and to_char(LINE_NO)='"+lineNo+"' ";
-				PreparedStatement pstmt=con.prepareStatement(sql);
-				pstmt.setString(1,newShipDate);
+				PreparedStatement pstmt=con.prepareStatement(sql);  		  
+				pstmt.setString(1,newShipDate);  
 				pstmt.setString(2,newShipDate);
-				pstmt.setString(3,newShipDate);
-				pstmt.setString(4,newShipDate);
-				pstmt.setString(5,rsx.getString("NEW_SHIPPING_METHOD"));
-				pstmt.setString(6,factoryDate);
-				pstmt.executeUpdate();
-				pstmt.close();
+				pstmt.setString(3,newShipDate);  
+				pstmt.setString(4,newShipDate);  
+				pstmt.setString(5,rsx.getString("NEW_SHIPPING_METHOD")); 
+				pstmt.setString(6,factoryDate); 
+				pstmt.executeUpdate(); 
+				pstmt.close();		
+				//lineNo="";
+				//factoryDate = "";             
+					
 				%>
 				<script language="JavaScript" type="text/JavaScript">
 				<%
 				if (rsx.getString("data_type").equals("1"))
 				{
-				%>
-					alert("å› å·¥å» äº¤æœŸ+æµ·é‹èˆ¹æœŸç„¡æ³•meetå®¢æˆ¶CRD,é‹è¼¸æ–¹å¼å°‡å¾SEA(UC)æ”¹ç‚ºAIR(UC)ä¸”é‡æ–°è¨ˆç®—SSD,è«‹ç¢ºèªAIR(UC)äº¤æœŸ,è¬è¬!");
+				%>				
+					alert("¦]¤u¼t¥æ´Á+®ü¹B²î´ÁµLªkmeet«È¤áCRD,¹B¿é¤è¦¡±N±qSEA(UC)§ï¬°AIR(UC)¥B­«·s­pºâSSD,½Ğ½T»{AIR(UC)¥æ´Á,ÁÂÁÂ!");
 				<%
 				}
 				else
 				{
 				%>
-					alert("å› å·¥å» äº¤æœŸç„¡æ³•meet TSCAèˆ¹æœŸ,ç³»çµ±å°‡ä¾å·¥å» äº¤æœŸè¨ˆç®—ç¬¦åˆTSCAèˆ¹æœŸçš„SSD,è«‹é‡æ–°ç¢ºèªæ–°äº¤æœŸ,è¬è¬!");
+					alert("¦]¤u¼t¥æ´ÁµLªkmeet TSCA²î´Á,¨t²Î±N¨Ì¤u¼t¥æ´Á­pºâ²Å¦XTSCA²î´ÁªºSSD,½Ğ­«·s½T»{·s¥æ´Á,ÁÂÁÂ!");
 				<%
 				}
 				%>
 				</script>
-				<%
+				<%	
 			}
-			else {
+			else
+			{
 				lineNo="";
-			    }
+			}				
+			/*else
+			{	
+				//sql = "update ORADDMAN.TSDELIVERY_NOTICE_DETAIL set FTACPDATE=to_char(to_date(?,'yyyymmdd')+0.99999,'yyyymmddhh24miss'),SHIP_DATE=? where DNDOCNO='"+dnDocNo+"' and to_char(LINE_NO)='"+lineNo+"' ";
+				//PreparedStatement pstmt=con.prepareStatement(sql);  		  
+				//pstmt.setString(1,factoryDate);  // ¤u¼t¥æ´Á¦w±Æ
+				//pstmt.setString(2,newShipDate);  // ¤u¼t¥æ´Á¦w±Æ
+				//pstmt.executeUpdate(); 
+				//pstmt.close();	
+				sql = "update ORADDMAN.TSDELIVERY_NOTICE_DETAIL a set FTACPDATE=to_char(to_date(?,'yyyymmdd')+0.99999,'yyyymmddhh24miss')"+
+				   " ,SHIP_DATE=?"+
+				   " ,REASON_CODE='"+(tsReasonNo!=null && !tsReasonNo.equals("")?(tsReasonNo.equals("--")?"00":tsReasonNo):"REASON_CODE")+"'"+
+				   " ,REASONDESC='"+(tsReasonNo!=null && !tsReasonNo.equals("")?(tsReasonNo.equals("--")?"N/A":remark):"REASONDESC")+"'"+
+				   " ,PC_COMMENT=PC_COMMENT||'"+((tsReasonNo!=null && !tsReasonNo.equals("")) || (remark!=null && !remark.equals(""))?remark:"")+"'"+
+				   " where DNDOCNO='"+dnDocNo+"' and to_char(LINE_NO)='"+lineNo+"' ";
+				//out.println(sql);				   
+				PreparedStatement pstmt=con.prepareStatement(sql);  		  
+				pstmt.setString(1,factoryDate);  // ¤u¼t¥æ´Á¦w±Æ
+				pstmt.setString(2,newShipDate);  // ¤u¼t¥æ´Á¦w±Æ
+				pstmt.executeUpdate(); 
+				pstmt.close();				
+			}
+			*/
 			rsx.close();
-			statex.close();
+			statex.close();				
+		}
+		//else
+		//{
+		//	//String sql = "update ORADDMAN.TSDELIVERY_NOTICE_DETAIL set FTACPDATE=to_char(to_date(?,'yyyymmdd')+0.99999,'yyyymmddhh24miss'),SHIP_DATE=? where DNDOCNO='"+dnDocNo+"' and to_char(LINE_NO)='"+lineNo+"' ";
+		//	//PreparedStatement pstmt=con.prepareStatement(sql);  		  
+		//	//pstmt.setString(1,factoryDate);  // ¤u¼t¥æ´Á¦w±Æ
+		//	//pstmt.setString(2,newShipDate);  // ¤u¼t¥æ´Á¦w±Æ
+		//	//pstmt.executeUpdate(); 
+		//	//pstmt.close();
+		//	sql = "update ORADDMAN.TSDELIVERY_NOTICE_DETAIL set FTACPDATE=to_char(to_date(?,'yyyymmdd')+0.99999,'yyyymmddhh24miss')"+
+		//	       " ,SHIP_DATE=?"+
+		//		   " ,REASON_CODE='"+(tsReasonNo!=null && !tsReasonNo.equals("")?(tsReasonNo.equals("--")?"00":tsReasonNo):"REASON_CODE")+"'"+
+		//		   " ,REASONDESC='"+(tsReasonNo!=null && !tsReasonNo.equals("")?(tsReasonNo.equals("--")?"N/A":remark):"REASONDESC")+"'"+
+		//		   " ,PC_COMMENT=PC_COMMENT||'"+((tsReasonNo!=null && !tsReasonNo.equals("")) || (remark!=null && !remark.equals(""))?remark:"")+"'"+
+		//		   " where DNDOCNO='"+dnDocNo+"' and to_char(LINE_NO)='"+lineNo+"' ";
+		//	//out.println(sql);
+		//	PreparedStatement pstmt=con.prepareStatement(sql);  		  
+		//	pstmt.setString(1,factoryDate);  // ¤u¼t¥æ´Á¦w±Æ
+		//	pstmt.setString(2,newShipDate);  // ¤u¼t¥æ´Á¦w±Æ
+		//	pstmt.executeUpdate(); 
+		//	pstmt.close();			
+		//}
+		
+		//if (tsReasonNo!=null && !tsReasonNo.equals(""))
+		//{
+		//	if (tsReasonNo.equals("--"))
+		//	{
+		//		String sql = "update ORADDMAN.TSDELIVERY_NOTICE_DETAIL set REASON_CODE=?,REASONDESC=?,PC_COMMENT=? where DNDOCNO='"+dnDocNo+"' and to_char(LINE_NO)='"+lineNo+"' ";
+		//		PreparedStatement pstmt=con.prepareStatement(sql);  
+		//		pstmt.setString(1,"00");  // ­«·s«ü¬£©Î§å°h­ì¦]½X 
+		//		pstmt.setString(2,"N/A");  // §å°h­ì¦]
+		//		pstmt.setString(3,remark);  //add by Peggy 20140402
+		//		pstmt.executeUpdate(); 
+		//		pstmt.close();	
+		//	}
+		//	else
+		//	{		//out.println("remark="+remark); 
+		//		String sql = "update ORADDMAN.TSDELIVERY_NOTICE_DETAIL set REASON_CODE=?,REASONDESC=?,PC_COMMENT=? where DNDOCNO='"+dnDocNo+"' and to_char(LINE_NO)='"+lineNo+"' ";
+		//		PreparedStatement pstmt=con.prepareStatement(sql);  
+		//		pstmt.setString(1,tsReasonNo);  // ­«·s«ü¬£©Î§å°h­ì¦]½X 
+		//		pstmt.setString(2,remark);  // §å°h­ì¦]
+		//		pstmt.setString(3,remark);  // 20101203
+		//		pstmt.executeUpdate(); 
+		//		pstmt.close();	
+		//	}	
+		//}	  
 	}
 }
 catch(Exception e)
 {
-	e.printStackTrace();
 	out.println("<font color='red'>update fail!"+e.getMessage()+"</font>");
 }
 %>
 <body>
 <%@ include file="/jsp/include/TSDocHyperLinkPage.jsp"%>
 <FORM NAME="DISPLAYREPAIR" onsubmit='return submitCheck("<jsp:getProperty name="rPH" property="pgAlertCancel"/>","<jsp:getProperty name="rPH" property="pgAlertSubmit"/>","<jsp:getProperty name="rPH" property="pgAlertAssign"/>","<jsp:getProperty name="rPH" property="pgAlertCheckLineFlag"/>","<jsp:getProperty name="rPH" property="pgAlertReassign"/>","<jsp:getProperty name="rPH" property="pgAlertRPReason"/>","<%=pageResultRow%>")' ACTION="../jsp/TSSalesDRQMProcessNew.jsp?DNDOCNO=<%=dnDocNo%>" METHOD="post">
-  <!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—ç¶­ä¿®åŸºæœ¬è³‡æ–™==========-->
+  <!--=============¥H¤U°Ï¬q¬°¨ú±oºû­×°ò¥»¸ê®Æ==========-->
 <%@ include file="/jsp/include/TSDRQBasicInfoDisplayPage.jsp"%>
 <!--=================================-->
 <HR>
 <table border="1" cellpadding="0" cellspacing="0" align="center" width="100%" bordercolor='#999966' bordercolorlight="#999999" bordercolordark="#CCCC99" bgcolor="#CCCC99">
-    <tr bgcolor='#D5D8A7'>
+    <tr bgcolor='#D5D8A7'> 
     <td colspan="3"><font color="#000066">
-      <jsp:getProperty name="rPH" property="pgProcess"/><jsp:getProperty name="rPH" property="pgContent"/><jsp:getProperty name="rPH" property="pgDetail"/></font>
+      <jsp:getProperty name="rPH" property="pgProcess"/><jsp:getProperty name="rPH" property="pgContent"/><jsp:getProperty name="rPH" property="pgDetail"/></font> 
       :&nbsp;&nbsp;&nbsp;<img src="../image/point.gif"><font color="#FF6600"><jsp:getProperty name="rPH" property="pgNoBlankMsg"/><BR>
       <%
 	try
-    {
-
-		String oneDArray[]= {"Line no.","Inventory Item","Quantity","UOM", "Request Date","Remark","Product Manufactory"};  // å…ˆå°‡å…§å®¹æ˜ç´°çš„æ¨™é ­,çµ¦ä¸€ç¶­é™£åˆ—
+    {   
+	
+		String oneDArray[]= {"Line no.","Inventory Item","Quantity","UOM", "Request Date","Remark","Product Manufactory"};  // ¥ı±N¤º®e©ú²Óªº¼ĞÀY,µ¹¤@ºû°}¦C		 	     			  
     	array2DArrangedFactoryBean.setArrayString(oneDArray);
-	   	String b[][]=new String[rowLength+1][9]; // å®£å‘Šä¸€äºŒç¶­é™£åˆ—,åˆ†åˆ¥æ˜¯(æœªåˆ†é…ç”¢åœ°=åˆ—)X(è³‡æ–™æ¬„æ•¸+1= è¡Œ)
-
-	   	//array2DArrangedFactoryBean.setArray2DString(oneDArray); // å…ˆæŠŠæ¨™é ­ç½®å…¥äºŒç¶­ç¬¬ä¸€åˆ—
+	   	String b[][]=new String[rowLength+1][9]; // «Å§i¤@¤Gºû°}¦C,¤À§O¬O(¥¼¤À°t²£¦a=¦C)X(¸ê®ÆÄæ¼Æ+1= ¦æ)
+	  
+	   	//array2DArrangedFactoryBean.setArray2DString(oneDArray); // ¥ı§â¼ĞÀY¸m¤J¤Gºû²Ä¤@¦C
 	   	//b[0][0]="Line no.";b[0][1]="Inventory Item";b[0][2]="Quantity";b[0][3]="UOM";b[0][4]="Request Date";b[0][5]="Remark";b[0][6]="Product Manufactory";
 	   	out.println("<TABLE border='1' cellpadding='0' cellspacing='0' align='center' width='100%'  bordercolor='#999966' bordercolorlight='#999999' bordercolordark='#CCCC99' bgcolor='#CCCC99'>");
 	   	out.println("<tr bgcolor='#D5D8A7'>");
@@ -837,56 +1068,56 @@ catch(Exception e)
 	   	<div align="center">
 		<!--<input name="button" type=button onClick="this.value=check(this.form.CHKFLAG)" value='<jsp:getProperty name="rPH" property="pgSelectAll"/>'>-->
 		<input type="checkbox" name="chkall"onClick="checkall()">
-		</div>
+		</div>		
 	   	<%
 	   	out.println("</td>");
 	   	//out.println("<td><font color='#000000'>&nbsp;</td>");
 	   	out.println("<td width='7%'><font color='#000000'>");
 	   	%><jsp:getProperty name="rPH" property="pgFDeliveryDate"/>
-	   	<%
-		//if (orderTypeID.equals("1021") || orderTypeID.equals("1022"))
-		//{
+	   	<% 
+		//if (orderTypeID.equals("1021") || orderTypeID.equals("1022")) 
+		//{ 
 		%>
-		<!--< <jsp:getProperty name="rPH" property="pgReturnTWN"/> >--> <%
-		//} // è‹¥æ˜¯è¨‚å–®é¡å‹å±¬æ–¼1131æˆ–1141å‰‡é¡¯ç¤º<å›T> %>
+		<!--< <jsp:getProperty name="rPH" property="pgReturnTWN"/> >--> <%  
+		//} // ­Y¬O­q³æÃş«¬Äİ©ó1131©Î1141«hÅã¥Ü<¦^T> %>
 	   	<%
 	    //out.println("</div>");
 	    //try
-        //{
+        //{ 
 		//	out.println("<input name='FACTORYDATE' type='text' size='8' style='font-family:Tahoma,Georgia' ");
-		//  	if (lineNo!=null && !lineNo.equals("")) out.println("value="+factoryDate); else out.println("value="+factoryDate);
-		//  	out.println("><A href='javascript:void(0)' onclick='gfPop.fPopCalendar(document.DISPLAYREPAIR.FACTORYDATE);return false;'><img name='popcal' border='0' src='../image/calbtn.gif'></A>");
-	   	//} //end of try
-       	//catch (Exception e)
-		//{
-		//	out.println("Exception2:"+e.getMessage());
-		//}
-
+		//  	if (lineNo!=null && !lineNo.equals("")) out.println("value="+factoryDate); else out.println("value="+factoryDate); 
+		//  	out.println("><A href='javascript:void(0)' onclick='gfPop.fPopCalendar(document.DISPLAYREPAIR.FACTORYDATE);return false;'><img name='popcal' border='0' src='../image/calbtn.gif'></A>");	   
+	   	//} //end of try		 
+       	//catch (Exception e) 
+		//{ 
+		//	out.println("Exception2:"+e.getMessage()); 
+		//} 
+	  
 	   	out.println("</font></td>");
 	   	out.println("<td width='10%'><font color='#000000'><div align='center'>");
 	   	%><jsp:getProperty name="rPH" property="pgASResActInput"/><%
 	   	out.println("</div>");
 		//out.println("<div align='center'>");
 	   	//try
-        //{ // å‹•æ…‹å»å–é‡æ–°åˆ†æ´¾æˆ–æ‰¹é€€åŸå› è³‡è¨Š
+        //{ // °ÊºA¥h¨ú­«·s¤À¬£©Î§å°h­ì¦]¸ê°T 						  
 		//	Statement stateGetP=con.createStatement();
-        //    ResultSet rsGetP=null;
+        //    ResultSet rsGetP=null;				      									  
 		//	String sqlGetP = " select TSREASONNO, REASONCODE||'('||REASONDESC||')' as RREASON "+
 		//	                 " from ORADDMAN.TSREASON "+
-		//	                 " where LOCALE = '"+locale+"' and  TSREASONNO <>'08'"+ //TSREASONNO <>'08' add by Peggy 20130423
-		//		   	         " order by TSREASONNO ";
+		//	                 " where LOCALE = '"+locale+"' and  TSREASONNO <>'08'"+ //TSREASONNO <>'08' add by Peggy 20130423														  
+		//		   	         " order by TSREASONNO "; 		  
 		//	rsGetP=stateGetP.executeQuery(sqlGetP);
 		//	comboBoxBean.setRs(rsGetP);
 		//  comboBoxBean.setSelection(tsReasonNo);
-	    //  comboBoxBean.setFieldName("TSREASONNO");
-        //  out.println(comboBoxBean.getRsString());
-		//  stateGetP.close();
+	    //  comboBoxBean.setFieldName("TSREASONNO");					     
+        //  out.println(comboBoxBean.getRsString());				
+		//  stateGetP.close();		  		  
         //  rsGetP.close();
-	   	//} //end of try
-       	//catch (Exception e)
-		//{
-		//	out.println("Exception3:"+e.getMessage());
-		//}
+	   	//} //end of try		 
+       	//catch (Exception e) 
+		//{ 
+		//	out.println("Exception3:"+e.getMessage()); 
+		//} 
 	   	//out.println("</div>");
 		out.println("</font></td>");
 	   	out.println("<td nowrap width='9%'><font color='#000000'><div align='center'>");
@@ -894,13 +1125,13 @@ catch(Exception e)
 	   	out.println("</div>");
 		//out.println("<div align='center'>");
 	   	//try
-       	//{
+       	//{ 
 		//	out.print("<input name='REMARK' type='text' size='16' ");
-		//  	out.print("value='"+remark+"'>");
-	   	//} //end of try
-       	//catch (Exception e)
-	   	//{
-	   	//	out.println("Exception4:"+e.getMessage());
+		//  	out.print("value='"+remark+"'>");	   
+	   	//} //end of try		 
+       	//catch (Exception e) 
+	   	//{ 
+	   	//	out.println("Exception4:"+e.getMessage()); 
 		//}
 	   	//out.println("</div></font>");
 		out.println("</td>");
@@ -922,11 +1153,11 @@ catch(Exception e)
 			out.println("<td align='center' width='6%'><font color='#000000'>");
 		%>
 			<jsp:getProperty name="rPH" property="pgVendorSSD"/>
-		<%
-			out.println("</font></td>");
+		<%		
+			out.println("</font></td>");			
 			out.println("<td width='6%' align='center'><font color='#000000'>Stock Info");
 			out.println("</font></td>");
-		}
+		}		   
 	   	out.println("<td width='3%' nowrap><font color='#000000'>");
 	   	%><jsp:getProperty name="rPH" property="pgAnItem"/>
 	   	<%
@@ -935,9 +1166,9 @@ catch(Exception e)
 	   	<jsp:getProperty name="rPH" property="pgOrderedItem"/><jsp:getProperty name="rPH" property="pgDesc"/>
 	   	<%
 	   	out.println("</font></td>");
-		out.println("<td width='6%'><font color='#000000'>End Cust</font></td>");
+		out.println("<td width='6%'><font color='#000000'>End Cust</font></td>");			
 	   	out.println("</font></td>");
-		out.println("<td width='6%'><font color='#000000'>Package</font></td>");
+		out.println("<td width='6%'><font color='#000000'>Package</font></td>");	
 		out.println("<td width='4%'><font color='#000000'>");
 	   	%><jsp:getProperty name="rPH" property="pgQty"/>
 	   	<%
@@ -953,28 +1184,30 @@ catch(Exception e)
 		out.println("<td width='5%'><font color='#000000'>");
 	   	%><jsp:getProperty name="rPH" property="pgRemark"/>
 	   	<%
-	   	out.println("</font></td>");
-
+	   	out.println("</font></td>");    
+	   
 	   	int k=0,linecnt=0;
-
+	   
 	   	String sqlEst = "";
 		sqlEst = "select a.LINE_NO, a.ITEM_SEGMENT1,a.ITEM_DESCRIPTION, a.QUANTITY, a.UOM, a.REQUEST_DATE, a.REMARK,a.REMARK||a.PC_COMMENT PC_COMMENT, a.ASSIGN_MANUFACT, case when nvl(a.FTACPDATE,a.REQUEST_DATE)='N/A' then a.REQUEST_DATE else nvl(a.FTACPDATE,a.REQUEST_DATE) end FTACPDATE ,a.REASONDESC,a.REASON_CODE"+
-				 ",a.INVENTORY_ITEM_ID,a.vendor_site_id,nvl(c.vendor_site_code,'') vendor_site_code "+ //add by Peggy 20140328
-				 ",NVL(a.vendor_ssd,'') VENDOR_SSD"+ //add by Peggy 20140423
-				 ",'åŸè¨‚å–®'|| (NVL(a.SMC_QTY,0)+nvl(a.QUANTITY,0)+nvl(a.SLOW_MOVING_ALLOT_QTY,0)) ||'K<BR>æ¶ˆåº«å­˜'||(NVL(a.SMC_QTY,0)+nvl(a.SLOW_MOVING_ALLOT_QTY,0))||'K' AS SMC_REMARKS,(NVL(a.SMC_QTY,0)+nvl(a.SLOW_MOVING_ALLOT_QTY,0)) SMC_QTY"+ //add by Peggy 20141022
+				 ",a.INVENTORY_ITEM_ID,a.vendor_site_id,nvl(c.vendor_site_code,'') vendor_site_code "+ //add by Peggy 20140328	
+				 ",NVL(a.vendor_ssd,'') VENDOR_SSD"+ //add by Peggy 20140423		
+				 ",'­ì­q³æ'|| (NVL(a.SMC_QTY,0)+nvl(a.QUANTITY,0)+nvl(a.SLOW_MOVING_ALLOT_QTY,0)) ||'K<BR>®ø®w¦s'||(NVL(a.SMC_QTY,0)+nvl(a.SLOW_MOVING_ALLOT_QTY,0))||'K' AS SMC_REMARKS,(NVL(a.SMC_QTY,0)+nvl(a.SLOW_MOVING_ALLOT_QTY,0)) SMC_QTY"+ //add by Peggy 20141022
 				 ",a.PC_LEADTIME,  case when a.PC_LEADTIME is null then -1 else to_date(a.PC_LEADTIME,'yyyymmdd')- to_date(substr(a.REQUEST_DATE,1,8),'yyyymmdd') end as lt_days "+ //add by Peggy 20150114
 				 ",case when a.FTACPDATE is null or FTACPDATE='N/A' then to_date(a.PC_LEADTIME,'yyyymmdd')- to_date(substr(a.REQUEST_DATE,1,8),'yyyymmdd') else to_date(a.PC_LEADTIME,'yyyymmdd')- to_date(substr(a.FTACPDATE,1,8),'yyyymmdd') end as pc_days"+ //add by Peggy 20150114
 				 ",case when a.ORDER_TYPE_ID=1175 and instr(a.CUST_PO_NUMBER, '(GE)')>0 then TSCH_GET_CUST_SHIP_FREQUENCY(a.orig_so_line_id) "+
 				 " when a.order_type_id = 1175 AND '"+tsAreaNo+"'='003' THEN tsc_get_cust_ship_frequency (a.SHIP_TO_ORG) "+
-				 " when a.assign_manufact ='002' and nvl(a.order_type_id,a.order_type_id) in ('1021','1022') then 2 "+ //yewå›tçµ±ä¸€ç‚ºå‘¨ä¸€,add by Peggy 20170510
-  			     " when a.tscustomerid=4985 and a.assign_manufact ='002' and a.shipping_method='SEA' and instr(a.remark,'æ€¥æ–™')<=0 then 2"+  //add by Peggy 20181113,MUSTARDå›ºå®šé€±ä¸€å‡ºè²¨(BY SEA),ä½†æ€¥æ–™æ’å¤–
+				 " when a.assign_manufact ='002' and nvl(a.order_type_id,a.order_type_id) in ('1021','1022') then 2 "+ //yew¦^t²Î¤@¬°©P¤@,add by Peggy 20170510
+  			     " when a.tscustomerid=4985 and a.assign_manufact ='002' and a.shipping_method='SEA' and instr(a.remark,'«æ®Æ')<=0 then 2"+  //add by Peggy 20181113,MUSTARD©T©w¶g¤@¥X³f(BY SEA),¦ı«æ®Æ±Æ¥~
 				 " else 0 end SHIP_FREQUENCY"+ //add by Peggy 20160913
 				 ",TSC_INV_Category(a.inventory_item_id, 43, 23)  tsc_package"+ //add by Peggy 20170412
 				 ",nvl(a.order_type_id,a.order_type_id1) order_type_id"+  //add by Peggy 20180207
 			     ",tsc_get_china_to_tw_days("+
-				 "        case when a.assign_manufact in ('011') and exists(select 1 from TSC_PROD_ITEM_CHANGE where inventory_item_id = a.inventory_item_id)\n" +
-				 "             then 'T' else (SELECT ALNAME FROM ORADDMAN.TSPROD_MANUFACTORY WHERE MANUFACTORY_NO=a.assign_manufact) end\n" +
-				 ",e.order_num,a.inventory_item_id,a.assign_manufact,a.tscustomerid,to_char(sysdate,'yyyymmdd'),a.CUST_PO_NUMBER)* CASE"+
+				 "    case when a.assign_manufact in ('011') and a.item_description in (\n" +
+				 "            'TSM4925DCS RLG','TSM4953DCS RLG','TSM4936DCS RLG','TSM2302CX RFG','TSM2305CX RFG','TSM2306CX RFG','TSM2307CX RFG','TSM2308CX RFG','TSM2312CX RFG',\n" +
+				 "            'TSM2314CX RFG','TSM2318CX RFG','TSM2323CX RFG','TSM2328CX RFG','TSM9409CS RLG','TSM3443CX6 RFG','TSM3481CX6 RFG','TSM3457CX6 RFG','TSM3911DCX6 RFG')\n" +
+				 "        then 'T' else (SELECT ALNAME FROM ORADDMAN.TSPROD_MANUFACTORY WHERE MANUFACTORY_NO=a.assign_manufact) end \n" +
+				 "		,e.order_num,a.inventory_item_id,a.assign_manufact,a.tscustomerid,to_char(sysdate,'yyyymmdd'),a.CUST_PO_NUMBER)* CASE"+
 				 "  WHEN a.direct_ship_to_cust =1 and a.assign_manufact='002' THEN 0 ELSE 1 END TOTW_DAYS"+
 	             ",count(1) over (partition by a.dndocno) line_cnt"+ //add by Peggy 20191025
 				 //",(select NVL(msi.attribute16,'N') from inv.mtl_system_items_b msi where a.inventory_item_id=msi.inventory_item_id and msi.organization_id=mp.organization_Id) forecastitem_flag"+ //add by Peggy 20191031
@@ -1008,28 +1241,28 @@ catch(Exception e)
                  //" and msi.organization_id=mp.organization_id(+)";
                  " and mp.organization_code =case when a.assign_manufact in ('005','008','011') then case when substr(e.order_num,1,1) in ('8') then 'SG1' else 'SG2' end else 'I1' end"; //add 011 by Peggy 20240607
 				 //" and mp.organization_code =case when a.assign_manufact in ('005','008') then case when substr(e.order_num,1,1) in ('8') then 'SG1' else 'I1' end else 'I1' end";
-				 //" and a.dndocno =d.dndocno	";
-		if (UserRoles.indexOf("admin")<0) sqlEst += " and a.ASSIGN_MANUFACT = '"+userProdCenterNo+"'";
-		if (!TSC_PACKAGE.equals("")) sqlEst += " and tsc_inv_category(a.inventory_item_id,43,23) = '"+TSC_PACKAGE+"'";	//add by Peggy 20210318
-		sqlEst += " order by a.LINE_NO";
+				 //" and a.dndocno =d.dndocno	";	
+		if (UserRoles.indexOf("admin")<0) sqlEst += " and a.ASSIGN_MANUFACT = '"+userProdCenterNo+"'";					 
+		if (!TSC_PACKAGE.equals("")) sqlEst += " and tsc_inv_category(a.inventory_item_id,43,23) = '"+TSC_PACKAGE+"'";	//add by Peggy 20210318	
+		sqlEst += " order by a.LINE_NO"; 
 //		out.println(sqlEst);
        	Statement statement=con.createStatement();
-       	ResultSet rs=statement.executeQuery(sqlEst);
+       	ResultSet rs=statement.executeQuery(sqlEst);	   
 	   	while (rs.next())
-	   	{//out.println("0");
+	   	{//out.println("0"); 
 	    	//String reasonDesc = "";
 	     	//Statement stateReason=con.createStatement();
 			//if (tsReasonNo ==null || tsReasonNo.equals("")) tsReasonNo = rs.getString("REASON_CODE");
-	     	////ResultSet rsReason=stateReason.executeQuery("select * from ORADDMAN.TSREASON where TSREASONNO='"+rs.getString("REASON_CODE")+"' ");
-		 	//ResultSet rsReason=stateReason.executeQuery("select * from ORADDMAN.TSREASON where TSREASONNO='"+tsReasonNo+"' and LOCALE ='"+locale+"'");
-		 	//if (rsReason.next())
+	     	////ResultSet rsReason=stateReason.executeQuery("select * from ORADDMAN.TSREASON where TSREASONNO='"+rs.getString("REASON_CODE")+"' ");	
+		 	//ResultSet rsReason=stateReason.executeQuery("select * from ORADDMAN.TSREASON where TSREASONNO='"+tsReasonNo+"' and LOCALE ='"+locale+"'");	 
+		 	//if (rsReason.next())	
 		 	//{
 		   	//	reasonDesc = "("+rsReason.getString("REASONCODE")+")"+rsReason.getString("REASONDESC");
-		 	//}
+		 	//} 
 		 	//rsReason.close();
 		 	//stateReason.close();
 	    	out.print("<TR bgcolor='#D5D8A7' onMouseOut='chkDate1("+'"'+rs.getString("LINE_NO")+'"'+","+'"'+dnDocNo+'"'+")'>");
-			out.println("<TD><div align='center'>");
+			out.println("<TD><div align='center'>");		
 			if (rs.getInt("line_cnt")==1 || choiceLine.indexOf(","+rs.getString("LINE_NO")+",")>=0)
 			{
 				checkflag=true;
@@ -1039,94 +1272,94 @@ catch(Exception e)
 				checkflag=false;
 			}
 			out.println("<input type='checkbox' name='CHKFLAG' value='"+rs.getString("LINE_NO")+"' onClick='setCheck("+(linecnt++)+")' "+(checkflag?"checked":"")+">");
-
+			
 			//out.println("<input type='checkbox' name='CHKFLAG' value='"+rs.getString("LINE_NO")+"' ");
-			//if (check !=null) // è‹¥å…ˆå‰ä»¥è¨­å®šç‚ºé¸å–,å‰‡Check Box é¡¯ç¤º checked
-			//{  //out.println("111");
-		  	//	for (int j=0;j<check.length;j++)
-			//	{
-			//		if (check[j]==rs.getString("LINE_NO") || check[j].equals(rs.getString("LINE_NO"))) out.println("checked");
+			//if (check !=null) // ­Y¥ı«e¥H³]©w¬°¿ï¨ú,«hCheck Box Åã¥Ü checked
+			//{  //out.println("111"); 
+		  	//	for (int j=0;j<check.length;j++) 
+			//	{ 
+			//		if (check[j]==rs.getString("LINE_NO") || check[j].equals(rs.getString("LINE_NO"))) out.println("checked");  
 			//	}
-		  	//	if (lineNo==rs.getString("LINE_NO") || lineNo.equals(rs.getString("LINE_NO"))) out.println("checked"); // çµ¦å®šç”Ÿç”¢æ—¥æœŸå³è¨­å®šæ¬²çµè½‰
-			//} else if (lineNo==rs.getString("LINE_NO") || lineNo.equals(rs.getString("LINE_NO"))) out.println("checked"); //ç¬¬ä¸€ç­†çµ¦å®šç”Ÿç”¢æ—¥æœŸå³è¨­å®šæ¬²çµè½‰
-			//if (rowLength==1)
-			//{
-			//	out.println("checked >");
-			//}
-			//else
-			//{
-			//	out.println(" >");
-			//}
-			out.println("</div></TD>");
-
-			//out.println("<TD nowrap><font color='#000000'>");
-			//out.println("<INPUT TYPE='button' value='Set' onClick='setSubmit2("+'"'+"../jsp/TSSalesDRQArrangedPage.jsp?LINENO="+rs.getString("LINE_NO")+"&DNDOCNO="+dnDocNo+"&EXPAND="+expand+'"'+","+'"'+rs.getString("LINE_NO")+'"'+","+'"'+dateBean.getYearMonthDay()+'"'+")'>");
+		  	//	if (lineNo==rs.getString("LINE_NO") || lineNo.equals(rs.getString("LINE_NO"))) out.println("checked"); // µ¹©w¥Í²£¤é´Á§Y³]©w±ıµ²Âà
+			//} else if (lineNo==rs.getString("LINE_NO") || lineNo.equals(rs.getString("LINE_NO"))) out.println("checked"); //²Ä¤@µ§µ¹©w¥Í²£¤é´Á§Y³]©w±ıµ²Âà  
+			//if (rowLength==1) 
+			//{  
+			//	out.println("checked >");  
+			//}  
+			//else 
+			//{   
+			//	out.println(" >"); 	 
+			//}	
+			out.println("</div></TD>");                     								  
+	   			
+			//out.println("<TD nowrap><font color='#000000'>");  
+			//out.println("<INPUT TYPE='button' value='Set' onClick='setSubmit2("+'"'+"../jsp/TSSalesDRQArrangedPage.jsp?LINENO="+rs.getString("LINE_NO")+"&DNDOCNO="+dnDocNo+"&EXPAND="+expand+'"'+","+'"'+rs.getString("LINE_NO")+'"'+","+'"'+dateBean.getYearMonthDay()+'"'+")'>");	
 			//out.println("</TD>");
       		out.println("<TD nowrap><input type='hidden' name='order_type_id_"+rs.getString("LINE_NO")+"' value='"+rs.getString("order_type_id")+"'><input type='hidden' name='totw_days_"+rs.getString("LINE_NO")+"' value='"+rs.getString("TOTW_DAYS")+"'><input type='hidden' name='ORIG_SHIPPING_METHOD_"+rs.getString("LINE_NO")+"' value='"+rs.getString("ORIG_SHIPPING_METHOD")+"'><input type='hidden' name='ORGCODE_"+rs.getString("LINE_NO")+"' value='"+rs.getString("organization_code")+"'><input type='hidden' name='SHIPPING_METHOD_"+rs.getString("LINE_NO")+"' value='"+rs.getString("SHIPPING_METHOD_NAME")+"'>");
-
+		
 			//if (rs.getString("FTACPDATE")==null || rs.getString("FTACPDATE").equals("") || rs.getString("FTACPDATE")=="N/A" || rs.getString("FTACPDATE").equals("N/A"))
-			//{
+			//{ 		  
 		  	//	if (lineNo==null || lineNo.equals(""))
-		  	//	{
-			//		out.println("<font color='#000099'>"+rs.getString("REQUEST_DATE").substring(0,8)+"</font>"+"</font>");
+		  	//	{  
+			//		out.println("<font color='#000099'>"+rs.getString("REQUEST_DATE").substring(0,8)+"</font>"+"</font>"); 
 			//	}
 		  	//	else if (lineNo==rs.getString("LINE_NO") || lineNo.equals(rs.getString("LINE_NO")))
-		  	//	{
-			//		out.println("<font color='#000000'>"+factoryDate+"</font>");
-			//	}
-		  	//	else
-			//	{
-			//		out.println("<font color='#000099'>"+rs.getString("REQUEST_DATE").substring(0,8)+"</font>");
-			//	}
+		  	//	{  
+			//		out.println("<font color='#000000'>"+factoryDate+"</font>");  
+			//	}		
+		  	//	else 
+			//	{ 
+			//		out.println("<font color='#000099'>"+rs.getString("REQUEST_DATE").substring(0,8)+"</font>"); 
+			//	}  
 			//}
-			//else
-			//{
-		    //	out.println("<font color='#FF0000'>");
+			//else  
+			//{  
+		    //	out.println("<font color='#FF0000'>"); 
 			//	if (lineNo!=rs.getString("LINE_NO") && !lineNo.equals(rs.getString("LINE_NO")))
-			//	{
-			//		out.println(rs.getString("FTACPDATE").substring(0,8)+"</font>");
+			//	{ 
+			//		out.println(rs.getString("FTACPDATE").substring(0,8)+"</font>");	
 			//	}
-			//	else
+			//	else 
 			//	{
-			//		out.println(factoryDate+"</font>");
-			//	}
-	      	//}
+			//		out.println(factoryDate+"</font>"); 
+			//	} 
+	      	//}				
 			out.println("<input name='FACTORYDATE_"+rs.getString("LINE_NO")+"'"+" type='text' size='8' value='"+(request.getParameter("FACTORYDATE_"+rs.getString("LINE_NO"))==null || rs.getString("LINE_NO").equals(lineNo)?rs.getString("FTACPDATE").substring(0,8):request.getParameter("FACTORYDATE_"+rs.getString("LINE_NO")))+"' style='font-size:11px;font-family: Tahoma,Georgia' onKeyPress='return (event.keyCode >=48 && event.keyCode <=57)'  onBlur='chkDate("+'"'+rs.getString("LINE_NO")+'"'+","+'"'+dnDocNo+'"'+")' "+(checkflag?"":" ")+"><input type='hidden' name='REQUESTDATE_"+rs.getString("line_no")+"' value='"+rs.getString("REQUEST_DATE").substring(0,8)+"'>");
-			out.println("<A href='javascript:void(0)' onclick='gfPop.fPopCalendar(document.DISPLAYREPAIR.FACTORYDATE_"+rs.getString("LINE_NO")+");return false;'><img name='imgpc_"+rs.getString("LINE_NO")+"' border='0' src='../image/calbtn.gif'></A>");
-			out.println((rs.getInt("totw_days")>0?"<font color='#0000ff'><å›T></font>":""));
+			out.println("<A href='javascript:void(0)' onclick='gfPop.fPopCalendar(document.DISPLAYREPAIR.FACTORYDATE_"+rs.getString("LINE_NO")+");return false;'><img name='imgpc_"+rs.getString("LINE_NO")+"' border='0' src='../image/calbtn.gif'></A>");	   
+			out.println((rs.getInt("totw_days")>0?"<font color='#0000ff'><¦^T></font>":""));
 			out.println("<input type='text' name='ORIG_REQUESTDATE_"+rs.getString("LINE_NO")+"' value='"+(request.getParameter("FACTORYDATE_"+rs.getString("LINE_NO"))==null || rs.getString("LINE_NO").equals(lineNo)?rs.getString("FTACPDATE").substring(0,8):request.getParameter("FACTORYDATE_"+rs.getString("LINE_NO")))+"' style='width:1;visibility:hidden'></TD>");
-			// é‡æ–°æŒ‡æ´¾æˆ–æ‰¹é€€ä»£ç¢¼é¸æ“‡
-			out.println("<TD nowrap><font color='#000000'>");
+			// ­«·s«ü¬£©Î§å°h¥N½X¿ï¾Ü
+			out.println("<TD nowrap><font color='#000000'>");      
 			//if (rs.getString("REASON_CODE")==null || rs.getString("REASON_CODE").equals("00"))
-			//{
+			//{  
 			//	out.println("<font color='#000000'>&nbsp;");
 		  	//	if (lineNo==null)
-		  	//	{
-			//		out.println("</font>");
+		  	//	{ 
+			//		out.println("</font>"); 
 			//	}
 		  	//	else if (lineNo.equals(rs.getString("LINE_NO")) || lineNo==rs.getString("LINE_NO"))
-		  	//	{
-			//		out.println(tsReasonNo+reasonDesc+"</font>");
+		  	//	{  
+			//		out.println(tsReasonNo+reasonDesc+"</font>"); 
 			//	}
 		 	//}
-			//else
+			//else  
 			//{
 		    //	out.println("<font color='#FF0000'>");
 			//	if (lineNo!=rs.getString("LINE_NO") && !lineNo.equals(rs.getString("LINE_NO")))
-			//	{
-			//		out.println(rs.getString("REASON_CODE")+reasonDesc+"</font>");
+			//	{ 
+			//		out.println(rs.getString("REASON_CODE")+reasonDesc+"</font>");	
 			//	}
-			//	else
+			//	else 
 			//	{
-			//		out.println(tsReasonNo+reasonDesc+"</font>");
-			//	}
-		    //}
-			//out.println("<INPUT TYPE='hidden' NAME='REASONCODE"+k+"' value='"+rs.getString("REASON_CODE")+"'>"); // éš±è—è¢«æŒ‡æ´¾å·¥å» ç‰©ä»¶,ä»¥ä¾¿ç”± java _scriptåˆ¤æ–·æ˜¯å¦ä½¿ç”¨è€…æœªæŒ‡æ´¾å³é€å‡ºç¶²é 
+			//		out.println(tsReasonNo+reasonDesc+"</font>"); 
+			//	}				 
+		    //}		     		
+			//out.println("<INPUT TYPE='hidden' NAME='REASONCODE"+k+"' value='"+rs.getString("REASON_CODE")+"'>"); // ÁôÂÃ³Q«ü¬£¤u¼tª«¥ó,¥H«K¥Ñ java _script§PÂ_¬O§_¨Ï¥ÎªÌ¥¼«ü¬£§Y°e¥Xºô­¶ 	 
 			Statement stateGetP=con.createStatement();
 			String sqlGetP = " select TSREASONNO, REASONCODE||'('||REASONDESC||')' as RREASON,rownum ,count(1) over (partition by 1) tot_row"+
 		                     " from ORADDMAN.TSREASON "+
-		                     " where LOCALE = '"+locale+"' "+
-		  		             " order by TSREASONNO ";
+		                     " where LOCALE = '"+locale+"' "+																  
+		  		             " order by TSREASONNO "; 		  
 	         ResultSet rsGetP=stateGetP.executeQuery(sqlGetP);
 			while (rsGetP.next())
 			{
@@ -1143,43 +1376,43 @@ catch(Exception e)
 				if (rsGetP.getInt("rownum")==rsGetP.getInt("tot_row"))
 				{
 				%>
-					</select>
+					</select>	
 				<%
 				}
 				%>
 			<%
-			}
-			stateGetP.close();
-			rsGetP.close();
-			out.println("</TD>"); // // é‡æ–°æŒ‡æ´¾æˆ–æ‰¹é€€ä»£ç¢¼é¸æ“‡
-			// é‡æ–°æŒ‡æ´¾ä½¿ç”¨è€…è‡ªè¡Œè¼¸å…¥èªªæ˜
-			out.println("<TD nowrap><font color='#000000'>");
+			}	
+			stateGetP.close();		  		  
+			rsGetP.close();		    		
+			out.println("</TD>"); // // ­«·s«ü¬£©Î§å°h¥N½X¿ï¾Ü	
+			// ­«·s«ü¬£¨Ï¥ÎªÌ¦Û¦æ¿é¤J»¡©ú
+			out.println("<TD nowrap><font color='#000000'>");      
 			//if (rs.getString("REASONDESC")==null || rs.getString("REASONDESC").equals(""))
-			//{
+			//{  
 			//	out.println("<font color='#000000'>&nbsp;");
 		  	//	if (lineNo==null)
-		  	//	{
-			//		out.println("</font>");
+		  	//	{ 
+			//		out.println("</font>"); 
 			//	}
 		  	//	else if (lineNo.equals(rs.getString("LINE_NO")) || lineNo==rs.getString("LINE_NO"))
-		  	//	{
-			//		out.println(remark+"</font>");
+		  	//	{  
+			//		out.println(remark+"</font>"); 
 			//	}
 		 	//}
-			//else
+			//else  
 			//{
 		    //	out.println("<font color='#FF0000'>");
 			//	if (lineNo!=rs.getString("LINE_NO") && !lineNo.equals(rs.getString("LINE_NO")))
-			//	{
-			//		out.println(rs.getString("REASONDESC")+"</font>");
+			//	{ 
+			//		out.println(rs.getString("REASONDESC")+"</font>");	
 			//	}
-			//	else
+			//	else 
 			//	{
-			//		out.println(remark+"</font>");
-			//	}
-		    //}
-			//out.println("<INPUT TYPE='hidden' NAME='REASON"+k+"' value='"+rs.getString("REASONDESC")+"'>"); // éš±è—è¢«æŒ‡æ´¾å·¥å» ç‰©ä»¶,ä»¥ä¾¿ç”± java _scriptåˆ¤æ–·æ˜¯å¦ä½¿ç”¨è€…æœªæŒ‡æ´¾å³é€å‡ºç¶²é 
-			out.println("<INPUT TYPE='text' NAME='REASON_"+rs.getString("LINE_NO")+"' value='"+(request.getParameter("REASON_"+rs.getString("LINE_NO"))!=null?request.getParameter("REASON_"+rs.getString("LINE_NO")):"")+"' size='15'  style='font-size:11px;font-family: Tahoma,Georgia' "+(checkflag?"":" ")+">"); // éš±è—è¢«æŒ‡æ´¾å·¥å» ç‰©ä»¶,ä»¥ä¾¿ç”± java _scriptåˆ¤æ–·æ˜¯å¦ä½¿ç”¨è€…æœªæŒ‡æ´¾å³é€å‡ºç¶²é 
+			//		out.println(remark+"</font>"); 
+			//	}				 
+		    //}		     		
+			//out.println("<INPUT TYPE='hidden' NAME='REASON"+k+"' value='"+rs.getString("REASONDESC")+"'>"); // ÁôÂÃ³Q«ü¬£¤u¼tª«¥ó,¥H«K¥Ñ java _script§PÂ_¬O§_¨Ï¥ÎªÌ¥¼«ü¬£§Y°e¥Xºô­¶ 	 
+			out.println("<INPUT TYPE='text' NAME='REASON_"+rs.getString("LINE_NO")+"' value='"+(request.getParameter("REASON_"+rs.getString("LINE_NO"))!=null?request.getParameter("REASON_"+rs.getString("LINE_NO")):"")+"' size='15'  style='font-size:11px;font-family: Tahoma,Georgia' "+(checkflag?"":" ")+">"); // ÁôÂÃ³Q«ü¬£¤u¼tª«¥ó,¥H«K¥Ñ java _script§PÂ_¬O§_¨Ï¥ÎªÌ¥¼«ü¬£§Y°e¥Xºô­¶ 	 
 			out.println("</TD>");
 			//add by Peggy 20150114
 			//out.println(rs.getInt("lt_days"));
@@ -1188,7 +1421,7 @@ catch(Exception e)
 			if (over_lt_reason==null) over_lt_reason="";
 			//if (rs.getInt("lt_days") >=0 && rs.getInt("lt_days") <=6 && rs.getInt("pc_days") <0)
 			//{
-				out.println("<td><input type='text' name='OVER_LT_"+rs.getString("LINE_NO")+"' value='"+over_lt_reason+"' size='8' style='font-family: Tahoma,Georgia'><input type='button' name='btnover_"+rs.getString("LINE_NO")+"' value='..'  style='width:10;font-family:arial' onClick='setOverInfo("+'"'+rs.getString("line_no")+'"'+")'></td>");
+				out.println("<td><input type='text' name='OVER_LT_"+rs.getString("LINE_NO")+"' value='"+over_lt_reason+"' size='8' style='font-family: Tahoma,Georgia'><input type='button' name='btnover_"+rs.getString("LINE_NO")+"' value='..'  style='width:10;font-family:arial' onClick='setOverInfo("+'"'+rs.getString("line_no")+'"'+")'></td>");			
 			//}
 			//else
 			//{
@@ -1202,7 +1435,7 @@ catch(Exception e)
 			else
 			{
 				out.println("<TD><font color='red'>"+rs.getString("SMC_REMARKS")+"</font></TD>");
-			}
+			}		
 			//add by Peggy 20140328
 			//if (vendor_flag.equals("Y"))
 			if (vendor_flag.equals("Y") || vendor_flag.equals("2"))  //add by Peggy 20140804
@@ -1213,14 +1446,14 @@ catch(Exception e)
 				if (vendor_site_code == null) vendor_site_code ="";
 				vendor_site_id =request.getParameter("VENDOR_SITE_ID_"+rs.getString("LINE_NO"));
 				if (vendor_site_id == null) vendor_site_id=rs.getString("vendor_site_id");
-				if (vendor_site_id == null) vendor_site_id="";
+				if (vendor_site_id == null) vendor_site_id="";			
 				out.println("<input type='text' name='VENDOR_CODE_"+rs.getString("LINE_NO")+"' value='"+vendor_site_code+"' size='10' "+(checkflag?"":" ")+"  style='font-size:11px;font-family: Tahoma,Georgia' readonly><input type='hidden' name='VENDOR_SITE_ID_"+rs.getString("LINE_NO")+"' value='"+vendor_site_id+"'><input type='button' name='btn_"+rs.getString("LINE_NO")+"' value='..'  style='font-family:Tahoma,Georgia' onClick='setVendorInfo("+'"'+rs.getString("inventory_item_id")+'"'+","+'"'+rs.getString("line_no")+'"'+","+'"'+dnDocNo+'"'+","+'"'+rs.getString("organization_code")+'"'+")' "+(checkflag?"":" ")+">");
 				out.println("</font>");
 				if (!rs.getString("vendor_moq").equals(rs.getString("moq")))
 				{
-					out.println("<font color='#0000ff'>Vendor MOQ:"+rs.getString("vendor_moq")+"K</font></td>");
+					out.println("<font color='#0000ff'>Vendor MOQ:"+rs.getString("vendor_moq")+"K</font></td>");		
 				}
-				out.println("</td>");
+				out.println("</td>");		
 				out.println("<td align='center'><font color='#FF0000'><input type='text' name='VENDOR_SSD_"+rs.getString("LINE_NO")+"' value='"+(request.getParameter("VENDOR_SSD_"+rs.getString("LINE_NO"))==null?(rs.getString("vendor_ssd")==null?"":rs.getString("vendor_ssd")):request.getParameter("VENDOR_SSD_"+rs.getString("LINE_NO")))+"' size='7' style='font-size:11px;font-family:Tahoma,Georgia' onKeyPress='return (event.keyCode >= 48 && event.keyCode <=57)' "+(checkflag?"":" ")+" ><A href='javascript:void(0)' onclick='gfPop.fPopCalendar(document.DISPLAYREPAIR.VENDOR_SSD_"+rs.getString("LINE_NO")+");return false;'><img name='img_"+rs.getString("LINE_NO")+"' border='0' src='../image/calbtn.gif'  "+(checkflag?" style='visibility:visible'":" style='visibility:visible'")+"></A></font></td>");
 			}
 			if (vendor_flag.equals("Y") || vendor_flag.equals("2"))
@@ -1236,7 +1469,7 @@ catch(Exception e)
 				}
 				out.println("</td>");
 			}
-			// é‡æ–°æŒ‡æ´¾ä½¿ç”¨è€…è‡ªè¡Œè¼¸å…¥èªªæ˜
+			// ­«·s«ü¬£¨Ï¥ÎªÌ¦Û¦æ¿é¤J»¡©ú
 			out.println("<TD><font color='#000000'><a name="+rs.getString("LINE_NO")+">");
 			out.println(rs.getString("LINE_NO")+"</a></font><input type='hidden' name='SHIP_FREQUENCY_"+rs.getString("LINE_NO")+"' value='"+rs.getString("SHIP_FREQUENCY")+"'></TD>"); //modify by Peggy 20160913
 			out.println("<TD><font color='#000000'>"+rs.getString("ITEM_DESCRIPTION")+"</font></TD>");
@@ -1257,93 +1490,93 @@ catch(Exception e)
 			b[k][4]=rs.getString("REQUEST_DATE");
 			b[k][5]=rs.getString("REMARK");
 			b[k][6]=rs.getString("FTACPDATE");
-			b[k][7]=rs.getString("ASSIGN_MANUFACT");
-         	b[k][8]=rs.getString("PC_COMMENT");
+			b[k][7]=rs.getString("ASSIGN_MANUFACT");	
+         	b[k][8]=rs.getString("PC_COMMENT");	 
 		 	array2DArrangedFactoryBean.setArray2DString(b);
 		 	k++;
-	   	}    // End of While
+	   	}    // End of While	   	   	 
 	   	out.println("</TABLE>");
 	   	statement.close();
-       	rs.close();
-
+       	rs.close();  	         
+	
 	} //end of try
     catch (Exception e)
     {
     	out.println("Exception:"+e.getMessage());
     }
-
-	String a[][]=array2DArrangedFactoryBean.getArray2DContent();//å–å¾—ç›®å‰é™£åˆ—å…§å®¹
-    if (a!=null)
-	{
+	   
+	String a[][]=array2DArrangedFactoryBean.getArray2DContent();//¨ú±o¥Ø«e°}¦C¤º®e 		    		                       		    		  	   
+    if (a!=null) 
+	{		  
  	}
-    %> </font>
-  </tr>
+    %> </font>      
+  </tr>      
 </table>
 <table border="1" cellpadding="0" cellspacing="0" align="center" width="100%" bordercolor="#999966"  bordercolorlight="#999999" bordercolordark="#CCCC99" bgcolor="#CCCC99">
-  <tr bgcolor='#D5D8A7'>
-      <td colspan="6"><font size="2"><jsp:getProperty name="rPH" property="pgProcessMark"/>:
+  <tr bgcolor='#D5D8A7'> 
+      <td colspan="6"><font size="2"><jsp:getProperty name="rPH" property="pgProcessMark"/>: 
         <INPUT TYPE="TEXT" NAME="REMARK" SIZE=60 maxlength="60" value="<%=remark%>">
 		<INPUT type="hidden" name="WORKTIME" value="0">
-        <INPUT TYPE="hidden" NAME="SOFTWAREVER" SIZE=60 ></font>
+        <INPUT TYPE="hidden" NAME="SOFTWAREVER" SIZE=60 ></font>           
      </td>
     </tr>
     <tr bgcolor='#D5D8A7'>
     	<td><font color="#0080C0" size="2"><jsp:getProperty name="rPH" property="pgProcessUser"/>:</font><font size="2"><%=userID+"("+UserName+")"%></font></td>
     	<td><font size="2" color="#0080C0"><jsp:getProperty name="rPH" property="pgProcessDate"/>:<%=dateBean.getYearMonthDay()%>
     	</font></td>
-  		<td><font color="#0080C0" size="2"><jsp:getProperty name="rPH" property="pgProcessTime"/>:
+  		<td><font color="#0080C0" size="2"><jsp:getProperty name="rPH" property="pgProcessTime"/>: 
   	 	<%=dateBean.getHourMinuteSecond()%></font>
   		</td>
-    </tr>
+    </tr>       
 </table>
 <table><tr><td colspan="3">
-  <strong><font color="#FF0000">
+  <strong><font color="#FF0000">   
    <jsp:getProperty name="rPH" property="pgAction"/>-&gt;
-   </font></strong>
+   </font></strong> 
    <a name='#ACTION'>
     <%
 	try
-    {
-		if (UserRoles.indexOf("MPC_User")>=0 || UserRoles.indexOf("admin")>=0 || UserRoles.indexOf("Sample_User")>=0 ) // è§’è‰²æ˜¯å·¥å» ç”Ÿç®¡äººå“¡åŠç®¡ç†å“¡æ‰å¯å›è¦†ç‹€æ…‹
-	    {
+    { 
+		if (UserRoles.indexOf("MPC_User")>=0 || UserRoles.indexOf("admin")>=0 || UserRoles.indexOf("Sample_User")>=0 ) // ¨¤¦â¬O¤u¼t¥ÍºŞ¤H­û¤ÎºŞ²z­û¤~¥i¦^ÂĞª¬ºA 
+	    {  
         	Statement statement=con.createStatement();
          	ResultSet rs=statement.executeQuery("select x1.ACTIONID,x2.ACTIONNAME from ORADDMAN.TSWORKFLOW x1,ORADDMAN.TSWFACTION x2 WHERE FORMID='TS' AND FROMSTATUSID='"+frStatID+"' AND x1.ACTIONID=x2.ACTIONID and  x1.LOCALE='"+locale+"'");
-
-	     	//out.println("<select NAME='ACTIONID' onChange='setSubmit1("+'"'+"../jsp/TSSalesDRQArrangedPage.jsp?DNDOCNO="+dnDocNo+'"'+")'>");
-	 		out.println("<select NAME='ACTIONID'>");
-	     	out.println("<OPTION VALUE=-->--");
+	     
+	     	//out.println("<select NAME='ACTIONID' onChange='setSubmit1("+'"'+"../jsp/TSSalesDRQArrangedPage.jsp?DNDOCNO="+dnDocNo+'"'+")'>");				  				  
+	 		out.println("<select NAME='ACTIONID'>");			
+	     	out.println("<OPTION VALUE=-->--");     
 	     	while (rs.next())
-	     	{
-		  		String s1=(String)rs.getString(1);
-		  		String s2=(String)rs.getString(2);
-          		if (s1.equals(actionID))
+	     	{            
+		  		String s1=(String)rs.getString(1); 
+		  		String s2=(String)rs.getString(2); 
+          		if (s1.equals(actionID)) 
   		  		{
-           			out.println("<OPTION VALUE='"+s1+"' SELECTED>"+s2);
-          		}
-				else
+           			out.println("<OPTION VALUE='"+s1+"' SELECTED>"+s2); 					                                
+          		} 
+				else 
 				{
                 	out.println("<OPTION VALUE='"+s1+"'>"+s2);
-                }
-	     	}
-	     	out.println("</select>");
-
+                }        
+	     	} 
+	     	out.println("</select>"); 
+	       
 	     	rs=statement.executeQuery("select COUNT (*) from ORADDMAN.TSWORKFLOW x1,ORADDMAN.TSWFACTION x2 WHERE FORMID='TS' AND FROMSTATUSID='"+frStatID+"' AND x1.ACTIONID=x2.ACTIONID and  x1.LOCALE='"+locale+"'");
 	     	rs.next();
-	     	if (rs.getInt(1)>0) //åˆ¤æ–·è‹¥æ²’æœ‰å‹•ä½œå¯é¸æ“‡å°±ä¸å‡ºç¾submitæŒ‰éˆ•
+	     	if (rs.getInt(1)>0) //§PÂ_­Y¨S¦³°Ê§@¥i¿ï¾Ü´N¤£¥X²{submit«ö¶s
 	     	{
            		out.println("<INPUT TYPE='submit' NAME='submit2' value='Submit'>");
 		   		out.println("<INPUT TYPE='checkBox' NAME='SENDMAILOPTION' VALUE='YES'>");%><jsp:getProperty name="rPH" property="pgMailNotice"/><%
-	     	}
-         	rs.close();
+	     	} 
+         	rs.close();       
 	     	statement.close();
 	   	} // End of if
 	} //end of try
     catch (Exception e)
     {
     	out.println("Exception1:"+e.getMessage());
-    }
+    }	 
 	%></a></td></tr></table>
-<!-- è¡¨å–®åƒæ•¸ -->
+<!-- ªí³æ°Ñ¼Æ --> 
 <INPUT type="hidden" name="LINE_NO" value="<%=line_No%>" >
 <input name="LSTATUSID" type="HIDDEN" value="<%=frStatID%>" >
 <input name="VENDOR_FLAG" type="hidden" value="<%=vendor_flag%>">
@@ -1353,7 +1586,7 @@ catch(Exception e)
 <input name="TSC_PACKAGE" type="hidden" value="<%=TSC_PACKAGE%>">
 </FORM>
 <iframe width=124 height=153 name="gToday:supermini:agenda.js" id="gToday:supermini:agenda.js" src="../calendar/ipopeng.htm" scrolling="no" frameborder="0" style="visibility:hidden; z-index:65535; position:absolute; top:0px;"></iframe>
- <!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->
+ <!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========--> 
  <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 </body>
