@@ -27,6 +27,7 @@
 <!--=================================-->
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
 <%@ page import="SalesDRQPageHeaderBean" %>
+<%@ page import="com.mysql.jdbc.StringUtils" %>
 <html>
 <head>
 	<title>Sales Delivery Request Questionnaire Input Form</title>
@@ -1866,6 +1867,8 @@
 		String spqCheck=request.getParameter("SPQCHECK");
 		String nSpqCheck=request.getParameter("NSPQCHECK");
 		String parOrgID=request.getParameter("PARORGID");  // 業務地區對應的ORG_ID
+		String modelN = StringUtils.isNullOrEmpty(request.getParameter("modelN")) ? "" : request.getParameter("modelN");
+		String groupByType = StringUtils.isNullOrEmpty(request.getParameter("groupByType")) ? "" : request.getParameter("groupByType");
 //String allowCRD="";
 		String computeSSD="N";
 		String strdisable = "";
@@ -4307,6 +4310,8 @@
 	<input type="hidden" name="SPQCHECKED" value="<%=SPQChecked%>">
 	<input type="hidden" name="FOBLIST" value="<%=fobList%>">
 	<input type="hidden" name="UPLOAD_TEMP_ID" value="<%=UPLOAD_TEMP_ID%>">
+	<input type="hidden" name="modelN" value="<%=modelN%>">
+	<input type="hidden" name="groupByType" value="<%=groupByType%>">
 </FORM>
 <iframe width=124 height=153 name="gToday:supermini:agenda.js" id="gToday:supermini:agenda.js" src="../calendar/ipopeng.htm" scrolling="no" frameborder="0" style="visibility:hidden; z-index:65535; position:absolute; top:0px;"></iframe>
 </body>

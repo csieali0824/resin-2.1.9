@@ -19,6 +19,8 @@ report/
 *.iml
 *.ipr
 *.class
+*.TXT
+*.bak
 *_jsp.java
 /out/
 

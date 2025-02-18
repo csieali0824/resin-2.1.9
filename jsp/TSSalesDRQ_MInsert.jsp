@@ -26,6 +26,19 @@ function alertRFQNotSuccess(msRFQCreateMsg)
 {
    alert(msRFQCreateMsg);
 }
+
+function insertSuccess(url) {
+	if (confirm("Insert Successfully!!(RFQ:"+ document.MYFORM.PRESEQNO.value+")")) {
+		document.location.href = url;
+	}
+}
+
+function insertFail(url) {
+	if (confirm("Insert Fail!!")) {
+		document.location.href = url;
+	}
+}
+
 </script>
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
@@ -52,7 +65,7 @@ try
   	String customerId=request.getParameter("CUSTOMERID"); 
   	String salesAreaNo=request.getParameter("SALESAREANO"); 
   	String salesPersonID=request.getParameter("SALESPERSONID"); 
-  	String customerPO=request.getParameter("CUSTOMERPO"); 
+  	String customerPO=request.getParameter("CUSTOMERPO");
   	customerPO = customerPO.trim();  //add by Peggychen 20110610
   	String receptDate=request.getParameter("RECEPTDATE");
   	String curr=request.getParameter("CURR"); 
@@ -62,7 +75,10 @@ try
 	String preOrderTypeCode=""; //ADD BY PEGGY 20210802
   	String salesPerson=request.getParameter("SALESPERSON"); 
   	String toPersonID=request.getParameter("TOPERSONID"); 
-  	String a[][]=arrayRFQDocumentInputBean.getArray2DContent();//oثe}Ce
+  	String modelN = request.getParameter("modelN");
+  	String groupByType = request.getParameter("groupByType");
+	String detailJsp ="../jsp/TSCModelNDetail.jsp?requestSalesNo=" + salesAreaNo;
+	String a[][]=arrayRFQDocumentInputBean.getArray2DContent();//oثe}Ce
    	//if (a!=null) 
    	//{
     //	for (int ac=0;ac<a.length;ac++)
@@ -1087,16 +1103,16 @@ try
 				}
 				else
 				{				
-					String sqlx="update oraddman.tsc_rfq_upload_temp SET CREATE_FLAG=?,LAST_UPDATED_BY=?,LAST_UPDATE_DATE=sysdate WHERE CREATE_FLAG=? AND CUSTOMER_ID=? AND CUSTOMER_PO=? AND salesareano=?";   
-					PreparedStatement seqstmt=con.prepareStatement(sqlx);        
+					String sqlx="update oraddman.tsc_rfq_upload_temp SET CREATE_FLAG=?,LAST_UPDATED_BY=?,LAST_UPDATE_DATE=sysdate WHERE CREATE_FLAG=? AND CUSTOMER_ID=? AND CUSTOMER_PO= nvl(?, customer_po) AND salesareano=?";
+					PreparedStatement seqstmt=con.prepareStatement(sqlx);
 					seqstmt.setString(1,"Y");   
 					seqstmt.setString(2,UserName);   
 					seqstmt.setString(3,"N");   
 					seqstmt.setString(4,customerId );   
-					seqstmt.setString(5,customerPO );   
-					seqstmt.setString(6,salesAreaNo ); 
+					seqstmt.setString(5, Arrays.asList(new String[]{"byCustNo", null, ""}).contains(groupByType) ? null : customerPO);
+					seqstmt.setString(6,salesAreaNo );
 					seqstmt.executeQuery();
-					seqstmt.close(); 
+					seqstmt.close();
 
 					ipendingcnt =0;
 					sqlx = " SELECT count(1) FROM oraddman.tsc_rfq_upload_temp a "+
@@ -1113,7 +1129,7 @@ try
 					stk.setString(2,salesAreaNo);
 					stk.setString(3,customerPO ); 
 					stk.setString(4,customerId);  //add by Peggy 20140225
-					ResultSet rsk = stk.executeQuery();		
+					ResultSet rsk = stk.executeQuery();
 					if (rsk.next())		
 					{
 						ipendingcnt = rsk.getInt(1);		
@@ -1266,37 +1282,22 @@ try
 	{
 		if (strRes.length() >0)
 		{
-			if (sProgramName.equals("D4-012"))  //add by Peggy 20130104
-			{
+			if (sProgramName.equals("D4-012")) { //add by Peggy 20130104
+				String url = modelN.equals("Y") ? detailJsp : "../jsp/TSCROWImportHistory.jsp";
 			%>
-				<script language="JavaScript" type="text/JavaScript">
-				if (confirm("Insert Fail!!"))
-				{
-					document.location.href="../jsp/TSCROWImportHistory.jsp";
-				}
-				</script>	
+				<script> insertFail("<%=url%>")</script>
 			<%
 			}
-			else if (sProgramName.equals("D4-013"))  //add by Peggy 20140115
-			{
+			else if (sProgramName.equals("D4-013")) { //add by Peggy 20140115
+				String url = modelN.equals("Y") ? detailJsp : "../jsp/TSCKBufferImport.jsp?ACTIONCODE=DETAIL";
 			%>
-				<script language="JavaScript" type="text/JavaScript">
-				if (confirm("Insert Fail!!"))
-				{
-					document.location.href="../jsp/TSCKBufferImport.jsp?ACTIONCODE=DETAIL";
-				}
-				</script>	
+				<script> insertFail("<%=url%>")</script>
 			<%
 			}
-			else if (sProgramName.equals("D4-015"))  //add by Peggy 20151116
-			{
+			else if (sProgramName.equals("D4-015")) { //add by Peggy 20151116
+				String url = modelN.equals("Y") ? detailJsp : "../jsp/TSCTDABufferImport.jsp?ACTIONCODE=DETAIL";
 			%>
-				<script language="JavaScript" type="text/JavaScript">
-				if (confirm("Insert Fail!!"))
-				{
-					document.location.href="../jsp/TSCTDABufferImport.jsp?ACTIONCODE=DETAIL";
-				}
-				</script>	
+				<script> insertFail("<%=url%>")</script>
 			<%
 			}	
 			else if (sProgramName.equals("D4-016"))  
@@ -1310,17 +1311,17 @@ try
 				</script>	
 			<%
 			}			
-			else if (sProgramName.equals("D4-017"))  //add by Peggy 20160225
-			{
+			else if (sProgramName.equals("D4-017")) { //add by Peggy 20160225
+				String url = modelN.equals("Y") ? detailJsp : "../jsp/TSCCSHAbroadRFQImport.jsp?ACTIONCODE=DETAIL";
 			%>
-				<script language="JavaScript" type="text/JavaScript">
-				if (confirm("Insert Fail!!"))
-				{
-					document.location.href="../jsp/TSCCSHAbroadRFQImport.jsp?ACTIONCODE=DETAIL";
-				}
-				</script>	
+				<script> insertFail("<%=url%>")</script>
 			<%
-			}	
+			}
+			else if (sProgramName.equals("D4-004") && modelN.equals("Y")) { //add by Peggy 20160225
+			%>
+				<script> insertFail("<%=detailJsp%>")</script>
+			<%
+			}
 			else if (sProgramName.equals("D4-018"))  //add by Peggy 20170213
 			{
 			%>
@@ -1343,53 +1344,33 @@ try
 				</script>	
 			<%
 			}	
-			else if (sProgramName.equals("D4-019"))  //add by Peggy 20181205
-			{
+			else if (sProgramName.equals("D4-019")) { //add by Peggy 20181205
+				String url = modelN.equals("Y") ? detailJsp : "../jsp/TSCTDistyBufferImport.jsp?ACTIONCODE=DETAIL";
 			%>
-				<script language="JavaScript" type="text/JavaScript">
-				if (confirm("Insert Fail!!"))
-				{
-					document.location.href="../jsp/TSCTDistyBufferImport.jsp?ACTIONCODE=DETAIL";
-				}
-				</script>	
+				<script> insertFail("<%=url%>")</script>
 			<%
-			}	
+			}
 			//else
 			//{
-				//response.sendRedirect("TSSalesDRQ_Create.jsp?PREDNDOCNO=Create Action Fail("+strRes+")");	
+				//response.sendRedirect("TSSalesDRQ_Create.jsp?PREDNDOCNO=Create Action Fail("+strRes+")");
 			//}
 		}
-		else if (sProgramName.equals("D4-012"))  //add by Peggy 20130104
-		{
+		else if (sProgramName.equals("D4-012")) { //add by Peggy 20130104
+			String url = modelN.equals("Y") ? detailJsp : "../jsp/TSCROWImportHistory.jsp";
 		%>
-			<script language="JavaScript" type="text/JavaScript">
-			if (confirm("Insert Successfully!!(RFQ:"+ document.MYFORM.PRESEQNO.value+")"))
-			{
-				document.location.href="../jsp/TSCROWImportHistory.jsp";
-			}
-			</script>
+			<script> insertSuccess("<%=url%>")</script>
 		<%	
 		}
-		else if (sProgramName.equals("D4-013") && ipendingcnt >0)  //add by Peggy 20140115
-		{
+		else if (sProgramName.equals("D4-013") && ipendingcnt >0) { //add by Peggy 20140115
+			String url = modelN.equals("Y") ? detailJsp : "../jsp/TSCKBufferImport.jsp?ACTIONCODE=DETAIL";
 		%>
-			<script language="JavaScript" type="text/JavaScript">
-			if (confirm("Insert Successfully!!(RFQ:"+ document.MYFORM.PRESEQNO.value+")"))
-			{
-				document.location.href="../jsp/TSCKBufferImport.jsp?ACTIONCODE=DETAIL";
-			}
-			</script>	
+			<script> insertSuccess("<%=url%>")</script>
 		<%
 		}
-		else if (sProgramName.equals("D4-015") && ipendingcnt >0)  //add by Peggy 20151116
-		{
+		else if (sProgramName.equals("D4-015") && ipendingcnt >0) { //add by Peggy 20151116
+			String url = modelN.equals("Y") ? detailJsp : "../jsp/TSCTDABufferImport.jsp?ACTIONCODE=DETAIL";
 		%>
-			<script language="JavaScript" type="text/JavaScript">
-			if (confirm("Insert Successfully!!(RFQ:"+ document.MYFORM.PRESEQNO.value+")"))
-			{
-				document.location.href="../jsp/TSCTDABufferImport.jsp?ACTIONCODE=DETAIL";
-			}
-			</script>	
+			<script> insertSuccess("<%=url%>")</script>
 		<%
 		}	
 		else if (sProgramName.equals("D4-016") && ipendingcnt >0) 
@@ -1403,15 +1384,10 @@ try
 			</script>	
 		<%
 		}			
-		else if (sProgramName.equals("D4-017") && ipendingcnt >0)  //add by Peggy 20160225
-		{
+		else if (sProgramName.equals("D4-017") && ipendingcnt >0) { //add by Peggy 20160225
+			String url = modelN.equals("Y") ? detailJsp : "../jsp/TSCCSHAbroadRFQImport.jsp?ACTIONCODE=DETAIL";
 		%>
-			<script language="JavaScript" type="text/JavaScript">
-			if (confirm("Insert Successfully!!(RFQ:"+ document.MYFORM.PRESEQNO.value+")"))
-			{
-				document.location.href="../jsp/TSCCSHAbroadRFQImport.jsp?ACTIONCODE=DETAIL";
-			}
-			</script>	
+			<script> insertSuccess("<%=url%>")</script>
 		<%
 		}	
 		else if (sProgramName.equals("D4-018") && ipendingcnt >0)  //add by Peggy 20170213
@@ -1436,28 +1412,18 @@ try
 			</script>	
 		<%
 		}
-		else if (sProgramName.equals("D4-004"))  //add by Peggy 20220610
-		{
+		else if (sProgramName.equals("D4-004")) { //add by Peggy 20220610
+			String url = modelN.equals("Y") ? detailJsp : "../jsp/TSCABufferImport.jsp";
 		%>
-			<script language="JavaScript" type="text/JavaScript">
-			if (confirm("Insert Successfully!!(RFQ:"+ document.MYFORM.PRESEQNO.value+")"))
-			{
-				document.location.href="../jsp/TSCABufferImport.jsp";
-			}
-			</script>	
+			<script> insertSuccess("<%=url%>")</script>
 		<%
 		}		
-		else if (sProgramName.equals("D4-019") && ipendingcnt >0)  //add by Peggy 20181205
-		{
+		else if (sProgramName.equals("D4-019") && ipendingcnt >0) { //add by Peggy 20181205
+			String url = modelN.equals("Y") ? detailJsp : "../jsp/TSCTDistyBufferImport.jsp?ACTIONCODE=DETAIL";
 		%>
-			<script language="JavaScript" type="text/JavaScript">
-			if (confirm("Insert Successfully!!(RFQ:"+ document.MYFORM.PRESEQNO.value+")"))
-			{
-				document.location.href="../jsp/TSCTDistyBufferImport.jsp?ACTIONCODE=DETAIL";
-			}
-			</script>	
+			<script> insertSuccess("<%=url%>")</script>
 		<%
-		}							
+		}
 		else if (sProgramName.equals("D4-006P"))  //add by Peggy 20190711
 		{
 		%>

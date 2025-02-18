@@ -20,7 +20,7 @@
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
 <%@ page language="java" import="java.sql.*,java.util.*,java.text.*" %>
 <%@ page language="java" import="java.io.*" %>
-<%@ page contentType="text/html; charset=utf-8"%>
+<%@ page contentType="text/html; charset=big5"%>
 <%@ page import="SalesDRQPageHeaderBean" %>
 <jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
 <%@ page import="DateBean,ArrayCheckBoxBean,Array2DimensionInputBean" %>
@@ -89,7 +89,11 @@ try
 	if (SHIPTO==null) SHIPTO="";
 	String TEMP_ID         = (String)session.getAttribute("UPLOAD_TEMP_ID");	//add by Peggy 20160303
 	if (TEMP_ID==null) TEMP_ID="";
-	String RFQTYPE         = request.getParameter("RFQTYPE"); 
+	String modelN = (String)session.getAttribute("modelN");
+	String groupByType = (String)session.getAttribute("groupByType");
+	if (modelN==null) modelN="";
+	if (groupByType==null) groupByType="";
+	String RFQTYPE         = request.getParameter("RFQTYPE");
 	String SAMPLEORDER     = request.getParameter("SAMPLEORDER");   //add by Peggy 20150715
 	if (SAMPLEORDER==null) SAMPLEORDER="";
 	String PCODE           = request.getParameter("PCODE");
@@ -128,7 +132,9 @@ try
 					"&RFQTYPE="+java.net.URLEncoder.encode(RFQTYPE)+
 			        "&UPLOAD_TEMP_ID="+java.net.URLEncoder.encode(TEMP_ID)+
 					"&SHIPTO="+java.net.URLEncoder.encode(SHIPTO)+	//add by Peggy 20160303
-					"&SHIPTOORGID="+java.net.URLEncoder.encode(SHIPTOORGID);  //add by Peggy 20180720
+					"&SHIPTOORGID="+java.net.URLEncoder.encode(SHIPTOORGID)+  //add by Peggy 20180720
+					"&modelN=" + modelN+
+					"&groupByType=" + groupByType;
 	}
 	else
 	{
