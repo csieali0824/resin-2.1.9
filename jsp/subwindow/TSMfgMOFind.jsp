@@ -1,5 +1,5 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*"%>
-<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—é€£çµæ± ==========-->
+<%@ page contentType="text/html; charset=big5" language="java" import="java.sql.*"%>
+<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=================================-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
@@ -24,7 +24,7 @@ String alternateRouting=request.getParameter("ALTERNATEROUTING");
 String organizationId=request.getParameter("ORGANIZATIONID");
 
  
-//String custLotAlert=request.getParameter("CUSTLOTALERT");  // 2007/08/02 å®šç¾©å®¢æˆ¶æµç¨‹å¡ç·¨ç¢¼çš„è­¦å‘Š(ä½¿ç”¨è€…æœªé¸æ“‡ç‰¹æ®Šå®¢æˆ¶ç·¨è™Ÿ,ç•¶é¸å®šçš„éŠ·å”®è¨‚å–®å°æ‡‰å®¢æˆ¶è¢«å®šç¾©æ–¼ç‰¹æ®Šæ‰¹è™Ÿ)
+//String custLotAlert=request.getParameter("CUSTLOTALERT");  // 2007/08/02 ©w¸q«È¤á¬yµ{¥d½s½XªºÄµ§i(¨Ï¥ÎªÌ¥¼¿ï¾Ü¯S®í«È¤á½s¸¹,·í¿ï©wªº¾P°â­q³æ¹ïÀ³«È¤á³Q©w¸q©ó¯S®í§å¸¹)
 
 String customerName=null,customerPo=null,woQty=null,woUom=null,endDate=null;
 String oeHeaderId=null,oeLineId=null,customerId=null;
@@ -34,16 +34,16 @@ String dateCode=null;
 String orderPartnoQty="",wipPartnoQty="";//add by Peggy 20191007
 String v_show="",wip_msg="";          //add by Peggy 20201208
  
-String dateShipSugDate=null; // å‡ºè²¨æ—¥å‰5å¤©çš„æ—¥æœŸ 
+String dateShipSugDate=null; // ¥X³f¤é«e5¤Ñªº¤é´Á 
 
-String q[][]=arrayWODocumentInputBean.getArray2DContent();//å–å¾—ç›®å‰é™£åˆ—å…§å®¹	
+String q[][]=arrayWODocumentInputBean.getArray2DContent();//¨ú±o¥Ø«e°}¦C¤º®e	
 
 
 float leftAddQty = 0;
 
 if (oeLineQtyCh==null || oeLineQtyCh.equals("")) oeLineQtyCh = "0";
 
-//if (custLotAlert==null || custLotAlert.equals("")) custLotAlert = "N"; // é è¨­å€¼æ˜¯ N , ç•¶å‡ºç¾é¸å®šå¾Œæ®µå·¥ä»¤å°æ‡‰éŠ·å”®è¨‚å–®å®¢æˆ¶æ˜¯éœ€è¦ç‰¹å®šæ‰¹è™Ÿå»é¸æ“‡ä¸€èˆ¬å®¢æˆ¶,å‰‡ç³»çµ±è­¦å‘Šè¨Šæ¯
+//if (custLotAlert==null || custLotAlert.equals("")) custLotAlert = "N"; // ¹w³]­È¬O N , ·í¥X²{¿ï©w«á¬q¤u¥O¹ïÀ³¾P°â­q³æ«È¤á¬O»İ­n¯S©w§å¸¹«o¿ï¾Ü¤@¯ë«È¤á,«h¨t²ÎÄµ§i°T®§
 
 String runCardDesc = null; // ItemDesc
 String runCardGet = "";  // itemCodeGet
@@ -212,17 +212,17 @@ function sendToMainWindow(jNo,oeOrderNo,invItem,itemDesc,woQty,woUom,endDate,cus
 {
 	if (exceedFlag=="Y")
 	{
-		alert("åŠ å…¥æ­¤é …æ¬¡å¾Œ,ç´¯è¨ˆé¸å®šæ•¸é‡å·²å¤§æ–¼MOå–®éœ€æ±‚æ•¸!!!\n           æ­¤å¼µæµç¨‹å¡å‰©é¤˜æ•¸å°‡ç‚ºä¸‹æ¬¡æ‰€ä½¿ç”¨");
+		alert("¥[¤J¦¹¶µ¦¸«á,²Ö­p¿ï©w¼Æ¶q¤w¤j©óMO³æ»İ¨D¼Æ!!!\n           ¦¹±i¬yµ{¥d³Ñ¾l¼Æ±N¬°¤U¦¸©Ò¨Ï¥Î");
 	}
 		  
 	if (eval(odrPartQty)<=eval(wipPartQty))
 	{
-		if (!confirm("è¨‚å–®:"+oeOrderNo+" å‹è™Ÿ:"+itemDesc+" å·¥å–®é‡å·²æ»¿è¶³è¨‚å–®é‡,ç¢ºå®šè¦å†ä¸‹å·¥å–®?")) return false;
+		if (!confirm("­q³æ:"+oeOrderNo+" «¬¸¹:"+itemDesc+" ¤u³æ¶q¤wº¡¨¬­q³æ¶q,½T©w­n¦A¤U¤u³æ?")) return false;
 	}
 	//add by Peggy 20221128
 	if (document.getElementById(oeLineId).value!="PASS")
 	{
-		if (!confirm("è¨‚å–®:"+oeOrderNo+" å‹è™Ÿ:"+itemDesc+" "+document.getElementById(oeLineId).value)) return false;
+		if (!confirm("­q³æ:"+oeOrderNo+" «¬¸¹:"+itemDesc+" "+document.getElementById(oeLineId).value)) return false;
 	}
 	
 	if (customerPo==null || customerPo=="null") customerPo="";
@@ -253,7 +253,7 @@ function setFindMO()
 {
 	if (document.SUBMOFORM.OEORDERNO.value==null || document.SUBMOFORM.OEORDERNO.value=="")
    	{
-    	alert("è«‹è¼¸å…¥ç‰¹å®šMOå–®ç‹€æ…‹ä½œMOå–®å…§å®¹æŸ¥è©¢!!!");
+    	alert("½Ğ¿é¤J¯S©wMO³æª¬ºA§@MO³æ¤º®e¬d¸ß!!!");
        	return false;	   
    	} 
    	subWin=window.open("../subwindow/TSMfgMOAdmFind.jsp?OEORDERNO="+document.SUBMOFORM.OEORDERNO.value+"&MARKETTYPE="+document.SUBMOFORM.ORGANIZATIONID.value,"subwin","width=640,height=480,scrollbars=yes,menubar=yes");    
@@ -261,12 +261,12 @@ function setFindMO()
 </script>
 <body >  
 <FORM name="SUBMOFORM" METHOD="post" ACTION="TSMfgMoFind.jsp">
-  <font color="#000099">è«‹è¼¸å…¥MOå–®é–‹ç«‹ä¹‹æˆå“æ–™è™Ÿ: <input type="text" name="SEARCHSTRING" size=30 value=<%=searchString%>>
+  <font color="#000099">½Ğ¿é¤JMO³æ¶}¥ß¤§¦¨«~®Æ¸¹: <input type="text" name="SEARCHSTRING" size=30 value=<%=searchString%>>
   </font> 
-  <INPUT TYPE="submit" NAME="submit" value="æŸ¥è©¢"><BR>
-  <font color="#000099">-----ä¾MOå–®é–‹ç«‹å¾Œæ®µå·¥ä»¤è³‡è¨Š-------------------------------------------- </font>     
+  <INPUT TYPE="submit" NAME="submit" value="¬d¸ß"><BR>
+  <font color="#000099">-----¨ÌMO³æ¶}¥ß«á¬q¤u¥O¸ê°T-------------------------------------------- </font>     
   <BR>
-  æŸ¥è©¢è¨‚å–®è©³ç´°å…§å®¹<input type="text" name='OEORDERNO' value="" size="15"><input type="button" name="FINDMO" value="è¨‚å–®å…§å®¹" onClick='setFindMO()'>  
+  ¬d¸ß­q³æ¸Ô²Ó¤º®e<input type="text" name='OEORDERNO' value="" size="15"><input type="button" name="FINDMO" value="­q³æ¤º®e" onClick='setFindMO()'>  
   <BR>
   <%  
    
@@ -279,7 +279,7 @@ try
 	cs1.setString(1,parOrgID); // By Choose market Set Client info
 	cs1.execute();	 			  
 		 
-	 // çµ„åˆMOå–®ä¸‹çš„æˆå“æ–™è™Ÿå°æ‡‰å‡ºåŠæˆå“æ–™è™Ÿ,ä½œç‚ºæ‰¾å‰æ®µæµç¨‹å¡ä¾æ“š_èµ·(è‹¥ä½¿ç”¨è€…è¼¸å…¥ORDER NOä½œæŸ¥è©¢ä¾æ“š)
+	 // ²Õ¦XMO³æ¤Uªº¦¨«~®Æ¸¹¹ïÀ³¥X¥b¦¨«~®Æ¸¹,§@¬°§ä«e¬q¬yµ{¥d¨Ì¾Ú_°_(­Y¨Ï¥ÎªÌ¿é¤JORDER NO§@¬d¸ß¨Ì¾Ú)
 	String semiItemDesc = null;
     String semiItemCodeGet = "";
     int semiItemCodeGetLength = 0;   
@@ -290,7 +290,7 @@ try
 		String itemCodeGet = "";
 		int itemCodeGetLength = 0;     
 		Statement stateItemDesc=con.createStatement(); 
-		//20100820 liling update  ä¿®æ­£åŸæœ‰å®¢å“æ–™è™Ÿæœƒæ’ˆéŒ¯
+		//20100820 liling update  ­×¥¿­ì¦³«È«~®Æ¸¹·|¼´¿ù
 		// ResultSet rsItemDesc=stateItemDesc.executeQuery("select ORDERED_ITEM_ID from OE_ORDER_HEADERS_ALL a, OE_ORDER_LINES_ALL b where a.HEADER_ID = b.HEADER_ID and a.ORDER_NUMBER ='"+oeOrderNo+"' ");
 		ResultSet rsItemDesc=stateItemDesc.executeQuery("select INVENTORY_ITEM_ID from OE_ORDER_HEADERS_ALL a, OE_ORDER_LINES_ALL b where a.HEADER_ID = b.HEADER_ID and a.ORDER_NUMBER ='"+oeOrderNo+"' ");
 		while (rsItemDesc.next()) 
@@ -302,14 +302,14 @@ try
         stateItemDesc.close(); 
 			 
 		// out.println("select ORDERED_ITEM_ID from OE_ORDER_HEADERS_ALL a, OE_ORDER_LINES_ALL b where a.HEADER_ID = b.HEADER_ID and a.ORDER_NUMBER ='"+oeOrderNo+"' ");
-        // å–ç•¶æœˆæ¢ä»¶å…§çš„æ©Ÿç¨®æˆå“æ–™è™Ÿ //
+        // ¨ú·í¤ë±ø¥ó¤ºªº¾÷ºØ¦¨«~®Æ¸¹ //
         if (itemCodeGet.length()>0)
         {   //out.println(itemCodeGet);     
         	itemCodeGetLength = itemCodeGet.length()-1;
             itemCodeGet = itemCodeGet.substring(0,itemCodeGetLength);
         } 
 			
-		// å–BOM_COMPONENT å…§å‹•æ‡‰çš„åŠæˆå“æ–™è™Ÿ_èµ·			 
+		// ¨úBOM_COMPONENT ¤º°ÊÀ³ªº¥b¦¨«~®Æ¸¹_°_			 
 		if (itemCodeGet!=null && !itemCodeGet.equals(""))			 
 		{
 			Statement stateBC=con.createStatement(); 
@@ -318,7 +318,7 @@ try
 												// " where a.BILL_SEQUENCE_ID = b.BILL_SEQUENCE_ID and to_char(b.ASSEMBLY_ITEM_ID) in ("+itemCodeGet+")  and a.DISABLE_DATE is null "); //20130925 liling add   a.DISABLE_DATE is null
 												" where a.BILL_SEQUENCE_ID = b.BILL_SEQUENCE_ID and to_char(b.ASSEMBLY_ITEM_ID) in ("+itemCodeGet+")  "+
 												"   and b.organization_Id ="+organizationId+
-												"   and sysdate between EFFECTIVITY_DATE  and nvl(DISABLE_DATE,sysdate+360) ");  //20150803 liling update  YEWæœ‰ä½¿ç”¨DISABLE åœ¨æ§åˆ¶BOM
+												"   and sysdate between EFFECTIVITY_DATE  and nvl(DISABLE_DATE,sysdate+360) ");  //20150803 liling update  YEW¦³¨Ï¥ÎDISABLE ¦b±±¨îBOM
 			while (rsBC.next()) 
             { 
             	semiItemDesc = rsBC.getString(1);
@@ -330,41 +330,41 @@ try
 			if (semiItemCodeGet.length()>0)
             {        
             	semiItemCodeGetLength = semiItemCodeGet.length()-1;            
-              	semiItemCodeGet = semiItemCodeGet.substring(0,semiItemCodeGetLength); // å–åˆ°å°æ‡‰åŠæˆå“æ–™è™ŸID
+              	semiItemCodeGet = semiItemCodeGet.substring(0,semiItemCodeGetLength); // ¨ú¨ì¹ïÀ³¥b¦¨«~®Æ¸¹ID
             } 
 		} // End of if (itemCodeGet!=null)
-		// å–BOM_COMPONENT å…§å‹•æ‡‰çš„åŠæˆå“æ–™è™Ÿ_è¿„
+		// ¨úBOM_COMPONENT ¤º°ÊÀ³ªº¥b¦¨«~®Æ¸¹_¨´
 	}
-	// çµ„åˆMOå–®ä¸‹çš„æˆå“æ–™è™Ÿå°æ‡‰å‡ºåŠæˆå“æ–™è™Ÿ,ä½œç‚ºæ‰¾å‰æ®µæµç¨‹å¡ä¾æ“š_è¿„ 	 
+	// ²Õ¦XMO³æ¤Uªº¦¨«~®Æ¸¹¹ïÀ³¥X¥b¦¨«~®Æ¸¹,§@¬°§ä«e¬q¬yµ{¥d¨Ì¾Ú_¨´ 	 
  		
 	String sql = " select DISTINCT "+
 				 " TSC_OM_Hold_status(ooh.org_id,ool.attribute20) \"Hold Flag\""+ //add by Peggy 20220221
-	             ", 'KPC' as \"å–®ä½\""+
-		         ", OOH.ORDER_NUMBER MOå–®è™Ÿ"+
-				 ", OOL.LINE_NUMBER||'.'||OOL.SHIPMENT_NUMBER \"MOé …æ¬¡\""+
-				 ", MSI.SEGMENT1 as \"è£½æˆå“å“è™Ÿ\""+
-				 ", REPLACE(MSI.DESCRIPTION,'\''',' ') as \"å“è™Ÿè¦æ ¼èªªæ˜\""+
-				 ", OOL.ORDERED_QUANTITY \"æœªé–‹å·¥ä»¤æ•¸\""+					
-			     ", OOL.ORDER_QUANTITY_UOM as \"MOå–®ä½\""+
-			     ", to_char(OOL.SCHEDULE_SHIP_DATE,'YYYYMMDD') as \"é è¨ˆå‡ºè²¨æ—¥\""+					
-			     ", REPLACE(OOL.CUSTOMER_LINE_NUMBER,'''','\\''' ) as \"å®¢æˆ¶è¨‚å–®è™Ÿ\" "+ //å°‡ ' è®Šæ›´ç‚º \' , æ‰èƒ½é€²è¡Œç¶²é é–“çš„å‚³å€¼	by shin 20090825
-				 " ,(SELECT SUM(x.ORDERED_QUANTITY) FROM APPS.OE_ORDER_LINES_ALL x WHERE x.HEADER_ID=OOL.HEADER_ID AND x.INVENTORY_ITEM_ID=OOL.INVENTORY_ITEM_ID) \"åŒå‹è™Ÿè¨‚å–®é‡\""+
-				 " ,NVL((SELECT SUM(WO_QTY*case when WO_UOM='KPC' then 1000 else 1 end) FROM YEW_WORKORDER_ALL X WHERE  X.ORDER_HEADER_ID=OOL.HEADER_ID AND X.INVENTORY_ITEM_ID=OOL.INVENTORY_ITEM_ID and X.WORKORDER_TYPE in ('3','5')  and X.STATUSID != '050'),0) \"åŒå‹è™Ÿå·²é–‹å·¥å–®é‡\""+
-			     ", OOH.HEADER_ID as \"MOå–®è­˜åˆ¥ç¢¼\""+
-				 ", OOL.LINE_ID as \"MOå–®é …æ¬¡è­˜åˆ¥ç¢¼\""+
-			     ", MSI.INVENTORY_ITEM_ID \"è£½æˆå“å“è™Ÿè­˜åˆ¥ç¢¼\" "+
+	             ", 'KPC' as \"³æ¦ì\""+
+		         ", OOH.ORDER_NUMBER MO³æ¸¹"+
+				 ", OOL.LINE_NUMBER||'.'||OOL.SHIPMENT_NUMBER \"MO¶µ¦¸\""+
+				 ", MSI.SEGMENT1 as \"»s¦¨«~«~¸¹\""+
+				 ", REPLACE(MSI.DESCRIPTION,'\''',' ') as \"«~¸¹³W®æ»¡©ú\""+
+				 ", OOL.ORDERED_QUANTITY \"¥¼¶}¤u¥O¼Æ\""+					
+			     ", OOL.ORDER_QUANTITY_UOM as \"MO³æ¦ì\""+
+			     ", to_char(OOL.SCHEDULE_SHIP_DATE,'YYYYMMDD') as \"¹w­p¥X³f¤é\""+					
+			     ", REPLACE(OOL.CUSTOMER_LINE_NUMBER,'''','\\''' ) as \"«È¤á­q³æ¸¹\" "+ //±N ' ÅÜ§ó¬° \' , ¤~¯à¶i¦æºô­¶¶¡ªº¶Ç­È	by shin 20090825
+				 " ,(SELECT SUM(x.ORDERED_QUANTITY) FROM APPS.OE_ORDER_LINES_ALL x WHERE x.HEADER_ID=OOL.HEADER_ID AND x.INVENTORY_ITEM_ID=OOL.INVENTORY_ITEM_ID) \"¦P«¬¸¹­q³æ¶q\""+
+				 " ,NVL((SELECT SUM(WO_QTY*case when WO_UOM='KPC' then 1000 else 1 end) FROM YEW_WORKORDER_ALL X WHERE  X.ORDER_HEADER_ID=OOL.HEADER_ID AND X.INVENTORY_ITEM_ID=OOL.INVENTORY_ITEM_ID and X.WORKORDER_TYPE in ('3','5')  and X.STATUSID != '050'),0) \"¦P«¬¸¹¤w¶}¤u³æ¶q\""+
+			     ", OOH.HEADER_ID as \"MO³æÃÑ§O½X\""+
+				 ", OOL.LINE_ID as \"MO³æ¶µ¦¸ÃÑ§O½X\""+
+			     ", MSI.INVENTORY_ITEM_ID \"»s¦¨«~«~¸¹ÃÑ§O½X\" "+
 				 ", OOH.SOLD_TO_ORG_ID "+	
-                 ", SML.INVENTORY_ITEM_ID as \"åŠæˆå“æ–™è™Ÿè­˜åˆ¥ç¢¼\""+
+                 ", SML.INVENTORY_ITEM_ID as \"¥b¦¨«~®Æ¸¹ÃÑ§O½X\""+
   			     " from APPS.OE_ORDER_HEADERS_ALL OOH, APPS.OE_ORDER_LINES_ALL OOL, APPS.MTL_SYSTEM_ITEMS MSI, "+
 				 " ( select b.INVENTORY_ITEM_ID, a.LOT_NUMBER, b.SEGMENT1 "+
 				 "     from MTL_LOT_NUMBERS a, MTL_SYSTEM_ITEMS b   "+
 				 "    where a.INVENTORY_ITEM_ID = b.INVENTORY_ITEM_ID and a.ORGANIZATION_ID = b.ORGANIZATION_ID "+
 				 "      and b.ITEM_TYPE ='SA' and substr(b.SEGMENT1,5,1) = '-' and length(b.SEGMENT1) != 22 "+
 				 "      and b.ORGANIZATION_ID in (326,327)  "+						  
-				 "  UNION "+ // æˆ–è€…å·²ç¶“é–‹äº†å‰æ®µå·¥ä»¤
+				 "  UNION "+ // ©ÎªÌ¤w¸g¶}¤F«e¬q¤u¥O
 				 "   select YRA.PRIMARY_ITEM_ID , YRA.RUNCARD_NO, YRA.INV_ITEM "+
 				 "     from YEW_WORKORDER_ALL YWA, YEW_RUNCARD_ALL YRA "+
-				 "    where YWA.WO_NO=YRA.WO_NO and YWA.WORKORDER_TYPE in (2,7) "+ // 2007/01/29_å·¥ç¨‹å¯¦é©—å‰æ®µå·¥ä»¤
+				 "    where YWA.WO_NO=YRA.WO_NO and YWA.WORKORDER_TYPE in (2,7) "+ // 2007/01/29_¤uµ{¹êÅç«e¬q¤u¥O
 				 "      and YWA.ORGANIZATION_ID in (326,327)   "+						  
 				 " ) SML "+
 				 "      ";			
@@ -374,49 +374,49 @@ try
 		           " and OOH.FLOW_STATUS_CODE = 'BOOKED' "+
 		           " and OOL.FLOW_STATUS_CODE != 'CLOSED' and OOL.INVENTORY_ITEM_ID = MSI.INVENTORY_ITEM_ID  "+
 				   " and OOL.LINE_CATEGORY_CODE = 'ORDER' "+
-				   " and OOL.SHIP_FROM_ORG_ID="+organizationId+" "+  // è¨‚å–®å¾å„è‡ªORG
+				   " and OOL.SHIP_FROM_ORG_ID="+organizationId+" "+  // ­q³æ±q¦U¦ÛORG
 				   " and OOL.SHIP_FROM_ORG_ID = MSI.ORGANIZATION_ID  ";		//20150513 liling for 1214			   
-	if (runCardGet!=null && !runCardGet.equals(""))	 where = where + " and YRA.RUNCARD_NO not in ("+runCardGet+") "; // å…ˆå‰å·²åœ¨æ¸…å–®å…§çš„RunCardä¸å¾—å‡ºç¾   
+	if (runCardGet!=null && !runCardGet.equals(""))	 where = where + " and YRA.RUNCARD_NO not in ("+runCardGet+") "; // ¥ı«e¤w¦b²M³æ¤ºªºRunCard¤£±o¥X²{   
 					   
-	if (semiItemID!=null && !semiItemID.equals(""))	 // å¦‚æœå…ˆé¸åŠæˆå“å†æ‰¾è¨‚å–®è³‡è¨Š		   
+	if (semiItemID!=null && !semiItemID.equals(""))	 // ¦pªG¥ı¿ï¥b¦¨«~¦A§ä­q³æ¸ê°T		   
 	{	
 		where +=" and SML.INVENTORY_ITEM_ID = '"+semiItemID+"' "+			                 
 		                  " and  MSI.INVENTORY_ITEM_ID in ( select  /* + ORDERED index(a BOM_COMPONENTS_B_N2) */   b.ASSEMBLY_ITEM_ID "+
 				                                                     " from BOM_COMPONENTS_B a, BOM_STRUCTURES_B b "+
 					                                                 " where ( a.BILL_SEQUENCE_ID = b.BILL_SEQUENCE_ID "+
-																	 "        or a.BILL_SEQUENCE_ID = b.COMMON_BILL_SEQUENCE_ID ) "+ // 2006/11/11 å› ç‚ºBOMè¡¨è¨­å®šä½¿ç”¨COMMON BOM
+																	 "        or a.BILL_SEQUENCE_ID = b.COMMON_BILL_SEQUENCE_ID ) "+ // 2006/11/11 ¦]¬°BOMªí³]©w¨Ï¥ÎCOMMON BOM
 																	 " and b.ASSEMBLY_ITEM_ID = MSI.INVENTORY_ITEM_ID "+
 															         " and COMPONENT_ITEM_ID = '"+semiItemID+"' "+
-																	 " and sysdate between EFFECTIVITY_DATE  and nvl(DISABLE_DATE,sysdate+360) "+   //20150803 liling update  YEWæœ‰ä½¿ç”¨DISABLE åœ¨æ§åˆ¶BOM
+																	 " and sysdate between EFFECTIVITY_DATE  and nvl(DISABLE_DATE,sysdate+360) "+   //20150803 liling update  YEW¦³¨Ï¥ÎDISABLE ¦b±±¨îBOM
 					 						                         " and b.ORGANIZATION_ID = "+organizationId+" ) ";
 	} 
 		
 	if ( (invItem==null || invItem.equals("")) && (semiItemID==null || semiItemID.equals("")) )
 	{  
-		// ä¸€å€‹æˆå“æ–™è™Ÿå¯èƒ½å°æ‡‰å¤šç­†åŠæˆå“æ–™è™Ÿ
+		// ¤@­Ó¦¨«~®Æ¸¹¥i¯à¹ïÀ³¦hµ§¥b¦¨«~®Æ¸¹
 		where += " and SML.INVENTORY_ITEM_ID in (  select /* + ORDERED index(a BOM_COMPONENTS_B_N2)  */ COMPONENT_ITEM_ID "+
 				                                               "  from BOM_COMPONENTS_B a, BOM_STRUCTURES_B b "+
 				                                               " where a.BILL_SEQUENCE_ID = b.BILL_SEQUENCE_ID and b.ASSEMBLY_ITEM_ID = MSI.INVENTORY_ITEM_ID "+
 				                                               "   and b.ASSEMBLY_ITEM_ID  = OOL.ORDERED_ITEM_ID "+
 															//   "    and a.DISABLE_DATE is null "+  //20130925 liling add
-															   " and sysdate between EFFECTIVITY_DATE  and nvl(DISABLE_DATE,sysdate+360) "+   //20150803 liling update  YEWæœ‰ä½¿ç”¨DISABLE åœ¨æ§åˆ¶BOM
+															   " and sysdate between EFFECTIVITY_DATE  and nvl(DISABLE_DATE,sysdate+360) "+   //20150803 liling update  YEW¦³¨Ï¥ÎDISABLE ¦b±±¨îBOM
 														       "   and b.ORGANIZATION_ID = "+organizationId+"  ) ";
 	}
 		
 	if (semiItemCodeGet!=null && !semiItemCodeGet.equals(""))
 	{
-		where +=" and to_char(SML.INVENTORY_ITEM_ID) in ("+semiItemCodeGet+") ";  // ä»¥MOæˆå“æ–™è™Ÿçš„IDå°æ‡‰çš„åŠæˆå“æ–™è™ŸIDä½œç‚ºæ‰¾æµç¨‹å¡çš„æ¢ä»¶
+		where +=" and to_char(SML.INVENTORY_ITEM_ID) in ("+semiItemCodeGet+") ";  // ¥HMO¦¨«~®Æ¸¹ªºID¹ïÀ³ªº¥b¦¨«~®Æ¸¹ID§@¬°§ä¬yµ{¥dªº±ø¥ó
 	}
 		
 	if (oeOrderNo!=null && !oeOrderNo.equals("")) where += "and ( to_char(OOH.ORDER_NUMBER) = '"+oeOrderNo+"' or to_char(OOH.ORDER_NUMBER) like '"+oeOrderNo+"%' ) "; 
 	if (invItem!=null && !invItem.equals(""))			   
 	{	
-		where +=" and ( MSI.SEGMENT1 = '"+invItem+"' or MSI.SEGMENT1 like '"+invItem+"%' ) ";	// å¦‚æœå·²å…ˆæ‰¾å‡ºç‰¹å®šæˆå“æ–™è™Ÿ,å‰‡ä»¥è©²æˆç‚ºæ–™è™Ÿä½œç‚ºæ‰¾å°‹æ¢ä»¶
+		where +=" and ( MSI.SEGMENT1 = '"+invItem+"' or MSI.SEGMENT1 like '"+invItem+"%' ) ";	// ¦pªG¤w¥ı§ä¥X¯S©w¦¨«~®Æ¸¹,«h¥H¸Ó¦¨¬°®Æ¸¹§@¬°§ä´M±ø¥ó
 	}	
 
 	if (woType=="5" || woType.equals("5"))			   
 	{	
-		where +=" and substr(OOH.ORDER_NUMBER,1,4) in ('1121' ,'4121')";	// è‹¥ç‚ºæ¨£å“å·¥ä»¤,åªå‡ºç¾1121åŠ4121çš„å–® ,20120606		   
+		where +=" and substr(OOH.ORDER_NUMBER,1,4) in ('1121' ,'4121')";	// ­Y¬°¼Ë«~¤u¥O,¥u¥X²{1121¤Î4121ªº³æ ,20120606		   
 	} 
 	else 
 	{ 
@@ -425,7 +425,7 @@ try
 								   
 	String orderby= "	order by to_char(OOL.SCHEDULE_SHIP_DATE,'YYYYMMDD'), OOH.ORDER_NUMBER,to_number(OOL.LINE_NUMBER||'.'||OOL.SHIPMENT_NUMBER) ";//" OOH.ORDER_NUMBER, OOL.SCHEDULE_SHIP_DATE ";
 		
-	// éœ€è¦æ”¹ç‚ºå–ç‰¹å®šç´¢å¼• SELECT / + ORDERED index(a QP_PRICING_ATTRIBUTES_N8)   /			 
+	// »İ­n§ï¬°¨ú¯S©w¯Á¤Ş SELECT / + ORDERED index(a QP_PRICING_ATTRIBUTES_N8)   /			 
 	if (searchString =="%" || searchString.equals("%"))			
 	{  
 		where += " and (MSI.SEGMENT1 like '%') "; //		  
@@ -441,14 +441,14 @@ try
 	ResultSet rs=statement.executeQuery(sql);
 	ResultSetMetaData md=rs.getMetaData();
     int colCount=md.getColumnCount();
-	//colCount = colCount-1; //CUSTOMER IDä¸é¡¯ç¤º,ADD BY PEGGY 20201208
+	//colCount = colCount-1; //CUSTOMER ID¤£Åã¥Ü,ADD BY PEGGY 20201208
     String colLabel[]=new String[colCount+1];           
 	//out.println("<TABLE cellSpacing='1' bordercolordark='#996666' cellPadding='1' width='97%' align='left' borderColorLight='#ffffff' border='0'>");          
 	strtable ="<TABLE cellSpacing='1' bordercolordark='#996666' cellPadding='1' width='97%' align='left' borderColorLight='#ffffff' border='0'>";
-	//out.println("<TR BGCOLOR='#CCCC99'><TD nowrap><FONT COLOR=BROWN>&nbsp;</TD><TD nowrap><FONT COLOR=BROWN>é …æ¬¡</TD>"); 
-	strtable += "<TR BGCOLOR='#CCCC99'><TD nowrap><FONT COLOR=BROWN>&nbsp;</TD><TD nowrap><FONT COLOR=BROWN>é …æ¬¡</TD>";
+	//out.println("<TR BGCOLOR='#CCCC99'><TD nowrap><FONT COLOR=BROWN>&nbsp;</TD><TD nowrap><FONT COLOR=BROWN>¶µ¦¸</TD>"); 
+	strtable += "<TR BGCOLOR='#CCCC99'><TD nowrap><FONT COLOR=BROWN>&nbsp;</TD><TD nowrap><FONT COLOR=BROWN>¶µ¦¸</TD>";
     //out.println("<TR BGCOLOR='#CCCC99'><TD nowrap><FONT COLOR=WHITE SIZE=1>&nbsp;</TH>");        
-    for (int i=1;i<=colCount-7;i++) // ä¸é¡¯ç¤ºç¬¬ä¸€,äºŒæ¬„è³‡æ–™ITEMID, æ•… for ç”± 2é–‹å§‹
+    for (int i=1;i<=colCount-7;i++) // ¤£Åã¥Ü²Ä¤@,¤GÄæ¸ê®ÆITEMID, ¬G for ¥Ñ 2¶}©l
     {
 		colLabel[i]=md.getColumnLabel(i);         
 		if (i==3)
@@ -465,10 +465,10 @@ try
     //out.println("</TR>");
 	strtable +="</TR>";
 		
-	String moNoTmp = null; // æ¯æ¬¡å–åˆ°çš„MOè™Ÿçµ¦æš«å­˜MoNoTmp
+	String moNoTmp = null; // ¨C¦¸¨ú¨ìªºMO¸¹µ¹¼È¦sMoNoTmp
 	String buttonContent=null;
 	String trBgColor = "";
-	int j = 0,icnt=0,iline=0; //é …æ¬¡æ•¸
+	int j = 0,icnt=0,iline=0; //¶µ¦¸¼Æ
 	while (rs.next())
     { 
 		if (icnt==0)
@@ -509,11 +509,11 @@ try
 				out.println("<table width=0>");
 				if (!rs1.getString("SUBINVENTORY_CODE").equals("08"))
 				{
-					out.println("<tr><td style='color:#0000FF'>"+(rs1.getString("ORGANIZATION_ID").equals("326")?"å…§éŠ·":"å¤–éŠ·")+rs1.getString("SUBINVENTORY_CODE")+"å€‰åº«å­˜:"+rs1.getString("ONHAND")+"K(CLOSEæ•¸:"+rs1.getString("CLOSED_QTY")+"K / CANCELæ•¸:"+rs1.getString("CANCELLED_QTY")+"K / HOLDæ•¸:"+rs1.getString("HOLD_QTY")+"K)</td></tr>");
+					out.println("<tr><td style='color:#0000FF'>"+(rs1.getString("ORGANIZATION_ID").equals("326")?"¤º¾P":"¥~¾P")+rs1.getString("SUBINVENTORY_CODE")+"­Ü®w¦s:"+rs1.getString("ONHAND")+"K(CLOSE¼Æ:"+rs1.getString("CLOSED_QTY")+"K / CANCEL¼Æ:"+rs1.getString("CANCELLED_QTY")+"K / HOLD¼Æ:"+rs1.getString("HOLD_QTY")+"K)</td></tr>");
 				}
 				else
 				{
-					out.println("<tr><td style='color:#FF0000'>"+(rs1.getString("ORGANIZATION_ID").equals("326")?"å…§éŠ·":"å¤–éŠ·")+rs1.getString("SUBINVENTORY_CODE")+"å€‰åº«å­˜:"+rs1.getString("ONHAND")+"K</td></tr>");
+					out.println("<tr><td style='color:#FF0000'>"+(rs1.getString("ORGANIZATION_ID").equals("326")?"¤º¾P":"¥~¾P")+rs1.getString("SUBINVENTORY_CODE")+"­Ü®w¦s:"+rs1.getString("ONHAND")+"K</td></tr>");
 				}
 			}
 			if (iline>0) out.println("</table>");
@@ -524,12 +524,12 @@ try
 		icnt++;
 		float accWoQty = 0;
 		
-		frontRunCard = "N/A";        // å‰æ®µæµç¨‹å¡è™Ÿ(å¾Œæ®µé–‹å·¥ä»¤æ™‚ä¸çµ¦å®š,å¾…æŠ•ç”¢æ™‚æ–¹æ±ºå®šæ‰¹è™Ÿ)
-		semiItemID = rs.getString(17);	 // å–å¾—å‰æ®µåŠæˆå“æ–™è™ŸIDä½œç‚ºæŸ¥MOå–®ä¾æ“š
-		woQty = rs.getString(7);  //æŠŠæœªå‡ºè²¨æ•¸é‡çµ¦æ­¤æ¬¡æ–°å¢æ•¸é‡
-		woUom = rs.getString(2); // å®Œå·¥å–®ä½
-		String backEndWoList = "å·²é–‹å¾Œæ®µå·¥ä»¤<BR>";
-		String orgOeLineQty = "åŸMOå–®é …æ¬¡è¨‚å–®æ•¸é‡=";
+		frontRunCard = "N/A";        // «e¬q¬yµ{¥d¸¹(«á¬q¶}¤u¥O®É¤£µ¹©w,«İ§ë²£®É¤è¨M©w§å¸¹)
+		semiItemID = rs.getString(17);	 // ¨ú±o«e¬q¥b¦¨«~®Æ¸¹ID§@¬°¬dMO³æ¨Ì¾Ú
+		woQty = rs.getString(7);  //§â¥¼¥X³f¼Æ¶qµ¹¦¹¦¸·s¼W¼Æ¶q
+		woUom = rs.getString(2); // §¹¤u³æ¦ì
+		String backEndWoList = "¤w¶}«á¬q¤u¥O<BR>";
+		String orgOeLineQty = "­ìMO³æ¶µ¦¸­q³æ¼Æ¶q=";
 		 
 		if (woQty==null || woQty.equals("")) woQty = "0";
 		oeOrderNo=rs.getString(3); //rs.getString("ORDER_NUMBER");
@@ -548,51 +548,51 @@ try
 			 
 		if (endDate==null || endDate.equals(""))
 		{
-			endDate = dateBean.getYearMonthDay(); // å¦‚MOæœªçµ¦é è¨ˆå‡ºè²¨æ—¥,å‰‡é è¨­ä»¥é–‹å–®æ—¥ç‚ºå·¥å–®çµæ¡ˆæ—¥
+			endDate = dateBean.getYearMonthDay(); // ¦pMO¥¼µ¹¹w­p¥X³f¤é,«h¹w³]¥H¶}³æ¤é¬°¤u³æµ²®×¤é
 		}
 
 			 
-		// åˆ—è¡¨ä¾MOå–®æ‰¾å‡ºå…ˆå‰å·²é–‹å¾Œæ®µå·¥ä»¤_èµ·			   
+		// ¦Cªí¨ÌMO³æ§ä¥X¥ı«e¤w¶}«á¬q¤u¥O_°_			   
 		Statement stateWOLst=con.createStatement();
-		String sqlWoLst = " select DISTINCT b.EXTEND_NO||'(æ•¸é‡='||b.EXTENDED_QTY||',å–®ä½='||WO_UOM||',å–®è€—é‡='||a.WO_UNIT_QTY||')', (b.EXTENDED_QTY*a.WO_UNIT_QTY) as ACCWO_QTY "+
+		String sqlWoLst = " select DISTINCT b.EXTEND_NO||'(¼Æ¶q='||b.EXTENDED_QTY||',³æ¦ì='||WO_UOM||',³æ¯Ó¶q='||a.WO_UNIT_QTY||')', (b.EXTENDED_QTY*a.WO_UNIT_QTY) as ACCWO_QTY "+
 			              " from YEW_WORKORDER_ALL a, YEW_MFG_TRAVELS_ALL b "+
-		                  " where a.WO_NO = b.EXTEND_NO and a.INV_ITEM= '"+invItem+"' "+  // æ­¤æª¢é©—æ‰¹åˆ—è¡¨å·²é–‹åˆ‡å‰²å·¥ä»¤è™Ÿ
+		                  " where a.WO_NO = b.EXTEND_NO and a.INV_ITEM= '"+invItem+"' "+  // ¦¹ÀËÅç§å¦Cªí¤w¶}¤Á³Î¤u¥O¸¹
 						  " and a.OE_ORDER_NO = b.ORDER_NO and b.EXTEND_TYPE= a.WORKORDER_TYPE "+
 						  " and a.ORDER_LINE_ID = b.ORDER_LINE_ID  "+
-						  " and a.STATUSID != '050' "+ // ä¸ç´¯åŠ å·²ç¶“å–æ¶ˆçš„å·¥ä»¤æ•¸
+						  " and a.STATUSID != '050' "+ // ¤£²Ö¥[¤w¸g¨ú®øªº¤u¥O¼Æ
 						  " and a.ORDER_HEADER_ID = "+rs.getString(13)+" "+
 						  " and a.ORDER_LINE_ID= '"+rs.getString(14)+"' "+
-		                  " and a.WORKORDER_TYPE in ('3','5') "; // ä¾å¾Œæ®µå·¥ä»¤æ‰¾å‡ºç´¯è¨ˆå·²é–‹æ•¸é‡
+		                  " and a.WORKORDER_TYPE in ('3','5') "; // ¨Ì«á¬q¤u¥O§ä¥X²Ö­p¤w¶}¼Æ¶q
 		//out.println(sqlWoLst);	 
 		ResultSet rsWOLst=stateWOLst.executeQuery(sqlWoLst);
 		while (rsWOLst.next()) 
 		{
 			backEndWoList = backEndWoList + rsWOLst.getString(1)+"<BR>";
-			accWoQty = accWoQty + rsWOLst.getFloat(2);  // ç´¯åŠ å·²é–‹å¾Œæ®µå·¥ä»¤æ•¸é‡;
+			accWoQty = accWoQty + rsWOLst.getFloat(2);  // ²Ö¥[¤w¶}«á¬q¤u¥O¼Æ¶q;
 		}
 		rsWOLst.close();
 		stateWOLst.close();
 			   
-		if (backEndWoList.equals("å·²é–‹å¾Œæ®µå·¥ä»¤<BR>")) backEndWoList = "å·²é–‹å¾Œæ®µå·¥ä»¤<BR>ç„¡";
+		if (backEndWoList.equals("¤w¶}«á¬q¤u¥O<BR>")) backEndWoList = "¤w¶}«á¬q¤u¥O<BR>µL";
 			 
 		oeLineQty=rs.getString(7); //rs.getString("UNSHIP_QTY");
-		orgOeLineQty = orgOeLineQty + oeLineQty+",å–®ä½="+moUom; // æŠŠåŸè¨‚å–®æ•¸é‡çµ¦äºˆ
+		orgOeLineQty = orgOeLineQty + oeLineQty+",³æ¦ì="+moUom; // §â­ì­q³æ¼Æ¶qµ¹¤©
 			   
 		if (moUom=="PCE" || moUom.equals("PCE"))
 		{
-			oeLineQty = Float.toString(Float.parseFloat(oeLineQty)/1000-accWoQty);  // è¨ˆç®—æ‰£é™¤å·²é–‹å·¥ä»¤æ•¸çš„æœ€å¾Œè¨‚å–®æ•¸
+			oeLineQty = Float.toString(Float.parseFloat(oeLineQty)/1000-accWoQty);  // ­pºâ¦©°£¤w¶}¤u¥O¼Æªº³Ì«á­q³æ¼Æ
 			woQty=oeLineQty;	
-			oeLineQty = Float.toString(Float.parseFloat(oeLineQty) *1000); // å†æ›ç®—å›ä¾†
+			oeLineQty = Float.toString(Float.parseFloat(oeLineQty) *1000); // ¦A´«ºâ¦^¨Ó
 		} 
 		else if (moUom=="KPC" || moUom.equals("KPC")) 
 		{
-			oeLineQty = Float.toString(Float.parseFloat(oeLineQty)-accWoQty);  // è¨ˆç®—æ‰£é™¤å·²é–‹å·¥ä»¤æ•¸çš„æœ€å¾Œè¨‚å–®æ•¸
+			oeLineQty = Float.toString(Float.parseFloat(oeLineQty)-accWoQty);  // ­pºâ¦©°£¤w¶}¤u¥O¼Æªº³Ì«á­q³æ¼Æ
 			woQty=oeLineQty;
 		}
 		moQty = Float.parseFloat(oeLineQty);
 			  
-		// æŠ“å®¢æˆ¶åç¨±
-		String sqlCust = " SELECT replace(CUSTOMER_NAME,'''','â€™') CUSTOMER_NAME FROM APPS.AR_CUSTOMERS where CUSTOMER_ID = " +customerId;
+		// §ì«È¤á¦WºÙ
+		String sqlCust = " SELECT replace(CUSTOMER_NAME,'''','¡¦') CUSTOMER_NAME FROM APPS.AR_CUSTOMERS where CUSTOMER_ID = " +customerId;
 		Statement stateCust=con.createStatement();
   		ResultSet rsCust=stateCust.executeQuery(sqlCust);
 		if (rsCust.next())
@@ -604,7 +604,7 @@ try
 			
 		if (moUom=="PCE" || moUom.equals("PCE"))
 		{
-	    	oeLineQty=String.valueOf(moQty);// è¨‚å–®æ•¸é‡		  
+	    	oeLineQty=String.valueOf(moQty);// ­q³æ¼Æ¶q		  
 		    moUom="KPC"; 
 		}	
 
@@ -631,7 +631,7 @@ try
 		  	oeLineQty = "0";
 		}
 		
-		if (Float.parseFloat(woQty)>0)  // if (accAvailQty>0) å¦‚æœå‰©é¤˜å¯é–‹ç«‹æ•¸ > 0æ‰é¡¯ç¤ºæ­¤åˆ—(è³‡æ–™é¡¯ç¤º,ä½†ç„¡æ³•é»æ“Šå¸¶å…¥éˆ•)
+		if (Float.parseFloat(woQty)>0)  // if (accAvailQty>0) ¦pªG³Ñ¾l¥i¶}¥ß¼Æ > 0¤~Åã¥Ü¦¹¦C(¸ê®ÆÅã¥Ü,¦ıµLªkÂIÀ»±a¤J¶s)
 	    { 
 		
 			//add by Peggy 20221129
@@ -648,44 +648,44 @@ try
 		
 			out.println("<input type='hidden' id='"+oeLineId+"' value='"+wip_msg+"'>");	
 							
-			if (oeOrderNo!=moNoTmp && !oeOrderNo.equals(moNoTmp)) // æ¯æ¬¡å–åˆ°çš„è£½æˆå“çµ¦æš«å­˜)// å¯èƒ½BOM å°åˆ°ä¸€å€‹ä»¥ä¸Šçš„è£½æˆå“è™Ÿ,è‹¥æ˜¯,å‰‡åºè™Ÿä¸ç´¯åŠ 
+			if (oeOrderNo!=moNoTmp && !oeOrderNo.equals(moNoTmp)) // ¨C¦¸¨ú¨ìªº»s¦¨«~µ¹¼È¦s)// ¥i¯àBOM ¹ï¨ì¤@­Ó¥H¤Wªº»s¦¨«~¸¹,­Y¬O,«h§Ç¸¹¤£²Ö¥[
 		  	{
-		    	j++; // é …æ¬¡æ•¸
+		    	j++; // ¶µ¦¸¼Æ
 		  	}
 			
 			v_show = ""; //add by Peggy 20201208
 			if (customerId.equals("601290"))  //On Semiconductor
 			{
-				if (customerPo.length()>8 && customerPo.startsWith("20")) //forecast poç”¨å¹´æœˆæ—¥æµæ°´ç¢¼ç·¨åˆ—,add by Peggy 20210303
-				//if (!customerPo.equals("14089675") && !customerPo.equals("14099423"))  //po<>14089675è¡¨ç¤ºæ˜¯forecastè¨‚å–®,Amandaè¦æ±‚ä¸è¦é–‹å¾Œæ®µå·¥å–®,2021 cust po:14099423 add by Peggy 20210125
+				if (customerPo.length()>8 && customerPo.startsWith("20")) //forecast po¥Î¦~¤ë¤é¬y¤ô½X½s¦C,add by Peggy 20210303
+				//if (!customerPo.equals("14089675") && !customerPo.equals("14099423"))  //po<>14089675ªí¥Ü¬Oforecast­q³æ,Amanda­n¨D¤£­n¶}«á¬q¤u³æ,2021 cust po:14099423 add by Peggy 20210125
 				{
 					v_show="disabled";
 				}
 			}
 			else if (customerId.equals("4777"))  //TSCJ,add by Peggy 20211007
 			{
-				if (customerPo.toUpperCase().startsWith("FORECAST"))  //forecast poä¸å…è¨±é–‹å·¥å–®
+				if (customerPo.toUpperCase().startsWith("FORECAST"))  //forecast po¤£¤¹³\¶}¤u³æ
 				{
 					v_show="disabled";
 				}
 			}
 			else if (hold_flag.equals("Y"))  //HOLD, add by Peggy 20221128
 			{
-				v_show="disabled";//åªå¡YC
+				v_show="disabled";//¥u¥dYC
 			}
        %>
-	  		 <INPUT TYPE="button" NAME="button" VALUE="å¸¶å…¥" onClick="sendToMainWindow('<%=j%>','<%=oeOrderNo%>','<%=invItem%>','<%=itemDesc%>','<%=woQty%>','<%=woUom%>','<%=endDate%>','<%=customerName%>','<%=customerPo%>','<%=oeHeaderId%>','<%=oeLineId%>','<%=itemId%>','<%=customerId%>','<%=defaultWoQty%>','<%=frontRunCard%>','<%=oeLineQty%>','<%=moUom%>','<%=exceedFlag%>','<%=tscAmp%>','<%=tscFamily%>','<%=tscPackage%>','<%=tscPacking%>','<%=dateCode%>','<%=oeLineQty%>','<%=orderPartnoQty%>','<%=wipPartnoQty%>')" <%=v_show%>>
+	  		 <INPUT TYPE="button" NAME="button" VALUE="±a¤J" onClick="sendToMainWindow('<%=j%>','<%=oeOrderNo%>','<%=invItem%>','<%=itemDesc%>','<%=woQty%>','<%=woUom%>','<%=endDate%>','<%=customerName%>','<%=customerPo%>','<%=oeHeaderId%>','<%=oeLineId%>','<%=itemId%>','<%=customerId%>','<%=defaultWoQty%>','<%=frontRunCard%>','<%=oeLineQty%>','<%=moUom%>','<%=exceedFlag%>','<%=tscAmp%>','<%=tscFamily%>','<%=tscPackage%>','<%=tscPacking%>','<%=dateCode%>','<%=oeLineQty%>','<%=orderPartnoQty%>','<%=wipPartnoQty%>')" <%=v_show%>>
        <%
-	   	}  // end of if (accAvailQty>0) å¦‚æœå‰©é¤˜å¯é–‹ç«‹æ•¸ > 0æ‰é¡¯ç¤ºåˆ—(è³‡æ–™é¡¯ç¤º,ä½†ç„¡æ³•é»æ“Šå¸¶å…¥éˆ•)
+	   	}  // end of if (accAvailQty>0) ¦pªG³Ñ¾l¥i¶}¥ß¼Æ > 0¤~Åã¥Ü¦C(¸ê®ÆÅã¥Ü,¦ıµLªkÂIÀ»±a¤J¶s)
 		else 
 		{ 
-			// j--; //ä¸è¨ˆå…¥
-		    out.println("<em><font color='#FF0000'>ç„¡é¤˜é¡</font></em>");
+			// j--; //¤£­p¤J
+		    out.println("<em><font color='#FF0000'>µL¾lÃB</font></em>");
 		}
 		
 		out.print("</TD>");		
 		out.print("<TD nowrap>"+j+"</TD>");		
-        for (int i=1;i<=colCount-7;i++) // ä¸é¡¯ç¤ºç¬¬ä¸€æ¬„è³‡æ–™ITEMID, æ•… for ç”± 2é–‹å§‹
+        for (int i=1;i<=colCount-7;i++) // ¤£Åã¥Ü²Ä¤@Äæ¸ê®ÆITEMID, ¬G for ¥Ñ 2¶}©l
         {		  
         	String s=(String)rs.getString(i);
 			if (i==1 && s.equals("N")) s=""; // HOLD BY PEGGY 20220221
@@ -705,7 +705,7 @@ try
 			}
         } //end of for
         out.println("</TR>");
-		moNoTmp = oeOrderNo; // æ™¶ç‰‡æ‰¹è™Ÿçµ¦æš«å­˜
+		moNoTmp = oeOrderNo; // ´¹¤ù§å¸¹µ¹¼È¦s
 	} //end of while
     out.println("</TABLE>");						
 		
@@ -718,12 +718,12 @@ catch (Exception e)
 statement.close();
   %>
   <BR>
-<!--%è¡¨å–®åƒæ•¸%-->
+<!--%ªí³æ°Ñ¼Æ%-->
 <input type="hidden" name="ORGANIZATIONID" value="<%=organizationId%>">
 <input type="hidden" name="MARKETTYPE" value="<%=marketType%>">
 <input type="hidden" name="SEMIITEMID" value="<%=semiItemID%>">
 </FORM>
-<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->
+<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
 <%@ include file="/jsp/include/MProcessStatusBarStop.jsp"%>
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
