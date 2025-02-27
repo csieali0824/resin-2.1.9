@@ -445,8 +445,8 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
         if (StringUtils.isNullOrEmpty(modelNDto.getSellingPrice())) {
             if (modelNDto.getQuoteNumber().equals("") || StringUtils.isNullOrEmpty(sellingPrice_Q)) {
                 modelNDto.setSellingPrice("");
-                errList.add(ErrorMessage.SELLING_PRICE_NOTNULL.getMessage());
-                modelNDto.setErrorList(errList);
+//                errList.add(ErrorMessage.SELLING_PRICE_NOTNULL.getMessage());
+//                modelNDto.setErrorList(errList);
             } else {
                 modelNDto.setSellingPrice(sellingPrice_Q);
             }
@@ -475,8 +475,8 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
     private void checkSSD() {
         if (StringUtils.isNullOrEmpty(modelNDto.getSsd())) {
             modelNDto.setSsd("");
-            errList.add(ErrorMessage.SSD_IS_NOTNULL.getMessage());
-            modelNDto.setErrorList(errList);
+//            errList.add(ErrorMessage.SSD_IS_NOTNULL.getMessage());
+//            modelNDto.setErrorList(errList);
         } else if (Long.parseLong(modelNDto.getSsd()) <= Long.parseLong(checkDate)) {
             errList.add(ErrorMessage.SSD_MUST_GREATER.getMessageFormat(checkDate));
             modelNDto.setErrorList(errList);
@@ -537,6 +537,8 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                 TsctDisty tsctDisty = new TsctDisty();
                 if (isShippingFobOrderType) {
                     tsctDisty.setShippingFobOrderTypeInfo();
+                }  else if (isSetSalesInfo) {
+                    tsctDisty.setExtraRuleInfo();
                 }
                 break;
             case TSCR:
@@ -705,20 +707,20 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                         modelNDto.setCustItem(rowCell.getContents().trim());
                         break;
                     case Qty:
-                        String qty = (rowCell.getContents()).trim();
-                        if (StringUtils.isNullOrEmpty(qty)) {
-                            qty = "0";
-                        } else if (rowCell.getType() == CellType.NUMBER) {
-                            qty = "" + ((NumberCell) rowCell).getValue();
+                        String qty = "";
+                        if (rowCell instanceof NumberCell) {
+                            qty =  "" + ((NumberCell) rowCell).getValue(); // 直接取數值
+                        } else {
+                            qty = (rowCell.getContents()).trim(); // 文字型欄位
                         }
                         modelNDto.setQty(qty);
                         break;
                     case SellingPrice:
-                        String sellingPrice = (rowCell.getContents()).trim();
-                        if (StringUtils.isNullOrEmpty(sellingPrice)) {
-                            sellingPrice = "0";
-                        } else if (rowCell.getType() == CellType.NUMBER) {
-                            sellingPrice = "" + ((NumberCell) rowCell).getValue();
+                        String sellingPrice = "";
+                        if (rowCell instanceof NumberCell) {
+                            sellingPrice =  "" + ((NumberCell) rowCell).getValue(); // 直接取數值
+                        } else {
+                            sellingPrice = (rowCell.getContents()).trim(); // 文字型欄位
                         }
                         modelNDto.setSellingPrice(sellingPrice);
                         break;
@@ -804,6 +806,9 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
     private void readAndCheckExcelContent() throws Exception {
         for (Iterator it = excelMap.entrySet().iterator(); it.hasNext(); ) {
             errList = new LinkedList();
+            endCustName = "";
+            sellingPrice_Q = "";
+            itemNoPacking = "";
             Map.Entry entry = (Map.Entry) it.next();
             modelNDto = (ModelNDto) entry.getValue();
 

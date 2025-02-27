@@ -6,6 +6,7 @@ import modelN.ModelNCommonUtils;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class TsctDisty extends ModelNCommonUtils {
@@ -93,9 +94,7 @@ public class TsctDisty extends ModelNCommonUtils {
                  modelNDto.setFob(rs.getString("FOB_POINT"));
             }
             if (modelNDto.getOrderType().equals("")) {
-                if (rs.getString("CURRENCY_CODE").equals("USD")) {
-                    modelNDto.setOrderType("1141");
-                } else {
+                if (Arrays.asList(new String[]{"24151", "2989", "23991", "11724", "24851", "26671", "2462"}).contains(modelNDto.getCustNo())) {
                     modelNDto.setOrderType("1131");
                 }
             }

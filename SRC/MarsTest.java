@@ -94,7 +94,7 @@ public class MarsTest {
         }
     }
 
-    private static String salesNo = SalesArea.TSCA.getSalesNo();
+    private static String salesNo = SalesArea.TSCTDISTY.getSalesNo();
 
     private static List errList = new LinkedList();
 
@@ -243,7 +243,7 @@ public class MarsTest {
         String json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(jsonList);
         System.out.println("json="+json);
     }
-    public static void main(String[] args) throws Exception {
+    public static void mainDetail_test(String[] args) throws Exception {
         setColumns();
         String[] detailColumns = getColumns();
 //        String[] detailColumns = new String[]{" ", "Customer Name", "RFQ Type", "Customer PO", "Item Desc", "Customer" +
@@ -489,7 +489,7 @@ public class MarsTest {
 
     }
 
-    public static void mainExcel(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception {
         CallableStatement cs1 = conn.prepareCall(
                 "{call mo_global.set_policy_context('S',?)}");
         cs1.setString(1, "41");  // 取業務員隸屬ParOrgID
@@ -499,7 +499,7 @@ public class MarsTest {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 //        String uploadFilePath = "D:/D4-019.xls";
 //        String uploadFilePath = "C:\\Users\\mars.wang\\Desktop\\sales-upload\\D4-019_20241212.xls";
-        String uploadFilePath = "C:\\Users\\mars.wang\\Desktop\\modelN_Excel\\006-modelN-xxx.xls";
+        String uploadFilePath = "C:\\Users\\mars.wang\\Desktop\\modelN_Excel\\006-modelN-0225.xls";
         InputStream is = new FileInputStream(uploadFilePath);
         Workbook wb = Workbook.getWorkbook(is);
         Sheet sheet = wb.getSheet(0);
@@ -541,20 +541,20 @@ public class MarsTest {
                         modelNDto.setCustItem(rowCell.getContents().trim());
                         break;
                     case Qty:
-                        String qty = (rowCell.getContents()).trim();
-                        if (qty == null) {
-                            qty = "0";
-                        } else if (rowCell.getType() == CellType.NUMBER) {
-                            qty = "" + ((NumberCell) rowCell).getValue();
+                        String qty = "";
+                        if (rowCell instanceof NumberCell) {
+                            qty =  "" + ((NumberCell) rowCell).getValue(); // 直接取數值
+                        } else {
+                            qty = (rowCell.getContents()).trim(); // 文字型欄位
                         }
                         modelNDto.setQty(qty);
                         break;
                     case SellingPrice:
-                        String sellingPrice = (rowCell.getContents()).trim();
-                        if (sellingPrice == null) {
-                            sellingPrice = "0";
-                        } else if (rowCell.getType() == CellType.NUMBER) {
-                            sellingPrice = "" + ((NumberCell) rowCell).getValue();
+                        String sellingPrice = "";
+                        if (rowCell instanceof NumberCell) {
+                            sellingPrice =  "" + ((NumberCell) rowCell).getValue(); // 直接取數值
+                        } else {
+                            sellingPrice = (rowCell.getContents()).trim(); // 文字型欄位
                         }
                         modelNDto.setSellingPrice(sellingPrice);
                         break;
@@ -690,14 +690,8 @@ public class MarsTest {
             {
                 modelNDto.setFob(rs.getString("FOB_POINT"));
             }
-            if (modelNDto.getOrderType().equals(""))
-            {
-                if (rs.getString("CURRENCY_CODE").equals("USD"))
-                {
-                    modelNDto.setOrderType("1141");
-                }
-                else
-                {
+            if (modelNDto.getOrderType().equals("")) {
+                if (Arrays.asList(new String[]{"24151", "2989", "23991", "11724", "24851", "26671", "2462"}).contains(modelNDto.getCustNo())) {
                     modelNDto.setOrderType("1131");
                 }
             }
@@ -817,6 +811,7 @@ public class MarsTest {
     private static void readExcelContent() throws SQLException {
         for (Iterator it = map.entrySet().iterator(); it.hasNext(); ) {
             errList = new LinkedList();
+            endCustName = "";
             Map.Entry entry = (Map.Entry) it.next();
             rowIndex = ((Integer) entry.getKey()).intValue();
             modelNDto = (ModelNDto) entry.getValue();
@@ -868,7 +863,10 @@ public class MarsTest {
                     // 檢查客戶ID在ERP是否存在
                     checkEndCustNumber();
                 }
+            } else if (!endCustName.equals("")) {
+                modelNDto.setEndCustNamePhonetic(endCustName);
             }
+            System.out.println("xxxx="+modelNDto.getEndCustNamePhonetic());
 //            System.out.println("mo="+errList2String(modelNDto.getErrorList()));
         }
 //        insertIntoTscRfqUploadTmp(connection, map);
@@ -925,10 +923,10 @@ public class MarsTest {
 //                    modelNDto.setErrorMsg(appendErrMsg("Selling Price必須大於零"));
                     errList.add("Selling Price必須大於零");
                     modelNDto.setErrorList(errList);
-                } else if (!modelNDto.getSellingPrice().equals(sellingPrice_Q)) {
-                    System.out.println("getSellingPrice="+modelNDto.getSellingPrice());
-                    System.out.println("sellingPrice_Q="+sellingPrice_Q);
-                    if (!modelNDto.getQuoteNumber().equals("")) { // 需有quote number
+                } else if (!modelNDto.getQuoteNumber().equals("")) {  // excel QuoteNumber 不為空時才會做檢查
+                    if (!modelNDto.getSellingPrice().equals(sellingPrice_Q)) {
+                        System.out.println("getSellingPrice="+modelNDto.getSellingPrice());
+                        System.out.println("sellingPrice_Q="+sellingPrice_Q);
                         errList.add("Selling Price not match quote price(" + sellingPrice_Q + ")");
                         modelNDto.setErrorList(errList);
                     }
@@ -981,7 +979,6 @@ public class MarsTest {
 
     //檢查出貨方式
     private static void checkShippingMethod() {
-        System.out.println("getShippingMethod="+modelNDto.getShippingMethod());
         if (modelNDto.getShippingMethod() == null || modelNDto.getShippingMethod().equals("")) {
             modelNDto.setSsd("");
             modelNDto.setErrorMsg(appendErrMsg("出貨方式不可空白"));
@@ -1064,7 +1061,6 @@ public class MarsTest {
                 " and b.MANUFACTORY_NO='" + modelNDto.getManuFactoryNo() + "' and b.ACTIVE='Y'";
         Statement statement = conn.createStatement();
         ResultSet rs = statement.executeQuery(sql);
-//        System.out.println(sql);
         if (!rs.next()) {
             modelNDto.setErrorMsg(appendErrMsg("訂單類型錯誤"));
         } else {
@@ -1192,40 +1188,6 @@ public class MarsTest {
                     }
                     rs.close();
                     stmt.close();
-                }
-            } else {
-                if (!modelNDto.getQuoteNumber().equals("") && !modelNDto.getTscItemDesc().equals("")) {
-                    Statement stmt = conn.createStatement();
-                    String sql = " select a.quoteid, a.partnumber,a.currency, to_char(a.pricekusd/1000,'FM99990.0999999') price_usd, \n"+
-                            "'('|| a.region ||')'|| a.endcustomer end_customer \n"+
-                            " from tsc_om_ref_quotenet a \n"+
-                            " where a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
-                            " and a.partnumber='" + modelNDto.getTscItemDesc() + "' \n"+
-                            " order by a.quoteid, a.partnumber";
-                    ResultSet rs = stmt.executeQuery(sql);
-                    if (rs.next()) {
-                        sellingPrice_Q = rs.getString("PRICE_USD");
-                        endCustName = rs.getString("END_CUSTOMER");
-                    }
-                    rs.close();
-                    stmt.close();
-                    if (sellingPrice_Q.equals("")) {
-                        stmt = conn.createStatement();
-                        sql = " select a.quoteid, a.partnumber,a.currency, to_char(a.pricekusd/1000,'FM99990.0999999') price_usd, \n" +
-                                "'('|| a.region ||')'|| a.endcustomer end_customer \n" +
-                                " from tsc_om_ref_quotenet a \n" +
-                                " where a.quoteid='" + modelNDto.getQuoteNumber() + "' \n" +
-                                " and a.partnumber like '" + itemNoPacking + "%' \n" +
-                                " order by a.quoteid, a.partnumber";
-                        rs = stmt.executeQuery(sql);
-                        if (rs.next())
-                        {
-                            sellingPrice_Q = rs.getString("PRICE_USD");
-                            endCustName = rs.getString("END_CUSTOMER");
-                        }
-                        rs.close();
-                        stmt.close();
-                    }
                 }
             }
         }
