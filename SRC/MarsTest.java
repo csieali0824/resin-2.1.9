@@ -129,19 +129,21 @@ public class MarsTest {
 //    }
 
 
-    public static void mainDetail(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException {
         setColumns();
         String[] detailColumns = getColumns();
         HashMap detailKeyValueMap = new LinkedHashMap();
         List list = new ArrayList();
         HashMap detailMap = new LinkedHashMap();
         TscRfqUploadTempImpl  temp = new TscRfqUploadTempImpl();
-        Map map = tscRfqUploadTemp().getTscRfqUploadTemp(conn, "006", null, null, null, null,  null);
+        Map map = tscRfqUploadTemp().getTscRfqUploadTemp(conn, "008", null, null, null, null,  null);
         for (Iterator it = map.entrySet().iterator(); it.hasNext();){
             Map.Entry en = (Map.Entry) it.next();
             int rowIndex =  ((Integer) en.getKey()).intValue();
-            DetailDto dtl = (DetailDto) en.getValue();
-            list.add(dtl);
+            detailDto = (DetailDto) en.getValue();
+            System.out.println(detailDto.getQty());
+            System.out.println(detailDto.getQty().replaceAll(",", ""));
+            list.add(detailDto);
             for (int i = 0, n= detailColumns.length; i < n; i++) {
                 String columnKey = detailColumns[i];
                 switch (DetailColumn.settingDetailColumn(columnKey, i)) {
@@ -212,7 +214,7 @@ public class MarsTest {
             list.add(detailKeyValueMap);
             detailMap.put(rowIndex, list);
         }
-        System.out.println("map="+detailMap);
+//        System.out.println("map="+detailMap);
     }
 
     public static void mainJson(String[] args) throws JsonProcessingException {
@@ -489,7 +491,7 @@ public class MarsTest {
 
     }
 
-    public static void main(String[] args) throws Exception {
+    public static void main2(String[] args) throws Exception {
         CallableStatement cs1 = conn.prepareCall(
                 "{call mo_global.set_policy_context('S',?)}");
         cs1.setString(1, "41");  // 取業務員隸屬ParOrgID

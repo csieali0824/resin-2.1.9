@@ -1,11 +1,11 @@
-<!-- 20110316 liling ï¿½×¥ï¿½TSC_PROD_GROUPï¿½ï¿½ï¿½Pï¿½_ï¿½Ï¤ï¿½ï¿½UPRODï¿½ï¿½MOQï¿½Æ¶qï¿½ï¿½ï¿½P -- >
+<!-- 20110316 liling ­×¥¿TSC_PROD_GROUPªº§PÂ_°Ï¤À¦UPRODªºMOQ¼Æ¶q¤£¦P -- >
 <!-- 20110330 Marvie : Fairchild MOQ -->
-<!-- 20150715 Peggy,ï¿½[SAMPLEORDERï¿½Pï¿½_-->
+<!-- 20150715 Peggy,¥[SAMPLEORDER§PÂ_-->
 <!-- 20151122 Peggy,add TSC_PROD_FAMILY column-->
 <!-- 20160114 Peggy,call function TSC_GET_ITEM_SPQ_MOQ get spq,moq,sample_spq  value-->
-<!-- 20160303 Peggy,add shiptoï¿½Ü¼ï¿½-->
-<!-- 20160623 Peggy,ï¿½×¥ï¿½ï¿½ï¿½ï¿½Oï¿½ï¿½remarks-->
-<!-- 20180720 Peggy,ï¿½sï¿½WSHIPTOORGï¿½Ñ¥[for TSCA CUSTOMER DIGIKEY ISSUE-->
+<!-- 20160303 Peggy,add shiptoÅÜ¼Æ-->
+<!-- 20160623 Peggy,­×¥¿§ì¨ì§Oµ§remarks-->
+<!-- 20180720 Peggy,·s¼WSHIPTOORG°Ñ¥[for TSCA CUSTOMER DIGIKEY ISSUE-->
 <html>
 <head>
 <title>Order Import SPQ Check</title>
@@ -104,7 +104,7 @@ try
 	if (RFQTYPE ==null) RFQTYPE ="FORECAST";
   	session.setAttribute("NONSPQEXIST","N");
   	String tscProdGroup="";
-  	String q[][]=arrayRFQDocumentInputBean.getArray2DContent();//ï¿½ï¿½ï¿½oï¿½Ø«eï¿½}ï¿½Cï¿½ï¿½ï¿½e
+  	String q[][]=arrayRFQDocumentInputBean.getArray2DContent();//¨ú±o¥Ø«e°}¦C¤º®e
   	boolean bUpdate=false;
 	String URLstr = "";
 	String matched_flag =""; //add by Peggy 20130310
@@ -203,7 +203,7 @@ try
 		                     "  and a.INVENTORY_ITEM_ID = c.INVENTORY_ITEM_ID "+
 		                     "  and c.CATEGORY_SET_ID = 21 "+
 		                     "  and a.ORGANIZATION_ID = '49' "+
-		                     "  and a.DESCRIPTION not like '%Disable%' "; //// ï¿½ï¿½ TSC_Package ï¿½ï¿½ TSC_Family ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½Bï¿½ï¿½ï¿½]ï¿½tï¿½wï¿½Qï¿½]ï¿½wï¿½ï¿½ Disableï¿½ï¿½ï¿½Æ¶ï¿½
+		                     "  and a.DESCRIPTION not like '%Disable%' "; //// ¨ú TSC_Package ¤Î TSC_Family ªº¤ÀÃþ, ¥B¤£¥]§t¤w³Q³]©w¬° Disableªº®Æ¶µ
 	    		where = where + "and (a.SEGMENT1 like '"+searchString.toUpperCase()+"' or DESCRIPTION like '"+searchString.toUpperCase()+"%') ";
 	    		Statement stateCNT=con.createStatement();
 	    		sqlCNT=sqlCNT+where;
@@ -213,7 +213,7 @@ try
 	    		stateCNT.close();
 				if (queryCount==0) 
 				{ 
-					//add by Peggy 20130225,I1 readï¿½ï¿½ï¿½ï¿½,ï¿½Aread IM
+					//add by Peggy 20130225,I1 read¤£¨ì,¦Aread IM
 					where =" where a.ORGANIZATION_ID = b.ORGANIZATION_ID "+
 						   "  and a.INVENTORY_ITEM_ID = b.INVENTORY_ITEM_ID "+
 						   "  and b.CATEGORY_SET_ID = 23 "+
@@ -231,8 +231,8 @@ try
 					stateCNT1.close();
 
 					if (queryCount==0) 
-					{ 
-						//ï¿½Yï¿½ï¿½ï¿½ìªºï¿½dï¿½ß¼ï¿½ == 0 ,ï¿½Yï¿½ä¤£ï¿½ï¿½bï¿½ï¿½,ï¿½hï¿½iï¿½ï¿½Oï¿½Lï¿½]ï¿½wï¿½ï¿½]ï¿½ï¿½Categoryï¿½ï¿½(ï¿½ï¿½sï¿½ï¿½ï¿½Lï¿½]ï¿½Ë²ï¿½ï¿½~),ï¿½ï¿½ï¿½ï¿½,ï¿½Nï¿½Ë®Ö®Æ¥ï¿½Dï¿½É§Yï¿½i
+					{
+						//­Y¨ú¨ìªº¬d¸ß¼Æ == 0 ,­Y§ä¤£¨ì¥bµ§,«h¥i¯à¬OµL³]©w©ó¥]¸ËCategory¤º(½æ¹s´²µL¥]¸Ë²£«~),¨º»ò,´NÀË®Ö®Æ¥ó¥DÀÉ§Y¥i
 						sql = "select a.SEGMENT1, a.DESCRIPTION, 'NO PACKAGE' as TSC_PACKAGE, 'NO FAMILY' as TSC_FAMILY ,'NO PROD GROUP' as TSC_PROD_GROUP,'NO PACKING CODE' AS tsc_packing_code,'NO PROD FAMILY' as TSC_PROD_FAMILY"+
 						      ",a.INVENTORY_ITEM_ID"+
 							  "  from APPS.MTL_SYSTEM_ITEMS a ";
@@ -298,7 +298,7 @@ try
 						//						  " and b.TSC_OUTLINE = a.TSC_OUTLINE) "+
 						//		 ") x";	
 						sqlSPQ = "  SELECT SPQ/1000 as SPQ,MOQ /1000 as MOQ,(CASE WHEN x.MOQ >0 THEN CASE WHEN x.QUANTITY <= x.MOQ THEN x.MOQ ELSE CEIL(x.QUANTITY/x.SPQ)*x.SPQ END ELSE x.QUANTITY END)/1000 AS RFQ_QTY"+
-						         " from (SELECT  MOQ as SPQ, MOQ ,("+q[i][3]+"*1000) QUANTITY from table(TSC_GET_ITEM_SPQ_MOQ("+rs.getString("inventory_item_id")+",'FSC',NULL))) x";										 											  
+						         " from (SELECT  MOQ as SPQ, MOQ ,("+q[i][3]+"*1000) QUANTITY from table(TSC_GET_ITEM_SPQ_MOQ("+rs.getString("inventory_item_id")+",'FSC',NULL))) x";
 		  			} 
 					else 
 					{
@@ -354,7 +354,7 @@ try
                   
             			//if ((Double.parseDouble(q[i][3])*1000)%baseK!=0) 
 						//if ((double)(Math.round((Double.parseDouble(q[i][3])*1000)*100000)/100000)%baseK !=0)   //modify by Peggy 20120504
-						//if ((double)(Math.round((Double.parseDouble(q[i][3])*1000)*100000)/100000)%baseK !=0 || ( Double.parseDouble(q[i][3]) < Double.parseDouble(sMOP[i])))  //ï¿½Wï¿½[MOQï¿½Ë¬d,modify by Peggy 20130201
+						//if ((double)(Math.round((Double.parseDouble(q[i][3])*1000)*100000)/100000)%baseK !=0 || ( Double.parseDouble(q[i][3]) < Double.parseDouble(sMOP[i])))  //¼W¥[MOQÀË¬d,modify by Peggy 20130201
 						//{
 						if (matched_flag.equals("N"))
 						{ 
@@ -371,7 +371,7 @@ try
 						if (matched_flag.equals("N")) //add by Peggy 20140310
 						{
 	          				//out.println("<TD><INPUT TYPE='TEXT'  NAME='REMARKS' SIZE='10'></TD>");
-							out.println("<TD><INPUT TYPE='TEXT'  NAME='REMARKS_"+i+"' SIZE='13' value='ï¿½È¤ï¿½Ý¨D"+(new DecimalFormat("######.###")).format(Double.valueOf(q[i][3]).doubleValue())+"K' style='font-size:11px;font-family: Tahoma,Georgia'></TD>");  //ï¿½Û°Ê¼gï¿½Jï¿½Æµï¿½
+							out.println("<TD><INPUT TYPE='TEXT'  NAME='REMARKS_"+i+"' SIZE='13' value='«È¤á»Ý¨D"+(new DecimalFormat("######.###")).format(Double.valueOf(q[i][3]).doubleValue())+"K' style='font-size:11px;font-family: Tahoma,Georgia'></TD>");  //¦Û°Ê¼g¤J³Æµù
               				out.println("<TD><INPUT TYPE=BUTTON value='Change Qty' onClick='winnoclose(\""+URLSPQChk+"\","+i+");' style='font-size:11px;font-family: Tahoma,Georgia'></TD>");
 							out.println("</tr>");
 							
@@ -384,7 +384,7 @@ try
 						}
             			//if ((Double.parseDouble(q[i][3])*1000)%baseK!=0) 
 						//if ((double)(Math.round((Double.parseDouble(q[i][3])*1000)*100000)/100000)%baseK !=0)  //modify by Peggy 20120504            			
-						//if ((double)(Math.round((Double.parseDouble(q[i][3])*1000)*100000)/100000)%baseK !=0 || ( Double.parseDouble(q[i][3]) < Double.parseDouble(sMOP[i])))  //ï¿½Wï¿½[MOQï¿½Ë¬d,modify by Peggy 20130201
+						//if ((double)(Math.round((Double.parseDouble(q[i][3])*1000)*100000)/100000)%baseK !=0 || ( Double.parseDouble(q[i][3]) < Double.parseDouble(sMOP[i])))  //¼W¥[MOQÀË¬d,modify by Peggy 20130201
 		  			} 
 					else 
 					{ 
@@ -402,7 +402,7 @@ try
            	 			out.println("<TD>&nbsp;</TD>");
            	 			out.println("<TD>&nbsp;</TD>");
 						out.println("</TR>");
-          			} // ï¿½ä¤£ï¿½ï¿½hï¿½]ï¿½wmOQP = 0
+          			} // §ä¤£¨ì«h³]©wmOQP = 0
 		  			rsSPQP.close();
 		  			stateSPQP.close();
  	    		}//end of while

@@ -69,15 +69,15 @@
         let request = detail.requestObj;
         let trRow = document.getElementById('trRow' + request.index);
         let newCell = document.createElement('td');
-        let columnColor = request.groupByType == 'byCustNo' ? 'Customer Name': 'Customer PO';
-        let bgColor =  request.groupByType == 'byCustNo' ? '#66e2ece2': '#f5db4b87';
+        let columnColor = request.groupByType === 'byCustNo' ? 'Customer Name': 'Customer PO';
+        let bgColor =  request.groupByType === 'byCustNo' ? '#66e2ece2': '#f5db4b87';
         newCell.id = detail.column + request.index;
 
         newCell.addEventListener('mouseover', function () {
             if (['Customer Name', 'RFQ Type', 'Ship to ID'].includes(detail.column)) {
                 document.getElementById(columnColor + request.index).style.backgroundColor = bgColor;
                 document.getElementById('RFQ Type' + request.index).style.backgroundColor = bgColor;
-                if (request.salesNo == '002') {
+                if (request.salesNo === '002') {
                     document.getElementById('Ship to ID' + request.index).style.backgroundColor = bgColor;
                 }
             }
@@ -87,13 +87,13 @@
                 document.getElementById(columnColor + request.index).style.backgroundColor = '#ffffff';
                 // document.getElementById('Customer Name' + request.index).style.backgroundColor = '#ffffff';
                 document.getElementById('RFQ Type' + request.index).style.backgroundColor = '#ffffff';
-                if (request.salesNo == '002') {
+                if (request.salesNo === '002') {
                     document.getElementById('Ship to ID' + request.index).style.backgroundColor = '#ffffff';
                 }
             }
         });
 
-        if ("Delete All" != detail.column) {
+        if ("Delete All" !== detail.column) {
             newCell.addEventListener('click', function () {
                 window.location.href = 'TSCModelNDetail.jsp?' +
                     'rowIndex=' + request.index +
@@ -113,7 +113,7 @@
         }
 
         if (['Delete All', 'Customer Name', 'RFQ Type'].includes(detail.column)) {
-            if ('Delete All' == detail.column) {
+            if ('Delete All' === detail.column) {
                 let buttonElement = document.createElement("input");
                 buttonElement.type = "button";
                 buttonElement.value = "Delete"; // 設定按鈕文字
@@ -131,10 +131,21 @@
                 };
                 newCell.appendChild(buttonElement)
             } else {
-                newCell.textContent = ("Customer Name" == detail.column) ? "(" + request.custNo + ")" + detail.value : detail.value;
+                newCell.textContent = ('Customer Name' === detail.column) ? "(" + request.custNo + ")" + detail.value : detail.value;
             }
         } else {
-            newCell.textContent = detail.value;
+            if (('Qty' === detail.column) ) {
+                newCell.textContent = Number.parseFloat(detail.value).toLocaleString('en-US', {
+                minimumFractionDigits: 0, maximumFractionDigits: 3
+            });
+            } else if (('Selling Price' === detail.column) ) {
+                newCell.textContent = Number.parseFloat(detail.value).toLocaleString('en-US', {
+                    minimumFractionDigits: 0, maximumFractionDigits: 6
+                });
+            }
+            else {
+                newCell.textContent = detail.value;
+            }
         }
         trRow.appendChild(newCell);
     }
@@ -163,8 +174,7 @@
     salesNo = !StringUtils.isNullOrEmpty(request.getParameter("salesNo")) ? request.getParameter("salesNo") : salesNo;
     arrayRFQDocumentInputBean.setArray2DString(null);
     final String hiddenGroupByType = "Group By";
-    int uploadRowCnt = 0, ErrCnt = 0, insert_cnt = 0;
-    List list = new LinkedList();
+
     if (insertFlag.equals("Y")) {
         modelNCommonUtils.readTscRfqUploadTemp(salesNo, uploadBy, customerNo, customerPo, groupByType, shipToOrgId);
         Map drqCreateArg = new HashMap();
@@ -181,6 +191,7 @@
         drqCreateArg.put("curr", SalesArea.TSCA.getSalesNo().equals(salesNo) ? "USD" : "");
         drqCreateArg.put("remark", "Order Import from file");
         String[][] strArray = modelNCommonUtils.sendRedirect2DRQCreate(session, response, drqCreateArg);
+
         if (!SalesArea.TSCA.getSalesNo().equals(salesNo)) {
             arrayRFQDocumentInputBean.setArray2DString(strArray);
         } else {
@@ -188,17 +199,7 @@
             String[][] newArray = new String[strArray.length + 1][strArray[0].length];
             // 複製原陣列内容到新陣列
             for (int i = 0; i < strArray.length; i++) {
-                for (int j = 0; j < strArray[i].length; j++) {
-                    newArray[i][j] = strArray[i][j];
-                }
-            }
-            // 新增新的一行，内容為""
-            for (int j = 0; j < strArray[0].length; j++) {
-                if (j == 0) {
-                    newArray[strArray.length][j] = String.valueOf(strArray.length + 1);
-                } else {
-                    newArray[strArray.length][j] = "";
-                }
+                System.arraycopy(strArray[i], 0, newArray[i], 0, strArray[i].length);
             }
             arrayRFQDocumentInputBean.setArray2DString(newArray);
         }
@@ -309,6 +310,8 @@
     <%
         if (!StringUtils.isNullOrEmpty(salesNo) && !salesNo.equals("All")) {
             modelNCommonUtils.setDetailHtmlColumns(salesNo);
+            session.removeAttribute("salesNo");
+            session.setAttribute(salesNo,"salesNo");
             modelNCommonUtils.readTscRfqUploadTemp(salesNo, uploadBy, customerNo, customerPo, groupByType, shipToOrgId);
     %>
             <table id="dataTable" align="center" border="1" width="90%" cellspacing="0" cellpadding="1"
@@ -367,7 +370,7 @@
                                     for (Iterator iterator = map.entrySet().iterator(); iterator.hasNext();) {
                                         Map.Entry en = (Map.Entry) iterator.next();
                                         String column = (String) en.getKey();
-                                        String value = (String) en.getValue() == null ? "" : (String) en.getValue();
+                                        String value = en.getValue() == null ? "" : (String) en.getValue();
                             %>
                                         <script>
                                             detailObj = {

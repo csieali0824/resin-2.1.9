@@ -1058,7 +1058,7 @@ try
    			} //enf of for
 			
 			//add by Peggy 20140115
-			if (sProgramName.equals("D4-012") || sProgramName.equals("D4-013") || sProgramName.equals("D4-015") || sProgramName.equals("D4-017")  || sProgramName.equals("D4-018") || sProgramName.equals("D4-003")  || sProgramName.equals("D4-019") || sProgramName.equals("D4-016")) //add D4-003 by Peggy 20140310
+			if (sProgramName.equals("D4-004") || sProgramName.equals("D4-012") || sProgramName.equals("D4-013") || sProgramName.equals("D4-015") || sProgramName.equals("D4-017")  || sProgramName.equals("D4-018") || sProgramName.equals("D4-003")  || sProgramName.equals("D4-019") || sProgramName.equals("D4-016")) //add D4-003 by Peggy 20140310
 			{
 				if (sProgramName.equals("D4-017")||sProgramName.equals("D4-018") || sProgramName.equals("D4-016"))
 				{

@@ -4,9 +4,8 @@ import modelN.dto.DetailDto;
 import modelN.dto.ModelNDto;
 
 import java.sql.*;
-import java.text.DecimalFormat;
-import java.util.*;
 import java.util.Date;
+import java.util.*;
 
 public class TscRfqUploadTempImpl implements TscRfqUploadTempDao {
 
@@ -76,8 +75,8 @@ public class TscRfqUploadTempImpl implements TscRfqUploadTempDao {
             detailDto.setDescription(rs.getString("description"));
             detailDto.setCustItemName(rs.getString("cust_item_name"));
             detailDto.setUom(rs.getString("uom"));
-            detailDto.setQty((new DecimalFormat("##,##0.######")).format(rs.getDouble("qty")));
-            detailDto.setSellingPrice((new DecimalFormat("##,##0.######")).format(rs.getDouble("selling_price")));
+            detailDto.setQty(rs.getString("qty"));
+            detailDto.setSellingPrice(rs.getString("selling_price"));
             detailDto.setCrd(rs.getString("crd"));
             detailDto.setSsd(rs.getString("ssd"));
             detailDto.setManuFactoryNo(rs.getString("factory"));
