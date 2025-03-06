@@ -17,7 +17,8 @@ public class Tsck extends ModelNCommonUtils {
                 DetailColumn.CustomerName.getColumnName(), DetailColumn.RFQType.getColumnName(), DetailColumn.CustomerPO.getColumnName(),
                 DetailColumn.TSC_PN.getColumnName(), DetailColumn.CustomerItem.getColumnName(), DetailColumn.Qty.getColumnName(),
                 DetailColumn.SellingPrice.getColumnName(), DetailColumn.SSD.getColumnName(), DetailColumn.OrderType.getColumnName(),
-                DetailColumn.EndCustomerNumber.getColumnName(), DetailColumn.EndCustomer.getColumnName(), DetailColumn.UploadBy.getColumnName()
+                DetailColumn.EndCustomerNumber.getColumnName(), DetailColumn.EndCustomer.getColumnName(), DetailColumn.ShipTo.getColumnName(),
+                DetailColumn.UploadBy.getColumnName()
         };
     }
 
@@ -57,10 +58,12 @@ public class Tsck extends ModelNCommonUtils {
                     detailHeaderHtmlWidthMap.put(columnKey, 6);
                     break;
                 case EndCustomer:
-                    detailHeaderHtmlWidthMap.put(columnKey, 10);
+                    detailHeaderHtmlWidthMap.put(columnKey, 8);
+                case ShipTo:
+                    detailHeaderHtmlWidthMap.put(columnKey, 4);
                     break;
                 case UploadBy:
-                    detailHeaderHtmlWidthMap.put(columnKey, 10);
+                    detailHeaderHtmlWidthMap.put(columnKey, 8);
                     break;
                 default:
                     break;
@@ -125,6 +128,18 @@ public class Tsck extends ModelNCommonUtils {
                 String transportation = modelNDto.getTransportation().equals("") ? "" : modelNDto.getTransportation();
                 errList.add(ErrorMessage.TRANSPORTATION_IS_NOT_DIFINED.getMessageFormat(transportation));
                 modelNDto.setErrorList(errList);
+            }
+        }
+    }
+
+    public void setExtraRuleInfo() {
+        if (!StringUtils.isNullOrEmpty(modelNDto.getShipToLocationId())) {
+            modelNDto.setShipToOrgId(modelNDto.getShipToOrgId());
+        } else {
+            if (modelNDto.getCustNo().equals("16163")) {
+                modelNDto.setShipToOrgId("64112");
+            } else if (modelNDto.getCustNo().equals("26892")) {
+                modelNDto.setShipToOrgId("66170");
             }
         }
     }
