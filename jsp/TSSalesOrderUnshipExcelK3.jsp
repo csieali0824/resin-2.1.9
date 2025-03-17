@@ -450,6 +450,7 @@ try
 				  " upper(TSC_OM_Get_Sales_Group(ooa.header_id)) sales_group,"+  //modify by Peggy 20220531
 				  " ooa.ORDER_NUMBER,"+
 				  " ooa.line_number ||'.'||ooa.shipment_number line_no,"+
+				  " ooa.itemk3code,"+
 				  " msi.description,"+
 				  " DECODE(ooa.ITEM_IDENTIFIER_TYPE,'CUST',ooa.ORDERED_ITEM,'') CUST_ITEM,"+
 				  " nvl(ar.CUSTOMER_NAME_PHONETIC,ar.customer_name) customer,"+
@@ -518,6 +519,7 @@ try
 				  "       ,ooh.ORG_ID"+
 				  "       ,ooh.BOOKED_DATE"+
 				  "       ,ool.line_id"+
+				  "       ,SUBSTR(TSC_GET_ITEM_DESC_AND_SUFFIX(ool.line_id), 1, INSTR(TSC_GET_ITEM_DESC_AND_SUFFIX(ool.line_id), '|') - 1) itemk3code"+
 				  "       ,ool.line_number	"+
 				  "       ,ool.shipment_number"+
 				  "       ,ool.ITEM_IDENTIFIER_TYPE"+
@@ -678,6 +680,7 @@ try
 			sql = " SELECT upper(TSC_OM_Get_Sales_Group(ooa.header_id)) sales_group,"+  
 				  " ooa.ORDER_NUMBER,"+
 				  " ooa.line_number ||'.'||ooa.shipment_number line_no,"+
+				  " ooa.itemk3code,"+
 				  " msi.description,"+
 				  " DECODE(ooa.ITEM_IDENTIFIER_TYPE,'CUST',ooa.ORDERED_ITEM,'') CUST_ITEM,"+
 				  " nvl(ar.CUSTOMER_NAME_PHONETIC,ar.customer_name) customer,"+
@@ -740,7 +743,8 @@ try
                   "       ,ooh.SOLD_TO_ORG_ID"+ 
                   "       ,ooh.ORG_ID"+ 
                   "       ,ooh.BOOKED_DATE"+ 
-                  "       ,ool.line_id"+ 
+                  "       ,ool.line_id"+
+				  "       ,SUBSTR(TSC_GET_ITEM_DESC_AND_SUFFIX(ool.line_id), 1, INSTR(TSC_GET_ITEM_DESC_AND_SUFFIX(ool.line_id), '|') - 1) itemk3code"+
                   "       ,ool.line_number "+  
                   "       ,ool.shipment_number"+ 
                   "       ,ool.ITEM_IDENTIFIER_TYPE"+ 
@@ -856,6 +860,7 @@ try
                  //" case when odr.ORDER_NUMBER is null then 'FORECAST' else odr.CUSTOMER_LINE_NUMBER end customer_po,"+
 				 " case when odr.ORDER_NUMBER is null then 'FORECAST' else case when trunc(e.creation_date)>= to_date('20211001','yyyymmdd') then nvl(odr.ORDER_NUMBER,'') else  odr.CUSTOMER_LINE_NUMBER end end customer_po,"+ //202110月起,po放銷售訂單號 add by Peggy 20210927
                  " msi.segment1 item_no,"+
+			     " odr.itemk3code,"+
                  " msi.description,  "+
                  " odr.CUST_ITEM,"+
                  " b.quantity * case  b.unit_meas_lookup_code when 'KPC' then 1000 else 1 end ordered_quantity,"+
@@ -914,6 +919,7 @@ try
                  "        ,ooh.header_id"+
                  "        ,DECODE(ool.ITEM_IDENTIFIER_TYPE,'CUST',ool.ORDERED_ITEM,'') CUST_ITEM"+
                  "        ,ool.line_number||'.'|| ool.shipment_number line_no"+
+				 "        ,SUBSTR(TSC_GET_ITEM_DESC_AND_SUFFIX(ool.line_id), 1, INSTR(TSC_GET_ITEM_DESC_AND_SUFFIX(ool.line_id), '|') - 1) itemk3code"+
                  "        ,ooh.sold_to_org_id"+
                  "        ,ooh.ORDERED_DATE"+
                  "        ,trunc(ool.REQUEST_DATE) REQUEST_DATE"+
@@ -1033,8 +1039,8 @@ try
 			//料號22D
 			ws.addCell(new jxl.write.Label(col, row, rs.getString("ITEM_NO"), ALeftL));
 			col++;	
-			//Item Desc
-			ws.addCell(new jxl.write.Label(col, row, rs.getString("DESCRIPTION") , ALeftL));
+			//ItemK3Code
+			ws.addCell(new jxl.write.Label(col, row, rs.getString("ITEMK3CODE") , ALeftL));
 			col++;	
 			//Item Desc
 			ws.addCell(new jxl.write.Label(col, row, rs.getString("DESCRIPTION") , ALeftL));
@@ -1208,7 +1214,7 @@ try
 			if (request.getRequestURL().toString().toLowerCase().indexOf("tsrfq.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("rfq134.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("yewintra.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("10.0.1.134") <0 && request.getRequestURL().toString().toLowerCase().indexOf("10.0.1.135") <0) //測試環境
 			{
 				remarks="(這是來自RFQ測試區的信件)";
-				message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("peggy.chen@ts.com.tw"));
+				message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("mars.wang@ts.com.tw"));
 			}
 			else
 			{
@@ -1217,7 +1223,7 @@ try
 				message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("sunny@ts-china.com.cn"));
 				message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("casey@ts-china.com.cn"));
 			}
-			message.addRecipient(Message.RecipientType.BCC, new javax.mail.internet.InternetAddress("peggy.chen@ts.com.tw"));
+			message.addRecipient(Message.RecipientType.BCC, new javax.mail.internet.InternetAddress("mars.wang@ts.com.tw"));
 			
 			//message.setHeader("Subject", MimeUtility.encodeText("TSCC內外銷訂單明細"+"("+SDATE+(!EDATE.equals("")&&!EDATE.equals(SDATE)?"-"+EDATE:"")+ "  "+(ACTTYPE.equals("AUTO")?"1500-2359":(ACTTYPE.equals("AUTO2")?"0000-1459":""))+")"+remarks, "UTF-8", null));				
 			message.setHeader("Subject", MimeUtility.encodeText("TSCC內外銷訂單明細"+(ACTTYPE.equals("AUTO3")?"(金碟已下單)":"")+"("+SDATE+(!ACTTYPE.equals("AUTO")?" 1500":"")+(((!EDATE.equals("")&&!EDATE.equals(SDATE))||!ACTTYPE.equals("AUTO"))?" - "+EDATE+(!ACTTYPE.equals("AUTO")?" 1459":""):"")+")"+remarks, "UTF-8", null));				

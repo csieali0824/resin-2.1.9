@@ -391,7 +391,10 @@ try
 		row++;
 			
 		if (i<=3) 
-		{			
+		{
+			String  desc = (i == 0 || i == 2) ?
+					"SUBSTR(TSC_GET_ITEM_DESC_AND_SUFFIX(ooa.line_id), 1, INSTR(TSC_GET_ITEM_DESC_AND_SUFFIX(ooa.line_id), '|') - 1)" :
+					"msi.description";
 			//out.println(sheetname[i]);
 			sql = " SELECT '' as \"序號\","+
 				  " to_char(ooa.actual_shipment_date,'yyyy/mm/dd') as \"出貨日期\","+
@@ -402,7 +405,8 @@ try
 				  " ooa.order_number as \"MO#\","+
 				  " ooa.header_id,"+
 				  " ooa.line_id,"+
-				  " msi.description as \"物料代碼\","+
+				  " "+desc+" as \"物料代碼\","+
+//				  " msi.description as \"物料代碼\","+
 				  " ooa.shipping_quantity,"+
 				  " sum( pkg.quantity) over (partition by ooa.header_id,ooa.line_id) tot_lot_qty,"+
 				  " pkg.quantity as  \"數量\","+
@@ -1198,7 +1202,7 @@ try
 			if (request.getRequestURL().toString().toLowerCase().indexOf("tsrfq.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("rfq134.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("yewintra.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("10.0.1.134") <0 && request.getRequestURL().toString().toLowerCase().indexOf("10.0.1.135") <0) //測試環境
 			{
 				remarks="(這是來自RFQ測試區的信件)";
-				message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("peggy.chen@ts.com.tw"));
+				message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("mars.wang@ts.com.tw"));
 			}
 			else
 			{
@@ -1212,7 +1216,7 @@ try
 				message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("sansan@ts-china.com.cn"));   //add by Peggy 20221019
 				message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("coco_liu@ts-china.com.cn")); //add by Peggy 20221019
 			}
-			message.addRecipient(Message.RecipientType.BCC, new javax.mail.internet.InternetAddress("peggy.chen@ts.com.tw"));
+			message.addRecipient(Message.RecipientType.BCC, new javax.mail.internet.InternetAddress("mars.wang@ts.com.tw"));
 			
 			message.setHeader("Subject", MimeUtility.encodeText("TSCC出入庫明細"+"("+SDATE+(!EDATE.equals("")&&!EDATE.equals(SDATE)?"-"+EDATE:"")+")"+remarks, "UTF-8", null));				
 			javax.mail.internet.MimeMultipart mp = new javax.mail.internet.MimeMultipart();
