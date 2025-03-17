@@ -2270,7 +2270,7 @@
 							{
 								if (at[ac][subac].equals("26851")) def_ship_org_id="58178";
 								if (at[ac][subac].equals("23080")) def_ship_org_id="40434";
-								if (at[ac][subac].equals("29612")) def_ship_org_id="65418";  //Continental Automotive Singapore Pte Ltd add by Peggy 20201027
+								if (at[ac][subac].equals("29612")) def_ship_org_id="76338";  //Continental Automotive Singapore Pte Ltd add by Peggy 20201027
 								if (at[ac][subac].equals("26971")) def_ship_org_id="67510";  //CONTINENTAL AUTOMOTIVE COMPONENTS MALAYSIA SDN. BH add by Peggy 20210506
 								if (at[ac][subac].equals("30032")) def_ship_org_id="68010";  //Enics Malaysia  add by Peggy 20210720
 								if (at[ac][subac].equals("31332")) def_ship_org_id="71434";  //Conti Philippines  add by Peggy 20220802
