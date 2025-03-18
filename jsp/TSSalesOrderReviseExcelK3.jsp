@@ -1090,7 +1090,7 @@ try
 			ws.addCell(new jxl.write.Label(col, row, rs.getString("ITEM_NO"), ALeftL));
 			col++;
 			//ItemK3Code
-			ws.addCell(new jxl.write.Label(col, row, rs.getString("ITEMK3CODE") , ALeftL));
+			ws.addCell(new jxl.write.Label(col, row, rs.getString("CUSTOMER_PO").equals("FORECAST") ? rs.getString("DESCRIPTION"): rs.getString("ITEMK3CODE") , ALeftL));
 			col++;	
 			//Item Desc
 			ws.addCell(new jxl.write.Label(col, row, rs.getString("DESCRIPTION") , ALeftL));
