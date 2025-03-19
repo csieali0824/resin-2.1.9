@@ -445,13 +445,13 @@ public class Tsca extends ModelNCommonUtils {
                     break;
                 }
             }
-            if (modelNDto.getShippingMethod().equals("")) {
-                String transportation = modelNDto.getTransportation().equals("") ? "" : modelNDto.getTransportation();
+            if (StringUtils.isNullOrEmpty(modelNDto.getShippingMethod())) {
+                String transportation = StringUtils.isNullOrEmpty(modelNDto.getTransportation()) ? "" : modelNDto.getTransportation();
                 errList.add("" + ErrorMessage.TRANSPORTATION_IS_NOT_DIFINED.getMessage() + "(" + (transportation) + ")");
                 modelNDto.setErrorList(errList);
                 rs.close();
             } else {
-                if (!modelNDto.getManuFactoryNo().equals("")) {
+                if (!StringUtils.isNullOrEmpty(modelNDto.getManuFactoryNo())) {
                     //¥æ³f¤é´Á
                     String sql = "SELECT TSCA_GET_ORDER_SSD("+modelNDto.getOrderType()+",'"+modelNDto.getTransportation()+"','"+modelNDto.getCrd()+"','CRD',trunc(sysdate),null) FROM DUAL";
                     Statement stmt = conn.createStatement();
