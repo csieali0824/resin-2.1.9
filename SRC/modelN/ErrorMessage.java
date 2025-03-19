@@ -6,6 +6,7 @@ public enum ErrorMessage {
     CUSTPO_REQUEST("Customer PO為必填欄位"),
     TSC_PN_REQUEST("TSC P/N為必填欄位"),
     CRD_REQUEST("CRD為必填欄位"),
+    SSD_REQUEST("SSD為必填欄位"),
     CRD_LENGTH_LESS_8("CRD欄位值長度小於8"),
     SSD_LENGTH_LESS_8("SSD欄位值長度小於8"),
     CUSTNO_NOTNULL("客戶代號不可空白"),

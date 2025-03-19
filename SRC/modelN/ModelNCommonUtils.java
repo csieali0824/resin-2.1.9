@@ -754,7 +754,9 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                                 }
                             }
                         } catch (Exception e) {
-                            ssd = "";
+                            if (StringUtils.isNullOrEmpty(ssd)) {
+                                throw new Exception(ErrorMessage.SSD_REQUEST.getMessage());
+                            }
                         }
                         modelNDto.setSsd(ssd);
                         break;
