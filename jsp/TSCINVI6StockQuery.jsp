@@ -287,7 +287,7 @@ if (chkvalue==null) chkvalue="N";
 .style1 {color: #003399}
 -->
 </style>
-<meta http-equiv="Content-Type" content="text/html; charset=big5"></head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
 <body topmargin="0" bottommargin="0">    
 <FORM ACTION="../jsp/TSCINVI6StockQuery.jsp" METHOD="post" NAME="MYFORM">
 <!--%/20040109/將Excel Veiw 夾在檔頭%-->
@@ -381,7 +381,7 @@ String currentWeek = workingDateBean.getWeekString();
 				if (shipFromOrg!=null && shipFromOrg.equals("163"))
 				{ 
 					//sqlGetP +=" AND inv.attribute2 = 'S'";
-					sqlGetP +=" AND (inv.attribute2 = 'S' or SECONDARY_INVENTORY_NAME='14')";  //ADD TSCE 14倉 BY PEGGY 20210625
+					sqlGetP +=" AND (inv.attribute2 = 'S' or SECONDARY_INVENTORY_NAME='14' or SECONDARY_INVENTORY_NAME='15')";  //ADD TSCE 14,15 倉 BY Mars 20250319
 				}
 				sqlGetP +=" order by 1 ";
 				Statement stateGetP=con.createStatement();
@@ -479,7 +479,7 @@ if (ActionCode.equals("Q") && (shipFromOrg=="163" || shipFromOrg.equals("163")))
            " mtl_system_items msi,"+
            " inv.mtl_parameters mps"+
            //" WHERE inv.attribute2 = 'S'"+
-		   " WHERE (inv.attribute2 = 'S' or SECONDARY_INVENTORY_NAME='14')"+  //ADD TSCE 14倉 BY PEGGY 20210625
+		   " WHERE (inv.attribute2 = 'S' or SECONDARY_INVENTORY_NAME='14' or SECONDARY_INVENTORY_NAME='15')"+  //ADD TSCE 14,15 倉 BY Mars 20250319
            " AND inv.organization_id = msi.organization_id"+
            " AND msi.organization_id = mps.organization_id"+
 		   //" AND msi.inventory_item_status_code <> 'Inactive'"+
