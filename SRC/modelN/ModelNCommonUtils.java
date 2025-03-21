@@ -45,10 +45,6 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
     private String sellingPrice_Q = "";
     private String endCustName = "";
 
-    public CheckSalesMechanism checkSalesMechanism() {
-        return new CheckSalesMechanism(this.salesNo);
-    }
-
     @Override
     public String[] getGroupBy(String salesNo) {
         return new String[]{"By Customer Number產生RFQ", "By Customer PO產生RFQ"};
@@ -63,28 +59,6 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
         return new String[]{"NORMAL", "FORECAST"};
     }
 
-//    public Map getSalesArea(Connection conn, String userRoles, String userName) throws SQLException {
-//        ModelNCommonUtils.conn = conn;
-//        this.userName = userName;
-//        String salesAreaNo = "";
-//        String salesAreaName = "";
-//        String sql = "select SALES_AREA_NO,'('||SALES_AREA_NO||')'||SALES_AREA_NAME from ORADDMAN.TSSALES_AREA ";
-//        String sWhere = "where SALES_AREA_NO > 0 and SALES_AREA_NO in ('002','004','005','006','008','009')";
-//        String sOrder = "Order by 1";
-//        Map salesAreaMap = new LinkedHashMap<>();
-//        if (!Objects.equals(userRoles, "admin") || !userRoles.equals("admin")) {
-//            sWhere += " and SALES_AREA_NO in (select tssaleareano from oraddman.tsrecperson " +
-//                    " where USERNAME='" + this.userName + "')";
-//        }
-//        PreparedStatement psmt = conn.prepareStatement(sql + sWhere + sOrder);
-//        ResultSet rs = psmt.executeQuery();
-//        while (rs.next()) {
-//            salesAreaMap.put(rs.getString(1), rs.getString(2));
-//        }
-//        rs.close();
-//        psmt.close();
-//        return salesAreaMap;
-//    }
     public List getSalesArea(Connection conn, String userRoles, String userName) throws SQLException, JsonProcessingException {
 
         List<Map<String, String>> list = new ArrayList<>();
@@ -240,8 +214,6 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
             modelNDto.setCustId(rs.getString("CUSTOMER_ID"));
             modelNDto.setCustName(rs.getString("CUSTOMER_NAME"));
             this.setAndCheckInfo(true, false);
-//            checkSalesMechanism().setSalesShippingFobOrderType();
-//            setShippingFobOrderTypeInfo();
         } else {
             errList.add(ErrorMessage.CUSTNO_NOT_FOUND_ERP.getMessage());
             modelNDto.setErrorList(errList);
@@ -663,6 +635,17 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
         }
     }
 
+    // 檢查是否為空的row
+    private static boolean isEmptyRow(Sheet sheet, int rowIndex) {
+        int colCount = sheet.getColumns();
+        for (int colIndex = 0; colIndex < colCount; colIndex++) {
+            String content = sheet.getCell(colIndex, rowIndex).getContents().trim();
+            if (!content.isEmpty()) {
+                return false; // 只要有一個儲存格有內容，就不是空的row
+            }
+        }
+        return true;
+    }
     public void writeExcel() throws Exception {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
         InputStream is = new FileInputStream(uploadFilePath);
@@ -670,41 +653,45 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
         Sheet sheet = wb.getSheet(0);
         excelMap = new HashMap();
 
-        for (int i = 1, n = sheet.getRows(); i < n; i++) {
+        for (int rowIndex = 1, rowCount = sheet.getRows(); rowIndex < rowCount; rowIndex++) {
             modelNDto = new ModelNDto();
-            for (int j = 0, k = sheet.getColumns(); j < k; j++) {
-                Cell rowCell = sheet.getColumn(j)[i];
-                String columnName = sheet.getColumn(j)[0].getContents();
-                switch (ExcelColumn.settingExcelColumn(columnName, j)) {
+            if (isEmptyRow(sheet, rowIndex)) {
+                continue; // ignore empty row
+            }
+            for (int colIndex = 0, colCount = sheet.getColumns(); colIndex < colCount; colIndex++) {
+                Cell rowCell = sheet.getCell(colIndex, rowIndex);
+                String content = rowCell.getContents().trim(); // 取得儲存格內容
+                String columnName = sheet.getCell(colIndex, 0).getContents().trim();
+                switch (ExcelColumn.settingExcelColumn(columnName, colIndex)) {
                     case CustomerNumber:
-                        if (StringUtils.isNullOrEmpty(rowCell.getContents().trim())) {
+                        if (StringUtils.isNullOrEmpty(content)) {
                             throw new Exception(ErrorMessage.CUSTNO_REQUEST.getMessage());
                         }
-                        modelNDto.setCustNo(rowCell.getContents().trim());
+                        modelNDto.setCustNo(content);
                         break;
                     case OrderType:
-                        modelNDto.setOrderType(rowCell.getContents().trim());
+                        modelNDto.setOrderType(content);
                         break;
                     case CustomerPO:
-                        if (StringUtils.isNullOrEmpty(rowCell.getContents().trim())) {
+                        if (StringUtils.isNullOrEmpty(content)) {
                             throw new Exception(ErrorMessage.CUSTPO_REQUEST.getMessage());
                         }
-                        modelNDto.setCustPo(rowCell.getContents().trim());
+                        modelNDto.setCustPo(content);
                         break;
                     case CustomerPOLineNumber:
-                        modelNDto.setCustPoLineNo(rowCell.getContents().trim());
+                        modelNDto.setCustPoLineNo(content);
                         break;
                     case _22D30D:
-                        modelNDto.setTscItem(rowCell.getContents().trim());
+                        modelNDto.setTscItem(content);
                         break;
                     case TSC_PN:
-                        if (StringUtils.isNullOrEmpty(rowCell.getContents().trim())) {
+                        if (StringUtils.isNullOrEmpty(content)) {
                             throw new Exception(ErrorMessage.TSC_PN_REQUEST.getMessage());
                         }
-                        modelNDto.setTscItemDesc(rowCell.getContents().trim());
+                        modelNDto.setTscItemDesc(content);
                         break;
                     case Customer_PN:
-                        modelNDto.setCustItem(rowCell.getContents().trim());
+                        modelNDto.setCustItem(content);
                         break;
                     case Qty:
                         String qty = "";
@@ -725,12 +712,12 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                         modelNDto.setSellingPrice(sellingPrice);
                         break;
                     case CRD:
-                        String crd = rowCell.getContents().trim();
+                        String crd = content;
                         try {
                             if (rowCell.getType() == CellType.DATE) {
                                 crd = sdf.format(((DateCell) rowCell).getDate());
                             } else {
-                                crd = (rowCell.getContents()).replace("-", "");
+                                crd = content.replace("-", "");
                                 if (crd.length() < 8) {
                                     throw new Exception(ErrorMessage.CRD_LENGTH_LESS_8.getMessage());
                                 }
@@ -743,12 +730,12 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                         modelNDto.setCrd(crd);
                         break;
                     case SSD:
-                        String ssd = rowCell.getContents().trim();
+                        String ssd = content;
                         try {
                             if (rowCell.getType() == CellType.DATE) {
                                 ssd = sdf.format(((DateCell) rowCell).getDate());
                             } else {
-                                ssd = (rowCell.getContents()).replace("-", "");
+                                ssd = content.replace("-", "");
                                 if (ssd.length() < 8) {
                                     throw new Exception(ErrorMessage.SSD_LENGTH_LESS_8.getMessage());
                                 }
@@ -761,39 +748,39 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                         modelNDto.setSsd(ssd);
                         break;
                     case ShippingMethod:
-                        modelNDto.setShippingMethod(rowCell.getContents().trim());
+                        modelNDto.setShippingMethod(content);
                         break;
                     case FOB:
-                        modelNDto.setFob(rowCell.getContents().trim());
+                        modelNDto.setFob(content);
                         break;
                     case Remarks:
-                        modelNDto.setRemarks(rowCell.getContents().trim());
+                        modelNDto.setRemarks(content);
                         break;
                     case EndCustomerNumber:
-                        modelNDto.setEndCustNo(rowCell.getContents().trim());
+                        modelNDto.setEndCustNo(content);
                         break;
                     case EndCustomerName:
-                        modelNDto.setEndCustName(rowCell.getContents().trim());
+                        modelNDto.setEndCustName(content);
                         break;
                     case QuoteNumber:
-                        modelNDto.setQuoteNumber(rowCell.getContents().trim());
+                        modelNDto.setQuoteNumber(content);
                         break;
                     case SupplierID:
-                        modelNDto.setSupplierId(rowCell.getContents().trim());
+                        modelNDto.setSupplierId(content);
                         break;
                     case ShipToLocationID:
-                        modelNDto.setShipToLocationId(rowCell.getContents().trim());
+                        modelNDto.setShipToLocationId(content);
                         break;
                     case ShipToOrgID:
-                        modelNDto.setShipToOrgId(rowCell.getContents().trim());
+                        modelNDto.setShipToOrgId(content);
                         break;
                     case BIRegion:
-                        modelNDto.setBiRegion(rowCell.getContents().trim());
+                        modelNDto.setBiRegion(content);
                         break;
                     default:
                         break;
                 }
-                excelMap.put(i, modelNDto);
+                excelMap.put(rowIndex, modelNDto);
             }
         }
         if (!SalesArea.TSCA.getSalesNo().equals(salesNo)) {

@@ -50,7 +50,7 @@ public class TscRfqUploadTempImpl implements TscRfqUploadTempDao {
                 "   and a.salesareano=d.SAREA_NO \n" +
                 "   and a.order_type=d.OTYPE_ID \n" +
                 "   and a.end_customer_id=e.customer_id(+) \n" +
-                "   order by a.customer_no,a.customer_po,a.line_no,b.description";
+                "   order by a.line_no,to_number(a.customer_no),a.customer_po,b.description";
 
         PreparedStatement pstmt = conn.prepareStatement(sql);
         pstmt.setString(1, "N");

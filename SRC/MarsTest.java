@@ -2,6 +2,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mysql.jdbc.StringUtils;
 import jxl.*;
+import jxl.read.biff.BiffException;
 import modelN.DetailColumn;
 import modelN.ErrorMessage;
 import modelN.ExcelColumn;
@@ -11,6 +12,7 @@ import modelN.dto.DetailDto;
 import modelN.dto.ModelNDto;
 
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
 import java.text.DecimalFormat;
@@ -62,6 +64,7 @@ public class MarsTest {
         }
         return result.toString();
     }
+
     public static String appendErrMsg(String errorMsg) {
         StringBuffer result = new StringBuffer();
         if (!errList.contains(errorMsg)) {
@@ -80,6 +83,7 @@ public class MarsTest {
         currentRow = rowIndex;
         return result.toString();
     }
+
     private static ModelNDto modelNDto;
     private static DetailDto detailDto;
     private static HashMap detailKVMap;
@@ -101,19 +105,23 @@ public class MarsTest {
     static int currentRow = 1;
     static int rowIndex;
 
-    public static String [] columns;
+    public static String[] columns;
 
-    static String sellingPrice_Q ="";
+    static String sellingPrice_Q = "";
     static String endCustName = "";
     static String itemNoPacking = "";
 
 //    private static TscRfqUploadTempDao tscRfqUploadTempDao;
 
     public static void setColumns() {
-        columns = new String[]{DetailColumn.CustomerName.getColumnName(), DetailColumn.RFQType.getColumnName(), DetailColumn.CustomerPO.getColumnName(),
-                DetailColumn.TSC_PN.getColumnName(), DetailColumn.CustomerItem.getColumnName(), DetailColumn.Qty.getColumnName(),
-                DetailColumn.SellingPrice.getColumnName(), DetailColumn.SSD.getColumnName(), DetailColumn.OrderType.getColumnName(),
-                DetailColumn.EndCustomerNumber.getColumnName(), DetailColumn.EndCustomer.getColumnName(), DetailColumn.UploadBy.getColumnName()};
+        columns = new String[]{DetailColumn.CustomerName.getColumnName(), DetailColumn.RFQType.getColumnName(),
+                DetailColumn.CustomerPO.getColumnName(),
+                DetailColumn.TSC_PN.getColumnName(), DetailColumn.CustomerItem.getColumnName(),
+                DetailColumn.Qty.getColumnName(),
+                DetailColumn.SellingPrice.getColumnName(), DetailColumn.SSD.getColumnName(),
+                DetailColumn.OrderType.getColumnName(),
+                DetailColumn.EndCustomerNumber.getColumnName(), DetailColumn.EndCustomer.getColumnName(),
+                DetailColumn.UploadBy.getColumnName()};
     }
 
     public static String[] getColumns() {
@@ -129,22 +137,22 @@ public class MarsTest {
 //    }
 
 
-    public static void main(String[] args) throws SQLException {
+    public static void mainDetail(String[] args) throws SQLException {
         setColumns();
         String[] detailColumns = getColumns();
         HashMap detailKeyValueMap = new LinkedHashMap();
         List list = new ArrayList();
         HashMap detailMap = new LinkedHashMap();
-        TscRfqUploadTempImpl  temp = new TscRfqUploadTempImpl();
-        Map map = tscRfqUploadTemp().getTscRfqUploadTemp(conn, "008", null, null, null, null,  null);
-        for (Iterator it = map.entrySet().iterator(); it.hasNext();){
+        TscRfqUploadTempImpl temp = new TscRfqUploadTempImpl();
+        Map map = tscRfqUploadTemp().getTscRfqUploadTemp(conn, "008", null, null, null, null, null);
+        for (Iterator it = map.entrySet().iterator(); it.hasNext(); ) {
             Map.Entry en = (Map.Entry) it.next();
-            int rowIndex =  ((Integer) en.getKey()).intValue();
+            int rowIndex = ((Integer) en.getKey()).intValue();
             detailDto = (DetailDto) en.getValue();
             System.out.println(detailDto.getQty());
             System.out.println(detailDto.getQty().replaceAll(",", ""));
             list.add(detailDto);
-            for (int i = 0, n= detailColumns.length; i < n; i++) {
+            for (int i = 0, n = detailColumns.length; i < n; i++) {
                 String columnKey = detailColumns[i];
                 switch (DetailColumn.settingDetailColumn(columnKey, i)) {
                     case DeleteAll:
@@ -243,13 +251,16 @@ public class MarsTest {
         // 轉換為 JSON
         ObjectMapper objectMapper = new ObjectMapper();
         String json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(jsonList);
-        System.out.println("json="+json);
+        System.out.println("json=" + json);
     }
+
     public static void mainDetail_test(String[] args) throws Exception {
         setColumns();
         String[] detailColumns = getColumns();
-//        String[] detailColumns = new String[]{" ", "Customer Name", "RFQ Type", "Customer PO", "Item Desc", "Customer" +
-//                "Item", "Qty", "Selling Price", "Request Date", "Order Type", "End Cust ID", "End Customer", "Upload By"};
+//        String[] detailColumns = new String[]{" ", "Customer Name", "RFQ Type", "Customer PO", "Item Desc",
+//        "Customer" +
+//                "Item", "Qty", "Selling Price", "Request Date", "Order Type", "End Cust ID", "End Customer",
+//                "Upload By"};
         String sql = " select a.salesareano, a.upload_date, a.upload_by, a.customer_no, a.customer_id, a" +
                 ".customer_name,a.rfq_type, \n" +
                 "UTL_I18N.UNESCAPE_REFERENCE(a.customer_po) customer_po, b.description, b.segment1, a.cust_item_name," +
@@ -318,7 +329,7 @@ public class MarsTest {
 //            detailMap.put(rowCount, detailDto);
 
             list.add(detailDto);
-            for (int i = 0, n= detailColumns.length; i < n; i++) {
+            for (int i = 0, n = detailColumns.length; i < n; i++) {
                 String columnKey = detailColumns[i];
                 switch (DetailColumn.settingDetailColumn(columnKey, i)) {
                     case DeleteAll:
@@ -390,7 +401,7 @@ public class MarsTest {
         }
         pstmt.close();
         rs.close();
-        
+
         // 分組存儲到 Map
         Map groupedData = new HashMap();
         DetailDto dto = new DetailDto();
@@ -409,7 +420,7 @@ public class MarsTest {
 //            System.out.println("customerNumber="+customerNumber);
 //            // 如果 Map 中沒有該 Customer Number，則初始化
             if (!groupedData.containsKey(customerNumber)) {
-                groupedData.put(customerNumber,new ArrayList());
+                groupedData.put(customerNumber, new ArrayList());
             }
 //            // 添加數據到對應的分組
             List group = (List) groupedData.get(customerNumber);
@@ -417,9 +428,9 @@ public class MarsTest {
             group.add(map);
         }
 
-        System.out.println("groupedData="+groupedData);
+        System.out.println("groupedData=" + groupedData);
         int groupCnt = 1;
-        for (Iterator it = groupedData.entrySet().iterator(); it.hasNext();) {
+        for (Iterator it = groupedData.entrySet().iterator(); it.hasNext(); ) {
             groupCnt++;
             Map.Entry entry = (Map.Entry) it.next();
             String customerNumber = (String) entry.getKey();
@@ -428,17 +439,17 @@ public class MarsTest {
 //            System.out.println("groupr="+ group);
             DetailDto dtl = new DetailDto();
             String groupBy = "";
-            for (int j = 0, k = group.size(); j < k ; j++) {
+            for (int j = 0, k = group.size(); j < k; j++) {
                 if (group.get(j) instanceof DetailDto) {
                     dtl = (DetailDto) group.get(j);
-                    System.out.println("txxxx="+ (groupBy.equals(dtl.getCustomerNo()) ? true: false));
+                    System.out.println("txxxx=" + (groupBy.equals(dtl.getCustomerNo()) ? true : false));
                 } else if (group.get(j) instanceof LinkedHashMap) {
                     Map groupedMap = (Map) group.get(j);
                     groupBy = dtl.getCustomerNo();
-                    System.out.println("dtl="+dtl.getCustomerNo());
+                    System.out.println("dtl=" + dtl.getCustomerNo());
 //                    System.out.println("groupCnt="+groupCnt);
                     System.out.println("---------------------------------------");
-                    for (Iterator groupedIt = groupedMap.entrySet().iterator(); groupedIt.hasNext();) {
+                    for (Iterator groupedIt = groupedMap.entrySet().iterator(); groupedIt.hasNext(); ) {
                         Map.Entry en = (Map.Entry) groupedIt.next();
                         String key = (String) en.getKey();
                         String value = (String) en.getValue();
@@ -460,7 +471,6 @@ public class MarsTest {
             }
 //            System.out.println("group="+ group);
         }
-
 
 
 //        DetailDto dto = new DetailDto();
@@ -491,7 +501,32 @@ public class MarsTest {
 
     }
 
-    public static void main2(String[] args) throws Exception {
+    public static int findLastNonEmptyColumn(Sheet sheet) {
+        int maxCol = 0;
+        for (int rowIndex = 0; rowIndex < sheet.getRows(); rowIndex++) {
+            for (int colIndex = sheet.getColumns() - 1; colIndex >= 0; colIndex--) {
+                if (!sheet.getCell(colIndex, rowIndex).getContents().trim().isEmpty()) {
+                    maxCol = Math.max(maxCol, colIndex + 1);
+                    break;
+                }
+            }
+        }
+        return maxCol;
+    }
+
+    // 檢查是否為空行
+    public static boolean isEmptyRow(Sheet sheet, int rowIndex) {
+        int colCount = sheet.getColumns();
+        for (int colIndex = 0; colIndex < colCount; colIndex++) {
+            String content = sheet.getCell(colIndex, rowIndex).getContents().trim();
+            if (!content.isEmpty()) {
+                return false; // 只要有一個儲存格有內容，就不是空行
+            }
+        }
+        return true;
+    }
+
+    public static void main(String[] args) throws Exception {
         CallableStatement cs1 = conn.prepareCall(
                 "{call mo_global.set_policy_context('S',?)}");
         cs1.setString(1, "41");  // 取業務員隸屬ParOrgID
@@ -501,139 +536,148 @@ public class MarsTest {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 //        String uploadFilePath = "D:/D4-019.xls";
 //        String uploadFilePath = "C:\\Users\\mars.wang\\Desktop\\sales-upload\\D4-019_20241212.xls";
-        String uploadFilePath = "C:\\Users\\mars.wang\\Desktop\\modelN_Excel\\006-modelN-0225.xls";
-        InputStream is = new FileInputStream(uploadFilePath);
-        Workbook wb = Workbook.getWorkbook(is);
-        Sheet sheet = wb.getSheet(0);
-
-        for (int i = 1, n = sheet.getRows(); i < n; i++) {
-            modelNDto = new ModelNDto();
-            for (int j = 0, k = sheet.getColumns(); j < k; j++) {
-                Cell rowCell = sheet.getColumn(j)[i];
-                String columnName = sheet.getColumn(j)[0].getContents();
-                switch (ExcelColumn.settingExcelColumn(columnName, j)) {
-                    case CustomerNumber:
-                        if (StringUtils.isNullOrEmpty(rowCell.getContents().trim())) {
-                            throw new Exception(ErrorMessage.CUSTNO_REQUEST.getMessage());
-                        }
-                        modelNDto.setCustNo(rowCell.getContents().trim());
-                        break;
-                    case OrderType:
-                        modelNDto.setOrderType(rowCell.getContents().trim());
-                        break;
-                    case CustomerPO:
-                        if (StringUtils.isNullOrEmpty(rowCell.getContents().trim())) {
-                            throw new Exception(ErrorMessage.CUSTPO_REQUEST.getMessage());
-                        }
-                        modelNDto.setCustPo(rowCell.getContents().trim());
-                        break;
-                    case CustomerPOLineNumber:
-                        modelNDto.setCustPoLineNo(rowCell.getContents().trim());
-                        break;
-                    case _22D30D:
-                        modelNDto.setTscItem(rowCell.getContents().trim());
-                        break;
-                    case TSC_PN:
-                        if (StringUtils.isNullOrEmpty(rowCell.getContents().trim())) {
-                            throw new Exception(ErrorMessage.TSC_PN_REQUEST.getMessage());
-                        }
-                        modelNDto.setTscItemDesc(rowCell.getContents().trim());
-                        break;
-                    case Customer_PN:
-                        modelNDto.setCustItem(rowCell.getContents().trim());
-                        break;
-                    case Qty:
-                        String qty = "";
-                        if (rowCell instanceof NumberCell) {
-                            qty =  "" + ((NumberCell) rowCell).getValue(); // 直接取數值
-                        } else {
-                            qty = (rowCell.getContents()).trim(); // 文字型欄位
-                        }
-                        modelNDto.setQty(qty);
-                        break;
-                    case SellingPrice:
-                        String sellingPrice = "";
-                        if (rowCell instanceof NumberCell) {
-                            sellingPrice =  "" + ((NumberCell) rowCell).getValue(); // 直接取數值
-                        } else {
-                            sellingPrice = (rowCell.getContents()).trim(); // 文字型欄位
-                        }
-                        modelNDto.setSellingPrice(sellingPrice);
-                        break;
-                    case CRD:
-                        String crd = rowCell.getContents().trim();
-                        try {
-                            if (rowCell.getType() == CellType.DATE) {
-                                crd = sdf.format(((DateCell) rowCell).getDate());
-                            } else {
-                                crd = (rowCell.getContents()).replace("-", "");
-                                if (crd.length() < 8) {
-                                    throw new Exception(ErrorMessage.CRD_LENGTH_LESS_8.getMessage());
-                                }
-                            }
-                        } catch (Exception e) {
-                            if (StringUtils.isNullOrEmpty(crd)) {
-                                throw new Exception(ErrorMessage.CRD_REQUEST.getMessage());
-                            }
-                        }
-                        modelNDto.setCrd(crd);
-                        break;
-                    case SSD:
-                        String ssd = rowCell.getContents().trim();
-                        try {
-                            if (rowCell.getType() == CellType.DATE) {
-                                ssd = sdf.format(((DateCell) rowCell).getDate());
-                            } else {
-                                ssd = (rowCell.getContents()).replace("-", "");
-                                if (ssd.length() < 8) {
-                                    throw new Exception(ErrorMessage.SSD_LENGTH_LESS_8.getMessage());
-                                }
-                            }
-                        } catch (Exception e) {
-                            ssd = "";
-                        }
-                        modelNDto.setSsd(ssd);
-                        break;
-                    case ShippingMethod:
-                        modelNDto.setShippingMethod(rowCell.getContents().trim());
-                        break;
-                    case FOB:
-                        modelNDto.setFob(rowCell.getContents().trim());
-                        break;
-                    case Remarks:
-                        modelNDto.setRemarks(rowCell.getContents().trim());
-                        break;
-                    case EndCustomerNumber:
-                        modelNDto.setEndCustNo(rowCell.getContents().trim());
-                        break;
-                    case EndCustomerName:
-                        modelNDto.setEndCustName(rowCell.getContents().trim());
-                        break;
-                    case QuoteNumber:
-                        modelNDto.setQuoteNumber(rowCell.getContents().trim());
-                        break;
-                    case SupplierID:
-                        modelNDto.setSupplierId(rowCell.getContents().trim());
-                        break;
-                    case ShipToLocationID:
-                        modelNDto.setShipToLocationId(rowCell.getContents().trim());
-                        break;
-                    case ShipToOrgID:
-                        modelNDto.setShipToOrgId(rowCell.getContents().trim());
-                        break;
-                    case BIRegion:
-                        modelNDto.setBiRegion(rowCell.getContents().trim());
-                        break;
-                    default:
-                        break;
-//                        throw new Exception("第" + (j + 1) + "欄的名稱錯誤:" + columnName);
+        try {
+            String uploadFilePath = "C:\\Users\\mars.wang\\Desktop\\modelN_Excel\\D4-021_ModelN_Upload format.xls";
+            InputStream is = new FileInputStream(uploadFilePath);
+            Workbook wb = Workbook.getWorkbook(is);
+            Sheet sheet = wb.getSheet(0);
+            for (int rowIndex = 1, rowCount = sheet.getRows(); rowIndex < rowCount; rowIndex++) {
+                if (isEmptyRow(sheet, rowIndex)) {
+                    System.out.println("跳過第 " + rowIndex + " 行（空白）");
+                    continue; // 忽略空白行
                 }
-                map.put(i, modelNDto);
-            }
+
+                modelNDto = new ModelNDto();
+                for (int colIndex = 0, colCount = sheet.getColumns(); colIndex < colCount; colIndex++) {
+                    Cell rowCell = sheet.getCell(colIndex, rowIndex);
+                    String content = rowCell.getContents().trim(); // 取得儲存格內容
+                    String columnName = sheet.getCell(colIndex, 0).getContents().trim();
+                    switch (ExcelColumn.settingExcelColumn(columnName, colIndex)) {
+                        case CustomerNumber:
+                            if (StringUtils.isNullOrEmpty(content)) {
+                                throw new Exception(ErrorMessage.CUSTNO_REQUEST.getMessage());
+                            }
+                            modelNDto.setCustNo(content);
+                            break;
+                        case OrderType:
+                            modelNDto.setOrderType(content);
+                            break;
+                        case CustomerPO:
+                            if (StringUtils.isNullOrEmpty(content)) {
+                                throw new Exception(ErrorMessage.CUSTPO_REQUEST.getMessage());
+                            }
+                            modelNDto.setCustPo(content);
+                            break;
+                        case CustomerPOLineNumber:
+                            modelNDto.setCustPoLineNo(content);
+                            break;
+                        case _22D30D:
+                            modelNDto.setTscItem(content);
+                            break;
+                        case TSC_PN:
+                            if (StringUtils.isNullOrEmpty(content)) {
+                                throw new Exception(ErrorMessage.TSC_PN_REQUEST.getMessage());
+                            }
+                            modelNDto.setTscItemDesc(content);
+                            break;
+                        case Customer_PN:
+                            modelNDto.setCustItem(content);
+                            break;
+                        case Qty:
+                            String qty = "";
+                            if (rowCell instanceof NumberCell) {
+                                qty = "" + ((NumberCell) rowCell).getValue(); // 直接取數值
+                            } else {
+                                qty = content; // 文字型欄位
+                            }
+                            modelNDto.setQty(qty);
+                            break;
+                        case SellingPrice:
+                            String sellingPrice = "";
+                            if (rowCell instanceof NumberCell) {
+                                sellingPrice = "" + ((NumberCell) rowCell).getValue(); // 直接取數值
+                            } else {
+                                sellingPrice = content; // 文字型欄位
+                            }
+                            modelNDto.setSellingPrice(sellingPrice);
+                            break;
+                        case CRD:
+                            String crd = content;
+                            try {
+                                if (rowCell.getType() == CellType.DATE) {
+                                    crd = sdf.format(((DateCell) rowCell).getDate());
+                                } else {
+                                    crd = content.replace("-", "");
+                                    if (crd.length() < 8) {
+                                        throw new Exception(ErrorMessage.CRD_LENGTH_LESS_8.getMessage());
+                                    }
+                                }
+                            } catch (Exception e) {
+                                if (StringUtils.isNullOrEmpty(crd)) {
+                                    throw new Exception(ErrorMessage.CRD_REQUEST.getMessage());
+                                }
+                            }
+                            modelNDto.setCrd(crd);
+                            break;
+                        case SSD:
+                            String ssd = rowCell.getContents().trim();
+                            try {
+                                if (rowCell.getType() == CellType.DATE) {
+                                    ssd = sdf.format(((DateCell) rowCell).getDate());
+                                } else {
+                                    ssd = content.replace("-", "");
+                                    if (ssd.length() < 8) {
+                                        throw new Exception(ErrorMessage.SSD_LENGTH_LESS_8.getMessage());
+                                    }
+                                }
+                            } catch (Exception e) {
+                                ssd = "";
+                            }
+                            modelNDto.setSsd(ssd);
+                            break;
+                        case ShippingMethod:
+                            modelNDto.setShippingMethod(content);
+                            break;
+                        case FOB:
+                            modelNDto.setFob(content);
+                            break;
+                        case Remarks:
+                            modelNDto.setRemarks(content);
+                            break;
+                        case EndCustomerNumber:
+                            modelNDto.setEndCustNo(content);
+                            break;
+                        case EndCustomerName:
+                            modelNDto.setEndCustName(content);
+                            break;
+                        case QuoteNumber:
+                            modelNDto.setQuoteNumber(content);
+                            break;
+                        case SupplierID:
+                            modelNDto.setSupplierId(content);
+                            break;
+                        case ShipToLocationID:
+                            modelNDto.setShipToLocationId(content);
+                            break;
+                        case ShipToOrgID:
+                            modelNDto.setShipToOrgId(content);
+                            break;
+                        case BIRegion:
+                            modelNDto.setBiRegion(content);
+                            break;
+                        default:
+                            break;
+//                        throw new Exception("第" + (j + 1) + "欄的名稱錯誤:" + columnName);
+                    }
+                    map.put(rowIndex, modelNDto);
+                }
 //            System.out.println(""+i+"----------------------------------------------");
+            }
+//            readExcelContent();
+            wb.close();
+        } catch (IOException | BiffException e) {
+            e.printStackTrace();
         }
-        readExcelContent();
-        wb.close();
     }
 
     private static void checkCustIdAndName() throws SQLException {
@@ -665,31 +709,32 @@ public class MarsTest {
     }
 
     public static void checkSalesErpInfo() throws SQLException {
-        String sql =" select case when upper(a.site_use_code)='BILL_TO' then 1 when upper(a.site_use_code)='SHIP_TO' then 2 else 3 end as segno,\n"+ //fob 先依ship_to為主,若無,再依deliver_to為主,modify by Peggy 20121026
-                " a.SITE_USE_CODE, a.PRIMARY_FLAG, a.SITE_USE_ID, loc.COUNTRY, loc.ADDRESS1,\n"+
-                " a.PAYMENT_TERM_ID, a.PAYMENT_TERM_NAME || '('||c.DESCRIPTION ||')' PAYMENT_TERM_NAME, a.SHIP_VIA, a.FOB_POINT, a.PRICE_LIST_ID, c.DESCRIPTION,nvl(d.CURRENCY_CODE,'') CURRENCY_CODE\n"+
-                " ,a.tax_code \n"+
-                " from ar_site_uses_v a,HZ_CUST_ACCT_SITES b, hz_party_sites party_site, hz_locations loc, RA_TERMS_VL c \n"+
-                " ,SO_PRICE_LISTS d\n"+
-                " where  a.ADDRESS_ID = b.cust_acct_site_id \n"+
-                " AND b.party_site_id = party_site.party_site_id \n"+
-                " AND loc.location_id = party_site.location_id \n"+
-                " and a.STATUS='A' \n"+
-                " and a.PRIMARY_FLAG='Y' \n"+
-                " and b.CUST_ACCOUNT_ID ='"+modelNDto.getCustId()+"' \n"+
-                " and a.PAYMENT_TERM_ID = c.TERM_ID(+) \n"+
-                " and a.PRICE_LIST_ID = d.PRICE_LIST_ID(+) \n"+
-                " order by case when upper(a.site_use_code)='BILL_TO' then 1 when upper(a.site_use_code)='SHIP_TO' then 2 else 3 end ";
+        String sql = " select case when upper(a.site_use_code)='BILL_TO' then 1 when upper(a.site_use_code)='SHIP_TO'" +
+                " then 2 else 3 end as segno,\n" + //fob 先依ship_to為主,若無,再依deliver_to為主,modify by Peggy 20121026
+                " a.SITE_USE_CODE, a.PRIMARY_FLAG, a.SITE_USE_ID, loc.COUNTRY, loc.ADDRESS1,\n" +
+                " a.PAYMENT_TERM_ID, a.PAYMENT_TERM_NAME || '('||c.DESCRIPTION ||')' PAYMENT_TERM_NAME, a.SHIP_VIA, a" +
+                ".FOB_POINT, a.PRICE_LIST_ID, c.DESCRIPTION,nvl(d.CURRENCY_CODE,'') CURRENCY_CODE\n" +
+                " ,a.tax_code \n" +
+                " from ar_site_uses_v a,HZ_CUST_ACCT_SITES b, hz_party_sites party_site, hz_locations loc, " +
+                "RA_TERMS_VL c \n" +
+                " ,SO_PRICE_LISTS d\n" +
+                " where  a.ADDRESS_ID = b.cust_acct_site_id \n" +
+                " AND b.party_site_id = party_site.party_site_id \n" +
+                " AND loc.location_id = party_site.location_id \n" +
+                " and a.STATUS='A' \n" +
+                " and a.PRIMARY_FLAG='Y' \n" +
+                " and b.CUST_ACCOUNT_ID ='" + modelNDto.getCustId() + "' \n" +
+                " and a.PAYMENT_TERM_ID = c.TERM_ID(+) \n" +
+                " and a.PRICE_LIST_ID = d.PRICE_LIST_ID(+) \n" +
+                " order by case when upper(a.site_use_code)='BILL_TO' then 1 when upper(a.site_use_code)='SHIP_TO' " +
+                "then 2 else 3 end ";
         Statement statement = conn.createStatement();
         ResultSet rs = statement.executeQuery(sql);
-        while (rs.next())
-        {
-            if (modelNDto.getShippingMethod().equals("") && rs.getString("ship_via") != null)
-            {
+        while (rs.next()) {
+            if (modelNDto.getShippingMethod().equals("") && rs.getString("ship_via") != null) {
                 modelNDto.setShippingMethod(rs.getString("ship_via"));
             }
-            if (modelNDto.getFob().equals("") && rs.getString("FOB_POINT")!= null)
-            {
+            if (modelNDto.getFob().equals("") && rs.getString("FOB_POINT") != null) {
                 modelNDto.setFob(rs.getString("FOB_POINT"));
             }
             if (modelNDto.getOrderType().equals("")) {
@@ -703,75 +748,80 @@ public class MarsTest {
     }
 
     private static ResultSet getFndLookupValuesData() throws SQLException {
-        String sql = " SELECT lookup_code,meaning FROM fnd_lookup_values lv"+
-                " WHERE language = 'US'"+
-                " AND view_application_id = 3"+
-                " AND lookup_type = 'SHIP_METHOD'"+
-                " AND security_group_id = 0"+
-                " AND ENABLED_FLAG='Y'"+
+        String sql = " SELECT lookup_code,meaning FROM fnd_lookup_values lv" +
+                " WHERE language = 'US'" +
+                " AND view_application_id = 3" +
+                " AND lookup_type = 'SHIP_METHOD'" +
+                " AND security_group_id = 0" +
+                " AND ENABLED_FLAG='Y'" +
                 " AND (end_date_active IS NULL OR end_date_active > SYSDATE)";
-        Statement stmt = conn.createStatement( ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         return stmt.executeQuery(sql);
     }
+
     public static void setShippingFobOrderTypeInfo() throws SQLException {
-        String sql =" select case when upper(a.site_use_code)='BILL_TO' then 1 when upper(a.site_use_code)='SHIP_TO' then 2 else 3 end as segno,"+ //fob 先依ship_to為主,若無,再依deliver_to為主,modify by Peggy 20121026
-                " a.SITE_USE_CODE, a.PRIMARY_FLAG, a.SITE_USE_ID, loc.COUNTRY, loc.ADDRESS1,"+
-                " a.PAYMENT_TERM_ID, a.PAYMENT_TERM_NAME || '('||c.DESCRIPTION ||')' PAYMENT_TERM_NAME, a.SHIP_VIA, a.FOB_POINT, a.PRICE_LIST_ID, c.DESCRIPTION,nvl(d.CURRENCY_CODE,'') CURRENCY_CODE"+
+        String sql = " select case when upper(a.site_use_code)='BILL_TO' then 1 when upper(a.site_use_code)='SHIP_TO'" +
+                " then 2 else 3 end as segno," + //fob 先依ship_to為主,若無,再依deliver_to為主,modify by Peggy 20121026
+                " a.SITE_USE_CODE, a.PRIMARY_FLAG, a.SITE_USE_ID, loc.COUNTRY, loc.ADDRESS1," +
+                " a.PAYMENT_TERM_ID, a.PAYMENT_TERM_NAME || '('||c.DESCRIPTION ||')' PAYMENT_TERM_NAME, a.SHIP_VIA, a" +
+                ".FOB_POINT, a.PRICE_LIST_ID, c.DESCRIPTION,nvl(d.CURRENCY_CODE,'') CURRENCY_CODE" +
                 " ,a.tax_code" +
-                " from ar_site_uses_v a,HZ_CUST_ACCT_SITES b, hz_party_sites party_site, hz_locations loc, RA_TERMS_VL c"+
-                " ,SO_PRICE_LISTS d"+
-                " where  a.ADDRESS_ID = b.cust_acct_site_id"+
-                " AND b.party_site_id = party_site.party_site_id"+
-                " AND loc.location_id = party_site.location_id "+
-                " and a.STATUS='A' "+
-                " and b.CUST_ACCOUNT_ID ='"+ modelNDto.getCustId()+"'"+
-                " and a.PAYMENT_TERM_ID = c.TERM_ID(+)"+
+                " from ar_site_uses_v a,HZ_CUST_ACCT_SITES b, hz_party_sites party_site, hz_locations loc, " +
+                "RA_TERMS_VL c" +
+                " ,SO_PRICE_LISTS d" +
+                " where  a.ADDRESS_ID = b.cust_acct_site_id" +
+                " AND b.party_site_id = party_site.party_site_id" +
+                " AND loc.location_id = party_site.location_id " +
+                " and a.STATUS='A' " +
+                " and b.CUST_ACCOUNT_ID ='" + modelNDto.getCustId() + "'" +
+                " and a.PAYMENT_TERM_ID = c.TERM_ID(+)" +
                 " and a.PRICE_LIST_ID = d.PRICE_LIST_ID(+)";
         if (!modelNDto.getShipToLocationId().equals("")) {
             sql += " and a.LOCATION='" + modelNDto.getShipToLocationId() + "'";
         } else if (modelNDto.getCustNo().equals("14413")) {
-            if (((modelNDto.getCustPo().length() >= 9 && modelNDto.getCustPo().substring(0,9).equals("CCPG01518")) ||
-                    (modelNDto.getCustPo().length() >= 10 && modelNDto.getCustPo().substring(0,10).equals("CCPF2300TB"))) &&
+            if (((modelNDto.getCustPo().length() >= 9 && modelNDto.getCustPo().substring(0, 9).equals("CCPG01518")) ||
+                    (modelNDto.getCustPo().length() >= 10 && modelNDto.getCustPo().substring(0, 10).equals(
+                            "CCPF2300TB"))) &&
                     modelNDto.getCustPo().equals("1214")) {
-                sql +=" and a.site_use_id = 50156";
-            } else if (((modelNDto.getCustPo().length() >= 9 && modelNDto.getCustPo().substring(0,9).equals("CCPG01511")) ||
-                    (modelNDto.getCustPo().length() >= 10 && (modelNDto.getCustPo().substring(0,10).equals("CCPM121002") ||
-                            modelNDto.getCustPo().substring(0,10).equals("CCPF2301TB")))) &&
+                sql += " and a.site_use_id = 50156";
+            } else if (((modelNDto.getCustPo().length() >= 9 && modelNDto.getCustPo().substring(0, 9).equals(
+                    "CCPG01511")) ||
+                    (modelNDto.getCustPo().length() >= 10 && (modelNDto.getCustPo().substring(0, 10).equals(
+                            "CCPM121002") ||
+                            modelNDto.getCustPo().substring(0, 10).equals("CCPF2301TB")))) &&
                     modelNDto.getCustPo().equals("1214")) {
-                sql +=" and a.site_use_id = 61410";
-            } else if (modelNDto.getCustPo().substring(0,3).equals("CCP")) {
-                sql +=" and a.site_use_id = 50156";
-            } else if (modelNDto.getCustPo().substring(0,3).equals("TPH")) {
-                sql +=" and a.site_use_id =65370";
-            } else if (modelNDto.getCustPo().substring(0,3).equals("FLC")) {
-                sql +=" and a.site_use_id = 65370";
+                sql += " and a.site_use_id = 61410";
+            } else if (modelNDto.getCustPo().substring(0, 3).equals("CCP")) {
+                sql += " and a.site_use_id = 50156";
+            } else if (modelNDto.getCustPo().substring(0, 3).equals("TPH")) {
+                sql += " and a.site_use_id =65370";
+            } else if (modelNDto.getCustPo().substring(0, 3).equals("FLC")) {
+                sql += " and a.site_use_id = 65370";
             } else {
-                sql +=" and a.site_use_id = 31918";
+                sql += " and a.site_use_id = 31918";
             }
         } else if (modelNDto.getCustNo().equals("1671")) {
-            sql +=" and a.site_use_id = 4520";
+            sql += " and a.site_use_id = 4520";
         } else if (modelNDto.getCustNo().equals("1067")) {
-            sql +=" and a.site_use_id = 1328";
+            sql += " and a.site_use_id = 1328";
         } else if (modelNDto.getCustNo().equals("24051")) {
-            if (modelNDto.getCustNo().substring(0,3).equals("CIF") && modelNDto.getOrderType().equals("1141")) {
-                sql +=" and a.site_use_id = 56522";
+            if (modelNDto.getCustNo().substring(0, 3).equals("CIF") && modelNDto.getOrderType().equals("1141")) {
+                sql += " and a.site_use_id = 56522";
             } else {
-                sql +=" and a.site_use_id = 52174";
+                sql += " and a.site_use_id = 52174";
             }
         } else {
             sql += " and a.PRIMARY_FLAG='Y'";
         }
-        sql +=" order by case when upper(a.site_use_code)='BILL_TO' then 2 when upper(a.site_use_code)='SHIP_TO' then 1 else 3 end ";
+        sql += " order by case when upper(a.site_use_code)='BILL_TO' then 2 when upper(a.site_use_code)='SHIP_TO' " +
+                "then 1 else 3 end ";
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(sql);
         ResultSet lookValuesRs = getFndLookupValuesData();
-        while (rs.next())
-        {
-            if (modelNDto.getShippingMethod().equals("") && rs.getString("ship_via") != null)
-            {
+        while (rs.next()) {
+            if (modelNDto.getShippingMethod().equals("") && rs.getString("ship_via") != null) {
                 if (lookValuesRs.isBeforeFirst() == false) lookValuesRs.beforeFirst();
-                while (lookValuesRs.next())
-                {
+                while (lookValuesRs.next()) {
                     if (lookValuesRs.getString("LOOKUP_CODE").equals(rs.getString("ship_via"))) {
                         modelNDto.setShippingMethod(rs.getString("ship_via"));
                         modelNDto.setTransportation(lookValuesRs.getString("MEANING"));
@@ -779,10 +829,10 @@ public class MarsTest {
                     }
                 }
             }
-            if (modelNDto.getFob().equals("") && rs.getString("FOB_POINT")!= null) {
+            if (modelNDto.getFob().equals("") && rs.getString("FOB_POINT") != null) {
                 modelNDto.setFob(rs.getString("FOB_POINT"));
             }
-            if (modelNDto.getOrderType().equals("1141") && ! rs.getString("CURRENCY_CODE").equals("USD")) {
+            if (modelNDto.getOrderType().equals("1141") && !rs.getString("CURRENCY_CODE").equals("USD")) {
                 modelNDto.setOrderType("1131");
             }
             if (rs.getString("SITE_USE_CODE").equals("SHIP_TO")) {
@@ -868,7 +918,7 @@ public class MarsTest {
             } else if (!endCustName.equals("")) {
                 modelNDto.setEndCustNamePhonetic(endCustName);
             }
-            System.out.println("xxxx="+modelNDto.getEndCustNamePhonetic());
+            System.out.println("xxxx=" + modelNDto.getEndCustNamePhonetic());
 //            System.out.println("mo="+errList2String(modelNDto.getErrorList()));
         }
 //        insertIntoTscRfqUploadTmp(connection, map);
@@ -889,7 +939,6 @@ public class MarsTest {
 //        System.out.println("currentRow="+currentRow);
 //        System.out.println("xxx="+result.toString());
     }
-
 
 
     private static void setDefaultLineType() throws SQLException {
@@ -927,8 +976,8 @@ public class MarsTest {
                     modelNDto.setErrorList(errList);
                 } else if (!modelNDto.getQuoteNumber().equals("")) {  // excel QuoteNumber 不為空時才會做檢查
                     if (!modelNDto.getSellingPrice().equals(sellingPrice_Q)) {
-                        System.out.println("getSellingPrice="+modelNDto.getSellingPrice());
-                        System.out.println("sellingPrice_Q="+sellingPrice_Q);
+                        System.out.println("getSellingPrice=" + modelNDto.getSellingPrice());
+                        System.out.println("sellingPrice_Q=" + sellingPrice_Q);
                         errList.add("Selling Price not match quote price(" + sellingPrice_Q + ")");
                         modelNDto.setErrorList(errList);
                     }
@@ -1079,7 +1128,8 @@ public class MarsTest {
                     "a.INVENTORY_ITEM, a.SOLD_TO_ORG_ID,msi.PRIMARY_UOM_CODE\n" +
                     ",NVL(msi.ATTRIBUTE3,'N/A') ATTRIBUTE3\n" +
                     ",tsc_rfq_create_erp_odr_pkg.tsc_get_order_type (msi.inventory_item_id) AS ORDER_TYPE  \n" +
-                    ",tsc_get_item_desc_nopacking(msi.organization_id,msi.inventory_item_id) itemnopacking \n" + // quote 使用
+                    ",tsc_get_item_desc_nopacking(msi.organization_id,msi.inventory_item_id) itemnopacking \n" + //
+                    // quote 使用
                     "from oe_items_v a,inv.mtl_system_items_b msi \n" +
                     ",APPS.MTL_ITEM_CATEGORIES_V c \n" +
                     "where a.SOLD_TO_ORG_ID = '" + modelNDto.getCustId() + "' \n" +
@@ -1123,7 +1173,8 @@ public class MarsTest {
             String sql = "SELECT DISTINCT msi.description,msi.segment1, msi.inventory_item_id,msi.primary_uom_code,\n" +
                     "NVL (msi.attribute3, 'N/A') attribute3,\n" +
                     "tsc_rfq_create_erp_odr_pkg.tsc_get_order_type (msi.inventory_item_id)  AS order_type\n" +
-                    ",tsc_get_item_desc_nopacking(msi.organization_id,msi.inventory_item_id) itemnopacking \n" + // quote 使用
+                    ",tsc_get_item_desc_nopacking(msi.organization_id,msi.inventory_item_id) itemnopacking \n" + //
+                    // quote 使用
                     "FROM  inv.mtl_system_items_b msi, apps.mtl_item_categories_v c\n" +
                     "WHERE msi.inventory_item_id = c.inventory_item_id\n" +
                     "AND msi.organization_id = c.organization_id\n" +
@@ -1161,11 +1212,12 @@ public class MarsTest {
         } else {
             if (!modelNDto.getQuoteNumber().equals("") && !modelNDto.getTscItemDesc().equals("")) {
                 Statement stmt = conn.createStatement();
-                String sql = " select a.quoteid, a.partnumber,a.currency, to_char(a.pricekusd/1000,'FM99990.0999999') price_usd, \n"+
-                        "'('|| a.region ||')'|| a.endcustomer end_customer \n"+
-                        " from tsc_om_ref_quotenet a \n"+
-                        " where a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
-                        " and a.partnumber='" + modelNDto.getTscItemDesc() + "' \n"+
+                String sql = " select a.quoteid, a.partnumber,a.currency, to_char(a.pricekusd/1000,'FM99990.0999999')" +
+                        " price_usd, \n" +
+                        "'('|| a.region ||')'|| a.endcustomer end_customer \n" +
+                        " from tsc_om_ref_quotenet a \n" +
+                        " where a.quoteid='" + modelNDto.getQuoteNumber() + "' \n" +
+                        " and a.partnumber='" + modelNDto.getTscItemDesc() + "' \n" +
                         " order by a.quoteid, a.partnumber";
                 ResultSet rs = stmt.executeQuery(sql);
                 if (rs.next()) {
@@ -1176,15 +1228,15 @@ public class MarsTest {
                 stmt.close();
                 if (sellingPrice_Q.equals("")) {
                     stmt = conn.createStatement();
-                    sql = " select a.quoteid, a.partnumber,a.currency, to_char(a.pricekusd/1000,'FM99990.0999999') price_usd, \n" +
+                    sql = " select a.quoteid, a.partnumber,a.currency, to_char(a.pricekusd/1000,'FM99990.0999999') " +
+                            "price_usd, \n" +
                             "'('|| a.region ||')'|| a.endcustomer end_customer \n" +
                             " from tsc_om_ref_quotenet a \n" +
                             " where a.quoteid='" + modelNDto.getQuoteNumber() + "' \n" +
                             " and a.partnumber like '" + itemNoPacking + "%' \n" +
                             " order by a.quoteid, a.partnumber";
                     rs = stmt.executeQuery(sql);
-                    if (rs.next())
-                    {
+                    if (rs.next()) {
                         sellingPrice_Q = rs.getString("PRICE_USD");
                         endCustName = rs.getString("END_CUSTOMER");
                     }
