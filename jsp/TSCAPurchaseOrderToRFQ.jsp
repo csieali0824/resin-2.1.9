@@ -214,6 +214,7 @@ String screenHeight=request.getParameter("SHEIGHT");
 if (screenHeight==null) screenHeight="0";
 String v_orderno="",v_lineno="";
 String v_job_id="";
+String errorException="";
 int irow=0;
 
 try
@@ -456,16 +457,18 @@ try
 	{
 		if (REQ_STATUS.equals("AWAITING_RFQ"))
 		{
-			CallableStatement csf = con.prepareCall("{call tsrfq_import_iface(?,?,?)}"); 
+			CallableStatement csf = con.prepareCall("{call tsrfq_import_iface(?,?,?,?)}");
 			csf.setString(1,"TSCA");
 			csf.setString(2,UserName);      
 			csf.registerOutParameter(3, Types.VARCHAR);  
+			csf.registerOutParameter(4, Types.VARCHAR);
 			csf.execute();
-			v_job_id = csf.getString(3);                
+			v_job_id = csf.getString(3);
+			errorException = csf.getString(4);
 			csf.close();
 			if (v_job_id.equals("-1"))
 			{
-				throw new Exception("something error!!");
+				throw new Exception(errorException);
 			}
 			else if (v_job_id.equals("0"))
 			{
