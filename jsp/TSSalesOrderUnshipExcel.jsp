@@ -1620,7 +1620,6 @@ try
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("emily.hsin@ts.com.tw"));
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("rachel.chen@ts.com.tw"));
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("cynthia.tseng@ts.com.tw"));
-					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("kristin.wu@ts.com.tw"));
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("june.wang@ts.com.tw"));
 				}
 			}
@@ -1663,7 +1662,7 @@ try
 				}
 				else
 				{
-					message.setHeader("Subject", MimeUtility.encodeText(ACTTYPE+"未交訂單明細"+remarks, "UTF-8", null));	
+					message.setHeader("Subject", MimeUtility.encodeText(ACTTYPE+"未交訂單明細"+remarks, "UTF-8", null));
 				}			
 			}	
 			else
