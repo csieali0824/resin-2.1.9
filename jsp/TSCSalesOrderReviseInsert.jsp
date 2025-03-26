@@ -23,9 +23,6 @@
 <jsp:useBean id="dateBean" scope="page" class="DateBean"/>
 <jsp:useBean id="mySmartUpload" scope="page" class="com.jspsmart.upload.SmartUpload" />
 
-<meta http-equiv="Content-Type" content="text/html; charset=big5"></head>
-<%@ include file="/jsp/include/TSCMfgDocHyperLinkPage.jsp"%>
-
 <script language="JavaScript" type="text/JavaScript">
 
 function setDataReset(URL)
@@ -43,6 +40,7 @@ function setDataRevise(URL)
 
 </script>
 <body>
+<A HREF="/oradds/ORADDSMainMenu.jsp"><strong>回首頁</strong></A>
 <A HREF="../jsp/TSCSalesOrderReviseUpload.jsp">上一頁</A>
 <FORM NAME="MYFORM" onsubmit='return submitCheck("是","否")' ACTION="../jsp/TSCSalesOrderReviseInsert.jsp" METHOD="post">
   <strong><font color="#004080" size="4" face="Arial">Sales Order Revise Process</font></strong> 
