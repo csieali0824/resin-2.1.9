@@ -243,6 +243,7 @@ try
 					remarks="";
 					if (rs1.getString("SALES_AREA_NO").equals("001"))
 					{
+						message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("zoe.wu@ts.com.tw")); //add by Peggy 20210224
 						message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("celine.yu@ts.com.tw"));
 						message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("emily.hsin@ts.com.tw"));
 						message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("sammy.chang@ts.com.tw"));
@@ -265,26 +266,21 @@ try
 					else if (rs1.getString("SALES_AREA_NO").equals("005"))
 					{				
 						message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("vivian.chou@ts.com.tw"));  //add by Peggy 20190329
-						message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("zoe.wu@ts.com.tw")); //add by Peggy 20210224
 						
 					}
 					else if (rs1.getString("SALES_AREA_NO").equals("006"))
 					{
 						message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("kristin.wu@ts.com.tw"));
 						message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("bonnie.liu@ts.com.tw"));
-						message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("zoe.wu@ts.com.tw")); //add by Peggy 20210224
 						
 					}
 					else if (rs1.getString("SALES_AREA_NO").equals("008"))
 					{
 						message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("cindy.huang@ts.com.tw"));
-						message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("cynthia.tseng@ts.com.tw"));
 					}
 					else if (rs1.getString("SALES_AREA_NO").equals("009"))
 					{
-						message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("lisa.chen@ts.com.tw"));
 						message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("alvin.lin@ts.com.tw")); //add by Peggy 20140902
-						message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("anu@tscind.in"));  //add by Peggy 20220426
 					}
 					else if (rs1.getString("SALES_AREA_NO").equals("020"))
 					{
@@ -295,7 +291,6 @@ try
 					else if (rs1.getString("SALES_AREA_NO").equals("015"))
 					{
 						//message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("sylvia_wang@ts.com.tw"));
-						//message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("lisa@ts.com.tw"));
 					}
 					//else if (rs1.getString("SALES_AREA_NO").equals("TSCH-SZ"))
 					else if (rs1.getString("SALES_AREA_NO").equals("018"))

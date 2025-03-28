@@ -1619,8 +1619,7 @@ try
 				{
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("emily.hsin@ts.com.tw"));
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("rachel.chen@ts.com.tw"));
-					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("cynthia.tseng@ts.com.tw"));
-					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("june.wang@ts.com.tw"));
+					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("zoe.wu@ts.com.tw"));
 				}
 			}
 			else if (ACTTYPE.equals("TSCA"))

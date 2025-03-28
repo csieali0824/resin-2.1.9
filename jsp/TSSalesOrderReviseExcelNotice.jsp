@@ -1749,10 +1749,10 @@ try
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("sammy.chang@ts.com.tw"));
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("rachel.chen@ts.com.tw"));
 					message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("celine.yu@ts.com.tw"));
+					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("zoe.wu@ts.com.tw"));
 				}
 				else if (SALES_REGION.equals("TSCA"))
 				{
-					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("cynthia.tseng@ts.com.tw"));
 					message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("cindy.huang@ts.com.tw"));
 				}
 				else if (SALES_REGION.equals("TSCJ"))
@@ -1849,7 +1849,6 @@ try
 				else if (SALES_REGION.equals("TSCT-DA"))
 				{	
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("vivian.chou@ts.com.tw"));
-					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("zoe.wu@ts.com.tw"));
 					message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("rika_lin@ts.com.tw"));
 					//message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("olivia.hsu@ts.com.tw"));
 				}							

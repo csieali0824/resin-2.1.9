@@ -1017,7 +1017,7 @@ try
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("emily.hsin@ts.com.tw"));
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("sammy.chang@ts.com.tw"));
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("rachel.chen@ts.com.tw"));
-					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("cynthia.tseng@ts.com.tw"));
+					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("zoe.wu@ts.com.tw"));
 					//message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("peggy.huang@ts.com.tw"));
 					if (ACTTYPE.equals("ALLOVERDUE") && remarks.equals(""))
 					{
@@ -1241,7 +1241,6 @@ try
 				else if (SALES_REGION.equals("TSCT-DA"))
 				{	
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("vivian.chou@ts.com.tw"));
-					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("zoe.wu@ts.com.tw"));
 					message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("rika_lin@ts.com.tw"));
 					message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("olivia.hsu@ts.com.tw"));
 					message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("ashley.chen@ts.com.tw"));
