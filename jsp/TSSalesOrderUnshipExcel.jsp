@@ -261,6 +261,7 @@ try
 		  " ooh.ORDER_NUMBER,"+
 		  " ool.line_number ||'.'||ool.shipment_number line_no,"+
 		  " msi.description,"+
+		  " ooh.org_id,"+
 		  " DECODE(ool.ITEM_IDENTIFIER_TYPE,'CUST',ool.ORDERED_ITEM,'') CUST_ITEM,"+
 		  //" nvl(ar.CUSTOMER_NAME_PHONETIC,ar.customer_name) customer,"+
 		  " nvl(ar.customer_sname,ar.customer_name) customer,"+  //modify by Peggy 20210610
@@ -456,7 +457,7 @@ try
 		  " AND SUBSTR(ooh.ORDER_NUMBER,2,2) <>'19'"+			  
 		  " AND ool.end_customer_id=end_ar.customer_id(+)"+
 		  " AND ool.LINE_ID=opa.LINE_ID(+)"+
-		  " AND ooh.org_id = case  WHEN SUBSTR( OOH.ORDER_NUMBER,1,1) =1  then 41 else ooh.org_id end"+
+//		  " AND ooh.org_id = case  WHEN SUBSTR( OOH.ORDER_NUMBER,1,1) =1  then 41 else ooh.org_id end"+
 		  " AND ool.line_id=odr_info.order_line_id(+)"+
 		  " AND ool.inventory_item_id=fact.inventory_item_id"; //add by Peggy 20240403
 		  //" AND not exists (select 1 from ont.oe_order_headers_all x where org_id = 325 and substr(x.order_number,1,4) in ('1141','1131','1121') and x.header_id=ooh.header_id)";
@@ -556,7 +557,11 @@ try
 	{
 		sql += " and case when substr(ooh.ORDER_NUMBER,1,4) in ('1156','1142') or substr(ooh.ORDER_NUMBER,1,1) in ('4','8','7') then 'China' when substr(ooh.ORDER_NUMBER,1,4) in ('1141','1131','1121') then 'Taiwan' when substr(ooh.ORDER_NUMBER,1,4) in ('1214') then case when ool.packing_instructions in ('Y','T') then 'China' else 'Taiwan' end else '' end='"+SHIPFROMLOCATION+"'";
 	}	
-	sql += "order by 1 desc,2,3,4";
+//	sql += "order by 1 desc,2,3,4";
+	sql = "select * from (".concat(sql).concat(") a \n"+
+			"where a.org_id = case  WHEN SUBSTR(a.ORDER_NUMBER,1,1) =1  then 41 else a.org_id end \n"+
+			" order by 1 desc,2,3,4"
+	);
 //	out.println(sql);
 	Statement statement=con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY); 
 	ResultSet rs=statement.executeQuery(sql);
@@ -1478,6 +1483,18 @@ try
 							String deliverid = rs.getString("deliver_to_org_id");
 							String coo = rs.getString("coo");
 							Statement stm =con.createStatement();
+							System.out.println("order_number="+rs.getString("order_number"));
+							System.out.println("sales_group="+sales_group);
+							System.out.println("plant_code="+plant_code);
+							System.out.println("request_date="+request_date);
+							System.out.println("ship_method="+ship_method);
+							System.out.println("orderType="+orderType);
+							System.out.println("CUSTOMER_PO="+rs.getString("CUSTOMER_PO"));
+							System.out.println("customerId="+customerId);
+							System.out.println("fob="+fob);
+							System.out.println("deliverid="+deliverid);
+							System.out.println("coo="+coo);
+							System.out.println("-------------------------------------------------");
 							ResultSet resultSet = stm.executeQuery("select GET_TSCE_PMD_SSD('"+sales_group+"','"+plant_code+"','"+request_date+"','"+ship_method+"','"+orderType+"','"+customerId+"',sysdate,'"+fob+"','"+deliverid+"','"+coo+"') as SSD from dual");
 							if (resultSet.next()) {
 								V_PULLIN_NEW_SSD = resultSet.getString("SSD");
@@ -1617,9 +1634,9 @@ try
 				}
 				else
 				{
-					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("emily.hsin@ts.com.tw"));
-					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("rachel.chen@ts.com.tw"));
-					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("zoe.wu@ts.com.tw"));
+//					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("emily.hsin@ts.com.tw"));
+//					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("rachel.chen@ts.com.tw"));
+//					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("zoe.wu@ts.com.tw"));
 				}
 			}
 			else if (ACTTYPE.equals("TSCA"))
@@ -1647,7 +1664,7 @@ try
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("demi_duan@ts-china.com.cn"));
 				}
 			}
-			message.addRecipient(Message.RecipientType.BCC, new javax.mail.internet.InternetAddress("peggy.chen@ts.com.tw"));
+			message.addRecipient(Message.RecipientType.BCC, new javax.mail.internet.InternetAddress("mars.wang@ts.com.tw"));
 			
 			if (ACTTYPE.equals("TSCC"))
 			{
