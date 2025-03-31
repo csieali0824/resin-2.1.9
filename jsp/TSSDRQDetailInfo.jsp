@@ -403,8 +403,10 @@
 						  " where a.dndocno = c.dndocno";
 						 if (UserRoles.indexOf("admin")<0 && UserRoles.indexOf("MPC_User")>=0 || UserRoles.indexOf("MPC_003")>=0)
 	                     {
-		                  	sql +=" and exists (select 1 from oraddman.tsprod_person x where x.USERNAME='"+UserName+"' and x.PROD_FACNO=a.ASSIGN_MANUFACT)";
-						 }						  
+							 if (!UserName.equals("JUDY_CHO")  && !UserName.equals("PERRY.JUAN")) {
+								 sql += " and exists (select 1 from oraddman.tsprod_person x where x.USERNAME='" + UserName + "' and x.PROD_FACNO=a.ASSIGN_MANUFACT)";
+							 }
+						 }
 					sql += " ) a,(select distinct SAREA_NO,OTYPE_ID,ORDER_NUM FROM oraddman.tsarea_ordercls) b"+
 						  ",ar_customers c"+
 						  ",ASO_I_SHIPPING_METHODS_V d"+
