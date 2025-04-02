@@ -394,24 +394,24 @@ try
 <div id='alpha' class='hidden' style='width:<%=screenWidth%>;height:<%=screenHeight%>;position:absolute;top:0;left:0;background:#000;filter:alpha(opacity=30);-moz-opacity:0.3;z-index:0;'></div>
 <TABLE border="1" cellpadding="1" cellspacing="0" width="100%" bgcolor="#CEEAD7" bordercolorlight="#333366" bordercolordark="#ffffff">
 	<tr>
-		<td width="10%" style="font-size:11px" align="right">Status：</td>
+		<td width="10%" style="font-size:11px" align="right">Status:</td>
 		<td width="18%" >
 		<select NAME="REQ_STATUS" style="font-family: Tahoma,Georgia;font-size:11px" onChange="setReqType(this.value)">
         <OPTION VALUE="AWAITING_RFQ" <%=(REQ_STATUS.equals("AWAITING_RFQ")?" selected ":"")%>>Awaiting RFQ
         <OPTION VALUE="HISTORY" <%=(REQ_STATUS.equals("HISTORY")?" selected ":"")%>>History
 		</select>	
 		</td>
-		<td width="8%" style="font-size:11px" align="right" rowspan="3">TSC MO#/Line#：</td>
+		<td width="8%" style="font-size:11px" align="right" rowspan="3">TSC MO#/Line#:</td>
 		<td width="16%" rowspan="3"><textarea cols="20" rows="5" name="TSC_MO_LIST"  style="font-family: Tahoma,Georgia;font-size:11px;" <%=REQ_STATUS.equals("AWAITING_RFQ")?"disabled":""%>><%=TSC_MO_LIST%></textarea></td>
-		<td width="8%" style="font-size:11px" align="right" rowspan="3">TSCA MO#/Line#：</td>
+		<td width="8%" style="font-size:11px" align="right" rowspan="3">TSCA MO#/Line#:</td>
 		<td width="12%" rowspan="3"><textarea cols="20" rows="5" name="TSCA_MO_LIST"  style="font-family: Tahoma,Georgia;font-size:11px" <%=REQ_STATUS.equals("AWAITING_RFQ")?"disabled":""%>><%=TSCA_MO_LIST%></textarea></td>
-		<td width="8%" style="font-size:11px" align="right" rowspan="3">Part Number：</td>
+		<td width="8%" style="font-size:11px" align="right" rowspan="3">Part Number:</td>
 		<td width="15%" rowspan="3"><textarea cols="20" rows="5" name="ITEM_LIST"  style="font-family: Tahoma,Georgia;font-size:11px" <%=REQ_STATUS.equals("AWAITING_RFQ")?"disabled":""%>><%=ITEM_LIST%></textarea></td>
-		<td width="8%" style="font-size:11px" align="right" rowspan="3">End Customer PO：</td>
+		<td width="8%" style="font-size:11px" align="right" rowspan="3">End Customer PO:</td>
 		<td width="15%" rowspan="3"><textarea cols="20" rows="5" name="END_CUST_PO_LIST"  style="font-family: Tahoma,Georgia;font-size:11px" <%=REQ_STATUS.equals("AWAITING_RFQ")?"disabled":""%>><%=END_CUST_PO_LIST%></textarea></td>
 	</tr>
 	<tr>
-		<td style="font-size:11px" align="right">End Customer：</td>
+		<td style="font-size:11px" align="right">End Customer:</td>
 		<td>
 		<%
 		try
@@ -436,7 +436,7 @@ try
 		</td>
 	</tr>
 	<tr>
-		<td style="font-size:11px" align="right">Plan Request Date：</td>
+		<td style="font-size:11px" align="right">Plan Request Date:</td>
 		<td><input type="TEXT" NAME="SDATE" value="<%=SDATE%>" style="font-size:11px;font-family: Tahoma,Georgia;" size="8" onKeyPress="return event.keyCode >= 48 && event.keyCode <=57" <%=REQ_STATUS.equals("AWAITING_RFQ")?"disabled":""%>>						
 		<A href="javascript:void(0)" onClick="gfPop.fPopCalendar(document.MYFORM.SDATE);return false;"><img name="popcal" border="0" src="../image/calbtn.gif"></A>
 		<input type="TEXT" NAME="EDATE" value="<%=EDATE%>" style="font-size:11px;font-family: Tahoma,Georgia;" size="8" onKeyPress="return event.keyCode >= 48 && event.keyCode <=57" <%=REQ_STATUS.equals("AWAITING_RFQ")?"disabled":""%>>						
