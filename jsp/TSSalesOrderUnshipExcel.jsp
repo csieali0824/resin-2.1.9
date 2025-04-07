@@ -1483,18 +1483,18 @@ try
 							String deliverid = rs.getString("deliver_to_org_id");
 							String coo = rs.getString("coo");
 							Statement stm =con.createStatement();
-							System.out.println("order_number="+rs.getString("order_number"));
-							System.out.println("sales_group="+sales_group);
-							System.out.println("plant_code="+plant_code);
-							System.out.println("request_date="+request_date);
-							System.out.println("ship_method="+ship_method);
-							System.out.println("orderType="+orderType);
-							System.out.println("CUSTOMER_PO="+rs.getString("CUSTOMER_PO"));
-							System.out.println("customerId="+customerId);
-							System.out.println("fob="+fob);
-							System.out.println("deliverid="+deliverid);
-							System.out.println("coo="+coo);
-							System.out.println("-------------------------------------------------");
+//							System.out.println("order_number="+rs.getString("order_number"));
+//							System.out.println("sales_group="+sales_group);
+//							System.out.println("plant_code="+plant_code);
+//							System.out.println("request_date="+request_date);
+//							System.out.println("ship_method="+ship_method);
+//							System.out.println("orderType="+orderType);
+//							System.out.println("CUSTOMER_PO="+rs.getString("CUSTOMER_PO"));
+//							System.out.println("customerId="+customerId);
+//							System.out.println("fob="+fob);
+//							System.out.println("deliverid="+deliverid);
+//							System.out.println("coo="+coo);
+//							System.out.println("-------------------------------------------------");
 							ResultSet resultSet = stm.executeQuery("select GET_TSCE_PMD_SSD('"+sales_group+"','"+plant_code+"','"+request_date+"','"+ship_method+"','"+orderType+"','"+customerId+"',sysdate,'"+fob+"','"+deliverid+"','"+coo+"') as SSD from dual");
 							if (resultSet.next()) {
 								V_PULLIN_NEW_SSD = resultSet.getString("SSD");
@@ -1503,23 +1503,27 @@ try
 							stm.close();
 
 						} else {
-							CallableStatement csg = con.prepareCall("{call tsc_edi_pkg.GET_SSD(?,?,?,?,?,?,?,sysdate,?,?)}");
-							csg.setString(1, rs.getString("sales_group"));
-							if (rs.getString("PACKING_INSTRUCTIONS").equals("I") || rs.getInt("totw_days") > 0) {
-								csg.setString(2, "006");
+							if (rs.getString("ship_method").equals("TRUCK")) {
+								V_PULLIN_NEW_SSD = rs.getString("schedule_ship_date").replace("/", "");
 							} else {
-								csg.setString(2, rs.getString("plant_code"));
+								CallableStatement csg = con.prepareCall("{call tsc_edi_pkg.GET_SSD(?,?,?,?,?,?,?,sysdate,?,?)}");
+								csg.setString(1, rs.getString("sales_group"));
+								if (rs.getString("PACKING_INSTRUCTIONS").equals("I") || rs.getInt("totw_days") > 0) {
+									csg.setString(2, "006");
+								} else {
+									csg.setString(2, rs.getString("plant_code"));
+								}
+								csg.setString(3, rs.getString("request_date").replace("/", ""));
+								csg.setString(4, rs.getString("ship_method"));
+								csg.setString(5, rs.getString("order_number").substring(0, 4));
+								csg.registerOutParameter(6, Types.VARCHAR);
+								csg.setString(7, rs.getString("sold_to_org_id"));
+								csg.setString(8, rs.getString("fob_point"));
+								csg.setString(9, rs.getString("deliver_to_org_id"));
+								csg.execute();
+								V_PULLIN_NEW_SSD = csg.getString(6);
+								csg.close();
 							}
-							csg.setString(3, rs.getString("request_date").replace("/", ""));
-							csg.setString(4, rs.getString("ship_method"));
-							csg.setString(5, rs.getString("order_number").substring(0, 4));
-							csg.registerOutParameter(6, Types.VARCHAR);
-							csg.setString(7, rs.getString("sold_to_org_id"));
-							csg.setString(8, rs.getString("fob_point"));
-							csg.setString(9, rs.getString("deliver_to_org_id"));
-							csg.execute();
-							V_PULLIN_NEW_SSD = csg.getString(6);
-							csg.close();
 						}
 						if (rs.getString("SCHEDULE_SHIP_DATE") != null && Integer.parseInt(rs.getString("SCHEDULE_SHIP_DATE").replace("/", "")) <= Integer.parseInt(V_PULLIN_NEW_SSD)) {
 							ws.addCell(new jxl.write.Label(col, row, "", ALeftL));
@@ -1634,9 +1638,9 @@ try
 				}
 				else
 				{
-//					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("emily.hsin@ts.com.tw"));
-//					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("rachel.chen@ts.com.tw"));
-//					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("zoe.wu@ts.com.tw"));
+					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("emily.hsin@ts.com.tw"));
+					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("rachel.chen@ts.com.tw"));
+					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("zoe.wu@ts.com.tw"));
 				}
 			}
 			else if (ACTTYPE.equals("TSCA"))
@@ -1720,7 +1724,8 @@ try
 	
 }   
 catch (Exception e) 
-{ 
+{
+	e.printStackTrace();
 	out.println("Exception:"+e.getMessage()); 
 } 	
 %>

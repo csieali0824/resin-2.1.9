@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.net.*,java.io.*,java.text.*,java.lang.*,java.util.*"%>
+<%@ page contentType="text/html; charset=big5" language="java" import="java.sql.*,java.net.*,java.io.*,java.text.*,java.lang.*,java.util.*"%>
 <html>
 <head>
 <STYLE TYPE='text/css'>  
@@ -12,7 +12,7 @@
   A:visited { color: #990066; text-decoration: underline }
 </STYLE>
 <title>Sales Order Revise for Query</title>
-<!--=============ä»¥ä¸‹å€æ®µç‚ºå®‰å…¨èªè­‰æ©Ÿåˆ¶==========-->
+<!--=============¥H¤U°Ï¬q¬°¦w¥þ»{ÃÒ¾÷¨î==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
@@ -209,15 +209,15 @@ pstmt1.close();
 		if (UserRoles.indexOf("admin")>0 || ERP_USERID.equals("5870"))
 		{
 		%>
-		<OPTION VALUE="INSITE" <%if (ORDERTYPE.equals("INSITE")) out.println("selected");%>>å…§éŠ·</OPTION>
-		<OPTION VALUE="OUTSITE" <%if (ORDERTYPE.equals("OUTSITE")) out.println("selected");%>>å¤–éŠ·</OPTION>
+		<OPTION VALUE="INSITE" <%if (ORDERTYPE.equals("INSITE")) out.println("selected");%>>¤º¾P</OPTION>
+		<OPTION VALUE="OUTSITE" <%if (ORDERTYPE.equals("OUTSITE")) out.println("selected");%>>¥~¾P</OPTION>
 		<OPTION VALUE="CONSIGNMENT" <%if (ORDERTYPE.equals("CONSIGNMENT")) out.println("selected");%>>Consignment</OPTION>
 		<%
 		}
 		if (UserRoles.indexOf("admin")>0 || ERP_USERID.equals("15196"))
 		{
 		%>		
-		<OPTION VALUE="OUTSITE" <%if (ORDERTYPE.equals("OUTSITE")) out.println("selected");%>>å¤–éŠ·</OPTION>
+		<OPTION VALUE="OUTSITE" <%if (ORDERTYPE.equals("OUTSITE")) out.println("selected");%>>¥~¾P</OPTION>
 		<OPTION VALUE="CONSIGNMENT" <%if (ORDERTYPE.equals("CONSIGNMENT")) out.println("selected");%>>Consignment</OPTION>
 		<%
 		}
@@ -475,19 +475,19 @@ try
 			rowcnt++;
 			if (rowcnt==1)
 			{
-				//æœ€å¾Œé æ•¸
+				//³Ì«á­¶¼Æ
 				LastPage = (int)(Math.ceil(rs.getLong(1) / PageSize));		
 			%>
 	<table width="100%" border="0">
 		<tr>
-			<td style="font-family:Tahoma,Georgia;font-size:12px">Data total count:<%=rs.getString(1)%>ï¼ŒCount Rangeï¼š<%=(int)((NowPage-1)*PageSize+1)%> ~ <%=((int)(NowPage*PageSize)>rs.getInt(1)?rs.getLong(1):(int)(NowPage*PageSize))%></font>
+			<td style="font-family:Tahoma,Georgia;font-size:12px">Data total count:<%=rs.getString(1)%>¡ACount Range:<%=(int)((NowPage-1)*PageSize+1)%> ~ <%=((int)(NowPage*PageSize)>rs.getInt(1)?rs.getLong(1):(int)(NowPage*PageSize))%></font>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<input type=button name="FPage" id="FPage" value="<<" onClick="setQuery('../jsp/TSSalesOrderUnshipQuery.jsp?QPage=1')" <%if((int)NowPage==1){ out.println("disabled");}%> title="First Page">
 				&nbsp;
 				<input type=button name="PPage" id="PPage" value="<" onClick="setQuery('../jsp/TSSalesOrderUnshipQuery.jsp?QPage=<%=((int)NowPage-1)%>')"  <%if(NowPage==1){ out.println("disabled");}%> title="Previous Page">
-				&nbsp;&nbsp;Pageï¼š<%=(int)NowPage%>&nbsp;&nbsp;
+				&nbsp;&nbsp;Page:<%=(int)NowPage%>&nbsp;&nbsp;
 				<input type=button name="NPage" id="NPage" value=">" onClick="setQuery('../jsp/TSSalesOrderUnshipQuery.jsp?QPage=<%=((int)NowPage+1)%>')"  <%if(NowPage==LastPage){ out.println("disabled");}%> title="Next Page">
 				&nbsp;
 				<input type=button name="LPage" id="LPage" value=">>" onClick="setQuery('../jsp/TSSalesOrderUnshipQuery.jsp?QPage=<%=(int)LastPage%>')" <%if(NowPage==LastPage){ out.println("disabled");}%> title="Last Page">
@@ -561,7 +561,7 @@ catch(Exception e)
 %>
 </FORM>
 <iframe width=124 height=153 name="gToday:supermini:agenda.js" id="gToday:supermini:agenda.js" src="../calendar/ipopeng.htm" scrolling="no" frameborder="0" style="visibility:hidden; z-index:65535; position:absolute; top:0px;"></iframe>
-<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->
+<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 </body>
