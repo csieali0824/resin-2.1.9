@@ -1646,7 +1646,6 @@ try
 			else if (ACTTYPE.equals("TSCA"))
 			{
 				message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("cindy.huang@ts.com.tw"));
-				message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("cynthia.tseng@ts.com.tw"));
 			}			
 			else if (ACTTYPE.equals("TSCR"))
 			{

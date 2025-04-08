@@ -1055,9 +1055,7 @@ try
 				}
 				else if (SALES_REGION.equals("TSCA"))
 				{
-					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("cynthia.tseng@ts.com.tw"));
 					message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("cindy.huang@ts.com.tw"));
-					//message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("june@ts.com.tw"));					
 					if (REQ_NAME.toUpperCase().equals("NONO") && ACTTYPE.equals("AUTO"))
 					{
 						message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("nono.huang@ts.com.tw"));

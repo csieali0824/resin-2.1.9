@@ -1,5 +1,5 @@
 <!--20190225 Peggy,add End customer part name-->
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.util.*,java.text.*,java.io.*,java.sql.*,jxl.*,jxl.Workbook.*,jxl.write.*,jxl.format.*,javax.mail.*,javax.mail.internet.*,javax.mail.Multipart.*,javax.activation.*"%>
+<%@ page contentType="text/html; charset=big5" language="java" import="java.util.*,java.text.*,java.io.*,java.sql.*,jxl.*,jxl.Workbook.*,jxl.write.*,jxl.format.*,javax.mail.*,javax.mail.internet.*,javax.mail.Multipart.*,javax.activation.*"%>
 <%@ page import="DateBean"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <jsp:useBean id="dateBean" scope="page" class="DateBean"/>
@@ -16,7 +16,7 @@ int fontsize=9,colcnt=0;
 int row =0,col=0,reccnt=0,totcnt=0;
 try  
 { 	
-	//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®ä¸­-ç²—é«”-æ ¼ç·š   
+	//­^¤å¤º¤å¤ô¥­««ª½¸m¤¤-²ÊÅé-®æ½u   
 	WritableCellFormat ACenterBL = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));   
 	ACenterBL.setAlignment(jxl.format.Alignment.CENTRE);
 	ACenterBL.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -24,49 +24,49 @@ try
 	ACenterBL.setBackground(jxl.write.Colour.GRAY_25); 
 	ACenterBL.setWrap(true);
 
-	//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®ä¸­-æ­£å¸¸-æ ¼ç·š   
+	//­^¤å¤º¤å¤ô¥­««ª½¸m¤¤-¥¿±`-®æ½u   
 	WritableCellFormat ACenterL = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));   
 	ACenterL.setAlignment(jxl.format.Alignment.CENTRE);
 	ACenterL.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 	ACenterL.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 	ACenterL.setWrap(true);
 
-	//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®å³-æ­£å¸¸-æ ¼ç·š   
+	//­^¤å¤º¤å¤ô¥­««ª½¸m¥k-¥¿±`-®æ½u   
 	WritableCellFormat ARightL = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"), fontsize,  WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));   
 	ARightL.setAlignment(jxl.format.Alignment.RIGHT);
 	ARightL.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 	ARightL.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 	ARightL.setWrap(true);
 
-	//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®å·¦-æ­£å¸¸-æ ¼ç·š   
+	//­^¤å¤º¤å¤ô¥­««ª½¸m¥ª-¥¿±`-®æ½u   
 	WritableCellFormat ALeftL = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"), fontsize,  WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));   
 	ALeftL.setAlignment(jxl.format.Alignment.LEFT);
 	ALeftL.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 	ALeftL.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 	ALeftL.setWrap(true);
 	
-	//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®å·¦-æ­£å¸¸-æ ¼ç·š-ç´…å­—   
+	//­^¤å¤º¤å¤ô¥­««ª½¸m¥ª-¥¿±`-®æ½u-¬õ¦r   
 	WritableCellFormat ALeftLR = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"), fontsize,  WritableFont.BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.RED));   
 	ALeftLR.setAlignment(jxl.format.Alignment.LEFT);
 	ALeftLR.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 	ALeftLR.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 	ALeftLR.setWrap(true);	
 	
-	//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®ä¸­-æ­£å¸¸-æ ¼ç·š-ç´…å­—   
+	//­^¤å¤º¤å¤ô¥­««ª½¸m¤¤-¥¿±`-®æ½u-¬õ¦r   
 	WritableCellFormat ACenterLR = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.RED));   
 	ACenterLR.setAlignment(jxl.format.Alignment.CENTRE);
 	ACenterLR.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 	ACenterLR.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 	ACenterLR.setWrap(true);
 
-	//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®å·¦-æ­£å¸¸-æ ¼ç·š-è—å­—   
+	//­^¤å¤º¤å¤ô¥­««ª½¸m¥ª-¥¿±`-®æ½u-ÂÅ¦r   
 	WritableCellFormat ALeftLB = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLUE));   
 	ALeftLB.setAlignment(jxl.format.Alignment.LEFT);
 	ALeftLB.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 	ALeftLB.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 	ALeftLB.setWrap(true);
 	
-	//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®ä¸­-æ­£å¸¸-æ ¼ç·š-è—å­—   
+	//­^¤å¤º¤å¤ô¥­««ª½¸m¤¤-¥¿±`-®æ½u-ÂÅ¦r   
 	WritableCellFormat ACenterLB = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLUE));   
 	ACenterLB.setAlignment(jxl.format.Alignment.CENTRE);
 	ACenterLB.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -107,7 +107,7 @@ try
 			  " to_char(b.unit_price,'999990.99999') \"U/P\","+
 			  " a.currency_code \"Currency\","+
 			  " b.cust_request_date CRD,"+
-			  " case when b.data_flag='Y' then 'æˆåŠŸ' when b.ACTION_CODE='1' and  b.data_flag<>'Y' then 'è³‡æ–™ç•°å¸¸å¾…ç¢ºèª' when b.ACTION_CODE='2' and  b.data_flag<>'Y' then 'Order Cancelå¾…ç¢ºèª' when b.ACTION_CODE='3' and  b.data_flag<>'Y' then 'Order Changeå¾…ç¢ºèª' else 'ç•°å¸¸' end as  Result,"+
+			  " case when b.data_flag='Y' then '¦¨¥\' when b.ACTION_CODE='1' and  b.data_flag<>'Y' then '¸ê®Æ²§±`«İ½T»{' when b.ACTION_CODE='2' and  b.data_flag<>'Y' then 'Order Cancel«İ½T»{' when b.ACTION_CODE='3' and  b.data_flag<>'Y' then 'Order Change«İ½T»{' else '²§±`' end as  Result,"+
 			  //" case when nvl(b.RFQ_QTY,0) >0 and b.data_flag='Y' then 'RFQ:'|| b.dndocno || '  LINE:' ||b.line_no else b.ERR_EXPLANATION end as Remarks, "+
 			  " case when nvl(b.RFQ_QTY,0) >0 and b.data_flag='Y' then 'RFQ:'|| b.dndocno || '  LINE:' ||b.line_no  else '' end"+
 			  " || case when nvl(b.erp_order_qty,0)>0 and b.data_flag='Y' then 'ERP MO#:'||b.erp_order_no|| '  Line#:'||b.erp_order_line_no else '' end"+
@@ -174,7 +174,7 @@ try
 				}
 				else if (i==14)
 				{
-					if (rs1.getString(i).equals("æˆåŠŸ"))
+					if (rs1.getString(i).equals("¦¨¥\"))
 					{
 						ws.addCell(new jxl.write.Label(col+(i-1), row, rs1.getString(i) , ACenterLB));
 						ws.setColumnView(col+(i-1),25);					
@@ -197,7 +197,7 @@ try
 				}				
 				else if (i==15)
 				{
-					if (rs1.getString(14).equals("æˆåŠŸ"))
+					if (rs1.getString(14).equals("¦¨¥\"))
 					{
 						ws.addCell(new jxl.write.Label(col+(i-1), row, rs1.getString(i) ,  ALeftLB));
 						ws.setColumnView(col+(i-1),40);
@@ -244,7 +244,7 @@ try
 		javax.mail.internet.MimeMessage message = new javax.mail.internet.MimeMessage(s);
 		message.setSentDate(new java.util.Date());
 		message.setFrom(new javax.mail.internet.InternetAddress("prodsys@ts.com.tw"));
-		if (request.getRequestURL().toString().toLowerCase().indexOf("tsrfq.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("rfq134.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("yewintra.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("10.0.1.134") <0 && request.getRequestURL().toString().toLowerCase().indexOf("10.0.1.135") <0) //æ¸¬è©¦ç’°å¢ƒ
+		if (request.getRequestURL().toString().toLowerCase().indexOf("tsrfq.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("rfq134.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("yewintra.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("10.0.1.134") <0 && request.getRequestURL().toString().toLowerCase().indexOf("10.0.1.135") <0) //´ú¸ÕÀô¹Ò
 		{
 			remarks="(This is a test letter, please ignore it)";
 			message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("peggy.chen@ts.com.tw"));
@@ -256,15 +256,14 @@ try
 			message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("emily.hsin@ts.com.tw"));
 			message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("sammy.chang@ts.com.tw"));
 			message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("Dieter.Leinert@tsceu.com"));  //add by Peggy 20210125
-			message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("cynthia.tseng@ts.com.tw"));
 		}
 		message.addRecipient(Message.RecipientType.BCC, new javax.mail.internet.InternetAddress("peggy.chen@ts.com.tw"));
 			
 		message.setSubject("EDI Order Notice - "+dateBean.getYearMonthDay()+remarks);
 		javax.mail.internet.MimeMultipart mp = new javax.mail.internet.MimeMultipart();
 		javax.mail.internet.MimeBodyPart mbp = new javax.mail.internet.MimeBodyPart();
-		String str_d = "<font style='font-size:14px;font-family:Times New Roman;'>ç•¶Remarkæ¬„ä½å‡ºç¾ç´…å­—è¨Šæ¯,è¡¨ç¤ºè³‡æ–™ç•°å¸¸,è«‹åˆ°<a href='http://tsrfq.ts.com.tw:8080/oradds/jsp/TSCEDIExceptionQuery.jsp'>RFQ D9-002</a> åŠŸèƒ½ç•«é¢é€²è¡Œç¢ºèª,è¬è¬!<p><p>"+
-					   "P.Sæ­¤ç‚ºç³»çµ±è‡ªå‹•ç™¼é€çš„EMAILä¿¡ä»¶ï¼Œè«‹å‹¿ç›´æ¥å›ä¿¡ï¼Œè¬è¬!";
+		String str_d = "<font style='font-size:14px;font-family:Times New Roman;'>·íRemarkÄæ¦ì¥X²{¬õ¦r°T®§,ªí¥Ü¸ê®Æ²§±`,½Ğ¨ì<a href='http://tsrfq.ts.com.tw:8080/oradds/jsp/TSCEDIExceptionQuery.jsp'>RFQ D9-002</a> ¥\¯àµe­±¶i¦æ½T»{,ÁÂÁÂ!<p><p>"+
+					   "P.S¦¹¬°¨t²Î¦Û°Êµo°eªºEMAIL«H¥ó¡A½Ğ¤Åª½±µ¦^«H¡AÁÂÁÂ!";
 		mbp.setContent(str_d, "text/html;charset=UTF-8");
 		mp.addBodyPart(mbp);
 		mbp = new javax.mail.internet.MimeBodyPart();
@@ -289,7 +288,7 @@ out.close();
 %>
 </FORM>
 </body>
-<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->
+<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 </html>
