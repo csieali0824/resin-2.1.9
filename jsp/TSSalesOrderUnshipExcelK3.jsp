@@ -195,7 +195,7 @@ try
 	String sheetname [] = wwb.getSheetNames();
 	for (int i =0 ; i < sheetname.length ; i++)
 	//for (int i =3 ; i < sheetname.length ; i++)
-	{	
+	{
 		reccnt=0;col=0;row=0;
 		ws = wwb.getSheet(sheetname[i]);
 		SheetSettings sst = ws.getSettings(); 
@@ -206,9 +206,9 @@ try
 			sst.setHorizontalFreeze(g);
 		}	
 		//單據編號
-		ws.addCell(new jxl.write.Label(col, row, "單據編號" , ACenterBL));
-		ws.setColumnView(col,15);	
-		col++;					
+		ws.addCell(new jxl.write.Label(col, row, "單據編號", ACenterBL));
+		ws.setColumnView(col, 15);
+		col++;
 
 		//Sales Group
 		ws.addCell(new jxl.write.Label(col, row, "行號" , ACenterBL));
@@ -658,13 +658,22 @@ try
 				//}
 				if (ACTTYPE.equals("AUTO2"))//下午時段,抓前天15:00~至當天14:59
 				{
-					sql += " and ooa.BOOKED_DATE  BETWEEN TO_DATE('"+SDATE+"','yyyymmdd')+(15/24) AND TO_DATE('"+ (EDATE.equals("")?SDATE:EDATE)+"','yyyymmdd')+(14.9996/24)"+
-						   " and ooa.k3_order_no is null";
+					String condition = (i == 0) ?
+							" and (ooa.k3_order_no is null \n" +
+									"	 or (ooa.END_CUSTOMER_ID in ('1040292','1040294','1040296','1040298','631292','627290')\n" +
+									"		 and ooa.k3_order_no not like 'PC%'\n" +
+									"		 and  SUBSTR(msi.description, 1, LENGTH(msi.description) - 2) = ooa.itemk3code\n" +
+									"		)\n" +
+									"	 )"
+							: "and ooa.k3_order_no is null";
+
+					sql += " and ooa.BOOKED_DATE  BETWEEN TO_DATE('"+SDATE+"','yyyymmdd')+(15/24) AND TO_DATE('"+ (EDATE.equals("")?SDATE:EDATE)+"','yyyymmdd')+(14.9996/24)"+ condition;
 				}
 				else if (ACTTYPE.equals("AUTO3"))//下午時段,抓前天15:00~至當天14:59
 				{
-					sql += " and ooa.BOOKED_DATE  BETWEEN TO_DATE('"+SDATE+"','yyyymmdd')+(15/24) AND TO_DATE('"+ (EDATE.equals("")?SDATE:EDATE)+"','yyyymmdd')+(14.9996/24)"+
-						   " and ooa.k3_order_no is not null";
+					String condition = (i == 0) ? "and (ooa.k3_order_no is not null  and ooa.k3_order_no like 'PC%' or ooa.k3_order_no like 'BYD%')" : "and ooa.k3_order_no is not null";
+
+					sql += " and ooa.BOOKED_DATE  BETWEEN TO_DATE('"+SDATE+"','yyyymmdd')+(15/24) AND TO_DATE('"+ (EDATE.equals("")?SDATE:EDATE)+"','yyyymmdd')+(14.9996/24)"+ condition;
 				}
 			}
 			else
@@ -1002,11 +1011,24 @@ try
 		while (rs.next()) 
 		{ 	
 			col=0;
-			ws.addCell(new jxl.write.Label(col, row, rs.getString("k3_order_no"),ALeftL));  //add by Peggy 20190625
-			col++;					
-			ws.addCell(new jxl.write.Label(col, row, rs.getString("k3_order_line_no"),ALeftL)); //add by Peggy 20190625
-			col++;					
-			//Customer
+			if (ACTTYPE.equals("AUTO2")) {
+				ws.addCell(new jxl.write.Label(col, row, (i == 0) ? "" : rs.getString("k3_order_no"), ALeftL));  //add by Peggy 20190625
+				col++;
+
+			} else if (ACTTYPE.equals("AUTO3")) {
+				ws.addCell(new jxl.write.Label(col, row, rs.getString("k3_order_no"), ALeftL));  //add by Peggy 20190625
+				col++;
+			}
+
+			if (ACTTYPE.equals("AUTO2")) {
+				ws.addCell(new jxl.write.Label(col, row, (i == 0) ? "" : rs.getString("k3_order_line_no"),ALeftL));
+				col++;
+
+			} else if (ACTTYPE.equals("AUTO3")) {
+				ws.addCell(new jxl.write.Label(col, row, rs.getString("k3_order_line_no"),ALeftL));
+				col++;
+			}
+
 			ws.addCell(new jxl.write.Label(col, row, rs.getString("CUSTOMER") , ALeftL));
 			col++;	
 			ws.addCell(new jxl.write.Label(col, row, (rs.getString("currency_code")==null?"":rs.getString("currency_code")) , ALeftL));
