@@ -533,7 +533,7 @@ else
 				  " WHEN oola.TO_TW='Y' THEN to_char(next_day(TO_DATE(NVL(?,TO_CHAR(TRUNC(SYSDATE)+10,'yyyymmdd')),'yyyymmdd'),3),'yyyymmdd')"+
 				  " WHEN oola.SALES_GROUP in ('TSCH-HK','TSCC-SH','TSCT-Disty','TSCT') and oola.SHIP_METHOD='SEA' THEN to_char(next_day(TO_DATE(NVL(?,TO_CHAR(TRUNC(SYSDATE)+10,'yyyymmdd')),'YYYYMMDD'),4),'yyyymmdd')  "+
 				  " WHEN oola.SALES_GROUP='TSCA' and  oola.SHIP_METHOD='SEA(UC)' THEN to_char(next_day(TO_DATE(NVL(?,TO_CHAR(TRUNC(SYSDATE)+10,'yyyymmdd')),'YYYYMMDD'),4),'yyyymmdd')"+
-				  " WHEN oola.SALES_GROUP='TSCE' and  oola.SHIP_METHOD='SEA(C)' THEN to_char(next_day(TO_DATE(NVL(?,TO_CHAR(TRUNC(SYSDATE)+10,'yyyymmdd')),'YYYYMMDD'),2),'yyyymmdd')"+
+				  " WHEN oola.SALES_GROUP='TSCE' and  oola.SHIP_METHOD='SEA(C)' THEN to_char(next_day(TO_DATE(NVL(?,TO_CHAR(TRUNC(SYSDATE)+10,'yyyymmdd')),'YYYYMMDD'),5),'yyyymmdd')"+
 				  " WHEN oola.SALES_GROUP='TSCE' and  oola.SHIP_METHOD='AIR(C)' THEN to_char(next_day(TO_DATE(NVL(?,TO_CHAR(TRUNC(SYSDATE)+10,'yyyymmdd')),'YYYYMMDD'),4),'yyyymmdd')"+
 				  " ELSE '' END AS ACT_SHIP_DATE_R"+
 				  ",nvl((select distinct group_id from oraddman.tssg_custpo_link_tspo x where x.sales_region=oola.SALES_GROUP and x.customer_po=oola.CUST_PO_NUMBER and x.item_desc=msi.DESCRIPTION),0) price_group_id"+ //特殊價綁定 by Peggy 20230515
