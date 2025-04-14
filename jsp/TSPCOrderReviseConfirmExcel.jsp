@@ -1237,9 +1237,10 @@
 						}
 						else if (SALES_REGION.equals("SAMPLE"))
 						{
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("jenny.liao@ts.com.tw"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("demi.kao@ts.com.tw"));
-							//message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("june@ts.com.tw"));
+							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("ks.foo@ts.com.tw"));
+							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("celine.yu@ts.com.tw"));
+							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("sammy.chang@ts.com.tw"));
+							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("alice.yu@ts.com.tw"));
 							if (REQ_NAME.toUpperCase().equals("NONO") && ACTTYPE.equals("AUTO"))
 							{
 								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("nono.huang@ts.com.tw"));
@@ -1247,7 +1248,7 @@
 
 						}
 					}
-					message.addRecipient(Message.RecipientType.BCC, new javax.mail.internet.InternetAddress("peggy.chen@ts.com.tw"));
+					message.addRecipient(Message.RecipientType.BCC, new javax.mail.internet.InternetAddress("mars.wang@ts.com.tw"));
 
 					V_CUST_LIST="";
 					if (!ACTTYPE.equals("ALLOVERDUE"))
