@@ -1,0 +1,29 @@
+
+#modal .fixed-table-container {
+    height: 500px !important;
+}
+
+/*.modal-footer {*/
+/*    border: 0 !important*/
+/*}*/
+
+#modal. fixed-table-container, .fixed-table-pagination {
+    border: none !important;
+}
+
+#modal .fixed-table-body {
+    height: 400px;
+}
+
+.modal-open .modal {
+    overflow: hidden  !important;
+}
+
+#modal .bootstrap-table .table {
+    margin-top: 50px;
+    font-size: 14px;
+}
+
+.bootstrap-table .fixed-table-container .fixed-table-header {
+     overflow: visible !important;
+}
