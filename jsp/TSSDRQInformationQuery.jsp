@@ -523,9 +523,10 @@ else
 		//sWhere+=" and (exists (select 1 from oraddman.tsrecperson x where x.USERNAME='"+UserName+"' and x.tssaleareano=b.SALES_AREA_NO)  or  b.SALES_AREA_NO='020')";   //其他區也需要看樣本區交期,add by Peggy 20190426
 		sWhere+=" AND b.SALES_AREA_NO IN ( SELECT  DISTINCT x.tssaleareano from oraddman.tsrecperson x where (x.USERNAME='"+UserName+"' or x.tssaleareano='020'))";
 	}
-	else if (UserRoles.indexOf("admin")<0 && UserRoles.indexOf("MPC_User")>=0 || UserRoles.indexOf("MPC_003")>=0)
-	{
-		sWhere+=" and exists (select 1 from oraddman.tsprod_person x where x.USERNAME='"+UserName+"' and x.PROD_FACNO=d.ASSIGN_MANUFACT)";
+	else if (!UserName.equals("JUDY_CHO")  && !UserName.equals("PERRY.JUAN")) {
+		if (UserRoles.indexOf("admin") < 0 && UserRoles.indexOf("MPC_User") >= 0 || UserRoles.indexOf("MPC_003") >= 0) {
+			sWhere += " and exists (select 1 from oraddman.tsprod_person x where x.USERNAME='" + UserName + "' and x.PROD_FACNO=d.ASSIGN_MANUFACT)";
+		}
 	}
   	
 	SWHERECOND = sWhere+ sWhereGP;
@@ -1354,12 +1355,12 @@ if (listMode==null || listMode.equals("TRUE"))
                                else if (statusCode.equals("A")) { whereM=whereM+" and d.LSTATUSID in ('012') ";  } // 只找放棄的單據
                                //else if (statusCode.equals("P")) { whereM=whereM+" and f.ORISTATUSID in ('002','007') ";  }   // 只找企劃處理過的單據 (對應HISTORY 的 ORISTATUSID in ('002','007') )
                                //else if (statusCode.equals("F")) { whereM=whereM+" and f.ORISTATUSID in ('003','004') ";  } // 只找工廠處理過的單據 (對應HISTORY 的 ORISTATUSID in ('003','004') )
-							   
-								if (UserRoles.indexOf("admin")<0 && UserRoles.indexOf("MPC_User")>=0 || UserRoles.indexOf("MPC_003")>=0  && UserRoles.indexOf("SMCUser")<0)
-								{
-									whereM+=" and exists (select 1 from oraddman.tsprod_person x where x.USERNAME='"+UserName+"' and x.PROD_FACNO=d.ASSIGN_MANUFACT)";
-							
-								}							  
+							   else if (!UserName.equals("JUDY_CHO")  && !UserName.equals("PERRY.JUAN")) {
+								   if (UserRoles.indexOf("admin") < 0 && UserRoles.indexOf("MPC_User") >= 0 || UserRoles.indexOf("MPC_003") >= 0 && UserRoles.indexOf("SMCUser") < 0) {
+									   whereM += " and exists (select 1 from oraddman.tsprod_person x where x.USERNAME='" + UserName + "' and x.PROD_FACNO=d.ASSIGN_MANUFACT)";
+
+								   }
+							   }
 							   sqlM = sqlM + whereM + orderM;
 							   //out.println("sqlM="+sqlM);
 							   

@@ -127,7 +127,7 @@ public class Tsccsh extends ModelNCommonUtils {
             errList.add(ErrorMessage.SHIPPING_METHOD_IS_NOTNULL.getMessage());
             modelNDto.setErrorList(errList);
         } else {
-            ResultSet rs = this.getShippingMethodForTsccsh();
+            ResultSet rs = this.getAsoShippingMethodsV();
             boolean shippingMethodExist = false;
             if (rs.isBeforeFirst() == false) rs.beforeFirst();
             while (rs.next()) {

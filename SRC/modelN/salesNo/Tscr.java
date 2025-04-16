@@ -102,4 +102,28 @@ public class Tscr extends ModelNCommonUtils {
             }
         }
     }
+
+    public void setShippingMethod() throws SQLException {
+        if (StringUtils.isNullOrEmpty(modelNDto.getShippingMethod())) {
+            modelNDto.setShippingMethod("");
+            errList.add(ErrorMessage.SHIPPING_METHOD_IS_NOTNULL.getMessage());
+            modelNDto.setErrorList(errList);
+        } else {
+            ResultSet rs = this.getAsoShippingMethodsV();
+            boolean shippingMethodExist = false;
+            if (!rs.isBeforeFirst()) rs.beforeFirst();
+            while (rs.next()) {
+                if (rs.getString("SHIPPING_METHOD").equals(modelNDto.getShippingMethod()) ||
+                        rs.getString("SHIPPING_METHOD_CODE").equals(modelNDto.getShippingMethod())) {
+                    shippingMethodExist = true;
+                    modelNDto.setShippingMethod(rs.getString("SHIPPING_METHOD_CODE"));
+                    break;
+                }
+            }
+            if (!shippingMethodExist) {
+                errList.add(ErrorMessage.SHIPPING_METHOD_IS_NOT_EXISTS.getMessage());
+                modelNDto.setErrorList(errList);
+            }
+        }
+    }
 }

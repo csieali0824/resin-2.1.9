@@ -119,7 +119,7 @@ public class Tsck extends ModelNCommonUtils {
             ResultSet rs = this.getFndLookupValuesData();
             if (!rs.isBeforeFirst()) rs.beforeFirst();
             while (rs.next()) {
-                if (rs.getString("MEANING").equals(modelNDto.getTransportation())) {
+                if (rs.getString("MEANING").equals(modelNDto.getShippingMethod())) {
                     modelNDto.setShippingMethod(rs.getString("LOOKUP_CODE"));
                     break;
                 }

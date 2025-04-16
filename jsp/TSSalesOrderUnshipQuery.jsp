@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.net.*,java.io.*,java.text.*,java.lang.*,java.util.*"%>
+<%@ page contentType="text/html; charset=big5" language="java" import="java.sql.*,java.net.*,java.io.*,java.text.*,java.lang.*,java.util.*"%>
 <html>
 <head>
 <STYLE TYPE='text/css'>  
@@ -12,7 +12,7 @@
   A:visited { color: #990066; text-decoration: underline }
 </STYLE>
 <title>Sales Order Revise for Query</title>
-<!--=============ä»¥ä¸‹å€æ®µç‚ºå®‰å…¨èªè­‰æ©Ÿåˆ¶==========-->
+<!--=============¥H¤U°Ï¬q¬°¦w¥þ»{ÃÒ¾÷¨î==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
@@ -138,7 +138,7 @@ pstmt1.close();
 <div id='alpha' class='hidden' style='width:0%;height:0;position:absolute;top:0;left:0;background:#000;filter:alpha(opacity=30);-moz-opacity:0.3;z-index:0;'></div>
 <TABLE width="100%" border='1' bordercolorlight='#426193' bordercolordark='#ffffff' cellPadding='1' cellspacing='0' bgcolor="#E2EBBE">
 	<tr>
-		<td width="8%">Sales Groupï¼š</td>
+		<td width="8%">Sales Group:</td>
 		<td width="12%">
 		<%
 		try
@@ -197,11 +197,11 @@ pstmt1.close();
 		} 
 		%>		</td>
 		
-		<td width="8%">Customerï¼š</td>
+		<td width="8%">Customer:</td>
 		<td width="12%"><input type="text" name="CUST" value="<%=CUST%>" style="font-family:Tahoma,Georgia;font-size:11px" size="20"></td>
-		<td width="8%">MO#ï¼š</td> 
+		<td width="8%">MO#:</td>
 		<td width="12%"><input type="text" name="MONO" value="<%=MONO%>" style="font-family:Tahoma,Georgia;font-size:11px" size="14"></td>
-		<td width="8%">Order Type ï¼š</td>
+		<td width="8%">Order Type:</td>
 		<td width="12%">
 		<select NAME="ORDERTYPE" style="font-family: Tahoma,Georgia; font-size:11px">
 		<OPTION VALUE="" <%if (ORDERTYPE.equals("")) out.println("selected");%>>All</OPTION>
@@ -209,27 +209,27 @@ pstmt1.close();
 		if (UserRoles.indexOf("admin")>0 || ERP_USERID.equals("5870"))
 		{
 		%>
-		<OPTION VALUE="INSITE" <%if (ORDERTYPE.equals("INSITE")) out.println("selected");%>>å…§éŠ·</OPTION>
-		<OPTION VALUE="OUTSITE" <%if (ORDERTYPE.equals("OUTSITE")) out.println("selected");%>>å¤–éŠ·</OPTION>
+		<OPTION VALUE="INSITE" <%if (ORDERTYPE.equals("INSITE")) out.println("selected");%>>¤º¾P</OPTION>
+		<OPTION VALUE="OUTSITE" <%if (ORDERTYPE.equals("OUTSITE")) out.println("selected");%>>¥~¾P</OPTION>
 		<OPTION VALUE="CONSIGNMENT" <%if (ORDERTYPE.equals("CONSIGNMENT")) out.println("selected");%>>Consignment</OPTION>
 		<%
 		}
 		if (UserRoles.indexOf("admin")>0 || ERP_USERID.equals("15196"))
 		{
 		%>		
-		<OPTION VALUE="OUTSITE" <%if (ORDERTYPE.equals("OUTSITE")) out.println("selected");%>>å¤–éŠ·</OPTION>
+		<OPTION VALUE="OUTSITE" <%if (ORDERTYPE.equals("OUTSITE")) out.println("selected");%>>¥~¾P</OPTION>
 		<OPTION VALUE="CONSIGNMENT" <%if (ORDERTYPE.equals("CONSIGNMENT")) out.println("selected");%>>Consignment</OPTION>
 		<%
 		}
 		%>
 		</select>
 		</td>	
-		<td width="7%">Item Descï¼š</td>
+		<td width="7%">Item Desc:</td>
 		<td width="9%">
 		<input type="text" NAME="ITEMDESC" value="<%=ITEMDESC%>" style="font-family:Tahoma,Georgia;font-size:11px" size="14"></td>
 	</tr>
 	<tr>
-		<td>Shipping Methodï¼š</td>
+		<td>Shipping Method:</td>
 		<td>
 		<%
 		try
@@ -254,7 +254,7 @@ pstmt1.close();
 		} 				
 		%>
 		</td>
-		<td>Ship From Locationï¼š</td>
+		<td>Ship From Location:</td>
 		<td>
 		<select NAME="SHIPFROMLOCATION" style="font-family: Tahoma,Georgia; font-size:11px">
 		<OPTION VALUE="" <%=(SHIPFROMLOCATION.equals("")?"selected":"")%>>All</OPTION>
@@ -262,7 +262,7 @@ pstmt1.close();
 		<OPTION VALUE="Taiwan" <%=(SHIPFROMLOCATION.equals("Taiwan")?"selected":"")%>>Taiwan</OPTION>
 		</select>		
 		</td>
-		<td>Schedule Ship Dateï¼š</td>
+		<td>Schedule Ship Date:</td>
 		<td colspan="2"><input type="TEXT" NAME="SDATE" value="<%=SDATE%>" style="font-size:11px;font-family: Tahoma,Georgia;" size="8" onKeyPress="return event.keyCode >= 48 && event.keyCode <=57">
           <A href="javascript:void(0)" onClick="gfPop.fPopCalendar(document.MYFORM.SDATE);return false;"><img name="popcal" border="0" src="../image/calbtn.gif"></A>
           <input type="TEXT" NAME="EDATE" value="<%=EDATE%>" style="font-size:11px;font-family: Tahoma,Georgia;" size="8" onKeyPress="return event.keyCode >= 48 && event.keyCode <=57">
@@ -301,6 +301,7 @@ try
 			  " ooh.ORDER_NUMBER,"+
 			  " ool.line_number ||'.'||ool.shipment_number line_no,"+
 			  " msi.description,"+
+			  " ooh.org_id,"+
 			  " DECODE(ool.ITEM_IDENTIFIER_TYPE,'CUST',ool.ORDERED_ITEM,'') CUST_ITEM,"+
 			  " nvl(ar.customer_sname,ar.customer_name) customer,"+
 			  " ool.CUSTOMER_LINE_NUMBER customer_po,"+
@@ -370,8 +371,8 @@ try
 			  " AND hcsu.attribute1=tog.group_id(+)"+
 			  " AND ool.line_type_id= ott.transaction_type_id(+)"+
 			  " AND ool.ship_to_org_id=addr.site_use_id(+)"+
-			  " AND SUBSTR(ooh.ORDER_NUMBER,2,2) <>'19'"+
-			  " AND ooh.org_id = case  WHEN SUBSTR( OOH.ORDER_NUMBER,1,1) =1  then 41 else ooh.org_id end";
+			  " AND SUBSTR(ooh.ORDER_NUMBER,2,2) <>'19'";
+//			  " AND ooh.org_id = case  WHEN SUBSTR( OOH.ORDER_NUMBER,1,1) =1  then 41 else ooh.org_id end";
 			  //" AND not exists (select 1 from ont.oe_order_headers_all x where org_id = 325 and substr(x.order_number,1,4) in ('1141','1131','1121') and x.header_id=ooh.header_id)";
 		if (!salesGroup.equals("--") && !salesGroup.equals(""))
 		{
@@ -460,8 +461,13 @@ try
 		{
 			sql += " and case when substr(ooh.ORDER_NUMBER,1,4) in ('1156','1142') or substr(ooh.ORDER_NUMBER,1,1) in ('4','8','7') then 'China' when substr(ooh.ORDER_NUMBER,1,4) in ('1141','1131','1121') then 'Taiwan' when substr(ooh.ORDER_NUMBER,1,4) in ('1214') then case when ool.packing_instructions in ('Y','T') then 'China' else 'Taiwan' end else '' end='"+SHIPFROMLOCATION+"'";
 		}
-		sql += " order by 1 desc,2,3,4";
-		//out.println(sql);
+//		sql += " order by 1 desc,2,3,4";
+		sql = "select * from (".concat(sql).concat(") a \n"+
+				"where a.org_id = case  WHEN SUBSTR(a.ORDER_NUMBER,1,1) =1  then 41 else a.org_id end \n"+
+				" order by 1 desc,2,3,4"
+		);
+//		out.println(sql);
+//		System.out.println(sql);
 		Statement statement=con.createStatement(); 
 		ResultSet rs=statement.executeQuery(sql);
 		while (rs.next()) 
@@ -469,19 +475,19 @@ try
 			rowcnt++;
 			if (rowcnt==1)
 			{
-				//æœ€å¾Œé æ•¸
+				//³Ì«á­¶¼Æ
 				LastPage = (int)(Math.ceil(rs.getLong(1) / PageSize));		
 			%>
 	<table width="100%" border="0">
 		<tr>
-			<td style="font-family:Tahoma,Georgia;font-size:12px">Data total count:<%=rs.getString(1)%>ï¼ŒCount Rangeï¼š<%=(int)((NowPage-1)*PageSize+1)%> ~ <%=((int)(NowPage*PageSize)>rs.getInt(1)?rs.getLong(1):(int)(NowPage*PageSize))%></font>
+			<td style="font-family:Tahoma,Georgia;font-size:12px">Data total count:<%=rs.getString(1)%>¡ACount Range:<%=(int)((NowPage-1)*PageSize+1)%> ~ <%=((int)(NowPage*PageSize)>rs.getInt(1)?rs.getLong(1):(int)(NowPage*PageSize))%></font>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<input type=button name="FPage" id="FPage" value="<<" onClick="setQuery('../jsp/TSSalesOrderUnshipQuery.jsp?QPage=1')" <%if((int)NowPage==1){ out.println("disabled");}%> title="First Page">
 				&nbsp;
 				<input type=button name="PPage" id="PPage" value="<" onClick="setQuery('../jsp/TSSalesOrderUnshipQuery.jsp?QPage=<%=((int)NowPage-1)%>')"  <%if(NowPage==1){ out.println("disabled");}%> title="Previous Page">
-				&nbsp;&nbsp;Pageï¼š<%=(int)NowPage%>&nbsp;&nbsp;
+				&nbsp;&nbsp;Page:<%=(int)NowPage%>&nbsp;&nbsp;
 				<input type=button name="NPage" id="NPage" value=">" onClick="setQuery('../jsp/TSSalesOrderUnshipQuery.jsp?QPage=<%=((int)NowPage+1)%>')"  <%if(NowPage==LastPage){ out.println("disabled");}%> title="Next Page">
 				&nbsp;
 				<input type=button name="LPage" id="LPage" value=">>" onClick="setQuery('../jsp/TSSalesOrderUnshipQuery.jsp?QPage=<%=(int)LastPage%>')" <%if(NowPage==LastPage){ out.println("disabled");}%> title="Last Page">
@@ -555,7 +561,7 @@ catch(Exception e)
 %>
 </FORM>
 <iframe width=124 height=153 name="gToday:supermini:agenda.js" id="gToday:supermini:agenda.js" src="../calendar/ipopeng.htm" scrolling="no" frameborder="0" style="visibility:hidden; z-index:65535; position:absolute; top:0px;"></iframe>
-<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->
+<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 </body>

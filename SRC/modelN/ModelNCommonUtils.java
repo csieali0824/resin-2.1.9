@@ -471,7 +471,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                 " AND security_group_id = 0"+
                 " AND ENABLED_FLAG='Y'"+
                 " AND (end_date_active IS NULL OR end_date_active > SYSDATE)";
-        Statement stmt = conn.createStatement( ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         return stmt.executeQuery(sql);
     }
 
@@ -518,6 +518,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                 if (isSetSalesInfo) {
                     tscr.setFob();
                     tscr.setCrd();
+                    tscr.setShippingMethod();
                 }
                 break;
             default:
@@ -525,7 +526,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
         }
     }
 
-    protected ResultSet getShippingMethodForTsccsh() throws SQLException {
+    protected ResultSet getAsoShippingMethodsV() throws SQLException {
         Statement stmt = conn.createStatement();
         String sql = "select a.SHIPPING_METHOD_CODE, a.SHIPPING_METHOD from ASO_I_SHIPPING_METHODS_V a ";
         ResultSet rs = stmt.executeQuery(sql);
@@ -535,7 +536,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
     // 取得FOB(incoterm)的資訊
     protected ResultSet getFobIncotermData() throws SQLException {
         String sql = " select a.FOB_CODE, a.FOB from OE_FOBS_ACTIVE_V a order by a.fob_code";
-        Statement stmt = conn.createStatement( ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         return stmt.executeQuery(sql);
     }
 
