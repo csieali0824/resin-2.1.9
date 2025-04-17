@@ -206,7 +206,7 @@ public class Tsca extends ModelNCommonUtils {
                 modelNDto.setManuFactoryNo(rs.getString("ATTRIBUTE3"));
                 itemNoPacking = rs.getString("itemnopacking");
                 modelNDto.setUom(rs.getString("PRIMARY_UOM_CODE"));
-                modelNDto.setOrderType(rs.getString("ORDER_TYPE"));
+                modelNDto.setOrderType(StringUtils.isNullOrEmpty(modelNDto.getOrderType())? rs.getString("ORDER_TYPE") : modelNDto.getOrderType());
                 modelNDto.setTscPackage(rs.getString("TSC_PACKAGE"));
                 modelNDto.setTscFamily(rs.getString("TSC_FAMILY"));
                 recordCount++;
@@ -252,7 +252,7 @@ public class Tsca extends ModelNCommonUtils {
                     modelNDto.setManuFactoryNo(rs.getString("ATTRIBUTE3"));
                     itemNoPacking = rs.getString("itemnopacking");
                     modelNDto.setUom(rs.getString("PRIMARY_UOM_CODE"));
-                    modelNDto.setOrderType(rs.getString("ORDER_TYPE"));
+                    modelNDto.setOrderType(StringUtils.isNullOrEmpty(modelNDto.getOrderType())? rs.getString("ORDER_TYPE") : modelNDto.getOrderType());
                     modelNDto.setTscPackage(rs.getString("TSC_PACKAGE"));
                     modelNDto.setTscFamily(rs.getString("TSC_FAMILY"));
                     modelNDto.setCustItem("");
