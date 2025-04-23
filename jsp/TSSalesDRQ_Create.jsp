@@ -1842,11 +1842,11 @@
 		String targetMonth="";
 		String customerId=request.getParameter("CUSTOMERID");
 		String customerNo=request.getParameter("CUSTOMERNO");
-		String customerName=request.getParameter("CUSTOMERNAME");
+		String customerName= StringUtils.isNullOrEmpty((String) session.getAttribute("CUSTOMERNAME")) ? "" : (String) session.getAttribute("CUSTOMERNAME");
 		String custActive=request.getParameter("CUSTACTIVE");
 		String salesAreaNo=request.getParameter("SALESAREANO");
 		String salesPersonID=request.getParameter("SALESPERSONID");
-		String customerPO=request.getParameter("CUSTOMERPO");
+		String customerPO= StringUtils.isNullOrEmpty((String) session.getAttribute("CUSTOMERPO")) ? "" : (String) session.getAttribute("CUSTOMERPO");
 		String receptDate=request.getParameter("RECEPTDATE");
 		String curr=request.getParameter("CURR");
 		String remark=request.getParameter("REMARK");
@@ -1891,8 +1891,7 @@
 		if (deliveryAddress==null) deliveryAddress="";
 		String deliveryCountry = request.getParameter("DELIVERYCOUNTRY"); //add by Peggy 20130218
 		if (deliveryCountry==null) deliveryCountry="";
-		String shipToContact = request.getParameter("SHIPTOCONTACT");  //add by Peggy 20130218
-		if (shipToContact ==null) shipToContact="";
+		String shipToContact = StringUtils.isNullOrEmpty((String) session.getAttribute("SHIPTOCONTACT")) ? "" : (String) session.getAttribute("SHIPTOCONTACT");
 		String shipToContactid = request.getParameter("SHIPTOCONTACTID");  //add by Peggy 20130220
 		if (shipToContactid ==null) shipToContactid="";
 		String paymentTerm = request.getParameter("PAYTERM");      //add by Peggy 20120215

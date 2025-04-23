@@ -20,6 +20,8 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+import static modelN.SalesArea.TSCTDA;
+
 public class ModelNCommonUtils extends AbstractModelNUtils {
 
     public String salesNo;
@@ -898,19 +900,25 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
     }
 
     private void setDefaultLineType() throws SQLException {
-        Statement statement = conn.createStatement();
-        String sql =
-                "select DEFAULT_ORDER_LINE_TYPE from ORADDMAN.TSAREA_ORDERCLS c \n" +
-                " where c.SAREA_NO = '" + salesNo + "' \n" +
-                " and c.ORDER_NUM='" + modelNDto.getOrderType() + "'";
-        ResultSet rs = statement.executeQuery(sql);
-        if (rs.next()) {
-            modelNDto.setLineType(rs.getString("DEFAULT_ORDER_LINE_TYPE"));
+        if (salesNo.equals(TSCTDA.getSalesNo())
+                && modelNDto.getOrderType().equals("1131")
+                && modelNDto.getTscItemDesc().toLowerCase().contains("wafer".toLowerCase())) {
+            modelNDto.setLineType("1503");
         } else {
-            modelNDto.setLineType("0");
+            Statement statement = conn.createStatement();
+            String sql =
+                    "select DEFAULT_ORDER_LINE_TYPE from ORADDMAN.TSAREA_ORDERCLS c \n" +
+                            " where c.SAREA_NO = '" + salesNo + "' \n" +
+                            " and c.ORDER_NUM='" + modelNDto.getOrderType() + "'";
+            ResultSet rs = statement.executeQuery(sql);
+            if (rs.next()) {
+                modelNDto.setLineType(rs.getString("DEFAULT_ORDER_LINE_TYPE"));
+            } else {
+                modelNDto.setLineType("0");
+            }
+            rs.close();
+            statement.close();
         }
-        rs.close();
-        statement.close();
     }
 
     public void insertIntoTscRfqUploadTmp() throws SQLException {

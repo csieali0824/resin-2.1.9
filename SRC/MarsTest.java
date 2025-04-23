@@ -6,7 +6,6 @@ import jxl.read.biff.BiffException;
 import modelN.DetailColumn;
 import modelN.ErrorMessage;
 import modelN.ExcelColumn;
-import modelN.SalesArea;
 import modelN.dao.impl.TscRfqUploadTempImpl;
 import modelN.dto.DetailDto;
 import modelN.dto.ModelNDto;
@@ -18,6 +17,8 @@ import java.sql.*;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
+
+import static modelN.SalesArea.TSCTDA;
 
 public class MarsTest {
     public static void mainc(String[] args) {
@@ -98,7 +99,7 @@ public class MarsTest {
         }
     }
 
-    private static String salesNo = SalesArea.TSCTDISTY.getSalesNo();
+    private static String salesNo = TSCTDA.getSalesNo();
 
     private static List errList = new LinkedList();
 
@@ -537,7 +538,7 @@ public class MarsTest {
 //        String uploadFilePath = "D:/D4-019.xls";
 //        String uploadFilePath = "C:\\Users\\mars.wang\\Desktop\\sales-upload\\D4-019_20241212.xls";
         try {
-            String uploadFilePath = "C:\\Users\\mars.wang\\Desktop\\modelN_Excel\\D4-021_ModelN_Upload format.xls";
+            String uploadFilePath = "C:\\Users\\mars.wang\\Desktop\\modelN_Excel\\RFQ-TSCTDA-33452.xls";
             InputStream is = new FileInputStream(uploadFilePath);
             Workbook wb = Workbook.getWorkbook(is);
             Sheet sheet = wb.getSheet(0);
@@ -673,7 +674,7 @@ public class MarsTest {
                 }
 //            System.out.println(""+i+"----------------------------------------------");
             }
-//            readExcelContent();
+            readExcelContent();
             wb.close();
         } catch (IOException | BiffException e) {
             e.printStackTrace();
@@ -918,7 +919,7 @@ public class MarsTest {
             } else if (!endCustName.equals("")) {
                 modelNDto.setEndCustNamePhonetic(endCustName);
             }
-            System.out.println("xxxx=" + modelNDto.getEndCustNamePhonetic());
+//            System.out.println("xxxx=" + modelNDto.getEndCustNamePhonetic());
 //            System.out.println("mo="+errList2String(modelNDto.getErrorList()));
         }
 //        insertIntoTscRfqUploadTmp(connection, map);
@@ -942,19 +943,25 @@ public class MarsTest {
 
 
     private static void setDefaultLineType() throws SQLException {
-        Statement statement = conn.createStatement();
-        String sql =
-                "select DEFAULT_ORDER_LINE_TYPE from ORADDMAN.TSAREA_ORDERCLS c  where c.SAREA_NO = '" + salesNo + "'" +
-                        " \n" +
-                        "and c.ORDER_NUM='" + modelNDto.getOrderType() + "'";
-        ResultSet rs = statement.executeQuery(sql);
-        if (rs.next()) {
-            modelNDto.setLineType(rs.getString("DEFAULT_ORDER_LINE_TYPE"));
+        if (salesNo.equals(TSCTDA.getSalesNo())
+                && modelNDto.getOrderType().equals("1131")
+                && modelNDto.getTscItemDesc().toLowerCase().contains("wafer".toLowerCase())) {
+            System.out.println("Found: " + modelNDto.getTscItemDesc());
         } else {
-            modelNDto.setLineType("0");
+            Statement statement = conn.createStatement();
+            String sql = "select DEFAULT_ORDER_LINE_TYPE from ORADDMAN.TSAREA_ORDERCLS c  where c.SAREA_NO = '" + salesNo + "' \n" +
+                    "and c.ORDER_NUM='" + modelNDto.getOrderType() + "'";
+            ResultSet rs = statement.executeQuery(sql);
+            if (rs.next()) {
+                modelNDto.setLineType(rs.getString("DEFAULT_ORDER_LINE_TYPE"));
+            } else if (salesNo.equals(TSCTDA.getSalesNo()) && modelNDto.getOrderType().equals("1131")) {
+                System.out.println("Xxxxxx");
+            } else {
+                modelNDto.setLineType("0");
+            }
+            rs.close();
+            statement.close();
         }
-        rs.close();
-        statement.close();
     }
 
     private static void checkSellingPrice() {
