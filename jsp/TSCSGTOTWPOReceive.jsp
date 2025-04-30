@@ -190,7 +190,7 @@ try
 					<OPTION VALUE="49" <%if (ORGCODE.equals("49")) out.println("selected");%>>I1</OPTION>
 					<%
 					}
-					if (UserRoles.equals("admin") || UserName.toUpperCase().equals("DEMI_KAO") || UserName.toUpperCase().equals("JENNY_LIAO") || UserName.toUpperCase().equals("JUDY_CHO") || UserName.toUpperCase().equals("REBECCA_YEH"))
+					if (UserRoles.equals("admin") || UserName.toUpperCase().equals("CLAIRE.WENG") || UserName.toUpperCase().equals("JANICE") || UserName.toUpperCase().equals("JASON") || UserName.toUpperCase().equals("JENNY_LIAO") || UserName.toUpperCase().equals("JUDY_CHO") || UserName.toUpperCase().equals("REBECCA_YEH"))
 					{ 
 					%>
 					<OPTION VALUE="566" <%if (ORGCODE.equals("566")) out.println("selected");%>>I20</OPTION>
