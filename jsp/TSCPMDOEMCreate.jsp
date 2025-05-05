@@ -131,7 +131,7 @@ function CheckDataCode(chooseLine)
 		}
 		if (document.MYFORM.elements["DateCode"+chooseLine].value!="" && document.MYFORM.elements["DateCode"+chooseLine].value!="HOLD" && document.MYFORM.elements["DateCode"+chooseLine].value!="NA")
 		{
-			subWin=window.open("../jsp/subwindow/TSCPMDDateCodeInfoFind.jsp?ITEMNAME="+document.MYFORM.elements["ITEMNAME"].value+"&DC="+document.MYFORM.elements["DateCode"+chooseLine].value+"&LNO="+chooseLine,"subwin","width=100,height=100,scrollbars=yes,menubar=no,location=no");
+			subWin=window.open("../jsp/subwindow/TSCPMDDateCodeInfoFind.jsp?ITEMNAME="+document.MYFORM.elements["ITEMNAME"].value+"&DC="+document.MYFORM.elements["DateCode"+chooseLine].value+"&PROD_GROUP="+document.MYFORM.elements["PROD_GROUP"].value + "&LNO="+chooseLine,"subwin","width=100,height=100,scrollbars=yes,menubar=no,location=no");
 		}
 		else
 		{

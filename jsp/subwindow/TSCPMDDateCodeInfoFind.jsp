@@ -21,7 +21,8 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 12px }
   select   {  font-family:  Tahoma,Georgia; color: #000000; font-size: 12px}
 </STYLE>
 <%
-
+String prodGroup = request.getParameter("PROD_GROUP");
+if (prodGroup == null) prodGroup = "";
 String ITEMNAME=request.getParameter("ITEMNAME");
 if (ITEMNAME == null) ITEMNAME = "";
 String DC=request.getParameter("DC");
@@ -76,6 +77,7 @@ function sendToMainWindow(DC_YYWW,iCnt)
 <%
 int queryCount=0;
 String dc_yyww="",sql ="";
+String dcExample = "";
 try
 {
 	sql = " SELECT nvl(a.date_code_example,a.date_code_rule) date_code_example, a.item_description"+
@@ -92,6 +94,7 @@ try
 
 	while (rs1.next())
 	{
+		dcExample = rs1.getString(1);
 		if ("TQL821CSV33-01 RLG".equals(rs1.getString(2)) && DC.matches(".*\\d$")
 		   || "TQL821CSV33 RLG".equals(rs1.getString(2)) && DC.matches(".*[a-zA-Z]$")) {
 			queryCount = -997;
@@ -120,17 +123,41 @@ try
 		out.println("<script type=\"text/javascript\">sendToMainWindow("+'"'+""+'"'+","+queryCount+")</script>"); 
 	}
 		  
-	sql =" select tsc_get_calendar_week(D_DATE,null),count(1) over (partition by 1) ROW_CNT"+
+	sql =" select tsc_get_calendar_week(D_DATE,null),count(1) over (partition by 1) ROW_CNT, to_char(D_DATE,'yyyy/mm/dd') D_DATE"+
 	     " from table(TSC_GET_ITEM_DATE_INFO(?,?))  WHERE D_TYPE=?";
 	state1 = con.prepareStatement(sql);
 	state1.setString(1,(ITEMNAME.equals("X06G-LIPRFTS1970500000")?DC:DC.replace("_","")));
 	state1.setString(2,ITEMNAME);
 	state1.setString(3,"MAKE");
 	rs1=state1.executeQuery();
-	if (rs1.next())
-	{	
-		dc_yyww=rs1.getString(1).substring(rs1.getString(1).length()-4);
-		queryCount=rs1.getInt(2);
+	if (rs1.next()) {
+		dc_yyww = rs1.getString(1).substring(rs1.getString(1).length() - 4);
+		queryCount = rs1.getInt(2);
+		if (prodGroup.equals("SSD") && dcExample.equals("YML")) {
+			String date = rs1.getString(3);
+			String sql1="alter SESSION set NLS_LANGUAGE = 'AMERICAN' ";
+			PreparedStatement pstmt1=con.prepareStatement(sql1);
+			pstmt1.executeUpdate();
+			pstmt1.close();
+
+			String getIwSql = " select to_char(to_date('"+date+"','yyyy/mm/dd'),'yy')||to_char(dt, 'IW') yyww from (\n" +
+					"    select CASE\n" +
+					"      WHEN (7 - TO_CHAR(TRUNC(ADD_MONTHS(to_date('"+date+"','yyyy/mm/dd'), 0), 'MM'), 'D')) + 1 < 3 THEN\n" +
+					"       NEXT_DAY(NEXT_DAY(TRUNC(ADD_MONTHS(to_date('"+date+"','yyyy/mm/dd'), 0), 'MM'), 'SUNDAY'), 'SUNDAY') + 7\n" +
+					"      ELSE\n" +
+					"        NEXT_DAY(NEXT_DAY(TRUNC(ADD_MONTHS(to_date('"+date+"','yyyy/mm/dd'), 0), 'MM'), 'SUNDAY'), 'SUNDAY')\n" +
+					"     END AS dt\n" +
+					"	FROM dual\n" +
+					")";
+			System.out.println("getIwSql="+getIwSql);
+			Statement statement = con.createStatement();
+			ResultSet rs = statement.executeQuery(getIwSql);
+			if (rs.next()) {
+				dc_yyww = rs.getString("yyww");
+			}
+			rs.close();
+			statement.close();
+		}
 	}
 	rs1.close();
 	state1.close();
@@ -138,6 +165,9 @@ try
 }
 catch(Exception e)
 {
+	System.out.println("err="+e.getMessage());
+	e.printStackTrace();
+
 	out.println("<font color='red'>Exception"+e.getMessage()+"</font>");
 	out.println("<script type=\"text/javascript\">sendToMainWindow("+'"'+dc_yyww+'"'+",-1000)</script>"); 
 }
