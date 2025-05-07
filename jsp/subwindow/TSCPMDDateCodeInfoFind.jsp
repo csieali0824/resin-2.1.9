@@ -149,7 +149,6 @@ try
 					"     END AS dt\n" +
 					"	FROM dual\n" +
 					")";
-			System.out.println("getIwSql="+getIwSql);
 			Statement statement = con.createStatement();
 			ResultSet rs = statement.executeQuery(getIwSql);
 			if (rs.next()) {
