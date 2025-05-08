@@ -1201,10 +1201,10 @@
 						else if (SALES_REGION.equals("TSCR-ROW"))
 						{
 							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("alvin.lin@ts.com.tw"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("joginder@tscind.in"));
 							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("priya.thakur@tscind.in"));
-							//message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("lisa.chen@ts.com.tw"));
-							//message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("june@ts.com.tw"));
+							message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("lisa.chen@ts.com.tw"));
+							message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("cindy.huang@ts.com.tw"));
+							message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("bonnie.liu@ts.com.tw"));
 							if (REQ_NAME.toUpperCase().equals("NONO") && ACTTYPE.equals("AUTO"))
 							{
 								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("nono.huang@ts.com.tw"));
