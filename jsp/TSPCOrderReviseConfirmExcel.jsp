@@ -1040,7 +1040,6 @@
 						else if (SALES_REGION.equals("TSCJ"))
 						{
 							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("bonnie.liu@ts.com.tw"));
-							message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("jacksonl@ts.com.tw"));
 							//message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("june@ts.com.tw"));
 							if (REQ_NAME.toUpperCase().equals("NONO") && ACTTYPE.equals("AUTO"))
 							{
