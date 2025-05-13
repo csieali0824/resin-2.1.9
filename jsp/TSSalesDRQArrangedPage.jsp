@@ -1203,7 +1203,7 @@ catch(Exception e)
 				 ",TSC_INV_Category(a.inventory_item_id, 43, 23)  tsc_package"+ //add by Peggy 20170412
 				 ",nvl(a.order_type_id,a.order_type_id1) order_type_id"+  //add by Peggy 20180207
 			     ",tsc_get_china_to_tw_days("+
-				 "    case when a.assign_manufact in ('011') and a.item_description in (\n" +
+				 "    case when a.assign_manufact in ('011') and a.ITEM_SEGMENT1 not in ('X03G-MFBRFTS2307000000') and a.item_description in (\n" +
 				 "            'TSM4925DCS RLG','TSM4953DCS RLG','TSM4936DCS RLG','TSM2302CX RFG','TSM2305CX RFG','TSM2306CX RFG','TSM2307CX RFG','TSM2308CX RFG','TSM2312CX RFG',\n" +
 				 "            'TSM2314CX RFG','TSM2318CX RFG','TSM2323CX RFG','TSM2328CX RFG','TSM9409CS RLG','TSM3443CX6 RFG','TSM3481CX6 RFG','TSM3457CX6 RFG','TSM3911DCX6 RFG')\n" +
 				 "        then 'T' else (SELECT ALNAME FROM ORADDMAN.TSPROD_MANUFACTORY WHERE MANUFACTORY_NO=a.assign_manufact) end \n" +
