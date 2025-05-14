@@ -8,14 +8,14 @@
 <!-- 20151026 by Peggy,get_ssd  arrow ssd+運輸天數>=crd -->
 <!-- 20160219 by Peggy,上海內銷012 end customer設為必填-->
 <!-- 20160308 by Peggy,for sample order add direct_ship_to_cust column-->
-<!-- 20160318 by Peggy,客戶單價有定義時,自動帶入-
-<!-- 20160512 by Peggy,tscj,tsca rfq type預設normal->
+<!-- 20160318 by Peggy,客戶單價有定義時,自動帶入-->
+<!-- 20160512 by Peggy,tscj,tsca rfq type預設normal-->
 <!-- 20161228 by Peggy,ITEM STATUS=NRND FOR SAMPLE ALERT-->
 <!-- 20170216 by Peggy,add sales region for bi-->
 <!-- 20170425 by Peggy,market group=AU & product package=SMA,當型號有assign到YEW,必須判002,否則依預設工廠別顯示(與CELINE討論)-->
 <!-- 20170511 by Peggy,add end cust ship to id-->
 <!-- 20171221 Peggy,TSCH-HK RFQ region code from 002 change to 018-->
-<!-- 20180518 Peggy,TSCC內銷012,022,外銷002客戶8103 RFQ必須輸入END CUSTOMER-
+<!-- 20180518 Peggy,TSCC內銷012,022,外銷002客戶8103 RFQ必須輸入END CUSTOMER-->
 <!-- 20180720 Peggy,for TSCA CUSTOMER DIGIKEY ISSUE-->
 <!-- 20190225 Peggy,add End customer part name-->
 <%@ page language="java" import="java.sql.*" %>
@@ -28,6 +28,10 @@
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
 <%@ page import="SalesDRQPageHeaderBean" %>
 <%@ page import="com.mysql.jdbc.StringUtils" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.Arrays" %>
+<%@ page import="java.util.HashMap" %>
+<%@ page import="java.util.Iterator" %>
 <html>
 <head>
 	<title>Sales Delivery Request Questionnaire Input Form</title>
@@ -1840,13 +1844,15 @@
 		String docNo=request.getParameter("DOCNO");
 		String targetYear="";
 		String targetMonth="";
+		String customerNo = "";
+		String customerName= "";
 		String customerId=request.getParameter("CUSTOMERID");
-		String customerNo=request.getParameter("CUSTOMERNO");
-		String customerName= StringUtils.isNullOrEmpty((String) session.getAttribute("CUSTOMERNAME")) ? "" : (String) session.getAttribute("CUSTOMERNAME");
+//		String customerNo=request.getParameter("CUSTOMERNO");
+//		String customerName=request.getParameter("CUSTOMERNAME");
 		String custActive=request.getParameter("CUSTACTIVE");
 		String salesAreaNo=request.getParameter("SALESAREANO");
 		String salesPersonID=request.getParameter("SALESPERSONID");
-		String customerPO= StringUtils.isNullOrEmpty((String) session.getAttribute("CUSTOMERPO")) ? "" : (String) session.getAttribute("CUSTOMERPO");
+		String customerPO=request.getParameter("CUSTOMERPO");
 		String receptDate=request.getParameter("RECEPTDATE");
 		String curr=request.getParameter("CURR");
 		String remark=request.getParameter("REMARK");
@@ -1891,7 +1897,8 @@
 		if (deliveryAddress==null) deliveryAddress="";
 		String deliveryCountry = request.getParameter("DELIVERYCOUNTRY"); //add by Peggy 20130218
 		if (deliveryCountry==null) deliveryCountry="";
-		String shipToContact = StringUtils.isNullOrEmpty((String) session.getAttribute("SHIPTOCONTACT")) ? "" : (String) session.getAttribute("SHIPTOCONTACT");
+		String shipToContact = request.getParameter("SHIPTOCONTACT");  //add by Peggy 20130218
+		if (shipToContact ==null) shipToContact="";
 		String shipToContactid = request.getParameter("SHIPTOCONTACTID");  //add by Peggy 20130220
 		if (shipToContactid ==null) shipToContactid="";
 		String paymentTerm = request.getParameter("PAYTERM");      //add by Peggy 20120215
@@ -2604,7 +2611,7 @@
 					sqla+= " and ((a.SITE_USE_CODE='SHIP_TO' and a.SITE_USE_ID='"+def_ship_org_id+"') or (a.SITE_USE_CODE<>'SHIP_TO' and a.PRIMARY_FLAG='Y'))";
 				}
 			}
-			if (salesAreaNo.equals("009") || salesAreaNo.equals("002") || salesAreaNo.equals("005") || salesAreaNo.equals("008")) //add 008 by Peggy 20230201,add by Peggy 20160321,for cust price issue
+			if (salesAreaNo.equals("009") || salesAreaNo.equals("002") || salesAreaNo.equals("005") || salesAreaNo.equals("008") || salesAreaNo.equals("018")) //add 018 by Mars 20250425 ,for cust price issue
 			{
 				sqla +=" order by case when upper(a.site_use_code)='SHIP_TO' then 1 when upper(a.site_use_code)='BILL_TO' then 2 else 3 end";
 			}

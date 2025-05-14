@@ -17,6 +17,7 @@
 <!--=================================-->
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
 <%@ page import="SalesDRQPageHeaderBean" %>
+<%@ page import="java.util.Arrays" %>
 <jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
 <%@ include file="/jsp/include/ProgressStatusBarStart.jsp"%>
 <%
@@ -57,6 +58,12 @@ String deliverid = request.getParameter("deliverid"); //add by Peggy 20210208
 if (deliverid==null) deliverid="";
 String currency="",sellingprice="",yew_flag="",tsceonhand="",itemID="",coo="";   //add by Peggy 20160318
 String tscPacking=null,tscFamily=null,tscProdGroup="",sPQP=null,sMOP=null,SPQRULE="",ORDERTYPE="",UOM="",tscProdFamily="",item_status="",packing_ins="";//add SPQRULE,ORDERTYPE by Peggy 20120516
+String[] ignoreCooArray = new String[]{"801G-051QQ1114000000000000AF00", "802H-031QQ212V000000000000AF00"};
+boolean ignoreCooFlag = false;
+
+if (Arrays.asList(ignoreCooArray).contains(invItem) && "004".equals(salesAreaNo)) {
+	ignoreCooFlag = true;
+}
 
 if (sampleOrdCh != null)
 {
@@ -537,7 +544,7 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 10px }
 		  		}    
 			}  // End of if (queryCount==0)
 
-			String filterCoo = (salesAreaNo.equals("008") || UserRoles.contains("admin")) ? "" :
+			String filterCoo = (salesAreaNo.equals("008") || UserRoles.contains("admin") || salesAreaNo.equals("020") || ignoreCooFlag) ? "" :
 					"and tsc_get_item_coo(a.inventory_item_id) =(\n" +
 							"case when TSC_INV_CATEGORY(INVENTORY_ITEM_ID,43,23) IN ('SMA', 'SMB', 'SMC', 'SOD-123W', 'SOD-128')\n" +
 							"then 'CN' else tsc_get_item_coo(a.inventory_item_id) end)";

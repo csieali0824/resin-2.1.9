@@ -32,6 +32,7 @@ public class ModelNDto {
     private String shipToLocationId = "";
     private String shipToOrgId = "";
     private String biRegion = "";
+    private String IgnoreCoo = "";
     private String tempId = "";
     private String errorMsg = "";
     private List errorList = new LinkedList();
@@ -272,6 +273,14 @@ public class ModelNDto {
 
     public void setBiRegion(String biRegion) {
         this.biRegion = biRegion;
+    }
+
+    public String getIgnoreCoo() {
+        return IgnoreCoo;
+    }
+
+    public void setIgnoreCoo(String ignoreCoo) {
+        IgnoreCoo = ignoreCoo;
     }
 
     public String getErrorMsg() {

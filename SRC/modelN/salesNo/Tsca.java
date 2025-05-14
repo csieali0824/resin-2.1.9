@@ -270,12 +270,34 @@ public class Tsca extends ModelNCommonUtils {
             } else {
                 if (!modelNDto.getQuoteNumber().equals("") && !modelNDto.getTscItemDesc().equals("")) {
                     Statement stmt = conn.createStatement();
-                    String sql = " select a.quoteid, a.partnumber,a.currency, to_char(a.pricekusd/1000,'FM99990.0999999') price_usd, \n"+
-                            "'('|| a.region ||')'|| a.endcustomer end_customer \n"+
-                            " from tsc_om_ref_quotenet a \n"+
+                    String sql = "select *  from (\n" +
+                            "select a.quoteid, a.partnumber,a.currency, to_char(a.pricekusd/1000,'FM99990.0999999') price_usd,\n" +
+                            "'('|| a.region ||')'|| a.endcustomer end_customer\n" +
+                            "from tsc_om_ref_quotenet a\n" +
                             " where a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
                             " and a.partnumber='" + modelNDto.getTscItemDesc() + "' \n"+
-                            " order by a.quoteid, a.partnumber";
+                            "union all\n" +
+                            "SELECT quoteid, partnumber, currency, price_usd, end_customer\n" +
+                            "FROM (\n" +
+                            "  SELECT \n" +
+                            "    a.quoteid, \n" +
+                            "    a.partnumber, \n" +
+                            "    a.currency,\n" +
+                            "    TO_CHAR(a.pricekusd / 1000, 'FM99990.0999999') AS price_usd,\n" +
+                            "    '(' || a.region || ')' || a.endcustomer AS end_customer,\n" +
+                            "    ROW_NUMBER() OVER (PARTITION BY a.quoteid, a.partnumber, a.currency ORDER BY a.pricekusd DESC) AS rn\n" +
+                            "  FROM TSC_OM_REF_MODELN a\n" +
+                            " where a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
+                            " and a.partnumber='" + modelNDto.getTscItemDesc() + "' \n"+
+                            ")\n" +
+                            "WHERE rn = 1\n" +
+                            ") order by quoteid, partnumber";
+//                    String sql = " select a.quoteid, a.partnumber,a.currency, to_char(a.pricekusd/1000,'FM99990.0999999') price_usd, \n"+
+//                            "'('|| a.region ||')'|| a.endcustomer end_customer \n"+
+//                            " from tsc_om_ref_quotenet a \n"+
+//                            " where a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
+//                            " and a.partnumber='" + modelNDto.getTscItemDesc() + "' \n"+
+//                            " order by a.quoteid, a.partnumber";
                     ResultSet rs = stmt.executeQuery(sql);
                     if (rs.next()) {
                         sellingPrice_Q = rs.getString("PRICE_USD");
@@ -285,12 +307,34 @@ public class Tsca extends ModelNCommonUtils {
                     stmt.close();
                     if (sellingPrice_Q.equals("")) {
                         stmt = conn.createStatement();
-                        sql = " select a.quoteid, a.partnumber,a.currency, to_char(a.pricekusd/1000,'FM99990.0999999') price_usd, \n" +
-                                "'('|| a.region ||')'|| a.endcustomer end_customer \n" +
-                                " from tsc_om_ref_quotenet a \n" +
-                                " where a.quoteid='" + modelNDto.getQuoteNumber() + "' \n" +
+                        sql = "select *  from (\n" +
+                                "select a.quoteid, a.partnumber,a.currency, to_char(a.pricekusd/1000,'FM99990.0999999') price_usd,\n" +
+                                "'('|| a.region ||')'|| a.endcustomer end_customer\n" +
+                                "from tsc_om_ref_quotenet a\n" +
+                                " where a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
                                 " and a.partnumber like '" + itemNoPacking + "%' \n" +
-                                " order by a.quoteid, a.partnumber";
+                                "union all\n" +
+                                "SELECT quoteid, partnumber, currency, price_usd, end_customer\n" +
+                                "FROM (\n" +
+                                "  SELECT \n" +
+                                "    a.quoteid, \n" +
+                                "    a.partnumber, \n" +
+                                "    a.currency,\n" +
+                                "    TO_CHAR(a.pricekusd / 1000, 'FM99990.0999999') AS price_usd,\n" +
+                                "    '(' || a.region || ')' || a.endcustomer AS end_customer,\n" +
+                                "    ROW_NUMBER() OVER (PARTITION BY a.quoteid, a.partnumber, a.currency ORDER BY a.pricekusd DESC) AS rn\n" +
+                                "  FROM TSC_OM_REF_MODELN a\n" +
+                                " where a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
+                                " and a.partnumber like '" + itemNoPacking + "%' \n" +
+                                ")\n" +
+                                "WHERE rn = 1\n" +
+                                ") order by quoteid, partnumber";
+//                        sql = " select a.quoteid, a.partnumber,a.currency, to_char(a.pricekusd/1000,'FM99990.0999999') price_usd, \n" +
+//                                "'('|| a.region ||')'|| a.endcustomer end_customer \n" +
+//                                " from tsc_om_ref_quotenet a \n" +
+//                                " where a.quoteid='" + modelNDto.getQuoteNumber() + "' \n" +
+//                                " and a.partnumber like '" + itemNoPacking + "%' \n" +
+//                                " order by a.quoteid, a.partnumber";
                         rs = stmt.executeQuery(sql);
                         if (rs.next())
                         {

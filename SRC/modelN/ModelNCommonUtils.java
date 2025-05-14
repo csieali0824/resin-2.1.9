@@ -256,10 +256,12 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                     "and c.CATEGORY_SET_ID = 6\n" +
                     "and a.CROSS_REF_STATUS='ACTIVE'\n" +
                     "and msi.inventory_item_status_code <> 'Inactive'\n" +
-                    "and tsc_get_item_coo(msi.inventory_item_id) =(\n" +
-                    "     case when TSC_INV_CATEGORY(msi.inventory_item_id,43,23) IN ('SMA', 'SMB', 'SMC', 'SOD-123W', 'SOD-128')\n" +
-                    "     then 'CN' else tsc_get_item_coo(msi.inventory_item_id) end) \n"+
                     "and a.ITEM = '" + modelNDto.getCustItem() + "'";
+            if (StringUtils.isNullOrEmpty(modelNDto.getIgnoreCoo()) || !modelNDto.getIgnoreCoo().equals("Y")) {
+                sql += "and tsc_get_item_coo(msi.inventory_item_id) =(\n" +
+                        "     case when TSC_INV_CATEGORY(msi.inventory_item_id,43,23) IN ('SMA', 'SMB', 'SMC', 'SOD-123W', 'SOD-128')\n" +
+                        "     then 'CN' else tsc_get_item_coo(msi.inventory_item_id) end)";
+            }
             if (!StringUtils.isNullOrEmpty(modelNDto.getTscItemDesc())) {
                 sql += " and a.ITEM_DESCRIPTION = '" + modelNDto.getTscItemDesc() + "'";
             }
@@ -268,6 +270,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
             }
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(sql);
+
             while (rs.next()) {
                 modelNDto.setTscItem(rs.getString("INVENTORY_ITEM"));
                 modelNDto.setInventoryItemId(rs.getString("INVENTORY_ITEM_ID"));
@@ -304,10 +307,13 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                     "AND nvl(msi.CUSTOMER_ORDER_FLAG,'N')='Y'\n" +
                     "AND nvl(msi.CUSTOMER_ORDER_ENABLED_FLAG,'N')='Y'\n" +
                     "AND msi.description =  nvl('" + modelNDto.getTscItemDesc() + "',msi.description)\n" +
-                    "AND msi.segment1 = nvl('" + modelNDto.getTscItem() + "',msi.segment1)\n"+
-                    " and tsc_get_item_coo(msi.inventory_item_id) =(\n" +
-                    "     case when TSC_INV_CATEGORY(msi.inventory_item_id,43,23) IN ('SMA', 'SMB', 'SMC', 'SOD-123W', 'SOD-128')\n" +
-                    "     then 'CN' else tsc_get_item_coo(msi.inventory_item_id) end) ";
+                    "AND msi.segment1 = nvl('" + modelNDto.getTscItem() + "',msi.segment1)";
+            if (StringUtils.isNullOrEmpty(modelNDto.getIgnoreCoo()) || !modelNDto.getIgnoreCoo().equals("Y")) {
+                sql += "and tsc_get_item_coo(msi.inventory_item_id) =(\n" +
+                        "     case when TSC_INV_CATEGORY(msi.inventory_item_id,43,23) IN ('SMA', 'SMB', 'SMC', 'SOD-123W', 'SOD-128')\n" +
+                        "     then 'CN' else tsc_get_item_coo(msi.inventory_item_id) end)";
+            }
+
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(sql);
             while (rs.next()) {
@@ -340,12 +346,28 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
         } else {
             if (!modelNDto.getQuoteNumber().equals("") && !modelNDto.getTscItemDesc().equals("")) {
                 Statement stmt = conn.createStatement();
-                String sql = " select a.quoteid, a.partnumber,a.currency, to_char(a.pricekusd/1000,'FM99990.0999999') price_usd, \n"+
-                        "'('|| a.region ||')'|| a.endcustomer end_customer \n"+
-                        " from tsc_om_ref_quotenet a \n"+
+                String sql = "select *  from (\n" +
+                        "select a.quoteid, a.partnumber,a.currency, to_char(a.pricekusd/1000,'FM99990.0999999') price_usd,\n" +
+                        "'('|| a.region ||')'|| a.endcustomer end_customer\n" +
+                        "from tsc_om_ref_quotenet a\n" +
                         " where a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
                         " and a.partnumber='" + modelNDto.getTscItemDesc() + "' \n"+
-                        " order by a.quoteid, a.partnumber";
+                        "union all\n" +
+                        "SELECT quoteid, partnumber, currency, price_usd, end_customer\n" +
+                        "FROM (\n" +
+                        "  SELECT \n" +
+                        "    a.quoteid, \n" +
+                        "    a.partnumber, \n" +
+                        "    a.currency,\n" +
+                        "    TO_CHAR(a.pricekusd / 1000, 'FM99990.0999999') AS price_usd,\n" +
+                        "    '(' || a.region || ')' || a.endcustomer AS end_customer,\n" +
+                        "    ROW_NUMBER() OVER (PARTITION BY a.quoteid, a.partnumber, a.currency ORDER BY a.pricekusd DESC) AS rn\n" +
+                        "  FROM TSC_OM_REF_MODELN a\n" +
+                        " where a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
+                        " and a.partnumber='" + modelNDto.getTscItemDesc() + "' \n"+
+                        ")\n" +
+                        "WHERE rn = 1\n" +
+                        ") order by quoteid, partnumber";
                 ResultSet rs = stmt.executeQuery(sql);
                 if (rs.next()) {
                     sellingPrice_Q = rs.getString("PRICE_USD");
@@ -355,12 +377,28 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                 stmt.close();
                 if (sellingPrice_Q.equals("")) {
                     stmt = conn.createStatement();
-                    sql = " select a.quoteid, a.partnumber,a.currency, to_char(a.pricekusd/1000,'FM99990.0999999') price_usd, \n" +
-                            "'('|| a.region ||')'|| a.endcustomer end_customer \n" +
-                            " from tsc_om_ref_quotenet a \n" +
-                            " where a.quoteid='" + modelNDto.getQuoteNumber() + "' \n" +
+                    sql = "select *  from (\n" +
+                            "select a.quoteid, a.partnumber,a.currency, to_char(a.pricekusd/1000,'FM99990.0999999') price_usd,\n" +
+                            "'('|| a.region ||')'|| a.endcustomer end_customer\n" +
+                            "from tsc_om_ref_quotenet a\n" +
+                            " where a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
                             " and a.partnumber like '" + itemNoPacking + "%' \n" +
-                            " order by a.quoteid, a.partnumber";
+                            "union all\n" +
+                            "SELECT quoteid, partnumber, currency, price_usd, end_customer\n" +
+                            "FROM (\n" +
+                            "  SELECT \n" +
+                            "    a.quoteid, \n" +
+                            "    a.partnumber, \n" +
+                            "    a.currency,\n" +
+                            "    TO_CHAR(a.pricekusd / 1000, 'FM99990.0999999') AS price_usd,\n" +
+                            "    '(' || a.region || ')' || a.endcustomer AS end_customer,\n" +
+                            "    ROW_NUMBER() OVER (PARTITION BY a.quoteid, a.partnumber, a.currency ORDER BY a.pricekusd DESC) AS rn\n" +
+                            "  FROM TSC_OM_REF_MODELN a\n" +
+                            " where a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
+                            " and a.partnumber like '" + itemNoPacking + "%' \n" +
+                            ")\n" +
+                            "WHERE rn = 1\n" +
+                            ") order by quoteid, partnumber";
                     rs = stmt.executeQuery(sql);
                     if (rs.next())
                     {
@@ -617,7 +655,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
         if (!dir.isDirectory()) {
             dir.mkdirs();
         }
-//        createOrDeleteDir(new File(path)); //todo keep 365 days
+        createOrDeleteDir(new File(path));
         return this.uploadFilePath;
     }
 
@@ -779,6 +817,9 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                         break;
                     case BIRegion:
                         modelNDto.setBiRegion(content);
+                        break;
+                    case IgnoreCOO:
+                        modelNDto.setIgnoreCoo(content);
                         break;
                     default:
                         break;
@@ -1110,11 +1151,9 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
 
         String urlDir = "TSSalesDRQ_Create.jsp?CUSTOMERID=" + java.net.URLEncoder.encode(customerId) +
                 "&SPQCHECKED=N" +
-                "&CUSTOMERNO=" + java.net.URLEncoder.encode(customerNo) +
-                "&CUSTOMERNAME= " + java.net.URLEncoder.encode(customerName, "UTF-8").replace("+", "%20") +
                 "&CUSTACTIVE=A" +
                 "&SALESAREANO=" + java.net.URLEncoder.encode(salesNo) +
-                "&CUSTOMERPO=" + java.net.URLEncoder.encode(customerPo, "UTF-8").replace("+", "%20") +
+                "&CUSTOMERPO=" + java.net.URLEncoder.encode(customerPo) +
                 "&CURR=" + java.net.URLEncoder.encode(curr) +
                 "&REMARK=" + java.net.URLEncoder.encode(remark) +
                 "&PREORDERTYPE=" + java.net.URLEncoder.encode(orderType) +
@@ -1125,7 +1164,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                 "&INSERT=Y" +
                 "&RFQTYPE=" + java.net.URLEncoder.encode(rfqType) +
                 "&UPLOAD_TEMP_ID="+java.net.URLEncoder.encode(tempId)+
-                "&SHIPTOCONTACT="+java.net.URLEncoder.encode(shipToContactName, "UTF-8").replace("+", "%20") +
+                "&SHIPTOCONTACT="+java.net.URLEncoder.encode(shipToContactName) +
                 "&SHIPTOCONTACTID="+java.net.URLEncoder.encode(shipToContactId)+
                 "&PROGRAMNAME=" + getSalesProgramName(salesNo);
         try {

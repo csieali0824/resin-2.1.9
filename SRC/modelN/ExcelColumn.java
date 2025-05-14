@@ -24,7 +24,8 @@ public enum ExcelColumn {
     SupplierID("Supplier ID"),
     ShipToLocationID("Ship To Location ID"),
     ShipToOrgID("Ship To Org ID"),
-    BIRegion("BI Region");
+    BIRegion("BI Region"),
+    IgnoreCOO("Ignore COO");
 
     private final String columnName;
     ExcelColumn(String columnName) {
