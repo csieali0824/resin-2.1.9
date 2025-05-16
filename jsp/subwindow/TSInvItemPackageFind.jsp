@@ -58,12 +58,7 @@ String deliverid = request.getParameter("deliverid"); //add by Peggy 20210208
 if (deliverid==null) deliverid="";
 String currency="",sellingprice="",yew_flag="",tsceonhand="",itemID="",coo="";   //add by Peggy 20160318
 String tscPacking=null,tscFamily=null,tscProdGroup="",sPQP=null,sMOP=null,SPQRULE="",ORDERTYPE="",UOM="",tscProdFamily="",item_status="",packing_ins="";//add SPQRULE,ORDERTYPE by Peggy 20120516
-String[] ignoreCooArray = new String[]{"801G-051QQ1114000000000000AF00", "802H-031QQ212V000000000000AF00"};
 boolean ignoreCooFlag = false;
-
-if (Arrays.asList(ignoreCooArray).contains(invItem) && "004".equals(salesAreaNo)) {
-	ignoreCooFlag = true;
-}
 
 if (sampleOrdCh != null)
 {
@@ -382,7 +377,18 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 10px }
 	int queryCount = 0, querySPQCount = 0;
     Statement statement=con.createStatement();
 	try
-    { 
+    {
+		if ("004".equals(salesAreaNo)) {
+			PreparedStatement pstmt =con.prepareStatement("select 1 from TSC_COO_SPECIAL_ITEMS where ITEM_NUMBER=?");
+			pstmt.setString(1, invItem);
+			ResultSet rs = pstmt.executeQuery();
+			if (rs.next()) {
+				ignoreCooFlag = true;
+			}
+			rs.close();
+			pstmt.close();
+		}
+
 		if (searchString!="" && searchString!=null) 
 	   	{ 
 			String sql1="alter SESSION set NLS_LANGUAGE = 'AMERICAN' ";     
