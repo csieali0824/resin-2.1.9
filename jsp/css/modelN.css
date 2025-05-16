@@ -1,0 +1,164 @@
+body {
+    font-family: Tahoma, Georgia;
+    color: #000000;
+    font-size: 11px
+}
+
+p {
+    font-family: Tahoma, Georgia;
+    color: #000000;
+    font-size: 11px
+}
+
+td {
+    font-family: Tahoma, Georgia;
+    font-size: 11px;
+    word-break: break-all
+}
+
+textarea {
+    font-family: Tahoma, Georgia;
+    font-size: 11px
+}
+
+a {
+    text-decoration: underline;
+    font-size: 11px
+}
+
+a:visited {
+    color: #990066;
+    text-decoration: underline
+}
+
+a:active {
+    color: #FF0000;
+    text-decoration: underline
+}
+
+.board {
+    background-color: #D6DBE7
+}
+
+.text {
+    font-family: Tahoma, Georgia;
+    font-size: 11px
+}
+
+.showImage {
+    visibility: hidden;
+    position: absolute;
+    z-index: 65535;
+    top: 260px;
+    left: 300px;
+    width: 370px;
+    height: 50px;
+}
+
+.image-table {
+    width: 350px;
+    height: 50px;
+    border: 1px;
+    text-align: center;
+    table-border-color-light: #CCFFCC;
+    table-border-color-dark: #336600;
+}
+
+.blockDiv {
+    visibility: hidden;
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    clip: rect(0px 5px 5px 0px);
+    background-color: #567886;
+    left: 50px;
+}
+
+.column-backGround {
+    font-size: 13px;
+    background: #C6D1E6;
+}
+
+.selected {
+    color: #000000;
+    border: none;
+    font-size: 12px;
+    width: 40%;
+}
+.radio-group {
+    display: flex;
+    align-items: center; /* 讓 Radio 按鈕與文字垂直對齊 */
+    height: 20px;
+    font-size: 12px;
+}
+
+.radio-group input[type="radio"]:nth-of-type(2) {
+    margin-left: 20px; /* 調整按鈕與文字的間距 */
+}
+
+.check-group {
+    display: flex;
+    align-items: center; /* 讓 Radio 按鈕與文字垂直對齊 */
+    height: 20px;
+    font-size: 12px;
+}
+
+.check-group input[type="checkbox"]:nth-of-type(1) {
+    margin-left: 5px; /* 調整按鈕與文字的間距 */
+}
+
+.check-group input[type="checkbox"]:nth-of-type(2) {
+    margin-left: 20px; /* 調整按鈕與文字的間距 */
+}
+
+.uploadFile {
+    font-size: 12px;
+    width: 60%;
+    margin: 3px 3px 3px 5px;
+}
+
+.detailContent {
+    color: #000000;
+    text-align: center;
+    text-wrap-mode: nowrap;
+}
+
+.detailSelect {
+    tab-index: 1;
+    font-size: 12px;
+    margin-bottom: 2px;
+    margin-left: 5%;
+}
+
+.detailSelectedOne {
+    color: #000000;
+    font-size: 12px;
+    width: 185px;
+    text-align: left;
+}
+
+.roundedByNo {
+    width: 50px;
+    height: 15px;
+    background-color: #66e2ece2;
+    border-radius: 5px; /* 四個角的圓弧半徑 */
+    border: 2px solid #499388;
+    text-align: center;
+    line-height: 15px;
+    font-size: 10px;
+    font-weight: bold;
+    color: #807f70;
+}
+
+.roundedByPo {
+    width: 50px;
+    height: 15px;
+    background-color: #f5db4b87;
+    border-radius: 5px; /* 四個角的圓弧半徑 */
+    border: 2px solid #63572487;
+    text-align: center;
+    line-height: 15px;
+    font-size: 10px;
+    font-weight: bold;
+    color: #807f70;
+}

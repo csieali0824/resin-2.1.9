@@ -453,6 +453,7 @@ try
 				  " upper(TSC_OM_Get_Sales_Group(ooa.header_id)) sales_group,"+  
 				  " ooa.ORDER_NUMBER,"+
 				  " ooa.line_number ||'.'||ooa.shipment_number line_no,"+
+				  " ooa.itemk3code,"+
 				  " msi.description,"+
 				  " msi.segment1 item_no,"+
 				  " DECODE(ooa.ITEM_IDENTIFIER_TYPE,'CUST',ooa.ORDERED_ITEM,'') CUST_ITEM,"+
@@ -547,6 +548,7 @@ try
 				  "       ,ool.INVENTORY_ITEM_ID"+
 				  "       ,ool.line_type_id"+
 				  "       ,ool.LINE_ID"+
+				  "       ,SUBSTR(TSC_GET_ITEM_DESC_AND_SUFFIX(ool.line_id), 1, INSTR(TSC_GET_ITEM_DESC_AND_SUFFIX(ool.line_id), '|') - 1) itemk3code"+
 				  "       ,ool.ORDER_QUANTITY_UOM"+
 				  "       ,ooh.creation_date mo_creation_date"+
 				  "       FROM  oe_order_headers_all ooh,oe_order_lines_all ool "+
@@ -677,8 +679,8 @@ try
 				sql += " and substr(ooa.ORDER_NUMBER,1,1) in ('1')";
 			}
 			sql +=" AND ooa.booked_date < TO_DATE('"+EDATE+"','yyyymmdd')"+
-				  " order by 1 desc,2,3,4";		
-								 
+				  " order by 1 desc,2,3,4";
+
 		}
 		else if (i==2)
 		{
@@ -686,6 +688,7 @@ try
 			sql = " SELECT upper(TSC_OM_Get_Sales_Group(ooa.header_id)) sales_group,"+  
 				  " ooa.ORDER_NUMBER,"+
 				  " ooa.line_number ||'.'||ooa.shipment_number line_no,"+
+				  " ooa.itemk3code,"+
 				  " msi.description,"+
 				  " DECODE(ooa.ITEM_IDENTIFIER_TYPE,'CUST',ooa.ORDERED_ITEM,'') CUST_ITEM,"+
 				  " nvl(ar.CUSTOMER_NAME_PHONETIC,ar.customer_name) customer,"+
@@ -760,7 +763,8 @@ try
                   "       ,ooh.SOLD_TO_ORG_ID"+ 
                   "       ,ooh.ORG_ID"+ 
                   "       ,ooh.BOOKED_DATE"+ 
-                  "       ,ool.line_id"+ 
+                  "       ,ool.line_id"+
+				  "	      ,SUBSTR(TSC_GET_ITEM_DESC_AND_SUFFIX(ool.line_id), 1, INSTR(TSC_GET_ITEM_DESC_AND_SUFFIX(ool.line_id), '|') - 1) itemk3code"+
                   "       ,ool.line_number "+  
                   "       ,ool.shipment_number"+ 
                   "       ,ool.ITEM_IDENTIFIER_TYPE"+ 
@@ -893,6 +897,7 @@ try
                  //" case when odr.ORDER_NUMBER is null then 'FORECAST' else odr.CUSTOMER_LINE_NUMBER end customer_po,"+
 				 " case when odr.ORDER_NUMBER is null then 'FORECAST' else case when trunc(e.creation_date)>= to_date('20211001','yyyymmdd') then nvl(odr.ORDER_NUMBER,'') else odr.CUSTOMER_LINE_NUMBER end end customer_po,"+  //202110月起,po放銷售訂單號 add by Peggy 20210927
                  " msi.segment1 item_no,"+
+				 " odr.itemk3code,"+
                  " msi.description,  "+
                  " odr.CUST_ITEM,"+
 				 " case when nvl(a.CANCEL_FLAG,' ')='Y' or nvl(e.CANCEL_FLAG,' ')='Y' then b.QUANTITY-b.QUANTITY_CANCELLED"+
@@ -962,7 +967,8 @@ try
                  "        ,ooh.sold_to_org_id"+
                  "        ,ooh.ORDERED_DATE"+
                  "        ,trunc(ool.REQUEST_DATE) REQUEST_DATE"+
-                 "        ,ool.line_type_id "+   
+                 "        ,ool.line_type_id "+
+				 "	      ,SUBSTR(TSC_GET_ITEM_DESC_AND_SUFFIX(ool.line_id), 1, INSTR(TSC_GET_ITEM_DESC_AND_SUFFIX(ool.line_id), '|') - 1) itemk3code"+
                  "        ,ooh.ORDER_NUMBER || '.'|| ool.line_number order_line_no"+
                  "        ,ool.payment_term_id"+
                  "        ,nvl(ool.FOB_POINT_CODE,ooh.FOB_POINT_CODE) fob_point"+
@@ -1082,9 +1088,9 @@ try
 			col++;	
 			//料號22D
 			ws.addCell(new jxl.write.Label(col, row, rs.getString("ITEM_NO"), ALeftL));
-			col++;	
-			//Item Desc
-			ws.addCell(new jxl.write.Label(col, row, rs.getString("DESCRIPTION") , ALeftL));
+			col++;
+			//ItemK3Code
+			ws.addCell(new jxl.write.Label(col, row, rs.getString("CUSTOMER_PO").equals("FORECAST") ? rs.getString("DESCRIPTION"): rs.getString("ITEMK3CODE") , ALeftL));
 			col++;	
 			//Item Desc
 			ws.addCell(new jxl.write.Label(col, row, rs.getString("DESCRIPTION") , ALeftL));

@@ -1158,12 +1158,15 @@ try
 					}
 					else
 					{
-						//out.println("array[m][0]="+array[m][0]);
-						//out.println("array[m][1]="+array[m][1]);
-						//out.println("array[m][2]="+array[m][2]);
-						//out.println("array[m][3]="+array[m][3]);
-						//out.println("array[m][4]="+array[m][4]);
-						//out.println("array[m][5]="+array[m][5]);
+//						System.out.println("array[m][0]="+array[m][0]);
+//						System.out.println("array[m][1]="+array[m][1]);
+//						System.out.println("array[m][2]="+array[m][2]);
+//						System.out.println("array[m][3]="+array[m][3]);
+//						System.out.println("array[m][4]="+array[m][4]);
+//						System.out.println("erp_customer_id="+rs.getString("erp_customer_id"));
+//						System.out.println("array[m][10]="+array[m][10]);
+//						System.out.println("array[m][11]="+array[m][11]);
+
 						CallableStatement csg = con.prepareCall("{call tsc_edi_pkg.GET_SSD(?,?,?,?,?,?,?,sysdate,?,?)}");
 						csg.setString(1,array[m][0]);
 						csg.setString(2,array[m][1]);      

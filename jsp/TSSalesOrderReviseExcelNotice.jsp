@@ -67,39 +67,39 @@ if (ACTTYPE==null) ACTTYPE="";
 String FileName="",RPTName="",PLANTNAME="",tsch_user="",SALES_REGION="",remarks="",V_CUST_LIST="";
 int fontsize=8,colcnt=0;
 SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
-try 
-{ 	
+try
+{
 	int row =0,col=0,reccnt=0;
 	String strContent="",strUrl= request.getRequestURL().toString(),strProgram="";
 	strUrl=strUrl.substring(0,strUrl.lastIndexOf("/"));
 	strUrl=strUrl.replace("10.0.3.109:8081","10.0.1.144:8080");
-		
-	OutputStream os = null;	
+
+	OutputStream os = null;
 	if (ACTTYPE.equals("REMINDER"))
 	{
 		RPTName="Order Change Request Reply to Notification";
 		sql = " SELECT DISTINCT DECODE(substr(a.sales_group,1,4),'TSCI','TSCR-ROW','TSCC','TSCC',a.sales_group) sales_region"+
               " FROM oraddman.tsc_om_salesorderrevise_req a"+
               " WHERE STATUS=?"+
-              " ORDER BY  1";	
+              " ORDER BY  1";
 	}
 	PreparedStatement statement1 = con.prepareStatement(sql);
 	if (ACTTYPE.equals("REMINDER"))
 	{
 		statement1.setString(1,REPORT_TYPE);
-	}	
+	}
 	ResultSet rs1=statement1.executeQuery();
 	while (rs1.next())
-	{	
+	{
 		SALES_REGION=rs1.getString("sales_region");
 		strProgram =strUrl+"/TSSalesOrderReviseConfirm.jsp" ;
 		FileName = SALES_REGION+" "+RPTName+ "-"+dateBean.getYearMonthDay()+dateBean.getHourMinute()+".xls";
-	
-	
+
+
 		//FileName = RPTName+"-"+dateBean.getYearMonthDay()+dateBean.getHourMinute()+".xls";
 		os = new FileOutputStream("\\resin-2.1.9\\webapps\\oradds\\report\\"+FileName);
-		WritableWorkbook wwb = Workbook.createWorkbook(os); 
-		//WritableSheet ws = wwb.createSheet(RPTName, 0); 
+		WritableWorkbook wwb = Workbook.createWorkbook(os);
+		//WritableSheet ws = wwb.createSheet(RPTName, 0);
 		if (ACTTYPE.equals("REMINDER"))
 		{
 			wwb.createSheet("sheet1", 0);
@@ -109,176 +109,176 @@ try
 			wwb.createSheet(RPTName, 0);
 		}
 		WritableSheet ws = null;
-	
+
 		WritableFont font_bold = new WritableFont(WritableFont.createFont("Arial"), fontsize+1, WritableFont.BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK);
 		WritableFont font_nobold = new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK);
 		WritableFont font_nobold_b = new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLUE);
-		
-		//英文內文水平垂直置中-粗體-格線-底色灰  
-		WritableCellFormat ACenterBL = new WritableCellFormat(font_bold);   
+
+		//英文內文水平垂直置中-粗體-格線-底色灰
+		WritableCellFormat ACenterBL = new WritableCellFormat(font_bold);
 		ACenterBL.setAlignment(jxl.format.Alignment.CENTRE);
 		ACenterBL.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		ACenterBL.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
-		ACenterBL.setBackground(jxl.write.Colour.GRAY_25); 
-		ACenterBL.setWrap(true);	
-	
-		//英文內文水平垂直置中-粗體-格線-底色藍  
-		WritableCellFormat ACenterBLB = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));   
+		ACenterBL.setBackground(jxl.write.Colour.GRAY_25);
+		ACenterBL.setWrap(true);
+
+		//英文內文水平垂直置中-粗體-格線-底色藍
+		WritableCellFormat ACenterBLB = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));
 		ACenterBLB.setAlignment(jxl.format.Alignment.CENTRE);
 		ACenterBLB.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		ACenterBLB.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
-		ACenterBLB.setBackground(jxl.write.Colour.PALE_BLUE); 
+		ACenterBLB.setBackground(jxl.write.Colour.PALE_BLUE);
 		ACenterBLB.setWrap(true);
-		
-		//英文內文水平垂直置中-粗體-格線-底色黃  
-		WritableCellFormat ACenterBLY = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));   
+
+		//英文內文水平垂直置中-粗體-格線-底色黃
+		WritableCellFormat ACenterBLY = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));
 		ACenterBLY.setAlignment(jxl.format.Alignment.CENTRE);
 		ACenterBLY.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		ACenterBLY.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
-		ACenterBLY.setBackground(jxl.write.Colour.YELLOW); 
-		ACenterBLY.setWrap(true);	
-		
+		ACenterBLY.setBackground(jxl.write.Colour.YELLOW);
+		ACenterBLY.setWrap(true);
+
 		//英文內文水平垂直置中-粗體-格線-底色橘
-		WritableCellFormat ACenterBLO = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));   
+		WritableCellFormat ACenterBLO = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));
 		ACenterBLO.setAlignment(jxl.format.Alignment.CENTRE);
 		ACenterBLO.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		ACenterBLO.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
-		ACenterBLO.setBackground(jxl.write.Colour.LIGHT_ORANGE); 
-		ACenterBLO.setWrap(true);	
-		
+		ACenterBLO.setBackground(jxl.write.Colour.LIGHT_ORANGE);
+		ACenterBLO.setWrap(true);
+
 		//英文內文水平垂直置中-粗體-格線-底色綠
-		WritableCellFormat ACenterBLG = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));   
+		WritableCellFormat ACenterBLG = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));
 		ACenterBLG.setAlignment(jxl.format.Alignment.CENTRE);
 		ACenterBLG.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		ACenterBLG.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
-		ACenterBLG.setBackground(jxl.write.Colour.BRIGHT_GREEN); 
-		ACenterBLG.setWrap(true);	
-				
-		//英文內文水平垂直置中-正常-格線   
-		WritableCellFormat ACenterL = new WritableCellFormat(font_nobold);   
+		ACenterBLG.setBackground(jxl.write.Colour.BRIGHT_GREEN);
+		ACenterBLG.setWrap(true);
+
+		//英文內文水平垂直置中-正常-格線
+		WritableCellFormat ACenterL = new WritableCellFormat(font_nobold);
 		ACenterL.setAlignment(jxl.format.Alignment.CENTRE);
 		ACenterL.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		ACenterL.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 		ACenterL.setWrap(true);
-	
-	
-		//英文內文水平垂直置右-正常-格線   
-		WritableCellFormat ARightL = new WritableCellFormat(font_nobold);   
+
+
+		//英文內文水平垂直置右-正常-格線
+		WritableCellFormat ARightL = new WritableCellFormat(font_nobold);
 		ARightL.setAlignment(jxl.format.Alignment.RIGHT);
 		ARightL.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		ARightL.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 		ARightL.setWrap(true);
-	
-		//英文內文水平垂直置右-正常-格線-藍字   
-		WritableCellFormat ARightL_B = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"),9, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLUE));   
+
+		//英文內文水平垂直置右-正常-格線-藍字
+		WritableCellFormat ARightL_B = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"),9, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLUE));
 		ARightL_B.setAlignment(jxl.format.Alignment.RIGHT);
 		ARightL_B.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		ARightL_B.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 		ARightL_B.setWrap(true);
-		
-		//英文內文水平垂直置右-正常-格線-紅字   
-		WritableCellFormat ARightL_R = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"),9, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.RED));   
+
+		//英文內文水平垂直置右-正常-格線-紅字
+		WritableCellFormat ARightL_R = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"),9, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.RED));
 		ARightL_R.setAlignment(jxl.format.Alignment.RIGHT);
 		ARightL_R.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		ARightL_R.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 		ARightL_R.setWrap(true);
-		
-		//英文內文水平垂直置右-正常-格線-紅字置中  
-		WritableCellFormat ACenter_R = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"),fontsize, WritableFont.BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.RED));   
+
+		//英文內文水平垂直置右-正常-格線-紅字置中
+		WritableCellFormat ACenter_R = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"),fontsize, WritableFont.BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.RED));
 		ACenter_R.setAlignment(jxl.format.Alignment.CENTRE);
 		ACenter_R.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		ACenter_R.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
-		ACenter_R.setWrap(true);		
-	
-		//英文內文水平垂直置左-正常-格線   
-		WritableCellFormat ALeftL = new WritableCellFormat(font_nobold);   
+		ACenter_R.setWrap(true);
+
+		//英文內文水平垂直置左-正常-格線
+		WritableCellFormat ALeftL = new WritableCellFormat(font_nobold);
 		ALeftL.setAlignment(jxl.format.Alignment.LEFT);
 		ALeftL.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		ALeftL.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 		ALeftL.setWrap(true);
-		
-		//英文內文水平垂直置中-正常-格線   
-		WritableCellFormat ACenterLB = new WritableCellFormat(font_nobold_b);   
+
+		//英文內文水平垂直置中-正常-格線
+		WritableCellFormat ACenterLB = new WritableCellFormat(font_nobold_b);
 		ACenterLB.setAlignment(jxl.format.Alignment.CENTRE);
 		ACenterLB.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		ACenterLB.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 		ACenterLB.setWrap(true);
-	
-	
-		//英文內文水平垂直置右-正常-格線   
-		WritableCellFormat ARightLB = new WritableCellFormat(font_nobold_b);   
+
+
+		//英文內文水平垂直置右-正常-格線
+		WritableCellFormat ARightLB = new WritableCellFormat(font_nobold_b);
 		ARightLB.setAlignment(jxl.format.Alignment.RIGHT);
 		ARightLB.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		ARightLB.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 		ARightLB.setWrap(true);
-	
-		//英文內文水平垂直置左-正常-格線   
-		WritableCellFormat ALeftLB = new WritableCellFormat(font_nobold_b);   
+
+		//英文內文水平垂直置左-正常-格線
+		WritableCellFormat ALeftLB = new WritableCellFormat(font_nobold_b);
 		ALeftLB.setAlignment(jxl.format.Alignment.LEFT);
 		ALeftLB.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		ALeftLB.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 		ALeftLB.setWrap(true);
-			
+
 		//英文內文水平垂直置中-正常-格線-底色粉紅
-		WritableCellFormat ACenterLP = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"),9, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));   
+		WritableCellFormat ACenterLP = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"),9, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));
 		ACenterLP.setAlignment(jxl.format.Alignment.CENTRE);
 		ACenterLP.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		ACenterLP.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
-		ACenterLP.setBackground(jxl.write.Colour.PINK); 	
+		ACenterLP.setBackground(jxl.write.Colour.PINK);
 		ACenterLP.setWrap(true);
-		
+
 		//英文內文水平垂直置中-正常-格線-底色淺綠
-		WritableCellFormat ACenterLG = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"),9, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));   
+		WritableCellFormat ACenterLG = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"),9, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));
 		ACenterLG.setAlignment(jxl.format.Alignment.CENTRE);
 		ACenterLG.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		ACenterLG.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
-		ACenterLG.setBackground(jxl.write.Colour.LIGHT_GREEN); 	
-		ACenterLG.setWrap(true);	
-	
+		ACenterLG.setBackground(jxl.write.Colour.LIGHT_GREEN);
+		ACenterLG.setWrap(true);
+
 		//英文內文水平垂直置中-正常-格線-底色粉紅-藍字
-		WritableCellFormat ACenterLPB = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"),9, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLUE));   
+		WritableCellFormat ACenterLPB = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"),9, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLUE));
 		ACenterLPB.setAlignment(jxl.format.Alignment.CENTRE);
 		ACenterLPB.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		ACenterLPB.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
-		ACenterLPB.setBackground(jxl.write.Colour.PINK); 	
+		ACenterLPB.setBackground(jxl.write.Colour.PINK);
 		ACenterLPB.setWrap(true);
-		
+
 		//英文內文水平垂直置中-正常-格線-底色淺綠-藍字
-		WritableCellFormat ACenterLGB = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"),9, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLUE));   
+		WritableCellFormat ACenterLGB = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"),9, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLUE));
 		ACenterLGB.setAlignment(jxl.format.Alignment.CENTRE);
 		ACenterLGB.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		ACenterLGB.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
-		ACenterLGB.setBackground(jxl.write.Colour.LIGHT_GREEN); 	
-		ACenterLGB.setWrap(true);	
-			
+		ACenterLGB.setBackground(jxl.write.Colour.LIGHT_GREEN);
+		ACenterLGB.setWrap(true);
+
 		//日期格式
-		WritableCellFormat DATE_FORMAT = new WritableCellFormat(font_nobold ,new jxl.write.DateFormat("yyyy/MM/dd")); 
+		WritableCellFormat DATE_FORMAT = new WritableCellFormat(font_nobold ,new jxl.write.DateFormat("yyyy/MM/dd"));
 		DATE_FORMAT.setAlignment(jxl.format.Alignment.CENTRE);
 		DATE_FORMAT.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		DATE_FORMAT.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 		DATE_FORMAT.setWrap(true);
-	
+
 		//日期格式
-		WritableCellFormat DATE_FORMAT1 = new WritableCellFormat(font_nobold_b ,new jxl.write.DateFormat("yyyy/MM/dd")); 
+		WritableCellFormat DATE_FORMAT1 = new WritableCellFormat(font_nobold_b ,new jxl.write.DateFormat("yyyy/MM/dd"));
 		DATE_FORMAT1.setAlignment(jxl.format.Alignment.CENTRE);
 		DATE_FORMAT1.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		DATE_FORMAT1.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 		DATE_FORMAT1.setWrap(true);
-	
+
 		//日期格式-紅字
-		WritableCellFormat DATE_FORMAT_R = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"),9, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.RED) ,new jxl.write.DateFormat("yyyy/MM/dd")); 
+		WritableCellFormat DATE_FORMAT_R = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"),9, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.RED) ,new jxl.write.DateFormat("yyyy/MM/dd"));
 		DATE_FORMAT_R.setAlignment(jxl.format.Alignment.CENTRE);
 		DATE_FORMAT_R.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		DATE_FORMAT_R.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 		DATE_FORMAT_R.setWrap(true);
-	
+
 		//日期格式-藍字
-		WritableCellFormat DATE_FORMAT_B = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"),9, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLUE) ,new jxl.write.DateFormat("yyyy/MM/dd")); 
+		WritableCellFormat DATE_FORMAT_B = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"),9, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLUE) ,new jxl.write.DateFormat("yyyy/MM/dd"));
 		DATE_FORMAT_B.setAlignment(jxl.format.Alignment.CENTRE);
 		DATE_FORMAT_B.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 		DATE_FORMAT_B.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 		DATE_FORMAT_B.setWrap(true);
-		
+
 		sql = " select a.request_no"+
 			  ",a.sales_group"+
 			  ",a.so_no"+
@@ -322,8 +322,8 @@ try
 			  ",a.ship_to"+
 			  ",a.pc_remarks"+
 			  ",a.remarks";
-		if (REPORT_TYPE.equals("AWAITING_CONFIRM"))	
-		{			 
+		if (REPORT_TYPE.equals("AWAITING_CONFIRM"))
+		{
 			sql += "||CASE WHEN a.remarks is null then '' else chr(10) end||tsc_order_revise_pkg.GET_REVISE_DESC(a.temp_id,a.seq_id,'PC')";
 		}
 		sql +=" remarks"+
@@ -354,7 +354,7 @@ try
 			  ",a.NEW_SO_NO"+
 			  ",a.NEW_LINE_NO";
 		if (REPORT_TYPE.equals("AWAITING_CONFIRM"))
-		{		  
+		{
 			if (PLANTCODE.equals("005") || PLANTCODE.equals("008"))
 			{
 				sql +=",g.PO_NO"+
@@ -367,7 +367,7 @@ try
 				//sql += ",k.wip_list,k.wip_completed_qty"; //add by Peggy 20180817
 			}
 		}
-		sql +=",k.wip_list,k.wip_completed_qty,k.wo_qty"; //add by Peggy 20180817	
+		sql +=",k.wip_list,k.wip_completed_qty,k.wo_qty"; //add by Peggy 20180817
 		sql +=",a.ship_to_location_id"+
 			  ",a.SOURCE_CUSTOMER_PO"+
 			  ",a.deliver_to_location_id"+
@@ -376,20 +376,20 @@ try
 			  ",a.BILL_TO_LOCATION_ID"+
 			  ",a.BILL_TO_ORG_ID"+
 			  ",a.BILL_TO"+
-			  ",a.SOURCE_BILL_TO_ORG_ID"+		
+			  ",a.SOURCE_BILL_TO_ORG_ID"+
 			  ",a.SOURCE_BILL_TO_LOCATION_ID"+
 			  ",a.SOURCE_SHIP_TO_LOCATION_ID"+
 			  ",a.SOURCE_DELIVER_TO_LOCATION_ID"+
 			  ",a.FOB_POINT_CODE"+
 			  ",a.SOURCE_FOB_POINT_CODE"+
-			  ",a.FOB"+	
+			  ",a.FOB"+
 			  ",decode(a.SALES_CONFIRMED_RESULT,'1','Revise Order','2','Hold Order','0','No Revise','4','No Revise',a.SALES_CONFIRMED_RESULT) SALES_CONFIRMED_RESULT"+
 			  ",(select count(1) from tsc_om_salesorderrevise_req_v x where x.temp_id = a.temp_id and x.so_line_id=a.so_line_id) partial_cnt"+
 			  //",TSC_OM_CATEGORY(d.INVENTORY_ITEM_ID,d.ship_from_org_ID,'TSC_Family') tsc_Family"+
 			  //",tsc_inv_category(a.SOURCE_ITEM_ID,a.SOURCE_SHIP_FROM_ORG_ID,21) tsc_Family"+
 			  ",tsc_inv_category(a.SOURCE_ITEM_ID,43,21) tsc_Family"+
 			  //",TSC_OM_CATEGORY(d.INVENTORY_ITEM_ID,d.ship_from_org_ID,'TSC_Package') tsc_package"+
-			  ",tsc_inv_category(a.SOURCE_ITEM_ID,43,23) tsc_package"+ 
+			  ",tsc_inv_category(a.SOURCE_ITEM_ID,43,23) tsc_package"+
 			  ",case when send_from_temp_id is null then null else row_number() over(partition by send_from_temp_id,send_from_seq_id order by temp_id) end resend_times"+//add by Peggy 20170426
 			  ",(select distinct request_no from tsc_om_salesorderrevise_req_v x where x.temp_id=a.send_from_temp_id) resend_from_request_no"+//add by Peggy 20170426
 			  ",case when a.plant_code='002' then (select DEPT from yew_mfg_dept x where x.tsc_package=tsc_inv_category(a.SOURCE_ITEM_ID,43,23)) else '' end as yew_departno"+ //add by Peggy 20180412
@@ -400,7 +400,7 @@ try
 			  "      when NVL(a.schedule_ship_date,a.source_ssd-case when nvl(d.ATTRIBUTE19,'xx')='1' then 0 else tsc_get_mo_line_totw_days(d.packing_instructions,c.order_number,d.line_id,trunc(sysdate)) end) > a.source_ssd then 'Push Out'"+ //modify Peggy 20200911
 			  "      else '其他' end as revise_remarks"+
 			  ",rank() over (partition by d.header_id,d.line_id order by a.request_no desc) odr_revise_seq"+  //add by Peggy 20190117
-			  ",to_char(d.schedule_ship_date,'yyyy/mm/dd') erp_ssd"+  //add by Peggy 20190117		  
+			  ",to_char(d.schedule_ship_date,'yyyy/mm/dd') erp_ssd"+  //add by Peggy 20190117
 			  ",to_char(c.ordered_date,'yyyy/mm/dd') ordered_date"+ //add by Peggy 20190612
 			  ",to_char(a.source_request_date,'yyyy/mm/dd') crd"+   //add by Peggy 20190612
 			  ",count(1) over (partition by a.so_no,a.line_no) - ((SELECT COUNT (1) FROM tsc_om_salesorderrevise_req_v x WHERE x.temp_id = a.temp_id AND x.so_line_id = a.so_line_id)-1) request_cnt"+ //add by Peggy 20190612
@@ -420,7 +420,7 @@ try
 			  ",hz_cust_accounts end_cust"+
 			  ",hz_parties party";
 		if (REPORT_TYPE.equals("AWAITING_CONFIRM"))
-		{			  
+		{
 			if (PLANTCODE.equals("005") || PLANTCODE.equals("008"))
 			{
 				sql+=",(SELECT A.SEGMENT1 PO_NO,C.VENDOR_SITE_CODE,TRUNC(B.NEED_BY_DATE) NEED_BY_DATE,B.QUANTITY-NVL(B.QUANTITY_CANCELLED,0) QUANTITY,SUBSTR (B.NOTE_TO_RECEIVER,1, INSTR (B.NOTE_TO_RECEIVER, '.') - 1) SO_NO"+
@@ -495,7 +495,7 @@ try
 			  " AND cust.party_id = party.party_id"+
 			  " and a.plant_code =b.manufactory_no(+)";
 		if (REPORT_TYPE.equals("AWAITING_CONFIRM"))
-		{		  
+		{
 			if (PLANTCODE.equals("005") || PLANTCODE.equals("008"))
 			{
 				sql+=" and to_char(a.so_no)=g.so_no(+)"+
@@ -504,36 +504,36 @@ try
 			else if (PLANTCODE.equals("002"))  //add by Peggy 20171020
 			{
 				//sql+= " and d.line_id = k.order_line_id(+)";
-				//sql+= " and TSC_GET_YEW_TOTW_ORDER_INFO(d.line_id,'TSC','LINE_ID',NULL) = k.order_line_id(+)";  
-			}		
+				//sql+= " and TSC_GET_YEW_TOTW_ORDER_INFO(d.line_id,'TSC','LINE_ID',NULL) = k.order_line_id(+)";
+			}
 		}
-		sql+= " and TSC_GET_YEW_TOTW_ORDER_INFO(d.line_id,'TSC','LINE_ID',NULL) = k.order_line_id(+)";  	
+		sql+= " and TSC_GET_YEW_TOTW_ORDER_INFO(d.line_id,'TSC','LINE_ID',NULL) = k.order_line_id(+)";
 		sql += " "+
 			  //" AND A.PLANT_CODE=f.PLANT_CODE(+)"+
 			  //" AND NVL(A.ORDER_TYPE,SUBSTR(A.SO_NO,1,4))=f.ORDER_NUM(+)"+
 			  //" AND A.PLANT_CODE=m.PLANT_CODE(+)"+
-			  //" AND SUBSTR(A.SO_NO,1,4)=m.ORDER_NUM(+)"+		  
+			  //" AND SUBSTR(A.SO_NO,1,4)=m.ORDER_NUM(+)"+
 			  //" AND d.end_customer_id = h.customer_id(+)";
 			  " AND d.end_customer_id = cc.cust_account_id(+)"+  //modify by Peggy 20180809
 			  " AND cc.party_id = pp.party_id(+)";
 		if (REPORT_TYPE.equals("RESEND"))
 		{
-			sql += " and a.GROUP_ID ='"+ GROUP_ID+"' and a.STATUS = 'CLOSED'";	
+			sql += " and a.GROUP_ID ='"+ GROUP_ID+"' and a.STATUS = 'CLOSED'";
 		}
 		else
 		{
 			if (!PLANTCODE.equals("--") && !PLANTCODE.equals(""))
 			{
 				sql += " and a.PLANT_CODE='"+PLANTCODE+"'";
-			}	
+			}
 			if (ORGCODE.equals("SG"))
 			{
 				sql += " and a.packing_instructions='T'";
 			}
-			else if (ORGCODE.equals("TSC"))		
+			else if (ORGCODE.equals("TSC"))
 			{
 				sql += " and a.packing_instructions<>'T'";
-			}			  
+			}
 			if (!salesGroup.equals("--") && !salesGroup.equals(""))
 			{
 				sql += " and a.SALES_GROUP='"+salesGroup+"'";
@@ -545,7 +545,7 @@ try
 			if (!ITEMDESC.equals("") && !ITEMDESC.equals("--"))
 			{
 				sql += " and a.SOURCE_ITEM_DESC like '"+ITEMDESC+"%'";
-			}	
+			}
 			if (!CREATEDBY.equals("") && !CREATEDBY.equals("--"))
 			{
 				sql += " and a.CREATED_BY ='"+CREATEDBY+"'";
@@ -558,15 +558,15 @@ try
 			{
 				sql += " and a.STATUS = '"+STATUS+"'";
 				if (STATUS.equals("CONFIRMED")) sql += " and a.GROUP_ID is null";
-			}	
+			}
 			if (!SDATE.equals("") || !EDATE.equals(""))
 			{
 				sql += " and a.CREATION_DATE  BETWEEN TO_DATE('"+(SDATE.equals("")?"20150101":SDATE)+"','yyyymmdd') AND TO_DATE('"+ (EDATE.equals("")?dateBean.getYearMonthDay():EDATE)+"','yyyymmdd')+0.99999";
-			}	
+			}
 			if (!PC_SDATE.equals("") || !PC_EDATE.equals(""))
 			{
 				sql += " and a.PC_CONFIRMED_DATE  BETWEEN TO_DATE('"+(PC_SDATE.equals("")?"20150101":PC_SDATE)+"','yyyymmdd') AND TO_DATE('"+ (PC_EDATE.equals("")?dateBean.getYearMonthDay():PC_EDATE)+"','yyyymmdd')+0.99999";
-			}			
+			}
 			if (!TEMP_ID.equals(""))
 			{
 				sql += " and a.TEMP_ID ='"+ TEMP_ID+"'";
@@ -597,11 +597,11 @@ try
 				{
 					sql += " and a.SALES_CONFIRMED_RESULT in (1)";
 				}
-			}	
+			}
 			if (!REQUEST_DATE.equals("") && !REQUEST_DATE.equals("--"))
 			{
 				sql += " and a.CREATION_DATE BETWEEN TO_DATE('"+ REQUEST_DATE+"','yyyymmdd') and TO_DATE('"+ REQUEST_DATE+"','yyyymmdd')+0.99999";
-			}	
+			}
 			if (!CUSTPO.equals(""))  //add by Peggy 20160325
 			{
 				sql += " and (a.CUSTOMER_PO LIKE '"+CUSTPO+"%' or a.SOURCE_CUSTOMER_PO LIKE '"+CUSTPO+"%')";
@@ -609,36 +609,36 @@ try
 			if (!PULL_SDATE.equals("") || !PULL_EDATE.equals(""))
 			{
 				sql += " and a.schedule_ship_date  BETWEEN TO_DATE('"+(PULL_SDATE.equals("")?"20150101":PULL_SDATE)+"','yyyymmdd') AND TO_DATE("+ (PULL_EDATE.equals("")?"TO_CHAR(SYSDATE+365,'yyyymmdd')":"'"+PULL_EDATE+"'")+",'yyyymmdd')+0.99999";
-			}	
+			}
 			if (!REVISE_SDATE.equals("") || !REVISE_EDATE.equals(""))
 			{
 				//sql += " and a.schedule_ship_date  BETWEEN TO_DATE('"+(PULL_SDATE.equals("")?"20150101":PULL_SDATE)+"','yyyymmdd') AND TO_DATE('"+ (PULL_EDATE.equals("")?"TO_CHAR(SYSDATE+365,'yyyymmdd')":PULL_EDATE)+"','yyyymmdd')+0.99999";
 				sql += " and (a.STATUS = 'CLOSED' and a.last_update_date  BETWEEN TO_DATE('"+(REVISE_SDATE.equals("")?"20150101":REVISE_SDATE)+"','yyyymmdd') AND TO_DATE("+ (REVISE_EDATE.equals("")?"TO_CHAR(SYSDATE,'yyyymmdd')":"'"+REVISE_EDATE+"'")+",'yyyymmdd')+0.99999)";
-			}	
+			}
 			if (ACTTYPE.equals("REMINDER"))
-		    {			       
+		    {
 				sql += " and DECODE(substr(a.sales_group,1,4),'TSCI','TSCR-ROW','TSCC','TSCC',a.sales_group)='"+SALES_REGION+"'";
-			}										
+			}
 		}
 		//sql += " order by a.SALES_GROUP,a.customer_number,a.item_desc,a.SO_NO||'-'||a.LINE_NO";
 		sql += " order by a.SALES_GROUP,a.SO_NO||'-'||a.LINE_NO";
 		//out.println(sql);
-		Statement statement=con.createStatement(); 
+		Statement statement=con.createStatement();
 		ResultSet rs=statement.executeQuery(sql);
 		String sheetname [] = wwb.getSheetNames();
 		reccnt=0;
-		while (rs.next()) 
-		{ 	
-			if (chkma.equals("Y")) 
+		while (rs.next())
+		{
+			if (chkma.equals("Y"))
 			{
 				if (rs.getInt("ODR_REVISE_SEQ")!=1) continue;
-			}	
+			}
 			//out.println(reccnt+"  "+rs.getString("so_no"));
 			if (reccnt==0)
 			{
 				col=0;row=0;
 				ws = wwb.getSheet(sheetname[0]);
-				SheetSettings sst = ws.getSettings(); 
+				SheetSettings sst = ws.getSettings();
 				sst.setSelected();
 				if (REPORT_TYPE.equals("AWAITING_CONFIRM"))
 				{
@@ -646,648 +646,648 @@ try
 					for (int g =1 ; g <=13+(PLANTCODE.equals("002")?3:0) ;g++ )
 					{
 						sst.setHorizontalFreeze(g);
-					}	
+					}
 					//申請單號
-					ws.mergeCells(col, row, col, row); 
+					ws.mergeCells(col, row, col, row);
 					ws.addCell(new jxl.write.Label(col, row, "Request No" , ACenterBL));
-					ws.setColumnView(col,12);	
-					col++;					
-	
+					ws.setColumnView(col,12);
+					col++;
+
 					//序號
-					ws.mergeCells(col, row, col, row); 
+					ws.mergeCells(col, row, col, row);
 					ws.addCell(new jxl.write.Label(col, row, "Seq No" , ACenterBL));
-					ws.setColumnView(col,5);	
-					col++;					
-						
+					ws.setColumnView(col,5);
+					col++;
+
 					//工廠別
-					ws.mergeCells(col, row, col, row); 
+					ws.mergeCells(col, row, col, row);
 					ws.addCell(new jxl.write.Label(col, row, "Plant Code" , ACenterBL));
-					ws.setColumnView(col,8);	
-					col++;	
-								
+					ws.setColumnView(col,8);
+					col++;
+
 					//Sales Group
-					ws.mergeCells(col, row, col, row); 
+					ws.mergeCells(col, row, col, row);
 					ws.addCell(new jxl.write.Label(col, row, "Sales Group" , ACenterBL));
-					ws.setColumnView(col,12);	
-					col++;	
-	
+					ws.setColumnView(col,12);
+					col++;
+
 					//Requester
-					ws.mergeCells(col, row, col, row); 
+					ws.mergeCells(col, row, col, row);
 					ws.addCell(new jxl.write.Label(col, row, "Requester" , ACenterBL));
-					ws.setColumnView(col,15);	
-					col++;	
-	
+					ws.setColumnView(col,15);
+					col++;
+
 					//customer
-					ws.mergeCells(col, row, col, row); 
+					ws.mergeCells(col, row, col, row);
 					ws.addCell(new jxl.write.Label(col, row, "Customer" , ACenterBL));
-					ws.setColumnView(col,25);	
-					col++;	
-		
+					ws.setColumnView(col,25);
+					col++;
+
 					//MO#
-					ws.mergeCells(col, row, col, row); 
+					ws.mergeCells(col, row, col, row);
 					ws.addCell(new jxl.write.Label(col, row, "MO#" , ACenterBL));
-					ws.setColumnView(col,12);	
-					col++;	
-		
+					ws.setColumnView(col,12);
+					col++;
+
 					//Line#
-					ws.mergeCells(col, row, col, row); 
+					ws.mergeCells(col, row, col, row);
 					ws.addCell(new jxl.write.Label(col, row, "Line#" , ACenterBL));
-					ws.setColumnView(col,8);	
-					col++;	
-	
+					ws.setColumnView(col,8);
+					col++;
+
 					//原料號
-					ws.mergeCells(col, row, col, row); 
+					ws.mergeCells(col, row, col, row);
 					ws.addCell(new jxl.write.Label(col, row, "Original Item Name" , ACenterBL));
-					ws.setColumnView(col,30);	
-					col++;	
-		
+					ws.setColumnView(col,30);
+					col++;
+
 					//原品名
-					ws.mergeCells(col, row, col, row); 
+					ws.mergeCells(col, row, col, row);
 					ws.addCell(new jxl.write.Label(col, row, "Original Item Desc" , ACenterBL));
-					ws.setColumnView(col,25);	
-					col++;	
-	
+					ws.setColumnView(col,25);
+					col++;
+
 					//WAFER料號
 					if (PLANTCODE.equals("002")) //add by Peggy 20210427
 					{
-						ws.mergeCells(col, row, col, row); 
+						ws.mergeCells(col, row, col, row);
 						ws.addCell(new jxl.write.Label(col, row, "Wafer料號" , ACenterBL));
-						ws.setColumnView(col,20);	
-						col++;				
+						ws.setColumnView(col,20);
+						col++;
 					}
-					
+
 					//Family
-					ws.mergeCells(col, row, col, row); 
+					ws.mergeCells(col, row, col, row);
 					ws.addCell(new jxl.write.Label(col, row, "TSC Family" , ACenterBL));
-					ws.setColumnView(col,15);	
-					col++;	
-	
+					ws.setColumnView(col,15);
+					col++;
+
 					//package
-					ws.mergeCells(col, row, col, row); 
+					ws.mergeCells(col, row, col, row);
 					ws.addCell(new jxl.write.Label(col, row, "TSC Package" , ACenterBL));
-					ws.setColumnView(col,15);	
-					col++;	
-		
+					ws.setColumnView(col,15);
+					col++;
+
 					//原訂單量
-					ws.mergeCells(col, row, col, row); 
+					ws.mergeCells(col, row, col, row);
 					ws.addCell(new jxl.write.Label(col, row, "Original Qty" , ACenterBL));
-					ws.setColumnView(col,10);	
-					col++;	
-					
+					ws.setColumnView(col,10);
+					col++;
+
 					if (PLANTCODE.equals("002"))  //add by Peggy 20190618
 					{
 						//下單日期
-						ws.mergeCells(col, row, col, row); 
+						ws.mergeCells(col, row, col, row);
 						ws.addCell(new jxl.write.Label(col, row, "下單日期" , ACenterBL));
-						ws.setColumnView(col,10);	
-						col++;	
-		
+						ws.setColumnView(col,10);
+						col++;
+
 						//CRD
-						ws.mergeCells(col, row, col, row); 
+						ws.mergeCells(col, row, col, row);
 						ws.addCell(new jxl.write.Label(col, row, "CRD" , ACenterBL));
-						ws.setColumnView(col,10);	
-						col++;	
+						ws.setColumnView(col,10);
+						col++;
 					}
-		
+
 					//原交期
-					ws.mergeCells(col, row, col, row); 
+					ws.mergeCells(col, row, col, row);
 					ws.addCell(new jxl.write.Label(col, row, "Original SSD" , ACenterBL));
-					ws.setColumnView(col,10);	
-					col++;	
-		
+					ws.setColumnView(col,10);
+					col++;
+
 					//Order Type
 					ws.addCell(new jxl.write.Label(col, row, "Order Type" , ACenterBLB));
-					ws.setColumnView(col,12);	
+					ws.setColumnView(col,12);
 					col++;
-		
+
 					//Customer
 					ws.addCell(new jxl.write.Label(col, row, "Customer" , ACenterBLB));
-					ws.setColumnView(col,25);	
-					col++;	
-		
+					ws.setColumnView(col,25);
+					col++;
+
 					//Ship To
 					ws.addCell(new jxl.write.Label(col, row, "Ship To" , ACenterBLB));
-					ws.setColumnView(col,25);	
-					col++;		
-		
+					ws.setColumnView(col,25);
+					col++;
+
 					//Item Name
 					ws.addCell(new jxl.write.Label(col, row, "Item Name" , ACenterBLB));
-					ws.setColumnView(col,20);	
-					col++;	
-						
+					ws.setColumnView(col,20);
+					col++;
+
 					//Item Desc
 					ws.addCell(new jxl.write.Label(col, row, "Item Desc" , ACenterBLB));
-					ws.setColumnView(col,20);	
-					col++;	
-		
+					ws.setColumnView(col,20);
+					col++;
+
 					//Cust P/N
 					ws.addCell(new jxl.write.Label(col, row, "Cust P/N" , ACenterBLB));
-					ws.setColumnView(col,20);	
+					ws.setColumnView(col,20);
 					col++;
-					
+
 					//Cust PO
 					ws.addCell(new jxl.write.Label(col, row, "Cust PO" , ACenterBLB));
-					ws.setColumnView(col,20);	
-					col++;	
-	
+					ws.setColumnView(col,20);
+					col++;
+
 					//Shipping Method
 					ws.addCell(new jxl.write.Label(col, row, "Shipping Method" , ACenterBLB));
-					ws.setColumnView(col,15);	
-					col++;	
-					
+					ws.setColumnView(col,15);
+					col++;
+
 					//add by Peggy 20220428
 					ws.addCell(new jxl.write.Label(col, row, "Supplier Number" , ACenterBLB));
-					ws.setColumnView(col,12);	
+					ws.setColumnView(col,12);
 					col++;
-									
+
 					//Order Qty
 					ws.addCell(new jxl.write.Label(col, row, "Sales Qty pull in/out" , ACenterBLB));
-					ws.setColumnView(col,10);	
-					col++;													
-	
+					ws.setColumnView(col,10);
+					col++;
+
 					//SSD pull in/out
 					ws.addCell(new jxl.write.Label(col, row, "Sales SSD pull in/out" , ACenterBLB));
-					ws.setColumnView(col,10);	
+					ws.setColumnView(col,10);
 					col++;
-	
+
 					//Factory CFM Qty
 					ws.addCell(new jxl.write.Label(col, row, "Factory CFM Qty" , ACenterBLY));
-					ws.setColumnView(col,10);	
-					col++;													
-	
+					ws.setColumnView(col,10);
+					col++;
+
 					//Factory CFM SSD
 					ws.addCell(new jxl.write.Label(col, row, "Factory CFM SSD" , ACenterBLY));
-					ws.setColumnView(col,10);	
+					ws.setColumnView(col,10);
 					col++;
-	
+
 					//Factory CFM Result
 					ws.addCell(new jxl.write.Label(col, row, "Factory CFM Result" , ACenterBLY));
-					ws.setColumnView(col,10);	
-					col++;	
-	
+					ws.setColumnView(col,10);
+					col++;
+
 					//Factory Remark
 					ws.addCell(new jxl.write.Label(col, row, "Factory Remark" , ACenterBLY));
-					ws.setColumnView(col,15);	
-					col++;	
-	
+					ws.setColumnView(col,15);
+					col++;
+
 					//Remarks
 					ws.addCell(new jxl.write.Label(col, row, "Remarks" , ACenterBLB));
-					ws.setColumnView(col,20);	
-					col++;	
-	
+					ws.setColumnView(col,20);
+					col++;
+
 					if (PLANTCODE.equals("005") || PLANTCODE.equals("008"))
 					{
 						//供應商
 						ws.addCell(new jxl.write.Label(col, row, "Vendor Name" , ACenterBL));
-						ws.setColumnView(col,15);	
+						ws.setColumnView(col,15);
 						col++;
-	
+
 						//採購單
 						ws.addCell(new jxl.write.Label(col, row, "PO#" , ACenterBL));
-						ws.setColumnView(col,12);	
-						col++;	
-	
+						ws.setColumnView(col,12);
+						col++;
+
 						//採購需求日
 						ws.addCell(new jxl.write.Label(col, row, "PO Need by Date" , ACenterBL));
-						ws.setColumnView(col,12);	
+						ws.setColumnView(col,12);
 						col++;
-						
+
 						//採購數量
 						ws.addCell(new jxl.write.Label(col, row, "PO Qty(K)" , ACenterBL));
-						ws.setColumnView(col,12);	
-						col++;																	
-					}	
+						ws.setColumnView(col,12);
+						col++;
+					}
 					else if (PLANTCODE.equals("002"))  //add by Peggy 20171020
-					{	
+					{
 						//工單號
 						ws.addCell(new jxl.write.Label(col, row, "工單號" , ACenterBL));
-						ws.setColumnView(col,15);	
+						ws.setColumnView(col,15);
 						col++;
-	
+
 						//工單數量
 						ws.addCell(new jxl.write.Label(col, row, "工單數量" , ACenterBL));
-						ws.setColumnView(col,10);	
+						ws.setColumnView(col,10);
 						col++;
-	
+
 						//完工入庫量
 						ws.addCell(new jxl.write.Label(col, row, "完工入庫量" , ACenterBL));
-						ws.setColumnView(col,10);	
+						ws.setColumnView(col,10);
 						col++;
 					}
 					//add by Peggy 20200325
 					ws.addCell(new jxl.write.Label(col, row, "回T" , ACenterBL));
-					ws.setColumnView(col,8);	
-					col++;	
+					ws.setColumnView(col,8);
+					col++;
 					row++;
 				}
 				else if (REPORT_TYPE.equals("CONFIRMED") || REPORT_TYPE.equals("QUERY"))
 				{
-					ws.mergeCells(col, row, col+2, row); 
+					ws.mergeCells(col, row, col+2, row);
 					ws.addCell(new jxl.write.Label(col, row, "註:訂單項次分批出貨以藍色字體標示" , ACenterBLY));
-					row++;						
-				
+					row++;
+
 					sst.setVerticalFreeze(2);  //凍結窗格
 					//sst.setVerticalFreeze(2);  //凍結窗格
 					for (int g =1 ; g <=14 ;g++ )
 					{
 						sst.setHorizontalFreeze(g);
-					}	
-					
+					}
+
 					//Request No
-					//ws.mergeCells(col, row, col, row+1); 
+					//ws.mergeCells(col, row, col, row+1);
 					ws.addCell(new jxl.write.Label(col, row, "Request No" , ACenterBL));
-					ws.setColumnView(col,12);	
-					col++;						
-								
+					ws.setColumnView(col,12);
+					col++;
+
 					//Sales Group
-					//ws.mergeCells(col, row, col, row+1); 
+					//ws.mergeCells(col, row, col, row+1);
 					ws.addCell(new jxl.write.Label(col, row, "Sales Group" , ACenterBL));
-					ws.setColumnView(col,12);	
-					col++;	
-	
+					ws.setColumnView(col,12);
+					col++;
+
 					//customer
-					//ws.mergeCells(col, row, col, row+1); 
+					//ws.mergeCells(col, row, col, row+1);
 					ws.addCell(new jxl.write.Label(col, row, "Customer" , ACenterBL));
-					ws.setColumnView(col,25);	
-					col++;	
-	
+					ws.setColumnView(col,25);
+					col++;
+
 					//end customer
-					//ws.mergeCells(col, row, col, row+1); 
+					//ws.mergeCells(col, row, col, row+1);
 					ws.addCell(new jxl.write.Label(col, row, "End Customer" , ACenterBL));
-					ws.setColumnView(col,25);	
-					col++;	
-		
+					ws.setColumnView(col,25);
+					col++;
+
 					//MO#
-					//ws.mergeCells(col, row, col, row+1); 
+					//ws.mergeCells(col, row, col, row+1);
 					ws.addCell(new jxl.write.Label(col, row, "MO#" , ACenterBL));
-					ws.setColumnView(col,12);	
-					col++;	
-		
+					ws.setColumnView(col,12);
+					col++;
+
 					//Line#
-					//ws.mergeCells(col, row, col, row+1); 
+					//ws.mergeCells(col, row, col, row+1);
 					ws.addCell(new jxl.write.Label(col, row, "Line#" , ACenterBL));
-					ws.setColumnView(col,8);	
-					col++;	
-		
+					ws.setColumnView(col,8);
+					col++;
+
 					//原品名
-					//ws.mergeCells(col, row, col, row+1); 
+					//ws.mergeCells(col, row, col, row+1);
 					ws.addCell(new jxl.write.Label(col, row, "Original Item Desc" , ACenterBL));
-					ws.setColumnView(col,20);	
-					col++;	
-						
+					ws.setColumnView(col,20);
+					col++;
+
 					//package
-					ws.mergeCells(col, row, col, row); 
+					ws.mergeCells(col, row, col, row);
 					ws.addCell(new jxl.write.Label(col, row, "TSC Package" , ACenterBL));
-					ws.setColumnView(col,15);	
-					col++;	
+					ws.setColumnView(col,15);
+					col++;
 
 					//原Cust PO
-					//ws.mergeCells(col, row, col, row+1); 
+					//ws.mergeCells(col, row, col, row+1);
 					ws.addCell(new jxl.write.Label(col, row, "Original Cust PO" , ACenterBL));
-					ws.setColumnView(col,15);	
-					col++;	
-					
+					ws.setColumnView(col,15);
+					col++;
+
 					//原訂單量
-					//ws.mergeCells(col, row, col, row+1); 
+					//ws.mergeCells(col, row, col, row+1);
 					ws.addCell(new jxl.write.Label(col, row, "Original Qty" , ACenterBL));
-					ws.setColumnView(col,10);	
-					col++;	
-	
+					ws.setColumnView(col,10);
+					col++;
+
 					//下單日期
 					ws.addCell(new jxl.write.Label(col, row, "下單日期" , ACenterBL));
-					ws.setColumnView(col,10);	
-					col++;	
-	
+					ws.setColumnView(col,10);
+					col++;
+
 					//CRD
 					ws.addCell(new jxl.write.Label(col, row, "CRD" , ACenterBL));
-					ws.setColumnView(col,10);	
-					col++;	
-		
+					ws.setColumnView(col,10);
+					col++;
+
 					//原交期
-					//ws.mergeCells(col, row, col, row+1); 
+					//ws.mergeCells(col, row, col, row+1);
 					ws.addCell(new jxl.write.Label(col, row, "Original TW SSD" , ACenterBL));
-					ws.setColumnView(col,10);	
-					col++;	
-					
+					ws.setColumnView(col,10);
+					col++;
+
 					//原交期
-					//ws.mergeCells(col, row, col, row+1); 
+					//ws.mergeCells(col, row, col, row+1);
 					ws.addCell(new jxl.write.Label(col, row, "Original SSD" , ACenterBL));
-					ws.setColumnView(col,10);	
-					col++;				
-						
+					ws.setColumnView(col,10);
+					col++;
+
 					//訂單修改明細
-					//ws.mergeCells(col, row, col+13, row); 
+					//ws.mergeCells(col, row, col+13, row);
 					//ws.addCell(new jxl.write.Label(col, row, "Order Revise Detail" , ACenterBLB));
-					//ws.setColumnView(col,10);	
-					//col+=14;	
-					
+					//ws.setColumnView(col,10);
+					//col+=14;
+
 					//工廠回覆結果
-					//ws.mergeCells(col, row, col+4, row); 
+					//ws.mergeCells(col, row, col+4, row);
 					//ws.addCell(new jxl.write.Label(col, row, "PC Replied Detail " , ACenterBLO));
-					//ws.setColumnView(col,10);	
+					//ws.setColumnView(col,10);
 					//col+=5;
 					//Order Type
 					ws.addCell(new jxl.write.Label(col, row, "Order Type" , ACenterBLB));
-					ws.setColumnView(col,12);	
+					ws.setColumnView(col,12);
 					col++;
-		
+
 					//Customer
 					ws.addCell(new jxl.write.Label(col, row, "Customer" , ACenterBLB));
-					ws.setColumnView(col,25);	
-					col++;	
-					
-		
+					ws.setColumnView(col,25);
+					col++;
+
+
 					//Ship To
 					ws.addCell(new jxl.write.Label(col, row, "Ship To" , ACenterBLB));
-					ws.setColumnView(col,25);	
-					col++;		
-		
-		
+					ws.setColumnView(col,25);
+					col++;
+
+
 					//Bill To
 					ws.addCell(new jxl.write.Label(col, row, "Bill To" , ACenterBLB));
-					ws.setColumnView(col,25);	
-					col++;		
-					
+					ws.setColumnView(col,25);
+					col++;
+
 					//Deliver To
 					ws.addCell(new jxl.write.Label(col, row, "Deliver To" , ACenterBLB));
-					ws.setColumnView(col,30);	
-					col++;	
-					
+					ws.setColumnView(col,30);
+					col++;
+
 					//Item Desc
 					ws.addCell(new jxl.write.Label(col, row, "Item Desc" , ACenterBLB));
-					ws.setColumnView(col,20);	
-					col++;	
-		
+					ws.setColumnView(col,20);
+					col++;
+
 					//Cust P/N
 					ws.addCell(new jxl.write.Label(col, row, "Cust P/N" , ACenterBLB));
-					ws.setColumnView(col,20);	
+					ws.setColumnView(col,20);
 					col++;
-					
+
 					//Cust PO
 					ws.addCell(new jxl.write.Label(col, row, "Cust PO" , ACenterBLB));
-					ws.setColumnView(col,20);	
-					col++;	
-	
+					ws.setColumnView(col,20);
+					col++;
+
 					//Shipping Method
 					ws.addCell(new jxl.write.Label(col, row, "Shipping Method" , ACenterBLB));
-					ws.setColumnView(col,15);	
-					col++;	
-						
+					ws.setColumnView(col,15);
+					col++;
+
 					//add by Peggy 20220428
 					ws.addCell(new jxl.write.Label(col, row, "Supplier Number" , ACenterBLB));
-					ws.setColumnView(col,12);	
-					col++;	
-													
+					ws.setColumnView(col,12);
+					col++;
+
 					//Order Qty
 					ws.addCell(new jxl.write.Label(col, row, "Order Qty" , ACenterBLB));
-					ws.setColumnView(col,10);	
-					col++;													
-	
+					ws.setColumnView(col,10);
+					col++;
+
 					//TW SSD pull in/out
 					ws.addCell(new jxl.write.Label(col, row, "TW SSD pull in/out" , ACenterBLB));
-					ws.setColumnView(col,10);	
+					ws.setColumnView(col,10);
 					col++;
-	
+
 					//SSD pull in/out
 					ws.addCell(new jxl.write.Label(col, row, "SSD pull in/out" , ACenterBLB));
-					ws.setColumnView(col,10);	
+					ws.setColumnView(col,10);
 					col++;
-							
+
 					//REQUEST DATE
 					ws.addCell(new jxl.write.Label(col, row, "Request Date(New CRD)" , ACenterBLB));
-					ws.setColumnView(col,10);	
+					ws.setColumnView(col,10);
 					col++;
-											
+
 					//FOB
 					ws.addCell(new jxl.write.Label(col, row, "FOB" , ACenterBLB));
-					ws.setColumnView(col,10);	
+					ws.setColumnView(col,10);
 					col++;
-											
+
 					//Remarks
 					ws.addCell(new jxl.write.Label(col, row, "Remarks" , ACenterBLB));
-					ws.setColumnView(col,20);	
-					col++;								
-	
+					ws.setColumnView(col,20);
+					col++;
+
 					//工廠別
 					ws.addCell(new jxl.write.Label(col, row, "Plant Code" , ACenterBLO));
-					ws.setColumnView(col,8);	
-					col++;	
-					
+					ws.setColumnView(col,8);
+					col++;
+
 					//工廠確認數量
 					ws.addCell(new jxl.write.Label(col, row, "PC QTY" , ACenterBLO));
-					ws.setColumnView(col,10);	
+					ws.setColumnView(col,10);
 					col++;
-		
+
 					//工廠確認交期
 					ws.addCell(new jxl.write.Label(col, row, "PC SSD" , ACenterBLO));
-					ws.setColumnView(col,10);	
-					col++;	
-	
+					ws.setColumnView(col,10);
+					col++;
+
 					//工廠確認交期TW
 					ws.addCell(new jxl.write.Label(col, row, "PC TW SSD" , ACenterBLO));
-					ws.setColumnView(col,10);	
-					col++;	
-		
+					ws.setColumnView(col,10);
+					col++;
+
 					//工廠回覆結果
 					ws.addCell(new jxl.write.Label(col, row, "PC Result" , ACenterBLO));
-					ws.setColumnView(col,10);	
-					col++;		
-		
+					ws.setColumnView(col,10);
+					col++;
+
 					//工廠備註
 					ws.addCell(new jxl.write.Label(col, row, "PC Remarks" , ACenterBLO));
-					ws.setColumnView(col,20);	
-					col++;	
-	
+					ws.setColumnView(col,20);
+					col++;
+
 					//Requester
-					//ws.mergeCells(col, row, col, row+1); 
+					//ws.mergeCells(col, row, col, row+1);
 					ws.addCell(new jxl.write.Label(col, row, "Requester" , ACenterBL));
-					ws.setColumnView(col,15);	
-					col++;	
-					
+					ws.setColumnView(col,15);
+					col++;
+
 					//Request DATE
-					//ws.mergeCells(col, row, col, row+1); 
+					//ws.mergeCells(col, row, col, row+1);
 					ws.addCell(new jxl.write.Label(col, row, "Request Date" , ACenterBL));
-					ws.setColumnView(col,10);	
-					col++;	
-					
+					ws.setColumnView(col,10);
+					col++;
+
 					//PC Confirmed
-					//ws.mergeCells(col, row, col, row+1); 
+					//ws.mergeCells(col, row, col, row+1);
 					ws.addCell(new jxl.write.Label(col, row, "PC Confirmed" , ACenterBL));
-					ws.setColumnView(col,12);	
-					col++;	
-									
+					ws.setColumnView(col,12);
+					col++;
+
 					//pc confirm date
-					//ws.mergeCells(col, row, col, row+1); 
+					//ws.mergeCells(col, row, col, row+1);
 					ws.addCell(new jxl.write.Label(col, row, "PC Confirmed Date" , ACenterBL));
-					ws.setColumnView(col,12);	
-					col++;										
-									
+					ws.setColumnView(col,12);
+					col++;
+
 					if (REPORT_TYPE.equals("QUERY"))
 					{
-					
+
 						//Last Updated By
-						//ws.mergeCells(col, row, col, row+1); 
+						//ws.mergeCells(col, row, col, row+1);
 						ws.addCell(new jxl.write.Label(col, row, "Last Updated By" , ACenterBL));
-						ws.setColumnView(col,12);	
-						col++;	
-										
+						ws.setColumnView(col,12);
+						col++;
+
 						//Last Update Date
-						//ws.mergeCells(col, row, col, row+1); 
+						//ws.mergeCells(col, row, col, row+1);
 						ws.addCell(new jxl.write.Label(col, row, "Last Update Date" , ACenterBL));
-						ws.setColumnView(col,12);	
-						col++;	
-										
+						ws.setColumnView(col,12);
+						col++;
+
 						//Sales Confirm Status
-						//ws.mergeCells(col, row, col, row+1); 
+						//ws.mergeCells(col, row, col, row+1);
 						ws.addCell(new jxl.write.Label(col, row, "Sales Confirm Result" , ACenterBL));
-						ws.setColumnView(col,15);	
-						col++;	
-					
+						ws.setColumnView(col,15);
+						col++;
+
 
 						//Change Reason
-						//ws.mergeCells(col, row, col, row+1); 
+						//ws.mergeCells(col, row, col, row+1);
 						ws.addCell(new jxl.write.Label(col, row, "Change Reason" , ACenterBL));
-						ws.setColumnView(col,15);	
-						col++;	
-					
-						//Change Comments
-						//ws.mergeCells(col, row, col, row+1); 
-						ws.addCell(new jxl.write.Label(col, row, "Change Comments" , ACenterBL));
-						ws.setColumnView(col,15);	
-						col++;		
-									
-						//新訂單
-						//ws.mergeCells(col, row, col, row+1); 
-						ws.addCell(new jxl.write.Label(col, row, "New MO#" , ACenterBL));
-						ws.setColumnView(col,12);	
-						col++;	
-						
-						//新項次
-						//ws.mergeCells(col, row, col, row+1); 
-						ws.addCell(new jxl.write.Label(col, row, "New Line#" , ACenterBL));
-						ws.setColumnView(col,8);	
-						col++;	
-						
-						//狀態
-						//ws.mergeCells(col, row, col, row+1); 
-						ws.addCell(new jxl.write.Label(col, row, "STATUS" , ACenterBL));
-						ws.setColumnView(col,16);	
-						col++;		
-						
-						//PROD GROUP
-						ws.mergeCells(col, row, col, row); 
-						ws.addCell(new jxl.write.Label(col, row, "PROD GROUP" , ACenterBL));
-						ws.setColumnView(col,12);	
+						ws.setColumnView(col,15);
 						col++;
-											
+
+						//Change Comments
+						//ws.mergeCells(col, row, col, row+1);
+						ws.addCell(new jxl.write.Label(col, row, "Change Comments" , ACenterBL));
+						ws.setColumnView(col,15);
+						col++;
+
+						//新訂單
+						//ws.mergeCells(col, row, col, row+1);
+						ws.addCell(new jxl.write.Label(col, row, "New MO#" , ACenterBL));
+						ws.setColumnView(col,12);
+						col++;
+
+						//新項次
+						//ws.mergeCells(col, row, col, row+1);
+						ws.addCell(new jxl.write.Label(col, row, "New Line#" , ACenterBL));
+						ws.setColumnView(col,8);
+						col++;
+
+						//狀態
+						//ws.mergeCells(col, row, col, row+1);
+						ws.addCell(new jxl.write.Label(col, row, "STATUS" , ACenterBL));
+						ws.setColumnView(col,16);
+						col++;
+
+						//PROD GROUP
+						ws.mergeCells(col, row, col, row);
+						ws.addCell(new jxl.write.Label(col, row, "PROD GROUP" , ACenterBL));
+						ws.setColumnView(col,12);
+						col++;
+
 						//Family
-						ws.mergeCells(col, row, col, row); 
+						ws.mergeCells(col, row, col, row);
 						ws.addCell(new jxl.write.Label(col, row, "TSC Family" , ACenterBL));
-						ws.setColumnView(col,16);	
-						col++;	
-		
+						ws.setColumnView(col,16);
+						col++;
+
 						//RESEND_TIMES
 						ws.addCell(new jxl.write.Label(col, row, "Resend Times" , ACenterBLB));
-						ws.setColumnView(col,8);	
-						col++;	
-		
+						ws.setColumnView(col,8);
+						col++;
+
 						//RESEND_FROM_REQUEST_NO
 						ws.addCell(new jxl.write.Label(col, row, "Resend From Request" , ACenterBLB));
-						ws.setColumnView(col,12);	
-						col++;	
-							
+						ws.setColumnView(col,12);
+						col++;
+
 						//if ((UserRoles.indexOf("MPC_User")>=0 || UserRoles.indexOf("MPC_003")>=0) ||  UserRoles.indexOf("Sale")<0)
 						//{
 							//revise分析
 							ws.addCell(new jxl.write.Label(col, row, "類別分析" , ACenterBL));
-							ws.setColumnView(col,10);	
-							col++;	
-	
+							ws.setColumnView(col,10);
+							col++;
+
 							//工單號
 							ws.addCell(new jxl.write.Label(col, row, "工單號" , ACenterBL));
-							ws.setColumnView(col,15);	
+							ws.setColumnView(col,15);
 							col++;
-		
+
 							//完工入庫量
 							ws.addCell(new jxl.write.Label(col, row, "完工入庫量" , ACenterBL));
-							ws.setColumnView(col,10);	
+							ws.setColumnView(col,10);
 							col++;
-	
+
 							//次數統計
 							ws.addCell(new jxl.write.Label(col, row, "次數統計" , ACenterBL));
-							ws.setColumnView(col,10);	
+							ws.setColumnView(col,10);
 							col++;
-						//}					
+						//}
 					}
-	
+
 					if (chkma.equals("Y"))
 					{
 						//erp order ssd,add by Peggy 20190117 for Mabel issue
 						ws.addCell(new jxl.write.Label(col, row, "ERP MO SSD" , ACenterBL));
-						ws.setColumnView(col,10);	
-						col++;	
+						ws.setColumnView(col,10);
+						col++;
 					}
 					//add by Peggy 20200325
 					ws.addCell(new jxl.write.Label(col, row, "回T" , ACenterBL));
-					ws.setColumnView(col,8);	
-					col++;	
+					ws.setColumnView(col,8);
+					col++;
 					row++;
 				}
-				
+
 			}
 			col=0;
 			if (REPORT_TYPE.equals("AWAITING_CONFIRM"))
 			{
 				ws.addCell(new jxl.write.Label(col, row, rs.getString("request_no"), ACenterL));
-				col++;					
+				col++;
 				ws.addCell(new jxl.write.Label(col, row, rs.getString("seq_id"), ACenterL));
-				col++;					
+				col++;
 				if (!rs.getString("so_line_id").equals(so_line_id))
 				{
-					so_line_id=rs.getString("so_line_id");	
-					ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1); 	
+					so_line_id=rs.getString("so_line_id");
+					ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1);
 					ws.addCell(new jxl.write.Label(col, row, rs.getString("ALENGNAME"), ACenterL));
-					col++;	
-					ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1); 	
+					col++;
+					ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1);
 					ws.addCell(new jxl.write.Label(col, row, rs.getString("sales_group"), ACenterL));
-					col++;	
-					ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1); 	
+					col++;
+					ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1);
 					ws.addCell(new jxl.write.Label(col, row, rs.getString("CREATED_BY"), ALeftL));
-					col++;	
-					ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1); 	
+					col++;
+					ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1);
 					ws.addCell(new jxl.write.Label(col, row, rs.getString("orig_customer"), ALeftL));
-					col++;	
-					ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1); 	
+					col++;
+					ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1);
 					ws.addCell(new jxl.write.Label(col, row, rs.getString("so_no") , ALeftL));
-					col++;	
-					ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1); 	
+					col++;
+					ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1);
 					ws.addCell(new jxl.write.Label(col, row, rs.getString("line_no") , ALeftL));
-					col++;	
-					ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1); 	
+					col++;
+					ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1);
 					ws.addCell(new jxl.write.Label(col, row, rs.getString("orig_item_name") , ALeftL));
-					col++;	
-					ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1); 	
+					col++;
+					ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1);
 					ws.addCell(new jxl.write.Label(col, row, rs.getString("orig_item_desc") , ALeftL));
-					col++;	
+					col++;
 					//WAFER料號
 					if (PLANTCODE.equals("002")) //add by Peggy 20210427
 					{
-						ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1); 	
+						ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1);
 						ws.addCell(new jxl.write.Label(col, row, rs.getString("wafer_item") , ALeftL));
-						col++;	
-					}				
-					ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1); 	
+						col++;
+					}
+					ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1);
 					ws.addCell(new jxl.write.Label(col, row, rs.getString("tsc_family") , ALeftL));
-					col++;	
-					ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1); 	
+					col++;
+					ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1);
 					ws.addCell(new jxl.write.Label(col, row, rs.getString("tsc_package") , ALeftL));
-					col++;	
-					ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1); 	
+					col++;
+					ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1);
 					ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("orig_so_qty")).doubleValue(), ARightL));
-					col++;	
+					col++;
 					if (PLANTCODE.equals("002"))  //add by Peggy 20190618
 					{
-						ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1); 	
+						ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1);
 						if (rs.getString("ordered_date")==null)
 						{
 							ws.addCell(new jxl.write.Label(col, row, "", ALeftL));
@@ -1296,8 +1296,8 @@ try
 						{
 							ws.addCell(new jxl.write.DateTime(col, row, formatter.parse(rs.getString("ordered_date")) ,DATE_FORMAT));
 						}
-						col++;					
-						ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1); 	
+						col++;
+						ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1);
 						if (rs.getString("crd")==null)
 						{
 							ws.addCell(new jxl.write.Label(col, row, "", ALeftL));
@@ -1306,9 +1306,9 @@ try
 						{
 							ws.addCell(new jxl.write.DateTime(col, row, formatter.parse(rs.getString("crd")) ,DATE_FORMAT));
 						}
-						col++;	
+						col++;
 					}
-					ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1); 	
+					ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1);
 					if (rs.getString("orig_schedule_ship_date")==null)
 					{
 						ws.addCell(new jxl.write.Label(col, row, "", ALeftL));
@@ -1317,31 +1317,31 @@ try
 					{
 						ws.addCell(new jxl.write.DateTime(col, row, formatter.parse(rs.getString("orig_schedule_ship_date")) ,DATE_FORMAT));
 					}
-					col++;	
+					col++;
 				}
 				else
 				{
 					col+=(12+(PLANTCODE.equals("002")?3:0));
 				}
 				ws.addCell(new jxl.write.Label(col, row, (rs.getString("order_type")==null?"":rs.getString("order_type")), ACenterL));
-				col++;	
+				col++;
 				ws.addCell(new jxl.write.Label(col, row, (rs.getString("customer_name")==null?"":rs.getString("customer_name")), ALeftL));
-				col++;	
+				col++;
 				ws.addCell(new jxl.write.Label(col, row, (rs.getString("ship_to")==null?"":rs.getString("ship_to")), ALeftL));
-				col++;	
+				col++;
 				ws.addCell(new jxl.write.Label(col, row, (rs.getString("item_name")==null?"":rs.getString("item_name")), ALeftL));
-				col++;	
+				col++;
 				ws.addCell(new jxl.write.Label(col, row, (rs.getString("item_desc")==null?"":rs.getString("item_desc")), ALeftL));
-				col++;	
+				col++;
 				ws.addCell(new jxl.write.Label(col, row, (rs.getString("cust_item_name")==null?"":rs.getString("cust_item_name")), ALeftL));
-				col++;	
+				col++;
 				ws.addCell(new jxl.write.Label(col, row, (rs.getString("customer_po")==null?"":rs.getString("customer_po")), ALeftL));
-				col++;	
+				col++;
 				ws.addCell(new jxl.write.Label(col, row, (rs.getString("shipping_method")==null?"":rs.getString("shipping_method")), ALeftL));
-				col++;	
+				col++;
 				//supplier number,add by Peggy 20220428
 				ws.addCell(new jxl.write.Label(col, row,  (rs.getString("supplier_number")==null?"":rs.getString("supplier_number")), ACenterL));
-				col++;				
+				col++;
 				//if (rs.getString("so_qty")==null)
 				//{
 				//	ws.addCell(new jxl.write.Label(col, row, "" , ACenterL));
@@ -1353,15 +1353,15 @@ try
 					ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("so_qty")).doubleValue(), ARightL_B));
 				}
 				else if (rs.getInt("change_qty")<0)
-				{		
+				{
 					ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("so_qty")).doubleValue(), ARightL_R));
 				}
 				else
-				{	
+				{
 					ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("so_qty")).doubleValue(), ARightL));
 				}
-				//}			
-				col++;	
+				//}
+				col++;
 				//if (rs.getString("schedule_ship_date")==null)
 				//{
 				//	ws.addCell(new jxl.write.Label(col, row, "" , ACenterL));
@@ -1387,10 +1387,10 @@ try
 						ws.addCell(new jxl.write.DateTime(col, row, formatter.parse(rs.getString("schedule_ship_date")) ,DATE_FORMAT));
 					}
 				}
-				//}	
-				col++;		
+				//}
+				col++;
 				ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("so_qty")).doubleValue(), ARightL));
-				col++;	
+				col++;
 				if ((rs.getString("plant_code").equals("005") || rs.getString("plant_code").equals("008")) || Double.valueOf(rs.getString("so_qty")).doubleValue()==0)
 				{
 					ws.addCell(new jxl.write.Label(col, row, "", ALeftL));
@@ -1399,19 +1399,19 @@ try
 				{
 					ws.addCell(new jxl.write.DateTime(col, row, formatter.parse(rs.getString("schedule_ship_date")) ,DATE_FORMAT));
 				}
-				col++;	
+				col++;
 				ws.addCell(new jxl.write.Label(col, row, "", ALeftL));
-				col++;	
+				col++;
 				ws.addCell(new jxl.write.Label(col, row, "", ALeftL));
-				col++;	
+				col++;
 				ws.addCell(new jxl.write.Label(col, row, (rs.getString("remarks")==null?"":rs.getString("remarks")), ALeftL));
-				col++;	
+				col++;
 				if (PLANTCODE.equals("005") || PLANTCODE.equals("008"))
 				{
 					ws.addCell(new jxl.write.Label(col, row, (rs.getString("vendor_site_code")==null?"":rs.getString("vendor_site_code")), ALeftL));
-					col++;	
+					col++;
 					ws.addCell(new jxl.write.Label(col, row, (rs.getString("po_no")==null?"":rs.getString("po_no")), ALeftL));
-					col++;							
+					col++;
 					if (rs.getString("need_by_date")==null)
 					{
 						ws.addCell(new jxl.write.Label(col, row, "" , ACenterL));
@@ -1419,8 +1419,8 @@ try
 					else
 					{
 						ws.addCell(new jxl.write.DateTime(col, row, formatter.parse(rs.getString("need_by_date")) ,DATE_FORMAT));
-					}	
-					col++;				
+					}
+					col++;
 					if (rs.getString("po_qty")==null)
 					{
 						ws.addCell(new jxl.write.Label(col, row, "" , ACenterL));
@@ -1428,14 +1428,14 @@ try
 					else
 					{
 						ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("po_qty")).doubleValue(), ARightL));
-					}			
-					col++;					
+					}
+					col++;
 				}
 				else if (PLANTCODE.equals("002"))  //add by Peggy 20171020
-				{	
+				{
 					//工單號
 					ws.addCell(new jxl.write.Label(col, row, (rs.getString("wip_list")==null?"":rs.getString("wip_list")), ACenterL));
-					col++;	
+					col++;
 					//工單數量
 					if (rs.getString("WO_QTY")==null)
 					{
@@ -1444,8 +1444,8 @@ try
 					else
 					{
 						ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("WO_QTY")).doubleValue(), ARightL));
-					}				
-					col++;	
+					}
+					col++;
 					//完工入庫量,add by Peggy 20180817
 					if (rs.getString("wip_completed_qty")==null)
 					{
@@ -1454,46 +1454,46 @@ try
 					else
 					{
 						ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("wip_completed_qty")).doubleValue(), ARightL));
-					}			
-					col++;				
-				}	
-				//to tw,add by Peggy 20200325	
+					}
+					col++;
+				}
+				//to tw,add by Peggy 20200325
 				ws.addCell(new jxl.write.Label(col, row, (rs.getInt("to_tw_days")>0?"Y":"N") , (rs.getInt("partial_cnt")>1?ALeftLB:ALeftL)));
-				col++;						
-				row++;				
+				col++;
+				row++;
 			}
 			else if (REPORT_TYPE.equals("CONFIRMED") || REPORT_TYPE.equals("QUERY"))
 			{
 				//if (!rs.getString("so_line_id").equals(so_line_id))
 				//{
-					so_line_id=rs.getString("so_line_id");	
-					//ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1); 	
+					so_line_id=rs.getString("so_line_id");
+					//ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1);
 					ws.addCell(new jxl.write.Label(col, row, rs.getString("request_no"), (rs.getInt("partial_cnt")>1?ACenterLB:ACenterL)));
-					col++;	
-					//ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1); 	
+					col++;
+					//ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1);
 					ws.addCell(new jxl.write.Label(col, row, rs.getString("sales_group"), (rs.getInt("partial_cnt")>1?ACenterLB:ACenterL)));
-					col++;	
-					//ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1); 	
+					col++;
+					//ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1);
 					ws.addCell(new jxl.write.Label(col, row, rs.getString("orig_customer"), (rs.getInt("partial_cnt")>1?ALeftLB:ALeftL)));
-					col++;	
+					col++;
 					ws.addCell(new jxl.write.Label(col, row, rs.getString("end_customer"), (rs.getInt("partial_cnt")>1?ALeftLB:ALeftL)));
-					col++;	
-					//ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1); 	
+					col++;
+					//ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1);
 					ws.addCell(new jxl.write.Label(col, row, rs.getString("so_no") , (rs.getInt("partial_cnt")>1?ALeftLB:ALeftL)));
-					col++;	
-					//ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1); 	
+					col++;
+					//ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1);
 					ws.addCell(new jxl.write.Label(col, row, rs.getString("line_no") , (rs.getInt("partial_cnt")>1?ALeftLB:ALeftL)));
-					col++;	
+					col++;
 					ws.addCell(new jxl.write.Label(col, row, rs.getString("orig_item_desc") , (rs.getInt("partial_cnt")>1?ALeftLB:ALeftL)));
-					col++;	
+					col++;
 					ws.addCell(new jxl.write.Label(col, row, rs.getString("tsc_package") , (rs.getInt("partial_cnt")>1?ALeftLB:ALeftL)));
-					col++;	
-					//ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1); 	
+					col++;
+					//ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1);
 					ws.addCell(new jxl.write.Label(col, row, rs.getString("source_customer_po") , (rs.getInt("partial_cnt")>1?ALeftLB:ALeftL)));
-					col++;					
-					//ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1); 	
+					col++;
+					//ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1);
 					ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("orig_so_qty")).doubleValue(), (rs.getInt("partial_cnt")>1?ARightLB:ARightL)));
-					col++;	
+					col++;
 					if (rs.getString("ordered_date")==null)  //add by Peggy 20190612
 					{
 						ws.addCell(new jxl.write.Label(col, row, "" , (rs.getInt("partial_cnt")>1?ACenterLB:ACenterL)));
@@ -1502,7 +1502,7 @@ try
 					{
 						ws.addCell(new jxl.write.DateTime(col, row, formatter.parse(rs.getString("ordered_date")) ,(rs.getInt("partial_cnt")>1?DATE_FORMAT1:DATE_FORMAT)));
 					}
-					col++;	
+					col++;
 					if (rs.getString("crd")==null)  //add by Peggy 20190612
 					{
 						ws.addCell(new jxl.write.Label(col, row, "" , (rs.getInt("partial_cnt")>1?ACenterLB:ACenterL)));
@@ -1510,15 +1510,15 @@ try
 					else
 					{
 						ws.addCell(new jxl.write.DateTime(col, row, formatter.parse(rs.getString("crd")) ,(rs.getInt("partial_cnt")>1?DATE_FORMAT1:DATE_FORMAT)));
-					}	
+					}
 					col++;
-					//ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1); 
+					//ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1);
 					if (rs.getString("orig_schedule_ship_date_tw")==null)
 					{
 						ws.addCell(new jxl.write.Label(col, row, "" , (rs.getInt("partial_cnt")>1?ACenterLB:ACenterL)));
 					}
 					else
-					{	
+					{
 						//add by Peggy 20210401
 						if (!chkma.equals("Y") && (rs.getString("status").equals("AWAITING_CONFIRM") ||rs.getString("status").equals("CONFIRMED"))  && !rs.getString("orig_schedule_ship_date_tw").equals(rs.getString("erp_ssd")))
 						{
@@ -1529,49 +1529,49 @@ try
 							ws.addCell(new jxl.write.DateTime(col, row, formatter.parse(rs.getString("orig_schedule_ship_date_tw")) , (rs.getInt("partial_cnt")>1?DATE_FORMAT1:DATE_FORMAT)));
 						}
 					}
-					col++;	
+					col++;
 					if (rs.getString("orig_schedule_ship_date")==null)
 					{
 						ws.addCell(new jxl.write.Label(col, row, "" , (rs.getInt("partial_cnt")>1?ACenterLB:ACenterL)));
 					}
 					else
-					{	
+					{
 						ws.addCell(new jxl.write.DateTime(col, row, formatter.parse(rs.getString("orig_schedule_ship_date")) , (rs.getInt("partial_cnt")>1?DATE_FORMAT1:DATE_FORMAT)));
-	
+
 					}
-					col++;					
+					col++;
 				//}
 				//else
 				//{
 				//	col=9;
 				//}
 				ws.addCell(new jxl.write.Label(col, row, (rs.getString("order_type")==null?"":rs.getString("order_type")), (rs.getInt("partial_cnt")>1?ACenterLB:ACenterL)));
-				col++;	
+				col++;
 				ws.addCell(new jxl.write.Label(col, row, (rs.getString("customer_name")==null?"":rs.getString("customer_name")), (rs.getInt("partial_cnt")>1?ALeftLB:ALeftL)));
-				col++;	
+				col++;
 				ws.addCell(new jxl.write.Label(col, row, (rs.getString("ship_to")==null?"":rs.getString("ship_to")),(rs.getInt("partial_cnt")>1?ALeftLB:ALeftL)));
-				col++;	
+				col++;
 				ws.addCell(new jxl.write.Label(col, row, (rs.getString("bill_to")==null?"":rs.getString("bill_to")), (rs.getInt("partial_cnt")>1?ALeftLB:ALeftL)));
-				col++;	
+				col++;
 				ws.addCell(new jxl.write.Label(col, row, (rs.getString("deliver_to")==null?"":rs.getString("deliver_to")), (rs.getInt("partial_cnt")>1?ALeftLB:ALeftL)));
-				col++;	
+				col++;
 				ws.addCell(new jxl.write.Label(col, row, (rs.getString("item_desc")==null?"":rs.getString("item_desc")), (rs.getInt("partial_cnt")>1?ALeftLB:ALeftL)));
-				col++;	
+				col++;
 				ws.addCell(new jxl.write.Label(col, row, (rs.getString("cust_item_name")==null?"":rs.getString("cust_item_name")),(rs.getInt("partial_cnt")>1?ALeftLB:ALeftL)));
-				col++;	
+				col++;
 				ws.addCell(new jxl.write.Label(col, row, (rs.getString("customer_po")==null?"":rs.getString("customer_po")), (rs.getInt("partial_cnt")>1?ALeftLB:ALeftL)));
-				col++;	
+				col++;
 				ws.addCell(new jxl.write.Label(col, row, (rs.getString("shipping_method")==null?"":rs.getString("shipping_method")), (rs.getInt("partial_cnt")>1?ALeftLB:ALeftL)));
-				col++;	
+				col++;
 				//supplier number,add by Peggy 20220428
 				ws.addCell(new jxl.write.Label(col, row,  (rs.getString("supplier_number")==null?"":rs.getString("supplier_number")), ACenterL));
-				col++;				
+				col++;
 				ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("so_qty")).doubleValue(), (rs.getInt("partial_cnt")>1?ARightLB:ARightL)));
-				col++;	
+				col++;
 				ws.addCell(new jxl.write.DateTime(col, row, formatter.parse(rs.getString("schedule_ship_date_tw")) ,(rs.getInt("partial_cnt")>1?DATE_FORMAT1:DATE_FORMAT)));
-				col++;	
+				col++;
 				ws.addCell(new jxl.write.DateTime(col, row, formatter.parse(rs.getString("schedule_ship_date")) ,(rs.getInt("partial_cnt")>1?DATE_FORMAT1:DATE_FORMAT)));
-				col++;	
+				col++;
 				if (rs.getString("request_date")==null)
 				{
 					ws.addCell(new jxl.write.Label(col, row, "" , (rs.getInt("partial_cnt")>1?ACenterLB:ACenterL)));
@@ -1579,14 +1579,14 @@ try
 				else
 				{
 					ws.addCell(new jxl.write.DateTime(col, row, formatter.parse(rs.getString("request_date")) ,(rs.getInt("partial_cnt")>1?DATE_FORMAT1:DATE_FORMAT)));
-				}	
-				col++;				
+				}
+				col++;
 				ws.addCell(new jxl.write.Label(col, row, (rs.getString("fob")==null?"":rs.getString("fob")), (rs.getInt("partial_cnt")>1?ALeftLB:ALeftL)));
-				col++;	
+				col++;
 				ws.addCell(new jxl.write.Label(col, row, (rs.getString("remarks")==null?"":rs.getString("remarks")), (rs.getInt("partial_cnt")>1?ALeftLB:ALeftL)));
-				col++;	
+				col++;
 				ws.addCell(new jxl.write.Label(col, row, rs.getString("ALENGNAME"),(rs.getInt("partial_cnt")>1?ACenterLB:ACenterL)));
-				col++;	
+				col++;
 				if (rs.getString("pc_so_qty")==null || (rs.getString("pc_confirmed_result") != null && rs.getString("pc_confirmed_result").equals("R")))
 				{
 					ws.addCell(new jxl.write.Label(col, row, "" , (rs.getInt("partial_cnt")>1?ACenterLB:ACenterL)));
@@ -1594,8 +1594,8 @@ try
 				else
 				{
 					ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("pc_so_qty")).doubleValue(),  (rs.getInt("partial_cnt")>1?ARightLB:ARightL)));
-				}			
-				col++;	
+				}
+				col++;
 				if (rs.getString("pc_schedule_ship_date")==null || (rs.getString("pc_confirmed_result") != null && rs.getString("pc_confirmed_result").equals("R")))
 				{
 					ws.addCell(new jxl.write.Label(col, row, "" , (rs.getInt("partial_cnt")>1?ACenterLB:ACenterL)));
@@ -1622,15 +1622,15 @@ try
 				{
 					ws.addCell(new jxl.write.Label(col, row, (rs.getString("pc_confirmed_result").equals("A")?"Accept":"Reject"), (rs.getInt("partial_cnt")>1?(rs.getString("pc_confirmed_result").equals("A")? ACenterLGB:ACenterLPB):(rs.getString("pc_confirmed_result").equals("A")? ACenterLG:ACenterLP))));
 				}
-				col++;				
+				col++;
 				ws.addCell(new jxl.write.Label(col, row, (rs.getString("pc_remarks")==null?"":rs.getString("pc_remarks")), (rs.getInt("partial_cnt")>1?ALeftLB:ALeftL)));
 				col++;
 				ws.addCell(new jxl.write.Label(col, row, rs.getString("CREATED_BY"), (rs.getInt("partial_cnt")>1?ALeftLB:ALeftL)));
-				col++;	
+				col++;
 				ws.addCell(new jxl.write.DateTime(col, row, formatter.parse(rs.getString("CREATION_DATE")) ,(rs.getInt("partial_cnt")>1?DATE_FORMAT1:DATE_FORMAT)));
-				col++;	
+				col++;
 				ws.addCell(new jxl.write.Label(col, row, (rs.getString("PC_CONFIRMED_BY")==null?"":rs.getString("PC_CONFIRMED_BY")),(rs.getInt("partial_cnt")>1?ALeftLB:ALeftL)));
-				col++;	
+				col++;
 				if (rs.getString("PC_CONFIRMED_DATE")==null)
 				{
 					ws.addCell(new jxl.write.Label(col, row, "" , (rs.getInt("partial_cnt")>1?ACenterLB:ACenterL)));
@@ -1639,42 +1639,42 @@ try
 				{
 					ws.addCell(new jxl.write.DateTime(col, row, formatter.parse(rs.getString("PC_CONFIRMED_DATE")) ,(rs.getInt("partial_cnt")>1?DATE_FORMAT1:DATE_FORMAT)));
 				}
-				col++;	
+				col++;
 				if (REPORT_TYPE.equals("QUERY"))
 				{
 					ws.addCell(new jxl.write.Label(col, row, (rs.getString("LAST_UPDATED_BY")==null?"":rs.getString("LAST_UPDATED_BY")),(rs.getInt("partial_cnt")>1?ALeftLB:ALeftL)));
-					col++;	
+					col++;
 					ws.addCell(new jxl.write.DateTime(col, row, formatter.parse(rs.getString("LAST_UPDATE_DATE")) ,(rs.getInt("partial_cnt")>1?DATE_FORMAT1:DATE_FORMAT)));
-					col++;	
+					col++;
 					ws.addCell(new jxl.write.Label(col, row, (rs.getString("SALES_CONFIRMED_RESULT")==null?"":rs.getString("SALES_CONFIRMED_RESULT")), (rs.getInt("partial_cnt")>1?ALeftLB:ALeftL)));
-					col++;	
+					col++;
 					ws.addCell(new jxl.write.Label(col, row, (rs.getString("CHANGE_REASON")==null?"":rs.getString("CHANGE_REASON")), (rs.getInt("partial_cnt")>1?ALeftLB:ALeftL)));
-					col++;	
+					col++;
 					ws.addCell(new jxl.write.Label(col, row, (rs.getString("CHANGE_COMMENTS")==null?"":rs.getString("CHANGE_COMMENTS")), (rs.getInt("partial_cnt")>1?ALeftLB:ALeftL)));
-					col++;					
+					col++;
 					ws.addCell(new jxl.write.Label(col, row, (rs.getString("NEW_SO_NO")==null?"":rs.getString("NEW_SO_NO")), (rs.getInt("partial_cnt")>1?ALeftLB:ALeftL)));
-					col++;	
+					col++;
 					ws.addCell(new jxl.write.Label(col, row, (rs.getString("NEW_LINE_NO")==null?"":rs.getString("NEW_LINE_NO")), (rs.getInt("partial_cnt")>1?ALeftLB:ALeftL)));
-					col++;	
+					col++;
 					ws.addCell(new jxl.write.Label(col, row, rs.getString("STATUS"),(rs.getInt("partial_cnt")>1?ALeftLB:ALeftL)));
-					col++;	
+					col++;
 					ws.addCell(new jxl.write.Label(col, row, rs.getString("tsc_prod_group") , (rs.getInt("partial_cnt")>1?ALeftLB:ALeftL)));  //add by Peggy 20210325
-					col++;					
+					col++;
 					ws.addCell(new jxl.write.Label(col, row, rs.getString("tsc_family") , (rs.getInt("partial_cnt")>1?ALeftLB:ALeftL)));
-					col++;	
+					col++;
 					ws.addCell(new jxl.write.Label(col, row, (rs.getString("RESEND_TIMES")==null?"":rs.getString("RESEND_TIMES")) , (rs.getInt("partial_cnt")>1?ARightLB:ARightL)));
-					col++;	
+					col++;
 					ws.addCell(new jxl.write.Label(col, row, (rs.getString("RESEND_FROM_REQUEST_NO")==null?"":rs.getString("RESEND_FROM_REQUEST_NO")) , (rs.getInt("partial_cnt")>1?ALeftLB:ALeftL)));
-					col++;	
+					col++;
 					//if ((UserRoles.indexOf("MPC_User")>=0 || UserRoles.indexOf("MPC_003")>=0) ||  UserRoles.indexOf("Sale")<0)
-					//{	
+					//{
 						//類別分析
 						ws.addCell(new jxl.write.Label(col, row, (rs.getString("revise_remarks")==null?"":rs.getString("revise_remarks")), ACenterL));
-						col++;	
-						
+						col++;
+
 						//工單號,add by Peggy 20190612
 						ws.addCell(new jxl.write.Label(col, row, (rs.getString("wip_list")==null?"":rs.getString("wip_list")), (rs.getInt("partial_cnt")>1?ARightLB:ARightL)));
-						col++;	
+						col++;
 						//完工入庫量,add by Peggy 20190612
 						if (rs.getString("wip_completed_qty")==null)
 						{
@@ -1683,8 +1683,8 @@ try
 						else
 						{
 							ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("wip_completed_qty")).doubleValue(),(rs.getInt("partial_cnt")>1?ARightLB:ARightL)));
-						}			
-						col++;				
+						}
+						col++;
 						//次數統計,add by Peggy 20190612
 						if (rs.getString("request_cnt")==null)
 						{
@@ -1694,9 +1694,9 @@ try
 						{
 							ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("request_cnt")).doubleValue(),  (rs.getInt("partial_cnt")>1?ARightLB:ARightL)));
 						}
-						col++;				
-					//}				
-				}	
+						col++;
+					//}
+				}
 				if (chkma.equals("Y"))
 				{
 					//erp order ssd,add by Peggy 20190117 for Mabel issue
@@ -1705,32 +1705,32 @@ try
 						ws.addCell(new jxl.write.Label(col, row, "" , (rs.getInt("partial_cnt")>1?ACenterLB:ACenterL)));
 					}
 					else
-					{				
+					{
 						ws.addCell(new jxl.write.DateTime(col, row, formatter.parse(rs.getString("erp_ssd")) ,(rs.getInt("partial_cnt")>1?DATE_FORMAT1:DATE_FORMAT)));
 					}
-					col++;	
+					col++;
 				}
-				//to tw,add by Peggy 20200325	
+				//to tw,add by Peggy 20200325
 				ws.addCell(new jxl.write.Label(col, row, (rs.getInt("to_tw_days")>0?"Y":"N") , (rs.getInt("partial_cnt")>1?ALeftLB:ALeftL)));
-				col++;	
-				//out.println("row="+row);		
-				row++;				
+				col++;
+				//out.println("row="+row);
+				row++;
 			}
-			
+
 			reccnt ++;
-		}	
+		}
 		rs.close();
 		statement.close();
-		wwb.write(); 
+		wwb.write();
 		wwb.close();
-	
+
 		if (ACTTYPE.equals("REMINDER") && reccnt>0)
 		{
 			Properties props = System.getProperties();
 			props.put("mail.transport.protocol","smtp");
 			props.put("mail.smtp.host", "mail.ts.com.tw");
 			props.put("mail.smtp.port", "25");
-			
+
 			Session s = Session.getInstance(props, null);
 			javax.mail.internet.MimeMessage message = new javax.mail.internet.MimeMessage(s);
 			message.setSentDate(new java.util.Date());
@@ -1741,18 +1741,16 @@ try
 				remarks="(這是來自RFQ測試區的信件)";
 				message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("peggy.chen@ts.com.tw"));
 			}
-			else 
+			else
 			{
 				if (SALES_REGION.equals("TSCE"))
 				{
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("emily.hsin@ts.com.tw"));
-					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("sammy.chang@ts.com.tw"));
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("rachel.chen@ts.com.tw"));
-					message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("celine.yu@ts.com.tw"));
+					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("zoe.wu@ts.com.tw"));
 				}
 				else if (SALES_REGION.equals("TSCA"))
 				{
-					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("cynthia.tseng@ts.com.tw"));
 					message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("cindy.huang@ts.com.tw"));
 				}
 				else if (SALES_REGION.equals("TSCJ"))
@@ -1761,7 +1759,7 @@ try
 					message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("jacksonl@ts.com.tw"));
 				}
 				else if (SALES_REGION.equals("TSCH-HK"))
-				{	
+				{
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("annie@ts-china.com.cn"));
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("demi_duan@ts-china.com.cn"));
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("fiona_chen@ts-china.com.cn"));
@@ -1792,15 +1790,15 @@ try
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("william_wu@ts-china.com.cn"));
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("jack_tang@ts-china.com.cn"));
 					//message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("nina_zan@ts-china.com.cn"));
-					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("hongmei_li@ts-china.com.cn"));					
+					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("hongmei_li@ts-china.com.cn"));
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("lisahou@ts-china.com.cn"));
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("peter_zheng@ts-china.com.cn"));
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("kara_tian@ts-china.com.cn"));
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("tschk-cs005@ts-china.com.cn"));
 					message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("rita_zhou@ts-china.com.cn"));
-				}	
+				}
 				else if (SALES_REGION.equals("TSCC"))
-				{	
+				{
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("tschk-cs002@ts-china.com.cn"));
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("tschk-cs003@ts-china.com.cn"));
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("tschk-cs006@ts-china.com.cn"));
@@ -1827,45 +1825,44 @@ try
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("lisahou@ts-china.com.cn"));
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("chris_wen@ts-china.com.cn"));
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("daphne_zhang@ts-china.com.cn"));
-					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("lily_yin@ts-china.com.cn"));					
+					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("lily_yin@ts-china.com.cn"));
 					//message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("tschk-sample@ts-china.com.cn"));
 					message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("rita_zhou@ts-china.com.cn"));
 					message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("ccyang@ts-china.com.cn"));
-					message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("tschk-cs004@ts-china.com.cn"));					
-					message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("tschk-cs001@ts-china.com.cn"));					
+					message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("tschk-cs004@ts-china.com.cn"));
+					message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("tschk-cs001@ts-china.com.cn"));
 					message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("sansan@ts-china.com.cn"));
 				}
 				else if (SALES_REGION.equals("TSCK"))
-				{	
+				{
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("bonnie.liu@ts.com.tw"));
 					message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("june.wang@ts.com.tw"));
-					
-				}							
+
+				}
 				else if (SALES_REGION.equals("TSCR-ROW"))
 				{
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("alvin.lin@ts.com.tw"));
 					message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("lisa.chen@ts.com.tw"));
-				}							
+				}
 				else if (SALES_REGION.equals("TSCT-DA"))
-				{	
+				{
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("vivian.chou@ts.com.tw"));
-					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("zoe.wu@ts.com.tw"));
 					message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("rika_lin@ts.com.tw"));
 					//message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("olivia.hsu@ts.com.tw"));
-				}							
+				}
 				else if (SALES_REGION.equals("TSCT-Disty"))
-				{	
+				{
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("kristin.wu@ts.com.tw"));
 					message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("sofia.liu@ts.com.tw"));
-				}		
+				}
 				else if (SALES_REGION.equals("SAMPLE"))
-				{	
+				{
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("jenny.liao@ts.com.tw"));
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("demi.kao@ts.com.tw"));
-				}								
+				}
 			}
 			message.addRecipient(Message.RecipientType.BCC, new javax.mail.internet.InternetAddress("peggy.chen@ts.com.tw"));
-	
+
 			V_CUST_LIST="";
 			sql = " SELECT DISTINCT '('||ar.account_number||')'|| case when a.sales_group='TSCH-HK' or a.source_customer_id IN (15540) then case when instr(a.SOURCE_CUSTOMER_PO,'(')>0  then substr(a.SOURCE_CUSTOMER_PO,instr(a.SOURCE_CUSTOMER_PO,'(')+1,instr(a.SOURCE_CUSTOMER_PO,')',-1)-instr(a.SOURCE_CUSTOMER_PO,'(')-1) else a.SOURCE_CUSTOMER_PO end"+
 				  " else nvl(ar.customer_sname,ar.customer_name) end ||case when a.source_customer_id in (14980,1019) then  nvl2(end_cust.account_name ,'('||end_cust.account_name ||')','') else '' end as customer"+
@@ -1884,16 +1881,16 @@ try
 			//out.println(SALES_REGION);
 			ResultSet rs2=statement2.executeQuery();
 			while (rs2.next())
-			{	
+			{
 				if (!V_CUST_LIST.equals("")) V_CUST_LIST =V_CUST_LIST+"<br>";
-				V_CUST_LIST =V_CUST_LIST+rs2.getString(1);	
+				V_CUST_LIST =V_CUST_LIST+rs2.getString(1);
 			}
 			rs2.close();
 			statement2.close();
 			strContent = "Request Notification,<p>Please login at:<a href="+'"'+strProgram+'"'+">"+strUrl+"</a> to confirm order revise.<p>"+
 						 "Include the following customer list in this request..<br>"+V_CUST_LIST;
-			
-			message.setHeader("Subject", MimeUtility.encodeText((ACTTYPE.equals("REMINDER")?"Reminder-":"")+"工廠已回覆申請改單通知"+remarks, "UTF-8", null));	
+
+			message.setHeader("Subject", MimeUtility.encodeText((ACTTYPE.equals("REMINDER")?"Reminder-":"")+"工廠已回覆申請改單通知"+remarks, "UTF-8", null));
 			javax.mail.internet.MimeMultipart mp = new javax.mail.internet.MimeMultipart();
 			javax.mail.internet.MimeBodyPart mbp = new javax.mail.internet.MimeBodyPart();
 			mbp.setContent(strContent, "text/html;charset=UTF-8");
@@ -1902,7 +1899,7 @@ try
 			javax.activation.FileDataSource fds = new javax.activation.FileDataSource("\\resin-2.1.9\\webapps\\oradds\\report\\"+FileName);
 			mbp.setDataHandler(new javax.activation.DataHandler(fds));
 			mbp.setFileName(fds.getName());
-		
+
 			// create the Multipart and add its parts to it
 			mp.addBodyPart(mbp);
 			message.setContent(mp);
@@ -1910,14 +1907,14 @@ try
 		}
 	}
 	rs1.close();
-	statement1.close();	
-	os.close();  
-	out.close(); 
-}   
-catch (Exception e) 
-{ 
-	out.println("Exception:"+e.getMessage()+sql); 
-} 	
+	statement1.close();
+	os.close();
+	out.close();
+}
+catch (Exception e)
+{
+	out.println("Exception:"+e.getMessage()+sql);
+}
 %>
 </FORM>
 </body>
@@ -1930,22 +1927,22 @@ try
 	if (ACTTYPE.equals(""))
 	{
 		response.reset();
-		response.setContentType("application/vnd.ms-excel");	
-		String strURL = "/oradds/report/"+FileName; 
+		response.setContentType("application/vnd.ms-excel");
+		String strURL = "/oradds/report/"+FileName;
 		response.sendRedirect(strURL);
 	}
 	else
 	{
 	%>
 	<script language="JavaScript" type="text/JavaScript">
-		window.close();		
-	</script>	
-	<%	
+		window.close();
+	</script>
+	<%
 	}
 }
 catch(Exception e)
 {
-	out.println("Exception1:"+e.getMessage()); 
+	out.println("Exception1:"+e.getMessage());
 }
 %>
 </html>

@@ -1315,7 +1315,7 @@ if (typeId=="5" || typeId.equals("5"))  //typeid=5  //I6 QUERY EXPORT
                " mtl_system_items msi,"+
                " inv.mtl_parameters mps"+
                //" WHERE inv.attribute2 = 'S'"+
-		       " WHERE (inv.attribute2 = 'S' or SECONDARY_INVENTORY_NAME='14')"+  //ADD TSCE 14倉 BY PEGGY 20210625
+		       " WHERE (inv.attribute2 = 'S' or SECONDARY_INVENTORY_NAME='14' or SECONDARY_INVENTORY_NAME='15')"+  //ADD TSCE 14,15 倉 BY Mars 20250319
                " AND inv.organization_id = msi.organization_id"+
                " AND msi.organization_id = mps.organization_id"+
 		 	   //" AND msi.inventory_item_status_code <> 'Inactive'"+

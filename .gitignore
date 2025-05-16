@@ -11,7 +11,7 @@ TSCEPriceBook/
 TSCItemList/
 TSCItemListUser/
 report/
-
+*.static
 
 ### IntelliJ IDEA ###
 .idea/
@@ -19,6 +19,8 @@ report/
 *.iml
 *.ipr
 *.class
+*.TXT
+*.bak
 *_jsp.java
 /out/
 

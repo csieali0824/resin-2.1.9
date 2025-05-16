@@ -1,17 +1,17 @@
-<!-- 20160919 Peggy,æ–°å¢bill_sequence_id-->
-<!-- 20161107 Peggy,æ–°å¢PRDå¤–åŒ…-->
-<!-- 20170817 Peggy,é è¨ˆå®Œå·¥æ—¥ç§»è‡³è¡¨é ­,å–æ¶ˆline request date,æ–°å¢æš«ä¸ç™¼æ–™é¸é …,åŠè£œç™¼æ–™åŠŸèƒ½-->
-<!-- 20171012 Peggy,æ–°å¢RD3å·¥ç¨‹å…¥åº«äº¤æ˜“-->
-<!-- 20171027 Peggy,æ–°å¢RD5å·¥ç¨‹å…¥åº«äº¤æ˜“-->
-<!-- 20180124 Peggy,HOLDæ™¶ç‰‡è½‰å·¥å–®ç”Ÿç”¢-->
-<!-- 20180528 Peggy,èŒ‚çŸ½åˆ†æ‰¹ç™¼æ–™issue-->
-<!-- 20180724 Peggy,æ–°å¢æ™¶ç‰‡ç‰‡è™Ÿæ¬„ä½for4056å¤©æ°´è¯å¤©é›†åœ˜-->
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.net.*,java.io.*,java.text.*,java.lang.*"%>
+<!-- 20160919 Peggy,·s¼Wbill_sequence_id-->
+<!-- 20161107 Peggy,·s¼WPRD¥~¥]-->
+<!-- 20170817 Peggy,¹w­p§¹¤u¤é²¾¦ÜªíÀY,¨ú®øline request date,·s¼W¼È¤£µo®Æ¿ï¶µ,¤Î¸Éµo®Æ¥\¯à-->
+<!-- 20171012 Peggy,·s¼WRD3¤uµ{¤J®w¥æ©ö-->
+<!-- 20171027 Peggy,·s¼WRD5¤uµ{¤J®w¥æ©ö-->
+<!-- 20180124 Peggy,HOLD´¹¤ùÂà¤u³æ¥Í²£-->
+<!-- 20180528 Peggy,­Zª¿¤À§åµo®Æissue-->
+<!-- 20180724 Peggy,·s¼W´¹¤ù¤ù¸¹Äæ¦ìfor4056¤Ñ¤ôµØ¤Ñ¶°¹Î-->
+<%@ page contentType="text/html; charset=big5" language="java" import="java.sql.*,java.net.*,java.io.*,java.text.*,java.lang.*"%>
 <%@ page import="ComboBoxBean,DateBean,ArrayComboBoxBean" %>
 <jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
 <jsp:useBean id="dateBean" scope="page" class="DateBean"/>
 <jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
- <!--=============ä»¥ä¸‹å€æ®µç‚ºå®‰å…¨èªè­‰æ©Ÿåˆ¶==========-->
+ <!--=============¥H¤U°Ï¬q¬°¦w¥ş»{ÃÒ¾÷¨î==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ page import="SalesDRQPageHeaderBean" %>
@@ -20,7 +20,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
 <jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<title>å§”å¤–åŠ å·¥å–®-ä¿®æ”¹</title>
+<title>©e¥~¥[¤u³æ-­×§ï</title>
 <script language="JavaScript" type="text/JavaScript">
 function setCopyLine(URL)
 {
@@ -34,7 +34,7 @@ function setAddLine(URL)
 	var TXTLINE = document.MYFORM.txtLine.value;
 	if (TXTLINE == "" || TXTLINE == null || TXTLINE == "null")
 	{
-		alert("è«‹è¼¸å…¥è¡Œæ•¸!");
+		alert("½Ğ¿é¤J¦æ¼Æ!");
 		document.MYFORM.txtLine.focus();
 		return false;
 	}	
@@ -43,13 +43,13 @@ function setAddLine(URL)
 		var regex = /^-?\d+$/;
 		if (TXTLINE.match(regex)==null) 
 		{ 
-    		alert("æ•¸é‡å¿…é ˆæ˜¯æ•´æ•¸æ•¸å€¼å‹æ…‹!"); 
+    		alert("¼Æ¶q¥²¶·¬O¾ã¼Æ¼Æ­È«¬ºA!"); 
 			document.MYFORM.txtLine.focus();
 			return false;
 		} 
 		else if (parseInt(TXTLINE)<1 || parseInt(TXTLINE)>10)
 		{
-    		alert("è¡Œæ•¸æ–°å¢ç¯„åœ1~10!"); 
+    		alert("¦æ¼Æ·s¼W½d³ò1~10!"); 
 			document.MYFORM.txtLine.focus();
 			return false;		
 		}
@@ -59,7 +59,7 @@ function setAddLine(URL)
 	{
 		if (document.MYFORM.COPY_NUM.value=="")
 		{
-			alert("è«‹è¼¸å…¥copyé …æ¬¡!");
+			alert("½Ğ¿é¤Jcopy¶µ¦¸!");
 			document.MYFORM.COPY_NUM.focus();
 			return false;		
 		}
@@ -68,13 +68,13 @@ function setAddLine(URL)
 			var regex = /^-?\d+$/;
 			if ((document.MYFORM.COPY_NUM.value).match(regex)==null) 
 			{ 
-				alert("æ•¸é‡å¿…é ˆæ˜¯æ•´æ•¸æ•¸å€¼å‹æ…‹!"); 
+				alert("¼Æ¶q¥²¶·¬O¾ã¼Æ¼Æ­È«¬ºA!"); 
 				document.MYFORM.COPY_NUM.focus();
 				return false;
 			} 
 			else if (parseInt(document.MYFORM.COPY_NUM.value)>parseInt(document.MYFORM.LINENUM.value))
 			{
-				alert("é …æ¬¡æœ€å¤šåªåˆ°"+document.MYFORM.LINENUM.value+",è«‹èªçœŸè¼¸å…¥,è¬è¬!"); 
+				alert("¶µ¦¸³Ì¦h¥u¨ì"+document.MYFORM.LINENUM.value+",½Ğ»{¯u¿é¤J,ÁÂÁÂ!"); 
 				document.MYFORM.COPY_NUM.focus();
 				return false;		
 			}	
@@ -87,7 +87,7 @@ function setAddLine(URL)
 
 function setDelete(objLine)
 {
-	if (confirm("æ‚¨ç¢ºå®šè¦åˆªé™¤è¡Œè™Ÿ"+objLine+"æ‰€æœ‰è³‡æ–™å—?"))
+	if (confirm("±z½T©w­n§R°£¦æ¸¹"+objLine+"©Ò¦³¸ê®Æ¶Ü?"))
 	{
 		for (var i = objLine ; i <= document.MYFORM.LINENUM.value ; i++)
 		{
@@ -132,7 +132,7 @@ function setDelete(objLine)
 }
 function CheckDataCode(chooseLine)
 {
-	//PRDæ’é™¤åœ¨åŒå‹è™ŸD/Cä¸é‡è¤‡ä¹‹é™åˆ¶å¤–,add by Peggy 20170609
+	//PRD±Æ°£¦b¦P«¬¸¹D/C¤£­«½Æ¤§­­¨î¥~,add by Peggy 20170609
 	if (document.MYFORM.PROD_GROUP.value.indexOf("PRD")<0)
 	{
 		var useDateCode = document.MYFORM.elements["UseDateCode"+chooseLine].value;
@@ -143,7 +143,7 @@ function CheckDataCode(chooseLine)
 			//if (DateCode != null && DateCode != "" && strlen[i] == DateCode)
 			if (DateCode != null && DateCode != "" && DateCode.toUpperCase() != "HOLD" && DateCode != "NA" && DateCode != "N/A" && strlen[i] == DateCode)
 			{
-				alert("DateCode:"+DateCode+"å·²ä½¿ç”¨é,è«‹é‡æ–°è¼¸å…¥!!");
+				alert("DateCode:"+DateCode+"¤w¨Ï¥Î¹L,½Ğ­«·s¿é¤J!!");
 				document.MYFORM.elements["DateCode"+chooseLine].value="";
 				document.MYFORM.elements["DateCode"+chooseLine].focus();
 				return false;
@@ -152,7 +152,7 @@ function CheckDataCode(chooseLine)
 	}
 	if (document.MYFORM.elements["DateCode"+chooseLine].value !="" && document.MYFORM.elements["DateCode"+chooseLine].value.toUpperCase() != "HOLD" && document.MYFORM.elements["DateCode"+chooseLine].value.toUpperCase() != "NA" && document.MYFORM.elements["DateCode"+chooseLine].value.toUpperCase() != "N/A")
 	{
-		subWin=window.open("../jsp/subwindow/TSCPMDDateCodeInfoFind.jsp?ITEMNAME="+document.MYFORM.elements["ITEMNAME"].value+"&DC="+document.MYFORM.elements["DateCode"+chooseLine].value+"&LNO="+chooseLine,"subwin","width=100,height=100,scrollbars=yes,menubar=no,location=no");
+		subWin=window.open("../jsp/subwindow/TSCPMDDateCodeInfoFind.jsp?ITEMNAME="+document.MYFORM.elements["ITEMNAME"].value + "&PROD_GROUP="+document.MYFORM.elements["PROD_GROUP"].value + "&DC="+document.MYFORM.elements["DateCode"+chooseLine].value+"&LNO="+chooseLine,"subwin","width=100,height=100,scrollbars=yes,menubar=no,location=no");
 	}
 	else
 	{
@@ -190,7 +190,7 @@ function setValue(wipType)
 	document.MYFORM.UNITPRICE.value = "";
 	var curr = document.MYFORM.CURRENCYCODE.value;
 	var price_uom = "";
-	if (wipType =="03" || wipType =="05") //é‡å·¥
+	if (wipType =="03" || wipType =="05") //­«¤u
 	{
 		status ="visible";
 		status1 = false;
@@ -201,13 +201,13 @@ function setValue(wipType)
 	{
 		status ="hidden";
 		status1 = true;
-		if (wipType =="01") //é‡ç”¢,add by Peggy 20120704
+		if (wipType =="01") //¶q²£,add by Peggy 20120704
 		{
 			document.MYFORM.UNITPRICE.readOnly = true;
 			price_uom = document.MYFORM.PRICE_SOURCE_UOM.value;  //modify by Peggy 20130522
 			//price_uom = document.MYFORM.PRICE_UOM.value;
 		}
-		else  //å·¥ç¨‹
+		else  //¤uµ{
 		{
 			document.MYFORM.UNITPRICE.readOnly = false;
 			if (curr != null && curr != "")
@@ -261,13 +261,13 @@ function subWindowItemLotFind(chooseLine)
 	var wiptype = document.MYFORM.WIPTYPE.value;
 	if (wiptype == null || wiptype =="--")
 	{
-		alert("è«‹å…ˆé¸æ“‡å·¥å–®é¡å‹!!");
+		alert("½Ğ¥ı¿ï¾Ü¤u³æÃş«¬!!");
 		document.MYFORM.WIPTYPE.focus();
 		return false;
 	}
 	var GoodsItemID = "";
 	var itemID = "";
-	if (wiptype =="03" || wiptype =="05") //é‡å·¥
+	if (wiptype =="03" || wiptype =="05") //­«¤u
 	{
 		itemID =document.MYFORM.elements["INVITEMID"+chooseLine].value;
 	}
@@ -279,7 +279,7 @@ function subWindowItemLotFind(chooseLine)
 	
 	if (itemID ==null || itemID =="")
 	{
-		alert("è«‹å…ˆè¼¸å…¥æ–™è™Ÿå¾Œ,å†é¸æ“‡Lot!!");
+		alert("½Ğ¥ı¿é¤J®Æ¸¹«á,¦A¿ï¾ÜLot!!");
 		if (wiptype =="03"  || wiptype =="05")
 		{
 			document.MYFORM.elements["INVITEM"+chooseLine].focus();
@@ -334,7 +334,7 @@ function setSubmit()
 	var ACTIONID = document.MYFORM.ACTIONID.value;
 	if (ACTIONID == "--" || ACTIONID == null || ACTIONID == "" || ACTIONID=="null")
 	{
-		alert("è«‹é¸æ“‡åŸ·è¡Œå‹•ä½œ!");
+		alert("½Ğ¿ï¾Ü°õ¦æ°Ê§@!");
 		document.MYFORM.ACTIONID.focus();
 		return false;
 	}
@@ -343,14 +343,14 @@ function setSubmit()
 	var STATUSTYPE = document.MYFORM.STATUSTYPE.value;
 	if (STATUSTYPE !="3" && ACTIONID =="002")
 	{
-		alert("å·¥å–®ç‹€æ…‹å·²ç‚ºCompletedï¼Œä¸å…è¨±ä¿®æ”¹!");
+		alert("¤u³æª¬ºA¤w¬°Completed¡A¤£¤¹³\­×§ï!");
 		return false;
 	}
 	
 	var WIPTYPE = document.MYFORM.WIPTYPE.value;
 	if (WIPTYPE == "--" || WIPTYPE == null || WIPTYPE =="" || WIPTYPE == "null")
 	{
-		alert("è«‹é¸æ“‡å·¥å–®é¡å‹!");
+		alert("½Ğ¿ï¾Ü¤u³æÃş«¬!");
 		document.MYFORM.WIPTYPE.focus();
 		return false;
 	}
@@ -362,14 +362,14 @@ function setSubmit()
 	var ISSUEDATE = document.MYFORM.ISSUEDATE.value;
 	if (ISSUEDATE =="" || ISSUEDATE == null || ISSUEDATE == "null")
 	{
-		alert("è«‹è¼¸å…¥ISSUE DATE!");
+		alert("½Ğ¿é¤JISSUE DATE!");
 		document.MYFORM.ISSUEDATE.focus();
 		return false;
 	}
 	var COMPLETEDATE = document.MYFORM.COMPLETEDATE.value;
 	if (COMPLETEDATE <= ISSUEDATE)
 	{
-		alert("é è¨ˆå®Œæˆæ—¥("+COMPLETEDATE+")å¿…é ˆå¤§æ–¼ISSUE DATE("+ISSUEDATE+")!"); 
+		alert("¹w­p§¹¦¨¤é("+COMPLETEDATE+")¥²¶·¤j©óISSUE DATE("+ISSUEDATE+")!"); 
 		document.MYFORM.COMPLETEDATE.focus();
 		return false;
 	}	
@@ -377,7 +377,7 @@ function setSubmit()
 	var SUPPLIERNO = document.MYFORM.SUPPLIERNO.value;
 	if (SUPPLIERNO =="" || SUPPLIERNO == null || SUPPLIERNO =="null")
 	{
-		alert("è«‹è¼¸å…¥ä¾›æ‡‰å•†ä»£ç¢¼!");
+		alert("½Ğ¿é¤J¨ÑÀ³°Ó¥N½X!");
 		document.MYFORM.SUPPLIERNO.focus();
 		return false;	
 	}
@@ -385,7 +385,7 @@ function setSubmit()
 	var SUPPLIERNAME = document.MYFORM.SUPPLIERNAME.value;
 	if (SUPPLIERNAME =="" || SUPPLIERNAME == null || SUPPLIERNAME =="null")
 	{
-		alert("è«‹è¼¸å…¥ä¾›æ‡‰å•†åç¨±!");
+		alert("½Ğ¿é¤J¨ÑÀ³°Ó¦WºÙ!");
 		document.MYFORM.SUPPLIERNAME.focus();
 		return false;	
 	}	
@@ -393,7 +393,7 @@ function setSubmit()
 	var VENDOR_SITE_ID = document.MYFORM.VENDOR_SITE_ID.value;
 	if (VENDOR_SITE_ID =="" || VENDOR_SITE_ID == null || VENDOR_SITE_ID =="null")
 	{
-		alert("ä¾›æ‡‰å•†Siteä¸å¯ç©ºç™½!");
+		alert("¨ÑÀ³°ÓSite¤£¥iªÅ¥Õ!");
 		document.MYFORM.SUPPLIERNAME.focus();
 		return false;	
 	}
@@ -401,7 +401,7 @@ function setSubmit()
 	var SUPPLIERCONTACT = document.MYFORM.SUPPLIERCONTACT.value;
 	if (SUPPLIERCONTACT == "" || SUPPLIERCONTACT == null || SUPPLIERCONTACT == "null")
 	{
-		alert("è«‹è¼¸å…¥ä¾›æ‡‰å•†ä¹‹è¯çµ¡äºº!");
+		alert("½Ğ¿é¤J¨ÑÀ³°Ó¤§Ápµ¸¤H!");
 		document.MYFORM.SUPPLIERCONTACT.focus();
 		return false;		
 	}
@@ -409,14 +409,14 @@ function setSubmit()
 	var CURRENCYCODE = document.MYFORM.CURRENCYCODE.value;
 	if (CURRENCYCODE == "" || CURRENCYCODE == null || CURRENCYCODE == "null" || CURRENCYCODE == "&nbsp;")
 	{
-		alert("å¹£åˆ¥ä¸å¯ç©ºç™½!");
+		alert("¹ô§O¤£¥iªÅ¥Õ!");
 		document.MYFORM.CURRENCYCODE.focus();
 		return false;		
 	}
 
 	if (document.MYFORM.SUBINVENTORY.value == null || document.MYFORM.SUBINVENTORY.value == "" || document.MYFORM.SUBINVENTORY.value == "null")
 	{
-		alert("è«‹æŒ‡å®šå…¥åº«å€‰!");
+		alert("½Ğ«ü©w¤J®w­Ü!");
 		document.MYFORM.SUBINVENTORY.focus();
 		return false;		
 	}	
@@ -429,12 +429,12 @@ function setSubmit()
 	var OTHERS = document.MYFORM.OTHERS.value;
 	if (CHKASSEMBLY == false && CHKTESTING == false && CHKTAPING ==false && CHKLAPPING ==false && CHKOTHERS ==false)
 	{
-		alert("æ¸¬è©¦é …ç›®è«‹è‡³å°‘å‹¾é¸ä¸€é …!");
+		alert("´ú¸Õ¶µ¥Ø½Ğ¦Ü¤Ö¤Ä¿ï¤@¶µ!");
 		return false;
 	}
 	if (CHKOTHERS==true && (OTHERS == "" || OTHERS == null || OTHERS == "null"))
 	{
-		alert("ç•¶å‹¾é¸[å…¶ä»–]æ™‚ï¼Œè«‹å¡«å¯«å…¶ä»–èªªæ˜!");
+		alert("·í¤Ä¿ï[¨ä¥L]®É¡A½Ğ¶ñ¼g¨ä¥L»¡©ú!");
 		document.MYFORM.OTHERS.focus();
 		return false;
 	}
@@ -443,7 +443,7 @@ function setSubmit()
 	var ITEMNAME = document.MYFORM.ITEMNAME.value;
 	if (ITEMNAME == "" || ITEMNAME == null || ITEMNAME == "null")
 	{
-		alert("è«‹è¼¸å…¥æ–™è™Ÿ!");
+		alert("½Ğ¿é¤J®Æ¸¹!");
 		document.MYFORM.ITEMNAME.focus();
 		return false;
 	}
@@ -451,7 +451,7 @@ function setSubmit()
 	var ITEMDESC = document.MYFORM.ITEMDESC.value;
 	if (ITEMDESC == "" || ITEMDESC == null || ITEMDESC == "null")
 	{
-		alert("è«‹è¼¸å…¥å“å!");
+		alert("½Ğ¿é¤J«~¦W!");
 		document.MYFORM.ITEMDESC.focus();
 		return false;
 	}	
@@ -459,7 +459,7 @@ function setSubmit()
 	//var PACKAGE = document.MYFORM.PACKAGE.value;
 	//if (PACKAGE == "" || PACKAGE == null || PACKAGE == "null")
 	//{
-	//	alert("è«‹è¼¸å…¥å°è£å‹å¼!");
+	//	alert("½Ğ¿é¤J«Ê¸Ë«¬¦¡!");
 	//	document.MYFORM.PACKAGE.focus();
 	//	return false;
 	//}
@@ -469,7 +469,7 @@ function setSubmit()
 	var DIENAME = document.MYFORM.DIENAME.value;
 	if (DIENAME == "" || DIENAME == null || DIENAME == "null")
 	{
-		alert("è«‹è¼¸å…¥èŠ¯ç‰‡åç¨±!");
+		alert("½Ğ¿é¤Jªä¤ù¦WºÙ!");
 		document.MYFORM.DIENAME.focus();
 		return false;
 	}	
@@ -477,7 +477,7 @@ function setSubmit()
 	var QTY = document.MYFORM.QTY.value;
 	if (QTY == "" || QTY == null || QTY == "null")
 	{
-		alert("è«‹è¼¸å…¥æ•¸é‡!");
+		alert("½Ğ¿é¤J¼Æ¶q!");
 		document.MYFORM.QTY.focus();
 		return false;
 	}	
@@ -486,7 +486,7 @@ function setSubmit()
 		var regex = /^-?\d+\.?\d*?$/;
 		if (QTY.match(regex)==null) 
 		{ 
-    		alert("æ•¸é‡å¿…é ˆæ˜¯æ•¸å€¼å‹æ…‹!"); 
+    		alert("¼Æ¶q¥²¶·¬O¼Æ­È«¬ºA!"); 
 			document.MYFORM.QTY.focus();
 			return false;
 		} 
@@ -503,21 +503,21 @@ function setSubmit()
 			//alert("openQty="+openQty + "  origQty="+origQty+ "  num1="+num1);
 			//if (num1 >  openQty && openQty >0 )
 			//{
-			//	alert("å·¥å–®ç¸½æ•¸é‡("+totChipQty+")ä¸å¯è¶…éERPå·¥å–®OPENæ•¸é‡("+openQty+")!");
+			//	alert("¤u³æÁ`¼Æ¶q("+totChipQty+")¤£¥i¶W¹LERP¤u³æOPEN¼Æ¶q("+openQty+")!");
 			//	return false;
 			//}
 			//var totChipQty = document.MYFORM.totChipQty.value;
 			//var origTotChipQty = document.MYFORM.ORIGTOTCHIPQTY.value;
 			//if ((((parseFloat(totChipQty)*1000)-(parseFloat(origTotChipQty)*1000))/1000) !=0)
 			//{
-			//	alert("ç™¼æ–™ç¸½æ•¸é‡("+totChipQty+")å¿…é ˆèˆ‡åŸå–®ç™¼æ–™æ•¸é‡("+origTotChipQty+")ä¸€è‡´!");
+			//	alert("µo®ÆÁ`¼Æ¶q("+totChipQty+")¥²¶·»P­ì³æµo®Æ¼Æ¶q("+origTotChipQty+")¤@­P!");
 			//	return false;
 			//}
 		}
 		var PRICEUOM = document.MYFORM.PRICE_UOM.value;
 		if (PRICEUOM == "" || PRICEUOM == null || PRICEUOM =="null")
 		{
-			alert("å–®åƒ¹å–®ä½ä¸å¯ç©ºç™½!");
+			alert("³æ»ù³æ¦ì¤£¥iªÅ¥Õ!");
 			document.MYFORM.PRICE_UOM.focus();
 			return false;	
 		}
@@ -525,7 +525,7 @@ function setSubmit()
 		var UNITPRICE = document.MYFORM.UNITPRICE.value;
 		if (UNITPRICE == "" || UNITPRICE == null || UNITPRICE == "null")
 		{
-			alert("è«‹è¼¸å…¥å–®åƒ¹!");
+			alert("½Ğ¿é¤J³æ»ù!");
 			document.MYFORM.UNITPRICE.focus();
 			return false;
 		}	
@@ -534,7 +534,7 @@ function setSubmit()
 			var regex = /^-?\d+\.?\d*?$/;
 			if (UNITPRICE.match(regex)==null) 
 			{ 
-				alert("å–®åƒ¹å¿…é ˆæ˜¯æ•¸å€¼å‹æ…‹!"); 
+				alert("³æ»ù¥²¶·¬O¼Æ­È«¬ºA!"); 
 				document.MYFORM.UNITPRICE.focus();
 				return false;
 			} 
@@ -543,7 +543,7 @@ function setSubmit()
 		var PACKING = document.MYFORM.PACKING.value;
 		if (ITEMNAME.length >=22 && (PACKING == "--" || PACKING == "" || PACKING == null || PACKING == "null"))
 		{
-			alert("è«‹è¼¸å…¥åŒ…è£!");
+			alert("½Ğ¿é¤J¥]¸Ë!");
 			document.MYFORM.PACKING.focus();
 			return false;
 		}	
@@ -551,7 +551,7 @@ function setSubmit()
 		var PACKAGESPEC = document.MYFORM.PACKAGESPEC.value;
 		if (PACKAGESPEC == "" || PACKAGESPEC == null || PACKAGESPEC == "null")
 		{
-			alert("è«‹è¼¸å…¥å°è£è¦æ ¼!");
+			alert("½Ğ¿é¤J«Ê¸Ë³W®æ!");
 			document.MYFORM.PACKAGESPEC.focus();
 			return false;
 		}	
@@ -559,14 +559,14 @@ function setSubmit()
 		var TESTSPEC = document.MYFORM.TESTSPEC.value;
 		if (TESTSPEC == "" || TESTSPEC == null || TESTSPEC == "null")
 		{
-			alert("è«‹è¼¸å…¥æ¸¬è©¦è¦æ ¼!");
+			alert("½Ğ¿é¤J´ú¸Õ³W®æ!");
 			document.MYFORM.TESTSPEC.focus();
 			return false;
 		}	
 		var REMARKS	 = document.MYFORM.REMARKS.value;
 		if (REMARKS == "" || REMARKS == null || REMARKS == "null")
 		{
-			alert("è«‹è¼¸å…¥å‚™è¨»è³‡è¨Š!");
+			alert("½Ğ¿é¤J³Æµù¸ê°T!");
 			document.MYFORM.REMARKS.focus();
 			return false;
 		}	
@@ -574,7 +574,7 @@ function setSubmit()
 		var MARKING = document.MYFORM.MARKING.value;
 		if (MARKING == "" || MARKING == null || MARKING == "null")
 		{
-			alert("è«‹è¼¸å…¥MARKING!");
+			alert("½Ğ¿é¤JMARKING!");
 			document.MYFORM.MARKING.focus();
 			return false;
 		}	
@@ -582,7 +582,7 @@ function setSubmit()
 		//add by Peggy 20240529
 		if (document.MYFORM.CHANGE_REASON.value=="" || document.MYFORM.CHANGE_REASON.value==null || document.MYFORM.CHANGE_REASON.value=="null")
 		{
-			alert("è«‹è¼¸å…¥è®Šæ›´åŸå› èªªæ˜!");
+			alert("½Ğ¿é¤JÅÜ§ó­ì¦]»¡©ú!");
 			document.CHANGE_REASON.focus();
 			return false;		
 		}
@@ -607,21 +607,21 @@ function setSubmit()
 			var WIP_ISSUE_FLAG = document.MYFORM.elements["WIP_ISSUE_FLAG_"+i].value;  //add by Peggy 20180529
 			if ((WaferLot != null && WaferLot != "") || ( WIPTYPE !="03" && WIPTYPE !="05" && invitem !=null && invitem != "" && invitemid !=null && invitemid != "" && WaferQty != null && WaferQty != "" && DateCode!=null && DateCode !="" && ChipQty != null && ChipQty != "") || ( (WIPTYPE =="03" || WIPTYPE =="05") && invitem !=null && invitem != "" &&  invitemid !=null && invitemid != "" && ChipQty != null && ChipQty != "" && DateCode!=null && DateCode !="" ) || (invitem !=null && invitem != "" &&  invitemid !=null && invitemid != "" && ChipQty != null && ChipQty != ""))
 			{
-				//20210514 by Peggy,forç”³è«‹å–®:R210514001 issue,èˆ‡nonoç¢ºèªå¾Œä¸æª¢æŸ¥
+				//20210514 by Peggy,for¥Ó½Ğ³æ:R210514001 issue,»Pnono½T»{«á¤£ÀË¬d
 				/*for (var j = i ; j <= LINENUM ; j++)
 				{
 					if (WaferLot != "" && WaferLot!=null)
 					{
 						//if (WIPTYPE !="03" && WaferLot == document.MYFORM.elements["WaferLot"+j].value && DateCode != document.MYFORM.elements["DateCode"+j].value)
 						//{
-						//	alert("Wafer Lot:"+WaferLot+" ä¸å…è¨±æœ‰å…©å€‹ä»¥ä¸Šçš„DataCode!"); 
+						//	alert("Wafer Lot:"+WaferLot+" ¤£¤¹³\¦³¨â­Ó¥H¤WªºDataCode!"); 
 						//	document.MYFORM.elements["WaferLot"+j].focus();
 						//	return false;
 						//}
 						//else if (WIPTYPE !="03" && i != j && WaferLot == document.MYFORM.elements["WaferLot"+j].value && DateCode == document.MYFORM.elements["DateCode"+j].value)
 						if (WIPTYPE !="03" && i != j && WaferLot == document.MYFORM.elements["WaferLot"+j].value && (DateCode.toUpperCase()!="HOLD" && DateCode == document.MYFORM.elements["DateCode"+j].value))
 						{
-							alert("Wafer Lot:"+WaferLot+" + Date Code:"+ DateCode + "ä¸å¯é‡è¤‡!"); 
+							alert("Wafer Lot:"+WaferLot+" + Date Code:"+ DateCode + "¤£¥i­«½Æ!"); 
 							document.MYFORM.elements["WaferLot"+j].focus();
 							return false;
 						}
@@ -630,7 +630,7 @@ function setSubmit()
 				*/
 				if (WIP_ISSUE_FLAG=="Y" &&  WaferLot !=null && WaferLot !="" &&  WaferLot !="&nbsp;" && (Stock ==null || Stock ==""))
 				{
-					alert("è«‹é¸æ“‡ç™¼æ–™å€‰!"); 
+					alert("½Ğ¿ï¾Üµo®Æ­Ü!"); 
 					document.MYFORM.elements["WaferLot"+i].focus();
 					return false;
 				}
@@ -647,7 +647,7 @@ function setSubmit()
 					}
 					if (okcnt ==0)
 					{
-						alert("ç™¼æ–™é …ç›®ä¸æ­£ç¢º!"); 
+						alert("µo®Æ¶µ¥Ø¤£¥¿½T!"); 
 						document.MYFORM.elements["INVITEM"+i].focus();
 						return false;
 					}
@@ -655,50 +655,50 @@ function setSubmit()
 				var regex = /^-?\d+\.?\d*?$/;
 				if (WIPTYPE !="03" && WIPTYPE !="05" && WaferQty.match(regex)==null) 
 				{ 
-					alert("Wafer Qtyå¿…é ˆæ˜¯æ•¸å€¼å‹æ…‹!"); 
+					alert("Wafer Qty¥²¶·¬O¼Æ­È«¬ºA!"); 
 					document.MYFORM.elements["WaferQty"+i].focus();
 					return false;
 				} 
 				if (ChipQty.match(regex)==null) 
 				{ 
-					alert("Chip Qtyå¿…é ˆæ˜¯æ•¸å€¼å‹æ…‹!"); 
+					alert("Chip Qty¥²¶·¬O¼Æ­È«¬ºA!"); 
 					document.MYFORM.elements["ChipQty"+i].focus();
 					return false;
 				}
 				else if (ChipQty ==0)
 				{
-					alert("Chip Qtyå¿…é ˆå¤§æ–¼0!"); 
+					alert("Chip Qty¥²¶·¤j©ó0!"); 
 					document.MYFORM.elements["ChipQty"+i].focus();
 					return false;
 				}
 				//if (!document.MYFORM.WIP_ISSUE_FLAG.checked && (parseFloat(ChipQty) > parseFloat(LotOnhand)))
 				//{ 
-				//	alert("Chip Qtyä¸å¯å¤§æ–¼ç›®å‰åº«å­˜é‡("+LotOnhand+")!"); 
+				//	alert("Chip Qty¤£¥i¤j©ó¥Ø«e®w¦s¶q("+LotOnhand+")!"); 
 				//	document.MYFORM.elements["ChipQty"+i].focus();
 				//	return false;
 				//}
 				if (document.MYFORM.SUPPLIERNO.value =="4056" && (WaferNumber==null||WaferNumber==""))  //add by Peggy 20180724
 				{
-					alert("æ­¤ä¾›æ‡‰å•†å¿…é ˆæŒ‡å®šWaferç‰‡è™Ÿ!"); 
+					alert("¦¹¨ÑÀ³°Ó¥²¶·«ü©wWafer¤ù¸¹!"); 
 					document.MYFORM.elements["WaferNumber"+i].focus();
 					return false;			
 				}				
 				//if (WIPTYPE !="03" && (DateCode==null || DateCode=="")) 
 				if (!document.MYFORM.WIP_ISSUE_FLAG.checked && (DateCode==null || DateCode=="")) 
 				{ 
-					alert("Date Codeä¸å¯ç©ºç™½!"); 
+					alert("Date Code¤£¥iªÅ¥Õ!"); 
 					document.MYFORM.elements["DateCode"+i].focus();
 					return false;
 				} 			
 				if (!document.MYFORM.WIP_ISSUE_FLAG.checked && DateCode!="HOLD" && DateCode!="NA" && DateCode!="N/A" && (DC_YYWW==null || DC_YYWW=="")) 
 				{ 
-					alert("DC_YYWWä¸å¯ç©ºç™½!"); 
+					alert("DC_YYWW¤£¥iªÅ¥Õ!"); 
 					document.MYFORM.elements["DC_YYWW"+i].focus();
 					return false;
 				} 			
 				//if (RequestSD <= ISSUEDATE)
 				//{
-				//	alert("Requeset S/D("+RequestSD+")å¿…é ˆå¤§æ–¼ISSUE DATE("+ISSUEDATE+")!"); 
+				//	alert("Requeset S/D("+RequestSD+")¥²¶·¤j©óISSUE DATE("+ISSUEDATE+")!"); 
 				//	document.MYFORM.elements["RequestSD"+i].focus();
 				//	return false;
 				//}
@@ -707,7 +707,7 @@ function setSubmit()
 		}
 		if (rec_cnt ==0)
 		{
-			alert("è«‹è¼¸å…¥å·¥å–®ç™¼æ–™è³‡è¨Š!");
+			alert("½Ğ¿é¤J¤u³æµo®Æ¸ê°T!");
 			document.MYFORM.elements["WaferLot1"].focus;
 			return false;
 		}
@@ -717,15 +717,15 @@ function setSubmit()
 		if (DIEQTY ==null) DIEQTY ="1";
 		totChipQty = Math.round(parseFloat(totChipQty)/parseFloat(DIEQTY)*10000)/10000;
 		//var maxQty = (((QTY *1.1) * 10000)/10000);
-		if ( document.MYFORM.PRICE_UOM.value !="ç‰‡" && totChipQty != QTY)
+		if ( document.MYFORM.PRICE_UOM.value !="¤ù" && totChipQty != QTY)
 		{
-			alert("ç™¼æ–™æ•¸é‡("+totChipQty+")ä¸ç­‰æ–¼é–‹å·¥æ•¸é‡("+QTY+")");
+			alert("µo®Æ¼Æ¶q("+totChipQty+")¤£µ¥©ó¶}¤u¼Æ¶q("+QTY+")");
 			document.MYFORM.QTY.focus;
 			return false;
 		}
-		else if (document.MYFORM.PRICE_UOM.value =="ç‰‡" && totWaferQty != QTY)
+		else if (document.MYFORM.PRICE_UOM.value =="¤ù" && totWaferQty != QTY)
 		{
-			alert("ç‰‡æ•¸("+totWaferQty+")ä¸ç­‰æ–¼é–‹å·¥ç‰‡æ•¸("+QTY+")");
+			alert("¤ù¼Æ("+totWaferQty+")¤£µ¥©ó¶}¤u¤ù¼Æ("+QTY+")");
 			document.MYFORM.QTY.focus;
 			return false;
 		}
@@ -843,7 +843,7 @@ function computeTotal(objName)
 	document.MYFORM.elements["tot"+objName].value = totQty;
 	if (objName =="ChipQty")
 	{
-		if (document.MYFORM.PRICE_UOM.value !="ç‰‡")
+		if (document.MYFORM.PRICE_UOM.value !="¤ù")
 		{	
 			//add by Peggy 20121009
 			var DIEQTY = document.MYFORM.DIEQTY.value;
@@ -855,7 +855,7 @@ function computeTotal(objName)
 	}
 	else
 	{
-		if (document.MYFORM.PRICE_UOM.value =="ç‰‡")
+		if (document.MYFORM.PRICE_UOM.value =="¤ù")
 		{	
 			document.MYFORM.QTY.value = totQty;
 			if (document.MYFORM.WIPTYPE.value=="01")  getUnitPrice();
@@ -868,7 +868,7 @@ function subWindowHistory()
 	var VENDOR = document.MYFORM.SUPPLIERNO.value;
 	if (VENDOR =="" || VENDOR == null || VENDOR =="null")
 	{
-		alert("è«‹è¼¸å…¥ä¾›æ‡‰å•†ä»£ç¢¼!");
+		alert("½Ğ¿é¤J¨ÑÀ³°Ó¥N½X!");
 		document.MYFORM.SUPPLIERNO.focus();
 		return false;	
 	}
@@ -876,7 +876,7 @@ function subWindowHistory()
 	var	ITEMID = document.MYFORM.ITEMID.value;
 	if (ITEMID == null || ITEMID == "")
 	{
-		alert("è«‹å…ˆè¼¸å…¥æ–™è™Ÿ");
+		alert("½Ğ¥ı¿é¤J®Æ¸¹");
 		document.MYFORM.ITEMID.focus();
 		return false;
 	}
@@ -934,17 +934,17 @@ function chkObj()
 }
 function setUnit()
 {
-	if ((document.MYFORM.WIPTYPE.value=="02" || document.MYFORM.WIPTYPE.value=="03" || document.MYFORM.WIPTYPE.value=="05"))  //å·¥ç¨‹,é‡å·¥å…è¨±æ‰‹å‹•èª¿æ•´å–®åƒ¹å–®ä½,modify by Peggy 20170823
+	if ((document.MYFORM.WIPTYPE.value=="02" || document.MYFORM.WIPTYPE.value=="03" || document.MYFORM.WIPTYPE.value=="05"))  //¤uµ{,­«¤u¤¹³\¤â°Ê½Õ¾ã³æ»ù³æ¦ì,modify by Peggy 20170823
 	{
 		if (document.MYFORM.CURRENCYCODE.value=="USD" && document.MYFORM.PRICE_UOM.value.toUpperCase()=="K")
 		{
-			document.MYFORM.PRICE_UOM.value="ç‰‡";
+			document.MYFORM.PRICE_UOM.value="¤ù";
 			document.getElementById("td2").innerHTML="Q'ty("+document.MYFORM.PRICE_UOM.value+")";
 			document.MYFORM.QTY.value=document.MYFORM.totWaferQty.value;
 		}
 		else if (document.MYFORM.CURRENCYCODE.value=="TWD" && document.MYFORM.PRICE_UOM.value.toUpperCase()=="EA")
 		{
-			document.MYFORM.PRICE_UOM.value="ç‰‡";
+			document.MYFORM.PRICE_UOM.value="¤ù";
 			document.getElementById("td2").innerHTML="Q'ty("+document.MYFORM.PRICE_UOM.value+")";
 			document.MYFORM.QTY.value=document.MYFORM.totWaferQty.value;
 		}
@@ -981,13 +981,13 @@ function chkObjX()
 }
 </script>
 <STYLE TYPE='text/css'> 
- .style3   {font-family:ç´°æ˜é«”; font-size:12px; background-color:#FFFFFF; text-align:center}
- .style4   {font-family:ç´°æ˜é«”;	font-size:12px;	background-color:#CCCCFF; text-align:center;color: #000000;}
- .style1   {font-family:ç´°æ˜é«”; font-size:12px; background-color:#FFFFFF; text-align:left}
- .style2   {font-family:ç´°æ˜é«”;	font-size:12px;	background-color:#CCCCFF; text-align:left;	color: #000000;}
- .style5   {font-family:ç´°æ˜é«”; font-size:12px; background-color:#FFFFFF; text-align:right}
- .style6   {font-family:ç´°æ˜é«”;	font-size:12px;	background-color:#CCCCFF; text-align:right; color: #000000;}
- .style7 {	font-family:ç´°æ˜é«”;
+ .style3   {font-family:²Ó©úÅé; font-size:12px; background-color:#FFFFFF; text-align:center}
+ .style4   {font-family:²Ó©úÅé;	font-size:12px;	background-color:#CCCCFF; text-align:center;color: #000000;}
+ .style1   {font-family:²Ó©úÅé; font-size:12px; background-color:#FFFFFF; text-align:left}
+ .style2   {font-family:²Ó©úÅé;	font-size:12px;	background-color:#CCCCFF; text-align:left;	color: #000000;}
+ .style5   {font-family:²Ó©úÅé; font-size:12px; background-color:#FFFFFF; text-align:right}
+ .style6   {font-family:²Ó©úÅé;	font-size:12px;	background-color:#CCCCFF; text-align:right; color: #000000;}
+ .style7 {	font-family:²Ó©úÅé;
 	font-size:12px;
 	background-color:#D8DEA9;
 	text-align:left;
@@ -1009,9 +1009,9 @@ if (VERSIONID==null) VERSIONID="";
 String ACTIONTYPE= request.getParameter("ACTIONTYPE");
 if (ACTIONTYPE==null) ACTIONTYPE="";
 String FuncName = "";
-if (ACTIONTYPE.equals("CHANGE")) FuncName ="è®Šæ›´";
-if (ACTIONTYPE.equals("MODIFY")) FuncName ="ä¿®æ”¹";
-if (ACTIONTYPE.equals("WIPISSUE")) FuncName ="ç™¼æ–™";
+if (ACTIONTYPE.equals("CHANGE")) FuncName ="ÅÜ§ó";
+if (ACTIONTYPE.equals("MODIFY")) FuncName ="­×§ï";
+if (ACTIONTYPE.equals("WIPISSUE")) FuncName ="µo®Æ";
 String WIPTYPE = request.getParameter("WIPTYPE");
 if (WIPTYPE ==null) WIPTYPE ="";
 String ISSUEDATE = request.getParameter("ISSUEDATE");
@@ -1077,7 +1077,7 @@ if (MARKING ==null) MARKING="";
 String CHANGE_REASON=request.getParameter("CHANGE_REASON"); //add by Peggy 20240529
 if (CHANGE_REASON==null) CHANGE_REASON="";
 String LINENUM=request.getParameter("LINENUM");
-if (LINENUM == null || LINENUM.equals("")) LINENUM ="0"; //é è¨­0è¡Œ
+if (LINENUM == null || LINENUM.equals("")) LINENUM ="0"; //¹w³]0¦æ
 String ADDLINE=request.getParameter("txtLine");
 if (ADDLINE == null || ADDLINE.equals("")) ADDLINE = "0";
 if (!ACTIONCODE.equals("AddLine")) ADDLINE="0";
@@ -1174,7 +1174,7 @@ try
 			if (ACTIONTYPE.equals(WIPMODIFY))
 			{
 				//VERSIONID=rs.getString("version_id");
-				VERSIONID=rs.getString("max_versionid");  //é€€ä»¶ä¿®æ”¹,ç‰ˆæ¬¡+1,add by Peggy 20150904
+				VERSIONID=rs.getString("max_versionid");  //°h¥ó­×§ï,ª©¦¸+1,add by Peggy 20150904
 				CREATEDATE=rs.getString("CREATION_DATE");
 				ORIGVERSIONID = rs.getString("version_id");
 				//ORIGVERSIONID = rs.getString("orig_version_id");
@@ -1313,7 +1313,7 @@ try
 		{
 		%>
 		<script language="JavaScript" type="text/JavaScript">
-			alert("æŸ¥ç„¡è³‡æ–™!!ç”³è«‹å–®ç‹€æ…‹å¯èƒ½ä¸ç¬¦åˆç•°å‹•æ¢ä»¶,è«‹é‡æ–°ç¢ºèª,è¬è¬!");
+			alert("¬dµL¸ê®Æ!!¥Ó½Ğ³æª¬ºA¥i¯à¤£²Å¦X²§°Ê±ø¥ó,½Ğ­«·s½T»{,ÁÂÁÂ!");
 			document.location.href="../jsp/TSCPMDOEMInformationQuery.jsp";
 		</script>
 		<%
@@ -1330,16 +1330,16 @@ catch(Exception e)
   <br>
   <table width="350" height="50" border="1" align="center" cellpadding="5" cellspacing="0" bordercolorlight="#CCFFCC" bordercolordark="#336600">
     <tr>
-    <td height="70" bgcolor="#CCCC99"  align="center"><font color="#003399" face="æ¨™æ¥·é«”" size="+2">è³‡æ–™æ­£åœ¨è™•ç†ä¸­,è«‹ç¨å€™.....</font> <BR>
+    <td height="70" bgcolor="#CCCC99"  align="center"><font color="#003399" face="¼Ğ·¢Åé" size="+2">¸ê®Æ¥¿¦b³B²z¤¤,½Ğµy­Ô.....</font> <BR>
       <DIV ID="blockDiv" STYLE="visibility:hidden;position:absolute; width:5px; height:5px; clip:rect(0px 5px 5px 0px); background-color:#567886; layer-background-color:#567886; display=''; left: 50px;"></div>
 	</td>
   </tr>
 </table>
 </div>
 <div id='alpha' class='hidden' style='width:0%;height:0;position:absolute;top:0;left:0;background:#000;filter:alpha(opacity=30);-moz-opacity:0.3;z-index:0;'></div>
- <font color="#000000" size="+2" face="æ¨™æ¥·é«”"> <strong><%=PROD_GROUP%>å§”å¤–åŠ å·¥å–®-<%=FuncName%></strong></font>
+ <font color="#000000" size="+2" face="¼Ğ·¢Åé"> <strong><%=PROD_GROUP%>©e¥~¥[¤u³æ-<%=FuncName%></strong></font>
 <br>
-<A HREF="../jsp/TSCPMDOEMInformationQuery.jsp"><font style="font-size:14px;font-family:'ç´°æ˜é«”'">å›æŸ¥è©¢ç•«é¢</font></A>&nbsp;&nbsp;&nbsp;
+<A HREF="../jsp/TSCPMDOEMInformationQuery.jsp"><font style="font-size:14px;font-family:'²Ó©úÅé'">¦^¬d¸ßµe­±</font></A>&nbsp;&nbsp;&nbsp;
 <%
 try
 {   
@@ -1364,21 +1364,21 @@ catch (Exception e)
 %>
 <table width="100%" border="1" align="left" cellpadding="1" cellspacing="0"  bordercolorlight="#FFFFFF"  bordercolordark="#9999CC">
 	<tr>
-		<td width="100%" height="21" colspan="12" class="style2">è¨‚å–®è³‡è¨Šï¼š</td>
+		<td width="100%" height="21" colspan="12" class="style2">­q³æ¸ê°T¡G</td>
 	</tr>
 	<tr>
-		<td class="style2" width="10%" height="30" ><font class="style2" style="font-family:'ç´°æ˜é«”'; color: #000000;">ç”³è«‹å–®è™Ÿ:</font></td>
+		<td class="style2" width="10%" height="30" ><font class="style2" style="font-family:'²Ó©úÅé'; color: #000000;">¥Ó½Ğ³æ¸¹:</font></td>
 		<td class="style1" width="30%"><input type="text" name="REQUESTNO" style="font-size:14px;font-family:Arial;text-align:LEFT;color:#0000CC" value="<%=REQUESTNO%>" size="12" onkeydown="return (event.keyCode!=8);" readonly>		&nbsp;&nbsp;
 		<input type="hidden" name="ACTIONTYPE" value="<%=ACTIONTYPE%>"><input type='hidden' name="STATUSTYPE" value="<%=STATUSTYPE%>"></td>
-		<td class="style2" width="10%" ><font class="style4" style="font-family:'ç´°æ˜é«”'; color: #000000;">ç‰ˆæ¬¡:</font></td>
+		<td class="style2" width="10%" ><font class="style4" style="font-family:'²Ó©úÅé'; color: #000000;">ª©¦¸:</font></td>
 		<td class="style1" width="10%"><input type="text" name="VERSIONID" style="font-size:14px;font-family:Arial;text-align:left;color:#0000CC" value="<%=VERSIONID%>" size="3" onkeydown="return (event.keyCode!=8);" readonly><input type="hidden" name="ORIGVERSIONID" value="<%=ORIGVERSIONID%>"></td>
-		<td class="style2" width="10%" style="font-family:'ç´°æ˜é«”'; color: #000000;">é–‹å–®äºº:</td>
+		<td class="style2" width="10%" style="font-family:'²Ó©úÅé'; color: #000000;">¶}³æ¤H:</td>
 	    <td class="style1" width="10%" ><input type="hidden" name="CREATORID" value="<%=CREATORID%>"><input type="text" name="CREATOR" style="font-family:Arial;text-align:left" value="<%=UserName%>" size="15" onkeydown="return (event.keyCode!=8);" readonly></td>
-		<td class="style2" width="10%" style="font-family:'ç´°æ˜é«”'; color: #000000;">å¹£åˆ¥:</td>
+		<td class="style2" width="10%" style="font-family:'²Ó©úÅé'; color: #000000;">¹ô§O:</td>
 	    <td class="style1" width="10%" ><INPUT TYPE="text" size="8" name="CURRENCYCODE" value="<%if (CURRENCYCODE==null) out.println(""); else out.println(CURRENCYCODE);%>" style="font-family:ARIAL" onchange="setCurrType(this.form.CURRENCYCODE.value)" onkeydown="return (event.keyCode!=8);" readonly></td>
 	</tr>
 	<TR>		
-		<td class="style2"><font style="font-family:'ç´°æ˜é«”'; color: #000000;">å·¥å–®é¡å‹:</font></td>
+		<td class="style2"><font style="font-family:'²Ó©úÅé'; color: #000000;">¤u³æÃş«¬:</font></td>
 		<td class="style1">
 		<%
 		try
@@ -1418,35 +1418,35 @@ catch (Exception e)
 		<td class="style1"><input type="text" name="ISSUEDATE" style="font-family:Arial;text-align:left" value="<%=ISSUEDATE%>" size="10" <%if(ACTIONTYPE.equals(WIPCHANGE) || ACTIONTYPE.equals(WIPISSUE)) out.println("onkeydown='return (event.keyCode!=8);' readonly"); else out.println("");%>>
 		<%if(ACTIONTYPE.equals(WIPCHANGE) || ACTIONTYPE.equals(WIPISSUE)) out.println(""); else out.println("<A href='javascript:void(0)' onclick='gfPop.fPopCalendar(document.MYFORM.ISSUEDATE);return false;'><img name='popcal' border='0' src='../image/calbtn.gif'></A>"); %>
 		</td>
-		<td class="style2" width="8%" style="font-family:'ç´°æ˜é«”'; color: #000000;">é è¨ˆå®Œå·¥æ—¥:</td>
+		<td class="style2" width="8%" style="font-family:'²Ó©úÅé'; color: #000000;">¹w­p§¹¤u¤é:</td>
 	    <td class="style1" width="10%" ><input type="text" name="COMPLETEDATE" style="font-family:Arial;text-align:left" value="<%=COMPLETEDATE%>" size="10" onkeydown="return (event.keyCode!=8);" readonly><A href="javascript:void(0)" onclick="gfPop.fPopCalendar(document.MYFORM.COMPLETEDATE);return false;"><img name="popcal" border="0" src="../image/calbtn.gif"></A><input type="hidden"name="CREATEDATE" style="font-family:Arial;text-align:LEFT" value="<%=CREATEDATE%>" readonly></td>
-		<td class="style2" style="font-family:'ç´°æ˜é«”'; color: #000000;">å®Œå·¥å…¥åº«å€‰:</td>
+		<td class="style2" style="font-family:'²Ó©úÅé'; color: #000000;">§¹¤u¤J®w­Ü:</td>
 	    <td class="style1"><input type="text" size="3" name="SUBINVENTORY" style="font-family:Arial;text-align:LEFT" value="<%if (SUBINVENTORY==null) out.println(""); else out.println(SUBINVENTORY);%>" <%if (!WIPTYPE.equals("02") && !WIPTYPE.equals("03") && !WIPTYPE.equals("05")) out.println(" onkeydown='return (event.keyCode!=8);' readonly"); else out.println("");%>>
 		<INPUT TYPE="button" name="btnStock" value=".." <%if(ACTIONTYPE.equals(WIPCHANGE) || ACTIONTYPE.equals(WIPISSUE)) out.println("style='font-family:ARIAL'"); else out.println("style='font-family:ARIAL'");%> onClick="subWindowSubinventoryFind();" <%if (!WIPTYPE.equals("02") && !WIPTYPE.equals("03") && !WIPTYPE.equals("05")) out.println("disabled"); else out.println("");%>></td>
 	</tr>    		   
 	<tr>
-		<td class="style2" height="30" >å» å•†åç¨±:</td>
+		<td class="style2" height="30" >¼t°Ó¦WºÙ:</td>
 		<td class="style1" colspan="3">
 		<INPUT TYPE="text" SIZE="5" name="SUPPLIERNO" value="<%=SUPPLIERNO%>" style="font-family:ARIAL" <%if(ACTIONTYPE.equals(WIPCHANGE) || ACTIONTYPE.equals(WIPISSUE)) out.println("onkeydown='return (event.keyCode!=8);' readonly"); else out.println("");%>>
 		<INPUT TYPE="button" name="btnSupplier" value=".." <%if(ACTIONTYPE.equals(WIPCHANGE) || ACTIONTYPE.equals(WIPISSUE)) out.println("style='visibility:hidden;font-family:ARIAL'"); else out.println("style='font-family:ARIAL'");%> onClick='subWindowSupplierFind(this.form.SUPPLIERNO.value,this.form.SUPPLIERNAME.value,this.form.ITEMID.value,this.form.QTY.value,this.form.VENDOR_SITE_ID.value)' tabindex="4">
 		<INPUT TYPE="text" SIZE="40" name="SUPPLIERNAME" value="<%=SUPPLIERNAME%>" style="font-family:ARIAL" <%if(ACTIONTYPE.equals(WIPCHANGE) || ACTIONTYPE.equals(WIPISSUE)) out.println("onkeydown='return (event.keyCode!=8);' readonly"); else out.println("");%>>
 		<INPUT TYPE="hidden" NAME="VENDOR_SITE_ID" value="<%=VENDOR_SITE_ID%>">
 		</td> 	
-		<td class="style2">è¯çµ¡äºº:</td>
+		<td class="style2">Ápµ¸¤H:</td>
 		<td class="style1"><INPUT TYPE="text" size="15" name="SUPPLIERCONTACT" value="<%=SUPPLIERCONTACT%>" style="font-family:ARIAL" tabindex="5" <%if(ACTIONTYPE.equals(WIPISSUE)) out.println(" readonly"); else out.println("");%>></td> 
-		<td class="style2">å·¥å–®è™Ÿç¢¼:</td>
+		<td class="style2">¤u³æ¸¹½X:</td>
 		<td class="style1"><font style="font-size:14px;font-family:Arial;text-align:LEFT;color:#0000CC"><%=(WIPNO.equals("")?"&nbsp;":WIPNO)%></font><input type="hidden" name="WIPNO" value="<%=WIPNO%>"><input type="hidden" name="PRNO" value="<%=PRNO%>"><input type="hidden" name="PONO" value="<%=PONO%>"><input type="hidden" name="WIPID" value="<%=WIPID%>"></td> 
 	</tr>
 	<TR>
 		<td colspan="8">
 			<table width="100%">
 				<tr>			
-					<TD class="style1" width="8%" style="border-style:double;border-color:#CCCCCC"><input type="checkbox" name="CHKASSEMBLY" value="Y" <%=CHKASSEMBLY%> tabindex="6" <%if(ACTIONTYPE.equals(WIPISSUE)) out.println(" disabled "); else out.println("");%>>å°è£ <font style="font-family:Arial">Assembly</font></TD>
-					<TD class="style1" width="8%" style="border-style:double;border-color:#CCCCCC"><input type="checkbox" name="CHKTESTING" value="Y" <%=CHKTESTING%> tabindex="7" <%if(ACTIONTYPE.equals(WIPISSUE)) out.println(" disabled"); else out.println("");%>>æ¸¬è©¦ <font style="font-family:Arial">Testing</font></TD>
-					<TD class="style1" width="8%" style="border-style:double;border-color:#CCCCCC"><input type="checkbox" name="CHKTAPING" value="Y" <%=CHKTAPING%> tabindex="8" <%if(ACTIONTYPE.equals(WIPISSUE)) out.println(" disabled"); else out.println("");%>>ç·¨å¸¶ <font style="font-family:Arial">Tï¼†R</font></TD>
-					<TD class="style1" width="8%" style="border-style:double;border-color:#CCCCCC"><input type="checkbox" name="CHKLAPPING" value="Y" <%=CHKLAPPING%> tabindex="9" <%if(ACTIONTYPE.equals(WIPISSUE)) out.println(" disabled"); else out.println("");%>>æ¸›è–„ <font style="font-family:Arial">Lapping</font></TD>
-					<TD class="style1" width="8%" style="border-style:double;border-color:#CCCCCC"><input type="checkbox" name="FSM" value="Y" <%=FSM%> tabindex="9" <%if(ACTIONTYPE.equals(WIPISSUE)) out.println(" disabled"); else out.println("");%>>æ­£é¢é‡‘å±¬æ¿ºéæ²ˆç© <font style="font-family:Arial">FSM</font></TD>
-					<TD class="style1" width="8%" style="border-style:double;border-color:#CCCCCC"><input type="checkbox" name="RINGCUT" value="Y" <%=RINGCUT%> tabindex="9" <%if(ACTIONTYPE.equals(WIPISSUE)) out.println(" disabled"); else out.println("");%>>ç’°åˆ‡ <font style="font-family:Arial">Ring Cut</font></TD>
+					<TD class="style1" width="8%" style="border-style:double;border-color:#CCCCCC"><input type="checkbox" name="CHKASSEMBLY" value="Y" <%=CHKASSEMBLY%> tabindex="6" <%if(ACTIONTYPE.equals(WIPISSUE)) out.println(" disabled "); else out.println("");%>>«Ê¸Ë <font style="font-family:Arial">Assembly</font></TD>
+					<TD class="style1" width="8%" style="border-style:double;border-color:#CCCCCC"><input type="checkbox" name="CHKTESTING" value="Y" <%=CHKTESTING%> tabindex="7" <%if(ACTIONTYPE.equals(WIPISSUE)) out.println(" disabled"); else out.println("");%>>´ú¸Õ <font style="font-family:Arial">Testing</font></TD>
+					<TD class="style1" width="8%" style="border-style:double;border-color:#CCCCCC"><input type="checkbox" name="CHKTAPING" value="Y" <%=CHKTAPING%> tabindex="8" <%if(ACTIONTYPE.equals(WIPISSUE)) out.println(" disabled"); else out.println("");%>>½s±a <font style="font-family:Arial">T¡®R</font></TD>
+					<TD class="style1" width="8%" style="border-style:double;border-color:#CCCCCC"><input type="checkbox" name="CHKLAPPING" value="Y" <%=CHKLAPPING%> tabindex="9" <%if(ACTIONTYPE.equals(WIPISSUE)) out.println(" disabled"); else out.println("");%>>´îÁ¡ <font style="font-family:Arial">Lapping</font></TD>
+					<TD class="style1" width="8%" style="border-style:double;border-color:#CCCCCC"><input type="checkbox" name="FSM" value="Y" <%=FSM%> tabindex="9" <%if(ACTIONTYPE.equals(WIPISSUE)) out.println(" disabled"); else out.println("");%>>¥¿­±ª÷ÄİÂqÁá¨H¿n <font style="font-family:Arial">FSM</font></TD>
+					<TD class="style1" width="8%" style="border-style:double;border-color:#CCCCCC"><input type="checkbox" name="RINGCUT" value="Y" <%=RINGCUT%> tabindex="9" <%if(ACTIONTYPE.equals(WIPISSUE)) out.println(" disabled"); else out.println("");%>>Àô¤Á <font style="font-family:Arial">Ring Cut</font></TD>
 					<TD class="style1" width="20%" style="border-style:double;border-color:#CCCCCC"><input type="checkbox" name="CHKOTHERS" value="Y" <%=CHKOTHERS%> tabindex="10" 
 					<%
 						if(ACTIONTYPE.equals(WIPCHANGE))
@@ -1462,7 +1462,7 @@ catch (Exception e)
 							out.println("onClick='selectCheckBox(this);'");
 						}
 					%>
-						>å…¶ä»–&nbsp;&nbsp;<input type="text" name="OTHERS" size="37" style="border-bottom-style:double;border-left:none;border-right:none;border-top:none;font-family:Arial" value="<%=OTHERS%>" <%if(ACTIONTYPE.equals(WIPISSUE)) out.println(" readonly"); else out.println("");%>></td>
+						>¨ä¥L&nbsp;&nbsp;<input type="text" name="OTHERS" size="37" style="border-bottom-style:double;border-left:none;border-right:none;border-top:none;font-family:Arial" value="<%=OTHERS%>" <%if(ACTIONTYPE.equals(WIPISSUE)) out.println(" readonly"); else out.println("");%>></td>
 				</tr>
 		  </table>
 	  </td>
@@ -1472,15 +1472,15 @@ catch (Exception e)
 			<table width="100%" bordercolorlight="#FFFFFF" border="1" cellpadding="1" cellspacing="0" bordercolordark="#9999CC">
 				<tr>
 				  	<td width="8%" height="42" class="style4"><font style="font-family:Arial">TSC Prod Group</font></td>
-					<td class="style4" height="42">æ–™è™Ÿ<br><font style="font-family:Arial">Item No</font></td>
-					<td class="style4">å“å<br><font style="font-family:Arial">Device Name</font></td>
-					<td class="style4">å°è£å‹å¼<br><font style="font-family:Arial">Package</font></td>
-					<td class="style4">èŠ¯ç‰‡åç¨±<br><font style="font-family:Arial">Die Name</font></td>
-					<td class="style4">æ•¸é‡<br><font style="font-family:Arial"><div id="td2"><%if (!PRICEUOM.equals("ç‰‡")) out.println("Q'ty(KPC)"); else out.println("Q'ty("+PRICEUOM+")");%></div></font></td>
-					<td class="style4">å–®åƒ¹<font style="font-family:Arial">U/P</font><br><font style="font-family:Arial"><div id="td1" onClick="setUnit();"><%=CURRENCYCODE+"/"+PRICEUOM%></div></font></td>
-					<td class="style4">åŒ…è£<br><font style="font-family:Arial">Packing</font></td>
-					<td class="style4">å°è£è¦æ ¼<br><font style="font-family:Arial">D/B No.</font></td>
-					<td class="style4">æ¸¬è©¦è¦æ ¼<br><font style="font-family:Arial">Test Spec</font></td>
+					<td class="style4" height="42">®Æ¸¹<br><font style="font-family:Arial">Item No</font></td>
+					<td class="style4">«~¦W<br><font style="font-family:Arial">Device Name</font></td>
+					<td class="style4">«Ê¸Ë«¬¦¡<br><font style="font-family:Arial">Package</font></td>
+					<td class="style4">ªä¤ù¦WºÙ<br><font style="font-family:Arial">Die Name</font></td>
+					<td class="style4">¼Æ¶q<br><font style="font-family:Arial"><div id="td2"><%if (!PRICEUOM.equals("¤ù")) out.println("Q'ty(KPC)"); else out.println("Q'ty("+PRICEUOM+")");%></div></font></td>
+					<td class="style4">³æ»ù<font style="font-family:Arial">U/P</font><br><font style="font-family:Arial"><div id="td1" onClick="setUnit();"><%=CURRENCYCODE+"/"+PRICEUOM%></div></font></td>
+					<td class="style4">¥]¸Ë<br><font style="font-family:Arial">Packing</font></td>
+					<td class="style4">«Ê¸Ë³W®æ<br><font style="font-family:Arial">D/B No.</font></td>
+					<td class="style4">´ú¸Õ³W®æ<br><font style="font-family:Arial">Test Spec</font></td>
 				</tr>
 				<tr>
 					<td class="style1"><input type="text" name="PROD_GROUP" style="font-size:11px;font-family:Arial" value="<%=PROD_GROUP%>" size="8" readonly><input type="hidden" name="ORGANIZATION_ID" value="<%=ORGANIZATION_ID%>"></td>
@@ -1541,7 +1541,7 @@ catch (Exception e)
 	  </td>
 	</tr>
 	<TR>
-		<TD height="110" class="style4">å‚™è¨»</TD>
+		<TD height="110" class="style4">³Æµù</TD>
 		<TD colspan="7" class="style1"><textarea cols="170" rows="6" name="REMARKS" style="text-align:left;font-family:Arial" tabindex="20" ><%=REMARKS%></textarea></TD>
 	</TR>
 	<tr>
@@ -1549,14 +1549,14 @@ catch (Exception e)
 		<TD colspan="7" class="style1" ><textarea cols="170" rows="2" name="MARKING" style="font-family:ARIAL" tabindex="21" <%if(ACTIONTYPE.equals(WIPISSUE)) out.println(" readonly"); else out.println("");%>><%=MARKING%></textarea></TD>
 	</TR>
 	<tr>
-		<TD height="40" class="style4" style="font-family:Arial">è®Šæ›´åŸå› èªªæ˜</TD>
+		<TD height="40" class="style4" style="font-family:Arial">ÅÜ§ó­ì¦]»¡©ú</TD>
 		<TD colspan="7" class="style1" ><textarea cols="170" rows="2" name="CHANGE_REASON" style="font-family:ARIAL" tabindex="21"><%=CHANGE_REASON%></textarea></TD>
 	</TR>	
 	<TR>
 		<TD colspan="8">
 			<table  width="100%" border="1" cellpadding="1" cellspacing="0" bordercolorlight="#FFFFFF"  bordercolordark="#9999CC">
 				<tr>
-					<td height="29" colspan="12" class="style2" style="font-family:Arial">Producton Controlï¼š</td>
+					<td height="29" colspan="12" class="style2" style="font-family:Arial">Producton Control¡G</td>
 				</tr>	
 				<% 
 				try
@@ -1666,11 +1666,11 @@ catch (Exception e)
 								out.println("<tr>");
 								out.println("<TD width='3%' class='style4' rowspan='"+(Integer.parseInt(rsd.getString("rec_cnt"))+1)+"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp</td>");
 								out.println("<TD width='4%' class='style4'>&nbsp;&nbsp;</td>");
-								out.println("<TD width='4%' class='style4'><font style='font-family:ç´°æ˜é«”'>è¡Œè™Ÿ</font></td>");
+								out.println("<TD width='4%' class='style4'><font style='font-family:²Ó©úÅé'>¦æ¸¹</font></td>");
 								out.println("<TD width='24%' class='style4'><font style='font-family:Arial'>Item Name</font></td>");
 								out.println("<TD width='5%' class='style4'><font style='font-family:Arial'>Wafer Subinventory</font></td>");
 								out.println("<TD width='15%' class='style4'><font style='font-family:Arial'>Wafer Lot#</font></td>");
-								out.println("<TD width='15%' class='style4'><font style='font-family:Arial'>Waferç‰‡è™Ÿ</font></td>");
+								out.println("<TD width='15%' class='style4'><font style='font-family:Arial'>Wafer¤ù¸¹</font></td>");
 								out.println("<TD width='6%' class='style4'><font style='font-family:Arial'>Wafer Qty</font></TD>");
 								out.println("<TD width='6%' class='style4'><font style='font-family:Arial'>Chip Qty</font></td>");
 								out.println("<TD width='6%' class='style4'><font style='font-family:Arial'>Date Code</font></td>");
@@ -1680,11 +1680,11 @@ catch (Exception e)
 								out.println("</TR>");
 							}
 							out.println("<tr>");
-							out.println("<TD class='style1'><input type='button' name='BtnDel"+i+"'  size='20' value='åˆªé™¤' onClick='setDelete("+i+")'"+(ACTIONTYPE.equals(WIPISSUE) && (i==1 || !WIP_ISSUE_FLAG.equals("Y"))?"disabled":"")+"></td>");
+							out.println("<TD class='style1'><input type='button' name='BtnDel"+i+"'  size='20' value='§R°£' onClick='setDelete("+i+")'"+(ACTIONTYPE.equals(WIPISSUE) && (i==1 || !WIP_ISSUE_FLAG.equals("Y"))?"disabled":"")+"></td>");
 							out.println("<TD class='style1'><input type='text' name='LineNo"+i+"'    size='3'  value='"+rsd.getString("LINE_NO")+"' style='font-family:Arial' readonly></td>");
-							out.println("<TD class='style1'><input type='hidden' name='INVITEMID"+i+"' value='"+INVITEMID+"'><input type='text' name='INVITEM"+i+"'  size='25' tabindex='"+(idx_num++)+"' value='"+INVITEM+"'  style='font-family:Arial;text-align:center;' "+(!WIPTYPE.equals("03")&& !WIPTYPE.equals("05")?"readonly":"")+"><input type='button' name='btnInvItem"+i+"' style='font-family:arial;"+(!WIPTYPE.equals("03") && !WIPTYPE.equals("05")?"visibility:hidden;":"")+"' value='...' title='è«‹æŒ‰æˆ‘!' onClick='subWindowInvItemFind("+i+")'></td>");
+							out.println("<TD class='style1'><input type='hidden' name='INVITEMID"+i+"' value='"+INVITEMID+"'><input type='text' name='INVITEM"+i+"'  size='25' tabindex='"+(idx_num++)+"' value='"+INVITEM+"'  style='font-family:Arial;text-align:center;' "+(!WIPTYPE.equals("03")&& !WIPTYPE.equals("05")?"readonly":"")+"><input type='button' name='btnInvItem"+i+"' style='font-family:arial;"+(!WIPTYPE.equals("03") && !WIPTYPE.equals("05")?"visibility:hidden;":"")+"' value='...' title='½Ğ«ö§Ú!' onClick='subWindowInvItemFind("+i+")'></td>");
 							out.println("<TD class='style1'><input type='text' name='Stock"+i+"' value='"+Stock+"' size='4' style='font-family:Arial;text-align:center;' readonly></td>");
-							out.println("<TD class='style1'><input type='text' name='WaferLot"+i+"'  size='14' tabindex='"+(idx_num++)+"' value='"+(WaferLot==null?"":WaferLot)+"'  style='font-family:Arial;text-align:center' readonly><input type='button' name='btnLot"+i+"' style='font-family:arial' value='...' title='è«‹æŒ‰æˆ‘!' onClick='subWindowItemLotFind("+i+")'"+(ACTIONTYPE.equals(WIPISSUE) && !WIP_ISSUE_FLAG.equals("Y")?"disabled":"")+" ><input type='hidden' name='trans_source_id_"+i+"' value='"+trans_source_id+"'><input type='hidden' name='WIP_ISSUE_FLAG_"+i+"' value='"+WIP_ISSUE_FLAG+"'></td>");
+							out.println("<TD class='style1'><input type='text' name='WaferLot"+i+"'  size='14' tabindex='"+(idx_num++)+"' value='"+(WaferLot==null?"":WaferLot)+"'  style='font-family:Arial;text-align:center' readonly><input type='button' name='btnLot"+i+"' style='font-family:arial' value='...' title='½Ğ«ö§Ú!' onClick='subWindowItemLotFind("+i+")'"+(ACTIONTYPE.equals(WIPISSUE) && !WIP_ISSUE_FLAG.equals("Y")?"disabled":"")+" ><input type='hidden' name='trans_source_id_"+i+"' value='"+trans_source_id+"'><input type='hidden' name='WIP_ISSUE_FLAG_"+i+"' value='"+WIP_ISSUE_FLAG+"'></td>");
 							out.println("<TD class='style1'><input type='text' name='WaferNumber"+i+"'  size='14' tabindex='"+(idx_num++)+"' value='"+(WaferNumber==null?"":WaferNumber)+"'  style='font-family:Arial;text-align:center'></td>");
 							out.println("<TD class='style5'><input type='text' name='WaferQty"+i+"'  size='5' tabindex='"+(idx_num++)+"' value='"+(new DecimalFormat("##0.####")).format(Float.parseFloat(WaferQty))+"'  style='font-family:Arial;text-align:right' onChange='computeTotal("+'"'+"WaferQty"+'"'+")'"+(ACTIONTYPE.equals(WIPISSUE) && !WIP_ISSUE_FLAG.equals("Y")?" readonly ":"")+"></TD>");
 							out.println("<TD class='style5'><input type='hidden' name='LotOnhand"+i+"' value='"+LotOnhand+"'><input type='text' name='ChipQty"+i+"'   size='12' tabindex='"+(idx_num++)+"' value='"+(new DecimalFormat("##0.####")).format(Float.parseFloat(ChipQty))+"'   style='font-family:Arial;text-align:right' onChange='computeTotal("+'"'+"ChipQty"+'"'+")'"+(ACTIONTYPE.equals(WIPISSUE) && !WIP_ISSUE_FLAG.equals("Y")?" readonly ":"")+"></TD>");
@@ -1732,11 +1732,11 @@ catch (Exception e)
 						<TR>
 							<TD class="style4" rowspan="<%=Integer.parseInt(LINENUM)+1%>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 							<TD class="style4">&nbsp;&nbsp;</td>
-							<TD class="style4"><font style="font-family:ç´°æ˜é«”">è¡Œè™Ÿ</font></td>
+							<TD class="style4"><font style="font-family:²Ó©úÅé">¦æ¸¹</font></td>
 							<TD class="style4"><font style="font-family:Arial">Item Name</font></td>
 							<TD class="style4"><font style="font-family:Arial">Wafer Subinventory</font></td>
 							<TD class="style4"><font style="font-family:Arial">Wafer Lot#</font></td>
-							<TD class="style4"><font style="font-family:Arial">Waferç‰‡è™Ÿ</font></td>
+							<TD class="style4"><font style="font-family:Arial">Wafer¤ù¸¹</font></td>
 							<TD class="style4"><font style="font-family:Arial">Wafer Qty</font></TD>
 							<TD class="style4"><font style="font-family:Arial">Chip Qty</font></td>
 							<TD class="style4"><font style="font-family:Arial">Date Code</font></td>
@@ -1814,11 +1814,11 @@ catch (Exception e)
 							if (DIE_MODE==null) DIE_MODE="";
 					%>
 						<TR>
-							<TD class="style1"><input type="button" name="<%="BtnDel"+i%>"  size="20" value="åˆªé™¤" onClick='setDelete(<%=i%>)' <%=(ACTIONTYPE.equals(WIPISSUE)&&(i==1 || !WIP_ISSUE_FLAG.equals("Y"))?"disabled":"")%>></td>
+							<TD class="style1"><input type="button" name="<%="BtnDel"+i%>"  size="20" value="§R°£" onClick='setDelete(<%=i%>)' <%=(ACTIONTYPE.equals(WIPISSUE)&&(i==1 || !WIP_ISSUE_FLAG.equals("Y"))?"disabled":"")%>></td>
 							<TD class="style1"><input type="text" name="<%="LineNo"+i%>"     size="2"  value="<%=V_LINENO%>" style="font-family:Arial" readonly></td>
-							<TD class="style1"><input type="hidden" name ="<%="INVITEMID"+i%>" value="<%=INVITEMID%>"><input type="text" name="<%="INVITEM"+i%>" size="27" tabindex="<%=(idx_num++)%>" value="<%=INVITEM%>" style="font-family:Arial;text-align:center" <%if(!WIPTYPE.equals("03") && !WIPTYPE.equals("05")) out.println("readonly"); else out.println("");%>><input type="button" name="<%="btnInvItem"+i%>" <%if(!WIPTYPE.equals("03") && !WIPTYPE.equals("05")) out.println("style='font-family:arial;visibility:hidden;'"); else out.println("style='font-family:arial;'");%> value="..." title="è«‹æŒ‰æˆ‘!" onClick="subWindowInvItemFind(<%=i%>)" tabindex="<%=(idx_num++)%>"></td>
+							<TD class="style1"><input type="hidden" name ="<%="INVITEMID"+i%>" value="<%=INVITEMID%>"><input type="text" name="<%="INVITEM"+i%>" size="27" tabindex="<%=(idx_num++)%>" value="<%=INVITEM%>" style="font-family:Arial;text-align:center" <%if(!WIPTYPE.equals("03") && !WIPTYPE.equals("05")) out.println("readonly"); else out.println("");%>><input type="button" name="<%="btnInvItem"+i%>" <%if(!WIPTYPE.equals("03") && !WIPTYPE.equals("05")) out.println("style='font-family:arial;visibility:hidden;'"); else out.println("style='font-family:arial;'");%> value="..." title="½Ğ«ö§Ú!" onClick="subWindowInvItemFind(<%=i%>)" tabindex="<%=(idx_num++)%>"></td>
 							<TD class="style1"><input type="text" name ="<%="Stock"+i%>" value="<%=(Stock==null?"":Stock)%>"  size="13" style="font-family:Arial;text-align:center;" readonly></td>
-							<TD class="style1"><input type="text" name="<%="WaferLot"+i%>"  size="15" tabindex="<%=(idx_num++)%>" value="<%=WaferLot%>" style="font-family:Arial;text-align:center" readonly><input type="button" name="<%="btnLot"+i%>" style="font-family:arial" value="..." title="è«‹æŒ‰æˆ‘!" onClick="subWindowItemLotFind(<%=i%>)" tabindex="<%=(idx_num++)%>"  <%=(ACTIONTYPE.equals(WIPISSUE)&&!WIP_ISSUE_FLAG.equals("Y")?"disabled":"")%>><input type="hidden" name="<%="trans_source_id_"+i%>" value="<%=trans_source_id%>"><input type="hidden" name="<%="WIP_ISSUE_FLAG_"+i%>" value="<%=WIP_ISSUE_FLAG%>"></td>
+							<TD class="style1"><input type="text" name="<%="WaferLot"+i%>"  size="15" tabindex="<%=(idx_num++)%>" value="<%=WaferLot%>" style="font-family:Arial;text-align:center" readonly><input type="button" name="<%="btnLot"+i%>" style="font-family:arial" value="..." title="½Ğ«ö§Ú!" onClick="subWindowItemLotFind(<%=i%>)" tabindex="<%=(idx_num++)%>"  <%=(ACTIONTYPE.equals(WIPISSUE)&&!WIP_ISSUE_FLAG.equals("Y")?"disabled":"")%>><input type="hidden" name="<%="trans_source_id_"+i%>" value="<%=trans_source_id%>"><input type="hidden" name="<%="WIP_ISSUE_FLAG_"+i%>" value="<%=WIP_ISSUE_FLAG%>"></td>
 							<TD class="style1"><input type="text" name="<%="WaferNumber"+i%>"  size="15" tabindex="<%=(idx_num++)%>" value="<%=WaferNumber%>" style="font-family:Arial;text-align:center"></td>
 							<TD class="style5"><input type="text" name="<%="WaferQty"+i%>"   size="14" tabindex="<%=(idx_num++)%>" value="<%=WaferQty%>" style="font-family:Arial;text-align:right" onchange="computeTotal('WaferQty')" <%=(ACTIONTYPE.equals(WIPISSUE)&&!WIP_ISSUE_FLAG.equals("Y")?" readonly":"")%>></TD>
 							<TD class="style5"><input type="hidden" name="<%="LotOnhand"+i%>" value="<%=LotOnhand%>"><input type="text" name="<%="ChipQty"+i%>"  size="14" tabindex="<%=(idx_num++)%>" value="<%=ChipQty%>" style="font-family:Arial;text-align:right" onchange="computeTotal('ChipQty')" <%=(ACTIONTYPE.equals(WIPISSUE)&&!WIP_ISSUE_FLAG.equals("Y")?" readonly":"")%>></td>
@@ -1868,13 +1868,13 @@ catch (Exception e)
 				}
 				%>
 				<tr>
-						<TD class="style6" colspan="7"><font style="font-family:arial;text-align:Right">Totalï¼š</font></td>
+						<TD class="style6" colspan="7"><font style="font-family:arial;text-align:Right">Total¡G</font></td>
 						<TD class="style4" style="border-left-color:#CCCCFF"><input type="text" name="totWaferQty" value="<%=totWaferQty%>" size="15" style="font-family:arial; text-align:right; background-color:#CCCCFF; border-bottom-style: none; border-left-style: none; border-right-style: none; border-top-style: none;"></TD>
 						<TD class="style4" style="border-left-color:#CCCCFF"><input type="text" name="totChipQty" value="<%=totChipQty%>" size="15" style="font-family:arial; text-align:right; background-color:#CCCCFF; border-bottom-style: none; border-left-style: none; border-right-style: none; border-top-style: none;"><input type="hidden" name="ORIGTOTCHIPQTY" value="<%=ORIGTOTCHIPQTY%>"></td>
 						<TD class="style4"colspan="3" style="border-left-color:#BBDDEE">&nbsp;&nbsp;&nbsp;</td>
 				</tr>
 				<tr>
-					<TD colspan="7"><font style="font-size:12px;font-family:æ¨™æ¥·é«”;color:#000000"><strong>
+					<TD colspan="7"><font style="font-size:12px;font-family:¼Ğ·¢Åé;color:#000000"><strong>
 					  <jsp:getProperty name="rPH" property="pgAction"/>
 					  =></strong></font>						
 					<%
