@@ -6,7 +6,6 @@ import jxl.read.biff.BiffException;
 import modelN.DetailColumn;
 import modelN.ErrorMessage;
 import modelN.ExcelColumn;
-import modelN.SalesArea;
 import modelN.dao.impl.TscRfqUploadTempImpl;
 import modelN.dto.DetailDto;
 import modelN.dto.ModelNDto;
@@ -19,7 +18,10 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-public class MarsTest {
+import static modelN.SalesArea.TSCTDA;
+import static modelN.SalesArea.TSCTDISTY;
+
+public class ModelNTest {
     public static void mainc(String[] args) {
         Map<String, Integer> map = new HashMap<>();
 
@@ -92,13 +94,13 @@ public class MarsTest {
 
     static {
         try {
-            conn = ConnUtils.getConnectionCRP1();
+            conn = ConnUtils.getConnectionProd();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    private static String salesNo = SalesArea.TSCTDISTY.getSalesNo();
+    private static String salesNo = TSCTDISTY.getSalesNo();
 
     private static List errList = new LinkedList();
 
@@ -537,7 +539,8 @@ public class MarsTest {
 //        String uploadFilePath = "D:/D4-019.xls";
 //        String uploadFilePath = "C:\\Users\\mars.wang\\Desktop\\sales-upload\\D4-019_20241212.xls";
         try {
-            String uploadFilePath = "C:\\Users\\mars.wang\\Desktop\\modelN_Excel\\D4-021_ModelN_Upload format.xls";
+            String uploadFilePath = "C:\\Users\\mars.wang\\Desktop\\modelN_Excel\\ModelN_RFQ-TEST.xls";
+//            String uploadFilePath = "C:\\Users\\mars.wang\\Desktop\\modelN_Excel\\RFQ-TSCTDA-33452.xls";
             InputStream is = new FileInputStream(uploadFilePath);
             Workbook wb = Workbook.getWorkbook(is);
             Sheet sheet = wb.getSheet(0);
@@ -665,6 +668,9 @@ public class MarsTest {
                         case BIRegion:
                             modelNDto.setBiRegion(content);
                             break;
+                        case IgnoreCOO:
+                            modelNDto.setIgnoreCoo(content);
+                            break;
                         default:
                             break;
 //                        throw new Exception("²Ä" + (j + 1) + "Äæªº¦WºÙ¿ù»~:" + columnName);
@@ -673,7 +679,7 @@ public class MarsTest {
                 }
 //            System.out.println(""+i+"----------------------------------------------");
             }
-//            readExcelContent();
+            readExcelContent();
             wb.close();
         } catch (IOException | BiffException e) {
             e.printStackTrace();
@@ -918,7 +924,7 @@ public class MarsTest {
             } else if (!endCustName.equals("")) {
                 modelNDto.setEndCustNamePhonetic(endCustName);
             }
-            System.out.println("xxxx=" + modelNDto.getEndCustNamePhonetic());
+//            System.out.println("xxxx=" + modelNDto.getEndCustNamePhonetic());
 //            System.out.println("mo="+errList2String(modelNDto.getErrorList()));
         }
 //        insertIntoTscRfqUploadTmp(connection, map);
@@ -942,19 +948,25 @@ public class MarsTest {
 
 
     private static void setDefaultLineType() throws SQLException {
-        Statement statement = conn.createStatement();
-        String sql =
-                "select DEFAULT_ORDER_LINE_TYPE from ORADDMAN.TSAREA_ORDERCLS c  where c.SAREA_NO = '" + salesNo + "'" +
-                        " \n" +
-                        "and c.ORDER_NUM='" + modelNDto.getOrderType() + "'";
-        ResultSet rs = statement.executeQuery(sql);
-        if (rs.next()) {
-            modelNDto.setLineType(rs.getString("DEFAULT_ORDER_LINE_TYPE"));
+        if (salesNo.equals(TSCTDA.getSalesNo())
+                && modelNDto.getOrderType().equals("1131")
+                && modelNDto.getTscItemDesc().toLowerCase().contains("wafer".toLowerCase())) {
+            System.out.println("Found: " + modelNDto.getTscItemDesc());
         } else {
-            modelNDto.setLineType("0");
+            Statement statement = conn.createStatement();
+            String sql = "select DEFAULT_ORDER_LINE_TYPE from ORADDMAN.TSAREA_ORDERCLS c  where c.SAREA_NO = '" + salesNo + "' \n" +
+                    "and c.ORDER_NUM='" + modelNDto.getOrderType() + "'";
+            ResultSet rs = statement.executeQuery(sql);
+            if (rs.next()) {
+                modelNDto.setLineType(rs.getString("DEFAULT_ORDER_LINE_TYPE"));
+            } else if (salesNo.equals(TSCTDA.getSalesNo()) && modelNDto.getOrderType().equals("1131")) {
+                System.out.println("Xxxxxx");
+            } else {
+                modelNDto.setLineType("0");
+            }
+            rs.close();
+            statement.close();
         }
-        rs.close();
-        statement.close();
     }
 
     private static void checkSellingPrice() {
@@ -1212,13 +1224,28 @@ public class MarsTest {
         } else {
             if (!modelNDto.getQuoteNumber().equals("") && !modelNDto.getTscItemDesc().equals("")) {
                 Statement stmt = conn.createStatement();
-                String sql = " select a.quoteid, a.partnumber,a.currency, to_char(a.pricekusd/1000,'FM99990.0999999')" +
-                        " price_usd, \n" +
-                        "'('|| a.region ||')'|| a.endcustomer end_customer \n" +
-                        " from tsc_om_ref_quotenet a \n" +
-                        " where a.quoteid='" + modelNDto.getQuoteNumber() + "' \n" +
-                        " and a.partnumber='" + modelNDto.getTscItemDesc() + "' \n" +
-                        " order by a.quoteid, a.partnumber";
+                String sql = "select *  from (\n" +
+                        "select a.quoteid, a.partnumber,a.currency, to_char(a.pricekusd/1000,'FM99990.0999999') price_usd,\n" +
+                        "'('|| a.region ||')'|| a.endcustomer end_customer\n" +
+                        "from tsc_om_ref_quotenet a\n" +
+                        " where a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
+                        " and a.partnumber='" + modelNDto.getTscItemDesc() + "' \n"+
+                        "union all\n" +
+                        "SELECT quoteid, partnumber, currency, price_usd, end_customer\n" +
+                        "FROM (\n" +
+                        "  SELECT \n" +
+                        "    a.quoteid, \n" +
+                        "    a.partnumber, \n" +
+                        "    a.currency,\n" +
+                        "    TO_CHAR(a.pricekusd / 1000, 'FM99990.0999999') AS price_usd,\n" +
+                        "    '(' || a.region || ')' || a.endcustomer AS end_customer,\n" +
+                        "    ROW_NUMBER() OVER (PARTITION BY a.quoteid, a.partnumber, a.currency ORDER BY a.pricekusd DESC) AS rn\n" +
+                        "  FROM TSC_OM_REF_MODELN a\n" +
+                        " where a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
+                        " and a.partnumber='" + modelNDto.getTscItemDesc() + "' \n"+
+                        ")\n" +
+                        "WHERE rn = 1\n" +
+                        ") order by quoteid, partnumber";
                 ResultSet rs = stmt.executeQuery(sql);
                 if (rs.next()) {
                     sellingPrice_Q = rs.getString("PRICE_USD");
@@ -1228,13 +1255,29 @@ public class MarsTest {
                 stmt.close();
                 if (sellingPrice_Q.equals("")) {
                     stmt = conn.createStatement();
-                    sql = " select a.quoteid, a.partnumber,a.currency, to_char(a.pricekusd/1000,'FM99990.0999999') " +
-                            "price_usd, \n" +
-                            "'('|| a.region ||')'|| a.endcustomer end_customer \n" +
-                            " from tsc_om_ref_quotenet a \n" +
-                            " where a.quoteid='" + modelNDto.getQuoteNumber() + "' \n" +
+                    sql = "select *  from (\n" +
+                            "select a.quoteid, a.partnumber,a.currency, to_char(a.pricekusd/1000,'FM99990.0999999') price_usd,\n" +
+                            "'('|| a.region ||')'|| a.endcustomer end_customer\n" +
+                            "from tsc_om_ref_quotenet a\n" +
+                            " where a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
                             " and a.partnumber like '" + itemNoPacking + "%' \n" +
-                            " order by a.quoteid, a.partnumber";
+                            "union all\n" +
+                            "SELECT quoteid, partnumber, currency, price_usd, end_customer\n" +
+                            "FROM (\n" +
+                            "  SELECT \n" +
+                            "    a.quoteid, \n" +
+                            "    a.partnumber, \n" +
+                            "    a.currency,\n" +
+                            "    TO_CHAR(a.pricekusd / 1000, 'FM99990.0999999') AS price_usd,\n" +
+                            "    '(' || a.region || ')' || a.endcustomer AS end_customer,\n" +
+                            "    ROW_NUMBER() OVER (PARTITION BY a.quoteid, a.partnumber, a.currency ORDER BY a.pricekusd DESC) AS rn\n" +
+                            "  FROM TSC_OM_REF_MODELN a\n" +
+                            " where a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
+                            " and a.partnumber like '" + itemNoPacking + "%' \n" +
+                            ")\n" +
+                            "WHERE rn = 1\n" +
+                            ") order by quoteid, partnumber";
+                    System.out.println("Xx="+sql);
                     rs = stmt.executeQuery(sql);
                     if (rs.next()) {
                         sellingPrice_Q = rs.getString("PRICE_USD");

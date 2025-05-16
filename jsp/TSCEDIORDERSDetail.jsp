@@ -1045,50 +1045,70 @@ function setCRD(objLine)
 						{
 							if (v_loop_cnt!=0)
 							{
-								//檢查客戶品號是否為-ON型號
-								sql = " SELECT DISTINCT msi.DESCRIPTION,a.cust_partno "+
-									  " FROM INV.MTL_SYSTEM_ITEMS_B msi"+
-									  ",oraddman.ts_label_onsemi_item A"+
-									  " WHERE msi.ORGANIZATION_ID=49"+
-									  " AND msi.INVENTORY_ITEM_STATUS_CODE<>'Inactive'"+
-									  " AND msi.CUSTOMER_ORDER_ENABLED_FLAG='Y'"+
-									  " AND msi.INTERNAL_ORDER_ENABLED_FLAG='Y'"+
-									  " AND msi.DESCRIPTION LIKE '%-ON %'"+
-									  " AND a.TSC_PARTNO LIKE '%-ON'";
-								if (v_loop_cnt==1 || v_loop_cnt==2)
+								// TSCE客戶不要自動帶出 ON SEMI PN from Emily Issue,Add by JB 20250505
+								sql = " select * from tsc_edi_orders_his_d a, APPS.TSC_EDI_CUSTOMER e"+
+										" where a.ERP_CUSTOMER_ID = e.CUSTOMER_ID"+
+										" and a.REQUEST_NO =?"+
+										" and a.ERP_CUSTOMER_ID =?"+
+										" and a.DATA_FLAG=?"+
+										" and REGION1 <> ?";
+								PreparedStatement statementxx = con.prepareStatement(sql);
+								statementxx.setString(1,REQUESTNO);
+								statementxx.setString(2,ERPCUSTOMERID);
+								statementxx.setString(3,"N");
+								statementxx.setString(4,"TSCE");
+								ResultSet rsxx=statementxx.executeQuery();
+								if (rsxx.next())
 								{
-									sql += " AND a.CUST_PARTNO=?";
-								}
-								else if (v_loop_cnt==3)
-								{
-									sql += " AND a.TSC_PARTNO=?||'-ON'";
-								}
-								sql += " AND MSI.DESCRIPTION LIKE TSC_PARTNO||'%'";
-								PreparedStatement statementc = con.prepareStatement(sql);
-								statementc.setString(1,(v_loop_cnt==1?ORDER_ITEM:TSC_ITEM_DESC));
-								ResultSet rsc=statementc.executeQuery();
-								if (rsc.next())
-								{
-									ORDER_ITEM=rsc.getString("cust_partno");
-									TSC_ITEM_DESC=rsc.getString("description");
+									//檢查客戶品號是否為-ON型號
+									sql = " SELECT DISTINCT msi.DESCRIPTION,a.cust_partno "+
+											" FROM INV.MTL_SYSTEM_ITEMS_B msi"+
+											",oraddman.ts_label_onsemi_item A"+
+											" WHERE msi.ORGANIZATION_ID=49"+
+											" AND msi.INVENTORY_ITEM_STATUS_CODE<>'Inactive'"+
+											" AND msi.CUSTOMER_ORDER_ENABLED_FLAG='Y'"+
+											" AND msi.INTERNAL_ORDER_ENABLED_FLAG='Y'"+
+											" AND msi.DESCRIPTION LIKE '%-ON %'"+
+											" AND a.TSC_PARTNO LIKE '%-ON'";
+									if (v_loop_cnt==1 || v_loop_cnt==2)
+									{
+										sql += " AND a.CUST_PARTNO=?";
+									}
+									else if (v_loop_cnt==3)
+									{
+										sql += " AND a.TSC_PARTNO=?||'-ON'";
+									}
+									sql += " AND MSI.DESCRIPTION LIKE TSC_PARTNO||'%'";
+									PreparedStatement statementc = con.prepareStatement(sql);
+									statementc.setString(1,(v_loop_cnt==1?ORDER_ITEM:TSC_ITEM_DESC));
+									ResultSet rsc=statementc.executeQuery();
+									if (rsc.next())
+									{
+										ORDER_ITEM=rsc.getString("cust_partno");
+										TSC_ITEM_DESC=rsc.getString("description");
 
-									sql = " update tsc_edi_orders_his_d a"+
-										  " set TSC_ITEM_NAME =?"+
-										  " ,CUST_ITEM_NAME=?"+
-										  " where a.erp_customer_id=?"+
-										  " and a.REQUEST_NO=?"+
-										  " and a.SEQ_NO=?";
-									PreparedStatement pstmtDt2=con.prepareStatement(sql);
-									pstmtDt2.setString(1,TSC_ITEM_DESC);
-									pstmtDt2.setString(2,ORDER_ITEM);
-									pstmtDt2.setString(3,ERPCUSTOMERID);
-									pstmtDt2.setString(4,REQUESTNO);
-									pstmtDt2.setString(5,rsb.getString("SEQ_NO"));
-									pstmtDt2.executeUpdate();
-									pstmtDt2.close();
+										sql = " update tsc_edi_orders_his_d a"+
+												" set TSC_ITEM_NAME =?"+
+												" ,CUST_ITEM_NAME=?"+
+												" where a.erp_customer_id=?"+
+												" and a.REQUEST_NO=?"+
+												" and a.SEQ_NO=?";
+										PreparedStatement pstmtDt2=con.prepareStatement(sql);
+										pstmtDt2.setString(1,TSC_ITEM_DESC);
+										pstmtDt2.setString(2,ORDER_ITEM);
+										pstmtDt2.setString(3,ERPCUSTOMERID);
+										pstmtDt2.setString(4,REQUESTNO);
+										pstmtDt2.setString(5,rsb.getString("SEQ_NO"));
+										pstmtDt2.executeUpdate();
+										pstmtDt2.close();
+									}
+									rsc.close();
+									statementc.close();
 								}
-								rsc.close();
-								statementc.close();
+								rsxx.close();
+								statementxx.close();
+
+
 							}
 							v_loop_cnt++;
 
