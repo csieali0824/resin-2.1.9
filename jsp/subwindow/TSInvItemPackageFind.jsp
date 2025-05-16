@@ -550,11 +550,7 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 10px }
 		  		}    
 			}  // End of if (queryCount==0)
 
-<<<<<<< HEAD
-			String filterCoo = (salesAreaNo.equals("008") || UserRoles.contains("admin") || salesAreaNo.equals("020")) ? "" :
-=======
 			String filterCoo = (salesAreaNo.equals("008") || UserRoles.contains("admin") || salesAreaNo.equals("020") || ignoreCooFlag) ? "" :
->>>>>>> dev/modelN
 					"and tsc_get_item_coo(a.inventory_item_id) =(\n" +
 							"case when TSC_INV_CATEGORY(INVENTORY_ITEM_ID,43,23) IN ('SMA', 'SMB', 'SMC', 'SOD-123W', 'SOD-128')\n" +
 							"then 'CN' else tsc_get_item_coo(a.inventory_item_id) end)";
