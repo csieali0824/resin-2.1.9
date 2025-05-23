@@ -56,7 +56,7 @@ public class DateCodeTest {
         }
     }
 
-    // ¤À­¶¦^¶Çªº JSON µ²ºc
+    // åˆ†é å›å‚³çš„ JSON çµæ§‹
     static class PaginatedResult {
         int total;
         List<DataItem> rows;
@@ -78,7 +78,7 @@ public class DateCodeTest {
                 Arrays.asList("5", "TQM100NH10CR RLG", "YWWLF", "YWWLF_", "Mars Wang Create", "2024-11-28 13:38:45.0")
         );
 
-        // Âà´«¦¨ JSON ®æ¦¡
+        // è½‰æ›æˆ JSON æ ¼å¼
         JsonArray jsonArray = new JsonArray();
         for (List<String> row : rawData) {
             JsonObject obj = new JsonObject();
@@ -88,7 +88,7 @@ public class DateCodeTest {
             jsonArray.add(obj);
         }
 
-        // Âà´«¬° JSON ¦r¦ê
+        // è½‰æ›ç‚º JSON å­—ä¸²
         String jsonData = new Gson().toJson(jsonArray);
         System.out.println(jsonData);
     }
@@ -125,7 +125,7 @@ public class DateCodeTest {
             jsonArray.add(obj);
         }
 
-        // Âà´«¬° JSON ¦r¦ê
+        // è½‰æ›ç‚º JSON å­—ä¸²
         String jsonData = new Gson().toJson(jsonArray);
         return jsonData;
     }
@@ -140,7 +140,7 @@ public class DateCodeTest {
         for (int colIndex = 0; colIndex < colCount; colIndex++) {
             String content = sheet.getCell(colIndex, rowIndex).getContents().trim();
             if (!content.isEmpty()) {
-                return false; // ¥u­n¦³¤@­ÓÀx¦s®æ¦³¤º®e¡A´N¤£¬OªÅªºrow
+                return false; // åªè¦æœ‰ä¸€å€‹å„²å­˜æ ¼æœ‰å…§å®¹ï¼Œå°±ä¸æ˜¯ç©ºçš„row
             }
         }
         return true;
@@ -159,7 +159,7 @@ public class DateCodeTest {
             }
             for (int colIndex = 0, colCount = sheet.getColumns(); colIndex < colCount; colIndex++) {
                 Cell rowCell = sheet.getCell(colIndex, rowIndex);
-                String content = rowCell.getContents().trim(); // ¨ú±oÀx¦s®æ¤º®e
+                String content = rowCell.getContents().trim(); // å–å¾—å„²å­˜æ ¼å…§å®¹
                 String columnName = sheet.getCell(colIndex, 0).getContents().trim();
                 switch (columnName) {
                     case "Device":

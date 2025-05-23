@@ -9,414 +9,414 @@ import java.util.Vector;
 
 public class PoolBean implements Serializable
 {
- private String driver=null;
- private String url=null,url2=null,url3=null;//url2¨Ofor failoverÆ…•Œ§ß¥¿•Nserver
- private int size=0;
- private String username="";
- private String password="";
- private ConnBean connBean=null;
- private Vector pool=null;
- private String hostinfo=""; //®˙±o®œ•Œ¶πBean™∫•Dæ˜∏Í∞T
- private String beanID=""; //®˙±o®œ•Œ¶πBean§ß√—ßO∏Í∞T
- private String fieldName="";//≥]©w¨∞±˝øÔ®˙§ßƒÊ¶Ï¶W∫Ÿ
- private String usingURL="";
+    private String driver=null;
+    private String url=null,url2=null,url3=null;//url2ÊòØfor failoverÊôÇÁî®‰πãÊõø‰ª£server
+    private int size=0;
+    private String username="";
+    private String password="";
+    private ConnBean connBean=null;
+    private Vector pool=null;
+    private String hostinfo=""; //ÂèñÂæó‰ΩøÁî®Ê≠§BeanÁöÑ‰∏ªÊ©üË≥áË®ä
+    private String beanID=""; //ÂèñÂæó‰ΩøÁî®Ê≠§Bean‰πãË≠òÂà•Ë≥áË®ä
+    private String fieldName="";//Ë®≠ÂÆöÁÇ∫Ê¨≤ÈÅ∏Âèñ‰πãÊ¨Ñ‰ΩçÂêçÁ®±
+    private String usingURL="";
 
- public PoolBean()
- {}
+    public PoolBean()
+    {}
 
- public void resetPool() //•Œ®”±NConnection¬_Ωu´·≠´∑s±“•Œ
- {
-  pool=new Vector(size);
-  System.err.println("Conn of "+beanID+" has been reseted at "+new Date());
- }
-
- public String getFieldName()
- {
-  return fieldName;
- }
-
-  public void setFieldName(String fieldName)
-  {
-   this.fieldName=fieldName;
-  } //end of setFieldName
-
-
- public void setHostInfo(String h)
- {
-  if (h!=null) hostinfo=h;
- }
-
- public String getHostInfo()
- {
-  return hostinfo;
- }
-
- public void setUsingURL(String uu)
- {
-  if (uu!=null) usingURL=uu;
- }
-
- public String getUsingURL()
- {
-  return usingURL;
- }
-
- public void setBeanID(String b)
- {
-  if (b!=null) beanID=b;
- }
-
- public String getBeanID()
- {
-  return beanID;
- }
-
- public void setDriver(String d)
- {
-  if (d!=null) driver=d;
- } //end of setDriver
-
- public String getDriver()
- {
-  return driver;
- }
-
- public void setURL(String u)
- {
-  if (u!=null) url=u;
- }
-
- public String getURL()
- {
-  return url;
- }
-
- public void setURL2(String u)
- {
-  if (u!=null) url2=u;
- }
-
- public String getURL2()
- {
-  return url2;
- }
-
- public void setURL3(String u)
- {
-  if (u!=null) url3=u;
- }
-
- public String getURL3()
- {
-  return url3;
- }
-
- public void setSize(int s)
- {
-  if (s>1) size=s;
- }
-
- public int getSize()
- {
-  return size;
- }
-
- public void setUsername(String un)
- {
-  if (un!=null) username=un;
- }
-
- public String getUserName()
- {
-  return username;
- }
-
- public void setPassword(String pw)
- {
-  if (pw!=null) password=pw;
- }
-
- public String getPassword()
- {
-  return password;
- }
-
- public void setConnBean(ConnBean cb)
- {
-  if (cb!=null) connBean=cb;
- }
-
- public ConnBean getConnBean() throws Exception
- {
-  Connection con=getConnection();
-  ConnBean cb=new ConnBean(con);
-  cb.setInuse(true);
-  return cb;
- } // end of getConnBean
-
- private Connection createConnection() throws Exception
- {
-  Connection con=null;
-  try
-  {
-    con=DriverManager.getConnection(url,username,password);
-    return con;
-  } //end of try
-  catch (Exception e)
-  {
-    try
+    public void resetPool() //Áî®‰æÜÂ∞áConnectionÊñ∑Á∑öÂæåÈáçÊñ∞ÂïüÁî®
     {
-     con=DriverManager.getConnection(url2,username,password);
-     System.err.println("Alert!!The Primary database is error , now switching to standby mode");
-     return con;
+        pool=new Vector(size);
+        System.err.println("Conn of "+beanID+" has been reseted at "+new Date());
     }
-    catch (Exception e2)
+
+    public String getFieldName()
     {
-      con=DriverManager.getConnection(url3,username,password);
-      System.err.println("Alert!!The Primary and Secondary database is error , now switching to standby mode");
-      return con;
+        return fieldName;
     }
-  }
- } // end of createConnection
 
- public synchronized void initializePool() throws Exception
- {
-  if (driver==null) throw new Exception("There is no Driver's Name provided");
-  if (url==null) throw new Exception("There is no URL provided");
-  if (size<1) throw new Exception("The Size of ConnPool is small than 1");
-  try
-  {
-   Class.forName(driver);
-   for (int i=0;i<size;i++)
-   {
-    Connection con=createConnection();
-    if (con!=null)
+    public void setFieldName(String fieldName)
     {
-     ConnBean connBean=new ConnBean(con);
-     addConnection(connBean);
-    }//end of if
-   } //end of for
-  }//end of try
-  catch (Exception e)
-  {
-   System.err.println(e.getMessage());
-   throw new Exception(e.getMessage());
-  }
- }//end of initializePool
+        this.fieldName=fieldName;
+    } //end of setFieldName
 
- private void addConnection(ConnBean connBean)
- {
-  if (pool==null)pool=new Vector(size);
-  pool.addElement(connBean);
- }
 
- public synchronized void releaseConnection(Connection con)
- {
-  for (int i=0;i<pool.size();i++)
-  {
-   ConnBean connBean=(ConnBean)pool.elementAt(i);
-   if (connBean.getConnection()==con)
-   {
-    //System.err.println("Release No:"+i+" Conn by "+beanID+"("+hostinfo+") at "+new java.util.Date());
-    connBean.setInuse(false);
-    break;
-   } //end of if
-  } //end of For
- }//end of releaseConnection
-
- public synchronized Connection getConnection() throws Exception
- {
-  ConnBean connBean=null;
-  DateBean dateBean=new DateBean();
-  for (int i=0;i<pool.size();i++)
-  {
-   connBean=(ConnBean)pool.elementAt(i);
-   if (connBean.getInuse()==false)
-   {
-    connBean.setInuse(true);
-    Connection con=connBean.getConnection();
-     try
-     {
-       Statement testConnStat=con.createStatement(); //≥o¶Êµ{¶°•ÿ™∫¶b¥˙∏’∏ÍÆ∆Æw≥sΩu¨Oß_•ø±`
-       if (!hostinfo.equals(connBean.getHostInfo())) //≠Y¨∞¶P§@SESSION´h§£¶Ashow•X∞TÆß
-       {
-         System.err.println("Create No:"+i+" Conn by "+beanID+"("+hostinfo+") at "+new Date());
-       }
-       connBean.setHostInfo(hostinfo);//≥]¨∞≤{•ø®œ•Œ§§§ßhost™∫information
-       connBean.setUseTime(dateBean.getYearMonthDay()+"-"+dateBean.getHourMinute());//≥]¨∞®œ•ŒÆ…∂°
-       connBean.setUseHMTime(dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond());//≥]¨∞®œ•ŒÆ…∂°¶r¶Í
-       connBean.setUsingURL(usingURL);//≥]¨∞≤{•ø®œ•Œ§§§ßURL
-       testConnStat.close();
-       return con;
-     } //end of try
-     catch (SQLException se)
-     {
-       System.err.println("Warrning!!Connection error,try to switch another Connection!");
-       if (!hostinfo.equals(connBean.getHostInfo())) //≠Y¨∞¶P§@SESSION´h§£¶Ashow•X∞TÆß
-       {
-         System.err.println("Create No:"+i+" Conn by "+beanID+"("+hostinfo+") at "+new Date());
-       }
-       connBean.setHostInfo(hostinfo);//≥]¨∞≤{•ø®œ•Œ§§§ßhost™∫information
-       connBean.setUseTime(dateBean.getYearMonthDay()+"-"+dateBean.getHourMinute());//≥]¨∞®œ•ŒÆ…∂°
-       connBean.setUseHMTime(dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond());//≥]¨∞®œ•ŒÆ…∂°¶r¶Í
-       connBean.setUsingURL(usingURL);//≥]¨∞≤{•ø®œ•Œ§§§ßURL
-       Connection temp_con=createConnection();
-       connBean.setConnection(temp_con); //≠Y¶]∏ÍÆ∆Æw≥sΩu§£•ø±`,´h≠´∑s≥]©w≥sΩu
-       con=connBean.getConnection();
-       return con;
-     }
-   } //end of getInuse if
-  } //end of for
-  try
-  {
-   Connection con=createConnection();
-   connBean=new ConnBean(con);
-   connBean.setInuse(true);
-   connBean.setHostInfo(hostinfo);
-   connBean.setUseTime(dateBean.getYearMonthDay()+"-"+dateBean.getHourMinute());//≥]¨∞®œ•ŒÆ…∂°
-   connBean.setUseHMTime(dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond());//≥]¨∞®œ•ŒÆ…∂°¶r¶Í
-   connBean.setUsingURL(usingURL);//≥]¨∞≤{•ø®œ•Œ§§§ßURL
-   pool.addElement(connBean);
-  } // end of try
-  catch (Exception e)
-  {
-   System.err.println("!Hello!");
-   System.err.println(e.getMessage());
-   throw new Exception(e.getMessage());
-   }
-  return connBean.getConnection();
- } //end of getConnection
-
- public synchronized void emptyPool()
- {
-  for (int i=0;i<pool.size();i++)
-  {
-   System.err.println("Shut the No."+i+" of "+beanID+" Connection down");
-   ConnBean connBean=(ConnBean)pool.elementAt(i);
-   if (connBean.getInuse()==false)
-     connBean.close();
-   else
-   {
-    try
+    public void setHostInfo(String h)
     {
-     Thread.sleep(20000);
-     connBean.close();
-    }//end of try
-    catch (InterruptedException ie)
-    {
-     System.err.println(ie.getMessage());
+        if (h!=null) hostinfo=h;
     }
-   }
-  } //end of for
- }//end of getConnection
 
- public String getConnStatus() throws Exception
-  {
-    StringBuffer sb=new StringBuffer();
-    String bgColor="E3E3CF";
-
-    sb.append("<FONT SIZE=2>Connection id:"+beanID+"</FONT>");
-    sb.append("<TABLE>");
-    sb.append("<TR>");
-    sb.append("<TH BGCOLOR=BLACK><FONT COLOR=WHITE SIZE=2>&nbsp;&nbsp;</TH><TH BGCOLOR=BLACK><FONT COLOR=WHITE SIZE=2>Conn#</TH><TH BGCOLOR=BLACK><FONT COLOR=WHITE SIZE=2>InUse?</TH><TH BGCOLOR=BLACK><FONT COLOR=WHITE SIZE=2>Who is in use?</TH><TH BGCOLOR=BLACK><FONT COLOR=WHITE SIZE=2>Time to use?</TH><TH BGCOLOR=BLACK><FONT COLOR=WHITE SIZE=2>Which URL is calling?</TH>");
-    sb.append("</TR>");
-
-    for (int i=0;i<pool.size();i++)
+    public String getHostInfo()
     {
-      sb.append("<TR BGCOLOR="+bgColor+">");
-      ConnBean connBean=(ConnBean)pool.elementAt(i);
-      if (connBean.getInuse()==true)
-      {
-       sb.append("<TD><INPUT TYPE=checkbox NAME="+fieldName+" VALUE='"+i+"'></TD><TD><FONT SIZE=2>"+i+"</TD><TD><FONT SIZE=2>"+connBean.getInuse()+"</TD><TD><FONT SIZE=2>"+connBean.getHostInfo()+"</TD><TD><FONT SIZE=2>"+connBean.getUseTime()+"</TD><TD><FONT SIZE=2>"+connBean.getUsingURL()+"</TD>");
-      } else {
-       sb.append("<TD>&nbsp;&nbsp;</TD><TD><FONT SIZE=2>"+i+"</TD><TD><FONT SIZE=2>"+connBean.getInuse()+"</TD><TD><FONT SIZE=2>--</TD><TD><FONT SIZE=2>-------------</TD><TD><FONT SIZE=2>&nbsp;&nbsp;</TD>");
-      }
-      sb.append("</TR>");
-      if (bgColor.equals("E3E3CF")) //∂°πj¶C√C¶‚ßÔ¥´
-      {
-        bgColor="E3E3B0";
-      } else {
-        bgColor="E3E3CF";
-      }
-    } //end of for
-    sb.append("</TABLE>");
-    return sb.toString();
-  } // end of getConnStatus
+        return hostinfo;
+    }
 
-  public String getSelALLConnStatus() throws Exception
-  {
-    StringBuffer sb=new StringBuffer();
-    DateBean dateBean=new DateBean();
-    //ConnBean connBean=null;
-
-    String bgColor="E3E3CF";
-
-    sb.append("<FONT SIZE=2>Connection id:"+beanID+"</FONT>");
-    sb.append("<TABLE>");
-    sb.append("<TR>");
-    sb.append("<TH BGCOLOR=BLACK><FONT COLOR=WHITE SIZE=2>&nbsp;&nbsp;</TH><TH BGCOLOR=BLACK><FONT COLOR=WHITE SIZE=2>Conn#</TH><TH BGCOLOR=BLACK><FONT COLOR=WHITE SIZE=2>InUse?</TH><TH BGCOLOR=BLACK><FONT COLOR=WHITE SIZE=2>Who is in use?</TH><TH BGCOLOR=BLACK><FONT COLOR=WHITE SIZE=2>Time to use?</TH><TH BGCOLOR=BLACK><FONT COLOR=WHITE SIZE=2>Current Time</TH><TH BGCOLOR=BLACK><FONT COLOR=WHITE SIZE=2>Working Time</TH><TH BGCOLOR=BLACK><FONT COLOR=WHITE SIZE=2>Which URL is calling?</TH>");
-    sb.append("</TR>");
-
-    for (int i=0;i<pool.size();i++)
+    public void setUsingURL(String uu)
     {
-      sb.append("<TR BGCOLOR="+bgColor+">");
-      ConnBean connBean=(ConnBean)pool.elementAt(i);
-      Connection con = connBean.getConnection();    // ®˙∏ÍÆ∆Æw≥sΩu,ßP¬_≥sΩuÆ…∂°
-      if (connBean.getInuse()==true)
-      {
-        Statement stateConnTime=con.createStatement();  //
-        ResultSet rsConnTime=stateConnTime.executeQuery("select ROUND((to_date('"+dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()+"','YYYYMMDDHH24MISS') - to_date('"+connBean.getUseHMTime()+"','YYYYMMDDHH24MISS')) * 24,2) from DUAL ");
-        if (rsConnTime.next())
+        if (uu!=null) usingURL=uu;
+    }
+
+    public String getUsingURL()
+    {
+        return usingURL;
+    }
+
+    public void setBeanID(String b)
+    {
+        if (b!=null) beanID=b;
+    }
+
+    public String getBeanID()
+    {
+        return beanID;
+    }
+
+    public void setDriver(String d)
+    {
+        if (d!=null) driver=d;
+    } //end of setDriver
+
+    public String getDriver()
+    {
+        return driver;
+    }
+
+    public void setURL(String u)
+    {
+        if (u!=null) url=u;
+    }
+
+    public String getURL()
+    {
+        return url;
+    }
+
+    public void setURL2(String u)
+    {
+        if (u!=null) url2=u;
+    }
+
+    public String getURL2()
+    {
+        return url2;
+    }
+
+    public void setURL3(String u)
+    {
+        if (u!=null) url3=u;
+    }
+
+    public String getURL3()
+    {
+        return url3;
+    }
+
+    public void setSize(int s)
+    {
+        if (s>1) size=s;
+    }
+
+    public int getSize()
+    {
+        return size;
+    }
+
+    public void setUsername(String un)
+    {
+        if (un!=null) username=un;
+    }
+
+    public String getUserName()
+    {
+        return username;
+    }
+
+    public void setPassword(String pw)
+    {
+        if (pw!=null) password=pw;
+    }
+
+    public String getPassword()
+    {
+        return password;
+    }
+
+    public void setConnBean(ConnBean cb)
+    {
+        if (cb!=null) connBean=cb;
+    }
+
+    public ConnBean getConnBean() throws Exception
+    {
+        Connection con=getConnection();
+        ConnBean cb=new ConnBean(con);
+        cb.setInuse(true);
+        return cb;
+    } // end of getConnBean
+
+    private Connection createConnection() throws Exception
+    {
+        Connection con=null;
+        try
         {
-           if (rsConnTime.getFloat(1)>1)   // §j©Û 1 ≠”§pÆ…  •º≥B≤zßπ™∫≥sΩu§@≤v≤M∞£
-           {
-             sb.append("<TD><INPUT TYPE=checkbox NAME="+fieldName+" VALUE='"+i+"' checked></TD><TD><FONT SIZE=2>"+i+"</TD><TD><FONT SIZE=2>"+connBean.getInuse()+"</TD><TD><FONT SIZE=2>"+connBean.getHostInfo()+"</TD><TD><FONT SIZE=2>"+connBean.getUseTime()+"</TD><TD><FONT SIZE=2>"+dateBean.getYearMonthDay()+"-"+dateBean.getHourMinute()+"</TD><TD><FONT SIZE=2>"+rsConnTime.getString(1)+"</TD><TD><FONT SIZE=2>"+connBean.getUsingURL()+"</TD>");
-           } else {
-                   sb.append("<TD><INPUT TYPE=checkbox NAME="+fieldName+" VALUE='"+i+"'></TD><TD><FONT SIZE=2>"+i+"</TD><TD><FONT SIZE=2>"+connBean.getInuse()+"</TD><TD><FONT SIZE=2>"+connBean.getHostInfo()+"</TD><TD><FONT SIZE=2>"+connBean.getUseTime()+"</TD><TD><FONT SIZE=2>"+dateBean.getYearMonthDay()+"-"+dateBean.getHourMinute()+"</TD><TD><FONT SIZE=2>"+rsConnTime.getString(1)+"</TD><TD><FONT SIZE=2>"+connBean.getUsingURL()+"</TD>");
-                  }
-        } else {
-                 sb.append("<TD><INPUT TYPE=checkbox NAME="+fieldName+" VALUE='"+i+"'></TD><TD><FONT SIZE=2>"+i+"</TD><TD><FONT SIZE=2>"+connBean.getInuse()+"</TD><TD><FONT SIZE=2>"+connBean.getHostInfo()+"</TD><TD><FONT SIZE=2>"+connBean.getUseTime()+"</TD><TD><FONT SIZE=2>"+dateBean.getYearMonthDay()+"-"+dateBean.getHourMinute()+"</TD><TD><FONT SIZE=2>N/A</TD><TD><FONT SIZE=2>"+connBean.getUsingURL()+"</TD>");
-               }
-        rsConnTime.close();
-        stateConnTime.close();
+            con=DriverManager.getConnection(url,username,password);
+            return con;
+        } //end of try
+        catch (Exception e)
+        {
+            try
+            {
+                con=DriverManager.getConnection(url2,username,password);
+                System.err.println("Alert!!The Primary database is error , now switching to standby mode");
+                return con;
+            }
+            catch (Exception e2)
+            {
+                con=DriverManager.getConnection(url3,username,password);
+                System.err.println("Alert!!The Primary and Secondary database is error , now switching to standby mode");
+                return con;
+            }
+        }
+    } // end of createConnection
 
-      } else {
-       sb.append("<TD>&nbsp;&nbsp;</TD><TD><FONT SIZE=2>"+i+"</TD><TD><FONT SIZE=2>"+connBean.getInuse()+"</TD><TD><FONT SIZE=2>--</TD><TD><FONT SIZE=2>-------------</TD><TD><FONT SIZE=2>-------------</TD><TD><FONT SIZE=2>-------------</TD><TD><FONT SIZE=2>&nbsp;&nbsp;</TD>");
-      }
-      sb.append("</TR>");
-      if (bgColor.equals("E3E3CF")) //∂°πj¶C√C¶‚ßÔ¥´
-      {
-        bgColor="E3E3B0";
-      } else {
-        bgColor="E3E3CF";
-      }
-    } //end of for
-    sb.append("</TABLE>");
-    return sb.toString();
-  } // end of getSelALLConnStatus
-
-
-  public synchronized void releaseWhichConn(int no[]) //ƒ¿©ÒØS©w≥sµ≤
-  {
-    for (int i=0;i<no.length;i++)
+    public synchronized void initializePool() throws Exception
     {
-     ConnBean connBean=(ConnBean)pool.elementAt(no[i]);
-     connBean.setInuse(false);
-    }//end of for
-  }//end of releaseWhichConn
+        if (driver==null) throw new Exception("There is no Driver's Name provided");
+        if (url==null) throw new Exception("There is no URL provided");
+        if (size<1) throw new Exception("The Size of ConnPool is small than 1");
+        try
+        {
+            Class.forName(driver);
+            for (int i=0;i<size;i++)
+            {
+                Connection con=createConnection();
+                if (con!=null)
+                {
+                    ConnBean connBean=new ConnBean(con);
+                    addConnection(connBean);
+                }//end of if
+            } //end of for
+        }//end of try
+        catch (Exception e)
+        {
+            System.err.println(e.getMessage());
+            throw new Exception(e.getMessage());
+        }
+    }//end of initializePool
+
+    private void addConnection(ConnBean connBean)
+    {
+        if (pool==null)pool=new Vector(size);
+        pool.addElement(connBean);
+    }
+
+    public synchronized void releaseConnection(Connection con)
+    {
+        for (int i=0;i<pool.size();i++)
+        {
+            ConnBean connBean=(ConnBean)pool.elementAt(i);
+            if (connBean.getConnection()==con)
+            {
+                //System.err.println("Release No:"+i+" Conn by "+beanID+"("+hostinfo+") at "+new java.util.Date());
+                connBean.setInuse(false);
+                break;
+            } //end of if
+        } //end of For
+    }//end of releaseConnection
+
+    public synchronized Connection getConnection() throws Exception
+    {
+        ConnBean connBean=null;
+        DateBean dateBean=new DateBean();
+        for (int i=0;i<pool.size();i++)
+        {
+            connBean=(ConnBean)pool.elementAt(i);
+            if (connBean.getInuse()==false)
+            {
+                connBean.setInuse(true);
+                Connection con=connBean.getConnection();
+                try
+                {
+                    Statement testConnStat=con.createStatement(); //ÈÄôË°åÁ®ãÂºèÁõÆÁöÑÂú®Ê∏¨Ë©¶Ë≥áÊñôÂ∫´ÈÄ£Á∑öÊòØÂê¶Ê≠£Â∏∏
+                    if (!hostinfo.equals(connBean.getHostInfo())) //Ëã•ÁÇ∫Âêå‰∏ÄSESSIONÂâá‰∏çÂÜçshowÂá∫Ë®äÊÅØ
+                    {
+                        System.err.println("Create No:"+i+" Conn by "+beanID+"("+hostinfo+") at "+new Date());
+                    }
+                    connBean.setHostInfo(hostinfo);//Ë®≠ÁÇ∫ÁèæÊ≠£‰ΩøÁî®‰∏≠‰πãhostÁöÑinformation
+                    connBean.setUseTime(dateBean.getYearMonthDay()+"-"+dateBean.getHourMinute());//Ë®≠ÁÇ∫‰ΩøÁî®ÊôÇÈñì
+                    connBean.setUseHMTime(dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond());//Ë®≠ÁÇ∫‰ΩøÁî®ÊôÇÈñìÂ≠ó‰∏≤
+                    connBean.setUsingURL(usingURL);//Ë®≠ÁÇ∫ÁèæÊ≠£‰ΩøÁî®‰∏≠‰πãURL
+                    testConnStat.close();
+                    return con;
+                } //end of try
+                catch (SQLException se)
+                {
+                    System.err.println("Warrning!!Connection error,try to switch another Connection!");
+                    if (!hostinfo.equals(connBean.getHostInfo())) //Ëã•ÁÇ∫Âêå‰∏ÄSESSIONÂâá‰∏çÂÜçshowÂá∫Ë®äÊÅØ
+                    {
+                        System.err.println("Create No:"+i+" Conn by "+beanID+"("+hostinfo+") at "+new Date());
+                    }
+                    connBean.setHostInfo(hostinfo);//Ë®≠ÁÇ∫ÁèæÊ≠£‰ΩøÁî®‰∏≠‰πãhostÁöÑinformation
+                    connBean.setUseTime(dateBean.getYearMonthDay()+"-"+dateBean.getHourMinute());//Ë®≠ÁÇ∫‰ΩøÁî®ÊôÇÈñì
+                    connBean.setUseHMTime(dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond());//Ë®≠ÁÇ∫‰ΩøÁî®ÊôÇÈñìÂ≠ó‰∏≤
+                    connBean.setUsingURL(usingURL);//Ë®≠ÁÇ∫ÁèæÊ≠£‰ΩøÁî®‰∏≠‰πãURL
+                    Connection temp_con=createConnection();
+                    connBean.setConnection(temp_con); //Ëã•Âõ†Ë≥áÊñôÂ∫´ÈÄ£Á∑ö‰∏çÊ≠£Â∏∏,ÂâáÈáçÊñ∞Ë®≠ÂÆöÈÄ£Á∑ö
+                    con=connBean.getConnection();
+                    return con;
+                }
+            } //end of getInuse if
+        } //end of for
+        try
+        {
+            Connection con=createConnection();
+            connBean=new ConnBean(con);
+            connBean.setInuse(true);
+            connBean.setHostInfo(hostinfo);
+            connBean.setUseTime(dateBean.getYearMonthDay()+"-"+dateBean.getHourMinute());//Ë®≠ÁÇ∫‰ΩøÁî®ÊôÇÈñì
+            connBean.setUseHMTime(dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond());//Ë®≠ÁÇ∫‰ΩøÁî®ÊôÇÈñìÂ≠ó‰∏≤
+            connBean.setUsingURL(usingURL);//Ë®≠ÁÇ∫ÁèæÊ≠£‰ΩøÁî®‰∏≠‰πãURL
+            pool.addElement(connBean);
+        } // end of try
+        catch (Exception e)
+        {
+            System.err.println("!Hello!");
+            System.err.println(e.getMessage());
+            throw new Exception(e.getMessage());
+        }
+        return connBean.getConnection();
+    } //end of getConnection
+
+    public synchronized void emptyPool()
+    {
+        for (int i=0;i<pool.size();i++)
+        {
+            System.err.println("Shut the No."+i+" of "+beanID+" Connection down");
+            ConnBean connBean=(ConnBean)pool.elementAt(i);
+            if (connBean.getInuse()==false)
+                connBean.close();
+            else
+            {
+                try
+                {
+                    Thread.sleep(20000);
+                    connBean.close();
+                }//end of try
+                catch (InterruptedException ie)
+                {
+                    System.err.println(ie.getMessage());
+                }
+            }
+        } //end of for
+    }//end of getConnection
+
+    public String getConnStatus() throws Exception
+    {
+        StringBuffer sb=new StringBuffer();
+        String bgColor="E3E3CF";
+
+        sb.append("<FONT SIZE=2>Connection id:"+beanID+"</FONT>");
+        sb.append("<TABLE>");
+        sb.append("<TR>");
+        sb.append("<TH BGCOLOR=BLACK><FONT COLOR=WHITE SIZE=2>&nbsp;&nbsp;</TH><TH BGCOLOR=BLACK><FONT COLOR=WHITE SIZE=2>Conn#</TH><TH BGCOLOR=BLACK><FONT COLOR=WHITE SIZE=2>InUse?</TH><TH BGCOLOR=BLACK><FONT COLOR=WHITE SIZE=2>Who is in use?</TH><TH BGCOLOR=BLACK><FONT COLOR=WHITE SIZE=2>Time to use?</TH><TH BGCOLOR=BLACK><FONT COLOR=WHITE SIZE=2>Which URL is calling?</TH>");
+        sb.append("</TR>");
+
+        for (int i=0;i<pool.size();i++)
+        {
+            sb.append("<TR BGCOLOR="+bgColor+">");
+            ConnBean connBean=(ConnBean)pool.elementAt(i);
+            if (connBean.getInuse()==true)
+            {
+                sb.append("<TD><INPUT TYPE=checkbox NAME="+fieldName+" VALUE='"+i+"'></TD><TD><FONT SIZE=2>"+i+"</TD><TD><FONT SIZE=2>"+connBean.getInuse()+"</TD><TD><FONT SIZE=2>"+connBean.getHostInfo()+"</TD><TD><FONT SIZE=2>"+connBean.getUseTime()+"</TD><TD><FONT SIZE=2>"+connBean.getUsingURL()+"</TD>");
+            } else {
+                sb.append("<TD>&nbsp;&nbsp;</TD><TD><FONT SIZE=2>"+i+"</TD><TD><FONT SIZE=2>"+connBean.getInuse()+"</TD><TD><FONT SIZE=2>--</TD><TD><FONT SIZE=2>-------------</TD><TD><FONT SIZE=2>&nbsp;&nbsp;</TD>");
+            }
+            sb.append("</TR>");
+            if (bgColor.equals("E3E3CF")) //ÈñìÈöîÂàóÈ°èËâ≤ÊîπÊèõ
+            {
+                bgColor="E3E3B0";
+            } else {
+                bgColor="E3E3CF";
+            }
+        } //end of for
+        sb.append("</TABLE>");
+        return sb.toString();
+    } // end of getConnStatus
+
+    public String getSelALLConnStatus() throws Exception
+    {
+        StringBuffer sb=new StringBuffer();
+        DateBean dateBean=new DateBean();
+        //ConnBean connBean=null;
+
+        String bgColor="E3E3CF";
+
+        sb.append("<FONT SIZE=2>Connection id:"+beanID+"</FONT>");
+        sb.append("<TABLE>");
+        sb.append("<TR>");
+        sb.append("<TH BGCOLOR=BLACK><FONT COLOR=WHITE SIZE=2>&nbsp;&nbsp;</TH><TH BGCOLOR=BLACK><FONT COLOR=WHITE SIZE=2>Conn#</TH><TH BGCOLOR=BLACK><FONT COLOR=WHITE SIZE=2>InUse?</TH><TH BGCOLOR=BLACK><FONT COLOR=WHITE SIZE=2>Who is in use?</TH><TH BGCOLOR=BLACK><FONT COLOR=WHITE SIZE=2>Time to use?</TH><TH BGCOLOR=BLACK><FONT COLOR=WHITE SIZE=2>Current Time</TH><TH BGCOLOR=BLACK><FONT COLOR=WHITE SIZE=2>Working Time</TH><TH BGCOLOR=BLACK><FONT COLOR=WHITE SIZE=2>Which URL is calling?</TH>");
+        sb.append("</TR>");
+
+        for (int i=0;i<pool.size();i++)
+        {
+            sb.append("<TR BGCOLOR="+bgColor+">");
+            ConnBean connBean=(ConnBean)pool.elementAt(i);
+            Connection con = connBean.getConnection();    // ÂèñË≥áÊñôÂ∫´ÈÄ£Á∑ö,Âà§Êñ∑ÈÄ£Á∑öÊôÇÈñì
+            if (connBean.getInuse()==true)
+            {
+                Statement stateConnTime=con.createStatement();  //
+                ResultSet rsConnTime=stateConnTime.executeQuery("select ROUND((to_date('"+dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()+"','YYYYMMDDHH24MISS') - to_date('"+connBean.getUseHMTime()+"','YYYYMMDDHH24MISS')) * 24,2) from DUAL ");
+                if (rsConnTime.next())
+                {
+                    if (rsConnTime.getFloat(1)>1)   // Â§ßÊñº 1 ÂÄãÂ∞èÊôÇ  Êú™ËôïÁêÜÂÆåÁöÑÈÄ£Á∑ö‰∏ÄÁéáÊ∏ÖÈô§
+                    {
+                        sb.append("<TD><INPUT TYPE=checkbox NAME="+fieldName+" VALUE='"+i+"' checked></TD><TD><FONT SIZE=2>"+i+"</TD><TD><FONT SIZE=2>"+connBean.getInuse()+"</TD><TD><FONT SIZE=2>"+connBean.getHostInfo()+"</TD><TD><FONT SIZE=2>"+connBean.getUseTime()+"</TD><TD><FONT SIZE=2>"+dateBean.getYearMonthDay()+"-"+dateBean.getHourMinute()+"</TD><TD><FONT SIZE=2>"+rsConnTime.getString(1)+"</TD><TD><FONT SIZE=2>"+connBean.getUsingURL()+"</TD>");
+                    } else {
+                        sb.append("<TD><INPUT TYPE=checkbox NAME="+fieldName+" VALUE='"+i+"'></TD><TD><FONT SIZE=2>"+i+"</TD><TD><FONT SIZE=2>"+connBean.getInuse()+"</TD><TD><FONT SIZE=2>"+connBean.getHostInfo()+"</TD><TD><FONT SIZE=2>"+connBean.getUseTime()+"</TD><TD><FONT SIZE=2>"+dateBean.getYearMonthDay()+"-"+dateBean.getHourMinute()+"</TD><TD><FONT SIZE=2>"+rsConnTime.getString(1)+"</TD><TD><FONT SIZE=2>"+connBean.getUsingURL()+"</TD>");
+                    }
+                } else {
+                    sb.append("<TD><INPUT TYPE=checkbox NAME="+fieldName+" VALUE='"+i+"'></TD><TD><FONT SIZE=2>"+i+"</TD><TD><FONT SIZE=2>"+connBean.getInuse()+"</TD><TD><FONT SIZE=2>"+connBean.getHostInfo()+"</TD><TD><FONT SIZE=2>"+connBean.getUseTime()+"</TD><TD><FONT SIZE=2>"+dateBean.getYearMonthDay()+"-"+dateBean.getHourMinute()+"</TD><TD><FONT SIZE=2>N/A</TD><TD><FONT SIZE=2>"+connBean.getUsingURL()+"</TD>");
+                }
+                rsConnTime.close();
+                stateConnTime.close();
+
+            } else {
+                sb.append("<TD>&nbsp;&nbsp;</TD><TD><FONT SIZE=2>"+i+"</TD><TD><FONT SIZE=2>"+connBean.getInuse()+"</TD><TD><FONT SIZE=2>--</TD><TD><FONT SIZE=2>-------------</TD><TD><FONT SIZE=2>-------------</TD><TD><FONT SIZE=2>-------------</TD><TD><FONT SIZE=2>&nbsp;&nbsp;</TD>");
+            }
+            sb.append("</TR>");
+            if (bgColor.equals("E3E3CF")) //ÈñìÈöîÂàóÈ°èËâ≤ÊîπÊèõ
+            {
+                bgColor="E3E3B0";
+            } else {
+                bgColor="E3E3CF";
+            }
+        } //end of for
+        sb.append("</TABLE>");
+        return sb.toString();
+    } // end of getSelALLConnStatus
 
 
-  public synchronized void setConRollback() throws Exception
-  {
-   try
-   {
-    Connection con=getConnection();
-    con.rollback();
-   }
-   catch (SQLException sqle)
-   {
-    System.err.println(sqle.getMessage());
-   }
-  }
+    public synchronized void releaseWhichConn(int no[]) //ÈáãÊîæÁâπÂÆöÈÄ£Áµê
+    {
+        for (int i=0;i<no.length;i++)
+        {
+            ConnBean connBean=(ConnBean)pool.elementAt(no[i]);
+            connBean.setInuse(false);
+        }//end of for
+    }//end of releaseWhichConn
+
+
+    public synchronized void setConRollback() throws Exception
+    {
+        try
+        {
+            Connection con=getConnection();
+            con.rollback();
+        }
+        catch (SQLException sqle)
+        {
+            System.err.println(sqle.getMessage());
+        }
+    }
 
 }

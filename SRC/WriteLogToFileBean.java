@@ -1,10 +1,9 @@
-import java.io.*;   // ¤Þ¥Îªº²Ä¤@­Ó package
+import java.io.*;   // å¼•ç”¨çš„ç¬¬ä¸€å€‹ package
 
 /**  This is Write Text/Html/Log to file Program created by Kerwin Chen
  * @author Kerwin Chen
  * @version 1.0
- * @see CopyFileSimpleDemo
-*/
+ */
 public class WriteLogToFileBean implements java.io.Serializable
 {
     public WriteLogToFileBean()
@@ -18,43 +17,43 @@ public class WriteLogToFileBean implements java.io.Serializable
 
     public void setFileName(String fname)
     {
-       dirFileName=fname;
+        dirFileName=fname;
     }
 
     public String getTextString()
     {
         try
         {
-          stbuff.append(textStr);
-          //System.out.println(textStr);
+            stbuff.append(textStr);
+            //System.out.println(textStr);
         }//end of try
         catch (Exception e)
         {
-         System.err.println(e.getMessage());
+            System.err.println(e.getMessage());
         }
         return stbuff.toString();
     }
 
     public void StrSaveToFile() throws Exception
     {
-      //WriteLogToFileBean getText = new WriteLogToFileBean();
-      String getHtmlStr = this.getTextString();
-      String s = "";
-      //System.out.println(getHtmlStr);
-      BufferedReader htmlbr = new BufferedReader(new StringReader(getHtmlStr));
-      PrintWriter outpw = new PrintWriter(new BufferedWriter(new FileWriter(dirFileName)));
+        //WriteLogToFileBean getText = new WriteLogToFileBean();
+        String getHtmlStr = this.getTextString();
+        String s = "";
+        //System.out.println(getHtmlStr);
+        BufferedReader htmlbr = new BufferedReader(new StringReader(getHtmlStr));
+        PrintWriter outpw = new PrintWriter(new BufferedWriter(new FileWriter(dirFileName)));
 
-      int lineCount = 1;
-      while((s = htmlbr.readLine()) != null )
-      //outpw.println(lineCount++ + ": " + s);
-      outpw.println(s);
-      outpw.close();
-      System.out.println(s);
+        int lineCount = 1;
+        while((s = htmlbr.readLine()) != null )
+            //outpw.println(lineCount++ + ": " + s);
+            outpw.println(s);
+        outpw.close();
+        System.out.println(s);
 
     }
 
-  private StringBuffer stbuff = new StringBuffer();
-  private String textStr="";
-  private String dirFileName="";
+    private StringBuffer stbuff = new StringBuffer();
+    private String textStr="";
+    private String dirFileName="";
 
 }

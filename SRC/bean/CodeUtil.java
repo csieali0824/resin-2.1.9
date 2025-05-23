@@ -5,124 +5,124 @@ public class CodeUtil
 {
 	public static String big5ToUnicode(String s)
 	{
-  		try
-  		{
-   			return new String(s.getBytes("ISO8859_1"),"Big5");   
-  		} //end of try
-  		catch (UnsupportedEncodingException uee)
-  		{
-   			return s;
-  		} //end of UnsupportedEncodingException
- 	}//end of big5toUnicode
+		try
+		{
+			return new String(s.getBytes("ISO8859_1"),"Big5");
+		} //end of try
+		catch (UnsupportedEncodingException uee)
+		{
+			return s;
+		} //end of UnsupportedEncodingException
+	}//end of big5toUnicode
 
-  	public static String unicodeToBig5(String s)
- 	{
-  		try
-  		{
-   			return new String(s.getBytes("Big5"),"ISO8859_1");
-  		}//end of try
-  		catch (UnsupportedEncodingException uee)
-  		{
-   			return s;
-  		} //end of catch
- 	} //end of unicodeToBig5
+	public static String unicodeToBig5(String s)
+	{
+		try
+		{
+			return new String(s.getBytes("Big5"),"ISO8859_1");
+		}//end of try
+		catch (UnsupportedEncodingException uee)
+		{
+			return s;
+		} //end of catch
+	} //end of unicodeToBig5
 
- 	public static String toHexString(String s)
- 	{
-  		String str="";
-  		for (int i=0;i<s.length();i++)
-  		{
-   			int ch=(int)s.charAt(i);
-   			String s4="0000"+Integer.toHexString(ch);
-   			str=str+s4.substring(s4.length()-4)+"";
-  		} //end of for
-  		return str;
- 	}// end of toHexString
- 
- 	public static String stringToHex(String s)
- 	{
-  		String str="";
-  		for (int i=0;i<s.length();i++)
-  		{
-   			int ch=(int)s.charAt(i);
-   			String s2="00"+Integer.toHexString(ch).toUpperCase();
-   			str=str+s2.substring(s2.length()-2)+"";
-  		} //end of for
-  		return str;
- 	}// end of toHexString
- 
- 	public static String hexToString(String strValue) 
- 	{
-   		int intCounts = strValue.length() / 2;
-   		String strReturn = "";
-   		String strHex = "";
-   		int intHex = 0;
-   		byte byteData[] = new byte[intCounts];   
-   		try 
-   		{
-      			for (int intI = 0; intI < intCounts; intI++) 
-      			{
-        			strHex = strValue.substring(0, 2);
-        			strValue = strValue.substring(2);
-        			intHex = Integer.parseInt(strHex, 16);
-        			if (intHex > 128)
-          				intHex = intHex - 256;
-        				byteData[intI] = (byte) intHex;
-      				}
-      				strReturn = new String(byteData,"ISO8859-1");  
-   			} catch (Exception ex) {
-      			ex.printStackTrace();
-   		}    
-   		return strReturn;
+	public static String toHexString(String s)
+	{
+		String str="";
+		for (int i=0;i<s.length();i++)
+		{
+			int ch=(int)s.charAt(i);
+			String s4="0000"+Integer.toHexString(ch);
+			str=str+s4.substring(s4.length()-4)+"";
+		} //end of for
+		return str;
+	}// end of toHexString
+
+	public static String stringToHex(String s)
+	{
+		String str="";
+		for (int i=0;i<s.length();i++)
+		{
+			int ch=(int)s.charAt(i);
+			String s2="00"+Integer.toHexString(ch).toUpperCase();
+			str=str+s2.substring(s2.length()-2)+"";
+		} //end of for
+		return str;
+	}// end of toHexString
+
+	public static String hexToString(String strValue)
+	{
+		int intCounts = strValue.length() / 2;
+		String strReturn = "";
+		String strHex = "";
+		int intHex = 0;
+		byte byteData[] = new byte[intCounts];
+		try
+		{
+			for (int intI = 0; intI < intCounts; intI++)
+			{
+				strHex = strValue.substring(0, 2);
+				strValue = strValue.substring(2);
+				intHex = Integer.parseInt(strHex, 16);
+				if (intHex > 128)
+					intHex = intHex - 256;
+				byteData[intI] = (byte) intHex;
+			}
+			strReturn = new String(byteData,"ISO8859-1");
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return strReturn;
 	} //end of hexToString
 
 	public static String convertFullorHalf(String originalStr, int option)
-  	{
-    		String[] asciiTable = {" ", "!", "\"", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/",
-        			"0", "1", "2", "3", "4", "5","6", "7", "8", "9",  ":", ";", "<", "=", ">", "?", "@",
-        			"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
-        			"[", "\\", "]", "^", "_", "`",
-        			"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
-        			"{", "|", "}", "~"};
-    		String[] big5Table = {"°@", "°I", "°®", "°≠", "¢C", "¢H", "°Æ", "°¶", "°]", "°^", "°Ø", "°œ", "°A", "°–", "°E", "°˛",
-        			"¢Ø", "¢∞", "¢±", "¢≤", "¢≥", "¢¥","¢µ", "¢∂", "¢∑", "¢∏",  "°G", "°F", "°’", "°◊", "°÷", "°H", "¢I",
-        			"¢œ", "¢–", "¢—", "¢“", "¢”", "¢‘", "¢’", "¢÷", "¢◊", "¢ÿ", "¢Ÿ", "¢⁄", "¢€", "¢‹", "¢›", "¢ﬁ", "¢ﬂ", "¢‡", "¢·", "¢‚", "¢„", "¢‰", "¢Â", "¢Ê", "¢Á", "¢Ë",
-        			"°e", "¢@", "°f", "°s", "°ƒ", "°•",
-        			"¢È", "¢Í", "¢Î", "¢Ï", "¢Ì", "¢Ó", "¢Ô", "¢", "¢Ò", "¢Ú", "¢Û", "¢Ù", "¢ı", "¢ˆ", "¢˜", "¢¯", "¢˘", "¢˙", "¢˚", "¢¸", "¢˝", "¢˛", "£@", "£A", "£B", "£C",
-        			"°a", "°U", "°b", "°„"};
-    
-    		if(asciiTable.length == big5Table.length)
-    		{
-	      		//System.out.println("πÔ∑”™Ì™¯´◊•øΩT°I ™¯´◊¨∞°G " + asciiTable.length);
-	      		//∂}©l¬‡¥´
-	      		if(originalStr == null || "".equalsIgnoreCase(originalStr))
-	      		{
-	        		return "";
-	      		}      
-	      		for(int i = 0 ; i < asciiTable.length; i++)
-	      		{
-	        	//¶L•XπÔ∑”™Ì
-	        	//System.out.println((i + 1) + ":  " + asciiTable[i] + "\t" + big5Table[i]);
-	        	//∂}©l¬‡¥´
-	        		if(option == 0)//to Half
-	        		{
-	          			originalStr = originalStr.replace(big5Table[i], asciiTable[i]);//§£•i•H•ŒreplaceAll°A∑|¶]regular expression•Xø˘
-	        		}
-	        		if(option == 1)//to Full
-	        		{
-	          			originalStr = originalStr.replace(asciiTable[i], big5Table[i]);//§£•i•H•ŒreplaceAll°A∑|¶]regular expression•Xø˘
-	        		}
-	      		}
-	      		return originalStr;
-    		}
-    		else
-    		{
-      			//System.out.println("πÔ∑”™Ì™¯´◊§£•øΩT°I asciiTable™¯´◊¨∞°G " + asciiTable.length);
-      			//System.out.println("πÔ∑”™Ì™¯´◊§£•øΩT°I big5Table™¯´◊¨∞°G " + big5Table.length);
-      			return originalStr;
-    		}
-    	}    
- 
+	{
+		String[] asciiTable = {" ", "!", "\"", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/",
+				"0", "1", "2", "3", "4", "5","6", "7", "8", "9",  ":", ";", "<", "=", ">", "?", "@",
+				"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
+				"[", "\\", "]", "^", "_", "`",
+				"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
+				"{", "|", "}", "~"};
+		String[] big5Table = {"„ÄÄ", "ÔºÅ", "‚Äù", "ÔºÉ", "ÔºÑ", "ÔºÖ", "ÔºÜ", "‚Äô", "Ôºà", "Ôºâ", "Ôºä", "Ôºã", "Ôºå", "Ôºç", "‚Äß", "Ôºè",
+				"Ôºê", "Ôºë", "Ôºí", "Ôºì", "Ôºî", "Ôºï","Ôºñ", "Ôºó", "Ôºò", "Ôºô",  "Ôºö", "Ôºõ", "Ôºú", "Ôºù", "Ôºû", "Ôºü", "Ôº†",
+				"Ôº°", "Ôº¢", "Ôº£", "Ôº§", "Ôº•", "Ôº¶", "Ôºß", "Ôº®", "Ôº©", "Ôº™", "Ôº´", "Ôº¨", "Ôº≠", "ÔºÆ", "ÔºØ", "Ôº∞", "Ôº±", "Ôº≤", "Ôº≥", "Ôº¥", "Ôºµ", "Ôº∂", "Ôº∑", "Ôº∏", "Ôºπ", "Ôº∫",
+				"„Äî", "Ôºº", "„Äï", "Ô∏ø", "Ôºø", "‚Äò",
+				"ÔΩÅ", "ÔΩÇ", "ÔΩÉ", "ÔΩÑ", "ÔΩÖ", "ÔΩÜ", "ÔΩá", "ÔΩà", "ÔΩâ", "ÔΩä", "ÔΩã", "ÔΩå", "ÔΩç", "ÔΩé", "ÔΩè", "ÔΩê", "ÔΩë", "ÔΩí", "ÔΩì", "ÔΩî", "ÔΩï", "ÔΩñ", "ÔΩó", "ÔΩò", "ÔΩô", "ÔΩö",
+				"ÔΩõ", "ÔΩú", "ÔΩù", "ÔΩû"};
+
+		if(asciiTable.length == big5Table.length)
+		{
+			//System.out.println("Â∞çÁÖßË°®Èï∑Â∫¶Ê≠£Á¢∫ÔºÅ Èï∑Â∫¶ÁÇ∫Ôºö " + asciiTable.length);
+			//ÈñãÂßãËΩâÊèõ
+			if(originalStr == null || "".equalsIgnoreCase(originalStr))
+			{
+				return "";
+			}
+			for(int i = 0 ; i < asciiTable.length; i++)
+			{
+				//Âç∞Âá∫Â∞çÁÖßË°®
+				//System.out.println((i + 1) + ":  " + asciiTable[i] + "\t" + big5Table[i]);
+				//ÈñãÂßãËΩâÊèõ
+				if(option == 0)//to Half
+				{
+					originalStr = originalStr.replace(big5Table[i], asciiTable[i]);//‰∏çÂèØ‰ª•Áî®replaceAllÔºåÊúÉÂõ†regular expressionÂá∫ÈåØ
+				}
+				if(option == 1)//to Full
+				{
+					originalStr = originalStr.replace(asciiTable[i], big5Table[i]);//‰∏çÂèØ‰ª•Áî®replaceAllÔºåÊúÉÂõ†regular expressionÂá∫ÈåØ
+				}
+			}
+			return originalStr;
+		}
+		else
+		{
+			//System.out.println("Â∞çÁÖßË°®Èï∑Â∫¶‰∏çÊ≠£Á¢∫ÔºÅ asciiTableÈï∑Â∫¶ÁÇ∫Ôºö " + asciiTable.length);
+			//System.out.println("Â∞çÁÖßË°®Èï∑Â∫¶‰∏çÊ≠£Á¢∫ÔºÅ big5TableÈï∑Â∫¶ÁÇ∫Ôºö " + big5Table.length);
+			return originalStr;
+		}
+	}
+
 }
 
 

@@ -130,24 +130,24 @@ public class TscSalesPrice {
                             return val.toString();
                         }),
                 new ExcelColumn("Standard Lead Time(Week)", 15, styles.get("rightL"), keys("LEAD_TIME")),
-                new ExcelColumn("PRICE LAST UPDATE DATE", 15, styles.get("centerL"), keys("PRICE_LAST_UPDATE_DATE"),
-                        val -> {
-                            if (val == null) return "";
-                            if (val instanceof Date) {
-                                return new SimpleDateFormat("yyyy-MM-dd").format((Date) val);
-                            }
-                            return val.toString();
-                        }),
-                new ExcelColumn("22D Creation Date", 15, styles.get("centerL"), keys("ITEM_CREATION_DATE"),
-                        val -> {
-                            if (val == null) return "";
-                            if (val instanceof Date) {
-                                return new SimpleDateFormat("yyyy-MM-dd").format((Date) val);
-                            }
-                            return val.toString();
-                        }),
+//                new ExcelColumn("PRICE LAST UPDATE DATE", 15, styles.get("centerL"), keys("PRICE_LAST_UPDATE_DATE"),
+//                        val -> {
+//                            if (val == null) return "";
+//                            if (val instanceof Date) {
+//                                return new SimpleDateFormat("yyyy-MM-dd").format((Date) val);
+//                            }
+//                            return val.toString();
+//                        }),
+//                new ExcelColumn("22D Creation Date", 15, styles.get("centerL"), keys("ITEM_CREATION_DATE"),
+//                        val -> {
+//                            if (val == null) return "";
+//                            if (val instanceof Date) {
+//                                return new SimpleDateFormat("yyyy-MM-dd").format((Date) val);
+//                            }
+//                            return val.toString();
+//                        }),
                 new ExcelColumn("Factory", 15, styles.get("centerL"), keys("FACTORY_CODE")),
-                new ExcelColumn("RFQ Factory Code", 12, styles.get("centerL"), keys("ATTRIBUTE3")),
+//                new ExcelColumn("RFQ Factory Code", 12, styles.get("centerL"), keys("ATTRIBUTE3")),
                 new ExcelColumn("COO", 7, styles.get("centerL"), keys("COO")),
                 new ExcelColumn("COO(TSCA use only)", 7, styles.get("centerL"), keys("COO_CODE")),
                 new ExcelColumn("Description", 35, styles.get("leftL"), keys("PART_SPEC")),
@@ -217,6 +217,22 @@ public class TscSalesPrice {
                 new ExcelColumn("Prod Group 5", 10, styles.get("leftL"), keys("PROD_GROUP_5")),
                 new ExcelColumn("TARIC Code", 10, styles.get("centerL"), keys("CCCODE")),
                 new ExcelColumn("HTS Code(TSCA local use)", 10, styles.get("leftL"), keys("HTS_CODE")),
+//                new ExcelColumn("Part Name create Date", 15, styles.get("centerL"), keys("NEW_PARTS_RELEASE_DATE"),
+//                        val -> {
+//                            if (val == null) return "";
+//                            if (val instanceof Date) {
+//                                return new SimpleDateFormat("yyyy-MM-dd").format((Date) val);
+//                            }
+//                            return val.toString();
+//                        }),
+//                new ExcelColumn("TW Vendor", 8, styles.get("centerL"), keys("TW_VENDOR_FLAG")),
+                new ExcelColumn("NPI released to Web", 12, styles.get("centerL"), keys("FIRST_ON_WEBSITE_DATE")),
+                new ExcelColumn("F400 PRODUCT", 12, styles.get("centerL"), keys("F400_PRODUCT")),
+                new ExcelColumn("SPG STATUS", 12, styles.get("centerL"), keys("SPG_STATUS")),
+                new ExcelColumn("PROD HIERARCHY 1", 20, styles.get("leftL"), keys("TSC_PROD_HIERARCHY_1")),
+                new ExcelColumn("PROD HIERARCHY 2", 20, styles.get("leftL"), keys("TSC_PROD_HIERARCHY_2")),
+                new ExcelColumn("PROD HIERARCHY 3", 20, styles.get("leftL"), keys("TSC_PROD_HIERARCHY_3")),
+                new ExcelColumn("PROD HIERARCHY 4", 20, styles.get("leftL"), keys("TSC_PROD_HIERARCHY_4")),
                 new ExcelColumn("Part Name create Date", 15, styles.get("centerL"), keys("NEW_PARTS_RELEASE_DATE"),
                         val -> {
                             if (val == null) return "";
@@ -225,14 +241,25 @@ public class TscSalesPrice {
                             }
                             return val.toString();
                         }),
+                new ExcelColumn("PRICE LAST UPDATE DATE", 15, styles.get("centerL"), keys("PRICE_LAST_UPDATE_DATE"),
+                        val -> {
+                            if (val == null) return "";
+                            if (val instanceof Date) {
+                                return new SimpleDateFormat("yyyy-MM-dd").format((Date) val);
+                            }
+                            return val.toString();
+                        }),
+                new ExcelColumn("22D Creation Date", 15, styles.get("centerL"), keys("ITEM_CREATION_DATE"),
+                        val -> {
+                            if (val == null) return "";
+                            if (val instanceof Date) {
+                                return new SimpleDateFormat("yyyy-MM-dd").format((Date) val);
+                            }
+                            return val.toString();
+                        }),
                 new ExcelColumn("TW Vendor", 8, styles.get("centerL"), keys("TW_VENDOR_FLAG")),
-                new ExcelColumn("NPI released to Web", 12, styles.get("centerL"), keys("FIRST_ON_WEBSITE_DATE")),
-                new ExcelColumn("F400 PRODUCT", 12, styles.get("centerL"), keys("F400_PRODUCT")),
-                new ExcelColumn("SPG STATUS", 12, styles.get("centerL"), keys("SPG_STATUS")),
-                new ExcelColumn("PROD HIERARCHY 1", 20, styles.get("leftL"), keys("TSC_PROD_HIERARCHY_1")),
-                new ExcelColumn("PROD HIERARCHY 2", 20, styles.get("leftL"), keys("TSC_PROD_HIERARCHY_2")),
-                new ExcelColumn("PROD HIERARCHY 3", 20, styles.get("leftL"), keys("TSC_PROD_HIERARCHY_3")),
-                new ExcelColumn("PROD HIERARCHY 4", 20, styles.get("leftL"), keys("TSC_PROD_HIERARCHY_4"))
+                new ExcelColumn("RFQ Factory Code", 12, styles.get("centerL"), keys("ATTRIBUTE3"))
+
         );
     }
 
@@ -414,18 +441,15 @@ public class TscSalesPrice {
                 break;
         }
 
-        String fileName = name + "-" + new SimpleDateFormat("yyyy-MM-dd").format(new Date()) + ".xls";
+        String fileName = name + "-" + new SimpleDateFormat("yyyyMMddHHmm").format(new Date()) + ".xls";
         response.reset();
         response.setContentType("application/vnd.ms-excel");
         response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
-        response.setHeader("Pragma", "no-cache");
-        response.setHeader("Cache-Control", "no-cache");
-        response.setDateHeader("Expires", 0);
 
         try (OutputStream os = response.getOutputStream()) {  // Get output stream from response
             String dataDateStr = "Data Date: " + new SimpleDateFormat("yyyy-MM-dd").format(new Date());
             ExcelWriter.writeExcel(os, dataDateStr, columns, dataList, styles, freezeCol);
-            System.out.println("Excel ∂◊•X¶®•\°I");
+            System.out.println("Excel ÂåØÂá∫ÊàêÂäü");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -930,15 +954,15 @@ public class TscSalesPrice {
 
         while (rs.next()) {
             if (rs.getString("PACKAGE_CODE") ==null || rs.getInt("ITEM_CNT")!=1 ) continue; //add by Peggy 20181023
-            Map<String, Object> row = new LinkedHashMap<>(); // ®œ•Œ LinkedHashMap ´O´˘ƒÊ¶Ï∂∂ß«
+            Map<String, Object> row = new LinkedHashMap<>(); // ÔøΩœ•ÔøΩ LinkedHashMap ÔøΩOÔøΩÔøΩÔøΩÔøΩÏ∂∂ÔøΩÔøΩ
             for (int i = 1; i <= columnCount; i++) {
-                String columnName = metaData.getColumnLabel(i); // getColumnLabel •iÆ≥®Ï SQL ßO¶W
+                String columnName = metaData.getColumnLabel(i); // getColumnLabel ÔøΩiÔøΩÔøΩÔøΩÔøΩ SQL ÔøΩOÔøΩW
                 Object value = rs.getObject(i);
                 row.put(columnName, value);
             }
             rows.add(row);
         }
-        // √ˆ≥¨∏Í∑Ω
+        // ÔøΩÔøΩÔøΩÔøΩÔøΩÍ∑Ω
         rs.close();
         statement.close();
         conn.close();
@@ -1159,9 +1183,9 @@ public class TscSalesPrice {
                 continue;
             if (rs.getString("TSC_PROD_GROUP").equals("PMD") && rs.getString("SEGMENT1").length() == 30 && rs.getString("SEGMENT1").charAt(21) == 'V')
                 continue;
-            Map<String, Object> row = new LinkedHashMap<>(); // ®œ•Œ LinkedHashMap ´O´˘ƒÊ¶Ï∂∂ß«
+            Map<String, Object> row = new LinkedHashMap<>(); // ÔøΩœ•ÔøΩ LinkedHashMap ÔøΩOÔøΩÔøΩÔøΩÔøΩÏ∂∂ÔøΩÔøΩ
             for (int i = 1; i <= columnCount; i++) {
-                String columnName = metaData.getColumnLabel(i); // getColumnLabel •iÆ≥®Ï SQL ßO¶W
+                String columnName = metaData.getColumnLabel(i); // getColumnLabel ÔøΩiÔøΩÔøΩÔøΩÔøΩ SQL ÔøΩOÔøΩW
                 Object value = rs.getObject(i);
                 row.put(columnName, value);
             }
