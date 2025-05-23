@@ -19,8 +19,8 @@ public class TspmdItemDateCodeImpl implements TspmdItemDateCodeDao {
 //            errList = new ArrayList<>()
             DateCodeDto dateCodeDto = dateCodeDtoEntry.getValue();
             ResultSet rs = statement.executeQuery("select 1 FROM inv.mtl_system_items_b \n" +
-                            "where ORGANIZATION_ID = 49 \n" +
-                            "and description='" + dateCodeDto.getDevice() + "'");
+                    "where ORGANIZATION_ID = 49 \n" +
+                    "and description='" + dateCodeDto.getDevice() + "'");
             if (rs.next()) {
                 try {
                     String sql = "insert into oraddman.tspmd_item_date_code \n " +
@@ -38,13 +38,13 @@ public class TspmdItemDateCodeImpl implements TspmdItemDateCodeDao {
                     pstmt.close();
                     conn.commit();
                 } catch (SQLException e) {
-                    errList.add("<strong>(" + dateCodeDto.getDevice() + ")</strong>§w¶s¶b");
+                    errList.add("<strong>(" + dateCodeDto.getDevice() + ")</strong>Â∑≤Â≠òÂú®");
                     DateCodeRuleSetting.dateCodeDto.setErrorList(errList);
                     e.printStackTrace();
                     conn.rollback();
                 }
             } else {
-                errList.add("<strong>(" + dateCodeDto.getDevice() + ")</strong>Æ∆∏π•D¿…§£¶s¶b");
+                errList.add("<strong>(" + dateCodeDto.getDevice() + ")</strong>ÊñôËôü‰∏ªÊ™î‰∏çÂ≠òÂú®");
                 DateCodeRuleSetting.dateCodeDto.setErrorList(errList);
                 conn.rollback();
             }
@@ -135,7 +135,7 @@ public class TspmdItemDateCodeImpl implements TspmdItemDateCodeDao {
                 pstmt.close();
                 conn.commit();
             } catch (SQLException e) {
-                errList.add("<strong>(" + parameterMap.get("dateCode") + ")</strong>ßÛ∑s•¢±—");
+                errList.add("<strong>(" + parameterMap.get("dateCode") + ")</strong>Êõ¥Êñ∞Â§±Êïó");
                 DateCodeRuleSetting.dateCodeDto.setErrorList(errList);
 //                dateCodeDto.setErrorList(errList);
 //                dateCodeDto.setErrMsg(e.getMessage());
@@ -158,7 +158,7 @@ public class TspmdItemDateCodeImpl implements TspmdItemDateCodeDao {
                 pstmt.close();
                 conn.commit();
             } catch (SQLException e) {
-                errList.add("<strong>(" + itemDesc + ")</strong>ßR∞£•¢±—");
+                errList.add("<strong>(" + itemDesc + ")</strong>Âà™Èô§Â§±Êïó");
                 DateCodeRuleSetting.dateCodeDto.setErrorList(errList);
 //                dateCodeDto.setErrorList(errList);
                 e.printStackTrace();

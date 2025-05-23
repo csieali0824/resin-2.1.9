@@ -12,10 +12,10 @@ public class SpecialItem18 {
         StringBuffer result = new StringBuffer();
 
         for (int i = 0; i < values.length; i++) {
-            // ¥]»q³æ¤Þ¸¹¨Ã³B²z SQL ª`¤J
+            // åŒ…è£¹å–®å¼•è™Ÿä¸¦è™•ç† SQL æ³¨å…¥
             result.append("'").append(values[i]).append("'");
             if (i < values.length - 1) {
-                result.append(", "); // ²K¥[³r¸¹¤À¹j
+                result.append(", "); // æ·»åŠ é€—è™Ÿåˆ†éš”
             }
         }
         return result.toString();

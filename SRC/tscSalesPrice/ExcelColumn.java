@@ -12,13 +12,11 @@ public class ExcelColumn {
     private final int width;
     private final WritableCellFormat defaultFormat;
     private final List<String> fieldKeys;
-    private final String styleDecideFieldKey; // ·s¼W: §PÂ_styleªºÄæ¦ì
-    // ¼W¥[³o­Ó
+    private final String styleDecideFieldKey; // æ–°å¢: åˆ¤æ–·styleçš„æ¬„ä½
     private final Function<Map<String, Object>, String> contentSelector;
-//    private final Function<Object, String> formatter;
+    //    private final Function<Object, String> formatter;
     private final BiFunction<Object, Map<String, WritableCellFormat>, WritableCellFormat> styleSelector;
 
-    // ?? ÂÂª©¡G¥Î fieldKeys¡AÂ²³æ§ì²Ä¤@­Ó¦³¸ê®ÆªºÄæ¦ì
     public ExcelColumn(String title, int width, WritableCellFormat format, List<String> fieldKeys) {
         this(title, width, format, fieldKeys, null, rowData -> getFirstNonNullFromKeys(rowData, fieldKeys), null);
     }
@@ -30,7 +28,7 @@ public class ExcelColumn {
         }, null);
     }
 
-    // ·s¼W¡G¤ä´©¨Ì¸ê®Æ¤º®e°ÊºA¨M©w style
+    // æ–°å¢ï¼šæ”¯æ´ä¾è³‡æ–™å…§å®¹å‹•æ…‹æ±ºå®š style
     public ExcelColumn(String title,
                        int width,
                        WritableCellFormat defaultFormat,
@@ -103,7 +101,7 @@ public class ExcelColumn {
 //        return "";
 //    }
 
-    // Åª²Ä¤@­Ó¤£¬°ªÅªº­È
+    // è®€ç¬¬ä¸€å€‹ä¸ç‚ºç©ºçš„å€¼
     private static String getFirstNonNullFromKeys(Map<String, Object> rowData, List<String> keys) {
         for (String key : keys) {
             Object value = rowData.get(key);

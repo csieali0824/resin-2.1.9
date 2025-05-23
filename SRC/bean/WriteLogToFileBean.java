@@ -5,7 +5,6 @@ import java.io.*;
 /**  This is Write Text/Html/Log to file Program created by Kerwin Chen
  * @author Kerwin Chen
  * @version 1.0
- * @see CopyFileSimpleDemo
 */
 public class WriteLogToFileBean implements Serializable
 {
