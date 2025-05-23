@@ -1834,7 +1834,7 @@
 
 		function setPrice(salesarea,quotenum,tscpartno,tscitem)
 		{
-			if ((salesarea=="009" || salesarea=="006" || salesarea=="003") && event.keyCode==13)   //tscj add by Peggy 20240528
+			if (event.keyCode==13)
 			{
 				subWin=window.open("../jsp/subwindow/TSDRQQuoteInfoFind.jsp?QNO="+quotenum+"&PNO="+tscpartno+"&PITEM="+tscitem,"subwin","top=400,left=600,width=500,height=100,scrollbars=yes,menubar=no");
 			}
@@ -3445,16 +3445,11 @@
 					<font face="Arial" color="#3366FF"><jsp:getProperty name="rPH" property="pgCustPONo"/>
 					</font></div>
 			</td>
-			<%
-				if(salesAreaNo.equals("001") || salesAreaNo.equals("009") || salesAreaNo.equals("006") || salesAreaNo.equals("003"))  //add by Peggy 20120904
-				{
-			%>
 			<td  nowrap>
 				<div align="center">
 					<font face="Arial" color="#3366FF">Quote#</font><img src="../image/point.gif"></div>
 			</td>
 			<%
-				}
 				if(custPOLineNo_flag.equals("Y"))
 				{
 			%>
@@ -3697,17 +3692,12 @@
 					<input type="text" name="ENDCUSTPO" tabindex="<%=(tabidx++)%>"  class="style2" size="10" maxlength="60"  value="<%=customerPO%>" onBlur="setPOObject(this.form.SALESAREANO.value,this.form.ENDCUSTPO.value)">
 				</div>
 			</td>
-			<%
-				if(salesAreaNo.equals("001") || salesAreaNo.equals("009") || salesAreaNo.equals("006") || salesAreaNo.equals("003")) //20190225 add TSCR input quote number by Peggy
-				{
-			%>
 			<td nowrap>
 				<div align="center">
 					<input type="text" name="QUOTENUMBER" tabindex="<%=(tabidx++)%>"  class="style2" size="8" maxlength="10"  value="<%=QUOTENUMBER%>" onKeyPress="setPrice(this.form.SALESAREANO.value,this.form.QUOTENUMBER.value,this.form.ITEMDESC.value,this.form.INVITEM.value)">
 				</div>
 			</td>
 			<%
-				}
 				if(custPOLineNo_flag.equals("Y"))
 				{
 			%>
@@ -3822,7 +3812,7 @@
 			%>
 		</tr>
 		<tr bgcolor="#CCFFCC">
-			<td colspan="15"><div align="center"><strong>
+			<td colspan="16"><div align="center"><strong>
 				<%
 					try
 					{

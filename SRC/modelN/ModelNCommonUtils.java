@@ -49,7 +49,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
 
     @Override
     public String[] getGroupBy(String salesNo) {
-        return new String[]{"By Customer Number²£¥ÍRFQ", "By Customer PO²£¥ÍRFQ"};
+        return new String[]{"By Customer Numberç”¢ç”ŸRFQ", "By Customer POç”¢ç”ŸRFQ"};
     }
 
     public Map getDetailMap() {
@@ -101,20 +101,20 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
         return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(list);
     }
 
-    // ¨ú±o«È¤á¸ê°T
+    // ï¿½ï¿½ï¿½oï¿½È¤ï¿½ï¿½T
     @Override
     public void setShippingFobOrderTypeInfo() throws SQLException {}
 
     public void setExtraRuleInfo() throws SQLException {}
 
-    //ÀË¬d¥X³f¤è¦¡
+    //ï¿½Ë¬dï¿½Xï¿½fï¿½è¦¡
     @Override
     public void setShippingMethod() throws SQLException {}
 
     @Override
     public void setCrd() throws SQLException {}
 
-    // ÀË¬dFOB
+    // ï¿½Ë¬dFOB
     @Override
     public void setFob() throws SQLException {}
 
@@ -162,30 +162,30 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
     }
 
     public String[] getDetailHeaderColumns() {
-        // ·~°È°Ï·|¦³¦hDelete All ©MGroup ByªºÄæ¦ì¡A²Î¤@¥[³o¸Ì¡A´N¤£¥Î¦bÃB¥~¦A¼g¤F
-        String deleteAll = DetailColumn.DeleteAll.getColumnName(); // ·s¼W¨ì³Ì«e­±
-        String groupBy = DetailColumn.GroupBy.getColumnName();   // ·s¼W¨ì³Ì«á­±
+        // æ¥­å‹™å€æœƒæœ‰å¤šDelete All å’ŒGroup Byçš„æ¬„ä½ï¼Œçµ±ä¸€åŠ é€™è£¡ï¼Œå°±ä¸ç”¨åœ¨é¡å¤–å†å¯«äº†
+        String deleteAll = DetailColumn.DeleteAll.getColumnName(); // æ–°å¢åˆ°æœ€å‰é¢
+        String groupBy = DetailColumn.GroupBy.getColumnName();   // æ–°å¢åˆ°æœ€å¾Œé¢
         String[] columns = detailHeaderColumns;
-        // ·s°}¦C¡Aªø«×¤ñ­ì°}¦C¦h 2
+        // æ–°é™£åˆ—ï¼Œé•·åº¦æ¯”åŸé™£åˆ—å¤š 2
         String[] newArray = new String[columns.length + 2];
-        // ±NDelete All´¡¤J¨ì²Ä¤@­Ó¦ì¸m
+        // å°‡Delete Allæ’å…¥åˆ°ç¬¬ä¸€å€‹ä½ç½®
         newArray[0] = deleteAll;
-        // ±N­ì°}¦Cªº¤¸¯À¨Ì§Ç½Æ»s¨ì·s°}¦C
+        // å°‡åŸé™£åˆ—çš„å…ƒç´ ä¾åºè¤‡è£½åˆ°æ–°é™£åˆ—
         for (int i = 0; i < columns.length; i++) {
             newArray[i + 1] = columns[i];
         }
-        // ±NGroup By´¡¤J¨ì³Ì«á¤@­Ó¦ì¸m
+        // å°‡åŸé™£åˆ—çš„å…ƒç´ ä¾åºè¤‡è£½åˆ°æ–°é™£åˆ—
         newArray[newArray.length - 1] = groupBy;
         return newArray;
     }
 
     public HashMap getDetailHeaderHtmlWidthMap() {
-        // ·~°È°Ï·|¦³¦h"Delete All ©M Group ByªºÄæ¦ì¡A²Î¤@¥[³o¸Ì¡A´N¤£¥Î¦bÃB¥~¦A¼g¤F
-        // ¤èªk¡G«Ø¥ß·sªº LinkedHashMap¡A±N³Ì«e­±©M­ì¦³¤º®e´¡¤J
+        // æ¥­å‹™å€æœƒæœ‰å¤š"Delete All å’Œ Group Byçš„æ¬„ä½ï¼Œçµ±ä¸€åŠ é€™è£¡ï¼Œå°±ä¸ç”¨åœ¨é¡å¤–å†å¯«äº†
+        // æ–¹æ³•ï¼šå»ºç«‹æ–°çš„ LinkedHashMapï¼Œå°‡æœ€å‰é¢å’ŒåŸæœ‰å…§å®¹æ’å…¥
         LinkedHashMap modifiedMap = new LinkedHashMap();
-        modifiedMap.put("Delete All", 2); // ·s¼W¨ì³Ì«e­±
-        modifiedMap.putAll(detailHeaderHtmlWidthMap); // ¥[¤J­ì¦³¤º®e
-        modifiedMap.put("Group By", 0);     // ·s¼W¨ì³Ì«á­±
+        modifiedMap.put("Delete All", 2); // æ–°å¢åˆ°æœ€å‰é¢
+        modifiedMap.putAll(detailHeaderHtmlWidthMap); // åŠ å…¥åŸæœ‰å…§å®¹
+        modifiedMap.put("Group By", 0);    // æ–°å¢åˆ°æœ€å¾Œé¢
         return modifiedMap;
     }
 
@@ -204,7 +204,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
             case TSCR:
                 return "D4-012";
             default :
-                throw new IllegalArgumentException("·~°È¥N½X:" + salesNo + "ªºprogramName¿ù»~");
+                throw new IllegalArgumentException("æ¥­å‹™ä»£ç¢¼:" + salesNo + "çš„programNameéŒ¯èª¤");
         }
     }
 
@@ -223,7 +223,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
     }
 
     private void checkCustomerPo() throws SQLException {
-        //ÀË¬dcustomerNo ©M customerPo ¬O§_¦³«İ³B²z¸ê®Æ
+        //æª¢æŸ¥customerNo å’Œ customerPo æ˜¯å¦æœ‰å¾…è™•ç†è³‡æ–™
         if (!StringUtils.isNullOrEmpty(modelNDto.getCustNo()) && !StringUtils.isNullOrEmpty(modelNDto.getCustPo())) {
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery("select 1 from oraddman.TSC_RFQ_UPLOAD_TEMP where SALESAREANO = '" + salesNo + "' \n" + "" +
@@ -244,7 +244,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                     "a.INVENTORY_ITEM, a.SOLD_TO_ORG_ID,msi.PRIMARY_UOM_CODE\n" +
                     ",NVL(msi.ATTRIBUTE3,'N/A') ATTRIBUTE3\n" +
                     ",tsc_rfq_create_erp_odr_pkg.tsc_get_order_type (msi.inventory_item_id) AS ORDER_TYPE \n" +
-                    ",tsc_get_item_desc_nopacking(msi.organization_id,msi.inventory_item_id) itemnopacking \n" + // quote ¨Ï¥Î
+                    ",tsc_get_item_desc_nopacking(msi.organization_id,msi.inventory_item_id) itemnopacking \n" + // quote ï¿½Ï¥ï¿½
                     "from oe_items_v a,inv.mtl_system_items_b msi \n" +
                     ",APPS.MTL_ITEM_CATEGORIES_V c \n" +
                     "where a.SOLD_TO_ORG_ID = '" + modelNDto.getCustId() + "' \n" +
@@ -297,7 +297,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
             String sql = "select distinct msi.description,msi.segment1, msi.inventory_item_id,msi.primary_uom_code,\n" +
                     "nvl(msi.attribute3, 'N/A') attribute3,\n" +
                     "tsc_rfq_create_erp_odr_pkg.tsc_get_order_type (msi.inventory_item_id)  AS order_type\n" +
-                    ",tsc_get_item_desc_nopacking(msi.organization_id,msi.inventory_item_id) itemnopacking \n" + // quote ¨Ï¥Î
+                    ",tsc_get_item_desc_nopacking(msi.organization_id,msi.inventory_item_id) itemnopacking \n" + // quote ï¿½Ï¥ï¿½
                     "FROM  inv.mtl_system_items_b msi, apps.mtl_item_categories_v c\n" +
                     "WHERE msi.inventory_item_id = c.inventory_item_id\n" +
                     "AND msi.organization_id = c.organization_id\n" +
@@ -344,75 +344,92 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
             errList.add(ErrorMessage.TSC_PN_MORE_THAN_ONE.getMessage());
             modelNDto.setErrorList(errList);
         } else {
-            if (!modelNDto.getQuoteNumber().equals("") && !modelNDto.getTscItemDesc().equals("")) {
+            if (!StringUtils.isNullOrEmpty(modelNDto.getQuoteNumber()) && !StringUtils.isNullOrEmpty(modelNDto.getTscItemDesc())) {
+                String passFlag = "";
+                String expireDate = "";
                 Statement stmt = conn.createStatement();
-                String sql = "select *  from (\n" +
-                        "select a.quoteid, a.partnumber,a.currency, to_char(a.pricekusd/1000,'FM99990.0999999') price_usd,\n" +
-                        "'('|| a.region ||')'|| a.endcustomer end_customer\n" +
-                        "from tsc_om_ref_quotenet a\n" +
-                        " where a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
-                        " and a.partnumber='" + modelNDto.getTscItemDesc() + "' \n"+
-                        "union all\n" +
-                        "SELECT quoteid, partnumber, currency, price_usd, end_customer\n" +
-                        "FROM (\n" +
-                        "  SELECT \n" +
-                        "    a.quoteid, \n" +
-                        "    a.partnumber, \n" +
-                        "    a.currency,\n" +
-                        "    TO_CHAR(a.pricekusd / 1000, 'FM99990.0999999') AS price_usd,\n" +
-                        "    '(' || a.region || ')' || a.endcustomer AS end_customer,\n" +
-                        "    ROW_NUMBER() OVER (PARTITION BY a.quoteid, a.partnumber, a.currency ORDER BY a.pricekusd DESC) AS rn\n" +
-                        "  FROM TSC_OM_REF_MODELN a\n" +
-                        " where a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
-                        " and a.partnumber='" + modelNDto.getTscItemDesc() + "' \n"+
-                        ")\n" +
-                        "WHERE rn = 1\n" +
-                        ") order by quoteid, partnumber";
+                String sql = "SELECT * FROM (\n" +
+                        "    -- ç¬¬ä¸€éƒ¨åˆ†ï¼šQUQTE è³‡æ–™ä¾†æº\n" +
+                        "    SELECT\n" +
+                        "        a.quoteid,\n" +
+                        "        a.partnumber,\n" +
+                        "        a.currency,\n" +
+                        "        TO_CHAR(a.pricekusd / 1000, 'FM99990.0999999') AS price_usd,\n" +
+                        "        '(' || a.region || ')' || a.endcustomer AS end_customer,\n" +
+                        "        CASE\n" +
+                        "            WHEN (\n" +
+                        "                CASE\n" +
+                        "                    WHEN a.region IN ('TSCR', 'TSCI') THEN TRUNC(a.fromdate)\n" +
+                        "                    ELSE TRUNC(SYSDATE)\n" +
+                        "                END\n" +
+                        "            ) BETWEEN TRUNC(a.fromdate) AND TRUNC(a.todate)\n" +
+                        "            THEN '1'\n" +
+                        "            ELSE '0'\n" +
+                        "        END AS pass_flag,\n" +
+                        "        TO_CHAR(a.todate,'yyyy-mm-dd') todate\n" +
+                        "    FROM tsc_om_ref_quotenet a\n" +
+                        "    WHERE a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
+                        "      AND a.partnumber='" + modelNDto.getTscItemDesc() + "' \n"+
+                        "    UNION ALL\n" +
+                        "     -- ç¬¬äºŒéƒ¨åˆ†ï¼šMODELN è³‡æ–™ä¾†æºï¼ˆåªå–æœ€æ–°å ±åƒ¹ï¼‰\n" +
+                        "    SELECT\n" +
+                        "        quoteid,\n" +
+                        "        partnumber,\n" +
+                        "        currency,\n" +
+                        "        price_usd,\n" +
+                        "        end_customer,\n" +
+                        "        pass_flag,\n" +
+                        "        todate\n" +
+                        "    FROM (\n" +
+                        "        SELECT\n" +
+                        "            a.quoteid,\n" +
+                        "            a.partnumber,\n" +
+                        "            a.currency,\n" +
+                        "            TO_CHAR(a.pricekusd / 1000, 'FM99990.0999999') AS price_usd,\n" +
+                        "            '(' || a.region || ')' || a.endcustomer AS end_customer,\n" +
+                        "            CASE\n" +
+                        "                WHEN (\n" +
+                        "                    CASE\n" +
+                        "                        WHEN a.region IN ('TSCR', 'TSCI') THEN TRUNC(a.fromdate)\n" +
+                        "                        ELSE TRUNC(SYSDATE)\n" +
+                        "                    END\n" +
+                        "                ) BETWEEN TRUNC(a.fromdate) AND TRUNC(a.todate)\n" +
+                        "                THEN '1'\n" +
+                        "                ELSE '0'\n" +
+                        "            END AS pass_flag,\n" +
+                        "            TO_CHAR(a.todate,'yyyy-mm-dd') todate,\n" +
+                        "            ROW_NUMBER() OVER (\n" +
+                        "                PARTITION BY a.quoteid, a.partnumber, a.currency\n" +
+                        "                ORDER BY a.pricekusd DESC\n" +
+                        "            ) AS rn\n" +
+                        "        FROM tsc_om_ref_modeln a\n" +
+                        "        WHERE a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
+                        "          AND a.partnumber='" + modelNDto.getTscItemDesc() + "' \n"+
+                        "    )\n" +
+                        "    WHERE rn = 1\n" +
+                        ")";
                 ResultSet rs = stmt.executeQuery(sql);
                 if (rs.next()) {
-                    sellingPrice_Q = rs.getString("PRICE_USD");
-                    endCustName = rs.getString("END_CUSTOMER");
+                    passFlag = rs.getString("PASS_FLAG");
+                    if ("1".equals(passFlag)) {
+                        sellingPrice_Q = rs.getString("PRICE_USD");
+                        endCustName = rs.getString("END_CUSTOMER");
+                    } else {
+                        expireDate = rs.getString("TODATE");
+                        errList.add(ErrorMessage.QUOTE_HAS_EXPIRED.getMessageFormat(expireDate));
+                        modelNDto.setErrorList(errList);
+                    }
+                } else {
+                    errList.add(ErrorMessage.QUOTE_NOT_FOUND.getMessage());
+                    modelNDto.setErrorList(errList);
                 }
                 rs.close();
                 stmt.close();
-                if (sellingPrice_Q.equals("")) {
-                    stmt = conn.createStatement();
-                    sql = "select *  from (\n" +
-                            "select a.quoteid, a.partnumber,a.currency, to_char(a.pricekusd/1000,'FM99990.0999999') price_usd,\n" +
-                            "'('|| a.region ||')'|| a.endcustomer end_customer\n" +
-                            "from tsc_om_ref_quotenet a\n" +
-                            " where a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
-                            " and a.partnumber like '" + itemNoPacking + "%' \n" +
-                            "union all\n" +
-                            "SELECT quoteid, partnumber, currency, price_usd, end_customer\n" +
-                            "FROM (\n" +
-                            "  SELECT \n" +
-                            "    a.quoteid, \n" +
-                            "    a.partnumber, \n" +
-                            "    a.currency,\n" +
-                            "    TO_CHAR(a.pricekusd / 1000, 'FM99990.0999999') AS price_usd,\n" +
-                            "    '(' || a.region || ')' || a.endcustomer AS end_customer,\n" +
-                            "    ROW_NUMBER() OVER (PARTITION BY a.quoteid, a.partnumber, a.currency ORDER BY a.pricekusd DESC) AS rn\n" +
-                            "  FROM TSC_OM_REF_MODELN a\n" +
-                            " where a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
-                            " and a.partnumber like '" + itemNoPacking + "%' \n" +
-                            ")\n" +
-                            "WHERE rn = 1\n" +
-                            ") order by quoteid, partnumber";
-                    rs = stmt.executeQuery(sql);
-                    if (rs.next())
-                    {
-                        sellingPrice_Q = rs.getString("PRICE_USD");
-                        endCustName = rs.getString("END_CUSTOMER");
-                    }
-                    rs.close();
-                    stmt.close();
-                }
             }
         }
     }
 
-    //ÀË¬d­q³æÃş«¬¬O§_¥¿½T
+    //æª¢æŸ¥è¨‚å–®é¡å‹æ˜¯å¦æ­£ç¢º
     private void checkCorrectOrderTypeId() throws SQLException {
         String sql = "SELECT a.otype_id FROM oraddman.tsarea_ordercls a,oraddman.tsprod_ordertype b \n" +
                 " where b.order_num=a.order_num and a.order_num='" + modelNDto.getOrderType() + "' and a.sarea_no ='" + salesNo + "'" +
@@ -430,7 +447,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
         statement.close();
     }
 
-    //ÀË¬d¼Æ¶q
+    //æª¢æŸ¥æ•¸é‡
     private void checkQty() {
         if (StringUtils.isNullOrEmpty(modelNDto.getQty())) {
             modelNDto.setQty("");
@@ -452,7 +469,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
         }
     }
 
-    //ÀË¬d³æ»ù
+    //æª¢æŸ¥å–®åƒ¹
     private void checkSellingPrice() {
         if (StringUtils.isNullOrEmpty(modelNDto.getSellingPrice())) {
             if (modelNDto.getQuoteNumber().equals("") || StringUtils.isNullOrEmpty(sellingPrice_Q)) {
@@ -468,7 +485,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                 if (priceNumber <= 0) {
                     errList.add(ErrorMessage.SELLING_PRICE_MUST_GREATER_0.getMessage());
                     modelNDto.setErrorList(errList);
-                } else if (!modelNDto.getQuoteNumber().equals("")) { // excel QuoteNumber ¤£¬°ªÅ®É¤~·|°µÀË¬d
+                } else if (!modelNDto.getQuoteNumber().equals("")) { // excel QuoteNumber ï¿½ï¿½ï¿½ï¿½ï¿½Å®É¤~ï¿½|ï¿½ï¿½ï¿½Ë¬d
                    if (!modelNDto.getSellingPrice().equals(sellingPrice_Q)) {
                        errList.add(ErrorMessage.SELLING_PRICE_NOT_MATCH_QUOTE_PRICE.getMessageFormat(sellingPrice_Q));
                        modelNDto.setErrorList(errList);
@@ -483,7 +500,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
         }
     }
 
-    //ÀË¬d¥æ³f¤é´Á(SSD)
+    //æª¢æŸ¥äº¤è²¨æ—¥æœŸ(SSD)
     private void checkSSD() {
         if (StringUtils.isNullOrEmpty(modelNDto.getSsd())) {
             modelNDto.setSsd("");
@@ -495,14 +512,14 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
         }
     }
 
-    // ÀË¬dREMARKS
+    //æª¢æŸ¥äº¤è²¨æ—¥æœŸ(SSD)
     private void checkRemarks() {
         if (StringUtils.isNullOrEmpty(modelNDto.getRemarks())) {
             modelNDto.setRemarks("");
         }
     }
 
-    // ¨ú±o¹B¿é¤è¦¡ªº¸ê°T
+    // å–å¾—é‹è¼¸æ–¹å¼çš„è³‡è¨Š
     protected ResultSet getFndLookupValuesData() throws SQLException {
         String sql = " SELECT lookup_code,meaning FROM fnd_lookup_values lv"+
                 " WHERE language = 'US'"+
@@ -573,21 +590,21 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
         return stmt.executeQuery(sql);
     }
 
-    // ¨ú±oFOB(incoterm)ªº¸ê°T
+    // å–å¾—FOB(incoterm)çš„è³‡è¨Š
     protected ResultSet getFobIncotermData() throws SQLException {
         String sql = " select a.FOB_CODE, a.FOB from OE_FOBS_ACTIVE_V a order by a.fob_code";
         Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
         return stmt.executeQuery(sql);
     }
 
-    // ¨ú±oBI REGIONªº¸ê°T
+    // å–å¾—BI REGIONçš„è³‡è¨Š
     protected ResultSet getBiRegionData() throws SQLException {
         String sql = "select distinct a.A_VALUE from oraddman.tsc_rfq_setup a WHERE A_CODE='BI_REGION'";
         Statement stmt = conn.createStatement();
         return stmt.executeQuery(sql);
     }
 
-    // ÀË¬d End Customer Number
+    // æª¢æŸ¥ End Customer Number
     private void checkEndCustNumber() throws SQLException {
         String sql = "select distinct c.customer_id,c.customer_number,c.customer_name_phonetic \n" +
                 " from APPS.HZ_CUST_ACCT_SITES_ALL a, AR.HZ_CUST_SITE_USES_ALL b, APPS.AR_CUSTOMERS c \n" +
@@ -661,7 +678,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
 
     private void createOrDeleteDir(File dir) {
         if (dir.isDirectory()) {
-            // §R°£¤lÀÉ®×©Î¤l¥Ø¿ı
+            // ï¿½Rï¿½ï¿½ï¿½lï¿½É®×©Î¤lï¿½Ø¿ï¿½
             File[] files = dir.listFiles();
             if (files != null) {
                 for (File file : files) {
@@ -671,18 +688,18 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                 }
             }
         } else {
-            // «Ø¥ß¤lÀÉ®×©Î¤l¥Ø¿ı
+            // ï¿½Ø¥ß¤lï¿½É®×©Î¤lï¿½Ø¿ï¿½
             dir.mkdirs();
         }
     }
 
-    // ÀË¬d¬O§_¬°ªÅªºrow
+    // æª¢æŸ¥æ˜¯å¦ç‚ºç©ºçš„row
     private static boolean isEmptyRow(Sheet sheet, int rowIndex) {
         int colCount = sheet.getColumns();
         for (int colIndex = 0; colIndex < colCount; colIndex++) {
             String content = sheet.getCell(colIndex, rowIndex).getContents().trim();
             if (!content.isEmpty()) {
-                return false; // ¥u­n¦³¤@­ÓÀx¦s®æ¦³¤º®e¡A´N¤£¬OªÅªºrow
+                return false; // ï¿½uï¿½nï¿½ï¿½ï¿½@ï¿½ï¿½ï¿½xï¿½sï¿½æ¦³ï¿½ï¿½ï¿½eï¿½Aï¿½Nï¿½ï¿½ï¿½Oï¿½Åªï¿½row
             }
         }
         return true;
@@ -701,7 +718,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
             }
             for (int colIndex = 0, colCount = sheet.getColumns(); colIndex < colCount; colIndex++) {
                 Cell rowCell = sheet.getCell(colIndex, rowIndex);
-                String content = rowCell.getContents().trim(); // ¨ú±oÀx¦s®æ¤º®e
+                String content = rowCell.getContents().trim(); // å–å¾—å„²å­˜æ ¼å…§å®¹
                 String columnName = sheet.getCell(colIndex, 0).getContents().trim();
                 switch (ExcelColumn.settingExcelColumn(columnName, colIndex)) {
                     case CustomerNumber:
@@ -737,18 +754,18 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                     case Qty:
                         String qty = "";
                         if (rowCell instanceof NumberCell) {
-                            qty =  "" + ((NumberCell) rowCell).getValue(); // ª½±µ¨ú¼Æ­È
+                            qty =  "" + ((NumberCell) rowCell).getValue(); // ç›´æ¥å–æ•¸å€¼
                         } else {
-                            qty = (rowCell.getContents()).trim(); // ¤å¦r«¬Äæ¦ì
+                            qty = (rowCell.getContents()).trim(); // æ–‡å­—å‹æ¬„ä½
                         }
                         modelNDto.setQty(qty);
                         break;
                     case SellingPrice:
                         String sellingPrice = "";
                         if (rowCell instanceof NumberCell) {
-                            sellingPrice =  "" + ((NumberCell) rowCell).getValue(); // ª½±µ¨ú¼Æ­È
+                            sellingPrice =  "" + ((NumberCell) rowCell).getValue(); // ç›´æ¥å–æ•¸å€¼
                         } else {
-                            sellingPrice = (rowCell.getContents()).trim(); // ¤å¦r«¬Äæ¦ì
+                            sellingPrice = (rowCell.getContents()).trim(); // æ–‡å­—å‹æ¬„ä½
                         }
                         modelNDto.setSellingPrice(sellingPrice);
                         break;
@@ -845,23 +862,23 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
             Map.Entry entry = (Map.Entry) it.next();
             modelNDto = (ModelNDto) entry.getValue();
 
-            // ÀË¬dExcel«È¤á¥N¸¹
+            // æª¢æŸ¥Excelå®¢æˆ¶ä»£è™Ÿ
             if (StringUtils.isNullOrEmpty(modelNDto.getCustNo())) {
                 errList.add(ErrorMessage.CUSTNO_NOTNULL.getMessage());
                 modelNDto.setErrorList(errList);
             } else {
-                // ¨ú±otable CustId ©M CustName
+                // å–å¾—table CustId å’Œ CustName
                 checkCustIdAndName();
             }
-            // ÀË¬dExcel CustomerPO
+            // æª¢æŸ¥Excel CustomerPO
             if (StringUtils.isNullOrEmpty(modelNDto.getCustPo())) {
                 errList.add(ErrorMessage.CUSTPO_NOTNULL.getMessage());
                 modelNDto.setErrorList(errList);
             } else {
-                // ÀË¬dtable«È¤á+customer po¬O§_¦³«İ³B²z¸ê®Æ
+                // æª¢æŸ¥tableå®¢æˆ¶+customer poæ˜¯å¦æœ‰å¾…è™•ç†è³‡æ–™
                 checkCustomerPo();
             }
-            // ÀË¬dExcel¥x¥b®Æ¸¹/«~¦W¤Î«È¤á®Æ¸¹
+            // æª¢æŸ¥Excelå°åŠæ–™è™Ÿ/å“ååŠå®¢æˆ¶æ–™è™Ÿ
             if (StringUtils.isNullOrEmpty(modelNDto.getTscItemDesc())
                     && StringUtils.isNullOrEmpty(modelNDto.getCustItem())
                     && StringUtils.isNullOrEmpty(modelNDto.getTscItem())) {
@@ -871,9 +888,9 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                 errList.add(ErrorMessage.TSC_ITEM_AND_TSC_ITEM_PN_AND_CUST_ITEM_NOTNULL.getMessage());
                 modelNDto.setErrorList(errList);
             } else {
-                // ÀË¬dtable¥x¥b®Æ¸¹¤Î«È¤á®Æ¸¹¦bERP¬O§_¦s¦b
+                // æª¢æŸ¥tableå°åŠæ–™è™ŸåŠå®¢æˆ¶æ–™è™Ÿåœ¨ERPæ˜¯å¦å­˜åœ¨
                 checkTscAndCustPartNo();
-                // ¥Ø«e¥u¦³002¦³³o¯S§OÅŞ¿è
+                // ç›®å‰åªæœ‰002æœ‰é€™ç‰¹åˆ¥é‚è¼¯
                 if (SalesArea.TSCCSH.getSalesNo().equals(salesNo)) {
                     if(!modelNDto.getCustId().equals("15540")
                             && !modelNDto.getCustId().equals("9404")
@@ -886,29 +903,29 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
             checkCorrectOrderTypeId();
             checkQty();
             checkSellingPrice();
-            // ÀË¬dCRD
+            // æª¢æŸ¥CRD
             checkSSD();
-            //ÀË¬d¥X³f¤è¦¡
-            // ÀË¬dFOB
+            //æª¢æŸ¥å‡ºè²¨æ–¹å¼
+            // æª¢æŸ¥FOB
             checkRemarks();
             setDefaultLineType();
-            // ÀË¬dExcel End Customer Number
+            // æª¢æŸ¥Excel End Customer Number
             if (!modelNDto.getEndCustNo().equals("")) {
-                //end customer number ¤£¥i»P customer number ¬Û¦P
+                //end customer number ä¸å¯èˆ‡ customer number ç›¸åŒ
                 if (modelNDto.getEndCustNo().equals(modelNDto.getCustNo())) {
                     errList.add(ErrorMessage.END_CUSTNO_NOT_SAME_CUSTNO.getMessage());
                     modelNDto.setErrorList(errList);
                 } else {
-                    // ÀË¬dEnd Customer Number¦bERP¬O§_¦s¦b
+                    // æª¢æŸ¥End Customer Numberåœ¨ERPæ˜¯å¦å­˜åœ¨
                     checkEndCustNumber();
                 }
             } else if (!endCustName.equals("")) {
                 modelNDto.setEndCustNamePhonetic(endCustName);
             }
-            // ·~°È°ÏÃB¥~ÀË¬d©Î³]©wÄæ¦ì­È¾÷¨î, ¼g¦b¦¹¤èªk¤º
+            // æ¥­å‹™å€é¡å¤–æª¢æŸ¥æˆ–è¨­å®šæ¬„ä½å€¼æ©Ÿåˆ¶, å¯«åœ¨æ­¤æ–¹æ³•å…§
             this.setAndCheckInfo(false, true);
 
-            //¦]Ä~©Ó¸Óclass overwrite setShippingMethod ªº¤èªk¡A¦pªG¨S¥[¦¹§PÂ_¡AerrList·|append¡A¾É­P·|§e²{¤@¼Ëªº¿ù»~°T®§
+            //å› ç¹¼æ‰¿è©²class overwrite setShippingMethod çš„æ–¹æ³•ï¼Œå¦‚æœæ²’åŠ æ­¤åˆ¤æ–·ï¼ŒerrListæœƒappendï¼Œå°è‡´æœƒå‘ˆç¾ä¸€æ¨£çš„éŒ¯èª¤è¨Šæ¯
             if (!errList.contains(ErrorMessage.SHIPPING_METHOD_IS_NOTNULL.getMessage())) {
                 if (StringUtils.isNullOrEmpty(modelNDto.getShippingMethod())) {
                     modelNDto.setShippingMethod("");
@@ -917,7 +934,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                 }
             }
 
-            //¦]Ä~©Ó¸Óclass overwrite setFob ªº¤èªk¡A¦pªG¨S¥[¦¹§PÂ_¡AerrList·|append¡A¾É­P·|§e²{¤@¼Ëªº¿ù»~°T®§
+            //å› ç¹¼æ‰¿è©²class overwrite setFob çš„æ–¹æ³•ï¼Œå¦‚æœæ²’åŠ æ­¤åˆ¤æ–·ï¼ŒerrListæœƒappendï¼Œå°è‡´æœƒå‘ˆç¾ä¸€æ¨£çš„éŒ¯èª¤è¨Šæ¯
             if (!errList.contains(ErrorMessage.FOB_IS_NOTNULL.getMessage())) {
                 if (StringUtils.isNullOrEmpty(modelNDto.getFob())) {
                     modelNDto.setFob("");
@@ -1068,7 +1085,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
             List row = new LinkedList();
             Map.Entry entry = (Map.Entry) it.next();
             int rowNo = ((Integer) entry.getKey()).intValue();
-            DetailDto detailDto = (DetailDto) ((List) entry.getValue()).get(0); //¥u¨ú DetailDtoªºª«¥ó
+            DetailDto detailDto = (DetailDto) ((List) entry.getValue()).get(0); //åªå– DetailDtoçš„ç‰©ä»¶
             row.add(String.valueOf(rowNo));               // 0
             row.add(detailDto.getTscItem());              // 1
             row.add(detailDto.getDescription());          // 2
@@ -1107,7 +1124,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
             strArray[i] = new String[row.size()];
             for (int j = 0; j < row.size(); j++) {
                 Object value = row.get(j);
-                strArray[i][j] = (value == null) ? "" : value.toString(); // ³B²z null ­È¬°ªÅ¦r¦ê
+                strArray[i][j] = (value == null) ? "" : value.toString(); // è™•ç† null å€¼ç‚ºç©ºå­—ä¸²
             }
         }
         String customerId = (String) argMap.get("customerId");
@@ -1125,7 +1142,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
         String shipToContactName = getShipToContactNameAndId(customerId, shipToOrgId)[0];
         String shipToContactId = getShipToContactNameAndId(customerId, shipToOrgId)[1];
 
-        // ¦]¬°TSCRFQImportSPQCheck.jsp ·|¨Ï¥Îsession ¨Ó°µ¨Æ¡A©Ò¥H¶·±Nª¬ºA¦s¦b³o¸Ì
+        // å› ç‚ºTSCRFQImportSPQCheck.jsp æœƒä½¿ç”¨session ä¾†åšäº‹ï¼Œæ‰€ä»¥é ˆå°‡ç‹€æ…‹å­˜åœ¨é€™è£¡
         session.setAttribute("SPQCHECKED","N");
         session.setAttribute("CUSTOMERID",customerId);
         session.setAttribute("CUSTOMERNO",customerNo);

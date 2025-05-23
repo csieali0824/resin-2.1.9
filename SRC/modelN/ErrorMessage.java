@@ -2,64 +2,66 @@ package modelN;
 
 public enum ErrorMessage {
 
-    CUSTNO_REQUEST("Customer Number¬°¥²¶ñÄæ¦ì"),
-    CUSTPO_REQUEST("Customer PO¬°¥²¶ñÄæ¦ì"),
-    TSC_PN_REQUEST("TSC P/N¬°¥²¶ñÄæ¦ì"),
-    CRD_REQUEST("CRD¬°¥²¶ñÄæ¦ì"),
-    SSD_REQUEST("SSD¬°¥²¶ñÄæ¦ì"),
-    CRD_LENGTH_LESS_8("CRDÄæ¦ì­Èªø«×¤p©ó8"),
-    SSD_LENGTH_LESS_8("SSDÄæ¦ì­Èªø«×¤p©ó8"),
-    CUSTNO_NOTNULL("«È¤á¥N¸¹¤£¥iªÅ¥Õ"),
-    CUSTPO_NOTNULL("Customer PO¤£¥iªÅ¥Õ"),
-    TSC_ITEM_AND_TSC_ITEM_PN_AND_CUST_ITEM_NOTNULL("¥x¥b®Æ¸¹/«~¦W¤Î«È¤á®Æ¸¹¤£¥i¦P®ÉªÅ¥Õ"),
-    INPUT_CUST_PN("«DSHANGHAI GREAT«È¤á¥²¶·¿é¤JCustomer P/N"),
-    CUSTNO_NOT_FOUND_ERP("ERP¬dµL«È¤á¸ê°T"),
-    PENDING_DETAIL_EXISTS_CUSTNO("Pending Detail¤w¦s¦b¦¹«È¤á+PO¸ê®Æ!"),
-    END_CUSTID_FOUND_ERP("End Customer ID¤£¦s¦bERP"),
-    CUST_PN_NOT_FOUND_ERP("«È¤á®Æ¸¹¦bERP¤£¦s¦b!"),
-    TSC_PN_NOT_FOUND_ERP("¥x¥b®Æ¸¹¦bERP¤£¦s¦b!"),
-    TSC_PN_MORE_THAN_ONE("¹ïÀ³ªº¥x¥b®Æ¸¹¶W¹L¤@­Ó¥H¤W,½Ð¿ï¾Ü¥¿½T¥x¥b®Æ¸¹"),
-    ORDER_TYPE_ID_ERROR("­q³æÃþ«¬¿ù»~"),
-    QTY_NOTNULL("¼Æ¶q¤£¥iªÅ¥Õ"),
-    QTY_MUST_GREATER_0("¼Æ¶q¥²¶·¤j©ó¹s"),
-    QTY_FORMAT_ERROR("¼Æ¶q®æ¦¡¿ù»~"),
-    SELLING_PRICE_NOTNULL("Selling Price¤£¥iªÅ¥Õ"),
-    SELLING_PRICE_MUST_GREATER_0("Selling Price¥²¶·¤j©ó¹s"),
+    CUSTNO_REQUEST("Customer Numberç‚ºå¿…å¡«æ¬„ä½"),
+    CUSTPO_REQUEST("Customer POç‚ºå¿…å¡«æ¬„ä½"),
+    TSC_PN_REQUEST("TSC P/Nç‚ºå¿…å¡«æ¬„ä½"),
+    CRD_REQUEST("CRDç‚ºå¿…å¡«æ¬„ä½"),
+    SSD_REQUEST("SSDç‚ºå¿…å¡«æ¬„ä½"),
+    CRD_LENGTH_LESS_8("CRDæ¬„ä½å€¼é•·åº¦å°æ–¼8"),
+    SSD_LENGTH_LESS_8("SSDæ¬„ä½å€¼é•·åº¦å°æ–¼8"),
+    CUSTNO_NOTNULL("å®¢æˆ¶ä»£è™Ÿä¸å¯ç©ºç™½"),
+    CUSTPO_NOTNULL("Customer POä¸å¯ç©ºç™½"),
+    TSC_ITEM_AND_TSC_ITEM_PN_AND_CUST_ITEM_NOTNULL("å°åŠæ–™è™Ÿ/å“ååŠå®¢æˆ¶æ–™è™Ÿä¸å¯åŒæ™‚ç©ºç™½"),
+    INPUT_CUST_PN("éžSHANGHAI GREATå®¢æˆ¶å¿…é ˆè¼¸å…¥Customer P/N"),
+    CUSTNO_NOT_FOUND_ERP("ERPæŸ¥ç„¡å®¢æˆ¶è³‡è¨Š"),
+    PENDING_DETAIL_EXISTS_CUSTNO("Pending Detailå·²å­˜åœ¨æ­¤å®¢æˆ¶+POè³‡æ–™!"),
+    END_CUSTID_FOUND_ERP("End Customer IDä¸å­˜åœ¨ERP"),
+    CUST_PN_NOT_FOUND_ERP("å®¢æˆ¶æ–™è™Ÿåœ¨ERPä¸å­˜åœ¨!"),
+    TSC_PN_NOT_FOUND_ERP("å°åŠæ–™è™Ÿåœ¨ERPä¸å­˜åœ¨!"),
+    TSC_PN_MORE_THAN_ONE("å°æ‡‰çš„å°åŠæ–™è™Ÿè¶…éŽä¸€å€‹ä»¥ä¸Š,è«‹é¸æ“‡æ­£ç¢ºå°åŠæ–™è™Ÿ"),
+    ORDER_TYPE_ID_ERROR("è¨‚å–®é¡žåž‹éŒ¯èª¤"),
+    QTY_NOTNULL("æ•¸é‡ä¸å¯ç©ºç™½"),
+    QTY_MUST_GREATER_0("æ•¸é‡å¿…é ˆå¤§æ–¼é›¶"),
+    QTY_FORMAT_ERROR("æ•¸é‡æ ¼å¼éŒ¯èª¤"),
+    SELLING_PRICE_NOTNULL("Selling Priceä¸å¯ç©ºç™½"),
+    SELLING_PRICE_MUST_GREATER_0("Selling Priceå¿…é ˆå¤§æ–¼é›¶"),
     SELLING_PRICE_NOT_MATCH_QUOTE_PRICE("Selling Price not match quote price(%s)"),
-    SELLING_PRICE_FORMAT_ERROR("³æ»ù®æ¦¡¿ù»~"),
-    FOB_IS_NOTNULL("FOB¤£¥iªÅ¥Õ"),
-    FOB_IS_NOT_EXISTS("FOB¤£¦s¦b"),
-    SHIPPING_METHOD_IS_NOTNULL("¥X³f¤è¦¡¤£¥iªÅ¥Õ"),
-    SHIPPING_METHOD_IS_NOT_EXISTS("¥X³f¤è¦¡¤£¦s¦b"),
-    TRANSPORTATION_IS_NOT_DIFINED("¹B¿é¤è¦¡¥¼©w¸q(%s)"),
-    SSD_IS_NOTNULL("SSD¤£¥iªÅ¥Õ"),
-    SSD_MUST_GREATER("SSD¥²¶·¤j©ó(%s)"),
-    CRD_IS_NOTNULL("CRD¤£¥iªÅ¥Õ"),
-    CRD_MUST_GREATER("CRD¥²¶·¤j©ó(%s)"),
-    CRD_MUST_GREATER_OR_EQUALS_SYS_DATE("CRD¤é´Á¥²¶·¤j©ó©Îµ¥©ó¨t²Î¤é"),
-    CRD_DATE_ERROR("CRD¤é´Á®æ¦¡¿ù»~(¥¿½T®æ¦¡=MM/DD/YY)"),
-    BI_REGION_IS_NOTNULL("BI Region¤£¥iªÅ¥Õ"),
-    BI_REGION_MUST("BI Region¥²¶·¬°(%s)"),
-    END_CUSTNO_NOT_SAME_CUSTNO("End Customer Number¤£¥i»PCustomer Number¬Û¦P"),
-    CHOOSE_END_CUSTNAME_OR_END_CUSTNO("End Customer Name»PEnd Customer Number½Ð¾Ü¤@¿é¤J"),
-    INPUT_CUSTPO_LINE_NO("½Ð¿é¤Jcustomer po line number"),
-    INPUT_CUSTPO_NO("½Ð¿é¤Jcustomer po number"),
-    CONFIRM_TSCA_SALES_ORDER("¬dµL¹ïÀ³TSCA¾P°â­q³æ,½Ð½T»{CUST PO¬O§_¥¿½T"),
-    QTY_MUST_SPQ_K("¼Æ¶q¥²¶·¬OSPQ(%s K)ªº­¿¼Æ"),
-    QTY_MUST_GREATER_OR_EQUALS_MOQ_K("¼Æ¶q¥²¶·¤j©ó©Îµ¥©óMOQ(%s K)ªº­¿¼Æ"),
-    NOT_CREATE_SPQ_MOQ("SPQ/MOQ¸ê°T¥¼«Ø¥ß,½Ð³qª¾PC¦P¤¯«Ø¥ß");
+    SELLING_PRICE_FORMAT_ERROR("å–®åƒ¹æ ¼å¼éŒ¯èª¤"),
+    FOB_IS_NOTNULL("FOBä¸å¯ç©ºç™½"),
+    FOB_IS_NOT_EXISTS("FOBä¸å­˜åœ¨"),
+    SHIPPING_METHOD_IS_NOTNULL("å‡ºè²¨æ–¹å¼ä¸å¯ç©ºç™½"),
+    SHIPPING_METHOD_IS_NOT_EXISTS("å‡ºè²¨æ–¹å¼ä¸å­˜åœ¨"),
+    TRANSPORTATION_IS_NOT_DIFINED("é‹è¼¸æ–¹å¼æœªå®šç¾©(%s)"),
+    SSD_IS_NOTNULL("SSDä¸å¯ç©ºç™½"),
+    SSD_MUST_GREATER("SSDå¿…é ˆå¤§æ–¼(%s)"),
+    CRD_IS_NOTNULL("CRDä¸å¯ç©ºç™½"),
+    CRD_MUST_GREATER("CRDå¿…é ˆå¤§æ–¼(%s)"),
+    CRD_MUST_GREATER_OR_EQUALS_SYS_DATE("CRDæ—¥æœŸå¿…é ˆå¤§æ–¼æˆ–ç­‰æ–¼ç³»çµ±æ—¥"),
+    CRD_DATE_ERROR("CRDæ—¥æœŸæ ¼å¼éŒ¯èª¤(æ­£ç¢ºæ ¼å¼=MM/DD/YY)"),
+    BI_REGION_IS_NOTNULL("BI Regionä¸å¯ç©ºç™½"),
+    BI_REGION_MUST("BI Regionå¿…é ˆç‚º(%s)"),
+    END_CUSTNO_NOT_SAME_CUSTNO("End Customer Numberä¸å¯èˆ‡Customer Numberç›¸åŒ"),
+    CHOOSE_END_CUSTNAME_OR_END_CUSTNO("End Customer Nameèˆ‡End Customer Numberè«‹æ“‡ä¸€è¼¸å…¥"),
+    INPUT_CUSTPO_LINE_NO("è«‹è¼¸å…¥customer po line number"),
+    INPUT_CUSTPO_NO("è«‹è¼¸å…¥customer po number"),
+    CONFIRM_TSCA_SALES_ORDER("æŸ¥ç„¡å°æ‡‰TSCAéŠ·å”®è¨‚å–®,è«‹ç¢ºèªCUST POæ˜¯å¦æ­£ç¢º"),
+    QTY_MUST_SPQ_K("æ•¸é‡å¿…é ˆæ˜¯SPQ(%s K)çš„å€æ•¸"),
+    QTY_MUST_GREATER_OR_EQUALS_MOQ_K("æ•¸é‡å¿…é ˆå¤§æ–¼æˆ–ç­‰æ–¼MOQ(%s K)çš„å€æ•¸"),
+    NOT_CREATE_SPQ_MOQ("SPQ/MOQè³‡è¨Šæœªå»ºç«‹,è«‹é€šçŸ¥PCåŒä»å»ºç«‹"),
+    QUOTE_NOT_FOUND("Quote not found"),
+    QUOTE_HAS_EXPIRED("Quote has expired(%s)");
     private final String message;
 
     ErrorMessage(String errorMessage) {
         this.message = errorMessage;
     }
 
-    // ¨ú±o¿ù»~°T®§
+    // å–å¾—éŒ¯èª¤è¨Šæ¯
     public String getMessage() {
         return message;
     }
 
-    // ¨ú±o±a°Ñ¼Æªº¿ù»~°T®§
+    // å–å¾—å¸¶åƒæ•¸çš„éŒ¯èª¤è¨Šæ¯
     public String getMessageFormat(String parameter) {
         return String.format(message, parameter);
     }

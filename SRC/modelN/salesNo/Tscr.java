@@ -68,7 +68,7 @@ public class Tscr extends ModelNCommonUtils {
     }
 
     public void setCrd() {
-        //�ˬdCRD
+        //檢查CRD
         if (StringUtils.isNullOrEmpty(modelNDto.getCrd())) {
             modelNDto.setCrd("");
             if (!modelNDto.getCrd().equals("")) {
