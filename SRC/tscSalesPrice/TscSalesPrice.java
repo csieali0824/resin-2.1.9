@@ -807,13 +807,12 @@ public class TscSalesPrice {
                 "               TSC_SALES_DISTRIBUTION_PRICE tsdp\n" +
                 "         WHERE     msi.ORGANIZATION_ID = 49\n" +
                 "               AND LENGTH (msi.SEGMENT1) >= 22\n" +
-                "               and msi.segment1 = tsdp.item_name\n" +
-                "               and msi.INVENTORY_ITEM_ID = tsdp.INVENTORY_ITEM_ID\n" +
+                "               AND msi.INVENTORY_ITEM_ID = tsdp.INVENTORY_ITEM_ID(+)\n" +
                 "               and case \n" +
                 "                     when instr(TSC_GET_ITEM_PACKING_CODE(43,msi.inventory_item_id),'QQ')>0 then msi.description \n" +
                 "                     else trim(substr(msi.description,0,length(msi.description)-length(TSC_GET_ITEM_PACKING_CODE(43,msi.inventory_item_id))))\n" +
-                "                   end = tsdp.part_id\n" +
-                "               and msi.description = tsdp.tsc_ordering_code\n" +
+                "                   end = tsdp.part_id(+)\n" +
+                "               and msi.description = tsdp.tsc_ordering_code(+)\n" +
                 "               AND TSC_INV_Category (msi.inventory_item_id, 43, 23) =\n" +
                 "                       tpcl.tsc_package(+)\n" +
                 "               AND tsc_get_item_packing_code (43, msi.inventory_item_id) =\n" +
@@ -954,15 +953,14 @@ public class TscSalesPrice {
 
         while (rs.next()) {
             if (rs.getString("PACKAGE_CODE") ==null || rs.getInt("ITEM_CNT")!=1 ) continue; //add by Peggy 20181023
-            Map<String, Object> row = new LinkedHashMap<>(); // �ϥ� LinkedHashMap �O����춶��
+            Map<String, Object> row = new LinkedHashMap<>(); // 使用 LinkedHashMap 保持欄位順序
             for (int i = 1; i <= columnCount; i++) {
-                String columnName = metaData.getColumnLabel(i); // getColumnLabel �i���� SQL �O�W
+                String columnName = metaData.getColumnLabel(i); // getColumnLabel 可拿到 SQL 別名
                 Object value = rs.getObject(i);
                 row.put(columnName, value);
             }
             rows.add(row);
         }
-        // �����귽
         rs.close();
         statement.close();
         conn.close();
@@ -1073,13 +1071,12 @@ public class TscSalesPrice {
                 "                 ,(SELECT * FROM oraddman.tsc_packing_conversion_list where nvl(INACTIVE_DATE,to_date('20991231','yyyymmdd'))>TRUNC(SYSDATE)) tpcl\n" +
                 "                 WHERE msi.ORGANIZATION_ID=49\n" +
                 "                 AND LENGTH(msi.SEGMENT1)>=22\n" +
-                "                 and msi.segment1 = tsdp.item_name\n" +
-                "                 and msi.INVENTORY_ITEM_ID = tsdp.INVENTORY_ITEM_ID\n" +
+                "                 and msi.INVENTORY_ITEM_ID = tsdp.INVENTORY_ITEM_ID(+)\n" +
                 "                 and case \n" +
                 "                       when instr(TSC_GET_ITEM_PACKING_CODE(43,msi.inventory_item_id),'QQ')>0 then msi.description \n" +
                 "                       else trim(substr(msi.description,0,length(msi.description)-length(TSC_GET_ITEM_PACKING_CODE(43,msi.inventory_item_id))))\n" +
-                "                     end = tsdp.part_id\n" +
-                "                 and msi.description = tsdp.tsc_ordering_code\n" +
+                "                     end = tsdp.part_id(+)\n" +
+                "                 and msi.description = tsdp.tsc_ordering_code(+)\n" +
                 "                 AND TSC_INV_Category(msi.inventory_item_id,43, 23)=tpcl.tsc_package(+)\n" +
                 "                 AND tsc_get_item_packing_code (43, msi.inventory_item_id)=tpcl.packing_code(+)\n" +
                 "                 AND msi.ITEM_TYPE='FG'\n" +
@@ -1138,8 +1135,6 @@ public class TscSalesPrice {
                 "                    over (partition by description order by creation_date desc) row_seq from inv.mtl_system_items_b\n" +
                 "                     where organization_id=43 and inventory_item_status_code<>'Inactive' ) a where row_seq=1) y\n" +
                 "                     WHERE x.row_seq = 1 and x.REPLACE_PART_NO=y.description(+)) new_pn\n" +
-                "                     ,oraddman.tsc_f400_product tfp\n" +
-                "                     ,oraddman.tsc_distribution_price_book tdpb\n" +
                 "                     WHERE 1=1\n" +
                 "                     AND a.ITEM_DESC1=tpi.PART_NO_LIST(+)\n" +
                 "                     AND a.TSC_PACKAGE=tpii.TSC_PACKAGE(+)\n" +
@@ -1151,8 +1146,6 @@ public class TscSalesPrice {
                 "                     AND a.description=new_pn.TSC_PART_NO(+)\n" +
                 "                     AND a.part_id=tsbpt.part_id(+)\n" +
                 "                     AND a.item_desc1=fair.tsc_partno(+)\n" +
-                "                     AND a.description=tdpb.tsc_ordering_code(+)\n" +
-                "                     AND a.description=tfp.tsc_ordering_code(+)\n" +
                 ") SELECT \n" +
                 "    SEGMENT1, PART_ID, PACKAGE_CODE, DESCRIPTION, PL_CATEGORY, TSC_PROD_GROUP, TSC_PROD_CATEGORY,TSC_FAMILY,\n" +
                 "    TSC_PROD_FAMILY, TSC_PACKAGE, SPQ, MOQ, LEAD_TIME, PRICE, PRICE_LAST_UPDATE_DATE,ITEM_CREATION_DATE, \n" +
@@ -1183,9 +1176,9 @@ public class TscSalesPrice {
                 continue;
             if (rs.getString("TSC_PROD_GROUP").equals("PMD") && rs.getString("SEGMENT1").length() == 30 && rs.getString("SEGMENT1").charAt(21) == 'V')
                 continue;
-            Map<String, Object> row = new LinkedHashMap<>(); // �ϥ� LinkedHashMap �O����춶��
+            Map<String, Object> row = new LinkedHashMap<>(); // 使用 LinkedHashMap 保持欄位順序
             for (int i = 1; i <= columnCount; i++) {
-                String columnName = metaData.getColumnLabel(i); // getColumnLabel �i���� SQL �O�W
+                String columnName = metaData.getColumnLabel(i); // getColumnLabel 可拿到 SQL 別名
                 Object value = rs.getObject(i);
                 row.put(columnName, value);
             }
