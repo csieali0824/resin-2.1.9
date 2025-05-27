@@ -4,6 +4,7 @@
 <!--=================================-->
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
 <%@ page import="SalesDRQPageHeaderBean" %>
+<%@ page import="com.mysql.jdbc.StringUtils" %>
 <jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
 <%@ include file="/jsp/include/ProgressStatusBarStart.jsp"%>
 <%
@@ -33,79 +34,94 @@ function sendToMainWindow(price,end_cust)
 <body >  
 <FORM METHOD="post" ACTION="TSDRQQuoteInfoFind.jsp" NAME="SITEFORM">
 <%  
-	String uprine="",end_cust="",chk_flag="";
+	String uprine="",end_cust="";
 	try
 	{
-		//String sql = " SELECT a.quote_id, a.tsc_partno,a.currency_code, TO_CHAR(a.price_k_usd/1000,'FM99990.0999999') price_usd, case when INSTR(UPPER(CREATED_BY),'LISA')>0 THEN '(TSCR)' ELSE '(TSCI)' END || a.end_customer end_customer"+
-		//			 " FROM oraddman.tsc_quote_data a"+
-		//			 " where a.quote_id=?"+
-		//			 " and a.tsc_partno=?";
-		//			 //" and trunc(sysdate) between to_date(a.from_date,'yyyy/mm/dd') and to_date(a.to_date,'yyyy/mm/dd')";
-		//String sql = " SELECT 1 iseq,a.quote_id, a.tsc_partno,a.currency_code, TO_CHAR(a.price_k_usd/1000,'FM99990.0999999') price_usd, case when INSTR(UPPER(CREATED_BY),'LISA')>0 THEN '(TSCR)' when INSTR(UPPER(CREATED_BY),'JUNE')>0 THEN '(TSCR)' ELSE '(TSCI)' END || a.end_customer end_customer,'Y' as chkflag"+
-        //             " FROM oraddman.tsc_quote_data a"+
-        //             " where a.quote_id=?"+
-        //             " and a.tsc_partno=?"+
-        //	         " union all"+
-        //             " SELECT 2 iseq,a.quote_id, a.tsc_partno,a.currency_code, TO_CHAR(a.price_k_usd/1000,'FM99990.0999999') price_usd, case when INSTR(UPPER(CREATED_BY),'LISA')>0 THEN '(TSCR)' when INSTR(UPPER(CREATED_BY),'JUNE')>0 THEN '(TSCR)' ELSE '(TSCI)' END || a.end_customer end_customer,'N' as chkflag"+
-        //             " FROM oraddman.tsc_quote_data a"+
-        //             " where a.quote_id=?"+
-        //             " and a.tsc_partno like (select tsc_get_item_desc_nopacking(msi.organization_id ,msi.inventory_item_id) from inv.mtl_system_items_b msi where msi.segment1=? and msi.organization_id=?)||'_%'"+
-	    //             " order by 1";
-		//String sql = " SELECT 1 iseq,a.quoteid, a.partnumber,a.currency, TO_CHAR(a.pricekusd/1000,'FM99990.0999999') price_usd, case when a.region in ('TSCR','TSCI') then case when INSTR(UPPER(a.createdby),'LISA')>0 THEN '(TSCR)' when INSTR(UPPER(a.createdby),'JUNE')>0 THEN '(TSCR)' when INSTR(UPPER(a.createdby),'JWANG')>0 THEN '(TSCR)' ELSE '(TSCI)' END else '' end || a.endcustomer end_customer,'Y' as chkflag"+
-		String sql = " SELECT 1 iseq,a.quoteid, a.partnumber,a.currency, TO_CHAR(a.pricekusd/1000,'FM99990.0999999') price_usd"+
-                     ",to_char(a.fromdate,'yyyy-mm-dd') fromdate"+
-                     ",to_char(a.todate,'yyyy-mm-dd') todate"+				 	
-		             ",case when a.region in ('TSCR','TSCI') then '('|| a.region ||')' else '' end || a.endcustomer end_customer"+
-					 ",'Y' as chkflag"+	
-                     ",case when case when a.region in ('TSCR','TSCI') then trunc(a.fromdate) else trunc(sysdate) end between trunc(a.fromdate) and trunc(a.todate) then '1' else '0' end pass_flag"+     
-                     " FROM tsc_om_ref_quotenet a"+
-                     " where a.quoteid=?"+
-                     " and a.partnumber=?"+
-					 //" and case when a.region in ('TSCR','TSCI') then trunc(a.fromdate) else trunc(sysdate) end between trunc(a.fromdate) and trunc(a.todate)"+ //add by Peggy 20231002
-                     " union all"+
-                     //" SELECT 2 iseq,a.quoteid, a.partnumber,a.currency, TO_CHAR(a.pricekusd/1000,'FM99990.0999999') price_usd, case when a.region in ('TSCR','TSCI') then case when INSTR(UPPER(a.createdby),'LISA')>0 THEN '(TSCR)' when INSTR(UPPER(a.createdby),'JUNE')>0 THEN '(TSCR)' when INSTR(UPPER(a.createdby),'JWANG')>0 THEN '(TSCR)' ELSE '(TSCI)' END else '' end || a.endcustomer end_customer,'N' as chkflag"+
-                     " SELECT 2 iseq,a.quoteid, a.partnumber,a.currency, TO_CHAR(a.pricekusd/1000,'FM99990.0999999') price_usd"+
-                     ",to_char(a.fromdate,'yyyy-mm-dd') fromdate"+
-                     ",to_char(a.todate,'yyyy-mm-dd') todate"+						 
-					 ",case when a.region in ('TSCR','TSCI') then '('|| a.region ||')' else '' end || a.endcustomer end_customer"+
-					 ",'N' as chkflag"+
-                     ",case when case when a.region in ('TSCR','TSCI') then trunc(a.fromdate) else trunc(sysdate) end between trunc(a.fromdate) and trunc(a.todate) then '1' else '0' end pass_flag"+     
-                     " FROM tsc_om_ref_quotenet a"+
-                     " where a.quoteid=?"+
-                     " and a.partnumber like (select tsc_get_item_desc_nopacking(msi.organization_id ,msi.inventory_item_id) from inv.mtl_system_items_b msi where msi.segment1=? and msi.organization_id=?)||'_%'"+
-					 " and length(?)>0"+ //add by Peggy 20240529 
-					 //" and case when a.region in ('TSCR','TSCI') then trunc(a.fromdate) else trunc(sysdate) end between trunc(a.fromdate) and trunc(a.todate)"+  //add by Peggy 20231002
-                     " order by 1";
-		//out.println(sql);
-		//out.println(PNO);
-		//out.println(PITEM);
-		PreparedStatement statement = con.prepareStatement(sql);
-		statement.setString(1,QNO);
-		statement.setString(2,PNO);
-		statement.setString(3,QNO);
-		statement.setString(4,PITEM);
-		statement.setInt(5,43);
-		statement.setString(6,PITEM);		
-		ResultSet rs=statement.executeQuery();
-		if (rs.next())
-		{	
-			if (rs.getString("pass_flag").equals("1"))
+		if (!StringUtils.isNullOrEmpty(QNO) && !StringUtils.isNullOrEmpty(PNO)) {
+			String sql = "SELECT * FROM (\n" +
+					"    -- 材场だQUOTE 戈ㄓ方\n" +
+					"    SELECT\n" +
+					"        a.quoteid,\n" +
+					"        a.partnumber,\n" +
+					"        a.currency,\n" +
+					"        TO_CHAR(a.pricekusd / 1000, 'FM99990.0999999') AS price_usd,\n" +
+					"        '(' || a.region || ')' || a.endcustomer AS end_customer,\n" +
+					"        CASE\n" +
+					"            WHEN (\n" +
+					"                CASE\n" +
+					"                    WHEN a.region IN ('TSCR', 'TSCI') THEN TRUNC(a.fromdate)\n" +
+					"                    ELSE TRUNC(SYSDATE)\n" +
+					"                END\n" +
+					"            ) BETWEEN TRUNC(a.fromdate) AND TRUNC(a.todate)\n" +
+					"            THEN '1'\n" +
+					"            ELSE '0'\n" +
+					"        END AS pass_flag,\n" +
+					"        TO_CHAR(a.todate,'yyyy-mm-dd') todate\n" +
+					"    FROM tsc_om_ref_quotenet a\n" +
+					"    WHERE a.quoteid='" +QNO + "' \n"+
+					"      AND a.partnumber='" + PNO + "' \n"+
+					"    UNION ALL\n" +
+					"    -- 材场だMODELN 戈ㄓ方程穝厨基\n" +
+					"    SELECT\n" +
+					"        quoteid,\n" +
+					"        partnumber,\n" +
+					"        currency,\n" +
+					"        price_usd,\n" +
+					"        end_customer,\n" +
+					"        pass_flag,\n" +
+					"        todate\n" +
+					"    FROM (\n" +
+					"        SELECT\n" +
+					"            a.quoteid,\n" +
+					"            a.partnumber,\n" +
+					"            a.currency,\n" +
+					"            TO_CHAR(a.pricekusd / 1000, 'FM99990.0999999') AS price_usd,\n" +
+					"            '(' || a.region || ')' || a.endcustomer AS end_customer,\n" +
+					"            CASE\n" +
+					"                WHEN (\n" +
+					"                    CASE\n" +
+					"                        WHEN a.region IN ('TSCR', 'TSCI') THEN TRUNC(a.fromdate)\n" +
+					"                        ELSE TRUNC(SYSDATE)\n" +
+					"                    END\n" +
+					"                ) BETWEEN TRUNC(a.fromdate) AND TRUNC(a.todate)\n" +
+					"                THEN '1'\n" +
+					"                ELSE '0'\n" +
+					"            END AS pass_flag,\n" +
+					"            TO_CHAR(a.todate,'yyyy-mm-dd') todate,\n" +
+					"            ROW_NUMBER() OVER (\n" +
+					"                PARTITION BY a.quoteid, a.partnumber, a.currency\n" +
+					"                ORDER BY a.pricekusd DESC\n" +
+					"            ) AS rn\n" +
+					"        FROM tsc_om_ref_modeln a\n" +
+					"        WHERE a.quoteid='" + QNO + "' \n"+
+					"          AND a.partnumber='" + PNO + "' \n"+
+					"    )\n" +
+					"    WHERE rn = 1\n" +
+					")";
+			Statement statement = con.createStatement();
+			ResultSet rs = statement.executeQuery(sql);
+			if (rs.next())
 			{
-				uprine=rs.getString("price_usd");
-				end_cust=rs.getString("end_customer");
-				chk_flag=rs.getString("chkflag");
+				if (rs.getString("pass_flag").equals("1"))
+				{
+					uprine=rs.getString("price_usd");
+					end_cust=rs.getString("end_customer");
+				}
+				else
+				{
+					out.println("Quote:"+QNO+" + Part:"+PNO+" has expired("+rs.getString("todate")+")!");
+				}
 			}
 			else
 			{
-				out.println("Quote:"+QNO+" + Part:"+PNO+" has expired("+rs.getString("todate")+")!");
+				out.println("Quote#"+QNO+" + Part#"+PNO+"  not found!");
 			}
+			rs.close();
+			statement.close();
 		}
-		else
-		{
-			out.println("Quote#"+QNO+" + Part#"+PNO+"  not found!");
+		if (StringUtils.isNullOrEmpty(PNO)) {
+			out.println("Please enter the TSC P/N.");
 		}
-		rs.close();
-		statement.close();
 
 		if (!uprine.equals(""))
 		{

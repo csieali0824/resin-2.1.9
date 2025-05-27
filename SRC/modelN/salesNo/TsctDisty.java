@@ -68,7 +68,7 @@ public class TsctDisty extends ModelNCommonUtils {
     }
 
     public void setShippingFobOrderTypeInfo() throws SQLException {
-        String sql =" select case when upper(a.site_use_code)='BILL_TO' then 1 when upper(a.site_use_code)='SHIP_TO' then 2 else 3 end as segno,\n"+ //fob •˝®Ãship_to¨∞•D,≠YµL,¶A®Ãdeliver_to¨∞•D,modify by Peggy 20121026
+        String sql =" select case when upper(a.site_use_code)='BILL_TO' then 1 when upper(a.site_use_code)='SHIP_TO' then 2 else 3 end as segno,\n"+ //fob ÂÖà‰æùship_toÁÇ∫‰∏ª,Ëã•ÁÑ°,ÂÜç‰æùdeliver_toÁÇ∫‰∏ª,modify by Peggy 20121026
                 " a.SITE_USE_CODE, a.PRIMARY_FLAG, a.SITE_USE_ID, loc.COUNTRY, loc.ADDRESS1,\n"+
                 " a.PAYMENT_TERM_ID, a.PAYMENT_TERM_NAME || '('||c.DESCRIPTION ||')' PAYMENT_TERM_NAME, a.SHIP_VIA, a.FOB_POINT, a.PRICE_LIST_ID, c.DESCRIPTION,nvl(d.CURRENCY_CODE,'') CURRENCY_CODE\n"+
                 " ,a.tax_code \n"+
@@ -91,7 +91,7 @@ public class TsctDisty extends ModelNCommonUtils {
                 modelNDto.setShippingMethod(rs.getString("ship_via"));
             }
             if (modelNDto.getFob().equals("") && rs.getString("FOB_POINT")!= null) {
-                 modelNDto.setFob(rs.getString("FOB_POINT"));
+                modelNDto.setFob(rs.getString("FOB_POINT"));
             }
             if (modelNDto.getOrderType().equals("")) {
                 if (Arrays.asList(new String[]{"24151", "2989", "23991", "11724", "24851", "26671", "2462"}).contains(modelNDto.getCustNo())) {

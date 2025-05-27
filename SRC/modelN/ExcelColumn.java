@@ -38,7 +38,7 @@ public enum ExcelColumn {
                 return column;
             }
         }
-        throw new IllegalArgumentException("Excel²Ä" + (position + 1) + "Äæ¦WºÙ¿ù»~:" + columnName);
+        throw new IllegalArgumentException("Excelç¬¬" + (position + 1) + "æ¬„åç¨±éŒ¯èª¤:" + columnName);
     }
 
     public String getColumnName() {

@@ -91,23 +91,23 @@ public class Tsca extends ModelNCommonUtils {
             modelNDto.setCustNo("1008");
             modelNDto.setCustId("1019");
 
-            // ¿À¨dExcel´»§·•N∏π
+            // ÔøΩÀ¨dExcelÔøΩ»§ÔøΩNÔøΩÔøΩ
             if (StringUtils.isNullOrEmpty(modelNDto.getCustNo())) {
                 errList.add(ErrorMessage.CUSTNO_NOTNULL.getMessage());
                 modelNDto.setErrorList(errList);
             } else {
-                // ®˙±otable CustId ©M CustName
+                // ÔøΩÔøΩÔøΩotable CustId ÔøΩM CustName
 //                checkCustIdAndName();
             }
-            // ¿À¨dExcel CustomerPO
+            // ÔøΩÀ¨dExcel CustomerPO
             if (StringUtils.isNullOrEmpty(modelNDto.getCustPo())) {
                 errList.add(ErrorMessage.CUSTPO_NOTNULL.getMessage());
                 modelNDto.setErrorList(errList);
             } else {
-                // ¿À¨dtable´»§·+customer po¨Oß_¶≥´›≥B≤z∏ÍÆ∆
+                // ÔøΩÀ¨dtableÔøΩ»§ÔøΩ+customer poÔøΩOÔøΩ_ÔøΩÔøΩÔøΩ›≥BÔøΩzÔøΩÔøΩÔøΩ
                 checkCustomerPo();
             }
-            // ¿À¨dExcel•x•bÆ∆∏π/´~¶W§Œ´»§·Æ∆∏π
+            // ÔøΩÀ¨dExcelÔøΩxÔøΩbÔøΩ∆∏ÔøΩ/ÔøΩ~ÔøΩWÔøΩŒ´»§ÔøΩ∆∏ÔøΩ
             if (StringUtils.isNullOrEmpty(modelNDto.getTscItemDesc())
                     && StringUtils.isNullOrEmpty(modelNDto.getCustItem())
                     && StringUtils.isNullOrEmpty(modelNDto.getTscItem())) {
@@ -117,25 +117,25 @@ public class Tsca extends ModelNCommonUtils {
                 errList.add(ErrorMessage.TSC_ITEM_AND_TSC_ITEM_PN_AND_CUST_ITEM_NOTNULL.getMessage());
                 modelNDto.setErrorList(errList);
             } else {
-                // ¿À¨dtable•x•bÆ∆∏π§Œ´»§·Æ∆∏π¶bERP¨Oß_¶s¶b
+                // ÔøΩÀ¨dtableÔøΩxÔøΩbÔøΩ∆∏ÔøΩÔøΩŒ´»§ÔøΩ∆∏ÔøΩÔøΩbERPÔøΩOÔøΩ_ÔøΩsÔøΩb
                 checkTscAndCustPartNo();
                 setShippingFobOrderTypeInfo();
             }
-            //¿À¨dº∆∂q
+            //ÔøΩÀ¨dÔøΩ∆∂q
             checkQty();
             checkSellingPrice();
             checkCrd();
             checkShippingMethod();
             checkEndCustomerAndId();
             checkRemarks();
-            // ¿À¨dExcel End Customer Number
+            // ÔøΩÀ¨dExcel End Customer Number
             if (!modelNDto.getEndCustNo().equals("")) {
-                //end customer number §£•iªP customer number ¨€¶P
+                //end customer number ÔøΩÔøΩÔøΩiÔøΩP customer number ÔøΩ€¶P
                 if (modelNDto.getEndCustNo().equals(modelNDto.getCustNo())) {
                     errList.add(ErrorMessage.END_CUSTNO_NOT_SAME_CUSTNO.getMessage());
                     modelNDto.setErrorList(errList);
                 } else {
-                    // ¿À¨dEnd Customer Number¶bERP¨Oß_¶s¶b
+                    // ÔøΩÀ¨dEnd Customer NumberÔøΩbERPÔøΩOÔøΩ_ÔøΩsÔøΩb
                     checkEndCustNumber();
                 }
             } else if (!endCustName.equals("")) {
@@ -147,7 +147,7 @@ public class Tsca extends ModelNCommonUtils {
     }
 
     private void checkCustomerPo() throws SQLException {
-        //¿À¨dcustomerNo ©M customerPo ¨Oß_¶≥´›≥B≤z∏ÍÆ∆
+        //ÔøΩÀ¨dcustomerNo ÔøΩM customerPo ÔøΩOÔøΩ_ÔøΩÔøΩÔøΩ›≥BÔøΩzÔøΩÔøΩÔøΩ
         if (!StringUtils.isNullOrEmpty(modelNDto.getCustNo()) && !StringUtils.isNullOrEmpty(modelNDto.getCustPo())) {
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery("select 1 from oraddman.TSC_RFQ_UPLOAD_TEMP where SALESAREANO = '" + salesNo + "' \n" + "" +
@@ -169,7 +169,7 @@ public class Tsca extends ModelNCommonUtils {
                     " ,case when msi.attribute3 in ('005','011') or \n"+
                     " (msi.attribute3 in ('002') and TSC_OM_CATEGORY(msi.INVENTORY_ITEM_ID,msi.ORGANIZATION_ID,'TSC_Package') in ('SMA', 'SMB','SMC','SOD-123W','SOD-128')) then '1141' \n"+
                     " else tsc_rfq_create_erp_odr_pkg.tsc_get_order_type (msi.INVENTORY_ITEM_ID) end AS ORDER_TYPE \n"+
-                    ",tsc_get_item_desc_nopacking(msi.organization_id,msi.inventory_item_id) itemnopacking \n" + // quote ®œ•Œ
+                    ",tsc_get_item_desc_nopacking(msi.organization_id,msi.inventory_item_id) itemnopacking \n" + // quote ÔøΩœ•ÔøΩ
                     " ,TSC_OM_CATEGORY(msi.INVENTORY_ITEM_ID,msi.ORGANIZATION_ID,'TSC_Package') as TSC_PACKAGE \n"+
                     " ,TSC_OM_CATEGORY(msi.INVENTORY_ITEM_ID,msi.ORGANIZATION_ID,'TSC_Family') as TSC_FAMILY \n"+
                     " from oe_items_v a,inv.mtl_system_items_b msi \n"+
@@ -224,7 +224,7 @@ public class Tsca extends ModelNCommonUtils {
                         " ,case when msi.attribute3 in ('005','011') or \n"+
                         " (msi.attribute3 in ('002') and TSC_OM_CATEGORY(msi.INVENTORY_ITEM_ID,msi.ORGANIZATION_ID,'TSC_Package') in ('SMA', 'SMB','SMC','SOD-123W','SOD-128')) then '1141' \n"+
                         " else tsc_rfq_create_erp_odr_pkg.tsc_get_order_type (msi.INVENTORY_ITEM_ID) end AS ORDER_TYPE \n"+
-                        ",tsc_get_item_desc_nopacking(msi.organization_id,msi.inventory_item_id) itemnopacking \n" + // quote ®œ•Œ
+                        ",tsc_get_item_desc_nopacking(msi.organization_id,msi.inventory_item_id) itemnopacking \n" + // quote ÔøΩœ•ÔøΩ
                         " ,TSC_OM_CATEGORY(msi.INVENTORY_ITEM_ID,msi.ORGANIZATION_ID,'TSC_Package') as TSC_PACKAGE \n"+
                         " ,TSC_OM_CATEGORY(msi.INVENTORY_ITEM_ID,msi.ORGANIZATION_ID,'TSC_Family') as TSC_FAMILY \n"+
                         " FROM  inv.mtl_system_items_b msi, apps.mtl_item_categories_v c \n"+
@@ -269,87 +269,92 @@ public class Tsca extends ModelNCommonUtils {
                 modelNDto.setErrorList(errList);
             } else {
                 if (!modelNDto.getQuoteNumber().equals("") && !modelNDto.getTscItemDesc().equals("")) {
+                    String passFlag = "";
+                    String expireDate = "";
                     Statement stmt = conn.createStatement();
-                    String sql = "select *  from (\n" +
-                            "select a.quoteid, a.partnumber,a.currency, to_char(a.pricekusd/1000,'FM99990.0999999') price_usd,\n" +
-                            "'('|| a.region ||')'|| a.endcustomer end_customer\n" +
-                            "from tsc_om_ref_quotenet a\n" +
-                            " where a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
-                            " and a.partnumber='" + modelNDto.getTscItemDesc() + "' \n"+
-                            "union all\n" +
-                            "SELECT quoteid, partnumber, currency, price_usd, end_customer\n" +
-                            "FROM (\n" +
-                            "  SELECT \n" +
-                            "    a.quoteid, \n" +
-                            "    a.partnumber, \n" +
-                            "    a.currency,\n" +
-                            "    TO_CHAR(a.pricekusd / 1000, 'FM99990.0999999') AS price_usd,\n" +
-                            "    '(' || a.region || ')' || a.endcustomer AS end_customer,\n" +
-                            "    ROW_NUMBER() OVER (PARTITION BY a.quoteid, a.partnumber, a.currency ORDER BY a.pricekusd DESC) AS rn\n" +
-                            "  FROM TSC_OM_REF_MODELN a\n" +
-                            " where a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
-                            " and a.partnumber='" + modelNDto.getTscItemDesc() + "' \n"+
-                            ")\n" +
-                            "WHERE rn = 1\n" +
-                            ") order by quoteid, partnumber";
-//                    String sql = " select a.quoteid, a.partnumber,a.currency, to_char(a.pricekusd/1000,'FM99990.0999999') price_usd, \n"+
-//                            "'('|| a.region ||')'|| a.endcustomer end_customer \n"+
-//                            " from tsc_om_ref_quotenet a \n"+
-//                            " where a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
-//                            " and a.partnumber='" + modelNDto.getTscItemDesc() + "' \n"+
-//                            " order by a.quoteid, a.partnumber";
+                    String sql = "SELECT * FROM (\n" +
+                            "    -- Á¨¨‰∏ÄÈÉ®ÂàÜÔºöQUQTE Ë≥áÊñô‰æÜÊ∫ê\n" +
+                            "    SELECT\n" +
+                            "        a.quoteid,\n" +
+                            "        a.partnumber,\n" +
+                            "        a.currency,\n" +
+                            "        TO_CHAR(a.pricekusd / 1000, 'FM99990.0999999') AS price_usd,\n" +
+                            "        '(' || a.region || ')' || a.endcustomer AS end_customer,\n" +
+                            "        CASE\n" +
+                            "            WHEN (\n" +
+                            "                CASE\n" +
+                            "                    WHEN a.region IN ('TSCR', 'TSCI') THEN TRUNC(a.fromdate)\n" +
+                            "                    ELSE TRUNC(SYSDATE)\n" +
+                            "                END\n" +
+                            "            ) BETWEEN TRUNC(a.fromdate) AND TRUNC(a.todate)\n" +
+                            "            THEN '1'\n" +
+                            "            ELSE '0'\n" +
+                            "        END AS pass_flag,\n" +
+                            "        TO_CHAR(a.todate,'yyyy-mm-dd') todate\n" +
+                            "    FROM tsc_om_ref_quotenet a\n" +
+                            "    WHERE a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
+                            "      AND a.partnumber='" + modelNDto.getTscItemDesc() + "' \n"+
+                            "    UNION ALL\n" +
+                            "    -- Á¨¨‰∫åÈÉ®ÂàÜÔºöMODELN Ë≥áÊñô‰æÜÊ∫êÔºàÂè™ÂèñÊúÄÊñ∞Â†±ÂÉπÔºâ\n" +
+                            "    SELECT\n" +
+                            "        quoteid,\n" +
+                            "        partnumber,\n" +
+                            "        currency,\n" +
+                            "        price_usd,\n" +
+                            "        end_customer,\n" +
+                            "        pass_flag,\n" +
+                            "        todate\n" +
+                            "    FROM (\n" +
+                            "        SELECT\n" +
+                            "            a.quoteid,\n" +
+                            "            a.partnumber,\n" +
+                            "            a.currency,\n" +
+                            "            TO_CHAR(a.pricekusd / 1000, 'FM99990.0999999') AS price_usd,\n" +
+                            "            '(' || a.region || ')' || a.endcustomer AS end_customer,\n" +
+                            "            CASE\n" +
+                            "                WHEN (\n" +
+                            "                    CASE\n" +
+                            "                        WHEN a.region IN ('TSCR', 'TSCI') THEN TRUNC(a.fromdate)\n" +
+                            "                        ELSE TRUNC(SYSDATE)\n" +
+                            "                    END\n" +
+                            "                ) BETWEEN TRUNC(a.fromdate) AND TRUNC(a.todate)\n" +
+                            "                THEN '1'\n" +
+                            "                ELSE '0'\n" +
+                            "            END AS pass_flag,\n" +
+                            "            TO_CHAR(a.todate,'yyyy-mm-dd') todate,\n" +
+                            "            ROW_NUMBER() OVER (\n" +
+                            "                PARTITION BY a.quoteid, a.partnumber, a.currency\n" +
+                            "                ORDER BY a.pricekusd DESC\n" +
+                            "            ) AS rn\n" +
+                            "        FROM tsc_om_ref_modeln a\n" +
+                            "        WHERE a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
+                            "          AND a.partnumber='" + modelNDto.getTscItemDesc() + "' \n"+
+                            "    )\n" +
+                            "    WHERE rn = 1\n" +
+                            ")";
                     ResultSet rs = stmt.executeQuery(sql);
                     if (rs.next()) {
-                        sellingPrice_Q = rs.getString("PRICE_USD");
-                        endCustName = rs.getString("END_CUSTOMER");
+                        passFlag = rs.getString("PASS_FLAG");
+                        if ("1".equals(passFlag)) {
+                            sellingPrice_Q = rs.getString("PRICE_USD");
+                            endCustName = rs.getString("END_CUSTOMER");
+                        } else {
+                            expireDate = rs.getString("TODATE");
+                            errList.add(ErrorMessage.QUOTE_HAS_EXPIRED.getMessageFormat(expireDate));
+                            modelNDto.setErrorList(errList);
+                        }
+                    } else {
+                        errList.add(ErrorMessage.QUOTE_NOT_FOUND.getMessage());
+                        modelNDto.setErrorList(errList);
                     }
                     rs.close();
                     stmt.close();
-                    if (sellingPrice_Q.equals("")) {
-                        stmt = conn.createStatement();
-                        sql = "select *  from (\n" +
-                                "select a.quoteid, a.partnumber,a.currency, to_char(a.pricekusd/1000,'FM99990.0999999') price_usd,\n" +
-                                "'('|| a.region ||')'|| a.endcustomer end_customer\n" +
-                                "from tsc_om_ref_quotenet a\n" +
-                                " where a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
-                                " and a.partnumber like '" + itemNoPacking + "%' \n" +
-                                "union all\n" +
-                                "SELECT quoteid, partnumber, currency, price_usd, end_customer\n" +
-                                "FROM (\n" +
-                                "  SELECT \n" +
-                                "    a.quoteid, \n" +
-                                "    a.partnumber, \n" +
-                                "    a.currency,\n" +
-                                "    TO_CHAR(a.pricekusd / 1000, 'FM99990.0999999') AS price_usd,\n" +
-                                "    '(' || a.region || ')' || a.endcustomer AS end_customer,\n" +
-                                "    ROW_NUMBER() OVER (PARTITION BY a.quoteid, a.partnumber, a.currency ORDER BY a.pricekusd DESC) AS rn\n" +
-                                "  FROM TSC_OM_REF_MODELN a\n" +
-                                " where a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
-                                " and a.partnumber like '" + itemNoPacking + "%' \n" +
-                                ")\n" +
-                                "WHERE rn = 1\n" +
-                                ") order by quoteid, partnumber";
-//                        sql = " select a.quoteid, a.partnumber,a.currency, to_char(a.pricekusd/1000,'FM99990.0999999') price_usd, \n" +
-//                                "'('|| a.region ||')'|| a.endcustomer end_customer \n" +
-//                                " from tsc_om_ref_quotenet a \n" +
-//                                " where a.quoteid='" + modelNDto.getQuoteNumber() + "' \n" +
-//                                " and a.partnumber like '" + itemNoPacking + "%' \n" +
-//                                " order by a.quoteid, a.partnumber";
-                        rs = stmt.executeQuery(sql);
-                        if (rs.next())
-                        {
-                            sellingPrice_Q = rs.getString("PRICE_USD");
-                            endCustName = rs.getString("END_CUSTOMER");
-                        }
-                        rs.close();
-                        stmt.close();
-                    }
                 }
             }
         }
     }
 
-    // ¿À¨d End Customer Number
+    // ÔøΩÀ¨d End Customer Number
     private void checkEndCustNumber() throws SQLException {
 
         String sql = "select distinct c.customer_id,c.customer_number,c.CUSTOMER_NAME_PHONETIC \n"+
@@ -413,7 +418,7 @@ public class Tsca extends ModelNCommonUtils {
         }
     }
 
-    //¿À¨d≥Êª˘
+    //ÔøΩÀ¨dÔøΩÔøΩÔøΩ
     private void checkSellingPrice() throws SQLException {
         if (StringUtils.isNullOrEmpty(modelNDto.getSellingPrice())) {
             if (sellingPrice_Q == null || sellingPrice_Q.equals("")) {
@@ -429,7 +434,7 @@ public class Tsca extends ModelNCommonUtils {
                 errList.add(ErrorMessage.SELLING_PRICE_MUST_GREATER_0.getMessage());
                 modelNDto.setErrorList(errList);
             } else if (!modelNDto.getSellingPrice().equals(sellingPrice_Q)) {
-                if (!modelNDto.getQuoteNumber().equals("")) { // ª›¶≥quote number
+                if (!modelNDto.getQuoteNumber().equals("")) { // ÔøΩ›¶ÔøΩquote number
                     errList.add(ErrorMessage.SELLING_PRICE_NOT_MATCH_QUOTE_PRICE.getMessageFormat(sellingPrice_Q));
                     modelNDto.setErrorList(errList);
                 }
@@ -496,7 +501,7 @@ public class Tsca extends ModelNCommonUtils {
                 rs.close();
             } else {
                 if (!StringUtils.isNullOrEmpty(modelNDto.getManuFactoryNo())) {
-                    //•Ê≥f§È¥¡
+                    //ÔøΩÔøΩfÔøΩÔøΩÔøΩ
                     String sql = "SELECT TSCA_GET_ORDER_SSD("+modelNDto.getOrderType()+",'"+modelNDto.getTransportation()+"','"+modelNDto.getCrd()+"','CRD',trunc(sysdate),null) FROM DUAL";
                     Statement stmt = conn.createStatement();
                     ResultSet rs2 = stmt.executeQuery(sql);

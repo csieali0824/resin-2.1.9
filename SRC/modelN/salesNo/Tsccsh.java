@@ -166,7 +166,7 @@ public class Tsccsh extends ModelNCommonUtils {
             }
         }
     }
-    // �ˬd BI Region
+    // 檢查 BI Region
     public void setExtraRuleInfo() throws SQLException {
         if (modelNDto.getCustId().equals("15540") || modelNDto.getCustId().equals("14980")) {
             if (StringUtils.isNullOrEmpty(modelNDto.getBiRegion())) {

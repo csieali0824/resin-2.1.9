@@ -37,7 +37,7 @@ public enum DetailColumn {
                 return column;
             }
         }
-        throw new IllegalArgumentException("Detail²Ä" + (position + 1) + "Äæ¦ìªº¦WºÙ³]©w¿ù»~:" + columnName);
+        throw new IllegalArgumentException("Detailç¬¬" + (position + 1) + "æ¬„ä½çš„åç¨±è¨­å®šéŒ¯èª¤:" + columnName);
     }
 
     public String getColumnName() {

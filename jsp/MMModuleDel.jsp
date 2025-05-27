@@ -12,7 +12,7 @@
 <%@ include file="/jsp/include/ProgressStatusBarStart.jsp"%>
 <html>
 <head>
-<title><jsp:getProperty name="pageHeader" property="pgDelete"/><jsp:getProperty name="pageHeader" property="pgSuccess"/></title>
+<title><jsp:getProperty name="rPH" property="pgDelete"/><jsp:getProperty name="rPH" property="pgSuccess"/></title>
 </head>
 
 <body>

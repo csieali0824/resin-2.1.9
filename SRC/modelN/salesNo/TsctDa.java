@@ -78,7 +78,7 @@ public class TsctDa extends ModelNCommonUtils {
 
     public void setShippingFobOrderTypeInfo() throws SQLException {
         String sql = " select case when upper(a.site_use_code)='BILL_TO' then 1 when upper(a.site_use_code)='SHIP_TO'" +
-                " then 2 else 3 end as segno," + //fob ㄌship_to,璝礚,ㄌdeliver_to,modify by Peggy 20121026
+                " then 2 else 3 end as segno," + //fob 鍏堜緷ship_to鐐轰富,鑻ョ劇,鍐嶄緷deliver_to鐐轰富,modify by Peggy 20121026
                 " a.SITE_USE_CODE, a.PRIMARY_FLAG, a.SITE_USE_ID, loc.COUNTRY, loc.ADDRESS1," +
                 " a.PAYMENT_TERM_ID, a.PAYMENT_TERM_NAME || '('||c.DESCRIPTION ||')' PAYMENT_TERM_NAME, a.SHIP_VIA, a" +
                 ".FOB_POINT, a.PRICE_LIST_ID, c.DESCRIPTION,nvl(d.CURRENCY_CODE,'') CURRENCY_CODE" +
@@ -209,7 +209,7 @@ public class TsctDa extends ModelNCommonUtils {
             if (!StringUtils.isNullOrEmpty(modelNDto.getShipToLocationId())) {
                 modelNDto.setShipToOrgId(modelNDto.getShipToOrgId());
             } else {
-                if (modelNDto.getCustNo().equals("14413")) {  // DELTA 疭呸胯
+                if (modelNDto.getCustNo().equals("14413")) {  // DELTA 鐗规畩閭忚集
                     if (((modelNDto.getCustPo().length() >= 9 && modelNDto.getCustPo().startsWith("CCPG01518"))
                             || (modelNDto.getCustPo().length() >= 10 && modelNDto.getCustPo().startsWith("CCPF2300TB")))
                             && modelNDto.getOrderTypeId().equals("1342")) {
