@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -58,7 +59,7 @@ public class TscSalesPrice {
                         val -> {
                             if (val == null) return "";
                             if (val instanceof Number) {
-                                return new BigDecimal(val.toString()).stripTrailingZeros().toPlainString();
+                                return String.valueOf(new BigDecimal(val.toString()).setScale(4, RoundingMode.HALF_UP));
                             }
                             return val.toString();
                         }),
@@ -66,7 +67,7 @@ public class TscSalesPrice {
                         val -> {
                             if (val == null) return "";
                             if (val instanceof Number) {
-                                return new BigDecimal(val.toString()).stripTrailingZeros().toPlainString();
+                                return String.valueOf(new BigDecimal(val.toString()).setScale(4, RoundingMode.HALF_UP));
                             }
                             return val.toString();
                         }),
@@ -75,7 +76,7 @@ public class TscSalesPrice {
                         val -> {
                             if (val == null) return "";
                             if (val instanceof Number) {
-                                return new BigDecimal(val.toString()).stripTrailingZeros().toPlainString();
+                                return String.valueOf(new BigDecimal(val.toString()).setScale(4, RoundingMode.HALF_UP));
                             }
                             return val.toString();
                         }),
@@ -85,7 +86,7 @@ public class TscSalesPrice {
                         val -> {
                             if (val == null) return "";
                             if (val instanceof Number) {
-                                return new BigDecimal(val.toString()).stripTrailingZeros().toPlainString();
+                                return String.valueOf(new BigDecimal(val.toString()).setScale(4, RoundingMode.HALF_UP));
                             }
                             return val.toString();
                         }),
@@ -93,7 +94,7 @@ public class TscSalesPrice {
                         val -> {
                             if (val == null) return "";
                             if (val instanceof Number) {
-                                return new BigDecimal(val.toString()).stripTrailingZeros().toPlainString();
+                                return String.valueOf(new BigDecimal(val.toString()).setScale(4, RoundingMode.HALF_UP));
                             }
                             return val.toString();
                         }),
@@ -102,7 +103,7 @@ public class TscSalesPrice {
                         val -> {
                             if (val == null) return "";
                             if (val instanceof Number) {
-                                return new BigDecimal(val.toString()).stripTrailingZeros().toPlainString();
+                                return String.valueOf(new BigDecimal(val.toString()).setScale(4, RoundingMode.HALF_UP));
                             }
                             return val.toString();
                         }),
@@ -318,7 +319,7 @@ public class TscSalesPrice {
                         val -> {
                             if (val == null) return "";
                             if (val instanceof Number) {
-                                return new BigDecimal(val.toString()).stripTrailingZeros().toPlainString();
+                                return String.valueOf(new BigDecimal(val.toString()).setScale(4, RoundingMode.HALF_UP));
                             }
                             return val.toString();
                         }),
