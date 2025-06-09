@@ -1240,6 +1240,11 @@
 							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("celine.yu@ts.com.tw"));
 							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("sammy.chang@ts.com.tw"));
 							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("alice.yu@ts.com.tw"));
+							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("sample@ts-china.com.cn"));
+							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("samplereport@ts.com.tw"));
+							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("janice.lin@ts.com.tw"));
+							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("jason.lin@ts.com.tw"));
+							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("ilanmc@ts.com.tw"));
 							if (REQ_NAME.toUpperCase().equals("NONO") && ACTTYPE.equals("AUTO"))
 							{
 								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("nono.huang@ts.com.tw"));
