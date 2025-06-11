@@ -2283,6 +2283,7 @@
 								if (at[ac][subac].equals("31912")) def_ship_org_id="72702";  //GPV add by Peggy 20230130
 								if (at[ac][subac].equals("32932")) def_ship_org_id="75995";  //GPV(THAILAND) add by Peggy 20240304
 								if (at[ac][subac].equals("33652")) def_ship_org_id="78652";  //Continental Autonomous Philippines ,ADD BY Mars 20250107
+								if (at[ac][subac].equals("23121")) def_ship_org_id="65310";  //Continental Autonomous Philippines ,ADD BY Mars 20250107
 							}
 						}
 					}  //end for array second layer count

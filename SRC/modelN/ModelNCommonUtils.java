@@ -19,6 +19,7 @@ import java.sql.*;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static modelN.SalesArea.TSCTDA;
 
@@ -371,7 +372,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                         "    WHERE a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
                         "      AND a.partnumber='" + modelNDto.getTscItemDesc() + "' \n"+
                         "    UNION ALL\n" +
-                        "     -- 第二部分：MODELN 資料來源（只取最新報價）\n" +
+                        "     -- 第二部分：MODELN 資料來源(只取最新報價)\n" +
                         "    SELECT\n" +
                         "        quoteid,\n" +
                         "        partnumber,\n" +
@@ -678,7 +679,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
 
     private void createOrDeleteDir(File dir) {
         if (dir.isDirectory()) {
-            // �R���l�ɮשΤl�ؿ�
+            // 建立子檔案或子目錄
             File[] files = dir.listFiles();
             if (files != null) {
                 for (File file : files) {
@@ -688,7 +689,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                 }
             }
         } else {
-            // �إߤl�ɮשΤl�ؿ�
+            // 建立子檔案或子目錄
             dir.mkdirs();
         }
     }
@@ -699,7 +700,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
         for (int colIndex = 0; colIndex < colCount; colIndex++) {
             String content = sheet.getCell(colIndex, rowIndex).getContents().trim();
             if (!content.isEmpty()) {
-                return false; // �u�n���@���x�s�榳���e�A�N���O�Ū�row
+                return false; // 只要有一個儲存格有內容，就不是空的row
             }
         }
         return true;
@@ -713,6 +714,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
 
         for (int rowIndex = 1, rowCount = sheet.getRows(); rowIndex < rowCount; rowIndex++) {
             modelNDto = new ModelNDto();
+            List<String> errorMsgList = new LinkedList<>();
             if (isEmptyRow(sheet, rowIndex)) {
                 continue; // ignore empty row
             }
@@ -776,13 +778,17 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                                 crd = sdf.format(((DateCell) rowCell).getDate());
                             } else {
                                 crd = content.replace("-", "");
+                                crd = sdf.format(((DateCell) rowCell).getDate());
                                 if (crd.length() < 8) {
                                     throw new Exception(ErrorMessage.CRD_LENGTH_LESS_8.getMessage());
                                 }
                             }
                         } catch (Exception e) {
+                            e.printStackTrace();
                             if (StringUtils.isNullOrEmpty(crd)) {
                                 throw new Exception(ErrorMessage.CRD_REQUEST.getMessage());
+                            } else {
+                                errorMsgList.add(ErrorMessage.DATE_FORMATTER_ERROR.getMessageFormat(columnName.concat(":" + crd)));
                             }
                         }
                         modelNDto.setCrd(crd);
@@ -794,6 +800,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                                 ssd = sdf.format(((DateCell) rowCell).getDate());
                             } else {
                                 ssd = content.replace("-", "");
+                                ssd = sdf.format(((DateCell) rowCell).getDate());
                                 if (ssd.length() < 8) {
                                     throw new Exception(ErrorMessage.SSD_LENGTH_LESS_8.getMessage());
                                 }
@@ -801,15 +808,31 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                         } catch (Exception e) {
                             if (StringUtils.isNullOrEmpty(ssd)) {
                                 throw new Exception(ErrorMessage.SSD_REQUEST.getMessage());
+                            } else {
+                                errorMsgList.add(ErrorMessage.DATE_FORMATTER_ERROR.getMessageFormat(columnName.concat(":" + ssd)));
                             }
                         }
                         modelNDto.setSsd(ssd);
                         break;
                     case ShippingMethod:
-                        modelNDto.setShippingMethod(content);
+                        String shippingMethod = content;
+                        if (!StringUtils.isNullOrEmpty(shippingMethod)) {
+                            boolean isFound = this.findShippingMethod(shippingMethod);
+                            if (!isFound) {
+                                errorMsgList.add(ErrorMessage.SHIPPING_METHOD_NOT_FOUND.getMessageFormat(columnName.concat(":" + shippingMethod)));
+                            }
+                        }
+                        modelNDto.setShippingMethod(shippingMethod);
                         break;
                     case FOB:
-                        modelNDto.setFob(content);
+                        String fob = content;
+                        if (!StringUtils.isNullOrEmpty(fob)) {
+                            boolean isFound = this.findFobIncoterm(fob);
+                            if (!isFound) {
+                                errorMsgList.add(ErrorMessage.FOB_INCOTERM_NOT_FOUND.getMessageFormat(columnName.concat(":" + fob)));
+                            }
+                        }
+                        modelNDto.setFob(fob);
                         break;
                     case Remarks:
                         modelNDto.setRemarks(content);
@@ -842,6 +865,10 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                         break;
                 }
                 excelMap.put(rowIndex, modelNDto);
+            }
+            if (!errorMsgList.isEmpty()) {
+                String errorException = String.join(";\t", errorMsgList);
+                throw new Exception(errorException);
             }
         }
         if (!SalesArea.TSCA.getSalesNo().equals(salesNo)) {
@@ -979,7 +1006,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
         }
     }
 
-    public void insertIntoTscRfqUploadTmp() throws SQLException {
+    public void insertIntoTscRfqUploadTmp() throws Exception {
         tscRfqUploadTemp().insertTscRfqUploadTemp(conn, excelMap, salesNo, userName, rfqType, groupByType);
     }
 
@@ -1218,5 +1245,35 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
             e.getMessage();
         }
         return new String[]{contactName, contactId};
+    }
+
+    private boolean findShippingMethod(String shippingMethod) throws SQLException {
+        String[] carriers = {"FEDEX", "FEDEX GD"};
+        String inClause = Arrays.stream(carriers)
+                .map(s -> "'" + s.replace("'", "''") + "'") // 包成 'xxx'，並處理單引號轉義
+                .collect(Collectors.joining(","));
+
+        String sql = "SELECT 1 FROM fnd_lookup_values lv \n" +
+                "WHERE language = 'US' \n" +
+                "AND view_application_id = 3 \n" +
+                "AND lookup_type = 'SHIP_METHOD' AND security_group_id = 0 AND ENABLED_FLAG='Y'\n" +
+                "AND MEANING NOT IN(" + inClause + ") \n" +
+                "AND MEANING = '" + shippingMethod + "' \n" +
+                "AND (end_date_active IS NULL OR end_date_active > SYSDATE)\n" +
+                "union\n" +
+                "select 1 from ASO_I_SHIPPING_METHODS_V a\n" +
+                "where SHIPPING_METHOD NOT IN(" + inClause + ")\n" +
+                "and SHIPPING_METHOD = '" + shippingMethod + "' or SHIPPING_METHOD_CODE = '" + shippingMethod + "'";
+        Statement statement = conn.createStatement();
+        ResultSet rs = statement.executeQuery(sql);
+        return rs.next();
+    }
+
+    private boolean findFobIncoterm(String fob) throws SQLException {
+        String sql = "SELECT 1 FROM OE_FOBS_ACTIVE_V \n" +
+                "WHERE fob = '" + fob + "' ";
+        Statement statement = conn.createStatement();
+        ResultSet rs = statement.executeQuery(sql);
+        return rs.next();
     }
 }

@@ -2,7 +2,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mysql.jdbc.StringUtils;
 import jxl.*;
-import jxl.read.biff.BiffException;
 import modelN.DetailColumn;
 import modelN.ErrorMessage;
 import modelN.ExcelColumn;
@@ -11,12 +10,12 @@ import modelN.dto.DetailDto;
 import modelN.dto.ModelNDto;
 
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static modelN.SalesArea.TSCTDA;
 import static modelN.SalesArea.TSCTDISTY;
@@ -528,6 +527,8 @@ public class ModelNTest {
         return true;
     }
 
+    static SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+//    static StringBuilder errorMessage = new StringBuilder();
     public static void main(String[] args) throws Exception {
         CallableStatement cs1 = conn.prepareCall(
                 "{call mo_global.set_policy_context('S',?)}");
@@ -535,11 +536,12 @@ public class ModelNTest {
         cs1.execute();
         cs1.close();
 //        Connection con = ConnUtils.getConnectionCRP1();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 //        String uploadFilePath = "D:/D4-019.xls";
 //        String uploadFilePath = "C:\\Users\\mars.wang\\Desktop\\sales-upload\\D4-019_20241212.xls";
+//        StringBuilder errorMessage = new StringBuilder();
         try {
-            String uploadFilePath = "C:\\Users\\mars.wang\\Desktop\\modelN_Excel\\ModelN_RFQ-TEST.xls";
+            String uploadFilePath = "C:\\Users\\mars.wang\\Desktop\\modelN_Excel\\RFQ 2.xls";
 //            String uploadFilePath = "C:\\Users\\mars.wang\\Desktop\\modelN_Excel\\RFQ-TSCTDA-33452.xls";
             InputStream is = new FileInputStream(uploadFilePath);
             Workbook wb = Workbook.getWorkbook(is);
@@ -551,6 +553,7 @@ public class ModelNTest {
                 }
 
                 modelNDto = new ModelNDto();
+                List<String> errorMsgList = new LinkedList<>();
                 for (int colIndex = 0, colCount = sheet.getColumns(); colIndex < colCount; colIndex++) {
                     Cell rowCell = sheet.getCell(colIndex, rowIndex);
                     String content = rowCell.getContents().trim(); // 取得儲存格內容
@@ -611,6 +614,7 @@ public class ModelNTest {
                                     crd = sdf.format(((DateCell) rowCell).getDate());
                                 } else {
                                     crd = content.replace("-", "");
+                                    crd = sdf.format(((DateCell) rowCell).getDate());
                                     if (crd.length() < 8) {
                                         throw new Exception(ErrorMessage.CRD_LENGTH_LESS_8.getMessage());
                                     }
@@ -618,31 +622,58 @@ public class ModelNTest {
                             } catch (Exception e) {
                                 if (StringUtils.isNullOrEmpty(crd)) {
                                     throw new Exception(ErrorMessage.CRD_REQUEST.getMessage());
+                                } else {
+                                    errorMsgList.add(ErrorMessage.DATE_FORMATTER_ERROR.getMessageFormat(columnName.concat(":" + crd)));
+//                                    errorMessage.append("Xxxxxxxxxxxxxxxxxxx");
+//                                    throw new Exception(ErrorMessage.DATE_FORMATTER_ERROR.getMessageFormat(crd));
                                 }
                             }
                             modelNDto.setCrd(crd);
                             break;
                         case SSD:
-                            String ssd = rowCell.getContents().trim();
+                            String ssd = content;
                             try {
                                 if (rowCell.getType() == CellType.DATE) {
                                     ssd = sdf.format(((DateCell) rowCell).getDate());
                                 } else {
                                     ssd = content.replace("-", "");
+                                    ssd = sdf.format(((DateCell) rowCell).getDate());
                                     if (ssd.length() < 8) {
                                         throw new Exception(ErrorMessage.SSD_LENGTH_LESS_8.getMessage());
                                     }
                                 }
                             } catch (Exception e) {
-                                ssd = "";
+                                if (StringUtils.isNullOrEmpty(ssd)) {
+                                    throw new Exception(ErrorMessage.SSD_REQUEST.getMessage());
+                                } else {
+                                    errorMsgList.add(ErrorMessage.DATE_FORMATTER_ERROR.getMessageFormat(columnName.concat(":" + ssd)));
+                                }
                             }
                             modelNDto.setSsd(ssd);
                             break;
                         case ShippingMethod:
-                            modelNDto.setShippingMethod(content);
+                            String shippingMethod = content;
+                            if (!StringUtils.isNullOrEmpty(shippingMethod)) {
+                                boolean isFound = findShippingMethod(shippingMethod);
+                                if (!isFound) {
+                                    errorMsgList.add(ErrorMessage.SHIPPING_METHOD_NOT_FOUND.getMessageFormat(columnName.concat(":" + shippingMethod)));
+//                                    errorMessage.append(ErrorMessage.SHIPPING_METHOD_NOT_FOUND.getMessageFormat(shippingMethod));
+//                                    throw new Exception(ErrorMessage.SHIPPING_METHOD_NOT_FOUND.getMessageFormat(shippingMethod));
+                                }
+                            }
+                            modelNDto.setShippingMethod(shippingMethod);
                             break;
                         case FOB:
-                            modelNDto.setFob(content);
+                            String fob = content;
+                            if (!StringUtils.isNullOrEmpty(fob)) {
+                                boolean isFound = findFobIncoterm(fob);
+                                if (!isFound) {
+                                    errorMsgList.add(ErrorMessage.FOB_INCOTERM_NOT_FOUND.getMessageFormat(columnName.concat(":" + fob)));
+//                                    errorMessage.append("yyyyyyyy");
+//                                    throw new Exception(ErrorMessage.FOB_INCOTERM_NOT_FOUND.getMessageFormat(fob));
+                                }
+                            }
+                            modelNDto.setFob(fob);
                             break;
                         case Remarks:
                             modelNDto.setRemarks(content);
@@ -675,16 +706,67 @@ public class ModelNTest {
                             break;
 //                        throw new Exception("第" + (j + 1) + "欄的名稱錯誤:" + columnName);
                     }
+
                     map.put(rowIndex, modelNDto);
                 }
 //            System.out.println(""+i+"----------------------------------------------");
+                if (!errorMsgList.isEmpty()) {
+                    String errorException = String.join(";\t", errorMsgList);
+                    throw new Exception(errorException);
+                }
             }
             readExcelContent();
             wb.close();
-        } catch (IOException | BiffException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+    private static boolean findShippingMethod(String shippingMethod) throws SQLException {
+        String[] carriers = {"FEDEX", "FEDEX GD"};
+        String inClause = Arrays.stream(carriers)
+                .map(s -> "'" + s.replace("'", "''") + "'") // 包成 'xxx'，並處理單引號轉義
+                .collect(Collectors.joining(","));
+
+        String sql = "SELECT 1 FROM fnd_lookup_values lv \n" +
+                "WHERE language = 'US' \n" +
+                "AND view_application_id = 3 \n" +
+                "AND lookup_type = 'SHIP_METHOD' AND security_group_id = 0 AND ENABLED_FLAG='Y'\n" +
+                "AND MEANING NOT IN(" + inClause + ") \n" +
+                "AND MEANING = '" + shippingMethod + "' \n" +
+                "AND (end_date_active IS NULL OR end_date_active > SYSDATE)\n" +
+                "union\n" +
+                "select 1 from ASO_I_SHIPPING_METHODS_V a\n" +
+                "where SHIPPING_METHOD NOT IN(" + inClause + ")\n" +
+                "and SHIPPING_METHOD = '" + shippingMethod + "' or SHIPPING_METHOD_CODE = '" + shippingMethod + "'";
+        Statement statement = conn.createStatement();
+        ResultSet rs = statement.executeQuery(sql);
+        return rs.next();
+    }
+
+    private static boolean findFobIncoterm(String fob) throws SQLException {
+        String sql = "SELECT 1 FROM OE_FOBS_ACTIVE_V \n" +
+                "WHERE fob = '" + fob + "' ";
+        Statement statement = conn.createStatement();
+        ResultSet rs = statement.executeQuery(sql);
+        return rs.next();
+    }
+
+//    private static boolean dateFormatValidator(String crd) {
+//        // 定義兩種格式
+//        System.out.println("xxx="+crd);
+//        DateTimeFormatter formatterYMD = DateTimeFormatter.ofPattern("yyyyMMdd");
+//        try {
+//            LocalDate date = LocalDate.parse(crd, formatterYMD);
+//            System.out.println("格式為 yyyyMMdd: " + date);
+//            return true;
+//        } catch (DateTimeParseException e1) {
+//            e1.printStackTrace();
+//            System.out.println("e="+e1.getMessage());
+//            System.err.println("錯誤：日期格式不正確，應為 yyyyMMdd 或 MMddyyyy");
+//            return false;
+//        }
+//    }
 
     private static void checkCustIdAndName() throws SQLException {
         Statement statement = conn.createStatement();

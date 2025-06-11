@@ -91,23 +91,23 @@ public class Tsca extends ModelNCommonUtils {
             modelNDto.setCustNo("1008");
             modelNDto.setCustId("1019");
 
-            // �ˬdExcel�Ȥ�N��
+            // 檢查Excel客戶代號
             if (StringUtils.isNullOrEmpty(modelNDto.getCustNo())) {
                 errList.add(ErrorMessage.CUSTNO_NOTNULL.getMessage());
                 modelNDto.setErrorList(errList);
             } else {
-                // ���otable CustId �M CustName
+                // 取得table CustId 和 CustName
 //                checkCustIdAndName();
             }
-            // �ˬdExcel CustomerPO
+            // 檢查Excel CustomerPO
             if (StringUtils.isNullOrEmpty(modelNDto.getCustPo())) {
                 errList.add(ErrorMessage.CUSTPO_NOTNULL.getMessage());
                 modelNDto.setErrorList(errList);
             } else {
-                // �ˬdtable�Ȥ�+customer po�O�_���ݳB�z���
+                // 檢查table客戶+customer po是否有待處理資料
                 checkCustomerPo();
             }
-            // �ˬdExcel�x�b�Ƹ�/�~�W�ΫȤ�Ƹ�
+            // 檢查Excel台半料號/品名及客戶料號
             if (StringUtils.isNullOrEmpty(modelNDto.getTscItemDesc())
                     && StringUtils.isNullOrEmpty(modelNDto.getCustItem())
                     && StringUtils.isNullOrEmpty(modelNDto.getTscItem())) {
@@ -117,25 +117,25 @@ public class Tsca extends ModelNCommonUtils {
                 errList.add(ErrorMessage.TSC_ITEM_AND_TSC_ITEM_PN_AND_CUST_ITEM_NOTNULL.getMessage());
                 modelNDto.setErrorList(errList);
             } else {
-                // �ˬdtable�x�b�Ƹ��ΫȤ�Ƹ��bERP�O�_�s�b
+                // 檢查table台半料號及客戶料號在ERP是否存在
                 checkTscAndCustPartNo();
                 setShippingFobOrderTypeInfo();
             }
-            //�ˬd�ƶq
+            //檢查數量
             checkQty();
             checkSellingPrice();
             checkCrd();
             checkShippingMethod();
             checkEndCustomerAndId();
             checkRemarks();
-            // �ˬdExcel End Customer Number
+            // 檢查Excel End Customer Number
             if (!modelNDto.getEndCustNo().equals("")) {
-                //end customer number ���i�P customer number �ۦP
+                //end customer number 不可與 customer number 相同
                 if (modelNDto.getEndCustNo().equals(modelNDto.getCustNo())) {
                     errList.add(ErrorMessage.END_CUSTNO_NOT_SAME_CUSTNO.getMessage());
                     modelNDto.setErrorList(errList);
                 } else {
-                    // �ˬdEnd Customer Number�bERP�O�_�s�b
+                    // 檢查End Customer Number在ERP是否存在
                     checkEndCustNumber();
                 }
             } else if (!endCustName.equals("")) {
@@ -147,7 +147,7 @@ public class Tsca extends ModelNCommonUtils {
     }
 
     private void checkCustomerPo() throws SQLException {
-        //�ˬdcustomerNo �M customerPo �O�_���ݳB�z���
+        //檢查customerNo 和 customerPo 是否有待處理資料
         if (!StringUtils.isNullOrEmpty(modelNDto.getCustNo()) && !StringUtils.isNullOrEmpty(modelNDto.getCustPo())) {
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery("select 1 from oraddman.TSC_RFQ_UPLOAD_TEMP where SALESAREANO = '" + salesNo + "' \n" + "" +
@@ -169,7 +169,7 @@ public class Tsca extends ModelNCommonUtils {
                     " ,case when msi.attribute3 in ('005','011') or \n"+
                     " (msi.attribute3 in ('002') and TSC_OM_CATEGORY(msi.INVENTORY_ITEM_ID,msi.ORGANIZATION_ID,'TSC_Package') in ('SMA', 'SMB','SMC','SOD-123W','SOD-128')) then '1141' \n"+
                     " else tsc_rfq_create_erp_odr_pkg.tsc_get_order_type (msi.INVENTORY_ITEM_ID) end AS ORDER_TYPE \n"+
-                    ",tsc_get_item_desc_nopacking(msi.organization_id,msi.inventory_item_id) itemnopacking \n" + // quote �ϥ�
+                    ",tsc_get_item_desc_nopacking(msi.organization_id,msi.inventory_item_id) itemnopacking \n" + // quote 使用
                     " ,TSC_OM_CATEGORY(msi.INVENTORY_ITEM_ID,msi.ORGANIZATION_ID,'TSC_Package') as TSC_PACKAGE \n"+
                     " ,TSC_OM_CATEGORY(msi.INVENTORY_ITEM_ID,msi.ORGANIZATION_ID,'TSC_Family') as TSC_FAMILY \n"+
                     " from oe_items_v a,inv.mtl_system_items_b msi \n"+
@@ -224,7 +224,7 @@ public class Tsca extends ModelNCommonUtils {
                         " ,case when msi.attribute3 in ('005','011') or \n"+
                         " (msi.attribute3 in ('002') and TSC_OM_CATEGORY(msi.INVENTORY_ITEM_ID,msi.ORGANIZATION_ID,'TSC_Package') in ('SMA', 'SMB','SMC','SOD-123W','SOD-128')) then '1141' \n"+
                         " else tsc_rfq_create_erp_odr_pkg.tsc_get_order_type (msi.INVENTORY_ITEM_ID) end AS ORDER_TYPE \n"+
-                        ",tsc_get_item_desc_nopacking(msi.organization_id,msi.inventory_item_id) itemnopacking \n" + // quote �ϥ�
+                        ",tsc_get_item_desc_nopacking(msi.organization_id,msi.inventory_item_id) itemnopacking \n" + // quote 使用
                         " ,TSC_OM_CATEGORY(msi.INVENTORY_ITEM_ID,msi.ORGANIZATION_ID,'TSC_Package') as TSC_PACKAGE \n"+
                         " ,TSC_OM_CATEGORY(msi.INVENTORY_ITEM_ID,msi.ORGANIZATION_ID,'TSC_Family') as TSC_FAMILY \n"+
                         " FROM  inv.mtl_system_items_b msi, apps.mtl_item_categories_v c \n"+
@@ -295,7 +295,7 @@ public class Tsca extends ModelNCommonUtils {
                             "    WHERE a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
                             "      AND a.partnumber='" + modelNDto.getTscItemDesc() + "' \n"+
                             "    UNION ALL\n" +
-                            "    -- 第二部分：MODELN 資料來源（只取最新報價）\n" +
+                            "    -- 第二部分：MODELN 資料來源(只取最新報價)\n" +
                             "    SELECT\n" +
                             "        quoteid,\n" +
                             "        partnumber,\n" +
@@ -354,7 +354,7 @@ public class Tsca extends ModelNCommonUtils {
         }
     }
 
-    // �ˬd End Customer Number
+    // 檢查 End Customer Number
     private void checkEndCustNumber() throws SQLException {
 
         String sql = "select distinct c.customer_id,c.customer_number,c.CUSTOMER_NAME_PHONETIC \n"+
@@ -418,7 +418,7 @@ public class Tsca extends ModelNCommonUtils {
         }
     }
 
-    //�ˬd���
+    //檢查單價
     private void checkSellingPrice() throws SQLException {
         if (StringUtils.isNullOrEmpty(modelNDto.getSellingPrice())) {
             if (sellingPrice_Q == null || sellingPrice_Q.equals("")) {
@@ -434,7 +434,7 @@ public class Tsca extends ModelNCommonUtils {
                 errList.add(ErrorMessage.SELLING_PRICE_MUST_GREATER_0.getMessage());
                 modelNDto.setErrorList(errList);
             } else if (!modelNDto.getSellingPrice().equals(sellingPrice_Q)) {
-                if (!modelNDto.getQuoteNumber().equals("")) { // �ݦ�quote number
+                if (!modelNDto.getQuoteNumber().equals("")) { // 需有quote number
                     errList.add(ErrorMessage.SELLING_PRICE_NOT_MATCH_QUOTE_PRICE.getMessageFormat(sellingPrice_Q));
                     modelNDto.setErrorList(errList);
                 }
@@ -457,7 +457,7 @@ public class Tsca extends ModelNCommonUtils {
                 ResultSet rs = stmt.executeQuery(sql);
                 if (rs.next()) {
                     modelNDto.setCrd(rs.getString(1));
-                    monthNum = rs.getInt(2); //add by Peggy 20170504
+                    monthNum = rs.getInt(2);
                 }
                 rs.close();
                 stmt.close();
@@ -481,8 +481,8 @@ public class Tsca extends ModelNCommonUtils {
             cs.setString(7, modelNDto.getOrderType());
             cs.setString(8, modelNDto.getManuFactoryNo());
             cs.setString(9, modelNDto.getCustId());
-            cs.setString(10, modelNDto.getFob());     //add by Peggy 20190319
-            cs.setString(11, "");         //add by Peggy 20190319
+            cs.setString(10, modelNDto.getFob());
+            cs.setString(11, "");
             cs.execute();
             modelNDto.setTransportation(cs.getString(6));
             cs.close();
@@ -501,7 +501,7 @@ public class Tsca extends ModelNCommonUtils {
                 rs.close();
             } else {
                 if (!StringUtils.isNullOrEmpty(modelNDto.getManuFactoryNo())) {
-                    //��f���
+                    //交貨日期
                     String sql = "SELECT TSCA_GET_ORDER_SSD("+modelNDto.getOrderType()+",'"+modelNDto.getTransportation()+"','"+modelNDto.getCrd()+"','CRD',trunc(sysdate),null) FROM DUAL";
                     Statement stmt = conn.createStatement();
                     ResultSet rs2 = stmt.executeQuery(sql);

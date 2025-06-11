@@ -14,5 +14,5 @@ public interface TscRfqUploadTempDao {
     void deleteTscRfqUploadTemp(Connection conn, String salesNo, String uploadBy, String customerId, String customerPo, String groupByType, String shipToOrgId) throws SQLException;
     void deleteAllTscRfqUploadTemp(Connection conn, String salesNo, String uploadBy) throws SQLException;
 
-    void insertTscRfqUploadTemp(Connection conn, HashMap map, String salesNo, String userName, String rfqType, String groupByType) throws SQLException;
+    void insertTscRfqUploadTemp(Connection conn, HashMap map, String salesNo, String userName, String rfqType, String groupByType) throws Exception;
 }

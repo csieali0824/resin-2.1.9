@@ -151,7 +151,7 @@ public class TscRfqUploadTempImpl implements TscRfqUploadTempDao {
     }
 
     @Override
-    public void insertTscRfqUploadTemp(Connection conn, HashMap map, String salesNo, String userName, String rfqType, String groupByType) throws SQLException {
+    public void insertTscRfqUploadTemp(Connection conn, HashMap map, String salesNo, String userName, String rfqType, String groupByType) throws Exception {
 
         int insertRowCnt = 0;
         try {
@@ -267,6 +267,7 @@ public class TscRfqUploadTempImpl implements TscRfqUploadTempDao {
         } catch (SQLException e) {
             e.printStackTrace();
             conn.rollback();
+            throw new Exception(e.getMessage());
         }
     }
 

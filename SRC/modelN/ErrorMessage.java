@@ -49,7 +49,10 @@ public enum ErrorMessage {
     QTY_MUST_GREATER_OR_EQUALS_MOQ_K("數量必須大於或等於MOQ(%s K)的倍數"),
     NOT_CREATE_SPQ_MOQ("SPQ/MOQ資訊未建立,請通知PC同仁建立"),
     QUOTE_NOT_FOUND("Quote not found"),
-    QUOTE_HAS_EXPIRED("Quote has expired(%s)");
+    QUOTE_HAS_EXPIRED("Quote has expired(%s)"),
+    SHIPPING_METHOD_NOT_FOUND("%s not found!"),
+    FOB_INCOTERM_NOT_FOUND("%s not found!"),
+    DATE_FORMATTER_ERROR("%s，日期格式不正確，應為 YYYY/MM/DD");
     private final String message;
 
     ErrorMessage(String errorMessage) {

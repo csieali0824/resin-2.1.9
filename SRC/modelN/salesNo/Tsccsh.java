@@ -129,7 +129,7 @@ public class Tsccsh extends ModelNCommonUtils {
         } else {
             ResultSet rs = this.getAsoShippingMethodsV();
             boolean shippingMethodExist = false;
-            if (rs.isBeforeFirst() == false) rs.beforeFirst();
+            if (!rs.isBeforeFirst()) rs.beforeFirst();
             while (rs.next()) {
                 if (rs.getString("SHIPPING_METHOD").equals(modelNDto.getShippingMethod()) ||
                         rs.getString("SHIPPING_METHOD_CODE").equals(modelNDto.getShippingMethod())) {
@@ -153,7 +153,7 @@ public class Tsccsh extends ModelNCommonUtils {
         } else {
             ResultSet rs = this.getFobIncotermData();
             boolean fobExist = false;
-            if (rs.isBeforeFirst() == false) rs.beforeFirst();
+            if (!rs.isBeforeFirst()) rs.beforeFirst();
             while (rs.next()) {
                 if (rs.getString("FOB").equals(modelNDto.getFob())) {
                     fobExist = true;
@@ -175,7 +175,7 @@ public class Tsccsh extends ModelNCommonUtils {
             } else {
                 ResultSet rs = this.getBiRegionData();
                 boolean biRegionExist = false;
-                if (rs.isBeforeFirst() == false) rs.beforeFirst();
+                if (!rs.isBeforeFirst()) rs.beforeFirst();
                 while (rs.next()) {
                     if (rs.getString("A_VALUE").equals(modelNDto.getBiRegion())) {
                         biRegionExist = true;
@@ -188,6 +188,9 @@ public class Tsccsh extends ModelNCommonUtils {
                     modelNDto.setErrorList(errList);
                 }
             }
+        }
+        if ("25071".equals(modelNDto.getCustNo()) && "1141".equals(modelNDto.getOrderType())) {
+            modelNDto.setShippingMethod("UPS EXPRESS");
         }
     }
 }
