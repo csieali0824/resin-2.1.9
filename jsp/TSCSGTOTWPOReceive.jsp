@@ -312,18 +312,14 @@ try
 					</tr>
 			<%
 			}
-			if (rs.getString("organization_id").equals("566"))
-			{
+			if (rs.getString("organization_id").equals("566")) {
 				stock_name="40";
-			}
-			else
-			{
-				if (rs.getString("product_group").equals("SSD"))
-				{
+			} else {
+				if (rs.getString("product_group").equals("SSD")) {
 					stock_name="11";
-				}
-				else
-				{
+				} else if (rs.getString("product_group").equals("PMD")) {
+					stock_name="68";
+				} else {
 					stock_name="13";
 				}
 			}
