@@ -25,6 +25,6 @@ public enum SalesArea {
                 return salesArea;
             }
         }
-        throw new IllegalArgumentException("¿ù»~ªº·~°È°Ï¥N½X: " + salesNo);
+        throw new IllegalArgumentException("éŒ¯èª¤çš„æ¥­å‹™å€ä»£ç¢¼: " + salesNo);
     }
 }

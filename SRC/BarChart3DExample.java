@@ -1,3 +1,5 @@
+import bean.PoolBean;
+import bean.WorkingDateBean;
 import org.jfree.chart.plot.CategoryPlot;
 
 import java.sql.Connection;
@@ -28,7 +30,7 @@ public class BarChart3DExample {
 //        public class ChartExample {
 //
 //            public static void main(String[] args) {
-//                // ³Ğ«Ø¥Ü¨Ò¼Æ¾Ú¶°©M¹Ïªí
+//                // å‰µå»ºç¤ºä¾‹æ•¸æ“šé›†å’Œåœ–è¡¨
 //                DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 //                dataset.addValue(5, "Category1", "Series1");
 //                dataset.addValue(3, "Category1", "Series2");
@@ -36,11 +38,11 @@ public class BarChart3DExample {
 //                CategoryPlot plot = ChartFactory.createBarChart("Title", "Category", "Value", dataset, PlotOrientation.VERTICAL, false, true, false).getPlot();
 //                JFreeChart chart = new JFreeChart("The "+thisWeek+"Th Sales RFQ Generate MO Stat.", JFreeChart.DEFAULT_TITLE_FONT, plot, false);
 //
-//                // ³]¸m¹ÏªíÄİ©Ê
+//                // è¨­ç½®åœ–è¡¨å±¬æ€§
 //                chart.setBackgroundPaint(new Color(255, 255, 166));
 //                chart.setBorderVisible(true);
 //
-//                // ²K¥[¤l¼ĞÃD
+//                // æ·»åŠ å­æ¨™é¡Œ
 //                TextTitle subXTitle = new TextTitle("Sales Area", new Font("Arial", Font.BOLD, 14), new Color(255, 0, 0), RectangleEdge.BOTTOM, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
 //                chart.addSubtitle(subXTitle);
 //
@@ -50,10 +52,10 @@ public class BarChart3DExample {
 //                TextTitle subYTitle2 = new TextTitle("MO Generated", new Font("Arial", Font.BOLD, 14), new Color(255, 0, 0), RectangleEdge.RIGHT, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
 //                chart.addSubtitle(subYTitle2);
 //
-//                // ´è¬V¹Ïªí¬° BufferedImage
+//                // æ¸²æŸ“åœ–è¡¨ç‚º BufferedImage
 //                BufferedImage chartImage = chart.createBufferedImage(480, 300);
 //
-//                // «O¦s JPEG ¤å¥ó
+//                // ä¿å­˜ JPEG æ–‡ä»¶
 //                try {
 //                    File outputfile = new File("chart.jpg");
 //                    ImageIO.write(chartImage, "jpg", outputfile);
@@ -62,10 +64,10 @@ public class BarChart3DExample {
 //                    System.err.println("Error saving JPEG image: " + e.getMessage());
 //                }
 //
-//                // ¨Ï¥Î ChartRenderingInfo ¥Í¦¨¬M®g¸ê°T¡]¨Ò¦p¹Ïªí¬M®g¥Î©ó HTML¡^
+//                // ä½¿ç”¨ ChartRenderingInfo ç”Ÿæˆæ˜ å°„è³‡è¨Šï¼ˆä¾‹å¦‚åœ–è¡¨æ˜ å°„ç”¨æ–¼ HTMLï¼‰
 //                ChartRenderingInfo info = new ChartRenderingInfo();
 //
-//                // ±N¬M®g«H®§¼g¤J PrintWriter (¨Ò¦p¦bºô­¶¤¤¨Ï¥Î)
+//                // å°‡æ˜ å°„ä¿¡æ¯å¯«å…¥ PrintWriter (ä¾‹å¦‚åœ¨ç¶²é ä¸­ä½¿ç”¨)
 //                PrintWriter pw = new PrintWriter(System.out);
 //                ChartUtils.writeImageMap(pw, "chartMap", info, false);
 //                pw.flush();
@@ -75,10 +77,10 @@ public class BarChart3DExample {
 //    }
 
     public static void main(String[] args) {
-        String customerId = "By Customer ID²£¥ÍRFQ";
-        String customerPo = "By Customer Po²£¥ÍRFQ";
+        String customerId = "By Customer IDç”¢ç”ŸRFQ";
+        String customerPo = "By Customer Poç”¢ç”ŸRFQ";
         String[] array = new String[]{customerId, customerPo};
-        System.out.println("xxx="+ Arrays.asList(array).contains("By Customer ID²£¥ÍRFQ"));
+        System.out.println("xxx="+ Arrays.asList(array).contains("By Customer IDç”¢ç”ŸRFQ"));
 //        for (String s : array) {
 //            System.out.println("xxx=" + s);
 //        }
@@ -86,8 +88,8 @@ public class BarChart3DExample {
     }
     public static void main1(String[] args) throws Exception {
         Connection con;
-        PoolBean poolBean = new  PoolBean();
-        WorkingDateBean workingDateBean = new  WorkingDateBean();
+        PoolBean poolBean = new PoolBean();
+        WorkingDateBean workingDateBean = new WorkingDateBean();
         poolBean.setDriver("oracle.jdbc.driver.OracleDriver");
         poolBean.setURL("jdbc:oracle:thin:@10.0.1.173:1528:crp1");
         poolBean.setURL2("jdbc:oracle:thin:@10.0.1.173:1528:crp1");

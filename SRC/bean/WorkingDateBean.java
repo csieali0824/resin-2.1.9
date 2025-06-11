@@ -99,17 +99,17 @@ public class WorkingDateBean
  }
 
 
-  public int getDay()
+ public int getDay()
  {
   return calendar.get(Calendar.DAY_OF_MONTH);
  }
 
-  public int getFirstDayOfWeek()
+ public int getFirstDayOfWeek()
  {
   return calendar.getFirstDayOfWeek();
  }
 
-  public int getDayOfWeek()
+ public int getDayOfWeek()
  {
   return calendar.get(Calendar.DAY_OF_WEEK);
  }
@@ -144,7 +144,7 @@ public class WorkingDateBean
  public String getWorkingWeek()
  {
   String y="0",ww="00";
-  if (calendar.get(Calendar.DAY_OF_YEAR)>350 & calendar.get(Calendar.WEEK_OF_YEAR)==1) //§PÂ_­Y¤é´Á¬°¸ó¦~¤§¶g¤¤¤é®É«h¦~¥÷ºâ¨ì¹j¦~
+  if (calendar.get(Calendar.DAY_OF_YEAR)>350 & calendar.get(Calendar.WEEK_OF_YEAR)==1) //åˆ¤æ–·è‹¥æ—¥æœŸç‚ºè·¨å¹´ä¹‹é€±ä¸­æ—¥æ™‚å‰‡å¹´ä»½ç®—åˆ°éš”å¹´
   {
    y=y+(getYear()+1);
   } else {
@@ -174,8 +174,8 @@ public class WorkingDateBean
   Calendar tempCal=calendar;
   for (int i=0;i<7;i++)
   {
-     if (tempCal.get(Calendar.DAY_OF_WEEK)==getFirstDayOfWeek()) break;
-     tempCal.add(Calendar.DAY_OF_YEAR,-1);
+   if (tempCal.get(Calendar.DAY_OF_WEEK)==getFirstDayOfWeek()) break;
+   tempCal.add(Calendar.DAY_OF_YEAR,-1);
   }
 
   String yyyy="0000",mm="00",dd="00";
@@ -193,12 +193,12 @@ public class WorkingDateBean
   Calendar tempCal=calendar;
   for (int i=0;i<7;i++)
   {
-    tempCal.add(Calendar.DAY_OF_YEAR,1);
-    if (tempCal.get(Calendar.DAY_OF_WEEK)==getFirstDayOfWeek())
-    {
-     tempCal.add(Calendar.DAY_OF_YEAR,-1);
-     break;
-    }
+   tempCal.add(Calendar.DAY_OF_YEAR,1);
+   if (tempCal.get(Calendar.DAY_OF_WEEK)==getFirstDayOfWeek())
+   {
+    tempCal.add(Calendar.DAY_OF_YEAR,-1);
+    break;
+   }
   }
 
   String yyyy="0000",mm="00",dd="00";

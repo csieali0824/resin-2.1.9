@@ -481,7 +481,7 @@ public class TscSalesPriceTest {
             OutputStream os = Files.newOutputStream(Paths.get(strPath));
             String dataDateStr = "Data Date: " + new SimpleDateFormat("yyyy-MM-dd").format(new Date());
             ExcelWriter.writeExcel(os, dataDateStr, columns, dataList, styles, freezeCol);
-            System.out.println("Excel ¶×¥X¦¨¥\¡I");
+            System.out.println("Excel åŒ¯å‡ºæˆåŠŸ");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -502,7 +502,7 @@ public class TscSalesPriceTest {
             OutputStream os = Files.newOutputStream(Paths.get(strPath));
             String dataDateStr = "Data Date: " + new SimpleDateFormat("yyyy-MM-dd").format(new Date());
             ExcelWriter.writeExcel(os, dataDateStr, columns, dataList, styles, 0);
-            System.out.println("Excel ¶×¥X¦¨¥\¡I");
+            System.out.println("Excel åŒ¯å‡ºæˆåŠŸ");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -1032,15 +1032,15 @@ public class TscSalesPriceTest {
 
         while (rs.next()) {
             if (rs.getString("PACKAGE_CODE") ==null || rs.getInt("ITEM_CNT")!=1 ) continue; //add by Peggy 20181023
-            Map<String, Object> row = new LinkedHashMap<>(); // ¨Ï¥Î LinkedHashMap «O«ùÄæ¦ì¶¶§Ç
+            Map<String, Object> row = new LinkedHashMap<>(); // ï¿½Ï¥ï¿½ LinkedHashMap ï¿½Oï¿½ï¿½ï¿½ï¿½ì¶¶ï¿½ï¿½
             for (int i = 1; i <= columnCount; i++) {
-                String columnName = metaData.getColumnLabel(i); // getColumnLabel ¥i®³¨ì SQL §O¦W
+                String columnName = metaData.getColumnLabel(i); // getColumnLabel ï¿½iï¿½ï¿½ï¿½ï¿½ SQL ï¿½Oï¿½W
                 Object value = rs.getObject(i);
                 row.put(columnName, value);
             }
             rows.add(row);
         }
-        // Ãö³¬¸ê·½
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ê·½
         rs.close();
         statement.close();
         conn.close();
@@ -1264,15 +1264,15 @@ public class TscSalesPriceTest {
                 continue;
             if (rs.getString("TSC_PROD_GROUP").equals("PMD") && rs.getString("SEGMENT1").length() == 30 && rs.getString("SEGMENT1").charAt(21) == 'V')
                 continue;
-            Map<String, Object> row = new LinkedHashMap<>(); // ¨Ï¥Î LinkedHashMap «O«ùÄæ¦ì¶¶§Ç
+            Map<String, Object> row = new LinkedHashMap<>(); // ä½¿ç”¨ LinkedHashMap ä¿æŒæ¬„ä½é †åº
             for (int i = 1; i <= columnCount; i++) {
-                String columnName = metaData.getColumnLabel(i); // getColumnLabel ¥i®³¨ì SQL §O¦W
+                String columnName = metaData.getColumnLabel(i); // getColumnLabel å¯æ‹¿åˆ° SQL åˆ¥å
                 Object value = rs.getObject(i);
                 row.put(columnName, value);
             }
             rows.add(row);
         }
-        // Ãö³¬¸ê·½
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ê·½
         rs.close();
         statement.close();
         conn.close();

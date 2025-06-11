@@ -395,6 +395,11 @@ if (!HEADER_ID.equals(""))
 					bb[i][6]="DHL";
 					bb[i][18]="DAP SINGAPORE";
 				}
+				else if (rs.getString("TSCH_CUSTOMER_NUMBER").equals("23121")) //LITE ON-2680 ,ADD BY Mars 20250603
+				{
+					bb[i][6]= "LAND";    //出貨方式
+					bb[i][18]=rs.getString("FOB_POINT_CODE");         //FOB
+				}
 				else if (rs.getString("TSCH_CUSTOMER_NUMBER").equals("31912") || rs.getString("TSCH_CUSTOMER_NUMBER").equals("32932")) //GPV ,ADD BY PEGGY 20230406, GPV(THAILAND) add by Peggy 20240304
 				{
 					bb[i][6]="DHL";

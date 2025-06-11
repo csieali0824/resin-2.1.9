@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -58,7 +59,7 @@ public class TscSalesPrice {
                         val -> {
                             if (val == null) return "";
                             if (val instanceof Number) {
-                                return new BigDecimal(val.toString()).stripTrailingZeros().toPlainString();
+                                return String.valueOf(new BigDecimal(val.toString()).setScale(4, RoundingMode.HALF_UP));
                             }
                             return val.toString();
                         }),
@@ -66,7 +67,7 @@ public class TscSalesPrice {
                         val -> {
                             if (val == null) return "";
                             if (val instanceof Number) {
-                                return new BigDecimal(val.toString()).stripTrailingZeros().toPlainString();
+                                return String.valueOf(new BigDecimal(val.toString()).setScale(4, RoundingMode.HALF_UP));
                             }
                             return val.toString();
                         }),
@@ -75,7 +76,7 @@ public class TscSalesPrice {
                         val -> {
                             if (val == null) return "";
                             if (val instanceof Number) {
-                                return new BigDecimal(val.toString()).stripTrailingZeros().toPlainString();
+                                return String.valueOf(new BigDecimal(val.toString()).setScale(4, RoundingMode.HALF_UP));
                             }
                             return val.toString();
                         }),
@@ -85,7 +86,7 @@ public class TscSalesPrice {
                         val -> {
                             if (val == null) return "";
                             if (val instanceof Number) {
-                                return new BigDecimal(val.toString()).stripTrailingZeros().toPlainString();
+                                return String.valueOf(new BigDecimal(val.toString()).setScale(4, RoundingMode.HALF_UP));
                             }
                             return val.toString();
                         }),
@@ -93,7 +94,7 @@ public class TscSalesPrice {
                         val -> {
                             if (val == null) return "";
                             if (val instanceof Number) {
-                                return new BigDecimal(val.toString()).stripTrailingZeros().toPlainString();
+                                return String.valueOf(new BigDecimal(val.toString()).setScale(4, RoundingMode.HALF_UP));
                             }
                             return val.toString();
                         }),
@@ -102,7 +103,7 @@ public class TscSalesPrice {
                         val -> {
                             if (val == null) return "";
                             if (val instanceof Number) {
-                                return new BigDecimal(val.toString()).stripTrailingZeros().toPlainString();
+                                return String.valueOf(new BigDecimal(val.toString()).setScale(4, RoundingMode.HALF_UP));
                             }
                             return val.toString();
                         }),
@@ -130,24 +131,24 @@ public class TscSalesPrice {
                             return val.toString();
                         }),
                 new ExcelColumn("Standard Lead Time(Week)", 15, styles.get("rightL"), keys("LEAD_TIME")),
-                new ExcelColumn("PRICE LAST UPDATE DATE", 15, styles.get("centerL"), keys("PRICE_LAST_UPDATE_DATE"),
-                        val -> {
-                            if (val == null) return "";
-                            if (val instanceof Date) {
-                                return new SimpleDateFormat("yyyy-MM-dd").format((Date) val);
-                            }
-                            return val.toString();
-                        }),
-                new ExcelColumn("22D Creation Date", 15, styles.get("centerL"), keys("ITEM_CREATION_DATE"),
-                        val -> {
-                            if (val == null) return "";
-                            if (val instanceof Date) {
-                                return new SimpleDateFormat("yyyy-MM-dd").format((Date) val);
-                            }
-                            return val.toString();
-                        }),
+//                new ExcelColumn("PRICE LAST UPDATE DATE", 15, styles.get("centerL"), keys("PRICE_LAST_UPDATE_DATE"),
+//                        val -> {
+//                            if (val == null) return "";
+//                            if (val instanceof Date) {
+//                                return new SimpleDateFormat("yyyy-MM-dd").format((Date) val);
+//                            }
+//                            return val.toString();
+//                        }),
+//                new ExcelColumn("22D Creation Date", 15, styles.get("centerL"), keys("ITEM_CREATION_DATE"),
+//                        val -> {
+//                            if (val == null) return "";
+//                            if (val instanceof Date) {
+//                                return new SimpleDateFormat("yyyy-MM-dd").format((Date) val);
+//                            }
+//                            return val.toString();
+//                        }),
                 new ExcelColumn("Factory", 15, styles.get("centerL"), keys("FACTORY_CODE")),
-                new ExcelColumn("RFQ Factory Code", 12, styles.get("centerL"), keys("ATTRIBUTE3")),
+//                new ExcelColumn("RFQ Factory Code", 12, styles.get("centerL"), keys("ATTRIBUTE3")),
                 new ExcelColumn("COO", 7, styles.get("centerL"), keys("COO")),
                 new ExcelColumn("COO(TSCA use only)", 7, styles.get("centerL"), keys("COO_CODE")),
                 new ExcelColumn("Description", 35, styles.get("leftL"), keys("PART_SPEC")),
@@ -217,6 +218,22 @@ public class TscSalesPrice {
                 new ExcelColumn("Prod Group 5", 10, styles.get("leftL"), keys("PROD_GROUP_5")),
                 new ExcelColumn("TARIC Code", 10, styles.get("centerL"), keys("CCCODE")),
                 new ExcelColumn("HTS Code(TSCA local use)", 10, styles.get("leftL"), keys("HTS_CODE")),
+//                new ExcelColumn("Part Name create Date", 15, styles.get("centerL"), keys("NEW_PARTS_RELEASE_DATE"),
+//                        val -> {
+//                            if (val == null) return "";
+//                            if (val instanceof Date) {
+//                                return new SimpleDateFormat("yyyy-MM-dd").format((Date) val);
+//                            }
+//                            return val.toString();
+//                        }),
+//                new ExcelColumn("TW Vendor", 8, styles.get("centerL"), keys("TW_VENDOR_FLAG")),
+                new ExcelColumn("NPI released to Web", 12, styles.get("centerL"), keys("FIRST_ON_WEBSITE_DATE")),
+                new ExcelColumn("F400 PRODUCT", 12, styles.get("centerL"), keys("F400_PRODUCT")),
+                new ExcelColumn("SPG STATUS", 12, styles.get("centerL"), keys("SPG_STATUS")),
+                new ExcelColumn("PROD HIERARCHY 1", 20, styles.get("leftL"), keys("TSC_PROD_HIERARCHY_1")),
+                new ExcelColumn("PROD HIERARCHY 2", 20, styles.get("leftL"), keys("TSC_PROD_HIERARCHY_2")),
+                new ExcelColumn("PROD HIERARCHY 3", 20, styles.get("leftL"), keys("TSC_PROD_HIERARCHY_3")),
+                new ExcelColumn("PROD HIERARCHY 4", 20, styles.get("leftL"), keys("TSC_PROD_HIERARCHY_4")),
                 new ExcelColumn("Part Name create Date", 15, styles.get("centerL"), keys("NEW_PARTS_RELEASE_DATE"),
                         val -> {
                             if (val == null) return "";
@@ -225,14 +242,25 @@ public class TscSalesPrice {
                             }
                             return val.toString();
                         }),
+                new ExcelColumn("PRICE LAST UPDATE DATE", 15, styles.get("centerL"), keys("PRICE_LAST_UPDATE_DATE"),
+                        val -> {
+                            if (val == null) return "";
+                            if (val instanceof Date) {
+                                return new SimpleDateFormat("yyyy-MM-dd").format((Date) val);
+                            }
+                            return val.toString();
+                        }),
+                new ExcelColumn("22D Creation Date", 15, styles.get("centerL"), keys("ITEM_CREATION_DATE"),
+                        val -> {
+                            if (val == null) return "";
+                            if (val instanceof Date) {
+                                return new SimpleDateFormat("yyyy-MM-dd").format((Date) val);
+                            }
+                            return val.toString();
+                        }),
                 new ExcelColumn("TW Vendor", 8, styles.get("centerL"), keys("TW_VENDOR_FLAG")),
-                new ExcelColumn("NPI released to Web", 12, styles.get("centerL"), keys("FIRST_ON_WEBSITE_DATE")),
-                new ExcelColumn("F400 PRODUCT", 12, styles.get("centerL"), keys("F400_PRODUCT")),
-                new ExcelColumn("SPG STATUS", 12, styles.get("centerL"), keys("SPG_STATUS")),
-                new ExcelColumn("PROD HIERARCHY 1", 20, styles.get("leftL"), keys("TSC_PROD_HIERARCHY_1")),
-                new ExcelColumn("PROD HIERARCHY 2", 20, styles.get("leftL"), keys("TSC_PROD_HIERARCHY_2")),
-                new ExcelColumn("PROD HIERARCHY 3", 20, styles.get("leftL"), keys("TSC_PROD_HIERARCHY_3")),
-                new ExcelColumn("PROD HIERARCHY 4", 20, styles.get("leftL"), keys("TSC_PROD_HIERARCHY_4"))
+                new ExcelColumn("RFQ Factory Code", 12, styles.get("centerL"), keys("ATTRIBUTE3"))
+
         );
     }
 
@@ -291,7 +319,7 @@ public class TscSalesPrice {
                         val -> {
                             if (val == null) return "";
                             if (val instanceof Number) {
-                                return new BigDecimal(val.toString()).stripTrailingZeros().toPlainString();
+                                return String.valueOf(new BigDecimal(val.toString()).setScale(4, RoundingMode.HALF_UP));
                             }
                             return val.toString();
                         }),
@@ -414,18 +442,15 @@ public class TscSalesPrice {
                 break;
         }
 
-        String fileName = name + "-" + new SimpleDateFormat("yyyy-MM-dd").format(new Date()) + ".xls";
+        String fileName = name + "-" + new SimpleDateFormat("yyyyMMddHHmm").format(new Date()) + ".xls";
         response.reset();
         response.setContentType("application/vnd.ms-excel");
         response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\"");
-        response.setHeader("Pragma", "no-cache");
-        response.setHeader("Cache-Control", "no-cache");
-        response.setDateHeader("Expires", 0);
 
         try (OutputStream os = response.getOutputStream()) {  // Get output stream from response
             String dataDateStr = "Data Date: " + new SimpleDateFormat("yyyy-MM-dd").format(new Date());
             ExcelWriter.writeExcel(os, dataDateStr, columns, dataList, styles, freezeCol);
-            System.out.println("Excel ∂◊•X¶®•\°I");
+            System.out.println("Excel ÂåØÂá∫ÊàêÂäü");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -783,13 +808,12 @@ public class TscSalesPrice {
                 "               TSC_SALES_DISTRIBUTION_PRICE tsdp\n" +
                 "         WHERE     msi.ORGANIZATION_ID = 49\n" +
                 "               AND LENGTH (msi.SEGMENT1) >= 22\n" +
-                "               and msi.segment1 = tsdp.item_name\n" +
-                "               and msi.INVENTORY_ITEM_ID = tsdp.INVENTORY_ITEM_ID\n" +
+                "               AND msi.INVENTORY_ITEM_ID = tsdp.INVENTORY_ITEM_ID(+)\n" +
                 "               and case \n" +
                 "                     when instr(TSC_GET_ITEM_PACKING_CODE(43,msi.inventory_item_id),'QQ')>0 then msi.description \n" +
                 "                     else trim(substr(msi.description,0,length(msi.description)-length(TSC_GET_ITEM_PACKING_CODE(43,msi.inventory_item_id))))\n" +
-                "                   end = tsdp.part_id\n" +
-                "               and msi.description = tsdp.tsc_ordering_code\n" +
+                "                   end = tsdp.part_id(+)\n" +
+                "               and msi.description = tsdp.tsc_ordering_code(+)\n" +
                 "               AND TSC_INV_Category (msi.inventory_item_id, 43, 23) =\n" +
                 "                       tpcl.tsc_package(+)\n" +
                 "               AND tsc_get_item_packing_code (43, msi.inventory_item_id) =\n" +
@@ -930,15 +954,14 @@ public class TscSalesPrice {
 
         while (rs.next()) {
             if (rs.getString("PACKAGE_CODE") ==null || rs.getInt("ITEM_CNT")!=1 ) continue; //add by Peggy 20181023
-            Map<String, Object> row = new LinkedHashMap<>(); // ®œ•Œ LinkedHashMap ´O´˘ƒÊ¶Ï∂∂ß«
+            Map<String, Object> row = new LinkedHashMap<>(); // ‰ΩøÁî® LinkedHashMap ‰øùÊåÅÊ¨Ñ‰ΩçÈ†ÜÂ∫è
             for (int i = 1; i <= columnCount; i++) {
-                String columnName = metaData.getColumnLabel(i); // getColumnLabel •iÆ≥®Ï SQL ßO¶W
+                String columnName = metaData.getColumnLabel(i); // getColumnLabel ÂèØÊãøÂà∞ SQL Âà•Âêç
                 Object value = rs.getObject(i);
                 row.put(columnName, value);
             }
             rows.add(row);
         }
-        // √ˆ≥¨∏Í∑Ω
         rs.close();
         statement.close();
         conn.close();
@@ -1049,13 +1072,12 @@ public class TscSalesPrice {
                 "                 ,(SELECT * FROM oraddman.tsc_packing_conversion_list where nvl(INACTIVE_DATE,to_date('20991231','yyyymmdd'))>TRUNC(SYSDATE)) tpcl\n" +
                 "                 WHERE msi.ORGANIZATION_ID=49\n" +
                 "                 AND LENGTH(msi.SEGMENT1)>=22\n" +
-                "                 and msi.segment1 = tsdp.item_name\n" +
-                "                 and msi.INVENTORY_ITEM_ID = tsdp.INVENTORY_ITEM_ID\n" +
+                "                 and msi.INVENTORY_ITEM_ID = tsdp.INVENTORY_ITEM_ID(+)\n" +
                 "                 and case \n" +
                 "                       when instr(TSC_GET_ITEM_PACKING_CODE(43,msi.inventory_item_id),'QQ')>0 then msi.description \n" +
                 "                       else trim(substr(msi.description,0,length(msi.description)-length(TSC_GET_ITEM_PACKING_CODE(43,msi.inventory_item_id))))\n" +
-                "                     end = tsdp.part_id\n" +
-                "                 and msi.description = tsdp.tsc_ordering_code\n" +
+                "                     end = tsdp.part_id(+)\n" +
+                "                 and msi.description = tsdp.tsc_ordering_code(+)\n" +
                 "                 AND TSC_INV_Category(msi.inventory_item_id,43, 23)=tpcl.tsc_package(+)\n" +
                 "                 AND tsc_get_item_packing_code (43, msi.inventory_item_id)=tpcl.packing_code(+)\n" +
                 "                 AND msi.ITEM_TYPE='FG'\n" +
@@ -1114,8 +1136,6 @@ public class TscSalesPrice {
                 "                    over (partition by description order by creation_date desc) row_seq from inv.mtl_system_items_b\n" +
                 "                     where organization_id=43 and inventory_item_status_code<>'Inactive' ) a where row_seq=1) y\n" +
                 "                     WHERE x.row_seq = 1 and x.REPLACE_PART_NO=y.description(+)) new_pn\n" +
-                "                     ,oraddman.tsc_f400_product tfp\n" +
-                "                     ,oraddman.tsc_distribution_price_book tdpb\n" +
                 "                     WHERE 1=1\n" +
                 "                     AND a.ITEM_DESC1=tpi.PART_NO_LIST(+)\n" +
                 "                     AND a.TSC_PACKAGE=tpii.TSC_PACKAGE(+)\n" +
@@ -1127,8 +1147,6 @@ public class TscSalesPrice {
                 "                     AND a.description=new_pn.TSC_PART_NO(+)\n" +
                 "                     AND a.part_id=tsbpt.part_id(+)\n" +
                 "                     AND a.item_desc1=fair.tsc_partno(+)\n" +
-                "                     AND a.description=tdpb.tsc_ordering_code(+)\n" +
-                "                     AND a.description=tfp.tsc_ordering_code(+)\n" +
                 ") SELECT \n" +
                 "    SEGMENT1, PART_ID, PACKAGE_CODE, DESCRIPTION, PL_CATEGORY, TSC_PROD_GROUP, TSC_PROD_CATEGORY,TSC_FAMILY,\n" +
                 "    TSC_PROD_FAMILY, TSC_PACKAGE, SPQ, MOQ, LEAD_TIME, PRICE, PRICE_LAST_UPDATE_DATE,ITEM_CREATION_DATE, \n" +
@@ -1159,9 +1177,9 @@ public class TscSalesPrice {
                 continue;
             if (rs.getString("TSC_PROD_GROUP").equals("PMD") && rs.getString("SEGMENT1").length() == 30 && rs.getString("SEGMENT1").charAt(21) == 'V')
                 continue;
-            Map<String, Object> row = new LinkedHashMap<>(); // ®œ•Œ LinkedHashMap ´O´˘ƒÊ¶Ï∂∂ß«
+            Map<String, Object> row = new LinkedHashMap<>(); // ‰ΩøÁî® LinkedHashMap ‰øùÊåÅÊ¨Ñ‰ΩçÈ†ÜÂ∫è
             for (int i = 1; i <= columnCount; i++) {
-                String columnName = metaData.getColumnLabel(i); // getColumnLabel •iÆ≥®Ï SQL ßO¶W
+                String columnName = metaData.getColumnLabel(i); // getColumnLabel ÂèØÊãøÂà∞ SQL Âà•Âêç
                 Object value = rs.getObject(i);
                 row.put(columnName, value);
             }

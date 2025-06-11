@@ -1,7 +1,7 @@
 <!-- 20141022 Peggy,Slow Moving庫存保證函下載-->
 <!-- 20150114 Peggy,Show Over Lead Time Reason-->
 <!-- 20160805 by Peggy,開放樣品rfq給他區查詢-->
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.util.Base64" %>
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" %>
 <%@ page import="ComboBoxAllBean,DateBean,WorkingDateBean,ArrayComboBoxBean"%>
 <script language="JavaScript" type="text/JavaScript">
 function setSubmit(URL)
@@ -178,7 +178,8 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 12px }
 <!--=================================-->
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
 <%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
+	<%@ page import="java.util.*" %>
+	<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
 <!--jsp:useBean id="poolBean" scope="application" class="PoolBean"/-->
 <jsp:useBean id="comboBoxAllBean" scope="page" class="ComboBoxAllBean"/>
 <jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
@@ -280,6 +281,7 @@ if (organizationId==null || organizationId.equals("")) { organizationId="44"; }
 if (spanning==null || spanning.equals("")) spanning = "TRUE";
 if (listMode==null) listMode = "TRUE";
 int iDetailRowCount = 0;
+boolean isSpecialUsers  = Arrays.asList(new String[]{"JASON","EDWARD_CHIEN","JANICE","TIM.LEE"}).contains(UserName);
 
 // 因關聯 訂單主檔及明細檔,故需呼叫SET Client Information Procedure
 String clientID = "";
@@ -518,7 +520,14 @@ else
 	}
 
 	//權限檢查,add by Peggy 20190402
-	if (UserRoles.indexOf("admin")<0 && UserRoles.indexOf("MPC_User")<0 && UserRoles.indexOf("MPC_003")<0 && UserRoles.indexOf("Sale")>=0 && UserRoles.indexOf("SMCUser")<0 && !UserName.equals("JUDY_CHO")  && !UserName.equals("PERRY.JUAN"))
+	if (UserRoles.indexOf("admin")<0 &&
+		UserRoles.indexOf("MPC_User")<0 &&
+		UserRoles.indexOf("MPC_003")<0 &&
+		UserRoles.indexOf("Sale")>=0 &&
+		UserRoles.indexOf("SMCUser")<0 &&
+		!UserName.equals("JUDY_CHO") && !UserName.equals("PERRY.JUAN") ||
+		isSpecialUsers
+	)
 	{
 		//sWhere+=" and (exists (select 1 from oraddman.tsrecperson x where x.USERNAME='"+UserName+"' and x.tssaleareano=b.SALES_AREA_NO)  or  b.SALES_AREA_NO='020')";   //其他區也需要看樣本區交期,add by Peggy 20190426
 		sWhere+=" AND b.SALES_AREA_NO IN ( SELECT  DISTINCT x.tssaleareano from oraddman.tsrecperson x where (x.USERNAME='"+UserName+"' or x.tssaleareano='020'))";
@@ -798,29 +807,34 @@ if (listMode==null || listMode.equals("TRUE"))
 		<td width="40%">
 <%		 
 	try
-    {   
+    {
 		Statement statement=con.createStatement();
-        ResultSet rs=null;	
-		String sql = "select distinct SALES_AREA_NO,SALES_AREA_NO||'('||SALES_AREA_NAME||')' from ORADDMAN.TSSALES_AREA ";
-		sWhere = "where SALES_AREA_NO > 0 ";
-		//if (UserRoles=="admin" || UserRoles.equals("admin") || UserRoles=="audit" || UserRoles.equals("audit")) 
-		if (UserRoles.equals("admin") || UserRoles.equals("audit") || UserRoles.indexOf("MPC_User")>=0 || UserRoles.indexOf("MPC_003")>=0) 
-		{ 
-			// 若為管理員,可開立任何一區詢問單
-		}  
-		else 
-		{  
-			//sWhere = sWhere + "and SALES_AREA_NO='"+userActCenterNo+"' ";
-			//modify by Peggy 20110628
-			//sWhere += " and SALES_AREA_NO in (select tssaleareano from oraddman.tsrecperson "+
-			//          " where (USERID='"+UserName+"' or USERNAME='"+UserName+"'))";
-			sWhere += " and (SALES_AREA_NO in (select tssaleareano from oraddman.tsrecperson "+
-			          " where (USERID='"+UserName+"' or USERNAME='"+UserName+"')) or SALES_AREA_NO='020')"; //其他區也需要看樣本區交期,add by Peggy 20190426
-		}  // 否則,就只能開立所屬區域單
-		sWhere += " ORDER BY SALES_AREA_NO";
-		sql = sql + sWhere;
-		//out.println(sql);
-        rs=statement.executeQuery(sql);		           
+		StringBuilder sqlBuilder = new StringBuilder();
+		sqlBuilder.append("SELECT DISTINCT SALES_AREA_NO, ")
+				.append("SALES_AREA_NO || '(' || SALES_AREA_NAME || ')' ")
+				.append("FROM ORADDMAN.TSSALES_AREA ")
+				.append("WHERE SALES_AREA_NO > 0 ");
+
+		boolean isAdmin = "admin".equals(UserRoles) || "audit".equals(UserRoles) ||
+				UserRoles.contains("MPC_User") || UserRoles.contains("MPC_003");
+
+		// 只有不是 admin/audit 時才加入條件
+		if (!isAdmin || isSpecialUsers) {
+			sqlBuilder.append("AND (SALES_AREA_NO IN (")
+					.append("SELECT TSSALEAREANO FROM ORADDMAN.TSRECPERSON ")
+					.append("WHERE USERID = ? OR USERNAME = ?) ")
+					.append("OR SALES_AREA_NO = '020') ");
+		}
+
+		sqlBuilder.append("ORDER BY SALES_AREA_NO");
+		PreparedStatement pstmt = con.prepareStatement(sqlBuilder.toString());
+
+		if (!isAdmin || isSpecialUsers) {
+			pstmt.setString(1, userID);
+			pstmt.setString(2, UserName);
+		}
+
+		ResultSet rs = pstmt.executeQuery();
 		comboBoxAllBean.setRs(rs);
 		if (salesAreaNo==null)
 		{ 

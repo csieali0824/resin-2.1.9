@@ -8,21 +8,21 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-//import javax.servlet.annotation.WebServlet; // ²¾°£ @WebServlet
+//import javax.servlet.annotation.WebServlet; // ç§»é™¤ @WebServlet
 
-//@WebServlet("/TscSalesPriceServlet")  // ±N URL ¼Ò¦¡²¾¦Ü¦¹³B (¦pªG¨Ï¥Î Servlet 3.0+)
+//@WebServlet("/TscSalesPriceServlet")  // å°‡ URL æ¨¡å¼ç§»è‡³æ­¤è™• (å¦‚æœä½¿ç”¨ Servlet 3.0+)
 public class TscSalesPriceServlet extends HttpServlet {
 
-    private static final String DB_URL = "jdbc:oracle:thin:@10.0.1.173:1528:crp1"; // ±zªº¸ê®Æ®w URL
-    private static final String DB_USER = "APPS";   // ±zªº¸ê®Æ®w¨Ï¥ÎªÌ¦WºÙ
-    private static final String DB_PASSWORD = "TSCApps12";  // ±zªº¸ê®Æ®w±K½X
+    private static final String DB_URL = "jdbc:oracle:thin:@10.0.1.173:1528:crp1"; // æ‚¨çš„è³‡æ–™åº« URL
+    private static final String DB_USER = "APPS";   // æ‚¨çš„è³‡æ–™åº«ä½¿ç”¨è€…åç¨±
+    private static final String DB_PASSWORD = "TSCApps12";  // æ‚¨çš„è³‡æ–™åº«å¯†ç¢¼
 
     @Override
     public void init() throws ServletException {
         try {
-            Class.forName("oracle.jdbc.driver.OracleDriver"); // ©Î±zªº¸ê®Æ®wÅX°Êµ{¦¡
+            Class.forName("oracle.jdbc.driver.OracleDriver"); // æˆ–æ‚¨çš„è³‡æ–™åº«é©…å‹•ç¨‹å¼
         } catch (ClassNotFoundException e) {
-            throw new ServletException("µLªk¸ü¤J¸ê®Æ®wÅX°Êµ{¦¡", e);
+            throw new ServletException("ç„¡æ³•è¼‰å…¥è³‡æ–™åº«é©…å‹•ç¨‹å¼", e);
         }
     }
 
@@ -36,19 +36,19 @@ public class TscSalesPriceServlet extends HttpServlet {
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-            // ©I¥s TscSalesPrice ªº¤èªk¨Ó²£¥Í Excel
+            // å‘¼å« TscSalesPrice çš„æ–¹æ³•ä¾†ç”¢ç”Ÿ Excel
             TscSalesPrice tscSalesPrice = new TscSalesPrice();
-            tscSalesPrice.downloadTscSalesPrice(conn, response, request.getParameter("item")); // ¶Ç»¼ item ¤Ş¼Æ
+            tscSalesPrice.downloadTscSalesPrice(conn, response, request.getParameter("item")); // å‚³é item å¼•æ•¸
         } catch (SQLException e) {
-            throw new ServletException("¸ê®Æ®w¿ù»~", e);
+            throw new ServletException("è³‡æ–™åº«éŒ¯èª¤", e);
         } catch (Exception e) {
-            throw new ServletException("²£¥Í Excel ÀÉ®×®Éµo¥Í¿ù»~", e);
+            throw new ServletException("ç”¢ç”Ÿ Excel æª”æ¡ˆæ™‚ç™¼ç”ŸéŒ¯èª¤", e);
         } finally {
             if (conn != null) {
                 try {
                     conn.close();
                 } catch (SQLException e) {
-                    e.printStackTrace(); // °O¿ı©Î³B²z¦¹²§±`
+                    e.printStackTrace(); // è¨˜éŒ„æˆ–è™•ç†æ­¤ç•°å¸¸
                 }
             }
         }

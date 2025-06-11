@@ -2,7 +2,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mysql.jdbc.StringUtils;
 import jxl.*;
-import jxl.read.biff.BiffException;
 import modelN.DetailColumn;
 import modelN.ErrorMessage;
 import modelN.ExcelColumn;
@@ -11,12 +10,12 @@ import modelN.dto.DetailDto;
 import modelN.dto.ModelNDto;
 
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static modelN.SalesArea.TSCTDA;
 import static modelN.SalesArea.TSCTDISTY;
@@ -229,18 +228,18 @@ public class ModelNTest {
 
     public static void mainJson(String[] args) throws JsonProcessingException {
         Map<String, String> map = new LinkedHashMap<>();
-        map.put("002", "(002)¥b¾ÉÅé·~°È³¡-¤W®üÄ¬¦{¦a°Ï");
-        map.put("004", "(004)¥b¾ÉÅé·~°È³¡-Áú°ê°Ï");
-        map.put("005", "(005)¥b¾ÉÅé·~°È³¡-¥xÆW°Ï(DA)");
-        map.put("006", "(006)¥b¾ÉÅé·~°È³¡-¥xÆW°Ï(Disty)");
-        map.put("008", "(008)¥b¾ÉÅé¨Æ·~³¡-¬ü°ê°Ï");
-        map.put("009", "(009)¥b¾ÉÅé¨Æ·~³¡-R.O.W.");
+        map.put("002", "(002)åŠå°é«”æ¥­å‹™éƒ¨-ä¸Šæµ·è˜‡å·åœ°å€");
+        map.put("004", "(004)åŠå°é«”æ¥­å‹™éƒ¨-éŸ“åœ‹å€");
+        map.put("005", "(005)åŠå°é«”æ¥­å‹™éƒ¨-å°ç£å€(DA)");
+        map.put("006", "(006)åŠå°é«”æ¥­å‹™éƒ¨-å°ç£å€(Disty)");
+        map.put("008", "(008)åŠå°é«”äº‹æ¥­éƒ¨-ç¾åœ‹å€");
+        map.put("009", "(009)åŠå°é«”äº‹æ¥­éƒ¨-R.O.W.");
         List<Map<String, String>> jsonList = new ArrayList<>();
 
-        // ¥[¤J¹w³]¿ï¶µ
+        // åŠ å…¥é è¨­é¸é …
         Map<String, String> defaultOption = new HashMap<>();
         defaultOption.put("value", "All");
-        defaultOption.put("text", "½Ğ¿ï¾Ü");
+        defaultOption.put("text", "è«‹é¸æ“‡");
         jsonList.add(defaultOption);
 
         for (Map.Entry<String, String> entry : map.entrySet()) {
@@ -250,7 +249,7 @@ public class ModelNTest {
             jsonList.add(item);
         }
 
-        // Âà´«¬° JSON
+        // è½‰æ›ç‚º JSON
         ObjectMapper objectMapper = new ObjectMapper();
         String json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(jsonList);
         System.out.println("json=" + json);
@@ -404,7 +403,7 @@ public class ModelNTest {
         pstmt.close();
         rs.close();
 
-        // ¤À²Õ¦sÀx¨ì Map
+        // åˆ†çµ„å­˜å„²åˆ° Map
         Map groupedData = new HashMap();
         DetailDto dto = new DetailDto();
         HashMap map = new LinkedHashMap();
@@ -420,11 +419,11 @@ public class ModelNTest {
             }
             String customerNumber = dto.getCustomerNo();
 //            System.out.println("customerNumber="+customerNumber);
-//            // ¦pªG Map ¤¤¨S¦³¸Ó Customer Number¡A«hªì©l¤Æ
+//            // å¦‚æœ Map ä¸­æ²’æœ‰è©² Customer Numberï¼Œå‰‡åˆå§‹åŒ–
             if (!groupedData.containsKey(customerNumber)) {
                 groupedData.put(customerNumber, new ArrayList());
             }
-//            // ²K¥[¼Æ¾Ú¨ì¹ïÀ³ªº¤À²Õ
+//            // æ·»åŠ æ•¸æ“šåˆ°å°æ‡‰çš„åˆ†çµ„
             List group = (List) groupedData.get(customerNumber);
             group.add(dto);
             group.add(map);
@@ -516,44 +515,48 @@ public class ModelNTest {
         return maxCol;
     }
 
-    // ÀË¬d¬O§_¬°ªÅ¦æ
+    // æª¢æŸ¥æ˜¯å¦ç‚ºç©ºè¡Œ
     public static boolean isEmptyRow(Sheet sheet, int rowIndex) {
         int colCount = sheet.getColumns();
         for (int colIndex = 0; colIndex < colCount; colIndex++) {
             String content = sheet.getCell(colIndex, rowIndex).getContents().trim();
             if (!content.isEmpty()) {
-                return false; // ¥u­n¦³¤@­ÓÀx¦s®æ¦³¤º®e¡A´N¤£¬OªÅ¦æ
+                return false; // åªè¦æœ‰ä¸€å€‹å„²å­˜æ ¼æœ‰å…§å®¹ï¼Œå°±ä¸æ˜¯ç©ºè¡Œ
             }
         }
         return true;
     }
 
+    static SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+//    static StringBuilder errorMessage = new StringBuilder();
     public static void main(String[] args) throws Exception {
         CallableStatement cs1 = conn.prepareCall(
                 "{call mo_global.set_policy_context('S',?)}");
-        cs1.setString(1, "41");  // ¨ú·~°È­ûÁõÄİParOrgID
+        cs1.setString(1, "41");  // å–æ¥­å‹™å“¡éš¸å±¬ParOrgID
         cs1.execute();
         cs1.close();
 //        Connection con = ConnUtils.getConnectionCRP1();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 //        String uploadFilePath = "D:/D4-019.xls";
 //        String uploadFilePath = "C:\\Users\\mars.wang\\Desktop\\sales-upload\\D4-019_20241212.xls";
+//        StringBuilder errorMessage = new StringBuilder();
         try {
-            String uploadFilePath = "C:\\Users\\mars.wang\\Desktop\\modelN_Excel\\ModelN_RFQ-TEST.xls";
+            String uploadFilePath = "C:\\Users\\mars.wang\\Desktop\\modelN_Excel\\RFQ 2.xls";
 //            String uploadFilePath = "C:\\Users\\mars.wang\\Desktop\\modelN_Excel\\RFQ-TSCTDA-33452.xls";
             InputStream is = new FileInputStream(uploadFilePath);
             Workbook wb = Workbook.getWorkbook(is);
             Sheet sheet = wb.getSheet(0);
             for (int rowIndex = 1, rowCount = sheet.getRows(); rowIndex < rowCount; rowIndex++) {
                 if (isEmptyRow(sheet, rowIndex)) {
-                    System.out.println("¸õ¹L²Ä " + rowIndex + " ¦æ¡]ªÅ¥Õ¡^");
-                    continue; // ©¿²¤ªÅ¥Õ¦æ
+                    System.out.println("è·³éç¬¬ " + rowIndex + " è¡Œï¼ˆç©ºç™½ï¼‰");
+                    continue; // å¿½ç•¥ç©ºç™½è¡Œ
                 }
 
                 modelNDto = new ModelNDto();
+                List<String> errorMsgList = new LinkedList<>();
                 for (int colIndex = 0, colCount = sheet.getColumns(); colIndex < colCount; colIndex++) {
                     Cell rowCell = sheet.getCell(colIndex, rowIndex);
-                    String content = rowCell.getContents().trim(); // ¨ú±oÀx¦s®æ¤º®e
+                    String content = rowCell.getContents().trim(); // å–å¾—å„²å­˜æ ¼å…§å®¹
                     String columnName = sheet.getCell(colIndex, 0).getContents().trim();
                     switch (ExcelColumn.settingExcelColumn(columnName, colIndex)) {
                         case CustomerNumber:
@@ -589,18 +592,18 @@ public class ModelNTest {
                         case Qty:
                             String qty = "";
                             if (rowCell instanceof NumberCell) {
-                                qty = "" + ((NumberCell) rowCell).getValue(); // ª½±µ¨ú¼Æ­È
+                                qty = "" + ((NumberCell) rowCell).getValue(); // ç›´æ¥å–æ•¸å€¼
                             } else {
-                                qty = content; // ¤å¦r«¬Äæ¦ì
+                                qty = content; // æ–‡å­—å‹æ¬„ä½
                             }
                             modelNDto.setQty(qty);
                             break;
                         case SellingPrice:
                             String sellingPrice = "";
                             if (rowCell instanceof NumberCell) {
-                                sellingPrice = "" + ((NumberCell) rowCell).getValue(); // ª½±µ¨ú¼Æ­È
+                                sellingPrice = "" + ((NumberCell) rowCell).getValue(); // ç›´æ¥å–æ•¸å€¼
                             } else {
-                                sellingPrice = content; // ¤å¦r«¬Äæ¦ì
+                                sellingPrice = content; // æ–‡å­—å‹æ¬„ä½
                             }
                             modelNDto.setSellingPrice(sellingPrice);
                             break;
@@ -611,6 +614,7 @@ public class ModelNTest {
                                     crd = sdf.format(((DateCell) rowCell).getDate());
                                 } else {
                                     crd = content.replace("-", "");
+                                    crd = sdf.format(((DateCell) rowCell).getDate());
                                     if (crd.length() < 8) {
                                         throw new Exception(ErrorMessage.CRD_LENGTH_LESS_8.getMessage());
                                     }
@@ -618,31 +622,58 @@ public class ModelNTest {
                             } catch (Exception e) {
                                 if (StringUtils.isNullOrEmpty(crd)) {
                                     throw new Exception(ErrorMessage.CRD_REQUEST.getMessage());
+                                } else {
+                                    errorMsgList.add(ErrorMessage.DATE_FORMATTER_ERROR.getMessageFormat(columnName.concat(":" + crd)));
+//                                    errorMessage.append("Xxxxxxxxxxxxxxxxxxx");
+//                                    throw new Exception(ErrorMessage.DATE_FORMATTER_ERROR.getMessageFormat(crd));
                                 }
                             }
                             modelNDto.setCrd(crd);
                             break;
                         case SSD:
-                            String ssd = rowCell.getContents().trim();
+                            String ssd = content;
                             try {
                                 if (rowCell.getType() == CellType.DATE) {
                                     ssd = sdf.format(((DateCell) rowCell).getDate());
                                 } else {
                                     ssd = content.replace("-", "");
+                                    ssd = sdf.format(((DateCell) rowCell).getDate());
                                     if (ssd.length() < 8) {
                                         throw new Exception(ErrorMessage.SSD_LENGTH_LESS_8.getMessage());
                                     }
                                 }
                             } catch (Exception e) {
-                                ssd = "";
+                                if (StringUtils.isNullOrEmpty(ssd)) {
+                                    throw new Exception(ErrorMessage.SSD_REQUEST.getMessage());
+                                } else {
+                                    errorMsgList.add(ErrorMessage.DATE_FORMATTER_ERROR.getMessageFormat(columnName.concat(":" + ssd)));
+                                }
                             }
                             modelNDto.setSsd(ssd);
                             break;
                         case ShippingMethod:
-                            modelNDto.setShippingMethod(content);
+                            String shippingMethod = content;
+                            if (!StringUtils.isNullOrEmpty(shippingMethod)) {
+                                boolean isFound = findShippingMethod(shippingMethod);
+                                if (!isFound) {
+                                    errorMsgList.add(ErrorMessage.SHIPPING_METHOD_NOT_FOUND.getMessageFormat(columnName.concat(":" + shippingMethod)));
+//                                    errorMessage.append(ErrorMessage.SHIPPING_METHOD_NOT_FOUND.getMessageFormat(shippingMethod));
+//                                    throw new Exception(ErrorMessage.SHIPPING_METHOD_NOT_FOUND.getMessageFormat(shippingMethod));
+                                }
+                            }
+                            modelNDto.setShippingMethod(shippingMethod);
                             break;
                         case FOB:
-                            modelNDto.setFob(content);
+                            String fob = content;
+                            if (!StringUtils.isNullOrEmpty(fob)) {
+                                boolean isFound = findFobIncoterm(fob);
+                                if (!isFound) {
+                                    errorMsgList.add(ErrorMessage.FOB_INCOTERM_NOT_FOUND.getMessageFormat(columnName.concat(":" + fob)));
+//                                    errorMessage.append("yyyyyyyy");
+//                                    throw new Exception(ErrorMessage.FOB_INCOTERM_NOT_FOUND.getMessageFormat(fob));
+                                }
+                            }
+                            modelNDto.setFob(fob);
                             break;
                         case Remarks:
                             modelNDto.setRemarks(content);
@@ -673,18 +704,69 @@ public class ModelNTest {
                             break;
                         default:
                             break;
-//                        throw new Exception("²Ä" + (j + 1) + "Äæªº¦WºÙ¿ù»~:" + columnName);
+//                        throw new Exception("ç¬¬" + (j + 1) + "æ¬„çš„åç¨±éŒ¯èª¤:" + columnName);
                     }
+
                     map.put(rowIndex, modelNDto);
                 }
 //            System.out.println(""+i+"----------------------------------------------");
+                if (!errorMsgList.isEmpty()) {
+                    String errorException = String.join(";\t", errorMsgList);
+                    throw new Exception(errorException);
+                }
             }
             readExcelContent();
             wb.close();
-        } catch (IOException | BiffException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+    private static boolean findShippingMethod(String shippingMethod) throws SQLException {
+        String[] carriers = {"FEDEX", "FEDEX GD"};
+        String inClause = Arrays.stream(carriers)
+                .map(s -> "'" + s.replace("'", "''") + "'") // åŒ…æˆ 'xxx'ï¼Œä¸¦è™•ç†å–®å¼•è™Ÿè½‰ç¾©
+                .collect(Collectors.joining(","));
+
+        String sql = "SELECT 1 FROM fnd_lookup_values lv \n" +
+                "WHERE language = 'US' \n" +
+                "AND view_application_id = 3 \n" +
+                "AND lookup_type = 'SHIP_METHOD' AND security_group_id = 0 AND ENABLED_FLAG='Y'\n" +
+                "AND MEANING NOT IN(" + inClause + ") \n" +
+                "AND MEANING = '" + shippingMethod + "' \n" +
+                "AND (end_date_active IS NULL OR end_date_active > SYSDATE)\n" +
+                "union\n" +
+                "select 1 from ASO_I_SHIPPING_METHODS_V a\n" +
+                "where SHIPPING_METHOD NOT IN(" + inClause + ")\n" +
+                "and SHIPPING_METHOD = '" + shippingMethod + "' or SHIPPING_METHOD_CODE = '" + shippingMethod + "'";
+        Statement statement = conn.createStatement();
+        ResultSet rs = statement.executeQuery(sql);
+        return rs.next();
+    }
+
+    private static boolean findFobIncoterm(String fob) throws SQLException {
+        String sql = "SELECT 1 FROM OE_FOBS_ACTIVE_V \n" +
+                "WHERE fob = '" + fob + "' ";
+        Statement statement = conn.createStatement();
+        ResultSet rs = statement.executeQuery(sql);
+        return rs.next();
+    }
+
+//    private static boolean dateFormatValidator(String crd) {
+//        // å®šç¾©å…©ç¨®æ ¼å¼
+//        System.out.println("xxx="+crd);
+//        DateTimeFormatter formatterYMD = DateTimeFormatter.ofPattern("yyyyMMdd");
+//        try {
+//            LocalDate date = LocalDate.parse(crd, formatterYMD);
+//            System.out.println("æ ¼å¼ç‚º yyyyMMdd: " + date);
+//            return true;
+//        } catch (DateTimeParseException e1) {
+//            e1.printStackTrace();
+//            System.out.println("e="+e1.getMessage());
+//            System.err.println("éŒ¯èª¤ï¼šæ—¥æœŸæ ¼å¼ä¸æ­£ç¢ºï¼Œæ‡‰ç‚º yyyyMMdd æˆ– MMddyyyy");
+//            return false;
+//        }
+//    }
 
     private static void checkCustIdAndName() throws SQLException {
         Statement statement = conn.createStatement();
@@ -700,8 +782,8 @@ public class ModelNTest {
 //            salesCheckMechanism().getTest();
 //            System.out.println("getTransportation="+modelNDto.getTransportation());
         } else {
-            modelNDto.setErrorMsg(appendErrMsg("ERP¬dµL«È¤á¸ê°T"));
-//            this.errList.add("ERP¬dµL«È¤á¸ê°T");
+            modelNDto.setErrorMsg(appendErrMsg("ERPæŸ¥ç„¡å®¢æˆ¶è³‡è¨Š"));
+//            this.errList.add("ERPæŸ¥ç„¡å®¢æˆ¶è³‡è¨Š");
         }
     }
 
@@ -716,7 +798,7 @@ public class ModelNTest {
 
     public static void checkSalesErpInfo() throws SQLException {
         String sql = " select case when upper(a.site_use_code)='BILL_TO' then 1 when upper(a.site_use_code)='SHIP_TO'" +
-                " then 2 else 3 end as segno,\n" + //fob ¥ı¨Ìship_to¬°¥D,­YµL,¦A¨Ìdeliver_to¬°¥D,modify by Peggy 20121026
+                " then 2 else 3 end as segno,\n" + //fob å…ˆä¾ship_toç‚ºä¸»,è‹¥ç„¡,å†ä¾deliver_toç‚ºä¸»,modify by Peggy 20121026
                 " a.SITE_USE_CODE, a.PRIMARY_FLAG, a.SITE_USE_ID, loc.COUNTRY, loc.ADDRESS1,\n" +
                 " a.PAYMENT_TERM_ID, a.PAYMENT_TERM_NAME || '('||c.DESCRIPTION ||')' PAYMENT_TERM_NAME, a.SHIP_VIA, a" +
                 ".FOB_POINT, a.PRICE_LIST_ID, c.DESCRIPTION,nvl(d.CURRENCY_CODE,'') CURRENCY_CODE\n" +
@@ -767,7 +849,7 @@ public class ModelNTest {
 
     public static void setShippingFobOrderTypeInfo() throws SQLException {
         String sql = " select case when upper(a.site_use_code)='BILL_TO' then 1 when upper(a.site_use_code)='SHIP_TO'" +
-                " then 2 else 3 end as segno," + //fob ¥ı¨Ìship_to¬°¥D,­YµL,¦A¨Ìdeliver_to¬°¥D,modify by Peggy 20121026
+                " then 2 else 3 end as segno," + //fob å…ˆä¾ship_toç‚ºä¸»,è‹¥ç„¡,å†ä¾deliver_toç‚ºä¸»,modify by Peggy 20121026
                 " a.SITE_USE_CODE, a.PRIMARY_FLAG, a.SITE_USE_ID, loc.COUNTRY, loc.ADDRESS1," +
                 " a.PAYMENT_TERM_ID, a.PAYMENT_TERM_NAME || '('||c.DESCRIPTION ||')' PAYMENT_TERM_NAME, a.SHIP_VIA, a" +
                 ".FOB_POINT, a.PRICE_LIST_ID, c.DESCRIPTION,nvl(d.CURRENCY_CODE,'') CURRENCY_CODE" +
@@ -850,7 +932,7 @@ public class ModelNTest {
     }
 
     private static void checkCustomerPo() throws SQLException {
-        //ÀË¬dcustomerNo ©M customerPo ¬O§_¦³«İ³B²z¸ê®Æ
+        //æª¢æŸ¥customerNo å’Œ customerPo æ˜¯å¦æœ‰å¾…è™•ç†è³‡æ–™
         if (modelNDto.getCustNo() != null && !modelNDto.getCustNo().equals("")
                 && modelNDto.getCustPo() != null && !modelNDto.getCustPo().equals("")) {
             Statement statement = conn.createStatement();
@@ -858,8 +940,8 @@ public class ModelNTest {
                     "select 1 from oraddman.TSC_RFQ_UPLOAD_TEMP where SALESAREANO = '" + salesNo + "' \n" + "" +
                             " and CUSTOMER_NO ='" + modelNDto.getCustNo() + "' AND CUSTOMER_PO='" + modelNDto.getCustPo() + "' AND CREATE_FLAG='N'");
             if (rs.next()) {
-                modelNDto.setErrorMsg(appendErrMsg("Pending Detail¤w¦s¦b¦¹«È¤á+PO¸ê®Æ!"));
-//                this.errList.add("Pending Detail¤w¦s¦b¦¹«È¤á+PO¸ê®Æ!");
+                modelNDto.setErrorMsg(appendErrMsg("Pending Detailå·²å­˜åœ¨æ­¤å®¢æˆ¶+POè³‡æ–™!"));
+//                this.errList.add("Pending Detailå·²å­˜åœ¨æ­¤å®¢æˆ¶+POè³‡æ–™!");
             }
             rs.close();
             statement.close();
@@ -874,33 +956,33 @@ public class ModelNTest {
             rowIndex = ((Integer) entry.getKey()).intValue();
             modelNDto = (ModelNDto) entry.getValue();
 
-            // ÀË¬dExcel«È¤á¥N¸¹
+            // æª¢æŸ¥Excelå®¢æˆ¶ä»£è™Ÿ
             if (modelNDto.getCustNo() == null || modelNDto.getCustNo().equals("")) {
-                modelNDto.setErrorMsg(appendErrMsg("«È¤á¥N¸¹¤£¥iªÅ¥Õ"));
-//                this.errList.add("«È¤á¥N¸¹¤£¥iªÅ¥Õ");
+                modelNDto.setErrorMsg(appendErrMsg("å®¢æˆ¶ä»£è™Ÿä¸å¯ç©ºç™½"));
+//                this.errList.add("å®¢æˆ¶ä»£è™Ÿä¸å¯ç©ºç™½");
             } else {
-                // ¨ú±otable CustId ©M CustName
+                // å–å¾—table CustId å’Œ CustName
                 checkCustIdAndName();
             }
-            // ÀË¬dExcel CustomerPO
+            // æª¢æŸ¥Excel CustomerPO
             if (modelNDto.getCustPo() == null || modelNDto.getCustPo().equals("")) {
-                modelNDto.setErrorMsg(appendErrMsg("Customer PO¤£¥iªÅ¥Õ"));
-//                this.errList.add("Customer PO¤£¥iªÅ¥Õ");
+                modelNDto.setErrorMsg(appendErrMsg("Customer POä¸å¯ç©ºç™½"));
+//                this.errList.add("Customer POä¸å¯ç©ºç™½");
             } else {
-                // ÀË¬dtable«È¤á+customer po¬O§_¦³«İ³B²z¸ê®Æ
+                // æª¢æŸ¥tableå®¢æˆ¶+customer poæ˜¯å¦æœ‰å¾…è™•ç†è³‡æ–™
                 checkCustomerPo();
             }
-            // ÀË¬dExcel¥x¥b®Æ¸¹/«~¦W¤Î«È¤á®Æ¸¹
+            // æª¢æŸ¥Excelå°åŠæ–™è™Ÿ/å“ååŠå®¢æˆ¶æ–™è™Ÿ
             if ((modelNDto.getTscItemDesc() == null || modelNDto.getTscItemDesc().equals(""))
                     && (modelNDto.getCustItem() == null || modelNDto.getCustItem().equals(""))
                     && (modelNDto.getTscItem() == null || modelNDto.getTscItem().equals(""))) {
                 modelNDto.setTscItem("");
                 modelNDto.setTscItemDesc("");
                 modelNDto.setCustItem("");
-                modelNDto.setErrorMsg(appendErrMsg("¥x¥b®Æ¸¹/«~¦W¤Î«È¤á®Æ¸¹¤£¥i¦P®ÉªÅ¥Õ"));
-//                errList.add("¥x¥b®Æ¸¹¤Î«È¤á®Æ¸¹¤£¥i¦P®ÉªÅ¥Õ");
+                modelNDto.setErrorMsg(appendErrMsg("å°åŠæ–™è™Ÿ/å“ååŠå®¢æˆ¶æ–™è™Ÿä¸å¯åŒæ™‚ç©ºç™½"));
+//                errList.add("å°åŠæ–™è™ŸåŠå®¢æˆ¶æ–™è™Ÿä¸å¯åŒæ™‚ç©ºç™½");
             } else {
-                // ÀË¬dtable¥x¥b®Æ¸¹¤Î«È¤á®Æ¸¹¦bERP¬O§_¦s¦b
+                // æª¢æŸ¥tableå°åŠæ–™è™ŸåŠå®¢æˆ¶æ–™è™Ÿåœ¨ERPæ˜¯å¦å­˜åœ¨
                 checkTscAndCustPartNo();
             }
             checkCorrectOrderTypeId();
@@ -911,14 +993,14 @@ public class ModelNTest {
             checkFOB();
             checkRemarks();
             setDefaultLineType();
-            // ÀË¬dExcel End Customer Number
+            // æª¢æŸ¥Excel End Customer Number
             if (!modelNDto.getEndCustNo().equals("")) {
-                //end customer number ¤£¥i»P customer number ¬Û¦P
+                //end customer number ä¸å¯èˆ‡ customer number ç›¸åŒ
                 if (modelNDto.getEndCustNo().equals(modelNDto.getCustNo())) {
-                    modelNDto.setErrorMsg(appendErrMsg("End Customer Number¤£¥i»PCustomer Number¬Û¦P"));
-//                    this.errList.add("End Customer Number¤£¥i»PCustomer Number¬Û¦P");
+                    modelNDto.setErrorMsg(appendErrMsg("End Customer Numberä¸å¯èˆ‡Customer Numberç›¸åŒ"));
+//                    this.errList.add("End Customer Numberä¸å¯èˆ‡Customer Numberç›¸åŒ");
                 } else {
-                    // ÀË¬d«È¤áID¦bERP¬O§_¦s¦b
+                    // æª¢æŸ¥å®¢æˆ¶IDåœ¨ERPæ˜¯å¦å­˜åœ¨
                     checkEndCustNumber();
                 }
             } else if (!endCustName.equals("")) {
@@ -973,8 +1055,8 @@ public class ModelNTest {
         if (modelNDto.getSellingPrice() == null || modelNDto.getSellingPrice().equals("")) {
             if (sellingPrice_Q == null || sellingPrice_Q.equals("")) {
                 modelNDto.setSellingPrice("");
-//                modelNDto.setErrorMsg(appendErrMsg("Selling Price¤£¥iªÅ"));
-                errList.add("Selling Price¤£¥iªÅ");
+//                modelNDto.setErrorMsg(appendErrMsg("Selling Priceä¸å¯ç©º"));
+                errList.add("Selling Priceä¸å¯ç©º");
                 modelNDto.setErrorList(errList);
             } else {
                 modelNDto.setSellingPrice(sellingPrice_Q);
@@ -983,10 +1065,10 @@ public class ModelNTest {
             try {
                 double priceNumber = Double.parseDouble(modelNDto.getSellingPrice().replace(",", ""));
                 if (priceNumber <= 0) {
-//                    modelNDto.setErrorMsg(appendErrMsg("Selling Price¥²¶·¤j©ó¹s"));
-                    errList.add("Selling Price¥²¶·¤j©ó¹s");
+//                    modelNDto.setErrorMsg(appendErrMsg("Selling Priceå¿…é ˆå¤§æ–¼é›¶"));
+                    errList.add("Selling Priceå¿…é ˆå¤§æ–¼é›¶");
                     modelNDto.setErrorList(errList);
-                } else if (!modelNDto.getQuoteNumber().equals("")) {  // excel QuoteNumber ¤£¬°ªÅ®É¤~·|°µÀË¬d
+                } else if (!modelNDto.getQuoteNumber().equals("")) {  // excel QuoteNumber ä¸ç‚ºç©ºæ™‚æ‰æœƒåšæª¢æŸ¥
                     if (!modelNDto.getSellingPrice().equals(sellingPrice_Q)) {
                         System.out.println("getSellingPrice=" + modelNDto.getSellingPrice());
                         System.out.println("sellingPrice_Q=" + sellingPrice_Q);
@@ -997,74 +1079,74 @@ public class ModelNTest {
                     modelNDto.setSellingPrice((new DecimalFormat("###,##0.000##")).format(priceNumber));
                 }
             } catch (Exception e) {
-//                modelNDto.setErrorMsg(appendErrMsg("³æ»ù®æ¦¡¿ù»~"));
-                errList.add("³æ»ù®æ¦¡¿ù»~");
+//                modelNDto.setErrorMsg(appendErrMsg("å–®åƒ¹æ ¼å¼éŒ¯èª¤"));
+                errList.add("å–®åƒ¹æ ¼å¼éŒ¯èª¤");
                 modelNDto.setErrorList(errList);
             }
         }
     }
 
 
-    //ÀË¬d³æ»ù
+    //æª¢æŸ¥å–®åƒ¹
 //    private static void checkSellingPrice() {
 //        if (modelNDto.getSellingPrice() == null || modelNDto.getSellingPrice().equals("")) {
 //            modelNDto.setSellingPrice("");
-////            modelNDto.setErrorMsg(appendErrMsg("Selling Price¤£¥iªÅ"));
-//            errList.add("Selling Price¤£¥iªÅ¥Õ");
+////            modelNDto.setErrorMsg(appendErrMsg("Selling Priceä¸å¯ç©º"));
+//            errList.add("Selling Priceä¸å¯ç©ºç™½");
 //        } else {
 //            try {
 //                double priceNumber = Double.parseDouble(modelNDto.getSellingPrice().replace(",", ""));
 //                if (priceNumber <= 0) {
-////                    modelNDto.setErrorMsg(appendErrMsg("Selling Price¥²¶·¤j©ó¹s"));
-//                    errList.add("Selling Price¥²¶·¤j©ó¹s");
+////                    modelNDto.setErrorMsg(appendErrMsg("Selling Priceå¿…é ˆå¤§æ–¼é›¶"));
+//                    errList.add("Selling Priceå¿…é ˆå¤§æ–¼é›¶");
 //                } else {
 //                    modelNDto.setSellingPrice((new DecimalFormat("###,##0.000##")).format(priceNumber));
 //                }
 //            } catch (Exception e) {
-////                modelNDto.setErrorMsg(appendErrMsg("³æ»ù®æ¦¡¿ù»~"));
-//                errList.add("³æ»ù®æ¦¡¿ù»~");
+////                modelNDto.setErrorMsg(appendErrMsg("å–®åƒ¹æ ¼å¼éŒ¯èª¤"));
+//                errList.add("å–®åƒ¹æ ¼å¼éŒ¯èª¤");
 //            }
 //        }
 //    }
 
-    //ÀË¬d¥æ³f¤é´Á(SSD or Request Date)
+    //æª¢æŸ¥äº¤è²¨æ—¥æœŸ(SSD or Request Date)
     private static void checkSSD() {
         if (modelNDto.getSsd() == null || modelNDto.getSsd().equals("")) {
             modelNDto.setSsd("&nbsp;");
-            modelNDto.setErrorMsg(appendErrMsg("SSD¤£¥iªÅ¥Õ"));
-//            this.errList.add("Request Date¤£¥iªÅ¥Õ");
+            modelNDto.setErrorMsg(appendErrMsg("SSDä¸å¯ç©ºç™½"));
+//            this.errList.add("Request Dateä¸å¯ç©ºç™½");
         }
 //        else if (Long.parseLong(modelNDto.getSsd()) <= Long.parseLong(checkDate)) {
-//            modelNDto.setErrorMsg(appendErrMsg("SSD" + modelNDto.getSsd() + "¥²¶·¤j©ó" + checkDate));
-////            this.errList.add("Request Date" + modelNDto.getSsd() + "¥²¶·¤j©ó" + checkDate);
+//            modelNDto.setErrorMsg(appendErrMsg("SSD" + modelNDto.getSsd() + "å¿…é ˆå¤§æ–¼" + checkDate));
+////            this.errList.add("Request Date" + modelNDto.getSsd() + "å¿…é ˆå¤§æ–¼" + checkDate);
 //        }
     }
 
-    //ÀË¬d¥X³f¤è¦¡
+    //æª¢æŸ¥å‡ºè²¨æ–¹å¼
     private static void checkShippingMethod() {
         if (modelNDto.getShippingMethod() == null || modelNDto.getShippingMethod().equals("")) {
             modelNDto.setSsd("");
-            modelNDto.setErrorMsg(appendErrMsg("¥X³f¤è¦¡¤£¥iªÅ¥Õ"));
+            modelNDto.setErrorMsg(appendErrMsg("å‡ºè²¨æ–¹å¼ä¸å¯ç©ºç™½"));
         }
     }
 
-    // ÀË¬dFOB
+    // æª¢æŸ¥FOB
     private static void checkFOB() {
         if (modelNDto.getFob() == null || modelNDto.getFob().equals("")) {
             modelNDto.setFob("&nbsp;");
-            modelNDto.setErrorMsg(appendErrMsg("FOB¤£¥iªÅ¥Õ"));
-//            this.errList.add("FOB¤£¥iªÅ¥Õ");
+            modelNDto.setErrorMsg(appendErrMsg("FOBä¸å¯ç©ºç™½"));
+//            this.errList.add("FOBä¸å¯ç©ºç™½");
         }
     }
 
-    // ÀË¬dREMARKS
+    // æª¢æŸ¥REMARKS
     private static void checkRemarks() {
         if (modelNDto.getRemarks() == null || modelNDto.getRemarks().equals("")) {
             modelNDto.setRemarks("");
         }
     }
 
-    // ÀË¬d End Customer Number
+    // æª¢æŸ¥ End Customer Number
     private static void checkEndCustNumber() throws SQLException {
         String sql = "	SELECT distinct c.customer_id,c.customer_number,c.CUSTOMER_NAME_PHONETIC \n" +
                 " from APPS.HZ_CUST_ACCT_SITES_ALL a, AR.HZ_CUST_SITE_USES_ALL b, APPS.AR_CUSTOMERS c \n" +
@@ -1090,33 +1172,33 @@ public class ModelNTest {
             }
         }
         if (modelNDto.getEndCustNamePhonetic().equals("")) {
-            modelNDto.setErrorMsg(appendErrMsg("End Customer ID¤£¦s¦bERP"));
-//            this.errList.add("End Customer ID¤£¦s¦bERP");
+            modelNDto.setErrorMsg(appendErrMsg("End Customer IDä¸å­˜åœ¨ERP"));
+//            this.errList.add("End Customer IDä¸å­˜åœ¨ERP");
         }
     }
 
     private static void checkQty() {
         if (modelNDto.getQty() == null || modelNDto.getQty().equals("")) {
             modelNDto.setQty("");
-            modelNDto.setErrorMsg(appendErrMsg("¼Æ¶q¤£¥iªÅ¥Õ"));
-//            errList.add("¼Æ¶q¤£¥iªÅ¥Õ");
+            modelNDto.setErrorMsg(appendErrMsg("æ•¸é‡ä¸å¯ç©ºç™½"));
+//            errList.add("æ•¸é‡ä¸å¯ç©ºç™½");
         } else {
             try {
                 double qtyNumber = Double.parseDouble(modelNDto.getQty().replace(",", ""));
                 if (qtyNumber <= 0) {
-//                    modelNDto.setErrorMsg(appendErrMsg("¼Æ¶q¥²¶·¤j©ó¹s"));
-//                    errList.add("¼Æ¶q¥²¶·¤j©ó¹s");
+//                    modelNDto.setErrorMsg(appendErrMsg("æ•¸é‡å¿…é ˆå¤§æ–¼é›¶"));
+//                    errList.add("æ•¸é‡å¿…é ˆå¤§æ–¼é›¶");
                 } else {
                     modelNDto.setQty((new DecimalFormat("#######0.0##")).format(qtyNumber));
                 }
             } catch (Exception e) {
-                modelNDto.setErrorMsg(appendErrMsg("¼Æ¶q®æ¦¡¿ù»~"));
-//                errList.add("¼Æ¶q®æ¦¡¿ù»~");
+                modelNDto.setErrorMsg(appendErrMsg("æ•¸é‡æ ¼å¼éŒ¯èª¤"));
+//                errList.add("æ•¸é‡æ ¼å¼éŒ¯èª¤");
             }
         }
     }
 
-    //ÀË¬d­q³æÃş«¬¬O§_¥¿½T
+    //æª¢æŸ¥è¨‚å–®é¡å‹æ˜¯å¦æ­£ç¢º
     private static void checkCorrectOrderTypeId() throws SQLException {
         String sql = "SELECT  a.otype_id FROM oraddman.tsarea_ordercls a,oraddman.tsprod_ordertype b \n" +
                 " where b.order_num=a.order_num and a.order_num='" + modelNDto.getOrderType() + "' and a.sarea_no ='" + salesNo + "'" +
@@ -1125,7 +1207,7 @@ public class ModelNTest {
         Statement statement = conn.createStatement();
         ResultSet rs = statement.executeQuery(sql);
         if (!rs.next()) {
-            modelNDto.setErrorMsg(appendErrMsg("­q³æÃş«¬¿ù»~"));
+            modelNDto.setErrorMsg(appendErrMsg("è¨‚å–®é¡å‹éŒ¯èª¤"));
         } else {
             modelNDto.setOrderTypeId(rs.getString(1));
         }
@@ -1141,7 +1223,7 @@ public class ModelNTest {
                     ",NVL(msi.ATTRIBUTE3,'N/A') ATTRIBUTE3\n" +
                     ",tsc_rfq_create_erp_odr_pkg.tsc_get_order_type (msi.inventory_item_id) AS ORDER_TYPE  \n" +
                     ",tsc_get_item_desc_nopacking(msi.organization_id,msi.inventory_item_id) itemnopacking \n" + //
-                    // quote ¨Ï¥Î
+                    // quote ä½¿ç”¨
                     "from oe_items_v a,inv.mtl_system_items_b msi \n" +
                     ",APPS.MTL_ITEM_CATEGORIES_V c \n" +
                     "where a.SOLD_TO_ORG_ID = '" + modelNDto.getCustId() + "' \n" +
@@ -1178,7 +1260,7 @@ public class ModelNTest {
             rs.close();
             statement.close();
             if (recordCount == 0) {
-                modelNDto.setErrorMsg(appendErrMsg("«È¤á®Æ¸¹¦bERP¤£¦s¦b!"));
+                modelNDto.setErrorMsg(appendErrMsg("å®¢æˆ¶æ–™è™Ÿåœ¨ERPä¸å­˜åœ¨!"));
             }
         } else if ((modelNDto.getTscItemDesc() != null && !modelNDto.getTscItemDesc().equals(""))
                 || (modelNDto.getTscItem() != null && !modelNDto.getTscItem().equals(""))) {
@@ -1186,7 +1268,7 @@ public class ModelNTest {
                     "NVL (msi.attribute3, 'N/A') attribute3,\n" +
                     "tsc_rfq_create_erp_odr_pkg.tsc_get_order_type (msi.inventory_item_id)  AS order_type\n" +
                     ",tsc_get_item_desc_nopacking(msi.organization_id,msi.inventory_item_id) itemnopacking \n" + //
-                    // quote ¨Ï¥Î
+                    // quote ä½¿ç”¨
                     "FROM  inv.mtl_system_items_b msi, apps.mtl_item_categories_v c\n" +
                     "WHERE msi.inventory_item_id = c.inventory_item_id\n" +
                     "AND msi.organization_id = c.organization_id\n" +
@@ -1216,11 +1298,11 @@ public class ModelNTest {
             rs.close();
             statement.close();
             if (recordCount == 0) {
-                modelNDto.setErrorMsg(appendErrMsg("¥x¥b®Æ¸¹¦bERP¤£¦s¦b!"));
+                modelNDto.setErrorMsg(appendErrMsg("å°åŠæ–™è™Ÿåœ¨ERPä¸å­˜åœ¨!"));
             }
         }
         if (recordCount > 1) {
-            modelNDto.setErrorMsg(appendErrMsg("¹ïÀ³ªº¥x¥b®Æ¸¹¶W¹L¤@­Ó¥H¤W,½Ğ¿ï¾Ü¥¿½T¥x¥b®Æ¸¹!"));
+            modelNDto.setErrorMsg(appendErrMsg("å°æ‡‰çš„å°åŠæ–™è™Ÿè¶…éä¸€å€‹ä»¥ä¸Š,è«‹é¸æ“‡æ­£ç¢ºå°åŠæ–™è™Ÿ!"));
         } else {
             if (!modelNDto.getQuoteNumber().equals("") && !modelNDto.getTscItemDesc().equals("")) {
                 Statement stmt = conn.createStatement();

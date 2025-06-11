@@ -51,13 +51,13 @@ public class DateCodeRuleSetting extends HttpServlet {
         return this.uploadFilePath;
     }
 
-    // ÀË¬d¬O§_¬°ªÅªºrow
+    // æª¢æŸ¥æ˜¯å¦ç‚ºç©ºçš„row
     private static boolean isEmptyRow(Sheet sheet, int rowIndex) {
         int colCount = sheet.getColumns();
         for (int colIndex = 0; colIndex < colCount; colIndex++) {
             String content = sheet.getCell(colIndex, rowIndex).getContents().trim();
             if (!content.isEmpty()) {
-                return false; // ¥u­n¦³¤@­ÓÀx¦s®æ¦³¤º®e¡A´N¤£¬OªÅªºrow
+                return false; // åªè¦æœ‰ä¸€å€‹å„²å­˜æ ¼æœ‰å…§å®¹ï¼Œå°±ä¸æ˜¯ç©ºçš„row
             }
         }
         return true;
@@ -75,7 +75,7 @@ public class DateCodeRuleSetting extends HttpServlet {
             }
             for (int colIndex = 0, colCount = sheet.getColumns(); colIndex < colCount; colIndex++) {
                 Cell rowCell = sheet.getCell(colIndex, rowIndex);
-                String content = rowCell.getContents().trim(); // ¨ú±oÀx¦s®æ¤º®e
+                String content = rowCell.getContents().trim(); // å–å¾—å„²å­˜æ ¼å…§å®¹
                 String columnName = sheet.getCell(colIndex, 0).getContents().trim();
                 switch (columnName) {
                     case "Device":
@@ -111,7 +111,7 @@ public class DateCodeRuleSetting extends HttpServlet {
 
     private void createOrDeleteDir(File dir) {
         if (dir.isDirectory()) {
-            // §R°£¤lÀÉ®×©Î¤l¥Ø¿ı
+            // åˆªé™¤å­æª”æ¡ˆæˆ–å­ç›®éŒ„
             File[] files = dir.listFiles();
             if (files != null) {
                 for (File file : files) {
@@ -121,7 +121,7 @@ public class DateCodeRuleSetting extends HttpServlet {
                 }
             }
         } else {
-            // «Ø¥ß¤lÀÉ®×©Î¤l¥Ø¿ı
+            // å»ºç«‹å­æª”æ¡ˆæˆ–å­ç›®éŒ„
             dir.mkdirs();
         }
     }
@@ -131,7 +131,7 @@ public class DateCodeRuleSetting extends HttpServlet {
     }
 
     public void updateTspmdItemDateCode(Connection conn, String itemDesc, String dateCodeRule, String dateCodeExample) throws SQLException {
-            tspmdItemDateCode().updateTspmdItemDateCode(conn, itemDesc, dateCodeRule, dateCodeExample);
+        tspmdItemDateCode().updateTspmdItemDateCode(conn, itemDesc, dateCodeRule, dateCodeExample);
     }
 
     public String convertToString(HttpServletRequest request) throws IOException {
@@ -161,7 +161,7 @@ public class DateCodeRuleSetting extends HttpServlet {
     }
 
     public Map<String, Map<String, String>> jsonToMap(String json) throws JsonProcessingException {
-        // ¸ÑªR JSON ¨ÃÂà´«¬° Map
+        // è§£æ JSON ä¸¦è½‰æ›ç‚º Map
         ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.readValue(json, new TypeReference<Map<String, Map<String, String>>>() {});
     }
@@ -176,7 +176,7 @@ public class DateCodeRuleSetting extends HttpServlet {
             jsonArray.add(obj);
         }
 
-        // Âà´«¬° JSON ¦r¦ê
+        // è½‰æ›ç‚º JSON å­—ä¸²
         String jsonData = new Gson().toJson(jsonArray);
         return jsonData;
     }

@@ -3,13 +3,13 @@ import java.sql.ResultSetMetaData;
 
 public class QryAllChkBoxEditFBean implements java.io.Serializable
 {
-  ResultSet rs=null;
-  private String fieldName="";  
-  private String rsString="";
-  private String searchKey="";
-  private String pageURL="";
-  private int scrollRowNumber=0; //³]©w­¶­±¸ê®Æ¼Æ
-  int rowNumber=0;//³]©w²{¦b¸ê®Æ¦C´å¼Ğ¦b²Ä´Xµ§
+    ResultSet rs=null;
+    private String fieldName="";
+    private String rsString="";
+    private String searchKey="";
+    private String pageURL="";
+    private int scrollRowNumber=0; //è¨­å®šé é¢è³‡æ–™æ•¸
+    int rowNumber=0;//è¨­å®šç¾åœ¨è³‡æ–™åˆ—æ¸¸æ¨™åœ¨ç¬¬å¹¾ç­†
 
   public QryAllChkBoxEditFBean() {}
 
@@ -18,66 +18,66 @@ public class QryAllChkBoxEditFBean implements java.io.Serializable
   return scrollRowNumber;
  }
 
- public void setScrollRowNumber(int scrollRowNumber)  
+ public void setScrollRowNumber(int scrollRowNumber)
   {
    this.scrollRowNumber=scrollRowNumber;
-  } //end of setScrollRowNumber 
+  } //end of setScrollRowNumber
 
  public int getRowNumber()
  {
   return rowNumber;
- } 
- 
- public void setRowNumber(int rowNumber)  
+ }
+
+ public void setRowNumber(int rowNumber)
   {
    this.rowNumber=rowNumber;
-  } //end of setRowNumber 
+  } //end of setRowNumber
 
  public String getPageURL()
  {
   return pageURL;
  }
 
- public void setPageURL(String pageURL)  
+ public void setPageURL(String pageURL)
   {
    this.pageURL=pageURL;
-  } //end of setpageURL 
+  } //end of setpageURL
 
- public String getSearchKey()
- {
-  return searchKey;
- }
+    public String getSearchKey()
+    {
+        return searchKey;
+    }
 
- public void setSearchKey(String searchKey)  
+ public void setSearchKey(String searchKey)
   {
    this.searchKey=searchKey;
-  } //end of setSearchKey 
+  } //end of setSearchKey
 
  public String getFieldName()
  {
   return fieldName;
  }
 
- public void setFieldName(String fieldName)  
+ public void setFieldName(String fieldName)
   {
    this.fieldName=fieldName;
-  } //end of setFieldName 
+  } //end of setFieldName
 
  public void setRs(ResultSet rs)
  {
   this.rs=rs;
  }
- 
+
   public ResultSet getRs()
   {
     return rs;
   }//enf of ResultSet
- 
-  public void setRsString(String rsStr)  
+
+  public void setRsString(String rsStr)
   {
    rsString=new String(rsStr);
   } //end of setRsString
-   
+
   public String getRsString() throws Exception
   {
     ResultSetMetaData md=rs.getMetaData();
@@ -87,24 +87,24 @@ public class QryAllChkBoxEditFBean implements java.io.Serializable
     String bgColor="E3E3CF";
     //String fontSize="3";
 
-    sb.append("<TABLE>");      
+    sb.append("<TABLE>");
     sb.append("<TR>");
     sb.append("<TH BGCOLOR=BLACK><FONT COLOR=WHITE>&nbsp;</TH><TH BGCOLOR=BLACK><FONT COLOR=WHITE>&nbsp;</TH>");
     for (int i=1;i<=colCount;i++)
     {
       colLabel[i]=md.getColumnLabel(i);
       sb.append("<TH BGCOLOR=BLACK><FONT COLOR=WHITE SIZE=1>"+colLabel[i]+"</TH>");
-    } //end of for 
+    } //end of for
     sb.append("</TR>");
-    
+
     int j=0;
     while (rs.next())
     {
-      if (j==scrollRowNumber && scrollRowNumber>0) break;      
-      j++;      
-      sb.append("<TR BGCOLOR="+bgColor+"><TD><INPUT TYPE=checkbox NAME="+fieldName+" VALUE="+(String)rs.getString(searchKey)+"></TD>");      
+      if (j==scrollRowNumber && scrollRowNumber>0) break;
+      j++;
+      sb.append("<TR BGCOLOR="+bgColor+"><TD><INPUT TYPE=checkbox NAME="+fieldName+" VALUE="+(String)rs.getString(searchKey)+"></TD>");
       sb.append("<TD><A HREF='"+pageURL+"?"+searchKey+"="+rs.getString(searchKey)+"'><img src='../image/docicon.gif'></A></TD>");
-      
+
       if (colCount>=7)
       {
         for (int i=1;i<=colCount;i++)
@@ -114,31 +114,31 @@ public class QryAllChkBoxEditFBean implements java.io.Serializable
          } //end of for
          sb.append("</TR>");
 
-        if (bgColor.equals("E3E3CF")) //¶¡¹j¦CÃC¦â§ï´«
-        {
-          bgColor="E3E3B0";
-        } else {
-          bgColor="E3E3CF";
-        }
-      }
-      else
-      {
-      	for (int i=1;i<=colCount;i++)
-        {
-          String s=(String)rs.getString(i);
-          sb.append("<TD><FONT SIZE=3>"+s+"</TD>");
-         } //end of for
-         sb.append("</TR>");
+                if (bgColor.equals("E3E3CF")) //é–“éš”åˆ—é¡è‰²æ”¹æ›
+                {
+                    bgColor="E3E3B0";
+                } else {
+                    bgColor="E3E3CF";
+                }
+            }
+            else
+            {
+                for (int i=1;i<=colCount;i++)
+                {
+                    String s=(String)rs.getString(i);
+                    sb.append("<TD><FONT SIZE=3>"+s+"</TD>");
+                } //end of for
+                sb.append("</TR>");
 
-        if (bgColor.equals("E3E3CF")) //¶¡¹j¦CÃC¦â§ï´«
-        {
-          bgColor="E3E3B0";
-        } else {
-          bgColor="E3E3CF";
-        }
-      }
-    } //end of while
-    sb.append("</TABLE>");
-    return sb.toString();               
-  } // end of getRsString
+                if (bgColor.equals("E3E3CF")) //é–“éš”åˆ—é¡è‰²æ”¹æ›
+                {
+                    bgColor="E3E3B0";
+                } else {
+                    bgColor="E3E3CF";
+                }
+            }
+        } //end of while
+        sb.append("</TABLE>");
+        return sb.toString();
+    } // end of getRsString
 } //end of this class

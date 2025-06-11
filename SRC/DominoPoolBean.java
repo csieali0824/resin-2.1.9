@@ -1,206 +1,208 @@
-import java.io.Serializable;
-import lotus.domino.*;
+import lotus.domino.DateTime;
+import lotus.domino.NotesException;
+import lotus.domino.NotesFactory;
+import lotus.domino.Session;
 
 public class DominoPoolBean implements java.io.Serializable
 {
- private String serverName=null;
- private String secondaryServerName=null;
- private String userName;
- private String password; 
- private String commonUserName;
- private String platform;
- private String version; 
- private String token=null;  
- private Session s=null;
+    private String serverName=null;
+    private String secondaryServerName=null;
+    private String userName;
+    private String password;
+    private String commonUserName;
+    private String platform;
+    private String version;
+    private String token=null;
+    private Session s=null;
 
 
- public DominoPoolBean() 
- {} 
- 
- public Session getSession() 
- {
-    return s;
- } 
+    public DominoPoolBean()
+    {}
 
- public boolean isSessionAlive()//ßP¬_Notes/Domino™∫session¨Oß_§¥¶s¶b
- {
-   try
-   {
-      DateTime dt=s.createDateTime("2000/01/01"); //2000/01/01∂»•N™Ì¥˙∏’•Œ§È¥¡,µL®‰•L∑N∏q              	 
-      return true;     
-   }
-   catch (Exception e)
-   {      	
-      e.printStackTrace();        
-      return false; 	
-   }    	 	    
- } 
+    public Session getSession()
+    {
+        return s;
+    }
 
- public String getServerName() 
- {
-    return serverName;
- }  
- 
- public String getSecondaryServerName() 
- {
-    return secondaryServerName;
- } 
-
- public String getCommonUserName() 
- {
-   return commonUserName;
- }
-
- public String getUserName() 
- {
-   return userName;
- }
-
- public String getPlatform() 
- {
-   return platform;
- }
-
- public String getVersion() 
- {
-  return version;
- } 
- 
- public String getToken() 
- {
-  return token;
- } 
- 
- public void setToken(String para) 
- {
-  this.token = para;
- } 
-
- public void setServerName(String para)  
- {
-   this.serverName = para;
- }
- 
- public void setSecondaryServerName(String para)  
- {
-   this.secondaryServerName = para;
- }
-
- public void setUserName(String para) 
- {
-   this.userName = para;
- }
-
- public void setPassword(String para) 
- {
-   this.password = para;
- }
-
- public void setCommonUserName(String para) 
- {
-   this.commonUserName = para;
- }
-
- public void setPlatform(String para) 
- {
-   this.platform = para;
- }
-
- public void setVersion(String para) 
- {
-  this.version = para;
- } 
-
- public synchronized Session connectDomino()  
- {                
-      try 
-      {	
-        this.s = NotesFactory.createSession(serverName,userName,password);                  
-        setPlatform(s.getPlatform());
-        setVersion(s.getNotesVersion());
-        setCommonUserName(s.getCommonUserName());        
-        setToken(s.getSessionToken());//≠Y¶≥≥]©wSSO,´h®˙±o®‰TOKEN         
-        System.out.println(this.commonUserName+" has been authenticated succefully by Domino");                          
-       } catch (NotesException n) {
-       	    if (n.id==4457 || n.id==4062) //4457 means Connection Error,4062 means CORBA Error Connection Refuse
-       	    {
-       	      try 
-              {		
-       	        this.s = NotesFactory.createSession(secondaryServerName,userName,password);                  
-                setPlatform(s.getPlatform());
-                setVersion(s.getNotesVersion());
-                setCommonUserName(s.getCommonUserName());
-                setToken(s.getSessionToken());//≠Y¶≥≥]©wSSO,´h®˙±o®‰TOKEN        	      	
-       	        System.err.println("Alert!!The Primary Domino Server is error , now switching to secondary!");
-       	        System.out.println(this.commonUserName+" has been authenticated succefully by Domino");
-       	      } catch (NotesException nn) {
-       	      	 System.out.println("Error: " + nn.id+",can't login to Domino Sever for Authentication by <"+userName+">");
-       	      } catch (Exception ee) {
-                    ee.printStackTrace();
-              }  	  
-       	    } else {	
-               System.out.println("Error: " + n.id+",can't login to Domino Sever for Authentication by <"+userName+">");
-            }   
-              //n.printStackTrace();
-       } catch (Exception e) {
+    public boolean isSessionAlive()//Âà§Êñ∑Notes/DominoÁöÑsessionÊòØÂê¶‰ªçÂ≠òÂú®
+    {
+        try
+        {
+            DateTime dt=s.createDateTime("2000/01/01"); //2000/01/01ÂÉÖ‰ª£Ë°®Ê∏¨Ë©¶Áî®Êó•Êúü,ÁÑ°ÂÖ∂‰ªñÊÑèÁæ©
+            return true;
+        }
+        catch (Exception e)
+        {
             e.printStackTrace();
-       }          
-        
-  return s;
- } //end of connectDomino
- 
- public synchronized Session connectDominoByToken(String checkToken)  
- {                 
-      try 
-      {	
-        this.s = NotesFactory.createSession(serverName,checkToken);                  
-        setPlatform(s.getPlatform());
-        setVersion(s.getNotesVersion());
-        setCommonUserName(s.getCommonUserName()); 
-        setToken(s.getSessionToken());//≠Y¶≥≥]©wSSO,´h®˙±o®‰TOKEN               
-        //setToken(null);
-        System.out.println(getCommonUserName()+" has been login through SSO");                                
-       } catch (NotesException n) {
-       	    if (n.id==4457 || n.id==4062) //4457 means Connection Error,4062 means CORBA Error Connection Refuse
-       	    {
-       	      try 
-              {	 	
-       	         this.s = NotesFactory.createSession(secondaryServerName,checkToken);                  
-                 setPlatform(s.getPlatform());
-                 setVersion(s.getNotesVersion());
-                 setCommonUserName(s.getCommonUserName());         
-                 setToken(s.getSessionToken());//≠Y¶≥≥]©wSSO,´h®˙±o®‰TOKEN                     
-                 //setToken(null);	      	
-       	         System.err.println("Alert!!The Primary Domino Server is error , now switching to secondary!");
-       	         System.out.println(getCommonUserName()+" has been login through SSO");
-       	      } catch (NotesException nn) {
-       	      	 System.out.println("Error: " + nn.id+",can't login to Domino Sever for Authentication by <"+getCommonUserName()+">");
-       	      } catch (Exception ee) {
+            return false;
+        }
+    }
+
+    public String getServerName()
+    {
+        return serverName;
+    }
+
+    public String getSecondaryServerName()
+    {
+        return secondaryServerName;
+    }
+
+    public String getCommonUserName()
+    {
+        return commonUserName;
+    }
+
+    public String getUserName()
+    {
+        return userName;
+    }
+
+    public String getPlatform()
+    {
+        return platform;
+    }
+
+    public String getVersion()
+    {
+        return version;
+    }
+
+    public String getToken()
+    {
+        return token;
+    }
+
+    public void setToken(String para)
+    {
+        this.token = para;
+    }
+
+    public void setServerName(String para)
+    {
+        this.serverName = para;
+    }
+
+    public void setSecondaryServerName(String para)
+    {
+        this.secondaryServerName = para;
+    }
+
+    public void setUserName(String para)
+    {
+        this.userName = para;
+    }
+
+    public void setPassword(String para)
+    {
+        this.password = para;
+    }
+
+    public void setCommonUserName(String para)
+    {
+        this.commonUserName = para;
+    }
+
+    public void setPlatform(String para)
+    {
+        this.platform = para;
+    }
+
+    public void setVersion(String para)
+    {
+        this.version = para;
+    }
+
+    public synchronized Session connectDomino()
+    {
+        try
+        {
+            this.s = NotesFactory.createSession(serverName,userName,password);
+            setPlatform(s.getPlatform());
+            setVersion(s.getNotesVersion());
+            setCommonUserName(s.getCommonUserName());
+            setToken(s.getSessionToken());//Ëã•ÊúâË®≠ÂÆöSSO,ÂâáÂèñÂæóÂÖ∂TOKEN
+            System.out.println(this.commonUserName+" has been authenticated succefully by Domino");
+        } catch (NotesException n) {
+            if (n.id==4457 || n.id==4062) //4457 means Connection Error,4062 means CORBA Error Connection Refuse
+            {
+                try
+                {
+                    this.s = NotesFactory.createSession(secondaryServerName,userName,password);
+                    setPlatform(s.getPlatform());
+                    setVersion(s.getNotesVersion());
+                    setCommonUserName(s.getCommonUserName());
+                    setToken(s.getSessionToken());//Ëã•ÊúâË®≠ÂÆöSSO,ÂâáÂèñÂæóÂÖ∂TOKEN
+                    System.err.println("Alert!!The Primary Domino Server is error , now switching to secondary!");
+                    System.out.println(this.commonUserName+" has been authenticated succefully by Domino");
+                } catch (NotesException nn) {
+                    System.out.println("Error: " + nn.id+",can't login to Domino Sever for Authentication by <"+userName+">");
+                } catch (Exception ee) {
                     ee.printStackTrace();
-              }     
-       	    } else {	
-              System.out.println("Error: " + n.id+",can't login to Domino Sever for Authentication by <"+getCommonUserName()+">");
-            }  
+                }
+            } else {
+                System.out.println("Error: " + n.id+",can't login to Domino Sever for Authentication by <"+userName+">");
+            }
             //n.printStackTrace();
-       } catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
-       }          
-        
-  return s;
- } //end of connectDomino by token 
- 
- 
- public void setDisconnect() 
- {      
-   try 
-   {	
-      this.s.recycle();//§§¬_ªPnotes§ßsession ;                         
-   } catch (NotesException n) {
+        }
+
+        return s;
+    } //end of connectDomino
+
+    public synchronized Session connectDominoByToken(String checkToken)
+    {
+        try
+        {
+            this.s = NotesFactory.createSession(serverName,checkToken);
+            setPlatform(s.getPlatform());
+            setVersion(s.getNotesVersion());
+            setCommonUserName(s.getCommonUserName());
+            setToken(s.getSessionToken());//Ëã•ÊúâË®≠ÂÆöSSO,ÂâáÂèñÂæóÂÖ∂TOKEN
+            //setToken(null);
+            System.out.println(getCommonUserName()+" has been login through SSO");
+        } catch (NotesException n) {
+            if (n.id==4457 || n.id==4062) //4457 means Connection Error,4062 means CORBA Error Connection Refuse
+            {
+                try
+                {
+                    this.s = NotesFactory.createSession(secondaryServerName,checkToken);
+                    setPlatform(s.getPlatform());
+                    setVersion(s.getNotesVersion());
+                    setCommonUserName(s.getCommonUserName());
+                    setToken(s.getSessionToken());//Ëã•ÊúâË®≠ÂÆöSSO,ÂâáÂèñÂæóÂÖ∂TOKEN
+                    //setToken(null);
+                    System.err.println("Alert!!The Primary Domino Server is error , now switching to secondary!");
+                    System.out.println(getCommonUserName()+" has been login through SSO");
+                } catch (NotesException nn) {
+                    System.out.println("Error: " + nn.id+",can't login to Domino Sever for Authentication by <"+getCommonUserName()+">");
+                } catch (Exception ee) {
+                    ee.printStackTrace();
+                }
+            } else {
+                System.out.println("Error: " + n.id+",can't login to Domino Sever for Authentication by <"+getCommonUserName()+">");
+            }
+            //n.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return s;
+    } //end of connectDomino by token
+
+
+    public void setDisconnect()
+    {
+        try
+        {
+            this.s.recycle();//‰∏≠Êñ∑Ëàánotes‰πãsession ;
+        } catch (NotesException n) {
             System.out.println("Error: " + n.id+",can't disconnect with Domino Sever!!!");
             //n.printStackTrace();
-   } catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
-   }        
- } //end of setDisconnect
+        }
+    } //end of setDisconnect
 } //end of this Bean
 

@@ -26,7 +26,7 @@ public class ExcelWriter {
                 false, UnderlineStyle.NO_UNDERLINE, jxl.format.Colour.RED);
 
 
-        //­^¤å¤º¤å¤ô¥­««ª½¸m¤¤-²ÊÅé-®æ½u-©³¦â¦Ç
+        //è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®ä¸­-ç²—é«”-æ ¼ç·š-åº•è‰²ç°
         WritableCellFormat centerBLB = new WritableCellFormat(font_bold);
         centerBLB.setBackground(Colour.GRAY_25);
         centerBLB.setAlignment(Alignment.CENTRE);
@@ -35,7 +35,7 @@ public class ExcelWriter {
         centerBLB.setWrap(false);
         styles.put("centerBLB", centerBLB);
 
-        //­^¤å¤º¤å¤ô¥­««ª½¸m¥ª-®æ½u-©³¦â¶À
+        //è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®å·¦-æ ¼ç·š-åº•è‰²é»ƒ
         WritableCellFormat leftBLY = new WritableCellFormat(font_bold);
         leftBLY.setBackground(Colour.YELLOW);
         leftBLY.setAlignment(Alignment.LEFT);
@@ -44,7 +44,7 @@ public class ExcelWriter {
         leftBLY.setWrap(false);
         styles.put("leftBLY", leftBLY);
 
-        //­^¤å¤º¤å¤ô¥­««ª½¸m¤¤-¥¿±`-®æ½u
+        //è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®ä¸­-æ­£å¸¸-æ ¼ç·š
         WritableCellFormat centerL = new WritableCellFormat(font_nobold);
         centerL.setAlignment(Alignment.CENTRE);
         centerL.setVerticalAlignment(VerticalAlignment.CENTRE);
@@ -52,7 +52,7 @@ public class ExcelWriter {
         centerL.setWrap(false);
         styles.put("centerL", centerL);
 
-        //­^¤å¤º¤å¤ô¥­««ª½¸m¥k-¥¿±`-®æ½u
+        //è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®å³-æ­£å¸¸-æ ¼ç·š
         WritableCellFormat rightL = new WritableCellFormat(font_nobold);
         rightL.setAlignment(Alignment.RIGHT);
         rightL.setVerticalAlignment(VerticalAlignment.CENTRE);
@@ -60,7 +60,7 @@ public class ExcelWriter {
         rightL.setWrap(false);
         styles.put("rightL", rightL);
 
-        //­^¤å¤º¤å¤ô¥­««ª½¸m¥ª-¥¿±`-®æ½u
+        //è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®å·¦-æ­£å¸¸-æ ¼ç·š
         WritableCellFormat leftL = new WritableCellFormat(font_nobold);
         leftL.setAlignment(Alignment.LEFT);
         leftL.setVerticalAlignment(VerticalAlignment.CENTRE);
@@ -68,7 +68,7 @@ public class ExcelWriter {
         leftL.setWrap(false);
         styles.put("leftL", leftL);
 
-        //­^¤å¤º¤å¤ô¥­««ª½¸m¥k-¥¿±`-®æ½u-¬õ¦r
+        //è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®å³-æ­£å¸¸-æ ¼ç·š-ç´…å­—
         WritableCellFormat leftLR = new WritableCellFormat(font_bold_red);
         leftLR.setAlignment(Alignment.LEFT);
         leftLR.setVerticalAlignment(VerticalAlignment.CENTRE);
@@ -82,7 +82,7 @@ public class ExcelWriter {
         if (text == null) return 0;
         int width = 0;
         for (char c : text.toCharArray()) {
-            width += (c >= 0x2E80 && c <= 0x9FFF) ? 2 : 1; // ¤¤¤åºâ2¼e¡A­^¤åºâ1
+            width += (c >= 0x2E80 && c <= 0x9FFF) ? 2 : 1; // ä¸­æ–‡ç®—2å¯¬ï¼Œè‹±æ–‡ç®—1
         }
         return width;
     }
@@ -97,22 +97,22 @@ public class ExcelWriter {
         WritableWorkbook wwb = Workbook.createWorkbook(outputStream);
         WritableSheet ws = wwb.createSheet("Sheet1", 0);
 
-        // ===== ¼Ë¦¡©w¸q =====
+        // ===== æ¨£å¼å®šç¾© =====
         WritableCellFormat headerFormat = new WritableCellFormat();
         headerFormat.setBackground(Colour.GRAY_25);
         headerFormat.setAlignment(Alignment.CENTRE);
         headerFormat.setBorder(jxl.format.Border.ALL, jxl.format.BorderLineStyle.THIN);
 
-        // ===== row 0: Data Date ¼ĞÃD¡]¾î¸ó A~C¡^=====
+        // ===== row 0: Data Date æ¨™é¡Œï¼ˆæ©«è·¨ A~Cï¼‰=====
         ws.addCell(new Label(0, 0, dataDateTitle, createStyles().get("leftBLY")));
         ws.mergeCells(0, 0, 2, 0);
 
-        // max content width (§t¼ĞÃD)
+        // max content width (å«æ¨™é¡Œ)
         int[] maxColumnWidths = new int[columns.size()];
         for (int i = 0; i < columns.size(); i++) {
             maxColumnWidths[i] = getDisplayWidth(columns.get(i).getTitle());
         }
-        // ===== row 1: Äæ¦ì¼ĞÃD¦C =====
+        // ===== row 1: æ¬„ä½æ¨™é¡Œåˆ— =====
         for (int col = 0; col < columns.size(); col++) {
             ExcelColumn colDef = columns.get(col);
             int titleLen = getDisplayWidth(colDef.getTitle());
@@ -120,11 +120,11 @@ public class ExcelWriter {
             Label label = new Label(col, 1, colDef.getTitle(), createStyles().get("centerBLB"));
             ws.addCell(label);
 
-            // ³]©wÄæ¼e¡]¦pªG­n¥Î³Ì¤j¤º®e°ÊºA½Õ¾ã¤]¥i¥HÂX¥R¡^
+            // è¨­å®šæ¬„å¯¬ï¼ˆå¦‚æœè¦ç”¨æœ€å¤§å…§å®¹å‹•æ…‹èª¿æ•´ä¹Ÿå¯ä»¥æ“´å……ï¼‰
 //            ws.setColumnView(col, colDef.getWidth());
         }
 
-        // ===== row 2+: ¸ê®Æ¦C =====
+        // ===== row 2+: è³‡æ–™åˆ— =====
         for (int rowIdx = 0; rowIdx < dataList.size(); rowIdx++) {
             Map<String, Object> rowData = dataList.get(rowIdx);
 //            System.out.println("rowData=" + rowData);
@@ -136,7 +136,7 @@ public class ExcelWriter {
                 Label cell = new Label(col, rowIdx + 2, text, format);
                 ws.addCell(cell);
 
-                // ­pºâ³Ì¤jÄæ¼e
+                // è¨ˆç®—æœ€å¤§æ¬„å¯¬
                 int displayWidth = getDisplayWidth(text);
                 if (displayWidth > maxColumnWidths[col]) {
                     maxColumnWidths[col] = displayWidth;
@@ -144,12 +144,12 @@ public class ExcelWriter {
             }
         }
 
-        // ³]©wÄæ¼e¡]+2°µ¶¡¶Z¡^
+        // è¨­å®šæ¬„å¯¬ï¼ˆ+2åšé–“è·ï¼‰
         for (int col = 0; col < columns.size(); col++) {
             ws.setColumnView(col, maxColumnWidths[col] + 2);
         }
 
-        // ===== ??¨ì EÄæ + ²Ä2¦C =====
+        // ===== ??åˆ° Eæ¬„ + ç¬¬2åˆ— =====
         ws.getSettings().setVerticalFreeze(2);     // Freeze Row 0 & 1
         ws.getSettings().setHorizontalFreeze(freezeCol);   // Freeze Col A~E
         wwb.write();

@@ -4,13 +4,13 @@ import lotus.domino.*;
 
 public class CorbaApp implements Runnable
 {
-        // N&A Server record -
-        // Net Address for TCPIP Port (or IP address)
+    // N&A Server record -
+    // Net Address for TCPIP Port (or IP address)
     String host      = null;
     String dbName    = null;
-    // N&A Person record ¡X Short name and/or Internet address
+    // N&A Person record â€” Short name and/or Internet address
     String userName = "";
-    // N&A Person record ¡X Internet password
+    // N&A Person record â€” Internet password
     String password = "";
 
     public CorbaApp(String argv[])
@@ -30,7 +30,7 @@ public class CorbaApp implements Runnable
         }
         if(argv.length < 2)
         {
-         System.out.println("ERROR: You must supply database filename.");
+            System.out.println("ERROR: You must supply database filename.");
             return;
         }
         CorbaApp CA = new CorbaApp(argv);
@@ -40,21 +40,21 @@ public class CorbaApp implements Runnable
 
     public void run()
     {
-    try
-    {
-     Session s = NotesFactory.createSession(host, userName, password);
-     Name serverName = s.createName(s.getServerName());
-     System.out.print("Connected to server "+serverName.getAbbreviated() + " as ");
-     System.out.println(s.getCommonUserName());
-     Database db = s.getDatabase(s.getServerName(), dbName);
-     System.out.print  ("Title of database " + db.getFilePath() + " is ");
-     System.out.println(db.getTitle());
-    }
-    catch (NotesException e)
-    {
-     System.err.println
-      (e.getClass().getName() + ": " + e.text);
-     e.printStackTrace();
-    }
+        try
+        {
+            Session s = NotesFactory.createSession(host, userName, password);
+            Name serverName = s.createName(s.getServerName());
+            System.out.print("Connected to server "+serverName.getAbbreviated() + " as ");
+            System.out.println(s.getCommonUserName());
+            Database db = s.getDatabase(s.getServerName(), dbName);
+            System.out.print  ("Title of database " + db.getFilePath() + " is ");
+            System.out.println(db.getTitle());
+        }
+        catch (NotesException e)
+        {
+            System.err.println
+                    (e.getClass().getName() + ": " + e.text);
+            e.printStackTrace();
+        }
     }
 }

@@ -18,7 +18,7 @@ public class TscRfqUploadTempImpl implements TscRfqUploadTempDao {
 
         CallableStatement cs = conn.prepareCall(
                 "{call mo_global.set_policy_context('S',?)}");
-        cs.setString(1, "41");  // ®˙∑~∞»≠˚¡ıƒ›ParOrgID
+        cs.setString(1, "41");  // ÂèñÊ•≠ÂãôÂì°Èö∏Â±¨ParOrgID
         cs.execute();
         cs.close();
     }
@@ -110,15 +110,15 @@ public class TscRfqUploadTempImpl implements TscRfqUploadTempDao {
     public void deleteTscRfqUploadTemp(Connection conn, String salesNo, String uploadBy, String customerId, String customerPo, String groupByType, String shipToOrgId) throws SQLException {
         try {
             String sql = "delete oraddman.tsc_rfq_upload_temp \n" +
-                         "where customer_id = ? \n" +
-                         "and customer_po = nvl(?, customer_po) \n " +
-                         " and nvl(ship_to_org_id,0) = nvl(?, nvl(ship_to_org_id,0)) \n" +
-                         "and upload_by = ? \n " +
-                         "and salesareano = ? ";
+                    "where customer_id = ? \n" +
+                    "and customer_po = nvl(?, customer_po) \n " +
+                    " and nvl(ship_to_org_id,0) = nvl(?, nvl(ship_to_org_id,0)) \n" +
+                    "and upload_by = ? \n " +
+                    "and salesareano = ? ";
 
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1, customerId);
-            // ¶p™G¨ObyPo™∫∏‹°A´h∂∑•d customerPo ∑Ì delete ™∫±¯•Û
+            // Â¶ÇÊûúÊòØbyPoÁöÑË©±ÔºåÂâáÈ†àÂç° customerPo Áï∂ delete ÁöÑÊ¢ù‰ª∂
             pstmt.setString(2, Arrays.asList(new String[]{"byCustNo", null, ""}).contains(groupByType) ? null : customerPo);
             pstmt.setString(3, Arrays.asList(new String[]{"byCustNo", null, ""}).contains(groupByType) ? null : shipToOrgId);
             pstmt.setString(4, uploadBy);
@@ -136,8 +136,8 @@ public class TscRfqUploadTempImpl implements TscRfqUploadTempDao {
     public void deleteAllTscRfqUploadTemp(Connection conn, String salesNo, String uploadBy) throws SQLException {
         try {
             String sql = "delete oraddman.tsc_rfq_upload_temp \n"+
-                         "where  salesareano = ? \n" +
-                         "and  upload_by = ? ";
+                    "where  salesareano = ? \n" +
+                    "and  upload_by = ? ";
 
             PreparedStatement pstmt = conn.prepareStatement(sql);
             pstmt.setString(1,salesNo);
@@ -151,7 +151,7 @@ public class TscRfqUploadTempImpl implements TscRfqUploadTempDao {
     }
 
     @Override
-    public void insertTscRfqUploadTemp(Connection conn, HashMap map, String salesNo, String userName, String rfqType, String groupByType) throws SQLException {
+    public void insertTscRfqUploadTemp(Connection conn, HashMap map, String salesNo, String userName, String rfqType, String groupByType) throws Exception {
 
         int insertRowCnt = 0;
         try {
@@ -267,6 +267,7 @@ public class TscRfqUploadTempImpl implements TscRfqUploadTempDao {
         } catch (SQLException e) {
             e.printStackTrace();
             conn.rollback();
+            throw new Exception(e.getMessage());
         }
     }
 

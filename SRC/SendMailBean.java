@@ -1,14 +1,15 @@
-// Decompiled by DJ v3.5.5.77 Copyright 2003 Atanas Neshkov  Date: 2003/12/10 §U§» 02:21:40
+// Decompiled by DJ v3.5.5.77 Copyright 2003 Atanas Neshkov  Date: 2003/12/10 ‰∏ãÂçà 02:21:40
 // Home Page : http://members.fortunecity.com/neshkov/dj.html  - Check often for new version!
 // Decompiler options: packimports(3)
 // Source File Name:   SendMailBean.java
 
-import java.io.PrintStream;
-import java.io.Serializable;
 import sun.net.smtp.SmtpClient;
 
+import java.io.PrintStream;
+import java.io.Serializable;
+
 public class SendMailBean
-    implements Serializable
+        implements Serializable
 {
 
     public SendMailBean()
