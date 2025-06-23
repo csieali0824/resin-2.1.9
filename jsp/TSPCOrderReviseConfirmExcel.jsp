@@ -1,7 +1,9 @@
 <%@ page contentType="text/html;charset=utf-8"   language="java" import="java.util.*,java.text.*,java.io.*,java.sql.*,jxl.*,jxl.Workbook.*,jxl.write.*,jxl.format.*,javax.mail.*,javax.mail.internet.*,javax.mail.Multipart.*,javax.activation.*"%>
 <%@ page import="DateBean"%>
+<%@ page import="commonUtil.mailUtil.Region" %>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="mailUtil" scope="page" class="commonUtil.mailUtil.MailUtil"/>
 <html>
 <head>
 	<title>Download Excel File</title>
@@ -995,264 +997,56 @@
 
 				if (ACTTYPE.equals("AUTO") || ACTTYPE.equals("REMINDER") || ACTTYPE.equals("ALLOVERDUE"))
 				{
-					Properties props = System.getProperties();
-					props.put("mail.transport.protocol","smtp");
-					props.put("mail.smtp.host", "mail.ts.com.tw");
-					props.put("mail.smtp.port", "25");
-
-					Session s = Session.getInstance(props, null);
-					javax.mail.internet.MimeMessage message = new javax.mail.internet.MimeMessage(s);
-					message.setSentDate(new java.util.Date());
-					message.setFrom(new javax.mail.internet.InternetAddress("prodsys@ts.com.tw"));
+					Message message = null;
 					remarks="";
-					if (request.getRequestURL().toString().toLowerCase().indexOf("tsrfq.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("rfq134.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("yewintra.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("10.0.1.134") <0 && request.getRequestURL().toString().toLowerCase().indexOf("10.0.1.135") <0) //測試環境
-					{
+					//測試環境
+					if (!request.getRequestURL().toString().toLowerCase().contains("tsrfq.") &&
+							!request.getRequestURL().toString().toLowerCase().contains("rfq134.") &&
+							!request.getRequestURL().toString().toLowerCase().contains("yewintra.") &&
+							!request.getRequestURL().toString().toLowerCase().contains("10.0.1.134") &&
+							!request.getRequestURL().toString().toLowerCase().contains("10.0.1.135")) {
 						remarks="(這是來自RFQ測試區的信件)";
-						message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("peggy_chen@ts.com.tw"));
 					}
-					else
-					{
-						if (SALES_REGION.equals("TSCE"))
-						{
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("emily.hsin@ts.com.tw"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("rachel.chen@ts.com.tw"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("zoe.wu@ts.com.tw"));
-							if (ACTTYPE.equals("ALLOVERDUE") && remarks.equals(""))
-							{
-								message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("ralf.welter@tsceu.com"));
-								message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("TSC-HQ-Reports@tsceu.com")); //add by Peggy 20231229
-							}
-							//message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("june@ts.com.tw"));
-							if (REQ_NAME.toUpperCase().equals("NONO") && ACTTYPE.equals("AUTO"))
-							{
-								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("nono.huang@ts.com.tw"));
-							}
-						}
-						else if (SALES_REGION.equals("TSCA"))
-						{
-							message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("cindy.huang@ts.com.tw"));
-							if (REQ_NAME.toUpperCase().equals("NONO") && ACTTYPE.equals("AUTO"))
-							{
-								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("nono.huang@ts.com.tw"));
-							}
-
-						}
-						else if (SALES_REGION.equals("TSCJ"))
-						{
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("bonnie.liu@ts.com.tw"));
-							//message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("june@ts.com.tw"));
-							if (REQ_NAME.toUpperCase().equals("NONO") && ACTTYPE.equals("AUTO"))
-							{
-								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("nono.huang@ts.com.tw"));
-							}
-
-						}
-						else if (SALES_REGION.equals("TSCH-HK"))
-						{
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("annie@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("demi_duan@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("fiona_chen@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("gina@mail.tew.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("jodie@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("regina_pu@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("sandy_sun@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("sophia_li@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("tina@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("tingting@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("tschk-cs001@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("tschk-cs002@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("tschk-cs003@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("tschk-cs006@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("tschk-cs007@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("tschk-cs008@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("tschk-sample@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("wendy_cai@ts-china.com.cn"));
-							//message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("xiongyu@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("winnie@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("anna_qiu@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("jason@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("kevin@ts-china.com.cn"));
-							//message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("Lauren_pei@ts-china.com.cn"));
-							//message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("peter_zheng@ts-china.com.cn"));
-							//message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("kara_tian@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("sandy@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("william_wu@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("jack_tang@ts-china.com.cn"));
-							//message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("nina_zan@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("hongmei_li@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("lisahou@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("peter_zheng@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("tschk-cs005@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("candy_pan@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("vivian_zhan@ts-china.com.cn"));
-							//message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("sansan@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("rita_zhou@ts-china.com.cn"));
-							//message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("june@ts.com.tw"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("tschk-cs004@ts-china.com.cn"));
-							if (REQ_NAME.toUpperCase().equals("NONO") && ACTTYPE.equals("AUTO"))
-							{
-								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("nono.huang@ts.com.tw"));
-							}
-
-						}
-						else if (SALES_REGION.equals("TSCC"))
-						{
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("tschk-cs002@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("tschk-cs003@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("tschk-cs006@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("tschk-cs007@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("tschk-cs008@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("joyce@ts-china.com.cn"));
-							//message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("xiongyu@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("winnie@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("annie@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("tina@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("anna_qiu@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("jason@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("kevin@ts-china.com.cn"));
-							//message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("lauren_pei@ts-china.com.cn"));
-							//message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("peter_zheng@ts-china.com.cn"));
-							//message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("kara_tian@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("demi_duan@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("sandy@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("william_wu@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("jack_tang@ts-china.com.cn"));
-							//message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("nina_zan@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("hongmei_li@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("tschk-cs002@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("lisahou@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("chris_wen@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("vivian_zhan@ts-china.com.cn"));
-							//message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("tschk-sample@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("rita_zhou@ts-china.com.cn"));
-							//message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("ccyang@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("tschk-cs004@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("tschk-cs001@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("sansan@ts-china.com.cn"));
-							//message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("june@ts.com.tw"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("daphne_zhang@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("lily_yin@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("tschk-cs004@ts-china.com.cn"));
-							if (REQ_NAME.toUpperCase().equals("NONO") && ACTTYPE.equals("AUTO"))
-							{
-								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("nono.huang@ts.com.tw"));
-							}
-
-						}
-						else if (SALES_REGION.equals("TSCC-TSCH"))
-						{
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("candy_pan@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("fiona_chen@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("jodie@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("regina_pu@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("rita_zhou@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("sandy_sun@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("sophia_li@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("tschk-cs001@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("tschk-cs002@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("tschk-cs003@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("tschk-cs005@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("tschk-cs006@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("tschk-cs007@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("tschk-cs008@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("tschk-sample@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("wendy_cai@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("coco_liu@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("anna_qiu@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("sansan@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("annie@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("jason@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("joyce@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("vivian_zhan@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("kevin@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("tina@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("winnie@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("xiongyu@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("lisahou@ts-china.com.cn"));
-							//message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("nina_zan@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("hongmei_li@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("chris_wen@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("demi_duan@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("jack_tang@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("william_wu@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("sandy@ts-china.com.cn"));
-							//message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("ccyang@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("mery_heng@ts-china.com.cn"));
-							//message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("june@ts.com.tw"));
-							message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("daphne_zhang@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("lily_yin@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("tschk-cs004@ts-china.com.cn"));
-							if (REQ_NAME.toUpperCase().equals("NONO") && ACTTYPE.equals("AUTO"))
-							{
-								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("nono.huang@ts.com.tw"));
-							}
-						}
-						else if (SALES_REGION.equals("TSCK"))
-						{
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("bonnie.liu@ts.com.tw"));
-							//message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("june@ts.com.tw"));
-							if (REQ_NAME.toUpperCase().equals("NONO") && ACTTYPE.equals("AUTO"))
-							{
-								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("nono.huang@ts.com.tw"));
-							}
-
-						}
-						else if (SALES_REGION.equals("TSCR-ROW"))
-						{
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("alvin.lin@ts.com.tw"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("priya.thakur@tscind.in"));
-							message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("lisa.chen@ts.com.tw"));
-							message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("cindy.huang@ts.com.tw"));
-							message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("bonnie.liu@ts.com.tw"));
-							if (REQ_NAME.toUpperCase().equals("NONO") && ACTTYPE.equals("AUTO"))
-							{
-								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("nono.huang@ts.com.tw"));
-							}
-
-						}
-						else if (SALES_REGION.equals("TSCT-DA"))
-						{
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("vivian.chou@ts.com.tw"));
-							message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("rika_lin@ts.com.tw"));
-							message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("olivia.hsu@ts.com.tw"));
-							message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("ashley.chen@ts.com.tw"));
-							//message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("june@ts.com.tw"));
-							if (REQ_NAME.toUpperCase().equals("NONO") && ACTTYPE.equals("AUTO"))
-							{
-								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("nono.huang@ts.com.tw"));
-							}
-
-						}
-						else if (SALES_REGION.equals("TSCT-Disty"))
-						{
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("kristin.wu@ts.com.tw"));
-							message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("sofia.liu@ts.com.tw"));
-							//message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("june@ts.com.tw"));
-							if (REQ_NAME.toUpperCase().equals("NONO") && ACTTYPE.equals("AUTO"))
-							{
-								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("nono.huang@ts.com.tw"));
-							}
-
-						}
-						else if (SALES_REGION.equals("SAMPLE"))
-						{
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("ks.foo@ts.com.tw"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("celine.yu@ts.com.tw"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("sammy.chang@ts.com.tw"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("alice.yu@ts.com.tw"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("sample@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("samplereport@ts.com.tw"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("janice.lin@ts.com.tw"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("jason.lin@ts.com.tw"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("ilanmc@ts.com.tw"));
-							if (REQ_NAME.toUpperCase().equals("NONO") && ACTTYPE.equals("AUTO"))
-							{
-								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("nono.huang@ts.com.tw"));
-							}
-
+					else {
+						switch (SALES_REGION) {
+							case "TSCE":
+								message = mailUtil.getMailAddress(con, SALES_REGION, ACTTYPE, Region.TSCE_AUTO.getRegion());
+								if (ACTTYPE.equals("ALLOVERDUE") && remarks.equals("")) {
+									message = mailUtil.getMailAddress(con, SALES_REGION, ACTTYPE, Region.TSCE_ALLOVERDUE.getRegion());
+								}
+								break;
+							case "TSCA":
+								message = mailUtil.getMailAddress(con, SALES_REGION, ACTTYPE, Region.TSCA.getRegion());
+								break;
+							case "TSCJ":
+								message = mailUtil.getMailAddress(con, SALES_REGION, ACTTYPE, Region.TSCJ.getRegion());
+								break;
+							case "TSCH-HK":
+								message = mailUtil.getMailAddress(con, "TSCH", ACTTYPE, Region.TSCH_HK.getRegion());
+								break;
+							case "TSCC":
+								message = mailUtil.getMailAddress(con, SALES_REGION, ACTTYPE, Region.TSCC.getRegion());
+								break;
+							case "TSCC-TSCH":
+								message = mailUtil.getMailAddress(con, "TSCH", ACTTYPE, Region.TSCC_TSCH.getRegion());
+								break;
+							case "TSCK":
+								message = mailUtil.getMailAddress(con, SALES_REGION, ACTTYPE, Region.TSCK.getRegion());
+								break;
+							case "TSCR-ROW":
+								message = mailUtil.getMailAddress(con, SALES_REGION, ACTTYPE, Region.TSCR_ROW.getRegion());
+								break;
+							case "TSCT-DA":
+								message = mailUtil.getMailAddress(con, SALES_REGION, ACTTYPE, Region.TSCT_DA.getRegion());
+								break;
+							case "TSCT-Disty":
+								message = mailUtil.getMailAddress(con, SALES_REGION, ACTTYPE, Region.TSCT_DISTY.getRegion());
+								break;
+							case "SAMPLE":
+								message = mailUtil.getMailAddress(con, SALES_REGION, ACTTYPE, Region.SAMPLE.getRegion());
+								break;
 						}
 					}
-					message.addRecipient(Message.RecipientType.BCC, new javax.mail.internet.InternetAddress("mars.wang@ts.com.tw"));
 
 					V_CUST_LIST="";
 					if (!ACTTYPE.equals("ALLOVERDUE"))

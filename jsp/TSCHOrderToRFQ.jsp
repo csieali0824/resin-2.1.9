@@ -397,7 +397,7 @@ if (!HEADER_ID.equals(""))
 				}
 				else if (rs.getString("TSCH_CUSTOMER_NUMBER").equals("23121")) //LITE ON-2680 ,ADD BY Mars 20250603
 				{
-					bb[i][6]= "LAND";    //出貨方式
+					bb[i][6]= "000001_TRUCK_R_P2P";    //出貨方式改為LAND
 					bb[i][18]=rs.getString("FOB_POINT_CODE");         //FOB
 				}
 				else if (rs.getString("TSCH_CUSTOMER_NUMBER").equals("31912") || rs.getString("TSCH_CUSTOMER_NUMBER").equals("32932")) //GPV ,ADD BY PEGGY 20230406, GPV(THAILAND) add by Peggy 20240304
