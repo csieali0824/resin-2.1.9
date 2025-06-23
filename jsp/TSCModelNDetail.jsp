@@ -50,8 +50,8 @@
         }
     };
 
-    function delData(url) {
-        if (confirm("您確定要刪除此筆資料?")) {
+    function delData(url, msg) {
+        if (confirm(msg)) {
             document.form1.action = url;
             document.form1.submit();
         }
@@ -127,7 +127,7 @@
                         '&customerPo=' + request.custPo +
                         '&shipToOrgId=' + request.shipToOrgId +
                         '&groupByType=' + request.groupByType +
-                        '&uploadBy=' + request.uploadBy);
+                        '&uploadBy=' + request.uploadBy, "確定要刪除此筆資料?");
                 };
                 newCell.appendChild(buttonElement)
             } else {
@@ -325,7 +325,7 @@
                         if (columns[i].equals("Delete All")) { %>
                             <td width="<%=width%>%" align="center">
                                 <input type="button" name="btnAll" value="Delete All" title="刪除全部資料" style="font-size:12px;font-family: Tahoma,Georgia;"
-                                       onClick="delData('../jsp/TSCModelNDetail.jsp?deleteAll=Y')">
+                                       onClick="delData('../jsp/TSCModelNDetail.jsp?deleteAll=Y','確定要刪除全部資料?')">
                             </td>
                 <%      } else if (!hiddenGroupByType.equals(columns[i])){ %>
                             <td width="<%=width%>%" align="center"><%=columns[i]%></td>

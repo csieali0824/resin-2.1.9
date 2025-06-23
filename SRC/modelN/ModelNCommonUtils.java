@@ -2,6 +2,8 @@ package modelN;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import commonUtil.dateUtil.DateParseResult;
+import commonUtil.dateUtil.DateUtil;
 import modelN.dao.impl.TscRfqUploadTempImpl;
 import modelN.dto.DetailDto;
 import modelN.dto.ModelNDto;
@@ -102,20 +104,20 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
         return objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(list);
     }
 
-    // ���o�Ȥ��T
+    // 取得客戶資訊
     @Override
     public void setShippingFobOrderTypeInfo() throws SQLException {}
 
     public void setExtraRuleInfo() throws SQLException {}
 
-    //�ˬd�X�f�覡
+    //檢查出貨方式
     @Override
     public void setShippingMethod() throws SQLException {}
 
     @Override
     public void setCrd() throws SQLException {}
 
-    // �ˬdFOB
+    // 檢查FOB
     @Override
     public void setFob() throws SQLException {}
 
@@ -355,12 +357,13 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                         "        a.quoteid,\n" +
                         "        a.partnumber,\n" +
                         "        a.currency,\n" +
-                        "        TO_CHAR(a.pricekusd / 1000, 'FM99990.0999999') AS price_usd,\n" +
+                        "LISTAGG(TO_CHAR(a.pricek / 1000, 'FM99990.0999999'), ',') \n" +
+                        "            WITHIN GROUP (ORDER BY a.pricek DESC) AS pricek,\n" +
                         "        '(' || a.region || ')' || a.endcustomer AS end_customer,\n" +
                         "        CASE\n" +
                         "            WHEN (\n" +
                         "                CASE\n" +
-                        "                    WHEN a.region IN ('TSCR', 'TSCI') THEN TRUNC(a.fromdate)\n" +
+                        "                    WHEN a.region IN ('TSCR') THEN TRUNC(a.fromdate)\n" +
                         "                    ELSE TRUNC(SYSDATE)\n" +
                         "                END\n" +
                         "            ) BETWEEN TRUNC(a.fromdate) AND TRUNC(a.todate)\n" +
@@ -371,13 +374,22 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                         "    FROM tsc_om_ref_quotenet a\n" +
                         "    WHERE a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
                         "      AND a.partnumber='" + modelNDto.getTscItemDesc() + "' \n"+
+                        "	 GROUP BY\n" +
+                        "	         a.quoteid,\n" +
+                        "	         a.partnumber,\n" +
+                        "	         a.currency,\n" +
+                        "	         a.datecreated,\n" +
+                        "	         a.region,\n" +
+                        "	         a.endcustomer,\n" +
+                        "	         a.fromdate,\n" +
+                        "	         a.todate\n" +
                         "    UNION ALL\n" +
                         "     -- 第二部分：MODELN 資料來源(只取最新報價)\n" +
                         "    SELECT\n" +
                         "        quoteid,\n" +
                         "        partnumber,\n" +
                         "        currency,\n" +
-                        "        price_usd,\n" +
+                        "        pricek,\n" +
                         "        end_customer,\n" +
                         "        pass_flag,\n" +
                         "        todate\n" +
@@ -386,7 +398,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                         "            a.quoteid,\n" +
                         "            a.partnumber,\n" +
                         "            a.currency,\n" +
-                        "            TO_CHAR(a.pricekusd / 1000, 'FM99990.0999999') AS price_usd,\n" +
+                        "            TO_CHAR(a.pricek / 1000, 'FM99990.0999999') AS pricek,\n" +
                         "            '(' || a.region || ')' || a.endcustomer AS end_customer,\n" +
                         "            CASE\n" +
                         "                WHEN (\n" +
@@ -401,7 +413,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                         "            TO_CHAR(a.todate,'yyyy-mm-dd') todate,\n" +
                         "            ROW_NUMBER() OVER (\n" +
                         "                PARTITION BY a.quoteid, a.partnumber, a.currency\n" +
-                        "                ORDER BY a.pricekusd DESC\n" +
+                        "                ORDER BY a.datechanged DESC\n" +
                         "            ) AS rn\n" +
                         "        FROM tsc_om_ref_modeln a\n" +
                         "        WHERE a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
@@ -413,8 +425,16 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                 if (rs.next()) {
                     passFlag = rs.getString("PASS_FLAG");
                     if ("1".equals(passFlag)) {
-                        sellingPrice_Q = rs.getString("PRICE_USD");
+                        sellingPrice_Q = rs.getString("PRICEK");
                         endCustName = rs.getString("END_CUSTOMER");
+                        if (sellingPrice_Q.split(",").length > 1) {
+                            if(!Arrays.asList(sellingPrice_Q.split(",")).contains(modelNDto.getSellingPrice())) {
+                                errList.add(ErrorMessage.MULTIPLE_PRICES.getMessageFormat(sellingPrice_Q.replace(",", " / ")));
+                                modelNDto.setErrorList(errList);
+                            } else {
+                                sellingPrice_Q = modelNDto.getSellingPrice();
+                            }
+                        }
                     } else {
                         expireDate = rs.getString("TODATE");
                         errList.add(ErrorMessage.QUOTE_HAS_EXPIRED.getMessageFormat(expireDate));
@@ -475,8 +495,6 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
         if (StringUtils.isNullOrEmpty(modelNDto.getSellingPrice())) {
             if (modelNDto.getQuoteNumber().equals("") || StringUtils.isNullOrEmpty(sellingPrice_Q)) {
                 modelNDto.setSellingPrice("");
-//                errList.add(ErrorMessage.SELLING_PRICE_NOTNULL.getMessage());
-//                modelNDto.setErrorList(errList);
             } else {
                 modelNDto.setSellingPrice(sellingPrice_Q);
             }
@@ -486,7 +504,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                 if (priceNumber <= 0) {
                     errList.add(ErrorMessage.SELLING_PRICE_MUST_GREATER_0.getMessage());
                     modelNDto.setErrorList(errList);
-                } else if (!modelNDto.getQuoteNumber().equals("")) { // excel QuoteNumber �����Ůɤ~�|���ˬd
+                } else if (!modelNDto.getQuoteNumber().equals("")) { // excel QuoteNumber 不為空時才會做檢查
                    if (!modelNDto.getSellingPrice().equals(sellingPrice_Q)) {
                        errList.add(ErrorMessage.SELLING_PRICE_NOT_MATCH_QUOTE_PRICE.getMessageFormat(sellingPrice_Q));
                        modelNDto.setErrorList(errList);
@@ -505,8 +523,6 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
     private void checkSSD() {
         if (StringUtils.isNullOrEmpty(modelNDto.getSsd())) {
             modelNDto.setSsd("");
-//            errList.add(ErrorMessage.SSD_IS_NOTNULL.getMessage());
-//            modelNDto.setErrorList(errList);
         } else if (Long.parseLong(modelNDto.getSsd()) <= Long.parseLong(checkDate)) {
             errList.add(ErrorMessage.SSD_MUST_GREATER.getMessageFormat(checkDate));
             modelNDto.setErrorList(errList);
@@ -725,7 +741,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                 switch (ExcelColumn.settingExcelColumn(columnName, colIndex)) {
                     case CustomerNumber:
                         if (StringUtils.isNullOrEmpty(content)) {
-                            throw new Exception(ErrorMessage.CUSTNO_REQUEST.getMessage());
+                            throw new Exception(ErrorMessage.CUSTNO_REQUIRED.getMessage());
                         }
                         modelNDto.setCustNo(content);
                         break;
@@ -734,7 +750,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                         break;
                     case CustomerPO:
                         if (StringUtils.isNullOrEmpty(content)) {
-                            throw new Exception(ErrorMessage.CUSTPO_REQUEST.getMessage());
+                            throw new Exception(ErrorMessage.CUSTPO_REQUIRED.getMessage());
                         }
                         modelNDto.setCustPo(content);
                         break;
@@ -746,7 +762,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                         break;
                     case TSC_PN:
                         if (StringUtils.isNullOrEmpty(content)) {
-                            throw new Exception(ErrorMessage.TSC_PN_REQUEST.getMessage());
+                            throw new Exception(ErrorMessage.TSC_PN_REQUIRED.getMessage());
                         }
                         modelNDto.setTscItemDesc(content);
                         break;
@@ -772,47 +788,28 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                         modelNDto.setSellingPrice(sellingPrice);
                         break;
                     case CRD:
-                        String crd = content;
-                        try {
-                            if (rowCell.getType() == CellType.DATE) {
-                                crd = sdf.format(((DateCell) rowCell).getDate());
-                            } else {
-                                crd = content.replace("-", "");
-                                crd = sdf.format(((DateCell) rowCell).getDate());
-                                if (crd.length() < 8) {
-                                    throw new Exception(ErrorMessage.CRD_LENGTH_LESS_8.getMessage());
-                                }
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                            if (StringUtils.isNullOrEmpty(crd)) {
-                                throw new Exception(ErrorMessage.CRD_REQUEST.getMessage());
-                            } else {
-                                errorMsgList.add(ErrorMessage.DATE_FORMATTER_ERROR.getMessageFormat(columnName.concat(":" + crd)));
+                        if (StringUtils.isNullOrEmpty(content)) {
+                            throw new Exception(ErrorMessage.CRD_REQUIRED.getMessage());
+                        } else {
+                            try {
+                                DateParseResult result = DateUtil.autoParseWithPattern(content);
+                                modelNDto.setCrd(result.formattedDate());
+                            } catch (IllegalArgumentException e) {
+                                errorMsgList.add(columnName.concat(":" + e.getMessage()));
                             }
                         }
-                        modelNDto.setCrd(crd);
                         break;
                     case SSD:
-                        String ssd = content;
-                        try {
-                            if (rowCell.getType() == CellType.DATE) {
-                                ssd = sdf.format(((DateCell) rowCell).getDate());
-                            } else {
-                                ssd = content.replace("-", "");
-                                ssd = sdf.format(((DateCell) rowCell).getDate());
-                                if (ssd.length() < 8) {
-                                    throw new Exception(ErrorMessage.SSD_LENGTH_LESS_8.getMessage());
-                                }
-                            }
-                        } catch (Exception e) {
-                            if (StringUtils.isNullOrEmpty(ssd)) {
-                                throw new Exception(ErrorMessage.SSD_REQUEST.getMessage());
-                            } else {
-                                errorMsgList.add(ErrorMessage.DATE_FORMATTER_ERROR.getMessageFormat(columnName.concat(":" + ssd)));
+                        if (StringUtils.isNullOrEmpty(content)) {
+                            throw new Exception(ErrorMessage.SSD_REQUIRED.getMessage());
+                        } else {
+                            try {
+                                DateParseResult result = DateUtil.autoParseWithPattern(content);
+                                modelNDto.setSsd(result.formattedDate());
+                            } catch (IllegalArgumentException e) {
+                                errorMsgList.add(columnName.concat(":" + e.getMessage()));
                             }
                         }
-                        modelNDto.setSsd(ssd);
                         break;
                     case ShippingMethod:
                         String shippingMethod = content;
