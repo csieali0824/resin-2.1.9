@@ -5,6 +5,8 @@
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
 <%@ page import="SalesDRQPageHeaderBean" %>
 <%@ page import="com.mysql.jdbc.StringUtils" %>
+<%@ page import="java.util.Arrays" %>
+<%@ page import="java.util.stream.Stream" %>
 <jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
 <%@ include file="/jsp/include/ProgressStatusBarStart.jsp"%>
 <%
@@ -14,6 +16,7 @@ String PNO=request.getParameter("PNO");
 if (PNO==null) PNO="";
 String PITEM=request.getParameter("PITEM");
 if (PITEM==null) PITEM="";
+String  sellingPrice = StringUtils.isNullOrEmpty(request.getParameter("UPRICE")) ? "" : request.getParameter("UPRICE");
 %>
 <html>
 <head>
@@ -34,7 +37,7 @@ function sendToMainWindow(price,end_cust)
 <body >  
 <FORM METHOD="post" ACTION="TSDRQQuoteInfoFind.jsp" NAME="SITEFORM">
 <%  
-	String uprine="",end_cust="";
+	String uprice="",end_cust="";
 	try
 	{
 		if (!StringUtils.isNullOrEmpty(QNO) && !StringUtils.isNullOrEmpty(PNO)) {
@@ -44,7 +47,8 @@ function sendToMainWindow(price,end_cust)
 					"        a.quoteid,\n" +
 					"        a.partnumber,\n" +
 					"        a.currency,\n" +
-					"        TO_CHAR(a.pricekusd / 1000, 'FM99990.0999999') AS price_usd,\n" +
+					"LISTAGG(TO_CHAR(a.pricek / 1000, 'FM99990.0999999'), ',') \n" +
+					"            WITHIN GROUP (ORDER BY a.pricek DESC) AS pricek,\n" +
 					"        '(' || a.region || ')' || a.endcustomer AS end_customer,\n" +
 					"        CASE\n" +
 					"            WHEN (\n" +
@@ -60,13 +64,22 @@ function sendToMainWindow(price,end_cust)
 					"    FROM tsc_om_ref_quotenet a\n" +
 					"    WHERE a.quoteid='" +QNO + "' \n"+
 					"      AND a.partnumber='" + PNO + "' \n"+
+					"	 GROUP BY\n" +
+					"	         a.quoteid,\n" +
+					"	         a.partnumber,\n" +
+					"	         a.currency,\n" +
+					"	         a.datecreated,\n" +
+					"	         a.region,\n" +
+					"	         a.endcustomer,\n" +
+					"	         a.fromdate,\n" +
+					"	         a.todate\n" +
 					"    UNION ALL\n" +
 					"    -- 材场だMODELN 戈ㄓ方程穝厨基\n" +
 					"    SELECT\n" +
 					"        quoteid,\n" +
 					"        partnumber,\n" +
 					"        currency,\n" +
-					"        price_usd,\n" +
+					"        pricek,\n" +
 					"        end_customer,\n" +
 					"        pass_flag,\n" +
 					"        todate\n" +
@@ -75,12 +88,12 @@ function sendToMainWindow(price,end_cust)
 					"            a.quoteid,\n" +
 					"            a.partnumber,\n" +
 					"            a.currency,\n" +
-					"            TO_CHAR(a.pricekusd / 1000, 'FM99990.0999999') AS price_usd,\n" +
+					"            TO_CHAR(a.pricek / 1000, 'FM99990.0999999') AS pricek,\n" +
 					"            '(' || a.region || ')' || a.endcustomer AS end_customer,\n" +
 					"            CASE\n" +
 					"                WHEN (\n" +
 					"                    CASE\n" +
-					"                        WHEN a.region IN ('TSCR', 'TSCI') THEN TRUNC(a.fromdate)\n" +
+					"                        WHEN a.region IN ('TSCR') THEN TRUNC(a.fromdate)\n" +
 					"                        ELSE TRUNC(SYSDATE)\n" +
 					"                    END\n" +
 					"                ) BETWEEN TRUNC(a.fromdate) AND TRUNC(a.todate)\n" +
@@ -90,7 +103,7 @@ function sendToMainWindow(price,end_cust)
 					"            TO_CHAR(a.todate,'yyyy-mm-dd') todate,\n" +
 					"            ROW_NUMBER() OVER (\n" +
 					"                PARTITION BY a.quoteid, a.partnumber, a.currency\n" +
-					"                ORDER BY a.pricekusd DESC\n" +
+					"                ORDER BY a.datechanged DESC\n" +
 					"            ) AS rn\n" +
 					"        FROM tsc_om_ref_modeln a\n" +
 					"        WHERE a.quoteid='" + QNO + "' \n"+
@@ -104,8 +117,19 @@ function sendToMainWindow(price,end_cust)
 			{
 				if (rs.getString("pass_flag").equals("1"))
 				{
-					uprine=rs.getString("price_usd");
+					uprice=rs.getString("pricek");
 					end_cust=rs.getString("end_customer");
+					if (uprice.split(",").length > 1) {
+						if (!Arrays.asList(uprice.split(",")).contains(sellingPrice)) {
+							out.println("Multiple prices exist for the same part number (" + uprice.replace(",", " / ") + ")!");
+							return ;
+						} else {
+							uprice = sellingPrice;
+						}
+					} else if (!StringUtils.isNullOrEmpty(sellingPrice) && !sellingPrice.equals(uprice)) {
+						out.println("Selling Price not match quote price(" + uprice + "))!");
+						return ;
+					}
 				}
 				else
 				{
@@ -123,12 +147,12 @@ function sendToMainWindow(price,end_cust)
 			out.println("Please enter the TSC P/N.");
 		}
 
-		if (!uprine.equals(""))
+		if (!uprice.equals(""))
 		{
 		%>
-		<script LANGUAGE="JavaScript">   
-			sendToMainWindow("<%=uprine%>","<%=end_cust%>");		                   
-		</script> 
+		<script LANGUAGE="JavaScript">
+			sendToMainWindow("<%=uprice%>","<%=end_cust%>");
+		</script>
 		<%	
 		}
     } 

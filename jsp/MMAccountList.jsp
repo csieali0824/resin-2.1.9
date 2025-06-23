@@ -6,9 +6,9 @@
 <%@ include file="../jsp/include/PageHeaderSwitch.jsp" %>
 <%@ page import="SalesDRQPageHeaderBean" %>
 <jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<!--=============¥H¤U°Ï¬q¬°¦w¥þ»{ÃÒ¾÷¨î==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå®‰å…¨èªè­‰æ©Ÿåˆ¶==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <html>
 <head>
@@ -54,7 +54,7 @@ function setSubmit(URL)
 
 <body>
 <strong><font color="#0080C0" size="5"><jsp:getProperty name="rPH" property="pgID"/><jsp:getProperty name="rPH" property="pgList"/></font></strong> 
-<br> <!--´«¦æ -->
+<br> <!--æ›è¡Œ -->
 <A HREF="/oradds/ORADDSMainMenu.jsp"><jsp:getProperty name="rPH" property="pgHOME"/></A>
 <A HREF="./MMAccountNew.jsp"><jsp:getProperty name="rPH" property="pgNew"/><jsp:getProperty name="rPH" property="pgID"/></A>
 <%
@@ -77,7 +77,7 @@ function setSubmit(URL)
 <input name="search" type="button" onClick="setSubmit('./MMAccountList.jsp')" value='<jsp:getProperty name="rPH" property="pgSearch"/>' >
 <%   
 int pageRow = 30;
-int maxrow=0;//¬d¸ß¸ê®ÆÁ`µ§¼Æ 
+int maxrow=0;//æŸ¥è©¢è³‡æ–™ç¸½ç­†æ•¸ 
 int currentPageNumber=0,totalPageNumber=0,rowNumber=0;
 try 
 {   
@@ -153,7 +153,7 @@ catch (Exception e)
 	out.println("Exception:"+e.getMessage());
 }   
 %>
-<br> <!--´«¦æ -->
+<br> <!--æ›è¡Œ -->
 <A HREF="../jsp/MMAccountList.jsp?SCROLLROW=FIRST&SEARCHSTRING=<%if (searchString!=null) out.println(searchString);%>">
 <strong><font color="#FF0080"><jsp:getProperty name="rPH" property="pgFirst"/><jsp:getProperty name="rPH" property="pgPage"/></font></strong>
 </A>
@@ -180,18 +180,18 @@ try
 	ResultSet rs=statement.executeQuery(sql);
 	if (rowNumber==1)  
 	{
-		rs.beforeFirst(); //²¾¦Ü²Ä¤@µ§¸ê®Æ¦C  
+		rs.beforeFirst(); //ç§»è‡³ç¬¬ä¸€ç­†è³‡æ–™åˆ—  
 	} 
 	else 
 	{
 		if (rowNumber<=maxrow) 
-		{ //­Y¤p©óÁ`µ§¼Æ®É¤~Ä~Äò´«­¶
-			rs.absolute(rowNumber); //²¾¦Ü«ü©w¸ê®Æ¦C
+		{ //è‹¥å°æ–¼ç¸½ç­†æ•¸æ™‚æ‰ç¹¼çºŒæ›é 
+			rs.absolute(rowNumber); //ç§»è‡³æŒ‡å®šè³‡æ–™åˆ—
 		} //end if
 	} //end if-else
-	qryAllChkBoxEditBean.setPageURL("../jsp/MMAccountEdit.jsp");//¤p¹Ï¥Ü³sµ²¨ì­×§ïªººô­¶
+	qryAllChkBoxEditBean.setPageURL("../jsp/MMAccountEdit.jsp");//å°åœ–ç¤ºé€£çµåˆ°ä¿®æ”¹çš„ç¶²é 
 	qryAllChkBoxEditBean.setHeaderArray(null);  
-	qryAllChkBoxEditBean.setSearchKey("USERNAME");//¶Ç¨ì¤U¤@­Óºô­¶¥H¨º¤@­ÓÅÜ¼Æ¬°¥D
+	qryAllChkBoxEditBean.setSearchKey("USERNAME");//å‚³åˆ°ä¸‹ä¸€å€‹ç¶²é ä»¥é‚£ä¸€å€‹è®Šæ•¸ç‚ºä¸»
 	qryAllChkBoxEditBean.setFieldName("CH");		 
 	qryAllChkBoxEditBean.setRowColor1("B0E0E6");
 	qryAllChkBoxEditBean.setRowColor2("ADD8E6");
@@ -211,5 +211,5 @@ catch (Exception e)
 </FORM>
 </body>
 </html>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
+<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->
 <%@ include file="/jsp/include/ReleaseConnORADDSPage.jsp"%>

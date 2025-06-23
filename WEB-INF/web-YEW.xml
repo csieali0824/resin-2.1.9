@@ -6,7 +6,7 @@
 
   <context-param>
     <param-name>MAIL_HOST</param-name>
-    <param-value>210.62.146.209</param-value> 
+    <param-value>10.0.1.52</param-value> 
   </context-param>  
 
   <context-param>
@@ -21,18 +21,13 @@
   
   <context-param>
     <param-name>ORADDS_JDBC_URL</param-name>
-    <param-value>jdbc:oracle:thin:@10.0.1.175:1529:yew12</param-value>
+    <param-value>jdbc:oracle:thin:@10.0.1.34:1521:PROD</param-value> 
   </context-param>
   
   <context-param>
     <param-name>ORADTST_JDBC_URL</param-name>
-    <param-value>jdbc:oracle:thin:@10.0.1.175:1529:yew12</param-value>
-  </context-param>   
-  
-  <context-param>
-    <param-name>ORADTST2_JDBC_URL</param-name>
-    <param-value>jdbc:oracle:thin:@10.0.1.175:1529:yew12</param-value>
-  </context-param>
+    <param-value>jdbc:oracle:thin:@10.0.1.7:1522:DEV</param-value> 
+  </context-param>     
 
   <context-param>
     <param-name>ORARFQDB_JDBC_URL</param-name>
@@ -57,17 +52,17 @@
   <context-param>
     <param-name>ILNASSIST_JDBC_URL</param-name>
     <param-value>jdbc:odbc:ILAN70</param-value> 
-  </context-param>
+  </context-param> 
 
   <context-param>
     <param-name>ILAN70_JDBC_URL</param-name>
     <param-value>jdbc:odbc:ILAN70</param-value> 
-  </context-param>   
-
-  <context-param>
-    <param-name>MIS003_JDBC_URL</param-name>
-    <param-value>jdbc:odbc:MIS-003</param-value> 
   </context-param> 
+  
+  <context-param>
+    <param-name>TPE70_ILNASSIST_JDBC_URL</param-name>
+    <param-value>jdbc:odbc:TPE70_ILNAssist</param-value> 
+  </context-param>  
    
   <context-param>
     <param-name>NOTESSAL(SALARY)_JDBC_URL</param-name>

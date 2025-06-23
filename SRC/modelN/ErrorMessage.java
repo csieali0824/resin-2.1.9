@@ -2,11 +2,11 @@ package modelN;
 
 public enum ErrorMessage {
 
-    CUSTNO_REQUEST("Customer Number為必填欄位"),
-    CUSTPO_REQUEST("Customer PO為必填欄位"),
-    TSC_PN_REQUEST("TSC P/N為必填欄位"),
-    CRD_REQUEST("CRD為必填欄位"),
-    SSD_REQUEST("SSD為必填欄位"),
+    CUSTNO_REQUIRED("Customer Number為必填欄位"),
+    CUSTPO_REQUIRED("Customer PO為必填欄位"),
+    TSC_PN_REQUIRED("TSC P/N為必填欄位"),
+    CRD_REQUIRED("CRD為必填欄位"),
+    SSD_REQUIRED("SSD為必填欄位"),
     CRD_LENGTH_LESS_8("CRD欄位值長度小於8"),
     SSD_LENGTH_LESS_8("SSD欄位值長度小於8"),
     CUSTNO_NOTNULL("客戶代號不可空白"),
@@ -50,9 +50,11 @@ public enum ErrorMessage {
     NOT_CREATE_SPQ_MOQ("SPQ/MOQ資訊未建立,請通知PC同仁建立"),
     QUOTE_NOT_FOUND("Quote not found"),
     QUOTE_HAS_EXPIRED("Quote has expired(%s)"),
+    MULTIPLE_PRICES("Multiple prices exist for the same part number(%s)!"),
     SHIPPING_METHOD_NOT_FOUND("%s not found!"),
     FOB_INCOTERM_NOT_FOUND("%s not found!"),
-    DATE_FORMATTER_ERROR("%s，日期格式不正確，應為 YYYY/MM/DD");
+    DATE_FORMATTER_ERROR("%s, invalid date format，The correct format must be YYYY/MM/DD"),
+    INVALID_DATE_ERROR("%s, Invalid date value");
     private final String message;
 
     ErrorMessage(String errorMessage) {
