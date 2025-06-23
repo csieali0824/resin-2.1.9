@@ -122,13 +122,13 @@ function sendToMainWindow(price,end_cust)
 					if (uprice.split(",").length > 1) {
 						if (!Arrays.asList(uprice.split(",")).contains(sellingPrice)) {
 							out.println("Multiple prices exist for the same part number (" + uprice.replace(",", " / ") + ")!");
-							return ;
+							return;
 						} else {
 							uprice = sellingPrice;
 						}
 					} else if (!StringUtils.isNullOrEmpty(sellingPrice) && !sellingPrice.equals(uprice)) {
 						out.println("Selling Price not match quote price(" + uprice + "))!");
-						return ;
+						return;
 					}
 				}
 				else
