@@ -34,7 +34,6 @@
 <%@ page import="java.util.Iterator" %>
 <html>
 <head>
-	<meta charset="UTF-8">
 	<title>Sales Delivery Request Questionnaire Input Form</title>
 	<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
 	<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
@@ -573,12 +572,14 @@
 				}
 				// 檢查日期是否符合日期格式
 			} //end of if ()
-			if (document.MYFORM.CRD.value != null || document.MYFORM.CRD.value !='') {
-				try {
-					validateDate(document.MYFORM.CRD.value);
-				} catch (e) {
-					alert(e.message);
-					return;
+			if (document.MYFORM.CRD !== undefined) {
+				if (document.MYFORM.CRD.value != null || document.MYFORM.CRD.value !== '') {
+					try {
+						validateDate(document.MYFORM.CRD.value);
+					} catch (e) {
+						alert(e.message);
+						return;
+					}
 				}
 			}
 
