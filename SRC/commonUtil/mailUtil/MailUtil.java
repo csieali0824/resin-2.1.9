@@ -12,23 +12,30 @@ import java.sql.SQLException;
 import java.util.*;
 
 public class MailUtil {
-    public Message getMailAddress(Connection conn, String region, String actType, String functionName) throws Exception {
+    public javax.mail.internet.MimeMessage message;
+    private Connection connection;
+
+    public MailUtil(Connection con) throws MessagingException {
+        this.connection = con;
         Properties props = System.getProperties();
         props.put("mail.transport.protocol","smtp");
         props.put("mail.smtp.host", "mail.ts.com.tw");
         props.put("mail.smtp.port", "25");
 
         javax.mail.Session session = Session.getInstance(props, null);
-        Message message = new MimeMessage(session);
-        message.setSentDate(new java.util.Date());
-        message.setFrom(new InternetAddress("prodsys@ts.com.tw"));
-        Map<String, Set<String>> groupedData = queryJobAndReceiverTypes(conn, region, functionName);
+        this.message = new MimeMessage(session);
+        this.message.setSentDate(new java.util.Date());
+        this.message.setFrom(new InternetAddress("prodsys@ts.com.tw"));
+    }
 
+    public void getMailAddress(String region, String actType, String functionName) throws Exception {
+
+        Map<String, Set<String>> groupedData = queryJobAndReceiverTypes(region, functionName);
         System.out.println("分組資料 groupedData = " + groupedData);
 
         String receiverSql = "SELECT tsc_mail_job_pkg.get_receiver(?, ?) AS email from dual";
 
-        try (PreparedStatement receiverStmt = conn.prepareStatement(receiverSql)) {
+        try (PreparedStatement receiverStmt = this.connection.prepareStatement(receiverSql)) {
             for (Map.Entry<String, Set<String>> entry : groupedData.entrySet()) {
                 String jobId = entry.getKey();
                 for (String receiverType : entry.getValue()) {
@@ -39,17 +46,16 @@ public class MailUtil {
                         while (rs.next()) {
                             String emailList = rs.getString("email");
                             if (emailList != null && !emailList.trim().isEmpty()) {
-                                handleRecipients(message, receiverType, emailList, actType);
+                                handleRecipients(receiverType, emailList, actType);
                             }
                         }
                     }
                 }
             }
         }
-        return message;
     }
 
-    private static Map<String, Set<String>> queryJobAndReceiverTypes(Connection conn, String region, String functionName) throws SQLException {
+    private Map<String, Set<String>> queryJobAndReceiverTypes(String region, String functionName) throws SQLException {
         Map<String, Set<String>> groupedData = new HashMap<>();
 
         String sql = "SELECT JOB_ID, RECEIVER_TYPE FROM tsc_mail_receiver \n" +
@@ -59,7 +65,7 @@ public class MailUtil {
                 "                  AND FUNCTION_NAME = ?) \n" +
                 "AND ACTIVE = ?";
 
-        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        try (PreparedStatement pstmt = this.connection.prepareStatement(sql)) {
             pstmt.setString(1, region);
             pstmt.setString(2, "SSIS");
             pstmt.setString(3, "RFQ");
@@ -79,19 +85,20 @@ public class MailUtil {
         return groupedData;
     }
 
-    private void handleRecipients(Message message, String receiverType, String emailList, String actType) throws MessagingException {
+    private void handleRecipients(String receiverType, String emailList, String actType) throws MessagingException {
         switch (receiverType) {
             case "TO":
                 System.out.println("TO: " + emailList);
-                message.addRecipients(Message.RecipientType.TO, InternetAddress.parse(emailList));
+                this.message.addRecipients(Message.RecipientType.TO, InternetAddress.parse(emailList));
                 break;
             case "CC":
-                System.out.println("CC(特殊處理): " + emailList);
-                addCcRecipientsWithCheck(message, emailList, actType);
+                System.out.println("CC: " + emailList);
+                this.message.addRecipients(Message.RecipientType.CC, InternetAddress.parse(emailList));
+//                addCcRecipientsWithCheck(message, emailList, actType);
                 break;
             case "BCC":
                 System.out.println("BCC: " + emailList);
-                message.addRecipients(Message.RecipientType.BCC, InternetAddress.parse(emailList));
+                this.message.addRecipients(Message.RecipientType.BCC, InternetAddress.parse(emailList));
                 break;
             default:
                 System.err.println("不支援的類型：" + receiverType);
