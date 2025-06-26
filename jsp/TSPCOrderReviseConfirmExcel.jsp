@@ -1,9 +1,9 @@
 <%@ page contentType="text/html;charset=utf-8"   language="java" import="java.util.*,java.text.*,java.io.*,java.sql.*,jxl.*,jxl.Workbook.*,jxl.write.*,jxl.format.*,javax.mail.*,javax.mail.internet.*,javax.mail.Multipart.*,javax.activation.*"%>
 <%@ page import="DateBean"%>
 <%@ page import="commonUtil.mailUtil.Region" %>
+<%@ page import="commonUtil.mailUtil.MailUtil" %>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="mailUtil" scope="page" class="commonUtil.mailUtil.MailUtil"/>
 <html>
 <head>
 	<title>Download Excel File</title>
@@ -997,104 +997,131 @@
 
 				if (ACTTYPE.equals("AUTO") || ACTTYPE.equals("REMINDER") || ACTTYPE.equals("ALLOVERDUE"))
 				{
-					Message message = null;
-					remarks="";
-					//測試環境
-					if (!request.getRequestURL().toString().toLowerCase().contains("tsrfq.") &&
-							!request.getRequestURL().toString().toLowerCase().contains("rfq134.") &&
-							!request.getRequestURL().toString().toLowerCase().contains("yewintra.") &&
-							!request.getRequestURL().toString().toLowerCase().contains("10.0.1.134") &&
-							!request.getRequestURL().toString().toLowerCase().contains("10.0.1.135")) {
-						remarks="(這是來自RFQ測試區的信件)";
-					}
-					else {
-						switch (SALES_REGION) {
-							case "TSCE":
-								message = mailUtil.getMailAddress(con, SALES_REGION, ACTTYPE, Region.TSCE_AUTO.getRegion());
-								if (ACTTYPE.equals("ALLOVERDUE") && remarks.equals("")) {
-									message = mailUtil.getMailAddress(con, SALES_REGION, ACTTYPE, Region.TSCE_ALLOVERDUE.getRegion());
-								}
-								break;
-							case "TSCA":
-								message = mailUtil.getMailAddress(con, SALES_REGION, ACTTYPE, Region.TSCA.getRegion());
-								break;
-							case "TSCJ":
-								message = mailUtil.getMailAddress(con, SALES_REGION, ACTTYPE, Region.TSCJ.getRegion());
-								break;
-							case "TSCH-HK":
-								message = mailUtil.getMailAddress(con, "TSCH", ACTTYPE, Region.TSCH_HK.getRegion());
-								break;
-							case "TSCC":
-								message = mailUtil.getMailAddress(con, SALES_REGION, ACTTYPE, Region.TSCC.getRegion());
-								break;
-							case "TSCC-TSCH":
-								message = mailUtil.getMailAddress(con, "TSCH", ACTTYPE, Region.TSCC_TSCH.getRegion());
-								break;
-							case "TSCK":
-								message = mailUtil.getMailAddress(con, SALES_REGION, ACTTYPE, Region.TSCK.getRegion());
-								break;
-							case "TSCR-ROW":
-								message = mailUtil.getMailAddress(con, SALES_REGION, ACTTYPE, Region.TSCR_ROW.getRegion());
-								break;
-							case "TSCT-DA":
-								message = mailUtil.getMailAddress(con, SALES_REGION, ACTTYPE, Region.TSCT_DA.getRegion());
-								break;
-							case "TSCT-Disty":
-								message = mailUtil.getMailAddress(con, SALES_REGION, ACTTYPE, Region.TSCT_DISTY.getRegion());
-								break;
-							case "SAMPLE":
-								message = mailUtil.getMailAddress(con, SALES_REGION, ACTTYPE, Region.SAMPLE.getRegion());
-								break;
+					try {
+						MailUtil mailUtil = new MailUtil(con);
+						javax.mail.internet.MimeMessage message = mailUtil.message;
+						String ccMail = "nono.huang@ts.com.tw";
+						remarks="";
+						//測試環境
+						if (!request.getRequestURL().toString().toLowerCase().contains("tsrfq.") &&
+								!request.getRequestURL().toString().toLowerCase().contains("rfq134.") &&
+								!request.getRequestURL().toString().toLowerCase().contains("yewintra.") &&
+								!request.getRequestURL().toString().toLowerCase().contains("10.0.1.134") &&
+								!request.getRequestURL().toString().toLowerCase().contains("10.0.1.135")) {
+							remarks="(這是來自RFQ測試區的信件)";
 						}
-					}
 
-					V_CUST_LIST="";
-					if (!ACTTYPE.equals("ALLOVERDUE"))
-					{
-						sql = " SELECT DISTINCT '('||ar.account_number||')'|| case when a.sales_group='TSCH-HK' or a.source_customer_id IN (15540) then case when instr(a.SOURCE_CUSTOMER_PO,'(')>0  then substr(a.SOURCE_CUSTOMER_PO,instr(a.SOURCE_CUSTOMER_PO,'(')+1,instr(a.SOURCE_CUSTOMER_PO,')',-1)-instr(a.SOURCE_CUSTOMER_PO,'(')-1) else a.SOURCE_CUSTOMER_PO end"+
-								" else nvl(ar.customer_sname,ar.customer_name) end ||case when a.source_customer_id in (14980,1019) then  nvl2(end_cust.account_name ,'('||end_cust.account_name ||')','') else '' end as customer"+
-								" FROM oraddman.tsc_om_salesorderrevise_pc a"+
-								" ,ont.oe_order_lines_all d"+
-								" ,tsc_customer_all_v ar"+
-								" ,hz_cust_accounts end_cust"+
-								" WHERE REQUEST_NO=?"+
-								" AND DECODE(substr(a.sales_group,1,4),'TSCI','TSCR-ROW','TSCC','TSCC',a.sales_group)=?"+
-								" AND a.STATUS=?"+
-								" AND a.so_line_id=d.line_id"+
-								" AND a.SOURCE_CUSTOMER_ID=ar.customer_id"+
-								" AND d.end_customer_id = end_cust.cust_account_id(+)";
-						PreparedStatement statement2 = con.prepareStatement(sql);
-						statement2.setString(1,NEW_REQ);
-						statement2.setString(2,SALES_REGION);
-						statement2.setString(3,"AWAITING_CONFIRM");
-						//out.println(SALES_REGION);
-						ResultSet rs2=statement2.executeQuery();
-						while (rs2.next())
+						if (SALES_REGION.equals("TSCE")) {
+							mailUtil.getMailAddress(SALES_REGION, ACTTYPE, Region.TSCE_AUTO.getRegion());
+							if (ACTTYPE.equals("ALLOVERDUE") && remarks.equals("")) {
+								mailUtil.getMailAddress(SALES_REGION, ACTTYPE, Region.TSCE_ALLOVERDUE.getRegion());
+							}
+							if (REQ_NAME.equalsIgnoreCase("NONO") && ACTTYPE.equals("AUTO")) {
+								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress(ccMail));
+							}
+						} else if (SALES_REGION.equals("TSCA")) {
+							mailUtil.getMailAddress(SALES_REGION, ACTTYPE, Region.TSCA.getRegion());
+							if (REQ_NAME.equalsIgnoreCase("NONO") && ACTTYPE.equals("AUTO")) {
+								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress(ccMail));
+							}
+						} else if (SALES_REGION.equals("TSCJ")) {
+							mailUtil.getMailAddress(SALES_REGION, ACTTYPE, Region.TSCJ.getRegion());
+							if (REQ_NAME.equalsIgnoreCase("NONO") && ACTTYPE.equals("AUTO")) {
+								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress(ccMail));
+							}
+						} else if (SALES_REGION.equals("TSCH-HK")) {
+							mailUtil.getMailAddress("TSCH", ACTTYPE, Region.TSCH_HK.getRegion());
+							if (REQ_NAME.equalsIgnoreCase("NONO") && ACTTYPE.equals("AUTO")) {
+								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress(ccMail));
+							}
+						} else if (SALES_REGION.equals("TSCC")) {
+							mailUtil.getMailAddress(SALES_REGION, ACTTYPE, Region.TSCC.getRegion());
+							if (REQ_NAME.equalsIgnoreCase("NONO") && ACTTYPE.equals("AUTO")) {
+								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress(ccMail));
+							}
+						} else if (SALES_REGION.equals("TSCC-TSCH")) {
+							mailUtil.getMailAddress("TSCH", ACTTYPE, Region.TSCC_TSCH.getRegion());
+							if (REQ_NAME.equalsIgnoreCase("NONO") && ACTTYPE.equals("AUTO")) {
+								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress(ccMail));
+							}
+						} else if (SALES_REGION.equals("TSCK")) {
+							mailUtil.getMailAddress(SALES_REGION, ACTTYPE, Region.TSCK.getRegion());
+							if (REQ_NAME.equalsIgnoreCase("NONO") && ACTTYPE.equals("AUTO")) {
+								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress(ccMail));
+							}
+						} else if (SALES_REGION.equals("TSCR-ROW")) {
+							mailUtil.getMailAddress(SALES_REGION, ACTTYPE, Region.TSCR_ROW.getRegion());
+							if (REQ_NAME.equalsIgnoreCase("NONO") && ACTTYPE.equals("AUTO")) {
+								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress(ccMail));
+							}
+						} else if (SALES_REGION.equals("TSCT-DA")) {
+							mailUtil.getMailAddress(SALES_REGION, ACTTYPE, Region.TSCT_DA.getRegion());
+							if (REQ_NAME.equalsIgnoreCase("NONO") && ACTTYPE.equals("AUTO")) {
+								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress(ccMail));
+							}
+						} else if (SALES_REGION.equals("TSCT-Disty")) {
+							mailUtil.getMailAddress(SALES_REGION, ACTTYPE, Region.TSCT_DISTY.getRegion());
+							if (REQ_NAME.equalsIgnoreCase("NONO") && ACTTYPE.equals("AUTO")) {
+								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress(ccMail));
+							}
+						} else if (SALES_REGION.equals("SAMPLE")) {
+							mailUtil.getMailAddress(SALES_REGION, ACTTYPE, Region.SAMPLE.getRegion());
+							if (REQ_NAME.equalsIgnoreCase("NONO") && ACTTYPE.equals("AUTO")) {
+								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress(ccMail));
+							}
+						}
+
+						V_CUST_LIST="";
+						if (!ACTTYPE.equals("ALLOVERDUE"))
 						{
-							if (!V_CUST_LIST.equals("")) V_CUST_LIST =V_CUST_LIST+"<br>";
-							V_CUST_LIST =V_CUST_LIST+rs2.getString(1);
+							sql = " SELECT DISTINCT '('||ar.account_number||')'|| case when a.sales_group='TSCH-HK' or a.source_customer_id IN (15540) then case when instr(a.SOURCE_CUSTOMER_PO,'(')>0  then substr(a.SOURCE_CUSTOMER_PO,instr(a.SOURCE_CUSTOMER_PO,'(')+1,instr(a.SOURCE_CUSTOMER_PO,')',-1)-instr(a.SOURCE_CUSTOMER_PO,'(')-1) else a.SOURCE_CUSTOMER_PO end"+
+									" else nvl(ar.customer_sname,ar.customer_name) end ||case when a.source_customer_id in (14980,1019) then  nvl2(end_cust.account_name ,'('||end_cust.account_name ||')','') else '' end as customer"+
+									" FROM oraddman.tsc_om_salesorderrevise_pc a"+
+									" ,ont.oe_order_lines_all d"+
+									" ,tsc_customer_all_v ar"+
+									" ,hz_cust_accounts end_cust"+
+									" WHERE REQUEST_NO=?"+
+									" AND DECODE(substr(a.sales_group,1,4),'TSCI','TSCR-ROW','TSCC','TSCC',a.sales_group)=?"+
+									" AND a.STATUS=?"+
+									" AND a.so_line_id=d.line_id"+
+									" AND a.SOURCE_CUSTOMER_ID=ar.customer_id"+
+									" AND d.end_customer_id = end_cust.cust_account_id(+)";
+							PreparedStatement statement2 = con.prepareStatement(sql);
+							statement2.setString(1,NEW_REQ);
+							statement2.setString(2,SALES_REGION);
+							statement2.setString(3,"AWAITING_CONFIRM");
+							//out.println(SALES_REGION);
+							ResultSet rs2=statement2.executeQuery();
+							while (rs2.next())
+							{
+								if (!V_CUST_LIST.equals("")) V_CUST_LIST =V_CUST_LIST+"<br>";
+								V_CUST_LIST =V_CUST_LIST+rs2.getString(1);
+							}
+							rs2.close();
+							statement2.close();
+							strContent = "Request Notification,<p>Please login at:<a href="+'"'+strProgram+'"'+">"+strUrl+"</a> to confirm order revise.<p>"+
+									"Include the following customer list in this request..<br>"+V_CUST_LIST;
 						}
-						rs2.close();
-						statement2.close();
-						strContent = "Request Notification,<p>Please login at:<a href="+'"'+strProgram+'"'+">"+strUrl+"</a> to confirm order revise.<p>"+
-								"Include the following customer list in this request..<br>"+V_CUST_LIST;
+
+						message.setHeader("Subject", MimeUtility.encodeText((ACTTYPE.equals("REMINDER")?"Reminder-":"")+(ACTTYPE.equals("ALLOVERDUE")?"Factory Overdue Early-Warning Weekly Report":"工廠Early Ship/Overdue/Early warning通知(申請單號:"+NEW_REQ+")")+remarks, "UTF-8", null));
+						javax.mail.internet.MimeMultipart mp = new javax.mail.internet.MimeMultipart();
+						javax.mail.internet.MimeBodyPart mbp = new javax.mail.internet.MimeBodyPart();
+						mbp.setContent(strContent, "text/html;charset=UTF-8");
+						mp.addBodyPart(mbp);
+						mbp = new javax.mail.internet.MimeBodyPart();
+						javax.activation.FileDataSource fds = new javax.activation.FileDataSource("\\resin-2.1.9\\webapps\\oradds\\report\\"+FileName);
+						mbp.setDataHandler(new javax.activation.DataHandler(fds));
+						mbp.setFileName(fds.getName());
+						// create the Multipart and add its parts to it
+						mp.addBodyPart(mbp);
+						message.setContent(mp);
+						Transport.send(message);
+						System.out.println("success！");
+					} catch (MessagingException e) {
+						e.printStackTrace();
+					} catch (UnsupportedEncodingException e) {
+						throw new RuntimeException(e);
 					}
-
-					message.setHeader("Subject", MimeUtility.encodeText((ACTTYPE.equals("REMINDER")?"Reminder-":"")+(ACTTYPE.equals("ALLOVERDUE")?"Factory Overdue Early-Warning Weekly Report":"工廠Early Ship/Overdue/Early warning通知(申請單號:"+NEW_REQ+")")+remarks, "UTF-8", null));
-					javax.mail.internet.MimeMultipart mp = new javax.mail.internet.MimeMultipart();
-					javax.mail.internet.MimeBodyPart mbp = new javax.mail.internet.MimeBodyPart();
-					mbp.setContent(strContent, "text/html;charset=UTF-8");
-					mp.addBodyPart(mbp);
-					mbp = new javax.mail.internet.MimeBodyPart();
-					javax.activation.FileDataSource fds = new javax.activation.FileDataSource("\\resin-2.1.9\\webapps\\oradds\\report\\"+FileName);
-					mbp.setDataHandler(new javax.activation.DataHandler(fds));
-					mbp.setFileName(fds.getName());
-
-					// create the Multipart and add its parts to it
-					mp.addBodyPart(mbp);
-					message.setContent(mp);
-					Transport.send(message);
-
 				}
 			}
 			rs1.close();

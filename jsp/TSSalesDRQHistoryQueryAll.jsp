@@ -5,8 +5,8 @@
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<%@ page import="QueryAllRepairBean" %>
-<jsp:useBean id="queryAllRepairBean" scope="application" class="QueryAllRepairBean"/>
+<%@ page import="QueryAllRepairBean2" %>
+<jsp:useBean id="queryAllRepairBean" scope="application" class="QueryAllRepairBean2"/>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
 <%@ page import="SalesDRQPageHeaderBean" %>
 <jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
