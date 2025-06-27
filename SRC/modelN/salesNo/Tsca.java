@@ -8,10 +8,7 @@ import com.mysql.jdbc.StringUtils;
 
 import java.sql.*;
 import java.text.DecimalFormat;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Map;
+import java.util.*;
 
 public class Tsca extends ModelNCommonUtils {
 
@@ -278,7 +275,8 @@ public class Tsca extends ModelNCommonUtils {
                             "        a.quoteid,\n" +
                             "        a.partnumber,\n" +
                             "        a.currency,\n" +
-                            "        TO_CHAR(a.pricekusd / 1000, 'FM99990.0999999') AS price_usd,\n" +
+                            "LISTAGG(TO_CHAR(a.pricek / 1000, 'FM99990.0999999'), ',') \n" +
+                            "            WITHIN GROUP (ORDER BY a.pricek DESC) AS pricek,\n" +
                             "        '(' || a.region || ')' || a.endcustomer AS end_customer,\n" +
                             "        CASE\n" +
                             "            WHEN (\n" +
@@ -294,13 +292,22 @@ public class Tsca extends ModelNCommonUtils {
                             "    FROM tsc_om_ref_quotenet a\n" +
                             "    WHERE a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
                             "      AND a.partnumber='" + modelNDto.getTscItemDesc() + "' \n"+
+                            "	 GROUP BY\n" +
+                            "	         a.quoteid,\n" +
+                            "	         a.partnumber,\n" +
+                            "	         a.currency,\n" +
+                            "	         a.datecreated,\n" +
+                            "	         a.region,\n" +
+                            "	         a.endcustomer,\n" +
+                            "	         a.fromdate,\n" +
+                            "	         a.todate\n" +
                             "    UNION ALL\n" +
                             "    -- 第二部分：MODELN 資料來源(只取最新報價)\n" +
                             "    SELECT\n" +
                             "        quoteid,\n" +
                             "        partnumber,\n" +
                             "        currency,\n" +
-                            "        price_usd,\n" +
+                            "        pricek,\n" +
                             "        end_customer,\n" +
                             "        pass_flag,\n" +
                             "        todate\n" +
@@ -309,12 +316,12 @@ public class Tsca extends ModelNCommonUtils {
                             "            a.quoteid,\n" +
                             "            a.partnumber,\n" +
                             "            a.currency,\n" +
-                            "            TO_CHAR(a.pricekusd / 1000, 'FM99990.0999999') AS price_usd,\n" +
+                            "            TO_CHAR(a.pricek / 1000, 'FM99990.0999999') AS pricek,\n" +
                             "            '(' || a.region || ')' || a.endcustomer AS end_customer,\n" +
                             "            CASE\n" +
                             "                WHEN (\n" +
                             "                    CASE\n" +
-                            "                        WHEN a.region IN ('TSCR', 'TSCI') THEN TRUNC(a.fromdate)\n" +
+                            "                        WHEN a.region IN ('TSCR') THEN TRUNC(a.fromdate)\n" +
                             "                        ELSE TRUNC(SYSDATE)\n" +
                             "                    END\n" +
                             "                ) BETWEEN TRUNC(a.fromdate) AND TRUNC(a.todate)\n" +
@@ -324,7 +331,7 @@ public class Tsca extends ModelNCommonUtils {
                             "            TO_CHAR(a.todate,'yyyy-mm-dd') todate,\n" +
                             "            ROW_NUMBER() OVER (\n" +
                             "                PARTITION BY a.quoteid, a.partnumber, a.currency\n" +
-                            "                ORDER BY a.pricekusd DESC\n" +
+                            "                ORDER BY a.datechanged DESC\n" +
                             "            ) AS rn\n" +
                             "        FROM tsc_om_ref_modeln a\n" +
                             "        WHERE a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
@@ -336,8 +343,16 @@ public class Tsca extends ModelNCommonUtils {
                     if (rs.next()) {
                         passFlag = rs.getString("PASS_FLAG");
                         if ("1".equals(passFlag)) {
-                            sellingPrice_Q = rs.getString("PRICE_USD");
+                            sellingPrice_Q = rs.getString("PRICEK");
                             endCustName = rs.getString("END_CUSTOMER");
+                            if (sellingPrice_Q.split(",").length > 1) {
+                                if(!Arrays.asList(sellingPrice_Q.split(",")).contains(modelNDto.getSellingPrice())) {
+                                    errList.add(ErrorMessage.MULTIPLE_PRICES.getMessageFormat(sellingPrice_Q.replace(",", " / ")));
+                                    modelNDto.setErrorList(errList);
+                                } else {
+                                    sellingPrice_Q = modelNDto.getSellingPrice();
+                                }
+                            }
                         } else {
                             expireDate = rs.getString("TODATE");
                             errList.add(ErrorMessage.QUOTE_HAS_EXPIRED.getMessageFormat(expireDate));

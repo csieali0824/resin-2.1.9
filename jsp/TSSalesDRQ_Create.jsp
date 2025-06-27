@@ -572,6 +572,16 @@
 				}
 				// 檢查日期是否符合日期格式
 			} //end of if ()
+			if (document.MYFORM.CRD !== undefined) {
+				if (document.MYFORM.CRD.value != null || document.MYFORM.CRD.value !== '') {
+					try {
+						validateDate(document.MYFORM.CRD.value);
+					} catch (e) {
+						alert(e.message);
+						return;
+					}
+				}
+			}
 
 			// 2006/12/28 檢查是否輸入客戶訂購單號_起
 			if (document.MYFORM.CUSTOMERPO.value==null || document.MYFORM.CUSTOMERPO.value=="")
@@ -768,7 +778,8 @@
 			//add by Peggy 20140812
 			if (document.MYFORM.ENDCUSTOMER.value != null && document.MYFORM.ENDCUSTOMER.value !="")
 			{
-				if ( document.MYFORM.SALESAREANO.value!="009" && document.MYFORM.SALESAREANO.value!="006" && (document.MYFORM.ENDCUSTOMERID.value ==null || document.MYFORM.ENDCUSTOMERID.value==""))  //add 006 by Peggy 20221028
+				//add 001 by Mars 20250617
+				if ( !['001', '006', '009'].includes(document.MYFORM.SALESAREANO.value) && (document.MYFORM.ENDCUSTOMERID.value ==null || document.MYFORM.ENDCUSTOMERID.value==""))
 				{
 					alert("Please choose erp end customer!!");
 					document.MYFORM.ENDCUSTOMER.focus();
@@ -818,6 +829,31 @@
 			//document.MYFORM.action=URL;
 			document.MYFORM.submit();
 		}
+
+		function validateDate(input) {
+			if (!/^\d{8}$/.test(input)) {
+				throw new Error("Invalid date format. The correct format must be yyyyMMdd");
+			}
+
+			const year = parseInt(input.slice(0, 4), 10);
+			const month = parseInt(input.slice(4, 6), 10);
+			const day = parseInt(input.slice(6, 8), 10);
+
+			// JavaScript 的 Date：月份從 0 開始（0 = 一月）
+			const date = new Date(year, month - 1, day);
+
+			// 驗證是否為真實日期
+			if (
+					date.getFullYear() !== year ||
+					date.getMonth() !== month - 1 ||
+					date.getDate() !== day
+			) {
+				throw new Error(`The input date is invalid. Value provided: ${input}`);
+			}
+
+			return input;
+		}
+
 
 		function setSPQCheck(xORDERQTY,xSPQP,xMOQP)
 		{ //alert("xSPQP="+xSPQP);
@@ -1832,11 +1868,11 @@
 			}
 		}
 
-		function setPrice(salesarea,quotenum,tscpartno,tscitem)
+		function setPrice(salesarea, quotenum, tscpartno, tscitem, sellingPrice)
 		{
 			if (event.keyCode==13)
 			{
-				subWin=window.open("../jsp/subwindow/TSDRQQuoteInfoFind.jsp?QNO="+quotenum+"&PNO="+tscpartno+"&PITEM="+tscitem,"subwin","top=400,left=600,width=500,height=100,scrollbars=yes,menubar=no");
+				subWin=window.open("../jsp/subwindow/TSDRQQuoteInfoFind.jsp?QNO="+quotenum+"&PNO="+tscpartno+"&PITEM="+tscitem+"&UPRICE="+sellingPrice,"subwin","top=400,left=600,width=500,height=100,scrollbars=yes,menubar=no");
 			}
 		}
 	</script>
@@ -3695,7 +3731,7 @@
 			</td>
 			<td nowrap>
 				<div align="center">
-					<input type="text" name="QUOTENUMBER" tabindex="<%=(tabidx++)%>"  class="style2" size="8" maxlength="10"  value="<%=QUOTENUMBER%>" onKeyPress="setPrice(this.form.SALESAREANO.value,this.form.QUOTENUMBER.value,this.form.ITEMDESC.value,this.form.INVITEM.value)">
+					<input type="text" name="QUOTENUMBER" tabindex="<%=(tabidx++)%>"  class="style2" size="8" maxlength="10"  value="<%=QUOTENUMBER%>" onKeyPress="setPrice(this.form.SALESAREANO.value,this.form.QUOTENUMBER.value,this.form.ITEMDESC.value,this.form.INVITEM.value,this.form.UPRICE.value)">
 				</div>
 			</td>
 			<%

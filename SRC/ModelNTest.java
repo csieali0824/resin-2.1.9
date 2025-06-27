@@ -1,6 +1,8 @@
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mysql.jdbc.StringUtils;
+import commonUtil.dateUtil.DateParseResult;
+import commonUtil.dateUtil.DateUtil;
 import jxl.*;
 import modelN.DetailColumn;
 import modelN.ErrorMessage;
@@ -561,7 +563,7 @@ public class ModelNTest {
                     switch (ExcelColumn.settingExcelColumn(columnName, colIndex)) {
                         case CustomerNumber:
                             if (StringUtils.isNullOrEmpty(content)) {
-                                throw new Exception(ErrorMessage.CUSTNO_REQUEST.getMessage());
+                                throw new Exception(ErrorMessage.CUSTNO_REQUIRED.getMessage());
                             }
                             modelNDto.setCustNo(content);
                             break;
@@ -570,7 +572,7 @@ public class ModelNTest {
                             break;
                         case CustomerPO:
                             if (StringUtils.isNullOrEmpty(content)) {
-                                throw new Exception(ErrorMessage.CUSTPO_REQUEST.getMessage());
+                                throw new Exception(ErrorMessage.CUSTPO_REQUIRED.getMessage());
                             }
                             modelNDto.setCustPo(content);
                             break;
@@ -582,7 +584,7 @@ public class ModelNTest {
                             break;
                         case TSC_PN:
                             if (StringUtils.isNullOrEmpty(content)) {
-                                throw new Exception(ErrorMessage.TSC_PN_REQUEST.getMessage());
+                                throw new Exception(ErrorMessage.TSC_PN_REQUIRED.getMessage());
                             }
                             modelNDto.setTscItemDesc(content);
                             break;
@@ -608,48 +610,28 @@ public class ModelNTest {
                             modelNDto.setSellingPrice(sellingPrice);
                             break;
                         case CRD:
-                            String crd = content;
-                            try {
-                                if (rowCell.getType() == CellType.DATE) {
-                                    crd = sdf.format(((DateCell) rowCell).getDate());
-                                } else {
-                                    crd = content.replace("-", "");
-                                    crd = sdf.format(((DateCell) rowCell).getDate());
-                                    if (crd.length() < 8) {
-                                        throw new Exception(ErrorMessage.CRD_LENGTH_LESS_8.getMessage());
-                                    }
-                                }
-                            } catch (Exception e) {
-                                if (StringUtils.isNullOrEmpty(crd)) {
-                                    throw new Exception(ErrorMessage.CRD_REQUEST.getMessage());
-                                } else {
-                                    errorMsgList.add(ErrorMessage.DATE_FORMATTER_ERROR.getMessageFormat(columnName.concat(":" + crd)));
-//                                    errorMessage.append("Xxxxxxxxxxxxxxxxxxx");
-//                                    throw new Exception(ErrorMessage.DATE_FORMATTER_ERROR.getMessageFormat(crd));
+                            if (StringUtils.isNullOrEmpty(content)) {
+                                throw new Exception(ErrorMessage.CRD_REQUIRED.getMessage());
+                            } else {
+                                try {
+                                    DateParseResult result = DateUtil.autoParseWithPattern(content);
+                                    modelNDto.setCrd(result.formattedDate());
+                                } catch (IllegalArgumentException e) {
+                                    errorMsgList.add(columnName.concat(":" + e.getMessage()));
                                 }
                             }
-                            modelNDto.setCrd(crd);
                             break;
                         case SSD:
-                            String ssd = content;
-                            try {
-                                if (rowCell.getType() == CellType.DATE) {
-                                    ssd = sdf.format(((DateCell) rowCell).getDate());
-                                } else {
-                                    ssd = content.replace("-", "");
-                                    ssd = sdf.format(((DateCell) rowCell).getDate());
-                                    if (ssd.length() < 8) {
-                                        throw new Exception(ErrorMessage.SSD_LENGTH_LESS_8.getMessage());
-                                    }
-                                }
-                            } catch (Exception e) {
-                                if (StringUtils.isNullOrEmpty(ssd)) {
-                                    throw new Exception(ErrorMessage.SSD_REQUEST.getMessage());
-                                } else {
-                                    errorMsgList.add(ErrorMessage.DATE_FORMATTER_ERROR.getMessageFormat(columnName.concat(":" + ssd)));
+                            if (StringUtils.isNullOrEmpty(content)) {
+                                throw new Exception(ErrorMessage.SSD_REQUIRED.getMessage());
+                            } else {
+                                try {
+                                    DateParseResult result = DateUtil.autoParseWithPattern(content);
+                                    modelNDto.setSsd(result.formattedDate());
+                                } catch (IllegalArgumentException e) {
+                                    errorMsgList.add(columnName.concat(":" + e.getMessage()));
                                 }
                             }
-                            modelNDto.setSsd(ssd);
                             break;
                         case ShippingMethod:
                             String shippingMethod = content;
