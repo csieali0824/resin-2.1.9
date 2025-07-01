@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8" import="java.sql.*"%>
+<%@ page contentType="text/html; charset=big5" import="java.sql.*"%>
 <%@ page import="java.sql.*"%>
 <%@ page import="java.util.*"%>
 <%@ page import="jxl.*"%>
@@ -8,7 +8,7 @@
 <%@ page import="java.io.*,DateBean"%>
 <%@ page import="com.jspsmart.upload.*"%>
 <%@ page import="DateBean,Array2DimensionInputBean" %>
-<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—é€£çµæ± ==========-->
+<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
@@ -36,7 +36,7 @@ function setUpload(URL)
 {
 	if (document.SUBFORM.UPLOADFILE.value ==null || document.SUBFORM.UPLOADFILE.value=="")
 	{
-		alert("è«‹å…ˆæŒ‰ç€è¦½éµé¸æ“‡ä¸Šå‚³çš„æª”æ¡ˆ!");
+		alert("½Ğ¥ı«öÂsÄıÁä¿ï¾Ü¤W¶ÇªºÀÉ®×!");
 		return false;
 	}
 	else
@@ -45,7 +45,7 @@ function setUpload(URL)
 		filename = filename.substr(filename.length-4);
 		if (filename.toUpperCase() != ".XLS")
 		{
-			alert('ä¸Šå‚³æª”æ¡ˆå¿…é ˆç‚ºoffice 2003 excelæª”!');
+			alert('¤W¶ÇÀÉ®×¥²¶·¬°office 2003 excelÀÉ!');
 			document.SUBFORM.UPLOADFILE.focus();
 			return false;	
 		}
@@ -96,15 +96,15 @@ statement.close();
 <FORM METHOD="post" NAME="SUBFORM"  ENCTYPE="multipart/form-data">
 <TABLE width="100%" border="1" cellspacing="0" cellpadding="0">
 	<TR>
-		<TD height="29" width="20%" align="center" bgcolor="#FFFFCC"><font style="font-family:'ç´°æ˜é«”';font-size:12px">ç”³è«‹é …ç›®&nbsp;</font></TD>
+		<TD height="29" width="20%" align="center" bgcolor="#FFFFCC"><font style="font-family:'²Ó©úÅé';font-size:12px">¥Ó½Ğ¶µ¥Ø&nbsp;</font></TD>
 		<TD><font style="color:#000099;font-family:Arial;font-size:12px">&nbsp;<strong><%=rdoitemdesc%></strong></font></TD>
 	</TR>
 	<TR>
-		<TD height="29" width="20%" align="center" bgcolor="#FFFFCC"><font style="font-family:'ç´°æ˜é«”';font-size:12px">&nbsp;è«‹é¸æ“‡ä¸Šæª”å‚³æ¡ˆ&nbsp;</font></TD>
+		<TD height="29" width="20%" align="center" bgcolor="#FFFFCC"><font style="font-family:'²Ó©úÅé';font-size:12px">&nbsp;½Ğ¿ï¾Ü¤WÀÉ¶Ç®×&nbsp;</font></TD>
 		<TD>&nbsp;<INPUT TYPE="FILE" NAME="UPLOADFILE" size="60" style="font-family:ARIAL;font-size:12px"></TD>
 	</TR>
 	<TR>
-		<TD height="25" align="center" bgcolor="#FFFFCC"><font style="font-family:'ç´°æ˜é«”';font-size:12px">&nbsp;ä¸Šå‚³ç¯„æœ¬&nbsp;</font></TD>
+		<TD height="25" align="center" bgcolor="#FFFFCC"><font style="font-family:'²Ó©úÅé';font-size:12px">&nbsp;¤W¶Ç½d¥»&nbsp;</font></TD>
 		<TD>
 		<% 
 		if (rdoitem.equals("SUBTRANS"))
@@ -124,9 +124,9 @@ statement.close();
 	</TR>
 	<TR>
 		<TD colspan="2" align="center">
-		<INPUT TYPE="button" NAME="upload" value="æª”æ¡ˆä¸Šå‚³" onClick='setUpload("../jsp/TSCStockTransRequestUpload.jsp?ACTIONCODE=UPLOAD&rdoitem=<%=rdoitem%>")'>
+		<INPUT TYPE="button" NAME="upload" value="ÀÉ®×¤W¶Ç" onClick='setUpload("../jsp/TSCStockTransRequestUpload.jsp?ACTIONCODE=UPLOAD&rdoitem=<%=rdoitem%>")'>
 		&nbsp;&nbsp;&nbsp;&nbsp;
-		<INPUT TYPE="button" NAME="winclose" value="é—œé–‰è¦–çª—" onClick='setClose();'>
+		<INPUT TYPE="button" NAME="winclose" value="Ãö³¬µøµ¡" onClick='setClose();'>
 		</TD>
 	</TR>
 </TABLE>
@@ -167,30 +167,30 @@ statement.close();
 						
 			for (int i = start_row ; i <sht.getRows(); i++) 
 			{
-				//è½‰å€‰é€šçŸ¥å–®
+				//Âà­Ü³qª¾³æ
 				if (rdoitem.equals("SUBTRANS"))
 				{
-					//ç”¢å“åˆ¥
+					//²£«~§O
 					jxl.Cell wcItem = sht.getCell(0, i);          
 					strProdGroup = (wcItem.getContents()).trim();
 					if (strProdGroup  == null) strProdGroup = "";
 
-					//æ–™è™Ÿ
+					//®Æ¸¹
 					wcItem = sht.getCell(1, i);          
 					strItemName = (wcItem.getContents()).trim();
 					if (strItemName  == null) strItemName = "";
 					
-					//å“å
+					//«~¦W
 					wcItem = sht.getCell(2, i);          
 					strItemDesc = (wcItem.getContents()).trim();
 					if (strItemDesc  == null) strItemDesc = "";		
 					//if (strItemDesc.equals(""))
 					//{
-					//	throw new Exception("ç¬¬"+(i+1)+"åˆ—:å“åä¸å¯ç©ºç™½!!");
+					//	throw new Exception("²Ä"+(i+1)+"¦C:«~¦W¤£¥iªÅ¥Õ!!");
 					//}	
 					if (strItemName.equals("") && strItemDesc.equals(""))
 					{
-						throw new Exception("ç¬¬"+(i)+"ç­†:æ–™è™Ÿæˆ–å“åè«‹æ“‡ä¸€è¼¸å…¥!!");
+						throw new Exception("²Ä"+(i)+"µ§:®Æ¸¹©Î«~¦W½Ğ¾Ü¤@¿é¤J!!");
 					}						
 						
 					//lot
@@ -199,7 +199,7 @@ statement.close();
 					if (strLot  == null) strLot = "";		
 					if (strLot.equals(""))
 					{
-						throw new Exception("ç¬¬"+(i)+"ç­†:Lotä¸å¯ç©ºç™½!!");
+						throw new Exception("²Ä"+(i)+"µ§:Lot¤£¥iªÅ¥Õ!!");
 					}								
 
 					//d/c
@@ -208,29 +208,29 @@ statement.close();
 					if (strDateCode  == null) strDateCode = "";		
 					//if (strDateCode.equals(""))
 					//{
-					//	throw new Exception("ç¬¬"+(i+1)+"åˆ—:Date Codeä¸å¯ç©ºç™½!!");
+					//	throw new Exception("²Ä"+(i+1)+"¦C:Date Code¤£¥iªÅ¥Õ!!");
 					//}	
 	
-					//ç§»å‡ºorg
+					//²¾¥Xorg
 					wcItem = sht.getCell(5, i);          
 					strOrigOrg = (wcItem.getContents()).trim();
 					if (strOrigOrg  == null) strOrigOrg = "";
 					if (strOrigOrg.equals(""))
 					{
-						throw new Exception("ç¬¬"+(i)+"ç­†:ç§»å‡ºOrgä¸å¯ç©ºç™½!!");
+						throw new Exception("²Ä"+(i)+"µ§:²¾¥XOrg¤£¥iªÅ¥Õ!!");
 					}	
 					else if (!strOrigOrg.equals("I1") && !strOrigOrg.equals("I20") && !strOrigOrg.equals("I91") && !strOrigOrg.equals("I13"))
 					{
-						throw new Exception("ç¬¬"+(i)+"ç­†:ç§»å‡ºOrg:"+strOrigOrg+"éŒ¯èª¤(ç›®å‰åªé–‹æ”¾I1,I20,I13,I91)!!");
+						throw new Exception("²Ä"+(i)+"µ§:²¾¥XOrg:"+strOrigOrg+"¿ù»~(¥Ø«e¥u¶}©ñI1,I20,I13,I91)!!");
 					}					
 					
-					//ç§»å‡ºå€‰åˆ¥ 
+					//²¾¥X­Ü§O 
 					wcItem = sht.getCell(6, i);          
 					strOrigSubinv = (wcItem.getContents()).trim();
 					if (strOrigSubinv  == null) strOrigSubinv = "";
 					if (strOrigSubinv.equals(""))
 					{
-						throw new Exception("ç¬¬"+(i)+"ç­†:ç§»å‡ºå€‰åˆ¥ä¸å¯ç©ºç™½!!");
+						throw new Exception("²Ä"+(i)+"µ§:²¾¥X­Ü§O¤£¥iªÅ¥Õ!!");
 					}	
 					else
 					{
@@ -246,34 +246,34 @@ statement.close();
 						}
 						if (ifound==false)
 						{
-							throw new Exception("ç¬¬"+(i)+"ç­†:ç§»å‡ºå€‰åˆ¥ä¸å­˜åœ¨!!");
+							throw new Exception("²Ä"+(i)+"µ§:²¾¥X­Ü§O¤£¦s¦b!!");
 						}
 					}
 					
-					//ç§»å…¥org
+					//²¾¤Jorg
 					wcItem = sht.getCell(7, i);          
 					strNewOrg = (wcItem.getContents()).trim();
 					if (strNewOrg  == null) strNewOrg = "";
 					if (strNewOrg.equals(""))
 					{
-						throw new Exception("ç¬¬"+(i)+"ç­†:ç§»å…¥Orgä¸å¯ç©ºç™½!!");
+						throw new Exception("²Ä"+(i)+"µ§:²¾¤JOrg¤£¥iªÅ¥Õ!!");
 					}
 					else if (!strNewOrg.equals("I1") && !strNewOrg.equals("I20") && !strNewOrg.equals("I91") && !strNewOrg.equals("I13"))
 					{
-						throw new Exception("ç¬¬"+(i)+"ç­†:ç§»å…¥Org"+strNewOrg+"éŒ¯èª¤(ç›®å‰åªé–‹æ”¾I1,I20,I13,I91)!!");
+						throw new Exception("²Ä"+(i)+"µ§:²¾¤JOrg"+strNewOrg+"¿ù»~(¥Ø«e¥u¶}©ñI1,I20,I13,I91)!!");
 					}
 					
-					//ç§»å…¥å€‰åˆ¥ 
+					//²¾¤J­Ü§O 
 					wcItem = sht.getCell(8, i);          
 					strNewSubinv = (wcItem.getContents()).trim();
 					if (strNewSubinv  == null) strNewSubinv = "";
 					if (strNewSubinv.equals(""))
 					{
-						throw new Exception("ç¬¬"+(i)+"ç­†:ç§»å…¥å€‰åˆ¥ä¸å¯ç©ºç™½!!");
+						throw new Exception("²Ä"+(i)+"µ§:²¾¤J­Ü§O¤£¥iªÅ¥Õ!!");
 					}	
 					else if (strNewOrg.equals(strOrigOrg) && strNewSubinv.equals(strOrigSubinv))
 					{
-						throw new Exception("ç¬¬"+(i)+"ç­†:ç§»å…¥ORGèˆ‡å€‰åˆ¥ä¸å¯èˆ‡è½‰å‡ºOrgå’Œå€‰åˆ¥ç›¸åŒ!!");
+						throw new Exception("²Ä"+(i)+"µ§:²¾¤JORG»P­Ü§O¤£¥i»PÂà¥XOrg©M­Ü§O¬Û¦P!!");
 					}				
 					else
 					{
@@ -289,42 +289,42 @@ statement.close();
 						}
 						if (ifound==false)
 						{
-							throw new Exception("ç¬¬"+(i)+"ç­†:ç§»å…¥å€‰åˆ¥ä¸å­˜åœ¨!!");
+							throw new Exception("²Ä"+(i)+"µ§:²¾¤J­Ü§O¤£¦s¦b!!");
 						}
 					}
 											
-					//æ•¸é‡
+					//¼Æ¶q
 					wcItem = sht.getCell(9, i);          
 					strQty = (wcItem.getContents()).trim();
 					if (strQty == null) strQty = "";
 					if (strQty.equals(""))
 					{
-						throw new Exception("ç¬¬"+(i)+"ç­†:æ•¸é‡ä¸å¯ç©ºç™½!!");
+						throw new Exception("²Ä"+(i)+"µ§:¼Æ¶q¤£¥iªÅ¥Õ!!");
 					}
 
-					//å–®ä½
+					//³æ¦ì
 					wcItem = sht.getCell(10, i);          
 					strUom = (wcItem.getContents()).trim();
 					if (strUom   == null) strUom  = "";
 					//if (strUom .equals(""))
 					//{
-					//	throw new Exception("ç¬¬"+(i+1)+"åˆ—:å–®ä½ä¸å¯ç©ºç™½!!");
+					//	throw new Exception("²Ä"+(i+1)+"¦C:³æ¦ì¤£¥iªÅ¥Õ!!");
 					//}
 					//else if (!strUom.equals("KPC") && !strUom.equals("PCE"))
 					//{
-					//	throw new Exception("ç¬¬"+(i+1)+"åˆ—:å–®ä½å€¼éŒ¯èª¤(æ‡‰ç‚ºKPCæˆ–PCE)!!");
+					//	throw new Exception("²Ä"+(i+1)+"¦C:³æ¦ì­È¿ù»~(À³¬°KPC©ÎPCE)!!");
 					//}					
 					
-					//ç§»å‡ºåŸå› 
+					//²¾¥X­ì¦]
 					wcItem = sht.getCell(11, i);          
 					strReason = (wcItem.getContents()).trim();
 					if (strReason  == null) strReason = "";
 					if (strReason.equals(""))
 					{
-						throw new Exception("ç¬¬"+(i)+"ç­†:ç§»è½‰åŸå› ä¸å¯ç©ºç™½!!");
+						throw new Exception("²Ä"+(i)+"µ§:²¾Âà­ì¦]¤£¥iªÅ¥Õ!!");
 					}
 					
-					//å–®åƒ¹
+					//³æ»ù
 					wcItem = sht.getCell(12, i); 
 					if (wcItem .getType() == CellType.NUMBER) 
 					{
@@ -333,14 +333,9 @@ statement.close();
 					else strUnitPrice = (wcItem.getContents()).trim();	
 					if (strUnitPrice == null || strUnitPrice.equals(""))
 					{
-						throw new Exception("ç¬¬"+(i)+"ç­†:å–®åƒ¹ä¸å¯ç©ºç™½!!");
+						throw new Exception("²Ä"+(i)+"µ§:³æ»ù¤£¥iªÅ¥Õ!!");
 					}
-					else if (Double.parseDouble(strUnitPrice)<=0)
-					{
-						throw new Exception("ç¬¬"+(i)+"ç­†:å–®åƒ¹å¿…é ˆå¤§æ–¼0!!");
-					}	
-					
-					//é‡‘é¡
+					//ª÷ÃB
 					wcItem = sht.getCell(13, i); 
 					if (wcItem .getType() == CellType.NUMBER) 
 					{
@@ -349,37 +344,33 @@ statement.close();
 					else strAmt = (wcItem.getContents()).trim();	
 					if (strAmt == null || strAmt.equals(""))
 					{
-						throw new Exception("ç¬¬"+(i)+"ç­†:å–®åƒ¹ä¸å¯ç©ºç™½!!");
+						throw new Exception("²Ä"+(i)+"µ§:³æ»ù¤£¥iªÅ¥Õ!!");
 					}
-					else if (Double.parseDouble(strAmt)<=0)
-					{
-						throw new Exception("ç¬¬"+(i)+"ç­†:å–®åƒ¹å¿…é ˆå¤§æ–¼0!!");
-					}					
 				}
-				//æ–™è™Ÿç§»è½‰(é‡åˆ†è½‰å…¥)é€šçŸ¥å–®
+				//®Æ¸¹²¾Âà(­«¤ÀÂà¤J)³qª¾³æ
 				else if (rdoitem.equals("MISC"))
 				{
-					//ç”¢å“åˆ¥
+					//²£«~§O
 					jxl.Cell wcItem = sht.getCell(0, i);          
 					strProdGroup = (wcItem.getContents()).trim();
 					if (strProdGroup  == null) strProdGroup = "";
 
-					//æ–™è™Ÿ
+					//®Æ¸¹
 					wcItem = sht.getCell(1, i);          
 					strItemName = (wcItem.getContents()).trim();
 					if (strItemName  == null) strItemName = "";
 					
-					//å“å
+					//«~¦W
 					wcItem = sht.getCell(2, i);          
 					strItemDesc = (wcItem.getContents()).trim();
 					if (strItemDesc  == null) strItemDesc = "";		
 					//if (strItemDesc.equals(""))
 					//{
-					//	throw new Exception("ç¬¬"+(i+1)+"åˆ—:å“åä¸å¯ç©ºç™½!!");
+					//	throw new Exception("²Ä"+(i+1)+"¦C:«~¦W¤£¥iªÅ¥Õ!!");
 					//}	
 					if (strItemName.equals("") && strItemDesc.equals(""))
 					{
-						throw new Exception("ç¬¬"+(i)+"ç­†:æ–™è™Ÿæˆ–å“åè«‹æ“‡ä¸€è¼¸å…¥!!");
+						throw new Exception("²Ä"+(i)+"µ§:®Æ¸¹©Î«~¦W½Ğ¾Ü¤@¿é¤J!!");
 					}						
 											
 					//lot
@@ -388,7 +379,7 @@ statement.close();
 					if (strLot  == null) strLot = "";		
 					if (strLot.equals(""))
 					{
-						throw new Exception("ç¬¬"+(i)+"ç­†:Lotä¸å¯ç©ºç™½!!");
+						throw new Exception("²Ä"+(i)+"µ§:Lot¤£¥iªÅ¥Õ!!");
 					}								
 
 					//d/c
@@ -397,43 +388,43 @@ statement.close();
 					if (strDateCode  == null) strDateCode = "";		
 					//if (strDateCode.equals(""))
 					//{
-					//	throw new Exception("ç¬¬"+(i+1)+"åˆ—:Date Codeä¸å¯ç©ºç™½!!");
+					//	throw new Exception("²Ä"+(i+1)+"¦C:Date Code¤£¥iªÅ¥Õ!!");
 					//}	
 	
-					//æ•¸é‡
+					//¼Æ¶q
 					wcItem = sht.getCell(5, i);          
 					strQty = (wcItem.getContents()).trim();
 					if (strQty == null) strQty = "";
 					if (strQty.equals(""))
 					{
-						throw new Exception("ç¬¬"+(i)+"ç­†:æ•¸é‡ä¸å¯ç©ºç™½!!");
+						throw new Exception("²Ä"+(i)+"µ§:¼Æ¶q¤£¥iªÅ¥Õ!!");
 					}
 
-					//å–®ä½
+					//³æ¦ì
 					wcItem = sht.getCell(6, i);          
 					strUom = (wcItem.getContents()).trim();
 					if (strUom   == null) strUom  = "";
 
-					//ç§»å‡ºorg
+					//²¾¥Xorg
 					wcItem = sht.getCell(7, i);          
 					strOrigOrg = (wcItem.getContents()).trim();
 					if (strOrigOrg  == null) strOrigOrg = "";
 					if (strOrigOrg.equals(""))
 					{
-						throw new Exception("ç¬¬"+(i)+"ç­†:ç§»å‡ºOrgä¸å¯ç©ºç™½!!");
+						throw new Exception("²Ä"+(i)+"µ§:²¾¥XOrg¤£¥iªÅ¥Õ!!");
 					}	
 					else if (!strOrigOrg.equals("I1") && !strOrigOrg.equals("I20") && !strOrigOrg.equals("I91") && !strOrigOrg.equals("I13"))
 					{
-						throw new Exception("ç¬¬"+(i)+"ç­†:ç§»å‡ºorgéŒ¯èª¤(ç›®å‰åªé–‹æ”¾I1,I20,I13,I91)!!");
+						throw new Exception("²Ä"+(i)+"µ§:²¾¥Xorg¿ù»~(¥Ø«e¥u¶}©ñI1,I20,I13,I91)!!");
 					}					
 					
-					//ç§»å‡ºå€‰åˆ¥ 
+					//²¾¥X­Ü§O 
 					wcItem = sht.getCell(8, i);          
 					strOrigSubinv = (wcItem.getContents()).trim();
 					if (strOrigSubinv  == null) strOrigSubinv = "";
 					if (strOrigSubinv.equals(""))
 					{
-						throw new Exception("ç¬¬"+(i)+"ç­†:ç§»å‡ºå€‰åˆ¥ä¸å¯ç©ºç™½!!");
+						throw new Exception("²Ä"+(i)+"µ§:²¾¥X­Ü§O¤£¥iªÅ¥Õ!!");
 					}	
 					else
 					{
@@ -449,84 +440,84 @@ statement.close();
 						}
 						if (ifound==false)
 						{
-							throw new Exception("ç¬¬"+(i)+"ç­†:ç§»å‡ºå€‰åˆ¥ä¸å­˜åœ¨!!");
+							throw new Exception("²Ä"+(i)+"µ§:²¾¥X­Ü§O¤£¦s¦b!!");
 						}
 					}
 										
-					//è¼¸å…¥æ–™è™Ÿ
+					//¿é¤J®Æ¸¹
 					wcItem = sht.getCell(9, i);          
 					strNewItemName = (wcItem.getContents()).trim();
 					if (strNewItemName  == null) strNewItemName = "";
 					//if (strNewItemName.equals(""))
 					//{
-					//	throw new Exception("ç¬¬"+(i+1)+"åˆ—:è½‰å…¥æ–™è™Ÿä¸å¯ç©ºç™½!!");
+					//	throw new Exception("²Ä"+(i+1)+"¦C:Âà¤J®Æ¸¹¤£¥iªÅ¥Õ!!");
 					//}	
 					
-					//è½‰å…¥å“å
+					//Âà¤J«~¦W
 					wcItem = sht.getCell(10, i);          
 					strNewItemDesc= (wcItem.getContents()).trim();
 					if (strNewItemDesc  == null) strNewItemDesc = "";
 					//if (strNewItemDesc.equals(""))
 					//{
-					//	throw new Exception("ç¬¬"+(i+1)+"åˆ—:è½‰å…¥å“åä¸å¯ç©ºç™½!!");
+					//	throw new Exception("²Ä"+(i+1)+"¦C:Âà¤J«~¦W¤£¥iªÅ¥Õ!!");
 					//}	
 					if (strNewItemName.equals("") && strNewItemDesc.equals(""))
 					{
-						throw new Exception("ç¬¬"+(i)+"ç­†:è½‰å‡ºæ–™è™Ÿæˆ–è½‰å‡ºå“åè«‹æ“‡ä¸€è¼¸å…¥!!");
+						throw new Exception("²Ä"+(i)+"µ§:Âà¥X®Æ¸¹©ÎÂà¥X«~¦W½Ğ¾Ü¤@¿é¤J!!");
 					}					
 					else if (strNewItemDesc.equals(strItemDesc) && 	(strItemName.equals("") || strNewItemName.equals("")))
 					{
-						throw new Exception("ç¬¬"+(i)+"ç­†:è½‰å‡ºå…¥å“åç›¸åŒæ™‚,è½‰å‡ºå…¥æ–™è™Ÿä¸å¯ç©ºç™½!!");
+						throw new Exception("²Ä"+(i)+"µ§:Âà¥X¤J«~¦W¬Û¦P®É,Âà¥X¤J®Æ¸¹¤£¥iªÅ¥Õ!!");
 					}
 						
-					//è½‰å…¥lot
+					//Âà¤Jlot
 					wcItem = sht.getCell(11, i);          
 					strNewLot = (wcItem.getContents()).trim();
 					if (strNewLot  == null) strNewLot = "";		
 					if (strNewLot.equals(""))
 					{
-						throw new Exception("ç¬¬"+(i)+"ç­†:è½‰å…¥Lotä¸å¯ç©ºç™½!!");
+						throw new Exception("²Ä"+(i)+"µ§:Âà¤JLot¤£¥iªÅ¥Õ!!");
 					}								
 
-					//è½‰å…¥d/c
+					//Âà¤Jd/c
 					wcItem = sht.getCell(12, i);          
 					strNewDateCode = (wcItem.getContents()).trim();
 					if (strNewDateCode  == null) strNewDateCode = "";		
 											
-					//è¼¸å…¥æ•¸é‡
+					//¿é¤J¼Æ¶q
 					wcItem = sht.getCell(13, i);          
 					strNewQty = (wcItem.getContents()).trim();
 					if (strNewQty == null) strNewQty = "";
 					if (strNewQty.equals(""))
 					{
-						throw new Exception("ç¬¬"+(i)+"ç­†:è½‰å…¥æ•¸é‡ä¸å¯ç©ºç™½!!");
+						throw new Exception("²Ä"+(i)+"µ§:Âà¤J¼Æ¶q¤£¥iªÅ¥Õ!!");
 					}
 
-					//è¼¸å…¥å–®ä½
+					//¿é¤J³æ¦ì
 					wcItem = sht.getCell(14, i);          
 					strNewUom = (wcItem.getContents()).trim();
 					if (strNewUom   == null) strNewUom  = "";
 					//if (strUom .equals(""))
 					//{
-					//	throw new Exception("ç¬¬"+(i+1)+"åˆ—:å–®ä½ä¸å¯ç©ºç™½!!");
+					//	throw new Exception("²Ä"+(i+1)+"¦C:³æ¦ì¤£¥iªÅ¥Õ!!");
 					//}
 					//else if (!strUom.equals("KPC") && !strUom.equals("PCE"))
 					//{
-					//	throw new Exception("ç¬¬"+(i+1)+"åˆ—:å–®ä½å€¼éŒ¯èª¤(æ‡‰ç‚ºKPCæˆ–PCE)!!");
+					//	throw new Exception("²Ä"+(i+1)+"¦C:³æ¦ì­È¿ù»~(À³¬°KPC©ÎPCE)!!");
 					//}					
 					
-					//ç§»å‡ºåŸå› 
+					//²¾¥X­ì¦]
 					wcItem = sht.getCell(15, i);          
 					strReason = (wcItem.getContents()).trim();
 					if (strReason  == null) strReason = "";
 					if (strReason.equals(""))
 					{
-						throw new Exception("ç¬¬"+(i)+"ç­†:ç§»è½‰åŸå› ä¸å¯ç©ºç™½!!");
+						throw new Exception("²Ä"+(i)+"µ§:²¾Âà­ì¦]¤£¥iªÅ¥Õ!!");
 					}
 					
 				}
 				
-				//æª¢æŸ¥æ–™è™Ÿ
+				//ÀË¬d®Æ¸¹
 				sql = " select a.segment1,a.description,a.inventory_item_status_code,tsc_inv_category(a.inventory_item_id,a.organization_id,1100000003) tsc_prod_group,a.item_type,a.PRIMARY_UNIT_OF_MEASURE uom"+
                       " from inv.mtl_system_items_b a,inv.mtl_parameters b"+
                       " where a.organization_id=b.organization_id"+
@@ -549,7 +540,7 @@ statement.close();
 				{
 					if (rs.getString("inventory_item_status_code").equals("Inactive"))
 					{
-						throw new Exception("ç¬¬"+(i)+"åˆ—:æ–™è™Ÿ"+rs.getString("segment1")+"å·²åœç”¨!!");
+						throw new Exception("²Ä"+(i)+"¦C:®Æ¸¹"+rs.getString("segment1")+"¤w°±¥Î!!");
 					}
 					if (rs.getString("item_type").equals("FG"))
 					{
@@ -557,11 +548,11 @@ statement.close();
 					}
 					else if (rs.getString("item_type").equals("SA"))
 					{
-						strProdGroup="åŠæˆå“";
+						strProdGroup="¥b¦¨«~";
 					}
 					else
 					{
-						strProdGroup="åŸç‰©æ–™";
+						strProdGroup="­ìª«®Æ";
 					}
 					strItemName=rs.getString("segment1");
 					strItemDesc=rs.getString("description");
@@ -570,14 +561,14 @@ statement.close();
 				else
 				{
 					out.println("xxx");
-					throw new Exception("ç¬¬"+(i)+"åˆ—:æŸ¥ç„¡æ–™è™Ÿ"+rs.getString("segment1")+"!!");
+					throw new Exception("²Ä"+(i)+"¦C:¬dµL®Æ¸¹"+rs.getString("segment1")+"!!");
 				}
 				rs.close();
 				statement.close();
 				
 				strKey=strItemName+","+strOrigOrg+","+strOrigSubinv+","+strLot;
 				
-				//æª¢æŸ¥åº«å­˜
+				//ÀË¬d®w¦s
 				sql = " select nvl(sum(TRANSACTION_QUANTITY* case when TRANSACTION_UOM_CODE='KPC' THEN 1000 ELSE 1 END ),0) onhand"+
                       " from (select b.organization_code,a.* from inv.mtl_onhand_quantities_detail a,inv.mtl_parameters b where a.organization_id=b.organization_id) a,inv.mtl_system_items_b c,oraddman.tsc_stock_trans_subinv d,oraddman.tsc_stock_trans_type e"+
                       " where a.organization_code=?"+
@@ -623,13 +614,13 @@ statement.close();
 				iQty =iQty-iiStrQty ;		
 				if (iQty<0)
 				{
-					throw new Exception("ç¬¬"+(i)+"åˆ—:æ–™è™Ÿ:"+strItemName+"    LOT:"+strLot+" åº«å­˜ä¸è¶³("+iQty+"  "+ionhand+"  "+iUseQty+"  "+iStrQty+"  "+iiStrQty+")!!");
+					throw new Exception("²Ä"+(i)+"¦C:®Æ¸¹:"+strItemName+"    LOT:"+strLot+" ®w¦s¤£¨¬("+iQty+"  "+ionhand+"  "+iUseQty+"  "+iStrQty+"  "+iiStrQty+")!!");
 				}
 				
 				iUseQty+= (Double.parseDouble(strQty)*(strUom.equals("KPC")?1000:1));
 				hashtb.put(strKey,""+iUseQty);
 				
-				//æª¢æŸ¥å€‰åˆ¥
+				//ÀË¬d­Ü§O
 				sql = " SELECT 1  FROM oraddman.tsc_stock_trans_subinv a,oraddman.tsc_stock_trans_type b"+
                       " WHERE nvl(a.active_flag,'N') =?"+
                       " AND a.organization_code=?"+
@@ -644,14 +635,14 @@ statement.close();
 				rs=statement.executeQuery();
 				if (!rs.next())
 				{	
-					throw new Exception("ç¬¬"+(i)+"åˆ—:ç§»å‡ºORG:"+strOrigOrg+"    ç§»å‡ºå€‰åˆ¥:"+strOrigSubinv+" ä¸åœ¨å¯åŸ·è¡Œäº¤æ˜“åå–®ä¸­!!");
+					throw new Exception("²Ä"+(i)+"¦C:²¾¥XORG:"+strOrigOrg+"    ²¾¥X­Ü§O:"+strOrigSubinv+" ¤£¦b¥i°õ¦æ¥æ©ö¦W³æ¤¤!!");
 				}
 				rs.close();	
 				statement.close();				  
 					 
 				if (rdoitem.equals("SUBTRANS"))
 				{					  
-					//æª¢æŸ¥å€‰åˆ¥
+					//ÀË¬d­Ü§O
 					sql = " SELECT 1  FROM oraddman.tsc_stock_trans_subinv a,oraddman.tsc_stock_trans_type b"+
 						  " WHERE nvl(a.active_flag,'N') =?"+
 						  " AND a.organization_code=?"+
@@ -666,7 +657,7 @@ statement.close();
 					rs=statement.executeQuery();
 					if (!rs.next())
 					{	
-						throw new Exception("ç¬¬"+(i)+"åˆ—:ç§»å‡ºORG:"+strNewOrg+"    ç§»å‡ºå€‰åˆ¥:"+strNewSubinv+" ä¸åœ¨å¯åŸ·è¡Œäº¤æ˜“åå–®ä¸­!!");
+						throw new Exception("²Ä"+(i)+"¦C:²¾¥XORG:"+strNewOrg+"    ²¾¥X­Ü§O:"+strNewSubinv+" ¤£¦b¥i°õ¦æ¥æ©ö¦W³æ¤¤!!");
 					}
 					rs.close();	
 					statement.close();	
@@ -689,14 +680,14 @@ statement.close();
 					{
 						if (rs.getString("inventory_item_status_code").equals("Inactive"))
 						{
-							throw new Exception("ç¬¬"+(i)+"åˆ—:è½‰å…¥æ–™è™Ÿ"+rs.getString("segment1")+"å·²åœç”¨!!");
+							throw new Exception("²Ä"+(i)+"¦C:Âà¤J®Æ¸¹"+rs.getString("segment1")+"¤w°±¥Î!!");
 						}
 						strNewItemName=rs.getString("segment1");
 						strNewItemDesc=rs.getString("description");
 					}
 					else
 					{
-						throw new Exception("ç¬¬"+(i)+"åˆ—:è½‰å…¥æ–™è™Ÿ"+rs.getString("segment1")+"ä¸å­˜åœ¨ERP!!");
+						throw new Exception("²Ä"+(i)+"¦C:Âà¤J®Æ¸¹"+rs.getString("segment1")+"¤£¦s¦bERP!!");
 					}
 					rs.close();
 					statement.close();				
@@ -755,14 +746,14 @@ statement.close();
 		}
 		catch(Exception e)
 		{
-			out.println("<div style='color:#ff0000;font-family:arial;font-size:12px'>ä¸Šå‚³å¤±æ•—!!éŒ¯èª¤åŸå› å¦‚ä¸‹èªªæ˜..<br>"+e.getMessage()+"</div>");
+			out.println("<div style='color:#ff0000;font-family:arial;font-size:12px'>¤W¶Ç¥¢±Ñ!!¿ù»~­ì¦]¦p¤U»¡©ú..<br>"+e.getMessage()+"</div>");
 		}
 	}
 %>
 <input type="hidden" name="rdoitem" value="<%=rdoitem%>">
 </FORM>
 <iframe width=124 height=153 name="gToday:supermini:agenda.js" id="gToday:supermini:agenda.js" src="../calendar/ipopeng.htm" scrolling="no" frameborder="0" style="visibility:hidden; z-index:65535; position:absolute; top:0px;"></iframe>
-<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->
+<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 <%@ include file="/jsp/include/ProgressStatusBarStop.jsp"%>
