@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=utf-8"   language="java" import="java.util.*,java.text.*,java.io.*,java.sql.*,jxl.*,jxl.Workbook.*,jxl.write.*,jxl.format.*,javax.mail.*,javax.mail.internet.*,javax.mail.Multipart.*,javax.activation.*"%>
 <%@ page import="DateBean"%>
-<%@ page import="commonUtil.mailUtil.Region" %>
 <%@ page import="commonUtil.mailUtil.MailUtil" %>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <jsp:useBean id="dateBean" scope="page" class="DateBean"/>
@@ -998,9 +997,11 @@
 				if (ACTTYPE.equals("AUTO") || ACTTYPE.equals("REMINDER") || ACTTYPE.equals("ALLOVERDUE"))
 				{
 					try {
-						MailUtil mailUtil = new MailUtil(con);
-						javax.mail.internet.MimeMessage message = mailUtil.message;
-						String ccMail = "nono.huang@ts.com.tw";
+						MailUtil mailUtil = new MailUtil(con, SALES_REGION, ACTTYPE);
+						MimeMessage message = mailUtil.message;
+						if (REQ_NAME.equalsIgnoreCase("NONO") && ACTTYPE.equals("AUTO")) {
+								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("nono_huang@ts.com.tw"));
+						}
 						remarks="";
 						//測試環境
 						if (!request.getRequestURL().toString().toLowerCase().contains("tsrfq.") &&
@@ -1009,66 +1010,6 @@
 								!request.getRequestURL().toString().toLowerCase().contains("10.0.1.134") &&
 								!request.getRequestURL().toString().toLowerCase().contains("10.0.1.135")) {
 							remarks="(這是來自RFQ測試區的信件)";
-						}
-
-						if (SALES_REGION.equals("TSCE")) {
-							mailUtil.getMailAddress(SALES_REGION, ACTTYPE, Region.TSCE_AUTO.getRegion());
-							if (ACTTYPE.equals("ALLOVERDUE") && remarks.equals("")) {
-								mailUtil.getMailAddress(SALES_REGION, ACTTYPE, Region.TSCE_ALLOVERDUE.getRegion());
-							}
-							if (REQ_NAME.equalsIgnoreCase("NONO") && ACTTYPE.equals("AUTO")) {
-								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress(ccMail));
-							}
-						} else if (SALES_REGION.equals("TSCA")) {
-							mailUtil.getMailAddress(SALES_REGION, ACTTYPE, Region.TSCA.getRegion());
-							if (REQ_NAME.equalsIgnoreCase("NONO") && ACTTYPE.equals("AUTO")) {
-								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress(ccMail));
-							}
-						} else if (SALES_REGION.equals("TSCJ")) {
-							mailUtil.getMailAddress(SALES_REGION, ACTTYPE, Region.TSCJ.getRegion());
-							if (REQ_NAME.equalsIgnoreCase("NONO") && ACTTYPE.equals("AUTO")) {
-								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress(ccMail));
-							}
-						} else if (SALES_REGION.equals("TSCH-HK")) {
-							mailUtil.getMailAddress("TSCH", ACTTYPE, Region.TSCH_HK.getRegion());
-							if (REQ_NAME.equalsIgnoreCase("NONO") && ACTTYPE.equals("AUTO")) {
-								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress(ccMail));
-							}
-						} else if (SALES_REGION.equals("TSCC")) {
-							mailUtil.getMailAddress(SALES_REGION, ACTTYPE, Region.TSCC.getRegion());
-							if (REQ_NAME.equalsIgnoreCase("NONO") && ACTTYPE.equals("AUTO")) {
-								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress(ccMail));
-							}
-						} else if (SALES_REGION.equals("TSCC-TSCH")) {
-							mailUtil.getMailAddress("TSCH", ACTTYPE, Region.TSCC_TSCH.getRegion());
-							if (REQ_NAME.equalsIgnoreCase("NONO") && ACTTYPE.equals("AUTO")) {
-								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress(ccMail));
-							}
-						} else if (SALES_REGION.equals("TSCK")) {
-							mailUtil.getMailAddress(SALES_REGION, ACTTYPE, Region.TSCK.getRegion());
-							if (REQ_NAME.equalsIgnoreCase("NONO") && ACTTYPE.equals("AUTO")) {
-								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress(ccMail));
-							}
-						} else if (SALES_REGION.equals("TSCR-ROW")) {
-							mailUtil.getMailAddress(SALES_REGION, ACTTYPE, Region.TSCR_ROW.getRegion());
-							if (REQ_NAME.equalsIgnoreCase("NONO") && ACTTYPE.equals("AUTO")) {
-								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress(ccMail));
-							}
-						} else if (SALES_REGION.equals("TSCT-DA")) {
-							mailUtil.getMailAddress(SALES_REGION, ACTTYPE, Region.TSCT_DA.getRegion());
-							if (REQ_NAME.equalsIgnoreCase("NONO") && ACTTYPE.equals("AUTO")) {
-								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress(ccMail));
-							}
-						} else if (SALES_REGION.equals("TSCT-Disty")) {
-							mailUtil.getMailAddress(SALES_REGION, ACTTYPE, Region.TSCT_DISTY.getRegion());
-							if (REQ_NAME.equalsIgnoreCase("NONO") && ACTTYPE.equals("AUTO")) {
-								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress(ccMail));
-							}
-						} else if (SALES_REGION.equals("SAMPLE")) {
-							mailUtil.getMailAddress(SALES_REGION, ACTTYPE, Region.SAMPLE.getRegion());
-							if (REQ_NAME.equalsIgnoreCase("NONO") && ACTTYPE.equals("AUTO")) {
-								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress(ccMail));
-							}
 						}
 
 						V_CUST_LIST="";
@@ -1115,6 +1056,10 @@
 						// create the Multipart and add its parts to it
 						mp.addBodyPart(mbp);
 						message.setContent(mp);
+						Address[] recipients = message.getAllRecipients();
+						if (recipients == null || recipients.length == 0) {
+							throw new MessagingException("No recipient addresses found before send.");
+						}
 						Transport.send(message);
 						System.out.println("success！");
 					} catch (MessagingException e) {
