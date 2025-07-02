@@ -113,14 +113,14 @@ public class MailTest {
                 getMailAddress(Region.TSCJ.getRegion());
                 break;
             case "TSCH-HK":
-                actType = "TSCH";
+                region = "TSCH";
                 getMailAddress(Region.TSCH_HK.getRegion());
                 break;
             case "TSCC":
                 getMailAddress(Region.TSCC.getRegion());
                 break;
             case "TSCC-TSCH":
-                actType = "TSCH";
+                region = "TSCH";
                 getMailAddress(Region.TSCC_TSCH.getRegion());
                 break;
             case "TSCK":
