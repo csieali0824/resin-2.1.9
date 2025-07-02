@@ -18,6 +18,12 @@ import java.util.*;
 
 public class MailTest {
 
+    public static MimeMessage message;
+    private static Session session;
+    private static String region;
+    private static String actType;
+    private static String createdBy;
+    private static final Set<String> addedEmails = new HashSet<>();
     private static Connection conn;
     static {
         try {
@@ -27,7 +33,14 @@ public class MailTest {
         }
     }
 
-    public static void main(String[] args) {
+    public static void resetMessage() throws MessagingException {
+        message = new MimeMessage(session);
+        message.setSentDate(new java.util.Date());
+        message.setFrom(new InternetAddress("prodsys@ts.com.tw"));
+        addedEmails.clear();
+    }
+
+    public static void main1(String[] args) {
         String[] testInputs = {
 //                "20250601",       // yyyyMMdd
 //                "2025-06-01",     // yyyy-MM-dd
@@ -51,27 +64,88 @@ public class MailTest {
         }
     }
 
-
-    public static void main2(String[] args) throws Exception {
-        Message message = getMailAddress("TSCE", ActType.AUTO.name(), Region.TSCE_ALLOVERDUE.getRegion());
-        System.out.println("Sss="+Arrays.deepToString(message.getAllRecipients()));
-//        InternetAddress[] addresses = getMailAddress("SAMPLE");
-//        for (InternetAddress address : addresses) {
-//            System.out.println("✔ 收件人：" + address.toString());
-//        }
-    }
-
-    public static Message getMailAddress(String region, String actType, String functionName) throws Exception {
+    public static void main(String[] args) throws Exception {
         Properties props = System.getProperties();
         props.put("mail.transport.protocol","smtp");
         props.put("mail.smtp.host", "mail.ts.com.tw");
         props.put("mail.smtp.port", "25");
 
-        javax.mail.Session session = Session.getInstance(props, null);
-        Message message = new MimeMessage(session);
-        message.setSentDate(new java.util.Date());
-        message.setFrom(new InternetAddress("prodsys@ts.com.tw"));
+        session = Session.getInstance(props, null);
+//        message = new MimeMessage(session);
+//        message.setSentDate(new java.util.Date());
+//        message.setFrom(new InternetAddress("prodsys@ts.com.tw"));
+
+        String sql = " SELECT DISTINCT a.request_no, DECODE(substr(a.sales_group,1,4),'TSCI','TSCR-ROW','TSCC','TSCC',a.sales_group) sales_region,created_by"+
+                " FROM oraddman.tsc_om_salesorderrevise_pc a"+
+                " WHERE REQUEST_NO=?"+
+                " AND notice_date is null"+
+                " ORDER BY  1,2";
+        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, "PC250620008");
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    resetMessage();
+                    String salesRegion = rs.getString("sales_region");
+                    String creatBy = rs.getString("created_by");
+                    region = salesRegion;
+                    createdBy = "NONO";
+                    actType = ActType.AUTO.name();
+                    getMailInfoByRegion();
+                }
+            }
+        }
+
+    }
+
+    public static void getMailInfoByRegion() throws Exception {
+        switch (region) {
+            case "TSCE":
+                getMailAddress(Region.TSCE_AUTO.getRegion());
+                if ("ALLOVERDUE".equals(actType)) {
+                    getMailAddress(Region.TSCE_ALLOVERDUE.getRegion());
+                }
+                System.out.println(region+"="+Arrays.deepToString(message.getAllRecipients()));
+                break;
+            case "TSCA":
+                getMailAddress(Region.TSCA.getRegion());
+                break;
+            case "TSCJ":
+                getMailAddress(Region.TSCJ.getRegion());
+                break;
+            case "TSCH-HK":
+                actType = "TSCH";
+                getMailAddress(Region.TSCH_HK.getRegion());
+                break;
+            case "TSCC":
+                getMailAddress(Region.TSCC.getRegion());
+                break;
+            case "TSCC-TSCH":
+                actType = "TSCH";
+                getMailAddress(Region.TSCC_TSCH.getRegion());
+                break;
+            case "TSCK":
+                getMailAddress(Region.TSCK.getRegion());
+                System.out.println("getFrom="+ Arrays.toString(message.getFrom()));
+                System.out.println(region+"="+Arrays.deepToString(message.getAllRecipients()));
+                break;
+            case "TSCR-ROW":
+                getMailAddress(Region.TSCR_ROW.getRegion());
+                break;
+            case "TSCT-DA":
+                getMailAddress(Region.TSCT_DA.getRegion());
+                break;
+            case "TSCT-Disty":
+                getMailAddress(Region.TSCT_DISTY.getRegion());
+                break;
+            case "SAMPLE":
+                getMailAddress(Region.SAMPLE.getRegion());
+                break;
+        }
+    }
+
+    public static void getMailAddress(String functionName) throws Exception {
         Map<String, Set<String>> groupedData = queryJobAndReceiverTypes(region, functionName);
+
 
         System.out.println("分組資料 groupedData = " + groupedData);
 
@@ -88,14 +162,14 @@ public class MailTest {
                         while (rs.next()) {
                             String emailList = rs.getString("email");
                             if (emailList != null && !emailList.trim().isEmpty()) {
-                                handleRecipients(message, receiverType, emailList, actType);
+                                handleRecipients(receiverType, emailList, actType);
                             }
                         }
                     }
                 }
             }
         }
-        return message;
+//        return message;
     }
 
     private static Map<String, Set<String>> queryJobAndReceiverTypes(String region, String functionName) throws SQLException {
@@ -119,7 +193,6 @@ public class MailTest {
                 while (rs.next()) {
                     String jobId = rs.getString("JOB_ID");
                     String receiverType = rs.getString("RECEIVER_TYPE");
-
                     groupedData.computeIfAbsent(jobId, k -> new HashSet<>()).add(receiverType);
                 }
             }
@@ -128,15 +201,40 @@ public class MailTest {
         return groupedData;
     }
 
-    private static void handleRecipients(Message message, String receiverType, String emailList, String actType) throws MessagingException {
+    private static Message.RecipientType parseRecipientType(String type) {
+        switch (type.toUpperCase()) {
+            case "TO":
+                return Message.RecipientType.TO;
+            case "CC":
+                return Message.RecipientType.CC;
+            case "BCC":
+                return Message.RecipientType.BCC;
+            default:
+                throw new IllegalArgumentException("Invalid recipient type: " + type);
+        }
+    }
+
+    private static void handleRecipients(String receiverType, String emailList, String actType) throws MessagingException {
+//        Arrays.stream(emailList.split(","))
+//                .map(String::trim)
+//                .filter(email -> !email.isEmpty() && addedEmails.add(email))
+//                .forEach(email -> {
+//                    try {
+//                        Message.RecipientType type = parseRecipientType(receiverType);
+//                        message.addRecipient(type, new InternetAddress(email));
+//                    } catch (Exception e) {
+//                        System.err.println("Failed to add email: " + email);
+//                    }
+//                });
+//
         switch (receiverType) {
             case "TO":
                 System.out.println("TO: " + emailList);
                 message.addRecipients(Message.RecipientType.TO, InternetAddress.parse(emailList));
                 break;
             case "CC":
-                System.out.println("CC(特殊處理): " + emailList);
-                addCcRecipientsWithCheck(message, emailList, actType);
+                System.out.println("CC: " + emailList);
+                message.addRecipients(Message.RecipientType.CC, InternetAddress.parse(emailList));
                 break;
             case "BCC":
                 System.out.println("BCC: " + emailList);
@@ -145,22 +243,5 @@ public class MailTest {
             default:
                 System.err.println("不支援的類型：" + receiverType);
         }
-    }
-
-    private static void addCcRecipientsWithCheck(Message message, String emailList, String actType) throws MessagingException {
-        List<String> removeMailList = new LinkedList<>();
-        for (String email: emailList.split(",")) {
-            String trimmedEmail = email.trim();
-            String mailName = trimmedEmail.substring(0,trimmedEmail.indexOf("@")).toUpperCase();
-            if (mailName.contains(CreatedBy.NONO.name()) && ActType.AUTO.name().equals(actType)) {
-                removeMailList.add(trimmedEmail);
-                message.addRecipients(Message.RecipientType.CC, InternetAddress.parse(trimmedEmail));
-            }
-        }
-        List<String> list = new ArrayList<>(Arrays.asList(emailList.split(",")));
-        list.removeAll(removeMailList); // 將已塞到message.addRecipients 的mail 移除，其餘的走原有的流程
-
-        String result = String.join(",", list);
-        message.addRecipients(Message.RecipientType.CC, InternetAddress.parse(result));
     }
 }
