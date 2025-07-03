@@ -613,7 +613,10 @@ public class ModelNTest {
                                 throw new Exception(ErrorMessage.CRD_REQUIRED.getMessage());
                             } else {
                                 try {
-                                    String crd = sdf.format(((DateCell) rowCell).getDate());
+                                    String crd = content;
+                                    if (rowCell.getType() == CellType.DATE) {
+                                        crd = sdf.format(((DateCell) rowCell).getDate());
+                                    }
                                     DateParseResult result = DateUtil.autoParseWithPattern(crd);
                                     modelNDto.setCrd(result.formattedDate());
                                 } catch (IllegalArgumentException e) {
@@ -626,7 +629,10 @@ public class ModelNTest {
                                 throw new Exception(ErrorMessage.SSD_REQUIRED.getMessage());
                             } else {
                                 try {
-                                    String ssd = sdf.format(((DateCell) rowCell).getDate());
+                                    String ssd = content;
+                                    if (rowCell.getType() == CellType.DATE) {
+                                        ssd = sdf.format(((DateCell) rowCell).getDate());
+                                    }
                                     DateParseResult result = DateUtil.autoParseWithPattern(ssd);
                                     modelNDto.setSsd(result.formattedDate());
                                 } catch (IllegalArgumentException e) {
@@ -692,7 +698,8 @@ public class ModelNTest {
 
                     map.put(rowIndex, modelNDto);
                 }
-                System.out.println("Xxxx="+modelNDto.getCrd());
+                System.out.println("getCrd="+modelNDto.getCrd());
+                System.out.println("getSsd="+modelNDto.getSsd());
 //            System.out.println(""+i+"----------------------------------------------");
                 if (!errorMsgList.isEmpty()) {
                     String errorException = String.join(";\t", errorMsgList);
