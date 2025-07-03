@@ -19,8 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static modelN.SalesArea.TSCTDA;
-import static modelN.SalesArea.TSCTDISTY;
+import static modelN.SalesArea.*;
 
 public class ModelNTest {
     public static void mainc(String[] args) {
@@ -101,7 +100,7 @@ public class ModelNTest {
         }
     }
 
-    private static String salesNo = TSCTDISTY.getSalesNo();
+    private static String salesNo = TSCCSH.getSalesNo();
 
     private static List errList = new LinkedList();
 
@@ -543,7 +542,7 @@ public class ModelNTest {
 //        String uploadFilePath = "C:\\Users\\mars.wang\\Desktop\\sales-upload\\D4-019_20241212.xls";
 //        StringBuilder errorMessage = new StringBuilder();
         try {
-            String uploadFilePath = "C:\\Users\\mars.wang\\Desktop\\modelN_Excel\\RFQ 2.xls";
+            String uploadFilePath = "C:\\Users\\mars.wang\\Desktop\\modelN_Excel\\002-ModelN_Sample-1.xls";
 //            String uploadFilePath = "C:\\Users\\mars.wang\\Desktop\\modelN_Excel\\RFQ-TSCTDA-33452.xls";
             InputStream is = new FileInputStream(uploadFilePath);
             Workbook wb = Workbook.getWorkbook(is);
@@ -614,7 +613,8 @@ public class ModelNTest {
                                 throw new Exception(ErrorMessage.CRD_REQUIRED.getMessage());
                             } else {
                                 try {
-                                    DateParseResult result = DateUtil.autoParseWithPattern(content);
+                                    String crd = sdf.format(((DateCell) rowCell).getDate());
+                                    DateParseResult result = DateUtil.autoParseWithPattern(crd);
                                     modelNDto.setCrd(result.formattedDate());
                                 } catch (IllegalArgumentException e) {
                                     errorMsgList.add(columnName.concat(":" + e.getMessage()));
@@ -626,7 +626,8 @@ public class ModelNTest {
                                 throw new Exception(ErrorMessage.SSD_REQUIRED.getMessage());
                             } else {
                                 try {
-                                    DateParseResult result = DateUtil.autoParseWithPattern(content);
+                                    String ssd = sdf.format(((DateCell) rowCell).getDate());
+                                    DateParseResult result = DateUtil.autoParseWithPattern(ssd);
                                     modelNDto.setSsd(result.formattedDate());
                                 } catch (IllegalArgumentException e) {
                                     errorMsgList.add(columnName.concat(":" + e.getMessage()));
@@ -691,6 +692,7 @@ public class ModelNTest {
 
                     map.put(rowIndex, modelNDto);
                 }
+                System.out.println("Xxxx="+modelNDto.getCrd());
 //            System.out.println(""+i+"----------------------------------------------");
                 if (!errorMsgList.isEmpty()) {
                     String errorException = String.join(";\t", errorMsgList);
