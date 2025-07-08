@@ -519,7 +519,11 @@
 						" and tsc_get_item_coo(a.inventory_item_id) =(\n" + //add by Mars 20250108
 						"     case when TSC_INV_CATEGORY(a.inventory_item_id,43,23) IN ('SMA', 'SMB', 'SMC', 'SOD-123W', 'SOD-128')\n" + //add by Mars 20250108
 						"     then 'CN' else tsc_get_item_coo(a.inventory_item_id) end) \n"+ //add by Mars 20250108
-						" and DESCRIPTION = '"+partdescCNT+"' ";
+						" and DESCRIPTION = '"+partdescCNT+"' \n"+
+						" and inventory_item_status_code <>'Inactive' \n"+
+						" and NVL(CUSTOMER_ORDER_FLAG,'N')='Y' \n"+
+						" and NVL(CUSTOMER_ORDER_ENABLED_FLAG,'N')='Y' \n"+
+						" and tsc_item_pcn_flag(43,a.inventory_item_id,trunc(sysdate))='N' ";
 				if (!cust_pn.equals(""))
 				{
 					sqlCNTitem += " and exists (select 1 from oe_items_v x where x.item ='"+cust_pn+"' and x.inventory_item_id=a.inventory_item_id)";
