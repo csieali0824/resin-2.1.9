@@ -81,7 +81,7 @@ public class MailTest {
                 " AND notice_date is null"+
                 " ORDER BY  1,2";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setString(1, "PC250620008");
+            pstmt.setString(1, "`PC250620008`");
             try (ResultSet rs = pstmt.executeQuery()) {
                 while (rs.next()) {
                     resetMessage();
@@ -135,6 +135,7 @@ public class MailTest {
                 getMailAddress(Region.TSCT_DA.getRegion());
                 break;
             case "TSCT-Disty":
+                region = Region.TSCT_DISTY.getRegion();
                 getMailAddress(Region.TSCT_DISTY.getRegion());
                 break;
             case "SAMPLE":

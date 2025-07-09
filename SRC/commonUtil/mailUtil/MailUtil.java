@@ -76,6 +76,7 @@ public class MailUtil {
                 getMailAddress(Region.TSCT_DA.getRegion());
                 break;
             case "TSCT-Disty":
+                region = Region.TSCT_DISTY.getRegion();
                 getMailAddress(Region.TSCT_DISTY.getRegion());
                 break;
             case "SAMPLE":
