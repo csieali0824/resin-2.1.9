@@ -71,8 +71,7 @@ public class TscSalesPrice {
                             }
                             return val.toString();
                         }),
-                new ExcelColumn("Sales Head price (USD/PCS)", 15, styles.get("rightL"), keys(
-                        "SALES_HEAD_PRICE_USD_PCS"),
+                new ExcelColumn("Sales Head price (USD/PCS)", 15, styles.get("rightL"), keys("SALES_HEAD_PRICE_USD_PCS"),
                         val -> {
                             if (val == null) return "";
                             if (val instanceof Number) {
