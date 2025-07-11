@@ -38,7 +38,7 @@ public class TscSalesPriceTest {
 
     static {
         try {
-            conn = ConnUtils.getConnectionCRP1();
+            conn = ConnUtils.getConnectionProd();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -284,7 +284,15 @@ public class TscSalesPriceTest {
                 new ExcelColumn("PROD HIERARCHY 1", 20, styles.get("leftL"), keys("TSC_PROD_HIERARCHY_1")),
                 new ExcelColumn("PROD HIERARCHY 2", 20, styles.get("leftL"), keys("TSC_PROD_HIERARCHY_2")),
                 new ExcelColumn("PROD HIERARCHY 3", 20, styles.get("leftL"), keys("TSC_PROD_HIERARCHY_3")),
-                new ExcelColumn("PROD HIERARCHY 4", 20, styles.get("leftL"), keys("TSC_PROD_HIERARCHY_4"))
+                new ExcelColumn("PROD HIERARCHY 4", 20, styles.get("leftL"), keys("TSC_PROD_HIERARCHY_4")),
+                new ExcelColumn("Disable Date", 15, styles.get("centerL"), keys("DISABLE_DATE"),
+                        val -> {
+                            if (val == null) return "";
+                            if (val instanceof Date) {
+                                return new SimpleDateFormat("yyyy/MM/dd").format((Date) val);
+                            }
+                            return val.toString();
+                        })
         );
     }
 
@@ -430,7 +438,15 @@ public class TscSalesPriceTest {
                 new ExcelColumn("PROD HIERARCHY 1", 20, styles.get("leftL"), keys("TSC_PROD_HIERARCHY_1")),
                 new ExcelColumn("PROD HIERARCHY 2", 20, styles.get("leftL"), keys("TSC_PROD_HIERARCHY_2")),
                 new ExcelColumn("PROD HIERARCHY 3", 20, styles.get("leftL"), keys("TSC_PROD_HIERARCHY_3")),
-                new ExcelColumn("PROD HIERARCHY 4", 20, styles.get("leftL"), keys("TSC_PROD_HIERARCHY_4"))
+                new ExcelColumn("PROD HIERARCHY 4", 20, styles.get("leftL"), keys("TSC_PROD_HIERARCHY_4")),
+                new ExcelColumn("Disable Date", 15, styles.get("centerL"), keys("DISABLE_DATE"),
+                        val -> {
+                            if (val == null) return "";
+                            if (val instanceof Date) {
+                                return new SimpleDateFormat("yyyy/MM/dd").format((Date) val);
+                            }
+                            return val.toString();
+                        })
         );
     }
 
@@ -455,7 +471,7 @@ public class TscSalesPriceTest {
         switch (str) {
             case TSC:
                 System.out.println("TSCE_ITEM");
-                name = "TSCE distribution price book";
+                name = "TSC distribution price book";
                 freezeCol = 5;
                 folder = "TSCEPriceBook";
                 dataList = tsceResultSetToList();
@@ -463,7 +479,7 @@ public class TscSalesPriceTest {
                 break;
             case TS:
                 System.out.println("TSC_ITEM");
-                name = "TSC Item Price Info";
+                name = "TS Item Price Report";
                 freezeCol = 6;
                 folder = "TSCItemListUser";
                 dataList = tscResultSetToList();
@@ -832,8 +848,7 @@ public class TscSalesPriceTest {
                 "                                         msi.inventory_item_id))))\n" +
                 "               END\n" +
                 "                   part_id,\n" +
-                "            case when tsdp.TSC_ORDERING_CODE is not null then 'YES' else '' end as F400_PRODUCT     " +
-                "  \n" +
+                "            case when tsdp.TSC_ORDERING_CODE is not null then 'YES' else '' end as F400_PRODUCT, tsdp.DISABLE_DATE \n" +
                 "          FROM MTL_SYSTEM_ITEMS             msi,\n" +
                 "               MTL_SYSTEM_ITEMS             msii,\n" +
                 "               oraddman.tsprod_manufactory  tm,\n" +
@@ -880,11 +895,12 @@ public class TscSalesPriceTest {
                 "(TSC_GET_ITEM_PACKING_CODE(43,msi.inventory_item_id))))\n" +
                 "                   end = tsdp.part_id\n" +
                 "               and msi.description = tsdp.tsc_ordering_code\n" +
-// todo
-                "               AND msi.segment1 IN\n" +
-                "                       ('0021-4L1QQ21TLD26A000000000F00',\n" +
-                "                        '0021-4L1QQ21TLD28A000000000F00',\n" +
-                "                        '0021-4L1QQ21TLD30A000000000F00')\n" +
+// todo tsc
+                "AND msi.segment1 ='0106-G71QQ1110H100CW0000000F00'\n" +
+//                "               AND msi.segment1 IN\n" +
+//                "                       ('0021-4L1QQ21TLD26A000000000F00',\n" +
+//                "                        '0021-4L1QQ21TLD28A000000000F00',\n" +
+//                "                        '0021-4L1QQ21TLD30A000000000F00')\n" +
                 "               AND TSC_INV_Category (msi.inventory_item_id, 43, 23) =\n" +
                 "                       tpcl.tsc_package(+)\n" +
                 "               AND tsc_get_item_packing_code (43, msi.inventory_item_id) =\n" +
@@ -1096,7 +1112,7 @@ public class TscSalesPriceTest {
                 "        case when tsdp.TSC_ORDERING_CODE is not null then 'YES' else '' end as F400_PRODUCT,\n" +
                 "               tsdp.BOTTOM_PRICE_USD_PCS,tsdp.SALES_HEAD_PRICE_USD_PCS,tsdp.RECOMMENDED_STOCK_IN_CHANNEL,\n" +
                 "               tsdp.PRICE_BOOK_CODE,tsdp.DESIGN_REGISTRATION,tsdp.RECOMMENDED_REPLACEMENT,tsdp.DISTRIBUTION_BOOK_PRICE as price1,\n" +
-                "               tsdp.DISTRIBUTION_MPP_PRICE as price2, tsdp.DESIGN_REGISTRATION_PRICE as price3, tsdp.spg_status,               \n" +
+                "               tsdp.DISTRIBUTION_MPP_PRICE as price2, tsdp.DESIGN_REGISTRATION_PRICE as price3, tsdp.spg_status, tsdp.DISABLE_DATE, \n" +
                 "               TSC_INV_CATEGORY(msi.inventory_item_id,43,23) TSC_PACKAGE ,\n" +
                 "               TSC_INV_CATEGORY(msi.inventory_item_id,43,1100000003) TSC_PROD_GROUP,\n" +
                 "               TSC_INV_CATEGORY(msi.inventory_item_id,43,21) TSC_FAMILY,\n" +
@@ -1158,9 +1174,10 @@ public class TscSalesPriceTest {
                 "                     end = tsdp.part_id\n" +
                 "                 and msi.description = tsdp.tsc_ordering_code\n" +
 //todo tsce
-                "                and msi.segment1 in('H03G-MFPC5TS480P06000000000F00',\n" +
-                "'004E-F11QQ11PUAD4D000000000F00','004E-F11QQ21PUAD4B000000000F00','004E-F11QQ21PUAD4D000000000F00'\n" +
-                "                )\n" +
+                "AND msi.segment1 ='0106-G71QQ1110H100CW0000000F00'\n" +
+//                "                and msi.segment1 in('H03G-MFPC5TS480P06000000000F00',\n" +
+//                "'004E-F11QQ11PUAD4D000000000F00','004E-F11QQ21PUAD4B000000000F00','004E-F11QQ21PUAD4D000000000F00'\n" +
+//                "                )\n" +
                 "                 AND TSC_INV_Category(msi.inventory_item_id,43, 23)=tpcl.tsc_package(+)\n" +
                 "                 AND tsc_get_item_packing_code (43, msi.inventory_item_id)=tpcl.packing_code(+)\n" +
                 "                 AND msi.ITEM_TYPE='FG'\n" +
@@ -1250,7 +1267,7 @@ public class TscSalesPriceTest {
                 "    END AS PROD_GROUP_5,\n" +
                 "    CCCODE, HTS_CODE, NEW_PARTS_RELEASE_DATE, TW_VENDOR_FLAG,FIRST_ON_WEBSITE_DATE, F400_PRODUCT, SPG_STATUS, \n" +
                 "    TSC_PROD_HIERARCHY_1, TSC_PROD_HIERARCHY_2, TSC_PROD_HIERARCHY_3, TSC_PROD_HIERARCHY_4,FAIRCHILD_CPN, \n" +
-                "    ITEM_CNT, PREFEERED_PACKING_CODE_FLAG\n" +
+                "    ITEM_CNT, PREFEERED_PACKING_CODE_FLAG, DISABLE_DATE\n" +
                 "FROM S1";
 
         Statement statement = conn.createStatement();
@@ -1272,7 +1289,6 @@ public class TscSalesPriceTest {
             }
             rows.add(row);
         }
-        // �����귽
         rs.close();
         statement.close();
         conn.close();

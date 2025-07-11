@@ -259,7 +259,15 @@ public class TscSalesPrice {
                             return val.toString();
                         }),
                 new ExcelColumn("TW Vendor", 8, styles.get("centerL"), keys("TW_VENDOR_FLAG")),
-                new ExcelColumn("RFQ Factory Code", 12, styles.get("centerL"), keys("ATTRIBUTE3"))
+                new ExcelColumn("RFQ Factory Code", 12, styles.get("centerL"), keys("ATTRIBUTE3")),
+                new ExcelColumn("Disable Date", 15, styles.get("centerL"), keys("DISABLE_DATE"),
+                        val -> {
+                            if (val == null) return "";
+                            if (val instanceof Date) {
+                                return new SimpleDateFormat("yyyy/MM/dd").format((Date) val);
+                            }
+                            return val.toString();
+                        })
 
         );
     }
@@ -406,7 +414,15 @@ public class TscSalesPrice {
                 new ExcelColumn("PROD HIERARCHY 1", 20, styles.get("leftL"), keys("TSC_PROD_HIERARCHY_1")),
                 new ExcelColumn("PROD HIERARCHY 2", 20, styles.get("leftL"), keys("TSC_PROD_HIERARCHY_2")),
                 new ExcelColumn("PROD HIERARCHY 3", 20, styles.get("leftL"), keys("TSC_PROD_HIERARCHY_3")),
-                new ExcelColumn("PROD HIERARCHY 4", 20, styles.get("leftL"), keys("TSC_PROD_HIERARCHY_4"))
+                new ExcelColumn("PROD HIERARCHY 4", 20, styles.get("leftL"), keys("TSC_PROD_HIERARCHY_4")),
+                new ExcelColumn("Disable Date", 15, styles.get("centerL"), keys("DISABLE_DATE"),
+                        val -> {
+                            if (val == null) return "";
+                            if (val instanceof Date) {
+                                return new SimpleDateFormat("yyyy/MM/dd").format((Date) val);
+                            }
+                            return val.toString();
+                        })
         );
     }
 
@@ -770,7 +786,7 @@ public class TscSalesPrice {
                 "                                         msi.inventory_item_id))))\n" +
                 "               END\n" +
                 "                   part_id,\n" +
-                "            case when tsdp.TSC_ORDERING_CODE is not null then 'YES' else '' end as F400_PRODUCT       \n" +
+                "            case when tsdp.TSC_ORDERING_CODE is not null then 'YES' else '' end as F400_PRODUCT, tsdp.DISABLE_DATE \n" +
                 "          FROM MTL_SYSTEM_ITEMS             msi,\n" +
                 "               MTL_SYSTEM_ITEMS             msii,\n" +
                 "               oraddman.tsprod_manufactory  tm,\n" +
@@ -1018,7 +1034,7 @@ public class TscSalesPrice {
                 "        case when tsdp.TSC_ORDERING_CODE is not null then 'YES' else '' end as F400_PRODUCT,\n" +
                 "               tsdp.BOTTOM_PRICE_USD_PCS,tsdp.SALES_HEAD_PRICE_USD_PCS,tsdp.RECOMMENDED_STOCK_IN_CHANNEL,\n" +
                 "               tsdp.PRICE_BOOK_CODE,tsdp.DESIGN_REGISTRATION,tsdp.RECOMMENDED_REPLACEMENT,tsdp.DISTRIBUTION_BOOK_PRICE as price1,\n" +
-                "               tsdp.DISTRIBUTION_MPP_PRICE as price2, tsdp.DESIGN_REGISTRATION_PRICE as price3, tsdp.spg_status,               \n" +
+                "               tsdp.DISTRIBUTION_MPP_PRICE as price2, tsdp.DESIGN_REGISTRATION_PRICE as price3, tsdp.spg_status, tsdp.DISABLE_DATE,\n" +
                 "               TSC_INV_CATEGORY(msi.inventory_item_id,43,23) TSC_PACKAGE ,\n" +
                 "               TSC_INV_CATEGORY(msi.inventory_item_id,43,1100000003) TSC_PROD_GROUP,\n" +
                 "               TSC_INV_CATEGORY(msi.inventory_item_id,43,21) TSC_FAMILY,\n" +
@@ -1163,7 +1179,7 @@ public class TscSalesPrice {
                 "    END AS PROD_GROUP_5,\n" +
                 "    CCCODE, HTS_CODE, NEW_PARTS_RELEASE_DATE, TW_VENDOR_FLAG,FIRST_ON_WEBSITE_DATE, F400_PRODUCT, SPG_STATUS, \n" +
                 "    TSC_PROD_HIERARCHY_1, TSC_PROD_HIERARCHY_2, TSC_PROD_HIERARCHY_3, TSC_PROD_HIERARCHY_4,FAIRCHILD_CPN, \n" +
-                "    ITEM_CNT, PREFEERED_PACKING_CODE_FLAG\n" +
+                "    ITEM_CNT, PREFEERED_PACKING_CODE_FLAG, DISABLE_DATE\n" +
                 "FROM S1";
 
         Statement statement = conn.createStatement();
