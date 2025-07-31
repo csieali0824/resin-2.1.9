@@ -384,6 +384,13 @@ function setSubmit(URL,URL1)
 					document.MYFORM.elements["CUST_ITEM_"+i].focus();
 					return false;
 				}
+				if (document.MYFORM.elements["TSC_ITEM_DESC_"+i].value !== document.MYFORM.elements["ITEM_DESC_"+i].value) {
+					var tscItemDesc = document.MYFORM.elements["TSC_ITEM_DESC_"+i].value;
+					var itemDesc = document.MYFORM.elements["ITEM_DESC_"+i].value;
+					alert("行號"+LineNo+":台半品名(" + tscItemDesc + ")和台半料號所帶入的 DESCRIPTION(" + itemDesc + ") 不一致!!");
+					document.MYFORM.elements["TSC_ITEM_DESC_"+i].focus();
+					return false;
+				}
 				//add by Peggy 20190306
 				//if ((document.MYFORM.ERPCUSTOMERID.value ==690290 || document.MYFORM.ERPCUSTOMERID.value ==702294) && document.MYFORM.elements["END_CUST_ITEM_"+i].value=="")
 				if (document.MYFORM.ERPCUSTOMERID.value !=7147)
@@ -1392,6 +1399,7 @@ function setCRD(objLine)
 							<input type="hidden" name="TSC_ITEM_PACKAGE_<%=iMaxLine%>" value="<%=PACKAGE_CODE%>">
 							<input type="hidden" name="TSC_PROD_GROUP_<%=iMaxLine%>" value="<%=TSC_PROD_GROUP%>"></td>
 							<td><input type="text" name="TSC_ITEM_DESC_<%=iMaxLine%>" value="<%=TSC_ITEM_DESC%>"  size="18" class="style4">
+							<input type="hidden" name="ITEM_DESC_<%=iMaxLine%>"  value="<%=TSC_ITEM_DESC%>">
 							<input type="hidden" name="UOM_<%=iMaxLine%>" value="<%=UOM%>"><input type="hidden" name="YEW_FLAG_<%=iMaxLine%>" value="<%=YEW_FLAG%>"></td>
 							<td><input type="text" name="END_CUST_ITEM_<%=iMaxLine%>" value="<%=(END_CUSTOMER_ITEM==null?"":END_CUSTOMER_ITEM)%>"  size="14" class="style4" onKeypress="return event.keyCode=-1"></td>
 							<td><input type="text" name="QUANTITY_<%=iMaxLine%>" value="<%=QUANTITY%>" size="3" class="style4"  <%if (exp_flag){out.println("style='background-color:#FFFF66'");}else{if(ORDER_TYPE.equals(ONHAND_ORDER_TYPE)){out.println("style='color:#0000ff;font-weight:bold;background-color:#FFCCCC'");}else{out.println("style='background-color:#FFFFFF'");}}%> >

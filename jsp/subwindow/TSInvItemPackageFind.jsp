@@ -120,7 +120,8 @@ function sendToMainWindow(invItem,itemDesc,sPQP,MOQP,plantCode,sType,tscPackage,
 	var requestdate ="";
 	if (sType == "D9002" || sType == "D11001" )
 	{
-		window.opener.document.MYFORM.elements["TSC_ITEM_"+lineNo].value=invItem; 
+		window.opener.document.MYFORM.elements["TSC_ITEM_"+lineNo].value=invItem;
+		window.opener.document.MYFORM.elements["ITEM_DESC_"+lineNo].value=itemDesc;
 		window.opener.document.MYFORM.elements["MOQ_"+lineNo].value=MOQP; 
 		window.opener.document.MYFORM.elements["SPQ_"+lineNo].value=sPQP; 
 		window.opener.document.MYFORM.elements["PLANTCODE_"+lineNo].value=plantCode; 
