@@ -13,7 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.*;
 
-import static tscSalesPrice.TscSalesPriceType.TS;
+import static tscSalesPrice.TscSalesPriceType.TSC;
 
 public class TscSalesPriceTest {
     private static Connection conn;
@@ -467,14 +467,14 @@ public class TscSalesPriceTest {
         List<Map<String, Object>> dataList = new ArrayList<>();
 //        List<Map<String, Object>> dataList = tscResultSetToList();
 //        setTscExcelColumns();
-        TscSalesPriceType str = TS;
+        TscSalesPriceType str = TSC;
         switch (str) {
             case TSC:
                 System.out.println("TSCE_ITEM");
                 name = "TSC distribution price book";
                 freezeCol = 5;
                 folder = "TSCEPriceBook";
-                dataList = tsceResultSetToList();
+                dataList = getTscResultSetToList();
                 setTsceExcelColumns();
                 break;
             case TS:
@@ -482,7 +482,7 @@ public class TscSalesPriceTest {
                 name = "TS Item Price Report";
                 freezeCol = 6;
                 folder = "TSCItemListUser";
-                dataList = tscResultSetToList();
+                dataList = getTsResultSetToList();
                 setTscExcelColumns();
                 break;
             default :
@@ -503,38 +503,7 @@ public class TscSalesPriceTest {
         }
     }
 
-
-    public static void main1(String[] args) throws Exception {
-//        tscItemPrice().setExcelColumns();
-        String name = "TSCE distribution price book";
-        String fileName = name + "-20250508.xls";
-
-        String dirPath = "D:\\resin-2.1.9\\webapps\\oradds\\TSCEPriceBook";
-        String strPath = dirPath + "\\" + fileName;
-        List<Map<String, Object>> dataList = tsceResultSetToList();
-        setTsceExcelColumns();
-
-        try {
-            OutputStream os = Files.newOutputStream(Paths.get(strPath));
-            String dataDateStr = "Data Date: " + new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-            ExcelWriter.writeExcel(os, dataDateStr, columns, dataList, styles, 0);
-            System.out.println("Excel 匯出成功");
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public static List<Map<String, Object>> tscResultSetToList() throws SQLException {
-//        String sql1 = "alter SESSION set NLS_LANGUAGE = 'AMERICAN' ";
-//        PreparedStatement pstmt1 = conn.prepareStatement(sql1);
-//        pstmt1.executeUpdate();
-//        pstmt1.close();
-//
-//        CallableStatement cs1 = conn.prepareCall("{call mo_global.set_policy_context('S',?)}");
-//        cs1.setString(1, "41");
-//        cs1.execute();
-//        cs1.close();
-
+    public static List<Map<String, Object>> getTsResultSetToList() throws SQLException {
         String sql = "with s1 as(SELECT a.*,\n" +
                 "       CASE\n" +
                 "           WHEN a.attribute3 IN ('005') AND a.tw_vendor_flag = 'N'\n" +
@@ -886,25 +855,21 @@ public class TscSalesPriceTest {
                 "               TSC_SALES_DISTRIBUTION_PRICE tsdp\n" +
                 "         WHERE     msi.ORGANIZATION_ID = 49\n" +
                 "               AND LENGTH (msi.SEGMENT1) >= 22\n" +
-                "               and msi.segment1 = tsdp.item_name\n" +
-                "               and msi.INVENTORY_ITEM_ID = tsdp.INVENTORY_ITEM_ID\n" +
+                "               AND msi.INVENTORY_ITEM_ID = tsdp.INVENTORY_ITEM_ID(+)\n" +
                 "               and case \n" +
-                "                     when instr(TSC_GET_ITEM_PACKING_CODE(43,msi.inventory_item_id),'QQ')>0 then msi" +
-                ".description \n" +
-                "                     else trim(substr(msi.description,0,length(msi.description)-length" +
-                "(TSC_GET_ITEM_PACKING_CODE(43,msi.inventory_item_id))))\n" +
-                "                   end = tsdp.part_id\n" +
-                "               and msi.description = tsdp.tsc_ordering_code\n" +
-// todo tsc
-                "AND msi.segment1 ='0106-G71QQ1110H100CW0000000F00'\n" +
-//                "               AND msi.segment1 IN\n" +
-//                "                       ('0021-4L1QQ21TLD26A000000000F00',\n" +
-//                "                        '0021-4L1QQ21TLD28A000000000F00',\n" +
-//                "                        '0021-4L1QQ21TLD30A000000000F00')\n" +
+                "                     when instr(TSC_GET_ITEM_PACKING_CODE(43,msi.inventory_item_id),'QQ')>0 then msi.description \n" +
+                "                     else trim(substr(msi.description,0,length(msi.description)-length(TSC_GET_ITEM_PACKING_CODE(43,msi.inventory_item_id))))\n" +
+                "                   end = tsdp.part_id(+)\n" +
+                "               and msi.description = tsdp.tsc_ordering_code(+)\n" +
                 "               AND TSC_INV_Category (msi.inventory_item_id, 43, 23) =\n" +
                 "                       tpcl.tsc_package(+)\n" +
                 "               AND tsc_get_item_packing_code (43, msi.inventory_item_id) =\n" +
                 "                       tpcl.packing_code(+)\n" +
+// todo
+                "               AND msi.segment1 IN\n" +
+                "                       ('0021-4L1QQ21TLD26A000000000F00',\n" +
+                "                        '0021-4L1QQ21TLD28A000000000F00',\n" +
+                "                        '0021-4L1QQ21TLD30A000000000F00')\n" +
                 "               AND msi.ITEM_TYPE = 'FG'\n" +
                 "               AND msi.INVENTORY_ITEM_STATUS_CODE <> 'Inactive'\n" +
                 "               AND msii.ORGANIZATION_ID = 43\n" +
@@ -997,8 +962,6 @@ public class TscSalesPriceTest {
                 "       (SELECT *\n" +
                 "          FROM oraddman.tsc_packing_info_list\n" +
                 "         WHERE part_no_list IS NULL) tpii,\n" +
-                "       --oraddman.tsc_sales_bottom_price                                 tsbp,\n" +
-                "       --oraddman.tsc_sales_bottom_price_tvs                             tsbpt,\n" +
                 "       (SELECT a.ALTERNATE_ROUTING TSC_PACKAGE,\n" +
                 "               a.DEM_LOCATION_ID   SPQ,\n" +
                 "               a.EXP_LOCATION_ID   MOQ,\n" +
@@ -1010,7 +973,6 @@ public class TscSalesPriceTest {
                 "               a.code_desc6        PACKAGINGDESCRIPTION\n" +
                 "          FROM yew_mfg_defdata a\n" +
                 "         WHERE DEF_TYPE = 'ON') on_packing\n" +
-                "--       oraddman.tsc_f400_product                                       tfp\n" +
                 " WHERE     1 = 1\n" +
                 "       AND a.ITEM_DESC1 = tpi.PART_NO_LIST(+)\n" +
                 "       AND a.TSC_PACKAGE = tpii.TSC_PACKAGE(+)\n" +
@@ -1023,23 +985,19 @@ public class TscSalesPriceTest {
                 "               ELSE\n" +
                 "                   a.TSC_PROD_GROUP\n" +
                 "           END = tpii.GROUPTYPE(+)\n" +
-                "       --AND a.description = tsbp.tsc_partno(+)\n" +
-                "       --AND a.part_id = tsbpt.part_id(+)\n" +
                 "       AND a.TSC_PACKAGE = on_packing.TSC_PACKAGE(+)\n" +
-                "       --AND a.description = tfp.tsc_ordering_code(+)\n" +
                 ")\n" +
                 "SELECT \n" +
                 "  s1.*,\n" +
                 "  CASE \n" +
                 "    WHEN PRODUCT_GROUP_8 IS NULL THEN ''\n" +
                 "    WHEN PRODUCT_GROUP_8 = 'LIGHTING IC' THEN 'PMD'\n" +
-                "    WHEN PRODUCT_GROUP_8 IN ('MOSFET-Subcon', 'Super Junction', 'Super Junction-Subcon') THEN " +
-                "'MOSFET'\n" +
+                "    WHEN PRODUCT_GROUP_8 IN ('MOSFET-Subcon', 'Super Junction', 'Super Junction-Subcon') THEN 'MOSFET'\n" +
                 "    WHEN PRODUCT_GROUP_8 IN ('PRD-Subcon', 'TRENCH SCHOTTKY') THEN 'PRD'\n" +
                 "    ELSE PRODUCT_GROUP_8\n" +
                 "  END AS PROD_GROUP_5\n" +
                 "FROM s1";
-        //        System.out.println(sql);
+
         Statement statement = conn.createStatement();
         ResultSet rs = statement.executeQuery(sql);
         List<Map<String, Object>> rows = new ArrayList<>();
@@ -1048,22 +1006,21 @@ public class TscSalesPriceTest {
 
         while (rs.next()) {
             if (rs.getString("PACKAGE_CODE") ==null || rs.getInt("ITEM_CNT")!=1 ) continue; //add by Peggy 20181023
-            Map<String, Object> row = new LinkedHashMap<>(); // �ϥ� LinkedHashMap �O����춶��
+            Map<String, Object> row = new LinkedHashMap<>(); // 使用 LinkedHashMap 保持欄位順序
             for (int i = 1; i <= columnCount; i++) {
-                String columnName = metaData.getColumnLabel(i); // getColumnLabel �i���� SQL �O�W
+                String columnName = metaData.getColumnLabel(i); // getColumnLabel 可拿到 SQL 別名
                 Object value = rs.getObject(i);
                 row.put(columnName, value);
             }
             rows.add(row);
         }
-        // �����귽
         rs.close();
         statement.close();
         conn.close();
         return rows;
     }
 
-    public static List<Map<String, Object>> tsceResultSetToList() throws SQLException {
+    public static List<Map<String, Object>> getTscResultSetToList() throws SQLException {
         String sql = "with s1 as (\n" +
                 "    select a.*,case when a.attribute3 in ('005') and a.tw_vendor_flag='N' \n" +
                 "    then round(decode( pp_ssd.TP_PRICE_UOM,'KPC',pp_ssd.TP_PRICE/1000,pp_ssd.TP_PRICE),5)\n" +
@@ -1166,20 +1123,18 @@ public class TscSalesPriceTest {
                 "                 ,(SELECT * FROM oraddman.tsc_packing_conversion_list where nvl(INACTIVE_DATE,to_date('20991231','yyyymmdd'))>TRUNC(SYSDATE)) tpcl\n" +
                 "                 WHERE msi.ORGANIZATION_ID=49\n" +
                 "                 AND LENGTH(msi.SEGMENT1)>=22\n" +
-                "                 and msi.segment1 = tsdp.item_name\n" +
-                "                 and msi.INVENTORY_ITEM_ID = tsdp.INVENTORY_ITEM_ID\n" +
+                "                 and msi.INVENTORY_ITEM_ID = tsdp.INVENTORY_ITEM_ID(+)\n" +
                 "                 and case \n" +
                 "                       when instr(TSC_GET_ITEM_PACKING_CODE(43,msi.inventory_item_id),'QQ')>0 then msi.description \n" +
                 "                       else trim(substr(msi.description,0,length(msi.description)-length(TSC_GET_ITEM_PACKING_CODE(43,msi.inventory_item_id))))\n" +
-                "                     end = tsdp.part_id\n" +
-                "                 and msi.description = tsdp.tsc_ordering_code\n" +
-//todo tsce
-                "AND msi.segment1 ='0106-G71QQ1110H100CW0000000F00'\n" +
-//                "                and msi.segment1 in('H03G-MFPC5TS480P06000000000F00',\n" +
-//                "'004E-F11QQ11PUAD4D000000000F00','004E-F11QQ21PUAD4B000000000F00','004E-F11QQ21PUAD4D000000000F00'\n" +
-//                "                )\n" +
+                "                     end = tsdp.part_id(+)\n" +
+                "                 and msi.description = tsdp.tsc_ordering_code(+)\n" +
                 "                 AND TSC_INV_Category(msi.inventory_item_id,43, 23)=tpcl.tsc_package(+)\n" +
                 "                 AND tsc_get_item_packing_code (43, msi.inventory_item_id)=tpcl.packing_code(+)\n" +
+//todo tsce
+                "                and msi.segment1 in('2107-1N2QQ11GBU10JGA0000000F00',\n" +
+                "'2107-1N2QQ11GBU10KGA0000000F00','2107-1N2QQ11GBU10MGA0000000F00'\n" +
+                "                )\n" +
                 "                 AND msi.ITEM_TYPE='FG'\n" +
                 "                 AND msi.INVENTORY_ITEM_STATUS_CODE <>'Inactive'\n" +
                 "                 AND msii.ORGANIZATION_ID=43\n" +
@@ -1236,8 +1191,6 @@ public class TscSalesPriceTest {
                 "                    over (partition by description order by creation_date desc) row_seq from inv.mtl_system_items_b\n" +
                 "                     where organization_id=43 and inventory_item_status_code<>'Inactive' ) a where row_seq=1) y\n" +
                 "                     WHERE x.row_seq = 1 and x.REPLACE_PART_NO=y.description(+)) new_pn\n" +
-                "                     ,oraddman.tsc_f400_product tfp\n" +
-                "                     ,oraddman.tsc_distribution_price_book tdpb\n" +
                 "                     WHERE 1=1\n" +
                 "                     AND a.ITEM_DESC1=tpi.PART_NO_LIST(+)\n" +
                 "                     AND a.TSC_PACKAGE=tpii.TSC_PACKAGE(+)\n" +
@@ -1249,8 +1202,6 @@ public class TscSalesPriceTest {
                 "                     AND a.description=new_pn.TSC_PART_NO(+)\n" +
                 "                     AND a.part_id=tsbpt.part_id(+)\n" +
                 "                     AND a.item_desc1=fair.tsc_partno(+)\n" +
-                "                     AND a.description=tdpb.tsc_ordering_code(+)\n" +
-                "                     AND a.description=tfp.tsc_ordering_code(+)\n" +
                 ") SELECT \n" +
                 "    SEGMENT1, PART_ID, PACKAGE_CODE, DESCRIPTION, PL_CATEGORY, TSC_PROD_GROUP, TSC_PROD_CATEGORY,TSC_FAMILY,\n" +
                 "    TSC_PROD_FAMILY, TSC_PACKAGE, SPQ, MOQ, LEAD_TIME, PRICE, PRICE_LAST_UPDATE_DATE,ITEM_CREATION_DATE, \n" +
