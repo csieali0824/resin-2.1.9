@@ -419,11 +419,11 @@ public class Tsca extends ModelNCommonUtils {
                 if (!modelNDto.getOrderType().equals("1141")) {
                     modelNDto.setShippingMethod(rs.getString("SHIP_VIA"));
                 } else {
-                    modelNDto.setShippingMethod(rs.getString("EXPEDITED"));
+                    modelNDto.setShippingMethod("UPS EXPEDITED");
                 }
                 modelNDto.setFob(rs.getString("FOB_POINT"));
-                if (modelNDto.getFob().equals("")) {
-                    modelNDto.setFob(rs.getString("FCA"));
+                if (StringUtils.isNullOrEmpty(modelNDto.getFob())) {
+                    modelNDto.setFob("FCA");
                 }
             }
             rs.close();
