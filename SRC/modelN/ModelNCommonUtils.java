@@ -1171,8 +1171,9 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
         String rfqType = (String) argMap.get("rfqType");
         String tempId = (String) argMap.get("tempId");
         String groupByType = (String) argMap.get("groupByType");
-        String shipToContactName = getShipToContactNameAndId(customerId, shipToOrgId)[0];
-        String shipToContactId = getShipToContactNameAndId(customerId, shipToOrgId)[1];
+        String[] shipToContactNameAndId = getShipToContactNameAndId(customerId, shipToOrgId);
+        String shipToContactName = shipToContactNameAndId[0];
+        String shipToContactId = shipToContactNameAndId[1];
 
         // 因為TSCRFQImportSPQCheck.jsp 會使用session 來做事，所以須將狀態存在這裡
         session.setAttribute("SPQCHECKED","N");

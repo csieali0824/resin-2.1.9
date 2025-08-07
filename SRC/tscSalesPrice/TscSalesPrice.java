@@ -824,10 +824,6 @@ public class TscSalesPrice {
                 "         WHERE     msi.ORGANIZATION_ID = 49\n" +
                 "               AND LENGTH (msi.SEGMENT1) >= 22\n" +
                 "               AND msi.INVENTORY_ITEM_ID = tsdp.INVENTORY_ITEM_ID(+)\n" +
-                "               and case \n" +
-                "                     when instr(TSC_GET_ITEM_PACKING_CODE(43,msi.inventory_item_id),'QQ')>0 then msi.description \n" +
-                "                     else trim(substr(msi.description,0,length(msi.description)-length(TSC_GET_ITEM_PACKING_CODE(43,msi.inventory_item_id))))\n" +
-                "                   end = tsdp.part_id(+)\n" +
                 "               and msi.description = tsdp.tsc_ordering_code(+)\n" +
                 "               AND TSC_INV_Category (msi.inventory_item_id, 43, 23) =\n" +
                 "                       tpcl.tsc_package(+)\n" +
@@ -1088,10 +1084,6 @@ public class TscSalesPrice {
                 "                 WHERE msi.ORGANIZATION_ID=49\n" +
                 "                 AND LENGTH(msi.SEGMENT1)>=22\n" +
                 "                 and msi.INVENTORY_ITEM_ID = tsdp.INVENTORY_ITEM_ID(+)\n" +
-                "                 and case \n" +
-                "                       when instr(TSC_GET_ITEM_PACKING_CODE(43,msi.inventory_item_id),'QQ')>0 then msi.description \n" +
-                "                       else trim(substr(msi.description,0,length(msi.description)-length(TSC_GET_ITEM_PACKING_CODE(43,msi.inventory_item_id))))\n" +
-                "                     end = tsdp.part_id(+)\n" +
                 "                 and msi.description = tsdp.tsc_ordering_code(+)\n" +
                 "                 AND TSC_INV_Category(msi.inventory_item_id,43, 23)=tpcl.tsc_package(+)\n" +
                 "                 AND tsc_get_item_packing_code (43, msi.inventory_item_id)=tpcl.packing_code(+)\n" +
