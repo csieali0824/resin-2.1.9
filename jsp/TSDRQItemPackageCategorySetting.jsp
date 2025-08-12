@@ -384,7 +384,6 @@ else
 //PreparedStatement StatementRpRepair = ConnRpRepair.prepareStatement(sSql);
 			Statement statementTC=con.createStatement();
 //ResultSet rsTC = StatementRpRepair.executeQuery();
-			System.out.println(sSql);
 			ResultSet rsTC= null;
 			try
 			{
