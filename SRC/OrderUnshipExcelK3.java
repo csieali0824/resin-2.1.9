@@ -23,11 +23,11 @@ public class OrderUnshipExcelK3 {
         String UserName = "PEGGY_CHEN";
         int row =0,col=0,reccnt=0;
         int fontsize=8,colcnt=0,sheetcnt=0;
-        String v_inside_order="¤º¾P­q³æ",v_outside_order="¥~¾P­q³æ",v_sg_order="SG¾P°â­q³æ",v_sg_po="SG±ÄÁÊ­q³æ";
+        String v_inside_order="å…§éŠ·è¨‚å–®",v_outside_order="å¤–éŠ·è¨‚å–®",v_sg_order="SGéŠ·å”®è¨‚å–®",v_sg_po="SGæ¡è³¼è¨‚å–®";
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
         OutputStream os = null;
-        String SDATE="20241212";
-        String EDATE="20241213";
+        String SDATE="20250729";
+        String EDATE="20250730";
         String RPTName = "TSCC New Order List";
         String FileName = RPTName+"("+SDATE+(!EDATE.equals("")&&!EDATE.equals(SDATE)?"-"+EDATE:"")+")-"+dateBean.getYearMonthDay()+dateBean.getHourMinute()+(ACTTYPE.equals("AUTO3")?"-2":(ACTTYPE.equals("AUTO2")?"-1":""))+".xls";
         String strPath = "D:\\resin-2.1.9\\webapps\\oradds\\report\\" + FileName;
@@ -35,16 +35,16 @@ public class OrderUnshipExcelK3 {
         WritableWorkbook wwb = Workbook.createWorkbook(os);
         //WritableSheet ws = wwb.createSheet(RPTName, 0);
         wwb.createSheet(v_inside_order, 0);
-        wwb.createSheet(v_outside_order, 1);
-        wwb.createSheet(v_sg_order, 2);
-        wwb.createSheet(v_sg_po, 3);
+//        wwb.createSheet(v_outside_order, 1);
+//        wwb.createSheet(v_sg_order, 2);
+//        wwb.createSheet(v_sg_po, 3);
         WritableSheet ws = null;
 
         WritableFont font_bold = new WritableFont(WritableFont.createFont("Arial"), fontsize+1, WritableFont.BOLD, false, UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK);
         WritableFont font_nobold = new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK);
         WritableFont font_nobold_b = new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLUE);
 
-        //­^¤å¤º¤å¤ô¥­««ª½¸m¤¤-²ÊÅé-®æ½u-©³¦â¦Ç
+        //è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®ä¸­-ç²—é«”-æ ¼ç·š-åº•è‰²ç°
         WritableCellFormat ACenterBL = new WritableCellFormat(font_bold);
         ACenterBL.setAlignment(jxl.format.Alignment.CENTRE);
         ACenterBL.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -52,7 +52,7 @@ public class OrderUnshipExcelK3 {
         ACenterBL.setBackground(jxl.write.Colour.GRAY_25);
         ACenterBL.setWrap(false);
 
-        //­^¤å¤º¤å¤ô¥­««ª½¸m¤¤-²ÊÅé-®æ½u-©³¦âÂÅ
+        //è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®ä¸­-ç²—é«”-æ ¼ç·š-åº•è‰²è—
         WritableCellFormat ACenterBLB = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));
         ACenterBLB.setAlignment(jxl.format.Alignment.CENTRE);
         ACenterBLB.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -60,7 +60,7 @@ public class OrderUnshipExcelK3 {
         ACenterBLB.setBackground(jxl.write.Colour.PALE_BLUE);
         ACenterBLB.setWrap(false);
 
-        //­^¤å¤º¤å¤ô¥­««ª½¸m¤¤-²ÊÅé-®æ½u-©³¦â¶À
+        //è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®ä¸­-ç²—é«”-æ ¼ç·š-åº•è‰²é»ƒ
         WritableCellFormat ACenterBLY = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));
         ACenterBLY.setAlignment(jxl.format.Alignment.CENTRE);
         ACenterBLY.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -68,7 +68,7 @@ public class OrderUnshipExcelK3 {
         ACenterBLY.setBackground(jxl.write.Colour.YELLOW);
         ACenterBLY.setWrap(false);
 
-        //­^¤å¤º¤å¤ô¥­««ª½¸m¤¤-²ÊÅé-®æ½u-©³¦â¾ï
+        //è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®ä¸­-ç²—é«”-æ ¼ç·š-åº•è‰²æ©˜
         WritableCellFormat ACenterBLO = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));
         ACenterBLO.setAlignment(jxl.format.Alignment.CENTRE);
         ACenterBLO.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -76,7 +76,7 @@ public class OrderUnshipExcelK3 {
         ACenterBLO.setBackground(jxl.write.Colour.LIGHT_ORANGE);
         ACenterBLO.setWrap(false);
 
-        //­^¤å¤º¤å¤ô¥­««ª½¸m¤¤-²ÊÅé-®æ½u-©³¦âºñ
+        //è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®ä¸­-ç²—é«”-æ ¼ç·š-åº•è‰²ç¶ 
         WritableCellFormat ACenterBLG = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));
         ACenterBLG.setAlignment(jxl.format.Alignment.CENTRE);
         ACenterBLG.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -84,7 +84,7 @@ public class OrderUnshipExcelK3 {
         ACenterBLG.setBackground(jxl.write.Colour.BRIGHT_GREEN);
         ACenterBLG.setWrap(false);
 
-        //­^¤å¤º¤å¤ô¥­««ª½¸m¤¤-¥¿±`-®æ½u
+        //è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®ä¸­-æ­£å¸¸-æ ¼ç·š
         WritableCellFormat ACenterL = new WritableCellFormat(font_nobold);
         ACenterL.setAlignment(jxl.format.Alignment.CENTRE);
         ACenterL.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -92,21 +92,21 @@ public class OrderUnshipExcelK3 {
         ACenterL.setWrap(false);
 
 
-        //­^¤å¤º¤å¤ô¥­««ª½¸m¥k-¥¿±`-®æ½u
+        //è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®å³-æ­£å¸¸-æ ¼ç·š
         WritableCellFormat ARightL = new WritableCellFormat(font_nobold);
         ARightL.setAlignment(jxl.format.Alignment.RIGHT);
         ARightL.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
         ARightL.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
         ARightL.setWrap(false);
 
-        //­^¤å¤º¤å¤ô¥­««ª½¸m¥ª-¥¿±`-®æ½u
+        //è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®å·¦-æ­£å¸¸-æ ¼ç·š
         WritableCellFormat ALeftL = new WritableCellFormat(font_nobold);
         ALeftL.setAlignment(jxl.format.Alignment.LEFT);
         ALeftL.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
         ALeftL.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
         ALeftL.setWrap(false);
 
-        //­^¤å¤º¤å¤ô¥­««ª½¸m¤¤-¥¿±`-®æ½u
+        //è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®ä¸­-æ­£å¸¸-æ ¼ç·š
         WritableCellFormat ACenterLB = new WritableCellFormat(font_nobold_b);
         ACenterLB.setAlignment(jxl.format.Alignment.CENTRE);
         ACenterLB.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -114,21 +114,21 @@ public class OrderUnshipExcelK3 {
         ACenterLB.setWrap(false);
 
 
-        //­^¤å¤º¤å¤ô¥­««ª½¸m¥k-¥¿±`-®æ½u
+        //è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®å³-æ­£å¸¸-æ ¼ç·š
         WritableCellFormat ARightLB = new WritableCellFormat(font_nobold_b);
         ARightLB.setAlignment(jxl.format.Alignment.RIGHT);
         ARightLB.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
         ARightLB.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
         ARightLB.setWrap(false);
 
-        //­^¤å¤º¤å¤ô¥­««ª½¸m¥ª-¥¿±`-®æ½u
+        //è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®å·¦-æ­£å¸¸-æ ¼ç·š
         WritableCellFormat ALeftLB = new WritableCellFormat(font_nobold_b);
         ALeftLB.setAlignment(jxl.format.Alignment.LEFT);
         ALeftLB.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
         ALeftLB.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
         ALeftLB.setWrap(false);
 
-        //­^¤å¤º¤å¤ô¥­««ª½¸m¤¤-¥¿±`-®æ½u-©³¦â¯»¬õ
+        //è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®ä¸­-æ­£å¸¸-æ ¼ç·š-åº•è‰²ç²‰ç´…
         WritableCellFormat ACenterLP = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"),9, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));
         ACenterLP.setAlignment(jxl.format.Alignment.CENTRE);
         ACenterLP.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -136,7 +136,7 @@ public class OrderUnshipExcelK3 {
         ACenterLP.setBackground(jxl.write.Colour.PINK);
         ACenterLP.setWrap(false);
 
-        //­^¤å¤º¤å¤ô¥­««ª½¸m¤¤-¥¿±`-®æ½u-©³¦â²Lºñ
+        //è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®ä¸­-æ­£å¸¸-æ ¼ç·š-åº•è‰²æ·ºç¶ 
         WritableCellFormat ACenterLG = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"),9, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));
         ACenterLG.setAlignment(jxl.format.Alignment.CENTRE);
         ACenterLG.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -144,7 +144,7 @@ public class OrderUnshipExcelK3 {
         ACenterLG.setBackground(jxl.write.Colour.LIGHT_GREEN);
         ACenterLG.setWrap(false);
 
-        //­^¤å¤º¤å¤ô¥­««ª½¸m¤¤-¥¿±`-®æ½u-©³¦â¯»¬õ-ÂÅ¦r
+        //è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®ä¸­-æ­£å¸¸-æ ¼ç·š-åº•è‰²ç²‰ç´…-è—å­—
         WritableCellFormat ACenterLPB = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"),9, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLUE));
         ACenterLPB.setAlignment(jxl.format.Alignment.CENTRE);
         ACenterLPB.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -152,7 +152,7 @@ public class OrderUnshipExcelK3 {
         ACenterLPB.setBackground(jxl.write.Colour.PINK);
         ACenterLPB.setWrap(false);
 
-        //­^¤å¤º¤å¤ô¥­««ª½¸m¤¤-¥¿±`-®æ½u-©³¦â²Lºñ-ÂÅ¦r
+        //è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®ä¸­-æ­£å¸¸-æ ¼ç·š-åº•è‰²æ·ºç¶ -è—å­—
         WritableCellFormat ACenterLGB = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"),9, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLUE));
         ACenterLGB.setAlignment(jxl.format.Alignment.CENTRE);
         ACenterLGB.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -160,14 +160,14 @@ public class OrderUnshipExcelK3 {
         ACenterLGB.setBackground(jxl.write.Colour.LIGHT_GREEN);
         ACenterLGB.setWrap(false);
 
-        //¤é´Á®æ¦¡
+        //æ—¥æœŸæ ¼å¼
         WritableCellFormat DATE_FORMAT = new WritableCellFormat(font_nobold ,new jxl.write.DateFormat("yyyy/MM/dd"));
         DATE_FORMAT.setAlignment(jxl.format.Alignment.CENTRE);
         DATE_FORMAT.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
         DATE_FORMAT.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
         DATE_FORMAT.setWrap(false);
 
-        //¤é´Á®æ¦¡
+        //æ—¥æœŸæ ¼å¼
         WritableCellFormat DATE_FORMAT1 = new WritableCellFormat(font_nobold_b ,new jxl.write.DateFormat("yyyy/MM/dd"));
         DATE_FORMAT1.setAlignment(jxl.format.Alignment.CENTRE);
         DATE_FORMAT1.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -198,18 +198,18 @@ public class OrderUnshipExcelK3 {
             ws = wwb.getSheet(sheetname[i]);
             SheetSettings sst = ws.getSettings();
             sst.setSelected();
-            sst.setVerticalFreeze(1);  //­áµ²µ¡®æ
+            sst.setVerticalFreeze(1);  //å‡çµçª—æ ¼
             for (int g =1 ; g <=10 ;g++ )
             {
                 sst.setHorizontalFreeze(g);
             }
-            //³æ¾Ú½s¸¹
-            ws.addCell(new jxl.write.Label(col, row, "³æ¾Ú½s¸¹" , ACenterBL));
+            //å–®æ“šç·¨è™Ÿ
+            ws.addCell(new jxl.write.Label(col, row, "å–®æ“šç·¨è™Ÿ" , ACenterBL));
             ws.setColumnView(col,15);
             col++;
 
             //Sales Group
-            ws.addCell(new jxl.write.Label(col, row, "¦æ¸¹" , ACenterBL));
+            ws.addCell(new jxl.write.Label(col, row, "è¡Œè™Ÿ" , ACenterBL));
             ws.setColumnView(col,10);
             col++;
 
@@ -218,8 +218,8 @@ public class OrderUnshipExcelK3 {
             ws.setColumnView(col,25);
             col++;
 
-            //¹ô§OK3¥N½X
-            ws.addCell(new jxl.write.Label(col, row, "¹ô§OK3¥N½X" , ACenterBL));
+            //å¹£åˆ¥K3ä»£ç¢¼
+            ws.addCell(new jxl.write.Label(col, row, "å¹£åˆ¥K3ä»£ç¢¼" , ACenterBL));
             ws.setColumnView(col,10);
             col++;
 
@@ -243,8 +243,8 @@ public class OrderUnshipExcelK3 {
             ws.setColumnView(col,10);
             col++;
 
-            //áMÀY
-            ws.addCell(new jxl.write.Label(col, row, "áMÀY" , ACenterBL));
+            //å˜œé ­
+            ws.addCell(new jxl.write.Label(col, row, "å˜œé ­" , ACenterBL));
             ws.setColumnView(col,25);
             col++;
 
@@ -278,8 +278,8 @@ public class OrderUnshipExcelK3 {
             ws.setColumnView(col,10);
             col++;
 
-            //¥¼µ|³æ»ù
-            ws.addCell(new jxl.write.Label(col, row, "¥¼µ|³æ»ù" , ACenterBL));
+            //æœªç¨…å–®åƒ¹
+            ws.addCell(new jxl.write.Label(col, row, "æœªç¨…å–®åƒ¹" , ACenterBL));
             ws.setColumnView(col,10);
             col++;
 
@@ -288,8 +288,8 @@ public class OrderUnshipExcelK3 {
             ws.setColumnView(col,10);
             col++;
 
-            //­n¨D¤u¼t¥X³f¤é
-            ws.addCell(new jxl.write.Label(col, row, "­n¨D¤u¼t¥X³f¤é´Á" , ACenterBL));
+            //è¦æ±‚å·¥å» å‡ºè²¨æ—¥
+            ws.addCell(new jxl.write.Label(col, row, "è¦æ±‚å·¥å» å‡ºè²¨æ—¥æœŸ" , ACenterBL));
             ws.setColumnView(col,10);
             col++;
 
@@ -298,28 +298,28 @@ public class OrderUnshipExcelK3 {
             ws.setColumnView(col,10);
             col++;
 
-            //«È¤áK3¥N½X
-            ws.addCell(new jxl.write.Label(col, row, "«È¤áK3¥N½X" , ACenterBL));
+            //å®¢æˆ¶K3ä»£ç¢¼
+            ws.addCell(new jxl.write.Label(col, row, "å®¢æˆ¶K3ä»£ç¢¼" , ACenterBL));
             ws.setColumnView(col,10);
             col++;
 
-            //³¡ªùK3¥N½X
-            ws.addCell(new jxl.write.Label(col, row, "³¡ªùK3¥N½X" , ACenterBL));
+            //éƒ¨é–€K3ä»£ç¢¼
+            ws.addCell(new jxl.write.Label(col, row, "éƒ¨é–€K3ä»£ç¢¼" , ACenterBL));
             ws.setColumnView(col,10);
             col++;
 
-            //·~°È­ûK3¥N½X
-            ws.addCell(new jxl.write.Label(col, row, "·~°È­ûK3¥N½X" , ACenterBL));
+            //æ¥­å‹™å“¡K3ä»£ç¢¼
+            ws.addCell(new jxl.write.Label(col, row, "æ¥­å‹™å“¡K3ä»£ç¢¼" , ACenterBL));
             ws.setColumnView(col,10);
             col++;
 
-            //Àu¥ı°e³f¦a§}¥N½X
-            ws.addCell(new jxl.write.Label(col, row, "Àu¥ı°e³f¦a§}¥N½X" , ACenterBL));
+            //å„ªå…ˆé€è²¨åœ°å€ä»£ç¢¼
+            ws.addCell(new jxl.write.Label(col, row, "å„ªå…ˆé€è²¨åœ°å€ä»£ç¢¼" , ACenterBL));
             ws.setColumnView(col,12);
             col++;
 
-            //¨ÑÀ³°ÓK3¥N½X
-            ws.addCell(new jxl.write.Label(col, row, "¨ÑÀ³°ÓK3¥N½X" , ACenterBL));
+            //ä¾›æ‡‰å•†K3ä»£ç¢¼
+            ws.addCell(new jxl.write.Label(col, row, "ä¾›æ‡‰å•†K3ä»£ç¢¼" , ACenterBL));
             ws.setColumnView(col,10);
             col++;
 
@@ -413,23 +413,23 @@ public class OrderUnshipExcelK3 {
             ws.setColumnView(col,20);
             col++;
 
-            //¤u¼t¦^T¥X³f¤é
-            ws.addCell(new jxl.write.Label(col, row, "¤u¼t¦^T¥X³f¤é" , ACenterBL));
+            //å·¥å» å›Tå‡ºè²¨æ—¥
+            ws.addCell(new jxl.write.Label(col, row, "å·¥å» å›Tå‡ºè²¨æ—¥" , ACenterBL));
             ws.setColumnView(col,15);
             col++;
 
-            //¥¼µ|ª÷ÃB
-            ws.addCell(new jxl.write.Label(col, row, "¥¼µ|ª÷ÃB" , ACenterBL));
+            //æœªç¨…é‡‘é¡
+            ws.addCell(new jxl.write.Label(col, row, "æœªç¨…é‡‘é¡" , ACenterBL));
             ws.setColumnView(col,10);
             col++;
 
-            //µ|²v
-            ws.addCell(new jxl.write.Label(col, row, "µ|²v" , ACenterBL));
+            //ç¨…ç‡
+            ws.addCell(new jxl.write.Label(col, row, "ç¨…ç‡" , ACenterBL));
             ws.setColumnView(col,10);
             col++;
 
-            //µ|ÃB
-            ws.addCell(new jxl.write.Label(col, row, "µ|ÃB" , ACenterBL));
+            //ç¨…é¡
+            ws.addCell(new jxl.write.Label(col, row, "ç¨…é¡" , ACenterBL));
             ws.setColumnView(col,10);
             col++;
 
@@ -448,6 +448,7 @@ public class OrderUnshipExcelK3 {
                         " upper(TSC_OM_Get_Sales_Group(ooa.header_id)) sales_group,"+  //modify by Peggy 20220531
                         " ooa.ORDER_NUMBER,"+
                         " ooa.line_number ||'.'||ooa.shipment_number line_no,"+
+                        " ooa.itemk3code,"+
                         " msi.description,"+
                         " DECODE(ooa.ITEM_IDENTIFIER_TYPE,'CUST',ooa.ORDERED_ITEM,'') CUST_ITEM,"+
                         " nvl(ar.CUSTOMER_NAME_PHONETIC,ar.customer_name) customer,"+
@@ -497,7 +498,7 @@ public class OrderUnshipExcelK3 {
                         ",tkc.cust_code"+
                         ",tkc.dept_code"+
                         ",tkc.sales_code"+
-                        ",round(ooa.UNIT_SELLING_PRICE*ooa.ordered_quantity,2) amount"+  //¥|±Ë¤­¤J¦Ü¤p¼ÆÂI¤GÂI,add by Peggy 20171031
+                        ",round(ooa.UNIT_SELLING_PRICE*ooa.ordered_quantity,2) amount"+  //å››æ¨äº”å…¥è‡³å°æ•¸é»äºŒé»,add by Peggy 20171031
                         ",round(ooa.UNIT_SELLING_PRICE*ooa.ordered_quantity*tkcr.tax_rate,2) tax_amount"+
                         ",ooa.K3_ADDR_CODE"+      //add by Peggy 20190625
                         ",ooa.k3_order_no"+       //add by Peggy 20190625
@@ -516,6 +517,7 @@ public class OrderUnshipExcelK3 {
                         "       ,ooh.ORG_ID"+
                         "       ,ooh.BOOKED_DATE"+
                         "       ,ool.line_id"+
+                        "       ,SUBSTR(TSC_GET_ITEM_DESC_AND_SUFFIX(ool.line_id), 1, INSTR(TSC_GET_ITEM_DESC_AND_SUFFIX(ool.line_id), '|') - 1) itemk3code"+
                         "       ,ool.line_number	"+
                         "       ,ool.shipment_number"+
                         "       ,ool.ITEM_IDENTIFIER_TYPE"+
@@ -588,7 +590,7 @@ public class OrderUnshipExcelK3 {
                         " AND ooa.ORG_ID=jrs.ORG_ID(+)"+
                         " AND ooa.SHIPPING_METHOD_CODE = lc.lookup_code (+)"+
                         //" AND ool.end_customer_id = ar1.customer_id(+)"+
-                        " AND case when substr(ooa.order_number,1,4) in ('4121') then ooa.sold_to_org_id else  ooa.end_customer_id end = ar1.customer_id(+)"+ //4121 ­q³æ¨Ìheader customer id link k3«È¤á,add by Peggy 20171226
+                        " AND case when substr(ooa.order_number,1,4) in ('4121') then ooa.sold_to_org_id else  ooa.end_customer_id end = ar1.customer_id(+)"+ //4121 è¨‚å–®ä¾header customer id link k3å®¢æˆ¶,add by Peggy 20171226
                         " AND ooa.ship_to_org_id = hcsu.site_use_id(+)"+
                         " AND hcsu.attribute1=tog.group_id(+)"+
                         " AND ooa.line_type_id= ott.transaction_type_id(+)"+
@@ -598,10 +600,13 @@ public class OrderUnshipExcelK3 {
                         " AND tkce.cust_code=tkc.cust_code(+)"+
                         " AND substr(ooa.order_number,1,1) =tks.erp_order_code(+)"+
                         " AND substr(ooa.order_number,1,1) =tkcr.erp_order_code(+)";
+
                 //if (ORDERTYPE.equals("INSITE") || ERP_USERID.equals("5870"))
                 if (i==0)
                 {
-                    sql += " and substr(ooa.ORDER_NUMBER,1,4) in ('4131','4121')";
+                    sql += " and substr(ooa.ORDER_NUMBER,1,4) in ('4131','4121') "+
+                            "and ooa.order_number='41310056803'";
+//                    sql += " and substr(ooa.ORDER_NUMBER,1,4) in ('4131','4121')";
                 }
                 //else if (ORDERTYPE.equals("OUTSITE"))
                 else if (i==1)
@@ -610,21 +615,29 @@ public class OrderUnshipExcelK3 {
                 }
                 if (!ACTTYPE.equals(""))
                 {
-                    sql += " and ooa.ordered_date >= to_date('20170502','yyyymmdd')+0.99999";  //20170502±qordered_date§ï¬°booked_date,¤w°e¥X­q³æ¤£¥i­«ÂĞµo°e
-                    //if (ACTTYPE.equals("AUTO"))//¤W¤È®É¬q,§ì«e¤@¤Ñ15:00~23:59
+                    sql += " and ooa.ordered_date >= to_date('20170502','yyyymmdd')+0.99999";  //20170502å¾ordered_dateæ”¹ç‚ºbooked_date,å·²é€å‡ºè¨‚å–®ä¸å¯é‡è¦†ç™¼é€
+                    //if (ACTTYPE.equals("AUTO"))//ä¸Šåˆæ™‚æ®µ,æŠ“å‰ä¸€å¤©15:00~23:59
                     //{
                     //	sql += " and ooa.BOOKED_DATE  BETWEEN TO_DATE('"+SDATE+"','yyyymmdd')+(15/24) AND TO_DATE('"+ (EDATE.equals("")?SDATE:EDATE)+"','yyyymmdd')+0.99999";
                     //}
-//				"("+SDATE+(!EDATE.equals("")&&!EDATE.equals(SDATE)?"-"+EDATE:"")+")
-                    if (ACTTYPE.equals("AUTO2"))//¤U¤È®É¬q,§ì«e¤Ñ15:00~¦Ü·í¤Ñ14:59
+                    if (ACTTYPE.equals("AUTO2"))//ä¸‹åˆæ™‚æ®µ,æŠ“å‰å¤©15:00~è‡³ç•¶å¤©14:59
                     {
-                        sql += " and ooa.BOOKED_DATE  BETWEEN TO_DATE('20241210','yyyymmdd')+(15/24) AND TO_DATE('20241212','yyyymmdd')+(14.9996/24)"+
-                                " and ooa.k3_order_no is null";
+                        String condition = (i == 0) ?
+                                " and (ooa.k3_order_no is null \n" +
+                                        "	 or (ooa.END_CUSTOMER_ID in ('1040292','1040294','1040296','1040298','631292','627290')\n" +
+                                        "		 and ooa.k3_order_no not like 'PC%'\n" +
+                                        "		 and  SUBSTR(msi.description, 1, LENGTH(msi.description) - 2) = ooa.itemk3code\n" +
+                                        "		)\n" +
+                                        "	 )"
+                                : "and ooa.k3_order_no is null";
+
+                        sql += " and ooa.BOOKED_DATE  BETWEEN TO_DATE('"+SDATE+"','yyyymmdd')+(15/24) AND TO_DATE('"+ (EDATE.equals("")?SDATE:EDATE)+"','yyyymmdd')+(14.9996/24)"+ condition;
                     }
-                    else if (ACTTYPE.equals("AUTO3"))//¤U¤È®É¬q,§ì«e¤Ñ15:00~¦Ü·í¤Ñ14:59
+                    else if (ACTTYPE.equals("AUTO3"))//ä¸‹åˆæ™‚æ®µ,æŠ“å‰å¤©15:00~è‡³ç•¶å¤©14:59
                     {
-                        sql += " and ooa.BOOKED_DATE  BETWEEN TO_DATE('20241210','yyyymmdd')+(15/24) AND TO_DATE('20241212','yyyymmdd')+(14.9996/24)"+
-                                " and ooa.k3_order_no is not null";
+                        String condition = (i == 0) ? "and (ooa.k3_order_no is not null  and ooa.k3_order_no like 'PC%' or ooa.k3_order_no like 'BYD%')" : "and ooa.k3_order_no is not null";
+
+                        sql += " and ooa.BOOKED_DATE  BETWEEN TO_DATE('"+SDATE+"','yyyymmdd')+(15/24) AND TO_DATE('"+ (EDATE.equals("")?SDATE:EDATE)+"','yyyymmdd')+(14.9996/24)"+ condition;
                     }
                 }
                 else
@@ -633,7 +646,7 @@ public class OrderUnshipExcelK3 {
                     sql += " and ooa.BOOKED_DATE  BETWEEN TO_DATE('"+(SDATE.equals("")?"trunc(add_months(sysdate,-48))":SDATE)+"','yyyymmdd') AND TO_DATE('"+ (EDATE.equals("")?SDATE:EDATE)+"','yyyymmdd')+0.99999";
                 }
                 sql += " order by 1 desc,2,3,4";
-                System.out.println("Sql="+sql);
+                System.out.println(sql);
             }
             else if (i==2)
             {
@@ -641,6 +654,7 @@ public class OrderUnshipExcelK3 {
                 sql = " SELECT upper(TSC_OM_Get_Sales_Group(ooa.header_id)) sales_group,"+
                         " ooa.ORDER_NUMBER,"+
                         " ooa.line_number ||'.'||ooa.shipment_number line_no,"+
+                        " ooa.itemk3code,"+
                         " msi.description,"+
                         " DECODE(ooa.ITEM_IDENTIFIER_TYPE,'CUST',ooa.ORDERED_ITEM,'') CUST_ITEM,"+
                         " nvl(ar.CUSTOMER_NAME_PHONETIC,ar.customer_name) customer,"+
@@ -704,6 +718,7 @@ public class OrderUnshipExcelK3 {
                         "       ,ooh.ORG_ID"+
                         "       ,ooh.BOOKED_DATE"+
                         "       ,ool.line_id"+
+                        "       ,SUBSTR(TSC_GET_ITEM_DESC_AND_SUFFIX(ool.line_id), 1, INSTR(TSC_GET_ITEM_DESC_AND_SUFFIX(ool.line_id), '|') - 1) itemk3code"+
                         "       ,ool.line_number "+
                         "       ,ool.shipment_number"+
                         "       ,ool.ITEM_IDENTIFIER_TYPE"+
@@ -722,8 +737,8 @@ public class OrderUnshipExcelK3 {
                         "       ,ool.ship_to_org_id"+
                         "       ,case when substr(ooh.order_number,1,1)=8 then  ool.UNIT_SELLING_PRICE"+
                         //"        else Tsc_Om_Get_Target_Price_0702(ool.ship_from_org_id,ool.inventory_item_id,ool.ORDER_QUANTITY_UOM,2142473,trunc(sysdate),'CNY',ool.packing_instructions,null) end UNIT_SELLING_PRICE"+
-                        //"        else Tsc_Om_Get_Target_Price_0702(43,ool.inventory_item_id,ool.ORDER_QUANTITY_UOM,case when trunc(ool.pricing_date)>= to_date('20200301','yyyymmdd') then 30915 else 2142473 end,trunc(ool.pricing_date),'CNY',ool.packing_instructions,null) end UNIT_SELLING_PRICE"+ //TP(USD) ¨C¤ë¨Ì®üÃö¤W¦¯¶×²vÅÜ°Ê,modify by Peggy 20200301
-                        "        else Tsc_Om_Get_Target_Price_0702(43,ool.inventory_item_id,ool.ORDER_QUANTITY_UOM,case when trunc(ooh.creation_date)>= to_date('20200301','yyyymmdd') then 30915 else 2142473 end,trunc(ooh.creation_date),'CNY',ool.packing_instructions,null) end UNIT_SELLING_PRICE"+ //TP(USD) ¨C¤ë¨Ì®üÃö¤W¦¯¶×²vÅÜ°Ê,modify by Peggy 20200301
+                        //"        else Tsc_Om_Get_Target_Price_0702(43,ool.inventory_item_id,ool.ORDER_QUANTITY_UOM,case when trunc(ool.pricing_date)>= to_date('20200301','yyyymmdd') then 30915 else 2142473 end,trunc(ool.pricing_date),'CNY',ool.packing_instructions,null) end UNIT_SELLING_PRICE"+ //TP(USD) æ¯æœˆä¾æµ·é—œä¸Šæ—¬åŒ¯ç‡è®Šå‹•,modify by Peggy 20200301
+                        "        else Tsc_Om_Get_Target_Price_0702(43,ool.inventory_item_id,ool.ORDER_QUANTITY_UOM,case when trunc(ooh.creation_date)>= to_date('20200301','yyyymmdd') then 30915 else 2142473 end,trunc(ooh.creation_date),'CNY',ool.packing_instructions,null) end UNIT_SELLING_PRICE"+ //TP(USD) æ¯æœˆä¾æµ·é—œä¸Šæ—¬åŒ¯ç‡è®Šå‹•,modify by Peggy 20200301
                         "       ,ool.INVENTORY_ITEM_ID"+
                         "       ,ool.line_type_id  "+
                         "       ,nvl(ool.payment_term_id,ooh.payment_term_id) payment_term_id"+
@@ -749,7 +764,7 @@ public class OrderUnshipExcelK3 {
                         "       AND hcsua.location=tkale.sg_ship_to_location_id(+)"+
                         "       AND ool.ship_from_org_id in (907,908)"; //modify by Peggy 20200331
                 //"       AND not exists (select 1 from ont.oe_order_headers_all sgh where sgh.org_id=906 and ooh.org_id<>906 and sgh.order_number=ooh.order_number)";
-                //"       AND not exists (select 1 from ont.oe_order_headers_all sgh where sgh.org_id<>906 and substr(sgh.order_number,1,4) in ('1121','1131','1141') and sgh.order_number=ooh.order_number and sgh.org_id=ooh.org_id )"; //20200226 ­×¥¿¿ù»~ by Peggy
+                //"       AND not exists (select 1 from ont.oe_order_headers_all sgh where sgh.org_id<>906 and substr(sgh.order_number,1,4) in ('1121','1131','1141') and sgh.order_number=ooh.order_number and sgh.org_id=ooh.org_id )"; //20200226 ä¿®æ­£éŒ¯èª¤ by Peggy
                 if (ACTTYPE.equals("AUTO2"))
                 {
                     sql += " and  (ool.attribute3 is null or instr(ool.attribute3,'-')=0)";
@@ -817,8 +832,9 @@ public class OrderUnshipExcelK3 {
                         " to_char(a.creation_date,'yyyy/mm/dd') ordered_date,"+
                         " TSC_GET_REMARK_DESC(odr.HEADER_ID,'SHIPPING MARKS') mark_desc,"+
                         //" case when odr.ORDER_NUMBER is null then 'FORECAST' else odr.CUSTOMER_LINE_NUMBER end customer_po,"+
-                        " case when odr.ORDER_NUMBER is null then 'FORECAST' else case when trunc(e.creation_date)>= to_date('20211001','yyyymmdd') then nvl(odr.ORDER_NUMBER,'') else  odr.CUSTOMER_LINE_NUMBER end end customer_po,"+ //202110¤ë°_,po©ñ¾P°â­q³æ¸¹ add by Peggy 20210927
+                        " case when odr.ORDER_NUMBER is null then 'FORECAST' else case when trunc(e.creation_date)>= to_date('20211001','yyyymmdd') then nvl(odr.ORDER_NUMBER,'') else  odr.CUSTOMER_LINE_NUMBER end end customer_po,"+ //202110æœˆèµ·,poæ”¾éŠ·å”®è¨‚å–®è™Ÿ add by Peggy 20210927
                         " msi.segment1 item_no,"+
+                        " odr.itemk3code,"+
                         " msi.description,  "+
                         " odr.CUST_ITEM,"+
                         " b.quantity * case  b.unit_meas_lookup_code when 'KPC' then 1000 else 1 end ordered_quantity,"+
@@ -877,6 +893,7 @@ public class OrderUnshipExcelK3 {
                         "        ,ooh.header_id"+
                         "        ,DECODE(ool.ITEM_IDENTIFIER_TYPE,'CUST',ool.ORDERED_ITEM,'') CUST_ITEM"+
                         "        ,ool.line_number||'.'|| ool.shipment_number line_no"+
+                        "        ,SUBSTR(TSC_GET_ITEM_DESC_AND_SUFFIX(ool.line_id), 1, INSTR(TSC_GET_ITEM_DESC_AND_SUFFIX(ool.line_id), '|') - 1) itemk3code"+
                         "        ,ooh.sold_to_org_id"+
                         "        ,ooh.ORDERED_DATE"+
                         "        ,trunc(ool.REQUEST_DATE) REQUEST_DATE"+
@@ -901,7 +918,7 @@ public class OrderUnshipExcelK3 {
                         "        and ool.PACKING_INSTRUCTIONS='T'"+
                         "        and ool.ship_from_org_id in (907,908)"+ //modify by Peggy 20200331
                         //"        and not exists (select 1 from ont.oe_order_headers_all sgh where sgh.org_id=906 and ooh.org_id<>906 and sgh.order_number=ooh.order_number)"+
-                        //"        and not exists (select 1 from ont.oe_order_headers_all sgh where sgh.org_id<>906 and substr(sgh.order_number,1,4) in ('1121','1131','1141') and sgh.order_number=ooh.order_number and sgh.org_id=ooh.org_id )"+//20200226 ­×¥¿¿ù»~ by Peggy
+                        //"        and not exists (select 1 from ont.oe_order_headers_all sgh where sgh.org_id<>906 and substr(sgh.order_number,1,4) in ('1121','1131','1141') and sgh.order_number=ooh.order_number and sgh.org_id=ooh.org_id )"+//20200226 ä¿®æ­£éŒ¯èª¤ by Peggy
                         "        ) odr"+
                         "        where e.po_line_id=b.po_line_id"+
                         "        and nvl(a.CLOSED_CODE,' ') <>'CLOSED'"+
@@ -987,13 +1004,13 @@ public class OrderUnshipExcelK3 {
                     ws.addCell(new jxl.write.DateTime(col, row, formatter.parse(rs.getString("ORDERED_DATE")) ,DATE_FORMAT));
                 }
                 col++;
-                //áMÀY
+                //å˜œé ­
                 ws.addCell(new jxl.write.Label(col, row, rs.getString("MARK_DESC")  , ALeftL));
                 col++;
                 //Customer PO
                 ws.addCell(new jxl.write.Label(col, row, rs.getString("CUSTOMER_PO"), ALeftL));
                 col++;
-                //®Æ¸¹22D
+                //æ–™è™Ÿ22D
                 ws.addCell(new jxl.write.Label(col, row, rs.getString("ITEM_NO"), ALeftL));
                 col++;
                 //Item Desc
@@ -1034,7 +1051,7 @@ public class OrderUnshipExcelK3 {
                     ws.addCell(new jxl.write.DateTime(col, row, formatter.parse(rs.getString("REQUEST_DATE")) ,DATE_FORMAT));
                 }
                 col++;
-                //­n¨D¤u¼t¥X³f¤é
+                //è¦æ±‚å·¥å» å‡ºè²¨æ—¥
                 ws.addCell(new jxl.write.Label(col, row, "" , ALeftL));
                 col++;
                 //Schedule Ship Date
@@ -1053,7 +1070,7 @@ public class OrderUnshipExcelK3 {
                 col++;
                 ws.addCell(new jxl.write.Label(col, row, (rs.getString("sales_code")==null?"":rs.getString("sales_code")) , ALeftL));
                 col++;
-                //Àu¥ı°e³f¦a§}¥N½X,add by Peggy 20190625
+                //å„ªå…ˆé€è²¨åœ°å€ä»£ç¢¼,add by Peggy 20190625
                 ws.addCell(new jxl.write.Label(col, row, (rs.getString("k3_addr_code")==null?"":rs.getString("k3_addr_code")) , ALeftL));
                 col++;
                 ws.addCell(new jxl.write.Label(col, row, (rs.getString("supplier_code")==null?"":rs.getString("supplier_code")) , ALeftL));
@@ -1112,7 +1129,7 @@ public class OrderUnshipExcelK3 {
                 //yew group
                 ws.addCell(new jxl.write.Label(col, row, rs.getString("YEW_GROUP") , ALeftL));
                 col++;
-                //¤u¼t¦^T¥X³f¤é,add by Peggy 20160805
+                //å·¥å» å›Tå‡ºè²¨æ—¥,add by Peggy 20160805
                 if (rs.getString("SCHEDULE_SHIP_DATE")==null || rs.getString("factory_totw_date")==null || rs.getString("SCHEDULE_SHIP_DATE").equals(rs.getString("factory_totw_date")) )
                 {
                     ws.addCell(new jxl.write.Label(col, row, "" , ALeftL));
