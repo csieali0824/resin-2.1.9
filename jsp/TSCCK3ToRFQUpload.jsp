@@ -9,6 +9,7 @@
 <%@ page import="com.jspsmart.upload.*"%>
 <%@ page errorPage="ExceptionHandler.jsp"%>
 <%@ page import="DateBean,ArrayCheckBoxBean,Array2DimensionInputBean" %>
+<%@ page import="com.mysql.jdbc.StringUtils" %>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=============以下區段為安全認證機制==========-->
@@ -809,9 +810,15 @@
 								sql += " and msi.segment1 = '"+strItemName+"'";
 							}
 
-							sql += "and tsc_get_item_coo(msi.inventory_item_id) =(\n" +
-											"case when TSC_INV_CATEGORY(msi.inventory_item_id,43,23) IN ('SMA', 'SMB', 'SMC', 'SOD-123W', 'SOD-128')\n" +
-											"then 'CN' else tsc_get_item_coo(msi.inventory_item_id) end)";
+							sql +=  "AND SUBSTR(msi.segment1, -4) <> 'AF00'\n" +
+									"         AND (\n" +
+									"                ( TSC_INV_CATEGORY(msi.inventory_item_id, 43, 23)\n" +
+									"                    IN ('SMA','SMB','SMC','SOD-123W','SOD-128')\n" +
+									"                  AND tsc_get_item_coo(msi.inventory_item_id) = 'CN'\n" +
+									"                )\n" +
+									"                OR TSC_INV_CATEGORY(msi.inventory_item_id, 43, 23)\n" +
+									"                    NOT IN ('SMA','SMB','SMC','SOD-123W','SOD-128')\n" +
+									"             )";
 							sql += " order by length(msi.segment1) desc,msi.segment1"; //30D優先 by Peggy 20230621
 							//out.println(sql);
 							Statement statement=con.createStatement();
@@ -833,7 +840,7 @@
 									strOrderType = rs.getString("ORDER_TYPE");
 
 									//add by Peggy 20200522,YBS3007 RAG&"BAV21W-G RHG不可下內銷訂單,統籌以外銷下單,取得優惠採購價格
-									//if (strOrderType.equals("8131") && (strItemDesc.equals("YBS3007G RAG") || strItemDesc.equals("BAV21W-G RHG")))
+									//if (strOrderType.equals("8131") && (strItemDesc.equ`als("YBS3007G RAG") || strItemDesc.equals("BAV21W-G RHG")))
 									//if (strOrderType.equals("8131") && (strItemDesc.equals("BAV21W-G RHG"))) //YBS3007G RAG不統一下單 from ava modify by Peggy 20201111
 									//{
 									//	strErr +=strItemDesc+"統一下外銷訂單,以取得優惠採購價<br>";
@@ -1202,7 +1209,7 @@
 											}
 										}
 
-										if (strEndCust.equals(""))
+										if (StringUtils.isNullOrEmpty(strEndCust))
 										{
 											sql =" SELECT  c.customer_id,c.ACCOUNT_NUMBER customer_number,c.CUSTOMER_SNAME CUSTOMER_NAME_PHONETIC  "+
 													//" FROM ar_customers a,ar.hz_cust_acct_relate_all b,ar_customers c"+
@@ -1657,6 +1664,7 @@
 		}
 		catch(Exception e)
 		{
+			e.printStackTrace();
 			con.rollback();
 			out.println("error1:"+e.getMessage());
 		}
