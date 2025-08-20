@@ -1853,12 +1853,6 @@ try
 				else if (SALES_REGION.equals("TSCT-Disty"))
 				{
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("kristin.wu@ts.com.tw"));
-					message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("sofia.liu@ts.com.tw"));
-				}
-				else if (SALES_REGION.equals("SAMPLE"))
-				{
-					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("jenny.liao@ts.com.tw"));
-					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("demi.kao@ts.com.tw"));
 				}
 			}
 			message.addRecipient(Message.RecipientType.BCC, new javax.mail.internet.InternetAddress("peggy.chen@ts.com.tw"));
