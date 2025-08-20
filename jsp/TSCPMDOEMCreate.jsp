@@ -348,14 +348,7 @@ function setValue(wipType)
 			}			
 			if (curr != null && curr != "")
 			{
-				if (curr=="TWD")
-				{
-					price_uom ="ea";
-				}
-				else
-				{
-					price_uom ="k";
-				}
+				price_uom ="k";
 			}
 			else
 			{
@@ -466,6 +459,7 @@ function setSubmit()
 	computeTotal("ChipQty");
 
 	var ACTIONID = document.MYFORM.ACTIONID.value;
+	console.log('ACTIONID=',ACTIONID);
 	if (ACTIONID == "--" || ACTIONID == null || ACTIONID == "" || ACTIONID=="null")
 	{
 		alert("請選擇執行動作!");
@@ -1247,7 +1241,7 @@ function setUnit()
 	//if ((document.MYFORM.WIPTYPE.value=="02" || document.MYFORM.WIPTYPE.value=="03") && document.MYFORM.CURRENCYCODE.value=="USD")  //工程,重工USD允許手動調整單價單位
 	if ((document.MYFORM.WIPTYPE.value=="02" || document.MYFORM.WIPTYPE.value=="03" || document.MYFORM.WIPTYPE.value=="05"))  //工程,重工允許手動調整單價單位,modify by Peggy 20170823
 	{
-		if (document.MYFORM.CURRENCYCODE.value=="USD" && document.MYFORM.PRICE_UOM.value.toUpperCase()=="K")
+		if ((document.MYFORM.CURRENCYCODE.value==="USD" || document.MYFORM.WIPTYPE.value==="02") && document.MYFORM.PRICE_UOM.value.toUpperCase()==="K")
 		{
 			document.MYFORM.PRICE_UOM.value="片";
 			document.getElementById("td2").innerHTML="Q'ty("+document.MYFORM.PRICE_UOM.value+")";
@@ -1261,7 +1255,7 @@ function setUnit()
 		}
 		else
 		{
-			if (document.MYFORM.CURRENCYCODE.value=="USD")
+			if (document.MYFORM.CURRENCYCODE.value=="USD" || document.MYFORM.WIPTYPE.value==="02")
 			{
 				document.MYFORM.PRICE_UOM.value="k";
 				document.getElementById("td2").innerHTML="Q'ty(KPC)";

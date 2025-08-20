@@ -91,7 +91,7 @@ function sendToMainWindow(VendorNo,VendorName,VendorContact,Currency,VendorSite,
 			}
 			else
 			{
-				if (Currency=="USD" || window.opener.document.MYFORM.WIPTYPE.value =="03")  //modify by Peggy 20120705,重工的單價單位為K
+				if (Currency==="USD" || window.opener.document.MYFORM.WIPTYPE.value ==="03" || window.opener.document.MYFORM.WIPTYPE.value === "02")  //modify by Peggy 20120705,重工的單價單位為K
 				{
 					//window.opener.document.getElementById("td1").innerHTML = Currency+"/k";
 					window.opener.document.MYFORM.PRICE_UOM.value = "k";
