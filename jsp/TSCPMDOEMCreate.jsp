@@ -459,7 +459,6 @@ function setSubmit()
 	computeTotal("ChipQty");
 
 	var ACTIONID = document.MYFORM.ACTIONID.value;
-	console.log('ACTIONID=',ACTIONID);
 	if (ACTIONID == "--" || ACTIONID == null || ACTIONID == "" || ACTIONID=="null")
 	{
 		alert("請選擇執行動作!");
