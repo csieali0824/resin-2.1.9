@@ -62,11 +62,11 @@ boolean ignoreCooFlag = false;
 
 if (sampleOrdCh != null)
 {
-	if (sampleOrdCh=="N" || sampleOrdCh.equals("N")) 
+	if (sampleOrdCh=="N" || sampleOrdCh.equals("N"))
 	{
 		sampleOrdCh="false";
 	}
-	else if (sampleOrdCh=="Y" || sampleOrdCh.equals("Y")) 
+	else if (sampleOrdCh=="Y" || sampleOrdCh.equals("Y"))
 	{
 		sampleOrdCh="true";
 	}
@@ -83,29 +83,29 @@ try
 	if (searchString==null)
    	{
     	if (invItem!=null && !invItem.equals(""))
-		{ 
-			searchString= invItem.toUpperCase(); 
+		{
+			searchString= invItem.toUpperCase();
 		}
 		else if (itemDesc != null && !itemDesc.equals(""))
-		{  
-			searchString = itemDesc.toUpperCase(); 
+		{
+			searchString = itemDesc.toUpperCase();
 		}
-    	else 
-		{ 
+    	else
+		{
 			searchString="%"; //out.println("NULL input");
 %>
-	      <script LANGUAGE="JavaScript"> 
+	      <script LANGUAGE="JavaScript">
             flag=confirm("This query could take a long time. Do you wish to continue?");
             if (flag==false)  { this.window.close(); } //alert("test");}//
-          </script> 
-<%   
+          </script>
+<%
 		}
 	}
-} 
+}
 catch (Exception e)
 {
 	out.println("Exception1:"+e.getMessage());
-}  
+}
 String lineType = "";
 %>
 <html>
@@ -114,7 +114,7 @@ String lineType = "";
 </head>
 <script language="JavaScript" type="text/JavaScript">
 function sendToMainWindow(invItem,itemDesc,sPQP,MOQP,plantCode,sType,tscPackage,orderType,lineType,SPQRULE,lineNo,UOM,ShippingMethod,SSD,itemID,sellingprice,itemstatus,yewflag,tsceonhand,packing_ins)
-{   
+{
 	var CRD = "";
 	var shippingmethod ="";
 	var requestdate ="";
@@ -122,9 +122,9 @@ function sendToMainWindow(invItem,itemDesc,sPQP,MOQP,plantCode,sType,tscPackage,
 	{
 		window.opener.document.MYFORM.elements["TSC_ITEM_"+lineNo].value=invItem;
 		window.opener.document.MYFORM.elements["ITEM_DESC_"+lineNo].value=itemDesc;
-		window.opener.document.MYFORM.elements["MOQ_"+lineNo].value=MOQP; 
-		window.opener.document.MYFORM.elements["SPQ_"+lineNo].value=sPQP; 
-		window.opener.document.MYFORM.elements["PLANTCODE_"+lineNo].value=plantCode; 
+		window.opener.document.MYFORM.elements["MOQ_"+lineNo].value=MOQP;
+		window.opener.document.MYFORM.elements["SPQ_"+lineNo].value=sPQP;
+		window.opener.document.MYFORM.elements["PLANTCODE_"+lineNo].value=plantCode;
 		window.opener.document.MYFORM.elements["UOM_"+lineNo].value=UOM;   //add by Peggy 20130910
 		window.opener.document.MYFORM.elements["TSC_ITEM_PACKAGE_"+lineNo].value=tscPackage;
 		if (window.opener.document.MYFORM.elements["ORDER_TYPE_"+lineNo].value!="1215")
@@ -140,7 +140,7 @@ function sendToMainWindow(invItem,itemDesc,sPQP,MOQP,plantCode,sType,tscPackage,
 		}
 		if (window.opener.document.MYFORM.elements["CUST_ITEM_"+lineNo].value=="N/A" || (sType == "D9002" && window.opener.document.MYFORM.ERPCUSTOMERID.value ==7147 && window.opener.document.MYFORM.elements["CUST_ITEM_"+lineNo].value==window.opener.document.MYFORM.elements["TSC_ITEM_DESC_"+lineNo].value))  //add by Peggy 20210825
 		{
-			window.opener.document.MYFORM.elements["TSC_ITEM_ID_"+lineNo].value=itemID; 
+			window.opener.document.MYFORM.elements["TSC_ITEM_ID_"+lineNo].value=itemID;
 		}
 		if (window.opener.document.MYFORM.SALESAREANO.value=="001")
 		{
@@ -163,9 +163,9 @@ function sendToMainWindow(invItem,itemDesc,sPQP,MOQP,plantCode,sType,tscPackage,
 					}
 					else
 					{
-						window.opener.document.MYFORM.elements["LINE_FOB_"+lineNo].value="EX WORKS";  
+						window.opener.document.MYFORM.elements["LINE_FOB_"+lineNo].value="EX WORKS";
 					}
-				}							
+				}
 			}
 			else if (orderType=="1141")
 			{
@@ -176,20 +176,20 @@ function sendToMainWindow(invItem,itemDesc,sPQP,MOQP,plantCode,sType,tscPackage,
 				else
 				{
 					window.opener.document.MYFORM.elements["LINE_FOB_"+lineNo].value=window.opener.document.MYFORM.FOB.value;
-				}	
+				}
 			}
 		}
 	}
 	else
 	{
-		window.opener.document.MYFORM.INVITEM.value=invItem; 
+		window.opener.document.MYFORM.INVITEM.value=invItem;
 		window.opener.document.MYFORM.ITEMDESC.value=itemDesc;
 		window.opener.document.MYFORM.SPQP.value=sPQP;
 		if (sType == "D1001" || sType == "D1009")
 		{
-			window.opener.document.MYFORM.MOQP.value=MOQP; 
-			window.opener.document.MYFORM.SPQRULE.value=SPQRULE; 
-			window.opener.document.MYFORM.PLANTCODE.value=plantCode; 
+			window.opener.document.MYFORM.MOQP.value=MOQP;
+			window.opener.document.MYFORM.SPQRULE.value=SPQRULE;
+			window.opener.document.MYFORM.PLANTCODE.value=plantCode;
 			window.opener.document.MYFORM.TSCPACKAGE.value=tscPackage;
 			window.opener.document.MYFORM.INVFLAG.value="";      //add by Peggy 20120305
 			window.opener.document.MYFORM.ITEMSTATUS.value=itemstatus;      //add by Peggy 20161228
@@ -200,7 +200,7 @@ function sendToMainWindow(invItem,itemDesc,sPQP,MOQP,plantCode,sType,tscPackage,
 			}
 			if (window.opener.document.MYFORM.SALESAREANO.value !="020" && window.opener.document.MYFORM.SALESAREANO.value !="021" && window.opener.document.MYFORM.SALESAREANO.value !="022") //add by Peggy 20120423
 			{
-				if (window.opener.document.MYFORM.CURR.value !="NTD" && window.opener.document.MYFORM.CURR.value !="TWD")  //add by Peggy 20120427		
+				if (window.opener.document.MYFORM.CURR.value !="NTD" && window.opener.document.MYFORM.CURR.value !="TWD")  //add by Peggy 20120427
 				{
 					if (window.opener.document.MYFORM.PREORDERTYPE.value=="1342")  //add by Peggy 20120523
 					{
@@ -228,9 +228,9 @@ function sendToMainWindow(invItem,itemDesc,sPQP,MOQP,plantCode,sType,tscPackage,
 									}
 									else
 									{
-										window.opener.document.MYFORM.LINEFOB.value="EX WORKS";  
+										window.opener.document.MYFORM.LINEFOB.value="EX WORKS";
 									}
-								}								
+								}
 							}
 						}
 					}
@@ -243,10 +243,10 @@ function sendToMainWindow(invItem,itemDesc,sPQP,MOQP,plantCode,sType,tscPackage,
 						}
 						else
 						{
-							window.opener.document.MYFORM.LINETYPE.value=lineType;  //add by Peggy 20120423	
+							window.opener.document.MYFORM.LINETYPE.value=lineType;  //add by Peggy 20120423
 						}
 						//add by Peggy 20121030
-						if (sType == "D1001" && (window.opener.document.MYFORM.SALESAREANO.value=="001" || window.opener.document.MYFORM.SALESAREANO.value=="004")) //add TSCR by Peggy 20131219 
+						if (sType == "D1001" && (window.opener.document.MYFORM.SALESAREANO.value=="001" || window.opener.document.MYFORM.SALESAREANO.value=="004")) //add TSCR by Peggy 20131219
 						{
 							if (window.opener.document.MYFORM.FOBPOINT.value.substring(0,3)=="FOB" && orderType=="1141")
 							{
@@ -269,7 +269,7 @@ function sendToMainWindow(invItem,itemDesc,sPQP,MOQP,plantCode,sType,tscPackage,
 								else
 								{
 									window.opener.document.MYFORM.LINEFOB.value="";
-								}								
+								}
 							}
 							else
 							{
@@ -277,13 +277,13 @@ function sendToMainWindow(invItem,itemDesc,sPQP,MOQP,plantCode,sType,tscPackage,
 							}
 						}
 					}
-					
+
 					if (window.opener.document.MYFORM.SALESAREANO.value == "008")  //TSCA issue,add by Peggy 20180719
 					{
 						if (window.opener.document.MYFORM.SHIPTOORG.value=="55839" && window.opener.document.MYFORM.LINEODRTYPE.value=="1141")
 						{
-							window.opener.document.MYFORM.LINEFOB.value="FCA";	
-							window.opener.document.MYFORM.SHIPPINGMETHOD.value="FEDEX ECNOMY";	
+							window.opener.document.MYFORM.LINEFOB.value="FCA";
+							window.opener.document.MYFORM.SHIPPINGMETHOD.value="FEDEX ECNOMY";
 						}
 					}
 					//add by Peggy 20190628
@@ -291,7 +291,7 @@ function sendToMainWindow(invItem,itemDesc,sPQP,MOQP,plantCode,sType,tscPackage,
 					{
 						if (window.opener.document.MYFORM.CUSTOMERNO.value=="25071")
 						{
-							if (window.opener.document.MYFORM.LINEODRTYPE.value=="1141")					
+							if (window.opener.document.MYFORM.LINEODRTYPE.value=="1141")
 							{
 								window.opener.document.MYFORM.SHIPPINGMETHOD.value="UPS EXPRESS";
 							}
@@ -305,14 +305,14 @@ function sendToMainWindow(invItem,itemDesc,sPQP,MOQP,plantCode,sType,tscPackage,
 				else
 				{
 					window.opener.document.MYFORM.LINEODRTYPE.value = "1131"; //add by Peggy 20120427
-					window.opener.document.MYFORM.LINETYPE.value="1007";  //add by Peggy 20120427	
+					window.opener.document.MYFORM.LINETYPE.value="1007";  //add by Peggy 20120427
 				}
 			}
 			if (window.opener.document.MYFORM.SALESAREANO.value == "001")
 			{
 				CRD = window.opener.document.MYFORM.CRD.value;
 				if (window.opener.document.MYFORM.FOBPOINT.value!="FCA I-LAN" && window.opener.document.MYFORM.FOBPOINT.value!="FCA YANGXIN XIAN" && window.opener.document.MYFORM.FOBPOINT.value!="FCA TIANJIN")
-				{				
+				{
 					shippingmethod = window.opener.document.MYFORM.SHIPPINGMETHOD.value;
 				}
 				if ( sType == "D1001")
@@ -329,35 +329,35 @@ function sendToMainWindow(invItem,itemDesc,sPQP,MOQP,plantCode,sType,tscPackage,
 				}
 			}
 			requestdate = window.opener.document.MYFORM.REQUESTDATE.value;
-			
+
 			//add by JB 20241021 WAFER料號直接帶LineType 1503
 			if (tscPackage == "WAFER" || invItem.charAt(2) == "-")
 			{
 				window.opener.document.MYFORM.LINETYPE.value="1503";
 			}
 		}
-	
+
 		if ( sType =="D1001" && CRD != null &&  CRD != "" && shippingmethod != null && shippingmethod != "" && (requestdate == null || requestdate == ""))
 		{
-			window.opener.document.MYFORM.REQUESTDATE.focus(); 
+			window.opener.document.MYFORM.REQUESTDATE.focus();
 		}
 		else if (window.opener.document.MYFORM.ORDERQTY.value==null || window.opener.document.MYFORM.ORDERQTY.value=="")
-		{ 
+		{
 			window.opener.document.MYFORM.ORDERQTY.focus();
 		}
-		else 
+		else
 		{
-			window.opener.document.MYFORM.REQUESTDATE.focus(); 
-		}		
+			window.opener.document.MYFORM.REQUESTDATE.focus();
+		}
 	}
  	this.window.close();
 }
 
 </script>
-<STYLE TYPE='text/css'>  
+<STYLE TYPE='text/css'>
 BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 10px }
-  P         { font-family: Tahoma,Georgia; color: #000000; font-size: 10px } 
-  TD        { font-family: Tahoma,Georgia;font-size: 10px ;word-break :break-all}  
+  P         { font-family: Tahoma,Georgia; color: #000000; font-size: 10px }
+  TD        { font-family: Tahoma,Georgia;font-size: 10px ;word-break :break-all}
   TEXTAREA  { font-family: Tahoma,Georgia; font-size: 10px }
   A         { text-decoration: underline }
   A:link    { color: #003399; text-decoration: underline }
@@ -366,15 +366,15 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 10px }
   .board    { background-color: #D6DBE7}
   .text     { font-family: Tahoma,Georgia;  font-size: 10px }
 </STYLE>
-<body onBlur="this.focus();">  
+<body onBlur="this.focus();">
 <FORM METHOD="post" ACTION="TSInvItemPackageFind.jsp" name=ITEMFORM>
-  <font size="-1"><jsp:getProperty name="rPH" property="pgTSCAlias"/><jsp:getProperty name="rPH" property="pgOrderedItem"/><jsp:getProperty name="rPH" property="pgOR"/><jsp:getProperty name="rPH" property="pgOrderedItem"/><jsp:getProperty name="rPH" property="pgDesc"/>: 
+  <font size="-1"><jsp:getProperty name="rPH" property="pgTSCAlias"/><jsp:getProperty name="rPH" property="pgOrderedItem"/><jsp:getProperty name="rPH" property="pgOR"/><jsp:getProperty name="rPH" property="pgOrderedItem"/><jsp:getProperty name="rPH" property="pgDesc"/>:
   <input type="text" name="SEARCHSTRING" size=30 value=<%=searchString%> style="font-family: Tahoma,Georgia">
-  </font> 
+  </font>
   <INPUT TYPE="submit" NAME="submit" value="<jsp:getProperty name="rPH" property="pgQuery"/>" style="font-family: Tahoma,Georgia"><BR>
-  -----<jsp:getProperty name="rPH" property="pgOrderedItem"/><jsp:getProperty name="rPH" property="pgInformation"/>--------------------------------------------     
+  -----<jsp:getProperty name="rPH" property="pgOrderedItem"/><jsp:getProperty name="rPH" property="pgInformation"/>--------------------------------------------
   <BR>
-<%  
+<%
 	int queryCount = 0, querySPQCount = 0;
     Statement statement=con.createStatement();
 	try
@@ -390,20 +390,20 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 10px }
 			pstmt.close();
 		}
 
-		if (searchString!="" && searchString!=null) 
-	   	{ 
-			String sql1="alter SESSION set NLS_LANGUAGE = 'AMERICAN' ";     
+		if (searchString!="" && searchString!=null)
+	   	{
+			String sql1="alter SESSION set NLS_LANGUAGE = 'AMERICAN' ";
 			PreparedStatement pstmt1=con.prepareStatement(sql1);
-			pstmt1.executeUpdate(); 
+			pstmt1.executeUpdate();
 			pstmt1.close();
-		
+
 		 	String sqly = " select  CURRENCY_CODE "+
 				          " from qp_list_headers_v "+
 					      " where ACTIVE_FLAG = 'Y' "+
 						  " and TO_CHAR(LIST_HEADER_ID) > '0'"+
 						  " AND NAME NOT LIKE 'TSC_%'"+ //不抓台半TP價
-						  " and LIST_HEADER_ID='"+priceList+"'"; 	
-			//out.println(sqly);				
+						  " and LIST_HEADER_ID='"+priceList+"'";
+			//out.println(sqly);
  			Statement statementy=con.createStatement();
        		ResultSet rsy=statement.executeQuery(sqly);
 			if (rsy.next())
@@ -416,7 +416,7 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 10px }
 			}
 			rsy.close();
 			statementy.close();
-				
+
 	    	String sqlCNT = "select count(a.SEGMENT1) from APPS.MTL_SYSTEM_ITEMS a  , ORADDMAN.TSPROD_MANUFACTORY B ";
 			String sql = "select tsc_get_item_coo(a.inventory_item_id) coo,"+ //add by Peggy 20240708
                      "        SEGMENT1,"+
@@ -424,13 +424,13 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 10px }
 				     "        TSC_INV_CATEGORY(INVENTORY_ITEM_ID,43,1100000146) as CUSTOMER_CODE, "+ //add by Peggy 20200105
 		             "        TSC_INV_CATEGORY(INVENTORY_ITEM_ID,43,23) as TSC_PACKAGE, "+          //I1讀不到,再抓IM,modify by Peggy 20130223
 		             "        TSC_INV_CATEGORY(INVENTORY_ITEM_ID,43,21) as TSC_FAMILY, "+	           //I1讀不到,再抓IM,modify by Peggy 20130223
-				     "        CASE WHEN TSC_INV_CATEGORY(INVENTORY_ITEM_ID,43,1100000003) IN ('PMD','SSP','SSD') THEN TSC_INV_CATEGORY(INVENTORY_ITEM_ID,43,1100000004) ELSE '' END as TSC_PROD_FAMILY, "+ //add by Peggy 20151122
+				     "        CASE WHEN TSC_INV_CATEGORY(INVENTORY_ITEM_ID,43,1100000003) IN ('PMD','PRD','SSD') THEN TSC_INV_CATEGORY(INVENTORY_ITEM_ID,43,1100000004) ELSE '' END as TSC_PROD_FAMILY, "+ //add by Peggy 20151122
 				     "        TSC_INV_CATEGORY(INVENTORY_ITEM_ID,43,1100000003) as TSC_PROD_GROUP, "+ //I1讀不到,再抓IM,modify by Peggy 20130223
-                     "        b.MANUFACTORY_NO PLANTCODE , B.MANUFACTORY_NAME "+	
+                     "        b.MANUFACTORY_NO PLANTCODE , B.MANUFACTORY_NAME "+
 					 "       ,a.INVENTORY_ITEM_STATUS_CODE"+ //add by Peggy 20161228
 	   			     //"       ,nvl(case when b.MANUFACTORY_NO='005' and ('"+OdrType+"' not in ('1015','1342','1021','1022','1743','1707') or '"+OdrType+"' is null) then tsc_rfq_create_erp_odr_pkg.TSC_GET_ORDER_TYPE(a.inventory_item_id) "+
 					 //"       else (SELECT DISTINCT  x.ORDER_NUM"+
-					 //"       FROM ORADDMAN.TSAREA_ORDERCLS  x ,ORADDMAN.TSPROD_ORDERTYPE y "+					 
+					 //"       FROM ORADDMAN.TSAREA_ORDERCLS  x ,ORADDMAN.TSPROD_ORDERTYPE y "+
                      //"       WHERE x.ACTIVE ='Y' "+
 					 //"       AND x.ORDER_NUM = y.ORDER_NUM"+
 					 //"       AND x.SAREA_NO = '"+salesAreaNo+"' "+
@@ -456,8 +456,8 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 10px }
 					 ",TSC_ORDER_WAREHOUSE_VALUE(a.inventory_item_id,tsc_rfq_create_erp_odr_pkg.TSC_GET_ORDER_TYPE(a.inventory_item_id),'PACKINGINSTRUCTIONS','"+customerID+"') packing_instructions"+//add by Peggy 20220105
 		             "  from APPS.MTL_SYSTEM_ITEMS A, ORADDMAN.TSPROD_MANUFACTORY B ";
 			String where="where ORGANIZATION_ID = '49'"+
-			         //"  and B.MANUFACTORY_NO = a.attribute3(+) "+		
-					 "  and  ','|| a.attribute3||NVL2(trim(ATTRIBUTE17),','||trim(ATTRIBUTE17),'') ||',' LIKE '%,'||b.MANUFACTORY_NO||',%'"+ //modify by Peggy 20200929			 
+			         //"  and B.MANUFACTORY_NO = a.attribute3(+) "+
+					 "  and  ','|| a.attribute3||NVL2(trim(ATTRIBUTE17),','||trim(ATTRIBUTE17),'') ||',' LIKE '%,'||b.MANUFACTORY_NO||',%'"+ //modify by Peggy 20200929
 					 "  and STOCK_ENABLED_FLAG ='Y' and MTL_TRANSACTIONS_ENABLED_FLAG = 'Y' "+ // 2007/03/28 避免更改 Item 屬性為 N 導致的RFQ 無法生成MO問題
 					 "  and a.INVENTORY_ITEM_STATUS_CODE <> 'Inactive' "+
 					 "  and DESCRIPTION not like '%Disable%' "+ //// 取 TSC_Package 及 TSC_Family 的分類, 且不包含已被設定為 Disable的料項
@@ -465,11 +465,11 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 10px }
 					 "  and NVL(a.CUSTOMER_ORDER_ENABLED_FLAG,'N')='Y'"+  //add by Peggy 20151008
 					 "  and tsc_item_pcn_flag(43,a.inventory_item_id,trunc(sysdate))='N'";  //add by Peggy 20230116
 
-			if (searchString=="%" || searchString.equals("%"))			
+			if (searchString=="%" || searchString.equals("%"))
 			{
 		 		where = where + "and (SEGMENT1 like '%') ";
 			}
-			else 
+			else
 			{
 				if (!invItem.equals("")) {
 
@@ -482,8 +482,8 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 10px }
 				}
 //		   			where = where + "and (upper(a.SEGMENT1) like '"+searchString.toUpperCase()+"'"+
 //					" or upper(DESCRIPTION) like '"+searchString.toUpperCase()+"%') ";
-			}    
-		 	
+			}
+
 			Statement stateCNT=con.createStatement();
 			sqlCNT=sqlCNT+where;
 			ResultSet rsCNT = stateCNT.executeQuery(sqlCNT);
@@ -527,7 +527,7 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 10px }
 					  " and a.MTL_TRANSACTIONS_ENABLED_FLAG = 'Y'"+
 					  " and a.INVENTORY_ITEM_STATUS_CODE <> 'Inactive' "+
 					  //" and b.MANUFACTORY_NO = a.attribute3(+) "+
-					 "  and  ','|| a.attribute3||NVL2(trim(ATTRIBUTE17),','||trim(ATTRIBUTE17),'') ||',' LIKE '%,'||b.MANUFACTORY_NO||',%'"+ //modify by Peggy 20200929			 
+					 "  and  ','|| a.attribute3||NVL2(trim(ATTRIBUTE17),','||trim(ATTRIBUTE17),'') ||',' LIKE '%,'||b.MANUFACTORY_NO||',%'"+ //modify by Peggy 20200929
 					  " and NVL(a.CUSTOMER_ORDER_FLAG,'N')='Y'"+  //add by Peggy 20151008
 					  " and NVL(a.CUSTOMER_ORDER_ENABLED_FLAG,'N')='Y'"+  //add by Peggy 20151008
 					  " and tsc_item_pcn_flag(43,a.inventory_item_id,trunc(sysdate))='N'";  //add by Peggy 20230116
@@ -548,7 +548,7 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 10px }
 					}
 //		   			where = where + "and (upper(a.SEGMENT1) like '"+searchString.toUpperCase()+"'"+
 //					" or upper(DESCRIPTION) like '"+searchString.toUpperCase()+"%') ";
-		  		}    
+		  		}
 			}  // End of if (queryCount==0)
 
 			String filterCoo = (salesAreaNo.equals("008") || UserRoles.contains("admin") || salesAreaNo.equals("020") || ignoreCooFlag) ? "" :
@@ -559,10 +559,10 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 10px }
 			sql = sql + where + filterCoo +" ORDER BY CASE WHEN SUBSTR(tsc_get_item_packing_code(ORGANIZATION_ID ,INVENTORY_ITEM_ID),1,2)='QQ' THEN 1 ELSE 2 END,DESCRIPTION"; //20201005 packing code=QQ Priority 1
 			//out.println(sql);
         	ResultSet rs=statement.executeQuery(sql);
-		    
-        	out.println("<TABLE>");    
-			out.println("<TR BGCOLOR=BLACK style='color:#ffffff'><TD width='3%'>&nbsp;</TD>");  
-			out.println("<TD width='3%'>COO</TD>");			
+
+        	out.println("<TABLE>");
+			out.println("<TR BGCOLOR=BLACK style='color:#ffffff'><TD width='3%'>&nbsp;</TD>");
+			out.println("<TD width='3%'>COO</TD>");
 			out.println("<TD width='18%'>SEGMENT1</TD>");
 			out.println("<TD width='12%'>DESCRIPTION</TD>");
 			out.println("<TD width='7%'>CUSTOMER CODE</TD>");
@@ -573,31 +573,31 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 10px }
 			out.println("<TD width='5%'>PLANTCODE</TD>");
 			out.println("<TD width='11%'>PLANTDESC</TD>");
 			out.println("<TD width='6%'>STATUS</TD>");
-		 
+
 			if (sampleOrdCh ==null || sampleOrdCh.equals("false"))
 			{ // 未選定為樣品訂單,則以 MOQ 為限定值回傳
 		 		out.println("<TD BGCOLOR=BLACK>"+"SPQP (KPC)"+"</TD>"); // 最後一欄帶入訂購最小包裝量
-			} 
-			else if (sampleOrdCh.equals("true")) 
+			}
+			else if (sampleOrdCh.equals("true"))
 		    {
 			    out.println("<TD BGCOLOR=BLACK>"+"SPQP (KPC)"+"</TD>"); // 最後一欄帶入訂購最小包裝量
-		   	}    
-			out.println("<TD BGCOLOR=BLACK>"+"MOQP (KPC)"+"</TD>"); // 最小包裝量		
+		   	}
+			out.println("<TD BGCOLOR=BLACK>"+"MOQP (KPC)"+"</TD>"); // 最小包裝量
         	out.println("</TR>");
 			tscPacking=null;tscFamily=null;tscProdGroup="";sPQP=null;sMOP=null;SPQRULE="";ORDERTYPE="";UOM="";tscProdFamily="";item_status="";//add SPQRULE,ORDERTYPE by Peggy 20120516
-        	String buttonContent=null;		
+        	String buttonContent=null;
         	while (rs.next())
         	{
 		 		invItem1=rs.getString("SEGMENT1");
 		 		itemDesc1=rs.getString("DESCRIPTION");
 		 		tscPacking=rs.getString("TSC_PACKAGE");
 		 		if (tscPacking==null) tscPacking="";
-		 		tscFamily=rs.getString("TSC_FAMILY");	
+		 		tscFamily=rs.getString("TSC_FAMILY");
 		 		if (tscFamily==null) tscFamily="";
 				plantCode=rs.getString("PLANTCODE");
 				ORDERTYPE = rs.getString("ORDER_TYPE");
 				itemID =rs.getString("INVENTORY_ITEM_ID"); //add by Peggy 20140430
-		 		tscProdFamily=rs.getString("TSC_PROD_FAMILY");	
+		 		tscProdFamily=rs.getString("TSC_PROD_FAMILY");
 		 		if (tscProdFamily==null) tscProdFamily="";
 				sellingprice=rs.getString("item_price");  //add by Peggy 20160318
 				item_status=rs.getString("INVENTORY_ITEM_STATUS_CODE");  //add by Peggy 20161228
@@ -605,7 +605,7 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 10px }
 				tsceonhand = rs.getString("tsceonhand"); //add by Peggy 20190521
 				packing_ins = rs.getString("packing_instructions"); //add by Peggy 20220105
 				coo=rs.getString("coo"); //add by Peggy 20240708
-				
+
 				if ((OdrType.equals("1302") || OdrType.equals("1165")) &&  salesAreaNo.equals("012")) //add by Peggy 20140114
 				{
 					plantCode ="002";
@@ -621,7 +621,7 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 10px }
 				UOM =rs.getString("PRIMARY_UOM_CODE");//add by Peggy 20130910
 				tscProdGroup=rs.getString("prod_group"); //add by Peggy 20151122
 		 		if (tscProdGroup==null) tscProdGroup="";
-         		plantDesc=rs.getString("MANUFACTORY_NAME");	
+         		plantDesc=rs.getString("MANUFACTORY_NAME");
 				String packMethodCode=rs.getString("tsc_packing_code"); //modify by Peggy 20141024
 				//modify by Peggy 20140814
 				if (MarketGroup.equals("AU") && tscPacking.equals("SMA") && salesAreaNo.equals("001") && yew_flag.equals("1"))
@@ -632,7 +632,7 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 10px }
 				{
 					ORDERTYPE="1214";
 				}
-				
+
 				//add by Peggy 20140529
 				if (salesAreaNo.equals("001"))
 				{
@@ -644,7 +644,7 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 10px }
 						}
 					}
 				}
-				
+
 				//add by Peggy 20120423
 				if (ORDERTYPE != null && !ORDERTYPE.equals(""))
 				{
@@ -659,13 +659,13 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 10px }
 					//out.println(sqlx);
 		    		ResultSet rsX=stateX.executeQuery(sqlx);
 		 			if (rsX.next())
-		 			{	
-						lineType = rsX.getString(2);			
+		 			{
+						lineType = rsX.getString(2);
 					}
 					rsX.close();
 					stateX.close();
 				}
-				
+
 				//add by Peggy 20131118
 				if (sType.equals("D9002") || sType.equals("D11001"))
 				{
@@ -673,41 +673,41 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 10px }
 					//CallableStatement csf = con.prepareCall("{call tsc_edi_pkg.GET_SHIPPING_METHOD(?,?,?,?,?,?,?,sysdate,?)}");
 					CallableStatement csf = con.prepareCall("{call tsc_edi_pkg.GET_SHIPPING_METHOD(?,?,?,?,?,?,?,sysdate,?,?,?,?)}"); //add by Peggy 20160513
 					csf.setString(1,salesAreaNo);
-					csf.setString(2,tscPacking);      
-					csf.setString(3,tscFamily);                   
-					csf.setString(4,itemDesc1);    
-					csf.setString(5,CRD);   
-					csf.registerOutParameter(6, Types.VARCHAR);  
-					csf.setString(7,ORDERTYPE);   
-					csf.setString(8,plantCode);   
-					csf.setString(9,sCustomerId);   //add by Peggy 20160513 
+					csf.setString(2,tscPacking);
+					csf.setString(3,tscFamily);
+					csf.setString(4,itemDesc1);
+					csf.setString(5,CRD);
+					csf.registerOutParameter(6, Types.VARCHAR);
+					csf.setString(7,ORDERTYPE);
+					csf.setString(8,plantCode);
+					csf.setString(9,sCustomerId);   //add by Peggy 20160513
 					csf.setString(10,FOB);   //add by Peggy 20190319
-					csf.setString(11,deliverid);    //add by Peggy 20190319 
-					csf.execute();					
+					csf.setString(11,deliverid);    //add by Peggy 20190319
+					csf.execute();
 					shippingMethod = csf.getString(6);
 
 					if (sType.equals("D11001"))  //add by Peggy 20140116
 					{
-						Statement state3=con.createStatement();     
+						Statement state3=con.createStatement();
 						ResultSet rs3=state3.executeQuery("SELECT tsce_buffernet_po_pkg.GET_PO_SSD('"+CRD+"','"+shippingMethod+"','"+plantCode+"',sysdate,'"+customerID+"','"+FOB+"','"+deliverid+"') from dual");
-						if (rs3.next())	
-						{ 
-							SSD =rs3.getString(1);	
+						if (rs3.next())
+						{
+							SSD =rs3.getString(1);
 						}
 						else
 						{
 							SSD ="";
 						}
 						rs3.close();
-						state3.close();					
+						state3.close();
 					}
 					else
 					{
-						CallableStatement cs3 = con.prepareCall("{call tsc_edi_pkg.GET_SSD(?,?,?,?,?,?,?,sysdate,?,?)}");			 
-						cs3.setString(1,salesAreaNo); 
-						cs3.setString(2,plantCode); 
-						cs3.setString(3,CRD); 
-						cs3.setString(4,shippingMethod);  
+						CallableStatement cs3 = con.prepareCall("{call tsc_edi_pkg.GET_SSD(?,?,?,?,?,?,?,sysdate,?,?)}");
+						cs3.setString(1,salesAreaNo);
+						cs3.setString(2,plantCode);
+						cs3.setString(3,CRD);
+						cs3.setString(4,shippingMethod);
 						cs3.setString(5,ORDERTYPE);
 						cs3.registerOutParameter(6, Types.VARCHAR);
 						cs3.setInt(7,Integer.parseInt(customerID));
@@ -729,9 +729,9 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 10px }
 		 		out.println("<input type='hidden' name='ITEMDESC1' value='"+itemDesc1+"' >");
          		out.println("<input type='hidden' name='PLANTCODE' value='"+plantCode+"' >");       //20090515 liling 補上,以利1筆資料 windows.closed
          		out.println("<input type='hidden' name='sType' value='"+sType+"' >");
-				out.println("<input type='hidden' name='TSCPACKAGE' value='"+tscPacking+"'>");      
-				out.println("<input type='hidden' name='ORDERTYPE' value='"+ORDERTYPE+"'>");  //Add by Peggy 20120423    
-				out.println("<input type='hidden' name='LINETYPE' value='"+lineType +"'>");  //Add by Peggy 20120423    
+				out.println("<input type='hidden' name='TSCPACKAGE' value='"+tscPacking+"'>");
+				out.println("<input type='hidden' name='ORDERTYPE' value='"+ORDERTYPE+"'>");  //Add by Peggy 20120423
+				out.println("<input type='hidden' name='LINETYPE' value='"+lineType +"'>");  //Add by Peggy 20120423
 				out.println("<input type='hidden' name='LINENO' value='"+LINENO +"'>");  //Add by Peggy 20130604
 				out.println("<input type='hidden' name='UOM' value='"+UOM+"'>");  //Add by Peggy 20130910
 				out.println("<input type='hidden' name='SHIPPINGMETHOD' value='"+shippingMethod+"'>");  //Add by Peggy 20131118
@@ -742,10 +742,10 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 10px }
 				out.println("<input type='hidden' name='YEWFLAG' value='"+yew_flag+"'>");  //Add by Peggy 20170425
 				out.println("<input type='hidden' name='TSCEONHAND' value='"+tsceonhand+"'>");  //Add by Peggy 20190521
 				out.println("<input type='hidden' name='PACKING_INS' value='"+packing_ins+"'>");  //Add by Peggy 20220105
-				
-		 		
+
+
 				String sqlSPQ= "";
-		  		if (sCustomerId.equals("1220") && (sampleOrdCh==null || sampleOrdCh.equals("false"))) 
+		  		if (sCustomerId.equals("1220") && (sampleOrdCh==null || sampleOrdCh.equals("false")))
 				{
             		//sqlSPQ = "select (MOQ / 1000) SPQ, (MOQ / 1000) MOQ,(SAMPLE_SPQ /1000) SAMPLE_SPQ from ORADDMAN.TSITEM_PACKING_CATE a "+
 		    		// " where a.INT_TYPE = 'FSC' "+
@@ -755,8 +755,8 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 10px }
 					//							  " and b.TSC_OUTLINE = a.TSC_OUTLINE) ";
 					//20160114 by Peggy,call spq moq function
 					sqlSPQ = "SELECT  (MOQ / 1000) SPQ, (MOQ / 1000) MOQ,(SAMPLE_SPQ /1000) SAMPLE_SPQ  from table(TSC_GET_ITEM_SPQ_MOQ("+itemID+",'FSC',NULL))";
-		  		} 
-				else 
+		  		}
+				else
 				{
 					//20160114 by Peggy,call spq moq function
 					sqlSPQ = "SELECT  (SPQ / 1000) SPQ, (MOQ / 1000) MOQ,(SAMPLE_SPQ /1000) SAMPLE_SPQ  from table(TSC_GET_ITEM_SPQ_MOQ("+itemID+",'TS','"+plantCode+"'))";
@@ -768,7 +768,7 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 10px }
 					//   " and nvl(a.TSC_PROD_FAMILY,'XX') = nvl('"+tscProdFamily+"','XX') "+
 					//   " and a.CREATION_DATE = (select MAX(CREATION_DATE) from ORADDMAN.TSITEM_PACKING_CATE b " +
 					//                           " where b.INT_TYPE = a.INT_TYPE "+
-					//						     " and b.TSC_OUTLINE = a.TSC_OUTLINE "+        
+					//						     " and b.TSC_OUTLINE = a.TSC_OUTLINE "+
 					//						     " and b.PACKAGE_CODE = a.PACKAGE_CODE "+
 					//						     " and b.TSC_FAMILY = a.TSC_FAMILY "+
 					//						     " and NVL(b.TSC_PROD_FAMILY,'XX') = NVL(a.TSC_PROD_FAMILY,'XX') "+
@@ -776,7 +776,7 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 10px }
 					//							 " and a.TSC_PROD_GROUP = '"+tscProdGroup+"' ";  //PMD MOQ,SPQ資料已補入,modify by Peggy 20140509
             		//if (tscProdGroup=="Rect-Subcon" || tscProdGroup.equals("Rect-Subcon") ||
 		        	//	tscProdGroup=="Rect" || tscProdGroup.equals("Rect") ||
-			    	//	tscProdGroup=="SSP" || tscProdGroup.equals("SSP")) 
+			    	//	tscProdGroup=="SSP" || tscProdGroup.equals("SSP"))
 					//{
               		//	sqlSPQ=sqlSPQ+ " and a.TSC_PROD_GROUP = '"+tscProdGroup+"' ";
 					//}
@@ -785,63 +785,63 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 10px }
 				//if (searchString.equals("ES2CA")) out.println(sqlSPQ);
 				//out.println(sqlSPQ);
 		    	Statement stateSPQP=con.createStatement();
-		    	ResultSet rsSPQP=stateSPQP.executeQuery(sqlSPQ); 																									 
+		    	ResultSet rsSPQP=stateSPQP.executeQuery(sqlSPQ);
 		 		if (rsSPQP.next())
 		 		{
 		   			sMOP = rsSPQP.getString("MOQ");
            			if (sMOP==null || sMOP.equals("null")) sMOP="0";
 		   			if (sampleOrdCh==null || sampleOrdCh.equals("false"))
-		   			{ 
+		   			{
 		   				sPQP = rsSPQP.getString("SPQ");
 						SPQRULE = sMOP;
 		   			}
 		   			else if (sampleOrdCh.equals("true"))
-		         	{ 
+		         	{
 		   				sPQP = rsSPQP.getString("SAMPLE_SPQ");
 						SPQRULE = sPQP;
 						ORDERTYPE = "1121";
 		         	}
 		   			if (sPQP==null || sPQP.equals("null")) sPQP="0";
 		   			if (SPQRULE==null || SPQRULE.equals("null")) SPQRULE="0";
-				} 
-				else 
+				}
+				else
 				{
 		         	sPQP = "0"; sMOP = "0"; SPQRULE = "0";
 				} // 找不到則設定mOQP = 0
 				out.println("<input type=hidden name='SPQP' value='"+sPQP+"'>");
-				out.println("<input type=hidden name='MOQ' value='"+sMOP+"'>");   
-				out.println("<input type=hidden name='SPQRULE' value='"+SPQRULE+"'>");   
-				buttonContent="this.value=sendToMainWindow("+'"'+invItem1+'"'+","+'"'+itemDesc1+'"'+","+'"'+sPQP+'"'+","+'"'+sMOP+'"'+","+'"'+plantCode+'"'+","+'"'+sType+'"'+","+'"'+tscPacking+'"'+","+ORDERTYPE+","+'"'+lineType+'"'+","+'"'+SPQRULE+'"'+","+'"'+LINENO+'"'+","+'"'+UOM+'"'+","+'"'+shippingMethod+'"'+","+'"'+SSD+'"'+","+'"'+itemID+'"'+","+'"'+sellingprice+'"'+","+'"'+item_status+'"'+","+'"'+yew_flag+'"'+","+'"'+tsceonhand+'"'+","+'"'+packing_ins+'"'+")";	
+				out.println("<input type=hidden name='MOQ' value='"+sMOP+"'>");
+				out.println("<input type=hidden name='SPQRULE' value='"+SPQRULE+"'>");
+				buttonContent="this.value=sendToMainWindow("+'"'+invItem1+'"'+","+'"'+itemDesc1+'"'+","+'"'+sPQP+'"'+","+'"'+sMOP+'"'+","+'"'+plantCode+'"'+","+'"'+sType+'"'+","+'"'+tscPacking+'"'+","+ORDERTYPE+","+'"'+lineType+'"'+","+'"'+SPQRULE+'"'+","+'"'+LINENO+'"'+","+'"'+UOM+'"'+","+'"'+shippingMethod+'"'+","+'"'+SSD+'"'+","+'"'+itemID+'"'+","+'"'+sellingprice+'"'+","+'"'+item_status+'"'+","+'"'+yew_flag+'"'+","+'"'+tsceonhand+'"'+","+'"'+packing_ins+'"'+")";
 		 		rsSPQP.close();
-		 		stateSPQP.close();		 
-		 
+		 		stateSPQP.close();
+
         		out.print("<TR BGCOLOR=E3E3CF><TD><INPUT TYPE=button NAME='button' VALUE='");%><jsp:getProperty name="rPH" property="pgFetch"/><%
-		 		out.println("' onClick='"+buttonContent+"'></TD>");		
-		 		for (int i=1;i<=11;i++) 
+		 		out.println("' onClick='"+buttonContent+"'></TD>");
+		 		for (int i=1;i<=11;i++)
 				{ //i=要顯示的欄位數 每多select 一欄顯示即要修改
            			String s=(String)rs.getString(i);
 		   			if (s==null) s="&nbsp;";
-           			out.println("<TD>"+s+"</TD>");		 
+           			out.println("<TD>"+s+"</TD>");
          		} //end of for
-		 		if (sampleOrdCh==null || sampleOrdCh.equals("false")) 
+		 		if (sampleOrdCh==null || sampleOrdCh.equals("false"))
 				{ // 未選定為樣品訂單,則以 MOQ 為限定值回傳
-		   			out.println("<TD align='right'>"+sPQP+"</TD>");  // 最後一欄帶入訂購最小包裝量 
-		   			out.println("<TD align='right'>"+sMOP+"</TD>");  // 最後一欄帶入訂購最小包裝量     
-		 		} 
-				else if (sampleOrdCh.equals("true")) 
-				{ // 若選定為樣品訂單  
-		   			out.println("<TD align='right'>"+sPQP+"</TD>");  // 最後一欄帶入訂購最小包裝量 
-		   			out.println("<TD align='right'>"+sMOP+"</TD>");  // 最後一欄帶入訂購最小包裝量     
+		   			out.println("<TD align='right'>"+sPQP+"</TD>");  // 最後一欄帶入訂購最小包裝量
+		   			out.println("<TD align='right'>"+sMOP+"</TD>");  // 最後一欄帶入訂購最小包裝量
 		 		}
-         		out.println("</TR>");	
+				else if (sampleOrdCh.equals("true"))
+				{ // 若選定為樣品訂單  
+		   			out.println("<TD align='right'>"+sPQP+"</TD>");  // 最後一欄帶入訂購最小包裝量
+		   			out.println("<TD align='right'>"+sMOP+"</TD>");  // 最後一欄帶入訂購最小包裝量
+		 		}
+         		out.println("</TR>");
         	} //end of while
-        	out.println("</TABLE>");						
-        	rs.close();       
+        	out.println("</TABLE>");
+        	rs.close();
 	   	}//end of while
-   
+
 	   	if (queryCount==1 && ((itemDesc.equals(itemDesc1) && (!itemDesc.equals("") || !itemDesc1.equals(""))) || (invItem.equals(invItem1) && (!invItem.equals("") || !invItem1.equals(""))))) //若取到的查詢數 == 1
-	   	{  
-			out.print("<script type=\"text/javascript\">sendToMainWindow("+'"'+invItem1+'"'+","+'"'+itemDesc1+'"'+","+'"'+sPQP+'"'+","+'"'+sMOP+'"'+","+'"'+plantCode+'"'+","+'"'+sType+'"'+","+'"'+tscPacking+'"'+","+ORDERTYPE+","+'"'+lineType+'"'+","+'"'+SPQRULE+'"'+","+'"'+LINENO+'"'+","+'"'+UOM+'"'+","+'"'+shippingMethod+'"'+","+'"'+SSD+'"'+","+'"'+itemID+'"'+","+'"'+sellingprice+'"'+","+'"'+item_status+'"'+","+'"'+yew_flag+'"'+","+'"'+tsceonhand+'"'+","+'"'+packing_ins+'"'+")</script>"); 
+	   	{
+			out.print("<script type=\"text/javascript\">sendToMainWindow("+'"'+invItem1+'"'+","+'"'+itemDesc1+'"'+","+'"'+sPQP+'"'+","+'"'+sMOP+'"'+","+'"'+plantCode+'"'+","+'"'+sType+'"'+","+'"'+tscPacking+'"'+","+ORDERTYPE+","+'"'+lineType+'"'+","+'"'+SPQRULE+'"'+","+'"'+LINENO+'"'+","+'"'+UOM+'"'+","+'"'+shippingMethod+'"'+","+'"'+SSD+'"'+","+'"'+itemID+'"'+","+'"'+sellingprice+'"'+","+'"'+item_status+'"'+","+'"'+yew_flag+'"'+","+'"'+tsceonhand+'"'+","+'"'+packing_ins+'"'+")</script>");
 		}
 	} //end of try
 	catch (Exception e)
