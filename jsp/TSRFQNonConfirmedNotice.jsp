@@ -253,7 +253,6 @@
 				{
 					if (hashtb.get("june.wang@ts.com.tw")==null)
 					{
-						hashtb.put("june.wang@ts.com.tw","june.wang@ts.com.tw");
 						hashtb.put("tschk-cs004@ts-china.com.cn","tschk-cs004@ts-china.com.cn");
 						hashtb.put("demi_duan@ts-china.com.cn","demi_duan@ts-china.com.cn");
 						if (hashtb.get("sansan@ts-china.com.cn")==null)
@@ -435,7 +434,6 @@
 					}
 					//message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("peggy_chen@ts.com.tw"));
 					//message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("doris_lee@ts.com.tw"));
-					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("june.wang@ts.com.tw"));
 				}
 				message.addRecipient(Message.RecipientType.BCC, new javax.mail.internet.InternetAddress("peggy.chen@ts.com.tw"));
 
