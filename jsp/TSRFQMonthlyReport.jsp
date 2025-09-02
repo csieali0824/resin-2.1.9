@@ -1,5 +1,5 @@
-<!-- 20170829 Peggy,è˜‡å·/ä¸Šæµ·/æ·±åœ³æ¥­å‹™å–®ä½è®Šæ›´éƒµä»¶domainç”±mail.tew.com.cnæ”¹ç‚ºts-china.com.cn-->
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.util.*,java.text.*,java.io.*,java.sql.*,jxl.*,jxl.Workbook.*,jxl.write.*,jxl.format.*,java.text.DecimalFormat,javax.mail.*,javax.mail.internet.*,javax.mail.Multipart.*,javax.activation.*"%>
+<!-- 20170829 Peggy,Ä¬¦{/¤W®ü/²`¦`·~°È³æ¦ìÅÜ§ó¶l¥ódomain¥Ñmail.tew.com.cn§ï¬°ts-china.com.cn-->
+<%@ page contentType="text/html; charset=big5" language="java" import="java.util.*,java.text.*,java.io.*,java.sql.*,jxl.*,jxl.Workbook.*,jxl.write.*,jxl.format.*,java.text.DecimalFormat,javax.mail.*,javax.mail.internet.*,javax.mail.Multipart.*,javax.activation.*"%>
 <%@ page import="DateBean"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <jsp:useBean id="dateBean" scope="page" class="DateBean"/>
@@ -58,7 +58,7 @@ try
 	WritableSheet ws = wwb.createSheet(RPTName, 0); 
 	SheetSettings sst = ws.getSettings(); 
 	sst.setSelected();
-	sst.setVerticalFreeze(1);  //å‡çµçª—æ ¼
+	sst.setVerticalFreeze(1);  //­áµ²µ¡®æ
 	for (int g =1 ; g <=6 ;g++ )
 	{
 		sst.setHorizontalFreeze(g);
@@ -68,7 +68,7 @@ try
 	WritableFont font_nobold = new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK);
 	WritableFont font_noboldred = new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.RED);
 	
-	//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®ä¸­-ç²—é«”-æ ¼ç·š-åº•è‰²ç°  
+	//­^¤å¤º¤å¤ô¥­««ª½¸m¤¤-²ÊÅé-®æ½u-©³¦â¦Ç  
 	WritableCellFormat ACenterBLB = new WritableCellFormat(font_bold);   
 	ACenterBLB.setAlignment(jxl.format.Alignment.CENTRE);
 	ACenterBLB.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -76,7 +76,7 @@ try
 	ACenterBLB.setBackground(jxl.write.Colour.GRAY_25); 
 	ACenterBLB.setWrap(true);	
 
-	//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®å³-æ­£å¸¸-æ ¼ç·š-åº•è‰²ç¶   
+	//­^¤å¤º¤å¤ô¥­««ª½¸m¥k-¥¿±`-®æ½u-©³¦âºñ  
 	WritableCellFormat ARightLGreen = new WritableCellFormat(font_nobold);   
 	ARightLGreen.setAlignment(jxl.format.Alignment.RIGHT);
 	ARightLGreen.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -84,7 +84,7 @@ try
 	ARightLGreen.setBackground(jxl.write.Colour.BRIGHT_GREEN); 
 	ARightLGreen.setWrap(true);
 
-	//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®å³-æ­£å¸¸-æ ¼ç·š-åº•è‰²é»ƒ  
+	//­^¤å¤º¤å¤ô¥­««ª½¸m¥k-¥¿±`-®æ½u-©³¦â¶À  
 	WritableCellFormat ARightLYellow = new WritableCellFormat(font_nobold);   
 	ARightLYellow.setAlignment(jxl.format.Alignment.RIGHT);
 	ARightLYellow.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -92,7 +92,7 @@ try
 	ARightLYellow.setBackground(jxl.write.Colour.YELLOW); 
 	ARightLYellow.setWrap(true);
 
-	//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®å³-æ­£å¸¸-æ ¼ç·š-åº•è‰²ç²‰ç´…  
+	//­^¤å¤º¤å¤ô¥­««ª½¸m¥k-¥¿±`-®æ½u-©³¦â¯»¬õ  
 	WritableCellFormat ARightLPink = new WritableCellFormat(font_nobold);   
 	ARightLPink.setAlignment(jxl.format.Alignment.RIGHT);
 	ARightLPink.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -100,35 +100,35 @@ try
 	ARightLPink.setBackground(jxl.write.Colour.ROSE); 
 	ARightLPink.setWrap(true);
 	
-	//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®ä¸­-æ­£å¸¸-æ ¼ç·š   
+	//­^¤å¤º¤å¤ô¥­««ª½¸m¤¤-¥¿±`-®æ½u   
 	WritableCellFormat ACenterL = new WritableCellFormat(font_nobold);   
 	ACenterL.setAlignment(jxl.format.Alignment.CENTRE);
 	ACenterL.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 	ACenterL.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 	ACenterL.setWrap(true);
 
-	//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®å³-æ­£å¸¸-æ ¼ç·š   
+	//­^¤å¤º¤å¤ô¥­««ª½¸m¥k-¥¿±`-®æ½u   
 	WritableCellFormat ARightL = new WritableCellFormat(font_nobold);   
 	ARightL.setAlignment(jxl.format.Alignment.RIGHT);
 	ARightL.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 	ARightL.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 	ARightL.setWrap(true);
 
-	//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´ç½®å·¦-æ­£å¸¸-æ ¼ç·š   
+	//­^¤å¤º¤å¤ô¥­««ª½¸m¥ª-¥¿±`-®æ½u   
 	WritableCellFormat ALeftL = new WritableCellFormat(font_nobold);   
 	ALeftL.setAlignment(jxl.format.Alignment.LEFT);
 	ALeftL.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 	ALeftL.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 	ALeftL.setWrap(true);
 	
-	//è‹±æ–‡å…§æ–‡æ°´å¹³å‚ç›´é å³-å­—é«”ç´…è‰²
+	//­^¤å¤º¤å¤ô¥­««ª½¾a¥k-¦rÅé¬õ¦â
 	WritableCellFormat ARightRED = new WritableCellFormat(font_noboldred);   
 	ARightRED.setAlignment(jxl.format.Alignment.RIGHT);
 	ARightRED.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 	ARightRED.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 	ARightRED.setWrap(true);	
 	
-	//æ—¥æœŸæ ¼å¼
+	//¤é´Á®æ¦¡
 	WritableCellFormat DATE_FORMAT = new WritableCellFormat(font_nobold ,new jxl.write.DateFormat("yyyy/MM/dd")); 
 	DATE_FORMAT.setAlignment(jxl.format.Alignment.CENTRE);
 	DATE_FORMAT.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -164,9 +164,9 @@ try
 		}
 		if (rs1.getInt(3)==0)
 		{
-			sql3 =" ,round((sum(case when substr(a.creation_date,1,6)='"+rs1.getString(1)+"' then a.quantity else 0 end)-sum(case when substr(a.creation_date,1,6)=substr(to_char(add_months(to_date('"+rs1.getString(1)+"01','yyyymmdd'),-1),'yyyymmdd'),1,6) then a.quantity else 0 end))/ case when sum(case when substr(a.creation_date,1,6)=substr(to_char(add_months(to_date('"+rs1.getString(1)+"01','yyyymmdd'),-1),'yyyymmdd'),1,6) then a.quantity else 0 end)=0 then 1 else sum(case when substr(a.creation_date,1,6)=substr(to_char(add_months(to_date('"+rs1.getString(1)+"01','yyyymmdd'),-1),'yyyymmdd'),1,6) then a.quantity else 0 end) end *100,2) as \"ç•¶æœˆä¸‹å–®ç‡(èˆ‡ä¸Šæœˆæ¯”)\""+
-			      " ,sum(case when substr(a.creation_date,1,6)='"+rs1.getString(1)+"' then a.quantity*NVL(a.selling_price,0)*1000 else 0 end)-sum(case when substr(a.creation_date,1,6)=substr(to_char(add_months(to_date('"+rs1.getString(1)+"01','yyyymmdd'),-1),'yyyymmdd'),1,6) then a.quantity*NVL(a.selling_price,0)*1000 else 0 end) as \"ç•¶æœˆé‡‘é¡å·®(èˆ‡ä¸Šæœˆæ¯”)\""+
-				  " ,sum(case when substr(a.creation_date,1,6)='"+rs1.getString(1)+"' then a.quantity*NVL(a.selling_price,0)*1000 else 0 end) ç•¶æœˆä¸‹å–®é‡‘é¡ ";
+			sql3 =" ,round((sum(case when substr(a.creation_date,1,6)='"+rs1.getString(1)+"' then a.quantity else 0 end)-sum(case when substr(a.creation_date,1,6)=substr(to_char(add_months(to_date('"+rs1.getString(1)+"01','yyyymmdd'),-1),'yyyymmdd'),1,6) then a.quantity else 0 end))/ case when sum(case when substr(a.creation_date,1,6)=substr(to_char(add_months(to_date('"+rs1.getString(1)+"01','yyyymmdd'),-1),'yyyymmdd'),1,6) then a.quantity else 0 end)=0 then 1 else sum(case when substr(a.creation_date,1,6)=substr(to_char(add_months(to_date('"+rs1.getString(1)+"01','yyyymmdd'),-1),'yyyymmdd'),1,6) then a.quantity else 0 end) end *100,2) as \"·í¤ë¤U³æ²v(»P¤W¤ë¤ñ)\""+
+			      " ,sum(case when substr(a.creation_date,1,6)='"+rs1.getString(1)+"' then a.quantity*NVL(a.selling_price,0)*1000 else 0 end)-sum(case when substr(a.creation_date,1,6)=substr(to_char(add_months(to_date('"+rs1.getString(1)+"01','yyyymmdd'),-1),'yyyymmdd'),1,6) then a.quantity*NVL(a.selling_price,0)*1000 else 0 end) as \"·í¤ëª÷ÃB®t(»P¤W¤ë¤ñ)\""+
+				  " ,sum(case when substr(a.creation_date,1,6)='"+rs1.getString(1)+"' then a.quantity*NVL(a.selling_price,0)*1000 else 0 end) ·í¤ë¤U³æª÷ÃB ";
 			sql4 =" sum(case when substr(a.creation_date,1,6)='"+rs1.getString(1)+"' then a.quantity*NVL(a.selling_price,0)*1000 else 0 end)-sum(case when substr(a.creation_date,1,6)=substr(to_char(add_months(to_date('"+rs1.getString(1)+"01','yyyymmdd'),-1),'yyyymmdd'),1,6) then a.quantity*NVL(a.selling_price,0)*1000 else 0 end)";
 		}
 	}
@@ -175,7 +175,7 @@ try
 	
 	if (!sql2.equals(""))
 	{
-		sql +=",to_char(round(("+sql2+")/3,2),'99990D099') \"å‰ä¸‰å€‹æœˆå¹³åœ´ä¸‹å–®é‡\"";
+		sql +=",to_char(round(("+sql2+")/3,2),'99990D099') \"«e¤T­Ó¤ë¥­ÉÊ¤U³æ¶q\"";
 	}
 	if (!sql3.equals(""))
 	{
@@ -306,7 +306,7 @@ try
 		javax.mail.internet.MimeMessage message = new javax.mail.internet.MimeMessage(s);
 		message.setSentDate(new java.util.Date());
 		message.setFrom(new javax.mail.internet.InternetAddress("prodsys@ts.com.tw"));
-		if (request.getRequestURL().toString().toLowerCase().indexOf("tsrfq.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("rfq134.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("yewintra.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("10.0.1.134") <0 && request.getRequestURL().toString().toLowerCase().indexOf("10.0.1.135") <0) //æ¸¬è©¦ç’°å¢ƒ
+		if (request.getRequestURL().toString().toLowerCase().indexOf("tsrfq.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("rfq134.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("yewintra.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("10.0.1.134") <0 && request.getRequestURL().toString().toLowerCase().indexOf("10.0.1.135") <0) //´ú¸ÕÀô¹Ò
 		{
 			remarks="(This is a test letter, please ignore it)";
 			message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("peggy.chen@ts.com.tw"));
@@ -316,9 +316,9 @@ try
 			remarks="";
 			if (colnum==0)
 			{
-				message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("amy.liu@ts.com.tw"));
+				message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("amy@ts-china.com.cn"));
 				message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("jodie@ts-china.com.cn"));
-				//message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("rita_zhou@ts-china.com.cn"));
+				message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("rita_zhou@ts-china.com.cn"));
 				//message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("SANSAN@ts-china.com.cn"));
 				message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("Sophia_li@ts-china.com.cn"));
 				message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("TSCHK-Sample@ts-china.com.cn"));
@@ -370,7 +370,7 @@ catch (Exception e)
 %>
 </FORM>
 </body>
-<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->
+<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 <%
