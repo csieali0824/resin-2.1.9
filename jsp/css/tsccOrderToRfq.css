@@ -1,0 +1,95 @@
+@import "modelN.css";
+
+#resultTable {
+    border-collapse: collapse;
+    width: 100%;
+    font-family: Arial;
+    font-size: 11px;
+    border: 1px solid #181717;
+    /*border-spacing: 1px;*/
+    /*border: 1px solid #64B077;*/
+}
+
+#resultTable td, #resultTable th {
+    border: 1px solid #181717;
+    padding: 4px;
+    text-align: left;
+}
+
+#resultTable th {
+    background-color: #64B077;
+    color: white;
+    font-size: 11px;
+    line-height: 2;
+}
+
+#dataTable {
+    /*margin: 0 auto; !* align="center" *!*/
+    border-collapse: collapse;
+    width: 1505px;
+    border-spacing: 0;
+    background-color: white; /* 底色白 */
+}
+
+#dataTable td,
+#dataTable th {
+    padding: 4px; /* cellpadding="1" */
+    font-size: 11px;
+    white-space: nowrap; /* 不換行 */
+    border: 1px solid #4A598A; /* 深色邊 */
+    box-shadow: inset 1px 1px 0 #544b4b52;
+    text-align: center;
+}
+
+#dataTable tr:first-child {
+    background-color: #C6D1E6; /* 表頭背景 */
+}
+
+#notice {
+    font-size: 13px;
+    color: #0000FF;
+    margin-top: 15px;
+    margin-bottom: 2px;
+}
+
+.error {
+    color: red;
+    white-space: pre-line;
+}
+
+.center {
+    text-align: center;
+    padding-top: 8px;
+    font-size: 11px;
+}
+
+body {
+    font-family: Tahoma, Georgia;
+    color: #000000;
+    font-size: 11px
+}
+
+td {
+    font-family: Tahoma, Georgia;
+    table-layout: fixed;
+    word-break: break-all
+}
+
+table {
+    font-family: Tahoma, Georgia;
+    font-size: 11px
+}
+
+a {
+    text-decoration: underline
+}
+
+a:link {
+    color: #003399;
+    text-decoration: underline
+}
+
+a:visited {
+    color: #990066;
+    text-decoration: underline
+}

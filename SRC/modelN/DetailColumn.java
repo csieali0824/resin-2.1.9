@@ -16,6 +16,7 @@ public enum DetailColumn {
     SSD("SSD"),
     ShippingMethod("Shipping Method"),
     FOB("FOB"),
+    CustomerPOLine("Cust PO Line"),
     OrderType("Order Type"),
     EndCustomerNumber("End Customer Number"),
     EndCustomer("End Customer"),

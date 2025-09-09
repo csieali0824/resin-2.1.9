@@ -62,7 +62,7 @@ try
   	String sProgramName=request.getParameter("PROGRAMNAME");
   	if (sProgramName==null || sProgramName.equals("")) sProgramName="";
   	String docNo=request.getParameter("DOCNO"); 
-  	String customerId=request.getParameter("CUSTOMERID"); 
+  	String customerId=request.getParameter("CUSTOMERID");
   	String salesAreaNo=request.getParameter("SALESAREANO"); 
   	String salesPersonID=request.getParameter("SALESPERSONID"); 
   	String customerPO=request.getParameter("CUSTOMERPO");
@@ -1417,8 +1417,22 @@ try
 		%>
 			<script> insertSuccess("<%=url%>")</script>
 		<%
-		}		
-		else if (sProgramName.equals("D4-019") && ipendingcnt >0) { //add by Peggy 20181205
+		}
+		else if (sProgramName.equals("TSCC")) { //add by Peggy 20220610
+			String headerId =session.getAttribute("headerId").toString();
+			String isEmptyRow = request.getParameter("isEmptyRow");
+			String url = "../jsp/TSCCIntermediate.jsp?requestHeaderId="+headerId;
+		%>
+			<script>
+				if (confirm("Insert Successfully!!(RFQ:"+ document.MYFORM.PRESEQNO.value+")")) {
+					if('<%=isEmptyRow%>'==='N') {
+						document.location.href = "<%=url%>";
+					}
+				}
+			</script>
+		<%
+		}
+	else if (sProgramName.equals("D4-019") && ipendingcnt >0) { //add by Peggy 20181205
 			String url = modelN.equals("Y") ? detailJsp : "../jsp/TSCTDistyBufferImport.jsp?ACTIONCODE=DETAIL";
 		%>
 			<script> insertSuccess("<%=url%>")</script>

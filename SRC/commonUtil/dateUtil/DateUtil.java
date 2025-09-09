@@ -17,7 +17,10 @@ public class DateUtil {
             new NamedFormatter("uuuu/MM/dd"),
             new NamedFormatter("uuuu-MM-dd"),
             new NamedFormatter("MM/dd/uuuu"),
-            new NamedFormatter("dd/MM/uuuu")
+            new NamedFormatter("dd/MM/uuuu"),
+            new NamedFormatter("M/d/uuuu"),
+            new NamedFormatter("uuuu/M/d")
+//            new NamedFormatter("d/M/uuuu")
     );
 
     // 對應格式的正規表示式（用來先排除非日期格式的字串）
@@ -25,7 +28,10 @@ public class DateUtil {
             Pattern.compile("^\\d{4}/\\d{2}/\\d{2}$"),   // yyyy/MM/dd
             Pattern.compile("^\\d{4}-\\d{2}-\\d{2}$"),   // yyyy-MM-dd
             Pattern.compile("^\\d{8}$"),                // yyyyMMdd
-            Pattern.compile("^\\d{2}/\\d{2}/\\d{4}$")    // MM/dd/yyyy 或 dd/MM/yyyy
+            Pattern.compile("^\\d{2}/\\d{2}/\\d{4}$"),    // MM/dd/yyyy 或 dd/MM/yyyy
+            Pattern.compile("^(0?[1-9]|1[0-2])/(0?[1-9]|[12][0-9]|3[2])/\\d{4}$"),    // M/d/uuuu
+            Pattern.compile("^\\d{4}/(0?[1-9]|1[0-2])/(0?[1-9]|[12][0-9]|3[10])$")  // uuuu/M/d
+//            Pattern.compile("^(0?[1-9]|[12][0-9]|3[01])/(0?[1-9]|1[0-2])/\\\\d{4}$")  // d/M/uuuu
     );
 
     /**
