@@ -33,7 +33,7 @@ try
 	String sqlh =" SELECT a.request_no||'-'||a.version_id request_no, b.type_name wip_name, a.vendor_name,a.vendor_contact,"+
              " to_char(TO_DATE(a.request_date,'yyyymmdd'),'yyyy-mm-dd') request_date, a.inventory_item_name, a.item_description, "+
              //" a.die_name || decode(a.die_name1,null,'','\r\n'||a.die_name1) die_name"+
-			 " a.die_name || decode(a.die_name1,null,'',case when a.vendor_code='3864' then '/' else '\r\n' end ||a.die_name1) die_name"+ //GEM雙DIE用/區隔 BY PEGGY 20220810
+			 " a.die_name || decode(a.die_name1,null,'',case when (a.vendor_code='3864' or a.vendor_code='5913') then '/' else '\r\n' end ||a.die_name1) die_name"+ //GEM雙DIE用/區隔 BY PEGGY 20220810
 			 ", a.quantity, a.unit_price,a.PACKING,a.PACKAGE_SPEC,a.TEST_SPEC,a.ITEM_PACKAGE,a.wip_no, a.pr_no, "+
 			 " a.status, to_char(a.creation_date,'yyyy-mm-dd') creation_date,"+
 			 " a.ASSEMBLY,a.TAPING_REEL,a.TESTING,a.LAPPING,a.OTHERS,a.unit_price_uom,a.version_id,a.request_no||'-'||a.orig_version_id ORIG_REQUESTNO,"+
@@ -415,12 +415,12 @@ try
 		if (v_marking_flag.equals("Y")) line++; //add by Peggy 20210222	
 		
 		row+=2;
-		ws.mergeCells(col, row, col+1, row); 
+		ws.mergeCells(col, row, col+1, row);
     	ws.addCell(new jxl.write.Label(col, row ,"To：" , ARight));
-		ws.setColumnView(col,2);	
+		ws.setColumnView(col,2);
 		ws.mergeCells(col+2, row, col+4,row);
     	ws.addCell(new jxl.write.Label(col+2, row ,VENDOR ,ALeftUL));
-		ws.setColumnView(col+2,8);	
+		ws.setColumnView(col+2,8);
 		if (v_marking_flag.equals("Y"))
 		{
 			ws.setColumnView(col+line-1,12);	
@@ -875,7 +875,7 @@ try
 				{
 					ws.addCell(new jxl.write.Label(col+7+i_addline+i_waferno, row, "Marking" , ACenterL));
 				}
-				else if (VENDOR_CODE.equals("3864")) //捷敏科 by Peggy 20221208
+				else if (VENDOR_CODE.equals("3864") || VENDOR_CODE.equals("5913")) //捷敏科, Carsem by Peggy 20221208
 				{
 					ws.addCell(new jxl.write.Label(col+7+i_addline+i_waferno, row, "取Die模式" , ACenterL));
 				}
@@ -1080,7 +1080,7 @@ try
 			{			
 				ws.addCell(new jxl.write.Label(col+7+i_addline+i_waferno, row, "C9"+rsd.getString("date_code") , ACenterL));
 			}
-			else if (VENDOR_CODE.equals("3864")) //捷敏科 by Peggy 20221208
+			else if (VENDOR_CODE.equals("3864") || VENDOR_CODE.equals("5913")) //捷敏科, Carsem by Peggy 20221208
 			{
 				if (rsd.getString("die_mode") != null && !ORIG_DIE_MODE.equals(rsd.getString("die_mode")))
 				{
@@ -1272,7 +1272,7 @@ try
 				{				
 					ws.addCell(new jxl.write.Label(col+7+i_addline+i_waferno, row, "" , ACenterL));
 				}
-				else if (VENDOR_CODE.equals("3864")) //捷敏科 by Peggy 20221208
+				else if (VENDOR_CODE.equals("3864") || VENDOR_CODE.equals("5913")) //捷敏科, Carsem by Peggy 20221208
 				{
 					ws.addCell(new jxl.write.Label(col+7+i_addline+i_waferno, row, "" , ACenterL));
 				}	
@@ -1430,7 +1430,7 @@ try
 		{		
 			ws.addCell(new jxl.write.Label(col+7+i_addline+i_waferno, row, "" , ACenterL));
 		}
-		else if (VENDOR_CODE.equals("3864")) //捷敏科 by Peggy 20221208
+		else if (VENDOR_CODE.equals("3864") || VENDOR_CODE.equals("5913")) //捷敏科, Carsem by Peggy 20221208
 		{
 			ws.addCell(new jxl.write.Label(col+7+i_addline+i_waferno, row, "" , ACenterL));
 		}		
