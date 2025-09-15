@@ -2195,81 +2195,83 @@ try
 					rs.close();
 					stmt.close();
 
-					String result = "('" + String.join("','", lineNoList) + "')";
-					String lineNoCondition = lineNoList.size() > 0 ?
-							"ORIG_SO_LINE_ID in " + result + "" : "'"+choiceLine+"' like '%,' || LINE_NO || ',%'";
+					if ("8".equals(orderNum.substring(0, 1))) {
+						if (!lineNoList.isEmpty()) {
+							// 8訂單，從workflow來的
+							String soLineIdResult = "('" + String.join("','", lineNoList) + "')";
+							Statement stmtSoLineIdSsd = con.createStatement();
+							sql = "select LINE_NO, ORIG_SO_LINE_ID, to_date(SHIP_DATE,'yyyymmdd')SHIP_DATE from ORADDMAN.TSDELIVERY_NOTICE_DETAIL \n" +
+									" where DNDOCNO='" + dnDocNo + "' and ORIG_SO_LINE_ID in " + soLineIdResult + "";
+							ResultSet rsSoLineIdSsd = stmtSoLineIdSsd.executeQuery(sql);
+							String detailLineNo = "";
+							String origSoLineId = "";
+							Date shipDate = null;
+							while (rsSoLineIdSsd.next()) {
+								detailLineNo = rsSoLineIdSsd.getString("LINE_NO");
+								origSoLineId = rsSoLineIdSsd.getString("ORIG_SO_LINE_ID");
+								shipDate = rsSoLineIdSsd.getDate("SHIP_DATE");
 
-					Statement stmtSoLineIdSsd = con.createStatement();
-					sql = "select LINE_NO, ORIG_SO_LINE_ID, to_date(SHIP_DATE,'yyyymmdd')SHIP_DATE from ORADDMAN.TSDELIVERY_NOTICE_DETAIL \n" +
-							" where DNDOCNO='" + dnDocNo + "' and "+ lineNoCondition +" ";
-					ResultSet rsSoLineIdSsd = stmtSoLineIdSsd.executeQuery(sql);
-					String detailLineNo = "";
-					String origSoLineId = "";
-					Date shipDate = null;
-					while (rsSoLineIdSsd.next()) {
-						detailLineNo = rsSoLineIdSsd.getString("LINE_NO");
-						origSoLineId = rsSoLineIdSsd.getString("ORIG_SO_LINE_ID");
-						shipDate = rsSoLineIdSsd.getDate("SHIP_DATE");
+								CallableStatement callStmt = con.prepareCall("{call APPS.Tscc_Oe_Order_line_Update_ssd(?,?,?,?)}");
+								callStmt.setInt(1, Integer.parseInt(origSoLineId));
+								callStmt.setDate(2, shipDate);
+								callStmt.registerOutParameter(3, Types.VARCHAR);
+								callStmt.registerOutParameter(4, Types.VARCHAR);
+								callStmt.execute();
+								processStatus = callStmt.getString(3);
+								errorMessageHeader = callStmt.getString(4);
+								callStmt.close();
 
-						if ("8".equals(orderNum.substring(0, 1)) && !StringUtils.isNullOrEmpty(origSoLineId)) {
-							CallableStatement callStmt = con.prepareCall("{call APPS.Tscc_Oe_Order_line_Update_ssd(?,?,?,?)}");
-							callStmt.setInt(1, Integer.parseInt(origSoLineId));
-							callStmt.setDate(2, shipDate);
-							callStmt.registerOutParameter(3, Types.VARCHAR);
-							callStmt.registerOutParameter(4, Types.VARCHAR);
-							callStmt.execute();
-							processStatus = callStmt.getString(3);
-							errorMessageHeader = callStmt.getString(4);
-							callStmt.close();
+								Statement stmtOeOrderHeadLine = con.createStatement();
+								String oeOrderSql = "select  h.header_id, h.order_number, l.line_number from OE_ORDER_HEADERS_ALL h, OE_ORDER_lines_all l\n" +
+										"    where h.header_id= l.header_id\n" +
+										"    and l.line_id = '" + origSoLineId + "' ";
+								ResultSet rsOeOrderHeadLine = stmtOeOrderHeadLine.executeQuery(oeOrderSql);
 
-							Statement stmtOeOrderHeadLine = con.createStatement();
-							String oeOrderSql = "select  h.header_id, h.order_number, l.line_number from OE_ORDER_HEADERS_ALL h, OE_ORDER_lines_all l\n" +
-									"    where h.header_id= l.header_id\n" +
-									"    and l.line_id = '" + origSoLineId + "' ";
-							ResultSet rsOeOrderHeadLine = stmtOeOrderHeadLine.executeQuery(oeOrderSql);
+								if (rsOeOrderHeadLine.next()) {
+									headerID = rsOeOrderHeadLine.getInt("HEADER_ID");
+									orderNo = rsOeOrderHeadLine.getString("ORDER_NUMBER");
+									String lineNumber = rsOeOrderHeadLine.getString("LINE_NUMBER");
 
-							if (rsOeOrderHeadLine.next()) {
-								headerID = rsOeOrderHeadLine.getInt("HEADER_ID");
-								orderNo = rsOeOrderHeadLine.getString("ORDER_NUMBER");
-								String lineNumber = rsOeOrderHeadLine.getString("LINE_NUMBER");
+									String upDateDetailSql = "update ORADDMAN.TSDELIVERY_NOTICE_DETAIL \n" +
+											" set SASCODATE=?,ORDERNO=?,OR_LINENO=?,LSTATUSID=?,LSTATUS=? \n" +
+											"where DNDOCNO='" + dnDocNo + "' and LINE_NO ='" + detailLineNo + "'";
 
-								String upDateDetailSql = "update ORADDMAN.TSDELIVERY_NOTICE_DETAIL \n" +
-										" set SASCODATE=?,ORDERNO=?,OR_LINENO=?,LSTATUSID=?,LSTATUS=? \n" +
-										"where DNDOCNO='" + dnDocNo + "' and LINE_NO ='" + detailLineNo + "'";
+									PreparedStatement psOeOrderHeadLineStmt = con.prepareStatement(upDateDetailSql);
+									psOeOrderHeadLineStmt.setString(1, dateBean.getYearMonthDay() + dateBean.getHourMinuteSecond());
+									psOeOrderHeadLineStmt.setString(2, orderNo);
+									psOeOrderHeadLineStmt.setString(3, lineNumber);
+									psOeOrderHeadLineStmt.setString(4, "010"); // Line 的狀態ID
+									psOeOrderHeadLineStmt.setString(5, "CLOSED"); // Line 的狀態
+									psOeOrderHeadLineStmt.executeUpdate();
+									psOeOrderHeadLineStmt.close();
 
-								PreparedStatement psOeOrderHeadLineStmt = con.prepareStatement(upDateDetailSql);
-								psOeOrderHeadLineStmt.setString(1, dateBean.getYearMonthDay() + dateBean.getHourMinuteSecond());
-								psOeOrderHeadLineStmt.setString(2, orderNo);
-								psOeOrderHeadLineStmt.setString(3, lineNumber);
-								psOeOrderHeadLineStmt.setString(4, "010"); // Line 的狀態ID
-								psOeOrderHeadLineStmt.setString(5, "CLOSED"); // Line 的狀態
-								psOeOrderHeadLineStmt.executeUpdate();
-								psOeOrderHeadLineStmt.close();
+									String updateTscOmRequisition = "UPDATE TSC_OM_REQUISITION\n" +
+											"   SET (SUPPLY_HEADER_ID, SUPPLY_LINE_ID, FLOW_STATUS_CODE, LAST_UPDATE_DATE) =\n" +
+											"           (SELECT HEADER_ID, LINE_ID, 'AWAITING_BOOK', LAST_UPDATE_DATE\n" +
+											"              FROM OE_ORDER_LINES_ALL L\n" +
+											"             WHERE L.LINE_ID = ?\n" +
+											"               AND EXISTS\n" +
+											"                       (SELECT 1\n" +
+											"                          FROM OE_ORDER_HEADERS_ALL H\n" +
+											"                         WHERE H.HEADER_ID = L.HEADER_ID\n" +
+											"                           AND H.ORDER_NUMBER = ?))\n" +
+											"WHERE  HEADER_ID= ? AND LINE_ID = ?";
 
-								String updateTscOmRequisition = "UPDATE TSC_OM_REQUISITION\n" +
-										"   SET (SUPPLY_HEADER_ID, SUPPLY_LINE_ID, FLOW_STATUS_CODE, LAST_UPDATE_DATE) =\n" +
-										"           (SELECT HEADER_ID, LINE_ID, 'AWAITING_BOOK', LAST_UPDATE_DATE\n" +
-										"              FROM OE_ORDER_LINES_ALL L\n" +
-										"             WHERE L.LINE_ID = ?\n" +
-										"               AND EXISTS\n" +
-										"                       (SELECT 1\n" +
-										"                          FROM OE_ORDER_HEADERS_ALL H\n" +
-										"                         WHERE H.HEADER_ID = L.HEADER_ID\n" +
-										"                           AND H.ORDER_NUMBER = ?))\n" +
-										"WHERE  HEADER_ID= ? AND LINE_ID = ?";
-
-								PreparedStatement psTscOmRequisitionStmt = con.prepareStatement(updateTscOmRequisition);
-								psTscOmRequisitionStmt.setString(1, origSoLineId);
-								psTscOmRequisitionStmt.setString(2, orderNo);
-								psTscOmRequisitionStmt.setInt(3, headerID);
-								psTscOmRequisitionStmt.setString(4, origSoLineId);
-								psTscOmRequisitionStmt.executeUpdate();
-								psTscOmRequisitionStmt.close();
+									PreparedStatement psTscOmRequisitionStmt = con.prepareStatement(updateTscOmRequisition);
+									psTscOmRequisitionStmt.setString(1, origSoLineId);
+									psTscOmRequisitionStmt.setString(2, orderNo);
+									psTscOmRequisitionStmt.setInt(3, headerID);
+									psTscOmRequisitionStmt.setString(4, origSoLineId);
+									psTscOmRequisitionStmt.executeUpdate();
+									psTscOmRequisitionStmt.close();
+									rsOeOrderHeadLine.close();
+									stmtOeOrderHeadLine.close();
+								}
 							}
-
-							rsOeOrderHeadLine.close();
-							stmtOeOrderHeadLine.close();
-						} else {
+							rsSoLineIdSsd.close();
+							stmtSoLineIdSsd.close();
+						} else  {
+							//8訂單，但不是從workflow來的
 							CallableStatement cs3 = con.prepareCall("{call tsc_rfq_odr_to_erp(" +
 									"?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}");
 							cs3.setString(1, orgID);
@@ -2322,10 +2324,66 @@ try
 							orderNo = cs3.getString(43);
 							errorMessageHeader = cs3.getString(44);
 							cs3.close();
+
 						}
+					} else {
+						// 只要是4和1都走原來流程
+						CallableStatement cs3 = con.prepareCall("{call tsc_rfq_odr_to_erp(" +
+								"?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}");
+						cs3.setString(1, orgID);
+						cs3.setInt(2, Integer.parseInt(oraUserID));
+						cs3.setInt(3, Integer.parseInt(respID));
+						cs3.setInt(4, Integer.parseInt(firmOrderType));
+						cs3.setInt(5, Integer.parseInt(firmSoldToOrg));
+						cs3.setInt(6, Integer.parseInt(firmPriceList));
+						cs3.setInt(7, Integer.parseInt(ShipToOrg));
+						cs3.setDate(8, orderedDate);
+						cs3.setInt(9, Integer.parseInt(billTo));
+						cs3.setInt(10, Integer.parseInt(payTermID));
+						cs3.setString(11, shipMethod);
+						cs3.setString(12, fobPoint);
+						cs3.setString(13, custPO);
+						cs3.setString(14, "N/A");
+						cs3.setDate(15, pricedate);
+						cs3.setDate(16, promisedate);
+						cs3.setString(17, sourceTypeCode);
+						cs3.setString(18, "");
+						cs3.setString(19, "N/A");
+						cs3.setString(20, dnDocNo);
+						cs3.setString(21, strSubinv);  //add by Peggy 20211118
+						cs3.setString(22, "N/A");
+						cs3.setString(23, notifyContact);
+						cs3.setString(24, notifyLocation);
+						cs3.setString(25, shipContact);
+						cs3.setInt(26, Integer.parseInt(deliverOrgID));
+						cs3.setInt(27, Integer.parseInt(deliverContactID));
+						cs3.setString(28, sampleOrder);
+						cs3.setString(29, dnDocNo);
+						cs3.setString(30, choiceLine + ",");
+						cs3.setString(31, prCurr);
+						cs3.setString(32, seqno);
+						cs3.setString(33, dateBean.getYearMonthDay() + dateBean.getHourMinuteSecond());
+						cs3.setString(34, sToStatusID);
+						cs3.setString(35, sToStatusName);
+						cs3.setString(36, remark);
+						cs3.setString(37, fromStatusID);
+						cs3.setString(38, actionID);
+						cs3.setString(39, prodCodeGet);
+						cs3.setString(40, userID);
+						cs3.registerOutParameter(41, Types.VARCHAR);
+						cs3.registerOutParameter(42, Types.INTEGER);
+						cs3.registerOutParameter(43, Types.INTEGER);
+						cs3.registerOutParameter(44, Types.VARCHAR);
+						cs3.execute();
+						processStatus = cs3.getString(41);
+						headerID = cs3.getInt(42);   // 把第二次的更新 Header ID 取到
+						orderNo = cs3.getString(43);
+						errorMessageHeader = cs3.getString(44);
+						cs3.close();
 					}
-					rsSoLineIdSsd.close();
-					stmtSoLineIdSsd.close();
+//					}
+//					rsSoLineIdSsd.close();
+//					stmtSoLineIdSsd.close();
 					// renderStart---------------------------------;
 					if (processStatus == null) {
 						strRes = strRes.replace("?processStatus", "");
