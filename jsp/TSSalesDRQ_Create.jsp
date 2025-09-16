@@ -1911,6 +1911,7 @@
 		String parOrgID=request.getParameter("PARORGID");  // 業務地區對應的ORG_ID
 		String modelN = StringUtils.isNullOrEmpty(request.getParameter("modelN")) ? "" : request.getParameter("modelN");
 		String groupByType = StringUtils.isNullOrEmpty(request.getParameter("groupByType")) ? "" : request.getParameter("groupByType");
+		String isEmptyRow = StringUtils.isNullOrEmpty(request.getParameter("ISEMPTYROW")) ? "" : request.getParameter("ISEMPTYROW");
 //String allowCRD="";
 		String computeSSD="N";
 		String strdisable = "";
@@ -4345,6 +4346,7 @@
 	<input type="hidden" name="UPLOAD_TEMP_ID" value="<%=UPLOAD_TEMP_ID%>">
 	<input type="hidden" name="modelN" value="<%=modelN%>">
 	<input type="hidden" name="groupByType" value="<%=groupByType%>">
+	<input type="hidden" name="isEmptyRow" value="<%=isEmptyRow%>">
 </FORM>
 <iframe width=124 height=153 name="gToday:supermini:agenda.js" id="gToday:supermini:agenda.js" src="../calendar/ipopeng.htm" scrolling="no" frameborder="0" style="visibility:hidden; z-index:65535; position:absolute; top:0px;"></iframe>
 </body>

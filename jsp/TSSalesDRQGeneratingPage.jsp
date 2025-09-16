@@ -674,7 +674,7 @@ function setSubmit2(URL,LINKREF,xMINIPRICE,xALNAME,itemStatus,xDiffFactroyMsg)
   		var uPrice="&UPRICE="+document.DISPLAYREPAIR.UPRICE.value+"&LINE_TYPE="+document.DISPLAYREPAIR.LINE_TYPE.value+"&CUSTITEMNO="+document.DISPLAYREPAIR.elements["CITEMDESC"+LINKREF].value+"&CUSTITEMID="+document.DISPLAYREPAIR.elements["CITEMID"+LINKREF].value+"&CUSTITEMTYPE="+document.DISPLAYREPAIR.elements["CITEMTYPE"+LINKREF].value; 
   		var linkURL = "#"+LINKREF;
   		document.DISPLAYREPAIR.action=URL+uPrice+linkURL;
-  		document.DISPLAYREPAIR.submit();   
+  		document.DISPLAYREPAIR.submit();
 	}
 }
 
@@ -863,7 +863,7 @@ function setchk(objline)
    	String assignManufact=request.getParameter("ASSIGN_MANUFACT");
    	String prodManufactory=request.getParameter("PRODMANUFACTORY");   
    	String lineNo=request.getParameter("LINENO");
-   	String factoryDate=request.getParameter("FACTORYDATE"); 
+   	String factoryDate=request.getParameter("FACTORYDATE");
    	String uPrice=request.getParameter("UPRICE"); 
    	String actionID = request.getParameter("ACTIONID");     //out.println("actionID="+actionID);
    	String remark = request.getParameter("REMARK");   
@@ -2068,7 +2068,7 @@ if (frStatID.equals("009"))
 		<%
 	   		}	 
 	  
-	   		String b[][]=new String[rowLength+1][19]; // 宣告一二維陣列,分別是(未分配產地=列)X(資料欄數+1= 行)
+	   		String b[][]=new String[rowLength+1][20]; // 宣告一二維陣列,分別是(未分配產地=列)X(資料欄數+1= 行)
 	   		out.println("<TABLE border='1' cellpadding='1' cellspacing='0' align='center' width='100%'  bordercolor='#999966' bordercolorlight='#999999' bordercolordark='#CCCC99' bgcolor='#CCCC99'>");
 	   		out.println("<tr bgcolor='#D5D8A7'>");	
 	   		out.println("<td nowrap><font color='#FFFFFF'></font>");
@@ -2243,6 +2243,7 @@ if (frStatID.equals("009"))
 							 ",a.ASSIGN_MANUFACT "+  //add by Peggy 20160219
 							 ",a.BI_REGION"+  //add by Peggy 20170220
 							 ",a.REASON_CODE"+  //add by Peggy 20190401
+							 ",a.ORIG_SO_LINE_ID"+
 							 ",tsc_item_pcn_flag(43,a.inventory_item_id,to_date(substr(a.creation_date,1,8),'yyyymmdd')) pcn_flag"+  //add by Peggy 20230204
 							 ",nvl((select 'Y' from oe_items_v x where x.item=a.ORDERED_ITEM and x.inventory_item_id=a.inventory_item_id and x.sold_to_org_id=d.tscustomerid),'N') as custitem_flag"+  //add by Peggy 20230204
 							 " from ORADDMAN.TSDELIVERY_NOTICE_DETAIL a"+
@@ -2530,6 +2531,7 @@ if (frStatID.equals("009"))
 				b[k][17]=rs.getString("ITEM_SEGMENT1"); // 把台半料號取出來,若使用者未給客戶料號,則ORDERED_ITEM亦給台半料號
 				if (rs.getString("CUST_PO_NUMBER")==null || rs.getString("CUST_PO_NUMBER").equals("null")) b[k][18]= "N/A";
 				else b[k][18]=rs.getString("CUST_PO_NUMBER");  // 2006/06/06 取上載Line PO Number
+				b[k][19]=rs.getString("ORIG_SO_LINE_ID");
 				array2DGenerateSOrderBean.setArray2DString(b);
 				k++;
 			}  // End of while (rs.next())  	   	   	 
