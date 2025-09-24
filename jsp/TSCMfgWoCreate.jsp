@@ -1,6 +1,6 @@
 <!-- 20151026 liling 增加 custtype=1-->
 <!-- 20190614 liling ADD ONSEMI CUSTOMER LOT RULE-->
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" %>
+<%@ page contentType="text/html; charset=big5" language="java" import="java.sql.*" %>
 <!--=============To get the Authentication==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============To get Connection Pool==========-->
@@ -646,8 +646,8 @@
 	String waferYld=request.getParameter("WAFERYLD");          //晶片良率
 	String waferVendor=request.getParameter("WAFERVENDOR");   //晶片供應商
 	String waferKind=request.getParameter("WAFERKIND");       //晶片類別
-	String waferElect=request.getParameter("WAFERELECT");     //電阻系數??
-	String waferPcs=request.getParameter("WAFERPCS");         //使用晶片片數???
+	String waferElect=request.getParameter("WAFERELECT");     //電阻系數
+	String waferPcs=request.getParameter("WAFERPCS");         //使用晶片片數
 	String waferIqcNo=request.getParameter("WAFERIQCNO");     //檢驗單號
 	String tscPackage=request.getParameter("TSCPACKAGE");     //
 	String tscFamily=request.getParameter("TSCFAMILY");     //
@@ -1085,7 +1085,7 @@
 			border-style: solid;
 		}
 	</Style>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
+	<meta http-equiv="Content-Type" content="text/html; charset=big5"></head>
 <body>
 <%@ include file="/jsp/include/TSCMfgDocHyperLinkPage.jsp"%>
 <FORM ACTION="TSCMfgWoCreate.jsp" METHOD="post" NAME="MYFORM">
@@ -1493,7 +1493,8 @@
 						String sWhereMIL = "";
 
 						sSqlMIL = "select Unique DICE_MIL as x ,DICE_MIL from APPS.YEW_WFDICE_FACTOR ";
-						sWhereMIL= "where DICE_MIL IS NOT NULL order by to_number(DICE_MIL)";
+						sWhereMIL= "where DICE_MIL IS NOT NULL order by DICE_MIL";		// 20250606 modify by JB - xxx * xxx issue
+						//sWhereMIL= "where DICE_MIL IS NOT NULL order by to_number(DICE_MIL)";
 						sSqlMIL = sSqlMIL+sWhereMIL;
 						//out.println(sSqlC);
 						Statement statementMIL=con.createStatement();
@@ -1660,7 +1661,8 @@
 						String sWhereMIL = "";
 
 						sSqlMIL = "select Unique DICE_MIL as x ,DICE_MIL from APPS.YEW_WFDICE_FACTOR ";
-						sWhereMIL= "where DICE_MIL IS NOT NULL order by to_number(DICE_MIL)";
+						sWhereMIL= "where DICE_MIL IS NOT NULL order by DICE_MIL";			// 20250606 modify by JB - xxx * xxx issue
+						//sWhereMIL= "where DICE_MIL IS NOT NULL order by to_number(DICE_MIL)";
 						sSqlMIL = sSqlMIL+sWhereMIL;
 						//out.println(sSqlC);
 						Statement statementMIL=con.createStatement();
@@ -1734,7 +1736,8 @@
 						String sWhereMIL = "";
 
 						sSqlMIL = "select Unique DICE_MIL as x ,DICE_MIL from APPS.YEW_WFDICE_FACTOR ";
-						sWhereMIL= "where DICE_MIL IS NOT NULL order by to_number(DICE_MIL)";
+						sWhereMIL= "where DICE_MIL IS NOT NULL order by DICE_MIL";		  			// 20250606 modify by JB - xxx * xxx issue
+						//sWhereMIL= "where DICE_MIL IS NOT NULL order by to_number(DICE_MIL)";
 						sSqlMIL = sSqlMIL+sWhereMIL;
 						//out.println(sSqlC);
 						Statement statementMIL=con.createStatement();
@@ -1896,7 +1899,8 @@
 						String sWhereMIL = "";
 
 						sSqlMIL = "select Unique DICE_MIL as x ,DICE_MIL from APPS.YEW_WFDICE_FACTOR ";
-						sWhereMIL= "where DICE_MIL IS NOT NULL order by to_number(DICE_MIL)";
+						sWhereMIL= "where DICE_MIL IS NOT NULL order by DICE_MIL";		  		  			// 20250606 modify by JB - xxx * xxx issue
+						//sWhereMIL= "where DICE_MIL IS NOT NULL order by to_number(DICE_MIL)";
 						sSqlMIL = sSqlMIL+sWhereMIL;
 						//out.println(sSqlC);
 						Statement statementMIL=con.createStatement();
