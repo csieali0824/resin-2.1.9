@@ -8,6 +8,7 @@ import modelN.ModelNCommonUtils;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class TsctDa extends ModelNCommonUtils {
@@ -154,6 +155,11 @@ public class TsctDa extends ModelNCommonUtils {
             }
             if (rs.getString("SITE_USE_CODE").equals("SHIP_TO")) {
                 modelNDto.setShipToOrgId(rs.getString("SITE_USE_ID"));
+            }
+            if (StringUtils.isNullOrEmpty(modelNDto.getOrderType())) {
+                if (Arrays.asList(new String[]{"7823","14453"}).contains(modelNDto.getCustNo())) {
+                    modelNDto.setOrderType("1131");
+                }
             }
         }
         rs.close();
