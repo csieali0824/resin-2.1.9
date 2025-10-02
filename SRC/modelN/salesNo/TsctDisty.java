@@ -94,7 +94,7 @@ public class TsctDisty extends ModelNCommonUtils {
                 modelNDto.setFob(rs.getString("FOB_POINT"));
             }
             if (modelNDto.getOrderType().equals("")) {
-                if (Arrays.asList(new String[]{"24151", "2989", "23991", "11724", "24851", "26671", "2462"}).contains(modelNDto.getCustNo())) {
+                if (Arrays.asList(new String[]{"24151", "2989", "23991", "11724", "26671", "2462", "34472", "34412"}).contains(modelNDto.getCustNo())) {
                     modelNDto.setOrderType("1131");
                 }
             }
