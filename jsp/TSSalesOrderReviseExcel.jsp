@@ -2645,13 +2645,11 @@ try
 							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("annie@ts-china.com.cn"));
 							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("demi_duan@ts-china.com.cn"));
 							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("fiona_chen@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("gina@mail.tew.com.cn"));
 							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("jodie@ts-china.com.cn"));
 							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("regina_pu@ts-china.com.cn"));
 							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("sandy_sun@ts-china.com.cn"));
 							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("sophia_li@ts-china.com.cn"));
 							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("tina@ts-china.com.cn"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("tingting@ts-china.com.cn"));
 							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("tschk-cs001@ts-china.com.cn"));
 							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("tschk-cs002@ts-china.com.cn"));
 							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("tschk-cs003@ts-china.com.cn"));
