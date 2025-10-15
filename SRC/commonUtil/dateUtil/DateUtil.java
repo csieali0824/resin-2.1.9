@@ -20,7 +20,6 @@ public class DateUtil {
             new NamedFormatter("dd/MM/uuuu"),
             new NamedFormatter("M/d/uuuu"),
             new NamedFormatter("uuuu/M/d")
-//            new NamedFormatter("d/M/uuuu")
     );
 
     // 對應格式的正規表示式（用來先排除非日期格式的字串）
