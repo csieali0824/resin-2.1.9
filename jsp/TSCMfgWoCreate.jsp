@@ -1,6 +1,6 @@
 <!-- 20151026 liling 增加 custtype=1-->
 <!-- 20190614 liling ADD ONSEMI CUSTOMER LOT RULE-->
-<%@ page contentType="text/html; charset=big5" language="java" import="java.sql.*" %>
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" %>
 <!--=============To get the Authentication==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============To get Connection Pool==========-->
