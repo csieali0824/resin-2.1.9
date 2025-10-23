@@ -2323,8 +2323,32 @@ try
 							headerID = cs3.getInt(42);   // 把第二次的更新 Header ID 取到
 							orderNo = cs3.getString(43);
 							errorMessageHeader = cs3.getString(44);
-							cs3.close();
+							if (errorMessageHeader == null) {
+								Statement stmtLineIdSsd = con.createStatement();
+								String lineIdSql = "select l.line_id, l.request_Date as ship_date \n" +
+													"from OE_ORDER_HEADERS_ALL h, OE_ORDER_lines_all l\n" +
+													"where h.order_number = '" + orderNo + "'\n" +
+													"and h.header_id = l.header_id \n" +
+													"and h.header_id = '" + headerID + "'";
 
+								ResultSet lineIdSsd = stmtLineIdSsd.executeQuery(lineIdSql);
+								while (lineIdSsd.next()) {
+									String lineId = lineIdSsd.getString("LINE_ID");
+									Date shipDate = lineIdSsd.getDate("SHIP_DATE");
+									CallableStatement callLineStmt = con.prepareCall("{call APPS.Tscc_Oe_Order_line_Update_ssd(?,?,?,?)}");
+									callLineStmt.setInt(1, Integer.parseInt(lineId));
+									callLineStmt.setDate(2, shipDate);
+									callLineStmt.registerOutParameter(3, Types.VARCHAR);
+									callLineStmt.registerOutParameter(4, Types.VARCHAR);
+									callLineStmt.execute();
+									processStatus = callLineStmt.getString(3);
+									errorMessageHeader = callLineStmt.getString(4);
+									callLineStmt.close();
+								}
+								lineIdSsd.close();
+								stmtLineIdSsd.close();
+							}
+							cs3.close();
 						}
 					} else {
 						// 走原來流程
