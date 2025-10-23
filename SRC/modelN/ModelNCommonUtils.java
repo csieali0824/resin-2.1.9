@@ -353,36 +353,48 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                 Statement stmt = conn.createStatement();
                 String sql = "SELECT * FROM (\n" +
                         "    -- 第一部分：QUQTE 資料來源\n" +
-                        "    SELECT\n" +
-                        "        a.quoteid,\n" +
-                        "        a.partnumber,\n" +
-                        "        a.currency,\n" +
-                        "LISTAGG(TO_CHAR(a.pricek / 1000, 'FM99990.0999999'), ',') \n" +
-                        "            WITHIN GROUP (ORDER BY a.pricek DESC) AS pricek,\n" +
-                        "        '(' || a.region || ')' || a.endcustomer AS end_customer,\n" +
-                        "        CASE\n" +
-                        "            WHEN (\n" +
-                        "                CASE\n" +
-                        "                    WHEN a.region IN ('TSCR') THEN TRUNC(a.fromdate)\n" +
-                        "                    ELSE TRUNC(SYSDATE)\n" +
-                        "                END\n" +
-                        "            ) BETWEEN TRUNC(a.fromdate) AND TRUNC(a.todate)\n" +
-                        "            THEN '1'\n" +
-                        "            ELSE '0'\n" +
-                        "        END AS pass_flag,\n" +
-                        "        TO_CHAR(a.todate,'yyyy-mm-dd') todate\n" +
-                        "    FROM tsc_om_ref_quotenet a\n" +
+                        "     SELECT \n" +
+                        "         quoteid,\n" +
+                        "         partnumber,\n" +
+                        "         currency,   \n" +
+                        "         LISTAGG(pricek, ',') WITHIN GROUP (ORDER BY pricek DESC) AS pricek,\n" +
+                        "         LISTAGG(end_customer||'_'||pricek, ',') WITHIN GROUP (ORDER BY end_customer DESC) AS end_customer,\n" +
+                        "         pass_flag,\n" +
+                        "         todate\n" +
+                        "     FROM (    \n" +
+                        "         SELECT DISTINCT\n" +
+                        "             a.quoteid,\n" +
+                        "             a.partnumber,\n" +
+                        "             a.currency,\n" +
+                        "             TO_CHAR(a.pricek / 1000, 'FM99990.0999999') AS pricek,           \n" +
+                        "             '(' || a.region || ')' || a.endcustomer AS end_customer,\n" +
+                        "             CASE\n" +
+                        "                 WHEN (\n" +
+                        "                     CASE\n" +
+                        "                         WHEN a.region IN ('TSCR', 'TSCI') THEN TRUNC(a.fromdate)\n" +
+                        "                         ELSE TRUNC(SYSDATE)\n" +
+                        "                     END\n" +
+                        "                 ) BETWEEN TRUNC(a.fromdate) AND TRUNC(a.todate)\n" +
+                        "                 THEN '1'\n" +
+                        "                 ELSE '0'\n" +
+                        "             END AS pass_flag,\n" +
+                        "             TO_CHAR(a.todate,'yyyy-mm-dd') todate\n" +
+                        "         FROM tsc_om_ref_quotenet a\n" +
                         "    WHERE a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
                         "      AND a.partnumber='" + modelNDto.getTscItemDesc() + "' \n"+
-                        "	 GROUP BY\n" +
-                        "	         a.quoteid,\n" +
-                        "	         a.partnumber,\n" +
-                        "	         a.currency,\n" +
-                        "	         a.datecreated,\n" +
-                        "	         a.region,\n" +
-                        "	         a.endcustomer,\n" +
-                        "	         a.fromdate,\n" +
-                        "	         a.todate\n" +
+                        "      AND EXISTS (\n" +
+                        "                     SELECT 1 \n" +
+                        "                     FROM tsc_om_ref_quotenet b\n" +
+                        "                     WHERE b.quoteid = a.quoteid\n" +
+                        "                       AND b.partnumber = a.partnumber\n" +
+                        "                 )\n" +
+                        "     )\n" +
+                        "     GROUP BY\n" +
+                        "        quoteid,\n" +
+                        "        partnumber,\n" +
+                        "        currency,\n" +
+                        "        pass_flag,\n" +
+                        "        todate\n" +
                         "    UNION ALL\n" +
                         "     -- 第二部分：MODELN 資料來源(只取最新報價)\n" +
                         "    SELECT\n" +
@@ -421,12 +433,22 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                         "    )\n" +
                         "    WHERE rn = 1\n" +
                         ")";
+//                System.out.println(sql);
                 ResultSet rs = stmt.executeQuery(sql);
                 if (rs.next()) {
                     passFlag = rs.getString("PASS_FLAG");
                     if ("1".equals(passFlag)) {
                         sellingPrice_Q = rs.getString("PRICEK");
                         endCustName = rs.getString("END_CUSTOMER");
+                        String[] arr = endCustName.split(",");
+                        for (String s : arr) {
+                            String item = s.trim(); // 去除前後空格
+                            int idx = item.lastIndexOf('_');
+                            if (item.contains(modelNDto.getSellingPrice())) { // 用 contains like 判斷
+                                endCustName = item.substring(0, idx);
+                            }
+                        }
+
                         if (sellingPrice_Q.split(",").length > 1) {
                             if(!Arrays.asList(sellingPrice_Q.split(",")).contains(modelNDto.getSellingPrice())) {
                                 errList.add(ErrorMessage.MULTIPLE_PRICES.getMessageFormat(sellingPrice_Q.replace(",", " / ")));

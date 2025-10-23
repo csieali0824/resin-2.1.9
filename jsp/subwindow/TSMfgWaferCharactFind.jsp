@@ -1,5 +1,5 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*"%>
-<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—é€£çµæ± ==========-->
+<%@ page contentType="text/html; charset=big5" language="java" import="java.sql.*"%>
+<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/MProcessStatusBarStart.jsp"%>
 <!--=================================-->
@@ -39,7 +39,7 @@
    rsID.close();
    stateID.close();
 
-//åˆ¤æ–·è©²lot æ˜¯å¦æœ‰ä¸è‰¯_____start  //20091205 liling add
+//§PÂ_¸Ólot ¬O§_¦³¤£¨}_____start  //20091205 liling add
      String iqcRemark="";
      String sqliqc=" SELECT INSPECT_REMARK  FROM ORADDMAN.TSCIQC_LOTINSPECT_DETAIL TLD "+
 			   // "  WHERE TLD.ORGANIZATION_ID = '"+organizationId+"' AND TLD.SUPPLIER_LOT_NO= '"+supplierLot+"'  ";
@@ -55,13 +55,13 @@
           %>
            <input type="hidden" name="IQCREMARK" value="<%=iqcRemark%>">
 		    <script language="javascript">
-			    alert("è«‹æ³¨æ„æ­¤æ‰¹IQCå‚™è¨»ä¸è‰¯");
+			    alert("½Ğª`·N¦¹§åIQC³Æµù¤£¨}");
 			 </script>
          <% }
 	  }
 	  rsLot.close();
  	  stateLot.close();						 
-//åˆ¤æ–·è©²lot æ˜¯å¦æœ‰ä¸è‰¯_____start   
+//§PÂ_¸Ólot ¬O§_¦³¤£¨}_____start   
 		
 	  //add by Peggy 20170612
 	  sqliqc=" select distinct WAIVE_REMARK from oraddman.tsciqc_lotinspect_history a where a.WAIVE_REMARK is not null and a.WAIVE_REMARK <>'N/A' and exists (select 1 from ORADDMAN.TSCIQC_LOTINSPECT_DETAIL TLD where tld.INSPLOT_NO=a.INSPLOT_NO and tld.line_no=a.line_no and  TLD.ORGANIZATION_ID = '"+organizationId+"' AND TLD.SUPPLIER_LOT_NO= '"+supplierLot+"')";
@@ -76,14 +76,14 @@
 	  
  if (woType==null || woType.equals("")) woType="1";
  
- String q[][]=arrayWODocumentInputBean.getArray2DContent();//å–å¾—ç›®å‰é™£åˆ—å…§å®¹	
+ String q[][]=arrayWODocumentInputBean.getArray2DContent();//¨ú±o¥Ø«e°}¦C¤º®e	
  
  String runCardDesc = null; // ItemDesc
  String runCardGet = "";  // itemCodeGet
  int runCardGetLength = 0;   // itemCodeGetLength
 
      if (q!=null) 
-	 {	// ç”±é™£åˆ—å…§å®¹ä½œç‚ºä¸‹ä¸€æ¬¡ä¸è½å…¥æ¢ä»¶çš„ä¾æ“š		   
+	 {	// ¥Ñ°}¦C¤º®e§@¬°¤U¤@¦¸¤£¸¨¤J±ø¥óªº¨Ì¾Ú		   
       //out.println(shpArray2DPageBean.getArray2DTempString());
 	   out.println(arrayWODocumentInputBean.getArray2DString());
 	   if (q.length>0)
@@ -96,22 +96,22 @@
 			 
 			 if (q[i][3]!=null && !q[i][3].equals(""))
 			 { 			   
-			   accWoQty = accWoQty + Float.parseFloat(q[i][3]);  // ç´¯åŠ å…ˆå‰é¸å®šæ•¸é‡		
+			   accWoQty = accWoQty + Float.parseFloat(q[i][3]);  // ²Ö¥[¥ı«e¿ï©w¼Æ¶q		
 			 } else {
 			          q[i][3] = "0";
-					  accWoQty = accWoQty + Float.parseFloat(q[i][3]);  // ç´¯åŠ å…ˆå‰é¸å®šæ•¸é‡
+					  accWoQty = accWoQty + Float.parseFloat(q[i][3]);  // ²Ö¥[¥ı«e¿ï©w¼Æ¶q
 			        }
 			 
 		  }
 		  out.println(accWoQty); 
 			
-		    // å–å¾—not in æ¢ä»¶_èµ·
+		    // ¨ú±onot in ±ø¥ó_°_
 		    if (runCardGet.length()>0)
             {   out.println(runCardGet);     
              runCardGetLength = runCardGet.length()-1;
              runCardGet = runCardGet.substring(0,runCardGetLength); 
             } 
-		    // å–å¾—not in æ¢ä»¶_è¿„
+		    // ¨ú±onot in ±ø¥ó_¨´
 	   }
      } else {
 	          //out.println("No get!");
@@ -253,7 +253,7 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 		   {
 		      if (chkCutAsbFlag=="N")
 			  {
-			    alert("æ‰¾ä¸åˆ°åˆ‡å‰²æ™¶ç‰‡å°æ‡‰çš„æ™¶ç²’è£½æˆå“è™Ÿ\n è«‹ç›¸é—œäººå“¡è‡³Oracleè¨­å®šè©²BOMè¡¨!!!");
+			    alert("§ä¤£¨ì¤Á³Î´¹¤ù¹ïÀ³ªº´¹²É»s¦¨«~¸¹\n ½Ğ¬ÛÃö¤H­û¦ÜOracle³]©w¸ÓBOMªí!!!");
 				return false;
 			  } else {
 			            window.opener.document.MYFORM.ITEMID.value=itemId; 
@@ -263,13 +263,13 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 		   }
 		   else if (woType=="2")
 		        { 
-				   // è‹¥æ˜¯å‰æ®µå·¥ä»¤,å†å°‡å–çš„çš„åˆ‡å‰²å·¥ä»¤è™Ÿå¸¶å›
+				   // ­Y¬O«e¬q¤u¥O,¦A±N¨úªºªº¤Á³Î¤u¥O¸¹±a¦^
 		           if (frontRunCard==null || frontRunCard=="null") frontRunCard="";
 		           window.opener.document.MYFORM.FRONTRUNCARD.value=frontRunCard;
 				   				
 				   if (chkSubAsbFlag=="N")
 			       {
-			         alert("æ‰¾ä¸åˆ°åˆ‡å‰²æ™¶ç‰‡å°æ‡‰çš„å‰æ®µåŠæˆå“è™Ÿ\n è«‹ç›¸é—œäººå“¡è‡³Oracleè¨­å®šè©²BOMè¡¨!!!");
+			         alert("§ä¤£¨ì¤Á³Î´¹¤ù¹ïÀ³ªº«e¬q¥b¦¨«~¸¹\n ½Ğ¬ÛÃö¤H­û¦ÜOracle³]©w¸ÓBOMªí!!!");
 					 return false;
 			       } else {
 			                window.opener.document.MYFORM.ITEMID.value=itemId; 
@@ -281,28 +281,28 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
            //alert(waferLineNo);
 		  
            this.window.close();
-	// }  End of å…ˆé€²å…ˆå‡º
+	// }  End of ¥ı¶i¥ı¥X
 }
 
 </script>
 <body > 
 <FORM METHOD="post" ACTION="TSMfgWaferCharactFind.jsp">
-  <font size="-1" color="#000099">ç”Ÿç”¢é˜»å€¼æˆ–æ™¶ç²’å°ºå¯¸:</font> 
+  <font size="-1" color="#000099">¥Í²£ªı­È©Î´¹²É¤Ø¤o:</font> 
   <input type="text" name="SEARCHSTRING" size=30 value=<%=searchString%>>
   </font> 
-  <INPUT TYPE="submit" NAME="submit" value="æŸ¥è©¢"><BR>  
-  <a href="TSMfgIQCLotImplBOMList.jsp?LOT=<%=supplierLot%>&ORGANIZATIONID=<%=organizationId%>" onMouseOver='this.T_WIDTH=120;this.T_OPACITY=80;return escape("è¼¸å…¥æ‰¹è™Ÿ:<%=supplierLot%>æŸ¥è©¢å¯é»é¸æª¢è¦–BOMè¡¨è³‡è¨Š")'>æ‰¹è™ŸåŸæ–™BOMè¡¨è³‡è¨Š</a><BR>
+  <INPUT TYPE="submit" NAME="submit" value="¬d¸ß"><BR>  
+  <a href="TSMfgIQCLotImplBOMList.jsp?LOT=<%=supplierLot%>&ORGANIZATIONID=<%=organizationId%>" onMouseOver='this.T_WIDTH=120;this.T_OPACITY=80;return escape("¿é¤J§å¸¹:<%=supplierLot%>¬d¸ß¥iÂI¿ïÀËµøBOMªí¸ê°T")'>§å¸¹­ì®ÆBOMªí¸ê°T</a><BR>
   <font size="-1" color="#000099">-----Wafer Inspection Lot Find-------------------------------------------</font>     
   <BR>
   <% 
 
-    if (woType.equals("2")) // å‰æ®µå·¥ä»¤ä¾†æºç”±åˆ‡å‰²å·¥ä»¤
+    if (woType.equals("2")) // «e¬q¤u¥O¨Ó·½¥Ñ¤Á³Î¤u¥O
     {
   %>
-  <span class="style1">é–‹ç«‹å‰æ®µå·¥ä»¤ç”±IQCæª¢é©—æ‰¹</span><BR>
+  <span class="style1">¶}¥ß«e¬q¤u¥O¥ÑIQCÀËÅç§å</span><BR>
   <%  
     } 
-      if(iqcRemark=="N/A" || iqcRemark.equals("N/A")) {} else {out.print("      <span class=style1>IQCä¸è‰¯åŸå› : "+iqcRemark+"</span>");}  //20091205 liling add
+      if(iqcRemark=="N/A" || iqcRemark.equals("N/A")) {} else {out.print("      <span class=style1>IQC¤£¨}­ì¦]: "+iqcRemark+"</span>");}  //20091205 liling add
       Statement statement=con.createStatement();
 	  try
       { 
@@ -315,21 +315,21 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 		  String order = "";
 		  String sqlOld = "";
 		  String whereOld = "";
-	      if (woType.equals("1")) // åˆ‡å‰²å·¥ä»¤
+	      if (woType.equals("1")) // ¤Á³Î¤u¥O
 		  {
-		     //  **** 2006/12/30 å…ˆå°‡æš«æ™‚æŸ¥è©¢æª”å¯«å…¥
+		     //  **** 2006/12/30 ¥ı±N¼È®É¬d¸ßÀÉ¼g¤J
 
-	             sql = " select DISTINCT IQCD.RESULT, IQCD.SUPPLIER_LOT_NO WAFERLOT, IQCD.RECEIPT_QTY ICQæ”¶æ–™æ•¸é‡,IQCD.GRAINQTY, IQCD.INV_ITEM, IQCD.INV_ITEM_ID, REPLACE(IQCD.INV_ITEM_DESC,'"+"\""+"',' inch ') as INV_ITEM_DESC,IQCH.INSPLOT_NO as WAFERIQCNO , "+
+	             sql = " select DISTINCT IQCD.RESULT, IQCD.SUPPLIER_LOT_NO WAFERLOT, IQCD.RECEIPT_QTY ICQ¦¬®Æ¼Æ¶q,IQCD.GRAINQTY, IQCD.INV_ITEM, IQCD.INV_ITEM_ID, REPLACE(IQCD.INV_ITEM_DESC,'"+"\""+"',' inch ') as INV_ITEM_DESC,IQCH.INSPLOT_NO as WAFERIQCNO , "+
 		                     "           IQCH.SUPPLIER_SITE_NAME,decode(IQCH.TOTAL_YIELD,null,'N/A','null','N/A',IQCH.TOTAL_YIELD) as TOTAL_YIELD, IQCWT.WF_TYPE_NAME,IQCH.WF_RESIST , "+
 	   				         "           IQCD.UOM, IQCD.INV_ITEM_ID,IQCD.LINE_NO, to_char(to_date(IQCH.INSPECT_DATE,'YYYYMMDDHH24MISS'),'YYYY/MM/DD HH24:MI:SS') as INSPECT_DATE, decode(IQCH.WAFER_AMP,null,'N/A','null','N/A',IQCH.WAFER_AMP) as WAFER_AMP  "+
 	                         " from ORADDMAN.TSCIQC_LOTINSPECT_HEADER IQCH,ORADDMAN.TSCIQC_LOTINSPECT_DETAIL IQCD, "+
 			                 "      ORADDMAN.TSCIQC_WAFER_TYPE IQCWT ";
 	      	     where=" where IQCWT.WF_TYPE_ID=IQCH.WAFER_TYPE and IQCH.INSPLOT_NO=IQCD.INSPLOT_NO "+
-		                      "   and IQCD.RESULT in ('ACCEPT','WAIVE','01','03') and IQCD.LSTATUSID = '010' "+ // 2006/11/01 åŠ å…¥å·²ç¶“é©—æ”¶å…¥åº«æˆ–ç¶“ç‰¹æ¡å…¥åº«çš„æª¢é©—æ‰¹							  
-							  "   and substr(IQCH.CREATION_DATE,0,8) >= '20061120' "+ // Clone å¾ŒPOæ–¹æœ‰å­˜åœ¨
+		                      "   and IQCD.RESULT in ('ACCEPT','WAIVE','01','03') and IQCD.LSTATUSID = '010' "+ // 2006/11/01 ¥[¤J¤w¸gÅç¦¬¤J®w©Î¸g¯S±Ä¤J®wªºÀËÅç§å							  
+							  "   and substr(IQCH.CREATION_DATE,0,8) >= '20061120' "+ // Clone «áPO¤è¦³¦s¦b
 							  "   and IQCD.ORGANIZATION_ID = '"+organizationId+"' ";
 		         order = "order by IQCD.INV_ITEM, INSPECT_DATE, WAFERLOT ";		
-		         if (runCardGet!=null && !runCardGet.equals(""))	 where = where + " and IQCD.SUPPLIER_LOT_NO not in ("+runCardGet+") "; // å…ˆå‰å·²åœ¨æ¸…å–®å…§çš„WaferLotä¸å¾—å‡ºç¾ 
+		         if (runCardGet!=null && !runCardGet.equals(""))	 where = where + " and IQCD.SUPPLIER_LOT_NO not in ("+runCardGet+") "; // ¥ı«e¤w¦b²M³æ¤ºªºWaferLot¤£±o¥X²{ 
 		
 		         if (invItem!=null && !invItem.equals("")) where = where + " and ( IQCD.INV_ITEM = '"+invItem+"' or IQCD.INV_ITEM like '%"+invItem+"%' ) ";
 
@@ -339,7 +339,7 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 				 if (supplierLot!=null && !supplierLot.equals("")  && !supplierLot.equals("--")) where = where + "and ( IQCD.SUPPLIER_LOT_NO= '"+supplierLot+"' or IQCD.SUPPLIER_LOT_NO like '%"+supplierLot+"%' ) ";
 		
 
-		         // éœ€è¦æ”¹ç‚ºå–ç‰¹å®šç´¢å¼• SELECT /*+ ORDERED index(a QP_PRICING_ATTRIBUTES_N8)  */			 
+		         // »İ­n§ï¬°¨ú¯S©w¯Á¤Ş SELECT /*+ ORDERED index(a QP_PRICING_ATTRIBUTES_N8)  */			 
 		         if (searchString =="%" || searchString.equals("%") || searchString.equals("--"))			
 		         {  
 		           where = where + " and (IQCD.SUPPLIER_LOT_NO like '%') ";
@@ -357,39 +357,39 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 				     ResultSet rsPrev=statePrev.executeQuery(sql);				   
 				     while (rsPrev.next())
 					 {			
-					     // å– Item Where Useçš„ Procedure_èµ·
+					     // ¨ú Item Where Useªº Procedure_°_
 				         String prevSubItem = rsPrev.getString("INV_ITEM").substring(0,3);			  
 			  
 			             CallableStatement csBOMInfo = con.prepareCall("{call TSC_BOM_IMPLODER_PARENT(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}");
 	                     csBOMInfo.setInt(1,Integer.parseInt(organizationId)); 
 			             csBOMInfo.setString(2,woType);
 	                     csBOMInfo.setInt(3,rsPrev.getInt("INV_ITEM_ID")); 
-	                     csBOMInfo.setString(4,prevSubItem);                 // åŸå­éšæ–™è™Ÿå‰ä¸‰ç¢¼( åˆ¤å®š 11-, 10- æˆ– 1A- )
-	                     csBOMInfo.registerOutParameter(5, Types.INTEGER);   // å›å‚³ Parent Item ID
-	                     csBOMInfo.registerOutParameter(6, Types.VARCHAR);   // å›å‚³ Parent Inv Item
-	                     csBOMInfo.registerOutParameter(7, Types.VARCHAR);   // å›å‚³ Parent Item Desc
-	                     csBOMInfo.registerOutParameter(8, Types.VARCHAR);   // å›å‚³ Error Message
-	                     csBOMInfo.registerOutParameter(9, Types.VARCHAR);   // å›å‚³ Error Code
-				         csBOMInfo.registerOutParameter(10, Types.INTEGER);  // å›å‚³ æ­¤æ¬¡ SEQUENCE ID
-				         csBOMInfo.setString(11,"");                         // åˆ‡å‰², 
-				         csBOMInfo.setString(12,rsPrev.getString("WAFERLOT"));   // çµ¦Wafer Lot
-				         csBOMInfo.setString(13,rsPrev.getString("WAFERIQCNO")); // çµ¦IQC No.
-				         csBOMInfo.setInt(14,rsPrev.getInt("LINE_NO"));          // çµ¦IQC Line No.
-				         csBOMInfo.setString(15,"FAKE");                     // æ­£å¼æŸ¥è©¢
+	                     csBOMInfo.setString(4,prevSubItem);                 // ­ì¤l¶¥®Æ¸¹«e¤T½X( §P©w 11-, 10- ©Î 1A- )
+	                     csBOMInfo.registerOutParameter(5, Types.INTEGER);   // ¦^¶Ç Parent Item ID
+	                     csBOMInfo.registerOutParameter(6, Types.VARCHAR);   // ¦^¶Ç Parent Inv Item
+	                     csBOMInfo.registerOutParameter(7, Types.VARCHAR);   // ¦^¶Ç Parent Item Desc
+	                     csBOMInfo.registerOutParameter(8, Types.VARCHAR);   // ¦^¶Ç Error Message
+	                     csBOMInfo.registerOutParameter(9, Types.VARCHAR);   // ¦^¶Ç Error Code
+				         csBOMInfo.registerOutParameter(10, Types.INTEGER);  // ¦^¶Ç ¦¹¦¸ SEQUENCE ID
+				         csBOMInfo.setString(11,"");                         // ¤Á³Î, 
+				         csBOMInfo.setString(12,rsPrev.getString("WAFERLOT"));   // µ¹Wafer Lot
+				         csBOMInfo.setString(13,rsPrev.getString("WAFERIQCNO")); // µ¹IQC No.
+				         csBOMInfo.setInt(14,rsPrev.getInt("LINE_NO"));          // µ¹IQC Line No.
+				         csBOMInfo.setString(15,"FAKE");                     // ¥¿¦¡¬d¸ß
 	                     csBOMInfo.execute();
 			             int parentInvItemID = csBOMInfo.getInt(5);
-	                     String parentInvItem = csBOMInfo.getString(6);       //  å›å‚³ REQUEST åŸ·è¡Œç‹€æ³
+	                     String parentInvItem = csBOMInfo.getString(6);       //  ¦^¶Ç REQUEST °õ¦æª¬ªp
 	                     String parentItemDesc = csBOMInfo.getString(7);
-	                     String errorMessage = csBOMInfo.getString(8);      //  å›å‚³ REQUEST åŸ·è¡Œç‹€æ³
-	                     String errorCode = csBOMInfo.getString(9);         //  å›å‚³ REQUEST åŸ·è¡Œç‹€æ³è¨Šæ¯
-	                     int seqID = csBOMInfo.getInt(10);	                 //  å›å‚³ æ­¤æ¬¡ SEQUENCE ID
+	                     String errorMessage = csBOMInfo.getString(8);      //  ¦^¶Ç REQUEST °õ¦æª¬ªp
+	                     String errorCode = csBOMInfo.getString(9);         //  ¦^¶Ç REQUEST °õ¦æª¬ªp°T®§
+	                     int seqID = csBOMInfo.getInt(10);	                 //  ¦^¶Ç ¦¹¦¸ SEQUENCE ID
 	                     csBOMInfo.close(); 
 					 }
 					 rsPrev.close();
 					 statePrev.close();
 					 
-					// ******** Step2. å†çµ„åˆä¸€æ¬¡SQLå–è¢«å±•é–‹ITEM Where Used çš„æ¸…å–®
-					sql = " select DISTINCT decode(YBI.ORGANIZATION_ID,'326','å…§éŠ·','327','å¤–éŠ·') as å…§å¤–éŠ·, IQC_RESULT as RESULT, IQC_WAFER_LOT as WAFERLOT, IQC_RECEPT_QTY as IQCæ”¶æ–™æ•¸é‡, IQC_GRAINQTY as IQCæ™¶ç‰‡æ•¸,IQC_INV_ITEM as INV_ITEM, IQC_ITEM_ID as INV_ITEM_ID, MSI.DESCRIPTION as INV_ITEM_DESC, IQC_INSP_NO as WAFERIQCNO ,  "+					       
+					// ******** Step2. ¦A²Õ¦X¤@¦¸SQL¨ú³Q®i¶}ITEM Where Used ªº²M³æ
+					sql = " select DISTINCT decode(YBI.ORGANIZATION_ID,'326','¤º¾P','327','¥~¾P') as ¤º¥~¾P, IQC_RESULT as RESULT, IQC_WAFER_LOT as WAFERLOT, IQC_RECEPT_QTY as IQC¦¬®Æ¼Æ¶q, IQC_GRAINQTY as IQC´¹¤ù¼Æ,IQC_INV_ITEM as INV_ITEM, IQC_ITEM_ID as INV_ITEM_ID, MSI.DESCRIPTION as INV_ITEM_DESC, IQC_INSP_NO as WAFERIQCNO ,  "+					       
 							"               IQC_VENDOR_NAME as SUPPLIER_SITE_NAME, IQC_YIELD as TOTAL_YIELD, IQC_WAFER_TYPE as WF_TYPE_NAME, IQC_WAFER_RESIST as WF_RESIST , "+
 							"               IQC_UOM as UOM, IQC_ITEM_ID as INV_ITEM_ID, IQC_LINE_NO as LINE_NO, IQC_INSPDATE as INSPECT_DATE, IQC_WAFER_AMP as WAFER_AMP, "+
 						 	"               PARENT_ITEM_ID, PARENT_INV_ITEM, PARENT_ITEM_DESC "+
@@ -397,18 +397,18 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 					where =	"  where YBI.ORGANIZATION_ID = "+organizationId+" "+	
 					        "    and YBI.ORGANIZATION_ID = MSI.ORGANIZATION_ID "+	
 							"    and YBI.IQC_ITEM_ID = MSI.INVENTORY_ITEM_ID "+														 
-							"    and YBI.QUERY_TYPE = 'FAKE' and YBI.WO_TYPE = 1 "+ // åªæ‰¾åˆ‡å‰²å·¥ä»¤çš„
+							"    and YBI.QUERY_TYPE = 'FAKE' and YBI.WO_TYPE = 1 "+ // ¥u§ä¤Á³Î¤u¥Oªº
 							"    and substr(YBI.PARENT_INV_ITEM,1,3) in ('1A-','1B-' ) ";  //20151225 liling add 1B-
 					order = "order by INV_ITEM, INSPECT_DATE, WAFERLOT "; 
 					
-					if (runCardGet!=null && !runCardGet.equals("")) where = where + " and IQC_WAFER_LOT not in ("+runCardGet+") "; // å…ˆå‰å·²åœ¨æ¸…å–®å…§çš„WaferLotä¸å¾—å‡ºç¾ 		
+					if (runCardGet!=null && !runCardGet.equals("")) where = where + " and IQC_WAFER_LOT not in ("+runCardGet+") "; // ¥ı«e¤w¦b²M³æ¤ºªºWaferLot¤£±o¥X²{ 		
 		            if (invItem!=null && !invItem.equals("")) where = where + " and ( QRY_INV_ITEM = '"+invItem+"' or QRY_INV_ITEM like '%"+invItem+"%' ) ";		                 
 		            if (waferResist!=null && !waferResist.equals("") && !waferResist.equals("--")) where = where + "and ( IQC_WAFER_RESIST = '"+waferResist+"' or IQC_WAFER_RESIST like '%"+waferResist+"%' )   ";
 		            if (diceSize!=null && !diceSize.equals("") && !diceSize.equals("--")) where = where + "and ( IQC_DICE_SIZE= '"+diceSize+"' and IQC_DICE_SIZE like '%"+diceSize+"%' ) ";
 		
 		            if (supplierLot!=null && !supplierLot.equals("")  && !supplierLot.equals("--")) where = where + "and ( IQC_WAFER_LOT= '"+supplierLot+"' or IQC_WAFER_LOT like '%"+supplierLot+"%' ) ";
 
-		             // éœ€è¦æ”¹ç‚ºå–ç‰¹å®šç´¢å¼• SELECT / + ORDERED index(a QP_PRICING_ATTRIBUTES_N8)  /			 
+		             // »İ­n§ï¬°¨ú¯S©w¯Á¤Ş SELECT / + ORDERED index(a QP_PRICING_ATTRIBUTES_N8)  /			 
 		             if (searchString =="%" || searchString.equals("%") || searchString.equals("--"))			
 		             {  
 		                    where = where + " and ( IQC_WAFER_LOT like '%' ) ";
@@ -421,14 +421,14 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 									        "         OR upper(IQC_WAFER_LOT) = '"+searchString.toUpperCase()+"' or upper(IQC_WAFER_LOT) like '"+searchString.toUpperCase()+"%' ) ";
 	                     } 
 					  
-				   // *********** Step2. å†ç”±æš«å­˜è¡¨åšä¸€æ¬¡é—œé€£_è¿„
+				   // *********** Step2. ¦A¥Ñ¼È¦sªí°µ¤@¦¸Ãö³s_¨´
 					 
-		  } else if (woType.equals("2")) // å‰æ®µå·¥ä»¤
+		  } else if (woType.equals("2")) // «e¬q¤u¥O
 		         {				 
 				         //sqlCNT = "select count(IQCH.INSPLOT_NO) from ORADDMAN.TSCIQC_LOTINSPECT_HEADER IQCH,ORADDMAN.TSCIQC_LOTINSPECT_DETAIL IQCD,ORADDMAN.TSCIQC_WAFER_TYPE IQCWT, "+
 						 //     "    BOM_COMPONENTS_B a, BOM_STRUCTURES_B b, MTL_SYSTEM_ITEMS MSI";
 /* //20091124 liling update performance issue
-	              sql = " select DISTINCT IQCD.RESULT, IQCD.SUPPLIER_LOT_NO WAFERLOT, IQCD.RECEIPT_QTY IQCæ”¶æ–™æ•¸é‡,IQCD.GRAINQTY,  "+		   
+	              sql = " select DISTINCT IQCD.RESULT, IQCD.SUPPLIER_LOT_NO WAFERLOT, IQCD.RECEIPT_QTY IQC¦¬®Æ¼Æ¶q,IQCD.GRAINQTY,  "+		   
 				                      "          MSI.SEGMENT1 as INV_ITEM, REPLACE(MSI.DESCRIPTION,'"+"\""+"',' inch ') as INV_ITEM_DESC, IQCH.INSPLOT_NO as WAFERIQCNO, "+
 		                              "          IQCH.SUPPLIER_SITE_NAME, decode(IQCH.TOTAL_YIELD,null,'N/A','null','N/A',IQCH.TOTAL_YIELD) as TOTAL_YIELD, IQCWT.WF_TYPE_NAME, IQCH.WF_RESIST , "+	   	   
 		                              //"          IQCD.UOM, BSB.ASSEMBLY_ITEM_ID as INV_ITEM_ID, IQCD.LINE_NO, to_char(to_date(IQCH.INSPECT_DATE,'YYYYMMDDHH24MISS'),'YYYY/MM/DD HH24:MI:SS') as INSPECT_DATE, decode(IQCH.WAFER_AMP,null,'N/A','null','N/A',IQCH.WAFER_AMP) as WAFER_AMP  "+
@@ -436,25 +436,25 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 	                                  " from ORADDMAN.TSCIQC_LOTINSPECT_HEADER IQCH, ORADDMAN.TSCIQC_LOTINSPECT_DETAIL IQCD, ORADDMAN.TSCIQC_WAFER_TYPE IQCWT, "+
 			                         "       MTL_SYSTEM_ITEMS MSI ";					                 
 	      	             where=       " where IQCWT.WF_TYPE_ID=IQCH.WAFER_TYPE and IQCH.INSPLOT_NO=IQCD.INSPLOT_NO "+
-		                              "   and IQCD.RESULT in ('ACCEPT','WAIVE','01','03') and IQCD.LSTATUSID = '010' "+ // 2006/11/01 åŠ å…¥å·²ç¶“é©—æ”¶å…¥åº«æˆ–ç¶“ç‰¹æ¡å…¥åº«çš„æª¢é©—æ‰¹
+		                              "   and IQCD.RESULT in ('ACCEPT','WAIVE','01','03') and IQCD.LSTATUSID = '010' "+ // 2006/11/01 ¥[¤J¤w¸gÅç¦¬¤J®w©Î¸g¯S±Ä¤J®wªºÀËÅç§å
 									  "   and IQCD.INV_ITEM_ID = MSI.INVENTORY_ITEM_ID and IQCD.ORGANIZATION_ID = MSI.ORGANIZATION_ID "+
 									  "   and MSI.ORGANIZATION_ID = "+organizationId+" "+
-									  "   and substr(IQCH.CREATION_DATE,0,8) >= '20061120' "; // Clone å¾ŒPOæ–¹æœ‰å­˜åœ¨									 
+									  "   and substr(IQCH.CREATION_DATE,0,8) >= '20061120' "; // Clone «áPO¤è¦³¦s¦b									 
 		                 order = "order by INV_ITEM, INSPECT_DATE, WAFERLOT ";
 	*/
-	              sql = " select DISTINCT IQCD.RESULT, IQCD.SUPPLIER_LOT_NO WAFERLOT, IQCD.RECEIPT_QTY IQCæ”¶æ–™æ•¸é‡,IQCD.GRAINQTY,  "+		   
+	              sql = " select DISTINCT IQCD.RESULT, IQCD.SUPPLIER_LOT_NO WAFERLOT, IQCD.RECEIPT_QTY IQC¦¬®Æ¼Æ¶q,IQCD.GRAINQTY,  "+		   
 				                      "          IQCD.INV_ITEM, REPLACE(IQCD.INV_ITEM_DESC,'"+"\""+"',' inch ') as INV_ITEM_DESC, IQCH.INSPLOT_NO as WAFERIQCNO, "+
 		                              "          IQCH.SUPPLIER_SITE_NAME, decode(IQCH.TOTAL_YIELD,null,'N/A','null','N/A',IQCH.TOTAL_YIELD) as TOTAL_YIELD, IQCWT.WF_TYPE_NAME, IQCH.WF_RESIST , "+	   	   
 		                              //"          IQCD.UOM, BSB.ASSEMBLY_ITEM_ID as INV_ITEM_ID, IQCD.LINE_NO, to_char(to_date(IQCH.INSPECT_DATE,'YYYYMMDDHH24MISS'),'YYYY/MM/DD HH24:MI:SS') as INSPECT_DATE, decode(IQCH.WAFER_AMP,null,'N/A','null','N/A',IQCH.WAFER_AMP) as WAFER_AMP  "+
 									  "          IQCD.UOM, IQCD.INV_ITEM_ID as INV_ITEM_ID, IQCD.LINE_NO, to_char(to_date(IQCH.INSPECT_DATE,'YYYYMMDDHH24MISS'),'YYYY/MM/DD HH24:MI:SS') as INSPECT_DATE, decode(IQCH.WAFER_AMP,null,'N/A','null','N/A',IQCH.WAFER_AMP) as WAFER_AMP  "+
 	                                  " from ORADDMAN.TSCIQC_LOTINSPECT_HEADER IQCH, ORADDMAN.TSCIQC_LOTINSPECT_DETAIL IQCD, ORADDMAN.TSCIQC_WAFER_TYPE IQCWT ";					                 
 	      	             where=       " where IQCWT.WF_TYPE_ID=IQCH.WAFER_TYPE and IQCH.INSPLOT_NO=IQCD.INSPLOT_NO "+
-		                              "   and IQCD.RESULT in ('ACCEPT','WAIVE','01','03') and IQCD.LSTATUSID = '010' "+ // 2006/11/01 åŠ å…¥å·²ç¶“é©—æ”¶å…¥åº«æˆ–ç¶“ç‰¹æ¡å…¥åº«çš„æª¢é©—æ‰¹
+		                              "   and IQCD.RESULT in ('ACCEPT','WAIVE','01','03') and IQCD.LSTATUSID = '010' "+ // 2006/11/01 ¥[¤J¤w¸gÅç¦¬¤J®w©Î¸g¯S±Ä¤J®wªºÀËÅç§å
 									  "   and IQCD.ORGANIZATION_ID = "+organizationId+" "+
-									  "   and substr(IQCH.CREATION_DATE,0,8) >= '20061120' "; // Clone å¾ŒPOæ–¹æœ‰å­˜åœ¨									 
+									  "   and substr(IQCH.CREATION_DATE,0,8) >= '20061120' "; // Clone «áPO¤è¦³¦s¦b									 
 		                 order = "order by INV_ITEM, INSPECT_DATE, WAFERLOT ";
 	
-		                 if (runCardGet!=null && !runCardGet.equals("")) where = where + " and IQCD.SUPPLIER_LOT_NO not in ("+runCardGet+") "; // å…ˆå‰å·²åœ¨æ¸…å–®å…§çš„WaferLotä¸å¾—å‡ºç¾ 
+		                 if (runCardGet!=null && !runCardGet.equals("")) where = where + " and IQCD.SUPPLIER_LOT_NO not in ("+runCardGet+") "; // ¥ı«e¤w¦b²M³æ¤ºªºWaferLot¤£±o¥X²{ 
 		
 		                 if (invItem!=null && !invItem.equals("")) where = where + " and ( IQCD.INV_ITEM = '"+invItem+"' or IQCD.INV_ITEM like '%"+invItem+"%' ) ";
 		                  //if (itemDesc!=null && !itemDesc.equals("")) where = where + "and INV_ITEM_DESC = '"+itemDesc+"' ";
@@ -471,7 +471,7 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 						                    " ) ";
 						 }
 
-		                 // éœ€è¦æ”¹ç‚ºå–ç‰¹å®šç´¢å¼• SELECT /*+ ORDERED index(a QP_PRICING_ATTRIBUTES_N8)  */			 
+		                 // »İ­n§ï¬°¨ú¯S©w¯Á¤Ş SELECT /*+ ORDERED index(a QP_PRICING_ATTRIBUTES_N8)  */			 
 		                 if (searchString =="%" || searchString.equals("%") || searchString.equals("--"))			
 		                 {  
 		                    where = where + " and ( IQCD.SUPPLIER_LOT_NO like '%' ) ";
@@ -482,62 +482,62 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 						    		
 	                     } 					 							
 					
-				     //  å…ˆæŠŠè³‡æ–™å­˜è‡³æš«å­˜æª”_èµ· 	
-					 // *********** Step1. å…ˆç”±ç¬¬ä¸€æ¬¡çš„æ¢ä»¶çµ„åˆå¯«å…¥æš«å­˜è¡¨					 
-					 sql = sql + where + order;	 // 2007/01/17 å› èˆŠåº«å­˜å°šæœ‰æ™¶ç²’æ‰¹
+				     //  ¥ı§â¸ê®Æ¦s¦Ü¼È¦sÀÉ_°_ 	
+					 // *********** Step1. ¥ı¥Ñ²Ä¤@¦¸ªº±ø¥ó²Õ¦X¼g¤J¼È¦sªí					 
+					 sql = sql + where + order;	 // 2007/01/17 ¦]ÂÂ®w¦s©|¦³´¹²É§å
 					 //out.println("sql="+sql);
 					
 					 Statement statePrev=con.createStatement();
 				     ResultSet rsPrev=statePrev.executeQuery(sql);				   
 				     while (rsPrev.next())
 					 {					 
-					      // å– Item Where Useçš„ Procedure_èµ·
+					      // ¨ú Item Where Useªº Procedure_°_
 				          String prevSubItem = rsPrev.getString("INV_ITEM").substring(0,3);			  
 			              //out.println("prevSubItem ="+prevSubItem);			  
 			              CallableStatement csBOMInfo = con.prepareCall("{call TSC_BOM_IMPLODER_PARENT(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}");
 	                      csBOMInfo.setInt(1,Integer.parseInt(organizationId)); 
 			              csBOMInfo.setString(2,woType);
 	                      csBOMInfo.setInt(3,rsPrev.getInt("INV_ITEM_ID")); 
-	                      csBOMInfo.setString(4,prevSubItem);                 // åŸå­éšæ–™è™Ÿå‰ä¸‰ç¢¼( åˆ¤å®š 11-, 10- æˆ– 1A- )
-	                      csBOMInfo.registerOutParameter(5, Types.INTEGER);   // å›å‚³ Parent Item ID
-	                      csBOMInfo.registerOutParameter(6, Types.VARCHAR);   // å›å‚³ Parent Inv Item
-	                      csBOMInfo.registerOutParameter(7, Types.VARCHAR);   // å›å‚³ Parent Item Desc
-	                      csBOMInfo.registerOutParameter(8, Types.VARCHAR);   // å›å‚³ Error Message
-	                      csBOMInfo.registerOutParameter(9, Types.VARCHAR);   // å›å‚³ Error Code
-						  csBOMInfo.registerOutParameter(10, Types.INTEGER);  // å›å‚³ æ­¤æ¬¡ SEQUENCE ID
-						  csBOMInfo.setString(11,"");                         // å…ˆä¸ä¾Sort Codeå–å› æ¯éšè³‡è¨Š
-						  csBOMInfo.setString(12,rsPrev.getString("WAFERLOT"));   // çµ¦Wafer Lot
-						  csBOMInfo.setString(13,rsPrev.getString("WAFERIQCNO")); // çµ¦IQC No.
-						  csBOMInfo.setInt(14,rsPrev.getInt("LINE_NO"));          // çµ¦IQC Line No.
-						  csBOMInfo.setString(15,"FAKE");                         // é å…ˆæŸ¥è©¢
+	                      csBOMInfo.setString(4,prevSubItem);                 // ­ì¤l¶¥®Æ¸¹«e¤T½X( §P©w 11-, 10- ©Î 1A- )
+	                      csBOMInfo.registerOutParameter(5, Types.INTEGER);   // ¦^¶Ç Parent Item ID
+	                      csBOMInfo.registerOutParameter(6, Types.VARCHAR);   // ¦^¶Ç Parent Inv Item
+	                      csBOMInfo.registerOutParameter(7, Types.VARCHAR);   // ¦^¶Ç Parent Item Desc
+	                      csBOMInfo.registerOutParameter(8, Types.VARCHAR);   // ¦^¶Ç Error Message
+	                      csBOMInfo.registerOutParameter(9, Types.VARCHAR);   // ¦^¶Ç Error Code
+						  csBOMInfo.registerOutParameter(10, Types.INTEGER);  // ¦^¶Ç ¦¹¦¸ SEQUENCE ID
+						  csBOMInfo.setString(11,"");                         // ¥ı¤£¨ÌSort Code¨ú¦^ ¥À¶¥¸ê°T
+						  csBOMInfo.setString(12,rsPrev.getString("WAFERLOT"));   // µ¹Wafer Lot
+						  csBOMInfo.setString(13,rsPrev.getString("WAFERIQCNO")); // µ¹IQC No.
+						  csBOMInfo.setInt(14,rsPrev.getInt("LINE_NO"));          // µ¹IQC Line No.
+						  csBOMInfo.setString(15,"FAKE");                         // ¹w¥ı¬d¸ß
 	                      csBOMInfo.execute();
 			              int parentInvItemID = csBOMInfo.getInt(5);
-	                      String parentInvItem = csBOMInfo.getString(6);       //  å›å‚³ REQUEST åŸ·è¡Œç‹€æ³
+	                      String parentInvItem = csBOMInfo.getString(6);       //  ¦^¶Ç REQUEST °õ¦æª¬ªp
 	                      String parentItemDesc = csBOMInfo.getString(7);
-	                      String errorMessage = csBOMInfo.getString(8);      //  å›å‚³ REQUEST åŸ·è¡Œç‹€æ³
-	                      String errorCode = csBOMInfo.getString(9);         //  å›å‚³ REQUEST åŸ·è¡Œç‹€æ³è¨Šæ¯
-						  int seqID = csBOMInfo.getInt(10);	                 // å›å‚³ æ­¤æ¬¡ SEQUENCE ID
+	                      String errorMessage = csBOMInfo.getString(8);      //  ¦^¶Ç REQUEST °õ¦æª¬ªp
+	                      String errorCode = csBOMInfo.getString(9);         //  ¦^¶Ç REQUEST °õ¦æª¬ªp°T®§
+						  int seqID = csBOMInfo.getInt(10);	                 // ¦^¶Ç ¦¹¦¸ SEQUENCE ID
 	                      //out.println("Procedure : Execute Success Procedure Get Item Where Used !!!<BR>");
 	                      csBOMInfo.close(); 
 					 } // End of while
 					 rsPrev.close();
 					 statePrev.close();
-				    //  å…ˆæŠŠè³‡æ–™å­˜è‡³æš«å­˜æª”_è¿„
-					// *********** Step2. å†ç”±æš«å­˜è¡¨åšä¸€æ¬¡é—œé€£_èµ·						
+				    //  ¥ı§â¸ê®Æ¦s¦Ü¼È¦sÀÉ_¨´
+					// *********** Step2. ¦A¥Ñ¼È¦sªí°µ¤@¦¸Ãö³s_°_						
 					
 					  //out.println("organizationId="+organizationId);
-					  sql = " select DISTINCT decode(YBI.ORGANIZATION_ID,'326','å…§éŠ·','327','å¤–éŠ·') as å…§å¤–éŠ·, IQC_RESULT as RESULT, IQC_WAFER_LOT as WAFERLOT, IQC_RECEPT_QTY as IQCæ”¶æ–™æ•¸é‡, IQC_GRAINQTY as IQCæ™¶ç‰‡æ•¸,"+
+					  sql = " select DISTINCT decode(YBI.ORGANIZATION_ID,'326','¤º¾P','327','¥~¾P') as ¤º¥~¾P, IQC_RESULT as RESULT, IQC_WAFER_LOT as WAFERLOT, IQC_RECEPT_QTY as IQC¦¬®Æ¼Æ¶q, IQC_GRAINQTY as IQC´¹¤ù¼Æ,"+
 					        "        QRY_INV_ITEM as INV_ITEM, REPLACE(QRY_ITEM_DESC,'"+"\""+"',' inch ') as INV_ITEM_DESC, IQC_INSP_NO as WAFERIQCNO, "+
 							"        IQC_VENDOR_NAME as SUPPLIER_SITE_NAME, IQC_YIELD as TOTAL_YIELD, IQC_WAFER_TYPE as WF_TYPE_NAME, IQC_WAFER_RESIST as WF_RESIST , "+
 							"        IQC_UOM as UOM, QRY_ITEM_ID as INV_ITEM_ID, IQC_LINE_NO as LINE_NO, IQC_INSPDATE as INSPECT_DATE, IQC_WAFER_AMP as WAFER_AMP, "+
 						 	"        PARENT_ITEM_ID, PARENT_INV_ITEM, PARENT_ITEM_DESC "+
 							"   from YEW_BOM_IMPL_TEMP1 YBI ";
 					where =	"  where YBI.ORGANIZATION_ID = "+organizationId+" "+																 
-							"    and YBI.QUERY_TYPE = 'FAKE'  and YBI.WO_TYPE = 2 "+ // åªæ‰¾å‰æ®µå·¥ä»¤
+							"    and YBI.QUERY_TYPE = 'FAKE'  and YBI.WO_TYPE = 2 "+ // ¥u§ä«e¬q¤u¥O
 						//	"    and length(YBI.PARENT_INV_ITEM) = 13 and substr(YBI.PARENT_INV_ITEM,1,3) not in ('11-','10-','1A-','1B-')  ";   //20151224 liling add 1B
                             "    and length(YBI.PARENT_INV_ITEM) IN (13, 16, 17, 20) and substr(YBI.PARENT_INV_ITEM,1,3) not in ('11-','10-','1A-','1B-')  ";   //20151224 liling add 1B, 20170922 ADD 16	,20171005 ADD 20						
 					order = "order by INV_ITEM, INSPECT_DATE, WAFERLOT ";
-					     if (runCardGet!=null && !runCardGet.equals("")) where = where + " and IQC_WAFER_LOT not in ("+runCardGet+") "; // å…ˆå‰å·²åœ¨æ¸…å–®å…§çš„WaferLotä¸å¾—å‡ºç¾ 		
+					     if (runCardGet!=null && !runCardGet.equals("")) where = where + " and IQC_WAFER_LOT not in ("+runCardGet+") "; // ¥ı«e¤w¦b²M³æ¤ºªºWaferLot¤£±o¥X²{ 		
 		                 if (invItem!=null && !invItem.equals("")) where = where + " and ( QRY_INV_ITEM = '"+invItem+"' or QRY_INV_ITEM like '%"+invItem+"%' ) ";		                 
 		                 if (waferResist!=null && !waferResist.equals("") && !waferResist.equals("--") && !waferResist.equals("0")) where = where + "and ( IQC_WAFER_RESIST = '"+waferResist+"' or IQC_WAFER_RESIST like '%"+waferResist+"%' )   ";
 		                 if (diceSize!=null && !diceSize.equals("") && !diceSize.equals("--") && !diceSize.equals("0")) where = where + "and ( IQC_DICE_SIZE= '"+diceSize+"' and IQC_DICE_SIZE like '%"+diceSize+"%' ) ";
@@ -550,7 +550,7 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 						   
 						 }
 
-		                 // éœ€è¦æ”¹ç‚ºå–ç‰¹å®šç´¢å¼• SELECT / + ORDERED index(a QP_PRICING_ATTRIBUTES_N8)  /			 
+		                 // »İ­n§ï¬°¨ú¯S©w¯Á¤Ş SELECT / + ORDERED index(a QP_PRICING_ATTRIBUTES_N8)  /			 
 		                 if (searchString =="%" || searchString.equals("%") || searchString.equals("--"))			
 		                 {  
 		                    where = where + " and ( IQC_WAFER_LOT like '%' ) ";		                     
@@ -563,9 +563,9 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 									        "         OR upper(IQC_WAFER_LOT) = '"+searchString.toUpperCase()+"' or upper(IQC_WAFER_LOT) like '"+searchString.toUpperCase()+"%' ) ";
 						   */				
 	                     } 					  
-				   // *********** Step2. å†ç”±æš«å­˜è¡¨åšä¸€æ¬¡é—œé€£_è¿„
+				   // *********** Step2. ¦A¥Ñ¼È¦sªí°µ¤@¦¸Ãö³s_¨´
 				   
-				     sqlOld = "select decode(a.ORGANIZATION_ID,'326','å…§éŠ·','327','å¤–éŠ·') as  å…§å¤–éŠ·,'01' as RESULT, a.LOT_NUMBER as WAFERLOT, a.PRIMARY_TRANSACTION_QUANTITY as IQCæ”¶æ–™æ•¸é‡, "+
+				     sqlOld = "select decode(a.ORGANIZATION_ID,'326','¤º¾P','327','¥~¾P') as  ¤º¥~¾P,'01' as RESULT, a.LOT_NUMBER as WAFERLOT, a.PRIMARY_TRANSACTION_QUANTITY as IQC¦¬®Æ¼Æ¶q, "+
 					                 "       b.SEGMENT1 as INV_ITEM, REPLACE(b.DESCRIPTION,'"+"\""+"',' inch ') as INV_ITEM_DESC, 'IQC0120070101-106' as WAFERIQCNO, "+
 									 "       'SUPPLIER' as SUPPLIER_SITE_NAME, 'N/A' as TOTAL_YIELD, 'N/A' as WF_TYPE_NAME, 'N/A' as WF_RESIST, "+
 									 "       a.TRANSACTION_UOM_CODE as UOM, a.INVENTORY_ITEM_ID as INV_ITEM_ID, 1 as LINE_NO,to_char(a.DATE_RECEIVED,'YYYY/MM/DD HH24:MI:SS')  as INSPECT_DATE, 'N/A' as WAFER_AMP, "+
@@ -585,25 +585,25 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
         int colCount=md.getColumnCount();
         String colLabel[]=new String[colCount+1];        
         out.println("<TABLE cellSpacing='1' bordercolordark='#996666' cellPadding='1' width='97%' align='center' borderColorLight='#ffffff' border='0'>");      
-        out.println("<TR BGCOLOR='#CCCC99'><TD nowrap><FONT>&nbsp;</TD><TD nowrap><FONT COLOR=BROWN>é …æ¬¡</TD>");        
-        for (int i=1;i<=colCount;i++) // ä¸é¡¯ç¤ºç¬¬ä¸€æ¬„è³‡æ–™, æ•… for ç”± 2é–‹å§‹
+        out.println("<TR BGCOLOR='#CCCC99'><TD nowrap><FONT>&nbsp;</TD><TD nowrap><FONT COLOR=BROWN>¶µ¦¸</TD>");        
+        for (int i=1;i<=colCount;i++) // ¤£Åã¥Ü²Ä¤@Äæ¸ê®Æ, ¬G for ¥Ñ 2¶}©l
         {
 		  if (i==5)
 		  {
 		    if (woType.equals("1"))
 			{
-			 out.println("<TD nowrap><FONT COLOR=BROWN>å‰©é¤˜æ•¸"+"</TD>");
-		     out.println("<TD nowrap><FONT COLOR=BLUE><strong>è£½æˆæ™¶ç²’å“è™Ÿ"+"</strong></TD>");
-			 out.println("<TD nowrap><FONT COLOR=BROWN>å¯ç”¨æ™¶ç‰‡æ•¸"+"</TD>");
-			} else if (woType.equals("2")) // å‰æ®µå·¥ä»¤å†å¤šå¸¶ä¸€åˆ‡å‰²æµç¨‹å¡è™Ÿ
+			 out.println("<TD nowrap><FONT COLOR=BROWN>³Ñ¾l¼Æ"+"</TD>");
+		     out.println("<TD nowrap><FONT COLOR=BLUE><strong>»s¦¨´¹²É«~¸¹"+"</strong></TD>");
+			 out.println("<TD nowrap><FONT COLOR=BROWN>¥i¥Î´¹¤ù¼Æ"+"</TD>");
+			} else if (woType.equals("2")) // «e¬q¤u¥O¦A¦h±a¤@¤Á³Î¬yµ{¥d¸¹
 		           {
-				     out.println("<TD nowrap><FONT COLOR=BROWN>å‰©é¤˜æ•¸"+"</TD>");
-		             //out.println("<TD nowrap><FONT COLOR=BLUE><strong>åˆ‡å‰²æµç¨‹å¡è™Ÿ"+"</strong></TD>");
-			         out.println("<TD nowrap><FONT COLOR=BLUE><strong>è£½æˆåŠæˆå“è™Ÿ"+"</strong></TD>");
-					 out.println("<TD nowrap><FONT COLOR=BROWN>å¯ç”¨æ™¶ç‰‡æ•¸"+"</TD>");
+				     out.println("<TD nowrap><FONT COLOR=BROWN>³Ñ¾l¼Æ"+"</TD>");
+		             //out.println("<TD nowrap><FONT COLOR=BLUE><strong>¤Á³Î¬yµ{¥d¸¹"+"</strong></TD>");
+			         out.println("<TD nowrap><FONT COLOR=BLUE><strong>»s¦¨¥b¦¨«~¸¹"+"</strong></TD>");
+					 out.println("<TD nowrap><FONT COLOR=BROWN>¥i¥Î´¹¤ù¼Æ"+"</TD>");
 		           }
 		  }
-		 //if (i==11) out.println("<TD nowrap><FONT COLOR=BROWN>å‰©é¤˜æ•¸"+"</TD>");
+		 //if (i==11) out.println("<TD nowrap><FONT COLOR=BROWN>³Ñ¾l¼Æ"+"</TD>");
          colLabel[i]=md.getColumnLabel(i);
 		 out.println("<TD nowrap><FONT COLOR=BROWN>"+colLabel[i]+"</TD>");
 		  
@@ -613,7 +613,7 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
       		
         String buttonContent=null;
 		String trBgColor = "";
-		int j = 0; //é …æ¬¡æ•¸
+		int j = 0; //¶µ¦¸¼Æ
 		float sumWOCretedQty = 0;
 		float accAvailQty = 0;
 		float sumWOCretedQty1 = 0;
@@ -625,25 +625,25 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 			String subAsbItemId = "";
 			String subAsbInvItem = "";
 			String subAsbItemDesc = "";
-			String waferLotTmp = null; // æ¯æ¬¡å–åˆ°çš„Lot çµ¦æš«å­˜
-			String cutAsbInvItemTmp = null; // æ¯æ¬¡å–åˆ°çš„è£½æˆå“çµ¦æš«å­˜
-			float cutterWoQty = 0; // åˆ‡å‰²æ®µå·¥ä»¤ç”¢å‡ºæ•¸
+			String waferLotTmp = null; // ¨C¦¸¨ú¨ìªºLot µ¹¼È¦s
+			String cutAsbInvItemTmp = null; // ¨C¦¸¨ú¨ìªº»s¦¨«~µ¹¼È¦s
+			float cutterWoQty = 0; // ¤Á³Î¬q¤u¥O²£¥X¼Æ
         while (rs.next())
         {
 			String chkCutAsbFlag = "N";
 			String chkSubAsbFlag = "N";		
-			String cutWoList = "å·²é–‹åˆ‡å‰²å·¥ä»¤<BR>";
-			String frontWoList = "å·²é–‹åˆ‡å‰²ã€å‰æ®µå·¥ä»¤<BR>";	
-			String IQCItemList = "IQCæ–™è™Ÿè³‡è¨Š<BR>"; 		
+			String cutWoList = "¤w¶}¤Á³Î¤u¥O<BR>";
+			String frontWoList = "¤w¶}¤Á³Î¡B«e¬q¤u¥O<BR>";	
+			String IQCItemList = "IQC®Æ¸¹¸ê°T<BR>"; 		
 		 
-		 // å–åˆ‡å‰²å·¥ä»¤å®Œæˆå“ä¹‹æ–™è™Ÿè³‡è¨Š_èµ·
-		 if (woType.equals("1")) // å¦‚ç‚ºåˆ‡å‰²å·¥ä»¤
+		 // ¨ú¤Á³Î¤u¥O§¹¦¨«~¤§®Æ¸¹¸ê°T_°_
+		 if (woType.equals("1")) // ¦p¬°¤Á³Î¤u¥O
 		 {	    
 			int parentInvItemID = rs.getInt("PARENT_ITEM_ID");
-	        String parentInvItem = rs.getString("PARENT_INV_ITEM");      //  å›å‚³ REQUEST åŸ·è¡Œç‹€æ³
+	        String parentInvItem = rs.getString("PARENT_INV_ITEM");      //  ¦^¶Ç REQUEST °õ¦æª¬ªp
 	        String parentItemDesc = rs.getString("PARENT_ITEM_DESC"); 					  
 				 
-			// å– Item Where Useçš„ Procedure_è¿„ 
+			// ¨ú Item Where Useªº Procedure_¨´ 
 		 
 		   result=rs.getString("RESULT");
 		   waferLot=rs.getString("WAFERLOT");		
@@ -652,7 +652,7 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 		   waferVendor=rs.getString("SUPPLIER_SITE_NAME");
  		   waferQty=rs.getString(4); //rs.getString("RECEIPT_QTY");
 		   IQC_GRAINQTY = rs.getString(5);
-		   waferUom=rs.getString("UOM");  // 2007/01/30 æ™¶ç‰‡çš„å–®ä½,å¦‚ç‚ºPCE, å‰‡è¨ˆç®—æ‰£é™¤å·²é–‹æ•¸éœ€ä»¥æ™¶ç‰‡ç‰‡æ•¸ç‚ºåŸºæº–
+		   waferUom=rs.getString("UOM");  // 2007/01/30 ´¹¤ùªº³æ¦ì,¦p¬°PCE, «h­pºâ¦©°£¤w¶}¼Æ»İ¥H´¹¤ù¤ù¼Æ¬°°ò·Ç
 		   waferYld=rs.getString("TOTAL_YIELD");
 		   waferElect=rs.getString("WF_RESIST");
 		   waferIqcNo=rs.getString("WAFERIQCNO");	
@@ -673,50 +673,50 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 			 }
 			 else if (parentInvItemID==0 || parentInvItem=="" || parentInvItem.equals(""))
 	         {
-	                 cutAsbInvItem="<font color=#CC0033><em>ç„¡å°æ‡‰åˆ‡å‰²å®Œå·¥å“è™Ÿ</em></font>";
+	                 cutAsbInvItem="<font color=#CC0033><em>µL¹ïÀ³¤Á³Î§¹¤u«~¸¹</em></font>";
 			         chkCutAsbFlag = "N";
 	         }
             Statement stateWOCr1=con.createStatement();
 		             String sqlWoCr1 = "select SUM(WAFER_USED_PCE) from YEW_WORKORDER_ALL "+
 		                              " where STATUSID!='050' and WAFER_LOT_NO = '"+rs.getString("WAFERLOT")+"' "+							          
 							          "   and WAFER_IQC_NO ='"+rs.getString("WAFERIQCNO")+"'  ";
-		             if (woType!=null) sqlWoCr1 = sqlWoCr1+ " and WORKORDER_TYPE in ('1','2') "; // ä¾åˆ‡å‰²æˆ–å‰æ®µå·¥ä»¤å€åˆ¥æ‰¾å‡ºå·²é–‹æ•¸é‡åŠIQCæ‰¹è™Ÿ	 
+		             if (woType!=null) sqlWoCr1 = sqlWoCr1+ " and WORKORDER_TYPE in ('1','2') "; // ¨Ì¤Á³Î©Î«e¬q¤u¥O°Ï§O§ä¥X¤w¶}¼Æ¶q¤ÎIQC§å¸¹	 
 		             ResultSet rsWOCr1=stateWOCr1.executeQuery(sqlWoCr1);
 		             if (rsWOCr1.next()) sumWOCretedQty1 = rsWOCr1.getFloat(1);
 					 accAvailQty1 = Float.parseFloat(IQC_GRAINQTY) - sumWOCretedQty1;
 		             rsWOCr1.close();
 		             stateWOCr1.close(); 
-		   if (waferUom.equals("KPC")) // 2007/01/30 æ™¶ç‰‡çš„å–®ä½,å¦‚ç‚ºPCE, å‰‡è¨ˆç®—æ‰£é™¤å·²é–‹æ•¸éœ€ä»¥æ™¶ç‰‡ç‰‡æ•¸ç‚ºåŸºæº–
+		   if (waferUom.equals("KPC")) // 2007/01/30 ´¹¤ùªº³æ¦ì,¦p¬°PCE, «h­pºâ¦©°£¤w¶}¼Æ»İ¥H´¹¤ù¤ù¼Æ¬°°ò·Ç
 		   {		   
-		     // ç´¯åŠ åˆ‡å‰²ã€å‰æ®µå·²é–‹å·¥ä»¤çš„å·²é–‹æ•¸_èµ·(å› ç‚ºIQC æ™¶ç‰‡ä¾†æºç‚ºå…±ç”¨æ–¼åˆ‡å‰²åŠå‰æ®µ)
+		     // ²Ö¥[¤Á³Î¡B«e¬q¤w¶}¤u¥Oªº¤w¶}¼Æ_°_(¦]¬°IQC ´¹¤ù¨Ó·½¬°¦@¥Î©ó¤Á³Î¤Î«e¬q)
 		     Statement stateWOCr=con.createStatement();
 		     String sqlWoCr = "select SUM(WO_QTY*WO_UNIT_QTY) from YEW_WORKORDER_ALL "+
 		                    "   where STATUSID!='050' and WAFER_LOT_NO = '"+rs.getString("WAFERLOT")+"' "+
 							"     and WAFER_IQC_NO in ( select ORDER_NO from YEW_MFG_TRAVELS_ALL where ( PRIMARY_NO='"+rs.getString("WAFERIQCNO")+"' ) )  ";
-		     if (woType!=null) sqlWoCr = sqlWoCr+ " and WORKORDER_TYPE in ('1','2') "; // ä¾åˆ‡å‰²æˆ–å‰æ®µå·¥ä»¤å€åˆ¥æ‰¾å‡ºå·²é–‹æ•¸é‡åŠIQCæ‰¹è™Ÿ	 
+		     if (woType!=null) sqlWoCr = sqlWoCr+ " and WORKORDER_TYPE in ('1','2') "; // ¨Ì¤Á³Î©Î«e¬q¤u¥O°Ï§O§ä¥X¤w¶}¼Æ¶q¤ÎIQC§å¸¹	 
 		     ResultSet rsWOCr=stateWOCr.executeQuery(sqlWoCr);
 		     if (rsWOCr.next()) sumWOCretedQty = rsWOCr.getFloat(1);
 		     rsWOCr.close();
 		     stateWOCr.close(); 	 
-		     // ç´¯åŠ åˆ‡å‰²ã€å‰æ®µå·²é–‹å·¥ä»¤çš„å·²é–‹æ•¸_è¿„(å› ç‚ºIQC æ™¶ç‰‡ä¾†æºç‚ºå…±ç”¨æ–¼åˆ‡å‰²åŠå‰æ®µ)
-		   } else if (waferUom.equals("PCE")) // ä¾†æ–™ç‚ºæ™¶ç‰‡,ä»¥ç‰‡æ•¸æ‰£é™¤å·²é–‹æ•¸
+		     // ²Ö¥[¤Á³Î¡B«e¬q¤w¶}¤u¥Oªº¤w¶}¼Æ_¨´(¦]¬°IQC ´¹¤ù¨Ó·½¬°¦@¥Î©ó¤Á³Î¤Î«e¬q)
+		   } else if (waferUom.equals("PCE")) // ¨Ó®Æ¬°´¹¤ù,¥H¤ù¼Æ¦©°£¤w¶}¼Æ
 		          {
 				     Statement stateWOCr=con.createStatement();
 		             String sqlWoCr = "select SUM(WAFER_USED_PCE) from YEW_WORKORDER_ALL "+
 		                              " where STATUSID!='050' and WAFER_LOT_NO = '"+rs.getString("WAFERLOT")+"' "+							          
 							          "   and WAFER_IQC_NO ='"+rs.getString("WAFERIQCNO")+"'  ";
-		             if (woType!=null) sqlWoCr = sqlWoCr+ " and WORKORDER_TYPE in ('1','2') "; // ä¾åˆ‡å‰²æˆ–å‰æ®µå·¥ä»¤å€åˆ¥æ‰¾å‡ºå·²é–‹æ•¸é‡åŠIQCæ‰¹è™Ÿ	 
+		             if (woType!=null) sqlWoCr = sqlWoCr+ " and WORKORDER_TYPE in ('1','2') "; // ¨Ì¤Á³Î©Î«e¬q¤u¥O°Ï§O§ä¥X¤w¶}¼Æ¶q¤ÎIQC§å¸¹	 
 		             ResultSet rsWOCr=stateWOCr.executeQuery(sqlWoCr);
 		             if (rsWOCr.next()) sumWOCretedQty = rsWOCr.getFloat(1);
 		             rsWOCr.close();
 		             stateWOCr.close(); 	
 				  }
 			 
-			  // åˆ—è¡¨ä¾å» å•†æ‰¹è™Ÿ_èµ·			   
+			  // ¦Cªí¨Ì¼t°Ó§å¸¹_°_			   
 			   Statement stateWOLst=con.createStatement();
-		       String sqlWoLst = "select DISTINCT WO_NO||'(æ•¸é‡='||WO_QTY||',å–®è€—é‡='||WO_UNIT_QTY||')' from YEW_WORKORDER_ALL "+
+		       String sqlWoLst = "select DISTINCT WO_NO||'(¼Æ¶q='||WO_QTY||',³æ¯Ó¶q='||WO_UNIT_QTY||')' from YEW_WORKORDER_ALL "+
 		                         " where STATUSID!='050' and WAFER_LOT_NO = '"+rs.getString("WAFERLOT")+"' "+
-		                         "   and WORKORDER_TYPE in ('1','2') "; // ä¾åˆ‡å‰²å·¥ä»¤åŠå» å•†æ‰¹è™Ÿæ‰¾å‡ºç´¯è¨ˆå·²é–‹æ•¸é‡	 
+		                         "   and WORKORDER_TYPE in ('1','2') "; // ¨Ì¤Á³Î¤u¥O¤Î¼t°Ó§å¸¹§ä¥X²Ö­p¤w¶}¼Æ¶q	 
 		       ResultSet rsWOLst=stateWOLst.executeQuery(sqlWoLst);
 		       while (rsWOLst.next()) 
 			   {
@@ -725,12 +725,12 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 		       rsWOLst.close();
 		       stateWOLst.close();
 			   
-			   if (cutWoList.equals("å·²é–‹åˆ‡å‰²å·¥ä»¤<BR>"))  cutWoList = "å·²é–‹åˆ‡å‰²å·¥ä»¤<BR>ç„¡";
-			// åˆ—è¡¨ä¾å» å•†æ‰¹è™Ÿ_è¿„
+			   if (cutWoList.equals("¤w¶}¤Á³Î¤u¥O<BR>"))  cutWoList = "¤w¶}¤Á³Î¤u¥O<BR>µL";
+			// ¦Cªí¨Ì¼t°Ó§å¸¹_¨´
 			
-			// åˆ—è¡¨å–IQCçš„è³¼è²·æ–™è™Ÿ_èµ·			   
+			// ¦Cªí¨úIQCªºÁÊ¶R®Æ¸¹_°_			   
 			   Statement stateIQCLst=con.createStatement();
-		       String sqlIQCLst = "select INV_ITEM_ID||'(æ–™è™Ÿ='||INV_ITEM||')' from ORADDMAN.TSCIQC_LOTINSPECT_DETAIL  "+
+		       String sqlIQCLst = "select INV_ITEM_ID||'(®Æ¸¹='||INV_ITEM||')' from ORADDMAN.TSCIQC_LOTINSPECT_DETAIL  "+
 		                         " where SUPPLIER_LOT_NO = '"+rs.getString("WAFERLOT")+"' and INSPLOT_NO='"+rs.getString("WAFERIQCNO")+"' "+
 								 "   and LINE_NO= '"+rs.getString("LINE_NO")+"' ";		                      
 		       ResultSet rsIQCLst=stateIQCLst.executeQuery(sqlIQCLst);
@@ -740,37 +740,37 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 			   }
 		       rsIQCLst.close();
 		       stateIQCLst.close();			   
-			   //if (IQCItemList.equals("IQCæ”¶æ–™æ–™è™Ÿ<BR>")) IQCItemList = "å·²é–‹åˆ‡å‰²å·¥ä»¤<BR>ç„¡";
-			// åˆ—è¡¨å–IQCçš„è³¼è²·æ–™è™Ÿ_è¿„
+			   //if (IQCItemList.equals("IQC¦¬®Æ®Æ¸¹<BR>")) IQCItemList = "¤w¶}¤Á³Î¤u¥O<BR>µL";
+			// ¦Cªí¨úIQCªºÁÊ¶R®Æ¸¹_¨´
 
-		   // åˆ‡å‰²å·¥ä»¤çš„ç´¯è¨ˆå¯ç”¨é¤˜é¡
-		   accAvailQty = Float.parseFloat(waferQty) - sumWOCretedQty; // å¯é–‹å–®æ•¸ = IQCæ”¶æ–™æ•¸ - ç´¯ç©å·¥å–®é–‹ç«‹æ•¸
+		   // ¤Á³Î¤u¥Oªº²Ö­p¥i¥Î¾lÃB
+		   accAvailQty = Float.parseFloat(waferQty) - sumWOCretedQty; // ¥i¶}³æ¼Æ = IQC¦¬®Æ¼Æ - ²Ö¿n¤u³æ¶}¥ß¼Æ
 		  
-		   defaultWoQty=Float.toString(accAvailQty); // ç•¶æˆé€™æ¬¡å¯é–‹ç«‹æ•¸    		   
+		   defaultWoQty=Float.toString(accAvailQty); // ·í¦¨³o¦¸¥i¶}¥ß¼Æ    		   
 		   
 		   
-		 } // å–åˆ‡å‰²å·¥ä»¤å®Œæˆå“ä¹‹æ–™è™Ÿè³‡è¨Š_è¿„
-		 else if (woType.equals("2")) // å¦‚ç‚ºå‰æ®µå·¥ä»¤,å‰‡ç”±Item Masterçš„ItemTypeå…ˆå–å¾—æ™¶ç²’æ–™è™Ÿ(1A-XXX),å†å°æ‡‰å–å¾—åŠæˆå“(15ç¢¼)æ–™è™Ÿ
+		 } // ¨ú¤Á³Î¤u¥O§¹¦¨«~¤§®Æ¸¹¸ê°T_¨´
+		 else if (woType.equals("2")) // ¦p¬°«e¬q¤u¥O,«h¥ÑItem MasterªºItemType¥ı¨ú±o´¹²É®Æ¸¹(1A-XXX),¦A¹ïÀ³¨ú±o¥b¦¨«~(15½X)®Æ¸¹
 		      {
 
 				  String prevSubItem = rs.getString("INV_ITEM").substring(0,3);			  
 
-			  // å– Item Where Useçš„ Procedure_è¿„ 
+			  // ¨ú Item Where Useªº Procedure_¨´ 
 			      int parentInvItemID = rs.getInt("PARENT_ITEM_ID");
-	              String parentInvItem = rs.getString("PARENT_INV_ITEM");      //  å›å‚³ REQUEST åŸ·è¡Œç‹€æ³
+	              String parentInvItem = rs.getString("PARENT_INV_ITEM");      //  ¦^¶Ç REQUEST °õ¦æª¬ªp
 	              String parentItemDesc = rs.getString("PARENT_ITEM_DESC"); 			      
 			    
-				  // Step1. å–å°æ‡‰æ™¶ç²’æ–™è™Ÿ(1A-XXXX)
+				  // Step1. ¨ú¹ïÀ³´¹²É®Æ¸¹(1A-XXXX)
 				  
 				  result=rs.getString("RESULT");
 		          waferLot=rs.getString("WAFERLOT");		
 		          invItem=rs.getString("INV_ITEM");
 		          itemDesc=rs.getString("INV_ITEM_DESC");	
 		          waferVendor=rs.getString("SUPPLIER_SITE_NAME");
- 		          waferQty=rs.getString(4); //rs.getString("RECEIPT_QTY"); // IQC æ”¶æ–™æ•¸é‡
+ 		          waferQty=rs.getString(4); //rs.getString("RECEIPT_QTY"); // IQC ¦¬®Æ¼Æ¶q
 				  //out.println("waferQty="+waferQty);
 				  IQC_GRAINQTY = rs.getString(5);
-		          waferUom=rs.getString("UOM"); // 2007/01/30 æ™¶ç‰‡çš„å–®ä½,å¦‚ç‚ºPCE, å‰‡è¨ˆç®—æ‰£é™¤å·²é–‹æ•¸éœ€ä»¥æ™¶ç‰‡ç‰‡æ•¸ç‚ºåŸºæº–
+		          waferUom=rs.getString("UOM"); // 2007/01/30 ´¹¤ùªº³æ¦ì,¦p¬°PCE, «h­pºâ¦©°£¤w¶}¼Æ»İ¥H´¹¤ù¤ù¼Æ¬°°ò·Ç
 		          waferYld=rs.getString("TOTAL_YIELD");
 		          waferElect=rs.getString("WF_RESIST");
 		          waferIqcNo=rs.getString("WAFERIQCNO");	
@@ -779,7 +779,7 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 		          waferLineNo=rs.getString("LINE_NO");
 		          waferAmp=rs.getString("WAFER_AMP");		
 		
-		        // 2006/12/16 Fix By Kerwin  ä»¥ Item Where Used çš„Procedure å–è£½æˆå“è™Ÿè³‡è¨Š
+		        // 2006/12/16 Fix By Kerwin  ¥H Item Where Used ªºProcedure ¨ú»s¦¨«~¸¹¸ê°T
 		        if (parentInvItemID!=0)
 			    {
 				    subAsbItemId = Integer.toString(parentInvItemID) ; 
@@ -797,15 +797,15 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 							//out.println("parentInvItemID="+parentInvItemID);		
 						 }    
 						 
-			   // åˆ—è¡¨ä¾å» å•†æ‰¹è™Ÿ_èµ·
+			   // ¦Cªí¨Ì¼t°Ó§å¸¹_°_
 			 //out.println("RRRR2<BR>");   
 			 
 			   Statement stateWOLst=con.createStatement();
-		       String sqlWoLst = " select DISTINCT WO_NO||'(æ•¸é‡='||WO_QTY||',å–®è€—é‡='||WO_UNIT_QTY||')' "+
+		       String sqlWoLst = " select DISTINCT WO_NO||'(¼Æ¶q='||WO_QTY||',³æ¯Ó¶q='||WO_UNIT_QTY||')' "+
 			                     " from YEW_WORKORDER_ALL "+
 		                         " where STATUSID !='050'  AND WAFER_LOT_NO = '"+rs.getString("WAFERLOT")+"' "+
-								// " and INV_ITEM= '"+parentInvItem+"' "+  // æ­¤æª¢é©—æ‰¹åˆ—è¡¨å·²é–‹åˆ‡å‰²å·¥ä»¤è™Ÿ
-		                         " and WORKORDER_TYPE in ('1', '2') "; // ä¾åˆ‡å‰²å·¥ä»¤åŠå» å•†æ‰¹è™Ÿæ‰¾å‡ºç´¯è¨ˆå·²é–‹æ•¸é‡	 
+								// " and INV_ITEM= '"+parentInvItem+"' "+  // ¦¹ÀËÅç§å¦Cªí¤w¶}¤Á³Î¤u¥O¸¹
+		                         " and WORKORDER_TYPE in ('1', '2') "; // ¨Ì¤Á³Î¤u¥O¤Î¼t°Ó§å¸¹§ä¥X²Ö­p¤w¶}¼Æ¶q	 
 		        //out.println("sqlWoCr="+sqlWoCr+"<BR>");
 		       ResultSet rsWOLst=stateWOLst.executeQuery(sqlWoLst);
 		       while (rsWOLst.next()) 
@@ -815,12 +815,12 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 		       rsWOLst.close();
 		       stateWOLst.close();
 			   
-			   if (frontWoList.equals("å·²é–‹å‰æ®µå·¥ä»¤<BR>")) frontWoList = "å·²é–‹å‰æ®µå·¥ä»¤<BR>ç„¡";			   
-		// åˆ—è¡¨ä¾å» å•†æ‰¹è™Ÿ_è¿„		
+			   if (frontWoList.equals("¤w¶}«e¬q¤u¥O<BR>")) frontWoList = "¤w¶}«e¬q¤u¥O<BR>µL";			   
+		// ¦Cªí¨Ì¼t°Ó§å¸¹_¨´		
 		
-		// åˆ—è¡¨å–IQCçš„è³¼è²·æ–™è™Ÿ_èµ·			   
+		// ¦Cªí¨úIQCªºÁÊ¶R®Æ¸¹_°_			   
 			   Statement stateIQCLst=con.createStatement();
-		       String sqlIQCLst = "select INV_ITEM_ID||'(æ–™è™Ÿ='||INV_ITEM||')' from ORADDMAN.TSCIQC_LOTINSPECT_DETAIL  "+
+		       String sqlIQCLst = "select INV_ITEM_ID||'(®Æ¸¹='||INV_ITEM||')' from ORADDMAN.TSCIQC_LOTINSPECT_DETAIL  "+
 		                          " where SUPPLIER_LOT_NO = '"+rs.getString("WAFERLOT")+"' and INSPLOT_NO='"+rs.getString("WAFERIQCNO")+"' "+
 								  "   and LINE_NO= '"+rs.getString("LINE_NO")+"' ";		                      
 		       //out.println("sqlWoCr="+sqlWoCr+"<BR>");
@@ -831,13 +831,13 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 			   }
 		       rsIQCLst.close();
 		       stateIQCLst.close();			   
-			   //if (IQCItemList.equals("IQCæ”¶æ–™æ–™è™Ÿ<BR>")) IQCItemList = "å·²é–‹åˆ‡å‰²å·¥ä»¤<BR>ç„¡";
-		// åˆ—è¡¨å–IQCçš„è³¼è²·æ–™è™Ÿ_è¿„ 
+			   //if (IQCItemList.equals("IQC¦¬®Æ®Æ¸¹<BR>")) IQCItemList = "¤w¶}¤Á³Î¤u¥O<BR>µL";
+		// ¦Cªí¨úIQCªºÁÊ¶R®Æ¸¹_¨´ 
 			  
 				//out.println("RRRR3<BR>");	  	
 	//out.println("RRRR3<BR>");		
-				//  è‹¥ç‚ºå‰æ®µå·¥ä»¤,å‰‡å˜—è©¦å»å°‹æ‰¾åˆ‡å‰²æµç¨‹å¡è™Ÿ(å·¥ä»¤)_èµ·
-			    if (woType.equals("2")) // è‹¥ç‚ºå‰æ®µå·¥ä»¤,å‰‡å˜—è©¦å»å°‹æ‰¾åˆ‡å‰²æµç¨‹å¡è™Ÿ(å·¥ä»¤)
+				//  ­Y¬°«e¬q¤u¥O,«h¹Á¸Õ¥h´M§ä¤Á³Î¬yµ{¥d¸¹(¤u¥O)_°_
+			    if (woType.equals("2")) // ­Y¬°«e¬q¤u¥O,«h¹Á¸Õ¥h´M§ä¤Á³Î¬yµ{¥d¸¹(¤u¥O)
 		        {
 		           Statement stateFront=con.createStatement();
 		           String sqlFront = " select b.RUNCARD_NO, a.WO_QTY, b.COMPLETION_QTY, a.WO_UNIT_QTY "+
@@ -845,52 +845,52 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 							 "  where a.WO_NO = b.WO_NO and a.WAFER_IQC_NO = '"+rs.getString("WAFERIQCNO")+"' "+
 							 "    and a.WO_NO = c.EXTEND_NO and c.PRIMARY_TYPE = '0' "+
 							 "    and c.PRIMARY_NO = '"+rs.getString("WAFERLOT")+"' and c.EXTEND_TYPE = '1' "+							
-		                     "    and a.WORKORDER_TYPE = '1' and b.STATUSID = '048' "; // æ‰¾åˆ‡å‰²æµç¨‹å¡è™Ÿ(å·¥ä»¤)	
+		                     "    and a.WORKORDER_TYPE = '1' and b.STATUSID = '048' "; // §ä¤Á³Î¬yµ{¥d¸¹(¤u¥O)	
 
 		           ResultSet rsFront=stateFront.executeQuery(sqlFront);
 		           if (rsFront.next()) 
 		           { 
 		              frontRunCard = rsFront.getString(1);
-			          cutterWoQty = rsFront.getFloat(3);// å–åˆ‡å‰²æ®µå·¥ä»¤å®Œå·¥æ•¸ 
-			          if (cutterWoQty==0) cutterWoQty = rsFront.getFloat(2);// å¦‚æœåˆ‡å‰²æ®µæœªå®Œå·¥,å‰‡ä»¥å·¥ä»¤æ•¸ä½œç‚ºè¨ˆç®—åŸºç¤			 
+			          cutterWoQty = rsFront.getFloat(3);// ¨ú¤Á³Î¬q¤u¥O§¹¤u¼Æ 
+			          if (cutterWoQty==0) cutterWoQty = rsFront.getFloat(2);// ¦pªG¤Á³Î¬q¥¼§¹¤u,«h¥H¤u¥O¼Æ§@¬°­pºâ°òÂ¦			 
 			          cutterRCNo=frontRunCard; 
 					  
-			          if (waferUom.equals("KPC")) // 2007/01/30 æ™¶ç‰‡çš„å–®ä½,å¦‚ç‚ºPCE, å‰‡è¨ˆç®—æ‰£é™¤å·²é–‹æ•¸éœ€ä»¥æ™¶ç‰‡ç‰‡æ•¸ç‚ºåŸºæº–
+			          if (waferUom.equals("KPC")) // 2007/01/30 ´¹¤ùªº³æ¦ì,¦p¬°PCE, «h­pºâ¦©°£¤w¶}¼Æ»İ¥H´¹¤ù¤ù¼Æ¬°°ò·Ç
 		              {	
-			             // ç´¯åŠ åˆ‡å‰²ã€å‰æ®µå·²é–‹å·¥ä»¤çš„å·²é–‹æ•¸_èµ·
+			             // ²Ö¥[¤Á³Î¡B«e¬q¤w¶}¤u¥Oªº¤w¶}¼Æ_°_
 		                 Statement stateWOCr=con.createStatement();
 		                 String sqlWoCr = "select SUM(WO_QTY*WO_UNIT_QTY) from YEW_WORKORDER_ALL "+
 		                                  " where STATUSID!='050' and WAFER_LOT_NO = '"+rs.getString("WAFERLOT")+"' "+
 							              "   and WAFER_LINE_NO = '"+rs.getString("LINE_NO")+"'  "+									  
 									      "   and WAFER_IQC_NO in ( select ORDER_NO from YEW_MFG_TRAVELS_ALL where ( PRIMARY_NO='"+rs.getString("WAFERIQCNO")+"' ) ) "; // RuncardNo
-		                 if (woType!=null) sqlWoCr = sqlWoCr+ " and WORKORDER_TYPE ='2' "; // ä¾åˆ‡å‰²æˆ–å‰æ®µå·¥ä»¤å€åˆ¥æ‰¾å‡ºå·²é–‹æ•¸é‡åŠIQCæ‰¹è™Ÿ	 
+		                 if (woType!=null) sqlWoCr = sqlWoCr+ " and WORKORDER_TYPE ='2' "; // ¨Ì¤Á³Î©Î«e¬q¤u¥O°Ï§O§ä¥X¤w¶}¼Æ¶q¤ÎIQC§å¸¹	 
 		                 //out.println("sqlWoCr="+sqlWoCr+"<BR>");
 		                 ResultSet rsWOCr=stateWOCr.executeQuery(sqlWoCr);
 		                 if (rsWOCr.next()) sumWOCretedQty = rsWOCr.getFloat(1);
 		                 rsWOCr.close();
 		                 stateWOCr.close(); 	 
-		                 // ç´¯åŠ åˆ‡å‰²ã€å‰æ®µå·²é–‹å·¥ä»¤çš„å·²é–‹æ•¸_è¿„	
-					   } else if (waferUom.equals("PCE")) // ä¾†æ–™ç‚ºæ™¶ç‰‡,å‰‡ä»¥ç‰‡æ•¸ç´¯è¨ˆç‚ºè¨ˆç®—åŸºç¤
+		                 // ²Ö¥[¤Á³Î¡B«e¬q¤w¶}¤u¥Oªº¤w¶}¼Æ_¨´	
+					   } else if (waferUom.equals("PCE")) // ¨Ó®Æ¬°´¹¤ù,«h¥H¤ù¼Æ²Ö­p¬°­pºâ°òÂ¦
 					          {
-					            // ç´¯åŠ åˆ‡å‰²ã€å‰æ®µå·²é–‹å·¥ä»¤çš„å·²é–‹æ•¸_èµ·
+					            // ²Ö¥[¤Á³Î¡B«e¬q¤w¶}¤u¥Oªº¤w¶}¼Æ_°_
 		                        Statement stateWOCr=con.createStatement();
 		                        String sqlWoCr = "select SUM(WAFER_USED_PCE) from YEW_WORKORDER_ALL "+
 		                                         " where STATUSID!='050' "+
 							                     "   and WAFER_LINE_NO = '"+rs.getString("LINE_NO")+"'  "+									  
 									             "   and WAFER_IQC_NO = '"+rs.getString("WAFERIQCNO")+"'  "; // RuncardNo
-		                        if (woType!=null) sqlWoCr = sqlWoCr+ " and WORKORDER_TYPE in ('1','2') "; // ä¾åˆ‡å‰²æˆ–å‰æ®µå·¥ä»¤å€åˆ¥æ‰¾å‡ºå·²é–‹æ•¸é‡åŠIQCæ‰¹è™Ÿ	 
+		                        if (woType!=null) sqlWoCr = sqlWoCr+ " and WORKORDER_TYPE in ('1','2') "; // ¨Ì¤Á³Î©Î«e¬q¤u¥O°Ï§O§ä¥X¤w¶}¼Æ¶q¤ÎIQC§å¸¹	 
 		                        //out.println("sqlWoCr="+sqlWoCr+"<BR>");
 		                        ResultSet rsWOCr=stateWOCr.executeQuery(sqlWoCr);
 		                        if (rsWOCr.next()) sumWOCretedQty = rsWOCr.getFloat(1);
 		                        rsWOCr.close();
 		                        stateWOCr.close(); 	 
-		                        // ç´¯åŠ åˆ‡å‰²ã€å‰æ®µå·²é–‹å·¥ä»¤çš„å·²é–‹æ•¸_è¿„  
+		                        // ²Ö¥[¤Á³Î¡B«e¬q¤w¶}¤u¥Oªº¤w¶}¼Æ_¨´  
 					          }	
 					Statement stateWOCr1=con.createStatement();
 		             String sqlWoCr1 = "select SUM(WAFER_USED_PCE) from YEW_WORKORDER_ALL "+
 		                              " where STATUSID!='050' and WAFER_LOT_NO = '"+rs.getString("WAFERLOT")+"' "+							          
 							          "   and WAFER_IQC_NO ='"+rs.getString("WAFERIQCNO")+"'  ";
-		             if (woType!=null) sqlWoCr1 = sqlWoCr1+ " and WORKORDER_TYPE in ('1','2') "; // ä¾åˆ‡å‰²æˆ–å‰æ®µå·¥ä»¤å€åˆ¥æ‰¾å‡ºå·²é–‹æ•¸é‡åŠIQCæ‰¹è™Ÿ	 
+		             if (woType!=null) sqlWoCr1 = sqlWoCr1+ " and WORKORDER_TYPE in ('1','2') "; // ¨Ì¤Á³Î©Î«e¬q¤u¥O°Ï§O§ä¥X¤w¶}¼Æ¶q¤ÎIQC§å¸¹	 
 		             ResultSet rsWOCr1=stateWOCr1.executeQuery(sqlWoCr1);
 		             if (rsWOCr1.next()) sumWOCretedQty1 = rsWOCr1.getFloat(1);
 					 accAvailQty1 = Float.parseFloat(IQC_GRAINQTY) - sumWOCretedQty1;
@@ -899,7 +899,7 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
                               //out.println("RRRR3.22<BR>");			 
 		            }
 		            else 
-		            {  // æ‰¾ä¸åˆ°,å‰‡å¯èƒ½æ˜¯ç›´æ¥é¸å–IQC æª¢é©—æ‰¹è™Ÿ,æ•…å‚³å›æ™‚æ‡‰å°‡IQCè™Ÿç¢¼ä½œç‚ºè¿½æº¯åºè™Ÿ
+		            {  // §ä¤£¨ì,«h¥i¯à¬Oª½±µ¿ï¨úIQC ÀËÅç§å¸¹,¬G¶Ç¦^®ÉÀ³±NIQC¸¹½X§@¬°°l·¹§Ç¸¹
 		   
 		                     frontRunCard =rs.getString("WAFERIQCNO");
 			                 cutterRCNo="";
@@ -907,27 +907,27 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 		             String sqlWoCr1 = "select SUM(WAFER_USED_PCE) from YEW_WORKORDER_ALL "+
 		                              " where STATUSID!='050' and WAFER_LOT_NO = '"+rs.getString("WAFERLOT")+"' "+							          
 							          "   and WAFER_IQC_NO ='"+rs.getString("WAFERIQCNO")+"'  ";
-		             if (woType!=null) sqlWoCr1 = sqlWoCr1+ " and WORKORDER_TYPE in ('1','2') "; // ä¾åˆ‡å‰²æˆ–å‰æ®µå·¥ä»¤å€åˆ¥æ‰¾å‡ºå·²é–‹æ•¸é‡åŠIQCæ‰¹è™Ÿ	 
+		             if (woType!=null) sqlWoCr1 = sqlWoCr1+ " and WORKORDER_TYPE in ('1','2') "; // ¨Ì¤Á³Î©Î«e¬q¤u¥O°Ï§O§ä¥X¤w¶}¼Æ¶q¤ÎIQC§å¸¹	 
 		             ResultSet rsWOCr1=stateWOCr1.executeQuery(sqlWoCr1);
 		             if (rsWOCr1.next()) sumWOCretedQty1 = rsWOCr1.getFloat(1);
 					 accAvailQty1 = Float.parseFloat(IQC_GRAINQTY) - sumWOCretedQty1;
 		             rsWOCr1.close();
 		             stateWOCr1.close(); 
-			             if (waferUom.equals("KPC")) // 2007/01/30 æ™¶ç‰‡çš„å–®ä½,å¦‚ç‚ºPCE, å‰‡è¨ˆç®—æ‰£é™¤å·²é–‹æ•¸éœ€ä»¥æ™¶ç‰‡ç‰‡æ•¸ç‚ºåŸºæº–
+			             if (waferUom.equals("KPC")) // 2007/01/30 ´¹¤ùªº³æ¦ì,¦p¬°PCE, «h­pºâ¦©°£¤w¶}¼Æ»İ¥H´¹¤ù¤ù¼Æ¬°°ò·Ç
 						 {
-			                 // ç´¯åŠ åˆ‡å‰²ã€å‰æ®µå·²é–‹å·¥ä»¤çš„å·²é–‹æ•¸_èµ·
+			                 // ²Ö¥[¤Á³Î¡B«e¬q¤w¶}¤u¥Oªº¤w¶}¼Æ_°_
 		                     Statement stateWOCr=con.createStatement();
 		                     String sqlWoCr = "select SUM(WO_QTY*WO_UNIT_QTY) from YEW_WORKORDER_ALL "+
 		                                      " where STATUSID!='050' and WAFER_IQC_NO = '"+rs.getString("WAFERIQCNO")+"' "+
 											  "   and WAFER_LINE_NO = '"+rs.getString("LINE_NO")+"'  "+
 											  "   and WAFER_IQC_NO in ( select ORDER_NO from YEW_MFG_TRAVELS_ALL where PRIMARY_NO='"+rs.getString("WAFERIQCNO")+"' )";
-		                      if (woType!=null) sqlWoCr = sqlWoCr+ " and WORKORDER_TYPE ='2' "; // ä¾åˆ‡å‰²æˆ–å‰æ®µå·¥ä»¤å€åˆ¥æ‰¾å‡ºå·²é–‹æ•¸é‡åŠIQCæ‰¹è™Ÿ	 
+		                      if (woType!=null) sqlWoCr = sqlWoCr+ " and WORKORDER_TYPE ='2' "; // ¨Ì¤Á³Î©Î«e¬q¤u¥O°Ï§O§ä¥X¤w¶}¼Æ¶q¤ÎIQC§å¸¹	 
 		                      //out.println("sqlWoCr="+sqlWoCr+"<BR>");
 		                      ResultSet rsWOCr=stateWOCr.executeQuery(sqlWoCr);
 		                      if (rsWOCr.next()) sumWOCretedQty = rsWOCr.getFloat(1);
 		                      rsWOCr.close();
 		                      stateWOCr.close(); 	 
-		                      // ç´¯åŠ åˆ‡å‰²ã€å‰æ®µå·²é–‹å·¥ä»¤çš„å·²é–‹æ•¸_è¿„	
+		                      // ²Ö¥[¤Á³Î¡B«e¬q¤w¶}¤u¥Oªº¤w¶}¼Æ_¨´	
 						} else if (waferUom.equals("PCE"))
 						       {
 							      Statement stateWOCr=con.createStatement();
@@ -935,7 +935,7 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 		                                           " where STATUSID!='050' "+
 											       "   and WAFER_LINE_NO = '"+rs.getString("LINE_NO")+"'  "+							                      
 											       "   and WAFER_IQC_NO ='"+rs.getString("WAFERIQCNO")+"' ";
-		                          if (woType!=null) sqlWoCr = sqlWoCr+ " and WORKORDER_TYPE in ('1', '2') "; // ä¾åˆ‡å‰²æˆ–å‰æ®µå·¥ä»¤å€åˆ¥æ‰¾å‡ºå·²é–‹æ•¸é‡åŠIQCæ‰¹è™Ÿ	 
+		                          if (woType!=null) sqlWoCr = sqlWoCr+ " and WORKORDER_TYPE in ('1', '2') "; // ¨Ì¤Á³Î©Î«e¬q¤u¥O°Ï§O§ä¥X¤w¶}¼Æ¶q¤ÎIQC§å¸¹	 
 		                          //out.println("sqlWoCr="+sqlWoCr+"<BR>");
 		                          ResultSet rsWOCr=stateWOCr.executeQuery(sqlWoCr);
 		                          if (rsWOCr.next()) sumWOCretedQty = rsWOCr.getFloat(1);
@@ -947,24 +947,24 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 		             rsFront.close();
 		             stateFront.close();	 
 		   
-		          }	// End of if (woType.equals("2")) // è‹¥ç‚ºå‰æ®µå·¥ä»¤,å‰‡å˜—è©¦å»å°‹æ‰¾åˆ‡å‰²æµç¨‹å¡è™Ÿ(å·¥ä»¤)
+		          }	// End of if (woType.equals("2")) // ­Y¬°«e¬q¤u¥O,«h¹Á¸Õ¥h´M§ä¤Á³Î¬yµ{¥d¸¹(¤u¥O)
  //out.println("RRRR4<BR>");		
-				// è‹¥ç‚ºå‰æ®µå·¥ä»¤,å‰‡å˜—è©¦å»å°‹æ‰¾åˆ‡å‰²æµç¨‹å¡è™Ÿ(å·¥ä»¤)_è¿„
-				 //  ******#$$$$&&&&&$$$$$$ è¨ˆç®—å¯ç”¨é¤˜é¡ $$$$$$$$$$$$&&&&&&&&77 ********* //
+				// ­Y¬°«e¬q¤u¥O,«h¹Á¸Õ¥h´M§ä¤Á³Î¬yµ{¥d¸¹(¤u¥O)_¨´
+				 //  ******#$$$$&&&&&$$$$$$ ­pºâ¥i¥Î¾lÃB $$$$$$$$$$$$&&&&&&&&77 ********* //
 		       
-				     accAvailQty = Float.parseFloat(waferQty) - sumWOCretedQty;    // å¯é–‹å–®å‰©é¤˜æ•¸ = IQCæ”¶æ–™æ•¸ - ç´¯ç©å·¥å–®é–‹ç«‹æ•¸
-		             defaultWoQty=Float.toString(accAvailQty); // ç•¶æˆé€™æ¬¡å¯é–‹ç«‹æ•¸		
+				     accAvailQty = Float.parseFloat(waferQty) - sumWOCretedQty;    // ¥i¶}³æ³Ñ¾l¼Æ = IQC¦¬®Æ¼Æ - ²Ö¿n¤u³æ¶}¥ß¼Æ
+		             defaultWoQty=Float.toString(accAvailQty); // ·í¦¨³o¦¸¥i¶}¥ß¼Æ		
 				  	 accAvailQty1 = Float.parseFloat(IQC_GRAINQTY) - sumWOCretedQty1; 	 
-		         //  ******#$$$$&&&&&$$$$$$ è¨ˆç®—å¯ç”¨é¤˜é¡ $$$$$$$$$$$$&&&&&&&&77 ********* //	
+		         //  ******#$$$$&&&&&$$$$$$ ­pºâ¥i¥Î¾lÃB $$$$$$$$$$$$&&&&&&&&77 ********* //	
 					  
-			  } //End of else if (line 568) å¦‚ç‚ºå‰æ®µå·¥ä»¤,å‰‡ç”±Item Masterçš„ItemTypeå–å¾—åŠæˆå“(15ç¢¼)æ–™è™Ÿ
+			  } //End of else if (line 568) ¦p¬°«e¬q¤u¥O,«h¥ÑItem MasterªºItemType¨ú±o¥b¦¨«~(15½X)®Æ¸¹
 		
 		 
 		 //out.print("invItem="+invItem);
       
-		//-----æŠ“å–å­˜åœ¨å·¥å–®æª”è£¡çš„æª¢é©—æ‰¹ ------
+		//-----§ì¨ú¦s¦b¤u³æÀÉ¸ÌªºÀËÅç§å ------
 		String sqla2= "  select wafer_lot_no, wafer_qty from APPS.YEW_WORKORDER_ALL  where STATUSID !='050' and WAFER_LOT_NO = '"+waferIqcNo+"' and WAFER_LINE_NO= '"+waferLineNo+"'";
-		if (woType!=null) sqla2 = sqla2+ " and WORKORDER_TYPE = '"+woType+"' "; // ä¾åˆ‡å‰²æˆ–å‰æ®µå·¥ä»¤å€åˆ¥æ‰¾å‡ºå·²é–‹æ•¸é‡åŠIQCæ‰¹è™Ÿ	    
+		if (woType!=null) sqla2 = sqla2+ " and WORKORDER_TYPE = '"+woType+"' "; // ¨Ì¤Á³Î©Î«e¬q¤u¥O°Ï§O§ä¥X¤w¶}¼Æ¶q¤ÎIQC§å¸¹	    
 	    Statement statea2=con.createStatement();
 		//out.print("sqla1="+sqla2);
         ResultSet rsa2=statea2.executeQuery(sqla2);
@@ -978,7 +978,7 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 	    rsa2.close();
         statea2.close();
 		
-		//æŠ“è¨ˆé‡å–®ä½
+		//§ì­p¶q³æ¦ì
 		String sqla1= " select PRIMARY_UNIT_OF_MEASURE WOUOM  from apps.mtl_system_items_b "+
 					  "  where Organization_id=43  and segment1= '"+invItem +"'";
 
@@ -1009,38 +1009,38 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 		//buttonContent="this.value=sendToMainWindow("+'"'+waferLot+'"'+","+'"'+invItem+'"'+","+'"'+itemDesc+'"'+","+'"'+waferVendor+'"'+","+'"'+waferQty+'"'+","+'"'+waferUom+'"'+","+'"'+waferYld+'"'+","+'"'+waferElect+'"'+","+'"'+waferIqcNo+'"'+","+'"'+waferKind+'"'+","+'"'+itemId+'"'+","+'"'+woUom+'"'+","+'"'+waferLineNo+'"'+")";
 		
 		
-//	if (accAvailQty>0)  // if (accAvailQty>0) å¦‚æœå‰©é¤˜å¯é–‹ç«‹æ•¸ > 0æ‰é¡¯ç¤ºæ­¤åˆ—(è³‡æ–™ä¹Ÿä¸é¡¯ç¤º)
+//	if (accAvailQty>0)  // if (accAvailQty>0) ¦pªG³Ñ¾l¥i¶}¥ß¼Æ > 0¤~Åã¥Ü¦¹¦C(¸ê®Æ¤]¤£Åã¥Ü)
 //	{
 		out.print("<TR BGCOLOR='"+"#D2D0AA"+"'><TD nowrap>");
 		
 		
 		if (accAvailQty<0) accAvailQty = 0;
 		if (accAvailQty1<0) accAvailQty1 = 0;
-		if (accAvailQty>0)  // if (accAvailQty>0) å¦‚æœå‰©é¤˜å¯é–‹ç«‹æ•¸ > 0æ‰é¡¯ç¤ºæ­¤åˆ—(è³‡æ–™é¡¯ç¤º,ä½†ç„¡æ³•é»æ“Šå¸¶å…¥éˆ•)
+		if (accAvailQty>0)  // if (accAvailQty>0) ¦pªG³Ñ¾l¥i¶}¥ß¼Æ > 0¤~Åã¥Ü¦¹¦C(¸ê®ÆÅã¥Ü,¦ıµLªkÂIÀ»±a¤J¶s)
 	    { 
-		  if (waferLot!=waferLotTmp && !waferLot.equals(waferLotTmp) && cutAsbInvItem!=cutAsbInvItemTmp && cutAsbInvItem.equals(cutAsbInvItemTmp)) // æ¯æ¬¡å–åˆ°çš„è£½æˆå“çµ¦æš«å­˜)// å¯èƒ½BOM å°åˆ°ä¸€å€‹ä»¥ä¸Šçš„è£½æˆå“è™Ÿ,è‹¥æ˜¯,å‰‡åºè™Ÿä¸ç´¯åŠ 
+		  if (waferLot!=waferLotTmp && !waferLot.equals(waferLotTmp) && cutAsbInvItem!=cutAsbInvItemTmp && cutAsbInvItem.equals(cutAsbInvItemTmp)) // ¨C¦¸¨ú¨ìªº»s¦¨«~µ¹¼È¦s)// ¥i¯àBOM ¹ï¨ì¤@­Ó¥H¤Wªº»s¦¨«~¸¹,­Y¬O,«h§Ç¸¹¤£²Ö¥[
 		  {
-		     j++; // é …æ¬¡æ•¸
+		     j++; // ¶µ¦¸¼Æ
 		  }
 		%>
-		<INPUT TYPE=button NAME='button' VALUE='å¸¶å…¥' onClick='sendToMainWindow("<%=j%>","<%=waferLot%>","<%=invItem%>","<%=itemDesc%>","<%=waferVendor%>","<%=waferQty%>","<%=waferUom%>","<%=waferYld%>","<%=waferElect%>","<%=waferIqcNo%>","<%=waferKind%>","<%=itemId%>","<%=woUom%>","<%=waferLineNo%>","<%=defaultWoQty%>","<%=woType%>","<%=waferIqcNo%>","<%=chkCutAsbFlag%>","<%=chkSubAsbFlag%>","<%=waferAmp%>")'>
+		<INPUT TYPE=button NAME='button' VALUE='±a¤J' onClick='sendToMainWindow("<%=j%>","<%=waferLot%>","<%=invItem%>","<%=itemDesc%>","<%=waferVendor%>","<%=waferQty%>","<%=waferUom%>","<%=waferYld%>","<%=waferElect%>","<%=waferIqcNo%>","<%=waferKind%>","<%=itemId%>","<%=woUom%>","<%=waferLineNo%>","<%=defaultWoQty%>","<%=woType%>","<%=waferIqcNo%>","<%=chkCutAsbFlag%>","<%=chkSubAsbFlag%>","<%=waferAmp%>")'>
 		<%
-		}  // end of if (accAvailQty>0) å¦‚æœå‰©é¤˜å¯é–‹ç«‹æ•¸ > 0æ‰é¡¯ç¤ºåˆ—(è³‡æ–™é¡¯ç¤º,ä½†ç„¡æ³•é»æ“Šå¸¶å…¥éˆ•)
+		}  // end of if (accAvailQty>0) ¦pªG³Ñ¾l¥i¶}¥ß¼Æ > 0¤~Åã¥Ü¦C(¸ê®ÆÅã¥Ü,¦ıµLªkÂIÀ»±a¤J¶s)
 		else { 
-		     // j--; //ä¸è¨ˆå…¥
-		      out.println("<em><font color='#FF0000'>ç„¡é¤˜é¡</font></em>");
+		     // j--; //¤£­p¤J
+		      out.println("<em><font color='#FF0000'>µL¾lÃB</font></em>");
 			 }
-		if (accAvailQty1<0)  // if (accAvailQty>0) å¦‚æœå‰©é¤˜å¯é–‹ç«‹æ•¸ > 0æ‰é¡¯ç¤ºæ­¤åˆ—(è³‡æ–™é¡¯ç¤º,ä½†ç„¡æ³•é»æ“Šå¸¶å…¥éˆ•)
+		if (accAvailQty1<0)  // if (accAvailQty>0) ¦pªG³Ñ¾l¥i¶}¥ß¼Æ > 0¤~Åã¥Ü¦¹¦C(¸ê®ÆÅã¥Ü,¦ıµLªkÂIÀ»±a¤J¶s)
 	 
 	         { 
-		     // j--; //ä¸è¨ˆå…¥
-		      out.println("<em><font color='#FF0000'>ç„¡é¤˜é¡</font></em>");
+		     // j--; //¤£­p¤J
+		      out.println("<em><font color='#FF0000'>µL¾lÃB</font></em>");
 			 }
 		 out.print("</TD>");		
 		 out.print("<TD>"+j+"</TD>");
-         for (int i=1;i<=colCount;i++) // ä¸é¡¯ç¤ºç¬¬ä¸€æ¬„è³‡æ–™, æ•… for ç”± 2é–‹å§‹
+         for (int i=1;i<=colCount;i++) // ¤£Åã¥Ü²Ä¤@Äæ¸ê®Æ, ¬G for ¥Ñ 2¶}©l
          {
-		    if (i==5) //å‰æ®µå·¥ä»¤å†å¤šå¸¶ä¸€åˆ‡å‰²æµç¨‹å¡è™Ÿ_èµ·
+		    if (i==5) //«e¬q¤u¥O¦A¦h±a¤@¤Á³Î¬yµ{¥d¸¹_°_
 		    {			  
 			  if (woType.equals("1"))
 			  {
@@ -1048,12 +1048,12 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 			    out.println("<TD nowrap><FONT COLOR=BLUE><strong>"+cutAsbInvItem+"</strong></TD>");
 				out.println("<TD nowrap><FONT>"+accAvailQty1+"</TD>");
 			  }
-			  else if (woType.equals("2")) // å‰æ®µå·¥ä»¤å†å¤šå¸¶ä¸€åˆ‡å‰²æµç¨‹å¡è™Ÿ
+			  else if (woType.equals("2")) // «e¬q¤u¥O¦A¦h±a¤@¤Á³Î¬yµ{¥d¸¹
 		           {
 				     out.println("<TD nowrap><FONT>"+accAvailQty+"</TD>");		            
 					 out.println("<TD nowrap><FONT COLOR=BLUE face='Georgia'><strong>"+subAsbInvItem+"</strong></TD>");					                     out.println("<TD nowrap><FONT>"+accAvailQty1+"</TD>");
 		           }
-		    } // å‰æ®µå·¥ä»¤å†å¤šå¸¶ä¸€åˆ‡å‰²æµç¨‹å¡è™Ÿ_è¿„		 
+		    } // «e¬q¤u¥O¦A¦h±a¤@¤Á³Î¬yµ{¥d¸¹_¨´		 
 		 
 		   //if (i==11) out.println("<TD nowrap><FONT>"+accAvailQty+"</TD>");
 		   
@@ -1080,14 +1080,14 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 					           s="<font color=BLUE face='Georgia'><strong><a onMouseOver='this.T_ABOVE=false;this.T_WIDTH=250;this.T_OPACITY=80;return escape("+'"'+IQCItemList+'"'+")'>"+s+"</a></strong></font>";
 					         } 
 						  }
-           out.println("<TD nowrap><FONT>"+s+"</TD>");// åˆ—å°å„æ¬„ä½è³‡æ–™
+           out.println("<TD nowrap><FONT>"+s+"</TD>");// ¦C¦L¦UÄæ¦ì¸ê®Æ
          } //end of for
           out.println("</TR>");	
 		  
-	      //	 }  // end of if (accAvailQty>0) å¦‚æœå‰©é¤˜å¯é–‹ç«‹æ•¸ > 0æ‰é¡¯ç¤ºåˆ—(è³‡æ–™ä¹Ÿä¸é¡¯ç¤º)
+	      //	 }  // end of if (accAvailQty>0) ¦pªG³Ñ¾l¥i¶}¥ß¼Æ > 0¤~Åã¥Ü¦C(¸ê®Æ¤]¤£Åã¥Ü)
 		  // %%%%%%%%%%%%%%%%%%%%%%
-		  waferLotTmp = waferLot; // æ™¶ç‰‡æ‰¹è™Ÿçµ¦æš«å­˜
-		  cutAsbInvItemTmp = cutAsbInvItem; // è£½æˆå“è™Ÿçµ¦æš«å­˜
+		  waferLotTmp = waferLot; // ´¹¤ù§å¸¹µ¹¼È¦s
+		  cutAsbInvItemTmp = cutAsbInvItem; // »s¦¨«~¸¹µ¹¼È¦s
 		  // %%%%%%%%%%%%%%%%%%%%%%
         } //end of while
         out.println("</TABLE>");						
@@ -1104,14 +1104,14 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
   <BR>
  <hr>
   <% 
-    if (woType.equals("2")) // å‰æ®µå·¥ä»¤ä¾†æºç”±åˆ‡å‰²å·¥ä»¤
+    if (woType.equals("2")) // «e¬q¤u¥O¨Ó·½¥Ñ¤Á³Î¤u¥O
     {
   %>
-  <span class="style1">é–‹ç«‹å‰æ®µå·¥ä»¤ç”±åˆ‡å‰²æµç¨‹å¡</span><BR>
+  <span class="style1">¶}¥ß«e¬q¤u¥O¥Ñ¤Á³Î¬yµ{¥d</span><BR>
   <%
     } // end of if (woType.equals("2"))
-    // å°‡ä¾†è‡ªæ–¼æª¢é©—æ‰¹èˆ‡ä¾†è‡ªåˆ‡å‰²æµç¨‹å¡é¸å–®å€åˆ†é–‹ä¾†
-	  // æ­¤ç‚ºä¾†è‡ªæ–¼WIP åˆ‡å‰²å®Œå·¥å·¥ä»¤çš„æ¸…å–®
+    // ±N¨Ó¦Û©óÀËÅç§å»P¨Ó¦Û¤Á³Î¬yµ{¥d¿ï³æ°Ï¤À¶}¨Ó
+	  // ¦¹¬°¨Ó¦Û©óWIP ¤Á³Î§¹¤u¤u¥Oªº²M³æ
 	  try
 	  {
 	        //String sqlCNT = "";
@@ -1120,10 +1120,10 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 		   String orderCutRC = "";
 		   
 	       Statement stateCutRC=con.createStatement();
-           if (woType.equals("2")) // å‰æ®µå·¥ä»¤
+           if (woType.equals("2")) // «e¬q¤u¥O
 		   {	   
-		    // ************* Step1. å…ˆå–å¾—æš«å­˜è¡¨çš„å…§å®¹
-	                     sqlCutRC = " select  DISTINCT IQCD.RESULT, IQCD.SUPPLIER_LOT_NO WAFERLOT, IQCD.GRAINQTY,YRA.RUNCARD_NO as åˆ‡å‰²æµç¨‹å¡è™Ÿ, YRA.COMPLETION_QTY as åˆ‡å‰²æµç¨‹å¡å®Œå·¥æ•¸, "+
+		    // ************* Step1. ¥ı¨ú±o¼È¦sªíªº¤º®e
+	                     sqlCutRC = " select  DISTINCT IQCD.RESULT, IQCD.SUPPLIER_LOT_NO WAFERLOT, IQCD.GRAINQTY,YRA.RUNCARD_NO as ¤Á³Î¬yµ{¥d¸¹, YRA.COMPLETION_QTY as ¤Á³Î¬yµ{¥d§¹¤u¼Æ, "+
 						           // "       ASI.SEGMENT1 as INV_ITEM, REPLACE(ASI.DESCRIPTION,'"+"\""+"',' inch ') as INV_ITEM_DESC, IQCH.INSPLOT_NO as WAFERIQCNO, "+
 								      "       YRA.INV_ITEM as INV_ITEM, REPLACE(YRA.ITEM_DESC,'"+"\""+"',' inch ') as INV_ITEM_DESC, IQCH.INSPLOT_NO as WAFERIQCNO, "+
 		                              "       IQCH.SUPPLIER_SITE_NAME, decode(IQCH.TOTAL_YIELD,null,'N/A','null','N/A',IQCH.TOTAL_YIELD) as TOTAL_YIELD, IQCWT.WF_TYPE_NAME, IQCH.WF_RESIST , "+
@@ -1135,26 +1135,26 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 									  "    ( select /* + orderCutRCED index(a BOM_COMPONENTS_B_N2)  */ COMPONENT_ITEM_ID, b.ASSEMBLY_ITEM_ID, MSIT.SEGMENT1, MSIT.DESCRIPTION, MSIT.INVENTORY_ITEM_ID, MSIT.ITEM_TYPE "+
 				                      "        from BOM_COMPONENTS_B a, BOM_STRUCTURES_B b, MTL_SYSTEM_ITEMS MSIT "+
 					                  "       where a.BILL_SEQUENCE_ID = b.BILL_SEQUENCE_ID and b.ASSEMBLY_ITEM_ID = MSIT.INVENTORY_ITEM_ID "+									  
-							          "         and MSIT.ITEM_TYPE = 'SA' "+ // ItemType æ˜¯ subassembly
-							         // "         and COMPONENT_ITEM_ID = "+cutAsbItemId+" "+ // åŸæ™¶ç²’æ–™è™Ÿ(1A-XXXXXX)
+							          "         and MSIT.ITEM_TYPE = 'SA' "+ // ItemType ¬O subassembly
+							         // "         and COMPONENT_ITEM_ID = "+cutAsbItemId+" "+ // ­ì´¹²É®Æ¸¹(1A-XXXXXX)
 							          "         and b.ORGANIZATION_ID = MSIT.ORGANIZATION_ID "+
-					 		          // "         and b.ORGANIZATION_ID = "+organizationId+"  "+ // 2006/11/10 BOM Resourceä¸èƒ½åˆ†Organization Id
+					 		          // "         and b.ORGANIZATION_ID = "+organizationId+"  "+ // 2006/11/10 BOM Resource¤£¯à¤ÀOrganization Id
 									  "     ) ASI ";					                 
 	      	             whereCutRC= " where IQCWT.WF_TYPE_ID=IQCH.WAFER_TYPE and IQCH.INSPLOT_NO=IQCD.INSPLOT_NO "+
-		                              "   and IQCD.RESULT in ('ACCEPT','WAIVE','01','03') and IQCD.LSTATUSID = '010' "+ // 2006/11/01 åŠ å…¥å·²ç¶“é©—æ”¶å…¥åº«æˆ–ç¶“ç‰¹æ¡å…¥åº«çš„æª¢é©—æ‰¹
+		                              "   and IQCD.RESULT in ('ACCEPT','WAIVE','01','03') and IQCD.LSTATUSID = '010' "+ // 2006/11/01 ¥[¤J¤w¸gÅç¦¬¤J®w©Î¸g¯S±Ä¤J®wªºÀËÅç§å
 									  "   and YWA.WAFER_IQC_NO = IQCH.INSPLOT_NO and YWA.WAFER_LOT_NO = IQCD.SUPPLIER_LOT_NO "+
 									  "   and YWA.WO_NO = YRA.WO_NO "+
-									  "   and YRA.STATUSID = '048' and YWA.WORKORDER_TYPE = '1' "+  // å·²ç¶“å…¥åº«çš„åˆ‡å‰²å·¥ä»¤
+									  "   and YRA.STATUSID = '048' and YWA.WORKORDER_TYPE = '1' "+  // ¤w¸g¤J®wªº¤Á³Î¤u¥O
 									  "   and BCB.BILL_SEQUENCE_ID = BSB.BILL_SEQUENCE_ID and BSB.ASSEMBLY_ITEM_ID = MSI.INVENTORY_ITEM_ID "+
 							         //    "   and substr(MSI.SEGMENT1,3,LENGTH(MSI.SEGMENT1)) = substr(IQCD.INV_ITEM,3,LENGTH(IQCD.INV_ITEM)) "+
-							          "   and BCB.COMPONENT_ITEM_ID = IQCD.INV_ITEM_ID "+ // åŸIQC æ”¶æ–™æ™¶ç‰‡æ–™è™Ÿ(11-XXXXXX)
+							          "   and BCB.COMPONENT_ITEM_ID = IQCD.INV_ITEM_ID "+ // ­ìIQC ¦¬®Æ´¹¤ù®Æ¸¹(11-XXXXXX)
 							          "   and BSB.ORGANIZATION_ID = MSI.ORGANIZATION_ID "+									
-					 		          //  "   and BSB.ORGANIZATION_ID = "+organizationId+" "+ // 2006/11/10 BOM Resourceä¸èƒ½åˆ†Organization Id
+					 		          //  "   and BSB.ORGANIZATION_ID = "+organizationId+" "+ // 2006/11/10 BOM Resource¤£¯à¤ÀOrganization Id
 									  "   and ASI.COMPONENT_ITEM_ID = BSB.ASSEMBLY_ITEM_ID ";
 		                     //   "   and IQCH.INSPLOT_NO = YWA.WAFER_IQC_NO(+) and IQCD.RECEIPT_QTY > ( select sum(WO_QTY) from YEW_WORKorderCutRC_ALL where WAFER_IQC_NO = YWA.WAFER_IQC_NO) "+  //"and IQCD.RECEIPT_QTY > DECODE(YWA.WO_QTY,null,0,YWA.WO_QTY) ";
 		                 orderCutRC = "order by INSPECT_DATE ";
 		
-		                 if (runCardGet!=null && !runCardGet.equals(""))	 whereCutRC = whereCutRC + " and IQCD.SUPPLIER_LOT_NO not in ("+runCardGet+") "; // å…ˆå‰å·²åœ¨æ¸…å–®å…§çš„WaferLotä¸å¾—å‡ºç¾ 
+		                 if (runCardGet!=null && !runCardGet.equals(""))	 whereCutRC = whereCutRC + " and IQCD.SUPPLIER_LOT_NO not in ("+runCardGet+") "; // ¥ı«e¤w¦b²M³æ¤ºªºWaferLot¤£±o¥X²{ 
 		
 		                 // if (invItem!=null && !invItem.equals("")) whereCutRC = whereCutRC + "and IQCD.INV_ITEM = '"+invItem+"' ";
 		                 // if (itemDesc!=null && !itemDesc.equals("")) whereCutRC = whereCutRC + "and INV_ITEM_DESC = '"+itemDesc+"' ";
@@ -1164,7 +1164,7 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 		            
 					     if (supplierLot!=null && !supplierLot.equals("")) whereCutRC = whereCutRC + "and ( IQCD.SUPPLIER_LOT_NO= '"+supplierLot+"' or IQCD.SUPPLIER_LOT_NO like '%"+supplierLot+"%' ) ";
 
-		                 // éœ€è¦æ”¹ç‚ºå–ç‰¹å®šç´¢å¼• SELECT /*+ ORDERED index(a QP_PRICING_ATTRIBUTES_N8)  */						  	 
+		                 // »İ­n§ï¬°¨ú¯S©w¯Á¤Ş SELECT /*+ ORDERED index(a QP_PRICING_ATTRIBUTES_N8)  */						  	 
 		                 if (searchString =="%" || searchString.equals("%") || searchString.equals("--"))			
 		                 {  
 		                    whereCutRC = whereCutRC + " and (IQCD.SUPPLIER_LOT_NO like '%') ";		                   
@@ -1176,8 +1176,8 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 									                 "         OR upper(IQCD.SUPPLIER_LOT_NO) = '"+searchString.toUpperCase()+"' or upper(IQCD.SUPPLIER_LOT_NO) like '"+searchString.toUpperCase()+"%' ) ";
 	                     } 		
 						 
-					 //  å…ˆæŠŠè³‡æ–™å­˜è‡³æš«å­˜æª”_èµ· 	
-					 // *********** Step2. å…ˆç”±ç¬¬ä¸€æ¬¡çš„æ¢ä»¶çµ„åˆå¯«å…¥æš«å­˜è¡¨					 
+					 //  ¥ı§â¸ê®Æ¦s¦Ü¼È¦sÀÉ_°_ 	
+					 // *********** Step2. ¥ı¥Ñ²Ä¤@¦¸ªº±ø¥ó²Õ¦X¼g¤J¼È¦sªí					 
 					 sqlCutRC = sqlCutRC + whereCutRC + orderCutRC;	 
 					 //out.println("sqlCutRC"+sqlCutRC);
 					 
@@ -1185,43 +1185,43 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 				     ResultSet rsPrev=statePrev.executeQuery(sqlCutRC);				   
 				     while (rsPrev.next())
 					 {					 
-					      // å– Item Where Useçš„ Procedure_èµ·
+					      // ¨ú Item Where Useªº Procedure_°_
 				          String prevSubItem = rsPrev.getString("INV_ITEM").substring(0,3);			  
 			              //out.println("prevSubItem ="+prevSubItem);			  
 			              CallableStatement csBOMInfo = con.prepareCall("{call TSC_BOM_IMPLODER_PARENT(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}");
 	                      csBOMInfo.setInt(1,Integer.parseInt(organizationId)); 
 			              csBOMInfo.setString(2,woType);
 	                      csBOMInfo.setInt(3,rsPrev.getInt("INV_ITEM_ID")); 
-	                      csBOMInfo.setString(4,prevSubItem);                 // åŸå­éšæ–™è™Ÿå‰ä¸‰ç¢¼( åˆ¤å®š 11-, 10- æˆ– 1A- )
-	                      csBOMInfo.registerOutParameter(5, Types.INTEGER);   // å›å‚³ Parent Item ID
-	                      csBOMInfo.registerOutParameter(6, Types.VARCHAR);   // å›å‚³ Parent Inv Item
-	                      csBOMInfo.registerOutParameter(7, Types.VARCHAR);   // å›å‚³ Parent Item Desc
-	                      csBOMInfo.registerOutParameter(8, Types.VARCHAR);   // å›å‚³ Error Message
-	                      csBOMInfo.registerOutParameter(9, Types.VARCHAR);   // å›å‚³ Error Code
-						  csBOMInfo.registerOutParameter(10, Types.INTEGER);  // å›å‚³ æ­¤æ¬¡ SEQUENCE ID
-						  csBOMInfo.setString(11,"");                         // å…ˆä¸ä¾Sort Codeå–å› æ¯éšè³‡è¨Š
-						  csBOMInfo.setString(12,rsPrev.getString("WAFERLOT"));   // çµ¦Wafer Lot
-						  csBOMInfo.setString(13,rsPrev.getString("WAFERIQCNO")); // çµ¦IQC No.
-						  csBOMInfo.setInt(14,rsPrev.getInt("LINE_NO"));          // çµ¦IQC Line No.
-						  csBOMInfo.setString(15,"FAKE");                         // é å…ˆæŸ¥è©¢
+	                      csBOMInfo.setString(4,prevSubItem);                 // ­ì¤l¶¥®Æ¸¹«e¤T½X( §P©w 11-, 10- ©Î 1A- )
+	                      csBOMInfo.registerOutParameter(5, Types.INTEGER);   // ¦^¶Ç Parent Item ID
+	                      csBOMInfo.registerOutParameter(6, Types.VARCHAR);   // ¦^¶Ç Parent Inv Item
+	                      csBOMInfo.registerOutParameter(7, Types.VARCHAR);   // ¦^¶Ç Parent Item Desc
+	                      csBOMInfo.registerOutParameter(8, Types.VARCHAR);   // ¦^¶Ç Error Message
+	                      csBOMInfo.registerOutParameter(9, Types.VARCHAR);   // ¦^¶Ç Error Code
+						  csBOMInfo.registerOutParameter(10, Types.INTEGER);  // ¦^¶Ç ¦¹¦¸ SEQUENCE ID
+						  csBOMInfo.setString(11,"");                         // ¥ı¤£¨ÌSort Code¨ú¦^ ¥À¶¥¸ê°T
+						  csBOMInfo.setString(12,rsPrev.getString("WAFERLOT"));   // µ¹Wafer Lot
+						  csBOMInfo.setString(13,rsPrev.getString("WAFERIQCNO")); // µ¹IQC No.
+						  csBOMInfo.setInt(14,rsPrev.getInt("LINE_NO"));          // µ¹IQC Line No.
+						  csBOMInfo.setString(15,"FAKE");                         // ¹w¥ı¬d¸ß
 	                      csBOMInfo.execute();
 			              int parentInvItemID = csBOMInfo.getInt(5);
-	                      String parentInvItem = csBOMInfo.getString(6);     //  å›å‚³ REQUEST åŸ·è¡Œç‹€æ³
+	                      String parentInvItem = csBOMInfo.getString(6);     //  ¦^¶Ç REQUEST °õ¦æª¬ªp
 	                      String parentItemDesc = csBOMInfo.getString(7);
-	                      String errorMessage = csBOMInfo.getString(8);      //  å›å‚³ REQUEST åŸ·è¡Œç‹€æ³
-	                      String errorCode = csBOMInfo.getString(9);         //  å›å‚³ REQUEST åŸ·è¡Œç‹€æ³è¨Šæ¯
-						  int seqID = csBOMInfo.getInt(10);	                 // å›å‚³ æ­¤æ¬¡ SEQUENCE ID
+	                      String errorMessage = csBOMInfo.getString(8);      //  ¦^¶Ç REQUEST °õ¦æª¬ªp
+	                      String errorCode = csBOMInfo.getString(9);         //  ¦^¶Ç REQUEST °õ¦æª¬ªp°T®§
+						  int seqID = csBOMInfo.getInt(10);	                 // ¦^¶Ç ¦¹¦¸ SEQUENCE ID
 	                      //out.println("Procedure : Execute Success Procedure Get Item Where Used !!!<BR>");
 	                      csBOMInfo.close(); 
 					 } // End of while
 					 rsPrev.close();
 					 statePrev.close();
-				    //  å…ˆæŠŠè³‡æ–™å­˜è‡³æš«å­˜æª”_è¿„   	 
+				    //  ¥ı§â¸ê®Æ¦s¦Ü¼È¦sÀÉ_¨´   	 
 					
-					// Step3. å†çµ„åˆä¸€æ¬¡sqlç”±æš«å­˜è¡¨å…§å¾—åˆ°çš„é—œé€£è³‡æ–™_èµ·
+					// Step3. ¦A²Õ¦X¤@¦¸sql¥Ñ¼È¦sªí¤º±o¨ìªºÃö³s¸ê®Æ_°_
 					   
-					// Step3. å†çµ„åˆä¸€æ¬¡sqlç”±æš«å­˜è¡¨å…§å¾—åˆ°çš„é—œé€£è³‡æ–™_è¿„	 		      
-		            sqlCutRC = " select DISTINCT decode(YBI.ORGANIZATION_ID,'326','å…§éŠ·','327','å¤–éŠ·') as å…§å¤–éŠ·, IQC_RESULT as RESULT, IQC_WAFER_LOT as WAFERLOT, YRA.RUNCARD_NO as åˆ‡å‰²æµç¨‹å¡è™Ÿ, YRA.COMPLETION_QTY as åˆ‡å‰²æµç¨‹å¡å®Œå·¥æ•¸, "+
+					// Step3. ¦A²Õ¦X¤@¦¸sql¥Ñ¼È¦sªí¤º±o¨ìªºÃö³s¸ê®Æ_¨´	 		      
+		            sqlCutRC = " select DISTINCT decode(YBI.ORGANIZATION_ID,'326','¤º¾P','327','¥~¾P') as ¤º¥~¾P, IQC_RESULT as RESULT, IQC_WAFER_LOT as WAFERLOT, YRA.RUNCARD_NO as ¤Á³Î¬yµ{¥d¸¹, YRA.COMPLETION_QTY as ¤Á³Î¬yµ{¥d§¹¤u¼Æ, "+
 					           "        QRY_INV_ITEM as INV_ITEM, REPLACE(QRY_ITEM_DESC,'"+"\""+"',' inch ') as INV_ITEM_DESC, IQC_INSP_NO as WAFERIQCNO, "+
 							   "        IQC_VENDOR_NAME as SUPPLIER_SITE_NAME, IQC_YIELD as TOTAL_YIELD, IQC_WAFER_TYPE as WF_TYPE_NAME, IQC_WAFER_RESIST as WF_RESIST , "+
 							   "        IQC_UOM as UOM, QRY_ITEM_ID as INV_ITEM_ID, IQC_LINE_NO as LINE_NO, IQC_INSPDATE as INSPECT_DATE, IQC_WAFER_AMP as WAFER_AMP, "+
@@ -1229,8 +1229,8 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 							   "   from YEW_BOM_IMPL_TEMP YBI,  YEW_WORKORDER_ALL YWA, YEW_RUNCARD_ALL YRA ";
 					whereCutRC =	"  where YBI.ORGANIZATION_ID = "+organizationId+" "+	
 					                "    and YWA.WAFER_LOT_NO = YBI.IQC_WAFER_LOT  "+	
-									"    and YWA.WO_NO = YRA.WO_NO "+  // å·¥ä»¤åŠæµç¨‹å¡
-									"    and YRA.STATUSID >= '048' and YWA.WORKORDER_TYPE = '1' "+  // å·²ç¶“å…¥åº«çš„åˆ‡å‰²å·¥ä»¤														 
+									"    and YWA.WO_NO = YRA.WO_NO "+  // ¤u¥O¤Î¬yµ{¥d
+									"    and YRA.STATUSID >= '048' and YWA.WORKORDER_TYPE = '1' "+  // ¤w¸g¤J®wªº¤Á³Î¤u¥O														 
 							        "    and YBI.QUERY_TYPE = 'FAKE'  "+ //
 							     //   "    and length(YBI.PARENT_INV_ITEM) = 13 and substr(YBI.PARENT_INV_ITEM,1,3) not in ('11-','10-','1A-','1B-')  ";   //20151225 liling add 1B
 							        "    and length(YBI.PARENT_INV_ITEM) IN (13, 16,17 ,20) and substr(YBI.PARENT_INV_ITEM,1,3) not in ('11-','10-','1A-','1B-')  ";   //20151225 liling add 1B 	,20170922 ADD 16	 ,20171005 ADD 20							 
@@ -1243,20 +1243,20 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
         int colCount=md.getColumnCount();
         String colLabel[]=new String[colCount+1];        
         out.println("<TABLE cellSpacing='1' bordercolordark='#996666' cellPadding='1' width='97%' align='left' borderColorLight='#ffffff' border='0'>");      
-        out.println("<TR BGCOLOR='#CCCC99'><TD nowrap><FONT>&nbsp;</TD><TD nowrap><FONT COLOR=BROWN>é …æ¬¡</TD>");        
-        for (int i=1;i<=colCount;i++) // ä¸é¡¯ç¤ºç¬¬ä¸€æ¬„è³‡æ–™, æ•… for ç”± 2é–‹å§‹
+        out.println("<TR BGCOLOR='#CCCC99'><TD nowrap><FONT>&nbsp;</TD><TD nowrap><FONT COLOR=BROWN>¶µ¦¸</TD>");        
+        for (int i=1;i<=colCount;i++) // ¤£Åã¥Ü²Ä¤@Äæ¸ê®Æ, ¬G for ¥Ñ 2¶}©l
         {
 		  if (i==6)
 		  {
-		     if (woType.equals("2")) // å‰æ®µå·¥ä»¤å†å¤šå¸¶ä¸€åˆ‡å‰²æµç¨‹å¡è™Ÿ
+		     if (woType.equals("2")) // «e¬q¤u¥O¦A¦h±a¤@¤Á³Î¬yµ{¥d¸¹
 		     {
-		      //out.println("<TD nowrap><FONT COLOR=BLUE><strong>åˆ‡å‰²æµç¨‹å¡è™Ÿ"+"</strong></TD>");
-			     out.println("<TD nowrap><FONT COLOR=BROWN>å‰©é¤˜æ•¸"+"</TD>");
-			     out.println("<TD nowrap><FONT COLOR=BLUE><strong>è£½æˆåŠæˆå“è™Ÿ"+"</strong></TD>");
-				 out.println("<TD nowrap><FONT COLOR=BROWN>å¯ç”¨æ™¶ç‰‡æ•¸"+"</TD>");
+		      //out.println("<TD nowrap><FONT COLOR=BLUE><strong>¤Á³Î¬yµ{¥d¸¹"+"</strong></TD>");
+			     out.println("<TD nowrap><FONT COLOR=BROWN>³Ñ¾l¼Æ"+"</TD>");
+			     out.println("<TD nowrap><FONT COLOR=BLUE><strong>»s¦¨¥b¦¨«~¸¹"+"</strong></TD>");
+				 out.println("<TD nowrap><FONT COLOR=BROWN>¥i¥Î´¹¤ù¼Æ"+"</TD>");
 		     }
 		  }
-		 //if (i==11) out.println("<TD nowrap><FONT COLOR=BROWN>å‰©é¤˜æ•¸"+"</TD>");
+		 //if (i==11) out.println("<TD nowrap><FONT COLOR=BROWN>³Ñ¾l¼Æ"+"</TD>");
          colLabel[i]=md.getColumnLabel(i);
 		 if (i==4) colLabel[i]="<font color=BLUE face='Georgia'><strong>"+colLabel[i]+"</strong></font>";
 		 out.println("<TD nowrap><FONT COLOR=BROWN>"+colLabel[i]+"</TD>");
@@ -1267,7 +1267,7 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
         String buttonContent=null;
 		String trBgColor = "";
 		String GRAINQTY = null;
-		int j = 0; //é …æ¬¡æ•¸
+		int j = 0; //¶µ¦¸¼Æ
 		float sumWOCretedQty = 0;
 		float accAvailQty = 0;
 		float sumWOCretedQty1 = 0;
@@ -1278,23 +1278,23 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 			String subAsbItemId = "";
 			String subAsbInvItem = "";
 			String subAsbItemDesc = "";
-			String waferLotTmp = null; // æ¯æ¬¡å–åˆ°çš„Lot çµ¦æš«å­˜
+			String waferLotTmp = null; // ¨C¦¸¨ú¨ìªºLot µ¹¼È¦s
 			String cutAsbInvItemTmp = null; 
-			float cutterWoQty = 0; // åˆ‡å‰²æ®µå·¥ä»¤ç”¢å‡ºæ•¸
+			float cutterWoQty = 0; // ¤Á³Î¬q¤u¥O²£¥X¼Æ
         while (rsCutRC.next())
 		{ 
 		    String chkCutAsbFlag = "N";
 			String chkSubAsbFlag = "N";		
-			String IQCItemList = "IQCæ–™è™Ÿè³‡è¨Š<BR>"; 
+			String IQCItemList = "IQC®Æ¸¹¸ê°T<BR>"; 
 			
-			// åˆ—è¡¨ä¾å» å•†æ‰¹è™Ÿ_èµ·
-			   String cutWoList = "å·²é–‹å‰æ®µå·¥ä»¤<BR>";			   
+			// ¦Cªí¨Ì¼t°Ó§å¸¹_°_
+			   String cutWoList = "¤w¶}«e¬q¤u¥O<BR>";			   
 			   Statement stateWOLst=con.createStatement();
-		       String sqlWoLst = "select DISTINCT WO_NO||'(æ•¸é‡='||WO_QTY||',å–®è€—é‡='||WO_UNIT_QTY||')' from YEW_WORKORDER_ALL "+
+		       String sqlWoLst = "select DISTINCT WO_NO||'(¼Æ¶q='||WO_QTY||',³æ¯Ó¶q='||WO_UNIT_QTY||')' from YEW_WORKORDER_ALL "+
 		                         " where STATUSID!='050' and WAFER_LOT_NO = '"+rsCutRC.getString("WAFERLOT")+"' "+
-								//  " and INV_ITEM= '"+rsCutRC.getString("INV_ITEM")+"' "+  // æ­¤æª¢é©—æ‰¹åˆ—è¡¨å·²é–‹åˆ‡å‰²å·¥ä»¤è™Ÿ(ä¸ç®¡é‚£å»ä½œå“ªä¸€å€‹è£½æˆå“,åªè¦ç”¨æ–¼å‰æ®µå·¥ä»¤)
+								//  " and INV_ITEM= '"+rsCutRC.getString("INV_ITEM")+"' "+  // ¦¹ÀËÅç§å¦Cªí¤w¶}¤Á³Î¤u¥O¸¹(¤£ºŞ¨º¥h§@­ş¤@­Ó»s¦¨«~,¥u­n¥Î©ó«e¬q¤u¥O)
 								 " and WO_NO in (select EXTEND_NO from YEW_MFG_TRAVELS_ALL where PRIMARY_NO='"+rsCutRC.getString(3)+"') "+
-		                         " and WORKORDER_TYPE = '2' "; // ä¾åˆ‡å‰²å·¥ä»¤åŠå» å•†æ‰¹è™Ÿæ‰¾å‡ºç´¯è¨ˆå·²é–‹æ•¸é‡	 
+		                         " and WORKORDER_TYPE = '2' "; // ¨Ì¤Á³Î¤u¥O¤Î¼t°Ó§å¸¹§ä¥X²Ö­p¤w¶}¼Æ¶q	 
 		        //out.println("sqlWoCr="+sqlWoCr+"<BR>");
 		       ResultSet rsWOLst=stateWOLst.executeQuery(sqlWoLst);
 		       while (rsWOLst.next()) 
@@ -1303,12 +1303,12 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 			   }
 		       rsWOLst.close();
 		       stateWOLst.close();
-			   if (cutWoList.equals("å·²é–‹å‰æ®µå·¥ä»¤<BR>"))  cutWoList = "å·²é–‹å‰æ®µå·¥ä»¤<BR>ç„¡";
-			// åˆ—è¡¨ä¾å» å•†æ‰¹è™Ÿ_è¿„
+			   if (cutWoList.equals("¤w¶}«e¬q¤u¥O<BR>"))  cutWoList = "¤w¶}«e¬q¤u¥O<BR>µL";
+			// ¦Cªí¨Ì¼t°Ó§å¸¹_¨´
 			
-			// åˆ—è¡¨å–IQCçš„è³¼è²·æ–™è™Ÿ_èµ·			   
+			// ¦Cªí¨úIQCªºÁÊ¶R®Æ¸¹_°_			   
 			   Statement stateIQCLst=con.createStatement();
-		       String sqlIQCLst = "select INV_ITEM_ID||'(æ–™è™Ÿ='||INV_ITEM||')' from ORADDMAN.TSCIQC_LOTINSPECT_DETAIL  "+
+		       String sqlIQCLst = "select INV_ITEM_ID||'(®Æ¸¹='||INV_ITEM||')' from ORADDMAN.TSCIQC_LOTINSPECT_DETAIL  "+
 		                         " where SUPPLIER_LOT_NO = '"+rsCutRC.getString("WAFERLOT")+"' and INSPLOT_NO='"+rsCutRC.getString("WAFERIQCNO")+"' "+
 								 "   and LINE_NO= '"+rsCutRC.getString("LINE_NO")+"' ";		                      
 		       //out.println("sqlWoCr="+sqlWoCr+"<BR>");
@@ -1319,11 +1319,11 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 			   }
 		       rsIQCLst.close();
 		       stateIQCLst.close();			   
-			   //if (IQCItemList.equals("IQCæ”¶æ–™æ–™è™Ÿ<BR>")) IQCItemList = "å·²é–‹åˆ‡å‰²å·¥ä»¤<BR>ç„¡";
-	    	// åˆ—è¡¨å–IQCçš„è³¼è²·æ–™è™Ÿ_è¿„ 
+			   //if (IQCItemList.equals("IQC¦¬®Æ®Æ¸¹<BR>")) IQCItemList = "¤w¶}¤Á³Î¤u¥O<BR>µL";
+	    	// ¦Cªí¨úIQCªºÁÊ¶R®Æ¸¹_¨´ 
 			
 				  int parentInvItemID = rsCutRC.getInt("PARENT_ITEM_ID");
-	              String parentInvItem = rsCutRC.getString("PARENT_INV_ITEM");      //  å›å‚³ REQUEST åŸ·è¡Œç‹€æ³
+	              String parentInvItem = rsCutRC.getString("PARENT_INV_ITEM");      //  ¦^¶Ç REQUEST °õ¦æª¬ªp
 	              String parentItemDesc = rsCutRC.getString("PARENT_ITEM_DESC"); 			
 			
 			      result=rsCutRC.getString("RESULT");
@@ -1333,7 +1333,7 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 		          itemDesc=rsCutRC.getString("INV_ITEM_DESC");	
 		          waferVendor=rsCutRC.getString("SUPPLIER_SITE_NAME");
 				  frontRunCard=rsCutRC.getString(5);
- 		          cutterWoQty=rsCutRC.getFloat(6); //rsCutRC.getFloat("COMPLETION_QTY"); // WO RUNCARD_NO å®Œå·¥æ•¸é‡
+ 		          cutterWoQty=rsCutRC.getFloat(6); //rsCutRC.getFloat("COMPLETION_QTY"); // WO RUNCARD_NO §¹¤u¼Æ¶q
 		          waferUom=rsCutRC.getString("UOM");
 		          waferYld=rsCutRC.getString("TOTAL_YIELD");
 		          waferElect=rsCutRC.getString("WF_RESIST");
@@ -1344,7 +1344,7 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 		          waferAmp=rsCutRC.getString("WAFER_AMP");		  
 				  
 				 
-				   // 2006/12/16 Fix By Kerwin  ä»¥ Item Where Used çš„Procedure å–è£½æˆå“è™Ÿè³‡è¨Š
+				   // 2006/12/16 Fix By Kerwin  ¥H Item Where Used ªºProcedure ¨ú»s¦¨«~¸¹¸ê°T
 		         if (parentInvItemID!=0)
 				 {
 				    subAsbItemId = Integer.toString(parentInvItemID) ; 
@@ -1360,33 +1360,33 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 						 }    	
 						 
 						 
-				  // ç´¯åŠ åˆ‡å‰²å·²é–‹å·¥ä»¤çš„å·²é–‹æ•¸_èµ·
+				  // ²Ö¥[¤Á³Î¤w¶}¤u¥Oªº¤w¶}¼Æ_°_
 				  
 		          Statement stateWOCr=con.createStatement();
 		          String sqlWoCr = "select SUM(WO_QTY*WO_UNIT_QTY) from YEW_WORKORDER_ALL "+
 		                           " where STATUSID!='050' and WAFER_LOT_NO = '"+rsCutRC.getString("WAFERLOT")+"' "+
-							       //"   and INV_ITEM= '"+subAsbInvItem+"' "+  // æ­¤æª¢é©—æ‰¹ä»¥æ–¼å·¥ä»¤æª”é–‹çš„ç´¯è¨ˆæ•¸é‡
+							       //"   and INV_ITEM= '"+subAsbInvItem+"' "+  // ¦¹ÀËÅç§å¥H©ó¤u¥OÀÉ¶}ªº²Ö­p¼Æ¶q
 							       "   and WO_NO in (select EXTEND_NO from YEW_MFG_TRAVELS_ALL where PRIMARY_NO='"+rsCutRC.getString(3)+"')"; // "RUNCARD_NO"
-		          if (woType!=null) sqlWoCr = sqlWoCr+ " and WORKORDER_TYPE in ('2') "; // ä¾åˆ‡å‰²å·¥ä»¤åŠå» å•†æ‰¹è™Ÿæ‰¾å‡ºç´¯è¨ˆå·²é–‹æ•¸é‡	 
+		          if (woType!=null) sqlWoCr = sqlWoCr+ " and WORKORDER_TYPE in ('2') "; // ¨Ì¤Á³Î¤u¥O¤Î¼t°Ó§å¸¹§ä¥X²Ö­p¤w¶}¼Æ¶q	 
 			              
 		          //out.println("<BR>sqlWoCr="+sqlWoCr+"<BR>");
 		          ResultSet rsWOCr=stateWOCr.executeQuery(sqlWoCr);
 		          if (rsWOCr.next()) sumWOCretedQty = rsWOCr.getFloat(1);
 		          rsWOCr.close();
 		          stateWOCr.close(); 	 
-		          // ç´¯åŠ åˆ‡å‰²å·²é–‹å·¥ä»¤çš„å·²é–‹æ•¸_è¿„	
+		          // ²Ö¥[¤Á³Î¤w¶}¤u¥Oªº¤w¶}¼Æ_¨´	
 				  
-				 //  ******#$$$$&&&&&$$$$$$ è¨ˆç®—å¯ç”¨é¤˜é¡ $$$$$$$$$$$$&&&&&&&&77 ********* //
-				   accAvailQty =  cutterWoQty - sumWOCretedQty;  // å¯é–‹å–®å‰©é¤˜æ•¸ = åˆ‡å‰²å®Œå·¥(å·¥ä»¤)æ•¸ - ç´¯ç©å·¥å–®é–‹ç«‹æ•¸
+				 //  ******#$$$$&&&&&$$$$$$ ­pºâ¥i¥Î¾lÃB $$$$$$$$$$$$&&&&&&&&77 ********* //
+				   accAvailQty =  cutterWoQty - sumWOCretedQty;  // ¥i¶}³æ³Ñ¾l¼Æ = ¤Á³Î§¹¤u(¤u¥O)¼Æ - ²Ö¿n¤u³æ¶}¥ß¼Æ
 				   //out.println("cutterWoQty="+cutterWoQty+"<BR>");
 				   //out.println("sumWOCretedQty="+sumWOCretedQty+"<BR>");
 				   //out.println("accAvailQty="+accAvailQty+"<BR>");
-				 //  ******#$$$$&&&&&$$$$$$ è¨ˆç®—å¯ç”¨é¤˜é¡ $$$$$$$$$$$$&&&&&&&&77 ********* //  
+				 //  ******#$$$$&&&&&$$$$$$ ­pºâ¥i¥Î¾lÃB $$$$$$$$$$$$&&&&&&&&77 ********* //  
 				 
-				 defaultWoQty=Float.toString(accAvailQty); // ç•¶æˆé€™æ¬¡å¯é–‹ç«‹æ•¸	
-				 waferQty = Float.toString(cutterWoQty);// æŠŠåˆ‡å‰²å·¥ä»¤æ•¸ç•¶æˆæ­¤æ¬¡æ™¶ç²’æ•¸		 
+				 defaultWoQty=Float.toString(accAvailQty); // ·í¦¨³o¦¸¥i¶}¥ß¼Æ	
+				 waferQty = Float.toString(cutterWoQty);// §â¤Á³Î¤u¥O¼Æ·í¦¨¦¹¦¸´¹²É¼Æ		 
 									 
-				 //æŠ“è¨ˆé‡å–®ä½
+				 //§ì­p¶q³æ¦ì
 		         String sqla1= " select PRIMARY_UNIT_OF_MEASURE WOUOM  from apps.mtl_system_items_b "+
 					           "    where Organization_id=43  and segment1= '"+invItem +"'";
 	             Statement statea1=con.createStatement();
@@ -1399,30 +1399,30 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 				
 				 out.print("<TR BGCOLOR='"+"#D2D0AA"+"'><TD nowrap>");		
 		
-		         if (accAvailQty>0)  // if (accAvailQty>0) å¦‚æœå‰©é¤˜å¯é–‹ç«‹æ•¸ > 0æ‰é¡¯ç¤ºæ­¤åˆ—(è³‡æ–™é¡¯ç¤º,ä½†ç„¡æ³•é»æ“Šå¸¶å…¥éˆ•)
+		         if (accAvailQty>0)  // if (accAvailQty>0) ¦pªG³Ñ¾l¥i¶}¥ß¼Æ > 0¤~Åã¥Ü¦¹¦C(¸ê®ÆÅã¥Ü,¦ıµLªkÂIÀ»±a¤J¶s)
 	             { 
-		            if ( (waferLot!=waferLotTmp && !waferLot.equals(waferLotTmp) ) || (cutAsbInvItem!=cutAsbInvItemTmp && !cutAsbInvItem.equals(cutAsbInvItemTmp)) )// å¯èƒ½BOM å°åˆ°ä¸€å€‹ä»¥ä¸Šçš„è£½æˆå“è™Ÿ,è‹¥æ˜¯,å‰‡åºè™Ÿä¸ç´¯åŠ 
+		            if ( (waferLot!=waferLotTmp && !waferLot.equals(waferLotTmp) ) || (cutAsbInvItem!=cutAsbInvItemTmp && !cutAsbInvItem.equals(cutAsbInvItemTmp)) )// ¥i¯àBOM ¹ï¨ì¤@­Ó¥H¤Wªº»s¦¨«~¸¹,­Y¬O,«h§Ç¸¹¤£²Ö¥[
 		            {
-		                j++; // é …æ¬¡æ•¸
+		                j++; // ¶µ¦¸¼Æ
 		            }
 		            %>
-		             <INPUT TYPE=button NAME='button' VALUE='å¸¶å…¥' onClick='sendToMainWindow("<%=j%>","<%=waferLot%>","<%=invItem%>","<%=itemDesc%>","<%=waferVendor%>","<%=waferQty%>","<%=waferUom%>","<%=waferYld%>","<%=waferElect%>","<%=waferIqcNo%>","<%=waferKind%>","<%=itemId%>","<%=woUom%>","<%=waferLineNo%>","<%=accAvailQty%>","<%=woType%>","<%=frontRunCard%>","<%=chkCutAsbFlag%>","<%=chkSubAsbFlag%>","<%=waferAmp%>")'>
+		             <INPUT TYPE=button NAME='button' VALUE='±a¤J' onClick='sendToMainWindow("<%=j%>","<%=waferLot%>","<%=invItem%>","<%=itemDesc%>","<%=waferVendor%>","<%=waferQty%>","<%=waferUom%>","<%=waferYld%>","<%=waferElect%>","<%=waferIqcNo%>","<%=waferKind%>","<%=itemId%>","<%=woUom%>","<%=waferLineNo%>","<%=accAvailQty%>","<%=woType%>","<%=frontRunCard%>","<%=chkCutAsbFlag%>","<%=chkSubAsbFlag%>","<%=waferAmp%>")'>
 		            <%
-		         }  // end of if (accAvailQty>0) å¦‚æœå‰©é¤˜å¯é–‹ç«‹æ•¸ > 0æ‰é¡¯ç¤ºåˆ—(è³‡æ–™é¡¯ç¤º,ä½†ç„¡æ³•é»æ“Šå¸¶å…¥éˆ•)
+		         }  // end of if (accAvailQty>0) ¦pªG³Ñ¾l¥i¶}¥ß¼Æ > 0¤~Åã¥Ü¦C(¸ê®ÆÅã¥Ü,¦ıµLªkÂIÀ»±a¤J¶s)
 		         else { 
-		                 // j--; //ä¸è¨ˆå…¥
-		                out.println("<em><font color='#FF0000'>ç„¡é¤˜é¡</font></em>");
+		                 // j--; //¤£­p¤J
+		                out.println("<em><font color='#FF0000'>µL¾lÃB</font></em>");
 			          }
 		if (accAvailQty1<0)
-		        out.println("<em><font color='#FF0000'>ç„¡é¤˜é¡</font></em>");
+		        out.println("<em><font color='#FF0000'>µL¾lÃB</font></em>");
 		        out.print("</TD>");		
 		        out.print("<TD>"+j+"</TD>");
-                for (int i=1;i<=colCount;i++) // ä¸é¡¯ç¤ºç¬¬ä¸€æ¬„è³‡æ–™, æ•… for ç”± 2é–‹å§‹
+                for (int i=1;i<=colCount;i++) // ¤£Åã¥Ü²Ä¤@Äæ¸ê®Æ, ¬G for ¥Ñ 2¶}©l
                 {
 				   			
-		            if (i==6) //å‰æ®µå·¥ä»¤å†å¤šå¸¶ä¸€åˆ‡å‰²æµç¨‹å¡è™Ÿ_èµ·
+		            if (i==6) //«e¬q¤u¥O¦A¦h±a¤@¤Á³Î¬yµ{¥d¸¹_°_
 		            {
-			          if (woType.equals("2")) // å‰æ®µå·¥ä»¤å†å¤šå¸¶ä¸€åˆ‡å‰²æµç¨‹å¡è™Ÿ
+			          if (woType.equals("2")) // «e¬q¤u¥O¦A¦h±a¤@¤Á³Î¬yµ{¥d¸¹
 		              { 
 					    if (accAvailQty<0) accAvailQty = 0;
 		                // out.println("<TD nowrap><FONT COLOR=BLUE face='Georgia'><strong>"+cutterRCNo+"</strong></TD>");
@@ -1430,7 +1430,7 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
 					     out.println("<TD nowrap><FONT COLOR=BLUE face='Georgia'><strong>"+subAsbInvItem+"</strong></TD>");
 						 out.println("<TD nowrap><FONT>"+accAvailQty1+"</TD>");
 		              }
-		            } // å‰æ®µå·¥ä»¤å†å¤šå¸¶ä¸€åˆ‡å‰²æµç¨‹å¡è™Ÿ_è¿„		 
+		            } // «e¬q¤u¥O¦A¦h±a¤@¤Á³Î¬yµ{¥d¸¹_¨´		 
 		 
 		           //if (i==11) out.println("<TD nowrap><FONT>"+accAvailQty+"</TD>");
                    String s=(String)rsCutRC.getString(i);
@@ -1447,10 +1447,10 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
                } //end of for
           out.println("</TR>");	
 		  
-	      //	 }  // end of if (accAvailQty>0) å¦‚æœå‰©é¤˜å¯é–‹ç«‹æ•¸ > 0æ‰é¡¯ç¤ºåˆ—(è³‡æ–™ä¹Ÿä¸é¡¯ç¤º)
+	      //	 }  // end of if (accAvailQty>0) ¦pªG³Ñ¾l¥i¶}¥ß¼Æ > 0¤~Åã¥Ü¦C(¸ê®Æ¤]¤£Åã¥Ü)
 		  // %%%%%%%%%%%%%%%%%%%%%%
-		  waferLotTmp = waferLot; // æ™¶ç‰‡æ‰¹è™Ÿçµ¦æš«å­˜
-		  cutAsbInvItemTmp = cutAsbInvItem; // è£½æˆå“è™Ÿçµ¦æš«å­˜ 
+		  waferLotTmp = waferLot; // ´¹¤ù§å¸¹µ¹¼È¦s
+		  cutAsbInvItemTmp = cutAsbInvItem; // »s¦¨«~¸¹µ¹¼È¦s 
 		  // %%%%%%%%%%%%%%%%%%%%%%       
         
 		 
@@ -1468,20 +1468,20 @@ function sendToMainWindow(jNo,waferLot,invItem,itemDesc,waferVendor,waferQty,waf
   %>
   
  <%
-     // ä½œå®ŒæŸ¥è©¢åˆªé™¤æ‰¾ITEM WHERE USER å¯«å…¥çš„TEMP Table_èµ·	         
+     // §@§¹¬d¸ß§R°£§äITEM WHERE USER ¼g¤JªºTEMP Table_°_	         
 	    PreparedStatement stmtDelTmp=con.prepareStatement("delete from APPS.YEW_BOM_IMPL_TEMP ");  			        
 	           stmtDelTmp.executeUpdate();
                stmtDelTmp.close();	 
-     // ä½œå®ŒæŸ¥è©¢åˆªé™¤æ‰¾ITEM WHERE USER å¯«å…¥çš„TEMP Table_è¿„
+     // §@§¹¬d¸ß§R°£§äITEM WHERE USER ¼g¤JªºTEMP Table_¨´
  %>
-<!--%è¡¨å–®åƒæ•¸%-->
+<!--%ªí³æ°Ñ¼Æ%-->
 <input type="hidden" name="WOTYPE" value="<%=woType%>">
 <input type="hidden" name="ORGANIZATIONID" value="<%=organizationId%>">
 <input type="hidden" name="MARKETTYPE" value="<%=marketType%>">
 <input type="hidden" name="WFRESIST" value="<%=waferResist%>">
 <input type="hidden" name="DICESIZE" value="<%=diceSize%>">
 </FORM>
-<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->
+<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
 <%@ include file="/jsp/include/MProcessStatusBarStop.jsp"%>
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
