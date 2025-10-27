@@ -11,13 +11,13 @@ TSCEPriceBook/
 TSCItemList/
 TSCItemListUser/
 report/
-#WEB-INF/*.iml
+WEB-INF/*.iml
 *.static
 
 ### IntelliJ IDEA ###
 .idea/
 *.iws
-*.iml
+#*.iml
 *.ipr
 *.class
 *.TXT
