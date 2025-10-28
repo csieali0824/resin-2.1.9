@@ -11,7 +11,6 @@
     <!--=============以下區段為安全認證機制==========-->
     <%@ include file="/jsp/include/AuthenticationPage.jsp" %>
     <%@ include file="/jsp/include/ConnectionPoolPage.jsp" %>
-    <%@ include file="/jsp/include/PageHeaderSwitch.jsp" %>
     <%@ page import="SalesDRQPageHeaderBean" %>
     <jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
     <jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
