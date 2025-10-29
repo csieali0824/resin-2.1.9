@@ -1681,6 +1681,10 @@ try
 				{
 					message.setHeader("Subject", MimeUtility.encodeText("TSCI/TSCR Backlog List"+remarks, "UTF-8", null));
 				}
+				else if (ACTTYPE.equals("TSCE"))
+				{
+					message.setHeader("Subject", MimeUtility.encodeText("TSCE Outstanding Order Report"+remarks, "UTF-8", null));
+				}
 				else
 				{
 					message.setHeader("Subject", MimeUtility.encodeText(ACTTYPE+"未交訂單明細"+remarks, "UTF-8", null));
