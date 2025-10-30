@@ -1,14 +1,14 @@
-<!-- 20160219 Peggy,é¡¯ç¤ºä¸Šæµ·å…§éŠ·012 end customer-->
-<!-- 20160222 Peggy,yewå›Tè¨‚å–®1141,1131,1121æª¢æŸ¥ITEMæ˜¯å¦ASSIGN Y2-->
+<!-- 20160219 Peggy,Åã¥Ü¤W®ü¤º¾P012 end customer-->
+<!-- 20160222 Peggy,yew¦^T­q³æ1141,1131,1121ÀË¬dITEM¬O§_ASSIGN Y2-->
 <!-- 20170216 Peggy,add sales region for bi-->
 <!-- 20171221 Peggy,TSCH-HK RFQ region code from 002 change to 018-->
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.math.BigDecimal,java.text.DecimalFormat,java.text.*"%>
+<%@ page contentType="text/html; charset=big5" language="java" import="java.sql.*,java.math.BigDecimal,java.text.DecimalFormat,java.text.*"%>
 <html>
 <head>
 <title>Sales Delivery Request Data Edit Page for Generating Sales Order</title>
-<!--=============ä»¥ä¸‹å€æ®µç‚ºå®‰å…¨èªè­‰æ©Ÿåˆ¶==========-->
+<!--=============¥H¤U°Ï¬q¬°¦w¥ş»{ÃÒ¾÷¨î==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—é€£çµæ± ==========-->
+<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ page import="CheckBoxBean,ComboBoxBean,Array2DimensionInputBean"%>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
@@ -79,19 +79,19 @@ document.onclick=function(e)
 
 function submitCheck(ms1,ms2,ms3,ms4,ms5,ms6,ms7,ms8,ms9,ms10,ms11)
 {  
-	// å…ˆå¡ä½æœªé¸ä»»ä½•å‹•ä½œæŒ‰ä¸‹Submit ...
-	if (document.DISPLAYREPAIR.ACTIONID.value=="--" || document.DISPLAYREPAIR.ACTIONID.value==null) // è¡¨ç¤ºç„¡é¸æ“‡ä»»ä½•å‹•ä½œé»æ“Š Submitéˆ•
+	// ¥ı¥d¦í¥¼¿ï¥ô¦ó°Ê§@«ö¤USubmit ...
+	if (document.DISPLAYREPAIR.ACTIONID.value=="--" || document.DISPLAYREPAIR.ACTIONID.value==null) // ªí¥ÜµL¿ï¾Ü¥ô¦ó°Ê§@ÂIÀ» Submit¶s
    	{  
 		alert(ms2);   
      	return(false);	  	
    	} 
-	else if (document.DISPLAYREPAIR.ACTIONID.value!="012")  //è¡¨ç¤ºå‹•ä½œæ¸…å–®ä¸ç‚ºCOMPLETE,å¯èƒ½æ˜¯è‡ªè¡Œè¼¸å…¥LINE_ID,å› æ­¤éœ€å¡ä½
-	{ //å…ˆå¡ä½æœªé¸ä»»ä½•å‹•ä½œæŒ‰ä¸‹Submit ...
+	else if (document.DISPLAYREPAIR.ACTIONID.value!="012")  //ªí¥Ü°Ê§@²M³æ¤£¬°COMPLETE,¥i¯à¬O¦Û¦æ¿é¤JLINE_ID,¦]¦¹»İ¥d¦í
+	{ //¥ı¥d¦í¥¼¿ï¥ô¦ó°Ê§@«ö¤USubmit ...
     	alert("Error !!!\n Don't try key-in invalid line No in this page...");   
         return(false);
     }   
    //     
-   	if (document.DISPLAYREPAIR.ACTIONID.value=="012")  //è¡¨ç¤ºç‚ºç¢ºèªé€å‡ºç”¢ç”Ÿè¨‚å–®å‹•ä½œ
+   	if (document.DISPLAYREPAIR.ACTIONID.value=="012")  //ªí¥Ü¬°½T»{°e¥X²£¥Í­q³æ°Ê§@
    	{ 
     	flag=confirm(ms1);      
     	if (flag==false)
@@ -99,53 +99,53 @@ function submitCheck(ms1,ms2,ms3,ms4,ms5,ms6,ms7,ms8,ms9,ms10,ms11)
 			return(false);
 		}
 		else
-        {   // è‹¥ç¢ºèªé€å‡ºå†æª¢æŸ¥
-        	if (document.DISPLAYREPAIR.ACTIONID.value=="--" || document.DISPLAYREPAIR.ACTIONID.value==null) // è¡¨ç¤ºç„¡é¸æ“‡ä»»ä½•å‹•ä½œé»æ“Š Submitéˆ•
+        {   // ­Y½T»{°e¥X¦AÀË¬d
+        	if (document.DISPLAYREPAIR.ACTIONID.value=="--" || document.DISPLAYREPAIR.ACTIONID.value==null) // ªí¥ÜµL¿ï¾Ü¥ô¦ó°Ê§@ÂIÀ» Submit¶s
           	{ 
            		alert(ms2);   
            		return(false);
           	} 
-          	if (document.DISPLAYREPAIR.FIRMORDERTYPE.value=="--" || document.DISPLAYREPAIR.FIRMORDERTYPE.value==null) // æœªé¸æ“‡è¨‚å–®é¡å‹
+          	if (document.DISPLAYREPAIR.FIRMORDERTYPE.value=="--" || document.DISPLAYREPAIR.FIRMORDERTYPE.value==null) // ¥¼¿ï¾Ü­q³æÃş«¬
           	{ 
            		alert(ms3);   
            		return(false);
           	} 
-          	if (document.DISPLAYREPAIR.FIRMSOLDTOORG.value=="--" || document.DISPLAYREPAIR.FIRMSOLDTOORG.value==null) // æœªé¸æ“‡å®¢æˆ¶
+          	if (document.DISPLAYREPAIR.FIRMSOLDTOORG.value=="--" || document.DISPLAYREPAIR.FIRMSOLDTOORG.value==null) // ¥¼¿ï¾Ü«È¤á
           	{ 
            		alert(ms4);   
            		return(false);
           	}
-          	if (document.DISPLAYREPAIR.FIRMPRICELIST.value=="--" || document.DISPLAYREPAIR.FIRMPRICELIST.value==null) // æœªé¸æ“‡åƒ¹æ ¼è¡¨
+          	if (document.DISPLAYREPAIR.FIRMPRICELIST.value=="--" || document.DISPLAYREPAIR.FIRMPRICELIST.value==null) // ¥¼¿ï¾Ü»ù®æªí
           	{ 
            		alert(ms5);   
            		return(false);
           	} 
-          	if (document.DISPLAYREPAIR.SHIPTOORG.value=="" || document.DISPLAYREPAIR.SHIPTOORG.value==null) // æœªé¸æ“‡å‡ºè²¨åœ°
+          	if (document.DISPLAYREPAIR.SHIPTOORG.value=="" || document.DISPLAYREPAIR.SHIPTOORG.value==null) // ¥¼¿ï¾Ü¥X³f¦a
           	{ 
            		alert(ms6);   
            		return(false);
           	}
-          	if (document.DISPLAYREPAIR.BILLTO.value=="" || document.DISPLAYREPAIR.BILLTO.value==null) // æœªé¸æ“‡ç«‹å¸³åœ°
+          	if (document.DISPLAYREPAIR.BILLTO.value=="" || document.DISPLAYREPAIR.BILLTO.value==null) // ¥¼¿ï¾Ü¥ß±b¦a
           	{ 
            		alert(ms7);   
            		return(false);
           	} 
-          	if (document.DISPLAYREPAIR.PAYTERMID.value=="" || document.DISPLAYREPAIR.PAYTERMID.value==null) // æœªé¸æ“‡ä»˜æ¬¾æ¢ä»¶
+          	if (document.DISPLAYREPAIR.PAYTERMID.value=="" || document.DISPLAYREPAIR.PAYTERMID.value==null) // ¥¼¿ï¾Ü¥I´Ú±ø¥ó
           	{ 
            		alert(ms8);   
            		return(false);
           	}
-          	if (document.DISPLAYREPAIR.FOBPOINT.value=="" || document.DISPLAYREPAIR.FOBPOINT.value==null) // æœªé¸æ“‡FOB
+          	if (document.DISPLAYREPAIR.FOBPOINT.value=="" || document.DISPLAYREPAIR.FOBPOINT.value==null) // ¥¼¿ï¾ÜFOB
           	{ 
            		alert(ms9);   
            		return(false);
           	}
-          	if (document.DISPLAYREPAIR.SHIPMETHOD.value=="" || document.DISPLAYREPAIR.SHIPMETHOD.value==null) // æœªé¸æ“‡å‡ºè²¨æ–¹å¼
+          	if (document.DISPLAYREPAIR.SHIPMETHOD.value=="" || document.DISPLAYREPAIR.SHIPMETHOD.value==null) // ¥¼¿ï¾Ü¥X³f¤è¦¡
           	{ 
            		alert(ms10);   
            		return(false);
           	}  
-		  	// è‹¥æœªé¸æ“‡ä»»ä¸€Line ä½œå‹•ä½œ,å‰‡è­¦å‘Š
+		  	// ­Y¥¼¿ï¾Ü¥ô¤@Line §@°Ê§@,«hÄµ§i
           	var chkFlag="FALSE";
 			for (i=0;i<document.DISPLAYREPAIR.CHKFLAG.length;i++)
 			{
@@ -168,7 +168,7 @@ function submitCheck(ms1,ms2,ms3,ms4,ms5,ms6,ms7,ms8,ms9,ms10,ms11)
 
 function submitCheckProcess(URL,ms1,ms2,ms3,ms4,ms5,ms6,ms7,ms8,ms9,ms10,ms11,ms12)
 {
-	//add by Peggy 20120113 check linetypeæ˜¯å¦æ­£ç¢º
+	//add by Peggy 20120113 check linetype¬O§_¥¿½T
 	if (document.DISPLAYREPAIR.ACTIONID.value!="013")
 	{
 		var num =1;
@@ -215,7 +215,7 @@ function submitCheckProcess(URL,ms1,ms2,ms3,ms4,ms5,ms6,ms7,ms8,ms9,ms10,ms11,ms
 				if (!isExit)
 				{
 					alert("LINE TYPE:"+slinetype+" is not available!!"); 
-					document.DISPLAYREPAIR.ACTIONID.value = "--"; //ç‚ºäº†ç¢ºä¿submitå‰,arrayç‰©ä»¶ä¸Šçš„å€¼éƒ½æœ‰è¢«getåˆ°,å¿…é ˆå¼·é€¼é‡é¸ACTION
+					document.DISPLAYREPAIR.ACTIONID.value = "--"; //¬°¤F½T«Osubmit«e,arrayª«¥ó¤Wªº­È³£¦³³Qget¨ì,¥²¶·±j¹G­«¿ïACTION
 					document.DISPLAYREPAIR.elements["SLINETYPE"+i].focus();
 					return(false);
 				}
@@ -224,24 +224,24 @@ function submitCheckProcess(URL,ms1,ms2,ms3,ms4,ms5,ms6,ms7,ms8,ms9,ms10,ms11,ms
 				var regex = /^-?\d+\.?\d*?$/;
 				if (sellingPrice.match(regex)==null) 
 				{ 
-					alert("Line:"+(i+1)+" å–®åƒ¹å¿…é ˆæ˜¯æ•¸å€¼å‹æ…‹!"); 
+					alert("Line:"+(i+1)+" ³æ»ù¥²¶·¬O¼Æ­È«¬ºA!"); 
 					return false;
 				}
 				if (TSAREANO=="002" &&  (sellingPrice==""||sellingPrice==null||sellingPrice=="0"||sellingPrice=="0.0"))
 				{
-					alert("Line:"+(i+1)+" å–®åƒ¹å¿…é ˆè¼¸å…¥!"); 
+					alert("Line:"+(i+1)+" ³æ»ù¥²¶·¿é¤J!"); 
 					return false;
 				}  
 				//add by Peggy 20120712
 				var editcode = document.DISPLAYREPAIR.elements["EDITCODE"+i].value;
-				if (editcode =="R") //é€€ä»¶
+				if (editcode =="R") //°h¥ó
 				{
-					alert("Line:"+ (i+1) +" è¢«å·¥å» é€€ä»¶,ä¸å…è¨±ç”ŸæˆMO!!!");
+					alert("Line:"+ (i+1) +" ³Q¤u¼t°h¥ó,¤£¤¹³\¥Í¦¨MO!!!");
 					return false;
 				}
 				if (document.DISPLAYREPAIR.elements["REASON_CODE"+i].value!="08" && document.DISPLAYREPAIR.elements["PCN_FLAG"+i].value=="Y") //add by Peggy 20230208
 				{
-					alert("Line:"+ (i+1) +" PCN/PDN/IDæ–™è™Ÿ,ä¸å…è¨±ç”ŸæˆMO!!!");
+					alert("Line:"+ (i+1) +" PCN/PDN/ID®Æ¸¹,¤£¤¹³\¥Í¦¨MO!!!");
 					return false;				
 				}
 				//add by peggy 20130628
@@ -253,7 +253,7 @@ function submitCheckProcess(URL,ms1,ms2,ms3,ms4,ms5,ms6,ms7,ms8,ms9,ms10,ms11,ms
 					{
 						if (document.DISPLAYREPAIR.CHKFLAG[j].checked && custpo != document.getElementById("CUSTPO_"+j).innerHTML)
 						{
-							alert("Line:"+ (j+1) +" å®¢æˆ¶è¨‚è³¼å–®è™Ÿä¸åŒ,ä¸å¯ç”ŸæˆåŒå¼µMO!");
+							alert("Line:"+ (j+1) +" «È¤á­qÁÊ³æ¸¹¤£¦P,¤£¥i¥Í¦¨¦P±iMO!");
 							return false;
 						}
 					}
@@ -268,7 +268,7 @@ function submitCheckProcess(URL,ms1,ms2,ms3,ms4,ms5,ms6,ms7,ms8,ms9,ms10,ms11,ms
 						{
 							if ( end_customer_ship_to != document.DISPLAYREPAIR.elements["END_CUST_SHIP_TO_"+j].value)
 							{
-								alert("Line:"+ (j+1) +" End Customer Ship toä¸åŒ,ä¸å¯ç”ŸæˆåŒå¼µMO!");
+								alert("Line:"+ (j+1) +" End Customer Ship to¤£¦P,¤£¥i¥Í¦¨¦P±iMO!");
 								return false;
 							}
 						}
@@ -285,7 +285,7 @@ function submitCheckProcess(URL,ms1,ms2,ms3,ms4,ms5,ms6,ms7,ms8,ms9,ms10,ms11,ms
 						{
 							if ( bi_region != document.DISPLAYREPAIR.elements["BI_REGION_"+j].value)
 							{
-								alert("Line:"+ (j+1) +" BI Regionä¸åŒ,ä¸å¯ç”ŸæˆåŒå¼µMO!");
+								alert("Line:"+ (j+1) +" BI Region¤£¦P,¤£¥i¥Í¦¨¦P±iMO!");
 								return false;
 							}
 						}
@@ -294,14 +294,14 @@ function submitCheckProcess(URL,ms1,ms2,ms3,ms4,ms5,ms6,ms7,ms8,ms9,ms10,ms11,ms
 				//add by peggy 20160222
 				if (document.DISPLAYREPAIR.elements["UNASSIGNORG"+i].value!="")
 				{
-					alert("Line:"+ (i+1) +" Itemæœªassignåˆ°"+document.DISPLAYREPAIR.elements["UNASSIGNORG"+i].value+"!");
+					alert("Line:"+ (i+1) +" Item¥¼assign¨ì"+document.DISPLAYREPAIR.elements["UNASSIGNORG"+i].value+"!");
 					return false;
 				}				
 			}
 		}
 		if (chkcnt==0)
 		{
-			alert("è«‹å‹¾é¸é …æ¬¡!");
+			alert("½Ğ¤Ä¿ï¶µ¦¸!");
 			return false;		
 		}
 
@@ -310,19 +310,19 @@ function submitCheckProcess(URL,ms1,ms2,ms3,ms4,ms5,ms6,ms7,ms8,ms9,ms10,ms11,ms
 		//alert(end_customer_ship_to +"  "+document.DISPLAYREPAIR.SHIPTOORG.value);
 		if (document.DISPLAYREPAIR.SALESAREANO.value=="012" && document.DISPLAYREPAIR.SHIPTOORG.value != end_customer_ship_to && end_customer_ship_to != null && end_customer_ship_to!="")
 		{
-			alert("å‡ºè²¨åœ°å€èˆ‡End Customer Ship toä¸ç¬¦,è«‹é‡æ–°ç¢ºèª!");
+			alert("¥X³f¦a§}»PEnd Customer Ship to¤£²Å,½Ğ­«·s½T»{!");
 			return false;
 		}
 		//add by Peggy 20130701
 		if (chkcnt >1 && (document.DISPLAYREPAIR.FIRMSOLDTOORG.value=="2016" || document.DISPLAYREPAIR.FIRMSOLDTOORG.value=="7911" || document.DISPLAYREPAIR.FIRMSOLDTOORG.value=="18615"  || document.DISPLAYREPAIR.FIRMSOLDTOORG.value=="47272"  || document.DISPLAYREPAIR.FIRMSOLDTOORG.value=="79272" || document.DISPLAYREPAIR.FIRMSOLDTOORG.value=="1238" || document.DISPLAYREPAIR.FIRMSOLDTOORG.value=="4377"  || document.DISPLAYREPAIR.FIRMSOLDTOORG.value=="537292" || document.DISPLAYREPAIR.FIRMSOLDTOORG.value=="6293"))
 		{
-			alert("æ­¤å®¢æˆ¶è¦å®šä¸€å€‹ITEMç”Ÿæˆä¸€ç­†MO!");
+			alert("¦¹«È¤á³W©w¤@­ÓITEM¥Í¦¨¤@µ§MO!");
 			return false;
 		}
 		//add by Peggy 20190401
 		//if ((document.DISPLAYREPAIR.FIRMORDERTYPE.value=="1175" || document.DISPLAYREPAIR.FIRMORDERTYPE.value=="1322") && slow_moving_cnt>0)
 		//{
-		//	alert("æ¶ˆåŒ–åº«å­˜çš„è¨‚å–®ä¸å¯ä¸‹1156æˆ–1142è¨‚å–®!");
+		//	alert("®ø¤Æ®w¦sªº­q³æ¤£¥i¤U1156©Î1142­q³æ!");
 		//	return false;		
 		//}
 		if (document.DISPLAYREPAIR.FIRMORDERTYPE.value == "1763" && document.DISPLAYREPAIR.SALES_GROUP_ID.value !="509")  //add by Peggy 20210528
@@ -345,7 +345,7 @@ function submitCheckProcess(URL,ms1,ms2,ms3,ms4,ms5,ms6,ms7,ms8,ms9,ms10,ms11,ms
 		}
 	}
      
-	if (document.DISPLAYREPAIR.ACTIONID.value=="--" || document.DISPLAYREPAIR.ACTIONID.value==null) // è¡¨ç¤ºç„¡é¸æ“‡ä»»ä½•å‹•ä½œé»æ“Š Submitéˆ•
+	if (document.DISPLAYREPAIR.ACTIONID.value=="--" || document.DISPLAYREPAIR.ACTIONID.value==null) // ªí¥ÜµL¿ï¾Ü¥ô¦ó°Ê§@ÂIÀ» Submit¶s
    	{  
 		alert(ms2);   
      	return(false);	  	
@@ -353,58 +353,58 @@ function submitCheckProcess(URL,ms1,ms2,ms3,ms4,ms5,ms6,ms7,ms8,ms9,ms10,ms11,ms
 	else
     {
 		if (document.DISPLAYREPAIR.ACTIONID.value=="012" || document.DISPLAYREPAIR.ACTIONID.value=="030" || document.DISPLAYREPAIR.ACTIONID.value=="013")  
-        {  //è¡¨ç¤ºç‚ºç¢ºèªé€å‡ºç”¢ç”Ÿè¨‚å–®å‹•ä½œ(012) æˆ–ç¢ºèªåˆä½µå·²å­˜åœ¨MOå–®(030)
+        {  //ªí¥Ü¬°½T»{°e¥X²£¥Í­q³æ°Ê§@(012) ©Î½T»{¦X¨Ö¤w¦s¦bMO³æ(030)
         	flag=confirm(ms1);      
             if (flag==false) return(false);
 	        else
             {  
-				if (document.DISPLAYREPAIR.FIRMORDERTYPE.value=="--" || document.DISPLAYREPAIR.FIRMORDERTYPE.value==null || document.DISPLAYREPAIR.FIRMORDERTYPE.value=="null") // æœªé¸æ“‡è¨‚å–®é¡å‹
+				if (document.DISPLAYREPAIR.FIRMORDERTYPE.value=="--" || document.DISPLAYREPAIR.FIRMORDERTYPE.value==null || document.DISPLAYREPAIR.FIRMORDERTYPE.value=="null") // ¥¼¿ï¾Ü­q³æÃş«¬
                 { 
                 	alert(ms3);   
                     return(false);
                 } 
-				if (document.DISPLAYREPAIR.FIRMSOLDTOORG.value=="--" || document.DISPLAYREPAIR.FIRMSOLDTOORG.value==null) // æœªé¸æ“‡å®¢æˆ¶
+				if (document.DISPLAYREPAIR.FIRMSOLDTOORG.value=="--" || document.DISPLAYREPAIR.FIRMSOLDTOORG.value==null) // ¥¼¿ï¾Ü«È¤á
                 { 
                 	alert(ms4);   
                     return(false);
                 }
   
-                if (document.DISPLAYREPAIR.FIRMPRICELIST.value=="--" || document.DISPLAYREPAIR.FIRMPRICELIST.value==null) // æœªé¸æ“‡åƒ¹æ ¼è¡¨
+                if (document.DISPLAYREPAIR.FIRMPRICELIST.value=="--" || document.DISPLAYREPAIR.FIRMPRICELIST.value==null) // ¥¼¿ï¾Ü»ù®æªí
                 { 
                 	alert(ms5);   
                     return(false);
                 } 
   
-                if (document.DISPLAYREPAIR.SHIPTOORG.value=="" || document.DISPLAYREPAIR.SHIPTOORG.value==null || document.DISPLAYREPAIR.SHIPTOORG.value=="null") // æœªé¸æ“‡å‡ºè²¨åœ°
+                if (document.DISPLAYREPAIR.SHIPTOORG.value=="" || document.DISPLAYREPAIR.SHIPTOORG.value==null || document.DISPLAYREPAIR.SHIPTOORG.value=="null") // ¥¼¿ï¾Ü¥X³f¦a
                 { 
                 	alert(ms6);   
                     return(false);
                 }
   
-                if (document.DISPLAYREPAIR.BILLTO.value=="" || document.DISPLAYREPAIR.BILLTO.value==null || document.DISPLAYREPAIR.BILLTO.value=="null") // æœªé¸æ“‡ç«‹å¸³åœ°
+                if (document.DISPLAYREPAIR.BILLTO.value=="" || document.DISPLAYREPAIR.BILLTO.value==null || document.DISPLAYREPAIR.BILLTO.value=="null") // ¥¼¿ï¾Ü¥ß±b¦a
                 { 
                 	alert(ms7);   
                     return(false);
                 } 
   
-                if (document.DISPLAYREPAIR.PAYTERMID.value=="" || document.DISPLAYREPAIR.PAYTERMID.value==null || document.DISPLAYREPAIR.PAYTERMID.value=="null") // æœªé¸æ“‡ä»˜æ¬¾æ¢ä»¶
+                if (document.DISPLAYREPAIR.PAYTERMID.value=="" || document.DISPLAYREPAIR.PAYTERMID.value==null || document.DISPLAYREPAIR.PAYTERMID.value=="null") // ¥¼¿ï¾Ü¥I´Ú±ø¥ó
                 { 
                 	alert(ms8);   
                     return(false);
                 }
   
-                if (document.DISPLAYREPAIR.FOBPOINT.value=="" || document.DISPLAYREPAIR.FOBPOINT.value==null || document.DISPLAYREPAIR.FOBPOINT.value=="null") // æœªé¸æ“‡FOB
+                if (document.DISPLAYREPAIR.FOBPOINT.value=="" || document.DISPLAYREPAIR.FOBPOINT.value==null || document.DISPLAYREPAIR.FOBPOINT.value=="null") // ¥¼¿ï¾ÜFOB
                 { 
                 	alert(ms9);   
                     return(false);
                 }
       
-                if (document.DISPLAYREPAIR.SHIPMETHOD.value=="" || document.DISPLAYREPAIR.SHIPMETHOD.value==null || document.DISPLAYREPAIR.SHIPMETHOD.value=="null") // æœªé¸æ“‡å‡ºè²¨æ–¹å¼
+                if (document.DISPLAYREPAIR.SHIPMETHOD.value=="" || document.DISPLAYREPAIR.SHIPMETHOD.value==null || document.DISPLAYREPAIR.SHIPMETHOD.value=="null") // ¥¼¿ï¾Ü¥X³f¤è¦¡
                 { 
                 	alert(ms10);   
                     return(false);
                 }  
-				// è‹¥æœªé¸æ“‡ä»»ä¸€Line ä½œå‹•ä½œ,å‰‡è­¦å‘Š
+				// ­Y¥¼¿ï¾Ü¥ô¤@Line §@°Ê§@,«hÄµ§i
 				var chkFlag="FALSE";
 				for (i=0;i<document.DISPLAYREPAIR.CHKFLAG.length;i++)
 				{
@@ -421,9 +421,9 @@ function submitCheckProcess(URL,ms1,ms2,ms3,ms4,ms5,ms6,ms7,ms8,ms9,ms10,ms11,ms
 					return(false);
 				}
 						
-				if (document.DISPLAYREPAIR.ACTIONID.value=="030") // å¦‚ç‚º APPEND åˆä½µè¨‚å–®
+				if (document.DISPLAYREPAIR.ACTIONID.value=="030") // ¦p¬° APPEND ¦X¨Ö­q³æ
 				{	 
-					if (document.DISPLAYREPAIR.ORGORDER.value==null || document.DISPLAYREPAIR.ORGORDER.value=="") // æœªé¸æ“‡åˆä½µçš„MOå–®è™Ÿ
+					if (document.DISPLAYREPAIR.ORGORDER.value==null || document.DISPLAYREPAIR.ORGORDER.value=="") // ¥¼¿ï¾Ü¦X¨ÖªºMO³æ¸¹
                     { 
                     	alert(ms11);
 						document.DISPLAYREPAIR.ORGORDER.focus();   
@@ -455,7 +455,7 @@ function setSubmit2(URL,LINKREF,xMINIPRICE,xALNAME,itemStatus,xDiffFactroyMsg)
 		return false;
 	}
 	
-  // æª¢æŸ¥ Mini Price 
+  // ÀË¬d Mini Price 
 	var nMINIPRICE = xMINIPRICE;
   	var nUPRICE = document.DISPLAYREPAIR.UPRICE.value;
   	if (nUPRICE != 0)
@@ -468,7 +468,7 @@ function setSubmit2(URL,LINKREF,xMINIPRICE,xALNAME,itemStatus,xDiffFactroyMsg)
   	}	 
   	//alert(document.DISPLAYREPAIR.MFGFACTORY.value);
   	if (document.DISPLAYREPAIR.MFGFACTORY.value!=null && document.DISPLAYREPAIR.MFGFACTORY.value!="")
-  	{  // è‹¥ä½¿ç”¨è€…é¸äº†å…ˆå‰çš„å·²ç”ŸæˆMO,åˆ¤æ–·è©²æ¬¡Setçš„ç”Ÿç”¢åœ°æ˜¯å¦ç›¸åŒæ–¼åŸMOç”Ÿç”¢åœ°
+  	{  // ­Y¨Ï¥ÎªÌ¿ï¤F¥ı«eªº¤w¥Í¦¨MO,§PÂ_¸Ó¦¸Setªº¥Í²£¦a¬O§_¬Û¦P©ó­ìMO¥Í²£¦a
     	if (xALNAME!=document.DISPLAYREPAIR.MFGFACTORY.value)
 	   	{
 	    	alert(xDiffFactroyMsg);
@@ -477,7 +477,7 @@ function setSubmit2(URL,LINKREF,xMINIPRICE,xALNAME,itemStatus,xDiffFactroyMsg)
   	}
 
   	warray=new Array(document.DISPLAYREPAIR.SSHIPDATE.value,document.DISPLAYREPAIR.LINE_TYPE.value,document.DISPLAYREPAIR.PROMISEDATE.value); 
-  	// æª¢æŸ¥æ—¥æœŸæ˜¯å¦ç¬¦åˆæ—¥æœŸæ ¼å¼ 
+  	// ÀË¬d¤é´Á¬O§_²Å¦X¤é´Á®æ¦¡ 
    	var datetime;
    	var year,month,day;
    	var gone,gtwo;
@@ -555,12 +555,12 @@ function setSubmit2(URL,LINKREF,xMINIPRICE,xALNAME,itemStatus,xDiffFactroyMsg)
   	}
 	else
 	{ 
-		// ä¸å¡æ—¥æœŸæœªè¼¸å…¥,ç”±è¨‚å–®ç”¢ç”Ÿå‰è‹¥æœªè¨­å®š Schedule Shippment Dateå‰‡é è¨­èˆ‡Customer Request Dateç›¸åŒ
+		// ¤£¥d¤é´Á¥¼¿é¤J,¥Ñ­q³æ²£¥Í«e­Y¥¼³]©w Schedule Shippment Date«h¹w³]»PCustomer Request Date¬Û¦P
         //alert("Please Input Date Type as(yyyymmdd) \n For example:(20010101)!!");
         //document.DISPLAYREPAIR.SSHIPDATE.focus();
         //return(false);
     }
-	// åˆ¤æ–· CR Date æ˜¯å¦åˆæ³•   
+	// §PÂ_ CR Date ¬O§_¦Xªk   
    	if(warray[2]!="")
    	{
     	datetime=warray[2];
@@ -635,14 +635,14 @@ function setSubmit2(URL,LINKREF,xMINIPRICE,xALNAME,itemStatus,xDiffFactroyMsg)
   	}
 	else
 	{ 
-		// ä¸å¡æ—¥æœŸæœªè¼¸å…¥,ç”±è¨‚å–®ç”¢ç”Ÿå‰è‹¥æœªè¨­å®š Schedule Shippment Dateå‰‡é è¨­èˆ‡Customer Request Dateç›¸åŒ
+		// ¤£¥d¤é´Á¥¼¿é¤J,¥Ñ­q³æ²£¥Í«e­Y¥¼³]©w Schedule Shippment Date«h¹w³]»PCustomer Request Date¬Û¦P
         //alert("Please Input Date Type as(yyyymmdd) \n For example:(20010101)!!");
         //document.DISPLAYREPAIR.SSHIPDATE.focus();
         //return(false);
     }	   
     
-  	// æª¢æŸ¥æ—¥æœŸæ˜¯å¦ç¬¦åˆæ—¥æœŸæ ¼å¼_æ­¢
-  	// æª¢æŸ¥Line Typeæ˜¯å¦æœªé¸æ“‡
+  	// ÀË¬d¤é´Á¬O§_²Å¦X¤é´Á®æ¦¡_¤î
+  	// ÀË¬dLine Type¬O§_¥¼¿ï¾Ü
   	if(warray[1]==null ||warray[1]=="" || warray[1]=="--")
   	{
     	alert("Please Choose Order Line Type !!!");
@@ -669,7 +669,7 @@ function setSubmit2(URL,LINKREF,xMINIPRICE,xALNAME,itemStatus,xDiffFactroyMsg)
 	}
 	if (sRun == "Y")
 	{
-		document.DISPLAYREPAIR.ACTIONID.value="--"; // é¿å…ä½¿ç”¨è€…å…ˆé¸å‹•ä½œå†è¨­å®šå„é …ç›®
+		document.DISPLAYREPAIR.ACTIONID.value="--"; // Á×§K¨Ï¥ÎªÌ¥ı¿ï°Ê§@¦A³]©w¦U¶µ¥Ø
   
   		var uPrice="&UPRICE="+document.DISPLAYREPAIR.UPRICE.value+"&LINE_TYPE="+document.DISPLAYREPAIR.LINE_TYPE.value+"&CUSTITEMNO="+document.DISPLAYREPAIR.elements["CITEMDESC"+LINKREF].value+"&CUSTITEMID="+document.DISPLAYREPAIR.elements["CITEMID"+LINKREF].value+"&CUSTITEMTYPE="+document.DISPLAYREPAIR.elements["CITEMTYPE"+LINKREF].value; 
   		var linkURL = "#"+LINKREF;
@@ -678,7 +678,7 @@ function setSubmit2(URL,LINKREF,xMINIPRICE,xALNAME,itemStatus,xDiffFactroyMsg)
 	}
 }
 
-// æª¢æŸ¥é–å¹´,åˆ¤æ–·æ—¥æœŸè¼¸å…¥åˆæ³•æ€§
+// ÀË¬d¶|¦~,§PÂ_¤é´Á¿é¤J¦Xªk©Ê
 function isLeapYear(year) 
 { 
 	if((year%4==0&&year%100!=0)||(year%400==0)) 
@@ -707,7 +707,7 @@ function subWindowShipToFind(siteUseCode,customerID,shipToOrg,salesAreaNo)
 	subWin=window.open("../jsp/subwindow/TSDRQSiteUseInfoFind.jsp?SITEUSECODE="+siteUseCode+"&CUSTOMERID="+customerID+"&SHIPTOORG="+shipToOrg+"&SALESAREANO="+salesAreaNo,"subwin","width=640,height=480,scrollbars=yes,menubar=no");  
 }
 
-// ç”¨è‡ªè¡Œè¼¸å…¥æ‰¾SHIP TO
+// ¥Î¦Û¦æ¿é¤J§äSHIP TO
 function setShipToFind(siteUseCode,customerID,shipToOrg,salesAreaNo)
 {  
 	if (event.keyCode==13)
@@ -716,13 +716,13 @@ function setShipToFind(siteUseCode,customerID,shipToOrg,salesAreaNo)
    	}
 }
 
-// é» ... æ‰¾ BILL TO
+// ÂI ... §ä BILL TO
 function subWindowBillToFind(siteUseCode,customerID,billTo,salesAreaNo)
 {    
 	subWin=window.open("../jsp/subwindow/TSDRQSiteUseInfoFind.jsp?SITEUSECODE="+siteUseCode+"&CUSTOMERID="+customerID+"&BILLTO="+billTo+"&SALESAREANO="+salesAreaNo,"subwin","width=640,height=480,scrollbars=yes,menubar=no");  
 }
 
-//ç”¨è‡ªè¡Œè¼¸å…¥æ‰¾BILL TO
+//¥Î¦Û¦æ¿é¤J§äBILL TO
 function setBillToFind(siteUseCode,customerID,billTo,salesAreaNo)
 {    
 	if (event.keyCode==13)
@@ -815,7 +815,7 @@ function popMenuMsg(listPrice)
 
 function setchk(objline)
 {
-	//add by Peggy 20170803,TSCT-Disty  å…ƒè¶…(å…¨æ¼¢)å¿…é ˆå–®ç¨ç”Ÿæˆè¨‚å–®,å› ç‚ºå˜œé ­æœ‰è¦å®š
+	//add by Peggy 20170803,TSCT-Disty  ¤¸¶W(¥şº~)¥²¶·³æ¿W¥Í¦¨­q³æ,¦]¬°áMÀY¦³³W©w
 	var chk_flag =false;
 	var chk_row = 0;
 	if (document.DISPLAYREPAIR.SALESAREANO.value=="006" && document.DISPLAYREPAIR.CUSTOMERNO.value=="1010")
@@ -837,10 +837,10 @@ function setchk(objline)
 			{
 				if (document.DISPLAYREPAIR.CHKFLAG[i].checked)
 				{
-					if ((document.getElementById("CUSTPO_"+objline).innerHTML.indexOf("å…¨æ¼¢")>0 && document.getElementById("CUSTPO_"+i).innerHTML.indexOf("å…¨æ¼¢")<=0)
-						  || (document.getElementById("CUSTPO_"+objline).innerHTML.indexOf("å…¨æ¼¢")<=0 && document.getElementById("CUSTPO_"+i).innerHTML.indexOf("å…¨æ¼¢")>0)) 
+					if ((document.getElementById("CUSTPO_"+objline).innerHTML.indexOf("¥şº~")>0 && document.getElementById("CUSTPO_"+i).innerHTML.indexOf("¥şº~")<=0)
+						  || (document.getElementById("CUSTPO_"+objline).innerHTML.indexOf("¥şº~")<=0 && document.getElementById("CUSTPO_"+i).innerHTML.indexOf("¥şº~")>0)) 
 					{
-						alert("å…ƒè¶…(å…¨æ¼¢)å¿…é ˆå–®ç¨è½‰è¨‚å–®,ä¸å¯èˆ‡å…¶ä»–End customerä½µå–®!");
+						alert("¤¸¶W(¥şº~)¥²¶·³æ¿WÂà­q³æ,¤£¥i»P¨ä¥LEnd customer¨Ö³æ!");
 						document.DISPLAYREPAIR.CHKFLAG[objline].checked = false;
 						return false;
 					}
@@ -915,7 +915,7 @@ function setchk(objline)
    	String alertItemAssignMsg = request.getParameter("ALERTITEMASSIGNMSG");
    	String setEnter  = "N";
    	String computeSSD ="N"; //add by Peggychen 20110621   
-   	String setOrderTypeOrg = userOrgID; // é è¨­ç‚ºä½¿ç”¨è€…çš„Org 
+   	String setOrderTypeOrg = userOrgID; // ¹w³]¬°¨Ï¥ÎªÌªºOrg 
 	if (dnDocNo.substring(2,5).equals("023"))setOrderTypeOrg="907";//add by Peggy 20200107
 	String tw_vendor_flag=request.getParameter("TW_VENDOR_FLAG"); //add by Peggy 20200224
 	if (tw_vendor_flag==null) tw_vendor_flag="N";
@@ -928,7 +928,7 @@ function setchk(objline)
 	pstmt1.close();   
 	/*if (preOrderType !=null && firmOrderType==null)
    	{
-    	// æ›´æ­£ä»¥ä¸‹çš„å›ºå®šå–setOrderTypeOegå¯«æ³•_èµ·
+    	// §ó¥¿¥H¤Uªº©T©w¨úsetOrderTypeOeg¼gªk_°_
        	Statement stateSetOrg = con.createStatement();
        	String orgSql=" SELECT B.ORG_ID ORGANIZATION_ID,case when d.TSCUSTOMERID=14880 and d.TSAREANO='005' and A.ORDER_NUM='1131' then '1008' else   a.DEFAULT_ORDER_LINE_TYPE end as DEFAULT_ORDER_LINE_TYPE FROM ORADDMAN.TSAREA_ORDERCLS A,"+
 	                 " oraddman.TSPROD_ORDERTYPE B ,"+
@@ -959,40 +959,40 @@ function setchk(objline)
 	    	if (preOrderType.equals("1021") || preOrderType.equals("1022")) 
 			{ 
 				setOrderTypeOrg = "49"; 
-			} // 1131åŠ1141è¨­ç‚º49(I1)
+			} // 1131¤Î1141³]¬°49(I1)
 	        else if (preOrderType.equals("1020")) 
 			{ 
 				setOrderTypeOrg = "44"; 
-			} // 1151è¨­ç‚º44(I8)
+			} // 1151³]¬°44(I8)
             else if (preOrderType.equals("1015")) 
 			{ 
 				setOrderTypeOrg = "566"; 
-			} // 1121è¨­ç‚º566(I20)
+			} // 1121³]¬°566(I20)
             else if (preOrderType.equals("1322")) 
 			{ 
 				//setOrderTypeOrg = "327"; 
 				setOrderTypeOrg = "49";   //modify by Peggy 20111109
-			} // 1122è¨­ç‚º327(Y2)
+			} // 1122³]¬°327(Y2)
 	        else if (preOrderType.equals("1114")) 
 			{ 
 				setOrderTypeOrg = "163"; 
-			} // 1213è¨­ç‚º163(I6)
+			} // 1213³]¬°163(I6)
 		    else if (preOrderType.equals("1165")) 
 			{ 
 				setOrderTypeOrg = "326"; 
-			} // 4131 YEW Y1(å…§éŠ·å€‰) // 2006/12/28	
+			} // 4131 YEW Y1(¤º¾P­Ü) // 2006/12/28	
             else if (preOrderType.equals("1302")) 
 			{ 
 				setOrderTypeOrg = "326"; 
-			} // 4121 YEW Y1(å…§éŠ·å€‰) // 2009/03/23  
+			} // 4121 YEW Y1(¤º¾P­Ü) // 2009/03/23  
 	    }
 	    rsSetOrg.close();
 	    stateSetOrg.close();   
-       	// æ›´æ­£ä»¥ä¸‹çš„å›ºå®šå–setOrderTypeOegå¯«æ³•_è¿„	 
+       	// §ó¥¿¥H¤Uªº©T©w¨úsetOrderTypeOeg¼gªk_¨´	 
    	} 
 	else*/ if ( firmOrderType!=null && !firmOrderType.equals("") )
     {
-		// æ›´æ­£ä»¥ä¸‹çš„å›ºå®šå–setOrderTypeOegå¯«æ³•_èµ·
+		// §ó¥¿¥H¤Uªº©T©w¨úsetOrderTypeOeg¼gªk_°_
     	Statement stateSetOrg = con.createStatement();
         //String orgSql=" SELECT B.ORG_ID ORGANIZATION_ID,a.DEFAULT_ORDER_LINE_TYPE FROM ORADDMAN.TSAREA_ORDERCLS A,"+
 		//              " oraddman.TSPROD_ORDERTYPE B ,"+
@@ -1032,36 +1032,36 @@ function setchk(objline)
 			if (firmOrderType.equals("1021") || firmOrderType.equals("1022")) 
 			{ 
 				setOrderTypeOrg = "49"; 
-			} // 1131åŠ1141è¨­ç‚º49(I1)
+			} // 1131¤Î1141³]¬°49(I1)
 	        else if (firmOrderType.equals("1020")) 
 			{ 
 				setOrderTypeOrg = "44"; 
-			} // 1151è¨­ç‚º44(I8)
+			} // 1151³]¬°44(I8)
             else if (firmOrderType.equals("1015")) 
 			{ 
 				setOrderTypeOrg = "566"; 
-			} // 1121è¨­ç‚º566(I20)
+			} // 1121³]¬°566(I20)
             else if (firmOrderType.equals("1322")) 
 			{ 
 				//setOrderTypeOrg = "327"; 
 				setOrderTypeOrg = "49";   //modify by Peggy 20111109
-			} // 1122è¨­ç‚º327(Y2)
+			} // 1122³]¬°327(Y2)
 	        else if (firmOrderType.equals("1114")) 
 			{ 
 				setOrderTypeOrg = "163"; 
-			} // 1213è¨­ç‚º163(I6)
+			} // 1213³]¬°163(I6)
 			else if (firmOrderType.equals("1165")) 
 			{ 
 				setOrderTypeOrg = "326"; 
-			} // 4131 YEW Y1(å…§éŠ·å€‰) // 2006/12/28
+			} // 4131 YEW Y1(¤º¾P­Ü) // 2006/12/28
             else if (firmOrderType.equals("1302")) 
 			{ 
 				setOrderTypeOrg = "326"; 
-			} // 4121 YEW Y1(å…§éŠ·å€‰) // 2009/03/23
+			} // 4121 YEW Y1(¤º¾P­Ü) // 2009/03/23
 		}
 		rsSetOrg.close();
 	    stateSetOrg.close();   
-        // æ›´æ­£ä»¥ä¸‹çš„å›ºå®šå–setOrderTypeOegå¯«æ³•_è¿„	
+        // §ó¥¿¥H¤Uªº©T©w¨úsetOrderTypeOeg¼gªk_¨´	
 		
 	} // End of else if ()
    
@@ -1140,7 +1140,7 @@ function setchk(objline)
 <body>
 <%@ include file="/jsp/include/TSDocHyperLinkPage.jsp"%>
 <FORM NAME="DISPLAYREPAIR" onsubmit='return submitCheck("<jsp:getProperty name="rPH" property="pgAlertMOGenSubmit"/>","<jsp:getProperty name="rPH" property="pgAlertSubmit"/>","<jsp:getProperty name="rPH" property="pgAlertSvrType"/>","<jsp:getProperty name="rPH" property="pgAlertCustomer"/>","<jsp:getProperty name="rPH" property="pgAlertPriceList"/>","<jsp:getProperty name="rPH" property="pgAlertShipAddress"/>","<jsp:getProperty name="rPH" property="pgAlertBillAddress"/>","<jsp:getProperty name="rPH" property="pgAlertPayTerm"/>","<jsp:getProperty name="rPH" property="pgAlertFOB"/>","<jsp:getProperty name="rPH" property="pgAlertShipMethod"/>","<jsp:getProperty name="rPH" property="pgAlertCheckLineFlag"/>")' ACTION="../jsp/TSSalesDRQMProcess.jsp?DNDOCNO=<%=dnDocNo%>" METHOD="post">
-  <!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—ç¶­ä¿®åŸºæœ¬è³‡æ–™==========-->
+  <!--=============¥H¤U°Ï¬q¬°¨ú±oºû­×°ò¥»¸ê®Æ==========-->
 <%@ include file="/jsp/include/TSDRQBasicInfoDisplayPage.jsp"%>
 <!--=================================-->
 <%
@@ -1151,7 +1151,7 @@ if (fobPoint ==null || fobPoint.equals("")) fobPoint = FOB_POINT;
 if (firmPriceList==null || firmPriceList.equals("")) firmPriceList = priceList;
 if (paymentTerm==null || paymentTerm.equals("")) paymentTerm=paymentterm;
 
-if (lineNo !=null && !lineNo.equals("") && uPrice!=null && !uPrice.equals("") && Double.valueOf(uPrice).doubleValue() >0)  //modify by Peggy 20150520,price >0 æ‰update
+if (lineNo !=null && !lineNo.equals("") && uPrice!=null && !uPrice.equals("") && Double.valueOf(uPrice).doubleValue() >0)  //modify by Peggy 20150520,price >0 ¤~update
 {
 	try
 	{
@@ -1189,7 +1189,7 @@ if (lineNo !=null && !lineNo.equals("") && uPrice!=null && !uPrice.equals("") &&
 		
 		sql = "update ORADDMAN.TSDELIVERY_NOTICE_DETAIL set SELLING_PRICE=? where DNDOCNO='"+dnDocNo+"' and LINE_NO='"+lineNo+"' ";
 		pstmt=con.prepareStatement(sql);  
-		pstmt.setFloat(1,Float.parseFloat(uPrice));  // å–®åƒ¹		 
+		pstmt.setFloat(1,Float.parseFloat(uPrice));  // ³æ»ù		 
 		//pstmt.executeUpdate(); 
 		pstmt.executeQuery(); 
 		pstmt.close();
@@ -1478,14 +1478,14 @@ if (lineNo !=null && !lineNo.equals("") && custItemNo!="" && !custItemNo.equals(
 
 	//CallableStatement cs2 = con.prepareCall("{call DBMS_APPLICATION_INFO.SET_CLIENT_INFO(?)}");
  	CallableStatement cs2 = con.prepareCall("{call mo_global.set_policy_context('S', ?)}");
-    cs2.setString(1,parOrgID);  // å–æ¥­å‹™å“¡éš¸å±¬ParOrgID
+    cs2.setString(1,parOrgID);  // ¨ú·~°È­ûÁõÄİParOrgID
     cs2.execute();
     cs2.close(); 
 
 int iCount = 0;
 if (firmSoldToOrg==null) firmSoldToOrg = tsCustomerID;
-// å–ç”±é¸æ“‡å®¢æˆ¶å¸¶å‡ºçš„Price Listç›¸é—œè³‡è¨Šç‚ºé è¨­PriceListé¸é …
-if (tsCustomerID!=null) // 2006/01/18 ä¸€å¾‹å–ShipTo BillTo
+// ¨ú¥Ñ¿ï¾Ü«È¤á±a¥XªºPrice List¬ÛÃö¸ê°T¬°¹w³]PriceList¿ï¶µ
+if (tsCustomerID!=null) // 2006/01/18 ¤@«ß¨úShipTo BillTo
 {
 	String acctSiteAddressID = "";
 	boolean prlistGet = false;
@@ -1511,7 +1511,7 @@ if (tsCustomerID!=null) // 2006/01/18 ä¸€å¾‹å–ShipTo BillTo
 				   " order by  a.SITE_USE_CODE,decode(a.PRIMARY_FLAG,'Y',1,2)";
 				   //" and a.ADDRESS_ID in (select CUST_ACCT_SITE_ID from HZ_CUST_ACCT_SITES_ALL "+		
 				   //" where CUST_ACCOUNT_ID ='"+tsCustomerID+"') "+
-				   //" and a.ORG_ID = '"+parOrgID+"' ";  // åŠå°é«”äº‹æ¥­éƒ¨
+				   //" and a.ORG_ID = '"+parOrgID+"' ";  // ¥b¾ÉÅé¨Æ·~³¡
 	Statement stateCust=con.createStatement();	  
 	ResultSet rsPr=stateCust.executeQuery(sqlPr);
 	//out.println("sqlPr="+sqlPr);
@@ -1556,12 +1556,12 @@ if (tsCustomerID!=null) // 2006/01/18 ä¸€å¾‹å–ShipTo BillTo
 	rsPr.close();	
 	stateCust.close(); 
 
-	if ((iCount==0 || iCount<=1) && alertMsg.equals("N")) // è‹¥ä¸å­˜åœ¨SHIP_TO & BILL TO æˆ– ç¼ºå…¶ä¸­ä¹‹ä¸€æœªè¨­ç‚º PRIMARY, å‰‡æ‰¾ä»»ä¸€çµ„ç½®å…¥
+	if ((iCount==0 || iCount<=1) && alertMsg.equals("N")) // ­Y¤£¦s¦bSHIP_TO & BILL TO ©Î ¯Ê¨ä¤¤¤§¤@¥¼³]¬° PRIMARY, «h§ä¥ô¤@²Õ¸m¤J
 	{  		  
 		//alertMsg = "Y";
 	} // End of if ()	
 		
-	// è‹¥æ‰¾ä¸åˆ°,å‰‡æ‰¾ç³»çµ±æ¨™æº–çš„VIEW(AR_SITE_USES_V)
+	// ­Y§ä¤£¨ì,«h§ä¨t²Î¼Ğ·ÇªºVIEW(AR_SITE_USES_V)
 	if (firmPriceList==null || firmPriceList.equals(""))
 	{	
 		Statement statePRLIST=con.createStatement();
@@ -1588,14 +1588,14 @@ if (tsCustomerID!=null) // 2006/01/18 ä¸€å¾‹å–ShipTo BillTo
 %>
 <hr>
 <%
-//  è‹¥ç‹€æ…‹æ˜¯ 009è¨‚å–®ç”Ÿæˆä¸­,æ‰é¡¯ç¤ºæ˜ç´°ä¾›ä½¿ç”¨è€…è¨­å®šç›¸é—œåƒæ•¸,å¦å‰‡,ä½¿ç”¨è€…ç„¡æ³•ä½œä»»ä½•Submit...(é˜²æ­¢Userè‡ªè¡Œæ–¼ç¶²å€åˆ—è¼¸å…¥LineNO) 	
+//  ­Yª¬ºA¬O 009­q³æ¥Í¦¨¤¤,¤~Åã¥Ü©ú²Ó¨Ñ¨Ï¥ÎªÌ³]©w¬ÛÃö°Ñ¼Æ,§_«h,¨Ï¥ÎªÌµLªk§@¥ô¦óSubmit...(¨¾¤îUser¦Û¦æ©óºô§}¦C¿é¤JLineNO) 	
 if (frStatID.equals("009"))
 {
-	String m[]=array2DMOContactInfoBean.getArrayContent(); // å–ä¸€ç¶­é™£åˆ—å…§å®¹
+	String m[]=array2DMOContactInfoBean.getArrayContent(); // ¨ú¤@ºû°}¦C¤º®e
     if (m!=null)
     {
     }
-	String n[]=array2DMODeliverInfoBean.getArrayContent(); // å–ä¸€ç¶­é™£åˆ—å…§å®¹
+	String n[]=array2DMODeliverInfoBean.getArrayContent(); // ¨ú¤@ºû°}¦C¤º®e
     if (n!=null)
     {
     }
@@ -1615,7 +1615,7 @@ if (frStatID.equals("009"))
 	<%
 	try
     {   
-    	//åˆ¤æ–·è‹¥ç‚ºè¨‚å–®ä¸æ”¶è²»,åªèƒ½ç”Ÿæˆ1121çš„è¨‚å–®_start
+    	//§PÂ_­Y¬°­q³æ¤£¦¬¶O,¥u¯à¥Í¦¨1121ªº­q³æ_start
         String sampleOrderCode="";
         String sampleChargeCode="";
         String sampleSql="";
@@ -1630,7 +1630,7 @@ if (frStatID.equals("009"))
 	   	rsSamp.close();
 	    statesamp.close();
 
-        if ( (sampleOrderCode.equals("Y") && sampleChargeCode.equals("Y")) || sampleOrderCode.equals("N"))   //æ¨£å“è¨‚å–®è¦æ”¶è²»,ç‚ºä¸€èˆ¬è¨‚å–®
+        if ( (sampleOrderCode.equals("Y") && sampleChargeCode.equals("Y")) || sampleOrderCode.equals("N"))   //¼Ë«~­q³æ­n¦¬¶O,¬°¤@¯ë­q³æ
         { 
         	sampleSql = " and A.ORDER_NUM NOT IN ('1121','1122','4121','8121')  ";  //add 8121 by Peggy 20201111
         }
@@ -1642,7 +1642,7 @@ if (frStatID.equals("009"))
         {  
 			sampleSql="  ";
         }
-       	//åˆ¤æ–·è‹¥ç‚ºè¨‚å–®ä¸æ”¶è²»,åªèƒ½ç”Ÿæˆ1121çš„è¨‚å–®_ end
+       	//§PÂ_­Y¬°­q³æ¤£¦¬¶O,¥u¯à¥Í¦¨1121ªº­q³æ_ end
 		Statement statement=con.createStatement();
         ResultSet rs=null;	
 		String sqlOrgInf = " SELECT DISTINCT A.OTYPE_ID, A.ORDER_NUM||'('||A.DESCRIPTION||')' AS TRANSACTION_TYPE_CODE "+
@@ -1653,7 +1653,7 @@ if (frStatID.equals("009"))
 		if (UserRoles.indexOf("admin")>=0) 
 		{  
 			whereOrgInf = whereOrgInf +"and A.SAREA_NO = '"+salesAreaNo+"' "; 					 
-		}// ç®¡ç†å“¡å¯é¸ä»»ä¸€å‹æ…‹
+		}// ºŞ²z­û¥i¿ï¥ô¤@«¬ºA
 		else
 		{
 			//whereOrgInf = whereOrgInf +"and A.SAREA_NO = '"+userActCenterNo+"' ";
@@ -1746,14 +1746,14 @@ if (frStatID.equals("009"))
 				</td>
            		<td width="39%"><font face="Arial" color="#996600"><span class="style1">&nbsp;</span><jsp:getProperty name="rPH" property="pgPriceList"/></font>
 	<%	
-	String orgID = "41";  // é è¨­çš„ ORG_ID (2006/12/27)
-	// ## ä¾æ­¤å–®æ“šé–‹å–®æ¥­å‹™å€å–å¾—å…¶ OrgID_èµ·				   
+	String orgID = "41";  // ¹w³]ªº ORG_ID (2006/12/27)
+	// ## ¨Ì¦¹³æ¾Ú¶}³æ·~°È°Ï¨ú±o¨ä OrgID_°_				   
 	Statement stateOrg=con.createStatement();			  
     ResultSet rsOrg=stateOrg.executeQuery("select PAR_ORG_ID from ORADDMAN.TSSALES_AREA where SALES_AREA_NO = substr('"+dnDocNo+"',3,3) ");
 	if (rsOrg.next()) orgID = rsOrg.getString("PAR_ORG_ID");
 	rsOrg.close();
 	stateOrg.close();
-	// ## ä¾å» å€æ‰¾æ­¤å–®æ“šé–‹å–®æ¥­å‹™å€å–å¾—å…¶ OrgID_è¿„	 
+	// ## ¨Ì¼t°Ï§ä¦¹³æ¾Ú¶}³æ·~°È°Ï¨ú±o¨ä OrgID_¨´	 
 	try
     {   
 		Statement statement=con.createStatement();
@@ -1797,7 +1797,7 @@ if (frStatID.equals("009"))
 	<%			     
 	try
     {  
-		// å–é è¨­é¸æ“‡å®¢æˆ¶çš„Ship To Address åŠ Bill To Address 
+		// ¨ú¹w³]¿ï¾Ü«È¤áªºShip To Address ¤Î Bill To Address 
 		if (ShipToOrg==null || ShipToOrg=="" || billTo==null || billTo=="")
 		{
 			Statement statement=con.createStatement();
@@ -1847,7 +1847,7 @@ if (frStatID.equals("009"))
 				iCount++;
 		    } //end of while		          			   
 		    rs.close();  
-			if ((iCount==0 || iCount<2) && alertMsg.equals("N")) // è‹¥ä¸å­˜åœ¨SHIP_TO & BILL TO æˆ– ç¼ºå…¶ä¸­ä¹‹ä¸€æœªè¨­ç‚º PRIMARY, å‰‡æ‰¾ä»»ä¸€çµ„ç½®å…¥
+			if ((iCount==0 || iCount<2) && alertMsg.equals("N")) // ­Y¤£¦s¦bSHIP_TO & BILL TO ©Î ¯Ê¨ä¤¤¤§¤@¥¼³]¬° PRIMARY, «h§ä¥ô¤@²Õ¸m¤J
 	        {  
 	%>
 	        	<script language="javascript">			   
@@ -1857,7 +1857,7 @@ if (frStatID.equals("009"))
               	alertMsg = "Y";
 		    } // End of if ()	 
 					 
-			// è‹¥æ²’ç›´æ¥å–åˆ°ShipToAddress,å‰‡æ‰¾ä¸‹åˆ—SQL   
+			// ­Y¨Sª½±µ¨ú¨ìShipToAddress,«h§ä¤U¦CSQL   
 			if (shipAddress==null || shipAddress.equals(""))
 			{					 
 				sql = " select DISTINCT a.SITE_USE_ID,a.SITE_USE_CODE,a.PAYMENT_TERM_ID,"+
@@ -1897,7 +1897,7 @@ if (frStatID.equals("009"))
 										" and b.CUST_ACCOUNT_ID ='"+tsCustomerID+"'"+				
 						                //" and a.ADDRESS_ID in (select CUST_ACCT_SITE_ID from HZ_CUST_ACCT_SITES_ALL"+
 										//" where CUST_ACCOUNT_ID ='"+tsCustomerID+"') "+
-					                    " and a.SITE_USE_CODE = 'SHIP_TO' "+ // å– SHIP_TO
+					                    " and a.SITE_USE_CODE = 'SHIP_TO' "+ // ¨ú SHIP_TO
 									    " and to_char(a.SITE_USE_ID) = '"+billTo+"' "; // 2007/09/14 modify
 						//out.println("sqlSP2="+sqlSP2);
 			            ResultSet rsSP2 = stateSP2.executeQuery(sqlSP2);		
@@ -1917,7 +1917,7 @@ if (frStatID.equals("009"))
 					rsSP.close();
 				}								 
 			}		// End of if (shipAddress==null || shipAddress.equals(""))			
-			// è‹¥æ²’ç›´æ¥å–åˆ°BillToAddress,å‰‡æ‰¾ä¸‹åˆ—SQL  
+			// ­Y¨Sª½±µ¨ú¨ìBillToAddress,«h§ä¤U¦CSQL  
 			if (billAddress==null || billAddress.equals(""))	
 			{
 				sql = " select a.PRIMARY_FLAG, a.SITE_USE_ID, loc.COUNTRY, loc.ADDRESS1, loc.ADDRESS2, loc.ADDRESS3, loc.ADDRESS4 "+
@@ -1930,7 +1930,7 @@ if (frStatID.equals("009"))
 						 " and a.STATUS='A' "+	
 						 " and b.CUST_ACCOUNT_ID ='"+tsCustomerID+"'"+				
 					     //"and a.ADDRESS_ID in (select CUST_ACCT_SITE_ID from HZ_CUST_ACCT_SITES_ALL where CUST_ACCOUNT_ID ='"+tsCustomerID+"') "+
-					     " and a.SITE_USE_CODE = 'BILL_TO' "+ // å– BILL_TO
+					     " and a.SITE_USE_CODE = 'BILL_TO' "+ // ¨ú BILL_TO
 					     " and a.SITE_USE_ID = '"+billTo+"' ";
 				//out.println("sql="+sql);
 				ResultSet rsBA = statement.executeQuery(sql);
@@ -2028,7 +2028,7 @@ if (frStatID.equals("009"))
       :&nbsp;&nbsp;&nbsp;<img src="../image/point.gif"><font color="#FF6600"><jsp:getProperty name="rPH" property="pgNoBlankMsg"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
 	  			<BR>
 		<%
-	    // ä¾è¨‚å–®ä¾†æºæ±ºå®šæ˜¯å¦éœ€æ‰¾å…§éŠ·åŒ¯ç‡çµ¦å®šSelling Price_èµ·
+	    // ¨Ì­q³æ¨Ó·½¨M©w¬O§_»İ§ä¤º¾P¶×²vµ¹©wSelling Price_°_
 		String poCurr = "";
 		double convRate = 1;
 		if (orgID.equals("325"))
@@ -2046,14 +2046,14 @@ if (frStatID.equals("009"))
 	    	rsCN.close();
 	        stateCN.close();
 		}		
-		// ä¾è¨‚å–®ä¾†æºæ±ºå®šæ˜¯å¦éœ€æ‰¾å…§éŠ·åŒ¯ç‡çµ¦å®šSelling Price_è¿„ 
+		// ¨Ì­q³æ¨Ó·½¨M©w¬O§_»İ§ä¤º¾P¶×²vµ¹©wSelling Price_¨´ 
 	  
 	  	try
       	{   
-			// å…ˆå°‡å…§å®¹æ˜ç´°çš„æ¨™é ­,çµ¦ä¸€ç¶­é™£åˆ—
+			// ¥ı±N¤º®e©ú²Óªº¼ĞÀY,µ¹¤@ºû°}¦C
 	    	String oneDArray[]= {"Line no.","Inventory Item","Quantity","UOM", "Request Date","Remark","Product Manufactory"};      			  
     		array2DGenerateSOrderBean.setArrayString(oneDArray);
-			// å…ˆå– è©²è©¢å•å–®ç­†æ•¸
+			// ¥ı¨ú ¸Ó¸ß°İ³æµ§¼Æ
 	     	int rowLength = 0;
 	     	Statement stateCNT=con.createStatement();
          	ResultSet rsCNT=stateCNT.executeQuery("select count(LINE_NO) from ORADDMAN.TSDELIVERY_NOTICE_DETAIL where DNDOCNO='"+dnDocNo+"' "+
@@ -2068,7 +2068,7 @@ if (frStatID.equals("009"))
 		<%
 	   		}	 
 	  
-	   		String b[][]=new String[rowLength+1][20]; // å®£å‘Šä¸€äºŒç¶­é™£åˆ—,åˆ†åˆ¥æ˜¯(æœªåˆ†é…ç”¢åœ°=åˆ—)X(è³‡æ–™æ¬„æ•¸+1= è¡Œ)
+	   		String b[][]=new String[rowLength+1][20]; // «Å§i¤@¤Gºû°}¦C,¤À§O¬O(¥¼¤À°t²£¦a=¦C)X(¸ê®ÆÄæ¼Æ+1= ¦æ)
 	   		out.println("<TABLE border='1' cellpadding='1' cellspacing='0' align='center' width='100%'  bordercolor='#999966' bordercolorlight='#999999' bordercolordark='#CCCC99' bgcolor='#CCCC99'>");
 	   		out.println("<tr bgcolor='#D5D8A7'>");	
 	   		out.println("<td nowrap><font color='#FFFFFF'></font>");
@@ -2176,11 +2176,11 @@ if (frStatID.equals("009"))
 		  		String sqlOrgWhere = " where wf.LINE_TYPE_ID = vl.TRANSACTION_TYPE_ID and wf.LINE_TYPE_ID is not null "+
                                      "  and vl.language = 'US' "+
                                      "  and to_char(ORDER_TYPE_ID) = '"+firmOrderType+"' and END_DATE_ACTIVE is NULL ";		  	   
-		  		if (sampleOrder.equals("Y") && !firmOrderType.equals("1114")) // è‹¥æ˜¯æ¨£å“è¨‚å–®,å†åˆ¤æ–·æ˜¯å¦è¦æ”¶è²»
+		  		if (sampleOrder.equals("Y") && !firmOrderType.equals("1114")) // ­Y¬O¼Ë«~­q³æ,¦A§PÂ_¬O§_­n¦¬¶O
 		  		{	
 		    		if (sampleCharge==null || sampleCharge.equals("")	|| sampleCharge.equals("N")) 
 		    		{
-			   			sqlOrgWhere = sqlOrgWhere + "and TO_CHAR(LINE_TYPE_ID) in ('1013','1161','1163','1703') ";  // åªå‡ºè²¨ä¸ç«‹å¸³
+			   			sqlOrgWhere = sqlOrgWhere + "and TO_CHAR(LINE_TYPE_ID) in ('1013','1161','1163','1703') ";  // ¥u¥X³f¤£¥ß±b
 					}                 
 		    		else if (sampleCharge.equals("Y")) 
 		    		{
@@ -2233,7 +2233,7 @@ if (frStatID.equals("009"))
 	                         " a.ASSIGN_MANUFACT, a.FTACPDATE, a.INVENTORY_ITEM_ID, a.SELLING_PRICE, a.LINE_TYPE,"+
 						     " a.SHIP_DATE,PROMISE_DATE, a.ORDERED_ITEM, a.ORDERED_ITEM_ID, a.ITEM_ID_TYPE, "+
 						     " a.ITEM_SEGMENT1, b.MINI_PRICE, a.LIST_PRICE, a.CUST_PO_NUMBER, "+
-						     " c.ALNAME, "+ // 2006/12/24 ä¾å„åˆ†æ´¾ç”¢åœ°è­˜åˆ¥æ˜¯å¦å¯Append èˆŠå–®
+						     " c.ALNAME, "+ // 2006/12/24 ¨Ì¦U¤À¬£²£¦aÃÑ§O¬O§_¥iAppend ÂÂ³æ
 							 " a.CUST_REQUEST_DATE,a.SHIPPING_METHOD"+  //add by Peggychen 20110621
 							 ",a.FTACPDATE,a.PC_COMMENT"+ //add by Peggy 20130430
 							 ",nvl(a.AUTOCREATE_FLAG,'N') AUTOCREATE_FLAG"+ //add by Peggy 20120301
@@ -2336,13 +2336,13 @@ if (frStatID.equals("009"))
 					}
 					rs1.close();
 					state1.close();
-			 	} // æª¢æŸ¥Orgçš„Item,ä¸å­˜åœ¨ç”¨é»ƒåº•æ¨™ç¤º			
+			 	} // ÀË¬dOrgªºItem,¤£¦s¦b¥Î¶À©³¼Ğ¥Ü			
 			 	rsChkItem.close();
 			 	stateChkItem.close();
 				String yellowMsg = "Yellow means no Item Exists on Org. with respect to Order Type";
 		
-				// 2007/03/27 æŠŠå–å¾—çš„Target Price å–è‡³å°æ•¸4ä½_èµ·
-		   		java.text.DecimalFormat nf = new java.text.DecimalFormat("###,##0.0000"); // å–å°æ•¸å¾Œå››ä½ 
+				// 2007/03/27 §â¨ú±oªºTarget Price ¨ú¦Ü¤p¼Æ4¦ì_°_
+		   		java.text.DecimalFormat nf = new java.text.DecimalFormat("###,##0.0000"); // ¨ú¤p¼Æ«á¥|¦ì 
 	       		java.math.BigDecimal bd = null;
 		   		java.math.BigDecimal strTargetPrice = null;
 		   		try
@@ -2356,10 +2356,10 @@ if (frStatID.equals("009"))
                 	System.out.println("Exception9: Target Price"+e.getMessage());
            		}
 		   
-				// 2007/03/27 æŠŠå–å¾—çš„Target Price å–è‡³å°æ•¸4ä½_è¿„
+				// 2007/03/27 §â¨ú±oªºTarget Price ¨ú¦Ü¤p¼Æ4¦ì_¨´
 	    		out.println("<TR bgcolor='"+trBGColor+"'>");
 				out.println("<TD width='2%'><div align='center'>");
-				//if (((actionID ==null || !actionID.equals("013")) && itemStatusCode.equals("Inactive")) || rs.getString("AUTOCREATE_FLAG").equals("Y"))  //add by Peggy 20120511åŠ å…¥é€€ä»¶åˆ¤æ–·
+				//if (((actionID ==null || !actionID.equals("013")) && itemStatusCode.equals("Inactive")) || rs.getString("AUTOCREATE_FLAG").equals("Y"))  //add by Peggy 20120511¥[¤J°h¥ó§PÂ_
 				//{
 				//	out.println("<input type='checkbox' name='CHKFLAG' value='"+rs.getString("LINE_NO")+"' style='visibility: hidden;'>");
 				//}
@@ -2372,16 +2372,16 @@ if (frStatID.equals("009"))
 					}
 					else
 					{
-						if (check !=null) // è‹¥å…ˆå‰ä»¥è¨­å®šç‚ºé¸å–,å‰‡Check Box é¡¯ç¤º checked
+						if (check !=null) // ­Y¥ı«e¥H³]©w¬°¿ï¨ú,«hCheck Box Åã¥Ü checked
 						{
 							for (int j=0;j<check.length;j++) 
 							{ 
 								if (check[j]==rs.getString("LINE_NO") || check[j].equals(rs.getString("LINE_NO")) ) out.println("checked");  
 							}
-							// çµ¦å®šå–®åƒ¹å³è¨­å®šæ¬²çµè½‰
+							// µ¹©w³æ»ù§Y³]©w±ıµ²Âà
 							if (lineNo==rs.getString("LINE_NO") || lineNo.equals(rs.getString("LINE_NO"))) out.println("checked"); 
 						} 
-						else if (lineNo==rs.getString("LINE_NO") || lineNo.equals(rs.getString("LINE_NO"))) //ç¬¬ä¸€ç­†çµ¦å®šå–®åƒ¹å³è¨­å®šæ¬²çµè½‰
+						else if (lineNo==rs.getString("LINE_NO") || lineNo.equals(rs.getString("LINE_NO"))) //²Ä¤@µ§µ¹©w³æ»ù§Y³]©w±ıµ²Âà
 						{
 							out.println("checked"); 
 						}
@@ -2394,11 +2394,11 @@ if (frStatID.equals("009"))
 				out.println("<input type='hidden' name='UNASSIGNORG"+k+"' value='"+unAssignORG+"'>");  //add by Peggy 20160222
 				out.println("<input type='hidden' name='PCN_FLAG"+k+"' value='"+rs.getString("pcn_flag")+"'>"); //add by Peggy 20230208
 				out.println("</TD>");
-				// Set æŒ‰éˆ•_èµ·
+				// Set «ö¶s_°_
 				out.println("<TD width='2%'><div align='center'>");
 				if (trBGColor=="#FFFF00" || trBGColor.equals("#FFFF00"))
 				{ 
-					// è‹¥ ç„¡æ–™è™ŸåŸè¨‚å–®é¡å‹æ‰€å±¬çš„ Org å‰‡é¡¯ç¤º Tool Tip èªªæ˜
+					// ­Y µL®Æ¸¹­ì­q³æÃş«¬©ÒÄİªº Org «hÅã¥Ü Tool Tip »¡©ú
 		  			out.print("<INPUT TYPE='button' value='Set' onClick='setSubmit2("+'"'+"../jsp/TSSalesDRQGeneratingPage.jsp?LINENO="+rs.getString("LINE_NO")+"&ASSIGN_MANUFACT="+assignManufact+"&ORDER_TYPE_ID="+firmOrderType+"&DNDOCNO="+dnDocNo+"&EXPAND="+expand+'"'+","+'"'+rs.getString("LINE_NO")+'"'+","+'"'+rs.getFloat("MINI_PRICE")+'"'+","+'"'+rs.getString("ALNAME")+'"'+","+'"'+itemStatusCode+'"'+","+'"'+"");
 		  %><jsp:getProperty name="rPH" property="pgFactDiffMsg"/><%out.print(""+'"'+")' ");      
 		  //out.print("onMouseOver='this.T_ABOVE=false;this.T_WIDTH=300;this.T_OPACITY=80;return escape("+'"'+yellowMsg+'"'+")'>");
@@ -2411,9 +2411,9 @@ if (frStatID.equals("009"))
 				    %><jsp:getProperty name="rPH" property="pgFactDiffMsg"/><%out.print(""+'"'+")'>");       
 				}
 				out.println("</div></TD>");		
-				// Set æŒ‰éˆ•_è¿„
+				// Set «ö¶s_¨´
 				out.println("<TD><font size='2'><a name="+rs.getString("LINE_NO")+">"+rs.getString("LINE_NO")+"</a></font></TD>");
-				// å°åŠæ–™è™Ÿèªªæ˜_èµ·
+				// ¥x¥b®Æ¸¹»¡©ú_°_
 				out.println("<TD width='2%' nowrap><font size='2'>");
 				out.println("<a href=javaScript:popMenuMsg('"+strTargetPrice+"') onmouseover='this.T_WIDTH=80;return escape("+strTargetPrice+")'>");
 				out.print(rs.getString("ITEM_DESCRIPTION"));
@@ -2453,7 +2453,7 @@ if (frStatID.equals("009"))
 				out.println("<TD width='3%' nowrap>");	
 				out.println("<font  color='#0000ff' size='2'><div id='sellingprice"+k+"'>"+rs.getFloat("SELLING_PRICE")+"</div></font>");  
 				out.println("</TD>");		
-        		// å–Item Mini Price
+        		// ¨úItem Mini Price
 				out.println("<TD width='3%' nowrap>");
         		out.print("<font size='2'>"+rs.getFloat("MINI_PRICE")+"</font>");
 	    		out.print("<INPUT TYPE='hidden' NAME='MINIPRICE' SIZE=10 value='"+rs.getFloat("MINI_PRICE")+"' > ");
@@ -2525,12 +2525,12 @@ if (frStatID.equals("009"))
 				b[k][11]=Integer.toString(rs.getInt("LINE_TYPE"));
 				b[k][12]=rs.getString("PROMISE_DATE");
 				b[k][13]=rs.getString("SHIP_DATE");	
-				b[k][14]=rs.getString("ORDERED_ITEM"); // è‹¥è¨­å®šORDERED_ITEM,å‰‡ä»¥å°åŠæ–™è™Ÿç‚ºOrdered Item çµ¦ API
+				b[k][14]=rs.getString("ORDERED_ITEM"); // ­Y³]©wORDERED_ITEM,«h¥H¥x¥b®Æ¸¹¬°Ordered Item µ¹ API
 				b[k][15]=rs.getString("ORDERED_ITEM_ID");
 				b[k][16]=rs.getString("ITEM_ID_TYPE");	
-				b[k][17]=rs.getString("ITEM_SEGMENT1"); // æŠŠå°åŠæ–™è™Ÿå–å‡ºä¾†,è‹¥ä½¿ç”¨è€…æœªçµ¦å®¢æˆ¶æ–™è™Ÿ,å‰‡ORDERED_ITEMäº¦çµ¦å°åŠæ–™è™Ÿ
+				b[k][17]=rs.getString("ITEM_SEGMENT1"); // §â¥x¥b®Æ¸¹¨ú¥X¨Ó,­Y¨Ï¥ÎªÌ¥¼µ¹«È¤á®Æ¸¹,«hORDERED_ITEM¥çµ¹¥x¥b®Æ¸¹
 				if (rs.getString("CUST_PO_NUMBER")==null || rs.getString("CUST_PO_NUMBER").equals("null")) b[k][18]= "N/A";
-				else b[k][18]=rs.getString("CUST_PO_NUMBER");  // 2006/06/06 å–ä¸Šè¼‰Line PO Number
+				else b[k][18]=rs.getString("CUST_PO_NUMBER");  // 2006/06/06 ¨ú¤W¸üLine PO Number
 				b[k][19]=rs.getString("ORIG_SO_LINE_ID");
 				array2DGenerateSOrderBean.setArray2DString(b);
 				k++;
@@ -2555,7 +2555,7 @@ if (frStatID.equals("009"))
 			out.println("Exception10:"+e.getMessage());
 		}
 
-		String a[][]=array2DGenerateSOrderBean.getArray2DContent();//å–å¾—ç›®å‰é™£åˆ—å…§å®¹ 
+		String a[][]=array2DGenerateSOrderBean.getArray2DContent();//¨ú±o¥Ø«e°}¦C¤º®e 
 		if (a!=null) 	
 		{		  	
 		}	//enf of a!=null if		
@@ -2618,10 +2618,10 @@ try
 	rs=statement.executeQuery("select COUNT (*) from ORADDMAN.TSWORKFLOW x1,ORADDMAN.TSWFACTION x2 "+
 	" WHERE FORMID='TS' AND FROMSTATUSID='"+frStatID+"' AND x1.ACTIONID=x2.ACTIONID and  x1.LOCALE='"+locale+"'");
 	rs.next();
-	if (rs.getInt(1)>0) //åˆ¤æ–·è‹¥æ²’æœ‰å‹•ä½œå¯é¸æ“‡å°±ä¸å‡ºç¾submitæŒ‰éˆ•
+	if (rs.getInt(1)>0) //§PÂ_­Y¨S¦³°Ê§@¥i¿ï¾Ü´N¤£¥X²{submit«ö¶s
 	{
 		if (actionID==null || actionID.equals("012"))
-		{  // è‹¥æ˜¯å–®ç´”æ–°å¢ç”¢ç”Ÿ MO å–®,å‰‡å‘¼å«åŸMProcess
+		{  // ­Y¬O³æ¯Â·s¼W²£¥Í MO ³æ,«h©I¥s­ìMProcess
 			out.print("<INPUT TYPE='button' NAME='submit2' tabindex='30' value='Submit' onClick='submitCheckProcess("+'"'+"../jsp/TSSalesDRQMProcess.jsp?DNDOCNO="+dnDocNo+'"'+","+'"'+"");
 		            %><jsp:getProperty name="rPH" property="pgAlertMOGenSubmit"/><%out.print(""+'"'+","+'"'+""); 
 				    %><jsp:getProperty name="rPH" property="pgAlertSubmit"/><%out.print(""+'"'+","+'"'+""); 
@@ -2637,7 +2637,7 @@ try
 				    %><jsp:getProperty name="rPH" property="pgAlertCheckLineFlag"/><%out.print(""+'"'+")'>");
 		}
 		else if (actionID.equals("030")) 
-		{   // è‹¥æ˜¯ 030(APPEND) å‰‡å‘¼å«å¦ä¸€å€‹MPROCESSç¨‹å¼
+		{   // ­Y¬O 030(APPEND) «h©I¥s¥t¤@­ÓMPROCESSµ{¦¡
 			out.print("<INPUT TYPE='button' NAME='submit2' tabindex='30' value='Submit' onClick='submitCheckProcess("+'"'+"../jsp/TSSalesDRQApndMProcess.jsp?DNDOCNO="+dnDocNo+'"'+","+'"'+"");
 		            %><jsp:getProperty name="rPH" property="pgAlertMOCmbSubmit"/><%out.print(""+'"'+","+'"'+""); 
 				    %><jsp:getProperty name="rPH" property="pgAlertSubmit"/><%out.print(""+'"'+","+'"'+""); 
@@ -2653,7 +2653,7 @@ try
 				    %><jsp:getProperty name="rPH" property="pgAlertCheckLineFlag"/><%out.print(""+'"'+")'>");
 		} 
 		else if (actionID.equals("013"))
-		{  //è‹¥æ˜¯ 013(ABORT) å‰‡å‘¼å«å¦ä¸€å€‹MPROCESSç¨‹å¼
+		{  //­Y¬O 013(ABORT) «h©I¥s¥t¤@­ÓMPROCESSµ{¦¡
 			out.print("<INPUT TYPE='button' NAME='submit2' tabindex='30' value='Submit' onClick='submitCheckProcess("+'"'+"../jsp/TSSalesDRQApndMProcess.jsp?DNDOCNO="+dnDocNo+'"'+","+'"'+"");
 		                  %><jsp:getProperty name="rPH" property="pgAlterGenAbort"/><%out.print(""+'"'+","+'"'+""); 
 				          %><jsp:getProperty name="rPH" property="pgAlertSubmit"/><%out.print(""+'"'+","+'"'+""); 
@@ -2690,7 +2690,7 @@ catch (Exception e)
 		</td>
 	</tr>
 </table>
-<!-- è¡¨å–®åƒæ•¸ --> 
+<!-- ªí³æ°Ñ¼Æ --> 
 <INPUT TYPE="hidden" NAME="SASCODATE" SIZE=14 value="<%=dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()%>" >
 <INPUT TYPE="hidden" NAME="PARTYID" SIZE=5 value="<%=partyID%>" >
 <INPUT TYPE="hidden" NAME="CURR" SIZE=5 value="<%=curr%>" >
@@ -2720,7 +2720,7 @@ catch (Exception e)
 <input name="REASON_CODE" type="hidden" value="<%=REASON_CODE%>">
 </FORM>
 <iframe width=124 height=153 name="gToday:supermini:agenda.js" id="gToday:supermini:agenda.js" src="../calendar/ipopeng.htm" scrolling="no" frameborder="0" style="visibility:hidden; z-index:65535; position:absolute; top:0px;"></iframe>
- <!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========--> 
+ <!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========--> 
  <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 <script language="JavaScript" type="text/javascript" src="../wz_tooltip.js" ></script>
