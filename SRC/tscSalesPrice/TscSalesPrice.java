@@ -836,16 +836,6 @@ public class TscSalesPrice {
                 "                       tpcl.tsc_package(+)\n" +
                 "               AND tsc_get_item_packing_code (43, msi.inventory_item_id) =\n" +
                 "                       tpcl.packing_code(+)\n" +
-//todo ts
-//                "and msi.segment1 in('020D-H11QQ21UGS20J000000000F00',\n" +
-//                "                                    '020DAH11QQ21UGS20J000000000F00',\n" +
-//                "                                    '8001-031QQ111JM000000000000F00',\n" +
-//                "                                    '8001-031MS211JM000000200000F00',\n" +
-//                "                                    '8001-031RS211JM000000200000F00',\n" +
-//                "                                    '8001-031QQ211JM000000000000F00',\n" +
-//                "                                    '8001-031QQ211JM000000800000F00',\n" +
-//                "                                    '8001-031QQ211JM0000000RLRAAFA2'\n" +
-//                "                )\n" +
                 "               AND msi.ITEM_TYPE = 'FG'\n" +
                 "               AND msii.ORGANIZATION_ID = 43\n" +
                 "               AND LENGTH (msii.SEGMENT1) >= 22\n" +
@@ -1106,17 +1096,6 @@ public class TscSalesPrice {
                 "                 and msi.description = tsdp.tsc_ordering_code(+)\n" +
                 "                 AND TSC_INV_Category(msi.inventory_item_id,43, 23)=tpcl.tsc_package(+)\n" +
                 "                 AND tsc_get_item_packing_code (43, msi.inventory_item_id)=tpcl.packing_code(+)\n" +
-//todo tsc
-//                "and msi.segment1 in('020D-H11QQ21UGS20J000000000F00',\n" +
-//                "                                    '020DAH11QQ21UGS20J000000000F00',\n" +
-//                "                                    '8001-031QQ111JM000000000000F00',\n" +
-//                "                                    '8001-031MS211JM000000200000F00',\n" +
-//                "                                    '8001-031RS211JM000000200000F00',\n" +
-//                "                                    '8001-031QQ211JM000000000000F00',\n" +
-//                "                                    '8001-031QQ211JM000000800000F00',\n" +
-//                "                                    '8001-031QQ211JM0000000RLRAAFA2',\n" +
-//                "'8017-041RT011J00000000','8017-041RT011K00000000','8017-041RT011M00000000','8017-041RT01FAL0000000','1010-402B0014741000000'\n" +
-//                "                )\n" +
                 "                 AND msi.ITEM_TYPE='FG'\n" +
                 "                 AND msii.ORGANIZATION_ID=43\n" +
                 "                 AND LENGTH(msii.SEGMENT1)>=22\n" +
