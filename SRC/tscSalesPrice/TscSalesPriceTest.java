@@ -2,7 +2,8 @@ package tscSalesPrice;
 
 import bean.ConnUtils;
 import com.mysql.jdbc.StringUtils;
-import jxl.write.WritableCellFormat;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 
 import java.io.OutputStream;
 import java.math.BigDecimal;
@@ -19,13 +20,13 @@ public class TscSalesPriceTest {
     private static Connection conn;
     private static List<ExcelColumn> columns = new ArrayList<>();
 
-    private static TscSalesPrice tscItemPrice() {
-        return new TscSalesPrice();
-    }
+//    private static TscSalesPrice tscItemPrice() {
+//        return new TscSalesPrice();
+//    }
 
-    private static Map<String, WritableCellFormat> styles;
-//    private Map<String, WritableCellFormat> styles = new HashMap<>();
-//    private static Map<String, WritableCellFormat> styles;
+    private static Map<String, CellStyle> styles;
+//    private Map<String, CellStyle> styles = new HashMap<>();
+//    private static Map<String, CellStyle> styles;
 //
 //    static {
 //        try {
@@ -60,7 +61,8 @@ public class TscSalesPriceTest {
 
 
     public static void setTsceExcelColumns() throws Exception {
-        styles = ExcelWriter.createStyles();
+        SXSSFWorkbook workbook = new SXSSFWorkbook(); // 使用 SXSSFWorkbook 以支援大數據量並保持低記憶體
+        styles = ExcelWriter.createStyles(workbook);
         columns = Arrays.asList(
                 new ExcelColumn("22/30-Digit-Code", 30, styles.get("leftL"), keys("SEGMENT1")),
                 new ExcelColumn("PART ID", 20, styles.get("leftL"), keys("FAIRCHILD_CPN", "PART_ID")),
@@ -292,12 +294,14 @@ public class TscSalesPriceTest {
                                 return new SimpleDateFormat("yyyy/MM/dd").format((Date) val);
                             }
                             return val.toString();
-                        })
+                        }),
+                new ExcelColumn("Item Status Code", 10, styles.get("centerL"), keys("INVENTORY_ITEM_STATUS_CODE"))
         );
     }
 
     public static void setTscExcelColumns() throws Exception {
-        styles = ExcelWriter.createStyles();
+        SXSSFWorkbook workbook = new SXSSFWorkbook();
+        styles = ExcelWriter.createStyles(workbook);
         columns = Arrays.asList(
                 new ExcelColumn("22/30-Digit-Code", 30, styles.get("leftL"), keys("SEGMENT1")),
                 new ExcelColumn("PART ID", 20, styles.get("leftL"), keys("PART_ID")),
@@ -446,11 +450,16 @@ public class TscSalesPriceTest {
                                 return new SimpleDateFormat("yyyy/MM/dd").format((Date) val);
                             }
                             return val.toString();
-                        })
+                        }),
+                new ExcelColumn("Item Status Code", 10, styles.get("centerL"), keys("IM_STATUS"))
         );
     }
 
     public static void main(String[] args) throws Exception {
+//        System.setProperty("javax.xml.parsers.DocumentBuilderFactory", "com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl");
+//        System.setProperty("javax.xml.parsers.SAXParserFactory", "com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl");
+//        System.setProperty("javax.xml.transform.TransformerFactory", "com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl");
+
         String sql1 = "alter SESSION set NLS_LANGUAGE = 'AMERICAN' ";
         PreparedStatement pstmt1 = conn.prepareStatement(sql1);
         pstmt1.executeUpdate();
@@ -465,8 +474,6 @@ public class TscSalesPriceTest {
         int freezeCol = 0;
         String folder = "";
         List<Map<String, Object>> dataList = new ArrayList<>();
-//        List<Map<String, Object>> dataList = tscResultSetToList();
-//        setTscExcelColumns();
         TscSalesPriceType str = TSC;
         switch (str) {
             case TSC:
@@ -489,14 +496,19 @@ public class TscSalesPriceTest {
                 break;
         }
 
-        String fileName = name + "-20250509.xls";
+        String fileName = name + "-20251020.xlsx";
         String dirPath = "D:\\resin-2.1.9\\webapps\\oradds\\"+folder;
         String strPath = dirPath + "\\" + fileName;
 
         try {
+//            檢測POI路徑位置
+//            System.out.println("POILogger loaded from: " +
+//                    org.apache.poi.util.POILogger.class.getProtectionDomain()
+//                            .getCodeSource().getLocation());
+
             OutputStream os = Files.newOutputStream(Paths.get(strPath));
             String dataDateStr = "Data Date: " + new SimpleDateFormat("yyyy-MM-dd").format(new Date());
-            ExcelWriter.writeExcel(os, dataDateStr, columns, dataList, styles, freezeCol);
+            ExcelWriter.writeExcel(os, dataDateStr, columns, dataList, freezeCol);
             System.out.println("Excel 匯出成功");
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -862,12 +874,17 @@ public class TscSalesPriceTest {
                 "               AND tsc_get_item_packing_code (43, msi.inventory_item_id) =\n" +
                 "                       tpcl.packing_code(+)\n" +
 // todo
-                "               AND msi.segment1 IN\n" +
-                "                       ('0021-4L1QQ21TLD26A000000000F00',\n" +
-                "                        '0021-4L1QQ21TLD28A000000000F00',\n" +
-                "                        '0021-4L1QQ21TLD30A000000000F00')\n" +
+               "and msi.segment1 in('020D-H11QQ21UGS20J000000000F00',\n" +
+                "                                    '020DAH11QQ21UGS20J000000000F00',\n" +
+                "                                    '8001-031QQ111JM000000000000F00',\n" +
+                "                                    '8001-031MS211JM000000200000F00',\n" +
+                "                                    '8001-031RS211JM000000200000F00',\n" +
+                "                                    '8001-031QQ211JM000000000000F00',\n" +
+                "                                    '8001-031QQ211JM000000800000F00',\n" +
+                "                                    '8001-031QQ211JM0000000RLRAAFA2'\n" +
+                "                )\n" +
                 "               AND msi.ITEM_TYPE = 'FG'\n" +
-                "               AND msi.INVENTORY_ITEM_STATUS_CODE <> 'Inactive'\n" +
+//                "               AND msi.INVENTORY_ITEM_STATUS_CODE <> 'Inactive'\n" +
                 "               AND msii.ORGANIZATION_ID = 43\n" +
                 "               AND LENGTH (msii.SEGMENT1) >= 22\n" +
                 "               AND msii.ITEM_TYPE = 'FG'\n" +
@@ -994,6 +1011,7 @@ public class TscSalesPriceTest {
                 "  END AS PROD_GROUP_5\n" +
                 "FROM s1";
 
+        System.out.println("ts=" +sql);
         Statement statement = conn.createStatement();
         ResultSet rs = statement.executeQuery(sql);
         List<Map<String, Object>> rows = new ArrayList<>();
@@ -1061,7 +1079,7 @@ public class TscSalesPriceTest {
                 "        and NVL(ttpc.TSC_PROD_CATEGORY,a.TSC_PROD_CATEGORY)=a.TSC_PROD_CATEGORY \n" +
                 "        and ttpc.TSC_FAMILY=a.TSC_FAMILY \n" +
                 "        and NVL(ttpc.TSC_PROD_FAMILY,nvl(a.TSC_PROD_FAMILY,'XXX'))=nvl(a.TSC_PROD_FAMILY,'XXX')) pl_category\n" +
-                "        FROM (SELECT msi.organization_id,msi.segment1,msi.description,msi.inventory_item_id,msi.attribute3,\n" +
+                "        FROM (SELECT msi.organization_id,msi.segment1,msi.description,msi.inventory_item_id,msi.attribute3, msi.INVENTORY_ITEM_STATUS_CODE,\n" +
                 "        case when tsdp.TSC_ORDERING_CODE is not null then 'YES' else '' end as F400_PRODUCT,\n" +
                 "               tsdp.BOTTOM_PRICE_USD_PCS,tsdp.SALES_HEAD_PRICE_USD_PCS,tsdp.RECOMMENDED_STOCK_IN_CHANNEL,\n" +
                 "               tsdp.PRICE_BOOK_CODE,tsdp.DESIGN_REGISTRATION,tsdp.RECOMMENDED_REPLACEMENT,tsdp.DISTRIBUTION_BOOK_PRICE as price1,\n" +
@@ -1124,15 +1142,22 @@ public class TscSalesPriceTest {
                 "                 AND TSC_INV_Category(msi.inventory_item_id,43, 23)=tpcl.tsc_package(+)\n" +
                 "                 AND tsc_get_item_packing_code (43, msi.inventory_item_id)=tpcl.packing_code(+)\n" +
 //todo tsce
-                "                and msi.segment1 in('1003-031A021500000000000000F00',\n" +
-                "'1003-041A0215000000000'\n" +
+                "and msi.segment1 in('020D-H11QQ21UGS20J000000000F00',\n" +
+                "                                    '020DAH11QQ21UGS20J000000000F00',\n" +
+                "                                    '8001-031QQ111JM000000000000F00',\n" +
+                "                                    '8001-031MS211JM000000200000F00',\n" +
+                "                                    '8001-031RS211JM000000200000F00',\n" +
+                "                                    '8001-031QQ211JM000000000000F00',\n" +
+                "                                    '8001-031QQ211JM000000800000F00',\n" +
+                "                                    '8001-031QQ211JM0000000RLRAAFA2',\n" +
+                " '8017-041RT011J00000000','8017-041RT011K00000000','8017-041RT011M00000000','8017-041RT01FAL0000000','1010-402B0014741000000' \n" +
                 "                )\n" +
                 "                 AND msi.ITEM_TYPE='FG'\n" +
-                "                 AND msi.INVENTORY_ITEM_STATUS_CODE <>'Inactive'\n" +
+//                "                 AND msi.INVENTORY_ITEM_STATUS_CODE <>'Inactive'\n" +
                 "                 AND msii.ORGANIZATION_ID=43\n" +
                 "                 AND LENGTH(msii.SEGMENT1)>=22\n" +
                 "                 AND msii.ITEM_TYPE='FG'\n" +
-                "                 AND msii.INVENTORY_ITEM_STATUS_CODE <>'Inactive'\n" +
+//                "                 AND msii.INVENTORY_ITEM_STATUS_CODE <>'Inactive'\n" +
                 "                 AND msi.inventory_item_id=msii.inventory_item_id\n" +
                 "                 AND UPPER(msi.DESCRIPTION) NOT LIKE '%DISABLE%'\n" +
                 "                 AND msi.attribute3=tm.manufactory_no(+)\n" +
@@ -1141,12 +1166,12 @@ public class TscSalesPriceTest {
                 "                 and msi.INVENTORY_ITEM_ID=pt.INVENTORY_ITEM_ID(+)\n" +
                 "                 and msi.organization_id=cc.ORGANIZATION_ID(+)\n" +
                 "                 and msi.INVENTORY_ITEM_ID=cc.INVENTORY_ITEM_ID(+)\n" +
-                "                 AND NVL(msi.CUSTOMER_ORDER_ENABLED_FLAG,'N')='Y'\n" +
-                "                 AND NVL(msi.INTERNAL_ORDER_ENABLED_FLAG,'N')='Y'\n" +
-                "                 and tsc_item_pcn_flag(43,msi.inventory_item_id,trunc(sysdate))='N'\n" +
+//                "                 AND NVL(msi.CUSTOMER_ORDER_ENABLED_FLAG,'N')='Y'\n" +
+//                "                 AND NVL(msi.INTERNAL_ORDER_ENABLED_FLAG,'N')='Y'\n" +
+                "                 --and tsc_item_pcn_flag(43,msi.inventory_item_id,trunc(sysdate))='N'\n" +
                 "                 and (((length(msi.segment1)=22 and substr(msi.segment1,21,1)='0') or (length(msi.segment1)=30 \n" +
                 "                 and substr(msi.segment1,21,1)='0' and substr(msi.segment1,29,2)='00'))\n" +
-                "                 and substr(msi.segment1,22,1) in ('0','A','B','C','D','F','G','H','I','J','K','L','N','O','P','Q','R','S','T','V','W','X','Y','Z'))\n" +
+                "                 )\n" +
                 "                 and instr(msi.description,'/')<=0) A\n" +
                 "                 ,TABLE(TSC_GET_ITEM_SPQ_MOQ(a.inventory_item_id,'TS',NULL)) qq\n" +
                 "                 ,TABLE(TSC_GET_ITEM_LEADTIME(a.inventory_item_id,a.attribute3,NULL)) tt\n" +
@@ -1210,9 +1235,10 @@ public class TscSalesPriceTest {
                 "    END AS PROD_GROUP_5,\n" +
                 "    CCCODE, HTS_CODE, NEW_PARTS_RELEASE_DATE, TW_VENDOR_FLAG,FIRST_ON_WEBSITE_DATE, F400_PRODUCT, SPG_STATUS, \n" +
                 "    TSC_PROD_HIERARCHY_1, TSC_PROD_HIERARCHY_2, TSC_PROD_HIERARCHY_3, TSC_PROD_HIERARCHY_4,FAIRCHILD_CPN, \n" +
-                "    ITEM_CNT, PREFEERED_PACKING_CODE_FLAG, DISABLE_DATE\n" +
+                "    ITEM_CNT, PREFEERED_PACKING_CODE_FLAG, DISABLE_DATE, INVENTORY_ITEM_STATUS_CODE\n" +
                 "FROM S1";
 
+//        System.out.println("tsc =" +sql);
         Statement statement = conn.createStatement();
         ResultSet rs = statement.executeQuery(sql);
         List<Map<String, Object>> rows = new ArrayList<>();
@@ -1220,10 +1246,10 @@ public class TscSalesPriceTest {
         int columnCount = metaData.getColumnCount();
 
         while (rs.next()) {
-            if (rs.getString("PACKAGE_CODE") == null || rs.getString("part_spec") == null || rs.getInt("ITEM_CNT") != 1)
+            if (rs.getString("PACKAGE_CODE") == null || rs.getInt("ITEM_CNT") != 1)
                 continue;
-            if (rs.getString("TSC_PROD_GROUP").equals("PMD") && rs.getString("SEGMENT1").length() == 30 && rs.getString("SEGMENT1").charAt(21) == 'V')
-                continue;
+//            if (rs.getString("TSC_PROD_GROUP").equals("PMD") && rs.getString("SEGMENT1").length() == 30 && rs.getString("SEGMENT1").charAt(21) == 'V')
+//                continue;
             Map<String, Object> row = new LinkedHashMap<>(); // 使用 LinkedHashMap 保持欄位順序
             for (int i = 1; i <= columnCount; i++) {
                 String columnName = metaData.getColumnLabel(i); // getColumnLabel 可拿到 SQL 別名
