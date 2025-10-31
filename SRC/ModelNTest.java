@@ -13,13 +13,16 @@ import modelN.dto.ModelNDto;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.*;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static modelN.SalesArea.*;
+import static modelN.SalesArea.TSCCSH;
+import static modelN.SalesArea.TSCTDA;
 
 public class ModelNTest {
     public static void mainc(String[] args) {
@@ -542,7 +545,7 @@ public class ModelNTest {
 //        String uploadFilePath = "C:\\Users\\mars.wang\\Desktop\\sales-upload\\D4-019_20241212.xls";
 //        StringBuilder errorMessage = new StringBuilder();
         try {
-            String uploadFilePath = "C:\\Users\\mars.wang\\Desktop\\modelN_Excel\\002-ModelN_Sample-1.xls";
+            String uploadFilePath = "C:\\Users\\mars.wang\\Desktop\\modelN_Excel\\WT RFQ-20251027-OK.xls";
 //            String uploadFilePath = "C:\\Users\\mars.wang\\Desktop\\modelN_Excel\\RFQ-TSCTDA-33452.xls";
             InputStream is = new FileInputStream(uploadFilePath);
             Workbook wb = Workbook.getWorkbook(is);
@@ -591,22 +594,29 @@ public class ModelNTest {
                             modelNDto.setCustItem(content);
                             break;
                         case Qty:
-                            String qty = "";
+                            String  qty;
                             if (rowCell instanceof NumberCell) {
-                                qty = "" + ((NumberCell) rowCell).getValue(); // 直接取數值
+                                double num = ((NumberCell) rowCell).getValue(); // 直接取數值
+                                // 若為整數，不顯示小數
+                                if (num == Math.floor(num)) {
+                                    qty = String.valueOf((long) num); // 轉成整數文字
+                                } else {
+                                    qty = String.valueOf(num);
+                                }
                             } else {
-                                qty = content; // 文字型欄位
+                                qty = content;
                             }
                             modelNDto.setQty(qty);
                             break;
                         case SellingPrice:
-                            String sellingPrice = "";
+                            BigDecimal sellingPrice;
                             if (rowCell instanceof NumberCell) {
-                                sellingPrice = "" + ((NumberCell) rowCell).getValue(); // 直接取數值
+                                double raw = ((NumberCell) rowCell).getValue(); // 直接取數值
+                                sellingPrice = new BigDecimal(raw).setScale(5, RoundingMode.HALF_UP).stripTrailingZeros();
                             } else {
-                                sellingPrice = content; // 文字型欄位
+                                sellingPrice = new BigDecimal(content).setScale(5, RoundingMode.HALF_UP).stripTrailingZeros();
                             }
-                            modelNDto.setSellingPrice(sellingPrice);
+                            modelNDto.setSellingPrice(sellingPrice.toPlainString());
                             break;
                         case CRD:
                             if (StringUtils.isNullOrEmpty(content)) {
@@ -698,8 +708,8 @@ public class ModelNTest {
 
                     map.put(rowIndex, modelNDto);
                 }
-                System.out.println("getCrd="+modelNDto.getCrd());
-                System.out.println("getSsd="+modelNDto.getSsd());
+//                System.out.println("getCrd="+modelNDto.getCrd());
+//                System.out.println("getSsd="+modelNDto.getSsd());
 //            System.out.println(""+i+"----------------------------------------------");
                 if (!errorMsgList.isEmpty()) {
                     String errorException = String.join(";\t", errorMsgList);
@@ -1067,6 +1077,7 @@ public class ModelNTest {
                         modelNDto.setErrorList(errList);
                     }
                 } else {
+                    System.out.println("priceNumber=" + (new DecimalFormat("###,##0.000##")).format(priceNumber));
                     modelNDto.setSellingPrice((new DecimalFormat("###,##0.000##")).format(priceNumber));
                 }
             } catch (Exception e) {
@@ -1295,70 +1306,138 @@ public class ModelNTest {
         if (recordCount > 1) {
             modelNDto.setErrorMsg(appendErrMsg("對應的台半料號超過一個以上,請選擇正確台半料號!"));
         } else {
-            if (!modelNDto.getQuoteNumber().equals("") && !modelNDto.getTscItemDesc().equals("")) {
+            if (!StringUtils.isNullOrEmpty(modelNDto.getQuoteNumber()) && !StringUtils.isNullOrEmpty(modelNDto.getTscItemDesc())) {
+                String passFlag = "";
+                String expireDate = "";
                 Statement stmt = conn.createStatement();
-                String sql = "select *  from (\n" +
-                        "select a.quoteid, a.partnumber,a.currency, to_char(a.pricekusd/1000,'FM99990.0999999') price_usd,\n" +
-                        "'('|| a.region ||')'|| a.endcustomer end_customer\n" +
-                        "from tsc_om_ref_quotenet a\n" +
-                        " where a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
-                        " and a.partnumber='" + modelNDto.getTscItemDesc() + "' \n"+
-                        "union all\n" +
-                        "SELECT quoteid, partnumber, currency, price_usd, end_customer\n" +
-                        "FROM (\n" +
-                        "  SELECT \n" +
-                        "    a.quoteid, \n" +
-                        "    a.partnumber, \n" +
-                        "    a.currency,\n" +
-                        "    TO_CHAR(a.pricekusd / 1000, 'FM99990.0999999') AS price_usd,\n" +
-                        "    '(' || a.region || ')' || a.endcustomer AS end_customer,\n" +
-                        "    ROW_NUMBER() OVER (PARTITION BY a.quoteid, a.partnumber, a.currency ORDER BY a.pricekusd DESC) AS rn\n" +
-                        "  FROM TSC_OM_REF_MODELN a\n" +
-                        " where a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
-                        " and a.partnumber='" + modelNDto.getTscItemDesc() + "' \n"+
-                        ")\n" +
-                        "WHERE rn = 1\n" +
-                        ") order by quoteid, partnumber";
+                String sql = "SELECT * FROM (\n" +
+                        "    -- 第一部分：QUQTE 資料來源\n" +
+                        "     SELECT \n" +
+                        "         quoteid,\n" +
+                        "         partnumber,\n" +
+                        "         currency,   \n" +
+                        "         LISTAGG(pricek, ',') WITHIN GROUP (ORDER BY pricek DESC) AS pricek,\n" +
+                        "         LISTAGG(end_customer||'_'||pricek, ',') WITHIN GROUP (ORDER BY end_customer DESC) AS end_customer,\n" +
+                        "         pass_flag,\n" +
+                        "         todate\n" +
+                        "     FROM (    \n" +
+                        "         SELECT DISTINCT\n" +
+                        "             a.quoteid,\n" +
+                        "             a.partnumber,\n" +
+                        "             a.currency,\n" +
+                        "             TO_CHAR(a.pricek / 1000, 'FM99990.0999999') AS pricek,           \n" +
+                        "             '(' || a.region || ')' || a.endcustomer AS end_customer,\n" +
+                        "             CASE\n" +
+                        "                 WHEN (\n" +
+                        "                     CASE\n" +
+                        "                         WHEN a.region IN ('TSCR', 'TSCI') THEN TRUNC(a.fromdate)\n" +
+                        "                         ELSE TRUNC(SYSDATE)\n" +
+                        "                     END\n" +
+                        "                 ) BETWEEN TRUNC(a.fromdate) AND TRUNC(a.todate)\n" +
+                        "                 THEN '1'\n" +
+                        "                 ELSE '0'\n" +
+                        "             END AS pass_flag,\n" +
+                        "             TO_CHAR(a.todate,'yyyy-mm-dd') todate\n" +
+                        "         FROM tsc_om_ref_quotenet a\n" +
+                        " WHERE a.quoteid='Q6180' \n" +
+                        "          AND a.partnumber='1.5KE130CA'\n" +
+//                        "    WHERE a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
+//                        "      AND a.partnumber='" + modelNDto.getTscItemDesc() + "' \n"+
+                        "      AND EXISTS (\n" +
+                        "                     SELECT 1 \n" +
+                        "                     FROM tsc_om_ref_quotenet b\n" +
+                        "                     WHERE b.quoteid = a.quoteid\n" +
+                        "                       AND b.partnumber = a.partnumber\n" +
+                        "                 )\n" +
+                        "     )\n" +
+                        "     GROUP BY\n" +
+                        "        quoteid,\n" +
+                        "        partnumber,\n" +
+                        "        currency,\n" +
+                        "        pass_flag,\n" +
+                        "        todate\n" +
+                        "    UNION ALL\n" +
+                        "     -- 第二部分：MODELN 資料來源(只取最新報價)\n" +
+                        "    SELECT\n" +
+                        "         quoteid,\n" +
+                        "         partnumber,\n" +
+                        "         currency,   \n" +
+                        "         LISTAGG(pricek, ',') WITHIN GROUP (ORDER BY pricek DESC) AS pricek,\n" +
+                        "         LISTAGG(end_customer||'_'||pricek, ',') WITHIN GROUP (ORDER BY end_customer DESC) AS end_customer,\n" +
+                        "         pass_flag,\n" +
+                        "         todate\n" +
+                        "    FROM (\n" +
+                        "       SELECT DISTINCT\n" +
+                        "             a.quoteid,\n" +
+                        "             a.partnumber,\n" +
+                        "             a.currency,\n" +
+                        "             TO_CHAR(a.pricek / 1000, 'FM99990.0999999') AS pricek,           \n" +
+                        "             '(' || a.region || ')' || a.endcustomer AS end_customer,\n" +
+                        "             CASE\n" +
+                        "                 WHEN (\n" +
+                        "                     CASE\n" +
+                        "                         WHEN a.region IN ('TSCR', 'TSCI') THEN TRUNC(a.fromdate)\n" +
+                        "                         ELSE TRUNC(SYSDATE)\n" +
+                        "                     END\n" +
+                        "                 ) BETWEEN TRUNC(a.fromdate) AND TRUNC(a.todate)\n" +
+                        "                 THEN '1'\n" +
+                        "                 ELSE '0'\n" +
+                        "             END AS pass_flag,\n" +
+                        "             TO_CHAR(a.todate,'yyyy-mm-dd') todate\n" +
+                        "        FROM tsc_om_ref_modeln a\n" +
+                        " WHERE a.quoteid='Q6180' \n" +
+                        "          AND a.partnumber='1.5KE130CA'\n" +
+//                        "        WHERE a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
+//                        "          AND a.partnumber='" + modelNDto.getTscItemDesc() + "' \n"+
+                        "          AND EXISTS (\n" +
+                        "               SELECT 1 \n" +
+                        "               FROM tsc_om_ref_modeln b\n" +
+                        "               WHERE b.quoteid = a.quoteid\n" +
+                        "                 AND b.partnumber = a.partnumber\n" +
+                        "           ) \n" +
+                        "    )\n" +
+                        "     GROUP BY\n" +
+                        "        quoteid,\n" +
+                        "        partnumber,\n" +
+                        "        currency,\n" +
+                        "        pass_flag,\n" +
+                        "        todate\n" +
+                        ")";
+//                System.out.println(sql);
                 ResultSet rs = stmt.executeQuery(sql);
                 if (rs.next()) {
-                    sellingPrice_Q = rs.getString("PRICE_USD");
-                    endCustName = rs.getString("END_CUSTOMER");
+                    passFlag = rs.getString("PASS_FLAG");
+                    if ("1".equals(passFlag)) {
+                        sellingPrice_Q = rs.getString("PRICEK");
+                        endCustName = rs.getString("END_CUSTOMER");
+                        String[] arr = endCustName.split(",");
+                        for (String s : arr) {
+                            String item = s.trim(); // 去除前後空格
+                            int idx = item.lastIndexOf('_');
+                            if (item.contains(modelNDto.getSellingPrice())) { // 用 contains like 判斷
+                                endCustName = item.substring(0, idx);
+                            }
+                        }
+
+                        if (sellingPrice_Q.split(",").length > 1) {
+                            if(!Arrays.asList(sellingPrice_Q.split(",")).contains(modelNDto.getSellingPrice())) {
+                                errList.add(ErrorMessage.MULTIPLE_PRICES.getMessageFormat(sellingPrice_Q.replace(",", " / ")));
+                                modelNDto.setErrorList(errList);
+                            } else {
+                                sellingPrice_Q = modelNDto.getSellingPrice();
+                            }
+                        }
+                    } else {
+                        expireDate = rs.getString("TODATE");
+                        errList.add(ErrorMessage.QUOTE_HAS_EXPIRED.getMessageFormat(expireDate));
+                        modelNDto.setErrorList(errList);
+                    }
+                } else {
+                    errList.add(ErrorMessage.QUOTE_NOT_FOUND.getMessage());
+                    modelNDto.setErrorList(errList);
                 }
                 rs.close();
                 stmt.close();
-                if (sellingPrice_Q.equals("")) {
-                    stmt = conn.createStatement();
-                    sql = "select *  from (\n" +
-                            "select a.quoteid, a.partnumber,a.currency, to_char(a.pricekusd/1000,'FM99990.0999999') price_usd,\n" +
-                            "'('|| a.region ||')'|| a.endcustomer end_customer\n" +
-                            "from tsc_om_ref_quotenet a\n" +
-                            " where a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
-                            " and a.partnumber like '" + itemNoPacking + "%' \n" +
-                            "union all\n" +
-                            "SELECT quoteid, partnumber, currency, price_usd, end_customer\n" +
-                            "FROM (\n" +
-                            "  SELECT \n" +
-                            "    a.quoteid, \n" +
-                            "    a.partnumber, \n" +
-                            "    a.currency,\n" +
-                            "    TO_CHAR(a.pricekusd / 1000, 'FM99990.0999999') AS price_usd,\n" +
-                            "    '(' || a.region || ')' || a.endcustomer AS end_customer,\n" +
-                            "    ROW_NUMBER() OVER (PARTITION BY a.quoteid, a.partnumber, a.currency ORDER BY a.pricekusd DESC) AS rn\n" +
-                            "  FROM TSC_OM_REF_MODELN a\n" +
-                            " where a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
-                            " and a.partnumber like '" + itemNoPacking + "%' \n" +
-                            ")\n" +
-                            "WHERE rn = 1\n" +
-                            ") order by quoteid, partnumber";
-                    System.out.println("Xx="+sql);
-                    rs = stmt.executeQuery(sql);
-                    if (rs.next()) {
-                        sellingPrice_Q = rs.getString("PRICE_USD");
-                        endCustName = rs.getString("END_CUSTOMER");
-                    }
-                    rs.close();
-                    stmt.close();
-                }
             }
         }
     }
