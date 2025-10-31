@@ -17,6 +17,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.sql.*;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -398,40 +400,47 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                         "    UNION ALL\n" +
                         "     -- 第二部分：MODELN 資料來源(只取最新報價)\n" +
                         "    SELECT\n" +
-                        "        quoteid,\n" +
-                        "        partnumber,\n" +
-                        "        currency,\n" +
-                        "        pricek,\n" +
-                        "        end_customer,\n" +
-                        "        pass_flag,\n" +
-                        "        todate\n" +
+                        "         quoteid,\n" +
+                        "         partnumber,\n" +
+                        "         currency,   \n" +
+                        "         LISTAGG(pricek, ',') WITHIN GROUP (ORDER BY pricek DESC) AS pricek,\n" +
+                        "         LISTAGG(end_customer||'_'||pricek, ',') WITHIN GROUP (ORDER BY end_customer DESC) AS end_customer,\n" +
+                        "         pass_flag,\n" +
+                        "         todate\n" +
                         "    FROM (\n" +
-                        "        SELECT\n" +
-                        "            a.quoteid,\n" +
-                        "            a.partnumber,\n" +
-                        "            a.currency,\n" +
-                        "            TO_CHAR(a.pricek / 1000, 'FM99990.0999999') AS pricek,\n" +
-                        "            '(' || a.region || ')' || a.endcustomer AS end_customer,\n" +
-                        "            CASE\n" +
-                        "                WHEN (\n" +
-                        "                    CASE\n" +
-                        "                        WHEN a.region IN ('TSCR', 'TSCI') THEN TRUNC(a.fromdate)\n" +
-                        "                        ELSE TRUNC(SYSDATE)\n" +
-                        "                    END\n" +
-                        "                ) BETWEEN TRUNC(a.fromdate) AND TRUNC(a.todate)\n" +
-                        "                THEN '1'\n" +
-                        "                ELSE '0'\n" +
-                        "            END AS pass_flag,\n" +
-                        "            TO_CHAR(a.todate,'yyyy-mm-dd') todate,\n" +
-                        "            ROW_NUMBER() OVER (\n" +
-                        "                PARTITION BY a.quoteid, a.partnumber, a.currency\n" +
-                        "                ORDER BY a.datechanged DESC\n" +
-                        "            ) AS rn\n" +
+                        "       SELECT DISTINCT\n" +
+                        "             a.quoteid,\n" +
+                        "             a.partnumber,\n" +
+                        "             a.currency,\n" +
+                        "             TO_CHAR(a.pricek / 1000, 'FM99990.0999999') AS pricek,           \n" +
+                        "             '(' || a.region || ')' || a.endcustomer AS end_customer,\n" +
+                        "             CASE\n" +
+                        "                 WHEN (\n" +
+                        "                     CASE\n" +
+                        "                         WHEN a.region IN ('TSCR', 'TSCI') THEN TRUNC(a.fromdate)\n" +
+                        "                         ELSE TRUNC(SYSDATE)\n" +
+                        "                     END\n" +
+                        "                 ) BETWEEN TRUNC(a.fromdate) AND TRUNC(a.todate)\n" +
+                        "                 THEN '1'\n" +
+                        "                 ELSE '0'\n" +
+                        "             END AS pass_flag,\n" +
+                        "             TO_CHAR(a.todate,'yyyy-mm-dd') todate\n" +
                         "        FROM tsc_om_ref_modeln a\n" +
                         "        WHERE a.quoteid='" + modelNDto.getQuoteNumber() + "' \n"+
                         "          AND a.partnumber='" + modelNDto.getTscItemDesc() + "' \n"+
+                        "          AND EXISTS (\n" +
+                        "               SELECT 1 \n" +
+                        "               FROM tsc_om_ref_modeln b\n" +
+                        "               WHERE b.quoteid = a.quoteid\n" +
+                        "                 AND b.partnumber = a.partnumber\n" +
+                        "           ) \n" +
                         "    )\n" +
-                        "    WHERE rn = 1\n" +
+                        "     GROUP BY\n" +
+                        "        quoteid,\n" +
+                        "        partnumber,\n" +
+                        "        currency,\n" +
+                        "        pass_flag,\n" +
+                        "        todate\n" +
                         ")";
 //                System.out.println(sql);
                 ResultSet rs = stmt.executeQuery(sql);
@@ -792,22 +801,29 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                         modelNDto.setCustItem(content);
                         break;
                     case Qty:
-                        String qty = "";
+                        String  qty;
                         if (rowCell instanceof NumberCell) {
-                            qty =  "" + ((NumberCell) rowCell).getValue(); // 直接取數值
+                            double num = ((NumberCell) rowCell).getValue(); // 直接取數值
+                            // 若為整數，不顯示小數
+                            if (num == Math.floor(num)) {
+                                qty = String.valueOf((long) num); // 轉成整數文字
+                            } else {
+                                qty = String.valueOf(num);
+                            }
                         } else {
-                            qty = (rowCell.getContents()).trim(); // 文字型欄位
+                            qty = content;
                         }
                         modelNDto.setQty(qty);
                         break;
                     case SellingPrice:
-                        String sellingPrice = "";
+                        BigDecimal sellingPrice;
                         if (rowCell instanceof NumberCell) {
-                            sellingPrice =  "" + ((NumberCell) rowCell).getValue(); // 直接取數值
+                            double raw = ((NumberCell) rowCell).getValue(); // 直接取數值
+                            sellingPrice = new BigDecimal(raw).setScale(5, RoundingMode.HALF_UP).stripTrailingZeros();
                         } else {
-                            sellingPrice = (rowCell.getContents()).trim(); // 文字型欄位
+                            sellingPrice = new BigDecimal(content).setScale(5, RoundingMode.HALF_UP).stripTrailingZeros();
                         }
-                        modelNDto.setSellingPrice(sellingPrice);
+                        modelNDto.setSellingPrice(sellingPrice.toPlainString());
                         break;
                     case CRD:
                         if (StringUtils.isNullOrEmpty(content)) {

@@ -1,6 +1,6 @@
 package tscSalesPrice;
 
-import jxl.write.WritableCellFormat;
+import org.apache.poi.ss.usermodel.CellStyle;
 
 import java.util.List;
 import java.util.Map;
@@ -10,18 +10,18 @@ import java.util.function.Function;
 public class ExcelColumn {
     private final String title;
     private final int width;
-    private final WritableCellFormat defaultFormat;
+    private final CellStyle defaultFormat;
     private final List<String> fieldKeys;
     private final String styleDecideFieldKey; // 新增: 判斷style的欄位
     private final Function<Map<String, Object>, String> contentSelector;
     //    private final Function<Object, String> formatter;
-    private final BiFunction<Object, Map<String, WritableCellFormat>, WritableCellFormat> styleSelector;
+    private final BiFunction<Object, Map<String, CellStyle>, CellStyle> styleSelector;
 
-    public ExcelColumn(String title, int width, WritableCellFormat format, List<String> fieldKeys) {
+    public ExcelColumn(String title, int width, CellStyle format, List<String> fieldKeys) {
         this(title, width, format, fieldKeys, null, rowData -> getFirstNonNullFromKeys(rowData, fieldKeys), null);
     }
 
-    public ExcelColumn(String title, int width, WritableCellFormat format, List<String> fieldKeys, Function<Object, String> formatter) {
+    public ExcelColumn(String title, int width, CellStyle format, List<String> fieldKeys, Function<Object, String> formatter) {
         this(title, width, format, fieldKeys, null, rowData -> {
             Object val = getFirstNonNullRaw(rowData, fieldKeys);
             return formatter != null ? formatter.apply(val) : (val == null ? "" : val.toString());
@@ -31,11 +31,11 @@ public class ExcelColumn {
     // 新增：支援依資料內容動態決定 style
     public ExcelColumn(String title,
                        int width,
-                       WritableCellFormat defaultFormat,
+                       CellStyle defaultFormat,
                        List<String> fieldKeys,
                        String styleDecideFieldKey,
                        Function<Map<String, Object>, String> contentSelector,
-                       BiFunction<Object, Map<String, WritableCellFormat>, WritableCellFormat> styleSelector) {
+                       BiFunction<Object, Map<String, CellStyle>, CellStyle> styleSelector) {
         this.title = title;
         this.width = width;
         this.defaultFormat = defaultFormat;
@@ -54,7 +54,7 @@ public class ExcelColumn {
         return width;
     }
 
-    public WritableCellFormat getDefaultFormat() {
+    public CellStyle getDefaultFormat() {
         return defaultFormat;
     }
 
@@ -81,7 +81,7 @@ public class ExcelColumn {
 //        return formatter != null ? formatter.apply(value) : (value == null ? "" : value.toString());
 //    }
 
-    public WritableCellFormat decideFormat(Map<String, Object> rowData, Map<String, WritableCellFormat> styles) {
+    public CellStyle decideFormat(Map<String, Object> rowData, Map<String, CellStyle> styles) {
         Object decideValue = (styleDecideFieldKey != null) ? rowData.get(styleDecideFieldKey) : null;
         if (styleSelector != null) {
             return styleSelector.apply(decideValue, styles);
