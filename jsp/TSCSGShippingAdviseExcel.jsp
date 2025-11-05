@@ -385,12 +385,12 @@
 				col=0;
 				package_mode=basic_package;
 				v_chk_rpt_name="";
-				if (to_tw.equals("Y") && (!(shipping_mark.contains("元超") || shipping_mark.contains("AVNET(TSCT-Disty)")) || so_no.startsWith("1121"))) {
+				if (to_tw.equals("Y") && ((shipping_mark.contains("WT(TSCT Disty)") || shipping_mark.contains("AVNET(TSCT-Disty)")) || so_no.startsWith("1121"))) {
 					package_mode="";
 				}
 				ws.setRowView(row, 800);
 				//if ((to_tw.equals("Y") && !so_no.startsWith("1121")) || shipping_mark.toUpperCase().indexOf("CHANNEL WELL") >=0 || rs.getString("QC_RPT_FLAG").equals("Y") || rs.getString("QC_RPT_FLAG").equals("PDF"))
-				if (((shipping_mark.contains("元超") || shipping_mark.contains("AVNET(TSCT-Disty)")) && !so_no.startsWith("1121")) || (!to_tw.equals("Y") && (rs.getString("QC_RPT_FLAG").equals("Y") || rs.getString("QC_RPT_FLAG").indexOf("PDF")>=0 || shipping_mark.toUpperCase().indexOf("CHANNEL WELL") >=0 || rs.getString("item_desc").indexOf("FR107G-K-02")>=0)))
+				if (((shipping_mark.contains("WT(TSCT Disty)") || shipping_mark.contains("AVNET(TSCT-Disty)")) && !so_no.startsWith("1121")) || (!to_tw.equals("Y") && (rs.getString("QC_RPT_FLAG").equals("Y") || rs.getString("QC_RPT_FLAG").indexOf("PDF")>=0 || shipping_mark.toUpperCase().indexOf("CHANNEL WELL") >=0 || rs.getString("item_desc").indexOf("FR107G-K-02")>=0)))
 				{
 					package_mode+="\r\n附"+(rs.getString("QC_RPT_FLAG").equals("PDF")?"電子檔":(rs.getString("QC_RPT_FLAG").equals("PPDF")?"電子檔及紙本":"出貨"))+"檢驗報告";
 					if (rs.getString("QC_RPT_FLAG").indexOf("PDF")>=0)
