@@ -1205,7 +1205,7 @@ catch(Exception e)
 			     ",tsc_get_china_to_tw_days("+
 				 "    case when a.assign_manufact in ('011') and a.ITEM_SEGMENT1 not in ('X03G-MFBRFTS2307000000') and a.item_description in (\n" +
 				 "            'TSM4925DCS RLG','TSM4953DCS RLG','TSM4936DCS RLG','TSM2302CX RFG','TSM2305CX RFG','TSM2306CX RFG','TSM2307CX RFG','TSM2308CX RFG','TSM2312CX RFG',\n" +
-				 "            'TSM2314CX RFG','TSM2318CX RFG','TSM2323CX RFG','TSM2328CX RFG','TSM9409CS RLG','TSM3443CX6 RFG','TSM3481CX6 RFG','TSM3457CX6 RFG','TSM3911DCX6 RFG')\n" +
+				 "            'TSM2314CX RFG','TSM2318CX RFG','TSM2323CX RFG','TSM2328CX RFG','TSM9409CS RLG','TSM3443CX6 RFG','TSM3481CX6 RFG','TSM3457CX6 RFG','TSM3911DCX6 RFG','TQM2N7002KCU RFG')\n" +
 				 "        then 'T' else (SELECT ALNAME FROM ORADDMAN.TSPROD_MANUFACTORY WHERE MANUFACTORY_NO=a.assign_manufact) end \n" +
 				 "		,e.order_num,a.inventory_item_id,a.assign_manufact,a.tscustomerid,to_char(sysdate,'yyyymmdd'),a.CUST_PO_NUMBER)* CASE"+
 				 "  WHEN a.direct_ship_to_cust =1 and a.assign_manufact='002' THEN 0 ELSE 1 END TOTW_DAYS"+
@@ -1323,7 +1323,7 @@ catch(Exception e)
 			//	{
 			//		out.println(factoryDate+"</font>"); 
 			//	} 
-	      	//}				
+	      	//}
 			out.println("<input name='FACTORYDATE_"+rs.getString("LINE_NO")+"'"+" type='text' size='8' value='"+(request.getParameter("FACTORYDATE_"+rs.getString("LINE_NO"))==null || rs.getString("LINE_NO").equals(lineNo)?rs.getString("FTACPDATE").substring(0,8):request.getParameter("FACTORYDATE_"+rs.getString("LINE_NO")))+"' style='font-size:11px;font-family: Tahoma,Georgia' onKeyPress='return (event.keyCode >=48 && event.keyCode <=57)'  onBlur='chkDate("+'"'+rs.getString("LINE_NO")+'"'+","+'"'+dnDocNo+'"'+")' "+(checkflag?"":" ")+"><input type='hidden' name='REQUESTDATE_"+rs.getString("line_no")+"' value='"+rs.getString("REQUEST_DATE").substring(0,8)+"'>");
 			out.println("<A href='javascript:void(0)' onclick='gfPop.fPopCalendar(document.DISPLAYREPAIR.FACTORYDATE_"+rs.getString("LINE_NO")+");return false;'><img name='imgpc_"+rs.getString("LINE_NO")+"' border='0' src='../image/calbtn.gif'></A>");	   
 			out.println((rs.getInt("totw_days")>0?"<font color='#0000ff'><¦^T></font>":""));

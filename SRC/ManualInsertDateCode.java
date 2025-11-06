@@ -6,8 +6,8 @@ public class ManualInsertDateCode {
     public static void main(String[] args) {
         Map<String, Integer> map = new HashMap<>();
 
-        String[] array = new String[]{"5O","5P","5Q","5R","5S","5T",
-                "5U","5V","5W","5X","5Y","5Z"};
+        String[] array = new String[]{"6O","6P","6Q","6R","6S","6T",
+                "6U","6V","6W","6X","6Y","6Z"};
 
         String[] alphabetArray = new String[]{"A","B","C","D","E","F","G","H","I","J",
                 "K","L","M","N","O","P","Q","R","S","T",
@@ -53,7 +53,7 @@ public class ManualInsertDateCode {
 //                    System.out.println("dateCode="+dateCode);
 //                    System.out.println("dateValue="+dateValue);
                     String insertSql = "INSERT INTO TSC.TSC_DATE_CODE (YEAR, DATE_TYPE, DATE_VALUE, DATE_CODE, PROD_GROUP, VENDOR, CUSTOMER, FACTORY_CODE, GREEN_FLAG, DC_RULE, TSC_PARTNO, CREATION_DATE) \n"+
-                            "VALUES (2025, 'MONTH', "+dateValue+", '"+dateCode+"', 'SSD', null, null, null, null, 'YML', null, sysdate);";
+                            "VALUES (2026, 'MONTH', "+dateValue+", '"+dateCode+"', 'PMD', null, null, null, null, 'YML', null, sysdate);";
                     System.out.println(insertSql);
                 }
             }
