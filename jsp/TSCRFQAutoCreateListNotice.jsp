@@ -294,7 +294,7 @@
 							{
 								//message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("sansan@ts-china.com.cn"));
 								//message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("tschk-cs007@ts-china.com.cn"));
-								//message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("rita_zhou@ts-china.com.cn"));
+								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("rita_zhou@ts-china.com.cn"));
 								message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("tschk-sample@ts-china.com.cn"));
 							}
 							else if (rs1.getString("SALES_AREA_NO").equals("023"))
