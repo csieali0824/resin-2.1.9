@@ -415,7 +415,17 @@ if (!HEADER_ID.equals(""))
 					{
 						bb[i][18]="FOB CHINA";  
 					}
-				}				
+				}
+				else if (rs.getString("TSCH_CUSTOMER_NUMBER").equals("34912")) //AUMOVIO Singapore,ADD BY Mars 20251108
+				{
+					bb[i][6]= "DHL"; //SHIPPING_METHOD
+					bb[i][18] = "DAP SINGAPORE";  //FOB
+				}
+				else if (rs.getString("TSCH_CUSTOMER_NUMBER").equals("34872")) //AUMOVIO Malaysia,ADD BY Mars 20251108
+				{
+					bb[i][6]= "DHL"; //SHIPPING_METHOD
+					bb[i][18] = "DAP  MALAYSIA";  //FOB
+				}
 				else
 				{
 					bb[i][6]=rs.getString("SHIPPING_METHOD_CODE");    //出貨方式

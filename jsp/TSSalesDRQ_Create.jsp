@@ -2321,6 +2321,8 @@
 								if (at[ac][subac].equals("32932")) def_ship_org_id="75995";  //GPV(THAILAND) add by Peggy 20240304
 								if (at[ac][subac].equals("33652")) def_ship_org_id="78652";  //Continental Autonomous Philippines ,ADD BY Mars 20250107
 								if (at[ac][subac].equals("23121")) def_ship_org_id="65310";  //LITE ON-2680 ,ADD BY Mars 20250602
+								if (at[ac][subac].equals("34912")) def_ship_org_id="82833";  //AUMOVIO Singapore ,ADD BY Mars 20251108
+								if (at[ac][subac].equals("34872")) def_ship_org_id="82810";  //AUMOVIO Malaysia ,ADD BY Mars 20251108
 							}
 						}
 					}  //end for array second layer count
@@ -2663,7 +2665,6 @@
 			{
 				if (rsa.getString("SITE_USE_CODE").equals("SHIP_TO"))
 				{
-					ShipToOrg =rsa.getString("SITE_USE_ID");
 					shipAddress = rsa.getString("ADDRESS1");
 					shipCountry = rsa.getString("COUNTRY");
 
