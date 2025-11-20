@@ -1205,7 +1205,7 @@ catch(Exception e)
 			     ",tsc_get_china_to_tw_days("+
 				 "    case when a.assign_manufact in ('011') and a.ITEM_SEGMENT1 not in ('X03G-MFBRFTS2307000000') and a.item_description in (\n" +
 				 "            'TSM4925DCS RLG','TSM4953DCS RLG','TSM4936DCS RLG','TSM2302CX RFG','TSM2305CX RFG','TSM2306CX RFG','TSM2307CX RFG','TSM2308CX RFG','TSM2312CX RFG',\n" +
-				 "            'TSM2314CX RFG','TSM2318CX RFG','TSM2323CX RFG','TSM2328CX RFG','TSM9409CS RLG','TSM3443CX6 RFG','TSM3481CX6 RFG','TSM3457CX6 RFG','TSM3911DCX6 RFG','TQM2N7002KCU RFG')\n" +
+				 "            'TSM2314CX RFG','TSM2318CX RFG','TSM2323CX RFG','TSM2328CX RFG','TSM9409CS RLG','TSM3443CX6 RFG','TSM3481CX6 RFG','TSM3457CX6 RFG','TSM3911DCX6 RFG','TQM2N7002KCU RFG', 'TQM2N7002KCX RFG')\n" +
 				 "        then 'T' else (SELECT ALNAME FROM ORADDMAN.TSPROD_MANUFACTORY WHERE MANUFACTORY_NO=a.assign_manufact) end \n" +
 				 "		,e.order_num,a.inventory_item_id,a.assign_manufact,a.tscustomerid,to_char(sysdate,'yyyymmdd'),a.CUST_PO_NUMBER)* CASE"+
 				 "  WHEN a.direct_ship_to_cust =1 and a.assign_manufact='002' THEN 0 ELSE 1 END TOTW_DAYS"+
