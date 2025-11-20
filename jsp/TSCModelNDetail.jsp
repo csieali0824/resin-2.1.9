@@ -139,9 +139,13 @@
                 minimumFractionDigits: 0, maximumFractionDigits: 3
             });
             } else if (('Selling Price' === detail.column) ) {
-                newCell.textContent = Number.parseFloat(detail.value).toLocaleString('en-US', {
-                    minimumFractionDigits: 0, maximumFractionDigits: 6
-                });
+                if (detail.value === null || detail.value === undefined || detail.value === "") {
+                    newCell.textContent = '';
+                } else {
+                    newCell.textContent = isNaN(detail.value) ? "": Number.parseFloat(detail.value).toLocaleString('en-US', {
+                        minimumFractionDigits: 0, maximumFractionDigits: 6
+                    });
+                }
             }
             else {
                 newCell.textContent = detail.value;

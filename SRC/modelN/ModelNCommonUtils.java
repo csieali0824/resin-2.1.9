@@ -816,14 +816,18 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                         modelNDto.setQty(qty);
                         break;
                     case SellingPrice:
-                        BigDecimal sellingPrice;
-                        if (rowCell instanceof NumberCell) {
-                            double raw = ((NumberCell) rowCell).getValue(); // 直接取數值
-                            sellingPrice = new BigDecimal(raw).setScale(5, RoundingMode.HALF_UP).stripTrailingZeros();
+                        if (StringUtils.isNullOrEmpty(content)) {
+                            modelNDto.setSellingPrice(content);
                         } else {
-                            sellingPrice = new BigDecimal(content).setScale(5, RoundingMode.HALF_UP).stripTrailingZeros();
+                            try {
+                                double raw = ((NumberCell) rowCell).getValue(); // 直接取數值
+                                BigDecimal sellingPrice = new BigDecimal(raw).setScale(5, RoundingMode.HALF_UP).stripTrailingZeros();
+                                modelNDto.setSellingPrice(sellingPrice.toPlainString());
+                            } catch (NumberFormatException e) {
+                                // 若輸入非數字，例如 "abc"，可視情況回傳空白或原字串
+                                modelNDto.setSellingPrice("");
+                            }
                         }
-                        modelNDto.setSellingPrice(sellingPrice.toPlainString());
                         break;
                     case CRD:
                         if (StringUtils.isNullOrEmpty(content)) {
