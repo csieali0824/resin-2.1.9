@@ -296,6 +296,7 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 11px }
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
 <%@ page import="SalesDRQPageHeaderBean" %>
+<%@ page import="com.mysql.jdbc.StringUtils" %>
 <jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
 <jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
 <jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
@@ -502,6 +503,7 @@ else
 				  " oola.SHIP_FROM_ORG_ID,"+
 				  " oola.ORDER_NO ORDER_NUMBER,"+
 				  " msi.DESCRIPTION,"+
+				  " APPS.TSCC_GET_FLOW_CODE(oola.INVENTORY_ITEM_ID)as flow_code,\n" +
 				  " case when ((select nvl(sum(ORDERED_QUANTITY),0) from ont.oe_order_lines_all x where x.header_id=oola.header_id and x.LINE_NUMBER=substr(oola.line_no,1,instr(oola.line_no,'.')-1)) - NVL (sap.ship_qty, 0)) < NVL (oola.ordered_quantity, 0) "+
 				  " then (select nvl(sum(ORDERED_QUANTITY),0) from ont.oe_order_lines_all x where x.header_id=oola.header_id and x.LINE_NUMBER=substr(oola.line_no,1,instr(oola.line_no,'.')-1)) - NVL (sap.ship_qty, 0) "+
 				  " else NVL (oola.ordered_quantity, 0)-nvl((SELECT sum(x.SHIP_QTY) FROM tsc.tsc_shipping_advise_pc_sg x where x.so_line_id=oola.line_id),0) end ordered_quantity,"+  //modify by Peggy 20210901
@@ -644,6 +646,7 @@ else
 						<td width="6%">Order Number </td>
 						<td width="3%">Line No </td>
 						<td width="11%">Item Desc </td>
+						<td width="5%">Flow Code </td>
 						<td width="5%">Order Qty <br>
 						  (PCE)</td>
 						<td width="5%">Onhand<br>
@@ -705,6 +708,7 @@ else
 						<td align="center"><%=rs.getString("ORDER_NUMBER")%><input type="hidden" name="ORDER_NUMBER_<%=rs.getString("line_id")%>" value="<%=rs.getString("ORDER_NUMBER")%>"></td>
 						<td align="center"><%=rs.getString("line_no")%><input type="hidden" name="ORDER_LINE_<%=rs.getString("line_id")%>" value="<%=rs.getString("line_no")%>"></td>
 						<td align="left"><%=rs.getString("DESCRIPTION")%><input type="hidden" name="ITEMID_<%=rs.getString("line_id")%>" value="<%=rs.getString("INVENTORY_ITEM_ID")%>"></td>
+						<td align="left"><%=StringUtils.isNullOrEmpty(rs.getString("FLOW_CODE"))? "" : rs.getString("FLOW_CODE")%><input type="hidden" name="FLOW_CODE<%=rs.getString("line_id")%>" value="<%=StringUtils.isNullOrEmpty(rs.getString("FLOW_CODE"))? "" : rs.getString("FLOW_CODE")%>"></td>
 						<td align="right"><%=rs.getString("ORDERED_QUANTITY")%><input type="hidden" name="ORDERED_QUANTITY_<%=rs.getString("line_id")%>" value="<%=rs.getString("ORDERED_QUANTITY")%>"></td>
 						<td align="right"><%=(new DecimalFormat("######.###")).format(rs.getFloat("ONHAND"))%><input type="hidden" name="ONHAND_<%=rs.getString("line_id")%>" value="<%=(rs.getString("ONHAND")==null?"0":rs.getString("ONHAND"))%>"></td>
 						<td align="left"><%=(rs.getString("SHIPPING_REMARK")==null || rs.getString("SHIPPING_REMARK").equals(" ")?"&nbsp;":rs.getString("SHIPPING_REMARK"))%><input type="hidden" name="SHIPPING_REMARK_<%=rs.getString("line_id")%>" value="<%=(rs.getString("SHIPPING_REMARK")==null?"":rs.getString("SHIPPING_REMARK"))%>"></td>

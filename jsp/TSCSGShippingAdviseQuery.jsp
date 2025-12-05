@@ -59,6 +59,7 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 11px }
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
 <%@ page import="SalesDRQPageHeaderBean" %>
+<%@ page import="com.mysql.jdbc.StringUtils"%>
 <jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
 <jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
 <jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
@@ -307,6 +308,7 @@ try
 		  ",TSC_GET_OQC_RPT(tsa.SO_LINE_ID,'TEW',null) as QC_RPT_FLAG "+  //add by Peggy 20201223 
 		  ",tsa.orig_advise_no"+ //add by Peggy 20210331
 		  ",tsa.CHK_PAPER_RPT_NAME"+ //add by Peggy 20210331
+		  ",APPS.TSCC_GET_FLOW_CODE(tsa.inventory_item_id) as flow_code \n"+
           " FROM tsc.tsc_shipping_advise_pc_sg tsa,"+
           " ONT.OE_ORDER_LINES_ALL oolla,"+
 		  " AR_CUSTOMERS ra,"+
@@ -426,7 +428,8 @@ try
 				<td width="90" align="center">Order Number</td>
 				<td width="30" align="center">Line No</td>
 				<td width="60" align="center">Vendor</td>            
-				<td width="130" align="center">Item Desc</td>            
+				<td width="130" align="center">Item Desc</td>
+				<td width="30" align="center">Flow Code</td>
 				<td width="20" align="center">Report</td>            
 				<td width="60" align="center">TSC Prod Group</td>            
 				<td width="50" align="center">PC confirm Qty(K)</td>            
@@ -434,7 +437,7 @@ try
 				<td width="20" align="center">To TW</td>            
 				<td width="140" align="center">Customer PO</td>            
 				<td width="70" align="center">Shipping Method</td>  
-				<td width="90" align="center">PO NO</font></div></td>
+				<td width="90" align="center">PO NO</td>
 				<td width="90" align="center">PO Cust Partno</td>
 				<td width="30" align="center">QTY(K)</td>
 				          
@@ -488,6 +491,7 @@ try
 			<td><%=rs.getString("SO_LINE_NUMBER")%></td>
 			<td><%=rs.getString("VENDOR_SITE_CODE")%></td>
 			<td><%=rs.getString("ITEM_DESC")%></td>
+			<td><%=StringUtils.isNullOrEmpty(rs.getString("FLOW_CODE")) ? "" : rs.getString("FLOW_CODE")%></td>
 			<%
 			CHK_RPT_NAME="";
 			if (rs.getString("shipping_remark")!=null)

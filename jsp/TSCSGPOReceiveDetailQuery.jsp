@@ -1,9 +1,10 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.net.*,java.io.*,java.text.*,java.lang.*"%>
+<%@ page contentType="text/html; charset=big5" language="java" import="java.sql.*,java.net.*,java.io.*,java.text.*,java.lang.*"%>
 <%@ page import="ComboBoxBean,DateBean,WorkingDateBean,ArrayComboBoxBean"%>
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
 <%@ page import="SalesDRQPageHeaderBean" %>
+<%@ page import="com.mysql.jdbc.StringUtils" %>
 <script language="JavaScript" type="text/JavaScript">
 function setSubmit(URL)
 {    
@@ -135,13 +136,13 @@ String sql ="",stock_color="";
   <div align="right"><A href="/oradds/ORADDSMainMenu.jsp"><jsp:getProperty name="rPH" property="pgHOME"/></A></div>
   <table cellSpacing='0' cellPadding='1' width='100%' align='center' borderColorLight="#CFDAD8"  bordercolordark="#5C7671" border='1'>
      <tr>
-		<td  Width="8%" bgcolor="#D3E6F3"  style="font-weight:bold;color:#006666;font-family: Tahoma,Georgia">內外銷:</td>   
+		<td  Width="8%" bgcolor="#D3E6F3"  style="font-weight:bold;color:#006666;font-family: Tahoma,Georgia">���~�P:</td>   
 		<td width="7%">
 		<%
 		try
     	{   
 			Statement statement1=con.createStatement();
-			sql = " select organization_id,case  organization_code when 'SG1' then '內銷' when 'SG2' then '外銷' else organization_code end as organization_code from inv.mtl_parameters a where organization_code IN ('SG1','SG2')";
+			sql = " select organization_id,case  organization_code when 'SG1' then '���P' when 'SG2' then '�~�P' else organization_code end as organization_code from inv.mtl_parameters a where organization_code IN ('SG1','SG2')";
 	    	ResultSet rs1=statement1.executeQuery(sql);
 			out.println("<select NAME='ORGCODE' style='font-family:Tahoma,Georgia;font-size:12px'>");
 			out.println("<OPTION VALUE=--"+ (ORGCODE.equals("") || ORGCODE.equals("--") ?" selected ":"")+">--");     
@@ -158,7 +159,7 @@ String sql ="",stock_color="";
 			out.println("Exception3:"+e.getMessage()); 
 		} 		
 		%>		 
-		<td width="8%" bgcolor="#D3E6F3"  style="font-weight:bold;color:#006666">收料日期:</td>   
+		<td width="8%" bgcolor="#D3E6F3"  style="font-weight:bold;color:#006666">���Ƥ��:</td>   
 		<td width="44%" colspan="3">
 <%
 	String CurrYear = null;	 
@@ -330,7 +331,7 @@ String sql ="",stock_color="";
     }
 %>    
 		</td>  
-	    <td width="6%" bgcolor="#D3E6F3" style="font-weight:bold;color:#006666">供應商:</td> 
+	    <td width="6%" bgcolor="#D3E6F3" style="font-weight:bold;color:#006666">������:</td> 
 		<td width="10%">
 		<%
 		try
@@ -352,11 +353,11 @@ String sql ="",stock_color="";
 		}
 		%>
 		</td>
-	    <td width="6%" bgcolor="#D3E6F3" style="font-weight:bold;color:#006666">採購單號:</td> 
+	    <td width="6%" bgcolor="#D3E6F3" style="font-weight:bold;color:#006666">���ʳ渹:</td> 
 		<td width="10%"><input type="text" name="PONO" value="<%=PONO%>" style="font-family: Tahoma,Georgia; font-size:12px" size="12" onChange="setChange();"></td>
 	</tr>
 	<tr>
-		<td bgcolor="#D3E6F3"  style="font-weight:bold;color:#006666">庫齡天數:</td>   
+		<td bgcolor="#D3E6F3"  style="font-weight:bold;color:#006666">�w�֤Ѽ�:</td>   
 		<td><select NAME="STOCK_AGE" style="font-family: Tahoma,Georgia; font-size: 12px" onChange="DateValueOf(this.value)">
 		<OPTION VALUE=-- <%if (STOCK_AGE.equals("")) out.println("selected");%>>--</OPTION>
 	<%
@@ -382,21 +383,21 @@ String sql ="",stock_color="";
 	%>
 		</select>
 		</td>
-		<td bgcolor="#D3E6F3"  style="font-weight:bold;color:#006666">台半料號或型號:</td>   
+		<td bgcolor="#D3E6F3"  style="font-weight:bold;color:#006666">�x�b�Ƹ��Ϋ���:</td>   
 		<td><input type="text" name="ITEM" value="<%=ITEM%>" style="font-family: Tahoma,Georgia; font-size: 12px " size="30" onChange="setChange();"></td>
 	    <td bgcolor="#D3E6F3" style="font-weight:bold;color:#006666">LOT Number:</td> 
 		<td><input type="text" name="LOT_NUMBER" value="<%=LOT_NUMBER%>" style="font-family: Tahoma,Georgia; font-size:12px" size="25" onChange="setChange();"></td>
 	    <td bgcolor="#D3E6F3" style="font-weight:bold;color:#006666">Date Code:</td> 
 		<td><input type="text" name="DATE_CODE" value="<%=DATE_CODE%>" style="font-family: Tahoma,Georgia; font-size:12px" size="12" onChange="setChange();"></td>
-	    <td bgcolor="#D3E6F3" style="font-weight:bold;color:#006666">數量條件:</td> 
+	    <td bgcolor="#D3E6F3" style="font-weight:bold;color:#006666">�ƶq����:</td> 
 		<td><select NAME="STOCK" style="font-family: Tahoma,Georgia; font-size:12px" onChange="setChange();">
 		<OPTION VALUE=-- <%if (STOCK.equals("")) out.println("selected");%>>--</OPTION>
-		<OPTION VALUE="1" <%if (STOCK.equals("1")) out.println("selected");%>>庫存數量>0</OPTION>
-		<OPTION VALUE="2" <%if (STOCK.equals("2")) out.println("selected");%>>庫存數量=0</OPTION>
-		<OPTION VALUE="3" <%if (STOCK.equals("3")) out.println("selected");%>>退貨數量>0</OPTION>
-		<OPTION VALUE="4" <%if (STOCK.equals("4")) out.println("selected");%>>撿貨數量>0</OPTION>
-		<OPTION VALUE="5" <%if (STOCK.equals("5")) out.println("selected");%>>出貨數量>0</OPTION>
-		<OPTION VALUE="6" <%if (STOCK.equals("6")) out.println("selected");%>>調撥數量>0</OPTION>
+		<OPTION VALUE="1" <%if (STOCK.equals("1")) out.println("selected");%>>�w�s�ƶq>0</OPTION>
+		<OPTION VALUE="2" <%if (STOCK.equals("2")) out.println("selected");%>>�w�s�ƶq=0</OPTION>
+		<OPTION VALUE="3" <%if (STOCK.equals("3")) out.println("selected");%>>�h�f�ƶq>0</OPTION>
+		<OPTION VALUE="4" <%if (STOCK.equals("4")) out.println("selected");%>>�߳f�ƶq>0</OPTION>
+		<OPTION VALUE="5" <%if (STOCK.equals("5")) out.println("selected");%>>�X�f�ƶq>0</OPTION>
+		<OPTION VALUE="6" <%if (STOCK.equals("6")) out.println("selected");%>>�ռ��ƶq>0</OPTION>
 		</select></td>
 	</tr>
 </table>
@@ -417,11 +418,12 @@ try
 	sql = " SELECT X.*,X.RECEIVED_QTY+X.ALLOCATE_IN_QTY-(X.ALLOCATE_OUT_QTY+X.RETURN_QTY+X.SHIPPED_QTY+X.PICK_QTY) ONHAND "+
 	      " FROM (SELECT A.SG_STOCK_ID"+
 		  "       ,A.ORGANIZATION_ID"+
-          "       ,CASE A.ORGANIZATION_ID WHEN 907 THEN '內銷' WHEN 908 THEN '外銷' ELSE '??' END AS organization_name"+
+          "       ,CASE A.ORGANIZATION_ID WHEN 907 THEN '���P' WHEN 908 THEN '�~�P' ELSE '??' END AS organization_name"+
           "       ,TRUNC(SYSDATE)-TRUNC(A.RECEIVED_DATE) STOCK_AGE"+
           "       ,A.INVENTORY_ITEM_ID ITEM_ID"+
           "       ,A.ITEM_NAME"+
           "       ,A.ITEM_DESC"+
+		  "       ,APPS.TSCC_GET_FLOW_CODE(A.INVENTORY_ITEM_ID) as FLOW_CODE \n" +
           "       ,A.SUBINVENTORY_CODE"+
           "       ,A.LOT_NUMBER"+
           "       ,A.DATE_CODE"+
@@ -441,7 +443,7 @@ try
 		  "       ,TO_CHAR(B.NEED_BY_DATE,'YYYY/MM/DD') NEED_BY_DATE"+
           "       ,A.VENDOR_SITE_ID"+
           "       ,A.VENDOR_SITE_CODE"+
-          //"       ,NVL(A.CUST_PARTNO,NVL(TRIM(REPLACE(REPLACE(CASE INSTR(C.NOTE_TO_VENDOR,'加貼') WHEN 1 THEN NULL WHEN 0 THEN C.NOTE_TO_VENDOR ELSE SUBSTR(C.NOTE_TO_VENDOR,1,INSTR(C.NOTE_TO_VENDOR,'加貼')-1) END,',',''),'，',''))"+
+          //"       ,NVL(A.CUST_PARTNO,NVL(TRIM(REPLACE(REPLACE(CASE INSTR(C.NOTE_TO_VENDOR,'�[�K') WHEN 1 THEN NULL WHEN 0 THEN C.NOTE_TO_VENDOR ELSE SUBSTR(C.NOTE_TO_VENDOR,1,INSTR(C.NOTE_TO_VENDOR,'�[�K')-1) END,',',''),'�A',''))"+
           "       ,NVL(A.CUST_PARTNO,NVL(TSSG_SHIP_PKG.GET_PO_CUST_ITEM(C.NOTE_TO_VENDOR)"+  //modify by Peggy 20230607
           "       ,CASE WHEN B.NOTE_TO_RECEIVER IS NOT NULL THEN (SELECT  decode(y.item_identifier_type,'CUST',y.ordered_item,'')"+
           "       FROM ont.oe_order_headers_all x,ont.oe_order_lines_all y"+
@@ -532,37 +534,38 @@ try
 		%>
 		<table border="0" width="100%">
 			<tr>
-				<td bgcolor="#00ff00" width="1%">&nbsp;</td><td width="7%">庫齡<=90天</td>
-				<td bgcolor="#ffff00" width="1%">&nbsp;</td><td width="7%">庫齡91~179天</td>
-				<td bgcolor="#ff0000" width="1%">&nbsp;</td><td width="7%">庫齡>=180天</td>
+				<td bgcolor="#00ff00" width="1%">&nbsp;</td><td width="7%">�w��<=90��</td>
+				<td bgcolor="#ffff00" width="1%">&nbsp;</td><td width="7%">�w��91~179��</td>
+				<td bgcolor="#ff0000" width="1%">&nbsp;</td><td width="7%">�w��>=180��</td>
 				<td width="76%">&nbsp;</td>
 			</tr>
 		</table>		
 		<table width="1530" border="1" cellpadding="1" cellspacing="0" borderColorLight="#CFDAD8"  bordercolordark="#5C7671">
 			<tr bgcolor="#C9E2D0"> 
-				<td width="40" style="color:#006666" align="center">庫齡(天)</td>
-				<td width="50" style="color:#006666" align="center">內外銷</td>
-				<td width="70" style="color:#006666" align="center">收料日期</td>
-				<td width="180" style="color:#006666" align="center">料號</td>
-				<td width="130" style="color:#006666" align="center">型號</td>            
-				<td width="30" style="color:#006666" align="center">倉別</td>            
+				<td width="40" style="color:#006666" align="center">�w��(��)</td>
+				<td width="50" style="color:#006666" align="center">���~�P</td>
+				<td width="70" style="color:#006666" align="center">���Ƥ��</td>
+				<td width="180" style="color:#006666" align="center">�Ƹ�</td>
+				<td width="130" style="color:#006666" align="center">����</td>
+				<td width="70" style="color:#006666" align="center">Flow Code</td>
+				<td width="30" style="color:#006666" align="center">�ܧO</td>            
 				<td width="130" style="color:#006666" align="center">LOT</td>            
 				<td width="50" style="color:#006666" align="center">D/C</td>
 				<td width="40" style="color:#006666" align="center">DC YYWW</td>            
-				<td width="40" style="color:#006666" align="center">收貨量(K)</td>            
-				<td width="40" style="color:#006666" align="center">退貨量(K)</td>            
-				<td width="40" style="color:#006666" align="center">調撥入(K)</td>            
-				<td width="40" style="color:#006666" align="center">調撥出(K)</td>            
-				<td width="40" style="color:#006666" align="center">出貨量(K)</td>            
-				<td width="40" style="color:#006666" align="center">撿貨量(K)</td>            
-				<td width="40" style="color:#006666" align="center">庫存量(K)</td>            
-				<td width="110" style="color:#006666" align="center">客戶品號</td>            
-				<td width="100" style="color:#006666" align="center">採購單號/項次</td>            
-				<td width="70" style="color:#006666" align="center">需求日</td>            
-				<td width="40" style="color:#006666" align="center">幣別</font></div></td>
-				<td width="70" style="color:#006666" align="center">供應商</td>
-				<td width="70" style="color:#006666" align="center">供應商箱號</td>
-				<td width="70" style="color:#006666" align="center">收貨員</td>
+				<td width="40" style="color:#006666" align="center">���f�q(K)</td>            
+				<td width="40" style="color:#006666" align="center">�h�f�q(K)</td>            
+				<td width="40" style="color:#006666" align="center">�ռ��J(K)</td>            
+				<td width="40" style="color:#006666" align="center">�ռ��X(K)</td>            
+				<td width="40" style="color:#006666" align="center">�X�f�q(K)</td>            
+				<td width="40" style="color:#006666" align="center">�߳f�q(K)</td>            
+				<td width="40" style="color:#006666" align="center">�w�s�q(K)</td>            
+				<td width="110" style="color:#006666" align="center">�Ȥ�~��</td>            
+				<td width="100" style="color:#006666" align="center">���ʳ渹/����</td>            
+				<td width="70" style="color:#006666" align="center">�ݨD��</td>            
+				<td width="40" style="color:#006666" align="center">���O</font></div></td>
+				<td width="70" style="color:#006666" align="center">������</td>
+				<td width="70" style="color:#006666" align="center">�����ӽc��</td>
+				<td width="70" style="color:#006666" align="center">���f��</td>
 			</tr>
 		<% 
 		}
@@ -587,6 +590,7 @@ try
 			<td align="center"><%=rs.getString("RECEIVED_DATE")%></td>
 			<td style="font-size:10px"><%=rs.getString("ITEM_NAME")%></td>
 			<td style="font-size:10px"><%=rs.getString("ITEM_DESC")%></td>
+			<td><%=StringUtils.isNullOrEmpty(rs.getString("flow_code"))? "" : rs.getString("flow_code")%></td>
 			<td <%=(rs.getString("SUBINVENTORY_CODE").equals("02")?"style='font-weight:bold'":"")%>><%=rs.getString("SUBINVENTORY_CODE")%></td>
 			<td><%=rs.getString("LOT_NUMBER")%></td>
 			<td><%=rs.getString("DATE_CODE")%></td>
@@ -613,7 +617,7 @@ try
 	
 	if (iCnt==0)
 	{
-		out.println("<div align='center'><font color='red' size='2' face='新細明體'><strong>查無資料,請重新篩選查詢條件,謝謝!</strong></font></div>");
+		out.println("<div align='center'><font color='red' size='2' face='�s�ө���'><strong>�d�L���,�Э��s�z��d�߱���,����!</strong></font></div>");
 	}
 	else
 	{

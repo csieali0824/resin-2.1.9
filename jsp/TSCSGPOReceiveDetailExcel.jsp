@@ -149,6 +149,7 @@ try
           "       ,A.INVENTORY_ITEM_ID ITEM_ID"+
           "       ,A.ITEM_NAME"+
           "       ,A.ITEM_DESC"+
+		  "       ,APPS.TSCC_GET_FLOW_CODE(A.INVENTORY_ITEM_ID) as FLOW_CODE \n" +
           "       ,A.SUBINVENTORY_CODE"+
           "       ,A.LOT_NUMBER"+
           "       ,A.DATE_CODE"+
@@ -279,7 +280,12 @@ try
 			//型號
 			ws.addCell(new jxl.write.Label(col, row, "型號" , ACenterBLB));
 			ws.setColumnView(col,25);	
-			col++;	
+			col++;
+
+			//Flow Code
+			ws.addCell(new jxl.write.Label(col, row, "Flow Code" , ACenterBLB));
+			ws.setColumnView(col,10);
+			col++;
 
 			//倉別
 			ws.addCell(new jxl.write.Label(col, row, "倉別" , ACenterBLB));
@@ -403,7 +409,10 @@ try
 		ws.addCell(new jxl.write.Label(col, row, rs.getString("ITEM_NAME"), ALeftL));
 		col++;	
 		ws.addCell(new jxl.write.Label(col, row, rs.getString("ITEM_DESC") , ALeftL));
-		col++;	
+		col++;
+		// flow code
+		ws.addCell(new jxl.write.Label(col, row, rs.getString("FLOW_CODE") , ALeftL));
+		col++;
 		ws.addCell(new jxl.write.Label(col, row, rs.getString("SUBINVENTORY_CODE") , ALeftL));
 		col++;	
 		ws.addCell(new jxl.write.Label(col, row, rs.getString("LOT_NUMBER") , ALeftL));

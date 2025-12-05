@@ -81,6 +81,7 @@
 					" tsa.SO_LINE_NUMBER,"+
 					" tsa.ITEM_NO,"+
 					" tsa.item_desc,"+
+					" APPS.TSCC_GET_FLOW_CODE(tsa.inventory_item_id) as flow_code, \n"+
 					" (tsa.PC_CONFIRM_QTY/1000) ship_qty,"+
 					" to_char(tsa.PC_SCHEDULE_SHIP_DATE,'yyyy/mm/dd') PC_SCHEDULE_SHIP_DATE,"+
 					" tsa.TO_TW,"+
@@ -322,13 +323,13 @@
 					ws.setRowView(row, 600);
 					ws.mergeCells(col, row, col+2, row);
 					ws.addCell(new jxl.write.Label(col, row,"出貨日期："+ ssd+"\r\nShipping date",ALEFT));
-					ws.mergeCells(col+10, row, col+12, row);
-					ws.addCell(new jxl.write.Label(col+10, row,"Advise No："+rs.getString("advise_no"),ARIGHT));
+					ws.mergeCells(col+11, row, col+13, row);
+					ws.addCell(new jxl.write.Label(col+11, row,"Advise No："+rs.getString("advise_no"),ARIGHT));
 					row++;//列+1
 
 					ws.setRowView(row, 850);
 					ws.addCell(new jxl.write.Label(col, row, "項次\r\nNumber" , ACenterBL));
-					ws.setColumnView(col,8);
+					ws.setColumnView(col,5);
 					col++;
 
 					ws.addCell(new jxl.write.Label(col, row, "供應商\r\nSupplier" , ACenterBL));
@@ -336,11 +337,15 @@
 					col++;
 
 					ws.addCell(new jxl.write.Label(col, row, "MO#" , ACenterBL));
-					ws.setColumnView(col,15);
+					ws.setColumnView(col,14);
 					col++;
 
 					ws.addCell(new jxl.write.Label(col, row, "型號\r\nType" , ACenterBL));
-					ws.setColumnView(col,25);
+					ws.setColumnView(col,20);
+					col++;
+
+					ws.addCell(new jxl.write.Label(col, row, "Flow Code" , ACenterBL));
+					ws.setColumnView(col,10);
 					col++;
 
 					ws.addCell(new jxl.write.Label(col, row, "數量(K)\r\nQuality" , ACenterBL));
@@ -364,7 +369,7 @@
 					col++;
 
 					ws.addCell(new jxl.write.Label(col, row, "出貨方式\r\nShipping method" , ACenterBL));
-					ws.setColumnView(col,15);
+					ws.setColumnView(col,10);
 					col++;
 
 					ws.addCell(new jxl.write.Label(col, row, "包裝方式\r\nPacking method" , ACenterBL));
@@ -424,6 +429,9 @@
 				col++;
 				ws.addCell(new jxl.write.Label(col, row, rs.getString("item_desc") , ALeftL));
 				//ws.setColumnView(col,25);
+				col++;
+				// flow code
+				ws.addCell(new jxl.write.Label(col, row, rs.getString("FLOW_CODE") , ALeftL));
 				col++;
 				ws.addCell(new jxl.write.Label(col, row, (new DecimalFormat("######0.####")).format(Float.parseFloat(rs.getString("ship_qty"))), ARightL));
 				//ws.setColumnView(col,10);

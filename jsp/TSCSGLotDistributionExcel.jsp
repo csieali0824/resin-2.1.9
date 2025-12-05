@@ -1,4 +1,4 @@
-<%@ page  contentType="text/html; charset=utf-8" language="java" import="java.lang.*,java.sql.*,java.math.BigDecimal,java.text.DecimalFormat,java.io.*,jxl.*,jxl.Workbook.*,jxl.write.*,jxl.format.*,java.awt.Image.*" %>
+<%@ page  contentType="text/html; charset=big5" language="java" import="java.lang.*,java.sql.*,java.math.BigDecimal,java.text.DecimalFormat,java.io.*,jxl.*,jxl.Workbook.*,jxl.write.*,jxl.format.*,java.awt.Image.*" %>
 <%@ page import="DateBean"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
@@ -44,10 +44,10 @@ try
 	}
 	WritableWorkbook wwb = Workbook.createWorkbook(os); 
 	WritableSheet ws = wwb.createSheet("Sheet1", 0);  
-	SheetSettings settings = ws.getSettings();//å–å¾—åˆ†é ç’°å¢ƒè¨­å®š(å¦‚:æ¨™é ­/æ¨™å°¾,åˆ†é ,æ¬„é•·,æ¬„é«˜ç­‰è¨­å®š
-	settings.setOrientation(jxl.format.PageOrientation.LANDSCAPE);//æ©«å°
-	settings.setZoomFactor(78);    //é¡¯ç¤ºç¸®æ”¾æ¯”ä¾‹
-	settings.setScaleFactor(55);   // è¨­ç½®æ‰“å°ç¸®æ”¾æ¯”ä¾‹
+	SheetSettings settings = ws.getSettings();//¨ú±o¤À­¶Àô¹Ò³]©w(¦p:¼ÐÀY/¼Ð§À,¤À­¶,Äæªø,Äæ°ªµ¥³]©w
+	settings.setOrientation(jxl.format.PageOrientation.LANDSCAPE);//¾î¦L
+	settings.setZoomFactor(78);    //Åã¥ÜÁY©ñ¤ñ¨Ò
+	settings.setScaleFactor(55);   // ³]¸m¥´¦LÁY©ñ¤ñ¨Ò
 	settings.setHeaderMargin(0.3);
 	settings.setBottomMargin(0.5);
 	settings.setLeftMargin(0.1);
@@ -55,25 +55,25 @@ try
 	settings.setTopMargin(0.5);
 	settings.setFooterMargin(0.3);	
 	
-	//å ±è¡¨åç¨±å¹³è¡Œç½®ä¸­    
-	WritableCellFormat wRptName = new WritableCellFormat(new WritableFont(WritableFont.createFont("æ¨™æ¥·é«”"), 16, WritableFont.BOLD,false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));   
+	//³øªí¦WºÙ¥­¦æ¸m¤¤    
+	WritableCellFormat wRptName = new WritableCellFormat(new WritableFont(WritableFont.createFont("¼Ð·¢Åé"), 16, WritableFont.BOLD,false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));   
 	wRptName.setAlignment(jxl.format.Alignment.CENTRE);
 	
-	//è¡¨å°¾è¡Œç½®ä¸­     
+	//ªí§À¦æ¸m¤¤     
 	WritableCellFormat wRptEnd = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"), fontsize,WritableFont.BOLD,false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));   
 	wRptEnd.setAlignment(jxl.format.Alignment.CENTRE);
 		
-	//è‹±æ–‡å…§æ–‡æ°´å¹³åž‚ç›´ç½®å·¦  
+	//­^¤å¤º¤å¤ô¥­««ª½¸m¥ª  
 	WritableCellFormat ALEFT = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"),fontsize ,  WritableFont.BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));   
 	ALEFT.setAlignment(jxl.format.Alignment.LEFT);
 	ALEFT.setVerticalAlignment(jxl.format.VerticalAlignment.TOP);
 	
-	//è‹±æ–‡å…§æ–‡æ°´å¹³åž‚ç›´ç½®å³ 
+	//­^¤å¤º¤å¤ô¥­««ª½¸m¥k 
 	WritableCellFormat ARIGHT = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"),fontsize ,  WritableFont.BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));   
 	ARIGHT.setAlignment(jxl.format.Alignment.RIGHT);
 	ARIGHT.setVerticalAlignment(jxl.format.VerticalAlignment.TOP);	
 		
-	//è‹±æ–‡å…§æ–‡æ°´å¹³åž‚ç›´ç½®ä¸­-ç²—é«”-æ ¼ç·š-åº•è‰²ç°-å­—é«”é»‘   
+	//­^¤å¤º¤å¤ô¥­««ª½¸m¤¤-²ÊÅé-®æ½u-©³¦â¦Ç-¦rÅé¶Â   
 	WritableCellFormat ACenterBL = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.WHITE));   
 	ACenterBL.setAlignment(jxl.format.Alignment.CENTRE);
 	ACenterBL.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
@@ -81,33 +81,33 @@ try
 	ACenterBL.setBackground(jxl.write.Colour.SEA_GREEN); 
 	ACenterBL.setWrap(true);
 
-	//è‹±æ–‡å…§æ–‡æ°´å¹³åž‚ç›´ç½®ä¸­-æ­£å¸¸-æ ¼ç·š   
+	//­^¤å¤º¤å¤ô¥­««ª½¸m¤¤-¥¿±`-®æ½u   
 	WritableCellFormat ACenterL = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"), fontsize, WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));   
 	ACenterL.setAlignment(jxl.format.Alignment.CENTRE);
 	ACenterL.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 	ACenterL.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 	ACenterL.setWrap(true);
 
-	//è‹±æ–‡å…§æ–‡æ°´å¹³åž‚ç›´ç½®å³-æ­£å¸¸-æ ¼ç·š   
+	//­^¤å¤º¤å¤ô¥­««ª½¸m¥k-¥¿±`-®æ½u   
 	WritableCellFormat ARightL = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"), fontsize,  WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));   
 	ARightL.setAlignment(jxl.format.Alignment.RIGHT);
 	ARightL.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 	ARightL.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 	ARightL.setWrap(true);
 
-	//è‹±æ–‡å…§æ–‡æ°´å¹³åž‚ç›´ç½®å·¦-æ­£å¸¸-æ ¼ç·š   
+	//­^¤å¤º¤å¤ô¥­««ª½¸m¥ª-¥¿±`-®æ½u   
 	WritableCellFormat ALeftL = new WritableCellFormat(new WritableFont(WritableFont.createFont("Arial"), fontsize,  WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));   
 	ALeftL.setAlignment(jxl.format.Alignment.LEFT);
 	ALeftL.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 	ALeftL.setBorder(jxl.format.Border.ALL,jxl.format.BorderLineStyle.THIN);
 	ALeftL.setWrap(true);
 		
-	//è‹±æ–‡å…§æ–‡æ°´å¹³åž‚ç›´ç½®å·¦-æ­£å¸¸-ç„¡æ ¼ç·š   
-	WritableCellFormat ANLeftL = new WritableCellFormat(new WritableFont(WritableFont.createFont("æ¨™æ¥·é«”"), 11,  WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));   
+	//­^¤å¤º¤å¤ô¥­««ª½¸m¥ª-¥¿±`-µL®æ½u   
+	WritableCellFormat ANLeftL = new WritableCellFormat(new WritableFont(WritableFont.createFont("¼Ð·¢Åé"), 11,  WritableFont.NO_BOLD, false,UnderlineStyle.NO_UNDERLINE ,jxl.format.Colour.BLACK));   
 	ANLeftL.setAlignment(jxl.format.Alignment.LEFT);
 	ANLeftL.setVerticalAlignment(jxl.format.VerticalAlignment.CENTRE);
 	ANLeftL.setWrap(true);
-			
+
 	if (ATYPE.equals(""))
 	{		
 		/*sql = " select c.vendor_site_code"+
@@ -180,6 +180,7 @@ try
               ",a.so_line_number"+
               ",a.item_no"+
               ",a.item_desc"+
+			  ",APPS.TSCC_GET_FLOW_CODE(a.inventory_item_id) as flow_code"+
               ",a.inventory_item_id"+
               ",to_char(a.pc_schedule_ship_date,'yyyy-mm-dd') pc_schedule_ship_date"+
               ",(a.ship_qty/1000) SHIP_QTY"+
@@ -248,6 +249,7 @@ try
 			  ",c.SO_LINE_ID"+
 			  ",b.ITEM_NAME ITEM_NO"+
 			  ",B.ITEM_DESC"+
+			  ",APPS.TSCC_GET_FLOW_CODE(c.INVENTORY_ITEM_ID) as FLOW_CODE"+
 			  ",b.SCHEDULE_SHIP_DATE PC_SCHEDULE_SHIP_DATE"+
 			  ",b.SHIP_QTY"+
 			  ",CARTON_NUM CARTON_NUM_FR"+
@@ -258,7 +260,7 @@ try
 			  ",b.LOT_NUMBER"+
 			  ",b.DATE_CODE"+
 			  ",b.DC_YYWW"+ //add by Peggy 20220721
-			  ",case when LOT_NUMBER='åº«å­˜ä¸è¶³' THEN 0 else b.QTY end/1000 ALLOT_QTY"+
+			  ",case when LOT_NUMBER='®w¦s¤£¨¬' THEN 0 else b.QTY end/1000 ALLOT_QTY"+
 			  ",b.CUST_PARTNO CUST_ITEM"+
 			  ",b.CUST_PO CUSTOMER_PO"+
 			  ",'' PONO"+
@@ -276,8 +278,8 @@ try
 			  ",case when b.DC_YYWW is not null and to_char(b.DC_YYWW)>=2331 then tssg_ship_pkg.GET_TOTW(c.SO_HEADER_ID,'LABEL') else '' end coo_info"+ //add by Peggy 20230808
 			  " from (SELECT  count(1) over(partition by ADVISE_LINE_ID order by carton_num desc) advise_line_cnt,"+
               "               count(1) over(partition by ADVISE_LINE_ID,carton_num) carton_cnt,"+
-			  "               sum(case when LOT_NUMBER='åº«å­˜ä¸è¶³' THEN 0 ELSE QTY END) over(partition by ADVISE_LINE_ID order by carton_num desc) advise_line_sum,"+
-              "               sum(case when LOT_NUMBER='åº«å­˜ä¸è¶³' THEN 0 ELSE QTY END) over(partition by ADVISE_LINE_ID,carton_num order by lot_number) carton_sum,"+
+			  "               sum(case when LOT_NUMBER='®w¦s¤£¨¬' THEN 0 ELSE QTY END) over(partition by ADVISE_LINE_ID order by carton_num desc) advise_line_sum,"+
+              "               sum(case when LOT_NUMBER='®w¦s¤£¨¬' THEN 0 ELSE QTY END) over(partition by ADVISE_LINE_ID,carton_num order by lot_number) carton_sum,"+
               "               count(distinct LOT_NUMBER) over(partition by ADVISE_LINE_ID,CUST_PARTNO,carton_num,DATE_CODE,DC_YYWW) carton_lot_cnt,"+ 
 			  //"       a.* FROM oraddman.TSSG_LOT_DISTRIBUTION_TEMP a"+
 			  //"         where SG_DISTRIBUTION_ID=?) a"+
@@ -314,7 +316,7 @@ try
 	{
 		if (!so_line_id.equals(rs.getString("so_line_id")))
 		{
-			if (!so_line_id.equals("")) ws.addCell(new jxl.write.Number(13, row-1, Double.valueOf(""+(so_line_qty/1000)).doubleValue() , ARightL));
+			if (!so_line_id.equals("")) ws.addCell(new jxl.write.Number(14, row-1, Double.valueOf(""+(so_line_qty/1000)).doubleValue() , ARightL));
 			so_line_id=rs.getString("so_line_id");  
 			so_line_qty = 0; 	
 		}
@@ -326,7 +328,7 @@ try
 		{
  			if (tot_cnt>0)
 			{
-				if (!SHIPPING_REMARK.equals("") && ((SHIPPING_REMARK.length()>=12 && SHIPPING_REMARK.substring(0,12).equals("CHANNEL WELL")) || (SHIPPING_REMARK.indexOf("é§±é¨°")>=0)))
+				if (!SHIPPING_REMARK.equals("") && ((SHIPPING_REMARK.length()>=12 && SHIPPING_REMARK.substring(0,12).equals("CHANNEL WELL")) || (SHIPPING_REMARK.indexOf("ÀdÄË")>=0)))
 				{
 					ws.addCell(new jxl.write.Label(col, row-1,  (S_CNO.equals(E_CNO)?BOX_CODE+S_CNO:BOX_CODE+S_CNO +" - "+BOX_CODE+E_CNO),  ACenterL));
 				}
@@ -346,7 +348,7 @@ try
 					col++;	
 					ws.addCell(new jxl.write.Number(col, row-1, Double.valueOf(""+(TOT_QTY/1000)).doubleValue(), ARightL));
 					col++;	
-					ws.addCell(new jxl.write.Label(16, row-1, VENDOR_CARTON,  ALeftL));
+					ws.addCell(new jxl.write.Label(17, row-1, VENDOR_CARTON,  ALeftL));
 					col++;	
 				}
 				else
@@ -360,7 +362,7 @@ try
 					col++;	
 					ws.addCell(new jxl.write.Label(col, row-1,QTY_LIST , ARightL));
 					col++;	
-					ws.addCell(new jxl.write.Label(16, row-1, VENDOR_CARTON_LIST,  ALeftL)); 
+					ws.addCell(new jxl.write.Label(17, row-1, VENDOR_CARTON_LIST,  ALeftL));
 					col++;	
 				}
 			}
@@ -373,29 +375,34 @@ try
 			{
 				col=0;
 				row++;
-				String strRPTtitle = "å‡ºè²¨æ‰¹è™Ÿæ˜Žç´°è¡¨";
-				ws.mergeCells(col, row, col+14, row);     
+				String strRPTtitle = "¥X³f§å¸¹©ú²Óªí";
+				ws.mergeCells(col, row, col+15, row);
 				ws.addCell(new jxl.write.Label(col, row,strRPTtitle ,wRptName));
-				row+=2;//åˆ—+1
+				row+=2;//¦C+1
 			
 				ws.mergeCells(col, row, col+2, row);     
-				ws.addCell(new jxl.write.Label(col, row,"Advise Noï¼š"+rs.getString("advise_no"),ALEFT));
-				row++;//åˆ—+1
+				ws.addCell(new jxl.write.Label(col, row,"Advise No¡G"+rs.getString("advise_no"),ALEFT));
+				row++;//¦C+1
 				ws.mergeCells(col, row, col+3, row);     
-				ws.addCell(new jxl.write.Label(col, row,"å‡ºè²¨æ—¥æœŸï¼š"+rs.getString("pc_schedule_ship_date") ,ALEFT));
+				ws.addCell(new jxl.write.Label(col, row,"¥X³f¤é´Á¡G"+rs.getString("pc_schedule_ship_date") ,ALEFT));
 				ws.mergeCells(col+10, row, col+12, row);     
-				ws.addCell(new jxl.write.Label(col+10, row,"é æ•¸ï¼š"+((int)(tot_cnt/page_num)+1),ARIGHT));
-				row++;//åˆ—+1
+				ws.addCell(new jxl.write.Label(col+10, row,"­¶¼Æ¡G"+((int)(tot_cnt/page_num)+1),ARIGHT));
+				row++;//¦C+1
 	
 				ws.setRowView(row, 500);
 				ws.addCell(new jxl.write.Label(col, row, "MO#" , ACenterBL));
 				ws.setColumnView(col,15);	
 				col++;	
 	
-				ws.addCell(new jxl.write.Label(col, row, "åž‹è™Ÿ" , ACenterBL));
+				ws.addCell(new jxl.write.Label(col, row, "«¬¸¹" , ACenterBL));
 				ws.setColumnView(col,18);	
-				col++;	
-				
+				col++;
+
+				// flow code
+				ws.addCell(new jxl.write.Label(col, row, "Flow Code" , ACenterBL));
+				ws.setColumnView(col,10);
+				col++;
+
 				ws.addCell(new jxl.write.Label(col, row, "P/N" , ACenterBL));
 				ws.setColumnView(col,18);	
 				col++;	
@@ -404,24 +411,24 @@ try
 				ws.setColumnView(col,28);	
 				col++;		
 				
-				ws.addCell(new jxl.write.Label(col, row, "å˜œé ­" , ACenterBL));
+				ws.addCell(new jxl.write.Label(col, row, "áMÀY" , ACenterBL));
 				ws.setColumnView(col,28);	
 				col++;	
 				
-				ws.addCell(new jxl.write.Label(col, row, "å‡ºè²¨æ–¹å¼" , ACenterBL));
+				ws.addCell(new jxl.write.Label(col, row, "¥X³f¤è¦¡" , ACenterBL));
 				ws.setColumnView(col,15);	
 				col++;		
 				
-				//ws.addCell(new jxl.write.Label(col, row, "æŽ¡è³¼å–®è™Ÿ" , ACenterBL));
-				ws.addCell(new jxl.write.Label(col, row, "æ¯›é‡" , ACenterBL));
+				//ws.addCell(new jxl.write.Label(col, row, "±ÄÁÊ³æ¸¹" , ACenterBL));
+				ws.addCell(new jxl.write.Label(col, row, "¤ò­«" , ACenterBL));
 				ws.setColumnView(col,10);	
 				col++;
 				
-				ws.addCell(new jxl.write.Label(col, row, "ä¾›æ‡‰å•†" , ACenterBL));
+				ws.addCell(new jxl.write.Label(col, row, "¨ÑÀ³°Ó" , ACenterBL));
 				ws.setColumnView(col,15);	
 				col++;	
 	
-				ws.addCell(new jxl.write.Label(col, row, "ç®±è™Ÿ" , ACenterBL));
+				ws.addCell(new jxl.write.Label(col, row, "½c¸¹" , ACenterBL));
 				ws.setColumnView(col,10);	
 				col++;	
 				
@@ -437,23 +444,23 @@ try
 				ws.setColumnView(col,10);	
 				col++;				
 				
-				ws.addCell(new jxl.write.Label(col, row, "æ’¿è²¨é‡(K)" , ACenterBL));
+				ws.addCell(new jxl.write.Label(col, row, "¾ß³f¶q(K)" , ACenterBL));
 				ws.setColumnView(col,10);	
 				col++;	
 																													
-				ws.addCell(new jxl.write.Label(col, row, "å‡ºè²¨ç¸½é‡(K)" , ACenterBL));  
+				ws.addCell(new jxl.write.Label(col, row, "¥X³fÁ`¶q(K)" , ACenterBL));  
 				ws.setColumnView(col,12);	
 				col++;	
 
-				ws.addCell(new jxl.write.Label(col, row, "å®¢æˆ¶æ¨™ç±¤" , ACenterBL)); 
+				ws.addCell(new jxl.write.Label(col, row, "«È¤á¼ÐÅÒ" , ACenterBL)); 
 				ws.setColumnView(col,17);	
 				col++;	
 
-				ws.addCell(new jxl.write.Label(col, row, "æ¨™ç±¤å‚™è¨»" , ACenterBL));  
+				ws.addCell(new jxl.write.Label(col, row, "¼ÐÅÒ³Æµù" , ACenterBL));  
 				ws.setColumnView(col,20);	
 				col++;	
 				
-				ws.addCell(new jxl.write.Label(col, row, "ä¾›æ‡‰å•†ç®±è™Ÿ" , ACenterBL));  
+				ws.addCell(new jxl.write.Label(col, row, "¨ÑÀ³°Ó½c¸¹" , ACenterBL));  
 				ws.setColumnView(col,12);	
 				col++;	
 				row++;
@@ -486,7 +493,10 @@ try
 			ws.addCell(new jxl.write.Label(col, row, rs.getString("SO_NO"),ACenterL));
 			col++;	
 			ws.addCell(new jxl.write.Label(col, row, rs.getString("item_desc") , ALeftL));
-			col++;	
+			col++;
+			// flow code
+			ws.addCell(new jxl.write.Label(col, row, rs.getString("FLOW_CODE") , ALeftL));
+			col++;
 			ws.addCell(new jxl.write.Label(col, row, rs.getString("CUST_ITEM") , ALeftL));
 			col++;
 			ws.addCell(new jxl.write.Label(col, row, rs.getString("CUSTOMER_PO") , ALeftL));
@@ -505,10 +515,10 @@ try
 			}
 			col++;	
 			ws.addCell(new jxl.write.Label(col, row, rs.getString("vendor_site_code") , ALeftL));
-			col++;		
-			ws.addCell(new jxl.write.Label(13, row, "" , ALeftL)); 
-			ws.addCell(new jxl.write.Label(14, row, rs.getString("CUST_LABEL_GROUP") , ALeftL)); 
-			label_remarks=((rs.getString("CUST_ITEM")==null && rs.getString("PO_CUSTPN_LIST")==null) || rs.getString("LOT_NUMBER").equals("åº«å­˜ä¸è¶³")|| (rs.getString("CUST_ITEM")!= null && (rs.getString("CUST_ITEM").equals((rs.getString("PO_CUSTPN_LIST")==null?"":rs.getString("PO_CUSTPN_LIST"))) || ((rs.getString("PO_CUSTPN_LIST")==null?"":","+rs.getString("PO_CUSTPN_LIST")+",")).indexOf(","+rs.getString("CUST_ITEM")+",")>=0)) ?"":"æ”¹PN");
+			col++;
+			ws.addCell(new jxl.write.Label(14, row, "" , ALeftL));
+			ws.addCell(new jxl.write.Label(15, row, rs.getString("CUST_LABEL_GROUP") , ALeftL));
+			label_remarks=((rs.getString("CUST_ITEM")==null && rs.getString("PO_CUSTPN_LIST")==null) || rs.getString("LOT_NUMBER").equals("®w¦s¤£¨¬")|| (rs.getString("CUST_ITEM")!= null && (rs.getString("CUST_ITEM").equals((rs.getString("PO_CUSTPN_LIST")==null?"":rs.getString("PO_CUSTPN_LIST"))) || ((rs.getString("PO_CUSTPN_LIST")==null?"":","+rs.getString("PO_CUSTPN_LIST")+",")).indexOf(","+rs.getString("CUST_ITEM")+",")>=0)) ?"":"§ïPN");
 			if (rs.getString("CUST_LABEL_GROUP") !=null && rs.getString("CUST_LABEL_GROUP").toUpperCase().indexOf("SIEMENS")>=0)
 			{
 				label_remarks += (label_remarks.length()>0?"\r\n":"")+ "Part Name:"+rs.getString("tsc_amp")+" "+rs.getString("tsc_volt")+" "+rs.getString("tsc_package");
@@ -524,13 +534,14 @@ try
 					label_remarks += (label_remarks.length()>0?"\r\n":"")+ "Vendor Code:SPT10026";
 				}	
 			}
-			if (rs.getString("REGION_CODE").equals("TSCH-HK") &&  SHIPPING_REMARK.toUpperCase().equals("LITE ON-2680") && rs.getString("item_desc").equals("ES1J-T"))
-			{
-				label_remarks += (label_remarks.length()>0?"\r\n":"")+ "åŠ åš´å“æ¨™ç±¤";			
-			}
+			// 20250214 Jerry­n¨D²¾°£ BY JB
+			//if (rs.getString("REGION_CODE").equals("TSCH-HK") &&  SHIPPING_REMARK.toUpperCase().equals("LITE ON-2680") && rs.getString("item_desc").equals("ES1J-T"))
+			//{
+			//	label_remarks += (label_remarks.length()>0?"\r\n":"")+ "¥[ÄY«~¼ÐÅÒ";			
+			//}
 			
-			//ws.addCell(new jxl.write.Label(15, row, label_remarks , ALeftL)); 
-			ws.addCell(new jxl.write.Label(15, row, label_remarks+(rs.getString("coo_info")==null?"":","+rs.getString("coo_info")) , ALeftL));  //modify by Peggy 20230808
+			//ws.addCell(new jxl.write.Label(15, row, label_remarks , ALeftL));
+			ws.addCell(new jxl.write.Label(16, row, label_remarks+(rs.getString("coo_info")==null?"":","+rs.getString("coo_info")) , ALeftL));  //modify by Peggy 20230808
 			row++;
 			reccnt++;
 			tot_cnt++;
@@ -548,7 +559,7 @@ try
 	}
 	if (tot_cnt>0)
 	{
-		if (!SHIPPING_REMARK.equals("") && ((SHIPPING_REMARK.length()>=12 && SHIPPING_REMARK.substring(0,12).equals("CHANNEL WELL")) || (SHIPPING_REMARK.indexOf("é§±é¨°")>=0)))
+		if (!SHIPPING_REMARK.equals("") && ((SHIPPING_REMARK.length()>=12 && SHIPPING_REMARK.substring(0,12).equals("CHANNEL WELL")) || (SHIPPING_REMARK.indexOf("ÀdÄË")>=0)))
 		{
 			ws.addCell(new jxl.write.Label(col, row-1, (S_CNO.equals(E_CNO)?BOX_CODE+S_CNO:BOX_CODE+S_CNO +" - "+BOX_CODE+E_CNO),  ACenterL));
 		}
@@ -568,8 +579,8 @@ try
 			col++;	
 			ws.addCell(new jxl.write.Number(col, row-1, Double.valueOf(""+(TOT_QTY/1000)).doubleValue(), ARightL));
 			col++;	
-			ws.addCell(new jxl.write.Label(16, row-1, (VENDOR_CARTON==null?"":VENDOR_CARTON),  ALeftL));
-			col++;	
+			ws.addCell(new jxl.write.Label(17, row-1, (VENDOR_CARTON==null?"":VENDOR_CARTON),  ALeftL));
+			col++;
 		}
 		else
 		{
@@ -581,23 +592,23 @@ try
 			ws.addCell(new jxl.write.Label(col, row-1, DC_YYWW_LIST,  ALeftL));  
 			col++;	
 			ws.addCell(new jxl.write.Label(col, row-1,QTY_LIST , ARightL));
-			col++;	
-			ws.addCell(new jxl.write.Label(16, row-1,(VENDOR_CARTON_LIST==null?"":VENDOR_CARTON_LIST) , ARightL));
+			col++;
+			ws.addCell(new jxl.write.Label(17, row-1,(VENDOR_CARTON_LIST==null?"":VENDOR_CARTON_LIST) , ARightL));
 			col++;	
 		}
-		ws.addCell(new jxl.write.Number(13, row-1, Double.valueOf(""+(so_line_qty/1000)).doubleValue() , ARightL));
+		ws.addCell(new jxl.write.Number(14, row-1, Double.valueOf(""+(so_line_qty/1000)).doubleValue() , ARightL));
 	}
 
 	row+=2;
 	ws.setRowView(row, 600);
 	ws.mergeCells(0, row, 2, row);     
-	ws.addCell(new jxl.write.Label(0, row, "ç·¨ç®±:",  ANLeftL));
+	ws.addCell(new jxl.write.Label(0, row, "½s½c:",  ANLeftL));
 	ws.mergeCells(3, row, 4, row);     
-	ws.addCell(new jxl.write.Label(3, row, "æ”¹æ¨™ç±¤:",  ANLeftL));
+	ws.addCell(new jxl.write.Label(3, row, "§ï¼ÐÅÒ:",  ANLeftL));
 	ws.mergeCells(5, row, 10, row);     
-	ws.addCell(new jxl.write.Label(5, row, "æ”¹æ¨™ç±¤æª¢é©—:",  ANLeftL));
+	ws.addCell(new jxl.write.Label(5, row, "§ï¼ÐÅÒÀËÅç:",  ANLeftL));
 	ws.mergeCells(11, row, 14, row);     
-	ws.addCell(new jxl.write.Label(11, row, "å‡ºè²¨æª¢é©—:",  ANLeftL));
+	ws.addCell(new jxl.write.Label(11, row, "¥X³fÀËÅç:",  ANLeftL));
 	
 	wwb.write(); 
 	wwb.close();
@@ -619,7 +630,7 @@ catch (Exception e)
 %>
 </FORM>
 </body>
-<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->
+<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 <%

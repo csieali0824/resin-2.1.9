@@ -2867,22 +2867,26 @@
 			//add by Peggy 20221018
 			if (!salesAreaNo.equals("021") && !salesAreaNo.equals("022") && !salesAreaNo.equals("012") && !salesAreaNo.equals("009") && !salesAreaNo.equals("006")) //add 009 by Peggy 20141212
 			{
-				Statement statementx=con.createStatement();
-				String sqlx = " select LAST_NAME || DECODE(FIRST_NAME, NULL,NULL, ', '||FIRST_NAME)|| DECODE(TITLE,NULL, NULL, ' '||TITLE) contact_name,con.contact_id"+
-						" from ar_contacts_v con,hz_cust_site_uses su,HZ_CUST_SITE_USES_ALL hcsu "+
-						" where  con.customer_id ='"+customerId+"'"+
-						" and con.status='A'"+
-						" AND con.address_id=su.cust_acct_site_id"+
-						" AND su.site_use_code='SHIP_TO'"+
-						" AND hcsu.CUST_ACCT_SITE_ID =con.address_id(+)"+
-						" AND hcsu.SITE_USE_ID='"+ShipToOrg+"'";
-				sqlx += " ORDER BY DECODE(LAST_NAME || DECODE(FIRST_NAME, NULL,NULL, ', '||FIRST_NAME)|| DECODE(TITLE,NULL, NULL, ' '||TITLE),'"+customerId+"',1,2)";
-				//out.println(sqlx);
-				ResultSet rsx=statementx.executeQuery(sqlx);
-				if (rsx.next())
-				{
-					shipToContact = rsx.getString("contact_name");
-					shipToContactid = rsx.getString("contact_id");
+				if (salesAreaNo.equals("003") && Arrays.asList(new String[]{"14053", "15202", "16988"}).contains(customerNo)) {
+					shipToContact = "";
+					shipToContactid = "";
+				} else {
+					Statement statementx = con.createStatement();
+					String sqlx = " select LAST_NAME || DECODE(FIRST_NAME, NULL,NULL, ', '||FIRST_NAME)|| DECODE(TITLE,NULL, NULL, ' '||TITLE) contact_name,con.contact_id" +
+							" from ar_contacts_v con,hz_cust_site_uses su,HZ_CUST_SITE_USES_ALL hcsu " +
+							" where  con.customer_id ='" + customerId + "'" +
+							" and con.status='A'" +
+							" AND con.address_id=su.cust_acct_site_id" +
+							" AND su.site_use_code='SHIP_TO'" +
+							" AND hcsu.CUST_ACCT_SITE_ID =con.address_id(+)" +
+							" AND hcsu.SITE_USE_ID='" + ShipToOrg + "'";
+					sqlx += " ORDER BY DECODE(LAST_NAME || DECODE(FIRST_NAME, NULL,NULL, ', '||FIRST_NAME)|| DECODE(TITLE,NULL, NULL, ' '||TITLE),'" + customerId + "',1,2)";
+					//out.println(sqlx);
+					ResultSet rsx = statementx.executeQuery(sqlx);
+					if (rsx.next()) {
+						shipToContact = rsx.getString("contact_name");
+						shipToContactid = rsx.getString("contact_id");
+					}
 				}
 			}
 		}
