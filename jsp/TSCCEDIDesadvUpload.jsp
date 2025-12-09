@@ -436,7 +436,7 @@ try
 						v_status="E";
 						cs3 = con.prepareCall("{call TSC_SENDMAIL(?,?,?,?,?)}");			 
 						cs3.setString(1,"prodsys@ts.com.tw"); 
-						cs3.setString(2,"peggy.chen@ts.com.tw"); 
+						cs3.setString(2,"mars.wang@ts.com.tw");
 						cs3.setString(3,""); 
 						cs3.setString(4,"TSCC ASN Upload Fail(RFQ)"); 
 						cs3.setString(5,""); 
@@ -541,7 +541,7 @@ try
 			<%
 				cs3 = con.prepareCall("{call TSC_SENDMAIL(?,?,?,?,?)}");			 
 				cs3.setString(1,"prodsys@ts.com.tw"); 
-				cs3.setString(2,"peggy.chen@ts.com.tw"); 
+				cs3.setString(2,"mars.wang@ts.com.tw");
 				cs3.setString(3,""); 
 				cs3.setString(4,"TSCC ASN fail("+batch_id+")"); 
 				cs3.setString(5,""); 
