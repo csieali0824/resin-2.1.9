@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public enum SalesArea {
     TSCCSH("002"),
+    TSCJ("003"),
     TSCK("004"),
     TSCTDA("005"),
     TSCTDISTY("006"),

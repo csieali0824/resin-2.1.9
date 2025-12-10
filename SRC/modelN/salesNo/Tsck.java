@@ -133,9 +133,7 @@ public class Tsck extends ModelNCommonUtils {
     }
 
     public void setExtraRuleInfo() {
-        if (!StringUtils.isNullOrEmpty(modelNDto.getShipToLocationId())) {
-            modelNDto.setShipToOrgId(modelNDto.getShipToOrgId());
-        } else {
+        if (StringUtils.isNullOrEmpty(modelNDto.getShipToOrgId())) {
             if (modelNDto.getCustNo().equals("16163")) {
                 modelNDto.setShipToOrgId("64112");
             } else if (modelNDto.getCustNo().equals("26892")) {

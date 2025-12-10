@@ -1,6 +1,7 @@
 <!--20151002 Peggy,add excel format condition-->
-<!--20160630 Peggy,add new field-æ”¹å–®ç”³è«‹å–®è™Ÿ-->
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.net.*,java.io.*,java.text.*,java.lang.*"%>
+<!--20160630 Peggy,add new field-§ï³æ¥Ó½Ğ³æ¸¹-->
+<!--20250522 by JB,·s¼WPlant (DP_CODE)-->
+<%@ page contentType="text/html; charset=big5" language="java" import="java.sql.*,java.net.*,java.io.*,java.text.*,java.lang.*"%>
 <%@ page import="ComboBoxBean,DateBean,WorkingDateBean,ArrayComboBoxBean"%>
 <script language="JavaScript" type="text/JavaScript">
 function setSubmit(URL)
@@ -17,13 +18,13 @@ function setExportXLS(URL)
 {   
 	if (document.MYFORM.ODRTYPE.value =="" || document.MYFORM.ODRTYPE.value=="null" || document.MYFORM.ODRTYPE.value=="--") 
 	{
-		alert("è«‹å…ˆé¸æ“‡äº¤æ˜“é¡å‹!");
+		alert("½Ğ¥ı¿ï¾Ü¥æ©öÃş«¬!");
 		document.MYFORM.ODRTYPE.focus();
 		return false;
 	}
 	if (document.MYFORM.EXLTYPE.value =="" || document.MYFORM.EXLTYPE.value=="null" || document.MYFORM.EXLTYPE.value=="--") 
 	{
-		alert("è«‹å…ˆé¸æ“‡Excelæ ¼å¼!");
+		alert("½Ğ¥ı¿ï¾ÜExcel®æ¦¡!");
 		document.MYFORM.EXLTYPE.focus();
 		return false;		
 	}
@@ -55,7 +56,7 @@ function setExportXLS(URL)
   A:visited { color: #990066; text-decoration: underline }
 </STYLE>
 <title>EDI Transaction Confirm</title>
-<!--=============ä»¥ä¸‹å€æ®µç‚ºå®‰å…¨èªè­‰æ©Ÿåˆ¶==========-->
+<!--=============¥H¤U°Ï¬q¬°¦w¥ş»{ÃÒ¾÷¨î==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
@@ -72,6 +73,8 @@ String ODRTYPE = request.getParameter("ODRTYPE");
 if (ODRTYPE == null) ODRTYPE ="--";
 String CUSTPO = request.getParameter("CUSTPO");
 if (CUSTPO == null) CUSTPO ="";
+String PLANT = request.getParameter("PLANT");				// 20250522 ADD BY JB Emily EBV New Plandcode issue
+if (PLANT == null) PLANT ="";
 String CYEARFR = request.getParameter("CYEARFR");
 if (CYEARFR==null) CYEARFR="--";
 String CMONTHFR = request.getParameter("CMONTHFR");
@@ -89,21 +92,21 @@ if (EXLTYPE == null) EXLTYPE ="D12001";
 String ORDERS = "ORDERS",ORDCHG="ORDCHG";
 String sql = "";
 %>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
+<meta http-equiv="Content-Type" content="text/html; charset=big5"></head>
 <body topmargin="0" bottommargin="0">  
 <FORM ACTION="../jsp/TSCEDIExceptionQuery.jsp" METHOD="post" NAME="MYFORM">
 <div id="showimage" style="position:absolute; visibility:hidden; z-index:65535; top: 260px; left: 300px; width: 370px; height: 50px;"> 
   <br>
   <table width="350" height="50" border="1" align="center" cellpadding="5" cellspacing="0" bordercolorlight="#CCFFCC" bordercolordark="#336600">
     <tr>
-    <td height="70" bgcolor="#CCCC99"  align="center"><font color="#003399" face="æ¨™æ¥·é«”" size="+2">è³‡æ–™è™•ç†ä¸­,è«‹ç¨å€™.....</font> <BR>
+    <td height="70" bgcolor="#CCCC99"  align="center"><font color="#003399" face="¼Ğ·¢Åé" size="+2">¸ê®Æ³B²z¤¤,½Ğµy­Ô.....</font> <BR>
       <DIV ID="blockDiv" STYLE="visibility:hidden;position:absolute; width:5px; height:5px; clip:rect(0px 5px 5px 0px); background-color:#567886; layer-background-color:#567886; display=''; left: 50px;"></div>
 	</td>
   </tr>
 </table>
 </div>
 <div id='alpha' class='hidden' style='width:0%;height:0;position:absolute;top:0;left:0;background:#000;filter:alpha(opacity=20);-moz-opacity:0.3;z-index:0;'></div>
-<strong><font style="font-size:18px;color:#000099">RFQç•°å¸¸åŠOrderChangeå¾…ç¢ºèª</font></strong>
+<strong><font style="font-size:18px;color:#000099">RFQ²§±`¤ÎOrderChange«İ½T»{</font></strong>
 <BR>
 <table width="100%">
 	<tr>
@@ -113,14 +116,14 @@ String sql = "";
 		<td>
   			<table cellSpacing='0' bordercolordark='#A289B1'  cellPadding='1' width='100%' align='center' borderColorLight='#ffffff' border='1' bgcolor="#CFD1C0" bordercolor="#cccccc">
      			<tr>
-					<td width="6%" colspan="1" nowrap><font color="#006666" ><strong>äº¤æ˜“é¡å‹:</strong></font></td> 
+					<td width="6%" colspan="1" nowrap><font color="#006666" ><strong>¥æ©öÃş«¬:</strong></font></td> 
 					<td width="10%"><select name="ODRTYPE" style="font-size:12;font-family:arial">
 									<option value="--">--
 									<option value="<%=ORDERS%>" <%if (ODRTYPE.equals(ORDERS)) out.println("selected");%>>NEW ORDER
 									<option value="<%=ORDCHG%>" <%if (ODRTYPE.equals(ORDCHG)) out.println("selected");%>>ORDER CHANGE
 									</select>
 					</td>
-					<td width="6%"><font color="#006666" ><strong>å®¢æˆ¶:</strong></font></td>   
+					<td width="6%"><font color="#006666" ><strong>«È¤á:</strong></font></td>   
 					<td width="20%">
 					<%
 					try
@@ -149,9 +152,9 @@ String sql = "";
 					}
 					%>
 					</td>    
-					<td width="6%"><font color="#006666" ><strong>å®¢æˆ¶PO:</strong></font></td>
+					<td width="6%"><font color="#006666" ><strong>«È¤áPO:</strong></font></td>
 					<td width="10%"><input type="text" name="CUSTPO" value="<%=CUSTPO%>" size="18"></td>
-					<td width="6%"><font color="#006666" ><strong>å»ºç«‹æ—¥æœŸ:</strong></font></td>
+					<td width="6%"><font color="#006666" ><strong>«Ø¥ß¤é´Á:</strong></font></td>
 					<td width="23%">
 					<%
 					try
@@ -273,10 +276,16 @@ String sql = "";
 									</select>
 					</td>										
 				</tr>
+				<tr>			
+					<td width="6%"><font color="#006666" ><strong>PLANT:</strong></font></td>	
+					<td width="10%"><input type="text" name="PLANT" size="18"></td>
+					<td colspan="8" align="center">
+					</td>
+				</tr>
 				<tr>
 				  <td colspan="10" align="center">
 		    			<INPUT TYPE="button" name="submit1" align="middle"  value='<jsp:getProperty name="rPH" property="pgQuery"/>' onClick='setSubmit("../jsp/TSCEDIExceptionQuery.jsp")' >&nbsp;&nbsp;
-		    			<INPUT name="excel" TYPE="button" onClick='setExportXLS()'  value='åŒ¯å‡ºEXCEL' align="middle"></td>
+		    			<INPUT name="excel" TYPE="button" onClick='setExportXLS()'  value='¶×¥XEXCEL' align="middle"></td>
    				</tr>
 			</table>  
 		</td>
@@ -288,15 +297,16 @@ String sql = "";
 		<td>
 			<table width="100%" border="1" cellpadding="0" cellspacing="1" bordercolorlight="#ffffff" bordercolordark="#A289B1" bordercolor="#99CCFF" >
 				<tr bgcolor="#99CCFF"> 
-					<td width="3%" height="20" nowrap><div align="center"><font color="#006666">åºè™Ÿ</font></div></td>
-					<td width="8%" nowrap><div align="center"><font color="#006666">äº¤æ˜“é¡å‹</font></div></td>
-					<td width="20%" nowrap><div align="center"><font color="#006666">å®¢æˆ¶</font></div></td>            
-					<td width="8%" nowrap><div align="center"><font color="#006666">å®¢æˆ¶è¨‚å–®</font></div></td>
-					<td width="10%" nowrap><div align="center"><font color="#006666">ç”³è«‹å–®è™Ÿ</font></div></td>
-					<td width="10%" nowrap><div align="center"><font color="#006666">ç‹€æ…‹</font></div></td> 
-					<td width="9%" nowrap><div align="center"><font color="#006666">å»ºç«‹æ—¥æœŸ</font></div></td> 
-					<td width="9%" nowrap><div align="center"><font color="#006666">å»ºç«‹äººå“¡</font></div></td>                    
-					<td width="8%" nowrap><div align="center"><font color="#006666">æ”¹å–®ç”³è«‹å–®è™Ÿ</font></div></td>                    
+					<td width="3%" height="20" nowrap><div align="center"><font color="#006666">§Ç¸¹</font></div></td>
+					<td width="8%" nowrap><div align="center"><font color="#006666">¥æ©öÃş«¬</font></div></td>
+					<td width="17%" nowrap><div align="center"><font color="#006666">«È¤á</font></div></td>   
+					<td width="5%" nowrap><div align="center"><font color="#006666">PLANT</font></div></td>            
+					<td width="8%" nowrap><div align="center"><font color="#006666">«È¤á­q³æ</font></div></td>
+					<td width="9%" nowrap><div align="center"><font color="#006666">¥Ó½Ğ³æ¸¹</font></div></td>
+					<td width="9%" nowrap><div align="center"><font color="#006666">ª¬ºA</font></div></td> 
+					<td width="9%" nowrap><div align="center"><font color="#006666">«Ø¥ß¤é´Á</font></div></td> 
+					<td width="9%" nowrap><div align="center"><font color="#006666">«Ø¥ß¤H­û</font></div></td>                    
+					<td width="8%" nowrap><div align="center"><font color="#006666">§ï³æ¥Ó½Ğ³æ¸¹</font></div></td>                    
 				</tr>
 				<%
 				try
@@ -322,7 +332,7 @@ String sql = "";
 					//		sql += " and exists (select 1 from oraddman.tsrecperson x where x.USERNAME='"+UserName+"' and x.tssaleareano=c.SALES_AREA_NO)";
 					//	}
 					//}
-					sql = " select distinct a.ORDER_TYPE,a.REQUEST_NO REQUEST_NO,a.ERP_CUSTOMER_ID as TSCUSTOMERID,decode(a.order_type,'"+ORDCHG+"','ORDER CHANGE','"+ORDERS+"','NEW ORDER',a.order_type) as order_type_name,'('||d.customer_number||')'|| c.CUSTOMER_NAME CUSTOMER,'AWAITING_CONFIRM' STATUS,a.CUSTOMER_PO CUST_PO,a.CREATION_DATE,to_char(a.CREATION_DATE,'yyyy-mm-dd hh24:mi') C_DATE,c.SALES_CONTACT created_by "+
+					sql = " select distinct a.DP_CODE, a.ORDER_TYPE,a.REQUEST_NO REQUEST_NO,a.ERP_CUSTOMER_ID as TSCUSTOMERID,decode(a.order_type,'"+ORDCHG+"','ORDER CHANGE','"+ORDERS+"','NEW ORDER',a.order_type) as order_type_name,'('||d.customer_number||')'|| c.CUSTOMER_NAME CUSTOMER,'AWAITING_CONFIRM' STATUS,a.CUSTOMER_PO CUST_PO,a.CREATION_DATE,to_char(a.CREATION_DATE,'yyyy-mm-dd hh24:mi') C_DATE,c.SALES_CONTACT created_by "+
 					      ", (select listagg('<a href=\"../jsp/TSSalesOrderReviseQuery.jsp?REQUESTNO='||request_no||'&CUSTPO='||SOURCE_CUSTOMER_PO||'\">'||request_no||'</a>','<br>')  within group (order by request_no) request_no from oraddman.TSC_OM_SALESORDERREVISE_REQ x where x.CUSTOMER_PO_REF=b.request_no and x.CUSTOMER_PO_LINE_REF=b.CUST_PO_LINE_NO and x.CUSTOMER_ID_REF=b.ERP_CUSTOMER_ID  and x.STATUS not in ('CLOSED') group by x.request_no) revise_request_no"+ //add by Peggy 20160630
 						  " from TSC_EDI_ORDERS_HIS_H a"+
 						  ",TSC_EDI_ORDERS_HIS_D b"+
@@ -345,6 +355,10 @@ String sql = "";
 					if (!CUSTPO.equals(""))
 					{
 						sql += " and a.CUST_PO ='"+CUSTPO+"'";
+					}
+					if (!PLANT.equals(""))								// 20250522 ADD BY JB Emily EBV New Plandcode issue
+					{
+						sql += " and a.DP_CODE ='"+PLANT+"'";			// 20250522 ADD BY JB Emily EBV New Plandcode issue
 					}
 					if (!CUSTOMER.equals("") && !CUSTOMER.equals("--"))
 					{
@@ -380,7 +394,7 @@ String sql = "";
 					
 					if (sql.length()<=0)
 					{	
-						throw new Exception("æŸ¥ç„¡è³‡æ–™,è«‹æ´½ç³»çµ±ç®¡ç†äººå“¡,è¬è¬!");
+						throw new Exception("¬dµL¸ê®Æ,½Ğ¬¢¨t²ÎºŞ²z¤H­û,ÁÂÁÂ!");
 					}
 					//out.println(sql);
 					Statement statement=con.createStatement();
@@ -391,11 +405,11 @@ String sql = "";
 						i++;
 						if (rs.getString("order_type").equals(ORDERS))
 						{
-							out.println("<tr bgColor='#FFFF99' onmouseover="+'"'+"this.style.color='#ffffff';this.style.backgroundColor='#91819A';this.style.fontWeight='bold'"+'"'+" onmouseout="+'"'+"style.backgroundColor='#FFFF99',style.color='#000000';this.style.fontWeight='normal'"+'"'+"  title='æŒ‰ä¸‹æ»‘é¼ å·¦éµ,é€²å…¥ç¢ºèªç•«é¢!' onclick='openSubWindow("+'"'+"../jsp/TSCEDIORDERSDetail.jsp?REQUESTNO="+rs.getString("REQUEST_NO")+"&ERPCUSTOMERID="+rs.getString("TSCUSTOMERID")+"&CUSTPO="+rs.getString("CUST_PO")+'"'+");' >");   					
+							out.println("<tr bgColor='#FFFF99' onmouseover="+'"'+"this.style.color='#ffffff';this.style.backgroundColor='#91819A';this.style.fontWeight='bold'"+'"'+" onmouseout="+'"'+"style.backgroundColor='#FFFF99',style.color='#000000';this.style.fontWeight='normal'"+'"'+"  title='«ö¤U·Æ¹«¥ªÁä,¶i¤J½T»{µe­±!' onclick='openSubWindow("+'"'+"../jsp/TSCEDIORDERSDetail.jsp?REQUESTNO="+rs.getString("REQUEST_NO")+"&ERPCUSTOMERID="+rs.getString("TSCUSTOMERID")+"&CUSTPO="+rs.getString("CUST_PO")+'"'+");' >");   					
 						}
 						else if (rs.getString("order_type").equals(ORDCHG))
 						{
-							out.println("<tr bgColor='#D2EDD1' onmouseover="+'"'+"this.style.color='#ffffff';this.style.backgroundColor='#91819A';this.style.fontWeight='bold'"+'"'+" onmouseout="+'"'+"style.backgroundColor='#D2EDD1',style.color='#000000';;this.style.fontWeight='normal'"+'"'+"  title='æŒ‰ä¸‹æ»‘é¼ å·¦éµ,é€²å…¥ç¢ºèªç•«é¢!' onclick='openSubWindow("+'"'+"../jsp/TSCEDIORDCHGDetail.jsp?REQUESTNO="+rs.getString("REQUEST_NO")+"&ERPCUSTOMERID="+rs.getString("TSCUSTOMERID")+"&CUSTPO="+rs.getString("CUST_PO")+'"'+");' >");    					
+							out.println("<tr bgColor='#D2EDD1' onmouseover="+'"'+"this.style.color='#ffffff';this.style.backgroundColor='#91819A';this.style.fontWeight='bold'"+'"'+" onmouseout="+'"'+"style.backgroundColor='#D2EDD1',style.color='#000000';;this.style.fontWeight='normal'"+'"'+"  title='«ö¤U·Æ¹«¥ªÁä,¶i¤J½T»{µe­±!' onclick='openSubWindow("+'"'+"../jsp/TSCEDIORDCHGDetail.jsp?REQUESTNO="+rs.getString("REQUEST_NO")+"&ERPCUSTOMERID="+rs.getString("TSCUSTOMERID")+"&CUSTPO="+rs.getString("CUST_PO")+'"'+");' >");    					
 						}
 						else
 						{
@@ -404,6 +418,7 @@ String sql = "";
 						out.println("<td align='center'>"+(i)+"</td>");
 						out.println("<td align='center'>"+rs.getString("order_type_name")+"</td>");
 						out.println("<td align='left'>"+rs.getString("CUSTOMER")+"</td>");
+						out.println("<td align='center'>"+rs.getString("DP_CODE")+"</td>");				// 20250522 ADD BY JB Emily EBV New Plandcode issue
 						out.println("<td align='center'>"+rs.getString("CUST_PO")+"</td>");
 						if (rs.getString("order_type").equals(ORDERS))
 						{
@@ -437,7 +452,7 @@ String sql = "";
 </table>
 </FORM>
 <BR>
-<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->
+<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 </body>
