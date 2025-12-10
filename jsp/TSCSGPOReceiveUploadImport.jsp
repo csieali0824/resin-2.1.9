@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8" import="java.sql.*"%>
+<%@ page contentType="text/html; charset=utf-8" import="java.sql.*"  pageEncoding="utf-8"%>
 <%@ page import="java.sql.*"%>
 <%@ page import="java.util.*"%>
 <%@ page import="jxl.*"%>
@@ -20,6 +20,7 @@
 <jsp:useBean id="POReceivingBean" scope="session" class="Array2DimensionInputBean"/>
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <script language="JavaScript" type="text/JavaScript">
 window.onbeforeunload = bunload; 
 function bunload()  
@@ -70,6 +71,8 @@ function setClose()
 <title>Excel Upload</title>
 </head>
 <%
+request.setCharacterEncoding("UTF-8");
+response.setContentType("text/html; charset=utf-8");
 String ORGCODE = request.getParameter("ORGCODE");
 if (ORGCODE==null || ORGCODE.equals("--")) ORGCODE="";
 String VENDORID = request.getParameter("VENDORID");
@@ -118,19 +121,19 @@ catch(Exception e)
 <input type="hidden" name="VENDORID" value="<%=VENDORID%>">
 <TABLE width="100%" border="1" cellspacing="0" cellpadding="0">
 	<TR>
-		<TD height="29" width="20%" align="center" bgcolor="#FFFFCC"><font style="font-family:'細明體';font-size:12px">&nbsp;供應商&nbsp;</font></TD>
+		<TD height="29" width="20%" align="center" bgcolor="#FFFFCC"><font style="font-family:'細明體';font-size:12px">供應商</font></TD>
 		<TD><font style="color:#000099;font-family:Arial;font-size:12px">&nbsp;<strong><%=VENDOR_NAME%></strong></font></TD>
 	</TR>
 	<TR>
-		<TD height="29" width="20%" align="center" bgcolor="#FFFFCC"><font style="font-family:'細明體';font-size:12px">&nbsp;收貨日期&nbsp;</font></TD>
+		<TD height="29" width="20%" align="center" bgcolor="#FFFFCC"><font style="font-family:'細明體';font-size:12px">收貨日期</font></TD>
 		<TD><input type="TEXT" name="RECEIVE_DATE" value="<%=RECEIVE_DATE%>"  style="font-family: Tahoma,Georgia;" size="10" onKeyPress="return (event.keyCode >= 48 && event.keyCode <=57)"readonly ><A href='javascript:void(0)' onclick='gfPop.fPopCalendar(document.SUBFORM.RECEIVE_DATE);return false;'><img name='popcal' border='0' src='../image/calbtn.gif'></A></TD>
 	</TR>	
 	<TR>
-		<TD height="29" width="20%" align="center" bgcolor="#FFFFCC"><font style="font-family:'細明體';font-size:12px">&nbsp;請選擇上檔傳案&nbsp;</font></TD>
+		<TD height="29" width="20%" align="center" bgcolor="#FFFFCC"><font style="font-family:'細明體';font-size:12px">請選擇上檔傳案</font></TD>
 		<TD>&nbsp;<INPUT TYPE="FILE" NAME="UPLOADFILE" size="60" style="font-family:ARIAL;font-size:12px"></TD>
 	</TR>
 	<TR>
-		<TD height="25" align="center" bgcolor="#FFFFCC"><font style="font-family:'細明體';font-size:12px">&nbsp;上傳範本&nbsp;</font></TD>
+		<TD height="25" align="center" bgcolor="#FFFFCC"><font style="font-family:'細明體';font-size:12px">上傳範本</font></TD>
 		<TD><A HREF="../jsp/samplefiles/H12-001_SampleFile.xls"><font face="ARIAL" size="-1">Download Sample File</font></A></TD>
 	</TR>
 	<TR>
@@ -149,7 +152,7 @@ catch(Exception e)
 		StringBuilder sb = new StringBuilder();
 		try
 		{
-			mySmartUpload.initialize(pageContext); 
+			mySmartUpload.initialize(pageContext);
 			mySmartUpload.upload();
 			com.jspsmart.upload.File upload_file=mySmartUpload.getFiles().getFile(0);
 			String uploadFile_name=upload_file.getFileName();
