@@ -241,18 +241,19 @@ catch(Exception e)
 	</tr>		
 	<tr>
 		<td width="5%">&nbsp;</td>
-		<td width="90%"><INPUT TYPE="button" align="middle"  value='Add New'  style="font-family:ARIAL" onClick='setAdd("../jsp/TSSalesOrderBaseDataModifyK3.jsp?TKIND=<%=strKind%>&STATUS=NEW")' <%=((UserName.equals("CASEY") || UserName.equals("SUNNY_LU") || UserName.equals("PEGGY_CHEN"))?"":"disabled")%>></td>
+		<td width="90%"><INPUT TYPE="button" align="middle"  value='Add New'  style="font-family:ARIAL" onClick='setAdd("../jsp/TSSalesOrderBaseDataModifyK3.jsp?TKIND=<%=strKind%>&STATUS=NEW")' <%=((UserName.equals("CASEY") || UserName.equals("SUNNY_LU") || UserName.equals("PEGGY_CHEN")|| UserName.equals("MARS.WANG"))?"":"disabled")%>></td>
 		<td width="5%">&nbsp;</td>
 	</tr>
 	<tr>
 		<td width="5%">&nbsp;</td>
 		<td width="90%">
 		<%
+			System.out.println(sql);
 		Statement statement=con.createStatement(); 
 		ResultSet rs=statement.executeQuery(sql);	
 		ResultSetMetaData md=rs.getMetaData();
 		while (rs.next()) 
-		{ 
+		{
 			if (icnt==0)
 			{
 			%>
@@ -275,11 +276,11 @@ catch(Exception e)
 			{
 				if (strKind.toUpperCase().equals("ERP")) 
 				{
-					if (j==1){%><tr><td align="center"><%=(icnt+1)%></td><td align="center"><%=((UserName.equals("CASEY") || UserName.equals("SUNNY_LU") || UserName.equals("PEGGY_CHEN"))?"<img border='0' src='images/updateicon_enabled.gif' height='18' title='modify' onClick='setUpdate("+'"'+"../jsp/TSSalesOrderBaseDataModifyK3.jsp?TKIND="+strKind+"&STATUS=UPD&CODE="+rs.getString(j)+"&CODE1="+rs.getString(3)+'"'+")'>":"")%></td><%}
+					if (j==1){%><tr><td align="center"><%=(icnt+1)%></td><td align="center"><%=((UserName.equals("CASEY") || UserName.equals("SUNNY_LU") || UserName.equals("PEGGY_CHEN")|| UserName.equals("MARS.WANG"))?"<img border='0' src='images/updateicon_enabled.gif' height='18' title='modify' onClick='setUpdate("+'"'+"../jsp/TSSalesOrderBaseDataModifyK3.jsp?TKIND="+strKind+"&STATUS=UPD&CODE="+rs.getString(j)+"&CODE1="+rs.getString(3)+'"'+")'>":"")%></td><%}
 				}
 				else
 				{
-					if (j==1){%><tr><td align="center"><%=(icnt+1)%></td><td align="center"><%=((UserName.equals("CASEY") || UserName.equals("SUNNY_LU") || UserName.equals("PEGGY_CHEN"))?"<img border='0' src='images/updateicon_enabled.gif' height='18' title='modify' onClick='setUpdate("+'"'+"../jsp/TSSalesOrderBaseDataModifyK3.jsp?TKIND="+strKind+"&STATUS=UPD&CODE="+rs.getString(j)+'"'+")'>":"")%></td><%}
+					if (j==1){%><tr><td align="center"><%=(icnt+1)%></td><td align="center"><%=((UserName.equals("CASEY") || UserName.equals("SUNNY_LU") || UserName.equals("PEGGY_CHEN")|| UserName.equals("MARS.WANG"))?"<img border='0' src='images/updateicon_enabled.gif' height='18' title='modify' onClick='setUpdate("+'"'+"../jsp/TSSalesOrderBaseDataModifyK3.jsp?TKIND="+strKind+"&STATUS=UPD&CODE="+rs.getString(j)+'"'+")'>":"")%></td><%}
 				}					
 			%>
 				
