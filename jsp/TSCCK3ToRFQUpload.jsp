@@ -789,7 +789,7 @@
 									" when msi.attribute3 in ('008') or instr('"+strK3Remarks+"','TEW')>0 then  case when '"+ strSampleOrder+"'='Y' then '8121' else '8131' end "+ //add by Peggy 20190918
 									" when msi.attribute3 in ('011') and msi.description in (\n" +
 									" 'TSM4925DCS RLG','TSM4953DCS RLG','TSM4936DCS RLG','TSM2302CX RFG','TSM2305CX RFG','TSM2306CX RFG','TSM2307CX RFG','TSM2308CX RFG','TSM2312CX RFG',\n" +
-									" 'TSM2314CX RFG','TSM2318CX RFG','TSM2323CX RFG','TSM2328CX RFG','TSM9409CS RLG','TSM3443CX6 RFG','TSM3481CX6 RFG','TSM3457CX6 RFG','TSM3911DCX6 RFG') then '8131'\n" +
+									" 'TSM2314CX RFG','TSM2318CX RFG','TSM2323CX RFG','TSM2328CX RFG','TSM9409CS RLG','TSM3443CX6 RFG','TSM3481CX6 RFG','TSM3457CX6 RFG','TSM3911DCX6 RFG','TQM2N7002KCU RFG','TQM2N7002KCX RFG') then '8131'\n" +
 									" when msi.attribute3 IN ('011') AND msi.description IN ('TQM138KCX RFG')\n" +
 									" then '8121' \n" +
 									" else tsc_rfq_create_erp_odr_pkg.tsc_get_order_type (msi.inventory_item_id) end  AS order_type"+
