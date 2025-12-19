@@ -2781,10 +2781,11 @@ try
 							//message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("sofia@ts.com.tw"));
 						}		
 						else if (SALES_REGION.equals("SAMPLE"))
-						{	
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("jenny.liao@ts.com.tw"));
-							//message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("judy_cho@ts.com.tw"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("demi.kao@ts.com.tw"));
+						{
+							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("edward.chien@ts.com.tw"));
+							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("jason.lin@ts.com.tw"));
+							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("zoe.kuan@ts.com.tw"));
+							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("janice.lin@ts.com.tw"));
 						}	
 					}							
 				}
@@ -2876,7 +2877,7 @@ try
 				strContent = "Request Notification,<p>Please login at:<a href="+'"'+strProgram+'"'+">"+strUrl+"</a> to confirm order revise.<p>"+
 							 "Include the following customer list in this request..<br>"+V_CUST_LIST;
 				
-				message.setHeader("Subject", MimeUtility.encodeText((ACTTYPE.equals("REMINDER")?"Reminder-":"")+"工廠已回覆申請改單通知"+remarks, "UTF-8", null));	
+				message.setHeader("Subject", MimeUtility.encodeText((ACTTYPE.equals("REMINDER")?"Reminder-":"")+"工廠已回覆申請改單通知"+remarks, "UTF-8", null));
 				javax.mail.internet.MimeMultipart mp = new javax.mail.internet.MimeMultipart();
 				javax.mail.internet.MimeBodyPart mbp = new javax.mail.internet.MimeBodyPart();
 				mbp.setContent(strContent, "text/html;charset=UTF-8");

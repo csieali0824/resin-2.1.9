@@ -1837,6 +1837,13 @@ try
 				{
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("kristin.wu@ts.com.tw"));
 				}
+				else if (SALES_REGION.equals("SAMPLE"))
+				{
+					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("edward.chien@ts.com.tw"));
+					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("jason.lin@ts.com.tw"));
+					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("zoe.kuan@ts.com.tw"));
+					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("janice.lin@ts.com.tw"));
+				}
 			}
 			message.addRecipient(Message.RecipientType.BCC, new javax.mail.internet.InternetAddress("peggy.chen@ts.com.tw"));
 
