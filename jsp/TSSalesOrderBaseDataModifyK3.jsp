@@ -4,7 +4,6 @@
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ page import="QryAllChkBoxEditBean,ComboBoxBean,ArrayComboBoxBean,DateBean,Array2DimensionInputBean"%>
-<%@ page import="com.mysql.jdbc.StringUtils" %>
 <!--=================================-->
 <jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
 <jsp:useBean id="shipTypecomboBoxBean" scope="page" class="ComboBoxBean"/>
@@ -14,6 +13,263 @@
 <jsp:useBean id="arrayIQCDocumentInputBean" scope="session" class="Array2DimensionInputBean"/>
 <jsp:useBean id="arrayIQCSearchBean" scope="session" class="Array2DimensionInputBean"/>
 <head>
+	<script language="JavaScript" type="text/JavaScript">
+		window.onbeforeunload = bunload;
+		function bunload()
+		{
+			if (event.clientY < 0)
+			{
+				if (document.MYFORMD.STATUS.value=="NEW")
+				{
+					window.opener.MYFORM.action="../jsp/TSSalesOrderBaseDataSetupK3.jsp?TKIND="+document.MYFORMD.TKIND.value;
+					window.opener.MYFORM.submit();
+				}
+				else if (document.MYFORMD.ACODE.value=="CHANGE")
+				{
+					return;
+				}
+				else
+				{
+					window.opener.document.getElementById("alpha").style.width="0";
+					window.opener.document.getElementById("alpha").style.height="0";
+				}
+				window.close();
+			}
+		}
+		function setCancel()
+		{
+			if (document.MYFORMD.STATUS.value=="NEW")
+			{
+				window.opener.MYFORM.action="../jsp/TSSalesOrderBaseDataSetupK3.jsp?TKIND="+document.MYFORMD.TKIND.value;
+				window.opener.MYFORM.submit();
+			}
+			else
+			{
+				window.opener.document.getElementById("alpha").style.width="0";
+				window.opener.document.getElementById("alpha").style.height="0";
+			}
+			self.close();
+		}
+		function setSubmit(URL)
+		{
+			var skind = document.MYFORMD.TKIND.value;
+
+			if (skind=="DEPT")
+			{
+				if ( document.MYFORMD.DEPPCODE.value=="")
+				{
+					alert("Please input the department code!");
+					document.MYFORMD.DEPPCODE.setFoucs();
+					return false;
+				}
+				if ( document.MYFORMD.DEPPNAME.value=="")
+				{
+					alert("Please input the department name!");
+					document.MYFORMD.DEPPNAME.setFoucs();
+					return false;
+				}
+			}
+			else if (skind=="SALES")
+			{
+				if (document.MYFORMD.SALESCODE.value=="")
+				{
+					alert("Please input the sales code!");
+					document.MYFORMD.SALESCODE.setFoucs();
+					return false;
+				}
+				if (document.MYFORMD.SALESNAME.value=="")
+				{
+					alert("Please input the sales name!");
+					document.MYFORMD.SALESNAME.setFoucs();
+					return false;
+				}
+			}
+			else if (skind=="CUST")
+			{
+				if (document.MYFORMD.CUSTSALES.value=="")
+				{
+					alert("Please input the sales code!");
+					document.MYFORMD.CUSTSALES.setFoucs();
+					return false;
+				}
+				if ( document.MYFORMD.CUSTDEPT.value=="")
+				{
+					alert("Please input the department code!");
+					document.MYFORMD.CUSTDEPT.setFoucs();
+					return false;
+				}
+				if (document.MYFORMD.CUSTCODE.value=="")
+				{
+					alert("Please input the customer code!");
+					document.MYFORMD.CUSTCODE.setFoucs();
+					return false;
+				}
+				if (document.MYFORMD.CUSTNAME.value=="")
+				{
+					alert("Please input the customer name!");
+					document.MYFORMD.CUSTNAME.setFoucs();
+					return false;
+				}
+			}
+			else if (skind=="SUPPLIER")
+			{
+				if (document.MYFORMD.SUPPLIERCODE.value=="")
+				{
+					alert("Please input the supplier code!");
+					document.MYFORMD.SUPPLIERCODE.setFoucs();
+					return false;
+				}
+				if ( document.MYFORMD.SUPPLIERNAME.value=="")
+				{
+					alert("Please input the supplier name!");
+					document.MYFORMD.SUPPLIERNAME.setFoucs();
+					return false;
+				}
+			}
+			else if (skind=="CURR")
+			{
+				if ( document.MYFORMD.CURRCODE.value=="")
+				{
+					alert("Please input the currency code!");
+					document.MYFORMD.CURRCODE.setFoucs();
+					return false;
+				}
+				if (document.MYFORMD.TAXRATE.value=="")
+				{
+					alert("Please input the tax rate!");
+					document.MYFORMD.TAXRATE.setFoucs();
+					return false;
+				}
+			}
+			else if (skind=="ADDR")
+			{
+				if ( document.MYFORMD.K3ADDRCODE.value=="")
+				{
+					alert("Please input the K3 Address code!");
+					document.MYFORMD.K3ADDRCODE.setFoucs();
+					return false;
+				}
+				if (document.MYFORMD.ERPSHIPLOCATIONID.value=="")
+				{
+					alert("Please choose the erp ship to location!");
+					document.MYFORMD.ERPSHIPLOCATIONID.setFoucs();
+					return false;
+				}
+				if (document.MYFORMD.ACTIVE_FLAG1.value=="--")
+				{
+					alert("Please choose a status!");
+					document.MYFORMD.ACTIVE_FLAG1.setFoucs();
+					return false;
+				}
+			}
+			else
+			{
+				if (document.MYFORMD.ERPCUSTCODE.value=="")
+				{
+					alert("Please input the erp customer number!");
+					document.MYFORMD.ERPCUSTCODE.setFoucs();
+					return false;
+				}
+				if (document.MYFORMD.K3CUSTCODE.value=="")
+				{
+					alert("Please input the K3 customer code!");
+					document.MYFORMD.K3CUSTCODE.setFoucs();
+					return false;
+				}
+				if (document.MYFORMD.ACTIVE_FLAG.value=="A" && document.MYFORMD.CUSTSNAME.value=="")
+				{
+					alert("Please input the customer english short name!");
+					document.MYFORMD.CUSTSNAME.setFoucs();
+					return false;
+				}
+				if (document.MYFORMD.ACTIVE_FLAG.value=="" || document.MYFORMD.ACTIVE_FLAG.value=="--")
+				{
+					alert("Please input a status!");
+					document.MYFORMD.ACTIVE_FLAG.setFoucs();
+					return false;
+				}
+			}
+			document.MYFORMD.btnSubmit.disabled =true;
+			document.MYFORMD.btnCancel.disabled =true;
+			document.MYFORMD.action=URL;
+			document.MYFORMD.submit();
+		}
+		function setClear()
+		{
+			var skind = document.MYFORMD.TKIND.value;
+
+			if (skind=="DEPT")
+			{
+				document.MYFORMD.DEPPCODE.value="";
+				document.MYFORMD.DEPPNAME.value="";
+			}
+			else if (skind=="SALES")
+			{
+				document.MYFORMD.SALESCODE.value="";
+				document.MYFORMD.SALESNAME.value="";
+			}
+			else if (skind=="CUST")
+			{
+				document.MYFORMD.CUSTSALES.value="";
+				document.MYFORMD.CUSTDEPT.value="";
+				document.MYFORMD.CUSTCODE.value="";
+				document.MYFORMD.CUSTNAME.value="";
+			}
+			else if (skind=="SUPPLIER")
+			{
+				document.MYFORMD.SUPPLIERCODE.value="";
+				document.MYFORMD.SUPPLIERNAME.value="";
+				document.MYFORMD.SUPPLIERODRCODE.value="";
+			}
+			else if (skind=="CURR")
+			{
+				document.MYFORMD.CURRCODE.value="";
+				document.MYFORMD.TAXRATE.value="";
+				document.MYFORMD.CURRERODRCODE.value="";
+			}
+			else if (skind=="ADDR")
+			{
+				document.MYFORMD.K3ADDRCODE.value="";
+				document.MYFORMD.ERPCUSTCODE1.value="";
+				document.MYFORMD.ERPCUSTNAME1.value="";
+				document.MYFORMD.ERPCUSTID.value="";
+				document.MYFORMD.ERPSHIPLOCATIONID.value="";
+			}
+			else
+			{
+				document.MYFORMD.ERPCUSTCODE.value="";
+				document.MYFORMD.ERPCUSTNAME.value="";
+				document.MYFORMD.K3CUSTCODE.value="";
+				document.MYFORMD.K3DEPTCODE.value="";
+				document.MYFORMD.K3SALESCODE.value="";
+				document.MYFORMD.CUSTSNAME.value="";
+			}
+		}
+		function setCust(strcust,sobj)
+		{
+			if (sobj=="1")
+			{
+				document.MYFORMD.ERPCUSTNAME1.value="";
+				document.MYFORMD.ERPSHIPLOCATIONID.value="";
+				document.MYFORMD.action="../jsp/TSSalesOrderBaseDataModifyK3.jsp?ERPCUSTCODE1="+strcust+"&STATUS="+document.MYFORMD.STATUS.value;
+			}
+			else
+			{
+				document.MYFORMD.ERPCUSTNAME.value="";
+				document.MYFORMD.action="../jsp/TSSalesOrderBaseDataModifyK3.jsp?ERPCUSTCODE="+strcust+"&STATUS="+document.MYFORMD.STATUS.value;
+			}
+			document.MYFORMD.submit();
+		}
+
+		function setK3Cust(strcust)
+		{
+			document.MYFORMD.K3DEPTCODE.value="";
+			document.MYFORMD.K3SALESCODE.value="";
+			//document.MYFORMD.action="../jsp/TSSalesOrderBaseDataModifyK3.jsp?K3CUSTCODE="+strcust+"&STATUS="+document.MYFORMD.STATUS.value;
+			document.MYFORMD.action="../jsp/TSSalesOrderBaseDataModifyK3.jsp?ACODE=CHANGE&K3CUSTCODE="+strcust+"&STATUS="+document.MYFORMD.STATUS.value;
+			document.MYFORMD.submit();
+		}
+	</script>
 	<STYLE TYPE='text/css'>
 		BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 12px }
 		P         { font-family: Tahoma,Georgia; color: #000000; font-size: 12px }
@@ -104,7 +360,6 @@
 		String ORIG_ERPVENDORCODE=request.getParameter("ORIG_ERPVENDORCODE");
 		if (ORIG_ERPVENDORCODE==null) ORIG_ERPVENDORCODE="";
 		String sql ="",strExist="",strNoFound="";
-		String custEngName = StringUtils.isNullOrEmpty(request.getParameter("CUSTENGNAME")) ? "" : request.getParameter("CUSTENGNAME");
 
 		try
 		{
@@ -153,8 +408,7 @@
 								" AND acct_site.cust_account_id =ac.customer_id"+
 								//" AND site.status = 'A'"+
 								" AND to_char(site.location)=to_char(tkale.erp_ship_to_location_id)"+
-								" AND tkale.erp_ship_to_location_id=?"+
-								" AND tkale.cust_eng_short_name=nvl(?, tkale.cust_eng_short_name)";
+								" AND tkale.addr_code=?";
 					}
 					else
 					{
@@ -169,17 +423,10 @@
 					}
 					//out.println(sql);
 					PreparedStatement statement = con.prepareStatement(sql);
-					if (!strKind.toUpperCase().equals("ADDR")) {
-						statement.setString(1, strCode);
-					}
+					statement.setString(1,strCode);
 					if (strKind.toUpperCase().equals("ERP"))
 					{
 						statement.setString(2,strCode1);
-					}
-					else if (strKind.toUpperCase().equals("ADDR"))
-					{
-						statement.setString(1, strCode1);
-						statement.setString(2,custEngName);
 					}
 					ResultSet rs=statement.executeQuery();
 					if (rs.next())
@@ -474,7 +721,7 @@
 					else if (strKind.toUpperCase().equals("ADDR"))
 					{
 					%>
-<%--					<tr><td bgcolor="#C9E2D0">K3 Addr Code</td><td><input type="text" name="K3ADDRCODE" value="<%=K3ADDRCODE%>" style="font-family:Tahoma,Georgia" <%=(STATUS.equals("UPD")?" onKeypress="+'"'+"return (event.keyCode <>-1)"+'"'+" readonly":"")%>></td></tr>--%>
+					<tr><td bgcolor="#C9E2D0">K3 Addr Code</td><td><input type="text" name="K3ADDRCODE" value="<%=K3ADDRCODE%>" style="font-family:Tahoma,Georgia" <%=(STATUS.equals("UPD")?" onKeypress="+'"'+"return (event.keyCode <>-1)"+'"'+" readonly":"")%>></td></tr>
 					<tr><td bgcolor="#C9E2D0">ERP Cust Name</td><td><input type="text" name="ERPCUSTCODE1" value="<%=ERPCUSTCODE1%>" style="font-family:Tahoma,Georgia;font-size:12px" size="5" onChange="setCust(this.value,1)">
 						<input type="text" name="ERPCUSTNAME1" value="<%=ERPCUSTNAME1%>" style="font-family:Tahoma,Georgia;font-size:12px" size="50" readonly><input type="hidden" name="ERPCUSTID" value="<%=ERPCUSTID%>">
 					</td></tr>
@@ -725,23 +972,20 @@
 					}
 					else if (strKind.toUpperCase().equals("ADDR"))
 					{
-						System.out.println("UPDATE----------------------");
 						sql= " update oraddman.TSCC_K3_ADDR_LINK_ERP "+
 								" set ERP_SHIP_TO_LOCATION_ID=?"+
 								",ACTIVE_FLAG=?"+
 								",ERP_CUSTOMER_ID=?"+
 								",SG_SHIP_TO_LOCATION_ID=?"+
 								",CUST_ENG_SHORT_NAME=?"+ //add by Peggy 20240408
-								" where ERP_SHIP_TO_LOCATION_ID = ?"+
-								" and CUST_ENG_SHORT_NAME = nvl(?, CUST_ENG_SHORT_NAME)";
+								" where ADDR_CODE = ?";
 						PreparedStatement st1 = con.prepareStatement(sql);
 						st1.setString(1,(ERPSHIPLOCATIONID.equals("")||ERPSHIPLOCATIONID.equals("--")?null:ERPSHIPLOCATIONID));
 						st1.setString(2,ACTIVE_FLAG1);
 						st1.setString(3,ERPCUSTID);
 						st1.setString(4,SGSHIPLOCATIONID);
 						st1.setString(5,CUSTSNAME);
-						st1.setString(6,strCode1);
-						st1.setString(7,custEngName);
+						st1.setString(6,K3ADDRCODE);
 						st1.executeUpdate();
 						st1.close();
 					}
@@ -898,8 +1142,8 @@
 		else if (strKind.toUpperCase().equals("ADDR"))
 		{
 			sql = " insert into ORADDMAN.TSCC_K3_ADDR_LINK_ERP"+
-					" ("+
-					" ERP_SHIP_TO_LOCATION_ID"+
+					" (ADDR_CODE"+
+					",ERP_SHIP_TO_LOCATION_ID"+
 					",ACTIVE_FLAG"+
 					",ERP_CUSTOMER_ID"+
 					",SG_SHIP_TO_LOCATION_ID"+
@@ -912,15 +1156,15 @@
 					",?"+
 					",?"+
 					",?"+
-					")";
+					",?)";
 			//out.println(sql);
 			PreparedStatement st1 = con.prepareStatement(sql);
-//			st1.setString(1,K3ADDRCODE);
-			st1.setString(1,ERPSHIPLOCATIONID);
-			st1.setString(2,ACTIVE_FLAG1);
-			st1.setString(3,ERPCUSTID);
-			st1.setString(4,SGSHIPLOCATIONID);
-			st1.setString(5,CUSTSNAME);
+			st1.setString(1,K3ADDRCODE);
+			st1.setString(2,ERPSHIPLOCATIONID);
+			st1.setString(3,ACTIVE_FLAG1);
+			st1.setString(4,ERPCUSTID);
+			st1.setString(5,SGSHIPLOCATIONID);
+			st1.setString(6,CUSTSNAME);
 			st1.executeUpdate();
 			st1.close();
 
@@ -989,263 +1233,6 @@
 	%>
 </FORM>
 </body>
-<script language="JavaScript" type="text/JavaScript">
-	window.onbeforeunload = bunload;
-	function bunload()
-	{
-		if (event.clientY < 0)
-		{
-			if (document.MYFORMD.STATUS.value=="NEW")
-			{
-				window.opener.MYFORM.action="../jsp/TSSalesOrderBaseDataSetupK3.jsp?TKIND="+document.MYFORMD.TKIND.value;
-				window.opener.MYFORM.submit();
-			}
-			else if (document.MYFORMD.ACODE.value=="CHANGE")
-			{
-				return;
-			}
-			else
-			{
-				window.opener.document.getElementById("alpha").style.width="0";
-				window.opener.document.getElementById("alpha").style.height="0";
-			}
-			window.close();
-		}
-	}
-	function setCancel()
-	{
-		if (document.MYFORMD.STATUS.value=="NEW")
-		{
-			window.opener.MYFORM.action="../jsp/TSSalesOrderBaseDataSetupK3.jsp?TKIND="+document.MYFORMD.TKIND.value;
-			window.opener.MYFORM.submit();
-		}
-		else
-		{
-			window.opener.document.getElementById("alpha").style.width="0";
-			window.opener.document.getElementById("alpha").style.height="0";
-		}
-		self.close();
-	}
-	function setSubmit(URL)
-	{
-		var skind = document.MYFORMD.TKIND.value;
-
-		if (skind=="DEPT")
-		{
-			if ( document.MYFORMD.DEPPCODE.value=="")
-			{
-				alert("Please input the department code!");
-				document.MYFORMD.DEPPCODE.setFoucs();
-				return false;
-			}
-			if ( document.MYFORMD.DEPPNAME.value=="")
-			{
-				alert("Please input the department name!");
-				document.MYFORMD.DEPPNAME.setFoucs();
-				return false;
-			}
-		}
-		else if (skind=="SALES")
-		{
-			if (document.MYFORMD.SALESCODE.value=="")
-			{
-				alert("Please input the sales code!");
-				document.MYFORMD.SALESCODE.setFoucs();
-				return false;
-			}
-			if (document.MYFORMD.SALESNAME.value=="")
-			{
-				alert("Please input the sales name!");
-				document.MYFORMD.SALESNAME.setFoucs();
-				return false;
-			}
-		}
-		else if (skind=="CUST")
-		{
-			if (document.MYFORMD.CUSTSALES.value=="")
-			{
-				alert("Please input the sales code!");
-				document.MYFORMD.CUSTSALES.setFoucs();
-				return false;
-			}
-			if ( document.MYFORMD.CUSTDEPT.value=="")
-			{
-				alert("Please input the department code!");
-				document.MYFORMD.CUSTDEPT.setFoucs();
-				return false;
-			}
-			if (document.MYFORMD.CUSTCODE.value=="")
-			{
-				alert("Please input the customer code!");
-				document.MYFORMD.CUSTCODE.setFoucs();
-				return false;
-			}
-			if (document.MYFORMD.CUSTNAME.value=="")
-			{
-				alert("Please input the customer name!");
-				document.MYFORMD.CUSTNAME.setFoucs();
-				return false;
-			}
-		}
-		else if (skind=="SUPPLIER")
-		{
-			if (document.MYFORMD.SUPPLIERCODE.value=="")
-			{
-				alert("Please input the supplier code!");
-				document.MYFORMD.SUPPLIERCODE.setFoucs();
-				return false;
-			}
-			if ( document.MYFORMD.SUPPLIERNAME.value=="")
-			{
-				alert("Please input the supplier name!");
-				document.MYFORMD.SUPPLIERNAME.setFoucs();
-				return false;
-			}
-		}
-		else if (skind=="CURR")
-		{
-			if ( document.MYFORMD.CURRCODE.value=="")
-			{
-				alert("Please input the currency code!");
-				document.MYFORMD.CURRCODE.setFoucs();
-				return false;
-			}
-			if (document.MYFORMD.TAXRATE.value=="")
-			{
-				alert("Please input the tax rate!");
-				document.MYFORMD.TAXRATE.setFoucs();
-				return false;
-			}
-		}
-		else if (skind=="ADDR")
-		{
-			// if ( document.MYFORMD.K3ADDRCODE.value=="")
-			// {
-			// 	alert("Please input the K3 Address code!");
-			// 	document.MYFORMD.K3ADDRCODE.setFoucs();
-			// 	return false;
-			// }
-			if (document.MYFORMD.ERPSHIPLOCATIONID.value=="")
-			{
-				alert("Please choose the erp ship to location!");
-				document.MYFORMD.ERPSHIPLOCATIONID.setFoucs();
-				return false;
-			}
-			if (document.MYFORMD.ACTIVE_FLAG1.value=="--")
-			{
-				alert("Please choose a status!");
-				document.MYFORMD.ACTIVE_FLAG1.setFoucs();
-				return false;
-			}
-		}
-		else
-		{
-			if (document.MYFORMD.ERPCUSTCODE.value=="")
-			{
-				alert("Please input the erp customer number!");
-				document.MYFORMD.ERPCUSTCODE.setFoucs();
-				return false;
-			}
-			if (document.MYFORMD.K3CUSTCODE.value=="")
-			{
-				alert("Please input the K3 customer code!");
-				document.MYFORMD.K3CUSTCODE.setFoucs();
-				return false;
-			}
-			if (document.MYFORMD.ACTIVE_FLAG.value=="A" && document.MYFORMD.CUSTSNAME.value=="")
-			{
-				alert("Please input the customer english short name!");
-				document.MYFORMD.CUSTSNAME.setFoucs();
-				return false;
-			}
-			if (document.MYFORMD.ACTIVE_FLAG.value=="" || document.MYFORMD.ACTIVE_FLAG.value=="--")
-			{
-				alert("Please input a status!");
-				document.MYFORMD.ACTIVE_FLAG.setFoucs();
-				return false;
-			}
-		}
-		document.MYFORMD.btnSubmit.disabled =true;
-		document.MYFORMD.btnCancel.disabled =true;
-		document.MYFORMD.action=URL;
-		document.MYFORMD.submit();
-	}
-	function setClear()
-	{
-		var skind = document.MYFORMD.TKIND.value;
-
-		if (skind=="DEPT")
-		{
-			document.MYFORMD.DEPPCODE.value="";
-			document.MYFORMD.DEPPNAME.value="";
-		}
-		else if (skind=="SALES")
-		{
-			document.MYFORMD.SALESCODE.value="";
-			document.MYFORMD.SALESNAME.value="";
-		}
-		else if (skind=="CUST")
-		{
-			document.MYFORMD.CUSTSALES.value="";
-			document.MYFORMD.CUSTDEPT.value="";
-			document.MYFORMD.CUSTCODE.value="";
-			document.MYFORMD.CUSTNAME.value="";
-		}
-		else if (skind=="SUPPLIER")
-		{
-			document.MYFORMD.SUPPLIERCODE.value="";
-			document.MYFORMD.SUPPLIERNAME.value="";
-			document.MYFORMD.SUPPLIERODRCODE.value="";
-		}
-		else if (skind=="CURR")
-		{
-			document.MYFORMD.CURRCODE.value="";
-			document.MYFORMD.TAXRATE.value="";
-			document.MYFORMD.CURRERODRCODE.value="";
-		}
-		else if (skind=="ADDR")
-		{
-			// document.MYFORMD.K3ADDRCODE.value="";
-			document.MYFORMD.ERPCUSTCODE1.value="";
-			document.MYFORMD.ERPCUSTNAME1.value="";
-			document.MYFORMD.ERPCUSTID.value="";
-			document.MYFORMD.ERPSHIPLOCATIONID.value="";
-		}
-		else
-		{
-			document.MYFORMD.ERPCUSTCODE.value="";
-			document.MYFORMD.ERPCUSTNAME.value="";
-			document.MYFORMD.K3CUSTCODE.value="";
-			document.MYFORMD.K3DEPTCODE.value="";
-			document.MYFORMD.K3SALESCODE.value="";
-			document.MYFORMD.CUSTSNAME.value="";
-		}
-	}
-	function setCust(strcust,sobj)
-	{
-		if (sobj=="1")
-		{
-			document.MYFORMD.ERPCUSTNAME1.value="";
-			document.MYFORMD.ERPSHIPLOCATIONID.value="";
-			document.MYFORMD.action="../jsp/TSSalesOrderBaseDataModifyK3.jsp?ERPCUSTCODE1="+strcust+"&STATUS="+document.MYFORMD.STATUS.value+"&CUSTENGNAME=<%=custEngName%>";
-		}
-		else
-		{
-			document.MYFORMD.ERPCUSTNAME.value="";
-			document.MYFORMD.action="../jsp/TSSalesOrderBaseDataModifyK3.jsp?ERPCUSTCODE="+strcust+"&STATUS="+document.MYFORMD.STATUS.value;
-		}
-		document.MYFORMD.submit();
-	}
-
-	function setK3Cust(strcust)
-	{
-		document.MYFORMD.K3DEPTCODE.value="";
-		document.MYFORMD.K3SALESCODE.value="";
-		//document.MYFORMD.action="../jsp/TSSalesOrderBaseDataModifyK3.jsp?K3CUSTCODE="+strcust+"&STATUS="+document.MYFORMD.STATUS.value;
-		document.MYFORMD.action="../jsp/TSSalesOrderBaseDataModifyK3.jsp?ACODE=CHANGE&K3CUSTCODE="+strcust+"&STATUS="+document.MYFORMD.STATUS.value;
-		document.MYFORMD.submit();
-	}
-</script>
 <!--=============以下區段為釋放連結池==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
