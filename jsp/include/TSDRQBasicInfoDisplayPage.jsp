@@ -761,7 +761,7 @@
 								" cust_request_date,shipping_method,b.meaning shipping_method_name, ORDERED_ITEM "+ //add by Peggychen 20110621
 								",case when ASSIGN_MANUFACT = '002' and '" + tsAreaNo +"' in('008')\n" +
 								"                               and TSC_INV_CATEGORY(a.inventory_item_id,43,23) in ('SMA','SMB','SMC','SOD-123W','SOD-128') then '1141'\n" +
-								"      when ASSIGN_MANUFACT = '011'  and '" + tsAreaNo +"' in('008') and a.item_description in ('TQM2N7002KCU RFG', 'TQM2N7002KCX RFG')then '1141'\n" +
+								"      when ASSIGN_MANUFACT = '011'  and '" + tsAreaNo +"' in('008') and a.item_description in ('TQM2N7002KCU RFG', 'TQM2N7002KCX RFG', 'TQM138KDCU6 RFG')then '1141'\n" +
 								"      when 'EDI' = '"+rfq_Type_Name+"' then tsc_rfq_create_erp_odr_pkg.TSC_GET_ORDER_TYPE(a.inventory_item_id)\n" +
 								"      else nvl((select b.order_num from oraddman.tsarea_ordercls b\n" +
 								"                 where b.sarea_no ='" + tsAreaNo +"' and  TO_CHAR(a.order_type_id) = b.OTYPE_ID),'N/A')\n" +
@@ -786,7 +786,7 @@
 								" cust_request_date,shipping_method,b.meaning shipping_method_name,ORDERED_ITEM "+ //add by Peggychen 20110621
 								",case when ASSIGN_MANUFACT = '002' and '" + tsAreaNo +"' in('008')\n" +
 								"                               and TSC_INV_CATEGORY(a.inventory_item_id,43,23) in ('SMA','SMB','SMC','SOD-123W','SOD-128') then '1141'\n" +
-								"      when ASSIGN_MANUFACT = '011'  and '" + tsAreaNo +"' in('008') and a.item_description in ('TQM2N7002KCU RFG', 'TQM2N7002KCX RFG')then '1141'\n" +
+								"      when ASSIGN_MANUFACT = '011'  and '" + tsAreaNo +"' in('008') and a.item_description in ('TQM2N7002KCU RFG', 'TQM2N7002KCX RFG', 'TQM138KDCU6 RFG')then '1141'\n" +
 								"      when 'EDI' = '"+rfq_Type_Name+"' then tsc_rfq_create_erp_odr_pkg.TSC_GET_ORDER_TYPE(a.inventory_item_id)\n" +
 								"      else nvl((select b.order_num from oraddman.tsarea_ordercls b\n" +
 								"                 where b.sarea_no ='" + tsAreaNo +"' and  TO_CHAR(a.order_type_id) = b.OTYPE_ID),'N/A')\n" +
@@ -819,7 +819,7 @@
 								" cust_request_date,shipping_method,b.meaning shipping_method_name,ORDERED_ITEM "+ //add by Peggychen 20110621
 								",case when ASSIGN_MANUFACT = '002' and '" + tsAreaNo +"' in('008')\n" +
 								"                               and TSC_INV_CATEGORY(a.inventory_item_id,43,23) in ('SMA','SMB','SMC','SOD-123W','SOD-128') then '1141'\n" +
-								"      when ASSIGN_MANUFACT = '011'  and '" + tsAreaNo +"' in('008') and a.item_description in ('TQM2N7002KCU RFG', 'TQM2N7002KCX RFG')then '1141'\n" +
+								"      when ASSIGN_MANUFACT = '011'  and '" + tsAreaNo +"' in('008') and a.item_description in ('TQM2N7002KCU RFG', 'TQM2N7002KCX RFG', 'TQM138KDCU6 RFG')then '1141'\n" +
 								"      when 'EDI' = '"+rfq_Type_Name+"' then tsc_rfq_create_erp_odr_pkg.TSC_GET_ORDER_TYPE(a.inventory_item_id)\n" +
 								"      else nvl((select b.order_num from oraddman.tsarea_ordercls b\n" +
 								"                 where b.sarea_no ='" + tsAreaNo +"' and  TO_CHAR(a.order_type_id) = b.OTYPE_ID),'N/A')\n" +
