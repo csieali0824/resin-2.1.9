@@ -1210,7 +1210,7 @@ catch(Exception e)
 				 "					(SELECT ALNAME \n" +
 				 "						FROM ORADDMAN.TSPROD_MANUFACTORY \n" +
 				 "					WHERE MANUFACTORY_NO = a.assign_manufact) \n" +
-			     "         when a.assign_manufact in ('011') and '"+tsAreaNo+"' = '008' and a.item_description in('TQM2N7002KCU RFG', 'TQM2N7002KCX RFG') then 'T' \n" +
+			     "         when a.assign_manufact in ('011') and '"+tsAreaNo+"' = '008' and a.item_description in('TQM2N7002KCU RFG', 'TQM2N7002KCX RFG', 'TQM138KDCU6 RFG') then 'T' \n" +
 				 "         else (SELECT ALNAME FROM ORADDMAN.TSPROD_MANUFACTORY WHERE MANUFACTORY_NO=a.assign_manufact) end \n" +
 				 "		,e.order_num,a.inventory_item_id,a.assign_manufact,a.tscustomerid,to_char(sysdate,'yyyymmdd'),a.CUST_PO_NUMBER)* CASE"+
 				 "  WHEN a.direct_ship_to_cust =1 and a.assign_manufact='002' THEN 0 ELSE 1 END TOTW_DAYS"+
