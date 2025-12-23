@@ -1,12 +1,12 @@
-<!-- 20110127 liling åŠ å…¥è©²item lot_no æ˜¯å¦æ›¾é€€è²¨åˆ¤æ–· returnFlag -->
-<!-- 20150205 Peggy,æ™¶ç‰‡ç¨®é¡,æ™¶ç‰‡å°ºå‹,éå±¤åŠ å…¥inactive_date is null or inactive_date > trunc(sysdate)æ¢ä»¶-->
-<!-- 20181005 Peggy,é›»æ€§è‰¯å“ç‡ & å‹è™Ÿè‰¯ç‡é è¨­N/A-->
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" %>
+<!-- 20110127 liling ¥[¤J¸Óitem lot_no ¬O§_´¿°h³f§PÂ_ returnFlag -->
+<!-- 20150205 Peggy,´¹¤ùºØÃş,´¹¤ù¤Ø¦T,Áá¼h¥[¤Jinactive_date is null or inactive_date > trunc(sysdate)±ø¥ó-->
+<!-- 20181005 Peggy,¹q©Ê¨}«~²v & «¬¸¹¨}²v¹w³]N/A-->
+<%@ page contentType="text/html; charset=big5" language="java" import="java.sql.*" %> 
 <%@ page import="ComboBoxBean,ComboBoxAllBean,DateBean,CheckBoxBean,ArrayComboBoxBean,Array2DimensionInputBean"%>
-<!--=============ä»¥ä¸‹å€æ®µç‚ºå®‰å…¨èªè­‰æ©Ÿåˆ¶==========-->
+<!--=============¥H¤U°Ï¬q¬°¦w¥ş»{ÃÒ¾÷¨î==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=================================-->
-<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—é€£çµæ± ==========-->
+<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
 <!--%@ include file="/jsp/include/PageHeaderSwitch.jsp"%-->
@@ -53,7 +53,7 @@ function check(field)
 
 function NeedConfirm()
 { 
-	flag=confirm("æ˜¯å¦ç¢ºå®šåˆªé™¤?"); 
+	flag=confirm("¬O§_½T©w§R°£?"); 
  	return flag;
 }
 
@@ -74,21 +74,21 @@ function setItemFindCheck(invItem,itemDesc)
     	subWin=window.open("../jsp/subwindow/TSCInvItemInfoFind.jsp?INVITEM="+invItem+"&ITEMDESC="+itemDesc,"subwin","width=640,height=480,scrollbars=yes,menubar=no,status=yes"); 
    	}
 }
-// Click ... æ‰¾å» å•†åŸºæœ¬è³‡æ–™_èµ·
+// Click ... §ä¼t°Ó°ò¥»¸ê®Æ_°_
 function subWindowSupplierFind(vndNo, vndName)
 {
 	subWin=window.open("../jsp/subwindow/TSCVendorInfoFind.jsp?SUPPLYVNDNO="+vndNo+"&SUPPLYVND="+vndName,"subwin","width=640,height=480,scrollbars=yes,menubar=no,status=yes"); 
 }
-// Click ... æ‰¾å» å•†åŸºæœ¬è³‡æ–™_è¿„
-// Enter ... æ‰¾å» å•†åŸºæœ¬è³‡æ–™_èµ·
+// Click ... §ä¼t°Ó°ò¥»¸ê®Æ_¨´
+// Enter ... §ä¼t°Ó°ò¥»¸ê®Æ_°_
 function setWindowSupplierFind(vndNo, vndName)
 {
-	if (event.keyCode==13) // è‹¥æ–¼æ¬„ä½å…§æŒ‰ä¸‹Enter
+	if (event.keyCode==13) // ­Y©óÄæ¦ì¤º«ö¤UEnter
    	{ 
     	subWin=window.open("../jsp/subwindow/TSCVendorInfoFind.jsp?SUPPLYVNDNO="+vndNo+"&SUPPLYVND="+vndName,"subwin","width=640,height=480,scrollbars=yes,menubar=no,status=yes"); 
    	}
 }
-// Enter ... æ‰¾å» å•†åŸºæœ¬è³‡æ–™_è¿„
+// Enter ... §ä¼t°Ó°ò¥»¸ê®Æ_¨´
 function redirectEntryForm(URL)
 {
 	document.MYFORM.action=URL;
@@ -114,9 +114,9 @@ function setSubmit2(URL)
 function setSubmitQuery(URL,supplier,vendor)
 { 
 	var suppID = "&SUPPLIERID="+supplier;
-    if ( (document.MYFORM.SUPPLYVND.value==null || document.MYFORM.SUPPLYVND.value=="") && (document.MYFORM.PONO.value==null || document.MYFORM.PONO.value=="")  ) //è‹¥æœªè¼¸å…¥ä¾›æ‡‰å•†æˆ–POè™Ÿ,å‰‡é¡¯ç¤ºè­¦å‘Šè¨Šæ¯
+    if ( (document.MYFORM.SUPPLYVND.value==null || document.MYFORM.SUPPLYVND.value=="") && (document.MYFORM.PONO.value==null || document.MYFORM.PONO.value=="")  ) //­Y¥¼¿é¤J¨ÑÀ³°Ó©ÎPO¸¹,«hÅã¥ÜÄµ§i°T®§
 	{
-		alert("è«‹è¼¸å…¥ä¾›æ‡‰å•†æˆ–æ¡è³¼å–®è™Ÿç‚ºæ”¶æ–™æŸ¥è©¢ä¾æ“š!!!");
+		alert("½Ğ¿é¤J¨ÑÀ³°Ó©Î±ÄÁÊ³æ¸¹¬°¦¬®Æ¬d¸ß¨Ì¾Ú!!!");
 	 	document.MYFORM.SUPPLYVND.focus(); 
 	 	return(false);
 	}
@@ -159,65 +159,65 @@ function setSubmitAdd(URL,xINTERFACEID,xRECEIPTNUMBER,xITEMNO,xGRAINQTY,xPRODYIE
 {   
 	formAUTHORNO = "document.MYFORM.AUTHORNO"+xINDEX+".focus()";
   	formAUTHORNO_Write = "document.MYFORM.AUTHORNO"+xINDEX+".value";
-  	xAUTHORNO = eval(formAUTHORNO_Write);  // æŠŠå€¼å–å¾—çµ¦java script è®Šæ•¸
+  	xAUTHORNO = eval(formAUTHORNO_Write);  // §â­È¨ú±oµ¹java script ÅÜ¼Æ
 	
   	formSUPLOTNO = "document.MYFORM.SUPLOTNO"+xINDEX+".focus()";
   	formSUPLOTNO_Write = "document.MYFORM.SUPLOTNO"+xINDEX+".value";
-  	xSUPLOTNO = eval(formSUPLOTNO_Write);  // æŠŠå€¼å–å¾—çµ¦java script è®Šæ•¸    
+  	xSUPLOTNO = eval(formSUPLOTNO_Write);  // §â­È¨ú±oµ¹java script ÅÜ¼Æ    
 
     formCOMMENT = "document.MYFORM.COMMENT"+xINDEX+".focus()";
   	formCOMMENT_Write = "document.MYFORM.COMMENT"+xINDEX+".value";
-  	xCOMMENT = eval(formCOMMENT_Write);  // æŠŠå€¼å–å¾—çµ¦java script è®Šæ•¸		 
+  	xCOMMENT = eval(formCOMMENT_Write);  // §â­È¨ú±oµ¹java script ÅÜ¼Æ		 
 
   
   	formGRAINQTY = "document.MYFORM.GRAINQTY"+xINDEX+".focus()";
   	formGRAINQTY_Write = "document.MYFORM.GRAINQTY"+xINDEX+".value";
-  	xGRAINQTY = eval(formGRAINQTY_Write);  // æŠŠå€¼å–å¾—çµ¦java script è®Šæ•¸ 
+  	xGRAINQTY = eval(formGRAINQTY_Write);  // §â­È¨ú±oµ¹java script ÅÜ¼Æ 
 
   	formPRODYIELD = "document.MYFORM.PRODYIELD"+xINDEX+".focus()";
   	formPRODYIELD_Write = "document.MYFORM.PRODYIELD"+xINDEX+".value";
-  	xPRODYIELD = eval(formPRODYIELD_Write);  // æŠŠå€¼å–å¾—çµ¦java script è®Šæ•¸ 
+  	xPRODYIELD = eval(formPRODYIELD_Write);  // §â­È¨ú±oµ¹java script ÅÜ¼Æ 
 
   	formTOTALYIELD = "document.MYFORM.TOTALYIELD"+xINDEX+".focus()";
   	formTOTALYIELD_Write = "document.MYFORM.TOTALYIELD"+xINDEX+".value";
-  	xTOTALYIELD = eval(formTOTALYIELD_Write);  // æŠŠå€¼å–å¾—çµ¦java script è®Šæ•¸ 
+  	xTOTALYIELD = eval(formTOTALYIELD_Write);  // §â­È¨ú±oµ¹java script ÅÜ¼Æ 
 	
 
 
-  	if ( (xSUPLOTNO=="" || xSUPLOTNO=="null") && (xLOTCTRL=="Y")) // è‹¥æ‰¹è™Ÿç©ºç™½æœªå¡«å…¥,ä¸”ç‚ºæ‰¹è™Ÿæ§ç®¡é …ç›®,å‰‡è­¦å‘Š
+  	if ( (xSUPLOTNO=="" || xSUPLOTNO=="null") && (xLOTCTRL=="Y")) // ­Y§å¸¹ªÅ¥Õ¥¼¶ñ¤J,¥B¬°§å¸¹±±ºŞ¶µ¥Ø,«hÄµ§i
   	{
-    	alert("ä¾æ‰¹è™Ÿæ§ç®¡åŸå‰‡,æ­¤æ–™è™Ÿç‚ºæ§ç®¡é …ç›®,è«‹å¦‚å¯¦è¼¸å…¥\nå¦å‰‡å°‡å°è‡´æ”¶æ–™å…¥åº«ç•°å¸¸!!!"); 
+    	alert("¨Ì§å¸¹±±ºŞ­ì«h,¦¹®Æ¸¹¬°±±ºŞ¶µ¥Ø,½Ğ¦p¹ê¿é¤J\n§_«h±N¾É­P¦¬®Æ¤J®w²§±`!!!"); 
 		return false;
   	}
 
-  	if (xRTNFLAG=="Y") // è‹¥
+  	if (xRTNFLAG=="Y") // ­Y
   	{
-    	alert(xSUPLOTNO+" æ­¤æ‰¹è™Ÿæœ‰é€€è²¨ç´€éŒ„,è«‹ç•™æ„!!!"); 
+    	alert(xSUPLOTNO+" ¦¹§å¸¹¦³°h³f¬ö¿ı,½Ğ¯d·N!!!"); 
   	}
   
   	formINSPREQ = "document.MYFORM.INSPREQ"+xINDEX+".focus()";
   	formINSPREQ_Write = "document.MYFORM.INSPREQ"+xINDEX+".value";
-  	xINSPREQ = eval(formINSPREQ_Write);  // æŠŠå€¼å–å¾—çµ¦java script è®Šæ•¸
+  	xINSPREQ = eval(formINSPREQ_Write);  // §â­È¨ú±oµ¹java script ÅÜ¼Æ
   
   	formINTERFACETRANSID = "document.MYFORM.INTERFACETRANSID"+xINDEX+".focus()";
   	formINTERFACETRANSID_Write = "document.MYFORM.INTERFACETRANSID"+xINDEX+".value";
-  	xINTERFACETRANSID = eval(formINTERFACETRANSID_Write);  // æŠŠå€¼å–å¾—çµ¦java script è®Šæ•¸ 
+  	xINTERFACETRANSID = eval(formINTERFACETRANSID_Write);  // §â­È¨ú±oµ¹java script ÅÜ¼Æ 
   
   	formRECNO = "document.MYFORM.RECNO"+xINDEX+".focus()";
   	formRECNO_Write = "document.MYFORM.RECNO"+xINDEX+".value";
-  	xRECNO = eval(formRECNO_Write);  // æŠŠå€¼å–å¾—çµ¦java script è®Šæ•¸ 
+  	xRECNO = eval(formRECNO_Write);  // §â­È¨ú±oµ¹java script ÅÜ¼Æ 
   
   	formINVITEMNO = "document.MYFORM.INVITEMNO"+xINDEX+".focus()";
   	formINVITEMNO_Write = "document.MYFORM.INVITEMNO"+xINDEX+".value";
-  	xINVITEMNO = eval(formINVITEMNO_Write);  // æŠŠå€¼å–å¾—çµ¦java script è®Šæ•¸
+  	xINVITEMNO = eval(formINVITEMNO_Write);  // §â­È¨ú±oµ¹java script ÅÜ¼Æ
   
   	formINVITEMDESC = "document.MYFORM.INVITEMDESC"+xINDEX+".focus()";
   	formINVITEMDESC_Write = "document.MYFORM.INVITEMDESC"+xINDEX+".value";
-  	xINVITEMDESC = eval(formINVITEMDESC_Write);  // æŠŠå€¼å–å¾—çµ¦java script è®Šæ•¸ 
+  	xINVITEMDESC = eval(formINVITEMDESC_Write);  // §â­È¨ú±oµ¹java script ÅÜ¼Æ 
   
-  	if ( (xINSPREQ==null || xINSPREQ=="")  ) //è‹¥åˆ¤æ–·æ˜¯å¦æª¢é©—ç‚ºç©ºå€¼,å‰‡è¦æ±‚å¡«å…¥
+  	if ( (xINSPREQ==null || xINSPREQ=="")  ) //­Y§PÂ_¬O§_ÀËÅç¬°ªÅ­È,«h­n¨D¶ñ¤J
   	{   
-    	alert("è«‹è¼¸å…¥æ˜¯å¦ç‚ºéœ€è¦æª¢é©—é …ç›®(Y/N)!?");	 	
+    	alert("½Ğ¿é¤J¬O§_¬°»İ­nÀËÅç¶µ¥Ø(Y/N)!?");	 	
 	 	formINSPREQ ="document.MYFORM.INSPREQ"+xINDEX+".focus()";
 	 	eval(formINSPREQ);
 	 	return(false);
@@ -226,7 +226,7 @@ function setSubmitAdd(URL,xINTERFACEID,xRECEIPTNUMBER,xITEMNO,xGRAINQTY,xPRODYIE
   
   	if ( document.MYFORM.CLASSID.value=="01" &&  (xSUPLOTNO==null || xSUPLOTNO==""))
   	{
-    	alert("æ™¶ç‰‡/æ™¶ç²’æª¢é©—éœ€è¼¸å…¥ä¾›æ‡‰å•†æ‰¹è™Ÿ(Supplier Lot No.)!");	 
+    	alert("´¹¤ù/´¹²ÉÀËÅç»İ¿é¤J¨ÑÀ³°Ó§å¸¹(Supplier Lot No.)!");	 
 	 	formSUPLOTNO ="document.MYFORM.SUPLOTNO"+xINDEX+".focus()";
 	 	eval(formSUPLOTNO);	 
 	 	return(false);
@@ -234,30 +234,31 @@ function setSubmitAdd(URL,xINTERFACEID,xRECEIPTNUMBER,xITEMNO,xGRAINQTY,xPRODYIE
 
   	if ( document.MYFORM.CLASSID.value=="01" &&  (xGRAINQTY==null || xGRAINQTY==""))
   	{
-    	alert("æ™¶ç‰‡/æ™¶ç²’æª¢é©—éœ€è¼¸å…¥æ™¶ç²’æ•¸é‡!");	 
+    	alert("´¹¤ù/´¹²ÉÀËÅç»İ¿é¤J´¹²É¼Æ¶q!");	 
 	 	formGRAINQTY ="document.MYFORM.GRAINQTY"+xINDEX+".focus()";
 	 	eval(formGRAINQTY);	 
 	 	return(false);
   	}
 
-  	if ( (xPRODYIELD==null || xPRODYIELD=="")  ) //è‹¥åˆ¤æ–·æ˜¯å¦æ™¶ç‰‡/ç²’ç‚ºç©ºå€¼,å‰‡è¦æ±‚å¡«å…¥  //20091118 LILING ADD
+  	if ( (xPRODYIELD==null || xPRODYIELD=="")  ) //­Y§PÂ_¬O§_´¹¤ù/²É¬°ªÅ­È,«h­n¨D¶ñ¤J  //20091118 LILING ADD
   	{   
-    	alert("è«‹è¼¸å…¥æ™¶ç‰‡/ç²’è‰¯ç‡!!");	 	
+    	alert("½Ğ¿é¤J´¹¤ù/²É¨}²v!!");	 	
 	 	formPRODYIELD ="document.MYFORM.INSPREQ"+xINDEX+".focus()";
 	 	eval(formPRODYIELD);
 	 	return(false);
   	}
 
-  	if ( (xTOTALYIELD==null || xTOTALYIELD=="")  ) //è‹¥åˆ¤æ–·æ˜¯å¦é›»æ€§è‰¯ç‡ç‚ºç©ºå€¼,å‰‡è¦æ±‚å¡«å…¥  //20091118 LILING ADD
+  	if ( (xTOTALYIELD==null || xTOTALYIELD=="")  ) //­Y§PÂ_¬O§_¹q©Ê¨}²v¬°ªÅ­È,«h­n¨D¶ñ¤J  //20091118 LILING ADD
   	{   
-    	alert("è«‹è¼¸å…¥é›»ä¿¡è‰¯ç‡!!");	 	
+    	alert("½Ğ¿é¤J¹q«H¨}²v!!");	 	
 	 	formTOTALYIELD ="document.MYFORM.INSPREQ"+xINDEX+".focus()";
 	 	eval(formTOTALYIELD);
 	 	return(false);
   	}
-	
+
+	let encodedSupLotNo = encodeURIComponent(xSUPLOTNO.trim());
   	// -- document.MYFORM.action="../jsp/TSIQCInspectLotInput.jsp?INSERT=Y&INTERFACETRANSID"+xINDEX+"="+xINTERFACETRANSID+"&RECNO"+xINDEX+"="+xRECNO+"&INVITEMNO"+xINDEX+"="+xINVITEMNO;
-  	document.MYFORM.action="../jsp/TSIQCInspectLotInput.jsp?INSERT=Y&INTERFACEID="+xINTERFACEID+"&RECEIPTNUMBER="+xRECEIPTNUMBER+"&ITEMNO="+xITEMNO+"&AUTHORNO="+xAUTHORNO+"&SUPLOTNO="+xSUPLOTNO+"&INSPREQ="+xINSPREQ+"&GRAINQTY="+xGRAINQTY+"&PRODYIELD="+xPRODYIELD+"&TOTALYIELD="+xTOTALYIELD+"&COMMENT="+xCOMMENT;
+  	document.MYFORM.action="../jsp/TSIQCInspectLotInput.jsp?INSERT=Y&INTERFACEID="+xINTERFACEID+"&RECEIPTNUMBER="+xRECEIPTNUMBER+"&ITEMNO="+xITEMNO+"&AUTHORNO="+xAUTHORNO+"&SUPLOTNO="+encodedSupLotNo+"&INSPREQ="+xINSPREQ+"&GRAINQTY="+xGRAINQTY+"&PRODYIELD="+xPRODYIELD+"&TOTALYIELD="+xTOTALYIELD+"&COMMENT="+xCOMMENT;
   	document.MYFORM.submit(); 
 }
 
@@ -271,12 +272,12 @@ function setSubmitSave(URL)
 { 
 	if (document.MYFORM.CLASSID.value=="" || document.MYFORM.CLASSID.value=="--")
    	{ 
-    	alert("è«‹é¸æ“‡æª¢é©—é¡åˆ¥...");
+    	alert("½Ğ¿ï¾ÜÀËÅçÃş§O...");
 	 	document.MYFORM.CLASSID.focus();
      	return false;
    	}
    
-  	if (document.MYFORM.CLASSID.value=="01") // è‹¥æª¢é©—é¡å‹ç‚ºæ™¶ç‰‡æ™¶ç²’é¡,å‰‡è¦æ±‚å¿…å¡«æ¬„ä½
+  	if (document.MYFORM.CLASSID.value=="01") // ­YÀËÅçÃş«¬¬°´¹¤ù´¹²ÉÃş,«h­n¨D¥²¶ñÄæ¦ì
   	{
     	var chkWFTYPEID = "false";
     	for (i=0;i<document.MYFORM.WFTYPEID.length;i++)
@@ -288,7 +289,7 @@ function setSubmitSave(URL)
      	}   // end of for   
    		if (chkWFTYPEID=="false")
    		{ 
-     		alert("è«‹é¸æ“‡ä¸€ç¨®æ™¶ç‰‡ç¨®é¡...");
+     		alert("½Ğ¿ï¾Ü¤@ºØ´¹¤ùºØÃş...");
      		return false;
    		}
    
@@ -302,7 +303,7 @@ function setSubmitSave(URL)
    		}   // end of for 
    		if (chkWFSIZEID=="false")
    		{ 
-     		alert("è«‹é¸æ“‡ä¸€ç¨®æ™¶ç‰‡å°ºå¯¸...");
+     		alert("½Ğ¿ï¾Ü¤@ºØ´¹¤ù¤Ø¤o...");
      		return false;
    		}
    
@@ -316,27 +317,27 @@ function setSubmitSave(URL)
    		}   // end of for 
    		if (chkWFPLATID=="false")
    		{ 
-     		alert("è«‹é¸æ“‡ä¸€ç¨®éå±¤ç¨®é¡...");
+     		alert("½Ğ¿ï¾Ü¤@ºØÁá¼hºØÃş...");
      		return false;
    		}
    		
 		if (document.MYFORM.WFTHICK.value=="" || document.MYFORM.WFTHICK.value=="--")
    		{ 
-     		alert("è«‹è¼¸å…¥æ™¶ç‰‡åšåº¦...");
+     		alert("½Ğ¿é¤J´¹¤ù«p«×...");
 	 		document.MYFORM.WFTHICK.focus();
      		return false;
    		}
 
    		if (document.MYFORM.DICESIZE.value=="" || document.MYFORM.DICESIZE.value=="--")
    		{ 
-     		alert("è«‹è¼¸å…¥æ™¶ç²’å°ºå¯¸...");
+     		alert("½Ğ¿é¤J´¹²É¤Ø¤o...");
 	 		document.MYFORM.DICESIZE.focus();
      		return false;
    		}
    
    		if (document.MYFORM.WFRESIST.value==null || document.MYFORM.WFRESIST.value=="")
    		{ 
-     		alert("è«‹è¼¸å…¥é˜»å€¼æˆ–é›»å£“...");
+     		alert("½Ğ¿é¤Jªı­È©Î¹qÀ£...");
 	 		document.MYFORM.WFRESIST.focus();
      		return false;
    		}
@@ -344,7 +345,7 @@ function setSubmitSave(URL)
 		//add by Peggy 20121220
 		if (document.MYFORM.HEADERTOTALYIELD.value==null || document.MYFORM.HEADERTOTALYIELD.value=="")
 		{
-			alert("è«‹è¼¸å…¥é›»æ€§è‰¯å“ç‡!!");
+			alert("½Ğ¿é¤J¹q©Ê¨}«~²v!!");
 			document.MYFORM.HEADERTOTALYIELD.focus();
 			return false;
 		}
@@ -352,7 +353,7 @@ function setSubmitSave(URL)
 		//add by Peggy 20121220
 		if (document.MYFORM.HEADERPRODYIELD.value==null || document.MYFORM.HEADERPRODYIELD.value=="")
 		{
-			alert("è«‹è¼¸å…¥å‹è™Ÿè‰¯ç‡!!");
+			alert("½Ğ¿é¤J«¬¸¹¨}²v!!");
 			document.MYFORM.HEADERPRODYIELD.focus();
 			return false;
 		}
@@ -361,18 +362,18 @@ function setSubmitSave(URL)
 	//add by Peggy 20121214
 	if (document.MYFORM.ACTIONID.value == null || document.MYFORM.ACTIONID.value =="--" || document.MYFORM.ACTIONID.value=="")
 	{
-		alert("è«‹é¸æ“‡åŸ·è¡Œå‹•ä½œ!!");
+		alert("½Ğ¿ï¾Ü°õ¦æ°Ê§@!!");
 		document.MYFORM.ACTIONID.focus();
 		return false;
 	}
 	else if (document.MYFORM.ACTIONID.value == "005" && (document.MYFORM.NGREASON.value == null || document.MYFORM.NGREASON.value ==""))
 	{
-		alert("è«‹è¼¸å…¥ä¸è‰¯åŸå› !!");
+		alert("½Ğ¿é¤J¤£¨}­ì¦]!!");
 		document.MYFORM.NGREASON.focus();
 		return false;
 	}
 	
-   	flag=confirm("æ˜¯å¦ç¢ºèªæ–°å¢IQCæª¢é©—æ‰¹?");      
+   	flag=confirm("¬O§_½T»{·s¼WIQCÀËÅç§å?");      
    	if (flag==false) return(false);
    	else 
 	{
@@ -381,7 +382,7 @@ function setSubmitSave(URL)
 	}
 }
 
-// æª¢æŸ¥é–å¹´,åˆ¤æ–·æ—¥æœŸè¼¸å…¥åˆæ³•æ€§
+// ÀË¬d¶|¦~,§PÂ_¤é´Á¿é¤J¦Xªk©Ê
 function isLeapYear(year) 
 { 
 	if((year%4==0&&year%100!=0)||(year%400==0)) 
@@ -415,7 +416,7 @@ function check(field)
 
 function popMenuMsg(itemDesc)
 {
-	alert("å°åŠæ–™è™Ÿ:"+itemDesc);
+	alert("¥x¥b®Æ¸¹:"+itemDesc);
 }
 
 function alertBKRule(URL,msl)
@@ -606,13 +607,13 @@ if ((choiceArr==null || choiceArr.equals("")))
 	} 
 	else 
 	{
-		choiceArr = "1";  // è¡¨ç¤ºåªå–®é»ä¸€ç­†ä½œæª¢é©—
+		choiceArr = "1";  // ªí¥Ü¥u³æÂI¤@µ§§@ÀËÅç
 	}
 }
 String receiptSource=request.getParameter("RECEIPTSOURCE");
 int commitmentMonth=0;
-arrayIQCDocumentInputBean.setCommitmentMonth(commitmentMonth);//è¨­å®šæ‰¿è«¾æœˆæ•¸
-String bringLast=request.getParameter("BRINGLAST"); //bringLastæ˜¯ç”¨ä¾†è­˜åˆ¥æ˜¯å¦å¸¶å‡ºä¸Šä¸€æ¬¡è¼¸å…¥ä¹‹æœ€æ–°ç‰ˆæœ¬è³‡æ–™
+arrayIQCDocumentInputBean.setCommitmentMonth(commitmentMonth);//³]©w©Ó¿Õ¤ë¼Æ
+String bringLast=request.getParameter("BRINGLAST"); //bringLast¬O¥Î¨ÓÃÑ§O¬O§_±a¥X¤W¤@¦¸¿é¤J¤§³Ì·sª©¥»¸ê®Æ
 String isModelSelected=request.getParameter("ISMODELSELECTED");  
 String [] addItems=request.getParameterValues("ADDITEMS");	
 String interfaceTransID=request.getParameter("INTERFACETRANSID"+Integer.toString(rs1__index+1));
@@ -640,7 +641,7 @@ String supLotNo=request.getParameter("SUPLOTNO");
 String inspReq=request.getParameter("INSPREQ");
 String comment=request.getParameter("COMMENT");
 String grainQty=request.getParameter("GRAINQTY"); //2007/04/06 liling
-String prodYield=request.getParameter("PRODYIELD"); //line çš„æ™¶ç‰‡è‰¯ç‡
+String prodYield=request.getParameter("PRODYIELD"); //line ªº´¹¤ù¨}²v
 String totalYield=request.getParameter("TOTALYIELD");
 String returnFlag=request.getParameter("RETURNFLAG");  //20110127
 if (interfaceID==null || interfaceID.equals("")) interfaceID = "";
@@ -660,11 +661,11 @@ if (entry!=null && !entry.equals("") )
 } 
   
 if (iNo==null || iNo.equals("")) iNo = "1"; 
-if (isModelSelected==null || isModelSelected.equals("")) isModelSelected="N"; // é è¨­æœªè¼¸å…¥ä»»ä¸€ç­†æ˜ç´°
+if (isModelSelected==null || isModelSelected.equals("")) isModelSelected="N"; // ¹w³]¥¼¿é¤J¥ô¤@µ§©ú²Ó
 String seqno=null;
 String seqkey=null;
 String dateString=null;
-int inpLen = 0;  // å…¨åŸŸè®Šæ•¸ inpLen 
+int inpLen = 0;  // ¥ş°ìÅÜ¼Æ inpLen 
 String classID=request.getParameter("CLASSID");
 String inspLotNo=request.getParameter("INSPLOTNO");
 String supplyVndID=request.getParameter("SUPPLYVNDID");
@@ -704,7 +705,7 @@ String sqlGlobal = "";
 String sWhereGlobal = "";
 if (receiptSource==null || receiptSource.equals("--")) 
 {  
-	if (classID!=null && !classID.equals("06")) // ä¸ç‚ºRMAé¡å‹
+	if (classID!=null && !classID.equals("06")) // ¤£¬°RMAÃş«¬
     {  
     	receiptSource="1";
 	} 
@@ -717,7 +718,7 @@ if (statusCode==null || statusCode.equals("")) statusCode="";
 if (receptDateStr==null || receptDateStr.equals("")) receptDateStr=dateBean.getYearMonthDay();
 if (receptDateEnd==null || receptDateEnd.equals("")) receptDateEnd=dateBean.getYearMonthDay();
 if (inspectDate==null || inspectDate.equals("")) inspectDate=dateBean.getYearMonthDay();
-if (classID==null || classID.equals("--")) classID = ""; // é è¨­çµ¦æ™¶ç‰‡æ™¶ç²’é¡åˆ¥æª¢é©—æ‰¹å–®è™Ÿ
+if (classID==null || classID.equals("--")) classID = ""; // ¹w³]µ¹´¹¤ù´¹²ÉÃş§OÀËÅç§å³æ¸¹
 if (poNo==null || poNo.equals("")) poNo = "";
 if (poNumber==null || poNumber.equals("")) poNumber = "";
 if (packMethod==null) packMethod = "";
@@ -736,7 +737,7 @@ if (itemDesc==null || itemDesc.equals("")) itemDesc = "";
 if (supLotNo==null || supLotNo.equals("")) supLotNo = "";
 if (authorNo==null || authorNo.equals("")) authorNo = "";
 if (comment==null || comment.equals("")) comment = "";
-if (prodName==null) prodName =  "";             // 2007/01/06 ä»¥ æª¢é©—ç‰©å“åç¨±ä½œç‚ºé è¨­å€¼
+if (prodName==null) prodName =  "";             // 2007/01/06 ¥H ÀËÅçª««~¦WºÙ§@¬°¹w³]­È
 if (prodModel==null) prodModel = "";
 if (sampleQty==null) sampleQty= "";
 if (wfThick==null) wfThick = "";
@@ -753,7 +754,7 @@ if (query==null || query.equals("")) query = "Y";
 if (returnFlag==null || returnFlag.equals("")) returnFlag="N";
 if (returnFlag=="Y" || returnFlag.equals("Y"))  colorStr="#FF6600";
 int iDetailRowCount = 0;    
-if (organizationId==null) organizationId=""; // çµ¦åˆå€¼ 
+if (organizationId==null) organizationId=""; // µ¹ªì­È 
 String headerProdYield=request.getParameter("HEADERPRODYIELD");  //add by Peggy 20121220
 if (headerProdYield==null)
 {
@@ -773,11 +774,11 @@ if (headerTotalYield==null)
 	}
 }
 String [] allMonth={iNo,interfaceID,receiptNumber,itemNo,invItemDesc,transactQty,grainQty,prodYield,supSiteID,authorNo,supLotNo,inspReq,totalYield,comment};
-// 2006/11/02 å–å¾—ä½¿ç”¨ç”±ä¸Šä¸€é é¸å–çš„Interface Transaction IDä½œç‚ºæ­¤æ¬¡æŸ¥è©¢æ¢ä»¶_èµ·
-String arrIQCSearch[][]=arrayIQCSearchBean.getArray2DContent();//å–å¾—å¾…æ”¶æ–™é™£åˆ—å…§å®¹
-String arrIQCTemp[][]=arrayIQCTempBean.getArray2DContent();//å–å¾—å¾…æ”¶æ–™é™£åˆ—å…§å®¹
-String tempCal[][]=new String[Integer.parseInt(choiceArr)+1][23]; // å®£å‘Šä¸€äºŒç¶­é™£åˆ—,åˆ†åˆ¥æ˜¯(åˆ—)X(è³‡æ–™æ¬„æ•¸+1= è¡Œ) //20091118 LILING ADD +2=23
-String candidate[][]=new String[Integer.parseInt(choiceArr)+1][20]; // å®£å‘Šä¸€äºŒç¶­é™£åˆ—,åˆ†åˆ¥æ˜¯(åˆ—)X(è³‡æ–™æ¬„æ•¸+1= è¡Œ) 
+// 2006/11/02 ¨ú±o¨Ï¥Î¥Ñ¤W¤@­¶¿ï¨úªºInterface Transaction ID§@¬°¦¹¦¸¬d¸ß±ø¥ó_°_
+String arrIQCSearch[][]=arrayIQCSearchBean.getArray2DContent();//¨ú±o«İ¦¬®Æ°}¦C¤º®e
+String arrIQCTemp[][]=arrayIQCTempBean.getArray2DContent();//¨ú±o«İ¦¬®Æ°}¦C¤º®e
+String tempCal[][]=new String[Integer.parseInt(choiceArr)+1][23]; // «Å§i¤@¤Gºû°}¦C,¤À§O¬O(¦C)X(¸ê®ÆÄæ¼Æ+1= ¦æ) //20091118 LILING ADD +2=23
+String candidate[][]=new String[Integer.parseInt(choiceArr)+1][20]; // «Å§i¤@¤Gºû°}¦C,¤À§O¬O(¦C)X(¸ê®ÆÄæ¼Æ+1= ¦æ) 
 String actionID=request.getParameter("ACTIONID"); //add by Peggy 20121213
 if (insertPage==null || actionID == null || actionID.equals("")) actionID ="";
 
@@ -789,7 +790,7 @@ if (choice==null || choice[0].equals(null))    // 2006/11/02 for fileter user do
 { 
 	if (interID!=null && !interID.equals(""))  
 	{ 
-		iDCodeGet = interID;   // è¡¨ç¤ºä½¿ç”¨è€…ç›´æ¥é»icon é€²å…¥	   
+		iDCodeGet = interID;   // ªí¥Ü¨Ï¥ÎªÌª½±µÂIicon ¶i¤J	   
 	   	for (int m=0;m<arrIQCSearch.length-1;m++) 
 	   	{	 
 	    	if (iDCodeGet.equals(arrIQCSearch[m][1]))
@@ -814,15 +815,15 @@ if (choice==null || choice[0].equals(null))    // 2006/11/02 for fileter user do
 				candidate[0][17]=arrIQCSearch[m][17];
 				candidate[0][18]=arrIQCSearch[m][18];
 				candidate[0][19]=arrIQCSearch[m][19];
-				defInsItemDesc = candidate[0][16];   // 2007/01/06 ä»¥é è¨­æª¢é©—çš„ç‰©æ–™å“åç‚ºé è¨­å€¼
+				defInsItemDesc = candidate[0][16];   // 2007/01/06 ¥H¹w³]ÀËÅçªºª«®Æ«~¦W¬°¹w³]­È
 			}
 	   	} 
-	   	System.arraycopy(candidate,0,tempCal,0,candidate.length-1); // æŠŠä¸Šæ¬¡çš„åŸå¾Œé¸é™£åˆ—ä¿ç•™è‡³æ¸…å–®å…§
+	   	System.arraycopy(candidate,0,tempCal,0,candidate.length-1); // §â¤W¦¸ªº­ì«á¿ï°}¦C«O¯d¦Ü²M³æ¤º
 	   	arrayIQCTempBean.setArray2DString(candidate);	  
 	}
 	else 
 	{
-	 	System.arraycopy(arrIQCTemp,0,tempCal,0,arrIQCTemp.length-1); // æŠŠä¸Šæ¬¡çš„åŸå¾Œé¸é™£åˆ—ä¿ç•™è‡³æ¸…å–®å…§			
+	 	System.arraycopy(arrIQCTemp,0,tempCal,0,arrIQCTemp.length-1); // §â¤W¦¸ªº­ì«á¿ï°}¦C«O¯d¦Ü²M³æ¤º			
 		arrayIQCTempBean.setArray2DString(tempCal);
 	}
 } 
@@ -835,7 +836,7 @@ else
 			  
 		for (int m=0;m<arrIQCSearch.length-1;m++) 
 		{			   
-			if (choice[k].equals(arrIQCSearch[m][1])) // åˆ¤æ–·è‹¥é¸å®šçš„InterfaceTransIDç­‰æ–¼å¾…æ”¶æ–™å…§å®¹,æ‰åŠ å…¥Array
+			if (choice[k].equals(arrIQCSearch[m][1])) // §PÂ_­Y¿ï©wªºInterfaceTransIDµ¥©ó«İ¦¬®Æ¤º®e,¤~¥[¤JArray
 			{
 				tempCal[k][0]=arrIQCSearch[m][0];
 				tempCal[k][1]=arrIQCSearch[m][1];
@@ -857,12 +858,12 @@ else
 				tempCal[k][17]=arrIQCSearch[m][17];
 				tempCal[k][18]=arrIQCSearch[m][18];
 				tempCal[k][19]=arrIQCSearch[m][19];
-				defInsItemDesc = tempCal[k][16]; // 2007/01/06 ä»¥é è¨­æª¢é©—çš„ç‰©æ–™å“åç‚ºé è¨­å€¼
+				defInsItemDesc = tempCal[k][16]; // 2007/01/06 ¥H¹w³]ÀËÅçªºª«®Æ«~¦W¬°¹w³]­È
 			}
 		}		  
 	}	   
 	arrayIQCTempBean.setArray2DString(tempCal);
-    System.arraycopy(tempCal,0,candidate,0,tempCal.length-1); // æŠŠé™£åˆ—ä¿ç•™è‡³å¾Œé¸æ¸…å–®å…§	
+    System.arraycopy(tempCal,0,candidate,0,tempCal.length-1); // §â°}¦C«O¯d¦Ü«á¿ï²M³æ¤º	
 			
 	if (iDCodeGet.length()>0)
     {
@@ -870,8 +871,8 @@ else
         iDCodeGet = iDCodeGet.substring(0,iDCodeGetLength);
 	} 		   
 }
-// è‡ªå·±é€™é å·²é¸çš„ä¸å…¥å€™é¸æ¸…å–®å…§_èµ·
-String g[][]=arrayIQCDocumentInputBean.getArray2DContent();//å–å¾—ç›®å‰é™£åˆ—å…§å®¹	 
+// ¦Û¤v³o­¶¤w¿ïªº¤£¤J­Ô¿ï²M³æ¤º_°_
+String g[][]=arrayIQCDocumentInputBean.getArray2DContent();//¨ú±o¥Ø«e°}¦C¤º®e	 
 String idCardDesc = null; // ItemDesc
 String idCardGet = request.getParameter("IDCARDGET");   // itemCodeGet
 int idCardGetLength = 0;   // itemCodeGetLength   
@@ -889,7 +890,7 @@ if (g!=null)
 			idCardDesc = g[i][1];
 			idCardGet = idCardGet+"'"+idCardDesc+"'"+",";
 		}
-	    // å–å¾—not in æ¢ä»¶_èµ·
+	    // ¨ú±onot in ±ø¥ó_°_
 		if (idCardGet.length()>0)
         { 
         	idCardGetLength = idCardGet.length()-1;
@@ -899,11 +900,11 @@ if (g!=null)
 } 
 	
 CallableStatement cs1 = con.prepareCall("{call DBMS_APPLICATION_INFO.SET_CLIENT_INFO(?)}");
-cs1.setString(1,"305");  /*  41 --> ç‚ºå°åŠåŠå°é«”  42 --> ç‚ºäº‹å‹™æ©Ÿ   305 --> YEW SEMI  */ 
+cs1.setString(1,"305");  /*  41 --> ¬°¥x¥b¥b¾ÉÅé  42 --> ¬°¨Æ°È¾÷   305 --> YEW SEMI  */ 
 cs1.execute();
 cs1.close();
 	 
-//  è¨­å®šArray åˆå§‹å…§å®¹_èµ· 
+//  ³]©wArray ªì©l¤º®e_°_ 
 if (insertPage==null) 
 {    
 	arrayIQCDocumentInputBean.setArray2DString(null);
@@ -919,46 +920,46 @@ else
   
 try 
 {   
-	String at[][]=arrayIQCDocumentInputBean.getArray2DContent();//å–å¾—ç›®å‰é™£åˆ—å…§å®¹     
+	String at[][]=arrayIQCDocumentInputBean.getArray2DContent();//¨ú±o¥Ø«e°}¦C¤º®e     
    	if (at!=null) 
    	{
     	for (int ac=0;ac<at.length;ac++)
 	  	{    	        
         	for (int subac=1;subac<at[ac].length;subac++)
 	      	{
-		    	String temp_at = request.getParameter("MONTH"+ac+"-"+subac);  //åˆ¤æ–·æ˜¯å¦Arrayç‚ºç©ºçš„å€¼
+		    	String temp_at = request.getParameter("MONTH"+ac+"-"+subac);  //§PÂ_¬O§_Array¬°ªÅªº­È
 			  	if (temp_at!=null)
 			  	{
-		       		at[ac][subac]=request.getParameter("MONTH"+ac+"-"+subac); //å–ä¸Šä¸€é ä¹‹è¼¸å…¥æ¬„ä½
+		       		at[ac][subac]=request.getParameter("MONTH"+ac+"-"+subac); //¨ú¤W¤@­¶¤§¿é¤JÄæ¦ì
 			  	}
 		   	}
 	  	} 
    	  	arrayIQCDocumentInputBean.setArray2DString(at);  //reset Array
    	} 
    
-  	if (addItems!=null) //è‹¥æœ‰é¸å–å‰‡è¡¨ç¤ºè¦ä½œåˆªé™¤
+  	if (addItems!=null) //­Y¦³¿ï¨ú«hªí¥Ü­n§@§R°£
   	{ 
-    	String a[][]=arrayIQCDocumentInputBean.getArray2DContent();//é‡æ–°å–å¾—é™£åˆ—å…§å®¹        
+    	String a[][]=arrayIQCDocumentInputBean.getArray2DContent();//­«·s¨ú±o°}¦C¤º®e        
     	if (a!=null && addItems.length>0)      
     	{ 		 
 	 		if (a.length>addItems.length)
 	 		{	  	  	    
        			String t[][]=new String[a.length-addItems.length][a[0].length];   
 	   			int cc=0; 
-	   			for (int m=0;m<a.length;m++) // è™•ç†åˆ—
+	   			for (int m=0;m<a.length;m++) // ³B²z¦C
 	   			{
 	    			String inArray="N";		
-					for (int n=0;n<addItems.length;n++)  // è™•ç†è¡Œ
+					for (int n=0;n<addItems.length;n++)  // ³B²z¦æ
 					{
 		 				if (addItems[n].equals(a[m][0])) inArray="Y"; 
 					}
-					if (inArray.equals("N"))  // æ²’è¢«åˆªé™¤çš„æ”¾é€²ä¾†
+					if (inArray.equals("N"))  // ¨S³Q§R°£ªº©ñ¶i¨Ó
 					{
 		  				for (int gg=0;gg<14;gg++)  
 		  				{  
 			 				if (gg==0)
 			 				{
-			   					t[cc][gg]= Integer.toString(cc+1); // æŠŠç¬¬ä¸€è¡Œçš„å€¼é‡ç®—			  
+			   					t[cc][gg]= Integer.toString(cc+1); // §â²Ä¤@¦æªº­È­«ºâ			  
 			 				}
 			 				else 
 							{
@@ -1033,8 +1034,8 @@ try
 	if (inspLotNo==null || inspLotNo.equals(""))
   	{  
    		dateString=dateBean.getYearMonthDay();   
-   		if (classID==null || classID.equals("--")) seqkey="IQC"+classID+dateString; //ä½†ä»ä»¥é è¨­ç‚ºä½¿ç”¨è€…åœ°å€
-   		else seqkey="IQC"+classID+dateString;         // 2006/01/10 æ”¹ä»¥é¸æ“‡çš„æ¥­å‹™åœ°å€ä»£è™Ÿç”¢ç”Ÿå–®è™Ÿ   
+   		if (classID==null || classID.equals("--")) seqkey="IQC"+classID+dateString; //¦ı¤´¥H¹w³]¬°¨Ï¥ÎªÌ¦a°Ï
+   		else seqkey="IQC"+classID+dateString;         // 2006/01/10 §ï¥H¿ï¾Üªº·~°È¦a°Ï¥N¸¹²£¥Í³æ¸¹   
    		Statement statement=con.createStatement();
    		ResultSet rs=statement.executeQuery("select * from ORADDMAN.TSQCDOCSEQ where header='"+seqkey+"' and TYPE_CODE ='IQC' ");
   
@@ -1072,7 +1073,7 @@ try
     		} 
     		else
     		{
-      			//===========(è™•ç†è·³è™Ÿå•é¡Œ)å¦å‰‡ä»¥å¯¦éš›rpRepairå…§æœ€å¤§æµæ°´è™Ÿç‚ºç›®å‰rpdocSeqçš„lastnoå…§å®¹(æœƒä¾ç¶­ä¿®åœ°å€åˆ¥)
+      			//===========(³B²z¸õ¸¹°İÃD)§_«h¥H¹ê»ÚrpRepair¤º³Ì¤j¬y¤ô¸¹¬°¥Ø«erpdocSeqªºlastno¤º®e(·|¨Ìºû­×¦a°Ï§O)
       			String sSqlSeq = "select to_number(substr(max(INSPLOT_NO),15,3)) as LASTNO from ORADDMAN.TSCIQC_LOTINSPECT_HEADER where substr(INSPLOT_NO,1,13)='"+seqkey+"' ";
       			ResultSet rs3=statement.executeQuery(sSqlSeq);
 	 
@@ -1100,7 +1101,7 @@ try
 		rs.close(); //add by Peggy 20130710
 		statement.close();//add by Peggy 20130710
 		
-		inspLotNo = seqno; // æŠŠå–åˆ°çš„è™Ÿç¢¼çµ¦æœ¬æ¬¡è¼¸å…¥
+		inspLotNo = seqno; // §â¨ú¨ìªº¸¹½Xµ¹¥»¦¸¿é¤J
   	}
   	else 
 	{
@@ -1114,7 +1115,7 @@ catch (Exception e)
 }
 %>
 
-<% /* å»ºç«‹æœ¬é é¢è³‡æ–™åº«é€£ç·š  */ %>
+<% /* «Ø¥ß¥»­¶­±¸ê®Æ®w³s½u  */ %>
 <style type="text/css">
 <!--
 .style14 {color: #003300}
@@ -1135,7 +1136,7 @@ catch (Exception e)
 <body topmargin="0" bottommargin="0">  
 <%@ include file="/jsp/include/TSCMfgDocHyperLinkPage.jsp"%>  
 <FORM ACTION="TSIQCInspectLotInput.jsp" METHOD="post" NAME="MYFORM">
-<!--%/20040109/å°‡Excel Veiw å¤¾åœ¨æª”é ­%-->
+<!--%/20040109/±NExcel Veiw §¨¦bÀÉÀY%-->
 <%
 sWhereGP = " ";  
 sSql =  " select /*+ ORDERED index(a RCV_TRANSACTIONS_T1)  */ "+
@@ -1146,8 +1147,8 @@ sSql =  " select /*+ ORDERED index(a RCV_TRANSACTIONS_T1)  */ "+
 String sFrom =  " from APPS.RCV_VRC_TXS_V a, MTL_SYSTEM_ITEMS b " ;
 sSqlCNT     = "  select count(distinct RECEIPT_NUM) as CASECOUNT ";
 sSqlCNTITEM = "  select count(RECEIPT_NUM) as iDetailRowCount ";
-sWhere = " where a.ITEM_ID = b.INVENTORY_ITEM_ID and a.ORGANIZATION_ID = b.ORGANIZATION_ID and a.TRANSACTION_TYPE='RECEIVE' and a.DESTINATION_TYPE_CODE = 'RECEIVING'  "+ // æš«æ”¶
-         " and a.ATTRIBUTE6 IS NULL "; // æ’é™¤æ‰é‚£äº›å·²ç¶“ä½œé–‹å–®,ä½†ç‹€æ…‹ä¸ç‚ºæ‰¹é€€ä¾›æ‡‰å•†(AWAITRECEIPT)çš„
+sWhere = " where a.ITEM_ID = b.INVENTORY_ITEM_ID and a.ORGANIZATION_ID = b.ORGANIZATION_ID and a.TRANSACTION_TYPE='RECEIVE' and a.DESTINATION_TYPE_CODE = 'RECEIVING'  "+ // ¼È¦¬
+         " and a.ATTRIBUTE6 IS NULL "; // ±Æ°£±¼¨º¨Ç¤w¸g§@¶}³æ,¦ıª¬ºA¤£¬°§å°h¨ÑÀ³°Ó(AWAITRECEIPT)ªº
 sOrderBy =  " order by a.TRANSACTION_DATE, a.PO_NUM ";			 
  
 if ((supplyVnd==null || supplyVnd.equals("") || supplyVnd.equals("null")) && (poNo==null || poNo.equals("") || poNo.equals("null"))) 
@@ -1179,7 +1180,7 @@ if (itemDesc!=null && !itemDesc.equals(""))
 	sWhere+=" and a.ITEM_DESC ='"+itemDesc+"'";	
 }
 
-// 2006/11/02 å–å¾—ä½¿ç”¨ç”±ä¸Šä¸€é é¸å–çš„Interface Transaction IDä½œç‚ºæ­¤æ¬¡æŸ¥è©¢æ¢ä»¶_è¿„
+// 2006/11/02 ¨ú±o¨Ï¥Î¥Ñ¤W¤@­¶¿ï¨úªºInterface Transaction ID§@¬°¦¹¦¸¬d¸ß±ø¥ó_¨´
 if (iDCodeGet!=null && !iDCodeGet.equals("")) 
 { 
 	sWhere+=" and to_char(INTERFACE_TRANSACTION_ID) in ("+iDCodeGet+") ";  
@@ -1218,11 +1219,11 @@ sqlGlobal = sSql;
     <tr bgcolor="#DAE089">
 	    <td nowrap></td><td><input type="hidden" size="30" name="INVITEM" tabindex='7' maxlength="30" value="<%=invItem.toUpperCase()%>" ><!--%<INPUT TYPE="button" tabindex="12" value="..." onClick="subWindowItemFind(this.form.INVITEM.value,this.form.ITEMDESC.value)">%--></td>
 		<td nowrap></td><td colspan="1"><input type="hidden" size="30" name="ITEMDESC" tabindex='4' maxlength="50" value="<%=itemDesc.toUpperCase()%>"><!--%<INPUT TYPE="button" tabindex="14"  value="..." onClick="subWindowItemFind(this.form.INVITEM.value,this.form.ITEMDESC.value)">%--></td>
-		<td colspan="2"><!--%<INPUT name="button3" tabindex='20' TYPE="button" onClick='setSubmitQuery("../jsp/TSIQCInspectLotInput.jsp?QUERY=Y",this.form.SUPPLYVND.value,this.form.VENDOR.value)'  value='è³‡æ–™å¸¶å‡º' >%--></td>
+		<td colspan="2"><!--%<INPUT name="button3" tabindex='20' TYPE="button" onClick='setSubmitQuery("../jsp/TSIQCInspectLotInput.jsp?QUERY=Y",this.form.SUPPLYVND.value,this.form.VENDOR.value)'  value='¸ê®Æ±a¥X' >%--></td>
     </tr>
   <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolorlight="#FFFFFF" bordercolordark="#B9BB99">
     <tr>      
-      <td width="19%"><span class="style20">IQCæª¢é©—æ‰¹å–®è™Ÿ:</span><font face="Arial" size="2" color="#003366"><span class="style1">&nbsp;</span><strong><font face="Georgia" size="+1"><%=inspLotNo%></font></strong></font>&nbsp;&nbsp;&nbsp;<img src="../image/point.gif"><font color="#FF6600">ç‚ºå¿…é¸(å¡«)æ¬„ä½,è«‹å‹™å¿…è¼¸å…¥</font></td>      	 
+      <td width="19%"><span class="style20">IQCÀËÅç§å³æ¸¹:</span><font face="Arial" size="2" color="#003366"><span class="style1">&nbsp;</span><strong><font face="Georgia" size="+1"><%=inspLotNo%></font></strong></font>&nbsp;&nbsp;&nbsp;<img src="../image/point.gif"><font color="#FF6600">¬°¥²¿ï(¶ñ)Äæ¦ì,½Ğ°È¥²¿é¤J</font></td>      	 
 	</tr>
 <%
 for (int pp=0;pp<tempCal.length-1;pp++)
@@ -1234,14 +1235,14 @@ for (int pp=0;pp<tempCal.length-1;pp++)
 	poNumber = tempCal[pp][10];
 %>	 
 	<script language="javascript">
-		window.document.MYFORM.SUPPLYVND.value="<%=tempCal[pp][3]%>";// æŠŠé€™æ¬¡æŸ¥è©¢çš„æ¢ä»¶ä¾›æ‡‰å•†åç¨±å†çµ¦
+		window.document.MYFORM.SUPPLYVND.value="<%=tempCal[pp][3]%>";// §â³o¦¸¬d¸ßªº±ø¥ó¨ÑÀ³°Ó¦WºÙ¦Aµ¹
 	</script>
 <% 
 }
 %>
 </table>
 <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolorlight="#FFFFFF" bordercolordark="#B9BB99">
-	<tr bgcolor="#CCCC99"><td width="7%" nowrap="nowrap">æª¢é©—é¡åˆ¥<img src="../image/point.gif"></td>
+	<tr bgcolor="#CCCC99"><td width="7%" nowrap="nowrap">ÀËÅçÃş§O<img src="../image/point.gif"></td>
      <td width="16%">
 <%	    	     		 		 
 try
@@ -1278,7 +1279,7 @@ catch (Exception e)
 }			
 %>
 	 </td>
-     <td width="13%" nowrap="nowrap">ä¾›æ‡‰å•†<img src="../image/point.gif"></td>
+     <td width="13%" nowrap="nowrap">¨ÑÀ³°Ó<img src="../image/point.gif"></td>
      <td width="28%"><input name="SUPPLIERID" tabindex="2" type="text" size="5" value="<%=supplierID%>" readonly>
 <%
 if (choice!=null)
@@ -1293,7 +1294,7 @@ if (choice!=null)
 				{  
 %>
 				<script language="javascript">
-					alertBKRule("../jsp/TSIQCInspectLotEntry.jsp?STATUSID=020&PAGEURL=TSIQCInspectLotInput.jsp","æœ¬æ¬¡æª¢é©—æ‰¹æ¸…å–®å…§å«ä¸åŒå» å•†,é•åæª¢é©—è¦ç¯„\n      è«‹é‡æ–°é¸æ“‡æ”¶æ–™é …ç›®æª¢é©—");	
+					alertBKRule("../jsp/TSIQCInspectLotEntry.jsp?STATUSID=020&PAGEURL=TSIQCInspectLotInput.jsp","¥»¦¸ÀËÅç§å²M³æ¤º§t¤£¦P¼t°Ó,¹H¤ÏÀËÅç³W½d\n      ½Ğ­«·s¿ï¾Ü¦¬®Æ¶µ¥ØÀËÅç");	
 				</script>
 <%
 				} 
@@ -1303,20 +1304,20 @@ if (choice!=null)
 }
 %>
 <input name="SUPPLIERNAME" type="hidden" size="25" value="<%=supplierName%>" readonly><% if (supplierName==null) out.println("&nbsp;"); else out.println(supplierName); %><input name="SUPSITEID" type="hidden" size="5" value="<%=supSiteID%>" readonly><input name="SUPSITENAME" type="hidden" size="5" value="<%=supSiteName%>" readonly></td>
-	<td width="12%" nowrap="nowrap">æª¢é©—æ—¥æœŸ<img src="../image/point.gif"></td>
+	<td width="12%" nowrap="nowrap">ÀËÅç¤é´Á<img src="../image/point.gif"></td>
 	<td width="29%"><input name="INSPECTDATE" tabindex="3" type="text" size="8" value="<%=inspectDate%>" readonly><A href='javascript:void(0)' onclick='gfPop.fPopCalendar(document.MYFORM.INSPECTDATE);return false;'><img name='popcal' border='0' src='../image/calbtn.gif'></A></td>
     </tr>
 	<tr bgcolor="#CCCC99">
 	   <input type="hidden" size="15" name="PONUMBER" tabindex='4' maxlength="20" value="<%=poNumber%>">
-	   <td nowrap="nowrap">ç‰¹æ¡æª¢é©—æ‰¹</td>
+	   <td nowrap="nowrap">¯S±ÄÀËÅç§å</td>
 	   <td colspan="1">
 	     <select name="WAIVELOT">
-	       <option value="<%if (waiveLot==null || waiveLot.equals("")) out.print(""); else  out.print("Y"); %>">Y(æ˜¯)</option>
-	       <option value="<%if (waiveLot==null || waiveLot.equals("")) out.print("N");else  out.print(waiveLot); %>" selected>N(å¦)</option>
+	       <option value="<%if (waiveLot==null || waiveLot.equals("")) out.print(""); else  out.print("Y"); %>">Y(¬O)</option>
+	       <option value="<%if (waiveLot==null || waiveLot.equals("")) out.print("N");else  out.print(waiveLot); %>" selected>N(§_)</option>
 	     </select>
 	   </td>
-	   <td>åŒ…è£æ–¹å¼</td><td><input type="text" size="15" name="PACKMETHOD" tabindex='4' maxlength="20" value="<%=packMethod%>"></td>
-	   <td nowrap="nowrap">åŸæ–™ç¨®é¡<% if (classID.equals("03")) out.print("<img src='../image/point.gif'>"); %></td>
+	   <td>¥]¸Ë¤è¦¡</td><td><input type="text" size="15" name="PACKMETHOD" tabindex='4' maxlength="20" value="<%=packMethod%>"></td>
+	   <td nowrap="nowrap">­ì®ÆºØÃş<% if (classID.equals("03")) out.print("<img src='../image/point.gif'>"); %></td>
 	   <td colspan="1">
 <%	    	     		 		 
 try
@@ -1343,14 +1344,14 @@ catch (Exception e)
 	</td>
 	</tr>
 	<tr bgcolor="#CCCC99">
-	  <td>ç‰©æ–™åç¨±</td><td nowrap><input type="text" size="25" name="PRODNAME" tabindex='12' maxlength="30" value="<% if (prodName==null || prodName.equals("")) out.print(defInsItemDesc); else out.print(prodName); %>"></td><td>é©ç”¨å‹è™Ÿ</td><td><input type="text" size="15" name="PRODMODEL" tabindex='12' maxlength="30" value="<%=prodModel%>"></td><td>æŠ½æ¨£æ•¸</td><td><input type="text" size="10" name="SAMPLEQTY" tabindex='12' maxlength="30" value="<%=sampleQty%>"></td>
+	  <td>ª«®Æ¦WºÙ</td><td nowrap><input type="text" size="25" name="PRODNAME" tabindex='12' maxlength="30" value="<% if (prodName==null || prodName.equals("")) out.print(defInsItemDesc); else out.print(prodName); %>"></td><td>¾A¥Î«¬¸¹</td><td><input type="text" size="15" name="PRODMODEL" tabindex='12' maxlength="30" value="<%=prodModel%>"></td><td>©â¼Ë¼Æ</td><td><input type="text" size="10" name="SAMPLEQTY" tabindex='12' maxlength="30" value="<%=sampleQty%>"></td>
 	</tr> 
 <%
-if (classID.equals("01")) // è‹¥æ˜¯æ™¶ç‰‡æ™¶ç²’çš„æª¢é©—æ‰é¡¯ç¤º_èµ·
+if (classID.equals("01")) // ­Y¬O´¹¤ù´¹²ÉªºÀËÅç¤~Åã¥Ü_°_
 {
 %>
     <tr bgcolor="#CCCC99">	    
-	    <td nowrap>æ™¶ç‰‡ç¨®é¡<% if (classID.equals("01")) out.print("<img src='../image/point.gif'>"); %></td>
+	    <td nowrap>´¹¤ùºØÃş<% if (classID.equals("01")) out.print("<img src='../image/point.gif'>"); %></td>
 		<td colspan="3" nowrap>
 <%
 	try
@@ -1362,7 +1363,7 @@ if (classID.equals("01")) // è‹¥æ˜¯æ™¶ç‰‡æ™¶ç²’çš„æª¢é©—æ‰é¡¯ç¤º_èµ·
     	if (wfTypeID != null)
    		checkBoxBean.setChecked(wfTypeID);
 	    checkBoxBean.setFieldName("WFTYPEID");	   
-	    checkBoxBean.setColumn(7); //å‚³åƒæ•¸çµ¦beanä»¥å›å‚³checkBoxçš„åˆ—æ•¸
+	    checkBoxBean.setColumn(7); //¶Ç°Ñ¼Æµ¹bean¥H¦^¶ÇcheckBoxªº¦C¼Æ
         out.println(checkBoxBean.getRsString());
 	    statement.close();
         rs.close();       
@@ -1373,15 +1374,16 @@ if (classID.equals("01")) // è‹¥æ˜¯æ™¶ç‰‡æ™¶ç²’çš„æª¢é©—æ‰é¡¯ç¤º_èµ·
 	}
 %>
 		</td>
-		<td nowrap>æ™¶ç‰‡å®‰åŸ¹æ•¸<input type="text" size="5" name="WAFERAMP" tabindex='4' maxlength="10" value="<%=waferAmp.toUpperCase()%>"></td>	
-		<td nowrap>æ™¶ç²’å°ºå¯¸<% if (classID.equals("01")) out.print("<img src='../image/point.gif'>"); %>
+		<td nowrap>´¹¤ù¦w°ö¼Æ<input type="text" size="5" name="WAFERAMP" tabindex='4' maxlength="10" value="<%=waferAmp.toUpperCase()%>"></td>	
+		<td nowrap>´¹²É¤Ø¤o<% if (classID.equals("01")) out.print("<img src='../image/point.gif'>"); %>
 <%	    	     		 		 
 	try
 	{ 	   		 
 		String sSqlMIL = "";
 		String sWhereMIL = "";		  
 		sSqlMIL = "select Unique DICE_MIL as x ,DICE_MIL from APPS.YEW_WFDICE_FACTOR ";		  
-		sWhereMIL= "where DICE_MIL IS NOT NULL order by to_number(DICE_MIL)";	
+		sWhereMIL= "where DICE_MIL IS NOT NULL order by DICE_MIL";	  		  		  			// 20250606 modify by JB - xxx * xxx issue
+		//sWhereMIL= "where DICE_MIL IS NOT NULL order by to_number(DICE_MIL)";	
 		sSqlMIL = sSqlMIL+sWhereMIL;		  
         Statement statementMIL=con.createStatement();
         ResultSet rsMIL=statementMIL.executeQuery(sSqlMIL);
@@ -1413,7 +1415,7 @@ if (classID.equals("01")) // è‹¥æ˜¯æ™¶ç‰‡æ™¶ç²’çš„æª¢é©—æ‰é¡¯ç¤º_èµ·
 	</td>			
 </tr>
 <tr bgcolor="#CCCC99">
-  <td nowrap>æ™¶ç‰‡å°ºå¯¸<% if (classID.equals("01")) out.print("<img src='../image/point.gif'>"); %></td>
+  <td nowrap>´¹¤ù¤Ø¤o<% if (classID.equals("01")) out.print("<img src='../image/point.gif'>"); %></td>
 	  <td nowrap>
 <%
 	try
@@ -1425,7 +1427,7 @@ if (classID.equals("01")) // è‹¥æ˜¯æ™¶ç‰‡æ™¶ç²’çš„æª¢é©—æ‰é¡¯ç¤º_èµ·
 		if (wfSizeID != null)
 		checkBoxBean.setChecked(wfSizeID);
 		checkBoxBean.setFieldName("WFSIZEID");	   
-		checkBoxBean.setColumn(3); //å‚³åƒæ•¸çµ¦beanä»¥å›å‚³checkBoxçš„åˆ—æ•¸
+		checkBoxBean.setColumn(3); //¶Ç°Ñ¼Æµ¹bean¥H¦^¶ÇcheckBoxªº¦C¼Æ
 		out.println(checkBoxBean.getRsString());
 	    statement.close();
         rs.close();       
@@ -1436,8 +1438,8 @@ if (classID.equals("01")) // è‹¥æ˜¯æ™¶ç‰‡æ™¶ç²’çš„æª¢é©—æ‰é¡¯ç¤º_èµ·
 	}
 %>
 	  </td>
-	  <td nowrap="nowrap">æ™¶ç‰‡åšåº¦<% if (classID.equals("01")) out.print("<img src='../image/point.gif'>"); %></td><td><input type="text" size="15" name="WFTHICK" maxlength="20" value="<%=wfThick%>">Î¼m</td>
-	  <td nowrap="nowrap">é˜»å€¼(é›»å£“)<% if (classID.equals("01")) out.print("<img src='../image/point.gif'>"); %></td>
+	  <td nowrap="nowrap">´¹¤ù«p«×<% if (classID.equals("01")) out.print("<img src='../image/point.gif'>"); %></td><td><input type="text" size="15" name="WFTHICK" maxlength="20" value="<%=wfThick%>">£gm</td>
+	  <td nowrap="nowrap">ªı­È(¹qÀ£)<% if (classID.equals("01")) out.print("<img src='../image/point.gif'>"); %></td>
 	  <td>
 <%	    	     		 		 
 	try
@@ -1461,10 +1463,10 @@ if (classID.equals("01")) // è‹¥æ˜¯æ™¶ç‰‡æ™¶ç²’çš„æª¢é©—æ‰é¡¯ç¤º_èµ·
     	out.println("Exception:"+e.getMessage());		  
 	}			
 %>
-	  <input type="hidden" size="15" name="WFRESIST2" tabindex='4' maxlength="20" value="<%=wfResist%>">Î©-cm/V</td>
+	  <input type="hidden" size="15" name="WFRESIST2" tabindex='4' maxlength="20" value="<%=wfResist%>">£[-cm/V</td>
 	</tr>
 	<tr bgcolor="#CCCC99">
-		<td colspan="1">éå±¤:</td>
+		<td colspan="1">Áá¼h:</td>
 		<td colspan="1"><font color="#990000">	   
 <%
 	try
@@ -1476,7 +1478,7 @@ if (classID.equals("01")) // è‹¥æ˜¯æ™¶ç‰‡æ™¶ç²’çš„æª¢é©—æ‰é¡¯ç¤º_èµ·
 		if (wfPlatID != null)
    	    checkBoxBean.setChecked(wfPlatID);
 	    checkBoxBean.setFieldName("WFPLATID");	   
-	    checkBoxBean.setColumn(3); //å‚³åƒæ•¸çµ¦beanä»¥å›å‚³checkBoxçš„åˆ—æ•¸
+	    checkBoxBean.setColumn(3); //¶Ç°Ñ¼Æµ¹bean¥H¦^¶ÇcheckBoxªº¦C¼Æ
         out.println(checkBoxBean.getRsString());
 	    statement.close();
         rs.close();       
@@ -1488,42 +1490,42 @@ if (classID.equals("01")) // è‹¥æ˜¯æ™¶ç‰‡æ™¶ç²’çš„æª¢é©—æ‰é¡¯ç¤º_èµ·
 %>
 	   </font>
 	   </td> 
-       <td>é›»æ€§è‰¯å“ç‡(Total Yield):</td>
+       <td>¹q©Ê¨}«~²v(Total Yield):</td>
 	   <TD><INPUT TYPE="TEXT" NAME="HEADERTOTALYIELD" SIZE=10 maxlength="10" value="<%=headerTotalYield%>" onKeyUp="setTOTALYIELD();"> %</TD>
-	   <td>å‹è™Ÿè‰¯ç‡(Product Yiels):</td>
+	   <td>«¬¸¹¨}²v(Product Yiels):</td>
 	   <td><INPUT TYPE="TEXT" NAME="HEADERPRODYIELD" SIZE=10 maxlength="10" value="<%=headerProdYield%>" onKeyUp="setPRODYIELD();"> %</td>
 	</tr>	
 <%
 } 
 %>
 	<tr bgcolor="#CCCC99">	   
-		<td nowrap="nowrap">å‚™è¨»</td><td colspan="5"><input type="text" size="80" name="REMARK" maxlength="50" value="<%=remark%>"></td>
+		<td nowrap="nowrap">³Æµù</td><td colspan="5"><input type="text" size="80" name="REMARK" maxlength="50" value="<%=remark%>"></td>
 	</tr>
 </table> 
 <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolorlight="#FFFFFF" bordercolordark="#B9BB99">
 	<tr bgcolor="#CCCC99"> 
 		<td width="5%" height="22" nowrap><div align="center" class="style14">&nbsp;</div></td> 
-	   	<!--<td width="8%" nowrap><div align="center" class="style14">è­˜åˆ¥ç¢¼</div></td>-->
-      	<td width="8%" nowrap><div align="center" class="style14">æ¡è³¼å–®è™Ÿ</div></td>
-      	<td width="8%" nowrap><div align="center" class="style14">æ”¶æ–™å–®è™Ÿ</div></td>
-      	<td width="18%" nowrap><div align="center" class="style14">æ–™è™Ÿèªªæ˜</div></td> 
-	  	<td width="5%" nowrap><div align="center" class="style14">æ•¸é‡</div></td> 
-	  	<td width="5%" nowrap><div align="center" class="style14">å–®ä½</div></td> 
-	  	<td width="8%" nowrap><div align="center" class="style14">ä¾›æ‡‰å•†</font></div></td> 
+	   	<!--<td width="8%" nowrap><div align="center" class="style14">ÃÑ§O½X</div></td>-->
+      	<td width="8%" nowrap><div align="center" class="style14">±ÄÁÊ³æ¸¹</div></td>
+      	<td width="8%" nowrap><div align="center" class="style14">¦¬®Æ³æ¸¹</div></td>
+      	<td width="18%" nowrap><div align="center" class="style14">®Æ¸¹»¡©ú</div></td> 
+	  	<td width="5%" nowrap><div align="center" class="style14">¼Æ¶q</div></td> 
+	  	<td width="5%" nowrap><div align="center" class="style14">³æ¦ì</div></td> 
+	  	<td width="8%" nowrap><div align="center" class="style14">¨ÑÀ³°Ó</font></div></td> 
 <% if (classID.equals("01"))
 { 
 %>
-		<td width="3%" nowrap><div align="center" class="style14">æ™¶ç‰‡æ•¸é‡</div></td> 
-      	<td width="3%" nowrap><div align="center" class="style14">æ™¶ç‰‡è‰¯ç‡</div></td> 
-      	<td width="3%" nowrap><div align="center" class="style14">é›»æ€§è‰¯ç‡</div></td> 
+		<td width="3%" nowrap><div align="center" class="style14">´¹¤ù¼Æ¶q</div></td> 
+      	<td width="3%" nowrap><div align="center" class="style14">´¹¤ù¨}²v</div></td> 
+      	<td width="3%" nowrap><div align="center" class="style14">¹q©Ê¨}²v</div></td> 
 <% 
 } 
 %>
-	  	<td width="9%" nowrap><div align="center" class="style14">é›¶ä»¶æ‰¿èªç·¨è™Ÿ</div></td> 
-	 	<td width="12%" nowrap><div align="center" class="style14">ä¾›æ‡‰å•†(æ™¶ç‰‡)æ‰¹è™Ÿ</div></td> 
-	 	<td width="7%" nowrap><div align="center" class="style14">å…é©—æ–™ä»¶<img src='../image/point.gif'></div></td> 
-	 	<td width="6%" nowrap><div align="center" class="style14">æ”¶æ–™æ—¥æœŸ</div></td>  	 
-      	<td width="3%" nowrap><div align="center" class="style14">èªªæ˜</div></td> 
+	  	<td width="9%" nowrap><div align="center" class="style14">¹s¥ó©Ó»{½s¸¹</div></td> 
+	 	<td width="12%" nowrap><div align="center" class="style14">¨ÑÀ³°Ó(´¹¤ù)§å¸¹</div></td> 
+	 	<td width="7%" nowrap><div align="center" class="style14">§KÅç®Æ¥ó<img src='../image/point.gif'></div></td> 
+	 	<td width="6%" nowrap><div align="center" class="style14">¦¬®Æ¤é´Á</div></td>  	 
+      	<td width="3%" nowrap><div align="center" class="style14">»¡©ú</div></td> 
 	 	<td width="5%" nowrap><div align="center" class="style14">&nbsp;</div></td> 	 			 		
     </tr>	
 <% 
@@ -1540,8 +1542,8 @@ if (tempCal!=null)
         ResultSet rsASL=stateASL.executeQuery(sqlASL);
 		if (rsASL.next())
 		{
-			inspReqFlag = rsASL.getString(1); // å–å…é©—æ¨™è¨˜
-			authorNumber = rsASL.getString(2); // å–å…é©—ç·¨è™Ÿ
+			inspReqFlag = rsASL.getString(1); // ¨ú§KÅç¼Ğ°O
+			authorNumber = rsASL.getString(2); // ¨ú§KÅç½s¸¹
 		} 
 		else 
 		{
@@ -1549,7 +1551,7 @@ if (tempCal!=null)
 		}
 	    rsASL.close();
 		stateASL.close();
-		String lotCtrl = "N"; // é è¨­ç‚ºå¦
+		String lotCtrl = "N"; // ¹w³]¬°§_
 		String sqlLotCrtl = "  select decode(LOT_CONTROL_CODE, '1','N','2','Y','N') from MTL_SYSTEM_ITEMS "+		  
 		                    "  where ORGANIZATION_ID = "+tempCal[qq][19]+" "+
 						    "  and INVENTORY_ITEM_ID ="+tempCal[qq][14]+" ";	
@@ -1558,7 +1560,7 @@ if (tempCal!=null)
         ResultSet rsLotCrtl=stateLotCrtl.executeQuery(sqlLotCrtl);
 		if (rsLotCrtl.next())
 		{
-			lotCtrl = rsLotCrtl.getString(1); // å–æ‰¹è™Ÿæ§ç®¡(æ˜¯/å¦)			
+			lotCtrl = rsLotCrtl.getString(1); // ¨ú§å¸¹±±ºŞ(¬O/§_)			
 		} 
 	    rsLotCrtl.close();
 		stateLotCrtl.close();		 
@@ -1580,12 +1582,12 @@ if (tempCal!=null)
 	  <input name="INTERFACETRANSID<%=Integer.toString(rs1__index+1)%>" type="hidden" size="5" value="<%if (interfaceTransID==null) out.print(tempCal[qq][1]); else out.print(interfaceTransID);%>">	    
 	  <%out.println(rs1__index+1);%>
 	  </font></div> </td>  
-	  <!--<td width="8%" nowrap><div align="center"><font color="#686731"><%=tempCal[qq][1]%></font></div></td>æ¬„ä½å¤ªå¤š,æ–°å¢æŒ‰éˆ•è¶…å‡ºè¢å¹•,æ•…éš±è—è­˜åˆ¥ç¢¼æ¬„ä½,modify by Peggy 20130131-->   	        
+	  <!--<td width="8%" nowrap><div align="center"><font color="#686731"><%=tempCal[qq][1]%></font></div></td>Äæ¦ì¤Ó¦h,·s¼W«ö¶s¶W¥X¿Ã¹õ,¬GÁôÂÃÃÑ§O½XÄæ¦ì,modify by Peggy 20130131-->   	        
 	  <td width="8%" nowrap><div align="center"><font color="#686731"><%=tempCal[qq][10]%></font></div></td><!--add po_no by Peggy 20130131-->  	        
       <td width="8%" nowrap><div align="center"><font color="#686731"><input name="RECNO<%=Integer.toString(rs1__index+1)%>" type="hidden" size="5" value="<%if (recNo==null) out.print(tempCal[qq][6]); else out.print(recNo);%>"><%=tempCal[qq][6]%></font></div></td>
 	  <td width="18%" nowrap><div align="center"><font color="#686731"><input name="INVITEMNO<%=Integer.toString(rs1__index+1)%>" type="hidden" size="5" value="<%if (invItemNo==null) out.print(tempCal[qq][15]); else out.print(invItemNo);%>"><input name="INVITEMDESC<%=Integer.toString(rs1__index+1)%>" type="hidden" size="5" value="<%if (invItemDesc==null) out.print(tempCal[qq][16]); else out.print(invItemDesc);%>">
 <%
-		out.print("<a href=javaScript:popMenuMsg('"+tempCal[qq][15]+"') onmouseover='this.T_WIDTH=150;this.T_OPACITY=150;return escape("+"\""+tempCal[qq][15]+"\""+")'>"); // å¯¬åº¦,é€æ˜åº¦ //
+		out.print("<a href=javaScript:popMenuMsg('"+tempCal[qq][15]+"') onmouseover='this.T_WIDTH=150;this.T_OPACITY=150;return escape("+"\""+tempCal[qq][15]+"\""+")'>"); // ¼e«×,³z©ú«× //
 	 	out.print(tempCal[qq][16]);
 		out.println("</a>");
 %></font></div>
@@ -1649,20 +1651,20 @@ if (tempCal!=null)
 		if (sFlag.equals("true"))
       	{ 
 %>
-	    <INPUT TYPE="button" name='INSPADD<%=Integer.toString(rs1__index+1)%>' tabindex="28" value='æ–°å¢' onClick='setSubmitAdd("../jsp/TSIQCInspectLotInput.jsp?INSERT=Y","<%=tempCal[qq][1]%>","<%=tempCal[qq][6]%>","<%=tempCal[qq][15]%>","<%=tempCal[qq][20]%>","<%=tempCal[qq][21]%>","<%=authorNumber%>","<%=supLotNumber%>","<%=inspReqFlag%>","<%=Integer.toString(rs1__index+1)%>","<%=lotCtrl%>","<%=tempCal[qq][22]%>","<%=returnFlag%>","<%=commentDesc%>")'>
+	    <INPUT TYPE="button" name='INSPADD<%=Integer.toString(rs1__index+1)%>' tabindex="28" value='·s¼W' onClick='setSubmitAdd("../jsp/TSIQCInspectLotInput.jsp?INSERT=Y","<%=tempCal[qq][1]%>","<%=tempCal[qq][6]%>","<%=tempCal[qq][15]%>","<%=tempCal[qq][20]%>","<%=tempCal[qq][21]%>","<%=authorNumber%>","<%=supLotNumber%>","<%=inspReqFlag%>","<%=Integer.toString(rs1__index+1)%>","<%=lotCtrl%>","<%=tempCal[qq][22]%>","<%=returnFlag%>","<%=commentDesc%>")'>
 <% 
 		}
 		else
 		{   
 %>
-	    <INPUT TYPE="button" name='INSPADD<%=Integer.toString(rs1__index+1)%>' tabindex="28" value='æ–°å¢' disabled onClick='setSubmitAdd("../jsp/TSIQCInspectLotInput.jsp?INSERT=Y","<%=tempCal[qq][1]%>","<%=tempCal[qq][6]%>","<%=tempCal[qq][15]%>","<%=tempCal[qq][20]%>","<%=tempCal[qq][21]%>","<%=authorNumber%>","<%=supLotNumber%>","<%=inspReqFlag%>","<%=Integer.toString(rs1__index+1)%>","<%=lotCtrl%>","<%=tempCal[qq][22]%>","<%=returnFlag%>","<%=commentDesc%>"))'>
+	    <INPUT TYPE="button" name='INSPADD<%=Integer.toString(rs1__index+1)%>' tabindex="28" value='·s¼W' disabled onClick='setSubmitAdd("../jsp/TSIQCInspectLotInput.jsp?INSERT=Y","<%=tempCal[qq][1]%>","<%=tempCal[qq][6]%>","<%=tempCal[qq][15]%>","<%=tempCal[qq][20]%>","<%=tempCal[qq][21]%>","<%=authorNumber%>","<%=supLotNumber%>","<%=inspReqFlag%>","<%=Integer.toString(rs1__index+1)%>","<%=lotCtrl%>","<%=tempCal[qq][22]%>","<%=returnFlag%>","<%=commentDesc%>"))'>
 <% 
 		}
 %>
 	  </div></td>	
     </tr></font>
 <%
-		rs1__index++; // ç´¯åŠ ç´¢å¼•å€¼
+		rs1__index++; // ²Ö¥[¯Á¤Ş­È
    	}
 }
 %>
@@ -1671,16 +1673,16 @@ if (tempCal!=null)
 <%
 try
 {
-	//String oneDArray[]= {"","åºè™Ÿ","æ”¶æ–™è­˜åˆ¥ç¢¼","æ”¶æ–™å–®è™Ÿ","å°åŠæ–™è™Ÿ","æ–™è™Ÿèªªæ˜","æ•¸é‡","ä¾›æ‡‰å•†å‡ºè²¨åœ°ç¢¼","è½‰æ›æ•¸é‡","æ™¶ç‰‡è‰¯ç‡","é›»æ€§è‰¯ç‡","é›¶ä»¶æ‰¿èªç·¨è™Ÿ","ä¾›æ‡‰å•†æ‰¹è™Ÿ","å…é©—æ–™ä»¶"}; 		 	     			  
-	String oneDArray[]= {"","åºè™Ÿ","æ”¶æ–™è­˜åˆ¥ç¢¼","æ”¶æ–™å–®è™Ÿ","å°åŠæ–™è™Ÿ","æ–™è™Ÿèªªæ˜","æ•¸é‡","ä¾›æ‡‰å•†å‡ºè²¨åœ°ç¢¼","è½‰æ›æ•¸é‡","æ™¶ç‰‡è‰¯ç‡","é›»æ€§è‰¯ç‡","é›¶ä»¶æ‰¿èªç·¨è™Ÿ","ä¾›æ‡‰å•†æ‰¹è™Ÿ","å…é©—æ–™ä»¶","èªªæ˜"}; //add by Peggy 20121218 		 	     			      
+	//String oneDArray[]= {"","§Ç¸¹","¦¬®ÆÃÑ§O½X","¦¬®Æ³æ¸¹","¥x¥b®Æ¸¹","®Æ¸¹»¡©ú","¼Æ¶q","¨ÑÀ³°Ó¥X³f¦a½X","Âà´«¼Æ¶q","´¹¤ù¨}²v","¹q©Ê¨}²v","¹s¥ó©Ó»{½s¸¹","¨ÑÀ³°Ó§å¸¹","§KÅç®Æ¥ó"}; 		 	     			  
+	String oneDArray[]= {"","§Ç¸¹","¦¬®ÆÃÑ§O½X","¦¬®Æ³æ¸¹","¥x¥b®Æ¸¹","®Æ¸¹»¡©ú","¼Æ¶q","¨ÑÀ³°Ó¥X³f¦a½X","Âà´«¼Æ¶q","´¹¤ù¨}²v","¹q©Ê¨}²v","¹s¥ó©Ó»{½s¸¹","¨ÑÀ³°Ó§å¸¹","§KÅç®Æ¥ó","»¡©ú"}; //add by Peggy 20121218 		 	     			      
 	arrayIQCDocumentInputBean.setArrayString(oneDArray);
-	String a[][]=arrayIQCDocumentInputBean.getArray2DContent();//å–å¾—ç›®å‰é™£åˆ—å…§å®¹  	   			    
+	String a[][]=arrayIQCDocumentInputBean.getArray2DContent();//¨ú±o¥Ø«e°}¦C¤º®e  	   			    
 	int i=0,j=0,k=0;
     String dupFLAG="FALSE";		 
 	if (( (invItemNo!=null && !invItemNo.equals("")) || (invItemDesc!=null && !invItemDesc.equals("")) ) && recNo!=null && !recNo.equals("") && bringLast==null)
 	{ 
 		String sqlUOM = ""; 
-		if (interfaceID!=null && !interfaceID.equals("") && receiptNumber!=null && !receiptNumber.equals("")) // è‹¥å–å¾—interfaceTransID,æŠ“ç›¸é—œå…§å®¹æ”¾é€²ArrayBean
+		if (interfaceID!=null && !interfaceID.equals("") && receiptNumber!=null && !receiptNumber.equals("")) // ­Y¨ú±ointerfaceTransID,§ì¬ÛÃö¤º®e©ñ¶iArrayBean
 		{ 	
 			for (int rr=0;rr<tempCal.length-1;rr++)
 			{	
@@ -1757,7 +1759,7 @@ try
 	}
 	Statement chkstat=con.createStatement();
     ResultSet chkrs=null;
-	String T2[][]=arrayIQCDocumentInputBean.getArray2DContent();//å–å¾—ç›®å‰é™£åˆ—å…§å®¹åšç‚ºæš«å­˜ç”¨;	  			  	
+	String T2[][]=arrayIQCDocumentInputBean.getArray2DContent();//¨ú±o¥Ø«e°}¦C¤º®e°µ¬°¼È¦s¥Î;	  			  	
 	String tp[]=arrayIQCDocumentInputBean.getArrayContent();
 	if  (T2!=null) 
 	{  		   
@@ -1772,7 +1774,7 @@ try
 		int ti = 0;
         int tj = 0;
         temp[ti][tj]="N";	
-	    arrayIQCDocumentInputBean.setArray2DCheck(temp);  //ç½®å…¥æª¢æŸ¥é™£åˆ—ä»¥ç‚ºæ§åˆ¶ä¹‹ç”¨			   
+	    arrayIQCDocumentInputBean.setArray2DCheck(temp);  //¸m¤JÀË¬d°}¦C¥H¬°±±¨î¤§¥Î			   
 	} 
 	else 
 	{    		      		     
@@ -1789,7 +1791,7 @@ catch (Exception e)
 <%
 try 
 {
-	String a[][]=arrayIQCDocumentInputBean.getArray2DContent();//å–å¾—ç›®å‰é™£åˆ—å…§å®¹  	   			    		                       		    
+	String a[][]=arrayIQCDocumentInputBean.getArray2DContent();//¨ú±o¥Ø«e°}¦C¤º®e  	   			    		                       		    
 	float total=0;
 }
 catch (Exception e)
@@ -1800,7 +1802,7 @@ catch (Exception e)
 <%
 try 
 {
-	String a[][]=arrayIQCDocumentInputBean.getArray2DContent();//å–å¾—ç›®å‰é™£åˆ—å…§å®¹  	   			    		                       		    
+	String a[][]=arrayIQCDocumentInputBean.getArray2DContent();//¨ú±o¥Ø«e°}¦C¤º®e  	   			    		                       		    
 	float total=0;
 }
 catch (Exception e)
@@ -1811,14 +1813,14 @@ catch (Exception e)
 	</td>
    </tr>
   </table>
-  <!--%æ¯é ç­†â—é¡¯ç¤ºç­†åˆ°ç­†ç¸½å…±æœ‰è³‡æ–™%-->
+  <!--%¨C­¶µ§¡´Åã¥Üµ§¨ìµ§Á`¦@¦³¸ê®Æ%-->
   <div align="center"> <font color="#993366" size="2">
     <% 
 	%>
     <!--strong>No Record Found</strong-->    
     </font> </div>
 	
-<!--é¸æ“‡å…¨éƒ¨,å­˜æª” -->
+<!--¿ï¾Ü¥ş³¡,¦sÀÉ -->
 
 <input name="SQLGLOBAL" type="hidden" value="<%=sqlGlobal%>">
 <input type="hidden" name="SWHERECOND" value="<%=SWHERECOND%>" maxlength="256" size="256">
@@ -1830,24 +1832,24 @@ catch (Exception e)
 <table border="1" cellSpacing="0" cellPadding="0" width="100%" align="center" bordercolorlight="#FFFFFF" bordercolordark="#B9BB99">
  <tr bgcolor="#CCCC99">
   <td colspan="3">     
-     <input name="button" tabindex='19' type=button onClick="this.value=check(this.form.ADDITEMS)" value='é¸æ“‡å…¨éƒ¨'>
+     <input name="button" tabindex='19' type=button onClick="this.value=check(this.form.ADDITEMS)" value='¿ï¾Ü¥ş³¡'>
      <font color="#336699" size="2">-----DETAIL you choosed to be saved-----------------------------------------------------------------------------------------------------------</font>
   </td>  
  </tr>
  <tr bgcolor="#CCCC99">
   <td colspan="3"> 
 <%
-int div1=0,div2=0;      //åšç‚ºé‹ç®—å…±æœ‰å¤šå°‘å€‹rowå’Œcolumnè¼¸å…¥æ¬„ä½çš„è®Šæ•¸
+int div1=0,div2=0;      //°µ¬°¹Bºâ¦@¦³¦h¤Ö­Órow©Mcolumn¿é¤JÄæ¦ìªºÅÜ¼Æ
 try
 {	
-	String a[][]=arrayIQCDocumentInputBean.getArray2DContent();//å–å¾—ç›®å‰é™£åˆ—å…§å®¹ 		    		                       		    		  	   
+	String a[][]=arrayIQCDocumentInputBean.getArray2DContent();//¨ú±o¥Ø«e°}¦C¤º®e 		    		                       		    		  	   
     if (a!=null) 
 	{		//out.println(a[0][0]+ " " +a[0][1]+" " +a[0][2]+" " +a[0][3]+" " +a[0][4]+" " +a[0][5]+" " +a[0][6]+"<BR>");	  
 		div1=a.length;
 		div2=a[0].length;				
 	    arrayIQCDocumentInputBean.setFieldName("ADDITEMS");
-		out.println(arrayIQCDocumentInputBean.getArray2DIQCString());  // ç”¨Item åŠItem Description ä½œç‚ºKey çš„Method
-		isModelSelected = "Y";	// è‹¥Model æ˜ç´°å…§æœ‰ä»»ä¸€ç­†è³‡æ–™,å‰‡ç‚º "Y" 	
+		out.println(arrayIQCDocumentInputBean.getArray2DIQCString());  // ¥ÎItem ¤ÎItem Description §@¬°Key ªºMethod
+		isModelSelected = "Y";	// ­YModel ©ú²Ó¤º¦³¥ô¤@µ§¸ê®Æ,«h¬° "Y" 	
 	}	//enf of a!=null if	
 } //end of try
 catch (Exception e)
@@ -1859,7 +1861,7 @@ catch (Exception e)
  </tr> 
  <tr bgcolor="#CCCC99">
    <td colspan="3">
-		  <INPUT name="button2" tabindex='20' TYPE="button" onClick='setSubmitDel("../jsp/TSIQCInspectLotInput.jsp?INSERT=Y")'  value='åˆªé™¤' >
+		  <INPUT name="button2" tabindex='20' TYPE="button" onClick='setSubmitDel("../jsp/TSIQCInspectLotInput.jsp?INSERT=Y")'  value='§R°£' >
 <% 
 if (isModelSelected =="Y" || isModelSelected.equals("Y")) 
 {
@@ -1867,7 +1869,7 @@ if (isModelSelected =="Y" || isModelSelected.equals("Y"))
 <font color='#336699' size='2'>-----CLICK checkbox and choice to delete------------------------------------------------------------------------------------------------------</font>		  
 <%
 }
-//  è¨­å®šArray åˆå§‹å…§å®¹_èµ· 
+//  ³]©wArray ªì©l¤º®e_°_ 
 %>
    </td>
  </tr>
@@ -1875,15 +1877,15 @@ if (isModelSelected =="Y" || isModelSelected.equals("Y"))
 <HR>
 <table width="100%" align="center" border="1" cellSpacing="0" cellPadding="0" bordercolorlight="#FFFFFF" bordercolordark="#B9BB99">
 	<tr bgcolor="#CCCC99">
- 		<td width="10%">è™•ç†äººå“¡</td><td width="30%"><%=UserName%></td>
- 		<td width="10%">è™•ç†æ—¥æœŸ</td><td width="20%"><% out.println(dateBean.getYearMonthDay()); %></td> 
-		<td width="10%">è™•ç†æ™‚é–“</td><td width="20%"><%out.println(dateBean.getHourMinuteSecond());%></td>  
+ 		<td width="10%">³B²z¤H­û</td><td width="30%"><%=UserName%></td>
+ 		<td width="10%">³B²z¤é´Á</td><td width="20%"><% out.println(dateBean.getYearMonthDay()); %></td> 
+		<td width="10%">³B²z®É¶¡</td><td width="20%"><%out.println(dateBean.getHourMinuteSecond());%></td>  
 	</tr>
 <%
 try
 {  
 	out.println("<tr bgcolor='#CCCC99'>");
- 	out.println("<td>åŸ·è¡Œå‹•ä½œ</td>");
+ 	out.println("<td>°õ¦æ°Ê§@</td>");
 
 	Statement statement=con.createStatement();
     ResultSet rs=statement.executeQuery("select x1.ACTIONID, x2.ACTIONNAME from ORADDMAN.TSWORKFLOW x1,ORADDMAN.TSWFACTION x2 WHERE FORMID='QC' and FROMSTATUSID='021' AND x1.ACTIONID=x2.ACTIONID and x1.ACTIONID <>'021' and  x1.LOCALE='886' order by 2");
@@ -1907,9 +1909,9 @@ try
 	rs.close();
 	statement.close();
 	
-	out.println("<INPUT name='button2' tabindex='20' TYPE='button' onClick='setSubmitSave("+'"'+"../jsp/TSIQCInspectLotMInsert.jsp?INSERT=Y"+'"'+")' value='Submit' ><INPUT TYPE='checkBox' NAME='SENDMAILOPTION' VALUE='YES' checked><span id='dv1'>éƒµä»¶é€šçŸ¥</span><br><font size=2 color=#ff0000>(è¨»:æœ‰é—œUSDé€€è²¨è«‹ACCEPTå¾Œå†é–‹å‡ºåº«å–®)</font></td>");   
-   	out.println("<td>æª¢é©—å–®ä½</td><td><font face='Arial'>"+userInspDeptID+"("+userInspDeptName+")"+"</font></td>");
-   	out.println("<td>æª¢é©—äººå“¡</td><td><font face='Arial'>"+userInspectorID+"("+userInspectorName+")"+"</font></td>");
+	out.println("<INPUT name='button2' tabindex='20' TYPE='button' onClick='setSubmitSave("+'"'+"../jsp/TSIQCInspectLotMInsert.jsp?INSERT=Y"+'"'+")' value='Submit' ><INPUT TYPE='checkBox' NAME='SENDMAILOPTION' VALUE='YES' checked><span id='dv1'>¶l¥ó³qª¾</span><br><font size=2 color=#ff0000>(µù:¦³ÃöUSD°h³f½ĞACCEPT«á¦A¶}¥X®w³æ)</font></td>");   
+   	out.println("<td>ÀËÅç³æ¦ì</td><td><font face='Arial'>"+userInspDeptID+"("+userInspDeptName+")"+"</font></td>");
+   	out.println("<td>ÀËÅç¤H­û</td><td><font face='Arial'>"+userInspectorID+"("+userInspectorName+")"+"</font></td>");
  	out.println("</tr>");
 }
 catch(Exception e)
@@ -1918,7 +1920,7 @@ catch(Exception e)
 }
 %>
 	<tr id="tr1" bgcolor="#99CC99"> 
-    	<td style="color:#FF0000">ä¸è‰¯åŸå› èªªæ˜:</td>
+    	<td style="color:#FF0000">¤£¨}­ì¦]»¡©ú:</td>
         <td colspan="5"><INPUT TYPE="TEXT"   NAME="NGREASON"   SIZE=100 maxlength="60" value="<%=NGREASON%>"></td>
     </tr>          
 	
@@ -1937,7 +1939,7 @@ catch(Exception e)
 <input type="hidden" name="IDCODEGET" value="<%=iDCodeGet%>"  size="5">
 <input type="hidden" name="CHOICEARRAY" value="<%=choiceArr%>"  size="5">
 </FORM>
-<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->
+<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 <script language="JavaScript" type="text/javascript" src="../wz_tooltip.js" ></script>

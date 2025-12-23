@@ -74,7 +74,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
         String salesAreaNo = "";
         String salesAreaName = "";
         String sql = "select SALES_AREA_NO,'('||SALES_AREA_NO||')'||SALES_AREA_NAME from ORADDMAN.TSSALES_AREA ";
-        String sWhere = "where SALES_AREA_NO > 0 and SALES_AREA_NO in ('002','004','005','006','008','009')";
+        String sWhere = "where SALES_AREA_NO > 0 and SALES_AREA_NO in ('002','003','004','005','006','008','009')";
         String sOrder = "Order by 1";
         Map<String, String> salesAreaMap = new LinkedHashMap<>();
         if (!Objects.equals(userRoles, "admin") || !userRoles.equals("admin")) {
@@ -141,6 +141,11 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                 tsck.setDetailHeaderColumns();
                 tsck.setDetailHeaderHtmlWidth();
                 break;
+            case TSCJ:
+                Tscj tscj = new Tscj();
+                tscj.setDetailHeaderColumns();
+                tscj.setDetailHeaderHtmlWidth();
+                break;
             case TSCTDA:
                 TsctDa tsctDa = new TsctDa();
                 tsctDa.setDetailHeaderColumns();
@@ -199,6 +204,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
             case TSCCSH:
                return "D4-017";
             case TSCK:
+            case TSCJ:
                 return "D4-013";
             case TSCTDA:
                 return "D4-015";
@@ -581,6 +587,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
     }
 
     private void setAndCheckInfo(Boolean isShippingFobOrderType, Boolean isSetSalesInfo) throws SQLException {
+        this.setDefaultShipToOrgId();
         switch (SalesArea.fromSalesNo(salesNo)) {
             case TSCCSH:
                 Tsccsh tsccsh = new Tsccsh();
@@ -598,6 +605,16 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                     tsck.setShippingFobOrderTypeInfo();
                 } else if (isSetSalesInfo) {
                     tsck.setShippingMethod();
+                    tsck.setExtraRuleInfo();
+                }
+                break;
+            case TSCJ:
+                Tscj tscj = new Tscj();
+                if (isShippingFobOrderType) {
+                    tscj.setShippingFobOrderTypeInfo();
+                    tscj.byCustNoSetOrderType();
+                } else if (isSetSalesInfo) {
+                    tscj.setShippingMethod();
                 }
                 break;
             case TSCTDA:
@@ -700,6 +717,9 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                 break;
             case TSCK:
                 salesAreaName = SalesArea.TSCK.name();
+                break;
+            case TSCJ:
+                salesAreaName = SalesArea.TSCJ.name();
                 break;
             case TSCTDA:
                 salesAreaName = SalesArea.TSCTDA.name();
@@ -816,14 +836,18 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                         modelNDto.setQty(qty);
                         break;
                     case SellingPrice:
-                        BigDecimal sellingPrice;
-                        if (rowCell instanceof NumberCell) {
-                            double raw = ((NumberCell) rowCell).getValue(); // 直接取數值
-                            sellingPrice = new BigDecimal(raw).setScale(5, RoundingMode.HALF_UP).stripTrailingZeros();
+                        if (StringUtils.isNullOrEmpty(content)) {
+                            modelNDto.setSellingPrice(content);
                         } else {
-                            sellingPrice = new BigDecimal(content).setScale(5, RoundingMode.HALF_UP).stripTrailingZeros();
+                            try {
+                                double raw = ((NumberCell) rowCell).getValue(); // 直接取數值
+                                BigDecimal sellingPrice = new BigDecimal(raw).setScale(5, RoundingMode.HALF_UP).stripTrailingZeros();
+                                modelNDto.setSellingPrice(sellingPrice.toPlainString());
+                            } catch (NumberFormatException e) {
+                                // 若輸入非數字，例如 "abc"，可視情況回傳空白或原字串
+                                modelNDto.setSellingPrice("");
+                            }
                         }
-                        modelNDto.setSellingPrice(sellingPrice.toPlainString());
                         break;
                     case CRD:
                         if (StringUtils.isNullOrEmpty(content)) {
@@ -1055,7 +1079,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
 
     public void deteleTscRfqUploadTemp(String salesNo, String uploadBy, String customerId, String customerPo, String groupByType, String shipToOrgId) throws SQLException {
         tscRfqUploadTemp().deleteTscRfqUploadTemp(conn, salesNo, uploadBy, customerId, customerPo, groupByType, shipToOrgId);
-        this.refreahDetailData(salesNo , uploadBy);
+        this.refreshDetailData(salesNo , uploadBy);
     }
 
     public void deteleAllTscRfqUploadTemp(String salesNo,String uploadBy) throws SQLException {
@@ -1063,7 +1087,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
         this.readTscRfqUploadTemp(salesNo, uploadBy, null, null, null, null);
     }
 
-    private void refreahDetailData(String salesNo, String uploadBy) throws SQLException {
+    private void refreshDetailData(String salesNo, String uploadBy) throws SQLException {
         this.readTscRfqUploadTemp(salesNo, uploadBy, null, null, null, null);
     }
     public void readTscRfqUploadTemp(String salesNo, String uploadBy, String customerNo, String customerPo, String groupByType, String shipToOrgId) throws SQLException {
@@ -1264,6 +1288,35 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
         return strArray;
     }
 
+    private void setDefaultShipToOrgId() throws SQLException {
+        String sql =" select case when upper(a.site_use_code)='BILL_TO' then 1 when upper(a.site_use_code)='SHIP_TO' then 2 else 3 end as segno, \n"+
+                " a.SITE_USE_CODE, a.PRIMARY_FLAG, a.SITE_USE_ID, loc.COUNTRY, loc.ADDRESS1, \n"+
+                " a.PAYMENT_TERM_ID, a.PAYMENT_TERM_NAME || '('||c.DESCRIPTION ||')' PAYMENT_TERM_NAME, a.SHIP_VIA, a.FOB_POINT, a.PRICE_LIST_ID, c.DESCRIPTION,nvl(d.CURRENCY_CODE,'') CURRENCY_CODE \n"+
+                " ,a.tax_code \n"+
+                " from ar_site_uses_v a,HZ_CUST_ACCT_SITES b, hz_party_sites party_site, hz_locations loc, RA_TERMS_VL c \n"+
+                " ,SO_PRICE_LISTS d \n"+
+                " where  a.ADDRESS_ID = b.cust_acct_site_id \n"+
+                " AND b.party_site_id = party_site.party_site_id \n"+
+                " AND loc.location_id = party_site.location_id \n"+
+                " and a.STATUS='A' \n"+
+                " and a.PRIMARY_FLAG='Y' \n"+
+                " and b.CUST_ACCOUNT_ID ='"+modelNDto.getCustId()+"' \n"+
+                " and a.PAYMENT_TERM_ID = c.TERM_ID(+) \n"+
+                " and a.PRICE_LIST_ID = d.PRICE_LIST_ID(+) \n"+
+                " order by case when upper(a.site_use_code)='BILL_TO' then 1 when upper(a.site_use_code)='SHIP_TO' then 2 else 3 end ";
+        Statement statement = conn.createStatement();
+        ResultSet rs = statement.executeQuery(sql);
+        while (rs.next())
+        {
+            if (StringUtils.isNullOrEmpty(modelNDto.getShipToOrgId()))  {
+                if (rs.getString("SITE_USE_CODE").equals("SHIP_TO")) {
+                    modelNDto.setShipToOrgId(rs.getString("SITE_USE_ID"));
+                }
+            }
+        }
+        rs.close();
+        statement.close();
+    }
     private String[] getShipToContactNameAndId(String customerId, String shipToOrgId) {
         String contactName = "";
         String contactId = "";

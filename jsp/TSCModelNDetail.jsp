@@ -139,9 +139,13 @@
                 minimumFractionDigits: 0, maximumFractionDigits: 3
             });
             } else if (('Selling Price' === detail.column) ) {
-                newCell.textContent = Number.parseFloat(detail.value).toLocaleString('en-US', {
-                    minimumFractionDigits: 0, maximumFractionDigits: 6
-                });
+                if (detail.value === null || detail.value === undefined || detail.value === "") {
+                    newCell.textContent = '';
+                } else {
+                    newCell.textContent = isNaN(detail.value) ? "": Number.parseFloat(detail.value).toLocaleString('en-US', {
+                        minimumFractionDigits: 0, maximumFractionDigits: 6
+                    });
+                }
             }
             else {
                 newCell.textContent = detail.value;
@@ -239,17 +243,17 @@
                             <table width="100%" border="0" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td bgcolor="#C6D1E6" width="15%" height="20" align="center"
-                                        style="border-color:#CAE1CF;border:insert;font-size:13px">
+                                        style="border-color: #CAE1CF;font-size:13px">
                                         <a href="../jsp/TSCModelNDetail.jsp"
                                            style="font-size:13px;text-decoration:none;">Pending Detail
                                         </a>
                                     </td>
                                     <td bgcolor="#CAE1CF" width="15%" align="center">
                                         <a href="../jsp/TSCModelN.jsp"
-                                           style="color:888888;font-size:13px;text-decoration:none;">Excel Upload
+                                           style="color:#888888;font-size:13px;text-decoration:none;">Excel Upload
                                         </a>
                                     </td>
-                                    <td width="70%" style="border-color:ffffff;">&nbsp;</td>
+                                    <td width="70%" style="border-color:#FFFFFF;">&nbsp;</td>
                                 </tr>
                             </table>
                         </td>
@@ -270,43 +274,6 @@
     <div id="salesAreaRow"
          style="display: flex; justify-content: space-between; padding-left: 4px; padding-right: 80px;">
     </div>
-<%--    <%--%>
-<%--        Map getSalesAreaMap = modelNCommonUtils.getSalesArea(con, UserRoles, UserName);--%>
-<%--        if (getSalesAreaMap.size() > 1) {--%>
-<%--            out.println("<select name='salesNo' id='options' class='detailSelect' tabindex='1'" +--%>
-<%--                        "onChange='setSalesNo(" + '"' + "../jsp/TSCModelNDetail.jsp" + '"' + ")'>");--%>
-<%--            out.println("<option value=All>請選擇</option>");--%>
-<%--        }--%>
-<%--        for (Iterator it = getSalesAreaMap.entrySet().iterator(); it.hasNext(); ) {--%>
-<%--            Map.Entry entry = (Map.Entry) it.next();--%>
-<%--            String s1 = (String) entry.getKey();--%>
-<%--            String s2 = (String) entry.getValue();--%>
-<%--            if (getSalesAreaMap.size() > 1) {--%>
-<%--                if (s1.equals(salesNo)) {--%>
-<%--                    out.println("<option value='" + s1 + "' selected>" + s2);--%>
-<%--                } else {--%>
-<%--                    out.println("<option value='" + s1 + "'>" + s2);--%>
-<%--                }--%>
-<%--            } else {--%>
-<%--                out.println("<td name='salesNo' value ='" + s1 + "'>" +--%>
-<%--                                "<input type='text' class='detailSelect detailSelectedOne' value='" + s2 + "' readonly>" +--%>
-<%--                            "</td>");--%>
-<%--                salesNo = StringUtils.isNullOrEmpty(salesNo) ? s1 : salesNo;--%>
-<%--            }--%>
-<%--        }--%>
-<%--        if (getSalesAreaMap.size() > 1) {--%>
-<%--            out.println("</select>");--%>
-<%--        }--%>
-
-<%--        if (!StringUtils.isNullOrEmpty(salesNo) && !salesNo.equals("All")) {--%>
-<%--            modelNCommonUtils.setDetailHtmlColumns(salesNo);--%>
-<%--            modelNCommonUtils.readTscRfqUploadTemp(salesNo, uploadBy, customerNo, customerPo, groupByType, shipToOrgId);--%>
-<%--    %>--%>
-<%--        <div style="display: flex; gap: 5px;">--%>
-<%--            <div class="roundedByNo">CustNo</div>--%>
-<%--            <div class="roundedByPo">CustPo</div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
     <%
         if (!StringUtils.isNullOrEmpty(salesNo) && !salesNo.equals("All")) {
             modelNCommonUtils.setDetailHtmlColumns(salesNo);

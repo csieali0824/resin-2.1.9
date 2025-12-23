@@ -691,7 +691,7 @@ function setCRD(objLine)
 		cs1.execute();
 		cs1.close();
 
-		sql = " select a.by_code,a.dp_code,a.currency_code,b.sales_area_no,CASE WHEN a.currency_code='USD' AND a.erp_customer_id=7147 THEN b.SHIP_TO_SITE_ID1 ELSE  b.SHIP_TO_SITE_ID END as SHIP_TO_SITE_ID,'('||c.sales_area_no||')'||c.sales_area_name as SALESAREA,"+
+		sql = " select a.by_code,a.dp_code,a.currency_code,b.sales_area_no,CASE WHEN a.currency_code='USD' AND a.erp_customer_id=7147 THEN b.SHIP_TO_SITE_ID1 WHEN a.erp_customer_id in (1071293,1071295) and a.DP_CODE in ('DE58','DE68','DE78') THEN b.SHIP_TO_SITE_ID1 ELSE  b.SHIP_TO_SITE_ID END as SHIP_TO_SITE_ID,'('||c.sales_area_no||')'||c.sales_area_name as SALESAREA,"+
               "'('||d.customer_number||')'||d.customer_name as CUSTNAME,d.ATTRIBUTE2 market_group,d.customer_name,c.PAR_ORG_ID"+
 			  ",nvl(b.MAIL_TO_CUST_FLAG,'N') MAIL_TO_CUST_FLAG"+ //add by Peggy 20140721
 			  ",nvl(b.MIN_ORDER_FLAG,'N') MIN_ORDER_FLAG,nvl(b.MIN_ORDER_AMT,0) MIN_ORDER_AMT,nvl(b.MIN_ORDER_CURR,'') MIN_ORDER_CURR"+ //add by Peggy 20140801
@@ -715,6 +715,7 @@ function setCRD(objLine)
 			RFQTYPE = "EDI";
 			BY_CODE=rs.getString("BY_CODE");
 			DP_CODE=rs.getString("DP_CODE");
+			DP_CODE = ("DE68".equals(DP_CODE) || "DE78".equals(DP_CODE)) ? "DE58" : DP_CODE;
 			SHIPTOID = rs.getString("ship_to_site_id");
 			SALESAREA = rs.getString("SALESAREA");
 			CUSTNAME = rs.getString("CUSTNAME");

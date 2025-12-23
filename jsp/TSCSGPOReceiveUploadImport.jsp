@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8" import="java.sql.*"%>
+<%@ page contentType="text/html; charset=utf-8" import="java.sql.*"  pageEncoding="utf-8"%>
 <%@ page import="java.sql.*"%>
 <%@ page import="java.util.*"%>
 <%@ page import="jxl.*"%>
@@ -13,12 +13,14 @@
 <!--=================================-->
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
 <%@ page import="SalesDRQPageHeaderBean" %>
+<%@ page import="com.mysql.jdbc.StringUtils" %>
 <jsp:useBean id="dateBean" scope="page" class="DateBean"/>
 <jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
 <jsp:useBean id="mySmartUpload" scope="page" class="com.jspsmart.upload.SmartUpload" />
 <jsp:useBean id="POReceivingBean" scope="session" class="Array2DimensionInputBean"/>
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <script language="JavaScript" type="text/JavaScript">
 window.onbeforeunload = bunload; 
 function bunload()  
@@ -69,6 +71,8 @@ function setClose()
 <title>Excel Upload</title>
 </head>
 <%
+request.setCharacterEncoding("UTF-8");
+response.setContentType("text/html; charset=utf-8");
 String ORGCODE = request.getParameter("ORGCODE");
 if (ORGCODE==null || ORGCODE.equals("--")) ORGCODE="";
 String VENDORID = request.getParameter("VENDORID");
@@ -77,8 +81,10 @@ String RECEIVE_DATE = request.getParameter("RECEIVE_DATE");
 if (RECEIVE_DATE==null) RECEIVE_DATE=dateBean.getYearMonthDay();
 String ACTION = request.getParameter("ACTION");
 if (ACTION ==null) ACTION="";
-String sql ="",strErr="";
-String VENDOR_NAME = "",CURRENCY_CODE="",ITEMDESC="",LOT="",RECEIVE_QTY="",DATE_CODE="",PO_NO="",CURR="",PRE_DATE_CODE="",CUST_PARTNO="",VENDOR_SITE_CODE="",remarks="",no_fifo_reason="",ITEMNAME="",no_fifo_flag="",SO_NO="",CartonNo="",delivery_type="",NW="",GW="",DC_YYWW="";
+String sql ="",strErr="", flowCodeErr = "";
+String VENDOR_NAME = "",CURRENCY_CODE="",ITEMDESC="",LOT="",RECEIVE_QTY="",DATE_CODE="",PO_NO="",CURR="",
+	    PRE_DATE_CODE="",CUST_PARTNO="",VENDOR_SITE_CODE="",remarks="",no_fifo_reason="",ITEMNAME="",
+		no_fifo_flag="",SO_NO="",CartonNo="",delivery_type="",NW="",GW="",DC_YYWW="", flowCode = "", uploadFlowCode="";
 String strDate=dateBean.getYearMonthDay();
 String strDateTime = dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond();   
 int colCnt = 12,start_row=5,i_code=0,chk_carton_no=0;
@@ -115,19 +121,19 @@ catch(Exception e)
 <input type="hidden" name="VENDORID" value="<%=VENDORID%>">
 <TABLE width="100%" border="1" cellspacing="0" cellpadding="0">
 	<TR>
-		<TD height="29" width="20%" align="center" bgcolor="#FFFFCC"><font style="font-family:'細明體';font-size:12px">&nbsp;供應商&nbsp;</font></TD>
+		<TD height="29" width="20%" align="center" bgcolor="#FFFFCC"><font style="font-family:'細明體';font-size:12px">供應商</font></TD>
 		<TD><font style="color:#000099;font-family:Arial;font-size:12px">&nbsp;<strong><%=VENDOR_NAME%></strong></font></TD>
 	</TR>
 	<TR>
-		<TD height="29" width="20%" align="center" bgcolor="#FFFFCC"><font style="font-family:'細明體';font-size:12px">&nbsp;收貨日期&nbsp;</font></TD>
+		<TD height="29" width="20%" align="center" bgcolor="#FFFFCC"><font style="font-family:'細明體';font-size:12px">收貨日期</font></TD>
 		<TD><input type="TEXT" name="RECEIVE_DATE" value="<%=RECEIVE_DATE%>"  style="font-family: Tahoma,Georgia;" size="10" onKeyPress="return (event.keyCode >= 48 && event.keyCode <=57)"readonly ><A href='javascript:void(0)' onclick='gfPop.fPopCalendar(document.SUBFORM.RECEIVE_DATE);return false;'><img name='popcal' border='0' src='../image/calbtn.gif'></A></TD>
 	</TR>	
 	<TR>
-		<TD height="29" width="20%" align="center" bgcolor="#FFFFCC"><font style="font-family:'細明體';font-size:12px">&nbsp;請選擇上檔傳案&nbsp;</font></TD>
+		<TD height="29" width="20%" align="center" bgcolor="#FFFFCC"><font style="font-family:'細明體';font-size:12px">請選擇上檔傳案</font></TD>
 		<TD>&nbsp;<INPUT TYPE="FILE" NAME="UPLOADFILE" size="60" style="font-family:ARIAL;font-size:12px"></TD>
 	</TR>
 	<TR>
-		<TD height="25" align="center" bgcolor="#FFFFCC"><font style="font-family:'細明體';font-size:12px">&nbsp;上傳範本&nbsp;</font></TD>
+		<TD height="25" align="center" bgcolor="#FFFFCC"><font style="font-family:'細明體';font-size:12px">上傳範本</font></TD>
 		<TD><A HREF="../jsp/samplefiles/H12-001_SampleFile.xls"><font face="ARIAL" size="-1">Download Sample File</font></A></TD>
 	</TR>
 	<TR>
@@ -146,7 +152,7 @@ catch(Exception e)
 		StringBuilder sb = new StringBuilder();
 		try
 		{
-			mySmartUpload.initialize(pageContext); 
+			mySmartUpload.initialize(pageContext);
 			mySmartUpload.upload();
 			com.jspsmart.upload.File upload_file=mySmartUpload.getFiles().getFile(0);
 			String uploadFile_name=upload_file.getFileName();
@@ -158,7 +164,7 @@ catch(Exception e)
 			jxl.Sheet sht = wb.getSheet(0);
 			Hashtable hashtb = new Hashtable();
 			Hashtable hashtb1 = new Hashtable();
-			
+
 			for (int i = start_row ; i <sht.getRows(); i++) 
 			{
 				//品名
@@ -229,22 +235,22 @@ catch(Exception e)
 					}	
 				}
 
-				//CARTON NO,add by Peggy 20200416
+				// 箱數
 				jxl.Cell wcCartonNo = sht.getCell(4, i);  
 				CartonNo = (wcCartonNo.getContents()).trim();
 				if (CartonNo== null) CartonNo = "";
 				
-				//訂單號碼
+				// M/O單號
 				jxl.Cell wcSO_NO= sht.getCell(5, i);  
 				SO_NO = (wcSO_NO.getContents()).trim();
 				if (SO_NO== null || SO_NO.equals("")) SO_NO = "N/A";  
 				
-				//CUST PART NO
+				//客户品號 P/N
 				jxl.Cell wcCUSTPARTNO = sht.getCell(6, i);  
 				CUST_PARTNO = (wcCUSTPARTNO.getContents()).trim();
 				if (CUST_PARTNO== null || CUST_PARTNO.equals("")) CUST_PARTNO = "N/A";
 								
-				//PO
+				//採購單號 PO
 				jxl.Cell wcPO = sht.getCell(7, i);  
 				PO_NO = (wcPO.getContents()).trim();
 				if (PO_NO== null) PO_NO = "";
@@ -286,7 +292,7 @@ catch(Exception e)
 					}
 				}
 				
-				//CURR
+				//交易類別
 				jxl.Cell wcCURR = sht.getCell(8, i);  
 				CURR = (wcCURR.getContents()).trim();
 				if (CURR== null) CURR = "";
@@ -299,7 +305,7 @@ catch(Exception e)
 					throw new Exception("第"+(i+1)+"列:"+CURR+"與供應商幣別"+CURRENCY_CODE+"不符!!");
 				}	
 				
-				//NW
+				// 淨重(KGS)
 				jxl.Cell wcNW = sht.getCell(9, i);  
 				NW = (wcNW.getContents()).trim();
 				if (NW== null) NW = "";
@@ -309,19 +315,15 @@ catch(Exception e)
 				//}	
 	
 				
-				//GW
+				// 毛重(KGS)
 				jxl.Cell wcGW = sht.getCell(10, i);  
 				GW = (wcGW.getContents()).trim();
 				if (GW== null) GW = "";
-				//if (GW.equals(""))
-				//{
-				//	throw new Exception("第"+i+"列:GW不可空白!!");
-				//}									
-				
-				//remarks
+
 				try
 				{
-					jxl.Cell wcREMARKS = sht.getCell(13, i);  
+					// 備註
+					jxl.Cell wcREMARKS = sht.getCell(13, i);
 					remarks = (wcREMARKS.getContents()).trim();
 					if (remarks== null) remarks = "";
 				}
@@ -329,9 +331,10 @@ catch(Exception e)
 				{
 					remarks = "";
 				}
-				
+
 				try
 				{
+					// 不符先進先出
 					jxl.Cell wcNOFIFOREASON = sht.getCell(14, i);  
 					no_fifo_reason = (wcNOFIFOREASON.getContents()).trim();
 					if (no_fifo_reason== null) no_fifo_reason = "";
@@ -341,10 +344,10 @@ catch(Exception e)
 					no_fifo_reason = "";
 				}				
 				
-			
+
 				try
 				{
-					//add by Peggy 20220721,DC_YYWW
+					// DCYYWW
 					jxl.Cell wcDC_YYWW = sht.getCell(15, i);  
 					DC_YYWW = (wcDC_YYWW.getContents()).trim();
 					if (DC_YYWW== null) DC_YYWW = "";
@@ -375,7 +378,7 @@ catch(Exception e)
 								
 				try
 				{
-					//add by Peggy 20200424
+					//廠商直出
 					jxl.Cell wcDeliveryType = sht.getCell(16, i);  
 					delivery_type = (wcDeliveryType.getContents()).trim();
 					if (delivery_type== null) delivery_type = "";
@@ -421,7 +424,18 @@ catch(Exception e)
 					{
 						throw new Exception("第"+(i+1)+"列:箱號必須為純整數");
 					}
-				}				
+				}
+
+				try
+				{
+					// FLOW CODE
+					jxl.Cell wcFlowCode = sht.getCell(17, i);
+					uploadFlowCode = (wcFlowCode.getContents()).trim();
+					uploadFlowCode = (StringUtils.isNullOrEmpty(uploadFlowCode) || "F00".equals(uploadFlowCode) )? "" : uploadFlowCode;
+				} catch(Exception e) {
+					e.printStackTrace();
+					System.out.println("flowCodeErr="+e.getMessage());
+				}
 	
 								
 				sql = " SELECT a.PO_HEADER_ID,"+
@@ -438,7 +452,8 @@ catch(Exception e)
 					  " C.QUANTITY_CANCELLED,"+
 					  " C.QUANTITY-NVL(C.QUANTITY_CANCELLED,0)-NVL(C.QUANTITY_RECEIVED,0) UNRECEIVE_QTY,"+
 					  " C.SHIP_TO_ORGANIZATION_ID,"+
-					  " E.INVENTORY_ITEM_ID ITEM_ID"+
+					  " E.INVENTORY_ITEM_ID ITEM_ID,"+
+					  " APPS.TSCC_GET_FLOW_CODE(E.INVENTORY_ITEM_ID) as FLOW_CODE \n" +
 					  " FROM PO.PO_HEADERS_ALL A,"+
 					  " PO.PO_LINES_ALL B,"+
 					  " PO.PO_LINE_LOCATIONS_ALL C,"+
@@ -499,7 +514,16 @@ catch(Exception e)
 				while (rs.next())
 				{
 					ITEMNAME = rs.getString("ITEM_NAME");
-					
+					flowCode = StringUtils.isNullOrEmpty(rs.getString("FLOW_CODE")) ? "" : rs.getString("FLOW_CODE");
+
+					if(!StringUtils.isNullOrEmpty(uploadFlowCode)) {
+						if (!flowCode.equals(uploadFlowCode)) {
+							flowCodeErr = "第" + (i + 1) + "列: "+
+									"upload FlowCode(" + uploadFlowCode + ") not match ERP Item FlowCode(" + flowCode + ")";
+							throw new Exception(flowCodeErr);
+						}
+					}
+
 					//add by Peggy 20221209
 					strErr="";
 					if (DC_YYWW.equals(""))
@@ -590,6 +614,18 @@ catch(Exception e)
 					//out.println(QTY);
 					throw new Exception("第"+(i+1)+"列:採購單號:"+PO_NO + "  型號:"+ITEMDESC + "  超收"+((float)(QTY/1000))+"K");
 				}
+
+//todo
+//				if(!StringUtils.isNullOrEmpty(upLoadFlowCode)) {
+//					if (flowCode != upLoadFlowCode) {
+//						flowCodeErr = "第" + (i + 1) + "列: "+
+//								"upload FlowCode(" + upLoadFlowCode + ") not match ERP Item FlowCode(" + flowCode + ")";
+//					}
+//					System.out.println("flowCodeErr="+flowCodeErr);
+//						if (!flowCodeErr.equals("")) {
+//							throw new Exception(flowCodeErr);
+//						}
+//				}
 				
 				//檢查當天收貨D/C是否有符FIFO,若無,需填入原因
 				/*

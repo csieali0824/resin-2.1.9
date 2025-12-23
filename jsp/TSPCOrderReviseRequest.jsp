@@ -994,7 +994,16 @@
 				}
 				else if (PLANTCODE.equals("011"))
 				{
-					sql= sql.replace("?01"," OHA.ORG_ID =41 AND OLA.PACKING_INSTRUCTIONS='E' AND TSC_INV_CATEGORY(OLA.INVENTORY_ITEM_ID,43,1100000003) IN ('PMD','PRD','PRD-Subcon')");
+					String condiotion = "((OHA.ORG_ID =906 OR (OHA.ORG_ID=41 AND SUBSTR(OHA.ORDER_NUMBER,1,4) IN ('1142','1214')) AND OLA.PACKING_INSTRUCTIONS='T') \n" +
+							"            OR ((OHA.ORG_ID=41 OR OHA.ORG_ID =906) \n" +
+							"                AND OLA.PACKING_INSTRUCTIONS = \n" +
+							"                    CASE\n" +
+							"                        WHEN tsc_tew_pmd_coo(OLA.inventory_item_id) = 'Y'\n" +
+							"                        THEN 'T' ELSE 'E' END\n" +
+							"                )\n" +
+							"         )\n" +
+							"    AND TSC_INV_CATEGORY(OLA.INVENTORY_ITEM_ID,43,1100000003)IN ('PMD', 'PRD', 'PRD-Subcon')";
+					sql= sql.replace("?01", condiotion);
 				}
 				sql += " ORDER BY OLA.SCHEDULE_SHIP_DATE,OHA.ORDER_NUMBER,TO_NUMBER(OLA.LINE_NUMBER||'.'||OLA.SHIPMENT_NUMBER),NVL(HIS.SCHEDULE_SHIP_DATE,OLA.SCHEDULE_SHIP_DATE)";
 				//out.println(sql);

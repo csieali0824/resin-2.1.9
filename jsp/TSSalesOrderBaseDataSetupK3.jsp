@@ -194,7 +194,7 @@ catch(Exception e)
 		}
 		else if (strKind.toUpperCase().equals("ADDR"))  //add by Peggy 20190625
 		{
-			sql = "SELECT ac.customer_number,ac.customer_name,tkale.erp_ship_to_location_id, loc.address1 ,tkale.cust_eng_short_name,case when tkale.ACTIVE_FLAG ='A' THEN 'Active' else 'Inactive' end as active_flag"+
+			sql = "SELECT tkale.addr_code,ac.customer_number,ac.customer_name,tkale.erp_ship_to_location_id, loc.address1 ,tkale.cust_eng_short_name,case when tkale.ACTIVE_FLAG ='A' THEN 'Active' else 'Inactive' end as active_flag"+
                   " FROM hz_cust_acct_sites acct_site,"+
                   " hz_party_sites party_site,"+
                   " hz_locations loc,"+
@@ -210,7 +210,7 @@ catch(Exception e)
                   " AND to_char(site.location)=to_char(tkale.erp_ship_to_location_id)"+
 				  " order by case when instr(tkale.addr_code,'-')>0 then substr(tkale.addr_code,1,instr(tkale.addr_code,'-')-1) else tkale.addr_code end,"+
                   " case when instr(tkale.addr_code,'-')>0 then  to_number(substr(tkale.addr_code,instr(tkale.addr_code,'-')+1)) else 0 end";
-			oneDArray=new String[]{"ERP Customer Number","ERP Customer Name","ERP Ship to Location","ERP Ship to Address","Cust Eng Short Name","Active Flag"};
+			oneDArray=new String[]{"K3 Addr Code","ERP Customer Number","ERP Customer Name","ERP Ship to Location","ERP Ship to Address","Cust Eng Short Name","Active Flag"};
 		}		
 		else
 		{
@@ -241,18 +241,19 @@ catch(Exception e)
 	</tr>		
 	<tr>
 		<td width="5%">&nbsp;</td>
-		<td width="90%"><INPUT TYPE="button" align="middle"  value='Add New'  style="font-family:ARIAL" onClick='setAdd("../jsp/TSSalesOrderBaseDataModifyK3.jsp?TKIND=<%=strKind%>&STATUS=NEW")' <%=((UserName.equals("CASEY") || UserName.equals("SUNNY_LU") || UserName.equals("MARS.WANG"))?"":"disabled")%>></td>
+		<td width="90%"><INPUT TYPE="button" align="middle"  value='Add New'  style="font-family:ARIAL" onClick='setAdd("../jsp/TSSalesOrderBaseDataModifyK3.jsp?TKIND=<%=strKind%>&STATUS=NEW")' <%=((UserName.equals("CASEY") || UserName.equals("SUNNY_LU") || UserName.equals("PEGGY_CHEN")|| UserName.equals("MARS.WANG"))?"":"disabled")%>></td>
 		<td width="5%">&nbsp;</td>
 	</tr>
 	<tr>
 		<td width="5%">&nbsp;</td>
 		<td width="90%">
 		<%
+			System.out.println(sql);
 		Statement statement=con.createStatement(); 
 		ResultSet rs=statement.executeQuery(sql);	
 		ResultSetMetaData md=rs.getMetaData();
 		while (rs.next()) 
-		{ 
+		{
 			if (icnt==0)
 			{
 			%>
@@ -273,16 +274,13 @@ catch(Exception e)
 			
 			for (int j =1 ; j <= md.getColumnCount() ; j++)
 			{
-				if (strKind.toUpperCase().equals("ERP"))
+				if (strKind.toUpperCase().equals("ERP")) 
 				{
-					if (j==1){%><tr><td align="center"><%=(icnt+1)%></td><td align="center"><%=((UserName.equals("CASEY") || UserName.equals("SUNNY_LU") || UserName.equals("MARS.WANG"))?"<img border='0' src='images/updateicon_enabled.gif' height='18' title='modify' onClick='setUpdate("+'"'+"../jsp/TSSalesOrderBaseDataModifyK3.jsp?TKIND="+strKind+"&STATUS=UPD&CODE="+rs.getString(j)+"&CODE1="+rs.getString(3)+'"'+")'>":"")%></td><%}
- 				}
-				else if (strKind.toUpperCase().equals("ADDR")) {
-					if (j==1){%><tr><td align="center"><%=(icnt+1)%></td><td align="center"><%=((UserName.equals("CASEY") || UserName.equals("SUNNY_LU") || UserName.equals("MARS.WANG"))?"<img border='0' src='images/updateicon_enabled.gif' height='18' title='modify' onClick='setUpdate("+'"'+"../jsp/TSSalesOrderBaseDataModifyK3.jsp?TKIND="+strKind+"&STATUS=UPD&CUSTENGNAME="+rs.getString(5)+"&CODE1="+rs.getString(3)+'"'+")'>":"")%></td><%}
+					if (j==1){%><tr><td align="center"><%=(icnt+1)%></td><td align="center"><%=((UserName.equals("CASEY") || UserName.equals("SUNNY_LU") || UserName.equals("PEGGY_CHEN")|| UserName.equals("MARS.WANG"))?"<img border='0' src='images/updateicon_enabled.gif' height='18' title='modify' onClick='setUpdate("+'"'+"../jsp/TSSalesOrderBaseDataModifyK3.jsp?TKIND="+strKind+"&STATUS=UPD&CODE="+rs.getString(j)+"&CODE1="+rs.getString(3)+'"'+")'>":"")%></td><%}
 				}
 				else
 				{
-					if (j==1){%><tr><td align="center"><%=(icnt+1)%></td><td align="center"><%=((UserName.equals("CASEY") || UserName.equals("SUNNY_LU") || UserName.equals("MARS.WANG"))?"<img border='0' src='images/updateicon_enabled.gif' height='18' title='modify' onClick='setUpdate("+'"'+"../jsp/TSSalesOrderBaseDataModifyK3.jsp?TKIND="+strKind+"&STATUS=UPD&CODE="+rs.getString(j)+'"'+")'>":"")%></td><%}
+					if (j==1){%><tr><td align="center"><%=(icnt+1)%></td><td align="center"><%=((UserName.equals("CASEY") || UserName.equals("SUNNY_LU") || UserName.equals("PEGGY_CHEN")|| UserName.equals("MARS.WANG"))?"<img border='0' src='images/updateicon_enabled.gif' height='18' title='modify' onClick='setUpdate("+'"'+"../jsp/TSSalesOrderBaseDataModifyK3.jsp?TKIND="+strKind+"&STATUS=UPD&CODE="+rs.getString(j)+'"'+")'>":"")%></td><%}
 				}					
 			%>
 				

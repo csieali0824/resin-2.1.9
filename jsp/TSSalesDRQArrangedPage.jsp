@@ -1203,10 +1203,15 @@ catch(Exception e)
 				 ",TSC_INV_Category(a.inventory_item_id, 43, 23)  tsc_package"+ //add by Peggy 20170412
 				 ",nvl(a.order_type_id,a.order_type_id1) order_type_id"+  //add by Peggy 20180207
 			     ",tsc_get_china_to_tw_days("+
-				 "    case when a.assign_manufact in ('011') and a.ITEM_SEGMENT1 not in ('X03G-MFBRFTS2307000000') and a.item_description in (\n" +
-				 "            'TSM4925DCS RLG','TSM4953DCS RLG','TSM4936DCS RLG','TSM2302CX RFG','TSM2305CX RFG','TSM2306CX RFG','TSM2307CX RFG','TSM2308CX RFG','TSM2312CX RFG',\n" +
-				 "            'TSM2314CX RFG','TSM2318CX RFG','TSM2323CX RFG','TSM2328CX RFG','TSM9409CS RLG','TSM3443CX6 RFG','TSM3481CX6 RFG','TSM3457CX6 RFG','TSM3911DCX6 RFG')\n" +
-				 "        then 'T' else (SELECT ALNAME FROM ORADDMAN.TSPROD_MANUFACTORY WHERE MANUFACTORY_NO=a.assign_manufact) end \n" +
+				 "    case when a.assign_manufact in ('011') and a.rfq_type<>'3' and tsc_tew_pmd_coo(a.inventory_item_id) = 'Y'\n" +
+				 "    	   then 'T' \n" +
+			     "         WHEN  a.assign_manufact IN ('011') and a.rfq_type = 3 \n" +
+				 "				THEN \n" +
+				 "					(SELECT ALNAME \n" +
+				 "						FROM ORADDMAN.TSPROD_MANUFACTORY \n" +
+				 "					WHERE MANUFACTORY_NO = a.assign_manufact) \n" +
+			     "         when a.assign_manufact in ('011') and '"+tsAreaNo+"' = '008' and a.item_description in('TQM2N7002KCU RFG', 'TQM2N7002KCX RFG') then 'T' \n" +
+				 "         else (SELECT ALNAME FROM ORADDMAN.TSPROD_MANUFACTORY WHERE MANUFACTORY_NO=a.assign_manufact) end \n" +
 				 "		,e.order_num,a.inventory_item_id,a.assign_manufact,a.tscustomerid,to_char(sysdate,'yyyymmdd'),a.CUST_PO_NUMBER)* CASE"+
 				 "  WHEN a.direct_ship_to_cust =1 and a.assign_manufact='002' THEN 0 ELSE 1 END TOTW_DAYS"+
 	             ",count(1) over (partition by a.dndocno) line_cnt"+ //add by Peggy 20191025
@@ -1221,7 +1226,7 @@ catch(Exception e)
 				 ",moq.moq/1000 moq"+ //add by Peggy 20211206
 				 ",nvl(moq.vendor_moq,moq.moq)/1000 vendor_moq"+ //add by Peggy 20211206
 				 ",a.END_CUSTOMER"+ //add by Peggy 20240220
-                 " FROM (select a.*,d.SHIP_TO_ORG ,nvl(a.order_type_id,d.order_type_id) order_type_id1,d.tscustomerid,d.tsareano from  oraddman.tsdelivery_notice_detail a,oraddman.tsdelivery_notice d where  a.dndocno =d.dndocno ) a"+
+                 " FROM (select a.*,d.rfq_type, d.SHIP_TO_ORG ,nvl(a.order_type_id,d.order_type_id) order_type_id1,d.tscustomerid,d.tsareano from  oraddman.tsdelivery_notice_detail a,oraddman.tsdelivery_notice d where  a.dndocno =d.dndocno ) a"+
 				 ", ap.ap_supplier_sites_all c"+
 				 //",oraddman.tsdelivery_notice d"+
 		    	 ",oraddman.tsarea_ordercls e"+
@@ -1244,8 +1249,8 @@ catch(Exception e)
 				 //" and a.dndocno =d.dndocno	";	
 		if (UserRoles.indexOf("admin")<0) sqlEst += " and a.ASSIGN_MANUFACT = '"+userProdCenterNo+"'";					 
 		if (!TSC_PACKAGE.equals("")) sqlEst += " and tsc_inv_category(a.inventory_item_id,43,23) = '"+TSC_PACKAGE+"'";	//add by Peggy 20210318	
-		sqlEst += " order by a.LINE_NO"; 
-//		out.println(sqlEst);
+		sqlEst += " order by a.LINE_NO";
+//			System.out.println(sqlEst);
        	Statement statement=con.createStatement();
        	ResultSet rs=statement.executeQuery(sqlEst);	   
 	   	while (rs.next())
@@ -1323,7 +1328,7 @@ catch(Exception e)
 			//	{
 			//		out.println(factoryDate+"</font>"); 
 			//	} 
-	      	//}				
+	      	//}
 			out.println("<input name='FACTORYDATE_"+rs.getString("LINE_NO")+"'"+" type='text' size='8' value='"+(request.getParameter("FACTORYDATE_"+rs.getString("LINE_NO"))==null || rs.getString("LINE_NO").equals(lineNo)?rs.getString("FTACPDATE").substring(0,8):request.getParameter("FACTORYDATE_"+rs.getString("LINE_NO")))+"' style='font-size:11px;font-family: Tahoma,Georgia' onKeyPress='return (event.keyCode >=48 && event.keyCode <=57)'  onBlur='chkDate("+'"'+rs.getString("LINE_NO")+'"'+","+'"'+dnDocNo+'"'+")' "+(checkflag?"":" ")+"><input type='hidden' name='REQUESTDATE_"+rs.getString("line_no")+"' value='"+rs.getString("REQUEST_DATE").substring(0,8)+"'>");
 			out.println("<A href='javascript:void(0)' onclick='gfPop.fPopCalendar(document.DISPLAYREPAIR.FACTORYDATE_"+rs.getString("LINE_NO")+");return false;'><img name='imgpc_"+rs.getString("LINE_NO")+"' border='0' src='../image/calbtn.gif'></A>");	   
 			out.println((rs.getInt("totw_days")>0?"<font color='#0000ff'><¦^T></font>":""));

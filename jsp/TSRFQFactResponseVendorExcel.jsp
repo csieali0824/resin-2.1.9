@@ -86,20 +86,22 @@
 					" ,case when rq.TOTW_DAYS>0 and rq.assign_manufact in ('005','008') and  to_char(TO_DATE(rq.FACTORY_SSD,'YYYY/MM/DD'),'D') <>3 then to_char(next_day(TO_DATE(rq.FACTORY_SSD,'YYYY/MM/DD')-case when  to_char(TO_DATE(rq.FACTORY_SSD,'YYYY/MM/DD'),'D')<3 then 7 else 0 end,3),'yyyy/mm/dd') else rq.FACTORY_SSD end FACTORY_NEW_SSD"+  //add by Peggy 20220308
 					" from (select to_char(sysdate,'yyyy/mm/dd') today,case when a.tscustomerid=5274 then ar.CUSTOMER_SNAME||'('||nvl(nvl(end_cust.CUSTOMER_SNAME,end_cust.customer_name),b.end_customer)||')' else a.customer end as customer,a.dndocno,b.item_description,b.quantity,b.uom,to_char(to_date(substr(b.request_date,1,8),'yyyymmdd'),'yyyy/mm/dd') ssd"+
 					" ,case when a.tscustomerid=269290 then b.remark|| case when length(nvl(b.remark,''))>0 then ',' else '' end ||'走蘇州物流園' else b.remark end as remarks"+
-					" ,b.item_segment1 item_name,tsc_inv_category(b.inventory_item_id,43,23) tsc_package,tsc_inv_category(b.inventory_item_id,43,21) tsc_family"+ //add by 20200325
+					" ,b.item_segment1 item_name,APPS.TSCC_GET_FLOW_CODE(b.inventory_item_id) as flow_code,tsc_inv_category(b.inventory_item_id,43,23) tsc_package,tsc_inv_category(b.inventory_item_id,43,21) tsc_family"+ //add by 20200325
 					//",tsc_get_china_to_tw_days(null,NVL(decode(b.orderno,'N/A',null,b.orderno),(SELECT order_num from oraddman.tsarea_ordercls oto where oto.sarea_no=a.tsareano and oto.otype_id=nvl(b.ORDER_TYPE_ID,a.ORDER_TYPE_ID))),b.inventory_item_id,b.assign_manufact,a.tscustomerid,null) * CASE WHEN b.direct_ship_to_cust =1  and b.assign_manufact='002' THEN 0 ELSE 1 END as totw_days"+ //add by Peggy 20200325
 					",tsc_get_china_to_tw_days(\n" +
-					"case when b.assign_manufact in ('011') and b.item_description in (\n" +
-					"            'TSM4925DCS RLG','TSM4953DCS RLG','TSM4936DCS RLG','TSM2302CX RFG','TSM2305CX RFG','TSM2306CX RFG','TSM2307CX RFG','TSM2308CX RFG','TSM2312CX RFG',\n" +
-					"            'TSM2314CX RFG','TSM2318CX RFG','TSM2323CX RFG','TSM2328CX RFG','TSM9409CS RLG','TSM3443CX6 RFG','TSM3481CX6 RFG','TSM3457CX6 RFG','TSM3911DCX6 RFG')\n" +
-					"        then 'T' else (SELECT ALNAME FROM ORADDMAN.TSPROD_MANUFACTORY WHERE MANUFACTORY_NO=b.assign_manufact) end \n" +
+					"case when b.assign_manufact in ('011') and a.rfq_type<>'3'\n" +
+					"     and tsc_tew_pmd_coo(b.inventory_item_id) = 'Y' then 'T' \n" +
+					"     when b.assign_manufact IN ('011') and a.rfq_type=3 then (SELECT ALNAME FROM ORADDMAN.TSPROD_MANUFACTORY WHERE MANUFACTORY_NO=b.assign_manufact)\n" +
+					"     when b.assign_manufact in ('011') and '"+salesAreaNo+"' = '008' and b.item_description in('TQM2N7002KCU RFG', 'TQM2N7002KCX RFG') then 'T' \n" +
+					"     else (SELECT ALNAME FROM ORADDMAN.TSPROD_MANUFACTORY WHERE MANUFACTORY_NO=b.assign_manufact) end \n" +
 					",NVL(decode(b.orderno,'N/A',null,b.orderno),(SELECT order_num from oraddman.tsarea_ordercls oto where oto.sarea_no=a.tsareano and oto.otype_id=nvl(b.ORDER_TYPE_ID,a.ORDER_TYPE_ID))),b.inventory_item_id,b.assign_manufact,a.tscustomerid,case when b.SASCODATE<>'N/A' then substr(b.SASCODATE,1,8) else to_char(sysdate,'yyyymmdd') end,nvl(b.CUST_PO_NUMBER,a.CUST_PO)) * CASE WHEN b.direct_ship_to_cust =1  and b.assign_manufact='002' THEN 0 ELSE 1 END as totw_days"+ //add by Peggy 20200916
 					",to_char(to_date(b.creation_date,'yyyymmddhh24miss'),'yyyy/mm/dd hh24:mi') creation_date"+//add by Peggy 20200326
 					",to_char(to_date(substr(b.request_date,1,8),'yyyymmdd')-tsc_get_china_to_tw_days(\n" +
-					"case when b.assign_manufact in ('011') and b.item_description in (\n" +
-					"            'TSM4925DCS RLG','TSM4953DCS RLG','TSM4936DCS RLG','TSM2302CX RFG','TSM2305CX RFG','TSM2306CX RFG','TSM2307CX RFG','TSM2308CX RFG','TSM2312CX RFG',\n" +
-					"            'TSM2314CX RFG','TSM2318CX RFG','TSM2323CX RFG','TSM2328CX RFG','TSM9409CS RLG','TSM3443CX6 RFG','TSM3481CX6 RFG','TSM3457CX6 RFG','TSM3911DCX6 RFG')\n" +
-					"        then 'T' else (SELECT ALNAME FROM ORADDMAN.TSPROD_MANUFACTORY WHERE MANUFACTORY_NO=b.assign_manufact) end \n" +
+					"case when b.assign_manufact in ('011') and a.rfq_type<>'3'\n" +
+					"     and tsc_tew_pmd_coo(b.inventory_item_id) = 'Y' then 'T' \n" +
+					"     when b.assign_manufact IN ('011') and a.rfq_type=3 then (SELECT ALNAME FROM ORADDMAN.TSPROD_MANUFACTORY WHERE MANUFACTORY_NO=b.assign_manufact)\n" +
+					"     when b.assign_manufact in ('011') and '"+salesAreaNo+"' = '008' and b.item_description in('TQM2N7002KCU RFG', 'TQM2N7002KCX RFG') then 'T' \n" +
+					"     else (SELECT ALNAME FROM ORADDMAN.TSPROD_MANUFACTORY WHERE MANUFACTORY_NO=b.assign_manufact) end \n" +
 					",NVL(decode(b.orderno,'N/A',null,b.orderno),(SELECT order_num from oraddman.tsarea_ordercls oto where oto.sarea_no=a.tsareano and oto.otype_id=nvl(b.ORDER_TYPE_ID,a.ORDER_TYPE_ID))),b.inventory_item_id,b.assign_manufact,a.tscustomerid,case when b.SASCODATE<>'N/A' then substr(b.SASCODATE,1,8) else to_char(sysdate,'yyyymmdd') end,nvl(b.CUST_PO_NUMBER,a.CUST_PO)) * CASE WHEN b.direct_ship_to_cust =1  and b.assign_manufact='002' THEN 0 ELSE 1 END,'yyyy/mm/dd') as factory_ssd"+
 					",moq.moq/1000 moq"+ //add by Peggy 20211206
 					",nvl(moq.vendor_moq,moq.moq)/1000 vendor_moq"+ //add by Peggy 20211206
@@ -157,7 +159,7 @@
 				{
 					col=0;row=0;
 
-					if (prodManufactory.equals("005"))
+					if (prodManufactory.equals("005") || prodManufactory.equals("008") || prodManufactory.equals("011"))
 					{
 						//詢問日
 						ws.addCell(new jxl.write.Label(col, row, "詢問日" , ACenterBLB));
@@ -182,6 +184,11 @@
 						//品名
 						ws.addCell(new jxl.write.Label(col, row, "品名" , ACenterBLB));
 						ws.setColumnView(col,25);
+						col++;
+
+						//flow code
+						ws.addCell(new jxl.write.Label(col, row, "Flow Code" , ACenterBLB));
+						ws.setColumnView(col,10);
 						col++;
 
 						//數量
@@ -307,7 +314,7 @@
 					}
 				}
 
-				if (prodManufactory.equals("005"))
+				if (prodManufactory.equals("005") || prodManufactory.equals("008") || prodManufactory.equals("011"))
 				{
 					col=0;
 					ws.addCell(new jxl.write.Label(col, row, rs.getString("TODAY") , ACenterL));
@@ -319,6 +326,9 @@
 					ws.addCell(new jxl.write.Label(col, row, rs.getString("DNDOCNO"), ACenterL));
 					col++;
 					ws.addCell(new jxl.write.Label(col, row, rs.getString("ITEM_DESCRIPTION") , ALeftL));
+					col++;
+					// flow code
+					ws.addCell(new jxl.write.Label(col, row, rs.getString("FLOW_CODE") , ALeftL));
 					col++;
 					ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("QUANTITY")).doubleValue() , ARightL));
 					col++;

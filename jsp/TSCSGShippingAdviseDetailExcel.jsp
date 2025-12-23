@@ -143,6 +143,7 @@ try
           " tsa.SO_LINE_NUMBER,"+
           " tsa.ITEM_NO,"+
           " tsa.item_desc,"+
+		  " APPS.TSCC_GET_FLOW_CODE(tsa.inventory_item_id) as flow_code, \n"+
           " (tsa.ship_qty/1000) ship_qty,"+
           " to_char(tsa.PC_SCHEDULE_SHIP_DATE,'yyyy/mm/dd') PC_SCHEDULE_SHIP_DATE,"+
           " decode(tsa.TO_TW,'N','否','Y','是',to_tw) TO_TW,"+
@@ -296,7 +297,12 @@ try
 			//型號
 			ws.addCell(new jxl.write.Label(col, row, "型號" , ACenterBLB));
 			ws.setColumnView(col,25);	
-			col++;	
+			col++;
+
+			//flow code
+			ws.addCell(new jxl.write.Label(col, row, "Flow Code" , ACenterBLB));
+			ws.setColumnView(col,10);
+			col++;
 
 			//出貨量(K)
 			ws.addCell(new jxl.write.Label(col, row, "出貨量(K)" , ACenterBLB));
@@ -424,7 +430,9 @@ try
 		ws.addCell(new jxl.write.Label(col, row, rs.getString("SO_LINE_NUMBER"), ACenterL));
 		col++;	
 		ws.addCell(new jxl.write.Label(col, row, rs.getString("ITEM_DESC"), ALeftL));
-		col++;				
+		col++;
+		ws.addCell(new jxl.write.Label(col, row, rs.getString("FLOW_CODE"), ALeftL));
+		col++;
 		if (rs.getString("order_qty")==null)
 		{
 			ws.addCell(new jxl.write.Label(col, row,"", ALeftL));

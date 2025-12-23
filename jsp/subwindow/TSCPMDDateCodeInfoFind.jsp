@@ -5,6 +5,11 @@
 <!--=================================-->
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
 <%@ page import="SalesDRQPageHeaderBean" %>
+<%@ page import="com.mysql.jdbc.StringUtils" %>
+<%@ page import="java.util.HashMap" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.regex.Matcher" %>
+<%@ page import="java.util.regex.Pattern" %>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
 <STYLE TYPE='text/css'>  
@@ -34,7 +39,7 @@ if (LNO==null) LNO="";
 <head>
 <script language="JavaScript" type="text/JavaScript">
 function sendToMainWindow(DC_YYWW,iCnt)
-{ 
+{
 	if (iCnt<0)
 	{
 		if (window.opener.document.MYFORM.ITEMDESC.value === 'TQL821CSV33-01 RLG'
@@ -125,13 +130,33 @@ try
 		  
 	sql =" select tsc_get_calendar_week(D_DATE,null),count(1) over (partition by 1) ROW_CNT, to_char(D_DATE,'yyyy/mm/dd') D_DATE"+
 	     " from table(TSC_GET_ITEM_DATE_INFO(?,?))  WHERE D_TYPE=?";
+
 	state1 = con.prepareStatement(sql);
 	state1.setString(1,(ITEMNAME.equals("X06G-LIPRFTS1970500000")?DC:DC.replace("_","")));
 	state1.setString(2,ITEMNAME);
 	state1.setString(3,"MAKE");
 	rs1=state1.executeQuery();
 	if (rs1.next()) {
-		dc_yyww = rs1.getString(1).substring(rs1.getString(1).length() - 4);
+		if (!StringUtils.isNullOrEmpty(DC)) {
+			// 建立代碼對應表
+			Map codeMap = new HashMap();
+			codeMap.put("P", "2606");
+			codeMap.put("Q", "2610");
+			codeMap.put("V", "2632");
+			codeMap.put("Y", "2645");
+
+			// 建立正規表示式
+			Pattern pattern = Pattern.compile("^6([PQVY])[1-9A-Z]$");
+			Matcher matcher = pattern.matcher(DC);
+
+			if (matcher.matches()) {
+				// 擷取第二碼 (P/Q/V/Y)
+				String key = matcher.group(1);
+				dc_yyww = codeMap.getOrDefault(key, "").toString();
+			} else {
+				dc_yyww = rs1.getString(1).substring(rs1.getString(1).length() - 4);
+			}
+		}
 		queryCount = rs1.getInt(2);
 		if (prodGroup.equals("SSD") && dcExample.equals("YML")) {
 			String date = rs1.getString(3);
@@ -160,7 +185,9 @@ try
 	}
 	rs1.close();
 	state1.close();
-	out.println("<script type=\"text/javascript\">sendToMainWindow("+'"'+dc_yyww+'"'+","+queryCount+")</script>"); 
+	System.out.println("dc_yyww="+dc_yyww);
+	System.out.println("queryCount="+queryCount);
+	out.println("<script type=\"text/javascript\">sendToMainWindow("+'"'+dc_yyww+'"'+","+queryCount+")</script>");
 }
 catch(Exception e)
 {

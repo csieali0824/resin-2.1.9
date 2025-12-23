@@ -476,6 +476,7 @@ try
 				  ",a.remarks"+
 				  ",a.SOURCE_SO_QTY orig_so_qty"+
 				  ",f.description orig_item_desc"+
+				  ",APPS.TSCC_GET_FLOW_CODE(a.inventory_item_id)as flow_code \n" +
 				  ",to_char(CASE WHEN a.packing_instructions IN ('Y','T') AND (SUBSTR(a.so_no,1,4) IN ('1131','1141','1121') OR (SUBSTR(a.so_no,1,4) IN ('1214') and nvl(a.TO_TW_DAYS,0)<>0)) THEN nvl(TO_DATE(TSC_GET_YEW_TOTW_ORDER_INFO(a.so_line_id,'TSC','SSD',NULL),'YYYY/MM/DD'),a.source_ssd-nvl(a.TO_TW_DAYS,0))"+ 
 				  "  ELSE a.source_ssd-nvl(a.TO_TW_DAYS,0) END ,'yyyy/mm/dd') AS  orig_schedule_ship_date"+ 
 				  ",case when a.sales_group='TSCH-HK' then case when instr(a.SOURCE_CUSTOMER_PO,'(')>0  then substr(a.SOURCE_CUSTOMER_PO,instr(a.SOURCE_CUSTOMER_PO,'(')+1,instr(a.SOURCE_CUSTOMER_PO,')')-instr(a.SOURCE_CUSTOMER_PO,'(')-1) else a.SOURCE_CUSTOMER_PO end "+ 
@@ -533,7 +534,7 @@ try
 				  " and a.SOURCE_SHIP_FROM_ORG_ID=f.organization_id"+
 				  " and ((g.region_sales_head_person='"+rs1.getString(2)+"' and g.sales_head_approve_date is null)"+
                   "     or (g.HQ_SALES_HEAD_PERSON='"+rs1.getString(2)+"' and g.sales_head_approve_result='A' and g.hq_sales_head_approve_date is null))";
-			//out.println(sql);	  
+			//out.println(sql);
 			Statement statement=con.createStatement(); 
 			ResultSet rs=statement.executeQuery(sql);
 			String sheetname [] = wwb.getSheetNames();
@@ -593,8 +594,16 @@ try
 					ws.mergeCells(col, row, col, row); 
 					ws.addCell(new jxl.write.Label(col, row, "Original Item Desc" , ACenterBL));
 					ws.setColumnView(col,22);	
-					col++;	
-	
+					col++;
+
+					//Flow Code
+					if (!PLANTCODE.equals("002")) {
+						ws.mergeCells(col, row, col, row);
+						ws.addCell(new jxl.write.Label(col, row, "Flow Code", ACenterBL));
+						ws.setColumnView(col, 8);
+						col++;
+					}
+
 					//package
 					ws.mergeCells(col, row, col, row); 
 					ws.addCell(new jxl.write.Label(col, row, "TSC Package" , ACenterBL));
@@ -689,7 +698,14 @@ try
 					col++;					
 					ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1); 	
 					ws.addCell(new jxl.write.Label(col, row, rs.getString("orig_item_desc") , ALeftL));
-					col++;	
+					col++;
+
+					if (!PLANTCODE.equals("002")) {
+						// flow code
+						ws.mergeCells(col, row, col, row + rs.getInt("line_cnt") - 1);
+						ws.addCell(new jxl.write.Label(col, row, rs.getString("flow_code"), ALeftL));
+						col++;
+					}
 					ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1); 	
 					ws.addCell(new jxl.write.Label(col, row, rs.getString("tsc_package") , ALeftL));
 					col++;	
@@ -864,6 +880,7 @@ try
 				  ",NVL(a.SOURCE_SO_QTY,d.ordered_quantity) orig_so_qty"+
 				  ",a.SOURCE_ITEM_DESC orig_item_desc"+
 				  ",xx.segment1  orig_item_name"+ //add by Peggy 20200206
+				  ",APPS.TSCC_GET_FLOW_CODE(a.inventory_item_id)as flow_code \n" +
 				  //",to_char(a.SOURCE_SSD,'yyyy/mm/dd') orig_schedule_ship_date"+
 				  //",to_char(a.SOURCE_SSD-NVL(f.TRANSPORTATION_DAYS,0),'yyyy/mm/dd') orig_schedule_ship_date"+
 				  //",to_char(a.SOURCE_SSD-case when nvl(d.ATTRIBUTE19,'xx')='1' then 0 else NVL(f.TRANSPORTATION_DAYS,0) end,'yyyy/mm/dd')  orig_schedule_ship_date"+
@@ -1326,7 +1343,15 @@ try
 						ws.mergeCells(col, row, col, row); 
 						ws.addCell(new jxl.write.Label(col, row, "Original Item Desc" , ACenterBL));
 						ws.setColumnView(col,25);	
-						col++;	
+						col++;
+
+						if (!PLANTCODE.equals("002")) {
+							//欄位: Flow Code
+							ws.mergeCells(col, row, col, row);
+							ws.addCell(new jxl.write.Label(col, row, "Flow Code", ACenterBL));
+							ws.setColumnView(col, 15);
+							col++;
+						}
 		
 						//WAFER料號
 						if (PLANTCODE.equals("002")) //add by Peggy 20210427
@@ -1559,7 +1584,14 @@ try
 						//ws.mergeCells(col, row, col, row+1); 
 						ws.addCell(new jxl.write.Label(col, row, "Original Item Desc" , ACenterBL));
 						ws.setColumnView(col,20);	
-						col++;	
+						col++;
+
+						if (!PLANTCODE.equals("002")) {
+							//Flow Code
+							ws.addCell(new jxl.write.Label(col, row, "Flow Code", ACenterBL));
+							ws.setColumnView(col, 8);
+							col++;
+						}
 							
 						//yew,add by Peggy 20180412 
 						if (((UserRoles.indexOf("MPC_User")>=0 || UserRoles.indexOf("MPC_003")>=0)  && UserRoles.indexOf("Sale,")<0) && PLANTCODE.equals("002"))
@@ -1976,7 +2008,14 @@ try
 						col++;	
 						ws.mergeCells(col, row, col, row+rs.getInt("line_cnt")-1); 	
 						ws.addCell(new jxl.write.Label(col, row, rs.getString("orig_item_desc") , ALeftL));
-						col++;	
+						col++;
+
+						if (!PLANTCODE.equals("002")) {
+							// flow code
+							ws.mergeCells(col, row, col, row + rs.getInt("line_cnt") - 1);
+							ws.addCell(new jxl.write.Label(col, row, rs.getString("flow_code"), ALeftL));
+							col++;
+						}
 						//WAFER料號
 						if (PLANTCODE.equals("002")) //add by Peggy 20210427
 						{
@@ -2215,7 +2254,13 @@ try
 						ws.addCell(new jxl.write.Label(col, row, rs.getString("line_no") , (rs.getInt("partial_cnt")>1?ALeftLB:ALeftL)));
 						col++;	
 						ws.addCell(new jxl.write.Label(col, row, rs.getString("orig_item_desc") , (rs.getInt("partial_cnt")>1?ALeftLB:ALeftL)));
-						col++;	
+						col++;
+
+						if (!PLANTCODE.equals("002")) {
+							// flow code
+							ws.addCell(new jxl.write.Label(col, row, rs.getString("flow_code"), (rs.getInt("partial_cnt") > 1 ? ALeftLB : ALeftL)));
+							col++;
+						}
 						//yew,add by Peggy 20180412 
 						if (((UserRoles.indexOf("MPC_User")>=0 || UserRoles.indexOf("MPC_003")>=0)  && UserRoles.indexOf("Sale,")<0) && PLANTCODE.equals("002"))
 						{
@@ -2736,10 +2781,11 @@ try
 							//message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("sofia@ts.com.tw"));
 						}		
 						else if (SALES_REGION.equals("SAMPLE"))
-						{	
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("jenny.liao@ts.com.tw"));
-							//message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("judy_cho@ts.com.tw"));
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("demi.kao@ts.com.tw"));
+						{
+							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("edward.chien@ts.com.tw"));
+							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("jason.lin@ts.com.tw"));
+							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("zoe.kuan@ts.com.tw"));
+							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("janice.lin@ts.com.tw"));
 						}	
 					}							
 				}
@@ -2831,7 +2877,7 @@ try
 				strContent = "Request Notification,<p>Please login at:<a href="+'"'+strProgram+'"'+">"+strUrl+"</a> to confirm order revise.<p>"+
 							 "Include the following customer list in this request..<br>"+V_CUST_LIST;
 				
-				message.setHeader("Subject", MimeUtility.encodeText((ACTTYPE.equals("REMINDER")?"Reminder-":"")+"工廠已回覆申請改單通知"+remarks, "UTF-8", null));	
+				message.setHeader("Subject", MimeUtility.encodeText((ACTTYPE.equals("REMINDER")?"Reminder-":"")+"工廠已回覆申請改單通知"+remarks, "UTF-8", null));
 				javax.mail.internet.MimeMultipart mp = new javax.mail.internet.MimeMultipart();
 				javax.mail.internet.MimeBodyPart mbp = new javax.mail.internet.MimeBodyPart();
 				mbp.setContent(strContent, "text/html;charset=UTF-8");

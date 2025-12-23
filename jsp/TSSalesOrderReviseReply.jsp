@@ -22,7 +22,8 @@
 <%@ page import="SalesDRQPageHeaderBean" %>
 <%@ page import="DateBean,ComboBoxBean"%>
 <%@ page import="Array2DimensionInputBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
+	<%@ page import="com.mysql.jdbc.StringUtils" %>
+	<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
 <jsp:useBean id="dateBean" scope="page" class="DateBean"/>
 <jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
 <jsp:useBean id="FactoryCFMBean" scope="session" class="Array2DimensionInputBean"/>
@@ -394,7 +395,7 @@ int rowcnt=0, show_maxcnt=250,chkline=0;
 <div id='alpha' class='hidden' style='width:0%;height:0;position:absolute;top:0;left:0;background:#000;filter:alpha(opacity=30);-moz-opacity:0.3;z-index:0;'></div>
 <TABLE width="100%" border='1' bordercolorlight='#426193' bordercolordark='#ffffff' cellPadding='1' cellspacing='0' bgcolor="#DAF0FC">
 	<tr>
-		<td width="5%" align="right">Plant Code：</td>
+		<td width="5%" align="right">Plant Code:</td>
 		<td width="5%">
 		<%
 		try
@@ -426,7 +427,7 @@ int rowcnt=0, show_maxcnt=250,chkline=0;
 		}		
 		%>
 		</td>
-		<td width="4%" align="right">ORG：</td>
+		<td width="4%" align="right">ORG:</td>
 		<td width="4%">
 		<%
 		try
@@ -450,7 +451,7 @@ int rowcnt=0, show_maxcnt=250,chkline=0;
 		} 				
 		%>
 		</td>
-		<td width="6%" align="right">Sales Group：</td>
+		<td width="6%" align="right">Sales Group:</td>
 		<td width="6%">
 		<%
 		try
@@ -479,7 +480,7 @@ int rowcnt=0, show_maxcnt=250,chkline=0;
 		} 	
 		%>	
 		</td>
-		<td width="5%" align="right">Customer：</td>
+		<td width="5%" align="right">Customer:</td>
 		<td width="9%" colspan="3">
 		<%
 		try
@@ -513,7 +514,7 @@ int rowcnt=0, show_maxcnt=250,chkline=0;
 		</td>
 	</tr>
 	<tr>
-		<td width="6%" align="right">Item Desc：</td> 
+		<td width="6%" align="right">Item Desc:</td>
 		<td width="10%">
 		<%
 		try
@@ -542,11 +543,11 @@ int rowcnt=0, show_maxcnt=250,chkline=0;
 		} 	
 		%>		
 		</td>
-		<td width="3%" align="right">MO#：</td> 
+		<td width="3%" align="right">MO#:</td>
 		<td width="6%"><input type="text" name="MONO" value="<%=MONO%>" style="font-family:Tahoma,Georgia;font-size:11px" size="10"></td>
-		<td width="6%"align="right">Request No：</td>
+		<td width="6%"align="right">Request No:</td>
 		<td width="6%"><input type="text" name="REQUESTNO" value="<%=REQUESTNO%>" style="font-family:Tahoma,Georgia;font-size:11px" size="14"></td>		
-		<td width="6%"align="right">Request Date：</td>
+		<td width="6%"align="right">Request Date:</td>
 		<td width="6%">
 		<%
 		try
@@ -633,6 +634,7 @@ try
 		  ",a.SOURCE_SO_QTY orig_so_qty"+
 		  //",f.description orig_item_desc"+
           ",(select f.description  from inv.mtl_system_items_b f where  a.SOURCE_ITEM_ID=f.inventory_item_id  and a.SOURCE_SHIP_FROM_ORG_ID=f.organization_id) orig_item_desc"+
+		  ",APPS.TSCC_GET_FLOW_CODE(a.inventory_item_id)as flow_code"+
 		  ",to_char(CASE WHEN a.packing_instructions IN ('Y','T') AND (SUBSTR(a.so_no,1,4) IN ('1131','1141','1121') OR (SUBSTR(a.so_no,1,4) IN ('1214') and nvl(a.TO_TW_DAYS,0)<>0)) and instr(NVL(a.remarks,' '),'NEW MO')=0 THEN TO_DATE(TSC_GET_YEW_TOTW_ORDER_INFO(a.so_line_id,'TSC','SSD',NULL),'YYYYMMDD')"+ //modify by Peggy 20201102 delta 1214 totw
 		  //"  ELSE a.source_ssd END ,'yyyymmdd') AS  orig_schedule_ship_date"+
 		  "  ELSE a.source_ssd-nvl(a.TO_TW_DAYS,0) END ,'yyyymmdd') AS  orig_schedule_ship_date"+ //回T依工廠SSD為準,MODIFY BY PEGGY 20220511
@@ -765,7 +767,7 @@ try
 		<td rowspan="2" width="30" align="center">Seq No</td>
 		<td rowspan="2" width="70" align="center">Request No</td>
 		<td rowspan="2" width="50" align="center">Plant Code </td>
-		<td colspan="8" width="600" align="center">Order Original Detail </td>
+		<td colspan="9" width="600" align="center">Order Original Detail </td>
 		<td width="200" style="background-color:#66CCCC;color:#000000" colspan="4" align="center">Factory Confirm Detail </td>
 		<td width="500" style="background-color:#D1E0D3;color:#000000" colspan="12" align="center">Sales Revise Detail </td>
 	</tr>
@@ -774,8 +776,9 @@ try
 		<td width="80" style="background-color:#51874E;color:#FFFFFF;" align="center">Customer</td>
 		<td width="80" style="background-color:#51874E;color:#FFFFFF;" align="center">MO#</td>
 		<td width="30" style="background-color:#51874E;color:#FFFFFF;" align="center">Line#</td>	
-		<td width="150" style="background-color:#51874E;color:#FFFFFF;" align="center">Original Item Desc </td>	
-		<td width="90" style="background-color:#51874E;color:#FFFFFF;" align="center">TSC Package </td>	
+		<td width="150" style="background-color:#51874E;color:#FFFFFF;" align="center">Original Item Desc </td>
+		<td width="30" style="background-color:#51874E;color:#FFFFFF;" align="center">Flow Code</td>
+		<td width="90" style="background-color:#51874E;color:#FFFFFF;" align="center">TSC Package </td>
 		<td width="50" style="background-color:#51874E;color:#FFFFFF;" align="center">Original Qty </td>	
 		<td width="60" style="background-color:#51874E;color:#FFFFFF;" align="center">Original SSD </td>	
 		<td width="60" align="center" style="background-color:#66CCCC;color:#000000">Factory CFM Qty</td>
@@ -844,6 +847,7 @@ try
 		<td align="center" rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("so_no")%><%=(rs.getInt("TO_TW_DAYS")==0?"":"<br><font color='#ff0000'><回T></font>")%></td>
 		<td rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("line_no")%></td>
 		<td rowspan="<%=rs.getString("line_cnt")%>" onMouseOver='this.T_ABOVE=false;this.T_WIDTH=100;this.T_OPACITY=80;return escape("<%=rs.getString("created_by")%>")'><%=rs.getString("orig_item_desc")%></td>
+		<td rowspan="<%=rs.getString("line_cnt")%>"><%=StringUtils.isNullOrEmpty(rs.getString("flow_code"))? "" : rs.getString("flow_code")%></td>
 		<td rowspan="<%=rs.getString("line_cnt")%>"><%=rs.getString("tsc_package")%></td>
 		<td rowspan="<%=rs.getString("line_cnt")%>"><input type="text" name="orig_qty_<%=so_line_id%>" value="<%=rs.getString("orig_so_qty")%>" style="border-bottom:none;border-left:none;border-right:none;border-top:none;font-family: Tahoma,Georgia; font-size:10px;text-align:right" size="5" readonly></td>
 		<td align="center" rowspan="<%=rs.getString("line_cnt")%>"><%=(rs.getString("orig_schedule_ship_date")==null?"&nbsp;":rs.getString("orig_schedule_ship_date"))%></td>

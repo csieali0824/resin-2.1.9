@@ -1,5 +1,6 @@
 package modelN.dao.impl;
 
+import com.mysql.jdbc.StringUtils;
 import modelN.dto.DetailDto;
 import modelN.dto.ModelNDto;
 
@@ -30,7 +31,7 @@ public class TscRfqUploadTempImpl implements TscRfqUploadTempDao {
                 "a.cust_item_name, a.qty, a.selling_price, a.crd, a.request_date as ssd, b.PRIMARY_UOM_CODE uom,a.crd, a.factory,\n" +
                 "a.shipping_method,a.fob, a.remarks, d.OTYPE_ID as order_type_id, d.ORDER_NUM order_type, a.line_type, \n" +
                 "UTL_I18N.UNESCAPE_REFERENCE(a.customer_po_line_number) customer_po_line_number,e.customer_number end_customer_number,\n" +
-                "a.end_customer, a.quote_number, a.temp_id, nvl(a.ship_to_org_id,0) ship_to_org_id, a.bi_region, a.org_so_line_id, a.groupby_type, \n" +
+                "a.end_customer, a.quote_number, a.temp_id, a.ship_to_org_id, a.bi_region, a.org_so_line_id, a.groupby_type, \n" +
                 "(select count(1) from oraddman.tsc_rfq_upload_temp c \n" +
                 "  where c.create_flag='N' \n" +
                 "   and c.salesareano=a.salesareano \n" +
@@ -89,11 +90,10 @@ public class TscRfqUploadTempImpl implements TscRfqUploadTempDao {
             detailDto.setCustomerPoLineNumber(rs.getString("customer_po_line_number"));
             detailDto.setRowCount(rs.getString("rowcnt"));
             detailDto.setEndCustomerNumber(rs.getString("end_customer_number"));
-            detailDto.setShipToOrgId(rs.getString("ship_to_org_id"));
-//            detailDto.setEndCustId(rs.getString("end_customer_id"));
+            detailDto.setShipToOrgId(StringUtils.isNullOrEmpty(rs.getString("ship_to_org_id")) ? "" : rs.getString("ship_to_org_id"));
             detailDto.setEndCustomer(rs.getString("end_customer"));
             detailDto.setQuoteNumber(rs.getString("quote_number"));
-            detailDto.setTempId(rs.getString("temp_id"));
+            detailDto.setTempId(StringUtils.isNullOrEmpty(rs.getString("temp_id")) ? "" : rs.getString("temp_id"));
             detailDto.setBiRegion(rs.getString("bi_region"));
             detailDto.setUploadDate(rs.getString("upload_date"));
             detailDto.setUploadBy(rs.getString("upload_by"));
