@@ -61,7 +61,7 @@
     throw new RuntimeException(e);
     }
 
-    if (!tsccOrderToRfq.errList.isEmpty()) { // todo 測事先把 ! 移除， 之後需還原，為了顯示error畫面
+    if (!tsccOrderToRfq.errList.isEmpty()) { // todo 測試先把 ! 移除， 之後需還原，為了顯示error畫面
 %>
         <script>
             $(document).ready(function () {

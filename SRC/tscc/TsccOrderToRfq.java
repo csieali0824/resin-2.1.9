@@ -79,13 +79,13 @@ public class TsccOrderToRfq {
                 String column = getHeaderColumns()[i];
                 switch (DetailColumn.settingDetailColumn(column, i)) {
                     case CustomerName:
-                        keyValueMap.put(column, tsccOrderToRfqDto.getSupplyCustomerName()); //todo 待和雄哥討論 getTsccCustomerName
+                        keyValueMap.put(column, tsccOrderToRfqDto.getSupplyCustomerName());
                         break;
                     case RFQType:
                         keyValueMap.put(column, "NORMAL");
                         break;
                     case CustomerPO:
-                        keyValueMap.put(column, tsccOrderToRfqDto.getCustPoNumber());//todo 待和雄哥討論 getCustPoNumber
+                        keyValueMap.put(column, tsccOrderToRfqDto.getCustPoNumber());
                         break;
                     case TSC_PN:
                         keyValueMap.put(column, tsccOrderToRfqDto.getItemDesc());
