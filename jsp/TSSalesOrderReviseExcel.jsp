@@ -2766,7 +2766,7 @@ try
 						else if (SALES_REGION.equals("TSCR-ROW"))
 						{
 							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("alvin.lin@ts.com.tw"));
-							message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("lisa.chen@ts.com.tw"));
+							message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("priya.thakur@tscind.in"));
 						}							
 						else if (SALES_REGION.equals("TSCT-DA"))
 						{	

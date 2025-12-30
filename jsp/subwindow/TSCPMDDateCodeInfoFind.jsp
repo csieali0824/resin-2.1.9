@@ -12,10 +12,10 @@
 <%@ page import="java.util.regex.Pattern" %>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<STYLE TYPE='text/css'>  
+<STYLE TYPE='text/css'>
 BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 12px }
-  P         { font-family: Tahoma,Georgia; color: #000000; font-size: 12px } 
-  TD        { font-family: Tahoma,Georgia;font-size: 12px ;word-break :break-all}  
+  P         { font-family: Tahoma,Georgia; color: #000000; font-size: 12px }
+  TD        { font-family: Tahoma,Georgia;font-size: 12px ;word-break :break-all}
   TEXTAREA  { font-family: Tahoma,Georgia; font-size: 11px }
   A         { text-decoration: underline }
   A:link    { color: #003399; text-decoration: underline }
@@ -74,7 +74,7 @@ function sendToMainWindow(DC_YYWW,iCnt)
 </script>
 <title>Page for choose Item dc yyww</title>
 </head>
-<body >  
+<body >
 <FORM METHOD="post" ACTION="TSCPMDDateCodeInfoFind.jsp" NAME="SITEFORM">
 <input type="hidden" name="ITEMNAME" value="<%=ITEMNAME%>">
 <input type="hidden" name="DC" value="<%=DC%>">
@@ -121,44 +121,27 @@ try
 	}
 	rs1.close();
 	state1.close();
-	
+
 	//out.println(queryCount);
 	if (queryCount<0)
 	{
-		out.println("<script type=\"text/javascript\">sendToMainWindow("+'"'+""+'"'+","+queryCount+")</script>"); 
+		out.println("<script type=\"text/javascript\">sendToMainWindow("+'"'+""+'"'+","+queryCount+")</script>");
 	}
-		  
+
 	sql =" select tsc_get_calendar_week(D_DATE,null),count(1) over (partition by 1) ROW_CNT, to_char(D_DATE,'yyyy/mm/dd') D_DATE"+
-	     " from table(TSC_GET_ITEM_DATE_INFO(?,?))  WHERE D_TYPE=?";
+	     " from table(TSC_GET_ITEM_DATE_INFO_NEW(?,?,?))  WHERE D_TYPE=?";
 
 	state1 = con.prepareStatement(sql);
 	state1.setString(1,(ITEMNAME.equals("X06G-LIPRFTS1970500000")?DC:DC.replace("_","")));
 	state1.setString(2,ITEMNAME);
-	state1.setString(3,"MAKE");
+	state1.setString(3,dcExample);
+	state1.setString(4,"MAKE");
 	rs1=state1.executeQuery();
+
 	if (rs1.next()) {
-		if (!StringUtils.isNullOrEmpty(DC)) {
-			// 建立代碼對應表
-			Map codeMap = new HashMap();
-			codeMap.put("P", "2606");
-			codeMap.put("Q", "2610");
-			codeMap.put("V", "2632");
-			codeMap.put("Y", "2645");
-
-			// 建立正規表示式
-			Pattern pattern = Pattern.compile("^6([PQVY])[1-9A-Z]$");
-			Matcher matcher = pattern.matcher(DC);
-
-			if (matcher.matches()) {
-				// 擷取第二碼 (P/Q/V/Y)
-				String key = matcher.group(1);
-				dc_yyww = codeMap.getOrDefault(key, "").toString();
-			} else {
-				dc_yyww = rs1.getString(1).substring(rs1.getString(1).length() - 4);
-			}
-		}
+		dc_yyww = rs1.getString(1).substring(rs1.getString(1).length() - 4);
 		queryCount = rs1.getInt(2);
-		if (prodGroup.equals("SSD") && dcExample.equals("YML")) {
+		if ((prodGroup.equals("SSD") || prodGroup.equals("PMD")) && dcExample.equals("YML")) {
 			String date = rs1.getString(3);
 			String sql1="alter SESSION set NLS_LANGUAGE = 'AMERICAN' ";
 			PreparedStatement pstmt1=con.prepareStatement(sql1);
@@ -177,7 +160,25 @@ try
 			Statement statement = con.createStatement();
 			ResultSet rs = statement.executeQuery(getIwSql);
 			if (rs.next()) {
-				dc_yyww = rs.getString("yyww");
+				// 建立代碼對應表
+				Map codeMap = new HashMap();
+				codeMap.put("P", "2606");
+				codeMap.put("Q", "2610");
+				codeMap.put("S", "2619");
+				codeMap.put("V", "2632");
+				codeMap.put("Y", "2645");
+
+				// 建立正規表示式
+				Pattern pattern = Pattern.compile("^6([PQSVY])[1-9A-Z]$");
+				Matcher matcher = pattern.matcher(DC);
+
+				if (matcher.matches()) {
+					// 擷取第二碼 (P/Q/S/V/Y)
+					String key = matcher.group(1);
+					dc_yyww = codeMap.getOrDefault(key, "").toString();
+				} else {
+					dc_yyww = rs.getString("yyww");
+				}
 			}
 			rs.close();
 			statement.close();
@@ -185,8 +186,8 @@ try
 	}
 	rs1.close();
 	state1.close();
-	System.out.println("dc_yyww="+dc_yyww);
-	System.out.println("queryCount="+queryCount);
+//	System.out.println("dc_yyww="+dc_yyww);
+//	System.out.println("queryCount="+queryCount);
 	out.println("<script type=\"text/javascript\">sendToMainWindow("+'"'+dc_yyww+'"'+","+queryCount+")</script>");
 }
 catch(Exception e)
@@ -195,7 +196,7 @@ catch(Exception e)
 	e.printStackTrace();
 
 	out.println("<font color='red'>Exception"+e.getMessage()+"</font>");
-	out.println("<script type=\"text/javascript\">sendToMainWindow("+'"'+dc_yyww+'"'+",-1000)</script>"); 
+	out.println("<script type=\"text/javascript\">sendToMainWindow("+'"'+dc_yyww+'"'+",-1000)</script>");
 }
 
 %>
