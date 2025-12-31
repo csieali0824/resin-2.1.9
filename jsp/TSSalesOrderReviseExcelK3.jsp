@@ -978,7 +978,7 @@ try
                  "        ,ool.SHIPPING_METHOD_CODE"+
 				 "        ,ool.attribute3 k3_po"+
 				 //"        ,ooh.attribute1"+
-				 "        ,case when substr(ooh.order_number,1,1)=8 and trunc(ooh.creation_date)=to_date('20200122','YYYYMMDD') then 'Opening Order' else ooh.attribute1 end attribute1  "+//attribute1值跑掉,modify by Peggy 20200310
+				 "        ,case when substr(ooh.order_number,1,1)='8' and trunc(ooh.creation_date)=to_date('20200122','YYYYMMDD') then 'Opening Order' else ooh.attribute1 end attribute1  "+//attribute1值跑掉,modify by Peggy 20200310
                  "        FROM  oe_order_headers_all ooh"+
                  "        ,oe_order_lines_all ool "+
                  "        ,hz_cust_site_uses_all hcsua"+
