@@ -1029,7 +1029,13 @@ try
 			{
 				//sql += " and substr(ooh.ORDER_NUMBER,2,3) not in ('214','121','131') and upper(Tsc_Intercompany_Pkg.get_sales_group(ooh.header_id)) <>'TSC-FSC'";
 				//if (rs.getString("ORDER_NUMBER").substring(1,4).equals("214") || rs.getString("ORDER_NUMBER").substring(1,4).equals("121")|| rs.getString("ORDER_NUMBER").substring(1,4).equals("131") || rs.getString("SALES_GROUP").equals("TSCC-FSC")) continue;
-				if (rs.getString("ORDER_NUMBER").substring(1,4).equals("214") || rs.getString("ORDER_NUMBER").substring(1,4).equals("121")|| rs.getString("ORDER_NUMBER").substring(1,4).equals("131") || rs.getString("SALES_GROUP").equals("TSCC-FSC") || rs.getString("customer_number").equals("25071")) continue;
+				if (rs.getString("ORDER_NUMBER").substring(1,4).equals("214") ||
+						rs.getString("ORDER_NUMBER").substring(1,4).equals("121") ||
+						rs.getString("ORDER_NUMBER").substring(1,4).equals("131") ||
+						rs.getString("SALES_GROUP").equals("TSCC-FSC") ||
+						rs.getString("customer_number").equals("25071") ||
+						rs.getString("customer_number").equals("35233")
+				) continue;
 			}	
 			else if (sheetname[i].equals(v_consignment_order))	
 			{
@@ -1040,11 +1046,13 @@ try
 			{
 				//sql += " and upper(Tsc_Intercompany_Pkg.get_sales_group(ooh.header_id)) ='TSC-FSC'";
 				//if (!rs.getString("SALES_GROUP").equals("TSCC-FSC")) continue;
-				if (!rs.getString("SALES_GROUP").equals("TSCC-FSC") || rs.getString("customer_number").equals("25071")) continue;
+				if (!rs.getString("SALES_GROUP").equals("TSCC-FSC") ||
+						rs.getString("customer_number").equals("25071") ||
+						rs.getString("customer_number").equals("35233")) continue;
 			}		
 			else if (sheetname[i].equals(v_onsemi_order)) //add by Peggy 20170929
 			{
-				if (!rs.getString("customer_number").equals("25071")) continue;
+				if (!(rs.getString("customer_number").equals("25071") || rs.getString("customer_number").equals("35233"))) continue;
 			}				
 			col=0;
 			//Sales Group

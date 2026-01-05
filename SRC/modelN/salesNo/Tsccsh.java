@@ -192,5 +192,8 @@ public class Tsccsh extends ModelNCommonUtils {
         if ("25071".equals(modelNDto.getCustNo()) && "1141".equals(modelNDto.getOrderType())) {
             modelNDto.setShippingMethod("UPS EXPRESS");
         }
+        if ("35233".equals(modelNDto.getCustNo())) {
+            modelNDto.setShipToOrgId("83766");
+        }
     }
 }
