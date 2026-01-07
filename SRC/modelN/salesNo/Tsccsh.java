@@ -192,8 +192,16 @@ public class Tsccsh extends ModelNCommonUtils {
         if ("25071".equals(modelNDto.getCustNo()) && "1141".equals(modelNDto.getOrderType())) {
             modelNDto.setShippingMethod("UPS EXPRESS");
         }
+
         if ("35233".equals(modelNDto.getCustNo())) {
-            modelNDto.setShipToOrgId("83766");
+            if ("1141".equals(modelNDto.getOrderType())) {
+                modelNDto.setShipToOrgId("83766");
+                modelNDto.setFob("FCA TAIWAN");
+            } else if ("1156".equals(modelNDto.getOrderType())) {
+                modelNDto.setShipToOrgId("83768");
+            }
+
+
         }
     }
 }
