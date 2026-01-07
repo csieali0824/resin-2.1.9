@@ -607,7 +607,7 @@
 					//on semi datecode rule=yyymm,add by Peggy 20171018
 					else if (customerName.toUpperCase().startsWith("ON SEMI") || endCustomerName.toUpperCase().startsWith("ON SEMI") ||  itemDesc.toUpperCase().indexOf("ON SEMI")>=0 ||  itemDesc.toUpperCase().indexOf("-ON ")>=0 || onsemi_flag.equals("Y"))  //add -ON by Peggy 20180706
 					{
-						if (Integer.parseInt(c_year) == 2025)	// 20250121 JB ADD
+						if (Integer.parseInt(c_year) >= 2025)	// 20250121 JB ADD
 						{
 							dateCode =c_onsemi.substring(2,6);
 							dc_yyww = c_onsemi.substring(2,6);
