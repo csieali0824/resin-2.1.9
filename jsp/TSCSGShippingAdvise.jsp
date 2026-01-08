@@ -304,6 +304,8 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 11px }
 <jsp:useBean id="workingDateBean" scope="page" class="WorkingDateBean"/>
 <jsp:useBean id="MOShipBean" scope="session" class="Array2DimensionInputBean"/>
 <%
+request.setCharacterEncoding("UTF-8");
+response.setContentType("text/html; charset=utf-8");
 String SDATE = request.getParameter("SDATE");
 if (SDATE==null) SDATE="";
 String EDATE = request.getParameter("EDATE");
@@ -497,7 +499,7 @@ else
 		MOShipBean.setArray2DString(null); 
 		try
 		{
-			sql = " SELECT oola.HEADER_ID,"+
+			sql = "select * from (SELECT oola.HEADER_ID,"+
 				  " oola.LINE_ID,"+
 				  " oola.CUSTOMER_ID,"+
 				  " oola.SHIP_FROM_ORG_ID,"+
@@ -523,15 +525,22 @@ else
 				  " oola.ORDER_STATUS STATUS,"+
 				  " NVL(sap.SHIP_QTY,0) SHIP_QTY,"+
 				  " oola.INVENTORY_ITEM_ID,"+
-				  " oola.SHIPPING_REMARK,"+		
+				  " oola.SHIPPING_REMARK,"+
 				  //" tssg_ship_pkg.get_inv_onhand(decode(oola.SHIP_FROM_ORG_ID,887,887,906,906,49),oola.INVENTORY_ITEM_ID,null) onhand,"+
 				  " nvl(tssg_ship_pkg.get_inv_onhand(case when mp.organization_code in ('SG1','SG2') then oola.SHIP_FROM_ORG_ID else 49 end,oola.INVENTORY_ITEM_ID,null),0)-NVL(TSSG_SHIP_PKG.GET_ITEM_ALLOT_QTY (oola.SHIP_FROM_ORG_ID,oola.inventory_item_id),0) onhand,"+
-				  " oola.TO_TW,"+
+				  "case when oola.SALES_GROUP ='TSCE' and substr(oola.ORDER_NO,0,4)='1214' then 'N'\n"+
+				  " else oola.TO_TW end TO_TW,\n"+
+//				  " oola.TO_TW,"+
 				  //" TSSG_RCV_PKG.GET_ITEM_VENDOR_SITE(oola.line_id,oola.org_id,null) vendor_site_id,"+
 				  //" TSSG_RCV_PKG.GET_ITEM_VENDOR_SITE(oola.line_id,906,null) vendor_site_id,"+
 				  " TSSG_RCV_PKG.GET_ITEM_VENDOR_LIST(oola.INVENTORY_ITEM_ID,oola.SHIP_FROM_ORG_ID,null) vendor_site_id,"+
 				  " oola.org_id,"+
-				  " case WHEN SUBSTR(oola.ORDER_NO,1,4) ='8131' THEN TO_CHAR(oola.SCHEDULE_SHIP_DATE,'yyyymmdd')"+ //add by Peggy 20200508
+//				  " case WHEN SUBSTR(oola.ORDER_NO,1,4) ='8131' THEN TO_CHAR(oola.SCHEDULE_SHIP_DATE,'yyyymmdd')"+ //add by Peggy 20200508
+				  " CASE\n" +
+				  "    WHEN (SUBSTR (oola.ORDER_NO, 1, 4) = '8131'\n" +
+				  "          or SUBSTR (oola.ORDER_NO, 1, 4) = '1214' and oola.SALES_GROUP ='TSCE')\n" +
+				  " THEN\n" +
+				  "     TO_CHAR (oola.SCHEDULE_SHIP_DATE, 'yyyymmdd')\n" +
 				  " WHEN oola.TO_TW='Y' THEN to_char(next_day(TO_DATE(NVL(?,TO_CHAR(TRUNC(SYSDATE)+10,'yyyymmdd')),'yyyymmdd'),3),'yyyymmdd')"+
 				  " WHEN oola.SALES_GROUP in ('TSCH-HK','TSCC-SH','TSCT-Disty','TSCT') and oola.SHIP_METHOD='SEA' THEN to_char(next_day(TO_DATE(NVL(?,TO_CHAR(TRUNC(SYSDATE)+10,'yyyymmdd')),'YYYYMMDD'),4),'yyyymmdd')  "+
 				  " WHEN oola.SALES_GROUP='TSCA' and  oola.SHIP_METHOD='SEA(UC)' THEN to_char(next_day(TO_DATE(NVL(?,TO_CHAR(TRUNC(SYSDATE)+10,'yyyymmdd')),'YYYYMMDD'),4),'yyyymmdd')"+
@@ -550,7 +559,7 @@ else
 				  " AND oola.HEADER_ID = sap.SO_HEADER_ID(+)"+
 				  " AND substr(oola.line_no,1,instr(oola.line_no,'.')-1)=sap.so_line_number(+)"+ //modify by Peggy 20200715
 				  " AND NVL(oola.ORDERED_QUANTITY,0) - nvl((SELECT sum(x.SHIP_QTY) FROM tsc.tsc_shipping_advise_pc_sg x where x.so_line_id=oola.line_id),0)>0"+ //add by Peggy 20200716
-				  " AND EXISTS (SELECT 1 FROM ONT.OE_ORDER_LINES_ALL x WHERE x.LINE_ID=oola.LINE_ID AND x.FLOW_STATUS_CODE IN ('ENTERED','BOOKED','AWAITING_SHIPPING','AWAITING_APPROVE'))"; 
+				  " AND EXISTS (SELECT 1 FROM ONT.OE_ORDER_LINES_ALL x WHERE x.LINE_ID=oola.LINE_ID AND x.FLOW_STATUS_CODE IN ('ENTERED','BOOKED','AWAITING_SHIPPING','AWAITING_APPROVE'))";
 			if (!SDATE.equals(""))
 			{
 				sql += " AND oola.SCHEDULE_SHIP_DATE BETWEEN to_date('"+SDATE+"','yyyymmdd') and to_date('"+(EDATE.equals("")?"20991231":EDATE)+"','yyyymmdd')+0.99999";
@@ -611,12 +620,14 @@ else
 					if (x==sArray.length -1) sql += ")";
 				}
 			}
+			sql += " )\n";
 			if (TOTW1 != null && !TOTW1.equals("--") && !TOTW1.equals(""))
 			{
-				sql += " and oola.to_tw='"+TOTW1+"'";
-			}			
-			sql += " ORDER BY oola.SCHEDULE_SHIP_DATE,oola.SALES_GROUP, oola.SHIP_METHOD,oola.SHIPPING_REMARK,oola.ORDER_NO,oola.LINE_ID,msi.DESCRIPTION";
+				sql += " where to_tw = '"+TOTW1+"' ";
+			}
+			sql += "ORDER BY SCHEDULE_SHIP_DATE,SALES_GROUP, SHIP_METHOD, SHIPPING_REMARK, ORDER_NUMBER, LINE_ID, DESCRIPTION";
 			//out.println(sql);
+//			System.out.println(sql);
 			PreparedStatement statement = con.prepareStatement(sql);
 			statement.setString(1,SDATE);
 			statement.setString(2,SDATE);

@@ -174,7 +174,7 @@ function sendToMainWindow(VendorNo,VendorName,VendorContact,Currency,VendorSite,
 		{
 			sql += " AND a.VENDOR_NAME like '%"+SupplierName+"%'"; 
 		}
-		if (WIPTYPE.equals("01") || WIPTYPE.equals("04") || WIPTYPE.equals("05"))
+		if (WIPTYPE.equals("01") || WIPTYPE.equals("05"))
 		{
 			sql += " and exists (select 1 from oraddman.tspmd_item_quotation x where x.VENDOR_SITE_ID=b.vendor_site_id)"; //add by Peggy 20220316
 		}	

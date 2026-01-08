@@ -1,41 +1,39 @@
-<!--20101220 lilin update æŠ“å„ç”Ÿç”¢å» åˆ¥id  -->
-<!--20110620 lilin update è‰ç¨¿Templator åŠ create çš„tsc_prod_group å¯«å…¥  -->
+<!--20101220 lilin update §ì¦U¥Í²£¼t§Oid  -->
+<!--20110620 lilin update ¯ó½ZTemplator ¤Î create ªºtsc_prod_group ¼g¤J  -->
 <!--20140811 Peggy ,INSERT TSDELIVERY_NOTICE_DETAIL.END_CUSTOMER_ID-->
 <!--20150114 Peggy,Lead Time reason insert-->
-<!--20150318 Peggy,å±±æ±èˆ¹æœŸæ”¹18å¤©-->
+<!--20150318 Peggy,¤sªF²î´Á§ï18¤Ñ-->
 <!--20150409 Peggy,check Arrow End customer item-->
 <!--20150519 by Peggy,add column "tsch orderl line id" for tsch case-->
-<!--20151008 by Peggy,mtl_system_items_båŠ å…¥CUSTOMER_ORDER_FLAG=Y AND CUSTOMER_ORDER_ENABLED_FLAG=Yåˆ¤æ–·-->
+<!--20151008 by Peggy,mtl_system_items_b¥[¤JCUSTOMER_ORDER_FLAG=Y AND CUSTOMER_ORDER_ENABLED_FLAG=Y§PÂ_-->
 <!--20160309 by Peggy,for sample order add direct_ship_to_cust column-->
-<!--20160706 by Peggy,PMD TIN SLOW MOVINGäº¤æœŸä»¥æ¥­å‹™äº¤æœŸå›è¦†-->
-<!--20161021 by Peggy,å·¥å» PC confirmå‰å†æª¢æŸ¥ä¸€æ¬¡rfqç‹€æ…‹æ˜¯å¦åˆæ³•,é¿å…ç³»çµ±ç•°å¸¸,é€ æˆé‡è¤‡confirm,é‡è¤‡è½‰å–®-->
+<!--20160706 by Peggy,PMD TIN SLOW MOVING¥æ´Á¥H·~°È¥æ´Á¦^ÂĞ-->
+<!--20161021 by Peggy,¤u¼tPC confirm«e¦AÀË¬d¤@¦¸rfqª¬ºA¬O§_¦Xªk,Á×§K¨t²Î²§±`,³y¦¨­«½Æconfirm,­«½ÆÂà³æ-->
 <!--20170216 by Peggy,add sales region for bi-->
 <!--20170511 by Peggy,add end cust ship to id-->
-<!--20170714 Peggy,å…ƒåˆ©,èŒ‚èƒ,MUSTARDæ–¼å‚™è¨»æ¬„æ¨™ç¤ºç”¢å“æœ‰æ•ˆé ˆç‚ºä¸€å¹´ä»¥ä¸Š-->
+<!--20170714 Peggy,¤¸§Q,­Z¯ş,MUSTARD©ó³ÆµùÄæ¼Ğ¥Ü²£«~¦³®Ä¶·¬°¤@¦~¥H¤W-->
 <!--20190225 Peggy,add End customer part name-->
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.util.*" %>
-<!--=============ä»¥ä¸‹å€æ®µç‚ºå®‰å…¨èªè­‰æ©Ÿåˆ¶==========-->
+<%@ page contentType="text/html; charset=big5" language="java" import="java.sql.*,java.util.*" %>
+<!--=============¥H¤U°Ï¬q¬°¦w¥ş»{ÃÒ¾÷¨î==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<!--=============ä»¥ä¸‹å€æ®µç‚ºå–å¾—é€£çµæ± ==========-->
+<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
 <%@ page import="SalesDRQPageHeaderBean" %>
 <jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
 <%@ page import="DateBean,ArrayCheckBoxBean,ArrayCheckBox2DBean,Array2DimensionInputBean,SendMailBean,CodeUtil" %>
-<%@ page import="java.sql.Date" %>
-<%@ page import="com.mysql.jdbc.StringUtils" %>
 <script language="JavaScript" type="text/JavaScript">
 function reProcessFormConfirm(ms1,URL,dnDOCNo,lineNo,assignFact,ordtypeid,linetypeid)
 {
 	var orginalPage="?DNDOCNO="+dnDOCNo+"&LINE_NO="+lineNo+"&ASSIGN_MANUFACT="+assignFact+"&ORDER_TYPE_ID="+ordtypeid+"&LINE_TYPE="+linetypeid;
-    flag=confirm(ms1);
+    flag=confirm(ms1);      
 	if (flag==false) return(false);
 	else
     {
 	  document.MPROCESSFORM.action=URL+orginalPage;
       document.MPROCESSFORM.submit();
-	}
+	} 
 }
 
 function alertItemExistsMsg(msItemExists)
@@ -48,14 +46,14 @@ function alertItemExistsMsg(msItemExists)
 <title>Sales Delivery Request M Data Process</title>
 <jsp:useBean id="dateBean" scope="page" class="DateBean"/>
 <jsp:useBean id="arrayCheckBoxBean" scope="session" class="ArrayCheckBoxBean"/> <!--FOR MATERIAL USAGE-->
-<jsp:useBean id="rfqArray2DTemporaryBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR æ¥­å‹™äº¤æœŸè©¢å•å–®è‰ç¨¿æ–‡ä»¶_2-->
-<jsp:useBean id="array2DAssignFactoryBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR ä¼åŠƒåˆ†æ´¾ç”¢åœ°-->
-<jsp:useBean id="array2DEstimateFactoryBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR å·¥å» å®‰æ’äº¤æœŸç¢ºèªä¸­-->
-<jsp:useBean id="array2DArrangedFactoryBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR å·¥å» å›è¦†äº¤æœŸç¢ºèª-->
-<jsp:useBean id="array2DGenerateSOrderBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR æ¥­å‹™ç”ŸæˆéŠ·å”®è¨‚å–®ç¢ºèª-->
-<jsp:useBean id="array2DPromiseFactoryBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR å®¢æˆ¶å–æ¶ˆäº¤æœŸçµ¦å®šæ–°äº¤æœŸéœ€æ±‚æ—¥-->
-<jsp:useBean id="array2DMOContactInfoBean" scope="session" class="Array2DimensionInputBean"/> <!-- FOR æ¥­å‹™ç”ŸæˆéŠ·å”®è¨‚å–®ç¢ºèª(å…¶ä»–è³‡è¨ŠNotify to Contact) -->
-<jsp:useBean id="array2DMODeliverInfoBean" scope="session" class="Array2DimensionInputBean"/> <!-- FOR æ¥­å‹™ç”ŸæˆéŠ·å”®è¨‚å–®ç¢ºèª(å…¶ä»–è³‡è¨ŠDeliver to Contact) -->
+<jsp:useBean id="rfqArray2DTemporaryBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR ·~°È¥æ´Á¸ß°İ³æ¯ó½Z¤å¥ó_2-->
+<jsp:useBean id="array2DAssignFactoryBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR ¥ø¹º¤À¬£²£¦a-->
+<jsp:useBean id="array2DEstimateFactoryBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR ¤u¼t¦w±Æ¥æ´Á½T»{¤¤-->
+<jsp:useBean id="array2DArrangedFactoryBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR ¤u¼t¦^ÂĞ¥æ´Á½T»{-->
+<jsp:useBean id="array2DGenerateSOrderBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR ·~°È¥Í¦¨¾P°â­q³æ½T»{-->
+<jsp:useBean id="array2DPromiseFactoryBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR «È¤á¨ú®ø¥æ´Áµ¹©w·s¥æ´Á»İ¨D¤é-->
+<jsp:useBean id="array2DMOContactInfoBean" scope="session" class="Array2DimensionInputBean"/> <!-- FOR ·~°È¥Í¦¨¾P°â­q³æ½T»{(¨ä¥L¸ê°TNotify to Contact) -->
+<jsp:useBean id="array2DMODeliverInfoBean" scope="session" class="Array2DimensionInputBean"/> <!-- FOR ·~°È¥Í¦¨¾P°â­q³æ½T»{(¨ä¥L¸ê°TDeliver to Contact) -->
 <jsp:useBean id="sendMailBean" scope="page" class="SendMailBean"/>
 <jsp:useBean id="StockInfoBean" scope="session" class="Array2DimensionInputBean"/>
 <meta http-equiv="Content-Type" content="text/html; charset=big5"></head>
@@ -63,31 +61,31 @@ function alertItemExistsMsg(msItemExists)
 <FORM ACTION="TSSalesDRQMProcess.jsp" METHOD="post" NAME="MPROCESSFORM">
 <%
 String serverHostName=request.getServerName();
-String mailHost=application.getInitParameter("MAIL_HOST"); //ç”±Serverçš„web.xmlä¸­å–å‡ºmail serverçš„host name
+String mailHost=application.getInitParameter("MAIL_HOST"); //¥ÑServerªºweb.xml¤¤¨ú¥Xmail serverªºhost name
 String previousPageAddress=request.getParameter("PREVIOUSPAGEADDRESS");
 String dnDocNo=request.getParameter("DNDOCNO");
 String formID=request.getParameter("FORMID");
 String typeNo=request.getParameter("TYPENO");
-String isTransmitted=request.getParameter("ISTRANSMITTED");//å–å¾—å‰ä¸€é è™•ç†ä¹‹ç¶­ä¿®æ¡ˆä»¶æ˜¯å¦å·²å¾Œé€ä¹‹FLAG
+String isTransmitted=request.getParameter("ISTRANSMITTED");//¨ú±o«e¤@­¶³B²z¤§ºû­×®×¥ó¬O§_¤w«á°e¤§FLAG
 String fromStatusID=request.getParameter("FROMSTATUSID");
 String actionID=request.getParameter("ACTIONID");
 String remark=request.getParameter("REMARK");
 // 20110310 Marvie Add : Add field  PROGRAM_NAME
 String sProgramName=request.getParameter("PROGRAMNAME");
 if (sProgramName==null || sProgramName.equals("")) sProgramName="";
-String aRfqTemporaryCode[][]=rfqArray2DTemporaryBean.getArray2DContent();//å–å¾—rfqArray2DTemporaryBeanç›®å‰é™£åˆ—å…§å®¹(æ¥­å‹™è‰ç¨¿æ–‡ä»¶é™£åˆ—å…§å®¹_2)
-String aFactoryCode[][]=array2DAssignFactoryBean.getArray2DContent();//å–å¾—assignFactoryCodeç›®å‰é™£åˆ—å…§å®¹
-String aFactoryEstimatingCode[][]=array2DEstimateFactoryBean.getArray2DContent();//å–å¾—å·¥å» äº¤æœŸå®‰æ’ä¸­ç¢ºèªç›®å‰é™£åˆ—å…§å®¹
-String aFactoryArrangedCode[][]=array2DArrangedFactoryBean.getArray2DContent();//å–å¾—å·¥å» å›è¦†äº¤æœŸç¢ºèªç›®å‰é™£åˆ—å…§å®¹
-String aSalesOrderGenerateCode[][]=array2DGenerateSOrderBean.getArray2DContent();//å–å¾—æ¥­å‹™è¨‚å–®ç”Ÿæˆé™£åˆ—å…§å®¹
-String aCustCancelPromiseCode[][]=array2DPromiseFactoryBean.getArray2DContent();//å–å¾—å®¢æˆ¶å–æ¶ˆäº¤æœŸä¸¦çµ¦å®šæ–°çš„äº¤æœŸéœ€æ±‚æ—¥é™£åˆ—å…§å®¹
-String aSalesOrderNotifyInfo[]=array2DMOContactInfoBean.getArrayContent(); // å–MOå–®ç”ŸæˆUserè¨­å®šçš„NotifyTOContactè³‡è¨Š é™£åˆ—å…§å®¹
-String aSalesOrderDeliverInfo[]=array2DMODeliverInfoBean.getArrayContent(); // å–MOå–®ç”ŸæˆUserè¨­å®šçš„DeliverTOContactè³‡è¨Š é™£åˆ—å…§å®¹
+String aRfqTemporaryCode[][]=rfqArray2DTemporaryBean.getArray2DContent();//¨ú±orfqArray2DTemporaryBean¥Ø«e°}¦C¤º®e(·~°È¯ó½Z¤å¥ó°}¦C¤º®e_2)  
+String aFactoryCode[][]=array2DAssignFactoryBean.getArray2DContent();//¨ú±oassignFactoryCode¥Ø«e°}¦C¤º®e 
+String aFactoryEstimatingCode[][]=array2DEstimateFactoryBean.getArray2DContent();//¨ú±o¤u¼t¥æ´Á¦w±Æ¤¤½T»{¥Ø«e°}¦C¤º®e
+String aFactoryArrangedCode[][]=array2DArrangedFactoryBean.getArray2DContent();//¨ú±o¤u¼t¦^ÂĞ¥æ´Á½T»{¥Ø«e°}¦C¤º®e
+String aSalesOrderGenerateCode[][]=array2DGenerateSOrderBean.getArray2DContent();//¨ú±o·~°È­q³æ¥Í¦¨°}¦C¤º®e
+String aCustCancelPromiseCode[][]=array2DPromiseFactoryBean.getArray2DContent();//¨ú±o«È¤á¨ú®ø¥æ´Á¨Ãµ¹©w·sªº¥æ´Á»İ¨D¤é°}¦C¤º®e
+String aSalesOrderNotifyInfo[]=array2DMOContactInfoBean.getArrayContent(); // ¨úMO³æ¥Í¦¨User³]©wªºNotifyTOContact¸ê°T °}¦C¤º®e
+String aSalesOrderDeliverInfo[]=array2DMODeliverInfoBean.getArrayContent(); // ¨úMO³æ¥Í¦¨User³]©wªºDeliverTOContact¸ê°T °}¦C¤º®e
 
 String changeProdPersonID=request.getParameter("CHANGEREPPERSONID");
 String changeProdPersonMail="";
-String sendMailOption=request.getParameter("SENDMAILOPTION");//æ˜¯å¦è¦SEND MAIL
-String newDRQOption=request.getParameter("NEWDRQOPTION");//æ˜¯å¦è¦ä»¥åŸå–®æ“šå…§å®¹ç”¢ç”Ÿæ–°çš„äº¤æœŸè©¢å•å–®
+String sendMailOption=request.getParameter("SENDMAILOPTION");//¬O§_­nSEND MAIL
+String newDRQOption=request.getParameter("NEWDRQOPTION");//¬O§_­n¥H­ì³æ¾Ú¤º®e²£¥Í·sªº¥æ´Á¸ß°İ³æ
 String oriStatus=null;
 String actionName=null;
 String dateString="";
@@ -97,7 +95,7 @@ String firmOrderType=request.getParameter("FIRMORDERTYPE");
 String firmSoldToOrg=request.getParameter("FIRMSOLDTOORG");
 String firmPriceList=request.getParameter("FIRMPRICELIST");
 String ShipToOrg=request.getParameter("SHIPTOORG");
-String billTo = request.getParameter("BILLTO");
+String billTo = request.getParameter("BILLTO"); 
 String payTermID=request.getParameter("PAYTERMID");
 String fobPoint=request.getParameter("FOBPOINT");
 String shipMethod=request.getParameter("SHIPMETHOD");
@@ -106,22 +104,21 @@ String custPO=request.getParameter("CUST_PO");
 String curr=request.getParameter("CURR");
 String prCurr=request.getParameter("PRCURR");
 String [] choice=request.getParameterValues("CHKFLAG");
-List lineNoList = new ArrayList();
 String sampleOrder=request.getParameter("SAMPLEORDER");
 if (custPO==null) { custPO=""; }
 String YearFr=dateBean.getYearMonthDay().substring(0,4);
 String MonthFr=dateBean.getYearMonthDay().substring(4,6);
 String DayFr=dateBean.getYearMonthDay().substring(6,8);;
-java.sql.Date orderedDate = new java.sql.Date(Integer.parseInt(YearFr)-1900,Integer.parseInt(MonthFr)-1,Integer.parseInt(DayFr));  // çµ¦Ordered Date
-java.sql.Date pricedate = new java.sql.Date(Integer.parseInt(YearFr)-1900,Integer.parseInt(MonthFr)-1,Integer.parseInt(DayFr));  // çµ¦Pricing Date
-java.sql.Date promisedate = new java.sql.Date(Integer.parseInt(YearFr)-1900,Integer.parseInt(MonthFr)-1,Integer.parseInt(DayFr)); // çµ¦Promise Date
-String sourceTypeCode = "INTERNAL";
-int lineType = 0;
-String respID = "50124"; // é è¨­å€¼ç‚º TSC_OM_Semi_SU, åˆ¤æ–·è‹¥ç‚º Printer Org å‰‡è¨­å®šç‚º TSC_OM_Printer_SU = 50125
+java.sql.Date orderedDate = new java.sql.Date(Integer.parseInt(YearFr)-1900,Integer.parseInt(MonthFr)-1,Integer.parseInt(DayFr));  // µ¹Ordered Date
+java.sql.Date pricedate = new java.sql.Date(Integer.parseInt(YearFr)-1900,Integer.parseInt(MonthFr)-1,Integer.parseInt(DayFr));  // µ¹Pricing Date
+java.sql.Date promisedate = new java.sql.Date(Integer.parseInt(YearFr)-1900,Integer.parseInt(MonthFr)-1,Integer.parseInt(DayFr)); // µ¹Promise Date
+String sourceTypeCode = "INTERNAL"; 
+int lineType = 0;  
+String respID = "50124"; // ¹w³]­È¬° TSC_OM_Semi_SU, §PÂ_­Y¬° Printer Org «h³]©w¬° TSC_OM_Printer_SU = 50125
 String assignLNo = "";
 String prodDesc = null;
 String prodCodeGet = "";
-int prodCodeGetLength = 0;
+int prodCodeGetLength = 0;   
 String dateCurrent = dateBean.getYearMonthDay();
 String sToStatusID = "";
 String sToStatusName = "";
@@ -141,92 +138,93 @@ String sql_e="",customer="",line_remarks=""; //add by Peggy 20170714
 long ship_qty=0,allot_qty=0;
 String SUPPLIER_NUMBER=request.getParameter("SUPPLIER_NUMBER"); //add by Peggy 20220428
 if (SUPPLIER_NUMBER==null) SUPPLIER_NUMBER="";
-// formID = åŸºæœ¬è³‡æ–™é å‚³ä¾†å›ºå®šå¸¸æ•¸='TS'
-// fromStatusID = åŸºæœ¬è³‡æ–™é å‚³ä¾†Hidden åƒæ•¸
-// actionID = å‰é å–å¾—å‹•ä½œ ID( Assign = 003 )
-try
+// formID = °ò¥»¸ê®Æ­¶¶Ç¨Ó©T©w±`¼Æ='TS'
+// fromStatusID = °ò¥»¸ê®Æ­¶¶Ç¨ÓHidden °Ñ¼Æ
+// actionID = «e­¶¨ú±o°Ê§@ ID( Assign = 003 )
+try 
 {
-	String sql1="alter SESSION set NLS_LANGUAGE = 'AMERICAN' ";
+	String sql1="alter SESSION set NLS_LANGUAGE = 'AMERICAN' ";     
 	PreparedStatement pstmt1=con.prepareStatement(sql1);
-	pstmt1.executeUpdate();
-	pstmt1.close();
+	pstmt1.executeUpdate(); 
+	pstmt1.close();	
 
- // å…ˆå–å¾—ä¸‹ä¸€ç‹€æ…‹åŠç‹€æ…‹æè¿°ä¸¦ä½œæµç¨‹ç‹€æ…‹æ›´æ–°
+ // ¥ı¨ú±o¤U¤@ª¬ºA¤Îª¬ºA´y­z¨Ã§@¬yµ{ª¬ºA§ó·s   
 	dateString=dateBean.getYearMonthDay();
-
+	
   	String sqlStat = "select TOSTATUSID,STATUSNAME from ORADDMAN.TSWORKFLOW x1, ORADDMAN.TSWFSTATUS x2 ";
   	String whereStat ="WHERE FROMSTATUSID='"+fromStatusID+"' AND ACTIONID='"+actionID+"' AND x1.TOSTATUSID=x2.STATUSID and  x1.LOCALE='"+locale+"'";
-  	// 2006/04/13åŠ å…¥ç‰¹æ®Šå…§éŠ·æµç¨‹,é‡å°ä¸Šæµ·å…§éŠ·_èµ·
-  	if (UserRoles.equals("admin"))
+  	// 2006/04/13¥[¤J¯S®í¤º¾P¬yµ{,°w¹ï¤W®ü¤º¾P_°_								  
+  	if (UserRoles.equals("admin")) 
 	{
-		whereStat = whereStat+"and FORMID='TS' "; //é è¨­TS
-	}  //è‹¥æ˜¯ç®¡ç†å“¡,å‰‡ä»»ä½•å‹•ä½œä¸å—é™åˆ¶
-  	else if (userActCenterNo.equals("010") || userActCenterNo.equals("011"))
+		whereStat = whereStat+"and FORMID='TS' "; //¹w³]TS
+	}  //­Y¬OºŞ²z­û,«h¥ô¦ó°Ê§@¤£¨ü­­¨î
+  	else if (userActCenterNo.equals("010") || userActCenterNo.equals("011")) 
 	{
-		whereStat = whereStat+"and FORMID='SH' "; // è‹¥æ˜¯ä¸Šæµ·å…§éŠ·è¾¦äº‹è™•
+		whereStat = whereStat+"and FORMID='SH' "; // ­Y¬O¤W®ü¤º¾P¿ì¨Æ³B
 	}
-  	else
+  	else 
 	{
-		whereStat = whereStat+"and FORMID='TS' "; // å¦å‰‡ä¸€å¾‹çš†ç‚ºå¤–éŠ·æµç¨‹
+		whereStat = whereStat+"and FORMID='TS' "; // §_«h¤@«ß¬Ò¬°¥~¾P¬yµ{
 	}
-
-  	// 2006/04/13åŠ å…¥ç‰¹æ®Šå…§éŠ·æµç¨‹,é‡å°ä¸Šæµ·å…§éŠ·_è¿„
+	
+  	// 2006/04/13¥[¤J¯S®í¤º¾P¬yµ{,°w¹ï¤W®ü¤º¾P_¨´		
   	sqlStat = sqlStat+whereStat;
 	//out.println("sqlStat="+sqlStat);
-  	Statement getStatusStat=con.createStatement();
-  	ResultSet getStatusRs=getStatusStat.executeQuery(sqlStat);
+  	Statement getStatusStat=con.createStatement();  
+  	ResultSet getStatusRs=getStatusStat.executeQuery(sqlStat);  
   	//getStatusRs.next();
-  	if (getStatusRs.next())
+  	if (getStatusRs.next()) 
 	{
     	sToStatusID = getStatusRs.getString("TOSTATUSID");
 		sToStatusName = getStatusRs.getString("STATUSNAME");
   	}
   	getStatusStat.close();
-  	getStatusRs.close();
-
+  	getStatusRs.close();  
+  
   	String sql="update ORADDMAN.TSDELIVERY_NOTICE set STATUSID=?,STATUS=? where DNDOCNO='"+dnDocNo+"'";
-  	PreparedStatement pstmt=con.prepareStatement(sql);
+  	PreparedStatement pstmt=con.prepareStatement(sql);  
   	pstmt.setString(1,sToStatusID);
   	pstmt.setString(2,sToStatusName);
   	pstmt.executeUpdate();
   	pstmt.close();
-
-  	//è‹¥æœ‰æŒ‡æ´¾äººå“¡å‰‡æ‰¾å‡ºå…¶e-Mail
-  	if (changeProdPersonID!=null)
+  
+  	//­Y¦³«ü¬£¤H­û«h§ä¥X¨äe-Mail
+  	if (changeProdPersonID!=null) 
 	{
-    	Statement mailStat=con.createStatement();
-    	ResultSet mailRs=mailStat.executeQuery("select USERMAIL from ORADDMAN.WSUSER where WEBID='"+changeProdPersonID+"'");
+    	Statement mailStat=con.createStatement();  
+    	ResultSet mailRs=mailStat.executeQuery("select USERMAIL from ORADDMAN.WSUSER where WEBID='"+changeProdPersonID+"'");  
     	if (mailRs.next()) changeProdPersonMail=mailRs.getString("USERMAIL");
 		mailRs.close();
-		mailStat.close();
-  	}
-
-  	//@@@@@@@@@@å–å¾—è©²ä½¿ç”¨è€…éš¸å±¬ä¹‹æ¥­å‹™ä¸­å¿ƒè³‡æ–™@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+		mailStat.close();	
+  	}	
+	
+  	//@@@@@@@@@@¨ú±o¸Ó¨Ï¥ÎªÌÁõÄİ¤§·~°È¤¤¤ß¸ê®Æ@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   	Statement userSalesStat=con.createStatement();
 	ResultSet userSalesRs=userSalesStat.executeQuery("SELECT SALES_AREA_NO,SALES_AREA_NAME,TEL,MOBILE,ZIP,ADDRESS "+
 	" FROM ORADDMAN.TSSALES_AREA WHERE trim(SALES_AREA_NO)='"+userActCenterNo+"'");
-  	String userSalesAreaName="",userTel="",userCell="",userAddr="",userZIP="";//Zipæ˜¯é›»è©±åˆ†æ©Ÿä»£ç¢¼
-  	if (userSalesRs.next())
+  	String userSalesAreaName="",userTel="",userCell="",userAddr="",userZIP="";//Zip¬O¹q¸Ü¤À¾÷¥N½X
+  	if (userSalesRs.next()) 
 	{
-		userSalesAreaName=userSalesRs.getString("SALES_AREA_NAME");
+		userSalesAreaName=userSalesRs.getString("SALES_AREA_NAME");	  
 		userTel=userSalesRs.getString("TEL");
 		userCell=userSalesRs.getString("MOBILE");
 		userAddr=userSalesRs.getString("ADDRESS");
-		userZIP=userSalesRs.getString("ZIP");
-  	}
+		userZIP=userSalesRs.getString("ZIP");	  
+  	}	 	  
   	userSalesRs.close();
   	userSalesStat.close();
-  	//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-  	// å…ˆè¨­å®šClient Info_èµ·
+  	//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  
+  	// ¥ı³]©wClient Info_°_ 
   	//CallableStatement cs1 = con.prepareCall("{call DBMS_APPLICATION_INFO.SET_CLIENT_INFO(?)}");
 	CallableStatement cs1 = con.prepareCall("{call mo_global.set_policy_context('S', ?)}");
- 	cs1.setString(1,userParOrgID);  // å–æ¥­å‹™å“¡éš¸å±¬ParOrgID
+ 	cs1.setString(1,userParOrgID);  // ¨ú·~°È­ûÁõÄİParOrgID
   	cs1.execute();
-  	cs1.close();
-	// å…ˆè¨­å®šClient Info_è¿„
-  	//æ¥­å‹™è‰ç¨¿æ–‡ä»¶è™•ç†(TEMPORARY)_èµ·	(ACTION=001)
-  	if (actionID.equals("001") || actionID.equals("002"))
-  	{
+  	cs1.close();	 
+	// ¥ı³]©wClient Info_¨´   
+  
+  	//·~°È¯ó½Z¤å¥ó³B²z(TEMPORARY)_°_	(ACTION=001)
+  	if (actionID.equals("001") || actionID.equals("002")) 
+  	{        
     	if (aRfqTemporaryCode!=null)
 		{
 			try
@@ -236,7 +234,7 @@ try
 				String custMarketGroup="";
 				String tscdesc="";  //add by Peggy 20141007
 				boolean slowmoving_flag = false; //add by Peggy 20141007
-
+	
 				//add by Peggy 20141007
 				String sqlh = " SELECT  a.area"+
 							  ",a.inventory_item_id"+
@@ -254,39 +252,39 @@ try
 							  " where exists (select 1 from (select VERSION_ID from oraddman.tsc_idle_stock_header  where VERSION_FLAG='A' order by UPDATE_DATE desc) b where rownum=1 and b.version_id=a.version_id)";
 				Statement statementh=con.createStatement( ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 				ResultSet rsh = statementh.executeQuery(sqlh);
-
-				Statement stateLT=con.createStatement();
+		
+				Statement stateLT=con.createStatement();  
 				ResultSet rsLT=stateLT.executeQuery("select a.TSAREANO,a.TSCUSTOMERID,nvl(a.AUTOCREATE_FLAG,'N') AUTOCREATE_FLAG, a.PRICE_LIST, b.LINE_TYPE,a.customer "+
 				",c.ATTRIBUTE2 market_group"+
 				" from ORADDMAN.TSDELIVERY_NOTICE a,ORADDMAN.TSDELIVERY_NOTICE_DETAIL b,APPS.AR_CUSTOMERS c  "+
-				" where a.DNDOCNO = b.DNDOCNO(+) and a.DNDOCNO='"+dnDocNo+"' and a.TSCUSTOMERID=c.CUSTOMER_ID");
-				if (rsLT.next())
-				{
-					salesAreaNo=rsLT.getString("TSAREANO");
-					customerId=rsLT.getString("TSCUSTOMERID");
-					autoCreate_Flag=rsLT.getString("AUTOCREATE_FLAG");
-					defaultLineType=rsLT.getString("LINE_TYPE");
-					priceList = rsLT.getString("PRICE_LIST");
+				" where a.DNDOCNO = b.DNDOCNO(+) and a.DNDOCNO='"+dnDocNo+"' and a.TSCUSTOMERID=c.CUSTOMER_ID");  
+				if (rsLT.next()) 
+				{ 
+					salesAreaNo=rsLT.getString("TSAREANO");	
+					customerId=rsLT.getString("TSCUSTOMERID");	
+					autoCreate_Flag=rsLT.getString("AUTOCREATE_FLAG");	
+					defaultLineType=rsLT.getString("LINE_TYPE"); 
+					priceList = rsLT.getString("PRICE_LIST"); 
 					customer=rsLT.getString("customer");   //add by Peggy 20170714
 					custMarketGroup =rsLT.getString("market_group");
 				}
 				rsLT.close();
 				stateLT.close();
-
-				// è‹¥æ¸…å–®å…§å®¹>0,å…ˆå…¨åˆª,å†ä¾Arrayå…§å®¹æ¸…å–®æ–°å¢
-				pstmt=con.prepareStatement("delete ORADDMAN.TSDELIVERY_NOTICE_DETAIL where DNDOCNO='"+dnDocNo+"' ");
+		  
+				// ­Y²M³æ¤º®e>0,¥ı¥ş§R,¦A¨ÌArray¤º®e²M³æ·s¼W
+				pstmt=con.prepareStatement("delete ORADDMAN.TSDELIVERY_NOTICE_DETAIL where DNDOCNO='"+dnDocNo+"' "); 
 				pstmt.executeQuery();
 
 				//add by Peggy 20130305
-				pstmt=con.prepareStatement("delete ORADDMAN.TSDELIVERY_NOTICE_REMARKS where DNDOCNO='"+dnDocNo+"' ");
+				pstmt=con.prepareStatement("delete ORADDMAN.TSDELIVERY_NOTICE_REMARKS where DNDOCNO='"+dnDocNo+"' "); 
 				pstmt.executeQuery();
-
+						
 
 				//add by Peggy 20170714
 				line_remarks ="";
 				if (salesAreaNo.equals("006"))
 				{
-					sql = " SELECT 'Date Codeé ˆ'||VALID_MONTHS/12||'å¹´å…§'"+
+					sql = " SELECT 'Date Code¶·'||VALID_MONTHS/12||'¦~¤º'"+
 						  " FROM tsc.tsc_cust_shipping_dc_check a"+
 						  " WHERE ? LIKE CUSTOMER_NAME"+
 						  " AND ?=?";
@@ -294,15 +292,15 @@ try
 					statementss.setString(1,customer);
 					statementss.setString(2,salesAreaNo);
 					statementss.setString(3,"006");
-					ResultSet rssx=statementss.executeQuery();
+					ResultSet rssx=statementss.executeQuery();	
 					if (rssx.next())
 					{
-						line_remarks=rssx.getString(1);
+						line_remarks=rssx.getString(1);	
 					}
 					rssx.close();
-					statementss.close();
-				}
-
+					statementss.close();					  
+				}		
+										
 				String sqlDtl="insert into ORADDMAN.TSDELIVERY_NOTICE_DETAIL(DNDOCNO,LINE_NO,INVENTORY_ITEM_ID,"+
 						"ITEM_SEGMENT1,QUANTITY,UOM,LIST_PRICE,REQUEST_DATE,SHIP_DATE,"+
 						"PROMISE_DATE,LINE_TYPE,PRIMARY_UOM,REMARK,CREATION_DATE,CREATED_BY,LAST_UPDATE_DATE,LAST_UPDATED_BY,LSTATUSID,LSTATUS,"+
@@ -318,11 +316,11 @@ try
 						",END_CUSTOMER_PARTNO,SUPPLIER_NUMBER)"+ //add by Peggy 20180225 //add SUPPLIER_NUMBER by Peggy
 						" values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 				for (int r=0;r<aRfqTemporaryCode.length-1;r++)
-				{
+				{	    
 					String invItemID = "0",uom = "N/A",itemFactory = "N/A",priceCategory = "",tscProdGroup=""; //20110620 liling add tscprodgroup
 					tscdesc="";slowmoving_flag=false; //add by Peggy 20141007
 					pc_lead_time=""; //add by Peggy 20150114
-					double listPrice = 0;
+					double listPrice = 0;	
 					Statement statement=con.createStatement();
 					sql = "select a.INVENTORY_ITEM_ID, a.PRIMARY_UOM_CODE, NVL(a.ATTRIBUTE3,'N/A') ATTRIBUTE3, b.SEGMENT1  "+
 						  ",APPS.TSC_OM_CATEGORY(b.INVENTORY_ITEM_ID, 49,'TSC_PROD_GROUP') TSCPRODGROUP "+ //20110620 LILING
@@ -335,7 +333,7 @@ try
 						  " where a.INVENTORY_ITEM_ID = b.INVENTORY_ITEM_ID "+
 						  " and a.ORGANIZATION_ID = b.ORGANIZATION_ID "+
 						  " AND NVL(a.CUSTOMER_ORDER_FLAG,'N')='Y'"+     //add by Peggy 20151008
-						  " AND NVL(a.CUSTOMER_ORDER_ENABLED_FLAG,'N')='Y'"+//add by Peggy 20151008
+						  " AND NVL(a.CUSTOMER_ORDER_ENABLED_FLAG,'N')='Y'"+//add by Peggy 20151008						  
 						  " and a.ORGANIZATION_ID = '49' "+
 						  " and b.CATEGORY_SET_ID = 6 "+
 						  " and a.SEGMENT1 = '"+aRfqTemporaryCode[r][1]+"' "+
@@ -346,10 +344,10 @@ try
 						invItemID = rs.getString("INVENTORY_ITEM_ID");
 						itemFactory = rs.getString("ATTRIBUTE3");
 						uom =  rs.getString("PRIMARY_UOM_CODE");
-						priceCategory = rs.getString("SEGMENT1");
+						priceCategory = rs.getString("SEGMENT1");		
 						tscProdGroup = rs.getString("TSCPRODGROUP");
-						tscdesc = rs.getString("tsc_desc");  //add by Peggy 20141007
-						listPrice = rs.getDouble("OPERAND"); //add by Peggy 20170714
+						tscdesc = rs.getString("tsc_desc");  //add by Peggy 20141007	
+						listPrice = rs.getDouble("OPERAND"); //add by Peggy 20170714 
 						if (salesAreaNo.equals("001") && rs.getString("TSC_PACKAGE").equals("SMA") && rs.getString("ATTRIBUTE3").equals("008"))
 						{
 							itemFactory ="002";
@@ -358,20 +356,20 @@ try
 						{
 							itemFactory ="002";
 						}
-						else
+						else 
 						{
 							itemFactory = rs.getString("ATTRIBUTE3");
-						}
-						//2009/04/02 è‹¥æ²’å¡«å°±æŠ“æ–™è™Ÿé è¨­
+						}	
+						//2009/04/02 ­Y¨S¶ñ´N§ì®Æ¸¹¹w³]
 						if (aRfqTemporaryCode[r][10]==null || aRfqTemporaryCode[r][10].equals("null")) aRfqTemporaryCode[r][10]= itemFactory;
-
+						
 						//add by Peggy 20150114
 						sql = "select tsc_get_pc_lead_time('"+itemFactory +"',trunc(sysdate),'"+invItemID +"') from dual";
 						Statement statementx=con.createStatement();
 						ResultSet rsx=statementx.executeQuery(sql);
 						if (rsx.next())
 						{
-							pc_lead_time = rsx.getString(1);
+							pc_lead_time = rsx.getString(1); 
 						}
 						rsx.close();
 						statementx.close();
@@ -379,10 +377,10 @@ try
 					else
 					{
 						throw new Exception("line:"+(r+1)+" The item is not exist!!");
-					}
+					}	
 					rs.close();
 					statement.close();
-
+			
 					//add by Peggy 20120307
 					if (!aRfqTemporaryCode[r][13].trim().equals("") && !aRfqTemporaryCode[r][13].trim().equals("N/A") && aRfqTemporaryCode[r][13].trim()!= null)
 					{
@@ -393,26 +391,26 @@ try
 										 " and item='"+aRfqTemporaryCode[r][13].trim()+"'"+
 										 " and inventory_item='"+aRfqTemporaryCode[r][1].trim()+"'"+
 										 " and sold_to_org_id='"+customerId+"'";
-						ResultSet rscust=statecust.executeQuery(sqlcust);
+						ResultSet rscust=statecust.executeQuery(sqlcust); 
 						if (rscust.next())
 						{
-							custItemID = rscust.getString("item_id");
+							custItemID = rscust.getString("item_id");  
 							custItemType = rscust.getString("item_type");
 						}
 						else
 						{
 							throw new Exception("line:"+(r+1)+" The customer item is not available!!"+sqlcust);
-						}
+						}					
 						rscust.close();
-						statecust.close();
+						statecust.close(); 
 					}
 					else
 					{
 						aRfqTemporaryCode[r][13]="N/A";
-						custItemID = "0";
-						custItemType = "INT";
-					}
-
+						custItemID = "0";  
+						custItemType = "INT";						
+					}					
+					
 					//add by Peggychen 20120307
 					if (autoCreate_Flag.equals("Y") || (aRfqTemporaryCode[r][15] != null && !aRfqTemporaryCode[r][15].trim().equals("N/A") && !aRfqTemporaryCode[r][15].trim().equals("")))
 					{
@@ -421,16 +419,16 @@ try
 							throw new Exception("line:"+(r+1)+" The order type can not empty!!");
 						}
 						else
-						{
+						{					
 							if (!orderType.equals(aRfqTemporaryCode[r][15].trim()))
 							{
 								Statement stateodrtype=con.createStatement();
 								ResultSet rsodrtype=stateodrtype.executeQuery("SELECT  a.otype_id  FROM oraddman.tsarea_ordercls a,oraddman.tsprod_ordertype b"+
 								" where b.order_num=a.order_num and a.order_num='"+aRfqTemporaryCode[r][15].trim()+"' and a.SAREA_NO ='"+salesAreaNo+"' and a.active='Y'"+
-								" and b.MANUFACTORY_NO='"+aRfqTemporaryCode[r][10]+"' and b.ACTIVE='Y'");
+								" and b.MANUFACTORY_NO='"+aRfqTemporaryCode[r][10]+"' and b.ACTIVE='Y'");  
 								if (rsodrtype.next())
 								{
-									orderTypeId=rsodrtype.getString("otype_id");
+									orderTypeId=rsodrtype.getString("otype_id");  
 								}
 								else
 								{
@@ -440,8 +438,8 @@ try
 								stateodrtype.close();
 								orderType= aRfqTemporaryCode[r][15].trim();
 							}
-						}
-						//CHECK LINE TYPEæ˜¯å¦æ­£ç¢º
+						}	
+						//CHECK LINE TYPE¬O§_¥¿½T
 						if (aRfqTemporaryCode[r][16] == null || aRfqTemporaryCode[r][16].trim().equals(""))
 						{
 							throw new Exception("line:"+(r+1)+" The line type can not empty!!");
@@ -452,24 +450,24 @@ try
 							ResultSet rsB=stateB.executeQuery(" select wf.LINE_TYPE_ID, vl.name as LINE_TYPE"+
 																   " from APPS.OE_WORKFLOW_ASSIGNMENTS wf, APPS.OE_TRANSACTION_TYPES_TL vl "+
 																   " where wf.LINE_TYPE_ID = vl.TRANSACTION_TYPE_ID "+
-																   " and wf.LINE_TYPE_ID is not null"+
+																   " and wf.LINE_TYPE_ID is not null"+ 
 																   " and vl.language = 'US' "+
 																   " and END_DATE_ACTIVE is NULL "+
 																   " and wf.LINE_TYPE_ID ='"+aRfqTemporaryCode[r][16].trim() +"'"+
 																   " and exists (select 1 from ORADDMAN.TSAREA_ORDERCLS c  where c.OTYPE_ID= wf.ORDER_TYPE_ID"+
-																   " and c.SAREA_NO = '"+salesAreaNo+"' and c.ORDER_NUM='"+orderType+"')");
+																   " and c.SAREA_NO = '"+salesAreaNo+"' and c.ORDER_NUM='"+orderType+"')"); 
 							if (!rsB.next())
 							{
 								throw new Exception("line:"+(r+1)+" The line type is not exist!!");
 							}
 							stateB.close();
 							rsB.close();
-						}
+						}					
 					}
 
 					//check slow moving stock,add by Peggy 20141007
 					//if (actionID.equals("002") && !aRfqTemporaryCode[r][15].trim().equals("1121") && !aRfqTemporaryCode[r][15].trim().equals("4121"))
-					if (actionID.equals("002") && !aRfqTemporaryCode[r][15].trim().equals("1121") && !aRfqTemporaryCode[r][15].trim().equals("4121") && !salesAreaNo.equals("018") && !customerId.equals("601290")) //TSCH RFQåœ¨7è¨‚å–®å·²ç¶“æª¢æŸ¥éFROM RITA 20221207 //from rita:onsemiçš„æ–™å› éƒ½æ˜¯ç‰¹æ®Šmarking/packing/label,ç„¡æ³•èˆ‡å…¶ä»–å®¢æˆ¶äº’ç›¸æ¶ˆåŒ– add by Peggy 20230207
+					if (actionID.equals("002") && !aRfqTemporaryCode[r][15].trim().equals("1121") && !aRfqTemporaryCode[r][15].trim().equals("4121") && !salesAreaNo.equals("018") && !customerId.equals("601290")) //TSCH RFQ¦b7­q³æ¤w¸gÀË¬d¹LFROM RITA 20221207 //from rita:onsemiªº®Æ¦]³£¬O¯S®ímarking/packing/label,µLªk»P¨ä¥L«È¤á¤¬¬Û®ø¤Æ add by Peggy 20230207
 					{
 						if (rsh.isBeforeFirst() ==false) rsh.beforeFirst();
 						while (rsh.next())
@@ -480,8 +478,8 @@ try
 								break;
 							}
 						}
-					}
-
+					}	
+					
 					//check arrow end customer item,add by Peggy 20150409
 					if (customerId.equals("7147"))
 					{
@@ -498,15 +496,15 @@ try
 						{
 							aRfqTemporaryCode[r][20]=rs88.getString(1);
 							aRfqTemporaryCode[r][23]=rs88.getString(2);
-						}
+						}	
 						rs88.close();
 						state88.close();
 					}
-
+						
 					if (salesAreaNo.equals("018"))
 					{
-						//FABRICATORS D/Cä¸€å¹´å…§,ADD BY PEGGY 20200512
-						sql = " SELECT 'Date Codeéœ€'||VALID_MONTHS/12||'å¹´å…§'"+
+						//FABRICATORS D/C¤@¦~¤º,ADD BY PEGGY 20200512
+						sql = " SELECT 'Date Code»İ'||VALID_MONTHS/12||'¦~¤º'"+
 							  " FROM tsc.tsc_cust_shipping_dc_check a"+
 							  " WHERE INSTR(upper(?),CUSTOMER_NAME)>0"+
 							  " AND ?=?";
@@ -514,29 +512,29 @@ try
 						statementss.setString(1,aRfqTemporaryCode[r][9]);
 						statementss.setString(2,salesAreaNo);
 						statementss.setString(3,"018");
-						ResultSet rssx=statementss.executeQuery();
+						ResultSet rssx=statementss.executeQuery();	
 						if (rssx.next())
 						{
-							//line_remarks =new String(rssx.getString(1).getBytes("ISO8859-1"),"utf8");
-							line_remarks =rssx.getString(1);
+							//line_remarks =new String(rssx.getString(1).getBytes("ISO8859-1"),"utf8");	
+							line_remarks =rssx.getString(1);	
 						}
 						rssx.close();
-						statementss.close();
+						statementss.close();					
 					}
-
+																			
 					pstmt=con.prepareStatement(sqlDtl);
-					pstmt.setString(1,dnDocNo); //  è©¢å•å–®è™Ÿ
-					pstmt.setInt(2,r+1); // Line_No // çµ¦æ–™é …åºè™Ÿ
-					pstmt.setString(3,invItemID); // Inventory_Item_ID
+					pstmt.setString(1,dnDocNo); //  ¸ß°İ³æ¸¹ 
+					pstmt.setInt(2,r+1); // Line_No // µ¹®Æ¶µ§Ç¸¹	  
+					pstmt.setString(3,invItemID); // Inventory_Item_ID	  
 					pstmt.setString(4,aRfqTemporaryCode[r][1]); // Inventory_Item_Segment1
 					pstmt.setFloat(5,Float.parseFloat(aRfqTemporaryCode[r][3])); // Order Qty
 					pstmt.setString(6,uom); // Primary Unit of Measure
 					pstmt.setDouble(7,listPrice); // List Price
 					pstmt.setString(8,aRfqTemporaryCode[r][7]+dateBean.getHourMinuteSecond()); // Request Date
-					pstmt.setString(9,aRfqTemporaryCode[r][7]+dateBean.getHourMinuteSecond());
-					// Ship Date( é è¨­èˆ‡éœ€æ±‚æ—¥ç›¸åŒ,ä½†å¯ç”±å·¥å» æ–¼å®‰æ’äº¤æœŸ,ç”Ÿç®¡ç¢ºèªäº¤æœŸåŠæ¥­å‹™æœ€å¾Œæ–¼ç”Ÿæˆè¨‚å–®æ™‚ä¿®æ”¹ )
-					pstmt.setString(10,aRfqTemporaryCode[r][7]+dateBean.getHourMinuteSecond());
-					// Promise Date( å®¢æˆ¶éœ€æ±‚æ—¥,é è¨­èˆ‡éœ€æ±‚æ—¥ç›¸åŒ,ä½†å¯ç”±æ¥­å‹™æœ€å¾Œæ–¼ç”Ÿæˆè¨‚å–®æ™‚ä¿®æ”¹ )
+					pstmt.setString(9,aRfqTemporaryCode[r][7]+dateBean.getHourMinuteSecond()); 
+					// Ship Date( ¹w³]»P»İ¨D¤é¬Û¦P,¦ı¥i¥Ñ¤u¼t©ó¦w±Æ¥æ´Á,¥ÍºŞ½T»{¥æ´Á¤Î·~°È³Ì«á©ó¥Í¦¨­q³æ®É­×§ï )
+					pstmt.setString(10,aRfqTemporaryCode[r][7]+dateBean.getHourMinuteSecond()); 
+					// Promise Date( «È¤á»İ¨D¤é,¹w³]»P»İ¨D¤é¬Û¦P,¦ı¥i¥Ñ·~°È³Ì«á©ó¥Í¦¨­q³æ®É­×§ï )
 					pstmt.setInt(11,Integer.parseInt(aRfqTemporaryCode[r][16].trim())); // Default Order Line Type
 					pstmt.setString(12,aRfqTemporaryCode[r][4]); // Primary Unit of Measure
 					if (aRfqTemporaryCode[r][8]==null || aRfqTemporaryCode[r][8].indexOf(line_remarks)<0) //add by Peggy 20170714
@@ -544,10 +542,10 @@ try
 						aRfqTemporaryCode[r][8] = aRfqTemporaryCode[r][8]+(aRfqTemporaryCode[r][8].length()>0?",":"")+line_remarks;
 					}
 					pstmt.setString(13,aRfqTemporaryCode[r][8]); // Remark
-					pstmt.setString(14,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); //å¯«å…¥æ—¥æœŸ
-					pstmt.setString(15,userID); //å¯«å…¥User ID
-					pstmt.setString(16,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); //æœ€å¾Œæ›´æ–°æ—¥æœŸ
-					pstmt.setString(17,userID); //æœ€å¾Œæ›´æ–°User
+					pstmt.setString(14,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); //¼g¤J¤é´Á
+					pstmt.setString(15,userID); //¼g¤JUser ID
+					pstmt.setString(16,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); //³Ì«á§ó·s¤é´Á
+					pstmt.setString(17,userID); //³Ì«á§ó·sUser
 					//add by Peggy 20141007
 					if (slowmoving_flag)
 					{
@@ -559,21 +557,21 @@ try
 						pstmt.setString(18,sToStatusID);
 						pstmt.setString(19,sToStatusName);
 					}
-					pstmt.setString(20,aRfqTemporaryCode[r][2]); //å°åŠå“è™Ÿèªªæ˜
-					pstmt.setString(21,"0"); //æœ€å°åŒ…è£è¨‚è³¼é‡
-					pstmt.setString(22,aRfqTemporaryCode[r][10]); // ç”Ÿç”¢åœ° 2009/04/02 liling
-					aRfqTemporaryCode[r][9] =aRfqTemporaryCode[r][9].replace("ï¼ˆ","(").replace("ï¼‰",")"); //20130304 by Peggy:å…¨å½¢è½‰åŠå½¢
-					pstmt.setString(23,aRfqTemporaryCode[r][9]); // Cust PO Number 2006/06/06 Add Kerwin
+					pstmt.setString(20,aRfqTemporaryCode[r][2]); //¥x¥b«~¸¹»¡©ú
+					pstmt.setString(21,"0"); //³Ì¤p¥]¸Ë­qÁÊ¶q	  
+					pstmt.setString(22,aRfqTemporaryCode[r][10]); // ¥Í²£¦a 2009/04/02 liling
+					aRfqTemporaryCode[r][9] =aRfqTemporaryCode[r][9].replace("¡]","(").replace("¡^",")"); //20130304 by Peggy:¥ş§ÎÂà¥b§Î
+					pstmt.setString(23,aRfqTemporaryCode[r][9]); // Cust PO Number 2006/06/06 Add Kerwin  
 					// 20110310 Marvie Add : Add Field  SPQ MOQ PROGRAM_NAME
 					float fSPQ = 0;
-					if (aRfqTemporaryCode[r].length > 9)
+					if (aRfqTemporaryCode[r].length > 9) 
 					{
 						if (aRfqTemporaryCode[r][11]==null || aRfqTemporaryCode[r][11].equals("") || aRfqTemporaryCode[r][11].equals("null")) aRfqTemporaryCode[r][11]="0";
 						fSPQ = Float.valueOf(aRfqTemporaryCode[r][11]).floatValue();
 					}
 					pstmt.setFloat(24,fSPQ); // SPQ
 					float fMOQ = 0;
-					if (aRfqTemporaryCode[r].length > 10)
+					if (aRfqTemporaryCode[r].length > 10) 
 					{
 						if (aRfqTemporaryCode[r][12]==null || aRfqTemporaryCode[r][12].equals("") || aRfqTemporaryCode[r][12].equals("null")) aRfqTemporaryCode[r][12]="0";
 						fMOQ = Float.valueOf(aRfqTemporaryCode[r][12]).floatValue();
@@ -596,15 +594,15 @@ try
 					if (!aRfqTemporaryCode[r][20].startsWith("&nbsp"))
 					{
 						Statement state1=con.createStatement();
-						ResultSet rs1=state1.executeQuery("SELECT A.CUSTOMER_ID  FROM  AR_CUSTOMERS A WHERE A.CUSTOMER_NUMBER = '"+aRfqTemporaryCode[r][20].trim()+"'");
+						ResultSet rs1=state1.executeQuery("SELECT A.CUSTOMER_ID  FROM  AR_CUSTOMERS A WHERE A.CUSTOMER_NUMBER = '"+aRfqTemporaryCode[r][20].trim()+"'");  
 						if (rs1.next())
 						{
 							END_CUST_ID =""+rs1.getInt(1);
 						}
 						rs1.close();
 						state1.close();
-					}
-					//check æ¥­å‹™å€012 end customeræ˜¯å¦æœ‰æ•ˆ,add by Peggy 20160219
+					}	
+					//check ·~°È°Ï012 end customer¬O§_¦³®Ä,add by Peggy 20160219
 					if (salesAreaNo.equals("012"))
 					{
 						sql_e=" select SITE_USE_ID from  AR.HZ_CUST_SITE_USES_ALL a,APPS.HZ_CUST_ACCT_SITES_ALL b"+
@@ -612,7 +610,7 @@ try
                               " AND A.STATUS='A' "+
 	    				      " AND A.ORG_ID=325"+
                               " AND A.CUST_ACCT_SITE_ID = B.CUST_ACCT_SITE_ID "+
-                              " AND TO_CHAR(B.CUST_ACCOUNT_ID) ='"+END_CUST_ID+"'";
+                              " AND TO_CHAR(B.CUST_ACCOUNT_ID) ='"+END_CUST_ID+"'";					
 						if (!aRfqTemporaryCode[r][27].equals("&nbsp;") && !aRfqTemporaryCode[r][27].equals(""))  //add by Peggy 20170511
 						{
 							sql_e += " AND a.LOCATION='"+aRfqTemporaryCode[r][27]+"'";
@@ -620,7 +618,7 @@ try
 						else
 						{
 							sql_e += " AND A.PRIMARY_FLAG='Y'";
-						}
+						}	
 						Statement state81=con.createStatement();
 						ResultSet rs81=state81.executeQuery(sql_e);
 						if (!rs81.next())
@@ -632,12 +630,12 @@ try
 							end_cust_ship_to = rs81.getString(1);
 						}
 						state81.close();
-						rs81.close();
+						rs81.close();														   
 					}
 					else
-					{
+					{	
 						end_cust_ship_to =null;
-					}
+					}					
 					pstmt.setString(39,(aRfqTemporaryCode[r][23].equals("&nbsp;"))?null:aRfqTemporaryCode[r][23]);  //END CUSTOMER,modify by Peggy 20140813
 					pstmt.setString(40,END_CUST_ID);  //END CUSTOMER ID,add by Peggy 20140813
 					pstmt.setString(41,pc_lead_time); //pc lead time,add by Peggy 20150114
@@ -648,12 +646,12 @@ try
 					pstmt.setString(46,(aRfqTemporaryCode[r][28].equals("&nbsp;") ||aRfqTemporaryCode[r][28]==null||aRfqTemporaryCode[r][28].equals("null"))?null:aRfqTemporaryCode[r][28]); //END_CUSTOMER_PARTNO,add by Peggy 20190225
 					pstmt.setString(47,SUPPLIER_NUMBER); //SUPPLIER_NUMBER,add by Peggy 20220428
 					pstmt.executeQuery();
-					out.print("***** sucess *****");
-
-					// å–æ­·ç¨‹æª”å…§å‰ä¸€å€‹ç‹€æ…‹è‡³ç›®å‰çš„æ™‚é–“å·®,åšç‚ºæœ¬æ¬¡æ­·ç¨‹çš„å·¥æ™‚_èµ·
+					out.print("***** sucess *****");		
+	
+					// ¨ú¾úµ{ÀÉ¤º«e¤@­Óª¬ºA¦Ü¥Ø«eªº®É¶¡®t,°µ¬°¥»¦¸¾úµ{ªº¤u®É_°_
 					float processWorkTime = 0;
-					//String preWorkTime = "0";
-					//Statement stateHProcWT=con.createStatement();  // ORISTATUSID = '001' (è‰ç¨¿æ–‡ä»¶å‰ä¸€ç‹€æ…‹ä»ç‚ºè‰ç¨¿æ–‡ä»¶)
+					//String preWorkTime = "0"; 
+					//Statement stateHProcWT=con.createStatement();  // ORISTATUSID = '001' (¯ó½Z¤å¥ó«e¤@ª¬ºA¤´¬°¯ó½Z¤å¥ó)
 					//ResultSet rsHProcWT=stateHProcWT.executeQuery("select CDATETIME from ORADDMAN.TSDELIVERY_DETAIL_HISTORY  where DNDOCNO='"+dnDocNo+"' and TO_CHAR(LINE_NO)='"+aRfqTemporaryCode[r][0]+"' and ORISTATUSID ='001' ");
 					//if (rsHProcWT.next())
 					//{
@@ -661,11 +659,11 @@ try
 					//}
 					//rsHProcWT.close();
 					//stateHProcWT.close();
-					////è‹¥å–åˆ°å‰ä¸€å€‹ç‹€æ…‹æ™‚é–“,å‰‡ä»¥ç›®å‰æ™‚é–“æ¸›å»å‰
+					////­Y¨ú¨ì«e¤@­Óª¬ºA®É¶¡,«h¥H¥Ø«e®É¶¡´î¥h«e
 					//if (preWorkTime!="0")
 					//{
 					//	String sqlWT = "select ROUND((to_date('"+dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()+"','YYYYMMDDHH24MISS') - to_date('"+preWorkTime+"','YYYYMMDDHH24MISS')) * 24,2) from DUAL ";
-					//	Statement stateWTime=con.createStatement();  // ORISTATUSID = '001' (è‰ç¨¿æ–‡ä»¶å‰ä¸€ç‹€æ…‹ä»ç‚ºè‰ç¨¿æ–‡ä»¶)
+					//	Statement stateWTime=con.createStatement();  // ORISTATUSID = '001' (¯ó½Z¤å¥ó«e¤@ª¬ºA¤´¬°¯ó½Z¤å¥ó)
 					//	ResultSet rsWTime=stateWTime.executeQuery(sqlWT);
 					//	if (rsWTime.next())
 					//	{
@@ -674,11 +672,11 @@ try
 					//	rsWTime.close();
 					//	stateWTime.close();
 					//}
-					//// å–æ­·ç¨‹æª”å…§å‰ä¸€å€‹ç‹€æ…‹è‡³ç›®å‰çš„æ™‚é–“å·®,åšç‚ºæœ¬æ¬¡æ­·ç¨‹çš„å·¥æ™‚_è¿„
-
+					//// ¨ú¾úµ{ÀÉ¤º«e¤@­Óª¬ºA¦Ü¥Ø«eªº®É¶¡®t,°µ¬°¥»¦¸¾úµ{ªº¤u®É_¨´		
+					
 					//modify by Peggy 20170512
 					String sqlWT = " select ROUND((SYSDATE-to_date(CDATETIME,'yyyymmddhh24miss'))*24,2) from ORADDMAN.TSDELIVERY_DETAIL_HISTORY  where DNDOCNO='"+dnDocNo+"' and TO_CHAR(LINE_NO)='"+aRfqTemporaryCode[r][0]+"' and ORISTATUSID ='001'";
-					Statement stateWTime=con.createStatement();  // ORISTATUSID = '001' (è‰ç¨¿æ–‡ä»¶å‰ä¸€ç‹€æ…‹ä»ç‚ºè‰ç¨¿æ–‡ä»¶)
+					Statement stateWTime=con.createStatement();  // ORISTATUSID = '001' (¯ó½Z¤å¥ó«e¤@ª¬ºA¤´¬°¯ó½Z¤å¥ó)
 					ResultSet rsWTime=stateWTime.executeQuery(sqlWT);
 					if (rsWTime.next())
 					{
@@ -687,10 +685,10 @@ try
 					rsWTime.close();
 					stateWTime.close();
 
-
-					//Step5. ä»»ä¸€Action,å¯«å…¥äº¤æœŸè©¢å•æ˜ç´°æ­·ç¨‹æª”
+			
+					//Step5. ¥ô¤@Action,¼g¤J¥æ´Á¸ß°İ©ú²Ó¾úµ{ÀÉ	          	 
 					int deliveryCount = 0;
-					Statement stateDeliveryCNT=con.createStatement();
+					Statement stateDeliveryCNT=con.createStatement(); 
 					ResultSet rsDeliveryCNT=stateDeliveryCNT.executeQuery("select count(*)+1 from ORADDMAN.TSDELIVERY_DETAIL_HISTORY  where DNDOCNO='"+dnDocNo+"' and TO_CHAR(LINE_NO)='"+aRfqTemporaryCode[r][0]+"' ");
 					if (rsDeliveryCNT.next())
 					{
@@ -698,194 +696,194 @@ try
 					}
 					rsDeliveryCNT.close();
 					stateDeliveryCNT.close();
-
+	
 					statement=con.createStatement();
 					rs=statement.executeQuery("select * from ORADDMAN.TSWFACTION where ACTIONID='"+actionID+"'");
 					rs.next();
 					actionName=rs.getString("ACTIONNAME");
-
+	   
 					rs=statement.executeQuery("select * from ORADDMAN.TSWFStatus where STATUSID='"+fromStatusID+"'");
 					rs.next();
-					oriStatus=rs.getString("STATUSNAME");
+					oriStatus=rs.getString("STATUSNAME");   
 					statement.close();
-					rs.close();
-
+					rs.close();	
+		
 					String historySql="insert into ORADDMAN.TSDELIVERY_DETAIL_HISTORY(DNDOCNO,ORISTATUSID,"+
 					"ORISTATUS,ACTIONID,ACTIONNAME,UPDATEUSERID,UPDATEDATE,UPDATETIME,ASSIGN_FACTORY,"+
 					"CDATETIME,REMARK,SERIALROW,LINE_NO,PROCESS_WORKTIME) "+
 									"values(?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
-					PreparedStatement historystmt=con.prepareStatement(historySql);
-					historystmt.setString(1,dnDocNo);
-					historystmt.setString(2,fromStatusID);
-					historystmt.setString(3,oriStatus); //å¯«å…¥statusåç¨±
-					historystmt.setString(4,actionID);
-					historystmt.setString(5,actionName);
-					historystmt.setString(6,userID);
-					historystmt.setString(7,dateBean.getYearMonthDay());
+					PreparedStatement historystmt=con.prepareStatement(historySql);   
+					historystmt.setString(1,dnDocNo); 
+					historystmt.setString(2,fromStatusID); 
+					historystmt.setString(3,oriStatus); //¼g¤Jstatus¦WºÙ
+					historystmt.setString(4,actionID); 
+					historystmt.setString(5,actionName); 
+					historystmt.setString(6,userID); 
+					historystmt.setString(7,dateBean.getYearMonthDay()); 
 					historystmt.setString(8,dateBean.getHourMinuteSecond());
-					historystmt.setString(9,prodCodeGet); //å¯«å…¥å·¥å» ç·¨è™Ÿ
+					historystmt.setString(9,prodCodeGet); //¼g¤J¤u¼t½s¸¹
 					historystmt.setString(10,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond());
 					historystmt.setString(11,remark);
 					historystmt.setInt(12,deliveryCount);
-					historystmt.setInt(13,Integer.parseInt(aRfqTemporaryCode[r][0])); // å¯«å…¥è™•ç†Line_No
-					historystmt.setFloat(14,processWorkTime);
+					historystmt.setInt(13,Integer.parseInt(aRfqTemporaryCode[r][0])); // ¼g¤J³B²zLine_No
+					historystmt.setFloat(14,processWorkTime);		
 					historystmt.executeQuery();
-
+					
 					//add by Peggy 20130304,insert data to tsdelivery_notice_remarks table
 					if (aRfqTemporaryCode[r][21] != null && !aRfqTemporaryCode[r][21].equals("") && !aRfqTemporaryCode[r][21].equals("&nbsp;") && aRfqTemporaryCode[r][22] != null && !aRfqTemporaryCode[r][22].equals("") && !aRfqTemporaryCode[r][22].equals("&nbsp;"))
 					{
-						PreparedStatement pstmtDt11=con.prepareStatement("insert into oraddman.tsdelivery_notice_remarks(dndocno, line_no, shipping_marks, remarks,creation_date, created_by, last_update_date,last_updated_by, customer) values(?,?,?,?,sysdate,?,sysdate,?,CASE WHEN ?='ARROW' THEN 'ARROW HONG KONG' ELSE ? END)");
-						pstmtDt11.setString(1,dnDocNo);
-						pstmtDt11.setInt(2,r+1); // Line_No
+						PreparedStatement pstmtDt11=con.prepareStatement("insert into oraddman.tsdelivery_notice_remarks(dndocno, line_no, shipping_marks, remarks,creation_date, created_by, last_update_date,last_updated_by, customer) values(?,?,?,?,sysdate,?,sysdate,?,CASE WHEN ?='ARROW' THEN 'ARROW HONG KONG' ELSE ? END)");  
+						pstmtDt11.setString(1,dnDocNo); 
+						pstmtDt11.setInt(2,r+1); // Line_No 
 						pstmtDt11.setString(3,(aRfqTemporaryCode[r][21].startsWith("&nbsp"))?null:aRfqTemporaryCode[r][21].trim()); //SHIPPING MARKS,Add by Peggy 20130304
 						pstmtDt11.setString(4,(aRfqTemporaryCode[r][22].startsWith("&nbsp"))?null:aRfqTemporaryCode[r][22].trim()); //REMARKS,Add by Peggy 20130304
 						pstmtDt11.setString(5,UserName); //User
 						pstmtDt11.setString(6,UserName);   //User
-						pstmtDt11.setString(7,(aRfqTemporaryCode[r][9].indexOf("(")<0?aRfqTemporaryCode[r][9]:aRfqTemporaryCode[r][9].substring(aRfqTemporaryCode[r][9].indexOf("(")+1,aRfqTemporaryCode[r][9].lastIndexOf(")"))));   //customer,modify by Peggy 20130729,æŠ“æœ€å³é‚Šçš„å³æ‹¬è™Ÿ
-						pstmtDt11.setString(8,(aRfqTemporaryCode[r][9].indexOf("(")<0?aRfqTemporaryCode[r][9]:aRfqTemporaryCode[r][9].substring(aRfqTemporaryCode[r][9].indexOf("(")+1,aRfqTemporaryCode[r][9].lastIndexOf(")"))));   //customer,modify by Peggy 20130729,æŠ“æœ€å³é‚Šçš„å³æ‹¬è™Ÿ
+						pstmtDt11.setString(7,(aRfqTemporaryCode[r][9].indexOf("(")<0?aRfqTemporaryCode[r][9]:aRfqTemporaryCode[r][9].substring(aRfqTemporaryCode[r][9].indexOf("(")+1,aRfqTemporaryCode[r][9].lastIndexOf(")"))));   //customer,modify by Peggy 20130729,§ì³Ì¥kÃäªº¥k¬A¸¹
+						pstmtDt11.setString(8,(aRfqTemporaryCode[r][9].indexOf("(")<0?aRfqTemporaryCode[r][9]:aRfqTemporaryCode[r][9].substring(aRfqTemporaryCode[r][9].indexOf("(")+1,aRfqTemporaryCode[r][9].lastIndexOf(")"))));   //customer,modify by Peggy 20130729,§ì³Ì¥kÃäªº¥k¬A¸¹
 						pstmtDt11.executeQuery();
 					}
-
+					
 				}
 
-				//Step1. è‹¥ç‚ºæ¥­å‹™è‰ç¨¿æ–‡ä»¶è™•ç†(ACTION=CREATE)
-				//Step3. å†æ›´æ–°äº¤æœŸè©¢å•ä¸»æª”è³‡æ–™
-				//pstmt=con.prepareStatement("update ORADDMAN.TSDELIVERY_NOTICE set LAST_UPDATED_BY=?,LAST_UPDATE_DATE=? where DNDOCNO='"+dnDocNo+"' ");
-				pstmt=con.prepareStatement("update ORADDMAN.TSDELIVERY_NOTICE set LAST_UPDATED_BY=?,LAST_UPDATE_DATE=?,CREATED_BY=?,CREATION_DATE=decode(?,'001',CREATION_DATE,TO_CHAR(SYSDATE,'yyyymmddhh24miss')) where DNDOCNO='"+dnDocNo+"' ");
-				pstmt.setString(1,userID); // æœ€å¾Œæ›´æ–°äººå“¡
-				pstmt.setString(2,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // æœ€å¾Œæ›´æ–°æ™‚é–“
-				pstmt.setString(3,userID);   // æœ€å¾Œæ›´æ–°äººå“¡
-				pstmt.setString(4,actionID); //å»ºç«‹æ™‚é–“
+				//Step1. ­Y¬°·~°È¯ó½Z¤å¥ó³B²z(ACTION=CREATE)		
+				//Step3. ¦A§ó·s¥æ´Á¸ß°İ¥DÀÉ¸ê®Æ
+				//pstmt=con.prepareStatement("update ORADDMAN.TSDELIVERY_NOTICE set LAST_UPDATED_BY=?,LAST_UPDATE_DATE=? where DNDOCNO='"+dnDocNo+"' ");      
+				pstmt=con.prepareStatement("update ORADDMAN.TSDELIVERY_NOTICE set LAST_UPDATED_BY=?,LAST_UPDATE_DATE=?,CREATED_BY=?,CREATION_DATE=decode(?,'001',CREATION_DATE,TO_CHAR(SYSDATE,'yyyymmddhh24miss')) where DNDOCNO='"+dnDocNo+"' ");      
+				pstmt.setString(1,userID); // ³Ì«á§ó·s¤H­û
+				pstmt.setString(2,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // ³Ì«á§ó·s®É¶¡     
+				pstmt.setString(3,userID);   // ³Ì«á§ó·s¤H­û
+				pstmt.setString(4,actionID); //«Ø¥ß®É¶¡   
 				pstmt.executeQuery();
-
+	
 				//write into db
 				con.commit();
-
+				
 				//clear array detail
-				rfqArray2DTemporaryBean.setArray2DString(null);
+				rfqArray2DTemporaryBean.setArray2DString(null); 
 			}
 			catch (Exception e)
-			{
+			{	
 				errCnt++;
- 				out.println("<font color='red'>å‹•ä½œå¤±æ•—!è«‹é€Ÿæ´½ç³»çµ±ç®¡ç†å“¡,è¬è¬!"+e.getMessage().toString()+"</font>");
+ 				out.println("<font color='red'>°Ê§@¥¢±Ñ!½Ğ³t¬¢¨t²ÎºŞ²z­û,ÁÂÁÂ!"+e.getMessage().toString()+"</font>");
 				con.rollback();
 			}//end of catch
 		}
-  	}
+  	} 
+  	
 
-
-  	//ç”Ÿç®¡åˆ†æ´¾ç”¢åœ°(ASSIGN)_èµ·	(ACTION=003)
-  	if (actionID.equals("003"))
-  	{
-		//Step1. è‹¥ç‚ºç”Ÿç®¡æŒ‡æ´¾(ACTION=ASSIGN)ç”Ÿç”¢åœ°,å‰‡ä¾åˆ¤æ–·ç”Ÿç®¡é å…ˆæŒ‡æ´¾çš„ç”¢åœ°çµ¦åˆ†æ‰¹çµ¦è™Ÿåºè™Ÿ
-		if (aFactoryCode!=null) // åˆ¤æ–·è©²æ¬¡æœ‰åˆ†æ´¾ç´°é …æ‰é€²è¡Œæ˜ç´°è¡¨æ›´æ–°
+  	//¥ÍºŞ¤À¬£²£¦a(ASSIGN)_°_	(ACTION=003)
+  	if (actionID.equals("003")) 
+  	{             
+		//Step1. ­Y¬°¥ÍºŞ«ü¬£(ACTION=ASSIGN)¥Í²£¦a,«h¨Ì§PÂ_¥ÍºŞ¹w¥ı«ü¬£ªº²£¦aµ¹¤À§åµ¹¸¹§Ç¸¹
+		if (aFactoryCode!=null) // §PÂ_¸Ó¦¸¦³¤À¬£²Ó¶µ¤~¶i¦æ©ú²Óªí§ó·s
     	{
 	 		for (int i=0;i<aFactoryCode.length-1;i++)
 	 		{
-	   			for (int k=0;k<=choice.length-1;k++)
-       			{
-		    		// åˆ¤æ–·è¢«Check çš„Line æ‰åŸ·è¡ŒæŒ‡æ´¾ä½œæ¥­
+	   			for (int k=0;k<=choice.length-1;k++)    
+       			{ 
+		    		// §PÂ_³QCheck ªºLine ¤~°õ¦æ«ü¬£§@·~
 	    			if (choice[k]==aFactoryCode[i][0] || choice[k].equals(aFactoryCode[i][0]))
-	    			{
-	     				String assignFactory = aFactoryCode[i][6];  // å–åˆ°è¢«ç”Ÿç®¡é å…ˆæŒ‡å®šçš„ç”Ÿç”¢åœ°
-	     				// å–è™Ÿ sub-program èµ· @@@@@@@@@@@@@@@@@@@@@@@@@@
+	    			{ 
+	     				String assignFactory = aFactoryCode[i][6];  // ¨ú¨ì³Q¥ÍºŞ¹w¥ı«ü©wªº¥Í²£¦a	  
+	     				// ¨ú¸¹ sub-program °_ @@@@@@@@@@@@@@@@@@@@@@@@@@ 
 	     				String lastLNo = "";
-
+	   
        	 				dateString=dateBean.getYearMonthDay();
-	    				seqkey=dnDocNo+"-"+assignFactory; // å…ˆæŠŠæœ¬å¼µè©¢å•å–®åºè™Ÿçµ¦ç‚ºå–è™Ÿå‰ç½®ç¢¼(å…±17ç¢¼+'-'+3ç¢¼=21ç¢¼)
-        				//====å…ˆå–å¾—æµæ°´è™Ÿ=====
+	    				seqkey=dnDocNo+"-"+assignFactory; // ¥ı§â¥»±i¸ß°İ³æ§Ç¸¹µ¹¬°¨ú¸¹«e¸m½X(¦@17½X+'-'+3½X=21½X)
+        				//====¥ı¨ú±o¬y¤ô¸¹=====  
         				Statement statement=con.createStatement();
-        				ResultSet rs=statement.executeQuery("select * from ORADDMAN.TSDOCSEQ where header='"+seqkey+"'");
+        				ResultSet rs=statement.executeQuery("select * from ORADDMAN.TSDOCSEQ where header='"+seqkey+"'");  
         				if (rs.next()==false)
-        				{
-          					String seqSql="insert into ORADDMAN.TSDOCSEQ values(?,?)";
-          					PreparedStatement seqstmt=con.prepareStatement(seqSql);
+        				{   
+          					String seqSql="insert into ORADDMAN.TSDOCSEQ values(?,?)";   
+          					PreparedStatement seqstmt=con.prepareStatement(seqSql);     
           					seqstmt.setString(1,seqkey);
-          					seqstmt.setInt(2,1);
+          					seqstmt.setInt(2,1);   	
           					seqstmt.executeUpdate();
-          					seqno=seqkey+"-01"; // åˆ†æ‰¹çµ¦æµæ°´è™Ÿè¨­ç‚ºå…©ç¢¼
-          					seqstmt.close();
-		  					lastLNo = "01"; // è‹¥ç‚ºæœ¬æ‰¹æ¬¡ç¬¬ä¸€ç­†è³‡æ–™
-        				}
-        				else
+          					seqno=seqkey+"-01"; // ¤À§åµ¹¬y¤ô¸¹³]¬°¨â½X
+          					seqstmt.close();  		  
+		  					lastLNo = "01"; // ­Y¬°¥»§å¦¸²Ä¤@µ§¸ê®Æ
+        				} 
+        				else 
         				{
           					int lastno=rs.getInt("LASTNO");
           					sql = "select * from ORADDMAN.TSDELIVERY_NOTICE_DETAIL "+
 							" where substr(DNDOCNO,1,17)||'-'||substr(ASSIGN_LNO,1,3)='"+seqkey+"' "+
 							" and to_number(substr(ASSIGN_LNO,5,2))= '"+lastno+"' ";
-          					ResultSet rs2=statement.executeQuery(sql);
-          					//===(è™•ç†è·³è™Ÿå•é¡Œ)è‹¥rprepairåŠrpdocseqçš†å­˜åœ¨ç›¸åŒæœ€å¤§è™Ÿ=========ä¾åŸæ–¹å¼å–æœ€å¤§è™Ÿ //
+          					ResultSet rs2=statement.executeQuery(sql); 
+          					//===(³B²z¸õ¸¹°İÃD)­Yrprepair¤Îrpdocseq¬Ò¦s¦b¬Û¦P³Ì¤j¸¹=========¨Ì­ì¤è¦¡¨ú³Ì¤j¸¹ //
           					if (rs2.next())
-          					{
+          					{         
             					lastno++;
             					String numberString = Integer.toString(lastno);
             					String lastSeqNumber="00"+numberString;
             					lastSeqNumber=lastSeqNumber.substring(lastSeqNumber.length()-2);
-            					seqno=seqkey+"-"+lastSeqNumber;
-            					String seqSql="update ORADDMAN.TSDOCSEQ SET LASTNO=? WHERE HEADER='"+seqkey+"'";
-            					PreparedStatement seqstmt=con.prepareStatement(seqSql);
-            					seqstmt.setInt(1,lastno);
-								seqstmt.executeUpdate();
-            					seqstmt.close();
-								lastLNo = lastSeqNumber; // æœ¬æ¬¡çš„æœ€å¤§æ‰¹åºè™Ÿ
-          					}
+            					seqno=seqkey+"-"+lastSeqNumber;     
+            					String seqSql="update ORADDMAN.TSDOCSEQ SET LASTNO=? WHERE HEADER='"+seqkey+"'";   
+            					PreparedStatement seqstmt=con.prepareStatement(seqSql);        
+            					seqstmt.setInt(1,lastno);  
+								seqstmt.executeUpdate();   
+            					seqstmt.close(); 
+								lastLNo = lastSeqNumber; // ¥»¦¸ªº³Ì¤j§å§Ç¸¹
+          					} 
           					else
           					{
-             					//===========(è™•ç†è·³è™Ÿå•é¡Œ)å¦å‰‡ä»¥å¯¦éš›rpRepairå…§æœ€å¤§æµæ°´è™Ÿç‚ºç›®å‰rpdocSeqçš„lastnoå…§å®¹(æœƒä¾ç¶­ä¿®åœ°å€åˆ¥)
+             					//===========(³B²z¸õ¸¹°İÃD)§_«h¥H¹ê»ÚrpRepair¤º³Ì¤j¬y¤ô¸¹¬°¥Ø«erpdocSeqªºlastno¤º®e(·|¨Ìºû­×¦a°Ï§O)
             					String sSql = "select to_number(substr(max(ASSIGN_LNO),5,2)) as LASTNO "+
 								" from ORADDMAN.TSDELIVERY_NOTICE_DETAIL "+
 								" where substr(DNDOCNO,1,17)||'-'||substr(ASSIGN_LNO,1,3)='"+seqkey+"' ";
-            					ResultSet rs3=statement.executeQuery(sSql);
+            					ResultSet rs3=statement.executeQuery(sSql);	 
 	        					if (rs3.next()==true)
 	        					{
-               						int lastno_r=rs3.getInt("LASTNO");
+               						int lastno_r=rs3.getInt("LASTNO");	  
 	           						lastno_r++;
-
+	  
 	           						String numberString_r = Integer.toString(lastno_r);
                						String lastSeqNumber_r="00"+numberString_r;
                						lastSeqNumber_r=lastSeqNumber_r.substring(lastSeqNumber_r.length()-2);
-               						seqno=seqkey+"-"+lastSeqNumber_r;
-	           						String seqSql="update ORADDMAN.TSDOCSEQ SET LASTNO=? WHERE HEADER='"+seqkey+"'";
-               						PreparedStatement seqstmt=con.prepareStatement(seqSql);
-               						seqstmt.setInt(1,lastno_r);
-               						seqstmt.executeUpdate();
-               						seqstmt.close();
-			   						lastLNo = lastSeqNumber_r; // æœ¬æ¬¡çš„æœ€å¤§æ‰¹åºè™Ÿ
-	         					}  // End of if (rs3.next()==true)
-            				} // End of Else  //===========(è™•ç†è·³è™Ÿå•é¡Œ)
+               						seqno=seqkey+"-"+lastSeqNumber_r;  
+	           						String seqSql="update ORADDMAN.TSDOCSEQ SET LASTNO=? WHERE HEADER='"+seqkey+"'";   
+               						PreparedStatement seqstmt=con.prepareStatement(seqSql);        
+               						seqstmt.setInt(1,lastno_r);  	
+               						seqstmt.executeUpdate();   
+               						seqstmt.close();  
+			   						lastLNo = lastSeqNumber_r; // ¥»¦¸ªº³Ì¤j§å§Ç¸¹
+	         					}  // End of if (rs3.next()==true)   
+            				} // End of Else  //===========(³B²z¸õ¸¹°İÃD)
          				} // End of Else  //int lastno=rs.getInt("LASTNO");
-	     				assignLNo = assignFactory +"-"+ lastLNo;   // æŠŠå–åˆ°çš„è™Ÿç¢¼çµ¦æœ¬æ¬¡æ›´æ–°çš„  ASSIGN_LNO æ¬„ä½  // ***********************
-	  					// å–è™Ÿ sub-program è¿„ @@@@@@@@@@@@@@@@@@@@
-	    				//Step2. å…ˆæ›´æ–°æ˜ç´°æª”è³‡æ–™, ä¾ç”Ÿç”¢å·¥å» çµ¦å®šå–åˆ°çš„æµæ°´æ‰¹è™Ÿ,æ¢ä»¶æ˜¯è©¢å•å–®è™ŸåŠé …æ¬¡
+	     				assignLNo = assignFactory +"-"+ lastLNo;   // §â¨ú¨ìªº¸¹½Xµ¹¥»¦¸§ó·sªº  ASSIGN_LNO Äæ¦ì  // ***********************
+	  					// ¨ú¸¹ sub-program ¨´ @@@@@@@@@@@@@@@@@@@@ 
+	    				//Step2. ¥ı§ó·s©ú²ÓÀÉ¸ê®Æ, ¨Ì¥Í²£¤u¼tµ¹©w¨ú¨ìªº¬y¤ô§å¸¹,±ø¥ó¬O¸ß°İ³æ¸¹¤Î¶µ¦¸
 						sql="update ORADDMAN.TSDELIVERY_NOTICE_DETAIL "+
 						" set ASSIGN_MANUFACT=ASSIGN_MANUFACT,ASSIGN_LNO=?,PCCFMDATE=?"+
 						",LAST_UPDATED_BY=?,LAST_UPDATE_DATE=?,LSTATUSID=?,LSTATUS=? "+
-	        			"where DNDOCNO='"+dnDocNo+"' and TO_CHAR(LINE_NO)='"+aFactoryCode[i][0]+"' ";
+	        			"where DNDOCNO='"+dnDocNo+"' and TO_CHAR(LINE_NO)='"+aFactoryCode[i][0]+"' ";     
        	 				pstmt=con.prepareStatement(sql);
-        				pstmt.setString(1,assignLNo); // æ‰¹æ¬¡æŒ‡æ´¾ç”¢åœ°åºè™Ÿ
-        				pstmt.setString(2,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // ç”Ÿç®¡æŒ‡æ´¾æ™‚é–“
-						pstmt.setString(3,userID); // æœ€å¾Œæ›´æ–°äººå“¡
-						pstmt.setString(4,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // æœ€å¾Œæ›´æ–°æ™‚é–“
+        				pstmt.setString(1,assignLNo); // §å¦¸«ü¬£²£¦a§Ç¸¹   
+        				pstmt.setString(2,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // ¥ÍºŞ«ü¬£®É¶¡
+						pstmt.setString(3,userID); // ³Ì«á§ó·s¤H­û 
+						pstmt.setString(4,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // ³Ì«á§ó·s®É¶¡ 
         				pstmt.setString(5,sToStatusID);
         				pstmt.setString(6,sToStatusName);
         				pstmt.executeUpdate();
-        				pstmt.close();
-
-	      				// å–æ­·ç¨‹æª”å…§å‰ä¸€å€‹ç‹€æ…‹è‡³ç›®å‰çš„æ™‚é–“å·®,åšç‚ºæœ¬æ¬¡æ­·ç¨‹çš„å·¥æ™‚_èµ·
+        				pstmt.close();       
+	  
+	      				// ¨ú¾úµ{ÀÉ¤º«e¤@­Óª¬ºA¦Ü¥Ø«eªº®É¶¡®t,°µ¬°¥»¦¸¾úµ{ªº¤u®É_°_
 		      			float processWorkTime = 0;
-		      			String preWorkTime = "0";
-		      			Statement stateHProcWT=con.createStatement();  // ORISTATUSID = '001' (ä¼åŠƒåˆ¤å®šç”¢åœ°é€å‡ºå‰ä¸€ç‹€æ…‹ç‚ºASSIGNING(001))
+		      			String preWorkTime = "0"; 			 
+		      			Statement stateHProcWT=con.createStatement();  // ORISTATUSID = '001' (¥ø¹º§P©w²£¦a°e¥X«e¤@ª¬ºA¬°ASSIGNING(001))
               			ResultSet rsHProcWT=stateHProcWT.executeQuery("select CDATETIME from ORADDMAN.TSDELIVERY_DETAIL_HISTORY "+
-						" where DNDOCNO='"+dnDocNo+"' and TO_CHAR(LINE_NO)='"+aFactoryCode[i][0]+"' and ORISTATUSID ='001' ");
+						" where DNDOCNO='"+dnDocNo+"' and TO_CHAR(LINE_NO)='"+aFactoryCode[i][0]+"' and ORISTATUSID ='001' ");			  
 	          			if (rsHProcWT.next())
 		      			{
 			     			preWorkTime = rsHProcWT.getString(1);
-			  			}
-						else
+			  			} 
+						else 
 						{
-			            	Statement stateCProcWT=con.createStatement();  // è‹¥ä¸å­˜åœ¨è‰ç¨¿æ–‡ä»¶,å‰‡æ‰¾å–®æ“šé–‹ç«‹æ—¥ç‚º
+			            	Statement stateCProcWT=con.createStatement();  // ­Y¤£¦s¦b¯ó½Z¤å¥ó,«h§ä³æ¾Ú¶}¥ß¤é¬°
                         	ResultSet rsCProcWT=stateCProcWT.executeQuery("select CREATION_DATE from ORADDMAN.TSDELIVERY_NOTICE_DETAIL "+
-							" where DNDOCNO='"+dnDocNo+"' and TO_CHAR(LINE_NO)='"+aFactoryCode[i][0]+"' ");
+							" where DNDOCNO='"+dnDocNo+"' and TO_CHAR(LINE_NO)='"+aFactoryCode[i][0]+"' ");   
 							if (rsCProcWT.next())
 							{
 						  		preWorkTime = rsCProcWT.getString(1);
@@ -895,11 +893,11 @@ try
 			         	}
 			  			rsHProcWT.close();
 			  			stateHProcWT.close();
-           				//è‹¥å–åˆ°å‰ä¸€å€‹ç‹€æ…‹æ™‚é–“,å‰‡ä»¥ç›®å‰æ™‚é–“æ¸›å»å‰
+           				//­Y¨ú¨ì«e¤@­Óª¬ºA®É¶¡,«h¥H¥Ø«e®É¶¡´î¥h«e
 		    			if (preWorkTime!="0")
 		    			{
 			    			String sqlWT = "select ROUND((to_date('"+dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()+"','YYYYMMDDHH24MISS') - to_date('"+preWorkTime+"','YYYYMMDDHH24MISS')) * 24,2) from DUAL ";
-		        			Statement stateWTime=con.createStatement();  // ORISTATUSID = '001' (è‰ç¨¿æ–‡ä»¶å‰ä¸€ç‹€æ…‹ä»ç‚ºè‰ç¨¿æ–‡ä»¶)
+		        			Statement stateWTime=con.createStatement();  // ORISTATUSID = '001' (¯ó½Z¤å¥ó«e¤@ª¬ºA¤´¬°¯ó½Z¤å¥ó)
                 			ResultSet rsWTime=stateWTime.executeQuery(sqlWT);
 	            			if (rsWTime.next())
 		        			{
@@ -908,11 +906,11 @@ try
 			    			rsWTime.close();
 			    			stateWTime.close();
 						}
-						// å–æ­·ç¨‹æª”å…§å‰ä¸€å€‹ç‹€æ…‹è‡³ç›®å‰çš„æ™‚é–“å·®,åšç‚ºæœ¬æ¬¡æ­·ç¨‹çš„å·¥æ™‚_è¿„
-
-	          			//Step5. ä»»ä¸€Action,å¯«å…¥äº¤æœŸè©¢å•æ˜ç´°æ­·ç¨‹æª”
+						// ¨ú¾úµ{ÀÉ¤º«e¤@­Óª¬ºA¦Ü¥Ø«eªº®É¶¡®t,°µ¬°¥»¦¸¾úµ{ªº¤u®É_¨´	  
+	  
+	          			//Step5. ¥ô¤@Action,¼g¤J¥æ´Á¸ß°İ©ú²Ó¾úµ{ÀÉ	         	 
 	          			int deliveryCount = 0;
-	          			Statement stateDeliveryCNT=con.createStatement();
+	          			Statement stateDeliveryCNT=con.createStatement(); 
               			ResultSet rsDeliveryCNT=stateDeliveryCNT.executeQuery("select count(*)+1 from ORADDMAN.TSDELIVERY_DETAIL_HISTORY "+
 						" where DNDOCNO='"+dnDocNo+"' and TO_CHAR(LINE_NO)='"+aFactoryCode[i][0]+"' ");
 	          			if (rsDeliveryCNT.next())
@@ -926,127 +924,127 @@ try
               			ResultSet rsACT=stateACT.executeQuery("select * from ORADDMAN.TSWFACTION where ACTIONID='"+actionID+"'");
               			rsACT.next();
               			actionName=rsACT.getString("ACTIONNAME");
-
+   
               			rsACT=stateACT.executeQuery("select * from ORADDMAN.TSWFStatus where STATUSID='"+fromStatusID+"'");
               			rsACT.next();
-              			oriStatus=rsACT.getString("STATUSNAME");
+              			oriStatus=rsACT.getString("STATUSNAME");   
               			stateACT.close();
-              			rsACT.close();
-
+              			rsACT.close();	
+	
 	          			String historySql="insert into ORADDMAN.TSDELIVERY_DETAIL_HISTORY(DNDOCNO,ORISTATUSID,"+
 					                      "ORISTATUS,ACTIONID,ACTIONNAME,UPDATEUSERID,UPDATEDATE,UPDATETIME,ASSIGN_FACTORY,"+
 						                  "CDATETIME,REMARK,SERIALROW,LINE_NO,PROCESS_WORKTIME) "+
 		                                  "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
-	          			PreparedStatement historystmt=con.prepareStatement(historySql);
-              			historystmt.setString(1,dnDocNo);
-              			historystmt.setString(2,fromStatusID);
-              			historystmt.setString(3,oriStatus); //å¯«å…¥statusåç¨±
-              			historystmt.setString(4,actionID);
-              			historystmt.setString(5,actionName);
-              			historystmt.setString(6,userID);
-              			historystmt.setString(7,dateBean.getYearMonthDay());
+	          			PreparedStatement historystmt=con.prepareStatement(historySql);   
+              			historystmt.setString(1,dnDocNo); 
+              			historystmt.setString(2,fromStatusID); 
+              			historystmt.setString(3,oriStatus); //¼g¤Jstatus¦WºÙ
+              			historystmt.setString(4,actionID); 
+              			historystmt.setString(5,actionName); 
+              			historystmt.setString(6,userID); 
+              			historystmt.setString(7,dateBean.getYearMonthDay()); 
               			historystmt.setString(8,dateBean.getHourMinuteSecond());
-              			historystmt.setString(9,prodCodeGet); //å¯«å…¥ç¶­ä¿®é»ç·¨è™Ÿ
+              			historystmt.setString(9,prodCodeGet); //¼g¤Jºû­×ÂI½s¸¹
               			historystmt.setString(10,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond());
               			historystmt.setString(11,remark);
               			historystmt.setInt(12,deliveryCount);
-		      			historystmt.setInt(13,Integer.parseInt(aFactoryCode[i][0])); // å¯«å…¥è™•ç†Line_No
-		      			historystmt.setFloat(14,processWorkTime);
-		      			historystmt.executeUpdate();
-              			historystmt.close();
-	         			//Step5. å¯«å…¥äº¤æœŸè©¢å•æ˜ç´°æ­·ç¨‹æª”
-             			//===ENF OF å¯«å…¥action history
-
-		   				// å¯„é€ E-Mail_èµ·
+		      			historystmt.setInt(13,Integer.parseInt(aFactoryCode[i][0])); // ¼g¤J³B²zLine_No
+		      			historystmt.setFloat(14,processWorkTime);		
+		      			historystmt.executeUpdate();   
+              			historystmt.close(); 
+	         			//Step5. ¼g¤J¥æ´Á¸ß°İ©ú²Ó¾úµ{ÀÉ
+             			//===ENF OF ¼g¤Jaction history
+			 
+		   				// ±H°e E-Mail_°_
 			 			if (sendMailOption!=null && sendMailOption.equals("YES"))
-             			{
+             			{ 
 	          				String sqlAddList = "select DISTINCT ASSIGN_MANUFACT from ORADDMAN.TSDELIVERY_NOTICE_DETAIL "+
 							" where DNDOCNO='"+dnDocNo+"' and ASSIGN_MANUFACT != 'N/A' and TO_CHAR(LINE_NO) = '"+aFactoryCode[i][0]+"' ";
 	          				Statement stateAddList=con.createStatement();
               				ResultSet rsAddList=stateAddList.executeQuery(sqlAddList);
               				while (rsAddList.next())
-	          				{
+	          				{		
 	            				Statement stateList=con.createStatement();
 	            				String sqlList = "select DISTINCT a.USERMAIL, a.USERNAME from ORADDMAN.WSUSER a,ORADDMAN.TSPROD_PERSON b "+
 								" where a.USERNAME = b.USERNAME and b.PROD_FACNO = '"+rsAddList.getString(1)+"' and b.PACTIVE = 'Y' ";
                 				ResultSet rsList=stateList.executeQuery(sqlList);
 	            				if (rsList.next())
-	            				{
+	            				{         
                    					sendMailBean.setMailHost(mailHost);
-                   					sendMailBean.setReception(rsList.getString("USERMAIL"));
-                   					sendMailBean.setFrom(UserName);
-                   					sendMailBean.setSubject(CodeUtil.unicodeToBig5("RFQ System Document Approvement Notification"));
+                   					sendMailBean.setReception(rsList.getString("USERMAIL"));		        
+                   					sendMailBean.setFrom(UserName);   	 	 
+                   					sendMailBean.setSubject(CodeUtil.unicodeToBig5("RFQ System Document Approvement Notification"));  
 				   		           	sendMailBean.setUrlName("Dear "+rsList.getString("USERNAME")+",\n"+
-									CodeUtil.unicodeToBig5("   è«‹é»æ“Šä¾†è‡ªäº¤æœŸè©¢å•ç³»çµ±çš„éƒµä»¶:ç¸½å…¬å¸ä¼åŠƒåˆ†æ´¾äº¤æœŸç”Ÿç”¢åœ°-("+dnDocNo+")"));
+									CodeUtil.unicodeToBig5("   ½ĞÂIÀ»¨Ó¦Û¥æ´Á¸ß°İ¨t²Îªº¶l¥ó:Á`¤½¥q¥ø¹º¤À¬£¥æ´Á¥Í²£¦a-("+dnDocNo+")"));   	 
                    					sendMailBean.setUrlAddr(serverHostName+":8080/oradds/jsp/TSSalesDRQEstimatingPage.jsp?DNDOCNO="+dnDocNo+"&LSTATUSID=003");
-				   					sendMailBean.setUrlName1(CodeUtil.unicodeToBig5("   äº¤æœŸè©¢å•å–®Excelè¡¨å‹•æ…‹ç”Ÿæˆè«‹é»æ“Šå¦‚ä¸‹é€£çµ:\n"));
-                   					sendMailBean.setUrlAddr1(serverHostName+":8080/oradds/jsp/TSSalesDRQAssignInf2Excel.jsp?DNDOCNO="+dnDocNo);
+				   					sendMailBean.setUrlName1(CodeUtil.unicodeToBig5("   ¥æ´Á¸ß°İ³æExcelªí°ÊºA¥Í¦¨½ĞÂIÀ»¦p¤U³sµ²:\n"));   	 
+                   					sendMailBean.setUrlAddr1(serverHostName+":8080/oradds/jsp/TSSalesDRQAssignInf2Excel.jsp?DNDOCNO="+dnDocNo);	   
                    					sendMailBean.sendMail();
 	            				} //While (rsList.next())
 	            				rsList.close();
-	            				stateList.close();
-	         				} //While (rsAddList.next())
+	            				stateList.close();	   
+	         				} //While (rsAddList.next()) 
 	         				rsAddList.close();
 	         				stateAddList.close();
 	       				} // End of if (sendMailOption!=null && sendMailOption.equals("YES"))
 	   				} // End of if (choice[k]==aFactoryCode[i][0] || choice[k].equals(aFactoryCode[i][0]))
-	  			} // End of for (int k=0;k<choice.length;k++) // åˆ¤æ–·ä½¿ç”¨è€…æœ‰Checkæ‰æŒ‡æ´¾ç”Ÿç”¢åœ°
+	  			} // End of for (int k=0;k<choice.length;k++) // §PÂ_¨Ï¥ÎªÌ¦³Check¤~«ü¬£¥Í²£¦a
      		} // End of for (i=0;i<aFactory.length;i++)
-		} // end of if (aFactoryCode!=null)
-
-	  	//Step4. å–å¾—æœ¬å¼µå–®æ“šåˆ†é…çš„å·¥å» çµ„åˆå­—ä¸²_èµ·
-        Statement stateProdDesc=con.createStatement();
+		} // end of if (aFactoryCode!=null) 
+	
+	  	//Step4. ¨ú±o¥»±i³æ¾Ú¤À°tªº¤u¼t²Õ¦X¦r¦ê_°_	           
+        Statement stateProdDesc=con.createStatement(); 
         ResultSet rsProdDesc=stateProdDesc.executeQuery("select DISTINCT ASSIGN_MANUFACT from ORADDMAN.TSDELIVERY_NOTICE_DETAIL "+
 		" where DNDOCNO='"+dnDocNo+"' ");
-        while (rsProdDesc.next())
-        {
+        while (rsProdDesc.next()) 
+        { 
         	prodDesc = rsProdDesc.getString(1);
-	        prodCodeGet = prodCodeGet + prodDesc+",";
+	        prodCodeGet = prodCodeGet + prodDesc+","; 
         }
         rsProdDesc.close();
-        stateProdDesc.close();
-
+        stateProdDesc.close(); 	
+			 
 		if (prodCodeGet.length()>0)
-        {
-        	prodCodeGetLength = prodCodeGet.length()-1;  // æŠŠæœ€å¾Œçš„','å»æ‰
+        {        
+        	prodCodeGetLength = prodCodeGet.length()-1;  // §â³Ì«áªº','¥h±¼          
             prodCodeGet = prodCodeGet.substring(0,prodCodeGetLength);
-        }
-	 	//å–å¾—æœ¬å¼µå–®æ“šåˆ†é…çš„å·¥å» çµ„åˆå­—ä¸²_è¿„
-
-	 	//Step4. å†æ›´æ–°äº¤æœŸè©¢å•ä¸»æª”è³‡æ–™
+        }  
+	 	//¨ú±o¥»±i³æ¾Ú¤À°tªº¤u¼t²Õ¦X¦r¦ê_¨´ 
+	  
+	 	//Step4. ¦A§ó·s¥æ´Á¸ß°İ¥DÀÉ¸ê®Æ
     	sql="update ORADDMAN.TSDELIVERY_NOTICE set PROD_FACTORY=?,PCCFIRM_DATE=?,LAST_UPDATED_BY=?,LAST_UPDATE_DATE=? "+
-	    "where DNDOCNO='"+dnDocNo+"' ";
+	    "where DNDOCNO='"+dnDocNo+"' ";     
      	pstmt=con.prepareStatement(sql);
-     	pstmt.setString(1,prodCodeGet);
-     	pstmt.setString(2,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // ç”Ÿç®¡æŒ‡æ´¾æ™‚é–“
-     	pstmt.setString(3,userID); // æœ€å¾Œæ›´æ–°äººå“¡
-	 	pstmt.setString(4,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // æœ€å¾Œæ›´æ–°æ™‚é–“
-     	pstmt.executeUpdate();
-     	pstmt.close();
-	 	// å†æ›´æ–°äº¤æœŸè©¢å•ä¸»æª”è³‡æ–™
-
-		//###***** å®Œæˆè™•ç†å¾Œå³å°‡sessionå–åˆ°çš„Bean çš„å…§å®¹å€¼æ¸…ç©º(é¿å…äºŒæ¬¡å‚³é€) *****### //
+     	pstmt.setString(1,prodCodeGet);  
+     	pstmt.setString(2,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // ¥ÍºŞ«ü¬£®É¶¡  
+     	pstmt.setString(3,userID); // ³Ì«á§ó·s¤H­û
+	 	pstmt.setString(4,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // ³Ì«á§ó·s®É¶¡     
+     	pstmt.executeUpdate(); 
+     	pstmt.close();      
+	 	// ¦A§ó·s¥æ´Á¸ß°İ¥DÀÉ¸ê®Æ
+	
+		//###***** §¹¦¨³B²z«á§Y±Nsession¨ú¨ìªºBean ªº¤º®e­È²MªÅ(Á×§K¤G¦¸¶Ç°e) *****### //
 		if (aFactoryCode!=null)
-		{
-			array2DAssignFactoryBean.setArray2DString(null);
+		{  
+			array2DAssignFactoryBean.setArray2DString(null);  
 		}
-  	}  //END OF 003 ACTION IF
-  	//ç”Ÿç®¡åˆ†æ´¾ç”¢åœ°(ASSIGN)_è¿„	(ACTION=003)
-
-  	//  (ACTION=005)å·¥å» æ‰¹é€€äº¤æœŸè©¢å•å–®(REJECT)_èµ· (ACTION=005) å³æ­£å¸¸æµè‡³ä¼åŠƒ(RESPONDING),ä¸”Showå‡ºæ‰¹é€€è¨Šæ¯
-  	if (actionID.equals("005"))
-  	{
+  	}  //END OF 003 ACTION IF  
+  	//¥ÍºŞ¤À¬£²£¦a(ASSIGN)_¨´	(ACTION=003)  
+  
+  	//  (ACTION=005)¤u¼t§å°h¥æ´Á¸ß°İ³æ(REJECT)_°_ (ACTION=005) §Y¥¿±`¬y¦Ü¥ø¹º(RESPONDING),¥BShow¥X§å°h°T®§
+  	if (actionID.equals("005")) 
+  	{    
 		String choose_line = ""; //add by Peggy 20120321
-		if (aFactoryEstimatingCode!=null) // åˆ¤æ–·è©²æ¬¡è™•ç†ç´°é …æ‰æ›´æ–°æ˜ç´°æª”
-		{
+		if (aFactoryEstimatingCode!=null) // §PÂ_¸Ó¦¸³B²z²Ó¶µ¤~§ó·s©ú²ÓÀÉ
+		{ 
 	 		for (int i=0;i<aFactoryEstimatingCode.length-1;i++)
 	 		{
-	   			for (int k=0;k<=choice.length-1;k++)
+	   			for (int k=0;k<=choice.length-1;k++)    
        			{
-		 			// åˆ¤æ–·è¢«Check çš„Line æ‰åŸ·è¡Œå·¥å» å®‰æ’äº¤æœŸä½œæ¥­
+		 			// §PÂ_³QCheck ªºLine ¤~°õ¦æ¤u¼t¦w±Æ¥æ´Á§@·~
 	    			if (choice[k]==aFactoryEstimatingCode[i][0] || choice[k].equals(aFactoryEstimatingCode[i][0]))
-	    			{
-						//add by Peggy  20161021,updateå‰æª¢æŸ¥rfqç‹€æ…‹æ˜¯å¦åˆæ³•
+	    			{ 	 
+						//add by Peggy  20161021,update«eÀË¬drfqª¬ºA¬O§_¦Xªk
 						Statement stater=con.createStatement();
 						sql = " select 1 from ORADDMAN.TSDELIVERY_NOTICE_DETAIL a "+
 						      " where DNDOCNO='"+dnDocNo+"' "+
@@ -1065,31 +1063,31 @@ try
 						stater.close();
 						if (!is_exist)
 						{
-							throw new Exception("æŸ¥ç„¡RFQè³‡æ–™!");
+							throw new Exception("¬dµLRFQ¸ê®Æ!");
 						}
-
+											
 						choose_line += (","+aFactoryEstimatingCode[i][0]); //add by Peggy 20120321
 	     				sql="update ORADDMAN.TSDELIVERY_NOTICE_DETAIL "+
 						"set ASSIGN_MANUFACT=?,LAST_UPDATED_BY=?,LAST_UPDATE_DATE=?,LSTATUSID=?,LSTATUS=?"+
-						",SHIP_DATE=?,REMARK=? , EDIT_CODE=? ,AUTOCREATE_FLAG = ?"+
-	         			"where DNDOCNO='"+dnDocNo+"' and TO_CHAR(LINE_NO)='"+aFactoryEstimatingCode[i][0]+"' ";
+						",SHIP_DATE=?,REMARK=? , EDIT_CODE=? ,AUTOCREATE_FLAG = ?"+  
+	         			"where DNDOCNO='"+dnDocNo+"' and TO_CHAR(LINE_NO)='"+aFactoryEstimatingCode[i][0]+"' ";     
          				pstmt=con.prepareStatement(sql);
-         				pstmt.setString(1,aFactoryEstimatingCode[i][7]); // è½‰ç§»çš„ç”¢åœ°ä»£ç¢¼
-		 				pstmt.setString(2,userID); // æœ€å¾Œæ›´æ–°äººå“¡
-		 				pstmt.setString(3,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // æœ€å¾Œæ›´æ–°æ™‚é–“
+         				pstmt.setString(1,aFactoryEstimatingCode[i][7]); // Âà²¾ªº²£¦a¥N½X     
+		 				pstmt.setString(2,userID); // ³Ì«á§ó·s¤H­û 
+		 				pstmt.setString(3,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // ³Ì«á§ó·s®É¶¡ 
          				pstmt.setString(4,sToStatusID);
          				pstmt.setString(5,sToStatusName);
-		 				pstmt.setString(6,"N/A"); // é è¨­å°‡å·¥å» æ’å®šæ—¥æœŸè¨­å®šç‚ºSchedule Shipment Date + æ™‚é–“(å› ç‚ºå·¥å» æ‰¹é€€,æ•…ä¸çµ¦SHIP_DATEæ™‚é–“)
-		 				pstmt.setString(7,aFactoryEstimatingCode[i][5]); // è¨˜ä½å„é …æ¬¡æ‰¹é€€çš„åŸå› 
-		 				pstmt.setString(8,"R"); // è¨˜ä½æ‰¹é€€ä»£ç¢¼"R"  //2009/03/03 LILING add
+		 				pstmt.setString(6,"N/A"); // ¹w³]±N¤u¼t±Æ©w¤é´Á³]©w¬°Schedule Shipment Date + ®É¶¡(¦]¬°¤u¼t§å°h,¬G¤£µ¹SHIP_DATE®É¶¡)  
+		 				pstmt.setString(7,aFactoryEstimatingCode[i][5]); // °O¦í¦U¶µ¦¸§å°hªº­ì¦]
+		 				pstmt.setString(8,"R"); // °O¦í§å°h¥N½X"R"  //2009/03/03 LILING add
 		 				pstmt.setString(9,"R"); // AUTOCREATE_FLAG, ADD BY Peggy 20120322
-         				pstmt.executeUpdate();
-         				pstmt.close();
-
-		  				// å–æ­·ç¨‹æª”å…§å‰ä¸€å€‹ç‹€æ…‹è‡³ç›®å‰çš„æ™‚é–“å·®,åšç‚ºæœ¬æ¬¡æ­·ç¨‹çš„å·¥æ™‚_èµ·
+         				pstmt.executeUpdate(); 
+         				pstmt.close();   
+		
+		  				// ¨ú¾úµ{ÀÉ¤º«e¤@­Óª¬ºA¦Ü¥Ø«eªº®É¶¡®t,°µ¬°¥»¦¸¾úµ{ªº¤u®É_°_
 		      			float processWorkTime = 0;
-		      			String preWorkTime = "0";
-		     			Statement stateHProcWT=con.createStatement();  // ORISTATUSID = '003' (å·¥å» æ‰¹é€€äº¤æœŸå®‰æ’ä¸­é€å‡ºå‰ä¸€ç‹€æ…‹ç‚ºESTIMATING(003))
+		      			String preWorkTime = "0"; 			 
+		     			Statement stateHProcWT=con.createStatement();  // ORISTATUSID = '003' (¤u¼t§å°h¥æ´Á¦w±Æ¤¤°e¥X«e¤@ª¬ºA¬°ESTIMATING(003))
               			ResultSet rsHProcWT=stateHProcWT.executeQuery("select CDATETIME from ORADDMAN.TSDELIVERY_DETAIL_HISTORY "+
 						"where DNDOCNO='"+dnDocNo+"' and TO_CHAR(LINE_NO)='"+aFactoryEstimatingCode[i][0]+"' and ORISTATUSID ='003' ");
 	          			if (rsHProcWT.next())
@@ -1098,13 +1096,13 @@ try
 			  			}
 			  			rsHProcWT.close();
 			  			stateHProcWT.close();
-           				//è‹¥å–åˆ°å‰ä¸€å€‹ç‹€æ…‹æ™‚é–“,å‰‡ä»¥ç›®å‰æ™‚é–“æ¸›å»å‰
+           				//­Y¨ú¨ì«e¤@­Óª¬ºA®É¶¡,«h¥H¥Ø«e®É¶¡´î¥h«e
 		    			if (preWorkTime!="0")
 		    			{
 			    			String sqlWT = "select ROUND((to_date('"+dateBean.getYearMonthDay()+
 							dateBean.getHourMinuteSecond()+"','YYYYMMDDHH24MISS') - to_date('"+preWorkTime+"','YYYYMMDDHH24MISS')) * 24,2) "+
 							"from DUAL ";
-		        			Statement stateWTime=con.createStatement();  // ORISTATUSID = '001' (è‰ç¨¿æ–‡ä»¶å‰ä¸€ç‹€æ…‹ä»ç‚ºè‰ç¨¿æ–‡ä»¶)
+		        			Statement stateWTime=con.createStatement();  // ORISTATUSID = '001' (¯ó½Z¤å¥ó«e¤@ª¬ºA¤´¬°¯ó½Z¤å¥ó)
                 			ResultSet rsWTime=stateWTime.executeQuery(sqlWT);
 	            			if (rsWTime.next())
 		        			{
@@ -1113,11 +1111,11 @@ try
 			    			rsWTime.close();
 			    			stateWTime.close();
 						}
-						// å–æ­·ç¨‹æª”å…§å‰ä¸€å€‹ç‹€æ…‹è‡³ç›®å‰çš„æ™‚é–“å·®,åšç‚ºæœ¬æ¬¡æ­·ç¨‹çš„å·¥æ™‚_è¿„
-
-		      			//Step5. ä»»ä¸€Action,å¯«å…¥äº¤æœŸè©¢å•æ˜ç´°æ­·ç¨‹æª”
+						// ¨ú¾úµ{ÀÉ¤º«e¤@­Óª¬ºA¦Ü¥Ø«eªº®É¶¡®t,°µ¬°¥»¦¸¾úµ{ªº¤u®É_¨´
+		
+		      			//Step5. ¥ô¤@Action,¼g¤J¥æ´Á¸ß°İ©ú²Ó¾úµ{ÀÉ	         	 
 	          			int deliveryCount = 0;
-	          			Statement stateDeliveryCNT=con.createStatement();
+	          			Statement stateDeliveryCNT=con.createStatement(); 
               			ResultSet rsDeliveryCNT=stateDeliveryCNT.executeQuery("select count(*)+1 from ORADDMAN.TSDELIVERY_DETAIL_HISTORY "+
 						" where DNDOCNO='"+dnDocNo+"' and TO_CHAR(LINE_NO)='"+aFactoryEstimatingCode[i][0]+"' ");
 	          			if (rsDeliveryCNT.next())
@@ -1134,63 +1132,63 @@ try
               			rs.next();
               			oriStatus=rs.getString("STATUSNAME");
               			statement.close();
-              			rs.close();
-	          			String historySql="insert into ORADDMAN.TSDELIVERY_DETAIL_HISTORY(DNDOCNO,ORISTATUSID,ORISTATUS,"+
+              			rs.close();	
+	          			String historySql="insert into ORADDMAN.TSDELIVERY_DETAIL_HISTORY(DNDOCNO,ORISTATUSID,ORISTATUS,"+									
 						"ACTIONID,ACTIONNAME,UPDATEUSERID,UPDATEDATE,UPDATETIME,ASSIGN_FACTORY,CDATETIME,REMARK,"+
 						"SERIALROW,LINE_NO,PROCESS_WORKTIME,PC_REMARK) "+
 		                "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
-	          			PreparedStatement historystmt=con.prepareStatement(historySql);
-              			historystmt.setString(1,dnDocNo);
-              			historystmt.setString(2,fromStatusID);
-              			historystmt.setString(3,oriStatus); //å¯«å…¥statusåç¨±
-              			historystmt.setString(4,actionID);
-              			historystmt.setString(5,actionName);
-             		 	historystmt.setString(6,userID);
-              			historystmt.setString(7,dateBean.getYearMonthDay());
+	          			PreparedStatement historystmt=con.prepareStatement(historySql);   
+              			historystmt.setString(1,dnDocNo); 
+              			historystmt.setString(2,fromStatusID); 
+              			historystmt.setString(3,oriStatus); //¼g¤Jstatus¦WºÙ
+              			historystmt.setString(4,actionID); 
+              			historystmt.setString(5,actionName); 
+             		 	historystmt.setString(6,userID); 
+              			historystmt.setString(7,dateBean.getYearMonthDay()); 
               			historystmt.setString(8,dateBean.getHourMinuteSecond());
-              			historystmt.setString(9,prodCodeGet); //å¯«å…¥ç¶­ä¿®é»ç·¨è™Ÿ
+              			historystmt.setString(9,prodCodeGet); //¼g¤Jºû­×ÂI½s¸¹
              	 		historystmt.setString(10,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond());
               			historystmt.setString(11,aFactoryEstimatingCode[i][5]);
               			historystmt.setInt(12,deliveryCount);
-		      			historystmt.setInt(13,Integer.parseInt(aFactoryEstimatingCode[i][0])); // å¯«å…¥è™•ç†Line_No
-		      			historystmt.setFloat(14,processWorkTime);
-		      			historystmt.setString(15,aFactoryEstimatingCode[i][8]); // 20110111 LILING å¯«å…¥è™•ç†PC_COMMENT
-		      			historystmt.executeUpdate();
-              			historystmt.close();
-	         			//Step5. å¯«å…¥äº¤æœŸè©¢å•æ˜ç´°æ­·ç¨‹æª”
-             			//===ENF OF å¯«å…¥action history
+		      			historystmt.setInt(13,Integer.parseInt(aFactoryEstimatingCode[i][0])); // ¼g¤J³B²zLine_No
+		      			historystmt.setFloat(14,processWorkTime);	
+		      			historystmt.setString(15,aFactoryEstimatingCode[i][8]); // 20110111 LILING ¼g¤J³B²zPC_COMMENT
+		      			historystmt.executeUpdate();   
+              			historystmt.close(); 
+	         			//Step5. ¼g¤J¥æ´Á¸ß°İ©ú²Ó¾úµ{ÀÉ
+             			//===ENF OF ¼g¤Jaction history
 					}  // End of if (choice[k]==aFactoryEstimatingCode[i][0] || choice[k].equals("aFactoryEstimatingCode[i][0]"))
-	  			}  // End of for (int k=0;k<choice.length;k++))
+	  			}  // End of for (int k=0;k<choice.length;k++))	
 	 		} // End of for
 		} // End of if (aFactoryEstimatingCode!=null)
-		if (aFactoryArrangedCode!=null) // ä¼åŠƒå–å¾—å·¥å» ç„¡æ³•çµ¦äºˆäº¤æœŸ,éœ€å›è¦†æ¥­å‹™REJECTä½œæ¥­
+		if (aFactoryArrangedCode!=null) // ¥ø¹º¨ú±o¤u¼tµLªkµ¹¤©¥æ´Á,»İ¦^ÂĞ·~°ÈREJECT§@·~
 		{
 	 		for (int i=0;i<aFactoryArrangedCode.length-1;i++)
 	 		{
-	   			for (int k=0;k<=choice.length-1;k++)
+	   			for (int k=0;k<=choice.length-1;k++)    
        			{
 	    			if (choice[k]==aFactoryArrangedCode[i][0] || choice[k].equals(aFactoryArrangedCode[i][0]))
-	    			{
+	    			{ 	 
 						choose_line += (","+aFactoryArrangedCode[i][0]); //add by Peggy 20120321
 	     				sql="update ORADDMAN.TSDELIVERY_NOTICE_DETAIL "+
-						" set LAST_UPDATED_BY=?,LAST_UPDATE_DATE=?,LSTATUSID=?,LSTATUS=?,SHIP_DATE=?,REMARK=?,EDIT_CODE=? ,AUTOCREATE_FLAG = ?"+
-	         			"where DNDOCNO='"+dnDocNo+"' and TO_CHAR(LINE_NO)='"+aFactoryArrangedCode[i][0]+"' ";
+						" set LAST_UPDATED_BY=?,LAST_UPDATE_DATE=?,LSTATUSID=?,LSTATUS=?,SHIP_DATE=?,REMARK=?,EDIT_CODE=? ,AUTOCREATE_FLAG = ?"+  
+	         			"where DNDOCNO='"+dnDocNo+"' and TO_CHAR(LINE_NO)='"+aFactoryArrangedCode[i][0]+"' ";     
          				pstmt=con.prepareStatement(sql);
-		 				pstmt.setString(1,userID); // æœ€å¾Œæ›´æ–°äººå“¡
-		 				pstmt.setString(2,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // æœ€å¾Œæ›´æ–°æ™‚é–“
+		 				pstmt.setString(1,userID); // ³Ì«á§ó·s¤H­û 
+		 				pstmt.setString(2,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // ³Ì«á§ó·s®É¶¡ 
          				pstmt.setString(3,sToStatusID);
          				pstmt.setString(4,sToStatusName);
-		 				pstmt.setString(5,"N/A"); // é è¨­å°‡å·¥å» æ’å®šæ—¥æœŸè¨­å®šç‚ºSchedule Shipment Date + æ™‚é–“(å› ç‚ºå·¥å» æ‰¹é€€,æ•…ä¸çµ¦SHIP_DATEæ™‚é–“)
-		 				pstmt.setString(6,aFactoryArrangedCode[i][5]); // è¨˜ä½å„é …æ¬¡æ‰¹é€€çš„åŸå› 
-		 				pstmt.setString(7,"R"); // è¨˜ä½æ‰¹é€€ä»£ç¢¼"R"
+		 				pstmt.setString(5,"N/A"); // ¹w³]±N¤u¼t±Æ©w¤é´Á³]©w¬°Schedule Shipment Date + ®É¶¡(¦]¬°¤u¼t§å°h,¬G¤£µ¹SHIP_DATE®É¶¡)  
+		 				pstmt.setString(6,aFactoryArrangedCode[i][5]); // °O¦í¦U¶µ¦¸§å°hªº­ì¦]
+		 				pstmt.setString(7,"R"); // °O¦í§å°h¥N½X"R"
 		 				pstmt.setString(8,"R"); // AUTOCREATE_FLAG, ADD BY Peggy 20120322
-         				pstmt.executeUpdate();
-         				pstmt.close();
-
-		  				// å–æ­·ç¨‹æª”å…§å‰ä¸€å€‹ç‹€æ…‹è‡³ç›®å‰çš„æ™‚é–“å·®,åšç‚ºæœ¬æ¬¡æ­·ç¨‹çš„å·¥æ™‚_èµ·
+         				pstmt.executeUpdate(); 
+         				pstmt.close();   
+		
+		  				// ¨ú¾úµ{ÀÉ¤º«e¤@­Óª¬ºA¦Ü¥Ø«eªº®É¶¡®t,°µ¬°¥»¦¸¾úµ{ªº¤u®É_°_
 		      			float processWorkTime = 0;
-		      			String preWorkTime = "0";
-		      			Statement stateHProcWT=con.createStatement();  // ORISTATUSID = '004' (å·¥å» æ‰¹é€€äº¤æœŸç¢ºèªé€å‡ºå‰ä¸€ç‹€æ…‹ç‚ºARRANGED(004))
+		      			String preWorkTime = "0"; 			 
+		      			Statement stateHProcWT=con.createStatement();  // ORISTATUSID = '004' (¤u¼t§å°h¥æ´Á½T»{°e¥X«e¤@ª¬ºA¬°ARRANGED(004))
               			ResultSet rsHProcWT=stateHProcWT.executeQuery("select CDATETIME from ORADDMAN.TSDELIVERY_DETAIL_HISTORY "+
 						" where DNDOCNO='"+dnDocNo+"' and TO_CHAR(LINE_NO)='"+aFactoryArrangedCode[i][0]+"' and ORISTATUSID ='004' ");
 	          			if (rsHProcWT.next())
@@ -1199,13 +1197,13 @@ try
 			  			}
 			  			rsHProcWT.close();
 			  			stateHProcWT.close();
-           				//è‹¥å–åˆ°å‰ä¸€å€‹ç‹€æ…‹æ™‚é–“,å‰‡ä»¥ç›®å‰æ™‚é–“æ¸›å»å‰
+           				//­Y¨ú¨ì«e¤@­Óª¬ºA®É¶¡,«h¥H¥Ø«e®É¶¡´î¥h«e
 		    			if (preWorkTime!="0")
 		    			{
 			    			String sqlWT = "select ROUND((to_date('"+dateBean.getYearMonthDay()+
 							dateBean.getHourMinuteSecond()+"','YYYYMMDDHH24MISS') - to_date('"+preWorkTime+"','YYYYMMDDHH24MISS')) * 24,2) "+
 							"from DUAL ";
-		        			Statement stateWTime=con.createStatement();  // ORISTATUSID = '001' (è‰ç¨¿æ–‡ä»¶å‰ä¸€ç‹€æ…‹ä»ç‚ºè‰ç¨¿æ–‡ä»¶)
+		        			Statement stateWTime=con.createStatement();  // ORISTATUSID = '001' (¯ó½Z¤å¥ó«e¤@ª¬ºA¤´¬°¯ó½Z¤å¥ó)
                 			ResultSet rsWTime=stateWTime.executeQuery(sqlWT);
 	            			if (rsWTime.next())
 		        			{
@@ -1214,11 +1212,11 @@ try
 			    			rsWTime.close();
 			    			stateWTime.close();
 						}
-						// å–æ­·ç¨‹æª”å…§å‰ä¸€å€‹ç‹€æ…‹è‡³ç›®å‰çš„æ™‚é–“å·®,åšç‚ºæœ¬æ¬¡æ­·ç¨‹çš„å·¥æ™‚_è¿„
-
-		      			//Step5. ä»»ä¸€Action,å¯«å…¥äº¤æœŸè©¢å•æ˜ç´°æ­·ç¨‹æª”
+						// ¨ú¾úµ{ÀÉ¤º«e¤@­Óª¬ºA¦Ü¥Ø«eªº®É¶¡®t,°µ¬°¥»¦¸¾úµ{ªº¤u®É_¨´
+		
+		      			//Step5. ¥ô¤@Action,¼g¤J¥æ´Á¸ß°İ©ú²Ó¾úµ{ÀÉ	         	 
 	          			int deliveryCount = 0;
-	          			Statement stateDeliveryCNT=con.createStatement();
+	          			Statement stateDeliveryCNT=con.createStatement(); 
               			ResultSet rsDeliveryCNT=stateDeliveryCNT.executeQuery("select count(*)+1 from ORADDMAN.TSDELIVERY_DETAIL_HISTORY "+
 						" where DNDOCNO='"+dnDocNo+"' and TO_CHAR(LINE_NO)='"+aFactoryArrangedCode[i][0]+"' ");
 	          			if (rsDeliveryCNT.next())
@@ -1231,47 +1229,47 @@ try
               			ResultSet rs=statement.executeQuery("select * from ORADDMAN.TSWFACTION where ACTIONID='"+actionID+"'");
               			rs.next();
               			actionName=rs.getString("ACTIONNAME");
-
+   
               			rs=statement.executeQuery("select * from ORADDMAN.TSWFStatus where STATUSID='"+fromStatusID+"'");
               			rs.next();
-              			oriStatus=rs.getString("STATUSNAME");
+              			oriStatus=rs.getString("STATUSNAME");   
              		 	statement.close();
-              			rs.close();
+              			rs.close();	
 
 	          			String historySql="insert into ORADDMAN.TSDELIVERY_DETAIL_HISTORY(DNDOCNO,ORISTATUSID,"+
 						"ORISTATUS,ACTIONID,ACTIONNAME,UPDATEUSERID,UPDATEDATE,UPDATETIME,ASSIGN_FACTORY,CDATETIME,REMARK,SERIALROW,LINE_NO"+
 						",PROCESS_WORKTIME,PC_REMARK) "+
 		                "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
-	          			PreparedStatement historystmt=con.prepareStatement(historySql);
-              			historystmt.setString(1,dnDocNo);
-              			historystmt.setString(2,fromStatusID);
-              			historystmt.setString(3,oriStatus); //å¯«å…¥statusåç¨±
-              			historystmt.setString(4,actionID);
-              			historystmt.setString(5,actionName);
-              			historystmt.setString(6,userID);
-              			historystmt.setString(7,dateBean.getYearMonthDay());
+	          			PreparedStatement historystmt=con.prepareStatement(historySql);   
+              			historystmt.setString(1,dnDocNo); 
+              			historystmt.setString(2,fromStatusID); 
+              			historystmt.setString(3,oriStatus); //¼g¤Jstatus¦WºÙ
+              			historystmt.setString(4,actionID); 
+              			historystmt.setString(5,actionName); 
+              			historystmt.setString(6,userID); 
+              			historystmt.setString(7,dateBean.getYearMonthDay()); 
               			historystmt.setString(8,dateBean.getHourMinuteSecond());
-              			historystmt.setString(9,aFactoryArrangedCode[i][7]); // 20110111 update å¯«å…¥å·¥å» ç·¨è™Ÿ
+              			historystmt.setString(9,aFactoryArrangedCode[i][7]); // 20110111 update ¼g¤J¤u¼t½s¸¹
               			historystmt.setString(10,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond());
-              			historystmt.setString(11,remark);  // çµ¦æ¥­å‹™æ‰¹é€€æ‰¹æ¬¡è¨»æ˜
+              			historystmt.setString(11,remark);  // µ¹·~°È§å°h§å¦¸µù©ú
               			historystmt.setInt(12,deliveryCount);
-		      			historystmt.setInt(13,Integer.parseInt(aFactoryArrangedCode[i][0])); // å¯«å…¥è™•ç†Line_No
-		      			historystmt.setFloat(14,processWorkTime);
+		      			historystmt.setInt(13,Integer.parseInt(aFactoryArrangedCode[i][0])); // ¼g¤J³B²zLine_No
+		      			historystmt.setFloat(14,processWorkTime);	
 		      			historystmt.setString(15,aFactoryArrangedCode[i][8]); // 20110111 PC_REMARK
-		      			historystmt.executeUpdate();
-             	 		historystmt.close();
-	         			//Step5. å¯«å…¥äº¤æœŸè©¢å•æ˜ç´°æ­·ç¨‹æª”
-             			//===ENF OF å¯«å…¥action history
-
-			 			//  æ´¾é€E-Mail_èµ·
+		      			historystmt.executeUpdate();   
+             	 		historystmt.close(); 
+	         			//Step5. ¼g¤J¥æ´Á¸ß°İ©ú²Ó¾úµ{ÀÉ
+             			//===ENF OF ¼g¤Jaction history
+			 
+			 			//  ¬£°eE-Mail_°_
 			 			if (sendMailOption!=null && sendMailOption.equals("YES"))
-             			{
+             			{ 
 	           				String sqlAddList = "select DISTINCT CREATED_BY from ORADDMAN.TSDELIVERY_NOTICE_DETAIL "+
 							" where DNDOCNO='"+dnDocNo+"' and TO_CHAR(LINE_NO)='"+aFactoryArrangedCode[i][0]+"' ";
 	           				Statement stateAddList=con.createStatement();
                				ResultSet rsAddList=stateAddList.executeQuery(sqlAddList);
                				while (rsAddList.next())
-	           				{
+	           				{		
 	             				Statement stateList=con.createStatement();
 	             				String sqlList = "select DISTINCT a.USERMAIL, a.USERNAME from ORADDMAN.WSUSER a,ORADDMAN.TSRECPERSON b "+
 								" where a.USERNAME = b.USERNAME and b.USERID = '"+rsAddList.getString(1)+"' ";
@@ -1279,87 +1277,87 @@ try
 	             				while (rsList.next())
 	             				{
                    					sendMailBean.setMailHost(mailHost);
-                   					sendMailBean.setReception(rsList.getString("USERMAIL"));
-                   					sendMailBean.setFrom(UserName);
-                   					sendMailBean.setSubject(CodeUtil.unicodeToBig5("RFQ System Document Approvement Notification"));
+                   					sendMailBean.setReception(rsList.getString("USERMAIL"));		          
+                   					sendMailBean.setFrom(UserName);   	 	 
+                   					sendMailBean.setSubject(CodeUtil.unicodeToBig5("RFQ System Document Approvement Notification"));               	
 		           					sendMailBean.setUrlName("Dear "+rsList.getString("USERNAME")+",\n"+
-									CodeUtil.unicodeToBig5("   è«‹é»æ“Šä¾†è‡ªäº¤æœŸè©¢å•ç³»çµ±çš„éƒµä»¶:ä¼åŠƒæ‰¹é€€äº¤æœŸè©¢å•å–®(è«‹æª¢è¦–å‚™è¨»èªªæ˜)-("+dnDocNo+")"));
+									CodeUtil.unicodeToBig5("   ½ĞÂIÀ»¨Ó¦Û¥æ´Á¸ß°İ¨t²Îªº¶l¥ó:¥ø¹º§å°h¥æ´Á¸ß°İ³æ(½ĞÀËµø³Æµù»¡©ú)-("+dnDocNo+")"));  
                    					sendMailBean.setUrlAddr(serverHostName+":8080/oradds/jsp/TSSalesDRQConfirmedPage.jsp?DNDOCNO="+
 									dnDocNo+"&LINE_NO="+aFactoryArrangedCode[i][0]);
                    					sendMailBean.sendMail();
 	             				}
 	             				rsList.close();
-	            				stateList.close();
+	            				stateList.close();	   
 	           				}
 	           				rsAddList.close();
 	           				stateAddList.close();
-	        			}
-					}
-	  			}
-	 		}
+	        			} 
+					} 
+	  			} 
+	 		} 
 		}
-
+		
 		if (!choose_line.equals(""))
 		{
-			CallableStatement cs3 = con.prepareCall("{call TSC_RFQ_CREATE_ERP_ODR_PKG.ACTION_REJECT_EMAIL_NOTICE(?,?)}");
-			cs3.setString(1,dnDocNo);
-			cs3.setString(2,choose_line+",");
+			CallableStatement cs3 = con.prepareCall("{call TSC_RFQ_CREATE_ERP_ODR_PKG.ACTION_REJECT_EMAIL_NOTICE(?,?)}");			 
+			cs3.setString(1,dnDocNo); 
+			cs3.setString(2,choose_line+","); 
 			cs3.execute();
-			cs3.close();
+			cs3.close();			
 		}
-	    //Step4. å†æ›´æ–°äº¤æœŸè©¢å•ä¸»æª”è³‡æ–™
-       	sql="update ORADDMAN.TSDELIVERY_NOTICE set FCTPOMS_DATE=?,LAST_UPDATED_BY=?,LAST_UPDATE_DATE=? where DNDOCNO='"+dnDocNo+"' ";
-       	pstmt=con.prepareStatement(sql);
-      	pstmt.setString(1,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // å·¥å» äº¤æœŸç¢ºèªæ™‚é–“
-       	pstmt.setString(2,userID); // æœ€å¾Œæ›´æ–°äººå“¡
-	   	pstmt.setString(3,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // æœ€å¾Œæ›´æ–°æ™‚é–“
-       	pstmt.executeUpdate();
-       	pstmt.close();
-	   	// å†æ›´æ–°äº¤æœŸè©¢å•ä¸»æª”è³‡æ–™
-		//###***  å®Œæˆå„è™•ç†å¾Œå³å°‡sessionå–åˆ°çš„Bean çš„å…§å®¹å€¼æ¸…ç©º(é¿å…äºŒæ¬¡å‚³é€)  *****###
-		if (aFactoryEstimatingCode!=null) array2DEstimateFactoryBean.setArray2DString(null);
-		if (aFactoryArrangedCode!=null)	array2DArrangedFactoryBean.setArray2DString(null);
-  	} //è‹¥ç‚ºå·¥å» æ‰¹é€€äº¤æœŸè©¢å•å–®(REJECT)_æˆ–ä¼åŠƒæ‰¹é€€æ¥­å‹™äº¤æœŸè©¢å•å–®(REJECT)_è¿„
-  	// å·¥å» æ‰¹é€€äº¤æœŸè©¢å•å–®(REJECT)_è¿„ (ACTION=005)
-
-	//  (ACTION=007)å·¥å» è«‹æ±‚ä¼åŠƒé‡æ–°æŒ‡æ´¾ç”¢åœ°(REASSIGN)_èµ· (ACTION=007)
-  	if (actionID.equals("007"))
-  	{
-		if (aFactoryEstimatingCode!=null) // åˆ¤æ–·è©²æ¬¡è™•ç†ç´°é …æ‰æ›´æ–°æ˜ç´°æª”
+	    //Step4. ¦A§ó·s¥æ´Á¸ß°İ¥DÀÉ¸ê®Æ
+       	sql="update ORADDMAN.TSDELIVERY_NOTICE set FCTPOMS_DATE=?,LAST_UPDATED_BY=?,LAST_UPDATE_DATE=? where DNDOCNO='"+dnDocNo+"' ";     
+       	pstmt=con.prepareStatement(sql);       
+      	pstmt.setString(1,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // ¤u¼t¥æ´Á½T»{®É¶¡  
+       	pstmt.setString(2,userID); // ³Ì«á§ó·s¤H­û
+	   	pstmt.setString(3,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // ³Ì«á§ó·s®É¶¡     
+       	pstmt.executeUpdate(); 
+       	pstmt.close();      
+	   	// ¦A§ó·s¥æ´Á¸ß°İ¥DÀÉ¸ê®Æ
+		//###***  §¹¦¨¦U³B²z«á§Y±Nsession¨ú¨ìªºBean ªº¤º®e­È²MªÅ(Á×§K¤G¦¸¶Ç°e)  *****###  
+		if (aFactoryEstimatingCode!=null) array2DEstimateFactoryBean.setArray2DString(null);  
+		if (aFactoryArrangedCode!=null)	array2DArrangedFactoryBean.setArray2DString(null);  
+  	} //­Y¬°¤u¼t§å°h¥æ´Á¸ß°İ³æ(REJECT)_©Î¥ø¹º§å°h·~°È¥æ´Á¸ß°İ³æ(REJECT)_¨´
+  	// ¤u¼t§å°h¥æ´Á¸ß°İ³æ(REJECT)_¨´ (ACTION=005)  
+ 	
+	//  (ACTION=007)¤u¼t½Ğ¨D¥ø¹º­«·s«ü¬£²£¦a(REASSIGN)_°_ (ACTION=007)
+  	if (actionID.equals("007")) 
+  	{    
+		if (aFactoryEstimatingCode!=null) // §PÂ_¸Ó¦¸³B²z²Ó¶µ¤~§ó·s©ú²ÓÀÉ
 		{
 	 		for (int i=0;i<aFactoryEstimatingCode.length-1;i++)
 	 		{
-	   			for (int k=0;k<=choice.length-1;k++)
+	   			for (int k=0;k<=choice.length-1;k++)    
        			{
-		 			// åˆ¤æ–·è¢«Check çš„Line æ‰åŸ·è¡Œå·¥å» å®‰æ’äº¤æœŸä½œæ¥­
+		 			// §PÂ_³QCheck ªºLine ¤~°õ¦æ¤u¼t¦w±Æ¥æ´Á§@·~
 	    			if (choice[k]==aFactoryEstimatingCode[i][0] || choice[k].equals(aFactoryEstimatingCode[i][0]))
-	    			{
+	    			{ 	 
 	     				sql="update ORADDMAN.TSDELIVERY_NOTICE_DETAIL  set FTACPDATE=?,LAST_UPDATED_BY=?,LAST_UPDATE_DATE=?,LSTATUSID=?,LSTATUS=?,SHIP_DATE=?,REMARK=? "+
-	         			" where DNDOCNO='"+dnDocNo+"' and TO_CHAR(LINE_NO)='"+aFactoryEstimatingCode[i][0]+"' ";
+	         			" where DNDOCNO='"+dnDocNo+"' and TO_CHAR(LINE_NO)='"+aFactoryEstimatingCode[i][0]+"' ";     
          				pstmt=con.prepareStatement(sql);
-         				pstmt.setString(1,"N/A"); // è¨­å®šçš„å·¥å» ç¢ºèªæ—¥æœŸ + æ™‚é–“
-		 				pstmt.setString(2,userID); // æœ€å¾Œæ›´æ–°äººå“¡
-		 				pstmt.setString(3,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // æœ€å¾Œæ›´æ–°æ™‚é–“
+         				pstmt.setString(1,"N/A"); // ³]©wªº¤u¼t½T»{¤é´Á + ®É¶¡     
+		 				pstmt.setString(2,userID); // ³Ì«á§ó·s¤H­û 
+		 				pstmt.setString(3,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // ³Ì«á§ó·s®É¶¡ 
          				pstmt.setString(4,sToStatusID);
          				pstmt.setString(5,sToStatusName);
-		 				pstmt.setString(6,"N/A"); // é è¨­å°‡å·¥å» æ’å®šæ—¥æœŸè¨­å®šç‚ºSchedule Shipment Date + æ™‚é–“
-		 				pstmt.setString(7,aFactoryEstimatingCode[i][5]); // è¨˜ä½å„é …æ¬¡æ‰¹é€€çš„åŸå› 
-         				pstmt.executeUpdate();
-         				pstmt.close();
-
-						// å–æ­·ç¨‹æª”å…§å‰ä¸€å€‹ç‹€æ…‹è‡³ç›®å‰çš„æ™‚é–“å·®,åšç‚ºæœ¬æ¬¡æ­·ç¨‹çš„å·¥æ™‚_èµ·
+		 				pstmt.setString(6,"N/A"); // ¹w³]±N¤u¼t±Æ©w¤é´Á³]©w¬°Schedule Shipment Date + ®É¶¡  
+		 				pstmt.setString(7,aFactoryEstimatingCode[i][5]); // °O¦í¦U¶µ¦¸§å°hªº­ì¦]
+         				pstmt.executeUpdate(); 
+         				pstmt.close();   
+		
+						// ¨ú¾úµ{ÀÉ¤º«e¤@­Óª¬ºA¦Ü¥Ø«eªº®É¶¡®t,°µ¬°¥»¦¸¾úµ{ªº¤u®É_°_
 		      			float processWorkTime = 0;
-		      			String preWorkTime = "0";
-		      			Statement stateHProcWT=con.createStatement();  // ORISTATUSID = '002' (å·¥å» æ‰¹é€€äº¤æœŸå®‰æ’ä¸­é€å‡ºå‰ä¸€ç‹€æ…‹ç‚ºESTIMATING(002))
+		      			String preWorkTime = "0"; 			 
+		      			Statement stateHProcWT=con.createStatement();  // ORISTATUSID = '002' (¤u¼t§å°h¥æ´Á¦w±Æ¤¤°e¥X«e¤@ª¬ºA¬°ESTIMATING(002))
               			ResultSet rsHProcWT=stateHProcWT.executeQuery("select CDATETIME from ORADDMAN.TSDELIVERY_DETAIL_HISTORY  where DNDOCNO='"+dnDocNo+"' and TO_CHAR(LINE_NO)='"+aFactoryEstimatingCode[i][0]+"' and ORISTATUSID ='002' ");
 	          			if (rsHProcWT.next()) preWorkTime = rsHProcWT.getString(1);
 			  			rsHProcWT.close();
 			  			stateHProcWT.close();
-           				//è‹¥å–åˆ°å‰ä¸€å€‹ç‹€æ…‹æ™‚é–“,å‰‡ä»¥ç›®å‰æ™‚é–“æ¸›å»å‰
+           				//­Y¨ú¨ì«e¤@­Óª¬ºA®É¶¡,«h¥H¥Ø«e®É¶¡´î¥h«e
 		    			if (preWorkTime!="0")
 		    			{
 			    			String sqlWT = "select ROUND((to_date('"+dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()+"','YYYYMMDDHH24MISS') - to_date('"+preWorkTime+"','YYYYMMDDHH24MISS')) * 24,2)  from DUAL ";
-		        			Statement stateWTime=con.createStatement();  // ORISTATUSID = '001' (è‰ç¨¿æ–‡ä»¶å‰ä¸€ç‹€æ…‹ä»ç‚ºè‰ç¨¿æ–‡ä»¶)
+		        			Statement stateWTime=con.createStatement();  // ORISTATUSID = '001' (¯ó½Z¤å¥ó«e¤@ª¬ºA¤´¬°¯ó½Z¤å¥ó)
                 			ResultSet rsWTime=stateWTime.executeQuery(sqlWT);
 	            			if (rsWTime.next())
 		        			{
@@ -1368,14 +1366,14 @@ try
 			    			rsWTime.close();
 			    			stateWTime.close();
 						}
-						// å–æ­·ç¨‹æª”å…§å‰ä¸€å€‹ç‹€æ…‹è‡³ç›®å‰çš„æ™‚é–“å·®,åšç‚ºæœ¬æ¬¡æ­·ç¨‹çš„å·¥æ™‚_è¿„
-
-		      			//Step5. ä»»ä¸€Action,å¯«å…¥äº¤æœŸè©¢å•æ˜ç´°æ­·ç¨‹æª”
+						// ¨ú¾úµ{ÀÉ¤º«e¤@­Óª¬ºA¦Ü¥Ø«eªº®É¶¡®t,°µ¬°¥»¦¸¾úµ{ªº¤u®É_¨´
+		
+		      			//Step5. ¥ô¤@Action,¼g¤J¥æ´Á¸ß°İ©ú²Ó¾úµ{ÀÉ	         
 	          			int deliveryCount = 0;
-	          			Statement stateDeliveryCNT=con.createStatement();
+	          			Statement stateDeliveryCNT=con.createStatement(); 
               			ResultSet rsDeliveryCNT=stateDeliveryCNT.executeQuery("select count(*)+1 from ORADDMAN.TSDELIVERY_DETAIL_HISTORY  where DNDOCNO='"+dnDocNo+"' and TO_CHAR(LINE_NO)='"+aFactoryEstimatingCode[i][0]+"' ");
 	          			if (rsDeliveryCNT.next())
-	          			{
+	          			{		
 	            			deliveryCount = rsDeliveryCNT.getInt(1);
 	          			}
 	          			rsDeliveryCNT.close();
@@ -1389,84 +1387,84 @@ try
               			oriStatus=rs.getString("STATUSNAME");
               			statement.close();
               			rs.close();
-
+	
 	          			String historySql="insert into ORADDMAN.TSDELIVERY_DETAIL_HISTORY(DNDOCNO,ORISTATUSID,ORISTATUS,ACTIONID,ACTIONNAME,UPDATEUSERID,UPDATEDATE,UPDATETIME,ASSIGN_FACTORY,CDATETIME,REMARK,SERIALROW,"+
 						" LINE_NO,PROCESS_WORKTIME) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
-	          			PreparedStatement historystmt=con.prepareStatement(historySql);
-              			historystmt.setString(1,dnDocNo);
-              			historystmt.setString(2,fromStatusID);
-              			historystmt.setString(3,oriStatus); //å¯«å…¥statusåç¨±
-              			historystmt.setString(4,actionID);
-              			historystmt.setString(5,actionName);
-              			historystmt.setString(6,userID);
-              			historystmt.setString(7,dateBean.getYearMonthDay());
+	          			PreparedStatement historystmt=con.prepareStatement(historySql);   
+              			historystmt.setString(1,dnDocNo); 
+              			historystmt.setString(2,fromStatusID); 
+              			historystmt.setString(3,oriStatus); //¼g¤Jstatus¦WºÙ
+              			historystmt.setString(4,actionID); 
+              			historystmt.setString(5,actionName); 
+              			historystmt.setString(6,userID); 
+              			historystmt.setString(7,dateBean.getYearMonthDay()); 
               			historystmt.setString(8,dateBean.getHourMinuteSecond());
-              			historystmt.setString(9,prodCodeGet); //å¯«å…¥å·¥å» ç·¨è™Ÿ
+              			historystmt.setString(9,prodCodeGet); //¼g¤J¤u¼t½s¸¹
               			historystmt.setString(10,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond());
-              			historystmt.setString(11,aFactoryEstimatingCode[i][5]); //å€‹åˆ¥Lineçš„é‡æ–°æŒ‡æ´¾èªªæ˜
+              			historystmt.setString(11,aFactoryEstimatingCode[i][5]); //­Ó§OLineªº­«·s«ü¬£»¡©ú
               			historystmt.setInt(12,deliveryCount);
-		      			historystmt.setInt(13,Integer.parseInt(aFactoryEstimatingCode[i][0])); // å¯«å…¥è™•ç†Line_No
+		      			historystmt.setInt(13,Integer.parseInt(aFactoryEstimatingCode[i][0])); // ¼g¤J³B²zLine_No
 		      			historystmt.setFloat(14,processWorkTime);
-		      			historystmt.executeUpdate();
-              			historystmt.close();
-					}
-	  			}
-	 		}
-		}
-
-	    //Step4. å†æ›´æ–°äº¤æœŸè©¢å•ä¸»æª”è³‡æ–™
-       	sql="update ORADDMAN.TSDELIVERY_NOTICE set FCTPOMS_DATE=?,LAST_UPDATED_BY=?,LAST_UPDATE_DATE=? where DNDOCNO='"+dnDocNo+"' ";
-       	pstmt=con.prepareStatement(sql);
-       	pstmt.setString(1,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // å·¥å» äº¤æœŸç¢ºèªæ™‚é–“
-       	pstmt.setString(2,userID); // æœ€å¾Œæ›´æ–°äººå“¡
-	   	pstmt.setString(3,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // æœ€å¾Œæ›´æ–°æ™‚é–“
-       	pstmt.executeUpdate();
-       	pstmt.close();
-	   	// å†æ›´æ–°äº¤æœŸè©¢å•ä¸»æª”è³‡æ–™
-		//###***  å®Œæˆå„è™•ç†å¾Œå³å°‡sessionå–åˆ°çš„Bean çš„å…§å®¹å€¼æ¸…ç©º(é¿å…äºŒæ¬¡å‚³é€)  *****###
-		if (aFactoryEstimatingCode!=null)  array2DEstimateFactoryBean.setArray2DString(null);
- 	} //è‹¥ç‚ºé‡æ–°æŒ‡æ´¾ç”¢åœ°(REASSIGN)_è¿„
-  	// å·¥å» è«‹æ±‚ä¼åŠƒé‡æ–°æŒ‡æ´¾ç”¢åœ°(REASSIGN)_è¿„ (ACTION=007)
-
-
-  	//è‹¥ç‚ºä¼åŠƒäº¤æœŸå›è¦†å·²ç¢ºèª(ACEPT)_èµ· (ACTION=010)
-  	if (actionID.equals("010"))
-  	{
-    	//å·¥å» äº¤æœŸå·²å›è¦†ç”±ä¼åŠƒç”Ÿç®¡ä½œç‹€æ…‹ç¢ºèªå¾Œ,æ›´æ–°è‡³äº¤æœŸå›æ‡‰å®¢æˆ¶åŒæ„ä¸­(RESPONDING)
-	 	//Step2. å–å¾—æœ¬å¼µå–®æ“šåˆ†é…çš„å·¥å» çµ„åˆå­—ä¸²_èµ·
+		      			historystmt.executeUpdate();   
+              			historystmt.close(); 
+					}  
+	  			}  
+	 		} 
+		} 
+	        
+	    //Step4. ¦A§ó·s¥æ´Á¸ß°İ¥DÀÉ¸ê®Æ
+       	sql="update ORADDMAN.TSDELIVERY_NOTICE set FCTPOMS_DATE=?,LAST_UPDATED_BY=?,LAST_UPDATE_DATE=? where DNDOCNO='"+dnDocNo+"' ";     
+       	pstmt=con.prepareStatement(sql);     
+       	pstmt.setString(1,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // ¤u¼t¥æ´Á½T»{®É¶¡  
+       	pstmt.setString(2,userID); // ³Ì«á§ó·s¤H­û
+	   	pstmt.setString(3,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // ³Ì«á§ó·s®É¶¡     
+       	pstmt.executeUpdate(); 
+       	pstmt.close();      
+	   	// ¦A§ó·s¥æ´Á¸ß°İ¥DÀÉ¸ê®Æ
+		//###***  §¹¦¨¦U³B²z«á§Y±Nsession¨ú¨ìªºBean ªº¤º®e­È²MªÅ(Á×§K¤G¦¸¶Ç°e)  *****###  
+		if (aFactoryEstimatingCode!=null)  array2DEstimateFactoryBean.setArray2DString(null);  
+ 	} //­Y¬°­«·s«ü¬£²£¦a(REASSIGN)_¨´
+  	// ¤u¼t½Ğ¨D¥ø¹º­«·s«ü¬£²£¦a(REASSIGN)_¨´ (ACTION=007)
+  
+    
+  	//­Y¬°¥ø¹º¥æ´Á¦^ÂĞ¤w½T»{(ACEPT)_°_ (ACTION=010)
+  	if (actionID.equals("010")) 
+  	{    
+    	//¤u¼t¥æ´Á¤w¦^ÂĞ¥Ñ¥ø¹º¥ÍºŞ§@ª¬ºA½T»{«á,§ó·s¦Ü¥æ´Á¦^À³«È¤á¦P·N¤¤(RESPONDING)
+	 	//Step2. ¨ú±o¥»±i³æ¾Ú¤À°tªº¤u¼t²Õ¦X¦r¦ê_°_	    
 	 	if (aFactoryArrangedCode!=null)
-	 	{
+	 	{	 
 	   		for (int i=0;i<aFactoryArrangedCode.length-1;i++)
-	   		{
-	    		for (int k=0;k<=choice.length-1;k++)
+	   		{  
+	    		for (int k=0;k<=choice.length-1;k++)    
         		{
-		 			// åˆ¤æ–·è¢«Check çš„Line æ‰åŸ·è¡Œå·¥å» å®‰æ’äº¤æœŸä½œæ¥­
+		 			// §PÂ_³QCheck ªºLine ¤~°õ¦æ¤u¼t¦w±Æ¥æ´Á§@·~
 	     			if (choice[k]==aFactoryArrangedCode[i][0] || choice[k].equals(aFactoryArrangedCode[i][0]))
-	     			{
+	     			{ 
 	      				sql="update ORADDMAN.TSDELIVERY_NOTICE_DETAIL "+
 						" set PCACPDATE=?,LAST_UPDATED_BY=?,LAST_UPDATE_DATE=?,LSTATUSID=?,LSTATUS=?,SHIP_DATE=?,PROMISE_DATE=? "+
-	          			"where DNDOCNO='"+dnDocNo+"' and TO_CHAR(LINE_NO)='"+aFactoryArrangedCode[i][0]+"' ";
+	          			"where DNDOCNO='"+dnDocNo+"' and TO_CHAR(LINE_NO)='"+aFactoryArrangedCode[i][0]+"' ";     
           				pstmt=con.prepareStatement(sql);
-						 // è‹¥ç”Ÿç®¡æœªé‡æ–°çµ¦å®šäº¤æœŸæ—¥,å‰‡ä»¥å·¥ç”¢å®‰æ’æ—¥ç‚ºå…¶äº¤æœŸæ—¥
+						 // ­Y¥ÍºŞ¥¼­«·sµ¹©w¥æ´Á¤é,«h¥H¤u²£¦w±Æ¤é¬°¨ä¥æ´Á¤é
 		  				if (aFactoryArrangedCode[i][6].equals("N/A")) aFactoryArrangedCode[i][6] = aFactoryArrangedCode[i][7];
-		  				if (aFactoryArrangedCode[i][7].equals("N/A"))  // è‹¥æ˜¯å·¥å» èˆ‡ç”Ÿç®¡éƒ½æœªçµ¦å®šæ—¥æœŸ,å‰‡å›è¦†é è¨­å€¼äºˆåŸéœ€æ±‚æ—¥
-		  				{
-							aFactoryArrangedCode[i][6] = aFactoryArrangedCode[i][4]; aFactoryArrangedCode[i][7] = aFactoryArrangedCode[i][4];
+		  				if (aFactoryArrangedCode[i][7].equals("N/A"))  // ­Y¬O¤u¼t»P¥ÍºŞ³£¥¼µ¹©w¤é´Á,«h¦^ÂĞ¹w³]­È¤©­ì»İ¨D¤é
+		  				{  
+							aFactoryArrangedCode[i][6] = aFactoryArrangedCode[i][4]; aFactoryArrangedCode[i][7] = aFactoryArrangedCode[i][4]; 
 						}
-          				pstmt.setString(1,aFactoryArrangedCode[i][6]); // è¨­å®šçš„PC æ¥æ”¶æ—¥æœŸ + æ™‚é–“
-		  				pstmt.setString(2,userID); // æœ€å¾Œæ›´æ–°äººå“¡
-		  				pstmt.setString(3,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // æœ€å¾Œæ›´æ–°æ™‚é–“
+          				pstmt.setString(1,aFactoryArrangedCode[i][6]); // ³]©wªºPC ±µ¦¬¤é´Á + ®É¶¡     
+		  				pstmt.setString(2,userID); // ³Ì«á§ó·s¤H­û 
+		  				pstmt.setString(3,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // ³Ì«á§ó·s®É¶¡ 
           				pstmt.setString(4,sToStatusID);
           				pstmt.setString(5,sToStatusName);
-		  				pstmt.setString(6,aFactoryArrangedCode[i][6]); // é è¨­å°‡ç”Ÿç®¡çš„ç¢ºèªæ—¥çµ¦Schedule Shipment Dateæ—¥æœŸ + æ™‚é–“
-		  				pstmt.setString(7,aFactoryArrangedCode[i][6]); // é è¨­å°‡ç”Ÿç®¡çš„ç¢ºèªæ—¥çµ¦Customer Request Dateæ—¥æœŸ + æ™‚é–“
-          				pstmt.executeUpdate();
-          				pstmt.close();
-
-		 				// å–æ­·ç¨‹æª”å…§å‰ä¸€å€‹ç‹€æ…‹è‡³ç›®å‰çš„æ™‚é–“å·®,åšç‚ºæœ¬æ¬¡æ­·ç¨‹çš„å·¥æ™‚_èµ·
+		  				pstmt.setString(6,aFactoryArrangedCode[i][6]); // ¹w³]±N¥ÍºŞªº½T»{¤éµ¹Schedule Shipment Date¤é´Á + ®É¶¡ 
+		  				pstmt.setString(7,aFactoryArrangedCode[i][6]); // ¹w³]±N¥ÍºŞªº½T»{¤éµ¹Customer Request Date¤é´Á + ®É¶¡  
+          				pstmt.executeUpdate(); 
+          				pstmt.close(); 		  
+		  
+		 				// ¨ú¾úµ{ÀÉ¤º«e¤@­Óª¬ºA¦Ü¥Ø«eªº®É¶¡®t,°µ¬°¥»¦¸¾úµ{ªº¤u®É_°_
 		      			float processWorkTime = 0;
-		      			String preWorkTime = "0";
-		      			Statement stateHProcWT=con.createStatement();  // ORISTATUSID = '003' (å·¥å» æ‰¹é€€äº¤æœŸå®‰æ’ä¸­é€å‡ºå‰ä¸€ç‹€æ…‹ç‚ºESTIMATING(003))
+		      			String preWorkTime = "0"; 			 
+		      			Statement stateHProcWT=con.createStatement();  // ORISTATUSID = '003' (¤u¼t§å°h¥æ´Á¦w±Æ¤¤°e¥X«e¤@ª¬ºA¬°ESTIMATING(003))
               			ResultSet rsHProcWT=stateHProcWT.executeQuery("select CDATETIME from ORADDMAN.TSDELIVERY_DETAIL_HISTORY "+
 						" where DNDOCNO='"+dnDocNo+"' and TO_CHAR(LINE_NO)='"+aFactoryArrangedCode[i][0]+"' and ORISTATUSID ='004' ");
 	          			if (rsHProcWT.next())
@@ -1475,12 +1473,12 @@ try
 			  			}
 			  			rsHProcWT.close();
 			  			stateHProcWT.close();
-           				//è‹¥å–åˆ°å‰ä¸€å€‹ç‹€æ…‹æ™‚é–“,å‰‡ä»¥ç›®å‰æ™‚é–“æ¸›å»å‰
+           				//­Y¨ú¨ì«e¤@­Óª¬ºA®É¶¡,«h¥H¥Ø«e®É¶¡´î¥h«e
 		    			if (preWorkTime!="0")
 		    			{
 			    			String sqlWT = "select ROUND((to_date('"+dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()
 							+"','YYYYMMDDHH24MISS') - to_date('"+preWorkTime+"','YYYYMMDDHH24MISS')) * 24,2) from DUAL ";
-		        			Statement stateWTime=con.createStatement();  // ORISTATUSID = '001' (è‰ç¨¿æ–‡ä»¶å‰ä¸€ç‹€æ…‹ä»ç‚ºè‰ç¨¿æ–‡ä»¶)
+		        			Statement stateWTime=con.createStatement();  // ORISTATUSID = '001' (¯ó½Z¤å¥ó«e¤@ª¬ºA¤´¬°¯ó½Z¤å¥ó)
                 			ResultSet rsWTime=stateWTime.executeQuery(sqlWT);
 	            			if (rsWTime.next())
 		        			{
@@ -1489,11 +1487,11 @@ try
 			    			rsWTime.close();
 			    			stateWTime.close();
 						}
-          				// å–æ­·ç¨‹æª”å…§å‰ä¸€å€‹ç‹€æ…‹è‡³ç›®å‰çš„æ™‚é–“å·®,åšç‚ºæœ¬æ¬¡æ­·ç¨‹çš„å·¥æ™‚_è¿„
-
-		      			//Step5. ä»»ä¸€Action,å¯«å…¥äº¤æœŸè©¢å•æ˜ç´°æ­·ç¨‹æª”
+          				// ¨ú¾úµ{ÀÉ¤º«e¤@­Óª¬ºA¦Ü¥Ø«eªº®É¶¡®t,°µ¬°¥»¦¸¾úµ{ªº¤u®É_¨´
+		  
+		      			//Step5. ¥ô¤@Action,¼g¤J¥æ´Á¸ß°İ©ú²Ó¾úµ{ÀÉ	         	 
 	          			int deliveryCount = 0;
-	          			Statement stateDeliveryCNT=con.createStatement();
+	          			Statement stateDeliveryCNT=con.createStatement(); 
               			ResultSet rsDeliveryCNT=stateDeliveryCNT.executeQuery("select count(*)+1 from ORADDMAN.TSDELIVERY_DETAIL_HISTORY "+
 						" where DNDOCNO='"+dnDocNo+"' and TO_CHAR(LINE_NO)='"+aFactoryArrangedCode[i][0]+"' ");
 	          			if (rsDeliveryCNT.next())
@@ -1502,69 +1500,69 @@ try
 	          			}
 	          			rsDeliveryCNT.close();
 	          			stateDeliveryCNT.close();
-
+	       
               			Statement statement=con.createStatement();
               			ResultSet rs=statement.executeQuery("select * from ORADDMAN.TSWFACTION where ACTIONID='"+actionID+"'");
               			rs.next();
               			actionName=rs.getString("ACTIONNAME");
-
+   
               			rs=statement.executeQuery("select * from ORADDMAN.TSWFStatus where STATUSID='"+fromStatusID+"'");
               			rs.next();
               			oriStatus=rs.getString("STATUSNAME");
               			statement.close();
               			rs.close();
-
+	
 	          			String historySql="insert into ORADDMAN.TSDELIVERY_DETAIL_HISTORY(DNDOCNO,ORISTATUSID,"+
 					    "ORISTATUS,ACTIONID,ACTIONNAME,UPDATEUSERID,UPDATEDATE,UPDATETIME,ASSIGN_FACTORY,CDATETIME,"+
 						"REMARK,SERIALROW,LINE_NO,PROCESS_WORKTIME,ARRANGED_DATE) "+
 		                "values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
-	          			PreparedStatement historystmt=con.prepareStatement(historySql);
-              			historystmt.setString(1,dnDocNo);
-              			historystmt.setString(2,fromStatusID);
-             		 	historystmt.setString(3,oriStatus); //å¯«å…¥statusåç¨±
-              			historystmt.setString(4,actionID);
-              			historystmt.setString(5,actionName);
-              			historystmt.setString(6,userID);
-              			historystmt.setString(7,dateBean.getYearMonthDay());
+	          			PreparedStatement historystmt=con.prepareStatement(historySql);   
+              			historystmt.setString(1,dnDocNo); 
+              			historystmt.setString(2,fromStatusID); 
+             		 	historystmt.setString(3,oriStatus); //¼g¤Jstatus¦WºÙ
+              			historystmt.setString(4,actionID); 
+              			historystmt.setString(5,actionName); 
+              			historystmt.setString(6,userID); 
+              			historystmt.setString(7,dateBean.getYearMonthDay()); 
               			historystmt.setString(8,dateBean.getHourMinuteSecond());
-              			historystmt.setString(9,prodCodeGet); //å¯«å…¥å·¥å» ç·¨è™Ÿ
+              			historystmt.setString(9,prodCodeGet); //¼g¤J¤u¼t½s¸¹
               			historystmt.setString(10,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond());
               			historystmt.setString(11,remark);
               			historystmt.setInt(12,deliveryCount);
-		      			historystmt.setInt(13,Integer.parseInt(aFactoryArrangedCode[i][0])); // å¯«å…¥è™•ç†Line_No
-		      			historystmt.setFloat(14,processWorkTime);
+		      			historystmt.setInt(13,Integer.parseInt(aFactoryArrangedCode[i][0])); // ¼g¤J³B²zLine_No
+		      			historystmt.setFloat(14,processWorkTime);		
 			  			historystmt.setString(15,aFactoryArrangedCode[i][6]);  //20101105 liling
-		      			historystmt.executeUpdate();
-              			historystmt.close();
-	         			//Step5. å¯«å…¥äº¤æœŸè©¢å•æ˜ç´°æ­·ç¨‹æª”
-             			//===ENF OF å¯«å…¥action history
-
-						// ä¼åŠƒå›è¦†äº¤æœŸå¯„é€Mailäºˆé–‹å–®æ¥­å‹™äººå“¡_èµ·
+		      			historystmt.executeUpdate();   
+              			historystmt.close(); 
+	         			//Step5. ¼g¤J¥æ´Á¸ß°İ©ú²Ó¾úµ{ÀÉ
+             			//===ENF OF ¼g¤Jaction history
+			 
+						// ¥ø¹º¦^ÂĞ¥æ´Á±H°eMail¤©¶}³æ·~°È¤H­û_°_  
 			 			/*if (sendMailOption!=null && sendMailOption.equals("YES"))
-             			{
+             			{  
 	          				String sqlAddList = "select DISTINCT CREATED_BY from ORADDMAN.TSDELIVERY_NOTICE where DNDOCNO='"+dnDocNo+"' ";
 	          				Statement stateAddList=con.createStatement();
               				ResultSet rsAddList=stateAddList.executeQuery(sqlAddList);
               				if (rsAddList.next())
-	          				{
+	          				{		  
 	             				Statement stateList=con.createStatement();
 	             				String sqlList = "select DISTINCT a.USERMAIL, a.USERNAME from ORADDMAN.WSUSER a, ORADDMAN.TSRECPERSON b "+
-								" where a.USERNAME = b.USERNAME "+
-				                "and b.USERID = '"+rsAddList.getString(1)+"' "; //å–å–®æ“šé–‹ç«‹äººå“¡Email
+								" where a.USERNAME = b.USERNAME "+				                 
+				                "and b.USERID = '"+rsAddList.getString(1)+"' "; //¨ú³æ¾Ú¶}¥ß¤H­ûEmail
                  				ResultSet rsList=stateList.executeQuery(sqlList);
 	             				while (rsList.next())
 	             				{
                    					sendMailBean.setMailHost(mailHost);
-                   					sendMailBean.setReception(rsList.getString("USERMAIL"));
-                   					sendMailBean.setFrom(UserName);
+                   					sendMailBean.setReception(rsList.getString("USERMAIL"));		           
+                   					sendMailBean.setFrom(UserName);   	 	 
                    					sendMailBean.setSubject(CodeUtil.unicodeToBig5("RFQ System Document Approvement Notification"));	                   					sendMailBean.setUrlName("Dear "+rsList.getString("USERNAME")+",\n"
-									+CodeUtil.unicodeToBig5("   è«‹é»æ“Šä¾†è‡ªäº¤æœŸè©¢å•ç³»çµ±çš„éƒµä»¶:å®¢æˆ¶äº¤æœŸç­‰å¾…ç¢ºèª-("+dnDocNo+")"));
+									+CodeUtil.unicodeToBig5("   ½ĞÂIÀ»¨Ó¦Û¥æ´Á¸ß°İ¨t²Îªº¶l¥ó:«È¤á¥æ´Áµ¥«İ½T»{-("+dnDocNo+")"));   	 
                    					sendMailBean.setUrlAddr(serverHostName+":8080/oradds/jsp/TSSalesDRQQueryAllStatus.jsp"+
 									"?STATUSID=008&PAGEURL=TSSalesDRQConfirmedPage.jsp&SEARCHSTRING="+dnDocNo);
                    					sendMailBean.sendMail();
 	             				} // End of while
                  				rsList.close();
-	             				stateList.close();
+	             				stateList.close();	   
 	           				} // End of if
 	           				rsAddList.close();
 	           				stateAddList.close();
@@ -1572,66 +1570,66 @@ try
 		 			} // End of if (choice[k]==aFactoryArrangedCode[i][0] || choice[k].equals(aFactoryArrangedCode[i][0]))
 				} // End of for (int k=0;k<choice.length;k++)
 	   		} // End of for
-	 	} // End of If  aFactoryArrangedCode!=null
-
-	    //Step4. å†æ›´æ–°äº¤æœŸè©¢å•ä¸»æª”è³‡æ–™
+	 	} // End of If  aFactoryArrangedCode!=null   
+	 
+	    //Step4. ¦A§ó·s¥æ´Á¸ß°İ¥DÀÉ¸ê®Æ
        	sql="update ORADDMAN.TSDELIVERY_NOTICE set LAST_UPDATED_BY=?,LAST_UPDATE_DATE=? "+
-	       "where DNDOCNO='"+dnDocNo+"' ";
-       	pstmt=con.prepareStatement(sql);
-       	pstmt.setString(1,userID); // æœ€å¾Œæ›´æ–°äººå“¡
-	   	pstmt.setString(2,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // æœ€å¾Œæ›´æ–°æ™‚é–“
-       	pstmt.executeUpdate();
-       	pstmt.close();
-	   	// å†æ›´æ–°äº¤æœŸè©¢å•ä¸»æª”è³‡æ–™
-
-		//###***  å®Œæˆå„è™•ç†å¾Œå³å°‡sessionå–åˆ°çš„Bean çš„å…§å®¹å€¼æ¸…ç©º(é¿å…äºŒæ¬¡å‚³é€)  *****###
-		if (aFactoryArrangedCode!=null)
-    	{
-			array2DArrangedFactoryBean.setArray2DString(null);
+	       "where DNDOCNO='"+dnDocNo+"' ";     
+       	pstmt=con.prepareStatement(sql);             
+       	pstmt.setString(1,userID); // ³Ì«á§ó·s¤H­û
+	   	pstmt.setString(2,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // ³Ì«á§ó·s®É¶¡     
+       	pstmt.executeUpdate(); 
+       	pstmt.close();      
+	   	// ¦A§ó·s¥æ´Á¸ß°İ¥DÀÉ¸ê®Æ
+	   
+		//###***  §¹¦¨¦U³B²z«á§Y±Nsession¨ú¨ìªºBean ªº¤º®e­È²MªÅ(Á×§K¤G¦¸¶Ç°e)  *****###  
+		if (aFactoryArrangedCode!=null)  
+    	{ 
+			array2DArrangedFactoryBean.setArray2DString(null);  
 		}
-  	} //è‹¥ç‚ºå·¥å» äº¤æœŸå›è¦†å·²ç¢ºèª(ACEPT)_è¿„ (ACTION=010)
-
-  	if (actionID.equals("011") || actionID.equals("015")) ////æ¥­å‹™å–å¾—å®¢æˆ¶ç¢ºèªäº¤æœŸ_APPLY_æˆ–CLOSE_(å…§éŠ·çµæ¡ˆ)_èµ·
-  	{
-    	if (aCustCancelPromiseCode!=null) // åˆ¤æ–·è©²æ¬¡è™•ç†ç´°é …æ‰æ›´æ–°æ˜ç´°æª”
-	    {
+  	} //­Y¬°¤u¼t¥æ´Á¦^ÂĞ¤w½T»{(ACEPT)_¨´ (ACTION=010)  
+  
+  	if (actionID.equals("011") || actionID.equals("015")) ////·~°È¨ú±o«È¤á½T»{¥æ´Á_APPLY_©ÎCLOSE_(¤º¾Pµ²®×)_°_
+  	{ 
+    	if (aCustCancelPromiseCode!=null) // §PÂ_¸Ó¦¸³B²z²Ó¶µ¤~§ó·s©ú²ÓÀÉ
+	    { 
 			for (int i=0;i<aCustCancelPromiseCode.length-1;i++)
-	        {
-	        	for (int k=0;k<=choice.length-1;k++)
+	        { 
+	        	for (int k=0;k<=choice.length-1;k++)    
                	{
-		        	// åˆ¤æ–·è¢«Check çš„Line æ‰åŸ·è¡Œå®¢æˆ¶ç¢ºèªäº¤æœŸä½œæ¥­
+		        	// §PÂ_³QCheck ªºLine ¤~°õ¦æ«È¤á½T»{¥æ´Á§@·~
 	             	if (choice[k]==aCustCancelPromiseCode[i][0] || choice[k].equals(aCustCancelPromiseCode[i][0]))
 	             	{
-				    	// 2006/12/27_å› æ‡‰ YEW ERPä¸Šç·š_åˆ¤æ–·å¤§é™¸å…§éŠ·å–®(012,013å€)å¦‚çµ¦å¤©æ´¥å» ç”Ÿç”¢åœ°(T)çš„é …æ¬¡,ç›´æ¥çµæ¡ˆ_èµ·
-					  	String statusID=sToStatusID;
+				    	// 2006/12/27_¦]À³ YEW ERP¤W½u_§PÂ_¤j³°¤º¾P³æ(012,013°Ï)¦pµ¹¤Ñ¬z¼t¥Í²£¦a(T)ªº¶µ¦¸,ª½±µµ²®×_°_
+					  	String statusID=sToStatusID; 
 					  	String status=sToStatusName;
 					  	salesAreaNo = dnDocNo.substring(2,5);
-					   	if ( (salesAreaNo.equals("012") || salesAreaNo.equals("013")) && aCustCancelPromiseCode[i][7].equals("T") ) // å¤©æ´¥ç›´æ¥çµæ¡ˆ
+					   	if ( (salesAreaNo.equals("012") || salesAreaNo.equals("013")) && aCustCancelPromiseCode[i][7].equals("T") ) // ¤Ñ¬zª½±µµ²®×
 					   	{
-					    	statusID = "010"; // ç”¢åœ°æ˜¯å¤©æ´¥RFQé …æ¬¡ç›´æ¥çµæ¡ˆ
-						 	status = "CLOSED";// ç”¢åœ°æ˜¯å¤©æ´¥RFQé …æ¬¡ç›´æ¥çµæ¡ˆ
+					    	statusID = "010"; // ²£¦a¬O¤Ñ¬zRFQ¶µ¦¸ª½±µµ²®×
+						 	status = "CLOSED";// ²£¦a¬O¤Ñ¬zRFQ¶µ¦¸ª½±µµ²®×
 					   	}
-					 	// 2006/12/27_å› æ‡‰ YEW ERPä¸Šç·š_åˆ¤æ–·å¤§é™¸å…§éŠ·å–®(012,013å€)å¦‚çµ¦å¤©æ´¥å» ç”Ÿç”¢åœ°(T)çš„é …æ¬¡,ç›´æ¥çµæ¡ˆ_è¿„
-
+					 	// 2006/12/27_¦]À³ YEW ERP¤W½u_§PÂ_¤j³°¤º¾P³æ(012,013°Ï)¦pµ¹¤Ñ¬z¼t¥Í²£¦a(T)ªº¶µ¦¸,ª½±µµ²®×_¨´
+				  
 				     	sql="update ORADDMAN.TSDELIVERY_NOTICE_DETAIL "+
 						" set REREQUEST_DATE=?,LAST_UPDATED_BY=?,LAST_UPDATE_DATE=?,LSTATUSID=?,LSTATUS=? "+
-	                     "where DNDOCNO='"+dnDocNo+"' and TO_CHAR(LINE_NO)='"+aCustCancelPromiseCode[i][0]+"' ";
-                     	pstmt=con.prepareStatement(sql);
-						// è‹¥æ¥­å‹™æœªé‡æ–°çµ¦å®šäº¤æœŸæ—¥,å‰‡ä»¥åŸéœ€æ±‚æ—¥ç‚ºå…¶é‡æ–°éœ€æ±‚æ—¥
-		             	if (aCustCancelPromiseCode[i][6].equals("N/A")) aCustCancelPromiseCode[i][6] = aCustCancelPromiseCode[i][4];
-                     	pstmt.setString(1,aCustCancelPromiseCode[i][6]); // è¨­å®šçš„é‡æ–°éœ€æ±‚æ—¥æœŸ + æ™‚é–“
-		             	pstmt.setString(2,userID); // æœ€å¾Œæ›´æ–°äººå“¡
-		             	pstmt.setString(3,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // æœ€å¾Œæ›´æ–°æ™‚é–“
-		             	pstmt.setString(4,statusID); // Line çš„ç‹€æ…‹ID
-		             	pstmt.setString(5,status); // Line çš„ç‹€æ…‹
-                     	pstmt.executeUpdate();
-                     	pstmt.close();
-
-					 	// å–æ­·ç¨‹æª”å…§å‰ä¸€å€‹ç‹€æ…‹è‡³ç›®å‰çš„æ™‚é–“å·®,åšç‚ºæœ¬æ¬¡æ­·ç¨‹çš„å·¥æ™‚_èµ·
+	                     "where DNDOCNO='"+dnDocNo+"' and TO_CHAR(LINE_NO)='"+aCustCancelPromiseCode[i][0]+"' ";     
+                     	pstmt=con.prepareStatement(sql);				
+						// ­Y·~°È¥¼­«·sµ¹©w¥æ´Á¤é,«h¥H­ì»İ¨D¤é¬°¨ä­«·s»İ¨D¤é	 
+		             	if (aCustCancelPromiseCode[i][6].equals("N/A")) aCustCancelPromiseCode[i][6] = aCustCancelPromiseCode[i][4]; 
+                     	pstmt.setString(1,aCustCancelPromiseCode[i][6]); // ³]©wªº­«·s»İ¨D¤é´Á + ®É¶¡     
+		             	pstmt.setString(2,userID); // ³Ì«á§ó·s¤H­û 
+		             	pstmt.setString(3,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // ³Ì«á§ó·s®É¶¡ 					 
+		             	pstmt.setString(4,statusID); // Line ªºª¬ºAID
+		             	pstmt.setString(5,status); // Line ªºª¬ºA		               
+                     	pstmt.executeUpdate(); 
+                     	pstmt.close();					 
+					 
+					 	// ¨ú¾úµ{ÀÉ¤º«e¤@­Óª¬ºA¦Ü¥Ø«eªº®É¶¡®t,°µ¬°¥»¦¸¾úµ{ªº¤u®É_°_
 		             	float processWorkTime = 0;
-		             	String preWorkTime = "0";
-					 	// ORISTATUSID = '007' (å®¢æˆ¶ç¢ºèªäº¤æœŸé€å‡ºå‰ä¸€ç‹€æ…‹ç‚ºä¼åŠƒè¦†è­°äº¤æœŸRESPONDING(007))
-		             	Statement stateHProcWT=con.createStatement();
+		             	String preWorkTime = "0"; 			 
+					 	// ORISTATUSID = '007' («È¤á½T»{¥æ´Á°e¥X«e¤@ª¬ºA¬°¥ø¹ºÂĞÄ³¥æ´ÁRESPONDING(007))
+		             	Statement stateHProcWT=con.createStatement();  
                      	ResultSet rsHProcWT=stateHProcWT.executeQuery("select CDATETIME from ORADDMAN.TSDELIVERY_DETAIL_HISTORY "+
 						" where DNDOCNO='"+dnDocNo+"' and TO_CHAR(LINE_NO)='"+aCustCancelPromiseCode[i][0]+"' and ORISTATUSID ='007' ");
 	                 	if (rsHProcWT.next())
@@ -1640,12 +1638,12 @@ try
 			         	}
 			         	rsHProcWT.close();
 			         	stateHProcWT.close();
-                     	//è‹¥å–åˆ°å‰ä¸€å€‹ç‹€æ…‹æ™‚é–“,å‰‡ä»¥ç›®å‰æ™‚é–“æ¸›å»å‰
+                     	//­Y¨ú¨ì«e¤@­Óª¬ºA®É¶¡,«h¥H¥Ø«e®É¶¡´î¥h«e
 		             	if (preWorkTime!="0")
 		             	{
 			          		String sqlWT = "select ROUND((to_date('"+dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()
 							+"','YYYYMMDDHH24MISS') - to_date('"+preWorkTime+"','YYYYMMDDHH24MISS')) * 24,2) from DUAL ";
-		              		Statement stateWTime=con.createStatement();  // ORISTATUSID = '001' (è‰ç¨¿æ–‡ä»¶å‰ä¸€ç‹€æ…‹ä»ç‚ºè‰ç¨¿æ–‡ä»¶)
+		              		Statement stateWTime=con.createStatement();  // ORISTATUSID = '001' (¯ó½Z¤å¥ó«e¤@ª¬ºA¤´¬°¯ó½Z¤å¥ó)
                       		ResultSet rsWTime=stateWTime.executeQuery(sqlWT);
 	                  		if (rsWTime.next())
 		              		{
@@ -1654,11 +1652,11 @@ try
 			          		rsWTime.close();
 			          		stateWTime.close();
 			        	}
-                    	// å–æ­·ç¨‹æª”å…§å‰ä¸€å€‹ç‹€æ…‹è‡³ç›®å‰çš„æ™‚é–“å·®,åšç‚ºæœ¬æ¬¡æ­·ç¨‹çš„å·¥æ™‚_è¿„
-
-					 	//Step5. ä»»ä¸€Action,å¯«å…¥äº¤æœŸè©¢å•æ˜ç´°æ­·ç¨‹æª”
+                    	// ¨ú¾úµ{ÀÉ¤º«e¤@­Óª¬ºA¦Ü¥Ø«eªº®É¶¡®t,°µ¬°¥»¦¸¾úµ{ªº¤u®É_¨´
+					 
+					 	//Step5. ¥ô¤@Action,¼g¤J¥æ´Á¸ß°İ©ú²Ó¾úµ{ÀÉ	                  
 	                 	int deliveryCount = 0;
-	                 	Statement stateDeliveryCNT=con.createStatement();
+	                 	Statement stateDeliveryCNT=con.createStatement(); 
                      	ResultSet rsDeliveryCNT=stateDeliveryCNT.executeQuery("select count(*)+1 from ORADDMAN.TSDELIVERY_DETAIL_HISTORY "+
 						"where DNDOCNO='"+dnDocNo+"' and TO_CHAR(LINE_NO)='"+aCustCancelPromiseCode[i][0]+"' ");
 	                 	if (rsDeliveryCNT.next())
@@ -1671,38 +1669,38 @@ try
                      	ResultSet rs=statement.executeQuery("select * from ORADDMAN.TSWFACTION where ACTIONID='"+actionID+"'");
                      	rs.next();
                      	actionName=rs.getString("ACTIONNAME");
-
+   
                      	rs=statement.executeQuery("select * from ORADDMAN.TSWFStatus where STATUSID='"+fromStatusID+"'");
                      	rs.next();
                      	oriStatus=rs.getString("STATUSNAME");
                      	statement.close();
-                     	rs.close();
-
-	                 	String historySql="insert into ORADDMAN.TSDELIVERY_DETAIL_HISTORY(DNDOCNO,ORISTATUSID,ORISTATUS,"+
+                     	rs.close();	
+	
+	                 	String historySql="insert into ORADDMAN.TSDELIVERY_DETAIL_HISTORY(DNDOCNO,ORISTATUSID,ORISTATUS,"+					
 						"ACTIONID,ACTIONNAME,UPDATEUSERID,UPDATEDATE,UPDATETIME,ASSIGN_FACTORY,"+
 						"CDATETIME,REMARK,SERIALROW,LINE_NO,PROCESS_WORKTIME,ARRANGED_DATE) "+
 		                " values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ";
-	                 	PreparedStatement historystmt=con.prepareStatement(historySql);
-                     	historystmt.setString(1,dnDocNo);
-                     	historystmt.setString(2,fromStatusID);
-                     	historystmt.setString(3,oriStatus); //å¯«å…¥statusåç¨±
-                     	historystmt.setString(4,actionID);
-                     	historystmt.setString(5,actionName);
-                     	historystmt.setString(6,userID);
-                     	historystmt.setString(7,dateBean.getYearMonthDay());
+	                 	PreparedStatement historystmt=con.prepareStatement(historySql);   
+                     	historystmt.setString(1,dnDocNo); 
+                     	historystmt.setString(2,fromStatusID); 
+                     	historystmt.setString(3,oriStatus); //¼g¤Jstatus¦WºÙ
+                     	historystmt.setString(4,actionID); 
+                     	historystmt.setString(5,actionName); 
+                     	historystmt.setString(6,userID); 
+                     	historystmt.setString(7,dateBean.getYearMonthDay()); 
                      	historystmt.setString(8,dateBean.getHourMinuteSecond());
-                     	historystmt.setString(9,prodCodeGet); //å¯«å…¥å·¥å» ç·¨è™Ÿ
+                     	historystmt.setString(9,prodCodeGet); //¼g¤J¤u¼t½s¸¹
                      	historystmt.setString(10,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond());
                      	historystmt.setString(11,remark);
                      	historystmt.setInt(12,deliveryCount);
-		             	historystmt.setInt(13,Integer.parseInt(aCustCancelPromiseCode[i][0])); // å¯«å…¥è™•ç†Line_No
+		             	historystmt.setInt(13,Integer.parseInt(aCustCancelPromiseCode[i][0])); // ¼g¤J³B²zLine_No
 		             	historystmt.setFloat(14,processWorkTime);
 		             	historystmt.setString(15,aCustCancelPromiseCode[i][6]);
-		             	historystmt.executeUpdate();
-                     	historystmt.close();
-	                 	//Step5. å¯«å…¥äº¤æœŸè©¢å•æ˜ç´°æ­·ç¨‹æª”
-
-					 	// å–ä¼åŠƒå›è¦†äº¤æœŸåŠæ¥­å‹™ç¢ºèªæ—¥æ–¼æ˜ç´°æ­·ç¨‹æª”å…§,åˆ¤æ–·æ­¤å®¢æˆ¶ç¢ºèªæ˜¯å¦è¶…éå·¥å» å›è¦†äº¤æœŸ4æ—¥ä»¥ä¸Š,å‰‡æ›´æ–°ç„¡æ•ˆå–®æ“šFLAG='Y'
+		             	historystmt.executeUpdate();   
+                     	historystmt.close(); 
+	                 	//Step5. ¼g¤J¥æ´Á¸ß°İ©ú²Ó¾úµ{ÀÉ
+                   
+					 	// ¨ú¥ø¹º¦^ÂĞ¥æ´Á¤Î·~°È½T»{¤é©ó©ú²Ó¾úµ{ÀÉ¤º,§PÂ_¦¹«È¤á½T»{¬O§_¶W¹L¤u¼t¦^ÂĞ¥æ´Á4¤é¥H¤W,«h§ó·sµL®Ä³æ¾ÚFLAG='Y'
 		             	String respondingDate= "0";
 		             	String salesCinfirmDate = "0";
 		             	String limitSalesDate="0";
@@ -1718,140 +1716,140 @@ try
                                    " where a.DNDOCNO='"+dnDocNo+"' and TO_CHAR(LINE_NO)='"+aCustCancelPromiseCode[i][0]+"' "+
 		                           " and a.ORISTATUSID in ('004','007','008','014') and ORISTATUS in ('ARRANGED','RESPONDING','CONFIRMED','PENDING') order by decode(a.ORISTATUSID,'014',1,0),a.ORISTATUSID ");
 		             	while (rsEstDate.next())
-		             	{
+		             	{  
 		               		if (rsEstDate.getString("ORISTATUSID").equals("007"))
 							{
-								respondingDate=rsEstDate.getString("UPDATEDATE");
+								respondingDate=rsEstDate.getString("UPDATEDATE"); 
 								//respDay=rsEstDate.getString("RESP_DAY");  //20111226
 								limitSalesDate=rsEstDate.getString("limitSalesDate");  //add by Peggy 20170802
 							}
 			           		if (rsEstDate.getString("ORISTATUSID").equals("008")) salesCinfirmDate = rsEstDate.getString("UPDATEDATE");
 		               		if (rsEstDate.getString("ORISTATUSID").equals("004"))
 							{
-								respondingDate=rsEstDate.getString("UPDATEDATE");
+								respondingDate=rsEstDate.getString("UPDATEDATE"); 
 								//respDay=rsEstDate.getString("RESP_DAY");  //20111226
 								limitSalesDate=rsEstDate.getString("limitSalesDate");  //add by Peggy 20170802
 							}
 		             	}
 		             	stateEstDate.close();
 		             	rsEstDate.close();
-		             	////Step1. è¨­å®šä¼åŠƒåˆ¤å®šæ—¥ç‚ºç›®å‰æ—¥æœŸ, ä¸”æ¥­å‹™äº¦ç¢ºèªå®¢æˆ¶äº¤æœŸ
+		             	////Step1. ³]©w¥ø¹º§P©w¤é¬°¥Ø«e¤é´Á, ¥B·~°È¥ç½T»{«È¤á¥æ´Á
 		             	//if (respondingDate!="0" && !respondingDate.equals("0") && salesCinfirmDate != "0" && !salesCinfirmDate.equals("0"))
 		             	//{
-						//	setDay += Integer.parseInt(respDay);  //20111226 modify by Peggy ç›´æ¥åŠ ä¸Šselect sqlå›å‚³å¤©æ•¸
+						//	setDay += Integer.parseInt(respDay);  //20111226 modify by Peggy ª½±µ¥[¤Wselect sql¦^¶Ç¤Ñ¼Æ
 		                //		dateBean.setVarDate(Integer.parseInt(respondingDate.substring(0,4)),Integer.parseInt(respondingDate.substring(4,6)),Integer.parseInt(respondingDate.substring(6,8)));
 			            //		dateBean.setAdjDate(setDay);
-			            //		limitSalesDate=dateBean.getYearMonthDay(); // å–å›æ¥­å‹™é™åˆ¶é–‹å–®æ—¥
-			            //		dateBean.setAdjDate(setDay*(-1));//æ—¥æœŸèª¿æ•´å›ä¾†
-			            //		dateBean.setVarDate(Integer.parseInt(dateCurrent.substring(0,4)),Integer.parseInt(dateCurrent.substring(4,6)),Integer.parseInt(dateCurrent.substring(6,8))); //æ—¥æœŸèª¿æ•´å›ä¾†
+			            //		limitSalesDate=dateBean.getYearMonthDay(); // ¨ú¦^·~°È­­¨î¶}³æ¤é
+			            //		dateBean.setAdjDate(setDay*(-1));//¤é´Á½Õ¾ã¦^¨Ó
+			            //		dateBean.setVarDate(Integer.parseInt(dateCurrent.substring(0,4)),Integer.parseInt(dateCurrent.substring(4,6)),Integer.parseInt(dateCurrent.substring(6,8))); //¤é´Á½Õ¾ã¦^¨Ó 
 		             	//}
-					 	if (Integer.parseInt(salesCinfirmDate)>Integer.parseInt(limitSalesDate)) // åˆ¤æ–·è‹¥è¶…é,å‰‡æ›´æ–°Exceed_Valid Flag --> Y
+					 	if (Integer.parseInt(salesCinfirmDate)>Integer.parseInt(limitSalesDate)) // §PÂ_­Y¶W¹L,«h§ó·sExceed_Valid Flag --> Y
 					 	{
 					    	String sqlExceed="update ORADDMAN.TSDELIVERY_NOTICE_DETAIL set SDRQ_EXCEED='Y' "+
-							" where DNDOCNO='"+dnDocNo+"' and to_char(LINE_NO)='"+aCustCancelPromiseCode[i][0]+"' ";
+							" where DNDOCNO='"+dnDocNo+"' and to_char(LINE_NO)='"+aCustCancelPromiseCode[i][0]+"' ";		
 	                    	PreparedStatement stmtExceed=con.prepareStatement(sqlExceed);
-							stmtExceed.executeUpdate();
-                        	stmtExceed.close();
-					 	} // End of if
+							stmtExceed.executeUpdate();   
+                        	stmtExceed.close();						
+					 	} // End of if		
 				 	} // End of if (choice[k]==aCustCancelPromiseCode[i][0] || choice[k].equals(aCustCancelPromiseCode[i][0]))
-			   	} // End of for (int k=0;k<=choice.length-1;k++)
-			} // End of for (int i=0;i<aCustCancelPromiseCode.length-1;i++)
+			   	} // End of for (int k=0;k<=choice.length-1;k++)	
+			} // End of for (int i=0;i<aCustCancelPromiseCode.length-1;i++)  
 	    } // End of if (aCustCancelPromiseCode!=null)
-
-	 	// æ›´æ–°äº¤æœŸè©¢å•ä¸»æª”
+		
+	 	// §ó·s¥æ´Á¸ß°İ¥DÀÉ
 		sql="update ORADDMAN.TSDELIVERY_NOTICE set LAST_UPDATED_BY=?,LAST_UPDATE_DATE=?,STATUSID=?,STATUS=? "+
-        "where DNDOCNO='"+dnDocNo+"' ";  //åŸå‰‡ä¸Šå·²é‡å°å„å€ä½œæŸ¥è©¢é™åˆ¶
+        "where DNDOCNO='"+dnDocNo+"' ";  //­ì«h¤W¤w°w¹ï¦U°Ï§@¬d¸ß­­¨î 
         pstmt=con.prepareStatement(sql);
-		pstmt.setString(1,userID); // æœ€å¾Œæ›´æ–°äººå“¡
-		pstmt.setString(2,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // æœ€å¾Œæ›´æ–°æ™‚é–“
+		pstmt.setString(1,userID); // ³Ì«á§ó·s¤H­û 
+		pstmt.setString(2,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // ³Ì«á§ó·s®É¶¡ 
 		pstmt.setString(3,sToStatusID);
 		pstmt.setString(4,sToStatusName);
-        pstmt.executeUpdate();
-        pstmt.close();
+        pstmt.executeUpdate(); 
+        pstmt.close(); 
   	}
-   	////æ¥­å‹™å–å¾—å®¢æˆ¶ç¢ºèªäº¤æœŸ_APPLY_æˆ–CLOSE_(å…§éŠ·çµæ¡ˆ)_è¿„
-
-  	//è‹¥ç‚ºäº¤æœŸè©¢å•éŠ·å”®è¨‚å–®ç”Ÿæˆ(COMPLETE)_èµ· (ACTION=012)
-  	if (actionID.equals("012"))
+   	////·~°È¨ú±o«È¤á½T»{¥æ´Á_APPLY_©ÎCLOSE_(¤º¾Pµ²®×)_¨´ 
+  
+  	//­Y¬°¥æ´Á¸ß°İ¾P°â­q³æ¥Í¦¨(COMPLETE)_°_ (ACTION=012)
+  	if (actionID.equals("012"))  
   	{
-    	//  å–æ‰¹æ¬¡è¨‚å–®ç”Ÿæˆæ‰¹è™Ÿ_èµ·( MG00X200XXXXXXXXX-XXX )
+    	//  ¨ú§å¦¸­q³æ¥Í¦¨§å¸¹_°_( MG00X200XXXXXXXXX-XXX )	    
         try
-        {
-        	dateString=dateBean.getYearMonthDay();
-            if (dnDocNo==null || dnDocNo.equals("--")) seqkey="MG"+userActCenterNo+dateString; //ä½†ä»ä»¥é è¨­ç‚ºä½¿ç”¨è€…åœ°å€
-            else seqkey="MG"+dnDocNo.substring(2,5)+dateString;         // 2006/01/10 æ”¹ä»¥é¸æ“‡çš„æ¥­å‹™åœ°å€ä»£è™Ÿç”¢ç”Ÿå–®è™Ÿ
-            //====å…ˆå–å¾—æµæ°´è™Ÿ=====
+        { 
+        	dateString=dateBean.getYearMonthDay();     
+            if (dnDocNo==null || dnDocNo.equals("--")) seqkey="MG"+userActCenterNo+dateString; //¦ı¤´¥H¹w³]¬°¨Ï¥ÎªÌ¦a°Ï
+            else seqkey="MG"+dnDocNo.substring(2,5)+dateString;         // 2006/01/10 §ï¥H¿ï¾Üªº·~°È¦a°Ï¥N¸¹²£¥Í³æ¸¹   
+            //====¥ı¨ú±o¬y¤ô¸¹=====  
             Statement statement=con.createStatement();
-            ResultSet rs=statement.executeQuery("select * from ORADDMAN.TSDOCSEQ where header='"+seqkey+"'");
+            ResultSet rs=statement.executeQuery("select * from ORADDMAN.TSDOCSEQ where header='"+seqkey+"'");  
             if (rs.next()==false)
-            {
-            	String seqSql="insert into ORADDMAN.TSDOCSEQ values(?,?)";
-                PreparedStatement seqstmt=con.prepareStatement(seqSql);
+            {   
+            	String seqSql="insert into ORADDMAN.TSDOCSEQ values(?,?)";   
+                PreparedStatement seqstmt=con.prepareStatement(seqSql);     
                 seqstmt.setString(1,seqkey);
-                seqstmt.setInt(2,1);
+                seqstmt.setInt(2,1);   	
                 seqstmt.executeUpdate();
                 seqno=seqkey+"-001";
-                seqstmt.close();
-            }
-            else
+                seqstmt.close();   
+            } 
+            else 
             {
-            	int lastno=rs.getInt("LASTNO");
+            	int lastno=rs.getInt("LASTNO");      
                 String sqlLstNo = "select * from ORADDMAN.TSDELIVERY_NOTICE "+
 				" where substr(DNDOCNO,1,13)='"+seqkey+"' and to_number(substr(DNDOCNO,15,3))= '"+lastno+"' ";
-                ResultSet rs2=statement.executeQuery(sqlLstNo);
-                //===(è™•ç†è·³è™Ÿå•é¡Œ)è‹¥rprepairåŠrpdocseqçš†å­˜åœ¨ç›¸åŒæœ€å¤§è™Ÿ=========ä¾åŸæ–¹å¼å–æœ€å¤§è™Ÿ //
+                ResultSet rs2=statement.executeQuery(sqlLstNo); 
+                //===(³B²z¸õ¸¹°İÃD)­Yrprepair¤Îrpdocseq¬Ò¦s¦b¬Û¦P³Ì¤j¸¹=========¨Ì­ì¤è¦¡¨ú³Ì¤j¸¹ //
                 if (rs2.next())
-                {
+                {         
                 	lastno++;
                     String numberString = Integer.toString(lastno);
                     String lastSeqNumber="000"+numberString;
                     lastSeqNumber=lastSeqNumber.substring(lastSeqNumber.length()-3);
-                    seqno=seqkey+"-"+lastSeqNumber;
-
-                    String seqSql="update ORADDMAN.TSDOCSEQ SET LASTNO=? WHERE HEADER='"+seqkey+"'";
-                    PreparedStatement seqstmt=con.prepareStatement(seqSql);
-                    seqstmt.setInt(1,lastno);
-                    seqstmt.executeUpdate();
-                 	seqstmt.close();
-                }
+                    seqno=seqkey+"-"+lastSeqNumber;     
+   
+                    String seqSql="update ORADDMAN.TSDOCSEQ SET LASTNO=? WHERE HEADER='"+seqkey+"'";   
+                    PreparedStatement seqstmt=con.prepareStatement(seqSql);        
+                    seqstmt.setInt(1,lastno);  	
+                    seqstmt.executeUpdate();   
+                 	seqstmt.close(); 
+                } 
                 else
                 {
-                	//===========(è™•ç†è·³è™Ÿå•é¡Œ)å¦å‰‡ä»¥å¯¦éš›rpRepairå…§æœ€å¤§æµæ°´è™Ÿç‚ºç›®å‰rpdocSeqçš„lastnoå…§å®¹(æœƒä¾ç¶­ä¿®åœ°å€åˆ¥)
+                	//===========(³B²z¸õ¸¹°İÃD)§_«h¥H¹ê»ÚrpRepair¤º³Ì¤j¬y¤ô¸¹¬°¥Ø«erpdocSeqªºlastno¤º®e(·|¨Ìºû­×¦a°Ï§O)
                     String sSql = "select to_number(substr(max(DNDOCNO),15,3)) as LASTNO "+
 					" from ORADDMAN.TSDELIVERY_NOTICE where substr(DNDOCNO,1,13)='"+seqkey+"' ";
-                    ResultSet rs3=statement.executeQuery(sSql);
+                    ResultSet rs3=statement.executeQuery(sSql);	 
 	                if (rs3.next()==true)
 	                {
                     	int lastno_r=rs3.getInt("LASTNO");
-	                    lastno_r++;
+	                    lastno_r++;	  
 	                    String numberString_r = Integer.toString(lastno_r);
                         String lastSeqNumber_r="000"+numberString_r;
                         lastSeqNumber_r=lastSeqNumber_r.substring(lastSeqNumber_r.length()-3);
-                        seqno=seqkey+"-"+lastSeqNumber_r;
-
-	                    String seqSql="update ORADDMAN.TSDOCSEQ SET LASTNO=? WHERE HEADER='"+seqkey+"'";
-                        PreparedStatement seqstmt=con.prepareStatement(seqSql);
-                        seqstmt.setInt(1,lastno_r);
-                       	seqstmt.executeUpdate();
-                        seqstmt.close();
+                        seqno=seqkey+"-"+lastSeqNumber_r;  
+	 
+	                    String seqSql="update ORADDMAN.TSDOCSEQ SET LASTNO=? WHERE HEADER='"+seqkey+"'";   
+                        PreparedStatement seqstmt=con.prepareStatement(seqSql);        
+                        seqstmt.setInt(1,lastno_r);   
+                       	seqstmt.executeUpdate();   
+                        seqstmt.close();  
 	                }  // End of if (rs3.next()==true)
-		        } // End of Else  //===========(è™•ç†è·³è™Ÿå•é¡Œ)
-            } // End of Else
+		        } // End of Else  //===========(³B²z¸õ¸¹°İÃD)
+            } // End of Else    	         
       	} //end of try
       	catch (Exception e)
       	{
         	out.println("Exception:"+e.getMessage());
       	}
-
+	  
        	String oraUserID = "";
 	   	Statement stateUser=con.createStatement();
 	   	ResultSet rsUser=stateUser.executeQuery("select DISTINCT ERP_USER_ID from ORADDMAN.WSUSER "+
-	   	" where (WEBID = '"+userID+"' or USERNAME = '"+userID+"' ) and ERP_USER_ID is not null ");
+	   	" where (WEBID = '"+userID+"' or USERNAME = '"+userID+"' ) and ERP_USER_ID is not null ");									   
        	if (rsUser.next())
-       	{
+       	{ 
 	    	oraUserID = rsUser.getString("ERP_USER_ID");
 	   	}
-	   	else
+	   	else 
 	   	{
 	    %>
 		<script language="javascript">
@@ -1859,37 +1857,37 @@ try
 		</script>
 		<%
 	   	}
-	   	rsUser.close();
-	   	stateUser.close();
-
-		int choiceLen = choice.length; // è‹¥æœ‰é¸ä»»ä¸€Lineä½œCheckæ‰åŸ·è¡Œä¸‹åˆ—å‹•ä½œ
+	   	rsUser.close();	  	   
+	   	stateUser.close(); 
+	   
+		int choiceLen = choice.length; // ­Y¦³¿ï¥ô¤@Line§@Check¤~°õ¦æ¤U¦C°Ê§@
 		if (choiceLen>0)
-		{
-	   		//æ¥­å‹™é‡å°å·²ç¢ºèªäº¤æœŸè©¢å•å–®ä½œéŠ·å”®è¨‚å–®ç”Ÿæˆä½œæ¥­,éœ€å‘¼å«ç”¢ç”Ÿè¨‚å–®API
-	   		//Step1. ä¸»è¦æ­¥é©Ÿ(i). å‘¼å«ç”¢ç”ŸéŠ·å”®è¨‚å–®APIçš„ StoreProcedure, ä½†å‰ææ˜¯Arrayå…§ä¸æ˜¯Null
+		{  
+	   		//·~°È°w¹ï¤w½T»{¥æ´Á¸ß°İ³æ§@¾P°â­q³æ¥Í¦¨§@·~,»İ©I¥s²£¥Í­q³æAPI  
+	   		//Step1. ¥D­n¨BÆJ(i). ©I¥s²£¥Í¾P°â­q³æAPIªº StoreProcedure, ¦ı«e´£¬OArray¤º¤£¬ONull
 	   		if (aSalesOrderGenerateCode!=null)
-	   		{
-	     		// é–‹å§‹é‡å° Array å…§å®¹ç”¢ç”Ÿè¨‚å–®åˆ° Oracle é€éAPI
+	   		{     	   
+	     		// ¶}©l°w¹ï Array ¤º®e²£¥Í­q³æ¨ì Oracle ³z¹LAPI
 	     		String errorMessage = "";
 		 		String errorMessageHeader = "";
 		 		String noTPriceMsg = "";
 		 		String processStatus="";
 		 		String processMsg = "";
-	     		int headerID = 0;  // ç¬¬ä¸€æ¬¡å–å¾—çš„ Header ID
-	     		int lineNo = 1;  // ç´¯åŠ çš„ LineNo
+	     		int headerID = 0;  // ²Ä¤@¦¸¨ú±oªº Header ID
+	     		int lineNo = 1;  // ²Ö¥[ªº LineNo
 		 		String orderNo = "";
 		 		String notifyContact = null;
 		 		String notifyLocation = null;
 		 		String shipContact = null;
 		 		String deliverOrgID = null;
-		 		String deliverContactID = null;
-		        String orgID = "41";  // é è¨­çš„ ORG_ID (2006/12/27)
+		 		String deliverContactID = null; 
+		        String orgID = "41";  // ¹w³]ªº ORG_ID (2006/12/27)
 				String sales_region = "";    //add by Peggy 20211118
 				String ship_to_org_id = "";  //add by Peggy 20211118
 				String customer_id = "";     //add by Peggy 20211118
 				String strSubinv = "N/A";    //add by Peggy 20211118
-				// ## ä¾å» å€æ‰¾æ­¤å–®æ“šé–‹å–®æ¥­å‹™å€å–å¾—å…¶ OrgID_èµ·
-				Statement stateOrg=con.createStatement();
+				// ## ¨Ì¼t°Ï§ä¦¹³æ¾Ú¶}³æ·~°È°Ï¨ú±o¨ä OrgID_°_				   
+				Statement stateOrg=con.createStatement();			  
                 ResultSet rsOrg=stateOrg.executeQuery("select a.PAR_ORG_ID,a.SALES_AREA_NO,b.SHIP_TO_ORG,b.TSCUSTOMERID from ORADDMAN.TSSALES_AREA a,oraddman.tsdelivery_notice b  "+
 				" where a.SALES_AREA_NO=b.TSAREANO and b.DNDOCNO='"+dnDocNo+"'");  //modify by Peggy 20120517
 				if (rsOrg.next())
@@ -1901,7 +1899,7 @@ try
 				}
 				rsOrg.close();
 				stateOrg.close();
-				// ## ä¾å» å€æ‰¾æ­¤å–®æ“šé–‹å–®æ¥­å‹™å€å–å¾—å…¶ OrgID_è¿„
+				// ## ¨Ì¼t°Ï§ä¦¹³æ¾Ú¶}³æ·~°È°Ï¨ú±o¨ä OrgID_¨´	 
 				//add by Peggy 20120517
 				if (orgID.equals("325") && firmOrderType.equals("1302"))
 				{
@@ -1911,8 +1909,8 @@ try
 				{
 					respID = "52244";
 				}
-
-				// åˆ¤æ–·å„è¨‚å–®é¡å‹çµ¦å®šçš„line TypeåŠ Source Type Code(Oracle Transaction Table -->
+		 
+				// §PÂ_¦U­q³æÃş«¬µ¹©wªºline Type¤Î Source Type Code(Oracle Transaction Table --> 
 		 		if (firmOrderType=="1132" || firmOrderType.equals("1132")) // Drop Ship
 		 		{
 					sourceTypeCode = "EXTERNAL";
@@ -1920,38 +1918,38 @@ try
 		 		}
 				else if (firmOrderType=="1015" || firmOrderType.equals("1015")) // 1121Order
 		        {
-					lineType = 1013; /* S_R_Ship Only */
+					lineType = 1013; /* S_R_Ship Only */ 
 				}
 				else if (firmOrderType=="1021" || firmOrderType.equals("1021")) // 1131Order
 				{
-					lineType = 1007; /* S_R_Finished Goods */
+					lineType = 1007; /* S_R_Finished Goods */ 
 				}
 				else if (firmOrderType=="1091" || firmOrderType.equals("1091")) // 1211Order
 				{
-					lineType = 1007; /* S_R_Finished Goods */
+					lineType = 1007; /* S_R_Finished Goods */ 
 				}
 				else if (firmOrderType=="1022" || firmOrderType.equals("1022")) // 1141Order
-				{
+				{  
 					//lineType = 1007; /* S_R_Finished Goods */
 				}
 				else if (firmOrderType=="1020" || firmOrderType.equals("1020")) // 1151Order
-				{
-					lineType = 1007; /* S_R_Finished Goods */
+				{  
+					lineType = 1007; /* S_R_Finished Goods */ 
 				}
 				else if (firmOrderType=="1054" || firmOrderType.equals("1054")) // 1161Order
-				{
+				{ 
 					lineType = 1051; /* S_R_Internal Deal */ }
 				else if (firmOrderType=="1114" || firmOrderType.equals("1114"))  // 1213Order
-				{
-					lineType = 1113; /* S_R_Forecast_Line */
+				{ 
+					lineType = 1113; /* S_R_Forecast_Line */ 
 				}
-				else if (firmOrderType=="1056" || firmOrderType.equals("1056"))  // 1112Order (åŠå°é«”äº¤æœŸè©¢å•å–®)
+				else if (firmOrderType=="1056" || firmOrderType.equals("1056"))  // 1112Order (¥b¾ÉÅé¥æ´Á¸ß°İ³æ)
 				{
-					lineType = 1010; /* S_R_Quotation STD */
+					lineType = 1010; /* S_R_Quotation STD */ 
 				}
 				else if (firmOrderType=="1161" || firmOrderType.equals("1161"))
 				{
-					lineType = 1158; /* TSC_S_DropShip Standard Order */
+					lineType = 1158; /* TSC_S_DropShip Standard Order */ 
 					sourceTypeCode = "EXTERNAL";
 				}
 				else if (firmOrderType=="1154" || firmOrderType.equals("1154"))
@@ -1959,32 +1957,32 @@ try
 					sourceTypeCode = "EXTERNAL";
 				}
 				else
-				{
-					lineType = 1007; /* S_R_Finished Goods */
-				}  // å¦å‰‡é è¨­ç‚º
-
+				{  
+					lineType = 1007; /* S_R_Finished Goods */ 
+				}  // §_«h¹w³]¬°
+													   
 		 		if (aSalesOrderGenerateCode!=null)
 		 		{
 					out.println("<BR>");
-		   		%>
-					<jsp:getProperty name="rPH" property="pgSalesOrder"/><jsp:getProperty name="rPH" property="pgGenerateInf"/>
-		   		<% out.println("<BR>");
-		 		} // end of if
-
+		   		%> 
+					<jsp:getProperty name="rPH" property="pgSalesOrder"/><jsp:getProperty name="rPH" property="pgGenerateInf"/>		 
+		   		<% out.println("<BR>"); 
+		 		} // end of if		 
+		 
 				out.println("<table cellSpacing='0' bordercolordark='#66CC99'  cellPadding='1' width='60%' borderColorLight='#ffffff' border='1'>");
 			 	if (shipMethod==null || shipMethod.equals(""))
 			 	{
-					shipMethod = "N/A";
+					shipMethod = "N/A"; 
 				}
-
+				
 				//add by Peggy 20211118
 				if (sales_region.equals("018"))
 				{
 					strSubinv="20";
-					notifyContact = "4315";
-					notifyLocation = "N/A";
+					notifyContact = "4315"; 
+					notifyLocation = "N/A"; 
 					shipContact = "N/A";
-
+							
 					sql = " select a.LOCATION "+
 						  " from ar_site_uses_v a"+
 						  " ,HZ_CUST_ACCT_SITES b"+
@@ -1992,7 +1990,7 @@ try
 						  " and a.STATUS=?"+
 						  " and a.PRIMARY_FLAG=?"+
 						  " and a.SITE_USE_CODE =?"+
-						  " and b.CUST_ACCOUNT_ID =?";
+						  " and b.CUST_ACCOUNT_ID =?";										
 					PreparedStatement statement1 = con.prepareStatement(sql);
 					statement1.setString(1,"A");
 					statement1.setString(2,"Y");
@@ -2000,12 +1998,12 @@ try
 					statement1.setString(4,customer_id);
 					ResultSet rs1=statement1.executeQuery();
 					if (rs1.next())
-					{
-						notifyLocation = rs1.getString("LOCATION");
+					{		
+						notifyLocation = rs1.getString("LOCATION"); 
 					}
 					rs1.close();
-					statement1.close();
-
+					statement1.close();								  
+					
 					sql = " SELECT r.cust_account_role_id"+
 						  " FROM hz_cust_site_uses_all s"+
 						  ", hz_cust_account_roles r"+
@@ -2019,18 +2017,18 @@ try
 					statement1.setInt(3,1);
 					rs1=statement1.executeQuery();
 					if (rs1.next())
-					{
+					{		
 						shipContact = rs1.getString("cust_account_role_id");
 					}
 					rs1.close();
-					statement1.close();
+					statement1.close();	
 				}
 				else
 				{
 					if (aSalesOrderNotifyInfo!=null)
 					{
 						if (aSalesOrderNotifyInfo[0]!=null && !aSalesOrderNotifyInfo[0].equals(""))
-						{
+						{ 
 							notifyContact = aSalesOrderNotifyInfo[0];
 						}
 						else
@@ -2042,7 +2040,7 @@ try
 							notifyLocation = aSalesOrderNotifyInfo[1];
 						}
 						else
-						{
+						{ 
 							notifyLocation = "N/A";
 						}
 						if (aSalesOrderNotifyInfo[2]!=null && !aSalesOrderNotifyInfo[2].equals(""))
@@ -2052,22 +2050,22 @@ try
 						else
 						{
 							shipContact = "N/A";
-						}
+						}								      
 					}
-					else
+					else 
 					{
-						notifyContact = "N/A";
-						notifyLocation = "N/A";
+						notifyContact = "N/A"; 
+						notifyLocation = "N/A"; 
 						shipContact = "N/A";
-					}
+					}	
 				}
-
+				
 				if (aSalesOrderDeliverInfo!=null)
 			   	{
-			    	if (aSalesOrderDeliverInfo[1]!=null && !aSalesOrderDeliverInfo[1].equals(""))
+			    	if (aSalesOrderDeliverInfo[1]!=null && !aSalesOrderDeliverInfo[1].equals("")) 
 						deliverOrgID = aSalesOrderDeliverInfo[1];
 				   	else deliverOrgID = "0";
-				   	if (aSalesOrderDeliverInfo[8]!=null && !aSalesOrderDeliverInfo[8].equals(""))
+				   	if (aSalesOrderDeliverInfo[8]!=null && !aSalesOrderDeliverInfo[8].equals("")) 
 						deliverContactID = aSalesOrderDeliverInfo[8];
 				   	else deliverContactID = "0";
 			   	}
@@ -2076,7 +2074,7 @@ try
 					deliverOrgID = "0";
 					deliverContactID = "0";
 				}
-
+				
 				String demonCURR = "CNY";
 				Statement statGetItemLP=con.createStatement();
 				String sqlGetItemLP = "select b.TO_CURRENCY_CODE from qp_currency_lists_vl a, qp_currency_details b "+
@@ -2085,74 +2083,71 @@ try
                 ResultSet rsGetItemLP=statGetItemLP.executeQuery(sqlGetItemLP);
 	            if (rsGetItemLP.next())
 				{
-					demonCURR = rsGetItemLP.getString("TO_CURRENCY_CODE");
+					demonCURR = rsGetItemLP.getString("TO_CURRENCY_CODE");						    
 				}
 				rsGetItemLP.close();
 				statGetItemLP.close();
-
+					
 				if (orgID.equals("325"))
 				{
-					prCurr = demonCURR; // å…§éŠ·éœ€å–è½‰æ›å¹£åˆ¥ç‚ºCNY
-				}
-
+					prCurr = demonCURR; // ¤º¾P»İ¨úÂà´«¹ô§O¬°CNY 
+				}				 
+				
 	   			for (int i=0;i<aSalesOrderGenerateCode.length-1;i++)
        			{ 	//out.println(choice[0]); out.println(aSalesOrderGenerateCode[i][0]);
-		  			for (int k=0;k<=choice.length-1;k++)
+		  			for (int k=0;k<=choice.length-1;k++)    
           			{ //out.println("choice[k]="+choice[k]);   out.println("aSalesOrderGenerateCode[i][0]="+aSalesOrderGenerateCode[i][0]);
-		    			// åˆ¤æ–·è¢«Check çš„Line æ‰åŸ·è¡Œç”¢ç”Ÿè¨‚å–®ä½œæ¥­
+		    			// §PÂ_³QCheck ªºLine ¤~°õ¦æ²£¥Í­q³æ§@·~
 		    			if (choice[k]==aSalesOrderGenerateCode[i][0] || choice[k].equals(aSalesOrderGenerateCode[i][0]))
-						{ //out.println("choice[k]="+choice[k]);   out.println("aSalesOrderGenerateCode[i][0]="+aSalesOrderGenerateCode[i][0]);
-			  				// è‹¥ç•¶æ™‚æ–™è™Ÿä¸å­˜åœ¨,å‰‡ç”¢ç”Ÿè¨‚å–®æ­¤æ™‚å†å–æ–™è™ŸInventory_Item_ID,ä¸¦æ›´æ–°_èµ·
+						{ //out.println("choice[k]="+choice[k]);   out.println("aSalesOrderGenerateCode[i][0]="+aSalesOrderGenerateCode[i][0]);			
+			  				// ­Y·í®É®Æ¸¹¤£¦s¦b,«h²£¥Í­q³æ¦¹®É¦A¨ú®Æ¸¹Inventory_Item_ID,¨Ã§ó·s_°_			
 			  				if (aSalesOrderGenerateCode[i][9]=="0" || aSalesOrderGenerateCode[i][9].equals("0"))
-			  				{
+			  				{       
 			       				Statement statGetItemID=con.createStatement();
-                   				ResultSet rsGetItemID=null;
+                   				ResultSet rsGetItemID=null;	
 	               				String sqlGetItemID = "select INVENTORY_ITEM_ID,PRIMARY_UOM_CODE "+
 								" from APPS.MTL_SYSTEM_ITEMS "+
 								" where ORGANIZATION_ID = '49' "+
 								" and DESCRIPTION = '"+aSalesOrderGenerateCode[i][1]+"' "+
                                 " and NVL(CUSTOMER_ORDER_FLAG,'N')='Y'"+
-								" and NVL(CUSTOMER_ORDER_ENABLED_FLAG,'N')='Y'";
+								" and NVL(CUSTOMER_ORDER_ENABLED_FLAG,'N')='Y'";														  								 			  
 				   				//out.println(sqlGetItemID);
                    				rsGetItemID=statGetItemID.executeQuery(sqlGetItemID);
 	               				if (rsGetItemID.next())
-	               				{
-					 				sql="update ORADDMAN.TSDELIVERY_NOTICE_DETAIL set INVENTORY_ITEM_ID=?,UOM=?"+
-	                     			"where DNDOCNO='"+dnDocNo+"' and TO_CHAR(LINE_NO)='"+aSalesOrderGenerateCode[i][0]+"' ";
+	               				{		             					 
+					 				sql="update ORADDMAN.TSDELIVERY_NOTICE_DETAIL set INVENTORY_ITEM_ID=?,UOM=?"+			                   
+	                     			"where DNDOCNO='"+dnDocNo+"' and TO_CHAR(LINE_NO)='"+aSalesOrderGenerateCode[i][0]+"' ";     
                      				pstmt=con.prepareStatement(sql);
-                     				pstmt.setInt(1,Integer.parseInt(rsGetItemID.getString("INVENTORY_ITEM_ID"))); // æ›´æ–°çš„Inventory_item_id
-					 				pstmt.setString(2,rsGetItemID.getString("PRIMARY_UOM_CODE")); // æ›´æ–°çš„Primary_UOM
-					 				pstmt.executeUpdate();
-                     				pstmt.close();
-
+                     				pstmt.setInt(1,Integer.parseInt(rsGetItemID.getString("INVENTORY_ITEM_ID"))); // §ó·sªºInventory_item_id
+					 				pstmt.setString(2,rsGetItemID.getString("PRIMARY_UOM_CODE")); // §ó·sªºPrimary_UOM 
+					 				pstmt.executeUpdate(); 
+                     				pstmt.close(); 		
+		             
 	               				}
 								else
 								{
-				                %>
+				                %>							     
                                 <script language="javascript">
-                                //alert("æ¸…å–®å…§å«ä¸å­˜åœ¨æ–¼Oracleç³»çµ±çš„å“è™Ÿ \n    è«‹æ´½ç›¸é—œäººå“¡ç¢ºèªå“è™Ÿå·²å»ºç«‹!!");
+                                //alert("²M³æ¤º§t¤£¦s¦b©óOracle¨t²Îªº«~¸¹ \n    ½Ğ¬¢¬ÛÃö¤H­û½T»{«~¸¹¤w«Ø¥ß!!");
 								alertItemExistsMsg("<jsp:getProperty name='rPH' property='pgAlertItemExistsMsg'/>");
-                                </script>
-                                <%
-							 	}
-	               				//out.println(sql);
-	              				rsGetItemID.close();
-	              				statGetItemID.close();
-			  				}
+                                </script>							   
+                                <%	
+							 	}		
+	               				//out.println(sql);    
+	              				rsGetItemID.close();   
+	              				statGetItemID.close(); 
+			  				} 	
 							//add by Peggy 20181205
-			 				sql=" update ORADDMAN.TSDELIVERY_NOTICE_DETAIL set ORDER_TYPE_ID=?"+
+			 				sql=" update ORADDMAN.TSDELIVERY_NOTICE_DETAIL set ORDER_TYPE_ID=?"+			                   
 	                     		" where DNDOCNO='"+dnDocNo+"' and TO_CHAR(LINE_NO)='"+choice[k]+"' "+
 								" and  ORDER_TYPE_ID<>'"+choice[k]+"'";
 							pstmt=con.prepareStatement(sql);
 							pstmt.setString(1,firmOrderType); //order type id
-							pstmt.executeUpdate();
-							pstmt.close();
-
+							pstmt.executeUpdate(); 
+							pstmt.close(); 
+																
 							choiceLine += ","+choice[k];
-							if (!StringUtils.isNullOrEmpty(aSalesOrderGenerateCode[i][19])) {
-								lineNoList.add(aSalesOrderGenerateCode[i][19]);
-							}
-
+							
 							if (k==0)
 							{
  								strRes += "<table border='1' bordercolordark='#66CC99'><TR bgcolor='#CCFFCC'>"+
@@ -2180,337 +2175,190 @@ try
 							"<TD align=right><font color='#000000'>"+aSalesOrderGenerateCode[i][2]+"</FONT></TD>"+
 							"</TR>";
 		   				}  // End of if (choice[k]==aSalesOrderGenerateCode[i][0])
-		  			} // End of for (k=0;k<choice.length)
+		  			} // End of for (k=0;k<choice.length) 
 	    		} //enf of for (int i=0;i<aSalesOrderGenerateCode.length-1;i++)
 
-				try {
-					Statement stmt = con.createStatement();
-					sql = "select distinct ORDER_NUM from ORADDMAN.TSAREA_ORDERCLS c  where c.OTYPE_ID= '" + firmOrderType + "' \n" +
-							" and c.SAREA_NO = '" + sales_region + "'";
-					String orderNum = "";
-					ResultSet rs = stmt.executeQuery(sql);  // å–ä»»ä¸€ç­†æœªè™•ç†RFQå–®æ“šåšè¨‚å–®ç”Ÿæˆçš„Line_NoåŠåˆ†æ´¾ç”¢åœ°
-					while (rs.next()) {
-						orderNum = rs.getString("ORDER_NUM");
-					}
-					rs.close();
-					stmt.close();
-
-					if ("8".equals(orderNum.substring(0, 1))) {
-						if (!lineNoList.isEmpty()) {
-							// 8è¨‚å–®ï¼Œå¾workflowä¾†çš„
-							String soLineIdResult = "('" + String.join("','", lineNoList) + "')";
-							Statement stmtSoLineIdSsd = con.createStatement();
-							sql = "select LINE_NO, ORIG_SO_LINE_ID, to_date(SHIP_DATE,'yyyymmdd')SHIP_DATE from ORADDMAN.TSDELIVERY_NOTICE_DETAIL \n" +
-									" where DNDOCNO='" + dnDocNo + "' and ORIG_SO_LINE_ID in " + soLineIdResult + "";
-							ResultSet rsSoLineIdSsd = stmtSoLineIdSsd.executeQuery(sql);
-							String detailLineNo = "";
-							String origSoLineId = "";
-							Date shipDate = null;
-							while (rsSoLineIdSsd.next()) {
-								detailLineNo = rsSoLineIdSsd.getString("LINE_NO");
-								origSoLineId = rsSoLineIdSsd.getString("ORIG_SO_LINE_ID");
-								shipDate = rsSoLineIdSsd.getDate("SHIP_DATE");
-
-								CallableStatement callStmt = con.prepareCall("{call APPS.Tscc_Oe_Order_line_Update_ssd(?,?,?,?)}");
-								callStmt.setInt(1, Integer.parseInt(origSoLineId));
-								callStmt.setDate(2, shipDate);
-								callStmt.registerOutParameter(3, Types.VARCHAR);
-								callStmt.registerOutParameter(4, Types.VARCHAR);
-								callStmt.execute();
-								processStatus = callStmt.getString(3);
-								errorMessageHeader = callStmt.getString(4);
-								callStmt.close();
-
-								Statement stmtOeOrderHeadLine = con.createStatement();
-								String oeOrderSql = "select  h.header_id, h.order_number, l.line_number from OE_ORDER_HEADERS_ALL h, OE_ORDER_lines_all l\n" +
-										"    where h.header_id= l.header_id\n" +
-										"    and l.line_id = '" + origSoLineId + "' ";
-								ResultSet rsOeOrderHeadLine = stmtOeOrderHeadLine.executeQuery(oeOrderSql);
-
-								if (rsOeOrderHeadLine.next()) {
-									headerID = rsOeOrderHeadLine.getInt("HEADER_ID");
-									orderNo = rsOeOrderHeadLine.getString("ORDER_NUMBER");
-									String lineNumber = rsOeOrderHeadLine.getString("LINE_NUMBER");
-
-									String upDateDetailSql = "update ORADDMAN.TSDELIVERY_NOTICE_DETAIL \n" +
-											" set SASCODATE=?,ORDERNO=?,OR_LINENO=?,LSTATUSID=?,LSTATUS=? \n" +
-											"where DNDOCNO='" + dnDocNo + "' and LINE_NO ='" + detailLineNo + "'";
-
-									PreparedStatement psOeOrderHeadLineStmt = con.prepareStatement(upDateDetailSql);
-									psOeOrderHeadLineStmt.setString(1, dateBean.getYearMonthDay() + dateBean.getHourMinuteSecond());
-									psOeOrderHeadLineStmt.setString(2, orderNo);
-									psOeOrderHeadLineStmt.setString(3, lineNumber);
-									psOeOrderHeadLineStmt.setString(4, "010"); // Line çš„ç‹€æ…‹ID
-									psOeOrderHeadLineStmt.setString(5, "CLOSED"); // Line çš„ç‹€æ…‹
-									psOeOrderHeadLineStmt.executeUpdate();
-									psOeOrderHeadLineStmt.close();
-
-									String updateTscOmRequisition = "UPDATE TSC_OM_REQUISITION\n" +
-											"   SET (SUPPLY_HEADER_ID, SUPPLY_LINE_ID, FLOW_STATUS_CODE, LAST_UPDATE_DATE) =\n" +
-											"           (SELECT HEADER_ID, LINE_ID, 'AWAITING_BOOK', LAST_UPDATE_DATE\n" +
-											"              FROM OE_ORDER_LINES_ALL L\n" +
-											"             WHERE L.LINE_ID = ?\n" +
-											"               AND EXISTS\n" +
-											"                       (SELECT 1\n" +
-											"                          FROM OE_ORDER_HEADERS_ALL H\n" +
-											"                         WHERE H.HEADER_ID = L.HEADER_ID\n" +
-											"                           AND H.ORDER_NUMBER = ?))\n" +
-											"WHERE  HEADER_ID= ? AND LINE_ID = ?";
-
-									PreparedStatement psTscOmRequisitionStmt = con.prepareStatement(updateTscOmRequisition);
-									psTscOmRequisitionStmt.setString(1, origSoLineId);
-									psTscOmRequisitionStmt.setString(2, orderNo);
-									psTscOmRequisitionStmt.setInt(3, headerID);
-									psTscOmRequisitionStmt.setString(4, origSoLineId);
-									psTscOmRequisitionStmt.executeUpdate();
-									psTscOmRequisitionStmt.close();
-									rsOeOrderHeadLine.close();
-									stmtOeOrderHeadLine.close();
-								}
-							}
-							rsSoLineIdSsd.close();
-							stmtSoLineIdSsd.close();
-						} else  {
-							//8è¨‚å–®ï¼Œä½†ä¸æ˜¯å¾workflowä¾†çš„
-							CallableStatement cs3 = con.prepareCall("{call tsc_rfq_odr_to_erp(" +
-									"?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}");
-							cs3.setString(1, orgID);
-							cs3.setInt(2, Integer.parseInt(oraUserID));
-							cs3.setInt(3, Integer.parseInt(respID));
-							cs3.setInt(4, Integer.parseInt(firmOrderType));
-							cs3.setInt(5, Integer.parseInt(firmSoldToOrg));
-							cs3.setInt(6, Integer.parseInt(firmPriceList));
-							cs3.setInt(7, Integer.parseInt(ShipToOrg));
-							cs3.setDate(8, orderedDate);
-							cs3.setInt(9, Integer.parseInt(billTo));
-							cs3.setInt(10, Integer.parseInt(payTermID));
-							cs3.setString(11, shipMethod);
-							cs3.setString(12, fobPoint);
-							cs3.setString(13, custPO);
-							cs3.setString(14, "N/A");
-							cs3.setDate(15, pricedate);
-							cs3.setDate(16, promisedate);
-							cs3.setString(17, sourceTypeCode);
-							cs3.setString(18, "");
-							cs3.setString(19, "N/A");
-							cs3.setString(20, dnDocNo);
-							cs3.setString(21, strSubinv);  //add by Peggy 20211118
-							cs3.setString(22, "N/A");
-							cs3.setString(23, notifyContact);
-							cs3.setString(24, notifyLocation);
-							cs3.setString(25, shipContact);
-							cs3.setInt(26, Integer.parseInt(deliverOrgID));
-							cs3.setInt(27, Integer.parseInt(deliverContactID));
-							cs3.setString(28, sampleOrder);
-							cs3.setString(29, dnDocNo);
-							cs3.setString(30, choiceLine + ",");
-							cs3.setString(31, prCurr);
-							cs3.setString(32, seqno);
-							cs3.setString(33, dateBean.getYearMonthDay() + dateBean.getHourMinuteSecond());
-							cs3.setString(34, sToStatusID);
-							cs3.setString(35, sToStatusName);
-							cs3.setString(36, remark);
-							cs3.setString(37, fromStatusID);
-							cs3.setString(38, actionID);
-							cs3.setString(39, prodCodeGet);
-							cs3.setString(40, userID);
-							cs3.registerOutParameter(41, Types.VARCHAR);
-							cs3.registerOutParameter(42, Types.INTEGER);
-							cs3.registerOutParameter(43, Types.INTEGER);
-							cs3.registerOutParameter(44, Types.VARCHAR);
-							cs3.execute();
-							processStatus = cs3.getString(41);
-							headerID = cs3.getInt(42);   // æŠŠç¬¬äºŒæ¬¡çš„æ›´æ–° Header ID å–åˆ°
-							orderNo = cs3.getString(43);
-							errorMessageHeader = cs3.getString(44);
-							cs3.close();
-
-						}
-					} else {
-						// åªè¦æ˜¯4å’Œ1éƒ½èµ°åŸä¾†æµç¨‹
-						CallableStatement cs3 = con.prepareCall("{call tsc_rfq_odr_to_erp(" +
-								"?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}");
-						cs3.setString(1, orgID);
-						cs3.setInt(2, Integer.parseInt(oraUserID));
-						cs3.setInt(3, Integer.parseInt(respID));
-						cs3.setInt(4, Integer.parseInt(firmOrderType));
-						cs3.setInt(5, Integer.parseInt(firmSoldToOrg));
-						cs3.setInt(6, Integer.parseInt(firmPriceList));
-						cs3.setInt(7, Integer.parseInt(ShipToOrg));
-						cs3.setDate(8, orderedDate);
-						cs3.setInt(9, Integer.parseInt(billTo));
-						cs3.setInt(10, Integer.parseInt(payTermID));
-						cs3.setString(11, shipMethod);
-						cs3.setString(12, fobPoint);
-						cs3.setString(13, custPO);
-						cs3.setString(14, "N/A");
-						cs3.setDate(15, pricedate);
-						cs3.setDate(16, promisedate);
-						cs3.setString(17, sourceTypeCode);
-						cs3.setString(18, "");
-						cs3.setString(19, "N/A");
-						cs3.setString(20, dnDocNo);
-						cs3.setString(21, strSubinv);  //add by Peggy 20211118
-						cs3.setString(22, "N/A");
-						cs3.setString(23, notifyContact);
-						cs3.setString(24, notifyLocation);
-						cs3.setString(25, shipContact);
-						cs3.setInt(26, Integer.parseInt(deliverOrgID));
-						cs3.setInt(27, Integer.parseInt(deliverContactID));
-						cs3.setString(28, sampleOrder);
-						cs3.setString(29, dnDocNo);
-						cs3.setString(30, choiceLine + ",");
-						cs3.setString(31, prCurr);
-						cs3.setString(32, seqno);
-						cs3.setString(33, dateBean.getYearMonthDay() + dateBean.getHourMinuteSecond());
-						cs3.setString(34, sToStatusID);
-						cs3.setString(35, sToStatusName);
-						cs3.setString(36, remark);
-						cs3.setString(37, fromStatusID);
-						cs3.setString(38, actionID);
-						cs3.setString(39, prodCodeGet);
-						cs3.setString(40, userID);
-						cs3.registerOutParameter(41, Types.VARCHAR);
-						cs3.registerOutParameter(42, Types.INTEGER);
-						cs3.registerOutParameter(43, Types.INTEGER);
-						cs3.registerOutParameter(44, Types.VARCHAR);
-						cs3.execute();
-						processStatus = cs3.getString(41);
-						headerID = cs3.getInt(42);   // æŠŠç¬¬äºŒæ¬¡çš„æ›´æ–° Header ID å–åˆ°
-						orderNo = cs3.getString(43);
-						errorMessageHeader = cs3.getString(44);
-						cs3.close();
-					}
-//					}
-//					rsSoLineIdSsd.close();
-//					stmtSoLineIdSsd.close();
-					// renderStart---------------------------------;
-					if (processStatus == null) {
-						strRes = strRes.replace("?processStatus", "");
-					} else {
-						strRes = strRes.replace("?processStatus", processStatus);
-					}
-					if (errorMessageHeader == null) {
-						strRes = strRes.replace("?color", "blue");
-						strRes = strRes.replace("?processMsg", "MO Generated Success!!!");
-						strRes = strRes.replace("?headerID", "" + headerID);
-						strRes = strRes.replace("?orderNo", orderNo);
-					} else {
-						strRes = strRes.replace("?color", "red");
-						strRes = strRes.replace("?processMsg", "MO Generated Fail!!!");
-						strRes = strRes.replace("?headerID", "&nbsp;");
-						strRes = strRes.replace("?orderNo", "&nbsp;");
-						strRes += "<TR bgcolor='#CCFFCC'>" +
-								"<TD colspan=4><font color='#000000'>Error Message</FONT></TD>" +
-								"</TR>" +
-								"<TR>" +
-								"<TD colspan=4><font color='RED'>" + errorMessageHeader + "</FONT></TD>" +
-								"</TR>";
-					}
-					strRes += "</table>";
-					out.println(strRes);
-					out.println("<p><p>");
-					if ((errorMessageHeader == null || errorMessageHeader.equals("")
-							|| errorMessageHeader.equals("&nbsp;")) && (processStatus == "S"
-							|| processStatus.equals("S")))     // è¨‚å–®ç¬¬ä¸€ç­†ç´°é …ç”¢ç”Ÿæ²’æœ‰ErrorMessage ,æ‰åŸ·è¡Œ
-					{
-
-					} else {
-						out.println("<BR>");
-						out.println("Sales Order create fail , No action happened in this case ! ");
-					}
-					// renderEnd---------------------------------;
-				} catch (Exception e) {
-					e.printStackTrace();
-					out.println("<font color='red'>æ›´æ–°å‹•ä½œå¤±æ•—!è«‹é€Ÿæ´½ç³»çµ±ç®¡ç†å“¡,è¬è¬!"+e.getMessage().toString()+"</font>");
-					con.rollback();
+				CallableStatement cs3 = con.prepareCall("{call tsc_rfq_odr_to_erp("+
+				"?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}");			 
+	        	cs3.setString(1,orgID); 
+				cs3.setInt(2,Integer.parseInt(oraUserID)); 
+				cs3.setInt(3,Integer.parseInt(respID)); 
+				cs3.setInt(4,Integer.parseInt(firmOrderType));  
+				cs3.setInt(5,Integer.parseInt(firmSoldToOrg));  
+				cs3.setInt(6,Integer.parseInt(firmPriceList));
+				cs3.setInt(7,Integer.parseInt(ShipToOrg)); 
+				cs3.setDate(8,orderedDate); 
+				cs3.setInt(9,Integer.parseInt(billTo)); 
+				cs3.setInt(10,Integer.parseInt(payTermID)); 
+				cs3.setString(11,shipMethod); 
+				cs3.setString(12,fobPoint);      
+				cs3.setString(13,custPO); 
+				cs3.setString(14,"N/A");  	 
+				cs3.setDate(15,pricedate);
+				cs3.setDate(16,promisedate);
+				cs3.setString(17,sourceTypeCode); 
+				cs3.setString(18,""); 
+				cs3.setString(19,"N/A");  
+				cs3.setString(20,dnDocNo); 
+				//cs3.setString(21,"N/A"); 
+				cs3.setString(21,strSubinv);  //add by Peggy 20211118 
+				cs3.setString(22,"N/A");
+				cs3.setString(23,notifyContact); 
+				cs3.setString(24,notifyLocation);  
+				cs3.setString(25,shipContact);
+				cs3.setInt(26,Integer.parseInt(deliverOrgID));
+				cs3.setInt(27,Integer.parseInt(deliverContactID)); 
+				cs3.setString(28,sampleOrder); 
+				cs3.setString(29, dnDocNo);
+				cs3.setString(30, choiceLine+",");
+				cs3.setString(31, prCurr);
+				cs3.setString(32, seqno);
+				cs3.setString(33, dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond());
+				cs3.setString(34, sToStatusID);
+				cs3.setString(35, sToStatusName);
+				cs3.setString(36, remark);
+				cs3.setString(37, fromStatusID);
+				cs3.setString(38, actionID);
+				cs3.setString(39, prodCodeGet);
+				cs3.setString(40, userID);
+	        	cs3.registerOutParameter(41, Types.VARCHAR);
+				cs3.registerOutParameter(42, Types.INTEGER); 
+				cs3.registerOutParameter(43, Types.INTEGER); 
+				cs3.registerOutParameter(44, Types.VARCHAR); 
+	        	cs3.execute();
+				processStatus = cs3.getString(41);
+	        	headerID = cs3.getInt(42);   // §â²Ä¤G¦¸ªº§ó·s Header ID ¨ú¨ì
+				orderNo = cs3.getString(43);
+				errorMessageHeader = cs3.getString(44);
+            	cs3.close();
+				if (processStatus ==null )
+				{
+					strRes = strRes.replace("?processStatus","");
 				}
-
-			}  // End of if (aSalesOrderGenerateCode!=null )
+				else
+				{
+					strRes = strRes.replace("?processStatus",processStatus);
+				}
+				if(errorMessageHeader==null )
+				{
+					strRes = strRes.replace("?color","blue");
+					strRes = strRes.replace("?processMsg","MO Generated Success!!!");
+					strRes = strRes.replace("?headerID",""+headerID);
+					strRes = strRes.replace("?orderNo",orderNo);
+				}
+				else
+				{
+					strRes = strRes.replace("?color","red");
+					strRes = strRes.replace("?processMsg","MO Generated Fail!!!");
+					strRes = strRes.replace("?headerID","&nbsp;");
+					strRes = strRes.replace("?orderNo","&nbsp;");
+					strRes +=  "<TR bgcolor='#CCFFCC'>"+
+						   "<TD colspan=4><font color='#000000'>Error Message</FONT></TD>"+
+						   "</TR>"+
+						   "<TR>"+
+						   "<TD colspan=4><font color='RED'>"+errorMessageHeader+"</FONT></TD>"+
+						   "</TR>";
+				}
+				strRes += "</table>";
+				out.println(strRes);
+				out.println("<p><p>");
+			
+       			if((errorMessageHeader==null || errorMessageHeader.equals("") 
+				|| errorMessageHeader.equals("&nbsp;")) && (processStatus=="S" 
+				|| processStatus.equals("S")))     // ­q³æ²Ä¤@µ§²Ó¶µ²£¥Í¨S¦³ErrorMessage ,¤~°õ¦æ  
+	   			{
+				
+	  			} 
+	  			else 
+				{
+	        		out.println("<BR>");
+			  		out.println("Sales Order create fail , No action happened in this case ! ");  			   
+	       		}	  
+			}  // End of if (aSalesOrderGenerateCode!=null )   
 			else
 			{
-	    		//Step3. åˆ¤æ–·è‹¥éæ‰€æœ‰è©¢å•å–®æ‹†å–®é …ç›®ç‹€æ…‹çš†å·²ç”¢ç”Ÿè¨‚å–®(ç‹€æ…‹å­˜åœ¨ä»»ä¸€å€‹'N/A'),å‰‡æ›´æ–°äº¤æœŸè©¢å•ä¸»æª”ç‹€æ…‹ç‚ºå‰ä¸€ç‹€æ…‹_èµ·
+	    		//Step3. §PÂ_­Y«D©Ò¦³¸ß°İ³æ©î³æ¶µ¥Øª¬ºA¬Ò¤w²£¥Í­q³æ(ª¬ºA¦s¦b¥ô¤@­Ó'N/A'),«h§ó·s¥æ´Á¸ß°İ¥DÀÉª¬ºA¬°«e¤@ª¬ºA_°_
 	       		Statement statement=con.createStatement();
            		ResultSet rs=statement.executeQuery("select * from ORADDMAN.TSWFACTION where ACTIONID='"+actionID+"'");
            		rs.next();
            		actionName=rs.getString("ACTIONNAME");
-
+   
            		rs=statement.executeQuery("select * from ORADDMAN.TSWFStatus where STATUSID='"+fromStatusID+"'");
            		rs.next();
-           		oriStatus=rs.getString("STATUSNAME");
+           		oriStatus=rs.getString("STATUSNAME");   
            		statement.close();
-           		rs.close();
-
+           		rs.close();	   
+	   
 	       		String oldStatusID = "N/A";
 	       		String oldStatus = "N/A";
-	       		Statement stateLStatus=con.createStatement();
+	       		Statement stateLStatus=con.createStatement(); 
            		ResultSet rsLStatus=stateLStatus.executeQuery("select LSTATUSID from ORADDMAN.TSDELIVERY_NOTICE_DETAIL "+
 				" where DNDOCNO='"+dnDocNo+"' and ORDERNO='N/A' ");
-           		if (rsLStatus.next())
+           		if (rsLStatus.next()) 
 	       		{
-	        		oldStatusID = fromStatusID; // å¦‚æœè©¢å•å–®æ˜ç´°é‚„å­˜åœ¨éƒ¨ä»½ç‹€æ…‹ç‚º "N/A" çš„æœªç”Ÿæˆè¨‚å–®,å‰‡è©¢å•å–®ä¸»æª”ç‹€æ…‹ä¾¿ä¸æ›´æ–°ç‚º "COMPLETE"
-		     		oldStatus = oriStatus;      // å›æœ”è‡³å‰ä¸€ç‹€æ…‹
-	       		}
-				else
+	        		oldStatusID = fromStatusID; // ¦pªG¸ß°İ³æ©ú²ÓÁÙ¦s¦b³¡¥÷ª¬ºA¬° "N/A" ªº¥¼¥Í¦¨­q³æ,«h¸ß°İ³æ¥DÀÉª¬ºA«K¤£§ó·s¬° "COMPLETE"
+		     		oldStatus = oriStatus;      // ¦^®Ò¦Ü«e¤@ª¬ºA
+	       		}	 
+				else 
 				{
 	        		oldStatusID =sToStatusID;
-					oldStatus =sToStatusName;
-	        	}
-		  		// æ²’æœ‰ä»»ä½•è¨‚å–®è¢«ç”¢ç”Ÿ,æ•…è©¢å•å–®ä¸»æª”ç‹€æ…‹RollBackè‡³å‰ä¸€å€‹ç‹€æ…‹
+					oldStatus =sToStatusName; 	            
+	        	} 
+		  		// ¨S¦³¥ô¦ó­q³æ³Q²£¥Í,¬G¸ß°İ³æ¥DÀÉª¬ºARollBack¦Ü«e¤@­Óª¬ºA	  
 	       		sql="update ORADDMAN.TSDELIVERY_NOTICE set STATUSID=?,STATUS=?,LAST_UPDATED_BY=?,LAST_UPDATE_DATE=? "+
-	           		"where DNDOCNO='"+dnDocNo+"' ";
+	           		"where DNDOCNO='"+dnDocNo+"' ";     
            		pstmt=con.prepareStatement(sql);
-	       		pstmt.setString(1,oldStatusID);  // åŸç‹€æ…‹ID
-           		pstmt.setString(2,oldStatus); // åŸç‹€æ…‹
-	       		pstmt.setString(3,userID); // æœ€å¾Œæ›´æ–°äººå“¡
-	       		pstmt.setString(4,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // æœ€å¾Œæ›´æ–°æ™‚é–“
-           		pstmt.executeUpdate();
-           		pstmt.close();
-			} // End of else
-	 		out.println("<BR>");
-		} // End of if (choiceLen>0) è‹¥ä½¿ç”¨è€…æœ‰é¸æ“‡ä»»ä¸€Check Choiceæ‰åŸ·è¡Œç”¢ç”Ÿè¨‚å–®ä½œæ¥­
-		else
+	       		pstmt.setString(1,oldStatusID);  // ­ìª¬ºAID      
+           		pstmt.setString(2,oldStatus); // ­ìª¬ºA	      
+	       		pstmt.setString(3,userID); // ³Ì«á§ó·s¤H­û
+	       		pstmt.setString(4,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // ³Ì«á§ó·s®É¶¡    
+           		pstmt.executeUpdate(); 
+           		pstmt.close(); 
+			} // End of else  
+	 		out.println("<BR>");   
+		} // End of if (choiceLen>0) ­Y¨Ï¥ÎªÌ¦³¿ï¾Ü¥ô¤@Check Choice¤~°õ¦æ²£¥Í­q³æ§@·~
+		else 
 		{
-	    	//Step3. åˆ¤æ–·è‹¥éæ‰€æœ‰è©¢å•å–®æ‹†å–®é …ç›®ç‹€æ…‹çš†å·²ç”¢ç”Ÿè¨‚å–®(ç‹€æ…‹å­˜åœ¨ä»»ä¸€å€‹'N/A'),å‰‡æ›´æ–°äº¤æœŸè©¢å•ä¸»æª”ç‹€æ…‹ç‚ºå‰ä¸€ç‹€æ…‹_èµ·
+	    	//Step3. §PÂ_­Y«D©Ò¦³¸ß°İ³æ©î³æ¶µ¥Øª¬ºA¬Ò¤w²£¥Í­q³æ(ª¬ºA¦s¦b¥ô¤@­Ó'N/A'),«h§ó·s¥æ´Á¸ß°İ¥DÀÉª¬ºA¬°«e¤@ª¬ºA_°_
 	    	Statement statement=con.createStatement();
         	ResultSet rs=statement.executeQuery("select * from ORADDMAN.TSWFACTION where ACTIONID='"+actionID+"'");
         	rs.next();
         	actionName=rs.getString("ACTIONNAME");
-
+   
         	rs=statement.executeQuery("select * from ORADDMAN.TSWFStatus where STATUSID='"+fromStatusID+"'");
         	rs.next();
-        	oriStatus=rs.getString("STATUSNAME");
+        	oriStatus=rs.getString("STATUSNAME");   
         	statement.close();
-        	rs.close();
-
+        	rs.close();	   
+	   
 	    	String oldStatusID = "N/A";
 	    	String oldStatus = "N/A";
-	    	Statement stateLStatus=con.createStatement();
+	    	Statement stateLStatus=con.createStatement(); 
         	ResultSet rsLStatus=stateLStatus.executeQuery("select LSTATUSID from ORADDMAN.TSDELIVERY_NOTICE_DETAIL "+
 				" where DNDOCNO='"+dnDocNo+"' and ORDERNO='N/A' ");
-        	if (rsLStatus.next())
+        	if (rsLStatus.next()) 
 	    	{
-	    		oldStatusID = fromStatusID; // å¦‚æœè©¢å•å–®æ˜ç´°é‚„å­˜åœ¨éƒ¨ä»½ç‹€æ…‹ç‚º "N/A" çš„æœªç”Ÿæˆè¨‚å–®,å‰‡è©¢å•å–®ä¸»æª”ç‹€æ…‹ä¾¿ä¸æ›´æ–°ç‚º "COMPLETE"
-		    	oldStatus = oriStatus;      // å›æœ”è‡³å‰ä¸€ç‹€æ…‹
-	    	}
-			else
+	    		oldStatusID = fromStatusID; // ¦pªG¸ß°İ³æ©ú²ÓÁÙ¦s¦b³¡¥÷ª¬ºA¬° "N/A" ªº¥¼¥Í¦¨­q³æ,«h¸ß°İ³æ¥DÀÉª¬ºA«K¤£§ó·s¬° "COMPLETE"
+		    	oldStatus = oriStatus;      // ¦^®Ò¦Ü«e¤@ª¬ºA
+	    	} 
+			else 
 			{
 	        	oldStatusID =sToStatusID;
-				oldStatus =sToStatusName;
-	    	}
-			// æ²’æœ‰ä»»ä½•è¨‚å–®è¢«ç”¢ç”Ÿ,æ•…è©¢å•å–®ä¸»æª”ç‹€æ…‹RollBackè‡³å‰ä¸€å€‹ç‹€æ…‹
+				oldStatus =sToStatusName; 	            
+	    	} 
+			// ¨S¦³¥ô¦ó­q³æ³Q²£¥Í,¬G¸ß°İ³æ¥DÀÉª¬ºARollBack¦Ü«e¤@­Óª¬ºA	  
 	    	sql="update ORADDMAN.TSDELIVERY_NOTICE set STATUSID=?,STATUS=?,LAST_UPDATED_BY=?,LAST_UPDATE_DATE=? "+
-	           "where DNDOCNO='"+dnDocNo+"' ";
+	           "where DNDOCNO='"+dnDocNo+"' ";     
         	pstmt=con.prepareStatement(sql);
-	    	pstmt.setString(1,oldStatusID);  // åŸç‹€æ…‹ID
-        	pstmt.setString(2,oldStatus); // åŸç‹€æ…‹
-	    	pstmt.setString(3,userID); // æœ€å¾Œæ›´æ–°äººå“¡
-	    	pstmt.setString(4,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // æœ€å¾Œæ›´æ–°æ™‚é–“
-        	pstmt.executeUpdate();
-        	pstmt.close();
-		}  //End of Else // æœªé¸ä»»ä½•Check lineä½œè¨‚å–®ç”Ÿæˆ,å‰‡ä¸»æª”ç‹€æ…‹å›å¾©	 
+	    	pstmt.setString(1,oldStatusID);  // ­ìª¬ºAID      
+        	pstmt.setString(2,oldStatus); // ­ìª¬ºA	      
+	    	pstmt.setString(3,userID); // ³Ì«á§ó·s¤H­û
+	    	pstmt.setString(4,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // ³Ì«á§ó·s®É¶¡    
+        	pstmt.executeUpdate(); 
+        	pstmt.close();       
+		}  //End of Else // ¥¼¿ï¥ô¦óCheck line§@­q³æ¥Í¦¨,«h¥DÀÉª¬ºA¦^´_	 
 	 
-		//å®Œæˆè™•ç†å¾Œå³å°‡sessionå–åˆ°çš„Bean çš„å…§å®¹å€¼æ¸…ç©º(é¿å…äºŒæ¬¡å‚³é€) 
+		//§¹¦¨³B²z«á§Y±Nsession¨ú¨ìªºBean ªº¤º®e­È²MªÅ(Á×§K¤G¦¸¶Ç°e) 
 		if (aSalesOrderGenerateCode!=null)
 		{ 
 			array2DGenerateSOrderBean.setArray2DString(null); 
@@ -2518,7 +2366,7 @@ try
 	 
 		Statement stateReProcess=con.createStatement(); 
     	ResultSet rsReProcess=stateReProcess.executeQuery("select LINE_NO,ASSIGN_MANUFACT from ORADDMAN.TSDELIVERY_NOTICE_DETAIL "+
-		" where DNDOCNO='"+dnDocNo+"' and LSTATUSID='009' ");  // å–ä»»ä¸€ç­†æœªè™•ç†RFQå–®æ“šåšè¨‚å–®ç”Ÿæˆçš„Line_NoåŠåˆ†æ´¾ç”¢åœ°
+		" where DNDOCNO='"+dnDocNo+"' and LSTATUSID='009' ");  // ¨ú¥ô¤@µ§¥¼³B²zRFQ³æ¾Ú°µ­q³æ¥Í¦¨ªºLine_No¤Î¤À¬£²£¦a
 		if (rsReProcess.next())
 		{
 			String reLineNo = rsReProcess.getString("LINE_NO");
@@ -2532,43 +2380,43 @@ try
 		rsReProcess.close();
 		stateReProcess.close();	 
 	 
-	} //è‹¥ç‚ºäº¤æœŸè©¢å•éŠ·å”®è¨‚å–®ç”Ÿæˆ(COMPLETE)_è¿„ (ACTION=012)
+	} //­Y¬°¥æ´Á¸ß°İ¾P°â­q³æ¥Í¦¨(COMPLETE)_¨´ (ACTION=012)
   
- 	 ////è‹¥ç‚ºä¼åŠƒè¦†è­°äº¤æœŸä½†è¦æ±‚å·¥å» é‡æ–°å®‰æ’äº¤æœŸ(REARRANGE)_è¿„ (ACTION=014)
+ 	 ////­Y¬°¥ø¹ºÂĞÄ³¥æ´Á¦ı­n¨D¤u¼t­«·s¦w±Æ¥æ´Á(REARRANGE)_¨´ (ACTION=014)
 	if (actionID.equals("014")) 
   	{
-    	//å·¥å» äº¤æœŸå·²å›è¦†ç”±ä¼åŠƒç”Ÿç®¡ä½œç‹€æ…‹ç¢ºèªå¾Œ,æ›´æ–°è‡³äº¤æœŸå®‰æ’ä¸­(ESTIMATING)
-	 	//Step2. å–å¾—æœ¬å¼µå–®æ“šåˆ†é…çš„å·¥å» çµ„åˆå­—ä¸²_èµ·	    
+    	//¤u¼t¥æ´Á¤w¦^ÂĞ¥Ñ¥ø¹º¥ÍºŞ§@ª¬ºA½T»{«á,§ó·s¦Ü¥æ´Á¦w±Æ¤¤(ESTIMATING)
+	 	//Step2. ¨ú±o¥»±i³æ¾Ú¤À°tªº¤u¼t²Õ¦X¦r¦ê_°_	    
 	 	if (aFactoryArrangedCode!=null)
 	 	{	 
 	   		for (int i=0;i<aFactoryArrangedCode.length-1;i++)
 	   		{
 	    		for (int k=0;k<=choice.length-1;k++)    
         		{
-		 			// åˆ¤æ–·è¢«Check çš„Line æ‰åŸ·è¡Œå·¥å» å®‰æ’äº¤æœŸä½œæ¥­
+		 			// §PÂ_³QCheck ªºLine ¤~°õ¦æ¤u¼t¦w±Æ¥æ´Á§@·~
 	     			if (choice[k]==aFactoryArrangedCode[i][0] || choice[k].equals(aFactoryArrangedCode[i][0]))
 	     			{ 
 	      				sql="update ORADDMAN.TSDELIVERY_NOTICE_DETAIL "+
 						" set PCACPDATE=?,LAST_UPDATED_BY=?,LAST_UPDATE_DATE=?,LSTATUSID=?,LSTATUS=?,SHIP_DATE=?,PROMISE_DATE=? "+
 	          			"where DNDOCNO='"+dnDocNo+"' and TO_CHAR(LINE_NO)='"+aFactoryArrangedCode[i][0]+"' ";     
           				pstmt=con.prepareStatement(sql);
-						// è‹¥ç”Ÿç®¡æœªé‡æ–°çµ¦å®šäº¤æœŸæ—¥,å‰‡ä»¥å·¥ç”¢å®‰æ’æ—¥ç‚ºå…¶äº¤æœŸæ—¥
+						// ­Y¥ÍºŞ¥¼­«·sµ¹©w¥æ´Á¤é,«h¥H¤u²£¦w±Æ¤é¬°¨ä¥æ´Á¤é
 		  				if (aFactoryArrangedCode[i][6].equals("N/A")) aFactoryArrangedCode[i][6] = aFactoryArrangedCode[i][7];
-		  				if (aFactoryArrangedCode[i][7].equals("N/A"))  // è‹¥æ˜¯å·¥å» èˆ‡ç”Ÿç®¡éƒ½æœªçµ¦å®šæ—¥æœŸ,å‰‡å›è¦†é è¨­å€¼äºˆåŸéœ€æ±‚æ—¥
+		  				if (aFactoryArrangedCode[i][7].equals("N/A"))  // ­Y¬O¤u¼t»P¥ÍºŞ³£¥¼µ¹©w¤é´Á,«h¦^ÂĞ¹w³]­È¤©­ì»İ¨D¤é
 		  				{  
 							aFactoryArrangedCode[i][6] = aFactoryArrangedCode[i][4]; aFactoryArrangedCode[i][7] = aFactoryArrangedCode[i][4];  
 						}
-          				pstmt.setString(1,aFactoryArrangedCode[i][6]); // è¨­å®šçš„PC æ¥æ”¶æ—¥æœŸ + æ™‚é–“     
-		  				pstmt.setString(2,userID); // æœ€å¾Œæ›´æ–°äººå“¡ 
-		  				pstmt.setString(3,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // æœ€å¾Œæ›´æ–°æ™‚é–“ 
+          				pstmt.setString(1,aFactoryArrangedCode[i][6]); // ³]©wªºPC ±µ¦¬¤é´Á + ®É¶¡     
+		  				pstmt.setString(2,userID); // ³Ì«á§ó·s¤H­û 
+		  				pstmt.setString(3,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // ³Ì«á§ó·s®É¶¡ 
 		  				pstmt.setString(4,sToStatusID);
 		  				pstmt.setString(5,sToStatusName);
-		  				pstmt.setString(6,aFactoryArrangedCode[i][6]); // é è¨­å°‡ç”Ÿç®¡çš„ç¢ºèªæ—¥çµ¦Schedule Shipment Dateæ—¥æœŸ + æ™‚é–“ 
-		  				pstmt.setString(7,aFactoryArrangedCode[i][6]); // é è¨­å°‡ç”Ÿç®¡çš„ç¢ºèªæ—¥çµ¦Customer Request Dateæ—¥æœŸ + æ™‚é–“  
+		  				pstmt.setString(6,aFactoryArrangedCode[i][6]); // ¹w³]±N¥ÍºŞªº½T»{¤éµ¹Schedule Shipment Date¤é´Á + ®É¶¡ 
+		  				pstmt.setString(7,aFactoryArrangedCode[i][6]); // ¹w³]±N¥ÍºŞªº½T»{¤éµ¹Customer Request Date¤é´Á + ®É¶¡  
           				pstmt.executeUpdate(); 
           				pstmt.close(); 
 		  
-		  				// å–æ­·ç¨‹æª”å…§å‰ä¸€å€‹ç‹€æ…‹è‡³ç›®å‰çš„æ™‚é–“å·®,åšç‚ºæœ¬æ¬¡æ­·ç¨‹çš„å·¥æ™‚_èµ·
+		  				// ¨ú¾úµ{ÀÉ¤º«e¤@­Óª¬ºA¦Ü¥Ø«eªº®É¶¡®t,°µ¬°¥»¦¸¾úµ{ªº¤u®É_°_
 		      			float processWorkTime = 0;
 		      			String preWorkTime = "0"; 			 
 		      			Statement stateHProcWT=con.createStatement();  
@@ -2580,7 +2428,7 @@ try
 			  			}
 			  			rsHProcWT.close();
 			  			stateHProcWT.close();
-           				//è‹¥å–åˆ°å‰ä¸€å€‹ç‹€æ…‹æ™‚é–“,å‰‡ä»¥ç›®å‰æ™‚é–“æ¸›å»å‰
+           				//­Y¨ú¨ì«e¤@­Óª¬ºA®É¶¡,«h¥H¥Ø«e®É¶¡´î¥h«e
 		    			if (preWorkTime!="0")
 		    			{
 			    			String sqlWT = "select ROUND((to_date('"+dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()
@@ -2594,10 +2442,10 @@ try
 			    			rsWTime.close();
 			    			stateWTime.close();
 						}
-            			// å–æ­·ç¨‹æª”å…§å‰ä¸€å€‹ç‹€æ…‹è‡³ç›®å‰çš„æ™‚é–“å·®,åšç‚ºæœ¬æ¬¡æ­·ç¨‹çš„å·¥æ™‚_è¿„		  
+            			// ¨ú¾úµ{ÀÉ¤º«e¤@­Óª¬ºA¦Ü¥Ø«eªº®É¶¡®t,°µ¬°¥»¦¸¾úµ{ªº¤u®É_¨´		  
 		  
-		      			//Step5. ä»»ä¸€Action,å¯«å…¥äº¤æœŸè©¢å•æ˜ç´°æ­·ç¨‹æª”
-	          			//STARTUP ====ä»¥ä¸‹ç‚ºå¯«å…¥è©²äº¤æœŸè©¢å•æ˜ç´°ä¹‹ç•°å‹•è¨˜éŒ„ 	 
+		      			//Step5. ¥ô¤@Action,¼g¤J¥æ´Á¸ß°İ©ú²Ó¾úµ{ÀÉ
+	          			//STARTUP ====¥H¤U¬°¼g¤J¸Ó¥æ´Á¸ß°İ©ú²Ó¤§²§°Ê°O¿ı 	 
 	          			int deliveryCount = 0;
 	          			Statement stateDeliveryCNT=con.createStatement(); 
               			ResultSet rsDeliveryCNT=stateDeliveryCNT.executeQuery("select count(*)+1 from ORADDMAN.TSDELIVERY_DETAIL_HISTORY "+
@@ -2625,26 +2473,26 @@ try
 	          			PreparedStatement historystmt=con.prepareStatement(historySql);   
               			historystmt.setString(1,dnDocNo); 
              	 		historystmt.setString(2,fromStatusID); 
-              			historystmt.setString(3,oriStatus); //å¯«å…¥statusåç¨±
+              			historystmt.setString(3,oriStatus); //¼g¤Jstatus¦WºÙ
               			historystmt.setString(4,actionID); 
               			historystmt.setString(5,actionName); 
               			historystmt.setString(6,userID); 
               			historystmt.setString(7,dateBean.getYearMonthDay()); 
               			historystmt.setString(8,dateBean.getHourMinuteSecond());
-              			historystmt.setString(9,prodCodeGet); //å¯«å…¥å·¥å» ç·¨è™Ÿ
+              			historystmt.setString(9,prodCodeGet); //¼g¤J¤u¼t½s¸¹
               			historystmt.setString(10,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond());
               			historystmt.setString(11,remark);
               			historystmt.setInt(12,deliveryCount);
-		      			historystmt.setInt(13,Integer.parseInt(aFactoryArrangedCode[i][0])); // å¯«å…¥è™•ç†Line_No
+		      			historystmt.setInt(13,Integer.parseInt(aFactoryArrangedCode[i][0])); // ¼g¤J³B²zLine_No
 		      			historystmt.setFloat(14,processWorkTime);
 		      			historystmt.executeUpdate();   
               			historystmt.close(); 
-             			//===ENF OF å¯«å…¥action history
+             			//===ENF OF ¼g¤Jaction history
 			 
-						// ä¼åŠƒå›è¦†äº¤æœŸå¯„é€Mailäºˆé–‹å–®æ¥­å‹™äººå“¡_èµ·  
+						// ¥ø¹º¦^ÂĞ¥æ´Á±H°eMail¤©¶}³æ·~°È¤H­û_°_  
 						if (sendMailOption!=null && sendMailOption.equals("YES"))
             			{
-			 				if (k==0) // ä¸€å€‹æ‰¹æ¬¡è™•ç†åªé€ä¸€æ¬¡Mail
+			 				if (k==0) // ¤@­Ó§å¦¸³B²z¥u°e¤@¦¸Mail
 			 				{
 	          					String sqlAddList = "select DISTINCT ASSIGN_MANUFACT from ORADDMAN.TSDELIVERY_NOTICE_DETAIL "+
 								" where DNDOCNO='"+dnDocNo+"' and ASSIGN_MANUFACT != 'N/A' ";
@@ -2663,10 +2511,10 @@ try
                    						sendMailBean.setFrom(UserName);   	 	 
                    						sendMailBean.setSubject(CodeUtil.unicodeToBig5("RFQ System Document Approvement Notification"));
 		           						sendMailBean.setUrlName("Dear "+rsList.getString("USERNAME")
-										+",\n"+CodeUtil.unicodeToBig5("   è«‹é»æ“Šä¾†è‡ªäº¤æœŸè©¢å•ç³»çµ±çš„éƒµä»¶:ä¼åŠƒè¦æ±‚å·¥å» é‡æ–°äº¤æœŸå®‰æ’-("+dnDocNo+")")); 
+										+",\n"+CodeUtil.unicodeToBig5("   ½ĞÂIÀ»¨Ó¦Û¥æ´Á¸ß°İ¨t²Îªº¶l¥ó:¥ø¹º­n¨D¤u¼t­«·s¥æ´Á¦w±Æ-("+dnDocNo+")")); 
                    						sendMailBean.setUrlAddr(serverHostName+":8080/oradds/jsp/TSSalesDRQQueryHeadAllStatus.jsp"
 										+"?STATUSID=003&PAGEURL=TSSalesDRQEstimatingPage.jsp&SEARCHSTRING="+dnDocNo);			   
-				   						sendMailBean.setUrlName1(CodeUtil.unicodeToBig5("   äº¤æœŸè©¢å•å–®Excelè¡¨å‹•æ…‹ç”Ÿæˆè«‹é»æ“Šå¦‚ä¸‹é€£çµ:\n"));   	 
+				   						sendMailBean.setUrlName1(CodeUtil.unicodeToBig5("   ¥æ´Á¸ß°İ³æExcelªí°ÊºA¥Í¦¨½ĞÂIÀ»¦p¤U³sµ²:\n"));   	 
                    						sendMailBean.setUrlAddr1(serverHostName+":8080/oradds/jsp/TSSalesDRQAssignInf2Excel.jsp?DNDOCNO="+dnDocNo);
                    						sendMailBean.sendMail();
 	            					} //While (rsList.next())
@@ -2675,31 +2523,31 @@ try
 	         					} //While (rsAddList.next()) 
 	         					rsAddList.close();
 	         					stateAddList.close();
-		   					} // End of if (k==0) // ä¸€å€‹æ‰¹æ¬¡è™•ç†åªé€ä¸€æ¬¡Mail
+		   					} // End of if (k==0) // ¤@­Ó§å¦¸³B²z¥u°e¤@¦¸Mail
 	      				} // End of if (sendMailOption!=null && sendMailOption.equals("YES"))
 		 			} // End of if (choice[k]==aFactoryArrangedCode[i][0] || choice[k].equals(aFactoryArrangedCode[i][0]))
 				} // End of for (int k=0;k<choice.length;k++)
 	   		} // End of for
 	 	} // End of If  aFactoryArrangedCode!=null   
 	      
-	    //Step4. å†æ›´æ–°äº¤æœŸè©¢å•ä¸»æª”è³‡æ–™
+	    //Step4. ¦A§ó·s¥æ´Á¸ß°İ¥DÀÉ¸ê®Æ
        	sql="update ORADDMAN.TSDELIVERY_NOTICE set LAST_UPDATED_BY=?,LAST_UPDATE_DATE=? "+
 	       "where DNDOCNO='"+dnDocNo+"' ";     
        	pstmt=con.prepareStatement(sql);              
-      	pstmt.setString(1,userID); // æœ€å¾Œæ›´æ–°äººå“¡
-	  	pstmt.setString(2,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // æœ€å¾Œæ›´æ–°æ™‚é–“     
+      	pstmt.setString(1,userID); // ³Ì«á§ó·s¤H­û
+	  	pstmt.setString(2,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // ³Ì«á§ó·s®É¶¡     
        	pstmt.executeUpdate(); 
       	pstmt.close();      
-	   	// å†æ›´æ–°äº¤æœŸè©¢å•ä¸»æª”è³‡æ–™
+	   	// ¦A§ó·s¥æ´Á¸ß°İ¥DÀÉ¸ê®Æ
 	   
-		//###***  å®Œæˆå„è™•ç†å¾Œå³å°‡sessionå–åˆ°çš„Bean çš„å…§å®¹å€¼æ¸…ç©º(é¿å…äºŒæ¬¡å‚³é€)  *****###  
+		//###***  §¹¦¨¦U³B²z«á§Y±Nsession¨ú¨ìªºBean ªº¤º®e­È²MªÅ(Á×§K¤G¦¸¶Ç°e)  *****###  
 		if (aFactoryArrangedCode!=null)  
     	{ 
 			array2DArrangedFactoryBean.setArray2DString(null);  
 		}
-  	} //è‹¥ç‚ºä¼åŠƒè¦†è­°äº¤æœŸä½†è¦æ±‚å·¥å» é‡æ–°å®‰æ’äº¤æœŸ(REARRANGE)_è¿„ (ACTION=014)
+  	} //­Y¬°¥ø¹ºÂĞÄ³¥æ´Á¦ı­n¨D¤u¼t­«·s¦w±Æ¥æ´Á(REARRANGE)_¨´ (ACTION=014)
 
-  	// æ¥­å‹™è©¢å•å®¢æˆ¶å–æ¶ˆåŸäº¤æœŸ,ä¸¦çµ¦å®šæ–°çš„äº¤æœŸéœ€æ±‚(ABORT)_èµ· (ACTION=013)
+  	// ·~°È¸ß°İ«È¤á¨ú®ø­ì¥æ´Á,¨Ãµ¹©w·sªº¥æ´Á»İ¨D(ABORT)_°_ (ACTION=013)
   	if (actionID.equals("013")) 
   	{
 		try
@@ -2709,8 +2557,8 @@ try
 			{
 				sql=" update ORADDMAN.TSDELIVERY_NOTICE set LAST_UPDATED_BY=?,LAST_UPDATE_DATE=?,STATUSID=?,STATUS=? where DNDOCNO='"+dnDocNo+"' ";     
 				pstmt=con.prepareStatement(sql);      
-				pstmt.setString(1,userID); // æœ€å¾Œæ›´æ–°äººå“¡
-				pstmt.setString(2,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // æœ€å¾Œæ›´æ–°æ™‚é–“     
+				pstmt.setString(1,userID); // ³Ì«á§ó·s¤H­û
+				pstmt.setString(2,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // ³Ì«á§ó·s®É¶¡     
 				pstmt.setString(3,sToStatusID);
 				pstmt.setString(4,sToStatusName);
 				//pstmt.executeUpdate(); 
@@ -2727,13 +2575,13 @@ try
 				//pstmt.close();  
 				pstmt.executeQuery(); 
 			}
-			else if (aCustCancelPromiseCode!=null) // åˆ¤æ–·è©²æ¬¡è™•ç†ç´°é …æ‰æ›´æ–°æ˜ç´°æª”
+			else if (aCustCancelPromiseCode!=null) // §PÂ_¸Ó¦¸³B²z²Ó¶µ¤~§ó·s©ú²ÓÀÉ
 			{ 
 				dateString=dateBean.getYearMonthDay();
 				//seqkey="TS"+userActCenterNo+dateString;
-				//æŠ“åŸå–®æ“šå‰äº”ç¢¼(å› ç‚ºä¸€å€‹å¸³è™Ÿæœƒæœ‰ä¸€å€‹ä»¥ä¸Šsite)modify by Peggy 20120910
+				//§ì­ì³æ¾Ú«e¤­½X(¦]¬°¤@­Ó±b¸¹·|¦³¤@­Ó¥H¤Wsite)modify by Peggy 20120910
 				seqkey=dnDocNo.substring(0,5)+dateString;
-				//====å…ˆå–å¾—æµæ°´è™Ÿ=====  
+				//====¥ı¨ú±o¬y¤ô¸¹=====  
 				Statement statement=con.createStatement();
 				ResultSet rs=statement.executeQuery("select * from ORADDMAN.TSDOCSEQ where header='"+seqkey+"'");  
 				if (rs.next()==false)
@@ -2752,7 +2600,7 @@ try
 					sql = "select * from ORADDMAN.TSDELIVERY_NOTICE where substr(DNDOCNO,1,13)='"+seqkey+"' "+
 					" and to_number(substr(DNDOCNO,15,3))= '"+lastno+"' ";
 					ResultSet rs2=statement.executeQuery(sql); 
-					//===(è™•ç†è·³è™Ÿå•é¡Œ)è‹¥rprepairåŠrpdocseqçš†å­˜åœ¨ç›¸åŒæœ€å¤§è™Ÿ=========ä¾åŸæ–¹å¼å–æœ€å¤§è™Ÿ //
+					//===(³B²z¸õ¸¹°İÃD)­Yrprepair¤Îrpdocseq¬Ò¦s¦b¬Û¦P³Ì¤j¸¹=========¨Ì­ì¤è¦¡¨ú³Ì¤j¸¹ //
 					if (rs2.next())
 					{         
 						lastno++;
@@ -2768,7 +2616,7 @@ try
 					} 
 					else
 					{
-						//===========(è™•ç†è·³è™Ÿå•é¡Œ)å¦å‰‡ä»¥å¯¦éš›rpRepairå…§æœ€å¤§æµæ°´è™Ÿç‚ºç›®å‰rpdocSeqçš„lastnoå…§å®¹(æœƒä¾ç¶­ä¿®åœ°å€åˆ¥)
+						//===========(³B²z¸õ¸¹°İÃD)§_«h¥H¹ê»ÚrpRepair¤º³Ì¤j¬y¤ô¸¹¬°¥Ø«erpdocSeqªºlastno¤º®e(·|¨Ìºû­×¦a°Ï§O)
 						String sSql = "select to_number(substr(max(DNDOCNO),15,3)) as LASTNO from ORADDMAN.TSDELIVERY_NOTICE "+
 						" where substr(DNDOCNO,1,13)='"+seqkey+"' ";
 						ResultSet rs3=statement.executeQuery(sSql);
@@ -2786,36 +2634,36 @@ try
 							seqstmt.executeUpdate();   
 							seqstmt.close();  
 						}  // End of if (rs3.next()==true)
-					} // End of Else  //===========(è™•ç†è·³è™Ÿå•é¡Œ)
+					} // End of Else  //===========(³B²z¸õ¸¹°İÃD)
 			 
 					int newLine =1; 		
-					// Step2. ä¾Detail æ›´æ–°åŸå–®æ“šç‹€æ…‹,ä¸¦æ ¹æ“šArrayæ–°å¢æ–°äº¤æœŸè©¢å•å–®ç´°é …å…§å®¹
+					// Step2. ¨ÌDetail §ó·s­ì³æ¾Úª¬ºA,¨Ã®Ú¾ÚArray·s¼W·s¥æ´Á¸ß°İ³æ²Ó¶µ¤º®e
 					for (int i=0;i<aCustCancelPromiseCode.length-1;i++)
 					{  
 						for (int k=0;k<=choice.length-1;k++)    
 						{
-							// åˆ¤æ–·è¢«Check çš„Line æ‰åŸ·è¡Œå®¢æˆ¶é‡æ–°ç¢ºèªç”¢ç”Ÿæ–°è¨‚å–®äº¤æœŸä½œæ¥­
+							// §PÂ_³QCheck ªºLine ¤~°õ¦æ«È¤á­«·s½T»{²£¥Í·s­q³æ¥æ´Á§@·~
 							if (choice[k]==aCustCancelPromiseCode[i][0] || choice[k].equals(aCustCancelPromiseCode[i][0]))
 							{ 
 								sql="update ORADDMAN.TSDELIVERY_NOTICE_DETAIL  set REREQUEST_DATE=?,LAST_UPDATED_BY=?,LAST_UPDATE_DATE=?,LSTATUSID=?,LSTATUS=?,EDIT_CODE=? where DNDOCNO='"+dnDocNo+"' and TO_CHAR(LINE_NO)='"+aCustCancelPromiseCode[i][0]+"' ";     
 								pstmt=con.prepareStatement(sql);
-								// è‹¥æ¥­å‹™æœªé‡æ–°çµ¦å®šæ–°çš„äº¤æœŸéœ€æ±‚æ—¥,å‰‡ä»¥åŸéœ€æ±‚æ—¥ä½œç‚ºæ–°äº¤æœŸéœ€æ±‚æ—¥
+								// ­Y·~°È¥¼­«·sµ¹©w·sªº¥æ´Á»İ¨D¤é,«h¥H­ì»İ¨D¤é§@¬°·s¥æ´Á»İ¨D¤é
 								if (aCustCancelPromiseCode[i][6].equals("N/A")) aCustCancelPromiseCode[i][6] = aCustCancelPromiseCode[i][4];
-								pstmt.setString(1,aCustCancelPromiseCode[i][6]); // è¨­å®šçš„å®¢æˆ¶æ–°äº¤æœŸéœ€æ±‚æ—¥æœŸ    
-								pstmt.setString(2,userID); // æœ€å¾Œæ›´æ–°äººå“¡ 
-								pstmt.setString(3,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // æœ€å¾Œæ›´æ–°æ™‚é–“ 
+								pstmt.setString(1,aCustCancelPromiseCode[i][6]); // ³]©wªº«È¤á·s¥æ´Á»İ¨D¤é´Á    
+								pstmt.setString(2,userID); // ³Ì«á§ó·s¤H­û 
+								pstmt.setString(3,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // ³Ì«á§ó·s®É¶¡ 
 								pstmt.setString(4,sToStatusID);
 								pstmt.setString(5,sToStatusName);
-								pstmt.setString(6,"N/A"); // å›è¦†EDIT_CODEçš„åŸç‹€æ…‹  
+								pstmt.setString(6,"N/A"); // ¦^ÂĞEDIT_CODEªº­ìª¬ºA  
 								//pstmt.executeUpdate(); 
 								//pstmt.close();    
-								pstmt.executeQuery();// å…ˆå°‡åŸå–®æ“šç‹€æ…‹æ›´æ–°ç‚º(012=ABANDONNING)
+								pstmt.executeQuery();// ¥ı±N­ì³æ¾Úª¬ºA§ó·s¬°(012=ABANDONNING)
 									   
 			   
-								// å–æ­·ç¨‹æª”å…§å‰ä¸€å€‹ç‹€æ…‹è‡³ç›®å‰çš„æ™‚é–“å·®,åšç‚ºæœ¬æ¬¡æ­·ç¨‹çš„å·¥æ™‚_èµ·
+								// ¨ú¾úµ{ÀÉ¤º«e¤@­Óª¬ºA¦Ü¥Ø«eªº®É¶¡®t,°µ¬°¥»¦¸¾úµ{ªº¤u®É_°_
 								float processWorkTime = 0;
 								String preWorkTime = "0"; 			 
-								Statement stateHProcWT=con.createStatement();  // ORISTATUSID = '003' (å®¢æˆ¶æ”¾æ£„äº¤æœŸè©¢å–®é€å‡ºå‰ä¸€ç‹€æ…‹ç‚ºRESPONDING(007))
+								Statement stateHProcWT=con.createStatement();  // ORISTATUSID = '003' («È¤á©ñ±ó¥æ´Á¸ß³æ°e¥X«e¤@ª¬ºA¬°RESPONDING(007))
 								ResultSet rsHProcWT=stateHProcWT.executeQuery("select CDATETIME from ORADDMAN.TSDELIVERY_DETAIL_HISTORY where DNDOCNO='"+dnDocNo+"' and TO_CHAR(LINE_NO)='"+aCustCancelPromiseCode[i][0]+"' and ORISTATUSID ='007' ");
 								if (rsHProcWT.next())
 								{
@@ -2824,11 +2672,11 @@ try
 								rsHProcWT.close();
 								stateHProcWT.close();
 								
-								//è‹¥å–åˆ°å‰ä¸€å€‹ç‹€æ…‹æ™‚é–“,å‰‡ä»¥ç›®å‰æ™‚é–“æ¸›å»å‰
+								//­Y¨ú¨ì«e¤@­Óª¬ºA®É¶¡,«h¥H¥Ø«e®É¶¡´î¥h«e
 								if (preWorkTime!="0")
 								{
 									String sqlWT = "select ROUND((to_date('"+dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond() +"','YYYYMMDDHH24MISS') - to_date('"+preWorkTime+"','YYYYMMDDHH24MISS')) * 24,2) from DUAL ";
-									Statement stateWTime=con.createStatement();  // ORISTATUSID = '001' (è‰ç¨¿æ–‡ä»¶å‰ä¸€ç‹€æ…‹ä»ç‚ºè‰ç¨¿æ–‡ä»¶)
+									Statement stateWTime=con.createStatement();  // ORISTATUSID = '001' (¯ó½Z¤å¥ó«e¤@ª¬ºA¤´¬°¯ó½Z¤å¥ó)
 									ResultSet rsWTime=stateWTime.executeQuery(sqlWT);
 									if (rsWTime.next())
 									{
@@ -2837,10 +2685,10 @@ try
 									rsWTime.close();
 									stateWTime.close();
 								}
-								// å–æ­·ç¨‹æª”å…§å‰ä¸€å€‹ç‹€æ…‹è‡³ç›®å‰çš„æ™‚é–“å·®,åšç‚ºæœ¬æ¬¡æ­·ç¨‹çš„å·¥æ™‚_è¿„
+								// ¨ú¾úµ{ÀÉ¤º«e¤@­Óª¬ºA¦Ü¥Ø«eªº®É¶¡®t,°µ¬°¥»¦¸¾úµ{ªº¤u®É_¨´
 			   
-								//Step5. ä»»ä¸€Action,å¯«å…¥äº¤æœŸè©¢å•æ˜ç´°æ­·ç¨‹æª”
-								//STARTUP ====ä»¥ä¸‹ç‚ºå¯«å…¥è©²äº¤æœŸè©¢å•æ˜ç´°ä¹‹ç•°å‹•è¨˜éŒ„ 	 
+								//Step5. ¥ô¤@Action,¼g¤J¥æ´Á¸ß°İ©ú²Ó¾úµ{ÀÉ
+								//STARTUP ====¥H¤U¬°¼g¤J¸Ó¥æ´Á¸ß°İ©ú²Ó¤§²§°Ê°O¿ı 	 
 								int deliveryCount = 0;
 								Statement stateDeliveryCNT=con.createStatement(); 
 								ResultSet rsDeliveryCNT=stateDeliveryCNT.executeQuery("select count(*)+1 from ORADDMAN.TSDELIVERY_DETAIL_HISTORY  where DNDOCNO='"+dnDocNo+"' and TO_CHAR(LINE_NO)='"+aCustCancelPromiseCode[i][0]+"' ");
@@ -2865,27 +2713,27 @@ try
 								PreparedStatement historystmt=con.prepareStatement(historySql);   
 								historystmt.setString(1,dnDocNo); 
 								historystmt.setString(2,fromStatusID); 
-								historystmt.setString(3,oriStatus); //å¯«å…¥statusåç¨±
+								historystmt.setString(3,oriStatus); //¼g¤Jstatus¦WºÙ
 								historystmt.setString(4,actionID); 
 								historystmt.setString(5,actionName); 
 								historystmt.setString(6,userID); 
 								historystmt.setString(7,dateBean.getYearMonthDay()); 
 								historystmt.setString(8,dateBean.getHourMinuteSecond());
-								historystmt.setString(9,prodCodeGet); //å¯«å…¥å·¥å» ç·¨è™Ÿ
+								historystmt.setString(9,prodCodeGet); //¼g¤J¤u¼t½s¸¹
 								historystmt.setString(10,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond());
 								historystmt.setString(11,remark);
 								historystmt.setInt(12,deliveryCount);
-								historystmt.setInt(13,Integer.parseInt(aCustCancelPromiseCode[i][0])); // å¯«å…¥è™•ç†Line_No
+								historystmt.setInt(13,Integer.parseInt(aCustCancelPromiseCode[i][0])); // ¼g¤J³B²zLine_No
 								historystmt.setFloat(14,processWorkTime);		
 								//historystmt.executeUpdate();   
 								//historystmt.close(); 
 								historystmt.executeQuery();
 			
-								if (newDRQOption!=null && newDRQOption.equals("YES")) // è‹¥ä½¿ç”¨è€…é¸æ“‡è¦ä»¥åŸå–®æ“šå…§å®¹ç”¢ç”Ÿæ–°çš„äº¤æœŸè©¢å•å–®
+								if (newDRQOption!=null && newDRQOption.equals("YES")) // ­Y¨Ï¥ÎªÌ¿ï¾Ü­n¥H­ì³æ¾Ú¤º®e²£¥Í·sªº¥æ´Á¸ß°İ³æ
 								{ 		   
 									if (k==0)
 									{
-										//Step1 è‹¥æœ‰çµ¦å®šæ–°çš„äº¤æœŸ,å‰‡,ä¾é ­æª”å…ˆç”¢ç”Ÿäº¤æœŸå–®æ“š
+										//Step1 ­Y¦³µ¹©w·sªº¥æ´Á,«h,¨ÌÀYÀÉ¥ı²£¥Í¥æ´Á³æ¾Ú
 										sql=" insert into ORADDMAN.TSDELIVERY_NOTICE(DNDOCNO,TSAREANO,REQPERSONID,REQREASON,"+
 										    " TSCUSTOMERID,CUSTOMER,CUST_PO,CURR,REQUIRE_DATE,REMARK,STATUSID,STATUS,CREATED_BY,"+
 										    " TOPERSONID,ORDER_TYPE_ID,SOLD_TO_ORG,PRICE_LIST,SHIP_TO_ORG,SALESPERSON,"+
@@ -2901,7 +2749,7 @@ try
 										pstmt=con.prepareStatement(sql);          
 										pstmt.executeQuery();
 									}
-									// å†ç”¢ç”Ÿæ–°çš„å–®æ“šç´°é …
+									// ¦A²£¥Í·sªº³æ¾Ú²Ó¶µ
 									sql="insert into ORADDMAN.TSDELIVERY_NOTICE_DETAIL(DNDOCNO,"+
 									"LINE_NO,"+
 									"INVENTORY_ITEM_ID,"+
@@ -2982,12 +2830,12 @@ try
 				//write into db
 				con.commit();
 						
-				//###***  å®Œæˆå„è™•ç†å¾Œå³å°‡sessionå–åˆ°çš„Bean çš„å…§å®¹å€¼æ¸…ç©º(é¿å…äºŒæ¬¡å‚³é€)  *****###  
+				//###***  §¹¦¨¦U³B²z«á§Y±Nsession¨ú¨ìªºBean ªº¤º®e­È²MªÅ(Á×§K¤G¦¸¶Ç°e)  *****###  
 				if (aCustCancelPromiseCode!=null)  
 				{ 
 					array2DPromiseFactoryBean.setArray2DString(null);  
 				}
-				//åŸ·è¡ŒsendMailå‹•ä½œ
+				//°õ¦æsendMail°Ê§@
 				if (sendMailOption!=null && sendMailOption.equals("YES"))
 				{
 					sendMailBean.setMailHost(mailHost);
@@ -2995,7 +2843,7 @@ try
 					sendMailBean.setFrom(UserName);
 					sendMailBean.setSubject(CodeUtil.unicodeToBig5("Assignment from the Sales Delivery Request System"));	 
 					sendMailBean.setBody(CodeUtil.unicodeToBig5("Case No.:")+dnDocNo);	
-					if (typeNo.equals("001")) //å€åˆ¥ä¸€èˆ¬ç¶­ä¿®åŠDOA/DAPä»¶
+					if (typeNo.equals("001")) //°Ï§O¤@¯ëºû­×¤ÎDOA/DAP¥ó
 					{
 						sendMailBean.setUrlAddr(serverHostName+"/oradds/jsp/TSSalesEstimatingPage.jsp?DNDOCNO="+dnDocNo);
 					}    
@@ -3006,12 +2854,12 @@ try
 		catch (Exception e)
 		{	
 			errCnt++;
-			out.println("<font color='red'>å‹•ä½œå¤±æ•—!è«‹é€Ÿæ´½ç³»çµ±ç®¡ç†å“¡,è¬è¬!"+e.getMessage().toString()+"</font>");
+			out.println("<font color='red'>°Ê§@¥¢±Ñ!½Ğ³t¬¢¨t²ÎºŞ²z­û,ÁÂÁÂ!"+e.getMessage().toString()+"</font>");
 			con.rollback();
 		}//end of catch
   	}
   
-  	//è‹¥ç‚ºé‡æ–°æŒ‡æ´¾(REASSIGN)å‰‡å†åŸ·è¡Œä»¥ä¸‹å‹•ä½œ
+  	//­Y¬°­«·s«ü¬£(REASSIGN)«h¦A°õ¦æ¥H¤U°Ê§@
   	if (actionID.equals("006")) 
   	{
    		sql="update ORADDMAN.TSDELIVERY_NOTICE set TSMANUFACTORYNO=? where DNDOCNO='"+dnDocNo+"'";
@@ -3021,7 +2869,7 @@ try
    		pstmt.close();  
   	}
  
-  	// æ¥­å‹™è©¢å•å–®å–æ¶ˆ(ACTION=021)
+  	// ·~°È¸ß°İ³æ¨ú®ø(ACTION=021)
   	if (actionID.equals("021")) 
   	{
     	if (aRfqTemporaryCode!=null)
@@ -3044,7 +2892,7 @@ try
 		  		stateLT.close();
 		  
 		  		sql="delete ORADDMAN.TSDELIVERY_NOTICE_DETAIL "+
-	          	"where DNDOCNO='"+dnDocNo+"' ";    // è‹¥æ¸…å–®å…§å®¹>0,å…ˆå…¨åˆª,å†ä¾Arrayå…§å®¹æ¸…å–®æ–°å¢ 
+	          	"where DNDOCNO='"+dnDocNo+"' ";    // ­Y²M³æ¤º®e>0,¥ı¥ş§R,¦A¨ÌArray¤º®e²M³æ·s¼W 
           		pstmt=con.prepareStatement(sql); 
           		pstmt.executeUpdate(); 
           		pstmt.close();
@@ -3061,7 +2909,7 @@ try
 	  		for (int r=0;r<aRfqTemporaryCode.length-1;r++)
 	  		{	    
         		pstmt=con.prepareStatement(sqlDtl);
-				pstmt.setString(1,dnDocNo); //  è©¢å•å–®è™Ÿ 
+				pstmt.setString(1,dnDocNo); //  ¸ß°İ³æ¸¹ 
 				String invItemID = "0";	
 	    		String uom = "N/A";
 	    		String itemFactory = "N/A";
@@ -3123,7 +2971,7 @@ try
 						orderType= aRfqTemporaryCode[r][15].trim();
 					}
 				}
-				pstmt.setInt(2,r+1); // Line_No // çµ¦æ–™é …åºè™Ÿ	  
+				pstmt.setInt(2,r+1); // Line_No // µ¹®Æ¶µ§Ç¸¹	  
         		pstmt.setString(3,invItemID); // Inventory_Item_ID	  
 	    		pstmt.setString(4,aRfqTemporaryCode[r][1]); // Inventory_Item_Segment1
 	    		pstmt.setFloat(5,Float.parseFloat(aRfqTemporaryCode[r][3])); // Order Qty
@@ -3135,16 +2983,16 @@ try
 	    		pstmt.setInt(11,Integer.parseInt(defaultLineType)); // Default Order Line Type
 	    		pstmt.setString(12,aRfqTemporaryCode[r][4]); // Primary Unit of Measure
 	    		pstmt.setString(13,aRfqTemporaryCode[r][8]); // Remark
-	    		pstmt.setString(14,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); //å¯«å…¥æ—¥æœŸ
-        		pstmt.setString(15,userID); //å¯«å…¥User ID
-        		pstmt.setString(16,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); //æœ€å¾Œæ›´æ–°æ—¥æœŸ
-        		pstmt.setString(17,userID); //æœ€å¾Œæ›´æ–°User
+	    		pstmt.setString(14,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); //¼g¤J¤é´Á
+        		pstmt.setString(15,userID); //¼g¤JUser ID
+        		pstmt.setString(16,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); //³Ì«á§ó·s¤é´Á
+        		pstmt.setString(17,userID); //³Ì«á§ó·sUser
         		pstmt.setString(18,sToStatusID);
         		pstmt.setString(19,sToStatusName);
-	    		pstmt.setString(20,aRfqTemporaryCode[r][2]); //å°åŠå“è™Ÿèªªæ˜
-	    		pstmt.setString(21,"0"); //æœ€å°åŒ…è£è¨‚è³¼é‡	  
+	    		pstmt.setString(20,aRfqTemporaryCode[r][2]); //¥x¥b«~¸¹»¡©ú
+	    		pstmt.setString(21,"0"); //³Ì¤p¥]¸Ë­qÁÊ¶q	  
 				if (aRfqTemporaryCode[r][10]==null || aRfqTemporaryCode[r][10].equals("null")) aRfqTemporaryCode[r][10]= itemFactory;	
-        		pstmt.setString(22,aRfqTemporaryCode[r][10]); // ç”Ÿç”¢åœ° 2009/04/02 liling
+        		pstmt.setString(22,aRfqTemporaryCode[r][10]); // ¥Í²£¦a 2009/04/02 liling
 				pstmt.setString(23,aRfqTemporaryCode[r][9]); // Cust PO Number 2006/06/06 Add Kerwin  
         		float fSPQ = 0;
         		if (aRfqTemporaryCode[r].length > 9) 
@@ -3201,10 +3049,10 @@ try
 	    		pstmt.executeUpdate();
         		pstmt.close(); 	
 
-				// å–æ­·ç¨‹æª”å…§å‰ä¸€å€‹ç‹€æ…‹è‡³ç›®å‰çš„æ™‚é–“å·®,åšç‚ºæœ¬æ¬¡æ­·ç¨‹çš„å·¥æ™‚_èµ·
+				// ¨ú¾úµ{ÀÉ¤º«e¤@­Óª¬ºA¦Ü¥Ø«eªº®É¶¡®t,°µ¬°¥»¦¸¾úµ{ªº¤u®É_°_
 		      	float processWorkTime = 0;
 		      	String preWorkTime = "0"; 
-		      	Statement stateHProcWT=con.createStatement();  // ORISTATUSID = '001' (è‰ç¨¿æ–‡ä»¶å‰ä¸€ç‹€æ…‹ä»ç‚ºè‰ç¨¿æ–‡ä»¶)
+		      	Statement stateHProcWT=con.createStatement();  // ORISTATUSID = '001' (¯ó½Z¤å¥ó«e¤@ª¬ºA¤´¬°¯ó½Z¤å¥ó)
               	ResultSet rsHProcWT=stateHProcWT.executeQuery("select CDATETIME from ORADDMAN.TSDELIVERY_DETAIL_HISTORY "+
 				" where DNDOCNO='"+dnDocNo+"' and TO_CHAR(LINE_NO)='"+aRfqTemporaryCode[r][0]+"' and ORISTATUSID ='001' ");
 	          	if (rsHProcWT.next())
@@ -3213,11 +3061,11 @@ try
 			  	}
 			  	rsHProcWT.close();
 			  	stateHProcWT.close();
-           		//è‹¥å–åˆ°å‰ä¸€å€‹ç‹€æ…‹æ™‚é–“,å‰‡ä»¥ç›®å‰æ™‚é–“æ¸›å»å‰
+           		//­Y¨ú¨ì«e¤@­Óª¬ºA®É¶¡,«h¥H¥Ø«e®É¶¡´î¥h«e
 		    	if (preWorkTime!="0")
 		    	{
 			    	String sqlWT = "select ROUND((to_date('"+dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()+"','YYYYMMDDHH24MISS') - to_date('"+preWorkTime+"','YYYYMMDDHH24MISS')) * 24,2) from DUAL ";
-		        	Statement stateWTime=con.createStatement();  // ORISTATUSID = '001' (è‰ç¨¿æ–‡ä»¶å‰ä¸€ç‹€æ…‹ä»ç‚ºè‰ç¨¿æ–‡ä»¶)
+		        	Statement stateWTime=con.createStatement();  // ORISTATUSID = '001' (¯ó½Z¤å¥ó«e¤@ª¬ºA¤´¬°¯ó½Z¤å¥ó)
                 	ResultSet rsWTime=stateWTime.executeQuery(sqlWT);
 	            	if (rsWTime.next())
 		        	{
@@ -3226,9 +3074,9 @@ try
 			    	rsWTime.close();
 			    	stateWTime.close();
 				}
-				// å–æ­·ç¨‹æª”å…§å‰ä¸€å€‹ç‹€æ…‹è‡³ç›®å‰çš„æ™‚é–“å·®,åšç‚ºæœ¬æ¬¡æ­·ç¨‹çš„å·¥æ™‚_è¿„		
+				// ¨ú¾úµ{ÀÉ¤º«e¤@­Óª¬ºA¦Ü¥Ø«eªº®É¶¡®t,°µ¬°¥»¦¸¾úµ{ªº¤u®É_¨´		
 		
-		      	//Step5. ä»»ä¸€Action,å¯«å…¥äº¤æœŸè©¢å•æ˜ç´°æ­·ç¨‹æª”	          	 
+		      	//Step5. ¥ô¤@Action,¼g¤J¥æ´Á¸ß°İ©ú²Ó¾úµ{ÀÉ	          	 
 	          	int deliveryCount = 0;
 	          	Statement stateDeliveryCNT=con.createStatement(); 
               	ResultSet rsDeliveryCNT=stateDeliveryCNT.executeQuery("select count(*)+1 from ORADDMAN.TSDELIVERY_DETAIL_HISTORY "+
@@ -3259,17 +3107,17 @@ try
 	          	PreparedStatement historystmt=con.prepareStatement(historySql);   
               	historystmt.setString(1,dnDocNo); 
               	historystmt.setString(2,fromStatusID); 
-              	historystmt.setString(3,oriStatus); //å¯«å…¥statusåç¨±
+              	historystmt.setString(3,oriStatus); //¼g¤Jstatus¦WºÙ
               	historystmt.setString(4,actionID); 
               	historystmt.setString(5,actionName); 
               	historystmt.setString(6,userID); 
               	historystmt.setString(7,dateBean.getYearMonthDay()); 
               	historystmt.setString(8,dateBean.getHourMinuteSecond());
-              	historystmt.setString(9,prodCodeGet); //å¯«å…¥å·¥å» ç·¨è™Ÿ
+              	historystmt.setString(9,prodCodeGet); //¼g¤J¤u¼t½s¸¹
               	historystmt.setString(10,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond());
               	historystmt.setString(11,remark);
               	historystmt.setInt(12,deliveryCount);
-		      	historystmt.setInt(13,Integer.parseInt(aRfqTemporaryCode[r][0])); // å¯«å…¥è™•ç†Line_No
+		      	historystmt.setInt(13,Integer.parseInt(aRfqTemporaryCode[r][0])); // ¼g¤J³B²zLine_No
 		      	historystmt.setFloat(14,processWorkTime);		
 		      	historystmt.executeUpdate();   
               	historystmt.close(); 
@@ -3278,8 +3126,8 @@ try
      	sql="update ORADDMAN.TSDELIVERY_NOTICE set LAST_UPDATED_BY=?,LAST_UPDATE_DATE=? "+
 	     "where DNDOCNO='"+dnDocNo+"' ";     
      	pstmt=con.prepareStatement(sql);      
-     	pstmt.setString(1,userID); // æœ€å¾Œæ›´æ–°äººå“¡
-	 	pstmt.setString(2,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // æœ€å¾Œæ›´æ–°æ™‚é–“     
+     	pstmt.setString(1,userID); // ³Ì«á§ó·s¤H­û
+	 	pstmt.setString(2,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond()); // ³Ì«á§ó·s®É¶¡     
      	pstmt.executeUpdate(); 
      	pstmt.close();      
 		if (aRfqTemporaryCode!=null)
@@ -3288,8 +3136,8 @@ try
 		}
   	}
  
-    //Step5. ä»»ä¸€Action,å¯«å…¥äº¤æœŸè©¢å•æ­·ç¨‹æª”
-	//STARTUP ====ä»¥ä¸‹ç‚ºå¯«å…¥è©²äº¤æœŸè©¢å•ä¹‹ç•°å‹•è¨˜éŒ„  
+    //Step5. ¥ô¤@Action,¼g¤J¥æ´Á¸ß°İ¾úµ{ÀÉ
+	//STARTUP ====¥H¤U¬°¼g¤J¸Ó¥æ´Á¸ß°İ¤§²§°Ê°O¿ı  
 	if (errCnt==0) //modify by Peggy 20120307
 	{
 		int deliveryCount = 0;
@@ -3318,22 +3166,22 @@ try
 		PreparedStatement historystmt=con.prepareStatement(historySql);   
 		historystmt.setString(1,dnDocNo); 
 		historystmt.setString(2,fromStatusID); 
-		historystmt.setString(3,oriStatus); //å¯«å…¥statusåç¨±
+		historystmt.setString(3,oriStatus); //¼g¤Jstatus¦WºÙ
 		historystmt.setString(4,actionID); 
 		historystmt.setString(5,actionName); 
 		historystmt.setString(6,userID); 
 		historystmt.setString(7,dateBean.getYearMonthDay()); 
 		historystmt.setString(8,dateBean.getHourMinuteSecond());
-		historystmt.setString(9,prodCodeGet); //å¯«å…¥å·¥å» ç·¨è™Ÿ
+		historystmt.setString(9,prodCodeGet); //¼g¤J¤u¼t½s¸¹
 		historystmt.setString(10,dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond());
-		//add by Peggy 20111103,è¨˜éŒ„è‰ç¨¿è©¢å•å–®å–æ¶ˆåŸå› 
+		//add by Peggy 20111103,°O¿ı¯ó½Z¸ß°İ³æ¨ú®ø­ì¦]
 		if (fromStatusID.equals("001") && actionID.equals("013"))
 		{
-			historystmt.setString(11,CancelReason); // å–æ¶ˆè©¢å•å–®åŸå› èªªæ˜
+			historystmt.setString(11,CancelReason); // ¨ú®ø¸ß°İ³æ­ì¦]»¡©ú
 		}
 		else
 		{
-			historystmt.setString(11,remark); // æœ¬æ¬¡è™•ç†èªªæ˜æ¬„ä½
+			historystmt.setString(11,remark); // ¥»¦¸³B²z»¡©úÄæ¦ì
 		}
 		historystmt.setInt(12,deliveryCount);		
 		historystmt.executeUpdate();   
@@ -3360,7 +3208,7 @@ try
 						sendMailBean.setFrom(UserName);   	 	 
 						sendMailBean.setSubject(CodeUtil.unicodeToBig5("RFQ System Document Approvement Notification"));	            
 						sendMailBean.setUrlName("Dear "+rsList.getString("USERNAME")+",\n"+
-						CodeUtil.unicodeToBig5("   è«‹é»æ“Šä¾†è‡ªäº¤æœŸè©¢å•ç³»çµ±çš„éƒµä»¶:å·¥å» è¦æ±‚é‡æ–°æŒ‡æ´¾ç”¢åœ°-("+dnDocNo+")"));   	 
+						CodeUtil.unicodeToBig5("   ½ĞÂIÀ»¨Ó¦Û¥æ´Á¸ß°İ¨t²Îªº¶l¥ó:¤u¼t­n¨D­«·s«ü¬£²£¦a-("+dnDocNo+")"));   	 
 						sendMailBean.setUrlAddr(serverHostName+":8080/oradds/jsp/TSSalesDRQAssigningPage.jsp?DNDOCNO="+dnDocNo);
 						sendMailBean.sendMail();
 					}
@@ -3374,9 +3222,9 @@ try
 
 		out.println("<BR>Processing Sales Delivery Request value(RFQ NO.:<A HREF='TSSalesDRQDisplayPage.jsp?DNDOCNO="+dnDocNo+"'><font color=#FF0000>"+dnDocNo+"</font></A>) OK!");
 	  
-		if (actionID.equals("013")) //è‹¥ç‚ºå€‰ç®¡ç™¼æ–™ç¢ºèª(ISSUE)å‰‡å†åŸ·è¡Œä»¥ä¸‹å‹•ä½œ
+		if (actionID.equals("013")) //­Y¬°­ÜºŞµo®Æ½T»{(ISSUE)«h¦A°õ¦æ¥H¤U°Ê§@
 		{
-			if (newDRQOption!=null && newDRQOption.equals("YES")) // è‹¥ä½¿ç”¨è€…é¸æ“‡è¦ä»¥åŸå–®æ“šå…§å®¹ç”¢ç”Ÿæ–°çš„äº¤æœŸè©¢å•å–®
+			if (newDRQOption!=null && newDRQOption.equals("YES")) // ­Y¨Ï¥ÎªÌ¿ï¾Ü­n¥H­ì³æ¾Ú¤º®e²£¥Í·sªº¥æ´Á¸ß°İ³æ
 			{ 	
 				out.println("<BR>&nbsp;<A HREF='TSSalesDRQTemporaryPage.jsp?DNDOCNO="+seqno+"&LSTATUSID=001'>");%><<jsp:getProperty name="rPH" property="pgRefresh"/>><jsp:getProperty name="rPH" property="pgSalesDRQ"/><%out.println("("+seqno+")</A><BR>"); 
 			}
@@ -3394,7 +3242,7 @@ try
 	{
 	%>
 		<script language="JavaScript" type="text/JavaScript">
-		if (confirm("æ˜¯å¦è¦ç¹¼çºŒä¸Šå‚³åŒ¯å…¥RFQ?"))
+		if (confirm("¬O§_­nÄ~Äò¤W¶Ç¶×¤JRFQ?"))
 		{
 			document.location.href="../jsp/TscJapanExlRfqUpload.jsp";
 		}
@@ -3453,7 +3301,7 @@ catch (Exception e)
 </FORM>
 </body>
 <!--%@ include file="/jsp/include/ProgressStatusBarStop.jsp"%-->
-<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->
+<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 </html>
