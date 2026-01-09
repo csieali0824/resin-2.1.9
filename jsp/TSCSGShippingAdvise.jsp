@@ -625,7 +625,7 @@ else
 			}
 			sql += "ORDER BY SCHEDULE_SHIP_DATE,SALES_GROUP, SHIP_METHOD, SHIPPING_REMARK, ORDER_NUMBER, LINE_ID, DESCRIPTION";
 			//out.println(sql);
-			System.out.println(sql);
+//			System.out.println(sql);
 			PreparedStatement statement = con.prepareStatement(sql);
 			statement.setString(1,SDATE);
 			statement.setString(2,SDATE);
