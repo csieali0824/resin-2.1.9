@@ -304,8 +304,6 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 11px }
 <jsp:useBean id="workingDateBean" scope="page" class="WorkingDateBean"/>
 <jsp:useBean id="MOShipBean" scope="session" class="Array2DimensionInputBean"/>
 <%
-request.setCharacterEncoding("UTF-8");
-response.setContentType("text/html; charset=utf-8");
 String SDATE = request.getParameter("SDATE");
 if (SDATE==null) SDATE="";
 String EDATE = request.getParameter("EDATE");
@@ -627,7 +625,7 @@ else
 			}
 			sql += "ORDER BY SCHEDULE_SHIP_DATE,SALES_GROUP, SHIP_METHOD, SHIPPING_REMARK, ORDER_NUMBER, LINE_ID, DESCRIPTION";
 			//out.println(sql);
-//			System.out.println(sql);
+			System.out.println(sql);
 			PreparedStatement statement = con.prepareStatement(sql);
 			statement.setString(1,SDATE);
 			statement.setString(2,SDATE);
