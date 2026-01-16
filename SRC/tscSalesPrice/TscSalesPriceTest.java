@@ -14,7 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.*;
 
-import static tscSalesPrice.TscSalesPriceType.TSC;
+import static tscSalesPrice.TscSalesPriceType.TS;
 
 public class TscSalesPriceTest {
     private static Connection conn;
@@ -474,7 +474,7 @@ public class TscSalesPriceTest {
         int freezeCol = 0;
         String folder = "";
         List<Map<String, Object>> dataList = new ArrayList<>();
-        TscSalesPriceType str = TSC;
+        TscSalesPriceType str = TS;
         switch (str) {
             case TSC:
                 System.out.println("TSCE_ITEM");
@@ -643,28 +643,11 @@ public class TscSalesPriceTest {
                 "           ELSE a.COO_CODE\n" +
                 "       END\n" +
                 "           COO,\n" +
-                "       CASE a.TSC_PROD_GROUP\n" +
-                "           WHEN 'PRD'\n" +
-                "           THEN\n" +
-                "               CASE\n" +
-                "                   WHEN SUBSTR (a.segment1, 11, 1) IN ('2', 'H') THEN 'Yes'\n" +
-                "                   ELSE ''\n" +
-                "               END\n" +
-                "           WHEN 'SSD'\n" +
-                "           THEN\n" +
-                "               CASE\n" +
-                "                   WHEN SUBSTR (a.segment1, 11, 1) IN ('2', 'H') THEN 'Yes'\n" +
-                "                   ELSE ''\n" +
-                "               END\n" +
-                "           WHEN 'PMD'\n" +
-                "           THEN\n" +
-                "               CASE\n" +
-                "                   WHEN SUBSTR (a.segment1, 11, 2) = 'TP' THEN 'Yes'\n" +
-                "                   ELSE ''\n" +
-                "               END\n" +
-                "           ELSE\n" +
-                "               ''\n" +
-                "       END\n" +
+                "        CASE WHEN SUBSTR (a.segment1, 11, 1) IN ('2', 'H') THEN 'Yes'\n" +
+                "             WHEN (SUBSTR (a.segment1, 11, 2) = 'TP' OR SUBSTR (a.segment1, 11, 2) = 'TS') THEN 'Yes'    \n" +
+                "             ELSE\n" +
+                "                  ''\n" +
+                "        END\n" +
                 "           AEC_Q101,\n" +
                 "       tsc_packing_info_preferred (a.inventory_item_id)\n" +
                 "           prefeered_packing_code_flag,\n" +
@@ -874,14 +857,10 @@ public class TscSalesPriceTest {
                 "               AND tsc_get_item_packing_code (43, msi.inventory_item_id) =\n" +
                 "                       tpcl.packing_code(+)\n" +
 // todo
-               "and msi.segment1 in('020D-H11QQ21UGS20J000000000F00',\n" +
-                "                                    '020DAH11QQ21UGS20J000000000F00',\n" +
-                "                                    '8001-031QQ111JM000000000000F00',\n" +
-                "                                    '8001-031MS211JM000000200000F00',\n" +
-                "                                    '8001-031RS211JM000000200000F00',\n" +
-                "                                    '8001-031QQ211JM000000000000F00',\n" +
-                "                                    '8001-031QQ211JM000000800000F00',\n" +
-                "                                    '8001-031QQ211JM0000000RLRAAFA2'\n" +
+               "and msi.segment1 in('I02G-SSEQQTPF06065G10000000F00',\n" +
+                "                                    'I02G-SSEQQTPF06065G1000000AF00',\n" +
+                "                                    'I02G-SSEQQTPF08065G10000000F00',\n" +
+                "                                    'I02G-SSEQQTPF08065G1000000AF00'\n" +
                 "                )\n" +
                 "               AND msi.ITEM_TYPE = 'FG'\n" +
 //                "               AND msi.INVENTORY_ITEM_STATUS_CODE <> 'Inactive'\n" +
@@ -1070,10 +1049,13 @@ public class TscSalesPriceTest {
                 "        case when substr(a.ITEM_DESC1,-3)='-ON' then null else nvl(tpi.PART_NO_LIST,tpii.PART_NO_LIST) end PART_NO_LIST1 ,\n" +
                 "        row_number() over(partition by a.SEGMENT1 order by decode(a.ITEM_DESC1,nvl(tpi.part_no_list,tpii.part_no_list),1,2)) item_cnt,\n" +
                 "        fair.cust_partno fairchild_cpn,case when  a.attribute3 ='005' and a.tw_vendor_flag='N' then 'CHINA' else a.COO_CODE end COO,\n" +
-                "        case a.TSC_PROD_GROUP when 'PRD' then case when substr(a.segment1,11,1) in ('2','H') then 'Yes' else '' end \n" +
-                "        when 'SSD' then case when substr(a.segment1,11,1) in ('2','H') then 'Yes' else '' end\n" +
-                "        when 'PMD' then case when substr(a.segment1,11,2) ='TP' then 'Yes' else '' end\n" +
-                "        else '' end AEC_Q101,tsc_packing_info_preferred(a.inventory_item_id) prefeered_packing_code_flag,\n" +
+                "        CASE WHEN SUBSTR (a.segment1, 11, 1) IN ('2', 'H') THEN 'Yes'\n" +
+                "             WHEN (SUBSTR (a.segment1, 11, 2) = 'TP' OR SUBSTR (a.segment1, 11, 2) = 'TS') THEN 'Yes'    \n" +
+                "             ELSE\n" +
+                "                  ''\n" +
+                "        END\n" +
+                "           AEC_Q101,\n" +
+                "        tsc_packing_info_preferred(a.inventory_item_id) prefeered_packing_code_flag,\n" +
                 "        (select distinct pl_category from oraddman.ts_pl_category ttpc \n" +
                 "        where ttpc.TSC_PROD_GROUP=a.TSC_PROD_GROUP \n" +
                 "        and NVL(ttpc.TSC_PROD_CATEGORY,a.TSC_PROD_CATEGORY)=a.TSC_PROD_CATEGORY \n" +

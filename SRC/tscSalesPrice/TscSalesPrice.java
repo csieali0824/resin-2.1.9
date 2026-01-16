@@ -606,29 +606,12 @@ public class TscSalesPrice {
                 "           ELSE a.COO_CODE\n" +
                 "       END\n" +
                 "           COO,\n" +
-                "       CASE a.TSC_PROD_GROUP\n" +
-                "           WHEN 'PRD'\n" +
-                "           THEN\n" +
-                "               CASE\n" +
-                "                   WHEN SUBSTR (a.segment1, 11, 1) IN ('2', 'H') THEN 'Yes'\n" +
-                "                   ELSE ''\n" +
-                "               END\n" +
-                "           WHEN 'SSD'\n" +
-                "           THEN\n" +
-                "               CASE\n" +
-                "                   WHEN SUBSTR (a.segment1, 11, 1) IN ('2', 'H') THEN 'Yes'\n" +
-                "                   ELSE ''\n" +
-                "               END\n" +
-                "           WHEN 'PMD'\n" +
-                "           THEN\n" +
-                "               CASE\n" +
-                "                   WHEN SUBSTR (a.segment1, 11, 2) = 'TP' THEN 'Yes'\n" +
-                "                   ELSE ''\n" +
-                "               END\n" +
-                "           ELSE\n" +
-                "               ''\n" +
+                "       CASE WHEN SUBSTR (a.segment1, 11, 1) IN ('2', 'H') THEN 'Yes'\n" +
+                "            WHEN (SUBSTR (a.segment1, 11, 2) = 'TP' OR SUBSTR (a.segment1, 11, 2) = 'TS') THEN 'Yes'    \n" +
+                "            ELSE\n" +
+                "                 ''\n" +
                 "       END\n" +
-                "           AEC_Q101,\n" +
+                "          AEC_Q101,\n" +
                 "       tsc_packing_info_preferred (a.inventory_item_id)\n" +
                 "           prefeered_packing_code_flag,\n" +
                 "       (SELECT LISTAGG (pl_category, ',') WITHIN GROUP (ORDER BY pl_category)\n" +
@@ -1025,10 +1008,13 @@ public class TscSalesPrice {
                 "        case when substr(a.ITEM_DESC1,-3)='-ON' then null else nvl(tpi.PART_NO_LIST,tpii.PART_NO_LIST) end PART_NO_LIST1 ,\n" +
                 "        row_number() over(partition by a.SEGMENT1 order by decode(a.ITEM_DESC1,nvl(tpi.part_no_list,tpii.part_no_list),1,2)) item_cnt,\n" +
                 "        fair.cust_partno fairchild_cpn,case when  a.attribute3 ='005' and a.tw_vendor_flag='N' then 'CHINA' else a.COO_CODE end COO,\n" +
-                "        case a.TSC_PROD_GROUP when 'PRD' then case when substr(a.segment1,11,1) in ('2','H') then 'Yes' else '' end \n" +
-                "        when 'SSD' then case when substr(a.segment1,11,1) in ('2','H') then 'Yes' else '' end\n" +
-                "        when 'PMD' then case when substr(a.segment1,11,2) ='TP' then 'Yes' else '' end\n" +
-                "        else '' end AEC_Q101,tsc_packing_info_preferred(a.inventory_item_id) prefeered_packing_code_flag,\n" +
+                "        CASE WHEN SUBSTR (a.segment1, 11, 1) IN ('2', 'H') THEN 'Yes'\n" +
+                "             WHEN (SUBSTR (a.segment1, 11, 2) = 'TP' OR SUBSTR (a.segment1, 11, 2) = 'TS') THEN 'Yes'    \n" +
+                "             ELSE\n" +
+                "                  ''\n" +
+                "        END\n" +
+                "           AEC_Q101,\n" +
+                "        tsc_packing_info_preferred(a.inventory_item_id) prefeered_packing_code_flag,\n" +
                 "        (select distinct pl_category from oraddman.ts_pl_category ttpc \n" +
                 "        where ttpc.TSC_PROD_GROUP=a.TSC_PROD_GROUP \n" +
                 "        and NVL(ttpc.TSC_PROD_CATEGORY,a.TSC_PROD_CATEGORY)=a.TSC_PROD_CATEGORY \n" +
