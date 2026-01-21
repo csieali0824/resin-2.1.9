@@ -92,7 +92,6 @@
 					"case when b.assign_manufact in ('011') and a.rfq_type<>'3'\n" +
 					"     and tsc_tew_pmd_coo(b.inventory_item_id) = 'Y' then 'T' \n" +
 					"     when b.assign_manufact IN ('011') and a.rfq_type=3 then (SELECT ALNAME FROM ORADDMAN.TSPROD_MANUFACTORY WHERE MANUFACTORY_NO=b.assign_manufact)\n" +
-					"     when b.assign_manufact in ('011') and '"+salesAreaNo+"' = '008' and b.item_description in('TQM2N7002KCU RFG', 'TQM2N7002KCX RFG', 'TQM138KDCU6 RFG') then 'T' \n" +
 					"     else (SELECT ALNAME FROM ORADDMAN.TSPROD_MANUFACTORY WHERE MANUFACTORY_NO=b.assign_manufact) end \n" +
 					",NVL(decode(b.orderno,'N/A',null,b.orderno),(SELECT order_num from oraddman.tsarea_ordercls oto where oto.sarea_no=a.tsareano and oto.otype_id=nvl(b.ORDER_TYPE_ID,a.ORDER_TYPE_ID))),b.inventory_item_id,b.assign_manufact,a.tscustomerid,case when b.SASCODATE<>'N/A' then substr(b.SASCODATE,1,8) else to_char(sysdate,'yyyymmdd') end,nvl(b.CUST_PO_NUMBER,a.CUST_PO)) * CASE WHEN b.direct_ship_to_cust =1  and b.assign_manufact='002' THEN 0 ELSE 1 END as totw_days"+ //add by Peggy 20200916
 					",to_char(to_date(b.creation_date,'yyyymmddhh24miss'),'yyyy/mm/dd hh24:mi') creation_date"+//add by Peggy 20200326
@@ -100,7 +99,6 @@
 					"case when b.assign_manufact in ('011') and a.rfq_type<>'3'\n" +
 					"     and tsc_tew_pmd_coo(b.inventory_item_id) = 'Y' then 'T' \n" +
 					"     when b.assign_manufact IN ('011') and a.rfq_type=3 then (SELECT ALNAME FROM ORADDMAN.TSPROD_MANUFACTORY WHERE MANUFACTORY_NO=b.assign_manufact)\n" +
-					"     when b.assign_manufact in ('011') and '"+salesAreaNo+"' = '008' and b.item_description in('TQM2N7002KCU RFG', 'TQM2N7002KCX RFG', 'TQM138KDCU6 RFG') then 'T' \n" +
 					"     else (SELECT ALNAME FROM ORADDMAN.TSPROD_MANUFACTORY WHERE MANUFACTORY_NO=b.assign_manufact) end \n" +
 					",NVL(decode(b.orderno,'N/A',null,b.orderno),(SELECT order_num from oraddman.tsarea_ordercls oto where oto.sarea_no=a.tsareano and oto.otype_id=nvl(b.ORDER_TYPE_ID,a.ORDER_TYPE_ID))),b.inventory_item_id,b.assign_manufact,a.tscustomerid,case when b.SASCODATE<>'N/A' then substr(b.SASCODATE,1,8) else to_char(sysdate,'yyyymmdd') end,nvl(b.CUST_PO_NUMBER,a.CUST_PO)) * CASE WHEN b.direct_ship_to_cust =1  and b.assign_manufact='002' THEN 0 ELSE 1 END,'yyyy/mm/dd') as factory_ssd"+
 					",moq.moq/1000 moq"+ //add by Peggy 20211206
