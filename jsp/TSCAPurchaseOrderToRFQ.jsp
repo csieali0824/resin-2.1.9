@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.net.*,java.io.*,java.text.*,java.lang.*,java.util.*"%>
+<%@ page contentType="text/html; charset=big5" language="java" import="java.sql.*,java.net.*,java.io.*,java.text.*,java.lang.*,java.util.*"%>
 <html>
 <head>
 <STYLE TYPE='text/css'>  
@@ -12,7 +12,7 @@
   A:visited { color: #990066; text-decoration: underline }
 </STYLE>
 <title>PC Request Order Revise</title>
-<!--=============ä»¥ä¸‹å€æ®µç‚ºå®‰å…¨èªè­‰æ©Ÿåˆ¶==========-->
+<!--=============¥H¤U°Ï¬q¬°¦w¥þ»{ÃÒ¾÷¨î==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
@@ -491,15 +491,15 @@ try
 				  " a.creation_date, a.created_by, a.err_msg,b.manufactory_name"+
 				  " ,row_number() over (partition by a.job_group_id,a.end_customer_id order by ITEM_DESCRIPTION,CUST_REQUIRED_DATE) cust_row_seq"+
 				  " ,count(1) over (partition by a.job_group_id,a.end_customer_id) cust_row_cnt"+
-				  " ,sum(case when a.err_msg is not null and instr(a.err_msg,'åƒ¹æ ¼')<=0 then 1 else 0 end) over (partition by a.job_group_id,a.end_customer_id) cust_err_cnt"+
+				  " ,sum(case when a.err_msg is not null and instr(a.err_msg,'»ù®æ')<=0 then 1 else 0 end) over (partition by a.job_group_id,a.end_customer_id) cust_err_cnt"+
 				  " FROM oraddman.tsrfq_import_iface a"+
 				  ",oraddman.tsprod_manufactory b"+
 				  ",ont.oe_order_lines_all c"+
 				  " where JOB_GROUP_ID=?"+
 				  " and a.source_line_id=c.line_id(+)"+
 				  " and a.end_customer_id=nvl(?,a.end_customer_id)"+
-				  " and a.plant_code=b.manufactory_no(+)"+
-				  " ORDER BY JOB_GROUP_ID ,END_CUSTOMER_ID,ITEM_DESCRIPTION,CUST_REQUIRED_DATE";
+				  " and a.plant_code=b.manufactory_no(+)";
+//				  " ORDER BY JOB_GROUP_ID ,END_CUSTOMER_ID,ITEM_DESCRIPTION,CUST_REQUIRED_DATE";
 			//out.println(v_job_id);
 			//out.println(END_CUST);
 			//out.println(sql);
@@ -558,7 +558,7 @@ try
 				%>
 					<td align="center">
 					<%
-					if (rs.getString("ERR_MSG")==null || rs.getString("ERR_MSG").indexOf("åƒ¹æ ¼")>=0)
+					if (rs.getString("ERR_MSG")==null || rs.getString("ERR_MSG").indexOf("»ù®æ")>=0)
 					{
 					%>
 					<input type="checkbox" name="chkline_<%=rs.getString("job_group_id")%>_<%=rs.getString("end_customer_id")%>" value="<%=rs.getString("source_line_id")%>">
@@ -840,7 +840,7 @@ catch (Exception e)
 %>
 </FORM>
 <iframe width=124 height=153 name="gToday:supermini:agenda.js" id="gToday:supermini:agenda.js" src="../calendar/ipopeng.htm" scrolling="no" frameborder="0" style="visibility:hidden; z-index:65535; position:absolute; top:0px;"></iframe>
-<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->
+<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 </body>
