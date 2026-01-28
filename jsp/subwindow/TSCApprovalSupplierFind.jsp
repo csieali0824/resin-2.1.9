@@ -140,9 +140,9 @@ function sendToMainWindow(VendorSiteCode,VendorSiteId)
               "  AND ood.organization_id = hl.inventory_organization_id"+
               "  AND b.org_id  IN (?)"+
 			  "  and ood.organization_code in (?)"+
-              //"  and exists (select 1 from oraddman.tssg_vendor_tw x where x.vendor_site_id=b.VENDOR_SITE_ID and nvl(x.active_flag,'N')='A')"+
-              "  and (exists (select 1 from oraddman.tssg_vendor_tw x where x.vendor_site_id=b.VENDOR_SITE_ID and nvl(x.active_flag,'N')='A')"+
-              "  or exists (select 1 from inv.mtl_system_items_b x where x.organization_id=49 and x.attribute3='011' and x.inventory_item_id=d.item_id))"+  //add by Peggy 20200406
+              "  and exists (select 1 from oraddman.tssg_vendor_tw x where x.vendor_site_id=b.VENDOR_SITE_ID and nvl(x.active_flag,'N')='A')"+
+//              "  and (exists (select 1 from oraddman.tssg_vendor_tw x where x.vendor_site_id=b.VENDOR_SITE_ID and nvl(x.active_flag,'N')='A')"+
+//              "  or exists (select 1 from inv.mtl_system_items_b x where x.organization_id=49 and x.attribute3='011' and x.inventory_item_id=d.item_id))"+  //add by Peggy 20200406
               "  and (b.inactive_date is null or b.INACTIVE_DATE > trunc(sysdate)) "+                             
               "  order by 7,2";	  
 		//out.println(sql);
