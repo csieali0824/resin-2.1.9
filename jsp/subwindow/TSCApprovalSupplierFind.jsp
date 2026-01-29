@@ -1,5 +1,5 @@
-<!-- 20180207 Peggy,ä¾›æ‡‰å•†=è˜‡å›ºä¸”è¨‚å–®é¡žåž‹=1142,è¨‚å–®é¡žåž‹è‡ªå‹•è½‰æ›ç‚º1141, FOBè¨­å®šç‚ºFOB TAIWAN-->
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.text.*"%>
+<!-- 20180207 Peggy,¨ÑÀ³°Ó=Ä¬©T¥B­q³æÃþ«¬=1142,­q³æÃþ«¬¦Û°ÊÂà´«¬°1141, FOB³]©w¬°FOB TAIWAN-->
+<%@ page contentType="text/html; charset=big5" language="java" import="java.sql.*,java.text.*"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
 <%@ page import="SalesDRQPageHeaderBean" %>
@@ -69,7 +69,7 @@ function sendToMainWindow(VendorSiteCode,VendorSiteId)
 		// 	  " and a.ITEM_ID='"+ITEMID+"'"+
 		//	  " and a.vendor_id=c.vendor_id"+
 		// 	  " and a.vendor_site_id = b.vendor_site_id";
-		//modify by Peggy 20140806,SSPç”¢ç”Ÿé¡¯ç¤ºå–®åƒ¹,å–®åƒ¹ç”±å°åˆ°å¤§æŽ’åº
+		//modify by Peggy 20140806,SSP²£¥ÍÅã¥Ü³æ»ù,³æ»ù¥Ñ¤p¨ì¤j±Æ§Ç
 		/*sql = " select c.VENDOR_NAME,a.VENDOR_SITE_ID, b.vendor_site_code ,d.CURRENCY_CODE,nvl(d.unit_price,0) unit_price ,tsc_om_category(a.item_id,a.OWNING_ORGANIZATION_ID,'TSC_PROD_GROUP') TSC_PROD_GROUP"+
               " from PO_APPROVED_SUPPLIER_LIST a ,ap.ap_supplier_sites_all b,ap.ap_suppliers c,"+
               " (select x.vendor_site_id,x.CURRENCY_CODE,y.item_id,y.unit_price from po_headers_all x,po_lines_all y"+
@@ -140,9 +140,9 @@ function sendToMainWindow(VendorSiteCode,VendorSiteId)
               "  AND ood.organization_id = hl.inventory_organization_id"+
               "  AND b.org_id  IN (?)"+
 			  "  and ood.organization_code in (?)"+
-              "  and exists (select 1 from oraddman.tssg_vendor_tw x where x.vendor_site_id=b.VENDOR_SITE_ID and nvl(x.active_flag,'N')='A')"+
-//              "  and (exists (select 1 from oraddman.tssg_vendor_tw x where x.vendor_site_id=b.VENDOR_SITE_ID and nvl(x.active_flag,'N')='A')"+
-//              "  or exists (select 1 from inv.mtl_system_items_b x where x.organization_id=49 and x.attribute3='011' and x.inventory_item_id=d.item_id))"+  //add by Peggy 20200406
+              //"  and exists (select 1 from oraddman.tssg_vendor_tw x where x.vendor_site_id=b.VENDOR_SITE_ID and nvl(x.active_flag,'N')='A')"+
+              "  and (exists (select 1 from oraddman.tssg_vendor_tw x where x.vendor_site_id=b.VENDOR_SITE_ID and nvl(x.active_flag,'N')='A')"+
+              "  or exists (select 1 from inv.mtl_system_items_b x where x.organization_id=49 and x.attribute3='011' and x.inventory_item_id=d.item_id))"+  //add by Peggy 20200406
               "  and (b.inactive_date is null or b.INACTIVE_DATE > trunc(sysdate)) "+                             
               "  order by 7,2";	  
 		//out.println(sql);
@@ -167,13 +167,13 @@ function sendToMainWindow(VendorSiteCode,VendorSiteId)
 				<TABLE width="80%" border="1" bordercolor="#0099CC" style="font-family:ARIAL;font-size:12px">
 					<TR bgcolor="#CCCCCC">
 						<TD>&nbsp;</TD>        
-						<TD>ä¾›æ‡‰å•†</TD>        
-						<TD>ä¾›æ‡‰å•†Site</TD>   
+						<TD>¨ÑÀ³°Ó</TD>        
+						<TD>¨ÑÀ³°ÓSite</TD>   
 				<%
 					if (rs.getString("tsc_prod_group").toUpperCase().equals("SSD"))
 					{
-						out.println("<td>å–®åƒ¹</td>");
-						out.println("<td>å¹£åˆ¥</td>");
+						out.println("<td>³æ»ù</td>");
+						out.println("<td>¹ô§O</td>");
 					}
 				%>     
 					</TR>
@@ -213,7 +213,7 @@ function sendToMainWindow(VendorSiteCode,VendorSiteId)
 		}
 		else
 		{
-			out.println("<font color='red'>æŸ¥ç„¡è³‡æ–™!!!</font>");
+			out.println("<font color='red'>¬dµL¸ê®Æ!!!</font>");
 		}
 	} //end of try
     catch (Exception e)
@@ -222,9 +222,9 @@ function sendToMainWindow(VendorSiteCode,VendorSiteId)
     }
 %>
  <BR>
-<!--%è¡¨å–®åƒæ•¸%-->
+<!--%ªí³æ°Ñ¼Æ%-->
 </FORM>
-<!--=============ä»¥ä¸‹å€æ®µç‚ºé‡‹æ”¾é€£çµæ± ==========-->
+<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <%@ include file="/jsp/include/ProgressStatusBarStop.jsp"%>
 </body>
