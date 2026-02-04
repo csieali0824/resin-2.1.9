@@ -426,6 +426,16 @@ if (!HEADER_ID.equals(""))
 					bb[i][6]= "DHL"; //SHIPPING_METHOD
 					bb[i][18] = "DAP  MALAYSIA";  //FOB
 				}
+				else if (rs.getString("TSCH_CUSTOMER_NUMBER").equals("35432")) //AUMOVIO Electronics Philippines
+				{
+					bb[i][6]= "DHL"; //SHIPPING_METHOD
+					bb[i][18] = "DAP Philippines";  //FOB
+				}
+				else if (rs.getString("TSCH_CUSTOMER_NUMBER").equals("35433")) //AUMOVIO Autonomous Philippines
+				{
+					bb[i][6]= "DHL"; //SHIPPING_METHOD
+					bb[i][18] = "DAP Philippines";  //FOB
+				}
 				else
 				{
 					bb[i][6]=rs.getString("SHIPPING_METHOD_CODE");    //出貨方式

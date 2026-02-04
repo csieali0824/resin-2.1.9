@@ -110,9 +110,9 @@ function subWindowCustItemFind(LINENO,CUSTOMERID,TSCITEMDESC,CUSTITEMDESC,salesA
 		subWin=window.open("../jsp/subwindow/TSDRQCustomerItemFind.jsp?PROGID=D9002&LINENO="+LINENO+"&INVDESC="+TSCITEMDESC+"&CUSTOMERID="+CUSTOMERID+"&CUSTITEM="+CUSTITEMDESC,"subwin","width=640,height=480,scrollbars=yes,menubar=no");
 	}
 }
-function subWindowItemFind(LineNO,invItem,itemDesc,sampleOrdCh,sCustomerId,salesAreaNo,orderType,marketGroup,CRD,customerID,FOB)
+function subWindowItemFind(LineNO,invItem,itemDesc,sampleOrdCh,sCustomerId,salesAreaNo,orderType,marketGroup,CRD,customerID,FOB,rfqType)
 {
-	subWin=window.open("../jsp/subwindow/TSInvItemPackageFind.jsp?LINENO="+LineNO+"&ITEMDESC="+itemDesc+"&SAMPLEORDCH="+sampleOrdCh+"&CUSTOMERID="+sCustomerId+"&sType=D9002&SALESAREA="+salesAreaNo+"&ORDERTYPE="+orderType+"&MARKETGROUP="+marketGroup+"&CRD="+CRD+"&CUSTOMERID="+customerID+"&FOB="+FOB+"&deliverid="+document.MYFORM.DELIVERYTOID.value,"subwin","width=640,height=480,scrollbars=yes,menubar=no");
+	subWin=window.open("../jsp/subwindow/TSInvItemPackageFind.jsp?LINENO="+LineNO+"&ITEMDESC="+itemDesc+"&SAMPLEORDCH="+sampleOrdCh+"&CUSTOMERID="+sCustomerId+"&sType=D9002&SALESAREA="+salesAreaNo+"&ORDERTYPE="+orderType+"&MARKETGROUP="+marketGroup+"&CRD="+CRD+"&CUSTOMERID="+customerID+"&FOB="+FOB+"&deliverid="+document.MYFORM.DELIVERYTOID.value+"&RFQTYPE="+rfqType,"subwin","width=640,height=480,scrollbars=yes,menubar=no");
 }
 function subWindowSSDFind(lineNo,sKind,plant)
 {
@@ -1395,7 +1395,7 @@ function setCRD(objLine)
 							<input type="hidden" name="ITEM_ID_TYPE_<%=iMaxLine%>" value="<%=ITEM_ID_TYPE%>">
 							<input type="hidden" name="CATEGORY_ITEM_<%=iMaxLine%>" value="<%=CATEGORY_ITEM%>">
 							<input type="hidden" name="ORIG_CUST_ITEM_<%=iMaxLine%>" value="<%=ORDER_ITEM%>"></td>
-							<td><input type="text" name="TSC_ITEM_<%=iMaxLine%>" value="<%=TSC_ITEM_NAME%>" size="23" class="style4" onKeyDown="return (event.keyCode!=8);" <%if (TSC_ITEM_NAME==null||TSC_ITEM_NAME.equals("")||item_cnt >1){out.println("style='background-color:#FFFF66'");}else{out.println("style='background-color:#FFFFFF'");}%> readonly><input type="button" id="btnitem_<%=iMaxLine%>" name="btnitem_<%=iMaxLine%>" value=".." onClick="subWindowItemFind('<%=iMaxLine%>',this.form.TSC_ITEM_<%=iMaxLine%>.value,this.form.TSC_ITEM_DESC_<%=iMaxLine%>.value,'N',this.form.ERPCUSTOMERID.value,this.form.SALESAREANO.value,this.form.ORDER_TYPE_<%=iMaxLine%>.value,this.form.CUSTMARKETGROUP.value,this.form.CRD_<%=iMaxLine%>.value,this.form.ERPCUSTOMERID.value,this.form.LINE_FOB_<%=iMaxLine%>.value)">
+							<td><input type="text" name="TSC_ITEM_<%=iMaxLine%>" value="<%=TSC_ITEM_NAME%>" size="23" class="style4" onKeyDown="return (event.keyCode!=8);" <%if (TSC_ITEM_NAME==null||TSC_ITEM_NAME.equals("")||item_cnt >1){out.println("style='background-color:#FFFF66'");}else{out.println("style='background-color:#FFFFFF'");}%> readonly><input type="button" id="btnitem_<%=iMaxLine%>" name="btnitem_<%=iMaxLine%>" value=".." onClick="subWindowItemFind('<%=iMaxLine%>',this.form.TSC_ITEM_<%=iMaxLine%>.value,this.form.TSC_ITEM_DESC_<%=iMaxLine%>.value,'N',this.form.ERPCUSTOMERID.value,this.form.SALESAREANO.value,this.form.ORDER_TYPE_<%=iMaxLine%>.value,this.form.CUSTMARKETGROUP.value,this.form.CRD_<%=iMaxLine%>.value,this.form.ERPCUSTOMERID.value,this.form.LINE_FOB_<%=iMaxLine%>.value,'<%=RFQTYPE%>')">
 							<input type="hidden" name="TSC_ITEM_ID_<%=iMaxLine%>" value="<%=INVENTORY_ITEM_ID%>">
 							<input type="hidden" name="TSC_ITEM_PACKAGE_<%=iMaxLine%>" value="<%=PACKAGE_CODE%>">
 							<input type="hidden" name="TSC_PROD_GROUP_<%=iMaxLine%>" value="<%=TSC_PROD_GROUP%>"></td>

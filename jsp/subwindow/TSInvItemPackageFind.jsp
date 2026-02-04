@@ -18,6 +18,7 @@
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
 <%@ page import="SalesDRQPageHeaderBean" %>
 <%@ page import="java.util.Arrays" %>
+<%@ page import="com.mysql.jdbc.StringUtils" %>
 <jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
 <%@ include file="/jsp/include/ProgressStatusBarStart.jsp"%>
 <%
@@ -56,6 +57,7 @@ if (priceList==null || priceList.equals("--")) priceList="";  //add by Peggy 201
 String shippingMethod="",SSD ="";//add by Peggy 20131118
 String deliverid = request.getParameter("deliverid"); //add by Peggy 20210208
 if (deliverid==null) deliverid="";
+String rfqType = StringUtils.isNullOrEmpty(request.getParameter("RFQTYPE"))? "" : request.getParameter("RFQTYPE");
 String currency="",sellingprice="",yew_flag="",tsceonhand="",itemID="",coo="";   //add by Peggy 20160318
 String tscPacking=null,tscFamily=null,tscProdGroup="",sPQP=null,sMOP=null,SPQRULE="",ORDERTYPE="",UOM="",tscProdFamily="",item_status="",packing_ins="";//add SPQRULE,ORDERTYPE by Peggy 20120516
 boolean ignoreCooFlag = false;
@@ -445,6 +447,7 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 10px }
 				     "          case when b.MANUFACTORY_NO IN ('005') then tsc_rfq_create_erp_odr_pkg.TSC_GET_ORDER_TYPE(a.inventory_item_id) "+
 					 "          when b.MANUFACTORY_NO IN ('011') and '"+OdrType+"' not in ('1743','1707') then tsc_rfq_create_erp_odr_pkg.TSC_GET_ORDER_TYPE(a.inventory_item_id) "+ // Add by Mars 20240821
 					 "          when b.MANUFACTORY_NO IN ('002') and '" + salesAreaNo +"' in('008') and TSC_INV_CATEGORY(INVENTORY_ITEM_ID,43,23) in ('SMA','SMB','SMC','SOD-123W','SOD-128') then '1141' "+ // Add by Mars 20241105
+					 "          when 'EDI' = '"+rfqType+"' then tsc_rfq_create_erp_odr_pkg.TSC_GET_ORDER_TYPE(a.inventory_item_id) "+
                  	 "		    else tsc_rfq_create_erp_odr_pkg.TSC_GET_ORDER_TYPE(b.MANUFACTORY_NO) end end ORDER_TYPE "+ 	 //011 Add by Peggy 20240604
 					 "  ,PRIMARY_UOM_CODE"+//add by Peggy 20130910
 				  	 "  ,a.inventory_item_id"+//add by Peggy 20140430
@@ -511,6 +514,7 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 10px }
 				"         case when b.MANUFACTORY_NO in ('005') then tsc_rfq_create_erp_odr_pkg.TSC_GET_ORDER_TYPE(a.inventory_item_id) " +
 				"         when b.MANUFACTORY_NO in ('011') then tsc_rfq_create_erp_odr_pkg.TSC_GET_ORDER_TYPE(a.inventory_item_id) "+
 				"         when b.MANUFACTORY_NO IN ('002') and '" + salesAreaNo +"' in('008') and TSC_INV_CATEGORY(INVENTORY_ITEM_ID,43,23) in ('SMA','SMB','SMC','SOD-123W','SOD-128') then '1141' "+ // Add by Mars 20241105
+				"         when 'EDI' = '"+rfqType+"' then tsc_rfq_create_erp_odr_pkg.TSC_GET_ORDER_TYPE(a.inventory_item_id) "+
 				"         else tsc_rfq_create_erp_odr_pkg.TSC_GET_ORDER_TYPE(b.MANUFACTORY_NO) end end ORDER_TYPE"+   //011 Add by Peggy 20240604
 				"  ,PRIMARY_UOM_CODE"+//add by Peggy 20130910
 				"  ,a.inventory_item_id"+//add by Peggy 20140430
