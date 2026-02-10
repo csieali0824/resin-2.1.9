@@ -33,7 +33,7 @@ try
 	String sqlh =" SELECT a.request_no||'-'||a.version_id request_no, b.type_name wip_name, a.vendor_name,a.vendor_contact,"+
              " to_char(TO_DATE(a.request_date,'yyyymmdd'),'yyyy-mm-dd') request_date, a.inventory_item_name, a.item_description, "+
              //" a.die_name || decode(a.die_name1,null,'','\r\n'||a.die_name1) die_name"+
-			 " a.die_name || decode(a.die_name1,null,'',case when (a.vendor_code='3864' or a.vendor_code='5913') then '/' else '\r\n' end ||a.die_name1) die_name"+ //GEM雙DIE用/區隔 BY PEGGY 20220810
+			 " a.die_name || decode(a.die_name1,null,'',case when (a.vendor_code='3864' or a.vendor_code='5913' or a.vendor_code='4746') then '/' else '\r\n' end ||a.die_name1) die_name"+ //GEM雙DIE用/區隔 BY PEGGY 20220810
 			 ", a.quantity, a.unit_price,a.PACKING,a.PACKAGE_SPEC,a.TEST_SPEC,a.ITEM_PACKAGE,a.wip_no, a.pr_no, "+
 			 " a.status, to_char(a.creation_date,'yyyy-mm-dd') creation_date,"+
 			 " a.ASSEMBLY,a.TAPING_REEL,a.TESTING,a.LAPPING,a.OTHERS,a.unit_price_uom,a.version_id,a.request_no||'-'||a.orig_version_id ORIG_REQUESTNO,"+
@@ -870,6 +870,10 @@ try
 					{
 						ws.addCell(new jxl.write.Label(col+10+i_addline+i_waferno, row, "DC YYWW" , ACenterL));
 					}
+					if (VENDOR_CODE.equals("4746"))
+					{
+						ws.addCell(new jxl.write.Label(col+11+i_addline+i_waferno, row, "取Die模式" , ACenterL));
+					}
 				}
 				else if (rsh.getString("item_description").equals("TSC497CX RFG")) //add by Peggy 20220427
 				{
@@ -1073,6 +1077,13 @@ try
 					else
 					{				
 						ws.addCell(new jxl.write.Label(col+10+i_addline+i_waferno, row, (rsd.getString("dc_yyww")==null?"":rsd.getString("dc_yyww")), ACenterL));
+						if ( VENDOR_CODE.equals("4746")) {
+							if (rsd.getString("die_mode") != null && !ORIG_DIE_MODE.equals(rsd.getString("die_mode"))) {
+								ws.addCell(new jxl.write.Label(col+11+i_addline+i_waferno, row, (rsd.getString("die_mode")==null?"":rsd.getString("die_mode")), ACenterLRED));
+							} else {
+								ws.addCell(new jxl.write.Label(col+11+i_addline+i_waferno, row,  (rsd.getString("die_mode")==null?"":rsd.getString("die_mode")), ACenterL));
+							}
+						}
 					}				
 				}				
 			}
@@ -1266,6 +1277,9 @@ try
 					if (i_addline==1)
 					{
 						ws.addCell(new jxl.write.Label(col+10+i_addline+i_waferno, row, "" , ACenterL));
+						if (VENDOR_CODE.equals("4746")) {
+							ws.addCell(new jxl.write.Label(col+11+i_addline+i_waferno, row, "" , ACenterL));
+						}
 					}
 				}
 				else if (rsh.getString("item_description").equals("TSC497CX RFG")) //add by Peggy 20220427
@@ -1424,6 +1438,9 @@ try
 			if (i_addline==1)
 			{
 				ws.addCell(new jxl.write.Label(col+10+i_addline+i_waferno, row, "" , ACenterL));
+				if (VENDOR_CODE.equals("4746")) {
+					ws.addCell(new jxl.write.Label(col+11+i_addline+i_waferno, row, "" , ACenterL));
+				}
 			}
 		}		
 		else if (rsh.getString("item_description").equals("TSC497CX RFG")) //add by Peggy 20220427
