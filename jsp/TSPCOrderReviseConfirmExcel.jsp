@@ -1044,7 +1044,8 @@
 									"Include the following customer list in this request..<br>"+V_CUST_LIST;
 						}
 
-						message.setHeader("Subject", MimeUtility.encodeText((ACTTYPE.equals("REMINDER")?"Reminder-":"")+(ACTTYPE.equals("ALLOVERDUE")?"Factory Overdue Early-Warning Weekly Report":"工廠Early Ship/Overdue/Early warning通知(申請單號:"+NEW_REQ+")")+remarks, "UTF-8", null));
+						message.setHeader("Subject", MimeUtility.encodeText((ACTTYPE.equals("REMINDER")?"Reminder-":"")+(ACTTYPE.equals("ALLOVERDUE")?"Factory Overdue Early-Warning Weekly Report":
+								"Factory Notification: Early Ship/Overdue/Early Warning(Request No:"+NEW_REQ+")")+remarks, "UTF-8", null));
 						javax.mail.internet.MimeMultipart mp = new javax.mail.internet.MimeMultipart();
 						javax.mail.internet.MimeBodyPart mbp = new javax.mail.internet.MimeBodyPart();
 						mbp.setContent(strContent, "text/html;charset=UTF-8");

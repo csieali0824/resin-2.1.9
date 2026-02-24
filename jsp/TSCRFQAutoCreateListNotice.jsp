@@ -2,6 +2,8 @@
 <!-- 20171221 Peggy,TSCH-HK RFQ region code from 002 change to 018-->
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.util.*,java.text.*,java.io.*,java.sql.*,jxl.*,jxl.Workbook.*,jxl.write.*,jxl.format.*,javax.mail.*,javax.mail.internet.*,javax.mail.Multipart.*,javax.activation.*"%>
 <%@ page import="DateBean"%>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.ParseException" %>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <jsp:useBean id="dateBean" scope="page" class="DateBean"/>
 <html>
@@ -54,7 +56,7 @@
 					//p_sdate ="20210809"+"120100";
 					//p_edate ="20210809"+"160059";
 					p_stime = "12:00 P.M.";
-					p_etime = "16:00 P.M.";
+					p_etime = "04:00 P.M.";
 					p_times = "3";
 				}
 
@@ -236,7 +238,7 @@
 						if (request.getRequestURL().toString().toLowerCase().indexOf("tsrfq.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("rfq134.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("yewintra.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("10.0.1.134") <0  && request.getRequestURL().toString().toLowerCase().indexOf("10.0.1.135") <0) //測試環境
 						{
 							remarks="(此為測試信件，請勿理會)";
-							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("peggy.chen@ts.com.tw"));
+							message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("mars.wang@ts.com.tw"));
 						}
 						else
 						{
@@ -245,11 +247,13 @@
 							{
 								message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("zoe.wu@ts.com.tw")); //add by Peggy 20210224
 								message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("emily.hsin@ts.com.tw"));
-								message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("rachel.chen@ts.com.tw"));
 							}
 							else if (rs1.getString("SALES_AREA_NO").equals("003"))
 							{
 								message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("bonnie.liu@ts.com.tw"));
+								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("sato@tscj.jp"));
+								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("kasuya@tscj.jp"));
+								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("morohara@tscj.jp"));
 							}
 							else if (rs1.getString("SALES_AREA_NO").equals("002") || rs1.getString("SALES_AREA_NO").equals("012")  || rs1.getString("SALES_AREA_NO").equals("022"))
 							{
@@ -304,18 +308,43 @@
 							}
 							else
 							{
-								message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("peggy.chen@ts.com.tw"));
+								message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("mars.wang@ts.com.tw"));
 							}
 						}
-						message.addRecipient(Message.RecipientType.BCC, new javax.mail.internet.InternetAddress("peggy.chen@ts.com.tw"));
+						message.addRecipient(Message.RecipientType.BCC, new javax.mail.internet.InternetAddress("mars.wang@ts.com.tw"));
 
 						message.setSubject(p_edate.substring(0,8)+"("+p_times+") ERP Order AutoCreate Notification!"+remarks);
 						javax.mail.internet.MimeMultipart mp = new javax.mail.internet.MimeMultipart();
 						javax.mail.internet.MimeBodyPart mbp = new javax.mail.internet.MimeBodyPart();
-						String str_d = "<font style='font-size:14px;font-family:Times New Roman;'>Dear All:<p>"+
-								"附檔為 ?01,從?02由系統自動產生的訂單明細.<p><p>"+
-								"P.S此為系統自動發送的EMAIL信件，請勿直接回信，謝謝!";
-						mbp.setContent(str_d.replace("?01","("+rs1.getString("SALES_AREA_NO")+")"+rs1.getString("sales_area_name")).replace("?02",p_sdate+" "+p_stime+"~"+p_edate+" "+p_etime), "text/html;charset=UTF-8");
+						String content = "";
+						if (!rs1.getString("SALES_AREA_NO").equals("003")) {
+							String str_d = "<font style='font-size:14px;font-family:Times New Roman;'>Dear All:<p>" +
+									"附檔為 ?01,從?02由系統自動產生的訂單明細.<p><p>" +
+									"P.S此為系統自動發送的EMAIL信件，請勿直接回信，謝謝!";
+							content = str_d.replace("?01","("+rs1.getString("SALES_AREA_NO")+")"+rs1.getString("sales_area_name")).replace("?02",p_sdate+" "+p_stime+"~"+p_edate+" "+p_etime);
+						} else {
+							// 1. 定義輸入字串的格式 (年月日時分秒)
+							SimpleDateFormat inputSdf = new SimpleDateFormat("yyyyMMddHHmmss");
+							// 2. 定義您想要輸出的格式 (年/月/日)
+							SimpleDateFormat outputSdf = new SimpleDateFormat("yyyy/MM/dd");
+
+							try {
+								// 將字串解析成 Date 物件
+								Date startDate = inputSdf.parse(p_sdate);
+								Date endDate = inputSdf.parse(p_sdate);
+								// 將 Date 物件格式化為新的字串格式
+								String concatDate = outputSdf.format(startDate).concat(" ").concat(p_stime).concat(" to ")
+										.concat(outputSdf.format(endDate)).concat(" ").concat(p_etime);
+								content ="<font style='font-size:14px;font-family:Times New Roman;'>Dear All:<p> \n" +
+										"Attached are the automatically generated order details for Global Sales-TSCJ, \n"+
+										"from  " + concatDate + "\n" +
+										"P.S. This is a system-generated email. Please do not reply directly. Thank you";
+							} catch (ParseException e) {
+								e.printStackTrace();
+							}
+						}
+
+						mbp.setContent(content, "text/html;charset=UTF-8");
 						mp.addBodyPart(mbp);
 						mbp = new javax.mail.internet.MimeBodyPart();
 						javax.activation.FileDataSource fds = new javax.activation.FileDataSource("\\resin-2.1.9\\webapps\\oradds\\report\\"+FileName+".xls");
