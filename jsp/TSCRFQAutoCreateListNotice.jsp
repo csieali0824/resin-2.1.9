@@ -251,9 +251,9 @@
 							else if (rs1.getString("SALES_AREA_NO").equals("003"))
 							{
 								message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("bonnie.liu@ts.com.tw"));
-								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("sato@tscj.jp"));
-								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("kasuya@tscj.jp"));
-								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("morohara@tscj.jp"));
+//								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("sato@tscj.jp"));
+//								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("kasuya@tscj.jp"));
+//								message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("morohara@tscj.jp"));
 							}
 							else if (rs1.getString("SALES_AREA_NO").equals("002") || rs1.getString("SALES_AREA_NO").equals("012")  || rs1.getString("SALES_AREA_NO").equals("022"))
 							{
@@ -337,7 +337,7 @@
 										.concat(outputSdf.format(endDate)).concat(" ").concat(p_etime);
 								content ="<font style='font-size:14px;font-family:Times New Roman;'>Dear All:<p> \n" +
 										"Attached are the automatically generated order details for Global Sales-TSCJ, \n"+
-										"from  " + concatDate + "\n" +
+										"from  " + concatDate + "<p> \n" +
 										"P.S. This is a system-generated email. Please do not reply directly. Thank you";
 							} catch (ParseException e) {
 								e.printStackTrace();
