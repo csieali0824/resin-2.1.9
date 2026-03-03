@@ -170,7 +170,7 @@
 				message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("fabian.storek@tsceu.com"));   //modify by Peggy 20190221
 				message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("dieter.leinert@tsceu.com"));   //modify by Peggy 20190221
 				message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("emily.hsin@ts.com.tw"));
-				message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("rachel.chen@ts.com.tw"));
+				message.addRecipient(Message.RecipientType.CC, new javax.mail.internet.InternetAddress("sandy.huang@ts.com.tw"));
 			}
 			message.addRecipient(Message.RecipientType.BCC, new javax.mail.internet.InternetAddress("peggy.chen@ts.com.tw"));
 
