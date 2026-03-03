@@ -247,6 +247,7 @@
 							{
 								message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("zoe.wu@ts.com.tw")); //add by Peggy 20210224
 								message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("emily.hsin@ts.com.tw"));
+								message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("sandy.huang@ts.com.tw"));
 							}
 							else if (rs1.getString("SALES_AREA_NO").equals("003"))
 							{
