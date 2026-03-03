@@ -242,6 +242,7 @@
 					{
 						remarks="";
 						message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("emily.hsin@ts.com.tw"));
+						message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("sandy.huang@ts.com.tw"));
 					}
 					message.addRecipient(Message.RecipientType.BCC, new javax.mail.internet.InternetAddress("peggy_chen@ts.com.tw"));
 
