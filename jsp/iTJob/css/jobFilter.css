@@ -1,0 +1,41 @@
+.datePickerBtn {
+    height: 40px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.dropdown-menu {
+    max-height: 280px;
+    overflow-y: auto;
+    padding: 0.5rem;
+}
+.dropdown-menu.show {
+    margin-left: -2rem;
+    width: 175px;
+}
+.form-check {
+    margin-left: 0.5rem;
+}
+.dropdown-divider {
+    margin: 0.25rem 0;
+}
+.dropdown-footer {
+    border-top: 1px solid #dee2e6;
+    padding: 0.5rem;
+    text-align: right;
+}
+.multiselect-selected-text {
+    font-weight: bold;
+}
+.multiselect.dropdown-toggle:focus,
+.multiselect.dropdown-toggle:active,
+.multiselect.dropdown-toggle:focus:active {
+    outline: none !important;
+    box-shadow: none !important; /* Bootstrap ªºÂÅ¦â¥ú·w */
+}
+.dropdown-menu.show > li > a {
+    margin-left: -35px;
+}
+.filter-item {
+    display: flex;
+    gap: 70px;
+}
