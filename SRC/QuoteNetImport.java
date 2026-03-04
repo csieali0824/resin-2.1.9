@@ -28,7 +28,7 @@ public class QuoteNetImport {
 
     // API 設定
     private static final String API_KEY = "FE853DF906584FA8B70DA3E97A71157474217749FFBA497E81B9A258CA3B00E871513CCE9129A948D69263C4B75A3AB8";
-    private static final String API_URL = "http://quotenet/SalesNET.WebAPI/api/v1/Quote/Hq";
+    private static final String API_URL = "https://salesnet.ts.com.tw/api/v1/Quote/Hq";
     private static final String TABLE_NAME = "TSC_OM_REF_QUOTENET";
     private static final int MAX_RESULTS = 100000;
 
