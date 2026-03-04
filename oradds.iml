@@ -1375,15 +1375,7 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/WEB-INF/lib/json-20231013.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
     <orderEntry type="library" name="poi-3.1.7" level="project" />
+    <orderEntry type="library" name="json-20231013" level="application" />
   </component>
 </module>

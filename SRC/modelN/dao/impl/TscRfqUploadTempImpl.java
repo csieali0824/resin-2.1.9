@@ -32,6 +32,7 @@ public class TscRfqUploadTempImpl implements TscRfqUploadTempDao {
                 "a.shipping_method,a.fob, a.remarks, d.OTYPE_ID as order_type_id, d.ORDER_NUM order_type, a.line_type, \n" +
                 "UTL_I18N.UNESCAPE_REFERENCE(a.customer_po_line_number) customer_po_line_number,e.customer_number end_customer_number,\n" +
                 "a.end_customer, a.quote_number, a.temp_id, a.ship_to_org_id, a.bi_region, a.org_so_line_id, a.groupby_type, \n" +
+                "a.ship_to_location_id,a.supplier_id,a.delivery_to_id,\n"+
                 "(select count(1) from oraddman.tsc_rfq_upload_temp c \n" +
                 "  where c.create_flag='N' \n" +
                 "   and c.salesareano=a.salesareano \n" +
@@ -99,6 +100,9 @@ public class TscRfqUploadTempImpl implements TscRfqUploadTempDao {
             detailDto.setUploadBy(rs.getString("upload_by"));
             detailDto.setOrgSoLineId(rs.getString("org_so_line_id"));
             detailDto.setGroupByType(rs.getString("groupby_type"));
+            detailDto.setShipToLocationId(StringUtils.isNullOrEmpty(rs.getString("ship_to_location_id")) ? "": rs.getString("ship_to_location_id"));
+            detailDto.setSupplierId(StringUtils.isNullOrEmpty(rs.getString("supplier_id")) ? "": rs.getString("supplier_id"));
+            detailDto.setDeliveryId(StringUtils.isNullOrEmpty(rs.getString("delivery_to_id")) ? "": rs.getString("delivery_to_id"));
             detailMap.put(rsRowCount, detailDto);
         }
         pstmt.close();
@@ -193,7 +197,10 @@ public class TscRfqUploadTempImpl implements TscRfqUploadTempDao {
                         "temp_id,\n " +            //28
                         "bi_region,\n " +          //29
                         "org_so_line_id,\n " +     //30
-                        "groupby_type)\n " +       //31
+                        "groupby_type,\n " +       //31
+                        "ship_to_location_id,\n " +//32
+                        "supplier_id,\n " +        //33
+                        "delivery_to_id)\n " +     //34
                         " values(\n " +
                         "?,\n " +                  //1
                         "?,\n " +                  //2
@@ -225,7 +232,10 @@ public class TscRfqUploadTempImpl implements TscRfqUploadTempDao {
                         "?,\n " +                  //28
                         "?,\n " +                  //29
                         "?,\n " +                  //30
-                        "?)";                      //31
+                        "?,\n " +                  //31
+                        "?,\n " +                  //32
+                        "?,\n " +                  //33
+                        "?)";                      //34
 
                 PreparedStatement pstmt = conn.prepareStatement(sql);
                 pstmt.setString(1, salesNo);
@@ -259,6 +269,9 @@ public class TscRfqUploadTempImpl implements TscRfqUploadTempDao {
                 pstmt.setString(29, modelNDto.getBiRegion()); //bi_region
                 pstmt.setString(30, modelNDto.getOrgSoLineId()); //OrgSoLineId
                 pstmt.setString(31, groupByType); //groupByType
+                pstmt.setString(32, modelNDto.getShipToLocationId()); //ship_to_location_id
+                pstmt.setString(33, modelNDto.getSupplierId()); //SupplierId
+                pstmt.setString(34, modelNDto.getDeliveryId()); //DeliverId
                 pstmt.executeUpdate();
                 pstmt.close();
                 insertRowCnt++;
