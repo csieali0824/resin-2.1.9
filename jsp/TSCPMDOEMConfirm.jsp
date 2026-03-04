@@ -440,6 +440,8 @@ try
 	String sql = " SELECT A.* FROM (SELECT a.request_no, a.version_id,a.wip_type_no,b.TYPE_NAME wip_type_name, a.vendor_code, a.vendor_name,a.vendor_site_id,"+
 				 " a.vendor_contact, a.request_date, a.inventory_item_id,"+
 				 " a.inventory_item_name, a.item_description, a.item_package,"+
+			     "(select distinct b.date_code_rule from oraddman.tspmd_item_date_code b \n" +
+			     "     where a.item_description = b.item_description) as date_code_rule,\n" +
 				 " a.die_item_id || decode(a.die_item_id1,null,'',','||a.die_item_id1) die_item_id, a.die_name || decode(a.die_name1,null,'','<br>'||a.die_name1) die_name, a.quantity, a.unit_price, a.packing,"+
 				 " a.package_spec, a.test_spec, a.assembly, a.testing,"+
 				 " a.taping_reel, a.lapping, a.others, a.remarks, a.marking,"+
@@ -751,8 +753,12 @@ try
 							out.println("<TD class='style4' width='5%'><font style='font-family:Arial'>Date Code</font></td>");
 							out.println("<TD class='style4' width='5%'><font style='font-family:Arial'>DC YYWW</font></td>");
 							out.println("<TD class='style4' width='5%'><font style='font-family:Arial'>DIE MODE</font></td>");
-							//out.println("<TD class='style4' width='10%'><font style='font-family:Arial'>Request S/D</font></td>");
-							out.println("<TD class='style4' width='5%'rowspan='"+(Integer.parseInt(rsd.getString("rec_cnt"))+2)+"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>");
+//							out.println("<TD class='style4' width='5%'><font style='font-family:Arial'>YYWW</font></td>");
+							out.println("<td class='style4' width='5%' rowspan='"+(Integer.parseInt(rsd.getString("rec_cnt"))+2)+"'>" +
+										"<a class='mb-3 btn btn-outline-primary me-3' " +
+										"href='javascript:void(0);' " +
+										"onclick=\"openYYWW('" + rs.getString("request_date") + "', '" + rs.getString("date_code_rule") +"', '" + PROD_GROUP + "');\" " +
+										"role='button'>YYWW </a></td>");
 							out.println("</TR>");
 						}
 						out.println("<tr>");
@@ -894,4 +900,18 @@ catch(Exception e)
 </form>
 <iframe width=124 height=153 name="gToday:supermini:agenda.js" id="gToday:supermini:agenda.js" src="../calendar/ipopeng.htm" scrolling="no" frameborder="0" style="visibility:hidden; z-index:65535; position:absolute; top:0px;"></iframe>
 </body>
+<script>
+	function openYYWW(year, dateCode, prodGroup) {
+		const encodedDateCode = encodeURIComponent(dateCode);
+		const encodedProdGroup = encodeURIComponent(prodGroup);
+		const encodedYear = encodeURIComponent(year.substring(0,4));
+
+		const targetUrl = "/oradds/jsp/tscDateCode/dateCodeYYWW.jsp" +
+				"?dateCode=" + encodedDateCode +
+				"&prodGroup=" + encodedProdGroup +
+				"&year=" + encodedYear;
+
+		window.open(targetUrl, "_blank");
+	}
+</script>
 </html>

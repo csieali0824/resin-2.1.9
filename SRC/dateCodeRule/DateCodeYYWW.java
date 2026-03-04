@@ -6,13 +6,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import com.mysql.jdbc.StringUtils;
 import dateCodeRule.dao.impl.TspmdItemDateCodeImpl;
 import dateCodeRule.dto.DateCodeDto;
 import jxl.Cell;
 import jxl.Sheet;
 import jxl.Workbook;
 
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
@@ -28,7 +28,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.IntStream;
 
-public class DateCodeRuleSetting {
+public class DateCodeYYWW extends HttpServlet {
     private String uploadFilePath;
     public String userName;
     private Workbook wb;
@@ -36,14 +36,16 @@ public class DateCodeRuleSetting {
     public Connection conn;
     public DateCodeDto dateCodeDto;
     public SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-    public TspmdItemDateCodeImpl dateCodeDao = new TspmdItemDateCodeImpl();
+    public TspmdItemDateCodeImpl tspmdItemDateCode() {
+        return new TspmdItemDateCodeImpl();
+    }
 
     public String getUploadFilePath(Connection conn, String startDateTime, String fileName, String userName) throws SQLException {
         this.conn = conn;
         this.userName = userName;
-        String path = "/resin-2.1.9/webapps/oradds/jsp/upload_exl/dateCode";
+        String path = "/resin-2.1.9/webapps/oradds/jsp/upload_exl/dateCodeYYWW";
         String startDateTimeFileName = startDateTime + "-" + fileName;
-        this.uploadFilePath = path + "/" + startDateTimeFileName;
+        this.uploadFilePath = path + "/" +startDateTimeFileName;
         createOrDeleteDir(new File(path));
         return this.uploadFilePath;
     }
@@ -59,13 +61,6 @@ public class DateCodeRuleSetting {
         }
         return true;
     }
-
-    private List<String> errorList = new ArrayList<>();
-
-    public List<String> getErrorList() {
-        return this.errorList;
-    }
-
     public void writeExcel(HttpServletRequest request, HttpServletResponse response) throws Exception {
         InputStream is = Files.newInputStream(Paths.get(uploadFilePath));
         this.wb = Workbook.getWorkbook(is);
@@ -73,7 +68,7 @@ public class DateCodeRuleSetting {
         excelMap = new HashMap<>();
 
         for (int rowIndex = 1, rowCount = sheet.getRows(); rowIndex < rowCount; rowIndex++) {
-            dateCodeDto = new DateCodeDto();
+            this.dateCodeDto = new DateCodeDto();
             if (isEmptyRow(sheet, rowIndex)) {
                 continue; // ignore empty row
             }
@@ -82,20 +77,20 @@ public class DateCodeRuleSetting {
                 String content = rowCell.getContents().trim(); // 取得儲存格內容
                 String columnName = sheet.getCell(colIndex, 0).getContents().trim();
                 switch (columnName) {
-                    case "Device":
-                        dateCodeDto.setDevice(content);
+                    case "D/C":
+                        dateCodeDto.setDateCodeRange(content);
                         break;
                     case "Date Code":
                         dateCodeDto.setDateCode(content);
                         break;
-                    case "Remark":
-                        dateCodeDto.setRemarks(content);
+                    case "Prod Group":
+                        dateCodeDto.setProdGroup(content);
                         break;
-                    case "Marking":
-                        dateCodeDto.setMarking(content);
+                    case "YYWW":
+                        dateCodeDto.setYyww(content);
                         break;
-                    case "Marking Desc":
-                        dateCodeDto.setMarkingDesc(content);
+                    case "Year":
+                        dateCodeDto.setYear(content);
                         break;
                     default:
                         break;
@@ -103,14 +98,17 @@ public class DateCodeRuleSetting {
                 excelMap.put(rowIndex, dateCodeDto);
             }
         }
-
         if (!excelMap.isEmpty()) {
-            insertTspmdItemDateCode();
-            if (dateCodeDto.getErrorList().isEmpty()) {
-                response.sendRedirect(request.getRequestURL().toString());
-            }
+            insertDateCodeYYWW();
+            redirect(request, response);
         }
         wb.close();
+    }
+
+    private void redirect(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        if (dateCodeDto.getErrorList().isEmpty()) {
+            response.sendRedirect(request.getRequestURL().toString());
+        }
     }
 
     private void createOrDeleteDir(File dir) {
@@ -119,7 +117,7 @@ public class DateCodeRuleSetting {
             File[] files = dir.listFiles();
             if (files != null) {
                 for (File file : files) {
-                    if (file.exists()) {
+                    if(file.exists()) {
                         file.delete();
                     }
                 }
@@ -130,15 +128,12 @@ public class DateCodeRuleSetting {
         }
     }
 
-    public void insertTspmdItemDateCode() throws SQLException {
-        dateCodeDao.insertTspmdItemDateCode(conn, excelMap, userName);
-        this.errorList = dateCodeDao.errList;
+    public void insertDateCodeYYWW() throws SQLException {
+        tspmdItemDateCode().insertDateCodeYYWW(conn, excelMap, userName);
     }
 
-    public void updateTspmdItemDateCode(Connection conn, String itemDesc, String dateCodeRule,
-                                        String dateCodeExample) throws SQLException {
-        dateCodeDao.updateTspmdItemDateCode(conn, itemDesc, dateCodeRule, dateCodeExample);
-        this.errorList = dateCodeDao.errList;
+    public void updateTspmdItemDateCode(Connection conn, String itemDesc, String dateCodeRule, String dateCodeExample) throws SQLException {
+        tspmdItemDateCode().updateTspmdItemDateCode(conn, itemDesc, dateCodeRule, dateCodeExample);
     }
 
     public String convertToString(HttpServletRequest request) throws IOException {
@@ -151,23 +146,20 @@ public class DateCodeRuleSetting {
         return sb.toString();
     }
 
-    public void updateMultiTspmdItemDateCode(Connection conn, HttpServletRequest request,
-                                             HttpServletResponse response, String modifyBy) throws SQLException,
-            IOException {
+    public void updateMultiTspmdItemDateCode(Connection conn, HttpServletRequest request, HttpServletResponse response, String modifyBy) throws SQLException, IOException {
         String jsonString = convertToString(request);
-        dateCodeDao.updateMultiTspmdItemDateCode(conn, jsonToMap(jsonString), modifyBy);
-        this.errorList = dateCodeDao.errList;
+        tspmdItemDateCode().updateMultiTspmdItemDateCode(conn, jsonToMap(jsonString), modifyBy);
+        redirect(request, response);
     }
 
     public void deleteItemDateCode(Connection conn, HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
         String jsonString = convertToString(request);
-        dateCodeDao.deleteItemDateCode(conn, Arrays.asList(jsonString.split(",")));
-        this.errorList = dateCodeDao.errList;
+        tspmdItemDateCode().deleteItemDateCode(conn,  Arrays.asList(jsonString.split(",")));
+        redirect(request, response);
     }
 
-    public List<String> headers() {
-        return Arrays.asList("no", "device", "dateCode", "marking", "remarks", "markingDesc", "creationDate",
-                "uploadBy", "modifyBy", "updateDate");
+    private List<String> headers() {
+        return Arrays.asList("dc", "dateCode", "prodGroup", "yyww", "year", "creationDate", "uploadBy");
     }
 
     public Map<String, DateCodeDto> jsonToMap(String jsonString) throws JsonProcessingException {
@@ -190,24 +182,27 @@ public class DateCodeRuleSetting {
         String jsonData = new Gson().toJson(jsonArray);
         return jsonData;
     }
-
-    public List getItemDateCode(Connection conn, String itemDesc, String dateCodeRule, String dateCodeExample) throws SQLException, ParseException {
+    public List getDateCodeYYWW(Connection conn, String dc, String dateCode, String prodGroup, String year) throws SQLException, ParseException {
         List list = new ArrayList<>();
-        Map<Integer, DateCodeDto> map = dateCodeDao.getTspmdItemDateCode(conn, itemDesc, dateCodeRule, dateCodeExample);
+        Map<Integer, DateCodeDto>  map = tspmdItemDateCode().getDateCodeYYWW(conn, dc, dateCode, prodGroup, year);
         for (Map.Entry<Integer, DateCodeDto> entry : map.entrySet()) {
             dateCodeDto = entry.getValue();
             list.add(Arrays.asList(
-                    String.valueOf(entry.getKey().intValue()),
-                    dateCodeDto.getDevice(),
+
+//                    String.valueOf(entry.getKey().intValue()),
+//                    dateCodeDto.getDevice(),
+                    dateCodeDto.getDateCodeRange(),
                     dateCodeDto.getDateCode(),
-                    dateCodeDto.getRemarks(),
-                    dateCodeDto.getMarking(),
-                    dateCodeDto.getMarkingDesc(),
+                    dateCodeDto.getProdGroup(),
+                    dateCodeDto.getYyww(),
+                    dateCodeDto.getYear(),
+//                    dateCodeDto.getMarking(),
+//                    dateCodeDto.getRemark(),
                     sdf.format(sdf.parse(dateCodeDto.getCreationDate())),
-                    dateCodeDto.getUploadBy(),
-                    dateCodeDto.getModifyBy(),
-                    StringUtils.isNullOrEmpty(dateCodeDto.getUpdateDate()) ? "" :
-                            sdf.format(sdf.parse(dateCodeDto.getUpdateDate()))
+                    dateCodeDto.getUploadBy()
+//                    dateCodeDto.getModifyBy(),
+//                    sdf.format(sdf.parse(dateCodeDto.getUpdateDate()))
+//                    StringUtils.isNullOrEmpty(dateCodeDto.getUpdateDate()) ? "" : sdf.format(sdf.parse(dateCodeDto.getUpdateDate()))
             ));
         }
         return list;

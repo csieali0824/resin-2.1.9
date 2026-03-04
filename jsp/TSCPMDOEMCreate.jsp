@@ -23,6 +23,7 @@
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ page import="SalesDRQPageHeaderBean,Array2DimensionInputBean"%>
+<%@ page import="com.mysql.jdbc.StringUtils" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -136,6 +137,8 @@ function CheckDataCode(chooseLine)
 		else
 		{
 			document.MYFORM.elements["DC_YYWW"+chooseLine].value="";
+			document.MYFORM.elements["_DC"].value="";
+			document.MYFORM.elements["DATE_CODE"].value="";
 		}
 		
 	}
@@ -1397,11 +1400,7 @@ String strRemarks2="D/C欄位三碼皆有底線時，標籤D/C欄位不需加註底線"; //add by Pe
 String REMARKS=request.getParameter("REMARKS");
 
 if ("4746".equals(SUPPLIERNO)) { // 華羿微電子
-	REMARKS = "1.晶片於" + ISSUEDATE + "出貨至華羿微電子\n" +
-			"2.每批date code都必須提供良率報告\n" +
-			"3.每批date code必須提供100 pcs EQC Data Log\n" +
-			"4.測試良率須符合Test SPEC需求；若出現低良率，請立即向TSC反饋\n" +
-			"5.晶片批次：";
+	REMARKS = "1.晶片批次：";
 } else if ("1253".equals(SUPPLIERNO)) { // 富吉特半導體
 	REMARKS = "1. Wafer will be delivered on " + ISSUEDATE + "\n" +
 			"2. Each date code has to be provided a yield report.\n" +
@@ -1787,7 +1786,34 @@ catch (Exception e)
 					<TD width="5%" class="style4"><font style="font-family:Arial">DC YYWW</font></td>
 					<TD width="7%" class="style4"><font style="font-family:Arial">Die Mode</font></td>
 					<!--<TD class="style4"><font style="font-family:Arial">Request S/D</font></td>-->
-					<TD width="3%" class="style4" rowspan="<%=Integer.parseInt(LINENUM)+1%>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+					<td width="3%" class="style4" rowspan="<%=Integer.parseInt(LINENUM)+1%>">
+						<a class="mb-3 btn btn-outline-primary me-3"
+						   href="javascript:void(0);"
+						   onclick="openYYWW('<%=ISSUEDATE%>', '<%=PROD_GROUP%>');"
+						   role="button">
+							YYWW
+						</a>
+<%--						<a class="mb-3 btn btn-outline-primary me-3"--%>
+<%--						   href="/oradds/jsp/tscDateCode/dateCodeYYWW.jsp?dateCode=<%=DateCode%>&prodGroup=<%=PROD_GROUP%>"--%>
+<%--						   target="_blank"--%>
+<%--						   rel="noopener noreferrer"--%>
+<%--						   role="button">--%>
+<%--							YYWW--%>
+<%--						</a>--%>
+<%--						<a class="mb-3 btn btn-outline-primary me-3"--%>
+<%--						   href="javascript:void(0);"--%>
+<%--						   onclick="window.open('/oradds/jsp/tscDateCode/dateCodeYYWW.jsp?dateCode=<%=DateCode%>&prodGroup=<%=PROD_GROUP%>', 'newwindow', 'width=800,height=600,scrollbars=yes'); return false;"--%>
+<%--						   role="button">--%>
+<%--							YYWW--%>
+<%--						</a>--%>
+<%--						<a class="mb-3 btn btn-outline-primary me-3"--%>
+<%--						   href="/oradds/jsp/tscDateCode/dateCodeYYWW.jsp"--%>
+<%--						   target="_blank"--%>
+<%--						   rel="noopener noreferrer"--%>
+<%--						   role="button">--%>
+<%--							YYWW--%>
+<%--						</a>--%>
+					</td>
 				</TR>
 				<% 
 				int idx_num=22;
@@ -1924,10 +1950,30 @@ catch (Exception e)
 <input type="hidden" name="AVL" value="<%=AVL%>">
 <input type="hidden" name="ORGANIZATION_ID" value="<%=ORGANIZATION_ID%>">
 <input type="hidden" name="ACTIONTYPE" value="NEW">
-<!--=============以下區段為釋放連結池==========-->  
+<input type="hidden" name="_DC">
+<input type="hidden" name="DATE_CODE">
+<!--=============以下區段為釋放連結池==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 </form>
 </body>
 <iframe width=124 height=153 name="gToday:supermini:agenda.js" id="gToday:supermini:agenda.js" src="../calendar/ipopeng.htm" scrolling="no" frameborder="0" style="visibility:hidden; z-index:65535; position:absolute; top:0px;"></iframe>
+<script>
+	function openYYWW(year, prodGroup) {
+		const dc = document.MYFORM._DC.value;
+		const dateCode = document.MYFORM.DATE_CODE.value;
+		const encodedDc = encodeURIComponent(dc);
+		const encodedDateCode = encodeURIComponent(dateCode);
+		const encodedYear = encodeURIComponent(year.substring(0,4));
+		const encodedProdGroup = encodeURIComponent(prodGroup);
+
+		const targetUrl = "/oradds/jsp/tscDateCode/dateCodeYYWW.jsp" +
+				"?dc=" + encodedDc +
+				"&dateCode=" + encodedDateCode +
+				"&prodGroup=" + encodedProdGroup +
+				"&year=" + encodedYear;
+
+		window.open(targetUrl, "_blank");
+	}
+</script>
 </html>

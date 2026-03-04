@@ -6,12 +6,17 @@ import java.util.List;
 public class DateCodeDto {
     private String device = "";
     private String dateCode = "";
-    private String remark = "";
+    private String remarks = "";
     private String marking = "";
+    private String markingDesc = "";
     private String creationDate = "";
     private String uploadBy = "";
     private String modifyBy = "";
     private String updateDate = "";
+    private String dateCodeRange = "";
+    private String prodGroup = "";
+    private String year = "";
+    private String yyww = "";
     private String errMsg = "";
     private List errorList = new LinkedList();
 
@@ -31,12 +36,12 @@ public class DateCodeDto {
         this.dateCode = dateCode;
     }
 
-    public String getRemark() {
-        return remark;
+    public String getRemarks() {
+        return remarks;
     }
 
-    public void setRemark(String remark) {
-        this.remark = remark;
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
     }
 
     public String getMarking() {
@@ -45,6 +50,22 @@ public class DateCodeDto {
 
     public void setMarking(String marking) {
         this.marking = marking;
+    }
+
+    public String getMarkingDesc() {
+        return markingDesc;
+    }
+
+    public void setMarkingDesc(String markingDesc) {
+        this.markingDesc = markingDesc;
+    }
+
+    public String getProdGroup() {
+        return prodGroup;
+    }
+
+    public void setProdGroup(String prodGroup) {
+        this.prodGroup = prodGroup;
     }
 
     public String getCreationDate() {
@@ -93,5 +114,29 @@ public class DateCodeDto {
 
     public void setErrorList(List errorList) {
         this.errorList = errorList;
+    }
+
+    public String getDateCodeRange() {
+        return dateCodeRange;
+    }
+
+    public void setDateCodeRange(String dateCodeRange) {
+        this.dateCodeRange = dateCodeRange;
+    }
+
+    public String getYyww() {
+        return yyww;
+    }
+
+    public void setYyww(String yyww) {
+        this.yyww = yyww;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
     }
 }

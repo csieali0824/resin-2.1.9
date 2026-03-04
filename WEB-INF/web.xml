@@ -6,76 +6,107 @@
 
   <context-param>
     <param-name>MAIL_HOST</param-name>
-    <param-value>210.62.146.209</param-value> 
-  </context-param>  
+    <param-value>210.62.146.209</param-value>
+  </context-param>
 
   <context-param>
     <param-name>DominoDIIOPConnection</param-name> <!--This URL is represent the primary Domino Server-->
-    <param-value>tptest1.dbtel.com.tw</param-value> 
+    <param-value>tptest1.dbtel.com.tw</param-value>
   </context-param>
-  
+
   <context-param>
     <param-name>DominoSecondaryDIIOPConnection</param-name> <!--This URL is represent the sceondary Domino Server-->
-    <param-value>tpefax.dbtel.com.tw</param-value> 
-  </context-param> 
-  
+    <param-value>tpefax.dbtel.com.tw</param-value>
+  </context-param>
+
   <context-param>
     <param-name>ORADDS_JDBC_URL</param-name>
-    <param-value>jdbc:oracle:thin:@10.0.1.173:1528:crp1</param-value>
+    <param-value>jdbc:oracle:thin:@10.0.1.171:1527:crp</param-value>
   </context-param>
-  
+
   <context-param>
     <param-name>ORADTST_JDBC_URL</param-name>
-    <param-value>jdbc:oracle:thin:@10.0.1.173:1528:crp1</param-value>
-  </context-param>   
-  
+    <param-value>jdbc:oracle:thin:@10.0.1.171:1527:crp</param-value>
+  </context-param>
+
   <context-param>
     <param-name>ORADTST2_JDBC_URL</param-name>
-    <param-value>jdbc:oracle:thin:@10.0.1.173:1528:crp1</param-value>
+    <param-value>jdbc:oracle:thin:@10.0.1.171:1527:crp</param-value>
   </context-param>
 
   <context-param>
     <param-name>ORARFQDB_JDBC_URL</param-name>
-    <param-value>jdbc:oracle:thin:@210.62.146.195:1521:RFQDB</param-value> 
-  </context-param> 
-  
+    <param-value>jdbc:oracle:thin:@210.62.146.195:1521:RFQDB</param-value>
+  </context-param>
+
   <context-param>
     <param-name>WEB_JDBC_URL</param-name>
-    <param-value>jdbc:microsoft:sqlserver://210.62.146.199:1433;DatabaseName=WEB</param-value> 
+    <param-value>jdbc:microsoft:sqlserver://210.62.146.199:1433;DatabaseName=WEB</param-value>
   </context-param>
 
   <context-param>
     <param-name>TEW_JDBC_URL</param-name>
-    <param-value>jdbc:odbc:ILAN70</param-value> 
+    <param-value>jdbc:odbc:ILAN70</param-value>
   </context-param>
 
   <context-param>
     <param-name>YEW_JDBC_URL</param-name>
-    <param-value>jdbc:odbc:ILAN70</param-value> 
+    <param-value>jdbc:odbc:ILAN70</param-value>
   </context-param>
-  
+
   <context-param>
     <param-name>ILNASSIST_JDBC_URL</param-name>
-    <param-value>jdbc:odbc:ILAN70</param-value> 
+    <param-value>jdbc:odbc:ILAN70</param-value>
   </context-param>
 
   <context-param>
     <param-name>ILAN70_JDBC_URL</param-name>
-    <param-value>jdbc:odbc:ILAN70</param-value> 
-  </context-param>   
+    <param-value>jdbc:odbc:ILAN70</param-value>
+  </context-param>
 
   <context-param>
     <param-name>MIS003_JDBC_URL</param-name>
-    <param-value>jdbc:odbc:MIS-003</param-value> 
-  </context-param> 
-   
+    <param-value>jdbc:odbc:MIS-003</param-value>
+  </context-param>
+
   <context-param>
     <param-name>NOTESSAL(SALARY)_JDBC_URL</param-name>
-    <param-value>jdbc:informix-sqli://dbtah01.dbtel.com.tw:1530/saltst:informixserver=dbtah0172_net</param-value> 
+    <param-value>jdbc:informix-sqli://dbtah01.dbtel.com.tw:1530/saltst:informixserver=dbtah0172_net</param-value>
   </context-param>
-    
-  <mime-mapping><extension>.mmf</extension><mime-type>audio/basic</mime-type></mime-mapping>  
-  
+
+  <mime-mapping><extension>.mmf</extension><mime-type>audio/basic</mime-type></mime-mapping>
+
+  <context-param>
+    <param-name>db.username</param-name>
+    <param-value>APPS</param-value>
+  </context-param>
+
+  <context-param>
+    <param-name>db.password</param-name>
+    <param-value>TSCApps12</param-value>
+  </context-param>
+
+  <context-param>
+    <param-name>db.driver</param-name>
+    <param-value>oracle.jdbc.driver.OracleDriver</param-value>
+  </context-param>
+
+  <servlet>
+    <servlet-name>InitServlet</servlet-name>
+    <servlet-class>servlet.InitServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+  <servlet>
+    <servlet-name>ITJob</servlet-name>
+    <servlet-class>iTJob.ITJob</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>ITJob</servlet-name>
+    <url-pattern>/task</url-pattern>
+  </servlet-mapping>
+
 </web-app>
 
 

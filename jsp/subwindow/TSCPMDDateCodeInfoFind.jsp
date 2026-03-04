@@ -26,6 +26,8 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 12px }
   select   {  font-family:  Tahoma,Georgia; color: #000000; font-size: 12px}
 </STYLE>
 <%
+request.setCharacterEncoding("UTF-8");
+response.setContentType("text/html; charset=utf-8");
 String prodGroup = request.getParameter("PROD_GROUP");
 if (prodGroup == null) prodGroup = "";
 String ITEMNAME=request.getParameter("ITEMNAME");
@@ -38,7 +40,7 @@ if (LNO==null) LNO="";
 <html>
 <head>
 <script language="JavaScript" type="text/JavaScript">
-function sendToMainWindow(DC_YYWW,iCnt)
+function sendToMainWindow(DC_YYWW, iCnt, dc, dateCode)
 {
 	if (iCnt<0)
 	{
@@ -58,6 +60,8 @@ function sendToMainWindow(DC_YYWW,iCnt)
 	else if (iCnt==1)
 	{
 		window.opener.document.MYFORM.elements["DC_YYWW"+document.SITEFORM.LNO.value].value=DC_YYWW;
+		window.opener.document.MYFORM.elements["_DC"].value=dc;
+		window.opener.document.MYFORM.elements["DATE_CODE"].value=dateCode;
 	}
 	else if (iCnt==0)
 	{
@@ -125,7 +129,7 @@ try
 	//out.println(queryCount);
 	if (queryCount<0)
 	{
-		out.println("<script type=\"text/javascript\">sendToMainWindow("+'"'+""+'"'+","+queryCount+")</script>");
+		out.println("<script type=\"text/javascript\">sendToMainWindow("+'"'+""+'"'+","+queryCount+",'','')</script>");
 	}
 
 	sql =" select tsc_get_calendar_week(D_DATE,null),count(1) over (partition by 1) ROW_CNT, to_char(D_DATE,'yyyy/mm/dd') D_DATE"+
@@ -134,10 +138,9 @@ try
 	state1 = con.prepareStatement(sql);
 	state1.setString(1,(ITEMNAME.equals("X06G-LIPRFTS1970500000")?DC:DC.replace("_","")));
 	state1.setString(2,ITEMNAME);
-	state1.setString(3,dcExample);
+	state1.setString(3,dcExample.replace("_",""));
 	state1.setString(4,"MAKE");
 	rs1=state1.executeQuery();
-
 	if (rs1.next()) {
 		dc_yyww = rs1.getString(1).substring(rs1.getString(1).length() - 4);
 		queryCount = rs1.getInt(2);
@@ -188,7 +191,7 @@ try
 	state1.close();
 //	System.out.println("dc_yyww="+dc_yyww);
 //	System.out.println("queryCount="+queryCount);
-	out.println("<script type=\"text/javascript\">sendToMainWindow("+'"'+dc_yyww+'"'+","+queryCount+")</script>");
+	out.println("<script type=\"text/javascript\">sendToMainWindow("+'"'+dc_yyww+'"'+","+queryCount+","+'"'+DC+'"'+","+'"'+dcExample+'"'+")</script>");
 }
 catch(Exception e)
 {
@@ -196,7 +199,7 @@ catch(Exception e)
 	e.printStackTrace();
 
 	out.println("<font color='red'>Exception"+e.getMessage()+"</font>");
-	out.println("<script type=\"text/javascript\">sendToMainWindow("+'"'+dc_yyww+'"'+",-1000)</script>");
+	out.println("<script type=\"text/javascript\">sendToMainWindow("+'"'+dc_yyww+'"'+",-1000,'','')</script>");
 }
 
 %>

@@ -12,6 +12,9 @@ public interface TspmdItemDateCodeDao {
     void insertTspmdItemDateCode(Connection conn, HashMap<Integer, DateCodeDto> map, String userName) throws SQLException;
     Map<Integer, DateCodeDto> getTspmdItemDateCode(Connection conn, String itemDesc, String dateCodeRule, String dateCodeExample) throws SQLException;
     void updateTspmdItemDateCode(Connection conn, String itemDesc, String dateCodeRule, String dateCodeExample) throws SQLException;
-    void updateMultiTspmdItemDateCode(Connection conn, Map<String, Map<String, String>> map, String modifyBy) throws SQLException;
+//    void updateMultiTspmdItemDateCode(Connection conn, Map<String, Map<String, String>> map, String modifyBy) throws SQLException;
     void deleteItemDateCode(Connection conn, List<String> itemDescList) throws SQLException;
+    void insertDateCodeYYWW(Connection conn, HashMap<Integer, DateCodeDto> map, String userName) throws SQLException;
+    Map<Integer, DateCodeDto> getDateCodeYYWW(Connection conn, String dc, String dateCode, String prodGroup, String year) throws SQLException;
+    void updateMultiTspmdItemDateCode(Connection conn, Map<String, DateCodeDto> map, String modifyBy) throws SQLException;
 }

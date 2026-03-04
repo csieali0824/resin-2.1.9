@@ -101,7 +101,7 @@ public class DateCodeTest {
         List list = new ArrayList();
         for (Map.Entry<Integer, DateCodeDto> entry : map.entrySet()) {
             dateCodeDto = entry.getValue();
-            dataList.add(new DataItem(entry.getKey(), dateCodeDto.getDevice(), dateCodeDto.getDateCode(), dateCodeDto.getMarking(), dateCodeDto.getRemark(), sdf.format(sdf.parse(dateCodeDto.getCreationDate()))));
+            dataList.add(new DataItem(entry.getKey(), dateCodeDto.getDevice(), dateCodeDto.getDateCode(), dateCodeDto.getMarking(), dateCodeDto.getRemarks(), sdf.format(sdf.parse(dateCodeDto.getCreationDate()))));
             list.add(Arrays.asList(String.valueOf(entry.getKey().intValue()), dateCodeDto.getDevice(), dateCodeDto.getDateCode(), dateCodeDto.getMarking(),dateCodeDto.getMarking(), sdf.format(sdf.parse(dateCodeDto.getCreationDate()))));
         }
         System.out.println(dataList);
@@ -169,7 +169,7 @@ public class DateCodeTest {
                         dateCodeDto.setDateCode(content);
                         break;
                     case "Remark":
-                        dateCodeDto.setRemark(content);
+                        dateCodeDto.setRemarks(content);
                         break;
                     case "Marking":
                         dateCodeDto.setMarking(content);

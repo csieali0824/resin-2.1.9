@@ -15,6 +15,7 @@
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ page import="SalesDRQPageHeaderBean" %>
+<%@ page import="com.mysql.jdbc.StringUtils" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -1043,6 +1044,7 @@ String ITEMNAME = request.getParameter("ITEMNAME");
 if (ITEMNAME==null) ITEMNAME="";
 String ITEMDESC = request.getParameter("ITEMDESC");
 if (ITEMDESC==null) ITEMDESC="";
+String dateCodeRule = "";
 String PACKAGE = request.getParameter("PACKAGE");
 if (PACKAGE==null) PACKAGE = "";
 String DIENAME = request.getParameter("DIENAME");
@@ -1137,6 +1139,8 @@ try
 		sql = " SELECT a.request_no, a.version_id,a.wip_type_no,b.TYPE_NAME wip_type_name, a.vendor_code, a.vendor_name,"+
 					 " a.vendor_contact, a.request_date, a.inventory_item_id,"+
 					 " a.inventory_item_name, a.item_description, a.item_package,"+
+					 "(select distinct b.date_code_rule from oraddman.tspmd_item_date_code b \n" +
+					 "     where a.item_description = b.item_description) as date_code_rule,\n" +
 					 " a.die_item_id || decode(a.die_item_id1,null,'',','||a.die_item_id1) die_item_id, a.die_name|| decode(a.die_name1,null,'',','||a.die_name1) die_name, a.quantity, a.unit_price, a.packing,"+
 					 " a.package_spec, a.test_spec, a.assembly, a.testing,"+
 					 " a.taping_reel, a.lapping, a.others, a.remarks, a.marking,a.currency_code,a.CREATED_BY,a.unit_price_uom,a.VENDOR_SITE_ID,"+
@@ -1158,6 +1162,7 @@ try
 			sql += " and exists (select 1 from wip.wip_discrete_jobs c where c.wip_entity_id=a.wip_entity_id and c.status_type='3')";
 		}
 		//out.println(sql);
+		System.out.println(sql);
 		Statement statement=con.createStatement();
 		ResultSet rs=statement.executeQuery(sql);
 		if (rs.next())
@@ -1232,6 +1237,7 @@ try
 			if (ITEMNAME==null) ITEMNAME="";
 			ITEMDESC = rs.getString("item_description");
 			if (ITEMDESC==null) ITEMDESC="";
+			dateCodeRule = StringUtils.isNullOrEmpty(rs.getString("date_code_rule"))? "" : rs.getString("date_code_rule");
 			PACKAGE = rs.getString("item_package");
 			if (PACKAGE==null) PACKAGE = "";
 			DIENAME = rs.getString("die_name");
@@ -1549,7 +1555,7 @@ catch (Exception e)
 		<TD colspan="8">
 			<table  width="100%" border="1" cellpadding="1" cellspacing="0" bordercolorlight="#FFFFFF"  bordercolordark="#9999CC">
 				<tr>
-					<td height="29" colspan="12" class="style2" style="font-family:Arial">Producton Control¡G</td>
+					<td height="29" colspan="13" class="style2" style="font-family:Arial">Producton Control¡G</td>
 				</tr>	
 				<% 
 				try
@@ -1669,7 +1675,12 @@ catch (Exception e)
 								out.println("<TD width='6%' class='style4'><font style='font-family:Arial'>Date Code</font></td>");
 								out.println("<TD width='6%' class='style4'><font style='font-family:Arial'>DC YYWW</font></td>");
 								out.println("<TD width='6%' class='style4'><font style='font-family:Arial'>DIE MODE</font></td>");
-								out.println("<TD width='3%' class='style4'rowspan='"+(Integer.parseInt(rsd.getString("rec_cnt"))+1)+"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>");
+								out.println("<td class='style4' rowspan='"+(Integer.parseInt(rsd.getString("rec_cnt"))+1)+"'>" +
+										"<a class='mb-3 btn btn-outline-primary me-3' " +
+										"href='javascript:void(0);' " +
+										"onclick=\"openYYWW('" + ISSUEDATE + "', '" + dateCodeRule +"', '" + PROD_GROUP + "');\" " +
+										"role='button'>YYWW</a></td>");
+//								out.println("<TD width='5%' class='style4'rowspan='"+(Integer.parseInt(rsd.getString("rec_cnt"))+1)+"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>");
 								out.println("</TR>");
 							}
 							out.println("<tr>");
@@ -1711,7 +1722,7 @@ catch (Exception e)
 							out.println("</td>");
 							//out.println("<TD class='style1'><input type='text' name='RequestSD"+i+"' size='10' tabindex='"+(idx_num++)+"' value='"+RequestSD+"' style='font-family:Arial;text-align:center' readonly>");
 							//out.println("<A href='javascript:void(0)' onclick='gfPop.fPopCalendar(document.MYFORM.RequestSD"+i+");return false;'><img name='popcal' border='0' src='../image/calbtn.gif'></A>");
-							//out.println("</td>");					
+							//out.println("</td>");
 							out.println("</tr>");
 						}
 						rsd.close();
@@ -1864,7 +1875,7 @@ catch (Exception e)
 						<TD class="style6" colspan="7"><font style="font-family:arial;text-align:Right">Total¡G</font></td>
 						<TD class="style4" style="border-left-color:#CCCCFF"><input type="text" name="totWaferQty" value="<%=totWaferQty%>" size="15" style="font-family:arial; text-align:right; background-color:#CCCCFF; border-bottom-style: none; border-left-style: none; border-right-style: none; border-top-style: none;"></TD>
 						<TD class="style4" style="border-left-color:#CCCCFF"><input type="text" name="totChipQty" value="<%=totChipQty%>" size="15" style="font-family:arial; text-align:right; background-color:#CCCCFF; border-bottom-style: none; border-left-style: none; border-right-style: none; border-top-style: none;"><input type="hidden" name="ORIGTOTCHIPQTY" value="<%=ORIGTOTCHIPQTY%>"></td>
-						<TD class="style4"colspan="3" style="border-left-color:#BBDDEE">&nbsp;&nbsp;&nbsp;</td>
+						<TD class="style4"colspan="4" style="border-left-color:#BBDDEE">&nbsp;&nbsp;&nbsp;</td>
 				</tr>
 				<tr>
 					<TD colspan="7"><font style="font-size:12px;font-family:¼Ð·¢Åé;color:#000000"><strong>
@@ -1919,4 +1930,18 @@ catch (Exception e)
 </form>
 <iframe width=124 height=153 name="gToday:supermini:agenda.js" id="gToday:supermini:agenda.js" src="../calendar/ipopeng.htm" scrolling="no" frameborder="0" style="visibility:hidden; z-index:65535; position:absolute; top:0px;"></iframe>
 </body>
+<script>
+	function openYYWW(year, dateCode, prodGroup) {
+		const encodedDateCode = encodeURIComponent(dateCode);
+		const encodedProdGroup = encodeURIComponent(prodGroup);
+		const encodedYear = encodeURIComponent(year.substring(0,4));
+
+		const targetUrl = "/oradds/jsp/tscDateCode/dateCodeYYWW.jsp" +
+				"?dateCode=" + encodedDateCode +
+				"&prodGroup=" + encodedProdGroup +
+				"&year=" + encodedYear;
+
+		window.open(targetUrl, "_blank");
+	}
+</script>
 </html>
