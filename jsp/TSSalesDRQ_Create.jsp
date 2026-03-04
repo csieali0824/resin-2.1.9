@@ -1911,7 +1911,12 @@
 		String parOrgID=request.getParameter("PARORGID");  // 業務地區對應的ORG_ID
 		String modelN = StringUtils.isNullOrEmpty(request.getParameter("modelN")) ? "" : request.getParameter("modelN");
 		String groupByType = StringUtils.isNullOrEmpty(request.getParameter("groupByType")) ? "" : request.getParameter("groupByType");
+		String shipToLocationId = StringUtils.isNullOrEmpty(request.getParameter("shipToLocationId")) ? "" : request.getParameter("shipToLocationId");
+
+		String supplierId = StringUtils.isNullOrEmpty(request.getParameter("supplierId")) ? "" : request.getParameter("supplierId");
+		String deliveryId = StringUtils.isNullOrEmpty(request.getParameter("deliveryId")) ? "" : request.getParameter("deliveryId");
 		String isEmptyRow = StringUtils.isNullOrEmpty(request.getParameter("ISEMPTYROW")) ? "" : request.getParameter("ISEMPTYROW");
+		String siteLocation = StringUtils.isNullOrEmpty(request.getParameter("SITELOCATION")) ? "" : request.getParameter("SITELOCATION");
 //String allowCRD="";
 		String computeSSD="N";
 		String strdisable = "";
@@ -1961,10 +1966,11 @@
 		if (rfqType==null)
 		{
 			rfqType="";
-			//if (userActCenterNo.equals("001")) //tsce rfq_type default value=NORMAL,add by Peggy 20140325
-			if (salesarealist.indexOf(",001,")>0 || salesarealist.indexOf(",003,")>0 || salesarealist.indexOf(",008,")>0) //modify by Peggy 20160509
+			if (salesarealist.contains(",001,") ||
+					salesarealist.contains(",003,") ||
+					salesarealist.contains(",008,"))
 			{
-				rfqType="NORMAL";
+				rfqType = "NORMAL";
 			}
 		}
 		String rfqTypeNormal = "";
@@ -2064,6 +2070,7 @@
 		if (SALES_GROUP_ID==null) SALES_GROUP_ID="";
 		String SUPPLIER_NUMBER=request.getParameter("SUPPLIER_NUMBER"); //add by Peggy 20220428
 		if (SUPPLIER_NUMBER==null) SUPPLIER_NUMBER="";
+		SUPPLIER_NUMBER = StringUtils.isNullOrEmpty(supplierId) ? SUPPLIER_NUMBER: supplierId;
 		String SUPPLIER_FLAG=request.getParameter("SUPPLIER_FLAG"); //add by Peggy 20220428
 		if (SUPPLIER_FLAG==null) SUPPLIER_FLAG="";
 		String v_normal_inactive_flag=""; //add by Peggy 20230113
@@ -2323,6 +2330,8 @@
 								if (at[ac][subac].equals("23121")) def_ship_org_id="65310";  //LITE ON-2680 ,ADD BY Mars 20250602
 								if (at[ac][subac].equals("34912")) def_ship_org_id="82833";  //AUMOVIO Singapore ,ADD BY Mars 20251108
 								if (at[ac][subac].equals("34872")) def_ship_org_id="82810";  //AUMOVIO Malaysia ,ADD BY Mars 20251108
+								if (at[ac][subac].equals("35432")) def_ship_org_id="84361";  //AUMOVIO Electronics Philippines ,ADD BY Mars 20260122
+								if (at[ac][subac].equals("35433")) def_ship_org_id="84359";  //AUMOVIO Autonomous Philippines ,ADD BY Mars 20260122
 							}
 						}
 					}  //end for array second layer count
@@ -2624,11 +2633,20 @@
 							" and a.PAYMENT_TERM_ID = c.TERM_ID(+)"+
 							" and a.PRICE_LIST_ID = d.PRICE_LIST_ID(+)";
 			//add by peggy 20180726
-			if (def_ship_org_id.equals(""))
+			if (def_ship_org_id.equals("") && StringUtils.isNullOrEmpty(deliveryId)  && StringUtils.isNullOrEmpty(shipToLocationId))
 			{
 				sqla += " and a.PRIMARY_FLAG='Y'";
-			}
-			else
+			} else if (!StringUtils.isNullOrEmpty(deliveryId) || !StringUtils.isNullOrEmpty(shipToLocationId)) {
+				sqla += " and (\n" +
+						"(a.SITE_USE_CODE = 'SHIP_TO' AND (\n" +
+						"        ( '" + shipToLocationId + "' IS NOT NULL AND a.location = '"+ shipToLocationId + "' )\n" +
+						"        OR\n" +
+						"        ( '" + shipToLocationId + "' IS NULL AND a.SITE_USE_ID = '"+ shipto + "' )\n" +
+						"    ))\n" +
+						"    OR (a.SITE_USE_CODE='BILL_TO' AND a.PRIMARY_FLAG='Y')\n" +
+						"    OR (a.SITE_USE_CODE='DELIVER_TO' AND a.SITE_USE_ID='" + deliveryId + "')\n" +
+						" )";
+			} else
 			{
 				if (def_ship_org_id.equals("55839"))
 				{
@@ -2659,7 +2677,7 @@
 			{
 				sqla +=" order by case when upper(a.site_use_code)='BILL_TO' then 1 when upper(a.site_use_code)='SHIP_TO' then 2 else 3 end";
 			}
-			//out.println(sqla);
+//			System.out.println(sqla);
 			rsa=statementa.executeQuery(sqla);
 			while (rsa.next())
 			{
@@ -2888,6 +2906,24 @@
 						shipToContactid = rsx.getString("contact_id");
 					}
 				}
+			}
+			if (!StringUtils.isNullOrEmpty(siteLocation)) {
+				System.out.println("siteLocation="+siteLocation);
+				System.out.println("parOrgID="+parOrgID);
+				Statement stmt = con.createStatement();
+				sql = "SELECT SITE_USE_ID, ADDRESS1 FROM tsc_customer_site_all_v tsc \n" +
+						"      WHERE site_number = (SELECT DISTINCT site_number FROM tsc_customer_site_all_v tsc\n" +
+						"                             WHERE SITE_LOCATION = '" + siteLocation + "')\n" +
+						"      AND org_id = '" + parOrgID + "' ";
+
+				ResultSet siteLocationRs = stmt.executeQuery(sql);
+				if (siteLocationRs.next())
+				{
+					ShipToOrg =siteLocationRs.getString("SITE_USE_ID");
+					shipAddress = siteLocationRs.getString("ADDRESS1");
+				}
+				siteLocationRs.close();
+				stmt.close();
 			}
 		}
 	%>
@@ -4352,6 +4388,7 @@
 	<input type="hidden" name="modelN" value="<%=modelN%>">
 	<input type="hidden" name="groupByType" value="<%=groupByType%>">
 	<input type="hidden" name="isEmptyRow" value="<%=isEmptyRow%>">
+	<input type="hidden" name="siteLocation" value="<%=siteLocation%>">
 </FORM>
 <iframe width=124 height=153 name="gToday:supermini:agenda.js" id="gToday:supermini:agenda.js" src="../calendar/ipopeng.htm" scrolling="no" frameborder="0" style="visibility:hidden; z-index:65535; position:absolute; top:0px;"></iframe>
 </body>

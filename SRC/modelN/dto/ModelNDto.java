@@ -42,6 +42,9 @@ public class ModelNDto {
     private String tscPackage = "";
     private String tscFamily = "";
     private String orgSoLineId = "";
+    private String deliveryId = "";
+    private String coo = "";
+    private String salesNo = "";
 
     public String getCustNo() {
         return custNo;
@@ -345,5 +348,29 @@ public class ModelNDto {
 
     public void setOrgSoLineId(String orgSoLineId) {
         this.orgSoLineId = orgSoLineId;
+    }
+
+    public String getDeliveryId() {
+        return deliveryId;
+    }
+
+    public void setDeliveryId(String deliveryId) {
+        this.deliveryId = deliveryId;
+    }
+
+    public String getCoo() {
+        return coo;
+    }
+
+    public void setCoo(String coo) {
+        this.coo = coo;
+    }
+
+    public String getSalesNo() {
+        return salesNo;
+    }
+
+    public void setSalesNo(String salesNo) {
+        this.salesNo = salesNo;
     }
 }

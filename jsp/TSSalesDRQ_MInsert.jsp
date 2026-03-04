@@ -46,7 +46,8 @@ function insertFail(url) {
 <%@ page import="SalesDRQPageHeaderBean" %>
 <jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
 <%@ page import="DateBean,ArrayCheckBoxBean,Array2DimensionInputBean,SendMailBean" %>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+	<%@ page import="com.mysql.jdbc.StringUtils" %>
+	<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
 <jsp:useBean id="arrayCheckBoxBean" scope="session" class="ArrayCheckBoxBean"/>
 <jsp:useBean id="arrayRFQDocumentInputBean" scope="session" class="Array2DimensionInputBean"/>
 <jsp:useBean id="sendMailBean" scope="page" class="SendMailBean"/>
@@ -149,10 +150,14 @@ try
 	String custMarketGroup =""; //add by Peggy 20120303	
 	String priceList = request.getParameter("FIRMPRICELIST"); //modify by Peggy 20120301
 	String shipToOrg = request.getParameter("SHIPTOORG"); //modify by Peggy 20120301
+	String siteLocation = request.getParameter("siteLocation");
 	String shipMethod = request.getParameter("SHIPVIA"); //modify by Peggy 20120312
 	String fobPoint = request.getParameter("FOBPOINT"); //modify by Peggy 20120301
 	String payTermID = request.getParameter("PAYTERMID"); //modify by Peggy 20120301
 	String billTo = request.getParameter("BILLTO"); //modify by Peggy 20120301
+	System.out.println("siteLocation="+siteLocation);
+	System.out.println("shipToOrg="+shipToOrg);
+	System.out.println("userParOrgID="+userParOrgID);
 	String stepNo = "";
 	String deliveryToOrg = request.getParameter("DELIVERYTO");        //add by Peggy 20130220
 	if (deliveryToOrg==null || deliveryToOrg.equals("")) deliveryToOrg="0";
@@ -965,12 +970,14 @@ try
 						if (!a[ac][28].startsWith("&nbsp")&& !a[ac][28].startsWith("--")&& !a[ac][28].equals(""))  //add by Peggy 20170511
 						{
 							sql_e += " AND a.LOCATION='"+a[ac][28]+"'";
-						}	
+						} else if (!StringUtils.isNullOrEmpty(siteLocation)) {
+							sql_e += " AND a.SITE_USE_ID='"+shipToOrg+"'";
+						}
 						else
 						{
 							sql_e += "	AND A.PRIMARY_FLAG='Y' ";
 						}
-						//out.println(sql_e);				
+						//out.println(sql_e);
 						Statement state81=con.createStatement();
 						ResultSet rs81=state81.executeQuery(sql_e);
 						if (!rs81.next())
@@ -998,8 +1005,8 @@ try
 					pstmtDtl.executeQuery();
 					//pstmtDtl.executeUpdate();
 					//pstmtDtl.close();
-	
-	
+
+
 					//add by Peggy 20130304,insert data to tsdelivery_notice_remarks table
 					if (a[ac][22] != null && !a[ac][22].equals("") && !a[ac][22].equals("&nbsp;") && a[ac][23] != null && !a[ac][23].equals("") && !a[ac][23].equals("&nbsp;"))
 					{
@@ -1058,7 +1065,17 @@ try
    			} //enf of for
 			
 			//add by Peggy 20140115
-			if (sProgramName.equals("D4-004") || sProgramName.equals("D4-012") || sProgramName.equals("D4-013") || sProgramName.equals("D4-015") || sProgramName.equals("D4-017")  || sProgramName.equals("D4-018") || sProgramName.equals("D4-003")  || sProgramName.equals("D4-019") || sProgramName.equals("D4-016")) //add D4-003 by Peggy 20140310
+			if (sProgramName.equals("D4-004") ||
+					sProgramName.equals("D4-012") ||
+					sProgramName.equals("D4-013") ||
+					sProgramName.equals("D4-015") ||
+					sProgramName.equals("D4-017") ||
+					sProgramName.equals("D4-018") ||
+					sProgramName.equals("D4-003") ||
+					sProgramName.equals("D4-019") ||
+					sProgramName.equals("D4-016") ||
+					sProgramName.equals("D4-021")
+			) //add D4-003 by Peggy 20140310
 			{
 				if (sProgramName.equals("D4-017")||sProgramName.equals("D4-018") || sProgramName.equals("D4-016"))
 				{
@@ -1416,6 +1433,11 @@ try
 			String url = modelN.equals("Y") ? detailJsp : "../jsp/TSCABufferImport.jsp";
 		%>
 			<script> insertSuccess("<%=url%>")</script>
+		<%
+		}
+		else if (sProgramName.equals("D4-021")) { //add by Peggy 20220610
+		%>
+		<script> insertSuccess("<%=detailJsp%>")</script>
 		<%
 		}
 		else if (sProgramName.equals("TSCC")) { //add by Peggy 20220610

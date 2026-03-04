@@ -71,10 +71,8 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
         List<Map<String, String>> list = new ArrayList<>();
         ModelNCommonUtils.conn = conn;
         this.userName = userName;
-        String salesAreaNo = "";
-        String salesAreaName = "";
         String sql = "select SALES_AREA_NO,'('||SALES_AREA_NO||')'||SALES_AREA_NAME from ORADDMAN.TSSALES_AREA ";
-        String sWhere = "where SALES_AREA_NO > 0 and SALES_AREA_NO in ('002','003','004','005','006','008','009')";
+        String sWhere = "where SALES_AREA_NO > 0 and SALES_AREA_NO in ('001','002','003','004','005','006','008','009')";
         String sOrder = "Order by 1";
         Map<String, String> salesAreaMap = new LinkedHashMap<>();
         if (!Objects.equals(userRoles, "admin") || !userRoles.equals("admin")) {
@@ -166,6 +164,11 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                 tscr.setDetailHeaderColumns();
                 tscr.setDetailHeaderHtmlWidth();
                 break;
+            case TSCE:
+                Tsce tsce = new Tsce();
+                tsce.setDetailHeaderColumns();
+                tsce.setDetailHeaderHtmlWidth();
+                break;
             default:
                 break;
         }
@@ -202,7 +205,9 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
     public String getSalesProgramName(String salesNo) {
         switch (SalesArea.fromSalesNo(salesNo)) {
             case TSCCSH:
-               return "D4-017";
+                return "D4-017";
+            case TSCE:
+                return "D4-021";
             case TSCK:
             case TSCJ:
                 return "D4-013";
@@ -238,7 +243,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
         if (!StringUtils.isNullOrEmpty(modelNDto.getCustNo()) && !StringUtils.isNullOrEmpty(modelNDto.getCustPo())) {
             Statement statement = conn.createStatement();
             ResultSet rs = statement.executeQuery("select 1 from oraddman.TSC_RFQ_UPLOAD_TEMP where SALESAREANO = '" + salesNo + "' \n" + "" +
-                            " and CUSTOMER_NO ='" + modelNDto.getCustNo() + "' AND CUSTOMER_PO='" + modelNDto.getCustPo() + "' AND CREATE_FLAG='N'");
+                    " and CUSTOMER_NO ='" + modelNDto.getCustNo() + "' AND CUSTOMER_PO='" + modelNDto.getCustPo() + "' AND CREATE_FLAG='N'");
             if (rs.next()) {
                 errList.add(ErrorMessage.PENDING_DETAIL_EXISTS_CUSTNO.getMessage());
                 modelNDto.setErrorList(errList);
@@ -252,10 +257,10 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
         int recordCount = 0;
         if (!StringUtils.isNullOrEmpty(modelNDto.getCustItem())) {
             String sql = "select  DISTINCT a.item,a.ITEM_DESCRIPTION,a.INVENTORY_ITEM_ID,\n" +
-                    "a.INVENTORY_ITEM, a.SOLD_TO_ORG_ID,msi.PRIMARY_UOM_CODE\n" +
+                    "a.INVENTORY_ITEM, a.SOLD_TO_ORG_ID,msi.PRIMARY_UOM_CODE,tsc_get_item_coo(msi.inventory_item_id) as COO\n" +
                     ",NVL(msi.ATTRIBUTE3,'N/A') ATTRIBUTE3\n" +
                     ",tsc_rfq_create_erp_odr_pkg.tsc_get_order_type (msi.inventory_item_id) AS ORDER_TYPE \n" +
-                    ",tsc_get_item_desc_nopacking(msi.organization_id,msi.inventory_item_id) itemnopacking \n" + // quote �ϥ�
+                    ",tsc_get_item_desc_nopacking(msi.organization_id,msi.inventory_item_id) itemnopacking \n" +
                     "from oe_items_v a,inv.mtl_system_items_b msi \n" +
                     ",APPS.MTL_ITEM_CATEGORIES_V c \n" +
                     "where a.SOLD_TO_ORG_ID = '" + modelNDto.getCustId() + "' \n" +
@@ -286,6 +291,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                 modelNDto.setTscItem(rs.getString("INVENTORY_ITEM"));
                 modelNDto.setInventoryItemId(rs.getString("INVENTORY_ITEM_ID"));
                 modelNDto.setTscItemDesc(rs.getString("ITEM_DESCRIPTION"));
+                modelNDto.setCoo(rs.getString("COO"));
                 modelNDto.setManuFactoryNo(rs.getString("ATTRIBUTE3"));
                 modelNDto.setUom(rs.getString("PRIMARY_UOM_CODE"));
                 itemNoPacking = rs.getString("itemnopacking");
@@ -306,9 +312,9 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
             }
         } else if (!StringUtils.isNullOrEmpty(modelNDto.getTscItemDesc()) || !StringUtils.isNullOrEmpty(modelNDto.getTscItem())) {
             String sql = "select distinct msi.description,msi.segment1, msi.inventory_item_id,msi.primary_uom_code,\n" +
-                    "nvl(msi.attribute3, 'N/A') attribute3,\n" +
+                    "nvl(msi.attribute3, 'N/A') attribute3,tsc_get_item_coo(msi.inventory_item_id) as COO,\n" +
                     "tsc_rfq_create_erp_odr_pkg.tsc_get_order_type (msi.inventory_item_id)  AS order_type\n" +
-                    ",tsc_get_item_desc_nopacking(msi.organization_id,msi.inventory_item_id) itemnopacking \n" + // quote �ϥ�
+                    ",tsc_get_item_desc_nopacking(msi.organization_id,msi.inventory_item_id) itemnopacking \n" +
                     "FROM  inv.mtl_system_items_b msi, apps.mtl_item_categories_v c\n" +
                     "WHERE msi.inventory_item_id = c.inventory_item_id\n" +
                     "AND msi.organization_id = c.organization_id\n" +
@@ -331,6 +337,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                 modelNDto.setTscItem(rs.getString("segment1"));
                 modelNDto.setInventoryItemId(rs.getString("INVENTORY_ITEM_ID"));
                 modelNDto.setTscItemDesc(rs.getString("description"));
+                modelNDto.setCoo(rs.getString("COO"));
                 modelNDto.setCustItem("");
                 modelNDto.setManuFactoryNo(rs.getString("ATTRIBUTE3"));
                 itemNoPacking = rs.getString("itemnopacking");
@@ -542,10 +549,10 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                     errList.add(ErrorMessage.SELLING_PRICE_MUST_GREATER_0.getMessage());
                     modelNDto.setErrorList(errList);
                 } else if (!modelNDto.getQuoteNumber().equals("")) { // excel QuoteNumber 不為空時才會做檢查
-                   if (!modelNDto.getSellingPrice().equals(sellingPrice_Q)) {
-                       errList.add(ErrorMessage.SELLING_PRICE_NOT_MATCH_QUOTE_PRICE.getMessageFormat(sellingPrice_Q));
-                       modelNDto.setErrorList(errList);
-                   }
+                    if (!modelNDto.getSellingPrice().equals(sellingPrice_Q)) {
+                        errList.add(ErrorMessage.SELLING_PRICE_NOT_MATCH_QUOTE_PRICE.getMessageFormat(sellingPrice_Q));
+                        modelNDto.setErrorList(errList);
+                    }
                 } else {
                     modelNDto.setSellingPrice((new DecimalFormat("###,##0.000##")).format(priceNumber));
                 }
@@ -643,6 +650,15 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                     tscr.setShippingMethod();
                 }
                 break;
+            case TSCE:
+                Tsce tsce = new Tsce();
+                if (isShippingFobOrderType) {
+                    tsce.setShippingFobOrderTypeInfo();
+                } else if (isSetSalesInfo) {
+                    tsce.setShippingMethod();
+                    tsce.setExtraRuleInfo();
+                }
+                break;
             default:
                 break;
         }
@@ -712,6 +728,9 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
         String salesAreaName = "";
 
         switch (SalesArea.fromSalesNo(salesNo)) {
+            case TSCE:
+                salesAreaName = SalesArea.TSCE.name();
+                break;
             case TSCCSH:
                 salesAreaName = SalesArea.TSCCSH.name();
                 break;
@@ -781,6 +800,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
 
         for (int rowIndex = 1, rowCount = sheet.getRows(); rowIndex < rowCount; rowIndex++) {
             modelNDto = new ModelNDto();
+            modelNDto.setSalesNo(salesNo);
             List<String> errorMsgList = new LinkedList<>();
             if (isEmptyRow(sheet, rowIndex)) {
                 continue; // ignore empty row
@@ -866,30 +886,34 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                         }
                         break;
                     case SSD:
-                        if (StringUtils.isNullOrEmpty(content)) {
-                            throw new Exception(ErrorMessage.SSD_REQUIRED.getMessage());
-                        } else {
-                            try {
-                                String ssd = content;
-                                if (rowCell.getType() == CellType.DATE) {
-                                    ssd = sdf.format(((DateCell) rowCell).getDate());
+                        if (!salesNo.equals(SalesArea.TSCE.getSalesNo())) {
+                            if (StringUtils.isNullOrEmpty(content)) {
+                                throw new Exception(ErrorMessage.SSD_REQUIRED.getMessage());
+                            } else {
+                                try {
+                                    String ssd = content;
+                                    if (rowCell.getType() == CellType.DATE) {
+                                        ssd = sdf.format(((DateCell) rowCell).getDate());
+                                    }
+                                    DateParseResult result = DateUtil.autoParseWithPattern(ssd);
+                                    modelNDto.setSsd(result.formattedDate());
+                                } catch (IllegalArgumentException e) {
+                                    errorMsgList.add(columnName.concat(":" + e.getMessage()));
                                 }
-                                DateParseResult result = DateUtil.autoParseWithPattern(ssd);
-                                modelNDto.setSsd(result.formattedDate());
-                            } catch (IllegalArgumentException e) {
-                                errorMsgList.add(columnName.concat(":" + e.getMessage()));
                             }
                         }
                         break;
                     case ShippingMethod:
-                        String shippingMethod = content;
-                        if (!StringUtils.isNullOrEmpty(shippingMethod)) {
-                            boolean isFound = this.findShippingMethod(shippingMethod);
-                            if (!isFound) {
-                                errorMsgList.add(ErrorMessage.SHIPPING_METHOD_NOT_FOUND.getMessageFormat(columnName.concat(":" + shippingMethod)));
+                        if (!salesNo.equals(SalesArea.TSCE.getSalesNo())) {
+                            String shippingMethod = content;
+                            if (!StringUtils.isNullOrEmpty(shippingMethod)) {
+                                boolean isFound = this.findShippingMethod(shippingMethod);
+                                if (!isFound) {
+                                    errorMsgList.add(ErrorMessage.SHIPPING_METHOD_NOT_FOUND.getMessageFormat(columnName.concat(":" + shippingMethod)));
+                                }
                             }
+                            modelNDto.setShippingMethod(shippingMethod);
                         }
-                        modelNDto.setShippingMethod(shippingMethod);
                         break;
                     case FOB:
                         String fob = content;
@@ -927,6 +951,9 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                         break;
                     case IgnoreCOO:
                         modelNDto.setIgnoreCoo(content);
+                        break;
+                    case DeliveryTo:
+                        modelNDto.setDeliveryId(content);
                         break;
                     default:
                         break;
@@ -1165,7 +1192,7 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                         detailKeyValueMap.put(columnKey, detailDto.getGroupByType());
                         break;
                     default:
-                      break;
+                        break;
                 }
             }
             list.add(detailKeyValueMap);
@@ -1221,18 +1248,21 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                 strArray[i][j] = (value == null) ? "" : value.toString(); // 處理 null 值為空字串
             }
         }
-        String customerId = (String) argMap.get("customerId");
-        String customerNo = (String) argMap.get("customerNo");
-        String customerName = (String) argMap.get("customerName");
-        String salesNo = (String) argMap.get("salesNo");
-        String customerPo = (String) argMap.get("customerPo");
-        String shipToOrgId = (String) argMap.get("shipToOrgId");
-        String curr = (String) argMap.get("curr");
-        String remark = (String) argMap.get("remark");
-        String orderType = (String) argMap.get("orderType");
-        String rfqType = (String) argMap.get("rfqType");
-        String tempId = (String) argMap.get("tempId");
-        String groupByType = (String) argMap.get("groupByType");
+        String customerId = getSafeString(argMap, "customerId");
+        String customerNo = getSafeString(argMap, "customerNo");
+        String customerName = getSafeString(argMap,"customerName");
+        String salesNo = getSafeString(argMap,"salesNo");
+        String customerPo = getSafeString(argMap,"customerPo");
+        String shipToOrgId = getSafeString(argMap,"shipToOrgId");
+        String curr = getSafeString(argMap,"curr");
+        String remark =getSafeString(argMap,"remark");
+        String orderType = getSafeString(argMap,"orderType");
+        String rfqType = getSafeString(argMap,"rfqType");
+        String tempId = getSafeString(argMap,"tempId");
+        String groupByType = getSafeString(argMap,"groupByType");
+        String shipToLocationId = getSafeString(argMap,"shipToLocationId");
+        String supplierId = getSafeString(argMap,"supplierId");
+        String deliveryId = getSafeString(argMap,"deliveryId");
         String[] shipToContactNameAndId = getShipToContactNameAndId(customerId, shipToOrgId);
         String shipToContactName = shipToContactNameAndId[0];
         String shipToContactId = shipToContactNameAndId[1];
@@ -1252,12 +1282,14 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
         session.setAttribute("SHIPTO",shipToOrgId);
         session.setAttribute("CUSTOMERIDTMP",customerId);
         session.setAttribute("INSERT","Y");
-        session.setAttribute("RFQ_TYPE",rfqType);
+        session.setAttribute("RFQTYPE",rfqType);
         session.setAttribute("UPLOAD_TEMP_ID",tempId);
         session.setAttribute("SHIPTOCONTACT",shipToContactName);
         session.setAttribute("SHIPTOCONTACTID",shipToContactId);
         session.setAttribute("modelN", "Y");
         session.setAttribute("groupByType", groupByType);
+        session.setAttribute("supplierId", supplierId);
+        session.setAttribute("deliveryId", deliveryId);
         session.setAttribute("MAXLINENO",""+strArray.length);
         session.setAttribute("PROGRAMNAME",getSalesProgramName(salesNo));
 
@@ -1278,7 +1310,10 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
                 "&UPLOAD_TEMP_ID="+java.net.URLEncoder.encode(tempId)+
                 "&SHIPTOCONTACT="+java.net.URLEncoder.encode(shipToContactName) +
                 "&SHIPTOCONTACTID="+java.net.URLEncoder.encode(shipToContactId)+
-                "&PROGRAMNAME=" + getSalesProgramName(salesNo);
+                "&PROGRAMNAME=" + getSalesProgramName(salesNo)+
+                "&shipToLocationId=" + shipToLocationId +
+                "&supplierId=" + supplierId +
+                "&deliveryId=" + deliveryId;
         try {
             response.sendRedirect(urlDir);
         } catch (Exception e) {
@@ -1288,6 +1323,11 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
         return strArray;
     }
 
+    private String getSafeString(Map<String, Object> map, String key) {
+        return Optional.ofNullable(map.get(key))
+                .map(Object::toString)
+                .orElse(""); // 如果是 null 就回傳空字串，避免 NullPointerException
+    }
     private void setDefaultShipToOrgId() throws SQLException {
         String sql =" select case when upper(a.site_use_code)='BILL_TO' then 1 when upper(a.site_use_code)='SHIP_TO' then 2 else 3 end as segno, \n"+
                 " a.SITE_USE_CODE, a.PRIMARY_FLAG, a.SITE_USE_ID, loc.COUNTRY, loc.ADDRESS1, \n"+
@@ -1321,14 +1361,14 @@ public class ModelNCommonUtils extends AbstractModelNUtils {
         String contactName = "";
         String contactId = "";
         String sql = " select LAST_NAME || DECODE(FIRST_NAME, NULL,NULL, ', '||FIRST_NAME)|| DECODE(TITLE,NULL, NULL, ' '||TITLE) contact_name,con.contact_id" +
-                    " from ar_contacts_v con,hz_cust_site_uses su,HZ_CUST_SITE_USES_ALL hcsu " +
-                    " where  con.customer_id ='" + customerId + "'" +
-                    " and con.status='A'" +
-                    " AND con.address_id=su.cust_acct_site_id" +
-                    " AND su.site_use_code='SHIP_TO'" +
-                    " AND hcsu.CUST_ACCT_SITE_ID =con.address_id(+)" +
-                    " AND hcsu.SITE_USE_ID='" + shipToOrgId + "'" +
-                    " ORDER BY DECODE(LAST_NAME || DECODE(FIRST_NAME, NULL,NULL, ', '||FIRST_NAME)|| DECODE(TITLE,NULL, NULL, ' '||TITLE),'" + customerId + "',1,2)";
+                " from ar_contacts_v con,hz_cust_site_uses su,HZ_CUST_SITE_USES_ALL hcsu " +
+                " where  con.customer_id ='" + customerId + "'" +
+                " and con.status='A'" +
+                " AND con.address_id=su.cust_acct_site_id" +
+                " AND su.site_use_code='SHIP_TO'" +
+                " AND hcsu.CUST_ACCT_SITE_ID =con.address_id(+)" +
+                " AND hcsu.SITE_USE_ID='" + shipToOrgId + "'" +
+                " ORDER BY DECODE(LAST_NAME || DECODE(FIRST_NAME, NULL,NULL, ', '||FIRST_NAME)|| DECODE(TITLE,NULL, NULL, ' '||TITLE),'" + customerId + "',1,2)";
         try {
             PreparedStatement stmt = conn.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();

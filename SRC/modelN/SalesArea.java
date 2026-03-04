@@ -3,6 +3,7 @@ package modelN;
 import java.util.Objects;
 
 public enum SalesArea {
+    TSCE("001"),
     TSCCSH("002"),
     TSCJ("003"),
     TSCK("004"),

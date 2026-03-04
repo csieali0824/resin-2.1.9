@@ -7,6 +7,7 @@ import jxl.*;
 import modelN.DetailColumn;
 import modelN.ErrorMessage;
 import modelN.ExcelColumn;
+import modelN.SalesArea;
 import modelN.dao.impl.TscRfqUploadTempImpl;
 import modelN.dto.DetailDto;
 import modelN.dto.ModelNDto;
@@ -21,8 +22,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static modelN.SalesArea.TSCCSH;
-import static modelN.SalesArea.TSCTDA;
+import static modelN.SalesArea.*;
 
 public class ModelNTest {
     public static void mainc(String[] args) {
@@ -97,13 +97,13 @@ public class ModelNTest {
 
     static {
         try {
-            conn = ConnUtils.getConnectionProd();
+            conn = ConnUtils.getConnectionCRP();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    private static String salesNo = TSCCSH.getSalesNo();
+    private static String salesNo = TSCE.getSalesNo();
 
     private static List errList = new LinkedList();
 
@@ -142,6 +142,7 @@ public class ModelNTest {
 //    }
 
 
+    //mainDetail
     public static void mainDetail(String[] args) throws SQLException {
         setColumns();
         String[] detailColumns = getColumns();
@@ -149,13 +150,13 @@ public class ModelNTest {
         List list = new ArrayList();
         HashMap detailMap = new LinkedHashMap();
         TscRfqUploadTempImpl temp = new TscRfqUploadTempImpl();
-        Map map = tscRfqUploadTemp().getTscRfqUploadTemp(conn, "008", null, null, null, null, null);
+        Map map = tscRfqUploadTemp().getTscRfqUploadTemp(conn, "001", null, null, null, null, null);
         for (Iterator it = map.entrySet().iterator(); it.hasNext(); ) {
             Map.Entry en = (Map.Entry) it.next();
             int rowIndex = ((Integer) en.getKey()).intValue();
             detailDto = (DetailDto) en.getValue();
-            System.out.println(detailDto.getQty());
-            System.out.println(detailDto.getQty().replaceAll(",", ""));
+//            System.out.println(detailDto.getQty());
+//            System.out.println(detailDto.getQty().replaceAll(",", ""));
             list.add(detailDto);
             for (int i = 0, n = detailColumns.length; i < n; i++) {
                 String columnKey = detailColumns[i];
@@ -227,7 +228,22 @@ public class ModelNTest {
             list.add(detailKeyValueMap);
             detailMap.put(rowIndex, list);
         }
-//        System.out.println("map="+detailMap);
+        System.out.println("Xxx="+list);
+//        for (Iterator it = detailMap.entrySet().iterator(); it.hasNext();) {
+//            Map.Entry entry = (Map.Entry) it.next();
+//            int index = ((Integer) entry.getKey()).intValue();
+//            List objectList = (List) entry.getValue();
+//            for (int i = 0, n = objectList.size(); i < n; i++) {
+//                if (objectList.get(i) instanceof ModelNDto) {
+//                    modelNDto = (ModelNDto) objectList.get(i);
+//                    System.out.println("getSsd=" + modelNDto.getDeliverId());
+//                }
+//                if (objectList.get(i) instanceof DetailDto) {
+//                    detailDto = (DetailDto) objectList.get(i);
+//                    System.out.println("getSupplierId=" + detailDto.getSupplierId());
+//                }
+//            }
+//        }
     }
 
     public static void mainJson(String[] args) throws JsonProcessingException {
@@ -533,6 +549,7 @@ public class ModelNTest {
 
     static SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 //    static StringBuilder errorMessage = new StringBuilder();
+    // mainExcel
     public static void main(String[] args) throws Exception {
         CallableStatement cs1 = conn.prepareCall(
                 "{call mo_global.set_policy_context('S',?)}");
@@ -545,7 +562,7 @@ public class ModelNTest {
 //        String uploadFilePath = "C:\\Users\\mars.wang\\Desktop\\sales-upload\\D4-019_20241212.xls";
 //        StringBuilder errorMessage = new StringBuilder();
         try {
-            String uploadFilePath = "C:\\Users\\mars.wang\\Desktop\\modelN_Excel\\WT RFQ-20251027-OK.xls";
+            String uploadFilePath = "C:\\Users\\mars.wang\\Desktop\\modelN_Excel\\20260130測試Po line.xls";
 //            String uploadFilePath = "C:\\Users\\mars.wang\\Desktop\\modelN_Excel\\RFQ-TSCTDA-33452.xls";
             InputStream is = new FileInputStream(uploadFilePath);
             Workbook wb = Workbook.getWorkbook(is);
@@ -635,32 +652,36 @@ public class ModelNTest {
                             }
                             break;
                         case SSD:
-                            if (StringUtils.isNullOrEmpty(content)) {
-                                throw new Exception(ErrorMessage.SSD_REQUIRED.getMessage());
-                            } else {
-                                try {
-                                    String ssd = content;
-                                    if (rowCell.getType() == CellType.DATE) {
-                                        ssd = sdf.format(((DateCell) rowCell).getDate());
+                            if (!salesNo.equals(SalesArea.TSCE.getSalesNo())) {
+                                if (StringUtils.isNullOrEmpty(content)) {
+                                    throw new Exception(ErrorMessage.SSD_REQUIRED.getMessage());
+                                } else {
+                                    try {
+                                        String ssd = content;
+                                        if (rowCell.getType() == CellType.DATE) {
+                                            ssd = sdf.format(((DateCell) rowCell).getDate());
+                                        }
+                                        DateParseResult result = DateUtil.autoParseWithPattern(ssd);
+                                        modelNDto.setSsd(result.formattedDate());
+                                    } catch (IllegalArgumentException e) {
+                                        errorMsgList.add(columnName.concat(":" + e.getMessage()));
                                     }
-                                    DateParseResult result = DateUtil.autoParseWithPattern(ssd);
-                                    modelNDto.setSsd(result.formattedDate());
-                                } catch (IllegalArgumentException e) {
-                                    errorMsgList.add(columnName.concat(":" + e.getMessage()));
                                 }
                             }
                             break;
                         case ShippingMethod:
-                            String shippingMethod = content;
-                            if (!StringUtils.isNullOrEmpty(shippingMethod)) {
-                                boolean isFound = findShippingMethod(shippingMethod);
-                                if (!isFound) {
-                                    errorMsgList.add(ErrorMessage.SHIPPING_METHOD_NOT_FOUND.getMessageFormat(columnName.concat(":" + shippingMethod)));
+                            if (!salesNo.equals(SalesArea.TSCE.getSalesNo())) {
+                                String shippingMethod = content;
+                                if (!StringUtils.isNullOrEmpty(shippingMethod)) {
+                                    boolean isFound = findShippingMethod(shippingMethod);
+                                    if (!isFound) {
+                                        errorMsgList.add(ErrorMessage.SHIPPING_METHOD_NOT_FOUND.getMessageFormat(columnName.concat(":" + shippingMethod)));
 //                                    errorMessage.append(ErrorMessage.SHIPPING_METHOD_NOT_FOUND.getMessageFormat(shippingMethod));
 //                                    throw new Exception(ErrorMessage.SHIPPING_METHOD_NOT_FOUND.getMessageFormat(shippingMethod));
+                                    }
                                 }
+                                modelNDto.setShippingMethod(shippingMethod);
                             }
-                            modelNDto.setShippingMethod(shippingMethod);
                             break;
                         case FOB:
                             String fob = content;
@@ -701,6 +722,9 @@ public class ModelNTest {
                         case IgnoreCOO:
                             modelNDto.setIgnoreCoo(content);
                             break;
+                        case DeliveryTo:
+                            modelNDto.setDeliveryId(content);
+                            break;
                         default:
                             break;
 //                        throw new Exception("第" + (j + 1) + "欄的名稱錯誤:" + columnName);
@@ -708,7 +732,7 @@ public class ModelNTest {
 
                     map.put(rowIndex, modelNDto);
                 }
-//                System.out.println("getCrd="+modelNDto.getCrd());
+//                System.out.println("getSupplierId="+modelNDto.getSupplierId());
 //                System.out.println("getSsd="+modelNDto.getSsd());
 //            System.out.println(""+i+"----------------------------------------------");
                 if (!errorMsgList.isEmpty()) {
@@ -990,10 +1014,12 @@ public class ModelNTest {
             checkQty();
             checkSellingPrice();
             checkSSD();
-            checkShippingMethod();
             checkFOB();
             checkRemarks();
             setDefaultLineType();
+            // todo setShippingMethod()
+            setShippingMethod();
+            checkShippingMethod();
             // 檢查Excel End Customer Number
             if (!modelNDto.getEndCustNo().equals("")) {
                 //end customer number 不可與 customer number 相同
@@ -1010,7 +1036,7 @@ public class ModelNTest {
 //            System.out.println("xxxx=" + modelNDto.getEndCustNamePhonetic());
 //            System.out.println("mo="+errList2String(modelNDto.getErrorList()));
         }
-//        insertIntoTscRfqUploadTmp(connection, map);
+//        tscRfqUploadTemp().insertTscRfqUploadTemp(conn, map);
 //        if (currentRow != rowIndex) {
 //            errList = new ArrayList();
 //        }
@@ -1027,6 +1053,58 @@ public class ModelNTest {
 //        System.out.println("rowIndex="+rowIndex);
 //        System.out.println("currentRow="+currentRow);
 //        System.out.println("xxx="+result.toString());
+    }
+
+    private static void setShippingMethod() throws SQLException {
+
+//        System.out.println("item="+modelNDto.getTscItem());
+//        System.out.println("getCrd="+modelNDto.getCrd());
+//        System.out.println("getOrderType="+modelNDto.getOrderType());
+//        System.out.println("getManuFactoryNo="+modelNDto.getManuFactoryNo());
+//        System.out.println("getCustId="+modelNDto.getCustId());
+//        System.out.println("getFob="+modelNDto.getFob());
+
+        String tscCategorySql = " select description, TSC_OM_CATEGORY(INVENTORY_ITEM_ID,ORGANIZATION_ID,'TSC_Package') as TSC_PACKAGE, "+
+                " TSC_OM_CATEGORY(INVENTORY_ITEM_ID,ORGANIZATION_ID,'TSC_Family') as TSC_FAMILY, "+
+                " tsc_get_item_coo(a.inventory_item_id)coo "+
+                " from APPS.MTL_SYSTEM_ITEMS A WHERE A.ORGANIZATION_ID=43"+
+                " and a.segment1= ? ";
+//        System.out.println("tscCategorySql="+tscCategorySql);
+        try (PreparedStatement tscCategoryStmt = conn.prepareStatement(tscCategorySql)) {
+            tscCategoryStmt.setString(1, "8125-241QQ21TUAU6M000000000F00");
+
+            try (ResultSet rs = tscCategoryStmt.executeQuery()) {
+                while (rs.next()) {
+                    System.out.println("TSC_PACKAGE="+rs.getString("TSC_PACKAGE"));
+                    System.out.println("TSC_FAMILY="+rs.getString("TSC_FAMILY"));
+                    System.out.println("description="+rs.getString("description"));
+                    System.out.println("CRD="+modelNDto.getCrd());
+//                System.out.println("odrtype="+odrtype);
+//                System.out.println("plant="+plant);
+                    System.out.println("cust_id="+modelNDto.getCustId());
+//                System.out.println("fob="+fob);
+//                System.out.println("deliverid="+deliverid);
+
+                    CallableStatement cs = conn.prepareCall("{call tsc_edi_pkg.GET_SHIPPING_METHOD(?,?,?,?,?,?,?,sysdate,?,?,?,?)}");
+                    cs.setString(1, salesNo);
+                    cs.setString(2, rs.getString("TSC_PACKAGE"));
+                    cs.setString(3, rs.getString("TSC_FAMILY"));
+                    cs.setString(4, rs.getString("description"));
+                    cs.setString(5, modelNDto.getCrd());
+                    cs.registerOutParameter(6, Types.VARCHAR);
+                    cs.setString(7, "1141");
+                    cs.setString(8, "010");
+                    cs.setString(9, modelNDto.getCustId());   //add by Peggy 20160513
+                    cs.setString(10, "FCA LANGENBACH");       //add by Peggy 20190319
+                    cs.setString(11, "23020");       //add by Peggy 20190319
+                    cs.execute();
+                    String shipMethod = cs.getString(6);
+                    System.out.println("shipMethod="+shipMethod);
+                    String coo = rs.getString("COO");
+                    cs.close();
+                }
+            }
+        }
     }
 
 

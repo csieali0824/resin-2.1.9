@@ -46,7 +46,10 @@
             rfqType: '',
             groupByType: '',
             uploadBy: '',
-            insertFlag: ''
+            insertFlag: '',
+            shipToLocationId: '',
+            supplierId: '',
+            deliveryId: ''
         }
     };
 
@@ -108,6 +111,9 @@
                     '&rfqType=' + request.rfqType +
                     '&groupByType=' + request.groupByType +
                     '&uploadBy=' + request.uploadBy +
+                    '&shipToLocationId=' + request.shipToLocationId +
+                    '&supplierId=' + request.supplierId +
+                    '&deliveryId=' + request.deliveryId +
                     '&insertFlag=' + request.insertFlag;
             });
         }
@@ -174,6 +180,9 @@
     String rfqType = request.getParameter("rfqType");
     String tempId = request.getParameter("tempId");
     String groupByType = request.getParameter("groupByType");
+    String shipToLocationId = request.getParameter("shipToLocationId");
+    String supplierId = request.getParameter("supplierId");
+    String deliveryId = request.getParameter("deliveryId");
     String rowIndex = request.getParameter("rowIndex");
     salesNo = !StringUtils.isNullOrEmpty(request.getParameter("salesNo")) ? request.getParameter("salesNo") : salesNo;
     arrayRFQDocumentInputBean.setArray2DString(null);
@@ -192,6 +201,9 @@
         drqCreateArg.put("orderType", orderType);
         drqCreateArg.put("rfqType", rfqType);
         drqCreateArg.put("groupByType", groupByType);
+        drqCreateArg.put("shipToLocationId", shipToLocationId);
+        drqCreateArg.put("supplierId", supplierId);
+        drqCreateArg.put("deliveryId", deliveryId);
         drqCreateArg.put("curr", SalesArea.TSCA.getSalesNo().equals(salesNo) ? "USD" : "");
         drqCreateArg.put("remark", "Order Import from file");
         String[][] strArray = modelNCommonUtils.sendRedirect2DRQCreate(session, response, drqCreateArg);
@@ -328,6 +340,9 @@
                                                 rfqType: "<%=detailDto.getRfqType()%>",
                                                 groupByType: "<%=detailDto.getGroupByType()%>",
                                                 uploadBy: "<%=detailDto.getUploadBy()%>",
+                                                shipToLocationId: "<%=detailDto.getShipToLocationId()%>",
+                                                supplierId: "<%=detailDto.getSupplierId()%>",
+                                                deliveryId: "<%=detailDto.getDeliveryId()%>",
                                                 insertFlag: 'Y'
                                         };
                                     </script>

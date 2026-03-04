@@ -54,7 +54,10 @@ public enum ErrorMessage {
     SHIPPING_METHOD_NOT_FOUND("%s not found!"),
     FOB_INCOTERM_NOT_FOUND("%s not found!"),
     DATE_FORMATTER_ERROR("%s, invalid date format，The correct format must be YYYY/MM/DD"),
-    INVALID_DATE_ERROR("%s, Invalid date value");
+    INVALID_DATE_ERROR("%s, Invalid date value"),
+
+    CUSTPO_LINE_NO("客戶代碼(%s), Please input the cust po line no value!!");
+
     private final String message;
 
     ErrorMessage(String errorMessage) {
