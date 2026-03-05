@@ -42,75 +42,95 @@ function sendToMainWindow(price,end_cust)
 	{
 		if (!StringUtils.isNullOrEmpty(QNO) && !StringUtils.isNullOrEmpty(PNO)) {
 			String sql = "SELECT * FROM (\n" +
-					"    -- 材场だQUOTE 戈ㄓ方\n" +
-					"    SELECT\n" +
-					"        a.quoteid,\n" +
-					"        a.partnumber,\n" +
-					"        a.currency,\n" +
-					"LISTAGG(TO_CHAR(a.pricek / 1000, 'FM99990.0999999'), ',') \n" +
-					"            WITHIN GROUP (ORDER BY a.pricek DESC) AS pricek,\n" +
-					"        '(' || a.region || ')' || a.endcustomer AS end_customer,\n" +
-					"        CASE\n" +
-					"            WHEN (\n" +
-					"                CASE\n" +
-					"                    WHEN a.region IN ('TSCR', 'TSCI') THEN TRUNC(a.fromdate)\n" +
-					"                    ELSE TRUNC(SYSDATE)\n" +
-					"                END\n" +
-					"            ) BETWEEN TRUNC(a.fromdate) AND TRUNC(a.todate)\n" +
-					"            THEN '1'\n" +
-					"            ELSE '0'\n" +
-					"        END AS pass_flag,\n" +
-					"        TO_CHAR(a.todate,'yyyy-mm-dd') todate\n" +
-					"    FROM tsc_om_ref_quotenet a\n" +
-					"    WHERE a.quoteid='" +QNO + "' \n"+
+					"    -- 材场だQUQTE 戈ㄓ方\n" +
+					"     SELECT \n" +
+					"         quoteid,\n" +
+					"         partnumber,\n" +
+					"         currency,   \n" +
+					"         LISTAGG(pricek, ',') WITHIN GROUP (ORDER BY pricek DESC) AS pricek,\n" +
+					"         LISTAGG(end_customer||'_'||pricek, ',') WITHIN GROUP (ORDER BY end_customer DESC) AS end_customer,\n" +
+					"         pass_flag,\n" +
+					"         todate\n" +
+					"     FROM (    \n" +
+					"         SELECT DISTINCT\n" +
+					"             a.quoteid,\n" +
+					"             a.partnumber,\n" +
+					"             a.currency,\n" +
+					"             TO_CHAR(a.pricek / 1000, 'FM99990.0999999') AS pricek,           \n" +
+					"             '(' || a.region || ')' || a.endcustomer AS end_customer,\n" +
+					"             CASE\n" +
+					"                 WHEN (\n" +
+					"                     CASE\n" +
+					"                         WHEN a.region IN ('TSCR', 'TSCI') THEN TRUNC(a.fromdate)\n" +
+					"                         ELSE TRUNC(SYSDATE)\n" +
+					"                     END\n" +
+					"                 ) BETWEEN TRUNC(a.fromdate) AND TRUNC(a.todate)\n" +
+					"                 THEN '1'\n" +
+					"                 ELSE '0'\n" +
+					"             END AS pass_flag,\n" +
+					"             TO_CHAR(a.todate,'yyyy-mm-dd') todate\n" +
+					"         FROM tsc_om_ref_quotenet a\n" +
+					"    WHERE a.quoteid='" + QNO + "' \n"+
 					"      AND a.partnumber='" + PNO + "' \n"+
-					"	 GROUP BY\n" +
-					"	         a.quoteid,\n" +
-					"	         a.partnumber,\n" +
-					"	         a.currency,\n" +
-					"	         a.datecreated,\n" +
-					"	         a.region,\n" +
-					"	         a.endcustomer,\n" +
-					"	         a.fromdate,\n" +
-					"	         a.todate\n" +
-					"    UNION ALL\n" +
-					"    -- 材场だMODELN 戈ㄓ方程穝厨基\n" +
-					"    SELECT\n" +
+					"      AND EXISTS (\n" +
+					"                     SELECT 1 \n" +
+					"                     FROM tsc_om_ref_quotenet b\n" +
+					"                     WHERE b.quoteid = a.quoteid\n" +
+					"                       AND b.partnumber = a.partnumber\n" +
+					"                 )\n" +
+					"     )\n" +
+					"     GROUP BY\n" +
 					"        quoteid,\n" +
 					"        partnumber,\n" +
 					"        currency,\n" +
-					"        pricek,\n" +
-					"        end_customer,\n" +
 					"        pass_flag,\n" +
 					"        todate\n" +
+					"    UNION ALL\n" +
+					"     -- 材场だMODELN 戈ㄓ方(程穝厨基)\n" +
+					"    SELECT\n" +
+					"         quoteid,\n" +
+					"         partnumber,\n" +
+					"         currency,   \n" +
+					"         LISTAGG(pricek, ',') WITHIN GROUP (ORDER BY pricek DESC) AS pricek,\n" +
+					"         LISTAGG(end_customer||'_'||pricek, ',') WITHIN GROUP (ORDER BY end_customer DESC) AS end_customer,\n" +
+					"         pass_flag,\n" +
+					"         todate\n" +
 					"    FROM (\n" +
-					"        SELECT\n" +
-					"            a.quoteid,\n" +
-					"            a.partnumber,\n" +
-					"            a.currency,\n" +
-					"            TO_CHAR(a.pricek / 1000, 'FM99990.0999999') AS pricek,\n" +
-					"            '(' || a.region || ')' || a.endcustomer AS end_customer,\n" +
-					"            CASE\n" +
-					"                WHEN (\n" +
-					"                    CASE\n" +
-					"                        WHEN a.region IN ('TSCR') THEN TRUNC(a.fromdate)\n" +
-					"                        ELSE TRUNC(SYSDATE)\n" +
-					"                    END\n" +
-					"                ) BETWEEN TRUNC(a.fromdate) AND TRUNC(a.todate)\n" +
-					"                THEN '1'\n" +
-					"                ELSE '0'\n" +
-					"            END AS pass_flag,\n" +
-					"            TO_CHAR(a.todate,'yyyy-mm-dd') todate,\n" +
-					"            ROW_NUMBER() OVER (\n" +
-					"                PARTITION BY a.quoteid, a.partnumber, a.currency\n" +
-					"                ORDER BY a.datechanged DESC\n" +
-					"            ) AS rn\n" +
+					"       SELECT DISTINCT\n" +
+					"             a.quoteid,\n" +
+					"             a.partnumber,\n" +
+					"             a.currency,\n" +
+					"             TO_CHAR(a.pricek / 1000, 'FM99990.0999999') AS pricek,           \n" +
+					"             '(' || a.region || ')' || a.endcustomer AS end_customer,\n" +
+					"             CASE\n" +
+					"                 WHEN (\n" +
+					"                     CASE\n" +
+					"                         WHEN a.region IN ('TSCR', 'TSCI') THEN TRUNC(a.fromdate)\n" +
+					"                         ELSE TRUNC(SYSDATE)\n" +
+					"                     END\n" +
+					"                 ) BETWEEN TRUNC(a.fromdate) AND TRUNC(a.todate)\n" +
+					"                 THEN '1'\n" +
+					"                 ELSE '0'\n" +
+					"             END AS pass_flag,\n" +
+					"             TO_CHAR(a.todate,'yyyy-mm-dd') todate\n" +
 					"        FROM tsc_om_ref_modeln a\n" +
 					"        WHERE a.quoteid='" + QNO + "' \n"+
 					"          AND a.partnumber='" + PNO + "' \n"+
+					"          AND EXISTS (\n" +
+					"               SELECT 1 \n" +
+					"               FROM tsc_om_ref_modeln b\n" +
+					"               WHERE b.quoteid = a.quoteid\n" +
+					"                 AND b.partnumber = a.partnumber\n" +
+					"           ) \n" +
 					"    )\n" +
-					"    WHERE rn = 1\n" +
+					"     GROUP BY\n" +
+					"        quoteid,\n" +
+					"        partnumber,\n" +
+					"        currency,\n" +
+					"        pass_flag,\n" +
+					"        todate\n" +
 					")";
+
 			Statement statement = con.createStatement();
 			ResultSet rs = statement.executeQuery(sql);
 			if (rs.next())
