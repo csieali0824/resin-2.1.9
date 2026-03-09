@@ -157,7 +157,7 @@ try
 	String billTo = request.getParameter("BILLTO"); //modify by Peggy 20120301
 	System.out.println("siteLocation="+siteLocation);
 	System.out.println("shipToOrg="+shipToOrg);
-	System.out.println("userParOrgID="+userParOrgID);
+	System.out.println("ParOrgID="+userParOrgID);
 	String stepNo = "";
 	String deliveryToOrg = request.getParameter("DELIVERYTO");        //add by Peggy 20130220
 	if (deliveryToOrg==null || deliveryToOrg.equals("")) deliveryToOrg="0";

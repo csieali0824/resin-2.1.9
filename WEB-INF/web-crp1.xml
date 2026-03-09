@@ -1,8 +1,8 @@
-<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN" "http://java.sun.com/j2ee/dtds/web-app_2_2.dtd">
-
-<!-- $Id: web.xml,v 1.2 2003/02/21 15:48:02 nathaniel_auvil Exp $ -->
-
-<web-app>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+         http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
 
   <context-param>
     <param-name>MAIL_HOST</param-name>
@@ -74,6 +74,8 @@
     <param-value>jdbc:informix-sqli://dbtah01.dbtel.com.tw:1530/saltst:informixserver=dbtah0172_net</param-value>
   </context-param>
 
+  <mime-mapping><extension>.mmf</extension><mime-type>audio/basic</mime-type></mime-mapping>
+
   <context-param>
     <param-name>db.username</param-name>
     <param-value>APPS</param-value>
@@ -89,60 +91,4 @@
     <param-value>oracle.jdbc.driver.OracleDriver</param-value>
   </context-param>
 
-
-  <mime-mapping><extension>.mmf</extension><mime-type>audio/basic</mime-type></mime-mapping>
-
-  <!-- 用一個專門初始化的 Servlet 代替 Listener -->
-  <servlet>
-    <servlet-name>InitServlet</servlet-name>
-    <servlet-class>servlet.InitServlet</servlet-class>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-
-  <!-- 註冊 Servlet -->
-<!--  <servlet>-->
-<!--    <servlet-name>FileUploadServlet</servlet-name>-->
-<!--    <servlet-class>iTJob.FileUploadServlet</servlet-class>-->
-<!--  </servlet>-->
-
-<!--  <servlet-mapping>-->
-<!--    <servlet-name>FileUploadServlet</servlet-name>-->
-<!--    <url-pattern>/fileUpload</url-pattern>-->
-<!--  </servlet-mapping>-->
-
-  <!-- URL 對應 -->
-<!--  <servlet-mapping>-->
-<!--    <servlet-name>FileUploadServlet</servlet-name>-->
-<!--    <url-pattern>/jsp/iTJob/upload</url-pattern>-->
-<!--  </servlet-mapping>-->
-
-  <servlet>
-    <servlet-name>ITJob</servlet-name>
-    <servlet-class>iTJob.ITJob</servlet-class>
-  </servlet>
-
-<!--  <servlet-mapping>-->
-<!--    <servlet-name>ITJob</servlet-name>-->
-<!--    <url-pattern>/jsp/iTJob/fileUpload</url-pattern>-->
-<!--  </servlet-mapping>-->
-
-  <servlet-mapping>
-    <servlet-name>ITJob</servlet-name>
-    <url-pattern>/task</url-pattern>
-  </servlet-mapping>
-
-
 </web-app>
-
-
-
-
-
-
-
-
-
-
-
-
-

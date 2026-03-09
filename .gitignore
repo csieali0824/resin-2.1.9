@@ -29,6 +29,7 @@ report/
 *.war
 *.ear
 *.lib
+*.smap
 
 ### Eclipse ###
 .apt_generated

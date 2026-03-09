@@ -354,6 +354,19 @@ try
 	{
 		sql +=",so_m.PUST_OUT_FREQUENCY,so_m.CANCELLATION_FREQUENCY"; //add by Peggy 20230526
 	}
+	if (ACTTYPE.equals("TSCC"))
+	{
+		sql +=",(SELECT H.ORDER_NUMBER FROM OE_ORDER_HEADERS_ALL H, OE_ORDER_LINES_ALL L \n" +
+				" WHERE H.HEADER_ID = L.HEADER_ID \n" +
+				"  AND L.LINE_ID = OOL.SOURCE_DOCUMENT_LINE_ID \n" +
+				") Link_ORDER_NUMBER, \n" +
+				"(SELECT L.LINE_NUMBER FROM OE_ORDER_HEADERS_ALL H, OE_ORDER_LINES_ALL L \n" +
+				" WHERE H.HEADER_ID = L.HEADER_ID \n" +
+				"  AND L.LINE_ID = OOL.SOURCE_DOCUMENT_LINE_ID \n" +
+				") Link_LINE_NUMBER, \n" +
+				"TSC_AR_CS_RPTS.Get_Customer_Info(OOH.SOLD_TO_ORG_ID,OOH.ORG_ID, 'ASSISTANT_NAME','') SA, \n" +
+				"TSC_AR_CS_RPTS.Get_Customer_Info(OOH.SOLD_TO_ORG_ID,OOH.ORG_ID, 'SALESPERSON_NAME','') SP";
+	}
 	sql += " from oe_order_headers_all ooh "+
 		  "      ,(select x.*,(select line_id from oe_order_lines_all y where y.header_id=x.header_id and y.line_number=x.line_number and y.shipment_number=1) first_line_id  from oe_order_lines_all x) ool"+  //for cust supplier id issue by Peggy 20220209
 		  "      ,JTF_RS_SALESREPS jrs "+
@@ -417,6 +430,8 @@ try
 	if (request.getRequestURL().toString().toLowerCase().indexOf("tsrfq.") >=0 || request.getRequestURL().toString().toLowerCase().indexOf("rfq134.") >=0 || request.getRequestURL().toString().toLowerCase().indexOf("yewintra.") >=0 || request.getRequestURL().toString().toLowerCase().indexOf("10.0.1.134") >=0 || request.getRequestURL().toString().toLowerCase().indexOf("10.0.1.135") >=0) 
 	{		  
     	sql +="   union all"+
+				// todo link crp
+//		  "       select to_number(SALES_ORDER_NUMBER) order_number,to_number(SALES_ORDER_LINE_ID) order_line_id ,min(to_date(MANUFACTURING_DATE,'yyyy/mm/dd')) creation_date from TSC_SALES_ORDER_VIEW@CRP_A01OLTPDSG a "+
           "       select to_number(SALES_ORDER_NUMBER) order_number,to_number(SALES_ORDER_LINE_ID) order_line_id ,min(to_date(MANUFACTURING_DATE,'yyyy/mm/dd')) creation_date from insitea01_oltp.TSC_SALES_ORDER_VIEW@prod_a01oltp a "+
           "       group by  SALES_ORDER_NUMBER,SALES_ORDER_LINE_ID";
 	}
@@ -431,6 +446,8 @@ try
     	sql += ",TABLE(TSC_GET_SO_MOVE_FREQUENCY(ool.line_id)) so_m";
 	}
 	sql +=" WHERE ooh.ORG_ID IN (906,325,41)"+ //add by Peggy 20210601
+			// todo
+//		  "and ooh.ORDER_NUMBER ='41310056280'"+
 		  " AND ooh.HEADER_ID = ool.HEADER_ID(+)"+
 		  " AND ooh.SALESREP_ID = jrs.SALESREP_ID(+)"+
 		  " AND ool.INVENTORY_ITEM_ID = msi.INVENTORY_ITEM_ID"+
@@ -562,7 +579,7 @@ try
 			"where a.org_id = case  WHEN SUBSTR(a.ORDER_NUMBER,1,1) =1  then 41 else a.org_id end \n"+
 			" order by 1 desc,2,3,4"
 	);
-//	out.println(sql);
+//	System.out.println(sql);
 	Statement statement=con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY); 
 	ResultSet rs=statement.executeQuery(sql);
 		
@@ -1008,10 +1025,32 @@ try
 		}
 		ws.addCell(new jxl.write.Label(col, row, "Plant Name" , ACenterBL));
 		ws.setColumnView(col,8);	
-		col++;																		
+		col++;
+
+		if (ACTTYPE.equals("TSCC"))
+		{
+			//Order No
+			ws.addCell(new jxl.write.Label(col, row, "Order No" , ACenterBL));
+			ws.setColumnView(col,12);
+			col++;
+
+			//Line No
+			ws.addCell(new jxl.write.Label(col, row, "Line No" , ACenterBL));
+			ws.setColumnView(col,8);
+			col++;
+
+			//SA
+			ws.addCell(new jxl.write.Label(col, row, "SA" , ACenterBL));
+			ws.setColumnView(col,10);
+			col++;
+
+			//SP
+			ws.addCell(new jxl.write.Label(col, row, "SP" , ACenterBL));
+			ws.setColumnView(col,10);
+			col++;
+		}
 		row++;
-		
-		
+
 		if (rs.isBeforeFirst() ==false) rs.beforeFirst();
 		while (rs.next()) 
 		{ 	
@@ -1456,8 +1495,7 @@ try
 				
 				//科易採購項目號,add by Peggy 20221026
 				ws.addCell(new jxl.write.Label(col, row, (rs.getString("customer_purchase_item_no")==null?"":rs.getString("customer_purchase_item_no")) , ACenterL));
-				col++;			
-														
+				col++;
 			}	
 			//add by Peggy 20230821
 			if (UserName.startsWith("JUNE") || UserRoles.indexOf("admin")>0 || ACTTYPE.equals("TSCE"))
@@ -1570,9 +1608,27 @@ try
 					ws.addCell(new jxl.write.Number(col, row, Double.valueOf(rs.getString("amt")).doubleValue(), ARightL));
 				}
 				col++;	
-			}	
+			}
 			ws.addCell(new jxl.write.Label(col, row,rs.getString("plant_name") ,ALeftL)); //add by Peggy 20240403
-			col++;																			
+			col++;
+
+			if (ACTTYPE.equals("TSCC")) {
+				//Order No
+				ws.addCell(new jxl.write.Label(col, row, (rs.getString("Link_ORDER_NUMBER")==null?"":rs.getString("Link_ORDER_NUMBER"))  ,ALeftL));
+				col++;
+
+				//Line No
+				ws.addCell(new jxl.write.Label(col, row, (rs.getString("Link_LINE_NUMBER")==null?"":rs.getString("Link_LINE_NUMBER"))  ,ALeftL));
+				col++;
+
+				//SA
+				ws.addCell(new jxl.write.Label(col, row, (rs.getString("SA")==null?"":rs.getString("SA"))  ,ALeftL));
+				col++;
+
+				//SP
+				ws.addCell(new jxl.write.Label(col, row, (rs.getString("SP")==null?"":rs.getString("SP"))  ,ALeftL));
+				col++;
+			}
 			row++;				
 			reccnt ++;
 		}
@@ -1651,6 +1707,7 @@ try
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("zoe.wu@ts.com.tw"));
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("christine.klein@tsceu.com"));
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("patricia.martos@tsceu.com"));
+					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("sandy.huang@ts.com.tw"));
 				}
 			}
 			else if (ACTTYPE.equals("TSCA"))
@@ -1708,15 +1765,15 @@ try
 			{
 				if (request.getRequestURL().toString().toLowerCase().indexOf("tsrfq.") >=0 || request.getRequestURL().toString().toLowerCase().indexOf("10.0.1.135")>=0)
 				{
-					mbp.setContent("<a href="+'"'+"file:///\\10.0.1.135"+"\\resin-2.1.9\\webapps\\oradds\\report\\"+FileName+'"'+">請按下此連結下載資料</a>,謝謝!&nbsp;", "text/html;charset=UTF-8");
+					mbp.setContent("<a href="+'"'+"file:///\\10.0.1.135"+"\\resin-2.1.9\\webapps\\oradds\\report\\"+FileName+'"'+">Please click the link to download the file.</a>&nbsp;Thanks!", "text/html;charset=UTF-8");
 				}
 				else if (request.getRequestURL().toString().toLowerCase().indexOf("rfq134.") >=0 || request.getRequestURL().toString().toLowerCase().indexOf("10.0.1.134")>=0)
 				{
-					mbp.setContent("<a href="+'"'+"file:///\\10.0.1.134"+"\\resin-2.1.9\\webapps\\oradds\\report\\"+FileName+'"'+">請按下此連結下載資料</a>,謝謝!&nbsp;", "text/html;charset=UTF-8");
+					mbp.setContent("<a href="+'"'+"file:///\\10.0.1.134"+"\\resin-2.1.9\\webapps\\oradds\\report\\"+FileName+'"'+">Please click the link to download the file.</a>&nbsp;Thanks!", "text/html;charset=UTF-8");
 				}
 				else
-				{					
-					mbp.setContent("<a href="+'"'+"file:///\\10.0.1.144"+"\\resin-2.1.9\\webapps\\oradds\\report\\"+FileName+'"'+">請按下此連結下載資料</a>,謝謝!&nbsp;", "text/html;charset=UTF-8");
+				{
+					mbp.setContent("<a href="+'"'+"file:///\\10.0.1.144"+"\\resin-2.1.9\\webapps\\oradds\\report\\"+FileName+'"'+">Please click the link to download the file.</a>&nbsp;Thanks!", "text/html;charset=UTF-8");
 				}
 			}
 			else

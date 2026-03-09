@@ -3287,7 +3287,7 @@
 		<tr bgcolor="#CCFFCC">
 			<td nowrap><font face="Arial" color="#3366FF"><span class="style1">&nbsp;</span><jsp:getProperty name="rPH" property="pgRequireReason"/></font>
 			</td>
-			<td bgColor="#ffffff"><font face="Arial"><input name="REQUIREREASON" tabindex="<%=(tabidx++)%>" type="text" size="50"  class="style1" value="<%=requireReason%>" maxlength="60">
+			<td bgColor="#ffffff"><font face="Arial"><input name="REQUIREREASON" tabindex="<%=(tabidx++)%>" type="text" size="50"  class="style1" value="<%=requireReason%>" maxlength="60"></font>
 			</td>
 			<td nowrap><font face="Arial" color="#3366FF"><span class="style1">&nbsp;</span><jsp:getProperty name="rPH" property="pgPriceList"/></font>
 			</td>

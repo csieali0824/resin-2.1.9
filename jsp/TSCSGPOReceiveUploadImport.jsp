@@ -641,6 +641,7 @@ catch(Exception e)
                       " FROM oraddman.tssg_stock_overview a"+
                       " WHERE ITEM_NAME=?"+
                       " AND VENDOR_SITE_ID=?"+
+					  " AND A.STOCK_FLAG = 'S'"+
                       " AND NVL(RECEIVED_QTY,0)-NVL(RETURN_QTY,0)>0) WHERE RANK_SEQ=1";
 				PreparedStatement statement1 = con.prepareStatement(sql);
 				statement1.setString(1,DATE_CODE);

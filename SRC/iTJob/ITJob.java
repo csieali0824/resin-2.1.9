@@ -17,6 +17,7 @@ import jxl.Cell;
 import jxl.Sheet;
 import jxl.Workbook;
 
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -34,6 +35,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.IntStream;
 
+@WebServlet(name="ITJob", urlPatterns="/task")
 public class ITJob extends HttpServlet {
     private String uploadFilePath;
     public String userName;
