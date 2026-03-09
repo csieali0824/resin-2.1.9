@@ -765,7 +765,7 @@
 	<table cellSpacing="1" bordercolordark="#B5B89A" cellPadding="1" width="97%" align="center" bordercolorlight="#FFFFFF" border="0">
 		<tr bgcolor="#CCCC99">
 			<td width="15%" nowrap>單批作業量:
-				<INPUT TYPE="TEXT" NAME="SINGLELOTQTY" SIZE=5 maxlength="5" value="<%=singleLotQtyD%>">&nbsp;&nbsp;<%=woUom%>
+				<INPUT TYPE="TEXT" NAME="SINGLELOTQTY" SIZE=6 maxlength="6" value="<%=singleLotQtyD%>">&nbsp;&nbsp;<%=woUom%>
 				<INPUT TYPE="button" NAME="SINGLELOTSET"  value="Update" onClick="setQty('../jsp/TSCMfgWoExpand.jsp?WO_NO=<%=woNo%>',this.form.SINGLELOTQTY.value)">     </td>
 			<%
 				//if(woType=="3" || woType.equals("3") || woType=="5" || woType.equals("5"))  //20130905 ADD TYPE=5 for sampletype dc
