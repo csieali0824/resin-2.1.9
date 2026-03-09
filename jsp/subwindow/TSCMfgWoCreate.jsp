@@ -3,11 +3,11 @@
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============To get Connection Pool==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<%@ page import="ComboBoxBean,DateBean,ArrayComboBoxBean,Array2DimensionInputBean" %>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="arrayWODocumentInputBean" scope="session" class="Array2DimensionInputBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<%@ page import="bean.ComboBoxBean,bean.DateBean,bean.ArrayComboBoxBean,bean.Array2DimensionInputBean" %>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="arrayWODocumentInputBean" scope="session" class="bean.Array2DimensionInputBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <!--=================================-->
 
 <!--=================================-->

@@ -6,7 +6,7 @@
 <%@ page import="java.sql.*,java.util.*,jxl.*,java.lang.Math.*,java.text.*,java.io.*"%>
 <%@ page import="com.jspsmart.upload.*"%>
 <%@ page errorPage="ExceptionHandler.jsp"%>
-<%@ page import="DateBean,ArrayCheckBoxBean,Array2DimensionInputBean,WorkingDateBean" %>
+<%@ page import="bean.DateBean,bean.ArrayCheckBoxBean,bean.Array2DimensionInputBean,bean.WorkingDateBean" %>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=============以下區段為安全認證機制==========-->
@@ -25,9 +25,9 @@
   A:visited { color: #990066; text-decoration: underline }
 </STYLE>
 <title>Excel Upload To Create a TSCA New RFQ Order</title>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <jsp:useBean id="mySmartUpload" scope="page" class="com.jspsmart.upload.SmartUpload" />
-<jsp:useBean id="arrayRFQDocumentInputBean" scope="session" class="Array2DimensionInputBean"/>
+<jsp:useBean id="arrayRFQDocumentInputBean" scope="session" class="bean.Array2DimensionInputBean"/>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
 </head>
 <script language="JavaScript" type="text/JavaScript">

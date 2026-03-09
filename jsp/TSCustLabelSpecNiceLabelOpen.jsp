@@ -1,11 +1,11 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.util.*" %>
-<%@ page import="java.io.*,oracle.sql.*,oracle.jdbc.driver.*,DateBean" %>
+<%@ page import="java.io.*,oracle.sql.*,oracle.jdbc.driver.*,bean.DateBean" %>
 <!--=============以下區段為安全認證機制==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=big5" />
 <script language="JavaScript" type="text/JavaScript">

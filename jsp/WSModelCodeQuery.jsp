@@ -8,9 +8,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
 <title>產品機種編碼</title>
 
-<%@ page import="ComboBoxBean,DateBean"%>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<%@ page import="bean.ComboBoxBean,bean.DateBean"%>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 </head>
 
 <body>

@@ -1,5 +1,5 @@
-<%@ page import="PoolBean"%>
-<jsp:useBean id="authPoolBean" scope="application" class="PoolBean"/>
+<%@ page import="bean.PoolBean"%>
+<jsp:useBean id="authPoolBean" scope="application" class="bean.PoolBean"/>
 <%
 //Start connect Oracle prod ORADDMAN,This Connection is for Authentication only
 Connection authcon=null;

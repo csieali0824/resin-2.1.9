@@ -4,7 +4,7 @@
 <%@ page import="jxl.*"%>
 <%@ page import="java.lang.Math.*"%>
 <%@ page import="java.text.*"%>
-<%@ page import="java.io.*,DateBean,ComboBoxAllBean"%>
+<%@ page import="java.io.*,bean.DateBean,bean.ComboBoxAllBean"%>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=============以下區段為安全認證機制==========-->
@@ -13,11 +13,11 @@
 <html>
 <head>
 <title>PC Order Revise for Query</title>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<%@ page import="DateBean,ComboBoxBean"%>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<%@ page import="bean.DateBean,bean.ComboBoxBean"%>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
 </head>
 <script language="JavaScript" type="text/JavaScript">

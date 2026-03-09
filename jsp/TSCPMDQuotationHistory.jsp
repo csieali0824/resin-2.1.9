@@ -2,8 +2,8 @@
 <!--=============以下區段為安全認證機制==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<%@ page import="WorkingDateBean,DateBean" %>
-<jsp:useBean id="workingDateBean" scope="page" class="WorkingDateBean"/>
+<%@ page import="bean.WorkingDateBean,bean.DateBean" %>
+<jsp:useBean id="workingDateBean" scope="page" class="bean.WorkingDateBean"/>
 
 <html>
 <head>

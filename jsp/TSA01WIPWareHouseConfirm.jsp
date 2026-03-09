@@ -1,7 +1,7 @@
 <!--20161028 Peggy,新增倉別讓user指定退料倉-->
 <!--20170814 Peggy,新增21 : 原物料-重驗合格倉 22 : 半成品-重驗合格倉-->
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.net.*,java.io.*,java.text.*,java.lang.*,java.util.*"%>
-<%@ page import="ComboBoxBean,DateBean,WorkingDateBean,ArrayComboBoxBean"%>
+<%@ page import="bean.ComboBoxBean,bean.DateBean,bean.WorkingDateBean,bean.ArrayComboBoxBean"%>
 <script language="JavaScript" type="text/JavaScript">
 function checkall()
 {
@@ -138,12 +138,12 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 12px }
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="workingDateBean" scope="page" class="WorkingDateBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="workingDateBean" scope="page" class="bean.WorkingDateBean"/>
 <%
 String sql = "";
 String PICK_NO = request.getParameter("PICK_NO");

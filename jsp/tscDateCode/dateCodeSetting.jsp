@@ -8,7 +8,7 @@
 <%@ page import="jxl.*" %>
 <%@ page import="java.lang.Math.*" %>
 <%@ page import="java.text.*" %>
-<%@ page import="java.io.*,DateBean" %>
+<%@ page import="java.io.*,bean.DateBean" %>
 <%@ page import="com.jspsmart.upload.*" %>
 <%@ page errorPage="/jsp/ExceptionHandler.jsp" %>
 <%@ page import="com.mysql.jdbc.StringUtils" %>
@@ -17,7 +17,7 @@
 <%@ page import="java.io.File" %>
 
 <%-- 1. 初始化 Bean --%>
-<jsp:useBean id="dateBean" class="DateBean"/>
+<jsp:useBean id="dateBean" class="bean.DateBean"/>
 <jsp:useBean id="dateCodeRule" class="dateCodeRule.DateCodeRuleSetting"/>
 <jsp:useBean id="smartUpload" class="com.jspsmart.upload.SmartUpload"/>
 

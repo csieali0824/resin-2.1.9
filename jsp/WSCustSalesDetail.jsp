@@ -1,12 +1,12 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" %>
-<%@ page import="DateBean,java.text.DecimalFormat,RsCountBean,ArraySearchBean" %>
+<%@ page import="bean.DateBean,java.text.DecimalFormat,bean.RsCountBean,bean.ArraySearchBean" %>
 <!--=============To get the Authentication==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/ConnBPCSPoolPage.jsp"%>
-<jsp:useBean id="rsCountBean" scope="application" class="RsCountBean"/>
-<jsp:useBean id="arraySearchBean" scope="application" class="ArraySearchBean"/>
+<jsp:useBean id="rsCountBean" scope="application" class="bean.RsCountBean"/>
+<jsp:useBean id="arraySearchBean" scope="application" class="bean.ArraySearchBean"/>
 <script language="JavaScript" type="text/JavaScript">
 function setSubmit(URL)
 {  
@@ -15,8 +15,8 @@ function setSubmit(URL)
  document.MYFORM.submit();
 }
 </script>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="thisDateBean" scope="session" class="DateBean"/> <!--用來抓出目前為幾月-->
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="thisDateBean" scope="session" class="bean.DateBean"/> <!--用來抓出目前為幾月-->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">

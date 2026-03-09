@@ -1,14 +1,14 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.io.*" %>
-<%@ page import="QueryAllBean,ComboBoxAllBean,ComboBoxBean,DateBean,ArrayComboBoxBean" %>
+<%@ page import="bean.QueryAllBean,bean.ComboBoxAllBean,bean.ComboBoxBean,bean.DateBean,bean.ArrayComboBoxBean" %>
 
 <!--=============To get the Authentication==========-->
 <%//@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
 
 <html>
 <head>

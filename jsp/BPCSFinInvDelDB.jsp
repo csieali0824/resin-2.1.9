@@ -62,7 +62,7 @@
 	  }//end of try
 	  catch (Exception e)
 	  {
-		  PoolBean.releaseConnection(dfcon);
+		  bean.PoolBean.releaseConnection(dfcon);
 	      out.println(e.getMessage());
 	  }
 

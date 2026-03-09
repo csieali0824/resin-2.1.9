@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,DateBean"  %>
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,bean.DateBean"  %>
 <!--=============以下區段為安全認證機制==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=================================-->
@@ -6,14 +6,14 @@
 <%@ include file="/jsp/include/ConnBPCSDbexpPoolPage.jsp"%>
 <%@ include file="/jsp/include/ConnBPCSDshoesPoolPage.jsp"%>
 <!--=================================-->
-<%@ page import="QryAllChkBoxEditBean,ComboBoxBean"%>
+<%@ page import="bean.QryAllChkBoxEditBean,bean.ComboBoxBean"%>
 <html>
 <head>
 <title>MRQAllStatus.jsp</title>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="qryAllChkBoxEditBean" scope="session" class="QryAllChkBoxEditBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="qryAllChkBoxEditBean" scope="session" class="bean.QryAllChkBoxEditBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 </head>
 <%-- 下方的函數是用來控制是否刪除之確認動作 --%>
 <script language="JavaScript" type="text/JavaScript">

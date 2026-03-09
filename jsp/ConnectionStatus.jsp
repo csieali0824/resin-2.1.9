@@ -1,38 +1,38 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" %>
-<%@ page import="PoolBean"%>
-<jsp:useBean id="poolBean" scope="application" class="PoolBean"/>
-<jsp:useBean id="authPoolBean" scope="application" class="PoolBean"/>
-<jsp:useBean id="dmpoolBean" scope="application" class="PoolBean"/>
-<jsp:useBean id="ifxpoolBean" scope="application" class="PoolBean"/>
-<jsp:useBean id="bpcsPoolBean" scope="application" class="PoolBean"/>
-<jsp:useBean id="mespoolBean" scope="application" class="PoolBean"/>
-<jsp:useBean id="mssqlpoolBean" scope="application" class="PoolBean"/>
-<jsp:useBean id="mssql65poolBean" scope="application" class="PoolBean"/>
-<jsp:useBean id="msTpe70poolBean" scope="application" class="PoolBean"/>
+<%@ page import="bean.PoolBean"%>
+<jsp:useBean id="poolBean" scope="application" class="bean.PoolBean"/>
+<jsp:useBean id="authPoolBean" scope="application" class="bean.PoolBean"/>
+<jsp:useBean id="dmpoolBean" scope="application" class="bean.PoolBean"/>
+<jsp:useBean id="ifxpoolBean" scope="application" class="bean.PoolBean"/>
+<jsp:useBean id="bpcsPoolBean" scope="application" class="bean.PoolBean"/>
+<jsp:useBean id="mespoolBean" scope="application" class="bean.PoolBean"/>
+<jsp:useBean id="mssqlpoolBean" scope="application" class="bean.PoolBean"/>
+<jsp:useBean id="mssql65poolBean" scope="application" class="bean.PoolBean"/>
+<jsp:useBean id="msTpe70poolBean" scope="application" class="bean.PoolBean"/>
 
 
-<jsp:useBean id="ifxDbexpPoolBean" scope="application" class="PoolBean"/>
-<jsp:useBean id="ifxDbglobalPoolBean" scope="application" class="PoolBean"/>
-<jsp:useBean id="ifxTestPoolBean" scope="application" class="PoolBean"/>
-<jsp:useBean id="ifxDistPoolBean" scope="application" class="PoolBean"/>
-<jsp:useBean id="ifxShoesPoolBean" scope="application" class="PoolBean"/>
-<jsp:useBean id="repairpoolBean" scope="application" class="PoolBean"/>
-<jsp:useBean id="ifxTstexpPoolBean" scope="application" class="PoolBean"/>
-<jsp:useBean id="cqPoolBean" scope="application" class="PoolBean"/>
-<jsp:useBean id="pdmPoolBean" scope="application" class="PoolBean"/>
-<jsp:useBean id="oraddspoolBean" scope="application" class="PoolBean"/>
+<jsp:useBean id="ifxDbexpPoolBean" scope="application" class="bean.PoolBean"/>
+<jsp:useBean id="ifxDbglobalPoolBean" scope="application" class="bean.PoolBean"/>
+<jsp:useBean id="ifxTestPoolBean" scope="application" class="bean.PoolBean"/>
+<jsp:useBean id="ifxDistPoolBean" scope="application" class="bean.PoolBean"/>
+<jsp:useBean id="ifxShoesPoolBean" scope="application" class="bean.PoolBean"/>
+<jsp:useBean id="repairpoolBean" scope="application" class="bean.PoolBean"/>
+<jsp:useBean id="ifxTstexpPoolBean" scope="application" class="bean.PoolBean"/>
+<jsp:useBean id="cqPoolBean" scope="application" class="bean.PoolBean"/>
+<jsp:useBean id="pdmPoolBean" scope="application" class="bean.PoolBean"/>
+<jsp:useBean id="oraddspoolBean" scope="application" class="bean.PoolBean"/>
 
-<jsp:useBean id="ifxNetPoolBean" scope="application" class="PoolBean"/>
-<jsp:useBean id="ifxdbintPoolBean" scope="application" class="PoolBean"/>
-<jsp:useBean id="ifxDbgroupPoolBean" scope="application" class="PoolBean"/>
-<jsp:useBean id="ifxTechPoolBean" scope="application" class="PoolBean"/>
-<jsp:useBean id="ifxmicroPoolBean" scope="application" class="PoolBean"/>
-<jsp:useBean id="ifxaresPoolBean" scope="application" class="PoolBean"/>
-<jsp:useBean id="ifxwwwPoolBean" scope="application" class="PoolBean"/>
-<jsp:useBean id="ifxDbtelPoolBean" scope="application" class="PoolBean"/>
-<jsp:useBean id="ifxNSalTestPoolBean" scope="application" class="PoolBean"/>
-<jsp:useBean id="ifxNotesSalPoolBean" scope="application" class="PoolBean"/>
-<jsp:useBean id="ifxTmpBOMPoolBean" scope="application" class="PoolBean"/>
+<jsp:useBean id="ifxNetPoolBean" scope="application" class="bean.PoolBean"/>
+<jsp:useBean id="ifxdbintPoolBean" scope="application" class="bean.PoolBean"/>
+<jsp:useBean id="ifxDbgroupPoolBean" scope="application" class="bean.PoolBean"/>
+<jsp:useBean id="ifxTechPoolBean" scope="application" class="bean.PoolBean"/>
+<jsp:useBean id="ifxmicroPoolBean" scope="application" class="bean.PoolBean"/>
+<jsp:useBean id="ifxaresPoolBean" scope="application" class="bean.PoolBean"/>
+<jsp:useBean id="ifxwwwPoolBean" scope="application" class="bean.PoolBean"/>
+<jsp:useBean id="ifxDbtelPoolBean" scope="application" class="bean.PoolBean"/>
+<jsp:useBean id="ifxNSalTestPoolBean" scope="application" class="bean.PoolBean"/>
+<jsp:useBean id="ifxNotesSalPoolBean" scope="application" class="bean.PoolBean"/>
+<jsp:useBean id="ifxTmpBOMPoolBean" scope="application" class="bean.PoolBean"/>
 <script language="JavaScript" type="text/JavaScript">
 function submit()
 {   

@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.io.*,java.sql.*,DateBean" %>
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.io.*,java.sql.*,bean.DateBean" %>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
@@ -8,7 +8,7 @@
 <title>ACpageByModelDb.jsp</title>
 </head>
 <body topmargin="0">
-<jsp:useBean id='dateBean' scope='page' class='DateBean' />
+<jsp:useBean id='dateBean' scope='page' class='bean.DateBean' />
 <%
   int Month=dateBean.getMonth();
   int Day=dateBean.getDay();

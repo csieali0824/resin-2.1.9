@@ -1,5 +1,5 @@
-<%@ page import="PoolBean"%>
-<jsp:useBean id="mssqlpoolBean" scope="application" class="PoolBean"/>
+<%@ page import="bean.PoolBean"%>
+<jsp:useBean id="mssqlpoolBean" scope="application" class="bean.PoolBean"/>
 <%
 // Start Connect MSSQL Server (POS IMEI) 
     Connection mssqlcon=null;

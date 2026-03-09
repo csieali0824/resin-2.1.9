@@ -6,15 +6,15 @@
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<%@ page import="DateBean,SendMailBean,SendMailBean,CodeUtil" %>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
+<%@ page import="bean.DateBean,bean.SendMailBean,bean.SendMailBean,CodeUtil" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
 <title>TSC ITEM CATEGORY TARIC CODE UPDATE ADAPTER</title>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="sendMailBean" scope="page" class="SendMailBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="sendMailBean" scope="page" class="bean.SendMailBean"/>
 </head>
 <body>
 <%@ include file="/jsp/include/TSCMfgDocHyperLinkPage.jsp"%> 

@@ -8,9 +8,9 @@
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<%@ page import="DateBean,,ArrayComboBoxBean" %>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
+<%@ page import="bean.DateBean,,bean.ArrayComboBoxBean" %>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
 <meta http-equiv="Content-Type" content="text/html; charset=big5"></head>
 <body>
 <p> <strong><font color="#54A7A7" size="+2" face="Arial Black"> DBTEL</font><font face="Courier, MS Sans Serif"></font></font></font><font color="#000000" size="+2" face="Times New Roman"> 

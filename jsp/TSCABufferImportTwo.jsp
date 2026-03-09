@@ -24,12 +24,12 @@
   <% upBean.addUploadListener(fileMover); %>
 </jsp:useBean>
 
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<%@ page import="DateBean,ArrayCheckBoxBean,Array2DimensionInputBean" %>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="arrayCheckBoxBean" scope="session" class="ArrayCheckBoxBean"/>
-<jsp:useBean id="arrayRFQDocumentInputBean" scope="session" class="Array2DimensionInputBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
+<%@ page import="bean.DateBean,bean.ArrayCheckBoxBean,bean.Array2DimensionInputBean" %>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="arrayCheckBoxBean" scope="session" class="bean.ArrayCheckBoxBean"/>
+<jsp:useBean id="arrayRFQDocumentInputBean" scope="session" class="bean.Array2DimensionInputBean"/>
 
 <!--  File Mover Bean is instantiated before the uploadBean to that it can be used as a
       listener for the upload Bean.
@@ -120,7 +120,7 @@ out.println("Trace 2");
          session.setAttribute("REMARK","Order Import from file");
          session.setAttribute("PREORDERTYPE","1020");
          session.setAttribute("ISMODELSELECTED","Y");
-         session.setAttribute("PROCESSAREA","008(¢Db?EAe¡LA¡P~3!-?u¢Xe¢XI)");
+         session.setAttribute("PROCESSAREA","008(ï¿½Db?EAeï¿½LAï¿½P~3!-?uï¿½Xeï¿½XI)");
          session.setAttribute("CUSTOMERIDTMP","1019");
          session.setAttribute("INSERT","Y");
 out.println("Trace 3");
@@ -344,7 +344,7 @@ out.println("Trace 5");
           String Insert          = (String)session.getAttribute("INSERT");
           //String fromPage        = (String)session.getAttribute("FROMPAGE");
 
-  String q[][]=arrayRFQDocumentInputBean.getArray2DContent();//¡Lu¡Óo¢DO?e¢X}|C?oRe
+  String q[][]=arrayRFQDocumentInputBean.getArray2DContent();//ï¿½Luï¿½ï¿½oï¿½DO?eï¿½X}|C?oRe
 
   if (q!=null) 
   {out.println("<BR>");		  

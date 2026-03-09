@@ -1,5 +1,5 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,RsBean,ComboBoxBean" %>
-<%@ page import="ComboBoxAllBean,DateBean,ArrayComboBoxBean" %>
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,bean.RsBean,bean.ComboBoxBean" %>
+<%@ page import="bean.ComboBoxAllBean,bean.DateBean,bean.ArrayComboBoxBean" %>
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnBPCSDbexpPoolPage.jsp"%>
@@ -17,11 +17,11 @@ function setSubmit(URL)
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
 <title>ByLCShow3.jsp</title>
 </head>
-<jsp:useBean id="rsBean" scope="application" class="RsBean"/>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="comboBoxAllBean" scope="page" class="ComboBoxAllBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="rsBean" scope="application" class="bean.RsBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="comboBoxAllBean" scope="page" class="bean.ComboBoxAllBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 
 <body background="../image/b01.jpg">
 <strong><font color="#0080C0" size="5">LC查詢報表</font></strong> 

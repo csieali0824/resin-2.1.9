@@ -1,8 +1,8 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.util.*,java.text.*,java.io.*,java.sql.*,javax.sql.*,javax.naming.*,WriteLogToFileBean,DateBean,javax.xml.parsers.*,CodeUtil"%>
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.util.*,java.text.*,java.io.*,java.sql.*,javax.sql.*,javax.naming.*,bean.WriteLogToFileBean,bean.DateBean,javax.xml.parsers.*,CodeUtil"%>
 <%@ page import="org.w3c.dom.*" %>
 <%@ page import="org.xml.sax.*" %>
-<jsp:useBean id="writeLogToFileBean" scope="page" class="WriteLogToFileBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="writeLogToFileBean" scope="page" class="bean.WriteLogToFileBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <jsp:useBean id="codeUtil" scope="page" class="CodeUtil"/>
 <%
 String UserName=(String)session.getAttribute("USERNAME"); 

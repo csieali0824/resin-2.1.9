@@ -1,14 +1,14 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" %>
-<%@ page import="ComboBoxAllBean,DateBean,ArrayComboBoxBean" %>
+<%@ page import="bean.ComboBoxAllBean,bean.DateBean,bean.ArrayComboBoxBean" %>
 <!--=============¥H?U°I?q?°|w¥t?{AO?÷‥i==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=================================-->
 <!--=============¥H?U°I?q?°‥u±o3sμ2|A==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<jsp:useBean id="comboBoxAllBean" scope="page" class="ComboBoxAllBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="comboBoxAllBean" scope="page" class="bean.ComboBoxAllBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <script language="JavaScript" type="text/JavaScript">
 function setSubmit(URL)
 {    

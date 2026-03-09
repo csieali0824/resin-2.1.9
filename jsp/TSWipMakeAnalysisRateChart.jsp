@@ -1,10 +1,10 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.io.*,java.util.*,java.awt.*,org.jfree.chart.ui.*,org.jfree.data.*,org.jfree.chart.*,org.jfree.chart.plot.*" %>
-<%@ page import="WorkingDateBean" %>
+<%@ page import="bean.WorkingDateBean" %>
 <%@ page import = "java.io.PrintWriter" %>
 
 <!--=============Pool=========-->
 <!--%@ include file="/jsp/include/ConnectionPoolPage.jsp"%-->
-<!--jsp:useBean id="workingDateBean" scope="page" class="WorkingDateBean"/-->
+<!--jsp:useBean id="workingDateBean" scope="page" class="bean.WorkingDateBean"/-->
 <!--=================================-->
 
 <html>

@@ -24,12 +24,12 @@
   <% upBean.addUploadListener(fileMover); %>
 </jsp:useBean>
 
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<%@ page import="DateBean,ArrayCheckBoxBean,Array2DimensionInputBean" %>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="arrayCheckBoxBean" scope="session" class="ArrayCheckBoxBean"/>
-<jsp:useBean id="arrayRFQDocumentInputBean" scope="session" class="Array2DimensionInputBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
+<%@ page import="bean.DateBean,bean.ArrayCheckBoxBean,bean.Array2DimensionInputBean" %>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="arrayCheckBoxBean" scope="session" class="bean.ArrayCheckBoxBean"/>
+<jsp:useBean id="arrayRFQDocumentInputBean" scope="session" class="bean.Array2DimensionInputBean"/>
 
 <!--  File Mover Bean is instantiated before the uploadBean to that it can be used as a
       listener for the upload Bean.
@@ -121,7 +121,7 @@ String replace(String s, String one, String another) {
          session.setAttribute("REMARK","Order Import from file");
          session.setAttribute("PREORDERTYPE","1020");
          session.setAttribute("ISMODELSELECTED","Y");
-         session.setAttribute("PROCESSAREA","009(¥b¾ÉÅé¨Æ·~³¡-R.O.W.)");
+         session.setAttribute("PROCESSAREA","009(ï¿½bï¿½ï¿½ï¿½ï¿½Æ·~ï¿½ï¿½-R.O.W.)");
          session.setAttribute("CUSTOMERIDTMP","1019");
          session.setAttribute("INSERT","Y");
 
@@ -306,7 +306,7 @@ String replace(String s, String one, String another) {
           String Insert          = (String)session.getAttribute("INSERT");
           //String fromPage        = (String)session.getAttribute("FROMPAGE");
 
-  String q[][]=arrayRFQDocumentInputBean.getArray2DContent();//¨ú±o¥Ø«e°}¦C¤º®e 		
+  String q[][]=arrayRFQDocumentInputBean.getArray2DContent();//ï¿½ï¿½ï¿½oï¿½Ø«eï¿½}ï¿½Cï¿½ï¿½ï¿½e 		
                        		    		  	   		   
   if (uploadFlag == null) 
   {  }

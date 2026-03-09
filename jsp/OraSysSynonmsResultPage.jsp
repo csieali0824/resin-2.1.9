@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" %>
-<%@ page import="QueryAllBean"%>
+<%@ page import="bean.QueryAllBean"%>
 
 <html>
 <head>
@@ -11,8 +11,8 @@
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnORADDSPoolPage.jsp"%>
 <!--=================================-->
-<!--jsp:useBean id="poolBean" scope="application" class="PoolBean"/-->
-<jsp:useBean id="queryAllBean" scope="page" class="QueryAllBean"/>
+<!--jsp:useBean id="poolBean" scope="application" class="bean.PoolBean"/-->
+<jsp:useBean id="queryAllBean" scope="page" class="bean.QueryAllBean"/>
 <%
   
    String synonmsName=request.getParameter("SYNONMSNAME");

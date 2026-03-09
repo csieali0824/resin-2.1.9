@@ -6,8 +6,8 @@
 <%@ include file="/jsp/include/ConnBPCSDbexpPoolPage.jsp"%>
 <%@ include file="/jsp/include/ConnBPCSDshoesPoolPage.jsp"%>
 <!--=================================-->
-<%@ page import="QueryAllRepairBean2" %>
-<%@ page import="QryAllChkBoxEditBean" %>
+<%@ page import="bean.QueryAllRepairBean2" %>
+<%@ page import="bean.QryAllChkBoxEditBean" %>
 <html>
 <head>
 <title>LCShow.jsp</title>
@@ -41,8 +41,8 @@ function searchRepNo(searchString,LCNO,pageURL)
 }
 </script>
 <body background="../image/b01.jpg" topmargin="0">
-<jsp:useBean id="queryAllRepairBean" scope="session" class="QueryAllRepairBean2"/>
-<jsp:useBean id="qryAllChkBoxEditBean" scope="page" class="QryAllChkBoxEditBean"/>
+<jsp:useBean id="queryAllRepairBean" scope="session" class="bean.QueryAllRepairBean2"/>
+<jsp:useBean id="qryAllChkBoxEditBean" scope="page" class="bean.QryAllChkBoxEditBean"/>
 <FORM ACTION="../jsp/LCinster.jsp" METHOD="POST" NAME="MYFORM" onSubmit="return NeedConfirm()">
   &nbsp;&nbsp; <strong></strong> 
 

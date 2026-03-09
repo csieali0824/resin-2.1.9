@@ -1,11 +1,11 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" %>
-<%@ page import="ComboBoxBean,DateBean,ArrayComboBoxBean,ArrayListCheckBoxBean" %>
-<%@ page import="DateBean,ArrayListCheckBoxBean"%>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="arrayListCheckBoxBean" scope="session" class="ArrayListCheckBoxBean"/>
+<%@ page import="bean.ComboBoxBean,bean.DateBean,bean.ArrayComboBoxBean,bean.ArrayListCheckBoxBean" %>
+<%@ page import="bean.DateBean,bean.ArrayListCheckBoxBean"%>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="arrayListCheckBoxBean" scope="session" class="bean.ArrayListCheckBoxBean"/>
 <!--=============以下區段為安全認證機制==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
 <!--=================================-->
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>

@@ -1,14 +1,14 @@
 ﻿<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" %>
-<%@ page import="ArrayChkBox4PITBean,ComboBoxBean,DateBean,ArrayComboBoxBean,RsCountBean" %>
+<%@ page import="bean.ArrayChkBox4PITBean,bean.ComboBoxBean,bean.DateBean,bean.ArrayComboBoxBean,bean.RsCountBean" %>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=============To get the Authentication==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<jsp:useBean id="ArrayChkBox4PITBean" scope="session" class="ArrayChkBox4PITBean"/>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="rsCountBean" scope="application" class="RsCountBean"/>
+<jsp:useBean id="bean.ArrayChkBox4PITBean" scope="session" class="bean.ArrayChkBox4PITBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="rsCountBean" scope="application" class="bean.RsCountBean"/>
 <script language="JavaScript" type="text/JavaScript">
  versionArray=new Array();
  subfunctionlArray=new Array();		
@@ -165,7 +165,7 @@ String location=request.getParameter("LOCATION");
 String phenomenon=request.getParameter("PHENOMENON");
 String funccode="";
 String d[]={"","M FUNCTION CODE","M FUNCTION NAME","S FUNCTION CODE","S FUNCTION NAME","S.LEVEL","PROBABILITY","SIM","NETWORK","RESULT","COMPARISON HANDSET","LOCATION","PHENOMENON"};
-ArrayChkBox4PITBean.setHeaderArray(d);
+bean.ArrayChkBox4PITBean.setHeaderArray(d);
 ResultSet rs=null,subRs=null;	  	
 Statement statement=con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 Statement subStmt=con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
@@ -353,7 +353,7 @@ try
 {    
   if (addFeatures!=null) //若有選取則表示要刪除
   {
-   String a[][]=ArrayChkBox4PITBean.getArray2DContent();//取得目前陣列內容   
+   String a[][]=bean.ArrayChkBox4PITBean.getArray2DContent();//取得目前陣列內容
     if (a!=null && addFeatures.length>0)      
     { 	 	 
 	 if (a.length>addFeatures.length)
@@ -386,9 +386,9 @@ try
     	 cc++;	
 		}  
 	   } //end of for a.length	   
-	    ArrayChkBox4PITBean.setArray2DString(t);
+	    bean.ArrayChkBox4PITBean.setArray2DString(t);
 	 } else { 	   			 
-	   ArrayChkBox4PITBean.setArray2DString(null); //將陣列內容清空
+	   bean.ArrayChkBox4PITBean.setArray2DString(null); //將陣列內容清空
 	 }  
 	}//end of if a!=null
   } 
@@ -404,7 +404,7 @@ catch (Exception e)
   <%	 	
 	  try
       { 
-	     String a[][]=ArrayChkBox4PITBean.getArray2DContent();//取得目前陣列內容	
+	     String a[][]=bean.ArrayChkBox4PITBean.getArray2DContent();//取得目前陣列內容
 		 String featureName="";
 		 int i=0,j=0,k=0;
 	    if (submitadd!=null ) //新增資料
@@ -433,22 +433,22 @@ catch (Exception e)
 			 b[k][10]=compha;
 			 b[k][11]=location;
 			 b[k][12]=phenomenon;
-			 ArrayChkBox4PITBean.setArray2DString(b); 
-			 ArrayChkBox4PITBean.setFieldName("ADDFEATURES");			 			 	   			 
-             out.println(ArrayChkBox4PITBean.getArray2DString());
+			 bean.ArrayChkBox4PITBean.setArray2DString(b);
+			 bean.ArrayChkBox4PITBean.setFieldName("ADDFEATURES");
+             out.println(bean.ArrayChkBox4PITBean.getArray2DString());
 		   } else {		    
 			 String c[][]={{strDateTime,functype,functypename,functypesubcode,functypeSubName,serle,probability,sim,network,result,compha,location,phenomenon}};
-     	     ArrayChkBox4PITBean.setArray2DString(c); 
-			 ArrayChkBox4PITBean.setFieldName("ADDFEATURES");  			    
-             out.println(ArrayChkBox4PITBean.getArray2DString());			 
+     	     bean.ArrayChkBox4PITBean.setArray2DString(c);
+			 bean.ArrayChkBox4PITBean.setFieldName("ADDFEATURES");
+             out.println(bean.ArrayChkBox4PITBean.getArray2DString());
 		   }    
 		
 		 } else {
 		   if (a!=null) 
 		   {
-		     ArrayChkBox4PITBean.setArray2DString(a); 
-        	 ArrayChkBox4PITBean.setFieldName("ADDFEATURES");	
-             out.println(ArrayChkBox4PITBean.getArray2DString());
+		     bean.ArrayChkBox4PITBean.setArray2DString(a);
+        	 bean.ArrayChkBox4PITBean.setFieldName("ADDFEATURES");
+             out.println(bean.ArrayChkBox4PITBean.getArray2DString());
 		   } 
 		 }
 		 		  	 

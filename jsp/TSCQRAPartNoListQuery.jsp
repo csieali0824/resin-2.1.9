@@ -1,11 +1,11 @@
 <!--20171116 Peggy,show "Recommended Replacement TSC P/N" column when query type=TSC P/N list-->
-<%@ page contentType="text/html;charset=utf-8"  language="java" import="java.util.*,java.text.*,java.io.*,java.sql.*,DateBean,CodeUtil"%>
+<%@ page contentType="text/html;charset=utf-8"  language="java" import="java.util.*,java.text.*,java.io.*,java.sql.*,bean.DateBean,CodeUtil"%>
 <%@ page import="org.w3c.dom.*" %>
 <%@ page import="org.xml.sax.*" %>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean"%>
+<%@ page import="bean.SalesDRQPageHeaderBean"%>
 <jsp:useBean id="codeUtil" scope="page" class="CodeUtil"/>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
 <html> 
 <head>
 <title></title>

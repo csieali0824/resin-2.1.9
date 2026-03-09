@@ -5,8 +5,8 @@
 <%@ include file="/jsp/include/ConnBPCSTestPoolPage.jsp"%>
 <!--%@ include file="/jsp/include/ConnBPCSDbtelPoolPage.jsp"%-->
 <!--=================================-->
-<%@ page import="QueryAllRepairBean2" %>
-<%@ page import="QryAllChkBoxEditBean" %>
+<%@ page import="bean.QueryAllRepairBean2" %>
+<%@ page import="bean.QryAllChkBoxEditBean" %>
 <html>
 <head>
 <!--=================================-->
@@ -20,8 +20,8 @@ function searchRepNo(pageURL)
 }
 </script>
 <body>
-<jsp:useBean id="queryAllRepairBean" scope="session" class="QueryAllRepairBean2"/>
-<jsp:useBean id="qryAllChkBoxEditBean" scope="page" class="QryAllChkBoxEditBean"/>
+<jsp:useBean id="queryAllRepairBean" scope="session" class="bean.QueryAllRepairBean2"/>
+<jsp:useBean id="qryAllChkBoxEditBean" scope="page" class="bean.QryAllChkBoxEditBean"/>
 <FORM>
 
   <p><font color="#0080C0" size="5">查詢BPCS所有應付帳款---未付清單</font></p>

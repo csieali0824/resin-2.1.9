@@ -17,11 +17,11 @@
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<%@ page import="DateBean,ComboBoxBean"%>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<%@ page import="bean.DateBean,bean.ComboBoxBean"%>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
 </head>
 <script language="JavaScript" type="text/JavaScript">

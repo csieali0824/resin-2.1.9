@@ -6,11 +6,11 @@
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=============以下區段為取得連結池==========-->
 <html>
-<%@ page import="ComboBoxBean,DateBean"%>
+<%@ page import="bean.ComboBoxBean,bean.DateBean"%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <title>Key Account Repair Data File Uploading Center</title>
 </head>
 

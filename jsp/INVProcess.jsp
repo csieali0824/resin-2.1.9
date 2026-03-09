@@ -5,13 +5,13 @@
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<%@ page import="DateBean,CodeUtil,ArrayCheckBoxBean" %>
+<%@ page import="bean.DateBean,CodeUtil,bean.ArrayCheckBoxBean" %>
 <html>
 <head>
 <title>INVProcess.jsp</title>
 <meta http-equiv="Content-Type" content="text/html; charset=Big5">
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="arrayCheckBoxBean" scope="session" class="ArrayCheckBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="arrayCheckBoxBean" scope="session" class="bean.ArrayCheckBoxBean"/>
 </head>
 
 <body>

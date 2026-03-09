@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,RsBean,CheckBoxBeanNew,CheckBoxBean,ComboBoxBean,java.util.*" %>
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,bean.RsBean,bean.CheckBoxBeanNew,CheckBoxBean,bean.ComboBoxBean,java.util.*" %>
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>                                               
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
@@ -10,9 +10,9 @@
 </head>
 
 <body  background="../image/b01.jpg" > 
-<jsp:useBean id="rsBean" scope="application" class="RsBean"/>
-<jsp:useBean id="checkBoxBeanNew" scope="page" class="CheckBoxBeanNew"/>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
+<jsp:useBean id="rsBean" scope="application" class="bean.RsBean"/>
+<jsp:useBean id="checkBoxBeanNew" scope="page" class="bean.CheckBoxBeanNew"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
 <jsp:useBean id="checkBoxBean" scope="page" class="CheckBoxBean"/>
 <%
   String[] LOCALE=request.getParameterValues("LOCALE");

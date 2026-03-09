@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" %>
-<%@ page import="ComboBoxAllBean,DateBean,WorkingDateBean,ArrayComboBoxBean"%>
+<%@ page import="bean.ComboBoxAllBean,bean.DateBean,bean.WorkingDateBean,bean.ArrayComboBoxBean"%>
 <script language="JavaScript" type="text/JavaScript">
 function setSubmit(URL)
 {
@@ -64,11 +64,11 @@ function setEndDateTypeCheck()
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=============================================-->
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<jsp:useBean id="comboBoxAllBean" scope="page" class="ComboBoxAllBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
+<jsp:useBean id="comboBoxAllBean" scope="page" class="bean.ComboBoxAllBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <% /* 宣告用 Block */
   String d_Type = "";
   String group_Name = request.getParameter("GROUP_NAME");

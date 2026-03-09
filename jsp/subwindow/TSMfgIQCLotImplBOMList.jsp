@@ -3,8 +3,8 @@
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/MProcessStatusBarStart.jsp"%>
 <!--=================================-->
-<%@ page import="DateBean" %>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/> 
+<%@ page import="bean.DateBean" %>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 
 <html>
 <head>

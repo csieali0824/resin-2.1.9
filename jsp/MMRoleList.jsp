@@ -1,15 +1,15 @@
 <%@ page contentType="text/html" language="java" import="java.sql.*"  %>
-<%@ page import="QryAllChkBoxEditBean" %>
-<jsp:useBean id="qryAllChkBoxEditBean" scope="page" class="QryAllChkBoxEditBean"/>
+<%@ page import="bean.QryAllChkBoxEditBean" %>
+<jsp:useBean id="qryAllChkBoxEditBean" scope="page" class="bean.QryAllChkBoxEditBean"/>
 <!--=============for multi-language==========-->
 <%@ include file="./include/PageHeaderSwitch.jsp" %>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<!--=============¥H¤U°Ï¬q¬°¦w¥þ»{ÃÒ¾÷¨î==========-->
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½wï¿½ï¿½ï¿½{ï¿½Ò¾ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½oï¿½sï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<!--=============¥H¤U°Ï¬q¬°³B²z¶}©l==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½Bï¿½zï¿½}ï¿½l==========-->
 <%@ include file="/jsp/include/ProgressStatusBarStart.jsp"%>
 
 
@@ -78,7 +78,7 @@ function setSubmit(URL) {
 
 <%   
 	int pageRow = 30;
-	int maxrow=0;//¬d¸ß¸ê®ÆÁ`µ§¼Æ 
+	int maxrow=0;//ï¿½dï¿½ß¸ï¿½ï¿½ï¿½`ï¿½ï¿½ï¿½ï¿½ 
 	int currentPageNumber=0,totalPageNumber=0,rowNumber=0;
   
 	try {   
@@ -129,7 +129,7 @@ function setSubmit(URL) {
 	} //end of try
 	catch (Exception e)  {   out.println("Exception:"+e.getMessage());  }   
 %>
-<br> <!--´«¦æ -->
+<br> <!--ï¿½ï¿½ï¿½ï¿½ -->
 <A HREF="../jsp/MMRoleList.jsp?SCROLLROW=FIRST&SEARCHSTRING=<%if (searchString!=null) out.println(searchString);%>">
 <strong><font color="#FF0080"><jsp:getProperty name="rPH" property="pgFirst"/><jsp:getProperty name="rPH" property="pgPage"/></font></strong>
 </A>
@@ -154,15 +154,15 @@ try {
 	Statement statement=con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
 	ResultSet rs=statement.executeQuery(sql);
 	if (rowNumber==1)  {
-		rs.beforeFirst(); //²¾¦Ü²Ä¤@µ§¸ê®Æ¦C  
+		rs.beforeFirst(); //ï¿½ï¿½ï¿½Ü²Ä¤@ï¿½ï¿½ï¿½ï¿½Æ¦C  
 	} else {
-		if (rowNumber<=maxrow) { //­Y¤p©óÁ`µ§¼Æ®É¤~Ä~Äò´«­¶
-			rs.absolute(rowNumber); //²¾¦Ü«ü©w¸ê®Æ¦C
+		if (rowNumber<=maxrow) { //ï¿½Yï¿½pï¿½ï¿½ï¿½`ï¿½ï¿½ï¿½Æ®É¤~ï¿½~ï¿½ò´«­ï¿½
+			rs.absolute(rowNumber); //ï¿½ï¿½ï¿½Ü«ï¿½ï¿½wï¿½ï¿½Æ¦C
 		} //end if
 	} //end if-else
  
-   qryAllChkBoxEditBean.setPageURL("../jsp/MMRoleEdit.jsp");//¤p¹Ï¥Ü³sµ²¨ì­×§ïªººô­¶
-   qryAllChkBoxEditBean.setSearchKey("ROLENAME");//¶Ç¨ì¤U¤@­Óºô­¶¥H¨º¤@­ÓÅÜ¼Æ¬°¥D
+   qryAllChkBoxEditBean.setPageURL("../jsp/MMRoleEdit.jsp");//ï¿½pï¿½Ï¥Ü³sï¿½ï¿½ï¿½ï¿½×§ïªºï¿½ï¿½ï¿½ï¿½
+   qryAllChkBoxEditBean.setSearchKey("ROLENAME");//ï¿½Ç¨ï¿½Uï¿½@ï¿½Óºï¿½ï¿½ï¿½ï¿½Hï¿½ï¿½ï¿½@ï¿½ï¿½ï¿½Ü¼Æ¬ï¿½ï¿½D
    qryAllChkBoxEditBean.setFieldName("CH");
    qryAllChkBoxEditBean.setRowColor1("B0E0E6");
    qryAllChkBoxEditBean.setRowColor2("ADD8E6");
@@ -177,7 +177,7 @@ try {
 </body>
 </html>
 
-<!--=============¥H¤U°Ï¬q¬°³B²z§¹¦¨==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½Bï¿½zï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ProgressStatusBarStop.jsp"%>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>

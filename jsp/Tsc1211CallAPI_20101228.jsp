@@ -8,8 +8,8 @@
 <html>
 <head>
 <title>Sales Delivery Request M Data Process</title>
-<%@ page import="DateBean"%>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<%@ page import="bean.DateBean"%>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
 
 </head>

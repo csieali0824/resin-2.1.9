@@ -1,18 +1,18 @@
 <!--20161107,新增PRD外包-->
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.net.*,java.io.*,java.text.*,java.lang.*"%>
-<%@ page import="ComboBoxBean,DateBean,ArrayComboBoxBean" %>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
+<%@ page import="bean.ComboBoxBean,bean.DateBean,bean.ArrayComboBoxBean" %>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
  <!--=============以下區段為安全認證機制==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
 <title>外包PO單價-核淮</title>
 <script language="JavaScript" type="text/JavaScript">
 function setSubmit()

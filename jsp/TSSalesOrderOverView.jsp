@@ -1,9 +1,9 @@
 <!-- 20160725 Peggy,function:tsce_get_eta_date replace TSC_OM_COUNT_DDATE-->
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.util.*,java.text.*,java.io.*,java.sql.*,jxl.*,jxl.Workbook.*,jxl.write.*,jxl.format.*,javax.mail.*,javax.mail.internet.*,javax.mail.Multipart.*,javax.activation.*"%>
-<%@ page import="DateBean"%>
+<%@ page import="bean.DateBean"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <html>
 <head>
 <title>Download Excel File</title>

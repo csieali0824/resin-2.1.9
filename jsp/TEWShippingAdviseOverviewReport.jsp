@@ -1,9 +1,9 @@
 <!-- modify by Peggy 20150703,新增TEW_RCV_PKG.GET_SO_DESTINATION取代JSP 取訂單目的地的code-->
 <!--20180620 Peggy,add TSC_PARTNO欄位取代attribute1-->
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.util.*,java.text.*,java.io.*,java.sql.*,jxl.*,jxl.Workbook.*,jxl.write.*,jxl.format.*,javax.mail.*,javax.mail.internet.*,javax.mail.Multipart.*,javax.activation.*"%>
-<%@ page import="DateBean"%>
+<%@ page import="bean.DateBean"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <html>
 <head>
 <title>Download Excel File</title>

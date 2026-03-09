@@ -1,11 +1,11 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.util.*" %>
-<%@ page import="java.io.*,DateBean" %>
+<%@ page import="java.io.*,bean.DateBean" %>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <html>
 <head>
 <title>Insert UploadFile into Database</title>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <%@ page import="com.jspsmart.upload.*" %>
 <jsp:useBean id="mySmartUpload" scope="page" class="com.jspsmart.upload.SmartUpload" /> 
 </head>

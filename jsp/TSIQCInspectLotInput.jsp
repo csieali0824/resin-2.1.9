@@ -2,7 +2,7 @@
 <!-- 20150205 Peggy,晶片種類,晶片尺吋,鍍層加入inactive_date is null or inactive_date > trunc(sysdate)條件-->
 <!-- 20181005 Peggy,電性良品率 & 型號良率預設N/A-->
 <%@ page contentType="text/html; charset=big5" language="java" import="java.sql.*" %> 
-<%@ page import="ComboBoxBean,ComboBoxAllBean,DateBean,CheckBoxBean,ArrayComboBoxBean,Array2DimensionInputBean"%>
+<%@ page import="bean.ComboBoxBean,bean.ComboBoxAllBean,bean.DateBean,CheckBoxBean,bean.ArrayComboBoxBean,bean.Array2DimensionInputBean"%>
 <!--=============以下區段為安全認證機制==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=================================-->
@@ -10,17 +10,17 @@
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
 <!--%@ include file="/jsp/include/PageHeaderSwitch.jsp"%-->
-<!--%@ page import="SalesDRQPageHeaderBean" %-->
-<!--jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/-->
-<!--jsp:useBean id="poolBean" scope="application" class="PoolBean"/-->
-<jsp:useBean id="comboBoxAllBean" scope="page" class="ComboBoxAllBean"/>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<!--%@ page import="bean.SalesDRQPageHeaderBean" %-->
+<!--jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/-->
+<!--jsp:useBean id="poolBean" scope="application" class="bean.PoolBean"/-->
+<jsp:useBean id="comboBoxAllBean" scope="page" class="bean.ComboBoxAllBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <jsp:useBean id="checkBoxBean" scope="page" class="CheckBoxBean"/>
-<jsp:useBean id="arrayIQCDocumentInputBean" scope="session" class="Array2DimensionInputBean"/>
-<jsp:useBean id="arrayIQCSearchBean" scope="session" class="Array2DimensionInputBean"/>
-<jsp:useBean id="arrayIQCTempBean" scope="session" class="Array2DimensionInputBean"/>
+<jsp:useBean id="arrayIQCDocumentInputBean" scope="session" class="bean.Array2DimensionInputBean"/>
+<jsp:useBean id="arrayIQCSearchBean" scope="session" class="bean.Array2DimensionInputBean"/>
+<jsp:useBean id="arrayIQCTempBean" scope="session" class="bean.Array2DimensionInputBean"/>
 <script language="JavaScript" type="text/JavaScript">
 var checkflag = "false";
 document.onclick=function(e)

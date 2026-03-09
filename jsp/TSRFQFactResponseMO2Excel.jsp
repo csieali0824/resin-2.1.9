@@ -9,14 +9,14 @@
 <!--20200112 Peggy,增加"是否回T"欄位 from Zhangdi-->
 <!--20200113 Peggy,增加"Over Lead Time Reason"欄位 from Amanda-->
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.io.*,jxl.*,jxl.write.*,jxl.format.*,java.util.*" %>
-<%@ page import="DateBean"%>
+<%@ page import="bean.DateBean"%>
 <!--=============以下區段為安全認證機制==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=================================-->
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <html>
 <head>
 <title>Upload File and Insert into Database</title>

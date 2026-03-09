@@ -104,10 +104,10 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 12px }
 <!--=============以下區段為等待畫面==========-->
 <%@ include file="/jsp/IQCinclude/MProcessStatusBarStart.jsp"%>
 <!--=================================-->
-<%@ page import="DateBean,ArrayCheckBoxBean,Array2DimensionInputBean" %>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="arrayCheckBoxBean" scope="session" class="ArrayCheckBoxBean"/>
-<jsp:useBean id="array2DDrawInputBean" scope="session" class="Array2DimensionInputBean"/>
+<%@ page import="bean.DateBean,bean.ArrayCheckBoxBean,bean.Array2DimensionInputBean" %>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="arrayCheckBoxBean" scope="session" class="bean.ArrayCheckBoxBean"/>
+<jsp:useBean id="array2DDrawInputBean" scope="session" class="bean.Array2DimensionInputBean"/>
 <body>
 <A HREF="/oradds/OraddsMainMenu.jsp">回首頁</A> 
 <%

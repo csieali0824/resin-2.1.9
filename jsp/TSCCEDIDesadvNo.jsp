@@ -1,12 +1,12 @@
 <%@ page language="java" import="java.sql.*"%>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½oï¿½sï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="DateBean"%>
+<%@ page import="bean.DateBean"%>
 <html>
 <head>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <title>Get Desadv No</title>
 </head>
 <body >  
@@ -22,9 +22,9 @@ strDesadvNo = csf.getString(2);
 csf.close();			
 %>
 <div style="font-size:16px;font-family:Times New Roman;">ASN No:<input type="text" value="<%=strDesadvNo%>" size="10" style="font-size:16px;font-family:Times New Roman;color:#003399"></div>
-<!--%ªí³æ°Ñ¼Æ%-->
+<!--%ï¿½ï¿½ï¿½Ñ¼ï¿½%-->
 </FORM>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 </body>
 </html>

@@ -2,13 +2,13 @@
 <!-- 20170810 Peggy,TSCE老是將轉賣的資料當成1211拋過來,為讓USER可自行處理,新增delete功能供user刪除非1211資料-->
 <!-- 20171117 Peggy,歐洲系統bug,將QUANTITY=0也丟進來,故增加QUANTITY>0判斷條件-->
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*"  %>
-<%@ page import="ComboBoxBean,DateBean"%>
+<%@ page import="bean.ComboBoxBean,bean.DateBean"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
-<jsp:useBean id="dateBeans" scope="page" class="DateBean"/>
-<jsp:useBean id="dateBeane" scope="page" class="DateBean"/>
+<jsp:useBean id="dateBeans" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="dateBeane" scope="page" class="bean.DateBean"/>
 <title></title>
 <%
 String ATYPE = request.getParameter("ATYPE");   //add by Peggy 20120713

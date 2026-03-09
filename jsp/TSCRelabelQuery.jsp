@@ -1,9 +1,9 @@
 <%@ page language="java" import="java.util.*,java.text.*,java.io.*,java.sql.*,java.lang.*,"%>
-<%@ page import="ComboBoxBean,DateBean,WorkingDateBean,ArrayComboBoxBean"%>
+<%@ page import="bean.ComboBoxBean,bean.DateBean,bean.WorkingDateBean,bean.ArrayComboBoxBean"%>
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
 <script language="JavaScript" type="text/JavaScript">
 function setSubmit(URL)
 {    
@@ -40,11 +40,11 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 11px }
   select   {  font-family:  Tahoma,Georgia; color: #000000; font-size: 11px}
 </STYLE>
 <title>Relabel Query</title>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="workingDateBean" scope="page" class="WorkingDateBean"/>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="workingDateBean" scope="page" class="bean.WorkingDateBean"/>
 <%
 String CUSTOMERPO=request.getParameter("CUSTOMERPO");
 if(CUSTOMERPO==null) CUSTOMERPO="";
@@ -206,7 +206,7 @@ try
 	
 	if (iCnt==0)
 	{
-		out.println("<div align='center'><font color='red' size='2' face='·s²Ó©úÅé'><strong>No Data Found!</strong></font></div>");
+		out.println("<div align='center'><font color='red' size='2' face='ï¿½sï¿½Ó©ï¿½ï¿½ï¿½'><strong>No Data Found!</strong></font></div>");
 	}
 	else
 	{

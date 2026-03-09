@@ -1,9 +1,9 @@
 <%@ page contentType="text/html" language="java" import="java.sql.*" %>
 <!--=============for multi-language==========-->
 <%@ include file="./include/PageHeaderSwitch.jsp" %>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o±ÂÅv==========-->
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½oï¿½ï¿½ï¿½v==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <html>
 <head>

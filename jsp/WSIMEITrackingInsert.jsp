@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" %>
-<%@ page import="DateBean" %>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<%@ page import="bean.DateBean" %>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <!--=============以下區段為安全認證機制==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=================================-->

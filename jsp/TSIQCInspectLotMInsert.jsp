@@ -105,14 +105,14 @@ function alertRFQNotSuccess(msRFQCreateMsg)
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<%@ page import="DateBean,ArrayCheckBoxBean,Array2DimensionInputBean,SendMailBean,CodeUtil" %>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="arrayCheckBoxBean" scope="session" class="ArrayCheckBoxBean"/>
-<jsp:useBean id="arrayIQCDocumentInputBean" scope="session" class="Array2DimensionInputBean"/>
+<%@ page import="bean.DateBean,bean.ArrayCheckBoxBean,bean.Array2DimensionInputBean,bean.SendMailBean,CodeUtil" %>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="arrayCheckBoxBean" scope="session" class="bean.ArrayCheckBoxBean"/>
+<jsp:useBean id="arrayIQCDocumentInputBean" scope="session" class="bean.Array2DimensionInputBean"/>
 <!--20100307 Marvie Add : Add MC agree-->
-<jsp:useBean id="arrayIQCSearchBean" scope="session" class="Array2DimensionInputBean"/>
+<jsp:useBean id="arrayIQCSearchBean" scope="session" class="bean.Array2DimensionInputBean"/>
 <!--20100927 Marvie Add : Add INV return-->
-<jsp:useBean id="sendMailBean" scope="page" class="SendMailBean"/>
+<jsp:useBean id="sendMailBean" scope="page" class="bean.SendMailBean"/>
 <meta http-equiv="Content-Type" content="text/html; charset=big5"></head>
 <body>
 <%@ include file="/jsp/include/TSCMfgDocHyperLinkPage.jsp"%>

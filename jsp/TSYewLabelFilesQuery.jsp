@@ -4,19 +4,19 @@
 <%@ page import="jxl.*"%>
 <%@ page import="java.lang.Math.*"%>
 <%@ page import="java.text.*"%>
-<%@ page import="java.io.*,DateBean,ComboBoxAllBean"%>
+<%@ page import="java.io.*,bean.DateBean,bean.ComboBoxAllBean"%>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=============以下區段為安全認證機制==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
 <!--=============以下區段為取得連結池==========-->
 <html>
 <head>
 <title>TS YEW Label Query</title>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="comboBoxAllBean" scope="page" class="ComboBoxAllBean"/>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="comboBoxAllBean" scope="page" class="bean.ComboBoxAllBean"/>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
 </head>
 <script language="JavaScript" type="text/JavaScript">
 function setSubmit(URL)

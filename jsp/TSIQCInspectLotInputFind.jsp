@@ -1,17 +1,17 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" %>
-<%@ page import="ComboBoxBean,ComboBoxAllBean,DateBean,CheckBoxBean,ArrayComboBoxBean,Array2DimensionInputBean"%>
+<%@ page import="bean.ComboBoxBean,bean.ComboBoxAllBean,bean.DateBean,CheckBoxBean,bean.ArrayComboBoxBean,bean.Array2DimensionInputBean"%>
 <!--=============以下區段為安全認證機制==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=================================-->
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<jsp:useBean id="comboBoxAllBean" scope="page" class="ComboBoxAllBean"/>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="comboBoxAllBean" scope="page" class="bean.ComboBoxAllBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <jsp:useBean id="checkBoxBean" scope="page" class="CheckBoxBean"/>
-<jsp:useBean id="arrayIQCDocumentInputBean" scope="session" class="Array2DimensionInputBean"/>
+<jsp:useBean id="arrayIQCDocumentInputBean" scope="session" class="bean.Array2DimensionInputBean"/>
 <script language="JavaScript" type="text/JavaScript">
 var checkflag = "false";
 document.onclick=function(e)

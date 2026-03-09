@@ -6,12 +6,12 @@
 <%@ include file="/jsp/include/ConnBPCSDbexpPoolPage.jsp"%>
 <%@ include file="/jsp/include/ConnBPCSDshoesPoolPage.jsp"%>
 <!--=================================-->
-<%@ page import="DateBean,CodeUtil" %>
+<%@ page import="bean.DateBean,CodeUtil" %>
 <html>
 <head>
 <title>MRQProcess.jsp</title>
 <meta http-equiv="Content-Type" content="text/html; charset=Big5">
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 </head>
 
 <body>

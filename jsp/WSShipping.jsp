@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,RsBean" %>
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,bean.RsBean" %>
 
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
 <title>WSShipping.jsp</title>
 </head>
-  <jsp:useBean id="rsBean" scope="application" class="RsBean"/>
+  <jsp:useBean id="rsBean" scope="application" class="bean.RsBean"/>
 
 <body topmargin="0">
   <%

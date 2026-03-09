@@ -2,13 +2,13 @@
 <%@ page import="java.sql.*" %>
 <!--=============for multi-language==========-->
 <%@ include file="./include/PageHeaderSwitch.jsp" %>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o±ÂÅv==========-->
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½oï¿½ï¿½ï¿½v==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½oï¿½sï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<!--=============¥H¤U°Ï¬q¬°³B²z¶}©l==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½Bï¿½zï¿½}ï¿½l==========-->
 <%@ include file="/jsp/include/ProgressStatusBarStart.jsp"%>
 <html>
 <head>
@@ -55,7 +55,7 @@ try {
 <font face="Arial" size="3"><jsp:getProperty name="rPH" property="pgDelete"/><jsp:getProperty name="rPH" property="pgSuccess"/></font>
 </body>
 </html>
-<!--=============¥H¤U°Ï¬q¬°³B²z§¹¦¨==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½Bï¿½zï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ProgressStatusBarStop.jsp"%>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>

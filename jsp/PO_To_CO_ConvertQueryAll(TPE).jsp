@@ -3,10 +3,10 @@
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnBPCSPoolPage.jsp"%>
-<%@ page import="DateBean,ArrayComboBoxBean,RsCountBean" %>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="rsCountBean" scope="application" class="RsCountBean"/>
+<%@ page import="bean.DateBean,bean.ArrayComboBoxBean,bean.RsCountBean" %>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="rsCountBean" scope="application" class="bean.RsCountBean"/>
 <html>
 <head>
 <title>Query All BPCS unclosed PO </title>

@@ -16,12 +16,12 @@
 <%@ page language="java" import="java.sql.*,java.util.*,java.text.*" %>
 <%@ page language="java" import="java.io.*" %>
 
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<%@ page import="DateBean,ArrayCheckBoxBean,Array2DimensionInputBean" %>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="arrayCheckBoxBean" scope="session" class="ArrayCheckBoxBean"/>
-<jsp:useBean id="arrayRFQDocumentInputBean" scope="session" class="Array2DimensionInputBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
+<%@ page import="bean.DateBean,bean.ArrayCheckBoxBean,bean.Array2DimensionInputBean" %>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="arrayCheckBoxBean" scope="session" class="bean.ArrayCheckBoxBean"/>
+<jsp:useBean id="arrayRFQDocumentInputBean" scope="session" class="bean.Array2DimensionInputBean"/>
 
 <% 
  String nSPQty     = request.getParameter("NSPQTY");

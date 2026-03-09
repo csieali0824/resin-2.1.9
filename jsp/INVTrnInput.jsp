@@ -69,14 +69,14 @@ function submitCheck(URL)
  document.MYFORM.submit();
 }
 </script>
-<%@ page import="CheckBoxBeanNew,CheckBoxBean,ComboBoxBean,ArrayComboBoxBean,DateBean,ArrayCheckBoxBean"%>
+<%@ page import="bean.CheckBoxBeanNew,CheckBoxBean,bean.ComboBoxBean,bean.ArrayComboBoxBean,bean.DateBean,bean.ArrayCheckBoxBean"%>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
 <jsp:useBean id="checkBoxBean" scope="page" class="CheckBoxBean"/>
-<jsp:useBean id="checkBoxBeanNew" scope="page" class="CheckBoxBeanNew"/>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="arrayCheckBoxBean" scope="session" class="ArrayCheckBoxBean"/> <!--此bean作用在存入故障描述-->
+<jsp:useBean id="checkBoxBeanNew" scope="page" class="bean.CheckBoxBeanNew"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="arrayCheckBoxBean" scope="session" class="bean.ArrayCheckBoxBean"/> <!--此bean作用在存入故障描述-->
 <%
   arrayCheckBoxBean.setArray2DString(null);//將此bean值清空以為不同case可以重新運作
 %>

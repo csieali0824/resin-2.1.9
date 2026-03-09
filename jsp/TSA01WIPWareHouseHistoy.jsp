@@ -1,6 +1,6 @@
 <!--20180912 Peggy,新增"類別"欄位 -->
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.net.*,java.io.*,java.text.*,java.lang.*"%>
-<%@ page import="ComboBoxBean,ComboBoxAllBean,DateBean,WorkingDateBean,ArrayComboBoxBean"%>
+<%@ page import="bean.ComboBoxBean,bean.ComboBoxAllBean,bean.DateBean,bean.WorkingDateBean,bean.ArrayComboBoxBean"%>
 <script language="JavaScript" type="text/JavaScript">
 function setSubmit(URL)
 {  
@@ -60,13 +60,13 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 12px }
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<jsp:useBean id="comboBoxAllBean" scope="page" class="ComboBoxAllBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="workingDateBean" scope="page" class="WorkingDateBean"/>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
+<jsp:useBean id="comboBoxAllBean" scope="page" class="bean.ComboBoxAllBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="workingDateBean" scope="page" class="bean.WorkingDateBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
 <%
 String colorStr = "";
 

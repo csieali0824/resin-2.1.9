@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" %>
-<%@ page import="DateBean,RsCountBean,ComboBoxBean,MiscellaneousBean" %>
+<%@ page import="bean.DateBean,bean.RsCountBean,bean.ComboBoxBean,bean.MiscellaneousBean" %>
 <!--=================================-->
 <script language="JavaScript" type="text/JavaScript">
 function setSubmit(URL)
@@ -8,10 +8,10 @@ function setSubmit(URL)
  document.MYFORM.submit();
 }
 </script>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="rsCountBean" scope="page" class="RsCountBean"/>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="miscellaneousBean" scope="page" class="MiscellaneousBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="rsCountBean" scope="page" class="bean.RsCountBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="miscellaneousBean" scope="page" class="bean.MiscellaneousBean"/>
 <!--=============To get the Authentication==========-->
 <%//@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============以下區段為取得連結池==========-->

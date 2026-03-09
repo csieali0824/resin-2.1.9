@@ -4,7 +4,7 @@
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<%@ page import="QryAllChkBoxEditBean,ComboBoxBean,ArrayComboBoxBean,DateBean"%>
+<%@ page import="bean.QryAllChkBoxEditBean,bean.ComboBoxBean,bean.ArrayComboBoxBean,bean.DateBean"%>
 <html>
 <head>
 <title>Query All IQC Item Information</title>
@@ -111,10 +111,10 @@ function setSubmitSave(URL)
  document.MYFORM.submit();
 }
 </script>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="qryAllChkBoxEditBean" scope="session" class="QryAllChkBoxEditBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="qryAllChkBoxEditBean" scope="session" class="bean.QryAllChkBoxEditBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <%     
   //String statusID=request.getParameter("STATUSID");  
   //String statusDesc="",statusName="";

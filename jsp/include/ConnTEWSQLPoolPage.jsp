@@ -1,5 +1,5 @@
-<%@ page import="PoolBean"%>
-<jsp:useBean id="mssqlpoolBean" scope="application" class="PoolBean"/>
+<%@ page import="bean.PoolBean"%>
+<jsp:useBean id="mssqlpoolBean" scope="application" class="bean.PoolBean"/>
 <%
 // Start Connect MSSQL Server(TEW SQL Server Database)
     Connection tewcon=null;
@@ -21,7 +21,7 @@
      mssqlpoolBean.setBeanID("mssqlpoolBean");
      mssqlpoolBean.setUsingURL(request.getRequestURL().toString());
      tewcon=mssqlpoolBean.getConnection();	  
-     tewcon.setAutoCommit(false);//3]cwAutoCommit?¢Xfalse¢DH¡L??ioo¡Mo3s?u2¡±¡Ó`RE£go¢DI?u?~ 
+     tewcon.setAutoCommit(false);//3]cwAutoCommit?ï¿½Xfalseï¿½DHï¿½L??iooï¿½Mo3s?u2ï¿½ï¿½ï¿½ï¿½`REï¿½goï¿½DI?u?~ 
 	         
     } //end of try
     catch (Exception e)

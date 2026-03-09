@@ -8,12 +8,12 @@
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<%@ page import="CheckBoxBean,ComboBoxBean,Array2DimensionInputBean"%>
+<%@ page import="CheckBoxBean,bean.ComboBoxBean,bean.Array2DimensionInputBean"%>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<jsp:useBean id="array2DMOContactInfoBean" scope="session" class="Array2DimensionInputBean"/>
-<jsp:useBean id="array2DMODeliverInfoBean" scope="session" class="Array2DimensionInputBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
+<jsp:useBean id="array2DMOContactInfoBean" scope="session" class="bean.Array2DimensionInputBean"/>
+<jsp:useBean id="array2DMODeliverInfoBean" scope="session" class="bean.Array2DimensionInputBean"/>
 <script language="JavaScript" type="text/JavaScript">
 function subWindowNotifyToFind(useCode,nContactID,nContact,nLocationID,nLocation,customerID,deliverTo)
 {    
@@ -79,7 +79,7 @@ function setDeliverCancel(setVal)
 }
 </script>
 <jsp:useBean id="checkBoxBean" scope="page" class="CheckBoxBean"/>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
 <style type="text/css">
 <!--
 

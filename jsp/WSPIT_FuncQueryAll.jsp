@@ -4,7 +4,7 @@
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<%@ page import="QryAllChkBoxEditBean" %>
+<%@ page import="bean.QryAllChkBoxEditBean" %>
 
 <html>
 <head>
@@ -65,7 +65,7 @@ function searchResult()
   location.href="WSPIT_FuncQueryAll.jsp?SEARCHSTRING="+document.MYFORM.SEARCHSTRING.value;
 }
 </script>
-<jsp:useBean id="qryAllChkBoxEditBean" scope="page" class="QryAllChkBoxEditBean"/>
+<jsp:useBean id="qryAllChkBoxEditBean" scope="page" class="bean.QryAllChkBoxEditBean"/>
 <body>
 <%  
 String searchString=request.getParameter("SEARCHSTRING");

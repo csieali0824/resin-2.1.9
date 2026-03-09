@@ -1,10 +1,10 @@
 <!--20151021 by Peggy,解決TMT.T_機器工時&TMT.T_人工工時=null-->
 <!--20180104 by Liling 修前段料號判斷方式 -->
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.math.BigDecimal,java.text.DecimalFormat,java.io.*,jxl.*,jxl.Workbook.*,jxl.write.*,jxl.format.*,java.awt.Image.*" %>
-<%@ page import="DateBean"%>
+<%@ page import="bean.DateBean"%>
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <html>
 <head>
 <title>Upload File and Insert into Database</title>

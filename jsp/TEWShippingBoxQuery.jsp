@@ -1,7 +1,7 @@
 <!-- 20180130 by Peggy,add column=>reel qty-->
 <!--20180620 Peggy,add TSC_PARTNO欄位取代attribute1-->
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.math.BigDecimal,java.text.*" %>
-<%@ page import="ComboBoxBean,DateBean,ArrayComboBoxBean"%>
+<%@ page import="bean.ComboBoxBean,bean.DateBean,bean.ArrayComboBoxBean"%>
 <script language="JavaScript" type="text/JavaScript">
 function setSubmit(URL)
 {   
@@ -47,13 +47,13 @@ function setInactive(URL,STATUS)
 <!--=============以下區段為安全認證機制==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<%@ page import="ComboBoxBean,DateBean,ArrayComboBoxBean" %>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
+<%@ page import="bean.ComboBoxBean,bean.DateBean,bean.ArrayComboBoxBean" %>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
 <body topmargin="0" bottommargin="0">  
 <FORM ACTION="../jsp/TEWShippingBoxQuery.jsp" METHOD="post" NAME="MYFORM">

@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,DominoPoolBean,lotus.domino.*"%>
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,bean.DominoPoolBean,lotus.domino.*"%>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
@@ -9,7 +9,7 @@
 </head>
 
 <body>
-<jsp:useBean id="dominoPool" scope="session" class="DominoPoolBean"/>
+<jsp:useBean id="dominoPool" scope="session" class="bean.DominoPoolBean"/>
 <%  
   String UserName=request.getParameter("UserName");
   String Password=request.getParameter("Password");

@@ -1,15 +1,15 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" %>
-<%@ page import="ComboBoxAllBean,ComboBoxBean,DateBean,ArrayComboBoxBean,ArrayListCheckBoxBean"%>
+<%@ page import="bean.ComboBoxAllBean,bean.ComboBoxBean,bean.DateBean,bean.ArrayComboBoxBean,bean.ArrayListCheckBoxBean"%>
 <!--=============To get the Authentication==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============To get Connection from different DB==========-->
 <%@ include file="/jsp/include/ConnBPCSPoolPage.jsp"%>
 <!--=============To get Connection from different DB==========-->
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="comboBoxAllBean" scope="page" class="ComboBoxAllBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="arrayListCheckBoxBean" scope="session" class="ArrayListCheckBoxBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="comboBoxAllBean" scope="page" class="bean.ComboBoxAllBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="arrayListCheckBoxBean" scope="session" class="bean.ArrayListCheckBoxBean"/>
 <title>WINS System - Sales Edit Page</title>
 <script language="JavaScript" type="text/JavaScript">
 function setSubmit(URL)

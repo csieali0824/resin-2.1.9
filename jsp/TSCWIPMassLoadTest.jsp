@@ -1,11 +1,11 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.util.*" %>
-<%@ page import="DateBean,CodeUtil"%>
+<%@ page import="bean.DateBean,CodeUtil"%>
 <!--=============To get the Authentication==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============To get Connection from different DB==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=big5" />

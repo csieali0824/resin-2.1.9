@@ -9,8 +9,8 @@
 <!--=================================-->
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<%@ page import="ComboBoxBean" %>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
+<%@ page import="bean.ComboBoxBean" %>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
 </head>
 <STYLE TYPE='text/css'>  BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 12px }
   P         { font-family: Tahoma,Georgia; color: #000000; font-size: 12px } 

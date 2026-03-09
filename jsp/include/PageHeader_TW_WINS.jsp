@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8" %>
-<%@ page import="PageHeaderBean" %>
-<jsp:useBean id="pageHeader" scope="session" class="PageHeaderBean"/>
+<%@ page import="bean.PageHeaderBean" %>
+<jsp:useBean id="pageHeader" scope="session" class="bean.PageHeaderBean"/>
 
 <jsp:setProperty name="pageHeader" property="pgTitleName" value="產品專案資訊系統"/>
 <jsp:setProperty name="pageHeader" property="pgSalesCode" value="市場型號"/>

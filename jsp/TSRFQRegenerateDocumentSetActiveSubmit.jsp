@@ -1,18 +1,18 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.util.*" %>
-<%@ page import="ComboBoxAllBean,ComboBoxBean,DateBean,ArrayComboBoxBean,ArrayListCheckBoxBean,CodeUtil,WriteLogToFileBean"%>
+<%@ page import="bean.ComboBoxAllBean,bean.ComboBoxBean,bean.DateBean,bean.ArrayComboBoxBean,bean.ArrayListCheckBoxBean,CodeUtil,bean.WriteLogToFileBean"%>
 <!--=============To get the Authentication==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============To get Connection from different DB==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
 <!--%@ include file="/jsp/include/ConnBPCSDisttstPoolPage.jsp"%-->
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="comboBoxAllBean" scope="page" class="ComboBoxAllBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="arrayListCheckBoxBean" scope="session" class="ArrayListCheckBoxBean"/>
-<jsp:useBean id="writeLogToFileBean" scope="page" class="WriteLogToFileBean"/>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="comboBoxAllBean" scope="page" class="bean.ComboBoxAllBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="arrayListCheckBoxBean" scope="session" class="bean.ArrayListCheckBoxBean"/>
+<jsp:useBean id="writeLogToFileBean" scope="page" class="bean.WriteLogToFileBean"/>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
 
 <html>
 <head>

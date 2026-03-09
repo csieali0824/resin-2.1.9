@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" %>
-<%@ page import="ComboBoxBean,DateBean"%>
+<%@ page import="bean.ComboBoxBean,bean.DateBean"%>
 <!--=============以下區段為安全認證機制==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
@@ -7,9 +7,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
 <title>TSC DELTA 1211 Order Query</title>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="dateBeans" scope="page" class="DateBean"/>
-<jsp:useBean id="dateBeane" scope="page" class="DateBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="dateBeans" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="dateBeane" scope="page" class="bean.DateBean"/>
 <style type="text/css">
  .style1   {font-family:Arial; font-size:12px; background-color:#A9E1E7; color:#000000; text-align:left;}
  .style2   {font-family:Arial; font-size:12px; color:#000000; text-align:left;}

@@ -1,5 +1,5 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.util.*,java.text.*,java.io.*,java.sql.*,javax.sql.*,javax.naming.*,WriteLogToFileBean"%>
-<jsp:useBean id="writeLogToFileBean" scope="page" class="WriteLogToFileBean"/>
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.util.*,java.text.*,java.io.*,java.sql.*,javax.sql.*,javax.naming.*,bean.WriteLogToFileBean"%>
+<jsp:useBean id="writeLogToFileBean" scope="page" class="bean.WriteLogToFileBean"/>
 <%
 
 String packingnumber = request.getParameter("packingnumber"); 

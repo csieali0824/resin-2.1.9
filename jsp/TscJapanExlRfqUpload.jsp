@@ -1,10 +1,10 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.io.*,java.util.*" %>
-<%@ page import="ComboBoxBean,DateBean"%>
+<%@ page import="bean.ComboBoxBean,bean.DateBean"%>
 <!--=============以下區段為安全認證機制==========-->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
-<jsp:useBean id="dateBeans" scope="page" class="DateBean"/>
+<jsp:useBean id="dateBeans" scope="page" class="bean.DateBean"/>
 <title>上傳XML及資料轉出頁面</title>
 <style type="text/css">
 <!--

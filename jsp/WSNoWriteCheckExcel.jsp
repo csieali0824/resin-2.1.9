@@ -1,14 +1,14 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.io.*,jxl.*,jxl.write.*,jxl.format.*,WorkingDateBean,java.lang.Math.*" %>
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.io.*,jxl.*,jxl.write.*,jxl.format.*,bean.WorkingDateBean,java.lang.Math.*" %>
 <!--%@ page contentType="image/jpeg; charset=Big5" language="java" import="java.sql.*,java.io.*,jxl.*,jxl.write.*,jxl.format.*" %-->
-<%@ page import="DateBean"%>
+<%@ page import="bean.DateBean"%>
 <!--=============以下區段為安全認證機制==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=================================-->
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnBPCSPoolPage.jsp"%>
 <!--=================================-->
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="workingDateBean" scope="page" class="WorkingDateBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="workingDateBean" scope="page" class="bean.WorkingDateBean"/>
 <html>
 <head>
 <title>Upload File and Insert into Database</title>

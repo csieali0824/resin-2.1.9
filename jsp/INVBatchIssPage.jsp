@@ -1,11 +1,11 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,RsBean"%>
-<%@ page import="CheckBoxBeanNew,CheckBoxBean,ComboBoxBean,ArrayComboBoxBean,DateBean,ArrayCheckInputBoxBean"%>
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,bean.RsBean"%>
+<%@ page import="bean.CheckBoxBeanNew,CheckBoxBean,bean.ComboBoxBean,bean.ArrayComboBoxBean,bean.DateBean,bean.ArrayCheckInputBoxBean"%>
 <jsp:useBean id="checkBoxBean" scope="page" class="CheckBoxBean"/>
-<jsp:useBean id="checkBoxBeanNew" scope="page" class="CheckBoxBeanNew"/>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="rsBean" scope="application" class="RsBean"/>
-<jsp:useBean id="arrayCheckInputBoxBean" scope="session" class="ArrayCheckInputBoxBean"/>
+<jsp:useBean id="checkBoxBeanNew" scope="page" class="bean.CheckBoxBeanNew"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="rsBean" scope="application" class="bean.RsBean"/>
+<jsp:useBean id="arrayCheckInputBoxBean" scope="session" class="bean.ArrayCheckInputBoxBean"/>
 
 <!--=============以下區段為安全認證機制==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>

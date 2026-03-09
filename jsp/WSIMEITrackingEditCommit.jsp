@@ -1,10 +1,10 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" %>
-<%@ page import="DateBean"%>
+<%@ page import="bean.DateBean"%>
 <!--=============To get the Authentication==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============To get Connection from different DB==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 
 <html>
 <head>

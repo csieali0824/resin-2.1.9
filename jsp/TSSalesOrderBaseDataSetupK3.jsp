@@ -2,12 +2,12 @@
 <%@ page import="java.sql.*"%>
 <%@ page import="java.util.*"%>
 <%@ page import="jxl.*"%>
-<%@ page import="WorkingDateBean"%>
+<%@ page import="bean.WorkingDateBean"%>
 <%@ page import="java.lang.Math.*"%>
 <%@ page import="java.text.*"%>
-<%@ page import="java.io.*,DateBean"%>
+<%@ page import="java.io.*,bean.DateBean"%>
 <%@ page errorPage="ExceptionHandler.jsp"%>
-<%@ page import="DateBean,ArrayCheckBoxBean,Array2DimensionInputBean" %>
+<%@ page import="bean.DateBean,bean.ArrayCheckBoxBean,bean.Array2DimensionInputBean" %>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=============以下區段為安全認證機制==========-->
@@ -16,8 +16,8 @@
 <html>
 <head>
 <title>TSCC K3 SYSTEM INFO SETUP</title>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="arrayRFQDocumentInputBean" scope="session" class="Array2DimensionInputBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="arrayRFQDocumentInputBean" scope="session" class="bean.Array2DimensionInputBean"/>
 </head>
 <script language="JavaScript" type="text/JavaScript">
 function setChoose(strvalue)

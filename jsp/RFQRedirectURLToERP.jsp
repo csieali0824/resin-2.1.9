@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" %>
 <%@ page import="java.sql.*"%>
 <%@ page import="java.util.*"%>
-<%@ page import="DateBean,ArrayCheckBoxBean,Array2DimensionInputBean" %>
+<%@ page import="bean.DateBean,bean.ArrayCheckBoxBean,bean.Array2DimensionInputBean" %>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=============以下區段為安全認證機制==========-->

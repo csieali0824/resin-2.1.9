@@ -3,9 +3,9 @@
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<%@ page import="RsCountBean,DateBean" %>
-<jsp:useBean id="rsCountBean" scope="application" class="RsCountBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<%@ page import="bean.RsCountBean,bean.DateBean" %>
+<jsp:useBean id="rsCountBean" scope="application" class="bean.RsCountBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <script language="JavaScript" type="text/JavaScript">
 </script>
 <%    

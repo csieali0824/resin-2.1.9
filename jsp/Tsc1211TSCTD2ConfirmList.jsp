@@ -1,12 +1,12 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" %>
-<%@ page import="ComboBoxBean,DateBean"%>
+<%@ page import="bean.ComboBoxBean,bean.DateBean"%>
 <!--=============以下區段為安全認證機制==========-->
 <%//@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
 <title>TSC轉出訂單頁面</title>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
 <%
 String  sSql = "";
 String  keyID = "";

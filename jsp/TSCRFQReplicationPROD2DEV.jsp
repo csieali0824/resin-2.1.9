@@ -3,9 +3,9 @@
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectDevPoolPage.jsp"%>
-<%@ page import="DateBean,RsCountBean" %>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="rsCountBean" scope="application" class="RsCountBean"/>
+<%@ page import="bean.DateBean,bean.RsCountBean" %>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="rsCountBean" scope="application" class="bean.RsCountBean"/>
 <html>
 <head>
 <title> Telnet Command --> Replication RFQ Production To Develop</title>

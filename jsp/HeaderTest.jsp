@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.sql.*,java.io.*" %>
-<%@ page import="PageHeaderBean" %>
-<jsp:useBean id="pageHeader" scope="session" class="PageHeaderBean"/>
+<%@ page import="bean.PageHeaderBean" %>
+<jsp:useBean id="pageHeader" scope="session" class="bean.PageHeaderBean"/>
 <% 
  String pageHeaderURL=null;
  String clientLocale=request.getLocale().toString();

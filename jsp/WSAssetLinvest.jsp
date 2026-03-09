@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" %>
-<%@ page import="DateBean,java.text.DecimalFormat,ComboBoxBean,ArrayComboBoxBean"%>
+<%@ page import="bean.DateBean,java.text.DecimalFormat,bean.ComboBoxBean,bean.ArrayComboBoxBean"%>
 <!--=============To get the Authentication==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============To get Connection from different DB==========-->
@@ -15,9 +15,9 @@
 
 <!--=============以下區段為處理開始==========-->
 <%@ include file="/jsp/include/ProgressStatusBarStart.jsp"%>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <%//@ page import="com.jspsmart.upload.*" %>
 
 

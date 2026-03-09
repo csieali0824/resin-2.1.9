@@ -9,9 +9,9 @@
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<%@ page import="DateBean,ArrayCheckBoxBean,ArrayCheckBox2DBean,Array2DimensionInputBean,SendMailBean,CodeUtil" %>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
+<%@ page import="bean.DateBean,bean.ArrayCheckBoxBean,bean.ArrayCheckBox2DBean,bean.Array2DimensionInputBean,bean.SendMailBean,CodeUtil" %>
 <!--%@ include file="/jsp/include/ProgressStatusBarStart.jsp"%-->
 <script language="JavaScript" type="text/JavaScript">
 function reProcessFormConfirm(ms1,URL,dnDOCNo,lineNo,assignFact,ordtypeid,linetypeid)
@@ -34,13 +34,13 @@ function alertItemExistsMsg(msItemExists)
 <html>
 <head>
 <title>Sales Delivery Request M Data Process</title>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="arrayCheckBoxBean" scope="session" class="ArrayCheckBoxBean"/> <!--FOR MATERIAL USAGE-->
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="arrayCheckBoxBean" scope="session" class="bean.ArrayCheckBoxBean"/> <!--FOR MATERIAL USAGE-->
 
-<jsp:useBean id="array2DGenerateSOrderBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR 業務生成銷售訂單確認-->
-<jsp:useBean id="array2DMOContactInfoBean" scope="session" class="Array2DimensionInputBean"/> <!-- FOR 業務生成銷售訂單確認(其他資訊Notify to Contact) -->
-<jsp:useBean id="array2DMODeliverInfoBean" scope="session" class="Array2DimensionInputBean"/> <!-- FOR 業務生成銷售訂單確認(其他資訊Deliver to Contact) -->
-<jsp:useBean id="sendMailBean" scope="page" class="SendMailBean"/>
+<jsp:useBean id="array2DGenerateSOrderBean" scope="session" class="bean.Array2DimensionInputBean"/> <!--FOR 業務生成銷售訂單確認-->
+<jsp:useBean id="array2DMOContactInfoBean" scope="session" class="bean.Array2DimensionInputBean"/> <!-- FOR 業務生成銷售訂單確認(其他資訊Notify to Contact) -->
+<jsp:useBean id="array2DMODeliverInfoBean" scope="session" class="bean.Array2DimensionInputBean"/> <!-- FOR 業務生成銷售訂單確認(其他資訊Deliver to Contact) -->
+<jsp:useBean id="sendMailBean" scope="page" class="bean.SendMailBean"/>
 <meta http-equiv="Content-Type" content="text/html; charset=big5"></head>
 <body>
 <FORM ACTION="TSSalesDRQApndMProcess.jsp" METHOD="post" NAME="MPROCESSFORM">

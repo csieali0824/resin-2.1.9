@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" %>
-<%@ page import="DateBean" %>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<%@ page import="bean.DateBean" %>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <!--=============Open Connection==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/ConnBPCSPoolPage.jsp/"%>

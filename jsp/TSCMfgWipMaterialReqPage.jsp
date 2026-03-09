@@ -8,11 +8,11 @@
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<%@ page import="DateBean,CheckBoxBean,ComboBoxBean,Array2DimensionInputBean"%>
-<jsp:useBean id="array2DWIPIssueByItemBean" scope="session" class="Array2DimensionInputBean"/>
-<jsp:useBean id="array2DWIPIssueByWoBean" scope="session" class="Array2DimensionInputBean"/>
-<jsp:useBean id="arrayWIPEntityIDBean" scope="session" class="Array2DimensionInputBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<%@ page import="bean.DateBean,CheckBoxBean,bean.ComboBoxBean,bean.Array2DimensionInputBean"%>
+<jsp:useBean id="array2DWIPIssueByItemBean" scope="session" class="bean.Array2DimensionInputBean"/>
+<jsp:useBean id="array2DWIPIssueByWoBean" scope="session" class="bean.Array2DimensionInputBean"/>
+<jsp:useBean id="arrayWIPEntityIDBean" scope="session" class="bean.Array2DimensionInputBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <script language="JavaScript" type="text/JavaScript">
 var checkflag = "false";
 function check(field) 
@@ -228,7 +228,7 @@ function subWindowSubInventoryFind(organizationID,subInv,subInvDesc,xIndex, invI
 }
 </script>
 <jsp:useBean id="checkBoxBean" scope="page" class="CheckBoxBean"/>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
 <style type="text/css">
 <!--
 

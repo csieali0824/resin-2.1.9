@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,RsBean,ComboBoxBean,DateBean,ArrayComboBoxBean,ComboBoxAllBean" %>
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,bean.RsBean,bean.ComboBoxBean,bean.DateBean,bean.ArrayComboBoxBean,bean.ComboBoxAllBean" %>
 
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
@@ -15,11 +15,11 @@
     String YearFr=request.getParameter("YEARFR");
     String MonthFr=request.getParameter("MONTHFR");
   %>
-<jsp:useBean id="rsBean" scope="application" class="RsBean"/>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="comboBoxAllBean" scope="page" class="ComboBoxAllBean"/>
+<jsp:useBean id="rsBean" scope="application" class="bean.RsBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="comboBoxAllBean" scope="page" class="bean.ComboBoxAllBean"/>
   <strong><font size="+2">AC生產日報彙總表</font></strong><BR>
   <A HREF="/wins/WinsMainMenu.jsp">回首頁</A> 
 <table width="39%" border="2" align="center" cellpadding="0" cellspacing="0">

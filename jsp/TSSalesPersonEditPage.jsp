@@ -3,15 +3,15 @@
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<%@ page import="ComboBoxBean"%>
+<%@ page import="bean.ComboBoxBean"%>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
 <html>
 <head>
 <title>Edit Sales Person Data Page</title>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
-<jsp:useBean id="comboBoxBean" scope="application" class="ComboBoxBean"/>
+<jsp:useBean id="comboBoxBean" scope="application" class="bean.ComboBoxBean"/>
 </head>
 <body>
 <%

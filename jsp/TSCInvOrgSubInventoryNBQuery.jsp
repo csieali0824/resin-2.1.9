@@ -1,6 +1,6 @@
 <!--modify by Peggy 20150105,年度下拉選單程式改寫-->
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" %>
-<%@ page import="ComboBoxAllBean,DateBean,WorkingDateBean,ArrayComboBoxBean"%>
+<%@ page import="bean.ComboBoxAllBean,bean.DateBean,bean.WorkingDateBean,bean.ArrayComboBoxBean"%>
 <script language="JavaScript" type="text/JavaScript">
 function setSubmit(URL)
 {    
@@ -23,11 +23,11 @@ function setSubmit2(URL)
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<!--jsp:useBean id="poolBean" scope="application" class="PoolBean"/-->
-<jsp:useBean id="comboBoxAllBean" scope="page" class="ComboBoxAllBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="workingDateBean" scope="page" class="WorkingDateBean"/>
+<!--jsp:useBean id="poolBean" scope="application" class="bean.PoolBean"/-->
+<jsp:useBean id="comboBoxAllBean" scope="page" class="bean.ComboBoxAllBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="workingDateBean" scope="page" class="bean.WorkingDateBean"/>
 <%
 int rs1__numRows = 200;
 int rs1__index = 0;

@@ -5,10 +5,10 @@
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<%@ page import="DateBean,ArrayCheckBoxBean,ArrayCheckBox2DBean,Array2DimensionInputBean,SendMailBean,CodeUtil" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<jsp:useBean id="StockInfoBean" scope="session" class="Array2DimensionInputBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<%@ page import="bean.DateBean,bean.ArrayCheckBoxBean,bean.ArrayCheckBox2DBean,bean.Array2DimensionInputBean,bean.SendMailBean,CodeUtil" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
+<jsp:useBean id="StockInfoBean" scope="session" class="bean.Array2DimensionInputBean"/>
 <script language="JavaScript" type="text/JavaScript">
 function reProcessFormConfirm(ms1,URL,dnDOCNo,lineNo,assignFact,ordtypeid,linetypeid)
 {

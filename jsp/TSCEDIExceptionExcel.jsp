@@ -3,11 +3,11 @@
 <!--20160630 Peggy,add new field-改單申請單號-->
 <!--20190307 Peggy,add end csutomer partno-->
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.math.BigDecimal,java.io.*,jxl.*,jxl.Workbook.*,jxl.write.*,jxl.format.*,java.awt.Image.*,java.text.DecimalFormat" %>
-<%@ page import="DateBean"%>
+<%@ page import="bean.DateBean"%>
 <%@ page import="java.text.*"%>
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <html>
 <head>
 <title>Upload File and Insert into Database</title>

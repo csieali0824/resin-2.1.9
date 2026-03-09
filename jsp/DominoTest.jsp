@@ -4,8 +4,8 @@
 <title>Domino Connection test page</title>
 </head>
 <body>
-<%@ page import="DominoBean" %>
-<jsp:useBean id="domino" scope="session" class="DominoBean"/>
+<%@ page import="bean.DominoBean" %>
+<jsp:useBean id="domino" scope="session" class="bean.DominoBean"/>
 <%
  domino.setUserName("ROGER CHANG");
  domino.setPassword("9103");

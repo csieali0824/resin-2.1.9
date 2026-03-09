@@ -6,11 +6,11 @@
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<%@ page import="QryAllChkBoxEditBean,ComboBoxBean,ArrayComboBoxBean,DateBean,Array2DimensionInputBean"%>
-<jsp:useBean id="shipTypecomboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="qryAllChkBoxEditBean" scope="session" class="QryAllChkBoxEditBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<%@ page import="bean.QryAllChkBoxEditBean,bean.ComboBoxBean,bean.ArrayComboBoxBean,bean.DateBean,bean.Array2DimensionInputBean"%>
+<jsp:useBean id="shipTypecomboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="qryAllChkBoxEditBean" scope="session" class="bean.QryAllChkBoxEditBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=big5" />
 <title>管理員WIP系統移站異常處理</title>

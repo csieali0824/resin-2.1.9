@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" %>
-<%@ page import="ArrayComboBoxBean,ComboBoxBean,DateBean" %>
+<%@ page import="bean.ArrayComboBoxBean,bean.ComboBoxBean,bean.DateBean" %>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=============To get the Authentication==========-->
@@ -11,10 +11,10 @@ function setSubmit(URL)
  document.MYFORM.submit();
 }
 </script>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="thisDateBean" scope="session" class="DateBean"/> <!--用來抓出目前為幾月-->
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="thisDateBean" scope="session" class="bean.DateBean"/> <!--用來抓出目前為幾月-->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">

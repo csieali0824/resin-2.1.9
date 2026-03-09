@@ -1,8 +1,8 @@
-<%@ page language="java" import="java.util.*,java.text.*,java.io.*,java.sql.*,DateBean"%>
+<%@ page language="java" import="java.util.*,java.text.*,java.io.*,java.sql.*,bean.DateBean"%>
 <%@ page import="org.w3c.dom.*" %>
 <%@ page import="org.xml.sax.*" %>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <html> 
 <head>
 <title></title>
@@ -168,7 +168,7 @@ if (action.equals("s"))
 <%
 }
 %>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->  
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½==========-->  
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 </body>

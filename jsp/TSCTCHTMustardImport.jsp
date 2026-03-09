@@ -25,12 +25,12 @@
   <% upBean.addUploadListener(fileMover); %>
 </jsp:useBean>
 
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<%@ page import="DateBean,ArrayCheckBoxBean,Array2DimensionInputBean" %>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="arrayCheckBoxBean" scope="session" class="ArrayCheckBoxBean"/>
-<jsp:useBean id="arrayRFQDocumentInputBean" scope="session" class="Array2DimensionInputBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
+<%@ page import="bean.DateBean,bean.ArrayCheckBoxBean,bean.Array2DimensionInputBean" %>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="arrayCheckBoxBean" scope="session" class="bean.ArrayCheckBoxBean"/>
+<jsp:useBean id="arrayRFQDocumentInputBean" scope="session" class="bean.Array2DimensionInputBean"/>
 
 <!--  File Mover Bean is instantiated before the uploadBean to that it can be used as a
       listener for the upload Bean.
@@ -97,11 +97,11 @@ String replace(String s, String one, String another) {
 
           // For Chinese Language Problem
 
-          String temp_ppono          = "±ÄÁÊ³æ¸¹:";
+          String temp_ppono          = "ï¿½ï¿½ï¿½Ê³æ¸¹:";
           byte[] temp_tpono          = temp_ppono.getBytes("ISO8859-1");
           String PONo                = new String(temp_tpono);
           
-          String temp_punitp         = "³æ  »ù(";
+          String temp_punitp         = "ï¿½ï¿½  ï¿½ï¿½(";
           byte[] temp_tunitp         = temp_punitp.getBytes("ISO8859-1");
           String UnitP                = new String(temp_tunitp);
 
@@ -125,7 +125,7 @@ String replace(String s, String one, String another) {
          session.setAttribute("SPQCHECKED","N");
          session.setAttribute("CUSTOMERID","4824");
          session.setAttribute("CUSTOMERNO","2462");
-         session.setAttribute("CUSTOMERNAME","­Z¯þªÑ¥÷¦³­­¤½¥q");
+         session.setAttribute("CUSTOMERNAME","ï¿½Zï¿½ï¿½ï¿½Ñ¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½q");
          session.setAttribute("CUSTOMERPO", BufferOrderNo);
          session.setAttribute("CURR", BufferCurrency);
          session.setAttribute("CUSTACTIVE","A");
@@ -133,7 +133,7 @@ String replace(String s, String one, String another) {
          session.setAttribute("REMARK","Order Import from file");
          session.setAttribute("PREORDERTYPE","1020");
          session.setAttribute("ISMODELSELECTED","Y");
-         session.setAttribute("PROCESSAREA","005(¥b¾ÉÅé·~°È³¡-¥xÆW°Ï(DA)");
+         session.setAttribute("PROCESSAREA","005(ï¿½bï¿½ï¿½ï¿½ï¿½~ï¿½È³ï¿½-ï¿½xï¿½Wï¿½ï¿½(DA)");
          session.setAttribute("CUSTOMERIDTMP","4824");
          session.setAttribute("INSERT","Y");
 
@@ -429,7 +429,7 @@ String replace(String s, String one, String another) {
           String Insert          = (String)session.getAttribute("INSERT");
           //String fromPage        = (String)session.getAttribute("FROMPAGE");
 
-  String q[][]=arrayRFQDocumentInputBean.getArray2DContent();//¨ú±o¥Ø«e°}¦C¤º®e 		
+  String q[][]=arrayRFQDocumentInputBean.getArray2DContent();//ï¿½ï¿½ï¿½oï¿½Ø«eï¿½}ï¿½Cï¿½ï¿½ï¿½e 		
                        		    		  	   		   
   if (uploadFlag == null) 
   {  }

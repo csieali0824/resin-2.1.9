@@ -1,13 +1,13 @@
-<!--20140826 by Peggy,·s¼WERP END CUSTOMER IDÄæ¦ì-->
-<!--20150326 by Peggy,­×¥¿¤W¶Ç«È¤áÃþ§O-->
+<!--20140826 by Peggy,ï¿½sï¿½WERP END CUSTOMER IDï¿½ï¿½ï¿½-->
+<!--20150326 by Peggy,ï¿½×¥ï¿½ï¿½Wï¿½Ç«È¤ï¿½ï¿½ï¿½ï¿½O-->
 <!--20150519 by Peggy,add column "tsch orderl line id" for tsch case-->
 <!--20150707 by Peggy,add "remarks" column-->
 <!--20151223 by Peggy,add new customer:22492 Tantron International Corporation-->
-<!--20160113 by Peggy,­×¥¿¸ê®Æµ§¼Æ¦h®É·|¦³¿ù»~°ÝÃD-->
+<!--20160113 by Peggy,ï¿½×¥ï¿½ï¿½ï¿½Æµï¿½ï¿½Æ¦hï¿½É·|ï¿½ï¿½ï¿½ï¿½ï¿½~ï¿½ï¿½ï¿½D-->
 <!--20160401 by Peggy,add sample order direct ship to cust flag-->
 <!--20170216 by Peggy,add sales region for bi-->
 <!--20170512 by Peggy,add end cust ship to id-->
-<!--20191128 Peggy,TSCT-DA»PTSCT-Disty¦X¨Ö¦¨TSCT,RFQ·~°È°Ï²¾°£006,²Î¤@¦b005-->
+<!--20191128 Peggy,TSCT-DAï¿½PTSCT-Distyï¿½Xï¿½Ö¦ï¿½TSCT,RFQï¿½~ï¿½È°Ï²ï¿½ï¿½ï¿½006,ï¿½Î¤@ï¿½b005-->
 <html>
 <head>
 <title>TSCT Tantron Order Import </title>
@@ -34,12 +34,12 @@
   <% upBean.addUploadListener(fileMover); %>
 </jsp:useBean>
 
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<%@ page import="DateBean,ArrayCheckBoxBean,Array2DimensionInputBean" %>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="arrayCheckBoxBean" scope="session" class="ArrayCheckBoxBean"/>
-<jsp:useBean id="arrayRFQDocumentInputBean" scope="session" class="Array2DimensionInputBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
+<%@ page import="bean.DateBean,bean.ArrayCheckBoxBean,bean.Array2DimensionInputBean" %>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="arrayCheckBoxBean" scope="session" class="bean.ArrayCheckBoxBean"/>
+<jsp:useBean id="arrayRFQDocumentInputBean" scope="session" class="bean.Array2DimensionInputBean"/>
 
 <!--  File Mover Bean is instantiated before the uploadBean to that it can be used as a
       listener for the upload Bean.
@@ -152,12 +152,12 @@ try
 					//if (Integer.parseInt(dateBean.getYearMonthDay())>=20200101)
 					//{
 					//	session.setAttribute("SALESAREANO","005");
-					//	session.setAttribute("PROCESSAREA","005(¥b¾ÉÅé·~°È³¡-¥xÆW°Ï)");
+					//	session.setAttribute("PROCESSAREA","005(ï¿½bï¿½ï¿½ï¿½ï¿½~ï¿½È³ï¿½-ï¿½xï¿½Wï¿½ï¿½)");
 					//}
 					//else
 					//{
 						session.setAttribute("SALESAREANO","006");
-						session.setAttribute("PROCESSAREA","006(¥b¾ÉÅé·~°È³¡-¥xÆW°Ï(Disty)");
+						session.setAttribute("PROCESSAREA","006(ï¿½bï¿½ï¿½ï¿½ï¿½~ï¿½È³ï¿½-ï¿½xï¿½Wï¿½ï¿½(Disty)");
 					//}
          		}
         	 	else if (CompInfo.toUpperCase().startsWith("GLOBAL"))
@@ -177,12 +177,12 @@ try
 					//if (Integer.parseInt(dateBean.getYearMonthDay())>=20200101)
 					//{
 					//	session.setAttribute("SALESAREANO","005");
-					//	session.setAttribute("PROCESSAREA","005(¥b¾ÉÅé·~°È³¡-¥xÆW°Ï)");
+					//	session.setAttribute("PROCESSAREA","005(ï¿½bï¿½ï¿½ï¿½ï¿½~ï¿½È³ï¿½-ï¿½xï¿½Wï¿½ï¿½)");
 					//}
 					//else
 					//{
 						session.setAttribute("SALESAREANO","006");
-						session.setAttribute("PROCESSAREA","006(¥b¾ÉÅé·~°È³¡-¥xÆW°Ï(Disty)");
+						session.setAttribute("PROCESSAREA","006(ï¿½bï¿½ï¿½ï¿½ï¿½~ï¿½È³ï¿½-ï¿½xï¿½Wï¿½ï¿½(Disty)");
 					//}
          		}
         	 	else if (CompInfo.toUpperCase().startsWith("TANTRON")) //add by Peggy 20151223
@@ -196,19 +196,19 @@ try
          			session.setAttribute("CUSTACTIVE","A");
          			session.setAttribute("REMARK","Order Import from file");
          			//session.setAttribute("PREORDERTYPE","1022");
-					session.setAttribute("PREORDERTYPE","1175"); //for bonnie Tantron¥u·|¦³1156©Î1142ªºMO³æ¸¹,modify by Peggy 20191022
+					session.setAttribute("PREORDERTYPE","1175"); //for bonnie Tantronï¿½uï¿½|ï¿½ï¿½1156ï¿½ï¿½1142ï¿½ï¿½MOï¿½æ¸¹,modify by Peggy 20191022
          			session.setAttribute("ISMODELSELECTED","Y");
          			session.setAttribute("CUSTOMERIDTMP","449294");
          			session.setAttribute("INSERT","Y");
 					//if (Integer.parseInt(dateBean.getYearMonthDay())>=20200101)
 					//{
 					//	session.setAttribute("SALESAREANO","005");
-					//	session.setAttribute("PROCESSAREA","005(¥b¾ÉÅé·~°È³¡-¥xÆW°Ï)");
+					//	session.setAttribute("PROCESSAREA","005(ï¿½bï¿½ï¿½ï¿½ï¿½~ï¿½È³ï¿½-ï¿½xï¿½Wï¿½ï¿½)");
 					//}
 					//else
 					//{
 						session.setAttribute("SALESAREANO","006");
-						session.setAttribute("PROCESSAREA","006(¥b¾ÉÅé·~°È³¡-¥xÆW°Ï(Disty)");
+						session.setAttribute("PROCESSAREA","006(ï¿½bï¿½ï¿½ï¿½ï¿½~ï¿½È³ï¿½-ï¿½xï¿½Wï¿½ï¿½(Disty)");
 					//}
 				}				
          		else
@@ -216,7 +216,7 @@ try
          			session.setAttribute("SPQCHECKED","N");
          			session.setAttribute("CUSTOMERID","1023");
          			session.setAttribute("CUSTOMERNO","1010");
-         			session.setAttribute("CUSTOMERNAME","¤¸¶W°ê»ÚªÑ¥÷¦³­­¤½¥q");
+         			session.setAttribute("CUSTOMERNAME","ï¿½ï¿½ï¿½Wï¿½ï¿½ÚªÑ¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½q");
          			session.setAttribute("CUSTOMERPO", BufferOrderNo);
          			session.setAttribute("CURR", BufferCurrency);
          			session.setAttribute("CUSTACTIVE","A");
@@ -228,12 +228,12 @@ try
 					//if (Integer.parseInt(dateBean.getYearMonthDay())>=20200101)
 					//{
 					//	session.setAttribute("SALESAREANO","005");
-					//	session.setAttribute("PROCESSAREA","005(¥b¾ÉÅé·~°È³¡-¥xÆW°Ï)");
+					//	session.setAttribute("PROCESSAREA","005(ï¿½bï¿½ï¿½ï¿½ï¿½~ï¿½È³ï¿½-ï¿½xï¿½Wï¿½ï¿½)");
 					//}
 					//else
 					//{
 						session.setAttribute("SALESAREANO","006");
-						session.setAttribute("PROCESSAREA","006(¥b¾ÉÅé·~°È³¡-¥xÆW°Ï(Disty)");
+						session.setAttribute("PROCESSAREA","006(ï¿½bï¿½ï¿½ï¿½ï¿½~ï¿½È³ï¿½-ï¿½xï¿½Wï¿½ï¿½(Disty)");
 					//}
          		}
          		int rows    = sheet.getRows(); 
@@ -456,7 +456,7 @@ try
 						}				
 					}	
 				
-					/*//ÀË¬d«È¤á«~¸¹
+					/*//ï¿½Ë¬dï¿½È¤ï¿½~ï¿½ï¿½
 					if (CustPart!= null && !CustPart.equals(""))
 					{						  
 						sql = " select  DISTINCT a.item,a.ITEM_DESCRIPTION,a.INVENTORY_ITEM_ID"+
@@ -590,10 +590,10 @@ try
 									b[j][10]="N";
 									b[j][11]="0";
 									b[j][12]="0";
-									b[j][13]=itemFactory;   //¥Í²£¼t§O add by Peggy 20120316
-									b[j][14]=custParts;      //«È¤á®Æ¸¹ add by Peggy 20120316
-									b[j][15]=""+BufferUnitPrice[7][i];       //¥[¤JEXCELÀÉªº³æ»ù,modify by Peggy 20140626
-									b[j][16]="";            //­q³æÃþ«¬ add by Peggy 20120316
+									b[j][13]=itemFactory;   //ï¿½Í²ï¿½ï¿½tï¿½O add by Peggy 20120316
+									b[j][14]=custParts;      //ï¿½È¤ï¿½Æ¸ï¿½ add by Peggy 20120316
+									b[j][15]=""+BufferUnitPrice[7][i];       //ï¿½[ï¿½JEXCELï¿½Éªï¿½ï¿½ï¿½ï¿½,modify by Peggy 20140626
+									b[j][16]="";            //ï¿½qï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ add by Peggy 20120316
 									b[j][17]="";            //LineType add by Peggy 20120316
 									b[j][18]="";            //FOB add by Peggy 20120329
 									b[j][19]="";            //CUST PO LINE NO,add by Peggy 20120601
@@ -634,10 +634,10 @@ try
 				   				b[j][10]="N";
                    				b[j][11]="0";
 				   				b[j][12]="0";
-								b[j][13]="";       //¥Í²£¼t§O add by Peggy 20120303
-								b[j][14]="";       //«È¤á®Æ¸¹ add by Peggy 20120303
-								b[j][15]="";       //³æ»ù add by Peggy 20120303
-								b[j][16]="";       //­q³æÃþ«¬ add by Peggy 20120303
+								b[j][13]="";       //ï¿½Í²ï¿½ï¿½tï¿½O add by Peggy 20120303
+								b[j][14]="";       //ï¿½È¤ï¿½Æ¸ï¿½ add by Peggy 20120303
+								b[j][15]="";       //ï¿½ï¿½ï¿½ add by Peggy 20120303
+								b[j][16]="";       //ï¿½qï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ add by Peggy 20120303
 								b[j][17]="";       //LineType add by Peggy 20120303	
 								b[j][18]="";       //FOB add by Peggy 201203029									
 								b[j][19]="";       //CUST PO LINE NO,add by Peggy 20120601
@@ -774,7 +774,7 @@ try
 	String ProcessArea     = (String)session.getAttribute("PROCESSAREA");
 	String CustomerIdTmp   = (String)session.getAttribute("CUSTOMERIDTMP");
 	String Insert          = (String)session.getAttribute("INSERT");
-	String q[][]=arrayRFQDocumentInputBean.getArray2DContent();//¨ú±o¥Ø«e°}¦C¤º®e 		
+	String q[][]=arrayRFQDocumentInputBean.getArray2DContent();//ï¿½ï¿½ï¿½oï¿½Ø«eï¿½}ï¿½Cï¿½ï¿½ï¿½e 		
                        		    		  	   		   
 	if (uploadFlag == null) 
 	{  

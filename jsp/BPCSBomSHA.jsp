@@ -1,8 +1,8 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*"%>
-<%@ page import="BpcsBomBean" %>
-<jsp:useBean id="bpcsBomBean" scope="session" class="BpcsBomBean"/>
-<%@ page import="RsCountBean" %>
-<jsp:useBean id="rsCountBean" scope="session" class="RsCountBean"/>
+<%@ page import="bean.BpcsBomBean" %>
+<jsp:useBean id="bpcsBomBean" scope="session" class="bean.BpcsBomBean"/>
+<%@ page import="bean.RsCountBean" %>
+<jsp:useBean id="rsCountBean" scope="session" class="bean.RsCountBean"/>
 <!--=============以下區段為取得授權==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============Process Start==========-->

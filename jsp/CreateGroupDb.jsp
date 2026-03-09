@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*"%>
-<%@ page import="CheckBoxBean,ArrayLstChkBoxInputBean,CheckBoxBeanNew" %>
+<%@ page import="CheckBoxBean,bean.ArrayLstChkBoxInputBean,bean.CheckBoxBeanNew" %>
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
@@ -12,9 +12,9 @@
 
 <body> 
 <jsp:useBean id="checkBoxBean" scope="page" class="CheckBoxBean"/>
-<jsp:useBean id="checkBoxBeanNew" scope="page" class="CheckBoxBeanNew"/>
+<jsp:useBean id="checkBoxBeanNew" scope="page" class="bean.CheckBoxBeanNew"/>
 
-<jsp:useBean id="arrayLstChkBoxInputBean" scope="session" class="ArrayLstChkBoxInputBean"/>
+<jsp:useBean id="arrayLstChkBoxInputBean" scope="session" class="bean.ArrayLstChkBoxInputBean"/>
 成員:<BR>
 <%
   String GROUPNAME=request.getParameter("GROUPNAME");

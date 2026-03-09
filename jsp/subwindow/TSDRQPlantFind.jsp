@@ -1,10 +1,10 @@
 <%@ page language="java" import="java.sql.*"%>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½oï¿½sï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
 <%
 String sourcePlant=request.getParameter("PLANTCODE");
 if (sourcePlant == null) sourcePlant = "";
@@ -29,7 +29,7 @@ function sendToMainWindow(PLANTCODE,ORIGPLANT)
   	window.opener.document.MYFORM.REQUESTDATE.value="";
 	window.opener.document.MYFORM.LINEODRTYPE.value="";    //add by Peggy 20120305  
 	window.opener.document.MYFORM.LINETYPE.value="";       //add by Peggy 20120305
-  	//window.opener.document.MYFORM.PLANTCODE.focus();//­nÄ²µoplantcode onblur¨Æ¥ó,¬G°µ¨â¦¸focus
+  	//window.opener.document.MYFORM.PLANTCODE.focus();//ï¿½nÄ²ï¿½oplantcode onblurï¿½Æ¥ï¿½,ï¿½Gï¿½ï¿½ï¿½â¦¸focus
 	window.opener.document.MYFORM.ORDERQTY.focus();
   }
   else
@@ -84,7 +84,7 @@ function sendToMainWindow(PLANTCODE,ORIGPLANT)
 			buttonContent="this.value=sendToMainWindow("+'"'+PLANT+'"'+','+'"'+sourcePlant+'"'+")";		
 			out.println("<TR BGCOLOR='E3E3CF'><TD><INPUT TYPE=button NAME='button' VALUE='");%><jsp:getProperty name="rPH" property="pgFetch"/><%
 			out.println("' onClick='"+buttonContent+"'></TD>");		
-			for (int i=1;i<=colCount;i++) // ¤£Åã¥Ü²Ä¤@Äæ¸ê®Æ, ¬G for ¥Ñ 2¶}©l
+			for (int i=1;i<=colCount;i++) // ï¿½ï¿½ï¿½ï¿½Ü²Ä¤@ï¿½ï¿½ï¿½ï¿½, ï¿½G for ï¿½ï¿½ 2ï¿½}ï¿½l
 			{
 				String s=(String)rs.getString(i);
 				out.println("<TD align='left'><FONT SIZE=2  color='black'>"+((s==null)?"&nbsp;":s)+"</FONT></TD>");
@@ -102,9 +102,9 @@ function sendToMainWindow(PLANTCODE,ORIGPLANT)
 	statement.close();
 %>
  <BR>
-<!--%ªí³æ°Ñ¼Æ%-->
+<!--%ï¿½ï¿½ï¿½Ñ¼ï¿½%-->
 </FORM>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 <%@ include file="/jsp/include/ProgressStatusBarStop.jsp"%>

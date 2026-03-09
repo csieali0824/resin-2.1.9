@@ -1,5 +1,5 @@
 <%@ page contentType="image/jpeg; charset=big5" language="java" import="java.sql.*,java.io.*,java.text.*,java.util.*,java.awt.*,org.jfree.chart.ui.*,org.jfree.data.*,org.jfree.chart.*,org.jfree.chart.plot.*" %>
-<%@ page import="WorkingDateBean" %>
+<%@ page import="bean.WorkingDateBean" %>
 <%@ page import = "java.io.PrintWriter" %>
 <!--=============Connection Pool==========-->
 <!--%@ include file="/jsp/include/ConnectionPoolPage.jsp"%-->

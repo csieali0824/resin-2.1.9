@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" %>
-<%@ page import="DateBean,java.text.DecimalFormat"%>
+<%@ page import="bean.DateBean,java.text.DecimalFormat"%>
 <!--=============To get the Authentication==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============以下區段為處理開始==========-->
@@ -8,7 +8,7 @@
 
 <%@ include file="/jsp/include/ConnBPCSPoolPage.jsp"%>
 <!--=============To get Connection from different DB==========-->
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
 <title>WSARCheckReport</title>

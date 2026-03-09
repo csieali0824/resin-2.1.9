@@ -1,13 +1,13 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" %>
-<%@ page import="ComboBoxBean,DateBean,ArrayComboBoxBean,ArrayListCheckBoxBean" %>
+<%@ page import="bean.ComboBoxBean,bean.DateBean,bean.ArrayComboBoxBean,bean.ArrayListCheckBoxBean" %>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/ConnBPCSPoolPage.jsp/"%>
 <!--=============To get the Authentication==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="arrayListCheckBoxBean" scope="session" class="ArrayListCheckBoxBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="arrayListCheckBoxBean" scope="session" class="bean.ArrayListCheckBoxBean"/>
 <%  
   arrayListCheckBoxBean.setArray2DString(null);//將此bean值清空以為不同case可以重新運作  
 %>

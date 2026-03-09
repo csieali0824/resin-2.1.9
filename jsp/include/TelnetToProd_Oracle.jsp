@@ -1,6 +1,6 @@
-<%@ page import="TelnetBean,DateBean"%>
+<%@ page import="TelnetBean,bean.DateBean"%>
 <jsp:useBean id="telnetBean_PROD" scope="application" class="TelnetBean"/>
-<jsp:useBean id="unixDateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="unixDateBean" scope="page" class="bean.DateBean"/>
 
 <%
 //Start to telnet to TPE UNIX Server
@@ -8,7 +8,7 @@ try
 {      
   if (telnetBean_PROD.isMonReady!=true)
   {    
-    //若telnetBean_TEST.isMonReady==false表示目前未連線或者連線異常,則重新連結一次
+    //嚙磐telnetBean_TEST.isMonReady==false嚙踝蕭雈堳e嚙踝蕭嚙編嚙線嚙諄者連嚙線嚙踝蕭嚙窯,嚙篁嚙踝蕭嚙編嚙編嚙踝蕭嚙瑾嚙踝蕭
 	telnetBean_PROD.setHost("10.0.1.5");
     telnetBean_PROD.setPort("23");
     telnetBean_PROD.setUser("oraprod");

@@ -1,10 +1,10 @@
-<%@ page import="PoolBean,TelnetBean"%>
-<jsp:useBean id="poolBean" scope="application" class="PoolBean"/>
-<jsp:useBean id="authPoolBean" scope="application" class="PoolBean"/>
+<%@ page import="bean.PoolBean,TelnetBean"%>
+<jsp:useBean id="poolBean" scope="application" class="bean.PoolBean"/>
+<jsp:useBean id="authPoolBean" scope="application" class="bean.PoolBean"/>
 
-<jsp:useBean id="oraddspoolBean" scope="application" class="PoolBean"/>
-<jsp:useBean id="mssqlpoolBean" scope="application" class="PoolBean"/>
-<jsp:useBean id="mssql65poolBean" scope="application" class="PoolBean"/>
+<jsp:useBean id="oraddspoolBean" scope="application" class="bean.PoolBean"/>
+<jsp:useBean id="mssqlpoolBean" scope="application" class="bean.PoolBean"/>
+<jsp:useBean id="mssql65poolBean" scope="application" class="bean.PoolBean"/>
 
 <jsp:useBean id="telnetBean" scope="application" class="TelnetBean"/>
 <jsp:useBean id="telnetBean_TPE" scope="application" class="TelnetBean"/>

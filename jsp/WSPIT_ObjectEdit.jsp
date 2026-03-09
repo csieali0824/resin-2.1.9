@@ -3,9 +3,9 @@
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============To ger the Connection Pool==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<%@ page import="DateBean,ComboBoxBean,ArrayComboBoxBean"%>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
+<%@ page import="bean.DateBean,bean.ComboBoxBean,bean.ArrayComboBoxBean"%>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
 <%
 String objectid=request.getParameter("objectid");
 Statement statement=con.createStatement();

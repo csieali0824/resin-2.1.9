@@ -1,15 +1,15 @@
 <%@ page language="java" import="java.sql.*"  %>
-<!--=============¥H¤U°Ï¬q¬°¦w¥þ»{ÃÒ¾÷¨î==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½wï¿½ï¿½ï¿½{ï¿½Ò¾ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=================================-->
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½oï¿½sï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<%@ page import="WorkingDateBean" %>
-<jsp:useBean id="workingDateBean" scope="page" class="WorkingDateBean"/>
+<%@ page import="bean.WorkingDateBean" %>
+<jsp:useBean id="workingDateBean" scope="page" class="bean.WorkingDateBean"/>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
 <html>
 <head>
 <STYLE TYPE='text/css'>
@@ -99,9 +99,9 @@
 <%@ include file="/jsp/include/TSHomeHyperLinkPage.jsp"%>   
 <% 
 workingDateBean.setAdjWeek(-1); //out.println("workingDateBean.getWeek()="+workingDateBean.getWeek());
-workingDateBean.setDefineWeekFirstDay(1);  // 3]cw¡LC?g2A?@?N?¢X?P¡¦A?e  
-String strFirstDayWeek = workingDateBean.getFirstDateOfWorkingWeek();   // ¡Lu¢X_cl?g2A?@?N
-String strLastDayWeek = workingDateBean.getLastDateOfWorkingWeek();  // ¡Lu¢X_cl?g3I?a?@?N 
+workingDateBean.setDefineWeekFirstDay(1);  // 3]cwï¿½LC?g2A?@?N?ï¿½X?Pï¿½ï¿½A?e  
+String strFirstDayWeek = workingDateBean.getFirstDateOfWorkingWeek();   // ï¿½Luï¿½X_cl?g2A?@?N
+String strLastDayWeek = workingDateBean.getLastDateOfWorkingWeek();  // ï¿½Luï¿½X_cl?g3I?a?@?N 
 String currentWeek = workingDateBean.getWeekString();
 String dnDocNo=request.getParameter("DNDOCNO");
 String lineNo=request.getParameter("LINENO");
@@ -261,7 +261,7 @@ catch (Exception e)
 }
 %>
 </body>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 </html>

@@ -4,9 +4,9 @@
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<%@ page import="oracle.sql.*,oracle.jdbc.driver.*,java.math.BigDecimal.*,ComboBoxBean,DateBean" %>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<%@ page import="oracle.sql.*,oracle.jdbc.driver.*,java.math.BigDecimal.*,bean.ComboBoxBean,bean.DateBean" %>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=big5" />
 <title>WIP Move Transaction page</title>

@@ -6,9 +6,9 @@
 <html>
 <head>
 <title>Insert forecast UploadFile into Database</title>
-<%@ page import="java.io.*,DateBean,WorkingDateBean" %>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="adjDateBean" scope="page" class="DateBean"/> <!--做為調整用之datebean-->
+<%@ page import="java.io.*,bean.DateBean,bean.WorkingDateBean" %>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="adjDateBean" scope="page" class="bean.DateBean"/> <!--做為調整用之datebean-->
 <%@ page import="com.jspsmart.upload.*" %>
 <jsp:useBean id="mySmartUpload" scope="page" class="com.jspsmart.upload.SmartUpload" /> 
 </head>

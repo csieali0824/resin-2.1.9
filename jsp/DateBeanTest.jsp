@@ -1,13 +1,13 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,DateBean"%>
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,bean.DateBean"%>
 <!-- page session="false" %>-->
 <html>
 <head>
-<title>DateBean Test</title>
+<title>bean.DateBean Test</title>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
 </head>
 
 <body>
-<jsp:useBean id='dateBean' scope='page' class='DateBean' />
+<jsp:useBean id='dateBean' scope='page' class='bean.DateBean' />
 yearMonthDate=<jsp:getProperty name='dateBean' property="yearMonthDay"/>
 hourMinuteSecond=<jsp:getProperty name='dateBean' property="hourMinuteSecond"/>
 <BR>

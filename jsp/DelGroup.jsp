@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,RsBean,CheckBoxBean" %>
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,bean.RsBean,CheckBoxBean" %>
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
@@ -10,7 +10,7 @@
 </head>
 
 <body> 
-<jsp:useBean id="rsBean" scope="application" class="RsBean"/>
+<jsp:useBean id="rsBean" scope="application" class="bean.RsBean"/>
 <jsp:useBean id="checkBoxBean" scope="page" class="CheckBoxBean"/>
 <%
   

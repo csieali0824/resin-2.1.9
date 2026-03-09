@@ -7,9 +7,9 @@
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnRFQDBPoolPage.jsp"%>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<%@ page import="QryAllChkBoxEditBean"%>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<%@ page import="bean.QryAllChkBoxEditBean"%>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
 <script language="JavaScript" type="text/JavaScript">
 var checkflag = "false";
 function check(field) 
@@ -31,7 +31,7 @@ function setSubmit(URL)
   document.REASONFORM.submit();    
 }
 </script>
-<jsp:useBean id="qryAllChkBoxEditBean" scope="session" class="QryAllChkBoxEditBean"/>
+<jsp:useBean id="qryAllChkBoxEditBean" scope="session" class="bean.QryAllChkBoxEditBean"/>
 <title>Estimating Reason Code Input Page</title>
 </head>
 <body>

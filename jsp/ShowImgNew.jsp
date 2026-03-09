@@ -1,8 +1,8 @@
 <%@ page import="java.sql.*,java.util.*,java.io.*,oracle.sql.*,oracle.jdbc.driver.*" %>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½oï¿½sï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<%@ page import="ShowImageBean"%>
-<jsp:useBean id="showImageBean" scope="application" class="ShowImageBean"/>
+<%@ page import="bean.ShowImageBean"%>
+<jsp:useBean id="showImageBean" scope="application" class="bean.ShowImageBean"/>
 
 <%
    String projectCode=request.getParameter("PROJECTCODE");
@@ -30,6 +30,6 @@ catch (Exception e)
  out.println(e.getMessage());
 }//end of catch
 %>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->

@@ -1,6 +1,6 @@
 <!-- modify by Peggy 20150305,增加年度條件及是否清除該年度所有DC資料-->
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.util.*,jxl.*,jxl.write.*,jxl.format.*,WorkingDateBean,java.lang.*" %>
-<%@ page import="java.io.*,DateBean" %>
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.util.*,jxl.*,jxl.write.*,jxl.format.*,bean.WorkingDateBean,java.lang.*" %>
+<%@ page import="java.io.*,bean.DateBean" %>
 <%@ page import="com.jspsmart.upload.*" %>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
@@ -8,7 +8,7 @@
 <html>
 <head>
 <title>Insert UploadFile into Database</title>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <jsp:useBean id="mySmartUpload" scope="page" class="com.jspsmart.upload.SmartUpload" /> 
 
 <meta http-equiv="Content-Type" content="text/html; charset=big5"></head>

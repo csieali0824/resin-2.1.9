@@ -2,8 +2,8 @@
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<%@ page import="DateBean,ArrayListCheckBoxBean"%>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<%@ page import="bean.DateBean,bean.ArrayListCheckBoxBean"%>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <html>
 <head>
 <title>Item Insert</title>

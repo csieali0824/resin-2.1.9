@@ -2,9 +2,9 @@
 <!--20171116 Peggy,show "New TSC P/N" column when query type=TSC P/N list-->
 <!--20180705 by Peggy,PDN 報表抬頭異動-->
 <%@ page  contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.math.BigDecimal,java.text.DecimalFormat,java.io.*,jxl.*,jxl.Workbook.*,jxl.write.*,jxl.format.*,java.awt.Image.*" %>
-<%@ page import="DateBean"%>
+<%@ page import="bean.DateBean"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <html>
 <head>
 <title>Download Excel File</title>

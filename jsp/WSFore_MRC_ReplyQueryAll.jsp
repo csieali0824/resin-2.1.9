@@ -4,9 +4,9 @@
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<%@ page import="QueryAllEditBean,RsCountBean"%>
+<%@ page import="QueryAllEditBean,bean.RsCountBean"%>
 <jsp:useBean id="queryAllEditBean" scope="session" class="QueryAllEditBean"/>
-<jsp:useBean id="rsCountBean" scope="application" class="RsCountBean"/>
+<jsp:useBean id="rsCountBean" scope="application" class="bean.RsCountBean"/>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">

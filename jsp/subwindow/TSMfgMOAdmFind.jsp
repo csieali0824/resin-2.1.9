@@ -5,8 +5,8 @@
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/MProcessStatusBarStart.jsp"%>
 <!--=================================-->
-<%@ page import="DateBean,Array2DimensionInputBean" %>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/> 
+<%@ page import="bean.DateBean,bean.Array2DimensionInputBean" %>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 
 <%
  String runCardNo=request.getParameter("RUNCARDNO");

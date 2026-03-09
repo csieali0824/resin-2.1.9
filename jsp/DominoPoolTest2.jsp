@@ -5,8 +5,8 @@
 <title>Domino Connection Pool test page</title>
 </head>
 <body>
-<%@ page import="DominoPoolBean" %>
-<jsp:useBean id="dominoPool" scope="session" class="DominoPoolBean"/>
+<%@ page import="bean.DominoPoolBean" %>
+<jsp:useBean id="dominoPool" scope="session" class="bean.DominoPoolBean"/>
 <%
  Session s=null; 
  try

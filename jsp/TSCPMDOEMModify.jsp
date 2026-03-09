@@ -7,20 +7,20 @@
 <!-- 20180528 Peggy,茂矽分批發料issue-->
 <!-- 20180724 Peggy,新增晶片片號欄位for4056天水華天集團-->
 <%@ page contentType="text/html; charset=big5" language="java" import="java.sql.*,java.net.*,java.io.*,java.text.*,java.lang.*"%>
-<%@ page import="ComboBoxBean,DateBean,ArrayComboBoxBean" %>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
+<%@ page import="bean.ComboBoxBean,bean.DateBean,bean.ArrayComboBoxBean" %>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
  <!--=============以下區段為安全認證機制==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
 <%@ page import="com.mysql.jdbc.StringUtils" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
 <title>委外加工單-修改</title>
 <script language="JavaScript" type="text/JavaScript">
 function setCopyLine(URL)

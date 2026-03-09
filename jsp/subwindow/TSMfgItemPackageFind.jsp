@@ -1,10 +1,10 @@
 <%@ page language="java" import="java.sql.*"%>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½oï¿½sï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
 <%@ include file="/jsp/include/ProgressStatusBarStart.jsp"%>
 <%
  String invItem=request.getParameter("INVITEM");
@@ -86,7 +86,7 @@ function sendToMainWindow(invItem,itemDesc,sPQP,MOQP)
 		             //"       b.CATEGORY_SET_NAME as PACKAGE_CATEGORY_SET, c.CATEGORY_SET_NAME as FAMILY_CATEGORY_SET   "+
 		             "  from APPS.MTL_SYSTEM_ITEMS a, APPS.MTL_ITEM_CATEGORIES_V b, APPS.MTL_ITEM_CATEGORIES_V c ";
 		             //"where a.ORGANIZATION_ID = b.ORGANIZATION_ID and a.INVENTORY_ITEM_ID = b.INVENTORY_ITEM_ID "+
-					 //"and a.ORGANIZATION_ID = '49' and CATEGORY_SET_ID=23 "; // ¨ú TSC_Package ªº¤ÀÃþ
+					 //"and a.ORGANIZATION_ID = '49' and CATEGORY_SET_ID=23 "; // ï¿½ï¿½ TSC_Package ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		String where="where a.ORGANIZATION_ID = b.ORGANIZATION_ID "+
 		             "  and a.INVENTORY_ITEM_ID = b.INVENTORY_ITEM_ID "+
 					 "  and b.CATEGORY_SET_ID = 23 "+
@@ -95,7 +95,7 @@ function sendToMainWindow(invItem,itemDesc,sPQP,MOQP)
 					 "  and c.CATEGORY_SET_ID = 21 "+
 					 "  and a.ORGANIZATION_ID = '49' "+
 					 "  and a.INVENTORY_ITEM_STATUS_CODE <> 'Inactive' "+
-					 "  and a.DESCRIPTION not like '%Disable%' "; //// ¨ú TSC_Package ¤Î TSC_Family ªº¤ÀÃþ, ¥B¤£¥]§t¤w³Q³]©w¬° Disableªº®Æ¶µ
+					 "  and a.DESCRIPTION not like '%Disable%' "; //// ï¿½ï¿½ TSC_Package ï¿½ï¿½ TSC_Family ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½Bï¿½ï¿½ï¿½]ï¿½tï¿½wï¿½Qï¿½]ï¿½wï¿½ï¿½ Disableï¿½ï¿½ï¿½Æ¶ï¿½
 		if (searchString=="%" || searchString.equals("%"))			
 		{  
 		 where = where + "and (a.SEGMENT1 = '%') ";
@@ -114,7 +114,7 @@ function sendToMainWindow(invItem,itemDesc,sPQP,MOQP)
 		rsCNT.close();
 		stateCNT.close();
 		
-		if (queryCount==0) //­Y¨ú¨ìªº¬d¸ß¼Æ == 0 ,­Y§ä¤£¨ì¥bµ§,«h¥i¯à¬OµL³]©w©ó¥]¸ËCategory¤º(½æ¹s´²µL¥]¸Ë²£«~),¨º»ò,´NÀË®Ö®Æ¥ó¥DÀÉ§Y¥i
+		if (queryCount==0) //ï¿½Yï¿½ï¿½ï¿½ìªºï¿½dï¿½ß¼ï¿½ == 0 ,ï¿½Yï¿½ä¤£ï¿½ï¿½bï¿½ï¿½,ï¿½hï¿½iï¿½ï¿½Oï¿½Lï¿½]ï¿½wï¿½ï¿½]ï¿½ï¿½Categoryï¿½ï¿½(ï¿½ï¿½sï¿½ï¿½ï¿½Lï¿½]ï¿½Ë²ï¿½ï¿½~),ï¿½ï¿½ï¿½ï¿½,ï¿½Nï¿½Ë®Ö®Æ¥ï¿½Dï¿½É§Yï¿½i
 	    {
 		  sql = "select a.SEGMENT1, a.DESCRIPTION, 'NO PACKAGE' as TSC_PACKAGE, 'NO FAMILY' as TSC_FAMILY "+
 		        //" 'NO Package Category' as PACKAGE_CATEGORY_SET, 'NO Family Category' as FAMILY_CATEGORY_SET "+
@@ -146,13 +146,13 @@ function sendToMainWindow(invItem,itemDesc,sPQP,MOQP)
         } //end of for 		    
 		
 		if (sampleOrdCh ==null || sampleOrdCh.equals("false"))
-		{ // ¥¼¿ï©w¬°¼Ë«~­q³æ,«h¥H MOQ ¬°­­©w­È¦^¶Ç
-		 out.println("<TH BGCOLOR=BLACK><FONT COLOR=WHITE SIZE=1>"+"SPQP (KPC)"+"</TH>"); // ³Ì«á¤@Äæ±a¤J­qÁÊ³Ì¤p¥]¸Ë¶q
+		{ // ï¿½ï¿½ï¿½ï¿½wï¿½ï¿½ï¿½Ë«~ï¿½qï¿½ï¿½,ï¿½hï¿½H MOQ ï¿½ï¿½ï¿½ï¿½ï¿½wï¿½È¦^ï¿½ï¿½
+		 out.println("<TH BGCOLOR=BLACK><FONT COLOR=WHITE SIZE=1>"+"SPQP (KPC)"+"</TH>"); // ï¿½Ì«ï¿½@ï¿½ï¿½aï¿½Jï¿½qï¿½Ê³Ì¤pï¿½]ï¿½Ë¶q
 		} else if (sampleOrdCh.equals("true")) 
 		       {
-			     out.println("<TH BGCOLOR=BLACK><FONT COLOR=WHITE SIZE=1>"+"SPQP (KPC)"+"</TH>"); // ³Ì«á¤@Äæ±a¤J­qÁÊ³Ì¤p¥]¸Ë¶q
+			     out.println("<TH BGCOLOR=BLACK><FONT COLOR=WHITE SIZE=1>"+"SPQP (KPC)"+"</TH>"); // ï¿½Ì«ï¿½@ï¿½ï¿½aï¿½Jï¿½qï¿½Ê³Ì¤pï¿½]ï¿½Ë¶q
 			   }    
-		out.println("<TH BGCOLOR=BLACK><FONT COLOR=WHITE SIZE=1>"+"MOQP (KPC)"+"</TH>"); // ³Ì¤p¥]¸Ë¶q		
+		out.println("<TH BGCOLOR=BLACK><FONT COLOR=WHITE SIZE=1>"+"MOQP (KPC)"+"</TH>"); // ï¿½Ì¤pï¿½]ï¿½Ë¶q		
         out.println("</TR>");
 		//String packingCategoryName=null,tscPacking=null,familyCategoryName=null,tscFamily=null,sPQP=null;
 		String tscPacking=null,tscFamily=null,sPQP=null,sMOP=null;
@@ -166,19 +166,19 @@ function sendToMainWindow(invItem,itemDesc,sPQP,MOQP)
 		 tscPacking=rs.getString("TSC_PACKAGE");	
 		 //familyCategoryName=rs.getString("FAMILY_CATEGORY_SET");
 		 tscFamily=rs.getString("TSC_FAMILY");			 
-		 String packMethodCode = itemDesc.substring(itemDesc.length()-2,itemDesc.length());		// ·~°È³æ¦ìµ¹©w®Æ¸¹»¡©ú½s½X ³Ì«á¨â½X¬°Package Code¤§­ì«h
+		 String packMethodCode = itemDesc.substring(itemDesc.length()-2,itemDesc.length());		// ï¿½~ï¿½È³ï¿½ìµ¹ï¿½wï¿½Æ¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½X ï¿½Ì«ï¿½ï¿½Xï¿½ï¿½Package Codeï¿½ï¿½ï¿½ï¿½h
 		 out.println("<input type='hidden' name='INVITEM' value='"+invItem+"' >");
 		 out.println("<input type='hidden' name='ITEMDESC' value='"+itemDesc+"' >");
 		 
 		 //out.println("select REEL from ORADDMAN.TSITEM_PACKING_CATE where trim(OUTLINE)='"+category.trim()+"' and trim(PACKAGE_CODE)='"+packMethodCode.trim()+"' ");		
-		 // ¨ú®Æ¥ó¹ïÀ³ªº¥]¸Ë¤è¦¡ÀÉ¤Î¨ä³Ì¤p¥]¸Ë¶qÀÉ¤º®e
+		 // ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½]ï¿½Ë¤è¦¡ï¿½É¤Î¨ï¿½Ì¤pï¿½]ï¿½Ë¶qï¿½É¤ï¿½ï¿½e
 
 		Statement stateSPQCNT=con.createStatement();
 		ResultSet rsSPQCNT = stateSPQCNT.executeQuery("select count(SPQ) from ORADDMAN.TSITEM_PACKING_CATE a "+
 		                                               " where trim(a.TSC_OUTLINE)='"+tscPacking.trim()+"' "+
 												       "   and trim(a.PACKAGE_CODE)='"+packMethodCode.trim()+"' "+
 													   "   and trim(a.TSC_FAMILY) is not null "+
-													   "   and trim(a.TSC_FAMILY)='"+tscFamily.trim()+"' "+ // 2006/05/30 ¥[¤J§ä³Ì·sMOQ/SPQ ÀÉª©¥»±ø¥ó
+													   "   and trim(a.TSC_FAMILY)='"+tscFamily.trim()+"' "+ // 2006/05/30 ï¿½[ï¿½Jï¿½ï¿½Ì·sMOQ/SPQ ï¿½Éªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 													   "   and a.CREATION_DATE = (select MAX(CREATION_DATE) from ORADDMAN.TSITEM_PACKING_CATE b " +
 					                                                             " where b.TSC_OUTLINE = a.TSC_OUTLINE "+        
 											                                     "   and b.PACKAGE_CODE = a.PACKAGE_CODE "+
@@ -194,7 +194,7 @@ function sendToMainWindow(invItem,itemDesc,sPQP,MOQP)
 		             " where trim(a.TSC_OUTLINE)='"+tscPacking.trim()+"' "+
 					 "   and trim(a.PACKAGE_CODE)='"+packMethodCode.trim()+"' "+
 					 "   and trim(a.TSC_FAMILY) is not null "+
-					 "   and trim(a.TSC_FAMILY)='"+tscFamily.trim()+"' "+  // 2006/05/30 ¥[¤J§ä³Ì·sMOQ/SPQ ÀÉª©¥»±ø¥ó
+					 "   and trim(a.TSC_FAMILY)='"+tscFamily.trim()+"' "+  // 2006/05/30 ï¿½[ï¿½Jï¿½ï¿½Ì·sMOQ/SPQ ï¿½Éªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 					 "   and a.CREATION_DATE = (select MAX(CREATION_DATE) from ORADDMAN.TSITEM_PACKING_CATE b " +
 					                           " where b.TSC_OUTLINE = a.TSC_OUTLINE "+        
 											   "   and b.PACKAGE_CODE = a.PACKAGE_CODE "+
@@ -203,7 +203,7 @@ function sendToMainWindow(invItem,itemDesc,sPQP,MOQP)
             sqlSPQ = "select (SPQ / 1000) SPQ, (MOQ / 1000) MOQ from ORADDMAN.TSITEM_PACKING_CATE a "+
 		             " where trim(a.TSC_OUTLINE)='"+tscPacking.trim()+"' "+
 					 "   and trim(a.PACKAGE_CODE)='"+packMethodCode.trim()+"' "+
-					 "   and trim(a.TSC_FAMILY) is null "+  // 2006/05/30 ¥[¤J§ä³Ì·sMOQ/SPQ ÀÉª©¥»±ø¥ó
+					 "   and trim(a.TSC_FAMILY) is null "+  // 2006/05/30 ï¿½[ï¿½Jï¿½ï¿½Ì·sMOQ/SPQ ï¿½Éªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 					 "   and a.CREATION_DATE = (select MAX(CREATION_DATE) from ORADDMAN.TSITEM_PACKING_CATE b " +
 					                           " where b.TSC_OUTLINE = a.TSC_OUTLINE "+        
 											   "   and b.PACKAGE_CODE = a.PACKAGE_CODE "+
@@ -226,14 +226,14 @@ function sendToMainWindow(invItem,itemDesc,sPQP,MOQP)
 		   
 		  
 		   if (sampleOrdCh==null || sampleOrdCh.equals("false"))
-		   { // ¥¼¿ï©w¬°¼Ë«~­q³æ,«h¥H MOQ ¬°­­©w­È¦^¶Ç
+		   { // ï¿½ï¿½ï¿½ï¿½wï¿½ï¿½ï¿½Ë«~ï¿½qï¿½ï¿½,ï¿½hï¿½H MOQ ï¿½ï¿½ï¿½ï¿½ï¿½wï¿½È¦^ï¿½ï¿½
 		       out.println("<input type=hidden name='SPQP' value='"+sPQP+"' >");
 		       out.println("<input type=hidden name='MOQ' value='"+sMOP+"' >");
 			   
 			   buttonContent="this.value=sendToMainWindow("+'"'+invItem+'"'+","+'"'+itemDesc+'"'+","+'"'+sMOP+'"'+","+'"'+sPQP+'"'+")";		
 		   }
 		   else if (sampleOrdCh.equals("true"))
-		         { // ­Y¿ï©w¬°¼Ë«~­q³æ    
+		         { // ï¿½Yï¿½ï¿½wï¿½ï¿½ï¿½Ë«~ï¿½qï¿½ï¿½    
 				   out.println("<input type=hidden name='SPQP' value='"+sPQP+"' >");
 		           out.println("<input type=hidden name='MOQ' value='"+sMOP+"' >");   
 				   
@@ -246,7 +246,7 @@ function sendToMainWindow(invItem,itemDesc,sPQP,MOQP)
 		 } else {
 		         sPQP = "0"; sMOP = "0";
 				 buttonContent="this.value=sendToMainWindow("+'"'+invItem+'"'+","+'"'+itemDesc+'"'+","+'"'+sPQP+'"'+","+'"'+sMOP+'"'+")";		
-				} // §ä¤£¨ì«h³]©wmOQP = 0
+				} // ï¿½ä¤£ï¿½ï¿½hï¿½]ï¿½wmOQP = 0
 		 rsSPQP.close();
 		 stateSPQP.close();		 
 		 
@@ -258,17 +258,17 @@ function sendToMainWindow(invItem,itemDesc,sPQP,MOQP)
           out.println("<TD><FONT SIZE=2>"+s+"</TD>");		 
          } //end of for
 		   if (sampleOrdCh==null || sampleOrdCh.equals("false"))
-		   { // ¥¼¿ï©w¬°¼Ë«~­q³æ,«h¥H MOQ ¬°­­©w­È¦^¶Ç
-		       out.println("<TD><FONT SIZE=2>"+sPQP+"</TD>");  // ³Ì«á¤@Äæ±a¤J­qÁÊ³Ì¤p¥]¸Ë¶q 
-			   out.println("<TD><FONT SIZE=2>"+sMOP+"</TD>");  // ³Ì«á¤@Äæ±a¤J­qÁÊ³Ì¤p¥]¸Ë¶q     
+		   { // ï¿½ï¿½ï¿½ï¿½wï¿½ï¿½ï¿½Ë«~ï¿½qï¿½ï¿½,ï¿½hï¿½H MOQ ï¿½ï¿½ï¿½ï¿½ï¿½wï¿½È¦^ï¿½ï¿½
+		       out.println("<TD><FONT SIZE=2>"+sPQP+"</TD>");  // ï¿½Ì«ï¿½@ï¿½ï¿½aï¿½Jï¿½qï¿½Ê³Ì¤pï¿½]ï¿½Ë¶q 
+			   out.println("<TD><FONT SIZE=2>"+sMOP+"</TD>");  // ï¿½Ì«ï¿½@ï¿½ï¿½aï¿½Jï¿½qï¿½Ê³Ì¤pï¿½]ï¿½Ë¶q     
 		   }
 		   else if (sampleOrdCh.equals("true"))
-		         { // ­Y¿ï©w¬°¼Ë«~­q³æ    
-				    out.println("<TD><FONT SIZE=2>"+sPQP+"</TD>");  // ³Ì«á¤@Äæ±a¤J­qÁÊ³Ì¤p¥]¸Ë¶q 
-					out.println("<TD><FONT SIZE=2>"+sMOP+"</TD>");  // ³Ì«á¤@Äæ±a¤J­qÁÊ³Ì¤p¥]¸Ë¶q     
+		         { // ï¿½Yï¿½ï¿½wï¿½ï¿½ï¿½Ë«~ï¿½qï¿½ï¿½    
+				    out.println("<TD><FONT SIZE=2>"+sPQP+"</TD>");  // ï¿½Ì«ï¿½@ï¿½ï¿½aï¿½Jï¿½qï¿½Ê³Ì¤pï¿½]ï¿½Ë¶q 
+					out.println("<TD><FONT SIZE=2>"+sMOP+"</TD>");  // ï¿½Ì«ï¿½@ï¿½ï¿½aï¿½Jï¿½qï¿½Ê³Ì¤pï¿½]ï¿½Ë¶q     
 		         }
-		 //out.println("<TD><FONT SIZE=2>"+sPQP+"</TD>");  // ³Ì«á¤@Äæ±a¤J­qÁÊ³Ì¤p¥]¸Ë¶q		 
-		 //out.println("<TD><FONT SIZE=2>"+sMOP+"</TD>");  // ³Ì«á¤@Äæ±a¤J­qÁÊ³Ì¤p¥]¸Ë¶q		 
+		 //out.println("<TD><FONT SIZE=2>"+sPQP+"</TD>");  // ï¿½Ì«ï¿½@ï¿½ï¿½aï¿½Jï¿½qï¿½Ê³Ì¤pï¿½]ï¿½Ë¶q		 
+		 //out.println("<TD><FONT SIZE=2>"+sMOP+"</TD>");  // ï¿½Ì«ï¿½@ï¿½ï¿½aï¿½Jï¿½qï¿½Ê³Ì¤pï¿½]ï¿½Ë¶q		 
          out.println("</TR>");	
         } //end of while
         out.println("</TABLE>");						
@@ -277,10 +277,10 @@ function sendToMainWindow(invItem,itemDesc,sPQP,MOQP)
 	   }//end of while
 	   // out.println("queryCount="+queryCount);
 	   
-	   if (queryCount==1) //­Y¨ú¨ìªº¬d¸ß¼Æ == 1
+	   if (queryCount==1) //ï¿½Yï¿½ï¿½ï¿½ìªºï¿½dï¿½ß¼ï¿½ == 1
 	   {  //out.println("queryCount="+queryCount);
 	       if (sampleOrdCh==null || sampleOrdCh.equals("false"))
-		   { // ¥¼¿ï©w¬°¼Ë«~­q³æ,«h¥H MOQ ¬°­­©w­È¦^¶Ç
+		   { // ï¿½ï¿½ï¿½ï¿½wï¿½ï¿½ï¿½Ë«~ï¿½qï¿½ï¿½,ï¿½hï¿½H MOQ ï¿½ï¿½ï¿½ï¿½ï¿½wï¿½È¦^ï¿½ï¿½
 	       %>
 		    <script LANGUAGE="JavaScript">	
 			  //alert("TEST");			   	   
@@ -299,7 +299,7 @@ function sendToMainWindow(invItem,itemDesc,sPQP,MOQP)
             </script>
 		   <%
 		 } else if (sampleOrdCh.equals("true"))
-		           { // ­Y¿ï©w¬°¼Ë«~­q³æ   
+		           { // ï¿½Yï¿½ï¿½wï¿½ï¿½ï¿½Ë«~ï¿½qï¿½ï¿½   
 				        %>
 		                 <script LANGUAGE="JavaScript">	
 			             //alert("TEST");			   	   
@@ -331,7 +331,7 @@ function sendToMainWindow(invItem,itemDesc,sPQP,MOQP)
      %>
   <BR>
 </FORM>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 <%@ include file="/jsp/include/ProgressStatusBarStop.jsp"%>

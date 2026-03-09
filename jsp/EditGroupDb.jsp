@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,RsBean,CheckBoxBean,ComboBoxBean,java.util.*" %>
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,bean.RsBean,CheckBoxBean,bean.ComboBoxBean,java.util.*" %>
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
@@ -10,9 +10,9 @@
 </head>
 
 <body> 
-<jsp:useBean id="rsBean" scope="application" class="RsBean"/>
+<jsp:useBean id="rsBean" scope="application" class="bean.RsBean"/>
 <jsp:useBean id="checkBoxBean" scope="page" class="CheckBoxBean"/>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
 
 <!--=============以下區段為釋放連結池==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>

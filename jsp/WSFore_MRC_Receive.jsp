@@ -3,9 +3,9 @@
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<%@ page import="ArrayStoreBean,RsCountBean" %>
+<%@ page import="ArrayStoreBean,bean.RsCountBean" %>
 <jsp:useBean id="arrayStoreBean" scope="session" class="ArrayStoreBean"/>
-<jsp:useBean id="rsCountBean" scope="application" class="RsCountBean"/>
+<jsp:useBean id="rsCountBean" scope="application" class="bean.RsCountBean"/>
 <script language="JavaScript" type="text/JavaScript">
 function saveMRC()
 { 

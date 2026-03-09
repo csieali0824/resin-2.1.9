@@ -2,20 +2,20 @@
 <%@ page import="java.sql.*"%>
 <%@ page import="java.util.*"%>
 <%@ page import="jxl.*"%>
-<%@ page import="WorkingDateBean"%>
+<%@ page import="bean.WorkingDateBean"%>
 <%@ page import="java.lang.Math.*"%>
 <%@ page import="java.text.*"%>
-<%@ page import="java.io.*,DateBean"%>
+<%@ page import="java.io.*,bean.DateBean"%>
 <%@ page import="com.jspsmart.upload.*"%>
-<%@ page import="DateBean,Array2DimensionInputBean" %>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<%@ page import="bean.DateBean,bean.Array2DimensionInputBean" %>
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½oï¿½sï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=================================-->
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
 <jsp:useBean id="mySmartUpload" scope="page" class="com.jspsmart.upload.SmartUpload" />
 <html>
 <head>
@@ -137,7 +137,7 @@ String strDateTime = dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond();
 					throw new Exception("Row#"+(i+1)+":org name must be SG1 or SG2!!");
 				}
 							
-				//®Æ¸¹
+				//ï¿½Æ¸ï¿½
 				jxl.Cell wcItemName = sht.getCell(1, i);          
 				ItemName = (wcItemName.getContents()).trim();
 				if (ItemName  == null) ItemName = "";
@@ -252,10 +252,10 @@ String strDateTime = dateBean.getYearMonthDay()+dateBean.getHourMinuteSecond();
 		}
 	}
 %>
-<!--%ªí³æ°Ñ¼Æ%-->
+<!--%ï¿½ï¿½ï¿½Ñ¼ï¿½%-->
 </FORM>
 <iframe width=124 height=153 name="gToday:supermini:agenda.js" id="gToday:supermini:agenda.js" src="../calendar/ipopeng.htm" scrolling="no" frameborder="0" style="visibility:hidden; z-index:65535; position:absolute; top:0px;"></iframe>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 <%@ include file="/jsp/include/ProgressStatusBarStop.jsp"%>

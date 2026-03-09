@@ -3,13 +3,13 @@
 <!--%@ include file="/jsp/include/AuthenticationPage.jsp"%->
 <!--=======To get Connection from different DB======-->
 <%@ include file ="/jsp/include/ConnectionPoolPage.jsp" %>
-<%@ page import="ComboBoxAllBean,DateBean,ArrayComboBoxBean,java.text.DecimalFormat,RsCountBean" %>
+<%@ page import="bean.ComboBoxAllBean,bean.DateBean,bean.ArrayComboBoxBean,java.text.DecimalFormat,bean.RsCountBean" %>
 
-<jsp:useBean id="comboBoxAllBean" scope="page" class="ComboBoxAllBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="adjDateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="rsCountBean" scope="application" class="RsCountBean"/>
+<jsp:useBean id="comboBoxAllBean" scope="page" class="bean.ComboBoxAllBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="adjDateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="rsCountBean" scope="application" class="bean.RsCountBean"/>
 
 <script language="JavaScript" type="text/JavaScript"></script>
 

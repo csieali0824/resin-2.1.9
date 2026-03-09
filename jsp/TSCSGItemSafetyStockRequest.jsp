@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.sql.*,java.net.*,java.io.*,java.text.*,java.lang.*,java.util.*"%>
-<%@ page import="ComboBoxBean,DateBean,WorkingDateBean,ArrayComboBoxBean,Array2DimensionInputBean"%>
+<%@ page import="bean.ComboBoxBean,bean.DateBean,bean.WorkingDateBean,bean.ArrayComboBoxBean,bean.Array2DimensionInputBean"%>
 <script language="JavaScript" type="text/JavaScript">
 function setSubmit(URL)
 {    
@@ -110,17 +110,17 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 11px }
   .text     { font-family: Tahoma,Georgia;  font-size: 11px }
 </STYLE>
 <title>SG Safety Stock Request</title>
-<!--=============¥H¤U°Ï¬q¬°¦w¥þ»{ÃÒ¾÷¨î==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½wï¿½ï¿½ï¿½{ï¿½Ò¾ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="workingDateBean" scope="page" class="WorkingDateBean"/>
-<jsp:useBean id="POReceivingBean" scope="session" class="Array2DimensionInputBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="workingDateBean" scope="page" class="bean.WorkingDateBean"/>
+<jsp:useBean id="POReceivingBean" scope="session" class="bean.Array2DimensionInputBean"/>
 <%
 String sql = "";
 String ITEM = request.getParameter("ITEM");
@@ -139,7 +139,7 @@ if (ORGCODE==null || ORGCODE.equals("--")) ORGCODE="";
   <br>
   <table width="350" height="50" border="1" align="center" cellpadding="5" cellspacing="0" bordercolorlight="#CCFFCC" bordercolordark="#336600">
     <tr>
-    <td height="70" bgcolor="#CCCC99"  align="center"><font color="#003399" face="¼Ð·¢Åé" size="+2">The data processing,please wait while.....</font> <BR>
+    <td height="70" bgcolor="#CCCC99"  align="center"><font color="#003399" face="ï¿½Ð·ï¿½ï¿½ï¿½" size="+2">The data processing,please wait while.....</font> <BR>
       <DIV ID="blockDiv" STYLE="visibility:hidden;position:absolute; width:5px; height:5px; clip:rect(0px 5px 5px 0px); background-color:#567886; layer-background-color:#567886; display=''; left: 50px;"></div>
 	</td>
   </tr>
@@ -302,7 +302,7 @@ catch(Exception e)
 </FORM>
 <iframe width=124 height=153 name="gToday:supermini:agenda.js" id="gToday:supermini:agenda.js" src="../calendar/ipopeng.htm" scrolling="no" frameborder="0" style="visibility:hidden; z-index:65535; position:absolute; top:0px;"></iframe>
 <BR>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 </body>

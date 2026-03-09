@@ -2,10 +2,10 @@
 <!-- 20150601 modify by Peggy,hip to contact有多筆時,不帶預設值-->
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.net.*,java.io.*,java.text.*"%>
 <%@ page import="java.text.*" %>
-<%@ page import="ComboBoxBean,DateBean,ArrayComboBoxBean" %>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
+<%@ page import="bean.ComboBoxBean,bean.DateBean,bean.ArrayComboBoxBean" %>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
  
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
  <!--=============以下區段為安全認證機制==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
  
@@ -119,7 +119,7 @@ String taxcode_err=""; //add by Peggy 20190412
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
 <title>TSC Confirm  List Detail</title>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
 <style type="text/css">
 <!--
 .style2 {color: #FFFFFF}

@@ -2,9 +2,9 @@
 <!--=============To get the Authentication==========-->
 <%//@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%//@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="DateBean,RsCountBean" %>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="rsCountBean" scope="application" class="RsCountBean"/>
+<%@ page import="bean.DateBean,bean.RsCountBean" %>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="rsCountBean" scope="application" class="bean.RsCountBean"/>
 <!--=============??????????==========-->
 <%//@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/ConnBPCSPoolPage.jsp"%>

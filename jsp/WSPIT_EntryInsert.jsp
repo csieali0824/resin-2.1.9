@@ -4,9 +4,9 @@
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<%@ page import="DateBean,ArrayChkBox4PITBean" %>
-<jsp:useBean id="ArrayChkBox4PITBean" scope="session" class="ArrayChkBox4PITBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<%@ page import="bean.DateBean,bean.ArrayChkBox4PITBean" %>
+<jsp:useBean id="bean.ArrayChkBox4PITBean" scope="session" class="bean.ArrayChkBox4PITBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <html>
 <head>
 <title>Function Data Insert</title>
@@ -26,7 +26,7 @@ String fromStatus=request.getParameter("FROMSTATUS");
 String formID=request.getParameter("FORMID");
 String typeNo=request.getParameter("TYPENO");
 String action=request.getParameter("ACTION");
-String a[][]=ArrayChkBox4PITBean.getArray2DContent();//取得目前陣列內容   
+String a[][]=bean.ArrayChkBox4PITBean.getArray2DContent();//取得目前陣列內容
 int i=0,j=0,k=0;
 String sql="",sFunc=""; 
 dateString=dateBean.getYearMonthDay(); 

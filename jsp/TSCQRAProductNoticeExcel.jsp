@@ -1,9 +1,9 @@
 <!-- 20161114 Peggy,新增only global customer查詢條件-->
 <!-- 20170602 Peggy,新增package & family查詢條件-->
 <%@ page contentType="text/html; charset=utf-8" import="java.sql.*,java.math.BigDecimal,java.text.DecimalFormat,java.io.*,jxl.*,jxl.Workbook.*,jxl.write.*,jxl.format.*,java.awt.Image.*" %>
-<%@ page import="DateBean"%>
+<%@ page import="bean.DateBean"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">

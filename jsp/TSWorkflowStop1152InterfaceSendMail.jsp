@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.util.*" %>
-<%@ page import="DateBean,SendMailBean,WorkingDateBean,CodeUtil,WriteLogToFileBean" %>
+<%@ page import="bean.DateBean,bean.SendMailBean,bean.WorkingDateBean,CodeUtil,bean.WriteLogToFileBean" %>
 <html>
 <head>
 <STYLE TYPE='text/css'>
@@ -85,10 +85,10 @@
 </STYLE>
 <title>Untitled Document</title>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="sendMailBean" scope="page" class="SendMailBean"/>
-<jsp:useBean id="workingDateBean" scope="page" class="WorkingDateBean"/>
-<jsp:useBean id="writeLogToFileBean" scope="page" class="WriteLogToFileBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="sendMailBean" scope="page" class="bean.SendMailBean"/>
+<jsp:useBean id="workingDateBean" scope="page" class="bean.WorkingDateBean"/>
+<jsp:useBean id="writeLogToFileBean" scope="page" class="bean.WriteLogToFileBean"/>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->

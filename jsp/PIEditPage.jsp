@@ -5,15 +5,15 @@
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=============Switch CharacterSet==========-->
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="PageHeaderBean,ComboBoxBean,ArrayComboBoxBean,DateBean,CheckBoxBean,ArrayCheckBoxBean,QueryAllBean" %>
-<jsp:useBean id="pageHeader" scope="session" class="PageHeaderBean"/>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<%@ page import="bean.PageHeaderBean,bean.ComboBoxBean,bean.ArrayComboBoxBean,bean.DateBean,CheckBoxBean,bean.ArrayCheckBoxBean,bean.QueryAllBean" %>
+<jsp:useBean id="pageHeader" scope="session" class="bean.PageHeaderBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <jsp:useBean id="checkBoxBean" scope="page" class="CheckBoxBean"/>
-<jsp:useBean id="queryAllBean" scope="page" class="QueryAllBean"/>
-<jsp:useBean id="arrayCheckBoxBean" scope="session" class="ArrayCheckBoxBean"/> <!--此bean作用在存入Other Feature-->
-<jsp:useBean id="arrayCheckBoxBean4Ringer" scope="session" class="ArrayCheckBoxBean"/> <!--此bean作用在存入Ringer-->
+<jsp:useBean id="queryAllBean" scope="page" class="bean.QueryAllBean"/>
+<jsp:useBean id="arrayCheckBoxBean" scope="session" class="bean.ArrayCheckBoxBean"/> <!--此bean作用在存入Other Feature-->
+<jsp:useBean id="arrayCheckBoxBean4Ringer" scope="session" class="bean.ArrayCheckBoxBean"/> <!--此bean作用在存入Ringer-->
 <%
   String  projectCode=request.getParameter("PROJECTCODE");
   String projectCodeTemp=projectCode;

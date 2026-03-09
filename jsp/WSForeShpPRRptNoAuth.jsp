@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" %>
-<%@ page import="ComboBoxAllBean,DateBean,ArrayComboBoxBean,java.text.DecimalFormat" %>
+<%@ page import="bean.ComboBoxAllBean,bean.DateBean,bean.ArrayComboBoxBean,java.text.DecimalFormat" %>
 <!--=============To get the Authentication==========-->
 <!-- include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=================================-->
@@ -9,10 +9,10 @@
 <!--=================================-->
 <script language="JavaScript" type="text/JavaScript">
 </script>
-<jsp:useBean id="comboBoxAllBean" scope="page" class="ComboBoxAllBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="adjDateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="comboBoxAllBean" scope="page" class="bean.ComboBoxAllBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="adjDateBean" scope="page" class="bean.DateBean"/>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">

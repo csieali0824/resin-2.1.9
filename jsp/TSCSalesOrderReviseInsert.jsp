@@ -8,8 +8,8 @@
 <!--20181222 Peggy,新增original customer part no-->
 <!--20200130 Peggy,新增overdue new ssd column for TSCE,Quote Number & End Customer for TSCR-->
 <!--20200430 sharlin,add Delivery_Instruction for YEW-DropShip-->
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.util.*,jxl.*,jxl.write.*,jxl.format.*,WorkingDateBean,java.lang.Math.*,java.text.*" %>
-<%@ page import="java.io.*,DateBean" %>
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.util.*,jxl.*,jxl.write.*,jxl.format.*,bean.WorkingDateBean,java.lang.Math.*,java.text.*" %>
+<%@ page import="java.io.*,bean.DateBean" %>
 <%@ page import="com.jspsmart.upload.*" %>
 <%@ page errorPage="ExceptionHandler.jsp" %>
 <!--=============以下區段為取得連結池==========-->
@@ -20,7 +20,7 @@
 <html>
 <head>
 <title>Sales Order Revise Process</title>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <jsp:useBean id="mySmartUpload" scope="page" class="com.jspsmart.upload.SmartUpload" />
 
 <script language="JavaScript" type="text/JavaScript">

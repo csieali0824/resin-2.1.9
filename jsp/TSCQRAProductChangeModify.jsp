@@ -1,17 +1,17 @@
 <!--20151014 by Peggy,for 新版ECN調整-->
 <!--20151204 by Peggy,TSC_PROD_ROUP更名,Rect=>PRD,SSP=>SSD-->
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.lang.*,java.util.*,java.text.*,java.io.*,java.sql.*,javax.sql.*,javax.naming.*,WriteLogToFileBean,DateBean,ComboBoxBean,ArrayComboBoxBean,javax.xml.parsers.*,CodeUtil"%>
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.lang.*,java.util.*,java.text.*,java.io.*,java.sql.*,javax.sql.*,javax.naming.*,bean.WriteLogToFileBean,bean.DateBean,bean.ComboBoxBean,bean.ArrayComboBoxBean,javax.xml.parsers.*,CodeUtil"%>
 <%@ page import="org.w3c.dom.*" %>
 <%@ page import="org.xml.sax.*" %>
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean"%>
-<jsp:useBean id="writeLogToFileBean" scope="page" class="WriteLogToFileBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean"%>
+<jsp:useBean id="writeLogToFileBean" scope="page" class="bean.WriteLogToFileBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <jsp:useBean id="codeUtil" scope="page" class="CodeUtil"/>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
 <html> 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">

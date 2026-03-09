@@ -2,12 +2,12 @@
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/ConnBPCSDbglobalPoolPage.jsp"%>
-<%@ page import="DateBean,SendMailBean" %>
-<jsp:useBean id="sendMailBean" scope="page" class="SendMailBean"/>
+<%@ page import="bean.DateBean,bean.SendMailBean" %>
+<jsp:useBean id="sendMailBean" scope="page" class="bean.SendMailBean"/>
 <script language="JavaScript" type="text/JavaScript">
 </script>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="thisDateBean" scope="page" class="DateBean"/> <!--用來抓出目前為幾月-->
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="thisDateBean" scope="page" class="bean.DateBean"/> <!--用來抓出目前為幾月-->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">

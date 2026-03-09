@@ -1,12 +1,12 @@
 <!-- 20150422 Peggy,修正price抓法,加入四捨五入至小數位之參數-->
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.util.*,java.text.*,java.io.*,java.sql.*,jxl.*,jxl.Workbook.*,jxl.write.*,jxl.format.*,java.lang.Math.*"%>
-<%@ page import="QueryAllBean,ComboBoxAllBean,ComboBoxBean,DateBean,ArrayComboBoxBean" %>
-<%@ page import="DateBean" %> 
+<%@ page import="bean.QueryAllBean,bean.ComboBoxAllBean,bean.ComboBoxBean,bean.DateBean,bean.ArrayComboBoxBean" %>
+<%@ page import="bean.DateBean" %>
 <%@ page import="jxl.*"%>
-<%@ page import="WorkingDateBean"%>
+<%@ page import="bean.WorkingDateBean"%>
 <%@ page import="com.jspsmart.upload.*" %>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
 <jsp:useBean id="mySmartUpload" scope="page" class="com.jspsmart.upload.SmartUpload" />
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>

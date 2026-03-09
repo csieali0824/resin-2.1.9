@@ -2,14 +2,14 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="java.util.*" %>
 <%@ page import="jxl.*" %>
-<%@ page import="WorkingDateBean" %>
+<%@ page import="bean.WorkingDateBean" %>
 <%@ page import="java.lang.Math.*" %>
 <%@ page import="java.text.*" %>
-<%@ page import="java.io.*,DateBean" %>
+<%@ page import="java.io.*,bean.DateBean" %>
 <%@ page import="modelN.ModelNCommonUtils" %>
 <%@ page import="com.jspsmart.upload.*" %>
 <%@ page errorPage="ExceptionHandler.jsp" %>
-<%@ page import="DateBean,ArrayCheckBoxBean,Array2DimensionInputBean" %>
+<%@ page import="bean.DateBean,bean.ArrayCheckBoxBean,bean.Array2DimensionInputBean" %>
 <%@ page import="com.mysql.jdbc.StringUtils" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="modelN.dto.DetailDto" %>
@@ -24,9 +24,9 @@
 <html>
 <head>
     <title>TSCC To D1-001</title>
-    <jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+    <jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
     <jsp:useBean id="tsccOrderToRfq" class="tscc.TsccOrderToRfq"/>
-    <jsp:useBean id="arrayRFQDocumentInputBean" scope="session" class="Array2DimensionInputBean"/>
+    <jsp:useBean id="arrayRFQDocumentInputBean" scope="session" class="bean.Array2DimensionInputBean"/>
     <link rel="stylesheet" href="../jsp/css/tsccOrderToRfq.css">
 </head>
 <script>
@@ -92,6 +92,7 @@
                 '&salesPersonId=' + request.salesPersonId +
                 '&rfqType=' + request.rfqType +
                 '&uploadBy=' + request.uploadBy +
+                '&siteLocation=' + request.siteLocation +
                 '&insertFlag=' + request.insertFlag;
         });
 
@@ -133,6 +134,7 @@
     String otypeId = request.getParameter("otypeId");
     String salesPerson = StringUtils.isNullOrEmpty(request.getParameter("salesPerson")) ? "" : request.getParameter("salesPerson");
     String salesPersonId = StringUtils.isNullOrEmpty(request.getParameter("salesPersonId")) ? "" : request.getParameter("salesPersonId");
+    String siteLocation = StringUtils.isNullOrEmpty(request.getParameter("siteLocation")) ? "" : request.getParameter("siteLocation");
     String rfqType = request.getParameter("rfqType");
     if (insertFlag.equals("Y")) {
         tsccOrderToRfq.getTsccToRfqData(con, headerId, salesNo, orderType);
@@ -154,6 +156,7 @@
         drqCreateArg.put("otypeId", otypeId);
         drqCreateArg.put("salesPerson", salesPerson);
         drqCreateArg.put("salesPersonId", salesPersonId);
+        drqCreateArg.put("siteLocation", siteLocation);
         drqCreateArg.put("rfqType", rfqType);
         drqCreateArg.put("curr", "");
         drqCreateArg.put("remark", "Workflow to RFQ");
@@ -238,6 +241,7 @@
                 otypeId: "<%=tsccOrderToRfqDto.getOtypeId()%>",
                 salesPerson: "<%=tsccOrderToRfqDto.getSalesrepName()%>",
                 salesPersonId: "<%=tsccOrderToRfqDto.getSalesrepId()%>",
+                siteLocation: "<%=tsccOrderToRfqDto.getSiteLocation()%>",
                 rfqType: "NORMAL",
                 uploadBy: "<%=UserName%>",
                 insertFlag: 'Y'

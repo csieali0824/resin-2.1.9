@@ -1,7 +1,7 @@
 <!-- 20180628 Peggy,add new column =customer group-->
-<%@ page contentType="text/html; charset=UTF-8" language="java" import="java.lang.*,java.util.*,java.text.*,java.io.*,java.sql.*,javax.sql.*,javax.naming.*,DateBean"%>
+<%@ page contentType="text/html; charset=UTF-8" language="java" import="java.lang.*,java.util.*,java.text.*,java.io.*,java.sql.*,javax.sql.*,javax.naming.*,bean.DateBean"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <html>
 <head>
 <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>

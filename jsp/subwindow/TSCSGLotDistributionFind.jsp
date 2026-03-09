@@ -3,9 +3,9 @@
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean,Array2DimensionInputBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<jsp:useBean id="LotDistributionBean" scope="session" class="Array2DimensionInputBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean,bean.Array2DimensionInputBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
+<jsp:useBean id="LotDistributionBean" scope="session" class="bean.Array2DimensionInputBean"/>
 <!--<%@ include file="/jsp/include/ProgressStatusBarStart.jsp"%>-->
 <%
 String sql = "";

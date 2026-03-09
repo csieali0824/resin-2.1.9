@@ -3,9 +3,9 @@
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=============To get the Authentication==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<%@ page import="DateBean,Array2DimensionInputBean" %>
-<jsp:useBean id="array2DimensionInputBean" scope="session" class="Array2DimensionInputBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<%@ page import="bean.DateBean,bean.Array2DimensionInputBean" %>
+<jsp:useBean id="array2DimensionInputBean" scope="session" class="bean.Array2DimensionInputBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <html>
 <head>
 <title>產品發展平台資料新增</title>

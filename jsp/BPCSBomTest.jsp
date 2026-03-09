@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*"%>
-<%@ page import="BpcsBomBean" %>
-<jsp:useBean id="bpcsBomBean" scope="session" class="BpcsBomBean"/>
+<%@ page import="bean.BpcsBomBean" %>
+<jsp:useBean id="bpcsBomBean" scope="session" class="bean.BpcsBomBean"/>
 <!--=============以下區段為取得授權==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============以下區段為取得連結池==========-->

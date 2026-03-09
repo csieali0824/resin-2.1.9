@@ -2,10 +2,10 @@
 <%@ page import="java.sql.*"%>
 <%@ page import="java.util.*"%>
 <%@ page import="jxl.*"%>
-<%@ page import="WorkingDateBean"%>
+<%@ page import="bean.WorkingDateBean"%>
 <%@ page import="java.lang.Math.*"%>
 <%@ page import="java.text.*"%>
-<%@ page import="java.io.*,DateBean"%>
+<%@ page import="java.io.*,bean.DateBean"%>
 <%@ page import="com.jspsmart.upload.*"%>
 <%@ page errorPage="ExceptionHandler.jsp"%>
 
@@ -17,7 +17,7 @@
 <html>
 <head>
 <title>DELTA 1211 Order Import</title>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <jsp:useBean id="mySmartUpload" scope="page" class="com.jspsmart.upload.SmartUpload" />
 
 <meta http-equiv="Content-Type" content="text/html; charset=big5">

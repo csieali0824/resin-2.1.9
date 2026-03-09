@@ -1,14 +1,14 @@
 <%@ page contentType="text/html; charset=gb2312" %>
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
 
 <jsp:setProperty name="rPH" property="pgHOME" value="回首页"/>
 <jsp:setProperty name="rPH" property="pgAllRepLog" value="查询所有维修案件"/>
 <jsp:setProperty name="rPH" property="pgTxLog" value="维修件异动记录"/>
 <jsp:setProperty name="rPH" property="pgAddWKF" value="新增流程"/>
 <jsp:setProperty name="rPH" property="pgRemark" value="附注"/>
-<jsp:setProperty name="rPH" property="pgFormID" value="流桯窗体识别"/>
+<jsp:setProperty name="rPH" property="pgFormID" value="流?H窗体识别"/>
 <jsp:setProperty name="rPH" property="pgWKFTypeNo" value="流程种类编号"/>
 <jsp:setProperty name="rPH" property="pgOriStat" value="原始状态"/>
 <jsp:setProperty name="rPH" property="pgAction" value="执行动作"/>
@@ -269,8 +269,8 @@
 <jsp:setProperty name="rPH" property="pgKeyAccount" value="关键经销/代理商"/>
 <jsp:setProperty name="rPH" property="pgEdit" value="编辑"/>
 
-<!--以下為查??面資料-->
-  <!--維修中心每日已入帳BPCS查?-->
+<!--以下?椴???面?Y料-->
+  <!--?S修中心每日已入??BPCS查?-->
 <jsp:setProperty name="rPH" property="pgCentPBpcsTitle" value="维修中心每日已入帐BPCS查询"/>
 <jsp:setProperty name="rPH" property="pgPostDateFr" value="入帐日起"/>
 <jsp:setProperty name="rPH" property="pgPostDateTo" value="入帐日迄"/>
@@ -292,7 +292,7 @@
 <jsp:setProperty name="rPH" property="pgStdServiceFee" value="标准维修费/小时"/>
 <jsp:setProperty name="rPH" property="pgActServiceFee" value="实际维修费/小时"/>
 <jsp:setProperty name="rPH" property="pgModelFeeSubTotal" value="机种费用小计"/>
- <!--月份故障原因分佈查?-->
+ <!--月份故障原因分?巡??-->
 <jsp:setProperty name="rPH" property="pgMonthFaultReasonTitle" value="月份故障原因分布查询"/>
 <jsp:setProperty name="rPH" property="pgRate" value="比率"/>
 
@@ -306,7 +306,7 @@
 <jsp:setProperty name="rPH" property="pgBPCSNo" value="BPCS单号"/>
 <jsp:setProperty name="rPH" property="pgBPCSDetail" value="BPCS明细"/>
 
- <!--維修工程?領料/倉管發料紀?查?-->
+ <!--?S修工程??I料/?}管?l料?o?查?-->
 <jsp:setProperty name="rPH" property="pgMaterialReqIssTitle" value="维修工程师领料/仓管发料纪录查询"/>
 
  <!--领料申请单打印-->
@@ -473,7 +473,7 @@
 <jsp:setProperty name="rPH" property="pgModelRefMsg" value="勾选之项目是做为料号变更欲一并更换之适用的机种"/>
 <jsp:setProperty name="rPH" property="pgDelImage" value="删除图档"/>
 
- <!--以下為作業管理功能資料 -->
+ <!--以下?樽?I管理功能?Y料 -->
 <jsp:setProperty name="rPH" property="pgAfterService" value="售服"/>
 <jsp:setProperty name="rPH" property="pgInput" value="输入"/>
 <jsp:setProperty name="rPH" property="pgMaintenance" value="维护"/>

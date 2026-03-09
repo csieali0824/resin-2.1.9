@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.util.*,jxl.*,jxl.write.*,jxl.format.*,java.lang.Math.*" %>
 <!--=============To get the Authentication==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<%@ page import="java.io.*,com.jspsmart.upload.*,CheckBoxBeanNew,CheckBoxBean,ComboBoxBean,ArrayComboBoxBean,DateBean" %>
+<%@ page import="java.io.*,com.jspsmart.upload.*,bean.CheckBoxBeanNew,CheckBoxBean,bean.ComboBoxBean,bean.ArrayComboBoxBean,bean.DateBean" %>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/ConnBPCSPoolPage.jsp/"%>
@@ -23,13 +23,13 @@ function submitCheck(URL)
  document.MYFORM.submit();
 }
 </script>
-<%@ page import="com.jspsmart.upload.*,ArrayCheckBoxBean" %>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
+<%@ page import="com.jspsmart.upload.*,bean.ArrayCheckBoxBean" %>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
 <jsp:useBean id="checkBoxBean" scope="page" class="CheckBoxBean"/>
-<jsp:useBean id="checkBoxBeanNew" scope="page" class="CheckBoxBeanNew"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="arrayCheckBoxBean" scope="session" class="ArrayCheckBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="checkBoxBeanNew" scope="page" class="bean.CheckBoxBeanNew"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="arrayCheckBoxBean" scope="session" class="bean.ArrayCheckBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <jsp:useBean id="mySmartUpload" scope="page" class="com.jspsmart.upload.SmartUpload" /> 
 <meta http-equiv="Content-Type" content="text/html; charset=big5"></head>
 <body>

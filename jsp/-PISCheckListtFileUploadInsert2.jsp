@@ -1,5 +1,5 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.util.*,jxl.*,jxl.write.*,jxl.format.*,WorkingDateBean,java.lang.Math.*" %>
-<%@ page import="java.io.*,DateBean" %>
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.util.*,jxl.*,jxl.write.*,jxl.format.*,bean.WorkingDateBean,java.lang.Math.*" %>
+<%@ page import="java.io.*,bean.DateBean" %>
 <%@ page import="com.jspsmart.upload.*" %>
 <!--=============To get the Authentication==========-->
 <%//@include file="/jsp/include/AuthenticationPage.jsp"%>
@@ -9,7 +9,7 @@
 <html>
 <head>
 
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <jsp:useBean id="mySmartUpload" scope="page" class="com.jspsmart.upload.SmartUpload" /> 
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
 

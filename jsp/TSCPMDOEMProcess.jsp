@@ -12,9 +12,9 @@
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<%@ page import="DateBean,ArrayCheckBoxBean,ArrayCheckBox2DBean,Array2DimensionInputBean,SendMailBean,CodeUtil" %>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
+<%@ page import="bean.DateBean,bean.ArrayCheckBoxBean,bean.ArrayCheckBox2DBean,bean.Array2DimensionInputBean,bean.SendMailBean,CodeUtil" %>
 <%@ include file="/jsp/include/ProgressStatusBarStart.jsp"%>
 <html>
 <head>
@@ -26,7 +26,7 @@ function setSubmit(URL)
 	document.PMDFORM.submit();
 }
 </script>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <meta http-equiv="Content-Type" content="text/html; charset=big5"></head>
 <body>
 <FORM ACTION="TSCPMDOEMProcess.jsp" METHOD="post" NAME="PMDFORM">

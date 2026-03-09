@@ -4,10 +4,10 @@
 <!--20160113 Peggy,新增"整批匯入"功能&ITEM DESC欄位-->
 <!--20160727 Peggy,add catalog_cust_moq欄位-->
 <%@ page contentType="text/html; charset=big5" language="java" import="java.sql.*" %>
-<%@ page import="QryAllChkBoxEditBean,ComboBoxBean,DateBean,WorkingDateBean,ArrayComboBoxBean"%>
+<%@ page import="bean.QryAllChkBoxEditBean,bean.ComboBoxBean,bean.DateBean,bean.WorkingDateBean,bean.ArrayComboBoxBean"%>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <script language="JavaScript" type="text/JavaScript">
 	var checkflag = "false";
@@ -64,12 +64,12 @@
 	<!--=============以下區段為取得連結池==========-->
 	<%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 	<!--=================================-->
-	<!--jsp:useBean id="poolBean" scope="application" class="PoolBean"/-->
-	<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-	<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-	<jsp:useBean id="qryAllChkBoxEditBean" scope="session" class="QryAllChkBoxEditBean"/>
-	<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-	<jsp:useBean id="workingDateBean" scope="page" class="WorkingDateBean"/>
+	<!--jsp:useBean id="poolBean" scope="application" class="bean.PoolBean"/-->
+	<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+	<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+	<jsp:useBean id="qryAllChkBoxEditBean" scope="session" class="bean.QryAllChkBoxEditBean"/>
+	<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+	<jsp:useBean id="workingDateBean" scope="page" class="bean.WorkingDateBean"/>
 	<%
 		int rs1__numRows = 200;
 		int rs1__index = 0;

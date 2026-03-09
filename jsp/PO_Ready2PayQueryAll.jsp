@@ -1,10 +1,10 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,RsCountBean"  %>
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,bean.RsCountBean"  %>
 <!--=============To get the Authentication==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnBPCSTestPoolPage.jsp"%>
 <%@ include file="/jsp/include/ConnDominoPage(NOTESAPP).jsp"%>
-<jsp:useBean id="rsCountBean" scope="application" class="RsCountBean"/>
+<jsp:useBean id="rsCountBean" scope="application" class="bean.RsCountBean"/>
 <html>
 <head>
 <title>Query All BPCS PO those are ready to pay </title>

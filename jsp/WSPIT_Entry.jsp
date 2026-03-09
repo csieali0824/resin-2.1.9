@@ -1,14 +1,14 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" %>
-<%@ page import="ArrayChkBox4PITBean,ComboBoxBean,DateBean,ArrayComboBoxBean,ForecastInputBean,ForePriCostInputBean,RsCountBean" %>
+<%@ page import="bean.ArrayChkBox4PITBean,bean.ComboBoxBean,bean.DateBean,bean.ArrayComboBoxBean,bean.ForecastInputBean,bean.ForePriCostInputBean,bean.RsCountBean" %>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=============To get the Authentication==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<jsp:useBean id="ArrayChkBox4PITBean" scope="session" class="ArrayChkBox4PITBean"/>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="rsCountBean" scope="application" class="RsCountBean"/>
+<jsp:useBean id="bean.ArrayChkBox4PITBean" scope="session" class="bean.ArrayChkBox4PITBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="rsCountBean" scope="application" class="bean.RsCountBean"/>
 <script language="JavaScript" type="text/JavaScript">
  versionArray=new Array();
  modelArray=new Array();		    
@@ -138,7 +138,7 @@ function showModel(gg)
   <strong>產品問題輸入</strong></font> <BR>
 <A HREF="/wins/WinsMainMenu.jsp">HOME</A>  
 <%  
-  ArrayChkBox4PITBean.setArray2DString(null); //將陣列內容清空    
+  bean.ArrayChkBox4PITBean.setArray2DString(null); //將陣列內容清空
   String productArray[]=null;
   Statement statement=con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
   Statement subStmt=con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);

@@ -9,10 +9,10 @@
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<%@ page import="DateBean,ArrayCheckInputBoxBean" %>
+<%@ page import="bean.DateBean,bean.ArrayCheckInputBoxBean" %>
 </head>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="arrayCheckInputBoxBean" scope="session" class="ArrayCheckInputBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="arrayCheckInputBoxBean" scope="session" class="bean.ArrayCheckInputBoxBean"/>
 <body>
 
 	<%

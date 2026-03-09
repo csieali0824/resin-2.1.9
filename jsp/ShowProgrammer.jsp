@@ -1,10 +1,10 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,QueryAllCheckBoxBean"  %>
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,bean.QueryAllCheckBoxBean"  %>
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<%@ page import="QueryAllRepairBean2" %>
-<%@ page import="QryAllChkBoxEditBean" %>
+<%@ page import="bean.QueryAllRepairBean2" %>
+<%@ page import="bean.QryAllChkBoxEditBean" %>
 <html>
 <head>
 <title>ShowProgrammer.jsp</title>
@@ -38,9 +38,9 @@ function searchRepNo(pageURL)
 }
 </script>
 <body>
-<jsp:useBean id="queryAllRepairBean" scope="session" class="QueryAllRepairBean2"/>
-<jsp:useBean id="qryAllChkBoxEditBean" scope="session" class="QryAllChkBoxEditBean"/>
-<jsp:useBean id="queryAllCheckBoxBean" scope="page" class="QueryAllCheckBoxBean"/>
+<jsp:useBean id="queryAllRepairBean" scope="session" class="bean.QueryAllRepairBean2"/>
+<jsp:useBean id="qryAllChkBoxEditBean" scope="session" class="bean.QryAllChkBoxEditBean"/>
+<jsp:useBean id="queryAllCheckBoxBean" scope="page" class="bean.QueryAllCheckBoxBean"/>
 <FORM ACTION="../jsp/ProgrammerDel.jsp" METHOD="POST" NAME="MYFORM" onSubmit="return NeedConfirm()">
 <strong><font color="#0080C0" size="5">查詢所有角色記錄</font></strong> 
   <%   

@@ -1,13 +1,13 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" %>
-<%@ page import="DateBean,RsCountBean,java.text.DecimalFormat" %>
+<%@ page import="bean.DateBean,bean.RsCountBean,java.text.DecimalFormat" %>
 <!--=============To get the Authentication==========-->
 <!--%@include file="/jsp/include/AuthenticationPage.jsp"%-->
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/ConnBPCSPoolPage.jsp"%>
 <%@ include file="/jsp/include/ConnREPAIRPoolPage.jsp"%>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="rsCountBean" scope="application" class="RsCountBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="rsCountBean" scope="application" class="bean.RsCountBean"/>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">

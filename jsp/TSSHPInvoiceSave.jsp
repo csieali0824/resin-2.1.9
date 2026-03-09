@@ -5,9 +5,9 @@
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<%@ page import="DateBean,ArrayCheckBoxBean,ArrayCheckBox2DBean,Array2DimensionInputBean,SendMailBean,CodeUtil" %>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
+<%@ page import="bean.DateBean,bean.ArrayCheckBoxBean,bean.ArrayCheckBox2DBean,bean.Array2DimensionInputBean,bean.SendMailBean,CodeUtil" %>
 <!--%@ include file="/jsp/include/ProgressStatusBarStart.jsp"%-->
 <script language="JavaScript" type="text/JavaScript">
 
@@ -15,9 +15,9 @@
 <html>
 <head>
 <title>Invoice Save Process</title>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="shpArray2DTemporaryBean" scope="session" class="Array2DimensionInputBean"/> <!---->
-<jsp:useBean id="shpArray2DPageBean" scope="page" class="Array2DimensionInputBean"/> <!---->
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="shpArray2DTemporaryBean" scope="session" class="bean.Array2DimensionInputBean"/> <!---->
+<jsp:useBean id="shpArray2DPageBean" scope="page" class="bean.Array2DimensionInputBean"/> <!---->
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
 <style type="text/css">
 <!--

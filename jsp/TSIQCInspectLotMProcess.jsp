@@ -7,7 +7,7 @@
 <%@ include file="/jsp/IQCInclude/MProcessStatusBarStart.jsp"%>
 <!--=================================-->
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="DateBean,ArrayCheckBoxBean,ArrayCheckBox2DBean,Array2DimensionInputBean,SendMailBean,CodeUtil" %>
+<%@ page import="bean.DateBean,bean.ArrayCheckBoxBean,bean.ArrayCheckBox2DBean,bean.Array2DimensionInputBean,bean.SendMailBean,CodeUtil" %>
 <!--%@ include file="/jsp/include/ProgressStatusBarStart.jsp"%-->
 <script language="JavaScript" type="text/JavaScript">
 function reProcessFormConfirm(ms1,URL,dnDOCNo,lineNo)
@@ -34,16 +34,16 @@ function alertItemExistsMsg(msItemExists)
 <html>
 <head>
 <title>IQC System Inspection Lot Mass Process Page</title>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="arrIQC2DTemporaryBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR 品管檢驗單草稿文件-->
-<jsp:useBean id="arrIQC2DInspectingBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR 品管檢驗數據輸入完成判定-->
-<jsp:useBean id="arrIQC2DAuthorizingBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR 檢驗批採購主管授權-->
-<jsp:useBean id="arrIQC2DApprovingBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR 檢驗批工廠主管授權-->
-<jsp:useBean id="arrIQC2DWaivingBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR 物管接收批退檢驗批特採申請核准-->
-<jsp:useBean id="arrIQC2DWaiveApprovedBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR 檢驗批特採申請廠主管核准-->
-<jsp:useBean id="arrIQC2DReceivingBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR 倉管接收檢驗合格入庫-->
-<jsp:useBean id="arrIQC2DReturningBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR 倉管接收檢驗判退批退供應商-->
-<jsp:useBean id="sendMailBean" scope="page" class="SendMailBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="arrIQC2DTemporaryBean" scope="session" class="bean.Array2DimensionInputBean"/> <!--FOR 品管檢驗單草稿文件-->
+<jsp:useBean id="arrIQC2DInspectingBean" scope="session" class="bean.Array2DimensionInputBean"/> <!--FOR 品管檢驗數據輸入完成判定-->
+<jsp:useBean id="arrIQC2DAuthorizingBean" scope="session" class="bean.Array2DimensionInputBean"/> <!--FOR 檢驗批採購主管授權-->
+<jsp:useBean id="arrIQC2DApprovingBean" scope="session" class="bean.Array2DimensionInputBean"/> <!--FOR 檢驗批工廠主管授權-->
+<jsp:useBean id="arrIQC2DWaivingBean" scope="session" class="bean.Array2DimensionInputBean"/> <!--FOR 物管接收批退檢驗批特採申請核准-->
+<jsp:useBean id="arrIQC2DWaiveApprovedBean" scope="session" class="bean.Array2DimensionInputBean"/> <!--FOR 檢驗批特採申請廠主管核准-->
+<jsp:useBean id="arrIQC2DReceivingBean" scope="session" class="bean.Array2DimensionInputBean"/> <!--FOR 倉管接收檢驗合格入庫-->
+<jsp:useBean id="arrIQC2DReturningBean" scope="session" class="bean.Array2DimensionInputBean"/> <!--FOR 倉管接收檢驗判退批退供應商-->
+<jsp:useBean id="sendMailBean" scope="page" class="bean.SendMailBean"/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
 <body>
 <%@ include file="/jsp/include/TSCMfgDocHyperLinkPage.jsp"%>

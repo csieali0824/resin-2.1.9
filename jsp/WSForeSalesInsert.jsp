@@ -3,10 +3,10 @@
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=============To get the Authentication==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<%@ page import="DateBean,ForePriCostInputBean,WorkingDateBean" %>
-<jsp:useBean id="forePriCostInputBean" scope="session" class="ForePriCostInputBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="workingDateBean" scope="page" class="WorkingDateBean"/>
+<%@ page import="bean.DateBean,bean.ForePriCostInputBean,bean.WorkingDateBean" %>
+<jsp:useBean id="forePriCostInputBean" scope="session" class="bean.ForePriCostInputBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="workingDateBean" scope="page" class="bean.WorkingDateBean"/>
 <html>
 <head>
 <title>Sales Monthly Forecast Data Insert</title>

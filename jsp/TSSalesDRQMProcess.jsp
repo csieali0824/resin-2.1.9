@@ -20,9 +20,9 @@
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<%@ page import="DateBean,ArrayCheckBoxBean,ArrayCheckBox2DBean,Array2DimensionInputBean,SendMailBean,CodeUtil" %>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
+<%@ page import="bean.DateBean,bean.ArrayCheckBoxBean,bean.ArrayCheckBox2DBean,bean.Array2DimensionInputBean,bean.SendMailBean,CodeUtil" %>
 <script language="JavaScript" type="text/JavaScript">
 function reProcessFormConfirm(ms1,URL,dnDOCNo,lineNo,assignFact,ordtypeid,linetypeid)
 {
@@ -44,18 +44,18 @@ function alertItemExistsMsg(msItemExists)
 <html>
 <head>
 <title>Sales Delivery Request M Data Process</title>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="arrayCheckBoxBean" scope="session" class="ArrayCheckBoxBean"/> <!--FOR MATERIAL USAGE-->
-<jsp:useBean id="rfqArray2DTemporaryBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR 業務交期詢問單草稿文件_2-->
-<jsp:useBean id="array2DAssignFactoryBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR 企劃分派產地-->
-<jsp:useBean id="array2DEstimateFactoryBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR 工廠安排交期確認中-->
-<jsp:useBean id="array2DArrangedFactoryBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR 工廠回覆交期確認-->
-<jsp:useBean id="array2DGenerateSOrderBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR 業務生成銷售訂單確認-->
-<jsp:useBean id="array2DPromiseFactoryBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR 客戶取消交期給定新交期需求日-->
-<jsp:useBean id="array2DMOContactInfoBean" scope="session" class="Array2DimensionInputBean"/> <!-- FOR 業務生成銷售訂單確認(其他資訊Notify to Contact) -->
-<jsp:useBean id="array2DMODeliverInfoBean" scope="session" class="Array2DimensionInputBean"/> <!-- FOR 業務生成銷售訂單確認(其他資訊Deliver to Contact) -->
-<jsp:useBean id="sendMailBean" scope="page" class="SendMailBean"/>
-<jsp:useBean id="StockInfoBean" scope="session" class="Array2DimensionInputBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="arrayCheckBoxBean" scope="session" class="bean.ArrayCheckBoxBean"/> <!--FOR MATERIAL USAGE-->
+<jsp:useBean id="rfqArray2DTemporaryBean" scope="session" class="bean.Array2DimensionInputBean"/> <!--FOR 業務交期詢問單草稿文件_2-->
+<jsp:useBean id="array2DAssignFactoryBean" scope="session" class="bean.Array2DimensionInputBean"/> <!--FOR 企劃分派產地-->
+<jsp:useBean id="array2DEstimateFactoryBean" scope="session" class="bean.Array2DimensionInputBean"/> <!--FOR 工廠安排交期確認中-->
+<jsp:useBean id="array2DArrangedFactoryBean" scope="session" class="bean.Array2DimensionInputBean"/> <!--FOR 工廠回覆交期確認-->
+<jsp:useBean id="array2DGenerateSOrderBean" scope="session" class="bean.Array2DimensionInputBean"/> <!--FOR 業務生成銷售訂單確認-->
+<jsp:useBean id="array2DPromiseFactoryBean" scope="session" class="bean.Array2DimensionInputBean"/> <!--FOR 客戶取消交期給定新交期需求日-->
+<jsp:useBean id="array2DMOContactInfoBean" scope="session" class="bean.Array2DimensionInputBean"/> <!-- FOR 業務生成銷售訂單確認(其他資訊Notify to Contact) -->
+<jsp:useBean id="array2DMODeliverInfoBean" scope="session" class="bean.Array2DimensionInputBean"/> <!-- FOR 業務生成銷售訂單確認(其他資訊Deliver to Contact) -->
+<jsp:useBean id="sendMailBean" scope="page" class="bean.SendMailBean"/>
+<jsp:useBean id="StockInfoBean" scope="session" class="bean.Array2DimensionInputBean"/>
 <meta http-equiv="Content-Type" content="text/html; charset=big5"></head>
 <body>
 <FORM ACTION="TSSalesDRQMProcess.jsp" METHOD="post" NAME="MPROCESSFORM">

@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*"%>
-<%@ page import="java.util.Calendar,WorkingDateBean,DateBean" %>
-<jsp:useBean id="workingDateBean" scope="page" class="WorkingDateBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<%@ page import="java.util.Calendar,bean.WorkingDateBean,bean.DateBean" %>
+<jsp:useBean id="workingDateBean" scope="page" class="bean.WorkingDateBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <html>
 <head>
 <title>Untitled Document</title>

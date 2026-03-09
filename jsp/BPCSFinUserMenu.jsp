@@ -3,9 +3,9 @@
 <!--% @ include file="/jsp/include/AuthenticationPage.jsp"%-->
 <!--=======To get Connection from different DB======-->
 <%@ include file ="/jsp/include/ConnBPCSWww602PoolPage.jsp" %>
-<%@ page import="ComboBoxBean" %>
+<%@ page import="bean.ComboBoxBean" %>
 
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
 
 <script language="JavaScript" type="text/JavaScript"></script>
 

@@ -1,8 +1,8 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
 <%@ include file="/jsp/include/ProgressStatusBarStart.jsp"%>
 <%
 String LOTNO = request.getParameter("LOTNO");

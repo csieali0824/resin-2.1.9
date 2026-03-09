@@ -1,12 +1,12 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*"%>
-<%@ page import="ComboBoxBean" %>
+<%@ page import="bean.ComboBoxBean" %>
 <!--=============以下區段為安全認證機制==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=================================-->
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
 <html>
 <head>
 <title>Country Factor Edit Form</title>

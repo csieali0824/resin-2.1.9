@@ -4,13 +4,13 @@
 <%@ page import="java.sql.*"%>
 <%@ page import="java.util.*"%>
 <%@ page import="jxl.*"%>
-<%@ page import="WorkingDateBean"%>
+<%@ page import="bean.WorkingDateBean"%>
 <%@ page import="java.lang.Math.*"%>
 <%@ page import="java.text.*"%>
-<%@ page import="java.io.*,DateBean"%>
+<%@ page import="java.io.*,bean.DateBean"%>
 <%@ page import="com.jspsmart.upload.*"%>
 <%@ page errorPage="ExceptionHandler.jsp"%>
-<%@ page import="DateBean,ArrayCheckBoxBean,Array2DimensionInputBean" %>
+<%@ page import="bean.DateBean,bean.ArrayCheckBoxBean,bean.Array2DimensionInputBean" %>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=============以下區段為安全認證機制==========-->
@@ -19,9 +19,9 @@
 <html>
 <head>
 <title>Sample Excel Upload</title>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <jsp:useBean id="mySmartUpload" scope="page" class="com.jspsmart.upload.SmartUpload" />
-<jsp:useBean id="arrayRFQDocumentInputBean" scope="session" class="Array2DimensionInputBean"/>
+<jsp:useBean id="arrayRFQDocumentInputBean" scope="session" class="bean.Array2DimensionInputBean"/>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
 </head>
 <script language="JavaScript" type="text/JavaScript">

@@ -5,13 +5,13 @@
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/MProcessStatusBarStart.jsp"%>
 <!--=================================-->
-<%@ page import="DateBean,ArrayCheckBoxBean,ComboBoxBean"%>
+<%@ page import="bean.DateBean,bean.ArrayCheckBoxBean,bean.ComboBoxBean"%>
 <html>
 <head>
 <title>AddLotIssueSubWindow</title>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/> 
-<jsp:useBean id="comboBoxBean" scope="application" class="ComboBoxBean"/>
-<jsp:useBean id="arrayLotIssueCheckBean" scope="session" class="ArrayCheckBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="comboBoxBean" scope="application" class="bean.ComboBoxBean"/>
+<jsp:useBean id="arrayLotIssueCheckBean" scope="session" class="bean.ArrayCheckBoxBean"/>
 <STYLE TYPE='text/css'>  
 BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 12px }
   P         { font-family: Tahoma,Georgia; color: #000000; font-size: 12px } 

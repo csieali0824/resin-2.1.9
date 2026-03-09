@@ -2,13 +2,13 @@
 <!--=============以下區段為安全認證機制==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%> 
-<%@ page import="ComboBoxBean,DateBean,WorkingDateBean" %>
+<%@ page import="bean.ComboBoxBean,bean.DateBean,bean.WorkingDateBean" %>
 <%@ page import="java.util.Date"%> 	
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
 <title>工令明細查詢報表</title>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
 <script language="JavaScript" type="text/JavaScript">
 function setSubmit(URL)
 {

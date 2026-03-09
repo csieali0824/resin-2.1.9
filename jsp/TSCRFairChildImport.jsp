@@ -25,12 +25,12 @@
 <jsp:setProperty name="upBean" property="overwrite" value="true" />
 <% upBean.addUploadListener(fileMover); %>
 </jsp:useBean>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<%@ page import="DateBean,ArrayCheckBoxBean,Array2DimensionInputBean" %>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="arrayCheckBoxBean" scope="session" class="ArrayCheckBoxBean"/>
-<jsp:useBean id="arrayRFQDocumentInputBean" scope="session" class="Array2DimensionInputBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
+<%@ page import="bean.DateBean,bean.ArrayCheckBoxBean,bean.Array2DimensionInputBean" %>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="arrayCheckBoxBean" scope="session" class="bean.ArrayCheckBoxBean"/>
+<jsp:useBean id="arrayRFQDocumentInputBean" scope="session" class="bean.Array2DimensionInputBean"/>
 
 <!--  File Mover Bean is instantiated before the uploadBean to that it can be used as a
       listener for the upload Bean.
@@ -134,7 +134,7 @@ try
 				session.setAttribute("REMARK","Order Import from file");
 				//session.setAttribute("PREORDERTYPE","1020"); //mark by Peggy 20120303
 				session.setAttribute("ISMODELSELECTED","Y");
-				session.setAttribute("PROCESSAREA","002(¥b¾ÉÅé·~°È³¡-­»´ä¡B¿Dªù¤Î¤j³°¦a°Ï)");
+				session.setAttribute("PROCESSAREA","002(ï¿½bï¿½ï¿½ï¿½ï¿½~ï¿½È³ï¿½-ï¿½ï¿½ï¿½ï¿½Bï¿½Dï¿½ï¿½ï¿½Î¤jï¿½ï¿½ï¿½aï¿½ï¿½)");
 				session.setAttribute("CUSTOMERIDTMP","1220");
 				session.setAttribute("INSERT","Y");
 				session.setAttribute("PROGRAMNAME","D4-005");
@@ -361,10 +361,10 @@ try
 									b[j][10]="N";
 									b[j][11]="0";
 									b[j][12]="0";
-									b[j][13]=itemFactory;   //¥Í²£¼t§O add by Peggy 20120303
-									b[j][14]=""+BufferPartDesc[1][i];    //«È¤á®Æ¸¹ add by Peggy 20120303
-									b[j][15]=""+BufferUnitPrice[6][i];  //³æ»ù add by Peggy 20120303
-									b[j][16]=orderType;      //­q³æÃþ«¬ add by Peggy 20120303
+									b[j][13]=itemFactory;   //ï¿½Í²ï¿½ï¿½tï¿½O add by Peggy 20120303
+									b[j][14]=""+BufferPartDesc[1][i];    //ï¿½È¤ï¿½Æ¸ï¿½ add by Peggy 20120303
+									b[j][15]=""+BufferUnitPrice[6][i];  //ï¿½ï¿½ï¿½ add by Peggy 20120303
+									b[j][16]=orderType;      //ï¿½qï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ add by Peggy 20120303
 									b[j][17]=lineType;       //LineType add by Peggy 20120303
 									b[j][18]=lineFob;        //FOB,add by Peggy 20120329
 									b[j][19]=CustPOLineNo;   //CUST PO LINE NO,add by Peggy 20120716
@@ -399,10 +399,10 @@ try
 								b[j][10]="N";
 								b[j][11]="0";
 								b[j][12]="0";
-								b[j][13]="&nbsp;";      //¥Í²£¼t§O add by Peggy 20120303
-								b[j][14]=""+BufferPartDesc[1][i];     //«È¤á®Æ¸¹ add by Peggy 20120303
-								b[j][15]=""+BufferUnitPrice[6][i];  //³æ»ù add by Peggy 20120303
-								b[j][16]="&nbsp;";      //­q³æÃþ«¬ add by Peggy 20120303
+								b[j][13]="&nbsp;";      //ï¿½Í²ï¿½ï¿½tï¿½O add by Peggy 20120303
+								b[j][14]=""+BufferPartDesc[1][i];     //ï¿½È¤ï¿½Æ¸ï¿½ add by Peggy 20120303
+								b[j][15]=""+BufferUnitPrice[6][i];  //ï¿½ï¿½ï¿½ add by Peggy 20120303
+								b[j][16]="&nbsp;";      //ï¿½qï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ add by Peggy 20120303
 								b[j][17]="&nbsp;";       //LineType add by Peggy 20120303	
 								b[j][18]="&nbsp;";       //FOB, add by Peggy 20120329	
 								b[j][19]=CustPOLineNo;   //CUST PO LINE NO,add by Peggy 20120716	
@@ -522,7 +522,7 @@ try
     String ProcessArea     = (String)session.getAttribute("PROCESSAREA");
     String CustomerIdTmp   = (String)session.getAttribute("CUSTOMERIDTMP");
     String Insert          = (String)session.getAttribute("INSERT");
-	String q[][]=arrayRFQDocumentInputBean.getArray2DContent();//¨ú±o¥Ø«e°}¦C¤º®e 		
+	String q[][]=arrayRFQDocumentInputBean.getArray2DContent();//ï¿½ï¿½ï¿½oï¿½Ø«eï¿½}ï¿½Cï¿½ï¿½ï¿½e 		
                        		    		  	   		   
   	if (uploadFlag == null) 
   	{  

@@ -1,16 +1,16 @@
 <!-- 20180628 Peggy,add new column =customer group-->
 <%@ page contentType="text/html; charset=utf-8"    language="java" import="java.sql.*,java.util.*,javax.mail.*,javax.mail.internet.*"%>
-<%@ page import="java.io.*,DateBean,ArrayComboBoxBean"%>
+<%@ page import="java.io.*,bean.DateBean,bean.ArrayComboBoxBean"%>
 <%@ page import="java.lang.Math.*"%>
 <%@ page import="java.text.*"%>
 <%@ page import="jxl.*"%>
-<%@ page import="WorkingDateBean"%>
+<%@ page import="bean.WorkingDateBean"%>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<%@ page import="DateBean" %> 
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
+<%@ page import="bean.DateBean" %>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">

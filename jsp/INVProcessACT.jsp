@@ -1,19 +1,19 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.util.*,RsBean" %>
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.util.*,bean.RsBean" %>
 <!--=============以下區段為安全認證機制==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=================================-->
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<%@ page import="DateBean,ArrayCheckInputBoxBean,SendMailBean,CodeUtil" %>
+<%@ page import="bean.DateBean,bean.ArrayCheckInputBoxBean,bean.SendMailBean,CodeUtil" %>
 <html>
 <head>
 <title>INVProcessACT.jsp</title>
 <meta http-equiv="Content-Type" content="text/html; charset=Big5">
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="arrayCheckInputBoxBean" scope="session" class="ArrayCheckInputBoxBean"/>
-<jsp:useBean id="sendMailBean" scope="page" class="SendMailBean"/>
-<jsp:useBean id="rsBean" scope="application" class="RsBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="arrayCheckInputBoxBean" scope="session" class="bean.ArrayCheckInputBoxBean"/>
+<jsp:useBean id="sendMailBean" scope="page" class="bean.SendMailBean"/>
+<jsp:useBean id="rsBean" scope="application" class="bean.RsBean"/>
 </head>
 
 <body>
@@ -45,7 +45,7 @@ String sDate = dateBean.getYearMonthDay();
 String ChkFlag = "";
 String fromStatusID=request.getParameter("FROMSTATUSID");
 String [][] chooseFeatures=arrayCheckInputBoxBean.getArray2DContent();
-//String [][] qty=ArrayCheckInputBoxBean.getArray2DContent();
+//String [][] qty=bean.ArrayCheckInputBoxBean.getArray2DContent();
  try
  { 
 if (chooseFeatures!=null) {

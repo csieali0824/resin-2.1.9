@@ -6,9 +6,9 @@
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<%@ page import="ComboBoxBean"%>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
+<%@ page import="bean.ComboBoxBean"%>
 <html>
 <head>
 <title>Sales Person Input Form</title>
@@ -20,7 +20,7 @@ function setSubmit(URL)
 }
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
-<jsp:useBean id="comboBoxBean" scope="application" class="ComboBoxBean"/>
+<jsp:useBean id="comboBoxBean" scope="application" class="bean.ComboBoxBean"/>
 </head>
 <body>
 <FORM ACTION="../jsp/TSSalesPersonInsert.jsp" METHOD="post" name="MYFORM">

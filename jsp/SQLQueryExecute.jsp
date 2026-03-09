@@ -2,7 +2,7 @@
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<%@ page import="QueryAllBean" %>
+<%@ page import="bean.QueryAllBean" %>
 <html>
 <head>
 <title>RsTest</title>
@@ -10,7 +10,7 @@
 </head>
 
 <body>
-<jsp:useBean id="queryAllBean" scope="application" class="QueryAllBean"/>
+<jsp:useBean id="queryAllBean" scope="application" class="bean.QueryAllBean"/>
 <%  
   String sqlStat=request.getParameter("SQL");
   try

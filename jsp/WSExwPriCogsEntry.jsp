@@ -1,13 +1,13 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" %>
-<%@ page import="ComboBoxBean,ArrayComboBoxBean,ForePriCostInputBean,DateBean" %>
+<%@ page import="bean.ComboBoxBean,bean.ArrayComboBoxBean,bean.ForePriCostInputBean,bean.DateBean" %>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=============To get the Authentication==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<jsp:useBean id="forePriCostInputBean" scope="session" class="ForePriCostInputBean"/>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="forePriCostInputBean" scope="session" class="bean.ForePriCostInputBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <%  
   forePriCostInputBean.setArray2DString(null);//將此bean值清空以為不同case可以重新運作  
   String vYear=request.getParameter("VYEAR");

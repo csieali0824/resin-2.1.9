@@ -1,8 +1,8 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" %>
 <!--=======To get Connection from different DB======-->
 <%@ include file="/jsp/include/ConnBPCSPoolPage.jsp" %>
-<%@ page import="DateBean" %>
-<jsp:useBean  class="DateBean" id="dateBean" scope="page"/>
+<%@ page import="bean.DateBean" %>
+<jsp:useBean  class="bean.DateBean" id="dateBean" scope="page"/>
 
 <html>
 <head>

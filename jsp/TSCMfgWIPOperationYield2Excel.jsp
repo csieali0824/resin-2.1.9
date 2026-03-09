@@ -1,13 +1,13 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.io.*,jxl.*,jxl.write.*,jxl.format.*" %>
-<%@ page import="DateBean,MiscellaneousBean"%>
+<%@ page import="bean.DateBean,bean.MiscellaneousBean"%>
 <!--=============以下區段為安全認證機制==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=================================-->
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="miscellaneousBean" scope="page" class="MiscellaneousBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="miscellaneousBean" scope="page" class="bean.MiscellaneousBean"/>
 <html>
 <head>
 <title>Upload File and Insert into Database</title>

@@ -3,9 +3,9 @@
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=============To get the Authentication==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<%@ page import="DateBean,ForePriCostInputBean" %>
-<jsp:useBean id="forePriCostInputBean" scope="session" class="ForePriCostInputBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<%@ page import="bean.DateBean,bean.ForePriCostInputBean" %>
+<jsp:useBean id="forePriCostInputBean" scope="session" class="bean.ForePriCostInputBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <html>
 <head>
 <title>WINS system - Price Segment Data Insert</title>

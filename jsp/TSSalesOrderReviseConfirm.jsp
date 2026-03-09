@@ -5,23 +5,23 @@
 <%@ page import="jxl.*"%>
 <%@ page import="java.lang.Math.*"%>
 <%@ page import="java.text.*"%>
-<%@ page import="java.io.*,DateBean,ComboBoxAllBean"%>
+<%@ page import="java.io.*,bean.DateBean,bean.ComboBoxAllBean"%>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=============以下區段為安全認證機制==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============以下區段為取得連結池==========-->
-<%@ page import="SalesDRQPageHeaderBean,ComboBoxBean,DateBean" %>
+<%@ page import="bean.SalesDRQPageHeaderBean,bean.ComboBoxBean,bean.DateBean" %>
 <html>
 <head>
 <title>Sales Order Revise for Confirm</title>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="comboBoxAllBean" scope="page" class="ComboBoxAllBean"/>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="comboBoxBean1" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="comboBoxBean2" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="comboBoxBean3" scope="page" class="ComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="comboBoxAllBean" scope="page" class="bean.ComboBoxAllBean"/>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="comboBoxBean1" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="comboBoxBean2" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="comboBoxBean3" scope="page" class="bean.ComboBoxBean"/>
 </head>
 <script language="JavaScript" type="text/JavaScript">
 function setQuery(URL)

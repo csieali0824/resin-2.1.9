@@ -7,7 +7,7 @@
 <%@ page import="jxl.*" %>
 <%@ page import="java.lang.Math.*" %>
 <%@ page import="java.text.*" %>
-<%@ page import="java.io.*,DateBean" %>
+<%@ page import="java.io.*,bean.DateBean" %>
 <%@ page import="com.jspsmart.upload.*" %>
 <%@ page errorPage="/jsp/ExceptionHandler.jsp" %>
 <%@ page import="com.mysql.jdbc.StringUtils" %>
@@ -21,7 +21,7 @@
 <html>
 <head>
     <title>Create Date Code Rule</title>
-    <jsp:useBean id="dateBean" class="DateBean"/>
+    <jsp:useBean id="dateBean" class="bean.DateBean"/>
     <jsp:useBean id="dateCodeYYWW" class="dateCodeRule.DateCodeYYWW"/>
     <jsp:useBean id="smartUpload" class="com.jspsmart.upload.SmartUpload"/>
     <link rel="stylesheet" href="../../css/bootstrap.min.css">

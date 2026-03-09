@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" %>
-<%@ page import="DateBean" %>
+<%@ page import="bean.DateBean" %>
 <!--=============以下區段為安全認證機制==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=================================-->
@@ -7,12 +7,12 @@
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/ConnBPCSPoolPage.jsp/"%>
 <%@ include file="/jsp/include/ConnMESPoolPage.jsp/"%>
-<!--%@ page import="DateBean,ForecastInputBean,WorkingDateBean" %-->
-<%@ page import="DateBean,ArrayListCheckBoxBean"%>
-<!--jsp:useBean id="forecastInputBean" scope="session" class="ForecastInputBean"/-->
-<jsp:useBean id="arrayListCheckBoxBean" scope="session" class="ArrayListCheckBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<!--jsp:useBean id="workingDateBean" scope="page" class="WorkingDateBean"/-->
+<!--%@ page import="bean.DateBean,bean.ForecastInputBean,bean.WorkingDateBean" %-->
+<%@ page import="bean.DateBean,bean.ArrayListCheckBoxBean"%>
+<!--jsp:useBean id="forecastInputBean" scope="session" class="bean.ForecastInputBean"/-->
+<jsp:useBean id="arrayListCheckBoxBean" scope="session" class="bean.ArrayListCheckBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<!--jsp:useBean id="workingDateBean" scope="page" class="bean.WorkingDateBean"/-->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">

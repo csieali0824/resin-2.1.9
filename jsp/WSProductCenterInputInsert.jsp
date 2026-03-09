@@ -3,9 +3,9 @@
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<%@ page import="DateBean,Array2DimensionInputBean" %>
-<jsp:useBean id="array2DimensionInputBean" scope="session" class="Array2DimensionInputBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<%@ page import="bean.DateBean,bean.Array2DimensionInputBean" %>
+<jsp:useBean id="array2DimensionInputBean" scope="session" class="bean.Array2DimensionInputBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <html>
 <head>
 <title>Sales Forecast Cost Data Insert</title>

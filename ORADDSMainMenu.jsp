@@ -1,13 +1,13 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.util.*,java.sql.*" %>
 <!--=============以下區段為取得授權==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<%@ page import="java.sql.*,DateBean" %>
+<%@ page import="java.sql.*,bean.DateBean" %>
 <%@ page pageEncoding="utf-8" %>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--%@ include file="/jsp/include/PageHeaderSwitch.jsp"%-->
-<!--%@ page import="SalesDRQPageHeaderBean" %-->
+<!--%@ page import="bean.SalesDRQPageHeaderBean" %-->
 
 <html>
 <head>

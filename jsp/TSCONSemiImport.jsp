@@ -1,8 +1,8 @@
-<!--20171106 Peggy,po§ï¦Üline-->
-<!--20180202 Peggy,­q³æ1141¥X³f¤è¦¡¬°DHL from Chris-->
-<!--20180706 Peggy,on semi housenoÅÜ¦¨-ON-->
-<!--20180706 Peggy,on semi housenoÅÜ¦¨-E-->
-<!--20180202 Peggy,­q³æ1141¥X³f¤è¦¡¬°UPS EXPRESS from Ava-->
+<!--20171106 Peggy,poï¿½ï¿½ï¿½line-->
+<!--20180202 Peggy,ï¿½qï¿½ï¿½1141ï¿½Xï¿½fï¿½è¦¡ï¿½ï¿½DHL from Chris-->
+<!--20180706 Peggy,on semi housenoï¿½Ü¦ï¿½-ON-->
+<!--20180706 Peggy,on semi housenoï¿½Ü¦ï¿½-E-->
+<!--20180202 Peggy,ï¿½qï¿½ï¿½1141ï¿½Xï¿½fï¿½è¦¡ï¿½ï¿½UPS EXPRESS from Ava-->
 <html>
 <head>
 <title>TSCC ON Semi Order Import </title>
@@ -26,12 +26,12 @@
 <jsp:setProperty name="upBean" property="overwrite" value="true" />
 <% upBean.addUploadListener(fileMover); %>
 </jsp:useBean>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<%@ page import="DateBean,ArrayCheckBoxBean,Array2DimensionInputBean" %>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="arrayCheckBoxBean" scope="session" class="ArrayCheckBoxBean"/>
-<jsp:useBean id="arrayRFQDocumentInputBean" scope="session" class="Array2DimensionInputBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
+<%@ page import="bean.DateBean,bean.ArrayCheckBoxBean,bean.Array2DimensionInputBean" %>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="arrayCheckBoxBean" scope="session" class="bean.ArrayCheckBoxBean"/>
+<jsp:useBean id="arrayRFQDocumentInputBean" scope="session" class="bean.Array2DimensionInputBean"/>
 
 <!--  File Mover Bean is instantiated before the uploadBean to that it can be used as a
       listener for the upload Bean.
@@ -91,7 +91,7 @@ try
 				// Change the directory location below
 				Workbook rw = Workbook.getWorkbook(new File("d:/resin-2.1.9/webapps/oradds/jsp/ON Semi/"+fileMover.getFileName()));
 				Sheet sheet = rw.getSheet(0);
-				//Cell   cellorderno   = sheet.getCell(3,2);  //§ï§ìline,modify by Peggy 20171106
+				//Cell   cellorderno   = sheet.getCell(3,2);  //ï¿½ï¿½ï¿½line,modify by Peggy 20171106
 				Cell cellorderno = null;
 				//String BufferOrderNo = cellorderno.getContents();
 				String BufferOrderNo = "";
@@ -127,7 +127,7 @@ try
 				session.setAttribute("SALESAREANO","002");
 				session.setAttribute("REMARK","Order Import from file");
 				session.setAttribute("ISMODELSELECTED","Y");
-				session.setAttribute("PROCESSAREA","002(¥b¾ÉÅé·~°È³¡-­»´ä¡B¿Dªù¤Î¤j³°¦a°Ï)");
+				session.setAttribute("PROCESSAREA","002(ï¿½bï¿½ï¿½ï¿½ï¿½~ï¿½È³ï¿½-ï¿½ï¿½ï¿½ï¿½Bï¿½Dï¿½ï¿½ï¿½Î¤jï¿½ï¿½ï¿½aï¿½ï¿½)");
 				session.setAttribute("CUSTOMERIDTMP","601290");
 				session.setAttribute("INSERT","Y");
 				session.setAttribute("PROGRAMNAME","D4-005");
@@ -519,7 +519,7 @@ try
     String ProcessArea     = (String)session.getAttribute("PROCESSAREA");
     String CustomerIdTmp   = (String)session.getAttribute("CUSTOMERIDTMP");
     String Insert          = (String)session.getAttribute("INSERT");
-	String q[][]=arrayRFQDocumentInputBean.getArray2DContent();//¨ú±o¥Ø«e°}¦C¤º®e 		
+	String q[][]=arrayRFQDocumentInputBean.getArray2DContent();//ï¿½ï¿½ï¿½oï¿½Ø«eï¿½}ï¿½Cï¿½ï¿½ï¿½e 		
                        		    		  	   		   
   	if (uploadFlag == null) 
   	{  

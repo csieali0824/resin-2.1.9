@@ -1,6 +1,6 @@
 <!--modify by Peggy 20150105,年度下拉選單程式改寫-->
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.math.BigDecimal,java.text.DecimalFormat" %>
-<%@ page import="ComboBoxAllBean,DateBean,WorkingDateBean,ArrayComboBoxBean,MiscellaneousBean"%>
+<%@ page import="bean.ComboBoxAllBean,bean.DateBean,bean.WorkingDateBean,bean.ArrayComboBoxBean,bean.MiscellaneousBean"%>
 <script language="JavaScript" type="text/JavaScript">
 function setSubmit(URL)
 {    
@@ -163,20 +163,20 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 12px }
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<%@ page import="ComboBoxBean,DateBean,ArrayComboBoxBean,Array2DimensionInputBean" %>
+<%@ page import="bean.ComboBoxBean,bean.DateBean,bean.ArrayComboBoxBean,bean.Array2DimensionInputBean" %>
  
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
 
-<%@ page import="RadioButton2DBean" %>
-<jsp:useBean id="radioButton2DBean" scope="page" class="RadioButton2DBean"/>
-<jsp:useBean id="comboBoxAllBean" scope="page" class="ComboBoxAllBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="workingDateBean" scope="page" class="WorkingDateBean"/>
-<jsp:useBean id="miscellaneousBean" scope="page" class="MiscellaneousBean"/>
+<%@ page import="bean.RadioButton2DBean" %>
+<jsp:useBean id="radioButton2DBean" scope="page" class="bean.RadioButton2DBean"/>
+<jsp:useBean id="comboBoxAllBean" scope="page" class="bean.ComboBoxAllBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="workingDateBean" scope="page" class="bean.WorkingDateBean"/>
+<jsp:useBean id="miscellaneousBean" scope="page" class="bean.MiscellaneousBean"/>
 <%
 int rs1__numRows = 500;
 int rs1__index = 0;

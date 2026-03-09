@@ -1,14 +1,14 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.util.*" %>
 <!--=============To get the Authentication==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<%@ page import="java.io.*,DateBean,jxl.*,jxl.write.*,jxl.format.*" %>
+<%@ page import="java.io.*,bean.DateBean,jxl.*,jxl.write.*,jxl.format.*" %>
 <!--=============To get the Connection==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <html>
 <head>
 <title>Insert PIT UploadFile into Database</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <%@ page import="com.jspsmart.upload.*" %>
 <jsp:useBean id="mySmartUpload" scope="page" class="com.jspsmart.upload.SmartUpload" /> 
 </head>

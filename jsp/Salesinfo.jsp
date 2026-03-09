@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,DateBean" %>
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,bean.DateBean" %>
 <!--=============To get the Authentication==========-->
 <!--< include file="/jsp/include/AuthenticationPage.jsp"%>-->
 <!--=============To get Connection from different DB==========-->
@@ -10,9 +10,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
 <title>Salesinfo.jsp</title>
 </head>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="thisDateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="tempDateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="thisDateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="tempDateBean" scope="page" class="bean.DateBean"/>
 <body>
 <%
     String comSql="";

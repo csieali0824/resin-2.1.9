@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.io.*,jxl.*,jxl.write.*,jxl.format.*" %>
-<%//@ page import="ComboBoxAllBean,DateBean"%>
+<%//@ page import="bean.ComboBoxAllBean,bean.DateBean"%>
 <%//@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.io.*,jxl.*,jxl.write.*,jxl.format.*,javax.naming.*,java.util.*,java.awt.*,com.jrefinery.data.*,com.jrefinery.chart.*,com.jrefinery.chart.ui.*,com.jrefinery.chart.data.*,org.jCharts.*,org.jCharts.chartData.*,org.jCharts.properties.*,org.jCharts.types.ChartType.*,org.jCharts.axisChart.*,org.jCharts.test.TestDataGenerator.*,org.jCharts.encoders.JPEGEncoder13.*,org.jCharts.properties.util.ChartFont.*,org.jCharts.encoders.ServletEncoderHelper.*" %>
-<%@ page import="DateBean,WorkingDateBean,ArrayComboBoxBean"%>
+<%@ page import="bean.DateBean,bean.WorkingDateBean,bean.ArrayComboBoxBean"%>
 
 <!--=============To get the Authentication==========-->
 <%//@ include file="/jsp/include/AuthenticationPage.jsp"%>
@@ -11,9 +11,9 @@
 <!--%@ include file="/jsp/include/ConnMESPoolPage.jsp"%-->
 <!--=============To get Connection from different DB==========-->
 <%@ include file="/jsp/include/ProgressStatusBarStart.jsp"%>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="workingDateBean" scope="page" class="WorkingDateBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="workingDateBean" scope="page" class="bean.WorkingDateBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
 <title>PIS MPS REPORT</title>

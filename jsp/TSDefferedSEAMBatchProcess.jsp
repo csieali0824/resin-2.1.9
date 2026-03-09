@@ -4,7 +4,7 @@
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<%@ page import="DateBean,ArrayCheckBoxBean,ArrayCheckBox2DBean,Array2DimensionInputBean,SendMailBean,CodeUtil" %>
+<%@ page import="bean.DateBean,bean.ArrayCheckBoxBean,bean.ArrayCheckBox2DBean,bean.Array2DimensionInputBean,bean.SendMailBean,CodeUtil" %>
 
 
 <html>
@@ -90,8 +90,8 @@
               padding: 2px;   margin: 1px; text-align: center;}             
 </STYLE>
 <title>SEA(C) Deffered Call RCV API Process</title>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="sendMailBean" scope="page" class="SendMailBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="sendMailBean" scope="page" class="bean.SendMailBean"/>
 <meta http-equiv="Content-Type" content="text/html; charset=big5"></head>
 <body>
 <%@ include file="/jsp/include/TSCMfgDocHyperLinkPage.jsp"%>

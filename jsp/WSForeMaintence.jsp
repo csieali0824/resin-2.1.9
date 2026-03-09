@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*"%>
-<%@ page import="QueryAllBean,ComboBoxAllBean,DateBean,ArrayComboBoxBean" %>
+<%@ page import="bean.QueryAllBean,bean.ComboBoxAllBean,bean.DateBean,bean.ArrayComboBoxBean" %>
 <!--=============以下區段為安全認證機制==========-->
 <!--%@ include file="/jsp/include/AuthenticationPage.jsp"%-->
 <!--=================================-->
@@ -24,10 +24,10 @@
 	{ alert("請選擇地區別作查詢");}
   }
 </script>
-<jsp:useBean id="queryAllBean" scope="application" class="QueryAllBean"/>
-<jsp:useBean id="comboBoxAllBean" scope="page" class="ComboBoxAllBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="queryAllBean" scope="application" class="bean.QueryAllBean"/>
+<jsp:useBean id="comboBoxAllBean" scope="page" class="bean.ComboBoxAllBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">

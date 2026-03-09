@@ -1,13 +1,13 @@
 <%@ page language="java" import="java.sql.*"%>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½oï¿½sï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
 <%@ page import="com.mysql.jdbc.StringUtils" %>
 <%@ page import="java.util.Arrays" %>
 <%@ page import="java.util.stream.Stream" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
 <%@ include file="/jsp/include/ProgressStatusBarStart.jsp"%>
 <%
 String QNO=request.getParameter("QNO");
@@ -42,7 +42,7 @@ function sendToMainWindow(price,end_cust)
 	{
 		if (!StringUtils.isNullOrEmpty(QNO) && !StringUtils.isNullOrEmpty(PNO)) {
 			String sql = "SELECT * FROM (\n" +
-					"    -- ²Ä¤@³¡¤À¡GQUQTE ¸ê®Æ¨Ó·½\n" +
+					"    -- ï¿½Ä¤@ï¿½ï¿½ï¿½ï¿½ï¿½GQUQTE ï¿½ï¿½Æ¨Ó·ï¿½\n" +
 					"     SELECT \n" +
 					"         quoteid,\n" +
 					"         partnumber,\n" +
@@ -86,7 +86,7 @@ function sendToMainWindow(price,end_cust)
 					"        pass_flag,\n" +
 					"        todate\n" +
 					"    UNION ALL\n" +
-					"     -- ²Ä¤G³¡¤À¡GMODELN ¸ê®Æ¨Ó·½(¥u¨ú³Ì·s³ø»ù)\n" +
+					"     -- ï¿½Ä¤Gï¿½ï¿½ï¿½ï¿½ï¿½GMODELN ï¿½ï¿½Æ¨Ó·ï¿½(ï¿½uï¿½ï¿½ï¿½Ì·sï¿½ï¿½ï¿½ï¿½)\n" +
 					"    SELECT\n" +
 					"         quoteid,\n" +
 					"         partnumber,\n" +
@@ -185,9 +185,9 @@ function sendToMainWindow(price,end_cust)
 		<%	    
 	}
 	%>
-<!--%ªí³æ°Ñ¼Æ%-->
+<!--%ï¿½ï¿½ï¿½Ñ¼ï¿½%-->
 </FORM>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 <%@ include file="/jsp/include/ProgressStatusBarStop.jsp"%>

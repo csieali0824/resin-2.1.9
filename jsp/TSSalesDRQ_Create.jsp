@@ -23,10 +23,10 @@
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============To get Connection Pool==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<%@ page import="ComboBoxBean,DateBean,ArrayComboBoxBean,Array2DimensionInputBean" %>
+<%@ page import="bean.ComboBoxBean,bean.DateBean,bean.ArrayComboBoxBean,bean.Array2DimensionInputBean" %>
 <!--=================================-->
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
 <%@ page import="com.mysql.jdbc.StringUtils" %>
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.Arrays" %>
@@ -35,13 +35,13 @@
 <html>
 <head>
 	<title>Sales Delivery Request Questionnaire Input Form</title>
-	<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-	<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-	<jsp:useBean id="arrayRFQDocumentInputBean" scope="session" class="Array2DimensionInputBean"/>
-	<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-	<jsp:useBean id="dateBeans" scope="page" class="DateBean"/>
-	<jsp:useBean id="dateBeanss" scope="page" class="DateBean"/>
-	<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
+	<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+	<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+	<jsp:useBean id="arrayRFQDocumentInputBean" scope="session" class="bean.Array2DimensionInputBean"/>
+	<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+	<jsp:useBean id="dateBeans" scope="page" class="bean.DateBean"/>
+	<jsp:useBean id="dateBeanss" scope="page" class="bean.DateBean"/>
+	<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
 	<!--=================================-->
 	<STYLE TYPE='text/css'>
 		BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 12px }

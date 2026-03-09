@@ -1,7 +1,7 @@
 <!-- 20161219 liling 增加organization id=606 直接入庫的部份 -->
 <!-- 20170515 liling 修改organization id=606 直接入庫改分階段入庫 -->
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.util.*,jxl.*,jxl.write.*,jxl.format.*,WorkingDateBean,java.lang.Math.*" %>
-<%@ page import="java.io.*,DateBean" %>
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.util.*,jxl.*,jxl.write.*,jxl.format.*,bean.WorkingDateBean,java.lang.Math.*" %>
+<%@ page import="java.io.*,bean.DateBean" %>
 <%@ page import="com.jspsmart.upload.*" %>
 <%@ page errorPage="ExceptionHandler.jsp" %>
 <!--=============以下區段為取得連結池==========-->
@@ -13,7 +13,7 @@
 <html>
 <head>
 <title>Insert UploadFile into Database</title>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <jsp:useBean id="mySmartUpload" scope="page" class="com.jspsmart.upload.SmartUpload" />
 
 <meta http-equiv="Content-Type" content="text/html; charset=big5"></head>

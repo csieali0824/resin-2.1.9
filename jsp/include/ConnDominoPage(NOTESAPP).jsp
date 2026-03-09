@@ -1,5 +1,5 @@
-<%@ page import="DominoPoolBean,lotus.domino.*"%>
-<jsp:useBean id="dominoConn" scope="application" class="DominoPoolBean"/>
+<%@ page import="bean.DominoPoolBean,lotus.domino.*"%>
+<jsp:useBean id="dominoConn" scope="application" class="bean.DominoPoolBean"/>
 
 <%
  // Strat Connection for Domino NOTESAPP Server

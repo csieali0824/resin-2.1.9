@@ -2,9 +2,9 @@
 <%@ page contentType="text/html; charset=big5" language="java" import="java.sql.*,java.text.*"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
 <%
 String sql = "";
 String ITEMID= request.getParameter("ITEMID");

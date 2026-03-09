@@ -1,16 +1,16 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*"%>
 <!--=============To get the Authentication==========-->
 <!--%@ include file="/jsp/include/AuthenticationPage.jsp"%-->
-<%@ page import="DateBean,WorkingDateBean,ComboBoxBean,ArrayComboBoxBean" %>
+<%@ page import="bean.DateBean,bean.WorkingDateBean,bean.ComboBoxBean,bean.ArrayComboBoxBean" %>
 <!--=============Open connection==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=============Process Start==========-->
 <%//@ include file="/jsp/include/ProgressStatusBarStart.jsp"%>
 
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="workingDateBean" scope="page" class="WorkingDateBean"/>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="workingDateBean" scope="page" class="bean.WorkingDateBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
 
 
 <html>

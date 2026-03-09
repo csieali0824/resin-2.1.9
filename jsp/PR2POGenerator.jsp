@@ -1,12 +1,12 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.util.Vector,ComboBoxBean,DateBean" %>
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.util.Vector,bean.ComboBoxBean,bean.DateBean" %>
 <!-- =============To get the Authentication==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnDominoPage(NOTESAPP).jsp"%>
 <!-- include file="/jsp/include/ConnBPCSPoolPage.jsp"%>-->
 <%@ include file="/jsp/include/ConnBPCSTestPoolPage.jsp"%>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">

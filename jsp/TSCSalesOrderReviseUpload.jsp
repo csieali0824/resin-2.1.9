@@ -1,7 +1,7 @@
 <!--modify by Peggy 20140829,added to modify FOB,PAYMENT TERM,SHIP TO CONTACT-->
 <!--modify by Peggy 20150618,add two columns "Hold Shipment" & "Remove Hold"-->
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.io.*" %>
-<%@ page import="QueryAllBean,ComboBoxAllBean,ComboBoxBean,DateBean,ArrayComboBoxBean" %>
+<%@ page import="bean.QueryAllBean,bean.ComboBoxAllBean,bean.ComboBoxBean,bean.DateBean,bean.ArrayComboBoxBean" %>
 <!--=============To get the Authentication==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============To get the Authentication==========-->

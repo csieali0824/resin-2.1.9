@@ -5,8 +5,8 @@
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<%@ page import="WorkingDateBean" %>
-<jsp:useBean id="workingDateBean" scope="page" class="WorkingDateBean"/>
+<%@ page import="bean.WorkingDateBean" %>
+<jsp:useBean id="workingDateBean" scope="page" class="bean.WorkingDateBean"/>
 <html>
 <head>
 <STYLE TYPE='text/css'>

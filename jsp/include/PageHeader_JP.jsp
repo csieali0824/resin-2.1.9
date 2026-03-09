@@ -1,9 +1,9 @@
 <%@ page contentType="text/html; charset=MS932" pageEncoding="euc-jp" %>
 <meta http-equiv="Content-Type" content="text/html; charset=MS932">
-<%@ page import="SalesDRQPageHeaderBean" %>
-<%@ page import="PageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<jsp:useBean id="pageHeader" scope="session" class="PageHeaderBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<%@ page import="bean.PageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
+<jsp:useBean id="pageHeader" scope="session" class="bean.PageHeaderBean"/>
 
 <jsp:setProperty name ="rPH" property ="pgHOME" value ="ｲｲ･ﾕ･｡･ｹ･ﾈ･ﾚ-･ｸ"/>
 <jsp:setProperty name ="rPH" property ="pgAllRepLog" value ="ﾌ荀､ｹ遉�､ｻ､ｹ､ﾙ､ﾆ､ﾎﾊ菴､ﾁﾊｾﾙｻ�"/>

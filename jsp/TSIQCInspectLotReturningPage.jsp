@@ -9,9 +9,9 @@
 <!--=============以下區段為等待畫面==========-->
 <%@ include file="/jsp/IQCInclude/MProcessStatusBarStart.jsp"%>
 <!--=================================-->
-<%@ page import="CheckBoxBean,ComboBoxBean,Array2DimensionInputBean"%>
+<%@ page import="CheckBoxBean,bean.ComboBoxBean,bean.Array2DimensionInputBean"%>
 </head>
-<jsp:useBean id="arrIQC2DReturningBean" scope="session" class="Array2DimensionInputBean"/>
+<jsp:useBean id="arrIQC2DReturningBean" scope="session" class="bean.Array2DimensionInputBean"/>
 <script language="JavaScript" type="text/JavaScript">
 var checkflag = "false";
 function check(field) 
@@ -96,7 +96,7 @@ function setSubmit2(URL)
 
 </script>
 <jsp:useBean id="checkBoxBean" scope="page" class="CheckBoxBean"/>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
 <%
    String inspLotNo=request.getParameter("INSPLOTNO");
    //String prodManufactory=request.getParameter("PRODMANUFACTORY");   

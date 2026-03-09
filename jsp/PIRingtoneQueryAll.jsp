@@ -2,7 +2,7 @@
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<%@ page import="QueryAllCheckBoxBean" %>
+<%@ page import="bean.QueryAllCheckBoxBean" %>
 
 <html>
 <head>
@@ -35,7 +35,7 @@ function NeedConfirm()
 <body><FORM ACTION="../jsp/PIRingtoneDel.jsp" METHOD="POST" onSubmit="return NeedConfirm()"> 
 <input name="button" type=button onClick="this.value=check(this.form.CH)" value="全部選取">
 <INPUT TYPE="submit" value="Delete">&nbsp;&nbsp;<A HREF="PIRingtoneInput.jsp">New Ringtone</A>&nbsp;&nbsp;<A HREF="/wins/WinsMainMenu.jsp">Home</A> 
-<jsp:useBean id="queryAllCheckBoxBean" scope="page" class="QueryAllCheckBoxBean"/>
+<jsp:useBean id="queryAllCheckBoxBean" scope="page" class="bean.QueryAllCheckBoxBean"/>
 <% 
  try
  {  

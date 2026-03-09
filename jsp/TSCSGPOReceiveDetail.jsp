@@ -3,7 +3,7 @@
 <!--modify by Peggy 20170920,新增remarks欄位-->
 <!--modify by Peggy 20171205,檢查供應商來貨D/C是否符FIFO,不符者需填入原因-->
 <%@ page contentType="text/html; charset=big5" language="java" import="java.sql.*,java.net.*,java.io.*,java.text.*,java.lang.*"%>
-<%@ page import="DateBean,Array2DimensionInputBean"%>
+<%@ page import="bean.DateBean,bean.Array2DimensionInputBean"%>
 <html>
 <head>
 <STYLE TYPE='text/css'>  
@@ -21,10 +21,10 @@
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="POReceivingBean" scope="session" class="Array2DimensionInputBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="POReceivingBean" scope="session" class="bean.Array2DimensionInputBean"/>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
 </head>
 <script language="JavaScript" type="text/JavaScript">

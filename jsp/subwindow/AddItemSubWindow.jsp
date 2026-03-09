@@ -4,13 +4,13 @@
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<%@ page import="ArrayCheckBoxBean,ComboBoxBean"%>
+<%@ page import="bean.ArrayCheckBoxBean,bean.ComboBoxBean"%>
 <html>
 <head>
 <title>AddItemSubWindow</title>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
-<jsp:useBean id="comboBoxBean" scope="application" class="ComboBoxBean"/>
-<jsp:useBean id="arrayCheckBoxBean" scope="session" class="ArrayCheckBoxBean"/>
+<jsp:useBean id="comboBoxBean" scope="application" class="bean.ComboBoxBean"/>
+<jsp:useBean id="arrayCheckBoxBean" scope="session" class="bean.ArrayCheckBoxBean"/>
 </head>
 <%-- 下方的函數是用來控制是否刪除之確認動作 --%>
 <script language="JavaScript" type="text/JavaScript">

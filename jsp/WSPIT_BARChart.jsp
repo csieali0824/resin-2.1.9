@@ -1,9 +1,9 @@
 <%@ page contentType="image/jpeg; charset=MS950" language="java" import="java.io.*,java.sql.*,javax.sql.*,javax.naming.*,java.util.*,java.awt.*,com.jrefinery.data.*,com.jrefinery.chart.*,com.jrefinery.chart.ui.*,com.jrefinery.chart.data.*" %>
-<%@ page import="DateBean"%>
+<%@ page import="bean.DateBean"%>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <%	
   String product=request.getParameter("PRODUCT"); 
   String model=request.getParameter("MODEL"); 

@@ -5,7 +5,7 @@
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="DateBean,ArrayCheckBoxBean,ArrayCheckBox2DBean,Array2DimensionInputBean,SendMailBean,CodeUtil" %>
+<%@ page import="bean.DateBean,bean.ArrayCheckBoxBean,bean.ArrayCheckBox2DBean,bean.Array2DimensionInputBean,bean.SendMailBean,CodeUtil" %>
 <!--%@ include file="/jsp/include/ProgressStatusBarStart.jsp"%-->
 <script language="JavaScript" type="text/JavaScript">
  function reProcessFormConfirm(ms1,URL,woNo,runCardNo)
@@ -29,11 +29,11 @@ function alertItemExistsMsg(msItemExists)
 <html>
 <head>
 <title>MFG System Work Order Process Page</title>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 
-<jsp:useBean id="arrMFGRCMovingBean" scope="session" class="Array2DimensionInputBean"/> <!--FOR 流程卡移站中-> 流程卡移站中 -->
+<jsp:useBean id="arrMFGRCMovingBean" scope="session" class="bean.Array2DimensionInputBean"/> <!--FOR 流程卡移站中-> 流程卡移站中 -->
 
-<jsp:useBean id="sendMailBean" scope="page" class="SendMailBean"/>
+<jsp:useBean id="sendMailBean" scope="page" class="bean.SendMailBean"/>
 <meta http-equiv="Content-Type" content="text/html; charset=big5"></head>
 <body>
 <%@ include file="/jsp/include/TSCMfgDocHyperLinkPage.jsp"%>

@@ -1,5 +1,5 @@
-<%@ page import="PoolBean"%>
-<jsp:useBean id="pdmPoolBean" scope="application" class="PoolBean"/>
+<%@ page import="bean.PoolBean"%>
+<jsp:useBean id="pdmPoolBean" scope="application" class="bean.PoolBean"/>
 
 <%
  // Strat Connection for Oracle PDM Server

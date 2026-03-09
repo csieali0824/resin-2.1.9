@@ -1,13 +1,13 @@
 <%@ page language="java" import="java.sql.*"%>
-<!--=============¥H¤U°Ï¬q¬°¦w¥þ»{ÃÒ¾÷¨î==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½wï¿½ï¿½ï¿½{ï¿½Ò¾ï¿½ï¿½ï¿½==========-->
 <!--%@ include file="/jsp/include/AuthenticationPage.jsp"%-->
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½oï¿½sï¿½ï¿½ï¿½ï¿½==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½oï¿½sï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
 <%@ include file="/jsp/include/ProgressStatusBarStart.jsp"%>
 <%
  String group_ID=request.getParameter("GROUP_ID");
@@ -92,7 +92,7 @@ function sendToMainWindow(group_ID,group_Name)
           String colLabel[]=new String[colCount+1];        
           out.println("<TABLE>");      
           out.println("<TR><TH BGCOLOR=BLACK><FONT COLOR=WHITE SIZE=1>&nbsp;</TH>");        
-          for (int i=1;i<=colCount;i++) // ¤£Åã¥Ü²Ä¤@Äæ¸ê®Æ, ¬G for ¥Ñ 2¶}©l
+          for (int i=1;i<=colCount;i++) // ï¿½ï¿½ï¿½ï¿½Ü²Ä¤@ï¿½ï¿½ï¿½ï¿½, ï¿½G for ï¿½ï¿½ 2ï¿½}ï¿½l
           {
              colLabel[i]=md.getColumnLabel(i);
              out.println("<TH BGCOLOR=BLACK><FONT COLOR=WHITE SIZE=1>"+colLabel[i]+"</TH>");
@@ -115,7 +115,7 @@ function sendToMainWindow(group_ID,group_Name)
 		 buttonContent="this.value=sendToMainWindow("+'"'+group_ID+'"'+","+'"'+group_Name+'"'+")";		
          out.println("<TR BGCOLOR='"+trBgColor+"'><TD><INPUT TYPE=button NAME='button' VALUE='");%><jsp:getProperty name="rPH" property="pgFetch"/><%
 		 out.println("' onClick='"+buttonContent+"'></TD>");		
-         for (int i=1;i<=colCount;i++) // ¤£Åã¥Ü²Ä¤@Äæ¸ê®Æ, ¬G for ¥Ñ 2¶}©l
+         for (int i=1;i<=colCount;i++) // ï¿½ï¿½ï¿½ï¿½Ü²Ä¤@ï¿½ï¿½ï¿½ï¿½, ï¿½G for ï¿½ï¿½ 2ï¿½}ï¿½l
          {
           String s=(String)rs.getString(i);
           out.println("<TD><FONT SIZE=2>"+s+"</TD>");
@@ -127,7 +127,7 @@ function sendToMainWindow(group_ID,group_Name)
         rs.close();       
 	   }//end of while
 	   
-	    if (queryCount==1) //­Y¨ú¨ìªº¬d¸ß¼Æ == 1
+	    if (queryCount==1) //ï¿½Yï¿½ï¿½ï¿½ìªºï¿½dï¿½ß¼ï¿½ == 1
 	    {
 	     //out.println("queryCount="+queryCount);
 	     %>
@@ -148,11 +148,11 @@ function sendToMainWindow(group_ID,group_Name)
 	  statement.close();
      %>
   <BR>
-<!--%ªí³æ°Ñ¼Æ%-->
+<!--%ï¿½ï¿½ï¿½Ñ¼ï¿½%-->
 <INPUT TYPE="hidden" NAME="GROUP_ID" SIZE=10 value="<%=group_ID%>" >
 <INPUT TYPE="hidden" NAME="GROUP_NAME" SIZE=30 value="<%=group_Name%>" >
 </FORM>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 <%@ include file="/jsp/include/ProgressStatusBarStop.jsp"%>

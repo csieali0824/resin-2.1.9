@@ -3,9 +3,9 @@
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=============Switch CharacterSet==========-->
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="PageHeaderBean,QueryAllBean" %>
-<jsp:useBean id="pageHeader" scope="session" class="PageHeaderBean"/>
-<jsp:useBean id="queryAllBean" scope="page" class="QueryAllBean"/>
+<%@ page import="bean.PageHeaderBean,bean.QueryAllBean" %>
+<jsp:useBean id="pageHeader" scope="session" class="bean.PageHeaderBean"/>
+<jsp:useBean id="queryAllBean" scope="page" class="bean.QueryAllBean"/>
 <script language="JavaScript" type="text/JavaScript">
 function showImg(pc,wv)
 {   

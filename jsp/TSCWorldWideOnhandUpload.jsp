@@ -2,10 +2,10 @@
 <%@ page import="java.sql.*"%>
 <%@ page import="java.util.*"%>
 <%@ page import="jxl.*"%>
-<%@ page import="WorkingDateBean"%>
+<%@ page import="bean.WorkingDateBean"%>
 <%@ page import="java.lang.Math.*"%>
 <%@ page import="java.text.*"%>
-<%@ page import="java.io.*,DateBean"%>
+<%@ page import="java.io.*,bean.DateBean"%>
 <%@ page import="com.jspsmart.upload.*"%>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
@@ -15,7 +15,7 @@
 <html>
 <head>
 <title>Slow Moving Stock Upload</title>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <jsp:useBean id="mySmartUpload" scope="page" class="com.jspsmart.upload.SmartUpload" />
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
 </head>
@@ -56,8 +56,8 @@ function setCreate(URL)
 </STYLE>
 </head>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
 <!--=============以下區段為等待畫面==========-->
 <%@ include file="/jsp/include/ProgressStatusBarStart.jsp"%>
 <body>

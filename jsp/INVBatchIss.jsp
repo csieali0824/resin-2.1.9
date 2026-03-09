@@ -28,14 +28,14 @@ function submitCheck1(URL)
  document.MYFORM.submit();
 }
 </script>
-<%@ page import="java.io.*,com.jspsmart.upload.*,CheckBoxBeanNew,CheckBoxBean,ComboBoxBean,ArrayComboBoxBean,DateBean"%>
+<%@ page import="java.io.*,com.jspsmart.upload.*,bean.CheckBoxBeanNew,CheckBoxBean,bean.ComboBoxBean,bean.ArrayComboBoxBean,bean.DateBean"%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <jsp:useBean id="checkBoxBean" scope="page" class="CheckBoxBean"/>
-<jsp:useBean id="checkBoxBeanNew" scope="page" class="CheckBoxBeanNew"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
+<jsp:useBean id="checkBoxBeanNew" scope="page" class="bean.CheckBoxBeanNew"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
 <jsp:useBean id="mySmartUpload" scope="page" class="com.jspsmart.upload.SmartUpload" /> 
 <body>
 <FORM NAME="MYFORM" ACTION="../jsp/INVBatchIssCheck.jsp" METHOD="post" ENCTYPE="multipart/form-data" >

@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,RsBean,DateBean" %>
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,bean.RsBean,bean.DateBean" %>
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnBPCSDbexpPoolPage.jsp"%>
@@ -11,8 +11,8 @@
 </head>
 
 <body background="../image/b01.jpg">
-<jsp:useBean id="rsBean" scope="application" class="RsBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="rsBean" scope="application" class="bean.RsBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <%
      String EDITION=null;
 	 String dateString=null;

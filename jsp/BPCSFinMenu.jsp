@@ -3,8 +3,8 @@
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=======To get Connection from different DB======-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp" %>
-<%@ page import="ComboBoxBean" %>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
+<%@ page import="bean.ComboBoxBean" %>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
 
 <html>
 <head>

@@ -4,7 +4,7 @@
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<%@ page import="QryAllChkBoxEditBean,ComboBoxBean,ArrayComboBoxBean,DateBean,Array2DimensionInputBean"%>
+<%@ page import="bean.QryAllChkBoxEditBean,bean.ComboBoxBean,bean.ArrayComboBoxBean,bean.DateBean,bean.Array2DimensionInputBean"%>
 <html>
 <head>
 <STYLE TYPE='text/css'>
@@ -140,13 +140,13 @@ function submitCheck(ms1,ms2)
    return(true);      
 }  
 </script>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="shipTypecomboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="qryAllChkBoxEditBean" scope="session" class="QryAllChkBoxEditBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="array2DMOContactInfoBean" scope="session" class="Array2DimensionInputBean"/>
-<jsp:useBean id="array2DMODeliverInfoBean" scope="session" class="Array2DimensionInputBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="shipTypecomboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="qryAllChkBoxEditBean" scope="session" class="bean.QryAllChkBoxEditBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="array2DMOContactInfoBean" scope="session" class="bean.Array2DimensionInputBean"/>
+<jsp:useBean id="array2DMODeliverInfoBean" scope="session" class="bean.Array2DimensionInputBean"/>
 <%   
   String searchString=request.getParameter("SEARCHSTRING");
   if (searchString==null) searchString="";

@@ -4,14 +4,14 @@
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
 <%@ page import="com.mysql.jdbc.StringUtils" %>
 <%@ page import="java.util.HashMap" %>
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.regex.Matcher" %>
 <%@ page import="java.util.regex.Pattern" %>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
 <STYLE TYPE='text/css'>
 BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 12px }
   P         { font-family: Tahoma,Georgia; color: #000000; font-size: 12px }

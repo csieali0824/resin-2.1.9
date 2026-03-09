@@ -1,5 +1,5 @@
-<%@ page import="PoolBean"%>
-<jsp:useBean id="ifxNotesSalPoolBean" scope="application" class="PoolBean"/>
+<%@ page import="bean.PoolBean"%>
+<jsp:useBean id="ifxNotesSalPoolBean" scope="application" class="bean.PoolBean"/>
 
 <%
  // Strat Connection for Informix HR DB Server

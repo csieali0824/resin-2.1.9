@@ -1,11 +1,11 @@
 <!--20140815 Peggy,修改業務預設值-->
 <!--20170503 Peggy,使用invoice+carton number+partno至packing抓22D-->
 <!--20171117 Peggy,歐洲系統bug,將QUANTITY=0也丟進來,故增加QUANTITY>0判斷條件-->
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.util.*,java.text.*,java.io.*,java.sql.*,javax.sql.*,javax.naming.*,WriteLogToFileBean,DateBean,"%>
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.util.*,java.text.*,java.io.*,java.sql.*,javax.sql.*,javax.naming.*,bean.WriteLogToFileBean,bean.DateBean,"%>
 <%@ page import="org.w3c.dom.*" %>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<jsp:useBean id="writeLogToFileBean" scope="page" class="WriteLogToFileBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="writeLogToFileBean" scope="page" class="bean.WriteLogToFileBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <%
 String UserName=(String)session.getAttribute("USERNAME"); 
 String checkbox[]= request.getParameterValues("checkbox");

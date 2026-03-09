@@ -5,22 +5,22 @@
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<%@ page import="QryAllChkBoxEditBean,ArrayComboBoxBean,DateBean,QueryAllRepairBean"%>
+<%@ page import="bean.QryAllChkBoxEditBean,bean.ArrayComboBoxBean,bean.DateBean,bean.QueryAllRepairBean"%>
 <html>
 <head>
 <title>Query unApprove Request Order List</title>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
 <!--=============以下區段為等待畫面==========-->
 <%@ include file="/jsp/include/ProgressStatusBarStart.jsp"%>
 <!--=============以上區段為等待畫面==========-->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
-<jsp:useBean id="qryAllChkBoxEditBean" scope="session" class="QryAllChkBoxEditBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="queryAllRepairBean" scope="application" class="QueryAllRepairBean"/>
+<jsp:useBean id="qryAllChkBoxEditBean" scope="session" class="bean.QryAllChkBoxEditBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="queryAllRepairBean" scope="application" class="bean.QueryAllRepairBean"/>
 <style type="text/css">
  .style1   {
 	font-family:Arial;

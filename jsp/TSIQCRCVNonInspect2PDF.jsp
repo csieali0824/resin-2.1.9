@@ -1,5 +1,5 @@
 <%@ page import="javax.swing.*,org.jfree.report.JFreeReport,javax.swing.table.DefaultTableModel,javax.swing.table.TableModel,org.jfree.report.ReportProcessingException"%>
-<%@ page import="CodeUtil,DateBean"%>
+<%@ page import="CodeUtil,bean.DateBean"%>
 <%@ page import="org.jfree.report.ext.servletdemo.AbstractPageableReportServletWorker,
                  java.sql.*,java.util.*,java.net.URL,
 				  org.jfree.report.ext.servletdemo.DefaultPageableReportServletWorker,                 
@@ -25,7 +25,7 @@
 <!--=============To get the Authentication==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <html>
 <head>
 <title>IQC Receipt Non-Inspect Detail Report</title>
@@ -33,10 +33,10 @@
 </head>
 <body>
 <%
-String docNo=request.getParameter("DOCNO");//¨ú±o«e¤@­¶¤§¤ä¥I³æ¤å¥ó½s¸¹
+String docNo=request.getParameter("DOCNO");//ï¿½ï¿½ï¿½oï¿½eï¿½@ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½ï¿½ï¿½ï¿½sï¿½ï¿½
 
 String sSql="";
-int itemCount=1;//¨C¤@µ§PO¤§¶µ¦¸
+int itemCount=1;//ï¿½Cï¿½@ï¿½ï¿½POï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
 if (docNo==null || docNo.equals("")) docNo = "";
 
@@ -60,7 +60,7 @@ try
   {  	
      /*      
 	  sSql="select c.VNDNAM,a.PVEND,b.TNAME,a.PSHIP,i.THADVN,a.PORD,a.PLINE,a.PODESC,a.PQORD,(a.PECST*a.PQORD) as PACST,i.THUPI,(a.PECST*a.PQORD)+i.THUPI as pait,i.TCOM,c.VCURR,t.VTMDSC from HPO a,ith i,EST b,AVM c,AVT t "+ 
-			" where a.PSHIP=b.TSHIP and a.PVEND=c.VENDOR and a.PORD=i.tref  and a.PLINE=i.THLIN and c.VTERMS=t.VTERM and ( i.TTYPE='U' or  i.TTYPE='U1')";//¥u¨ú¥X¤w¦¬®Æ¦ý©|¥¼½Ð´Ú¤§¸ê®Æ
+			" where a.PSHIP=b.TSHIP and a.PVEND=c.VENDOR and a.PORD=i.tref  and a.PLINE=i.THLIN and c.VTERMS=t.VTERM and ( i.TTYPE='U' or  i.TTYPE='U1')";//ï¿½uï¿½ï¿½ï¿½Xï¿½wï¿½ï¿½ï¿½Æ¦ï¿½ï¿½|ï¿½ï¿½ï¿½Ð´Ú¤ï¿½ï¿½ï¿½ï¿½
 	  sSql=sSql+" and TCOM='"+docNo+"'";		
 	  sSql=sSql+" ORDER BY PVEND,PSHIP,PORD,PLINE";		
 	 */
@@ -88,7 +88,7 @@ try
 	
 	  report.setData(result); 
 	
-	 //==========¥H¤U¬°¿é¥X¨ìPDFÀÉ¥B¿Ã¹õÅã¥Ü=======================================================       
+	 //==========ï¿½Hï¿½Uï¿½ï¿½ï¿½ï¿½Xï¿½ï¿½PDFï¿½É¥Bï¿½Ã¹ï¿½ï¿½ï¿½ï¿½=======================================================       
 	   AbstractPageableReportServletWorker worker =new DefaultPageableReportServletWorker(null,in,new StaticTableModelProvider(result));  
 	  
 	   out.clearBuffer(); 

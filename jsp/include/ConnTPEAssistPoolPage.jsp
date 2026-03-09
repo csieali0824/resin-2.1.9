@@ -1,5 +1,5 @@
-<%@ page import="PoolBean"%>
-<jsp:useBean id="msTpe70poolBean" scope="application" class="PoolBean"/>
+<%@ page import="bean.PoolBean"%>
+<jsp:useBean id="msTpe70poolBean" scope="application" class="bean.PoolBean"/>
 <%
 // Start Connect MSSQL Server (TPE70 ILNAssist Database) 
     Connection tpe70iLncon=null;
@@ -22,7 +22,7 @@
      msTpe70poolBean.setBeanID("msTpe70poolBean");
      msTpe70poolBean.setUsingURL(request.getRequestURL().toString());
      tpe70iLncon=msTpe70poolBean.getConnection();	  
-     tpe70iLncon.setAutoCommit(false);//³]©wAutoCommit¬°false¥H¨¾¤îºô¸ô³s½u²§±`®Éµo¥Í¿ù»~ 
+     tpe70iLncon.setAutoCommit(false);//ï¿½]ï¿½wAutoCommitï¿½ï¿½falseï¿½Hï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½uï¿½ï¿½ï¿½`ï¿½Éµoï¿½Í¿ï¿½ï¿½~ 
 	         
     } //end of try
     catch (Exception e)

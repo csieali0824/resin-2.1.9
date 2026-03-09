@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" %>
-<%@ page import="QueryAllBean,ComboBoxAllBean,DateBean,ArrayComboBoxBean,RsBean,WorkingDateBean" %>
+<%@ page import="bean.QueryAllBean,bean.ComboBoxAllBean,bean.DateBean,bean.ArrayComboBoxBean,bean.RsBean,bean.WorkingDateBean" %>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
@@ -15,12 +15,12 @@ function wsCountryReportByModel(yearfr,monthfr,type,region,locale)
   subWin=window.open("WSForecastCountryRpt.jsp?YEARFR="+yearfr+"&MONTHFR="+monthfr+"&TYPE="+type+"&REGION="+region+"&LOCALE="+locale,"subwin","width=800,height=600,scrollbars=yes,menubar=no");  
 }
 </script>
-<jsp:useBean id="queryAllBean" scope="application" class="QueryAllBean"/>
-<jsp:useBean id="comboBoxAllBean" scope="page" class="ComboBoxAllBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="rsBean" scope="page" class="RsBean"/>
-<jsp:useBean id="workingDateBean" scope="page" class="WorkingDateBean"/>
+<jsp:useBean id="queryAllBean" scope="application" class="bean.QueryAllBean"/>
+<jsp:useBean id="comboBoxAllBean" scope="page" class="bean.ComboBoxAllBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="rsBean" scope="page" class="bean.RsBean"/>
+<jsp:useBean id="workingDateBean" scope="page" class="bean.WorkingDateBean"/>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">

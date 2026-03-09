@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" %>
-<%@ page import="ComboBoxAllBean,DateBean,ArrayComboBoxBean" %>
+<%@ page import="bean.ComboBoxAllBean,bean.DateBean,bean.ArrayComboBoxBean" %>
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnBPCSDbexpPoolPage.jsp"%>
@@ -9,9 +9,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
 <title>CreateLC.jsp</title>
-<jsp:useBean id="comboBoxAllBean" scope="page" class="ComboBoxAllBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="comboBoxAllBean" scope="page" class="bean.ComboBoxAllBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 </head>
 
 <body background="../image/b01.jpg" topmargin="0">

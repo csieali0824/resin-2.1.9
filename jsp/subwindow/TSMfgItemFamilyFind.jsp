@@ -1,10 +1,10 @@
 <%@ page language="java" import="java.sql.*"%>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½oï¿½sï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
 <%@ include file="/jsp/include/ProgressStatusBarStart.jsp"%>
 <%
  String primaryFlag=request.getParameter("PRIMARYFLAG");
@@ -89,7 +89,7 @@ function sendToMainWindow(itemId,invItem,itemDesc,woUom,tscPackage,tscFamily,tsc
       				 " and A.ORGANIZATION_ID = '49' and A.INVENTORY_ITEM_STATUS_CODE <> 'Inactive' "+
       				 " and A.DESCRIPTION not like '%Disable%' ";
 					 
-		// »Ý­n§ï¬°¨ú¯S©w¯Á¤Þ SELECT /*+ ORDERED index(a QP_PRICING_ATTRIBUTES_N8)  */			 
+		// ï¿½Ý­nï¿½ï¬°ï¿½ï¿½ï¿½Sï¿½wï¿½ï¿½ï¿½ï¿½ SELECT /*+ ORDERED index(a QP_PRICING_ATTRIBUTES_N8)  */			 
 		if (searchString =="%" || searchString.equals("%"))			
 		{  
 		 where = where + " and (A.SEGMENT1 = '%') ";
@@ -109,7 +109,7 @@ function sendToMainWindow(itemId,invItem,itemDesc,woUom,tscPackage,tscFamily,tsc
         String colLabel[]=new String[colCount+1];        
         out.println("<TABLE borderColorLight='#ffffff'>");      
         out.println("<TR><TH BGCOLOR=BLACK><FONT COLOR=WHITE SIZE=1>&nbsp;</TH>");        
-        for (int i=2;i<=colCount;i++) // ¤£Åã¥Ü²Ä¤@Äæ¸ê®ÆITEMID, ¬G for ¥Ñ 2¶}©l
+        for (int i=2;i<=colCount;i++) // ï¿½ï¿½ï¿½ï¿½Ü²Ä¤@ï¿½ï¿½ï¿½ï¿½ITEMID, ï¿½G for ï¿½ï¿½ 2ï¿½}ï¿½l
         {
          colLabel[i]=md.getColumnLabel(i);
          out.println("<TH BGCOLOR=BULE><FONT COLOR=WHITE SIZE=1>"+colLabel[i]+"</TH>");
@@ -136,7 +136,7 @@ function sendToMainWindow(itemId,invItem,itemDesc,woUom,tscPackage,tscFamily,tsc
 		out.println("<TR BGCOLOR='"+"#CCFFDD"+"'><TD><INPUT TYPE=button NAME='button' VALUE='");%><jsp:getProperty name="rPH" property="pgFetch"/><%
 		
 		 out.println("' onClick='"+buttonContent+"'></TD>");		
-         for (int i=2;i<=colCount;i++) // ¤£Åã¥Ü²Ä¤@Äæ¸ê®ÆITEMID, ¬G for ¥Ñ 2¶}©l
+         for (int i=2;i<=colCount;i++) // ï¿½ï¿½ï¿½ï¿½Ü²Ä¤@ï¿½ï¿½ï¿½ï¿½ITEMID, ï¿½G for ï¿½ï¿½ 2ï¿½}ï¿½l
          {
           String s=(String)rs.getString(i);
           out.println("<TD><FONT SIZE=2>"+s+"</TD>");
@@ -155,11 +155,11 @@ function sendToMainWindow(itemId,invItem,itemDesc,woUom,tscPackage,tscFamily,tsc
 	  statement.close();
      %>
   <BR>
-<!--%ªí³æ°Ñ¼Æ%-->
+<!--%ï¿½ï¿½ï¿½Ñ¼ï¿½%-->
 <INPUT TYPE="hidden" NAME="PRIMARYFLAG" SIZE=10 value="<%=primaryFlag%>" >
 
 </FORM>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 <%@ include file="/jsp/include/ProgressStatusBarStop.jsp"%>

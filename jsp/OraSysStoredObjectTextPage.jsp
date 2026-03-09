@@ -1,8 +1,8 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*"%>
-<%@ page import="MiscellaneousBean,java.text.DecimalFormat"%>
+<%@ page import="bean.MiscellaneousBean,java.text.DecimalFormat"%>
 <!--%@ include file="/jsp/include/ConnTest2PoolPage.jsp"%-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<jsp:useBean id="miscellaneousBean" scope="page" class="MiscellaneousBean"/>
+<jsp:useBean id="miscellaneousBean" scope="page" class="bean.MiscellaneousBean"/>
 <html>
 <head>
 <script language="JavaScript" type="text/JavaScript">

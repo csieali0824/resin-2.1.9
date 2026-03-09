@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,RsBean,PoolBean,CheckBoxBean,ArrayLstChkBoxInputBean,ComboBoxBean" %>
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,bean.RsBean,bean.PoolBean,CheckBoxBean,bean.ArrayLstChkBoxInputBean,bean.ComboBoxBean" %>
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
@@ -10,10 +10,10 @@
 </head>
 
 <body> 
-<jsp:useBean id="rsBean" scope="application" class="RsBean"/>
+<jsp:useBean id="rsBean" scope="application" class="bean.RsBean"/>
 <jsp:useBean id="checkBoxBean" scope="page" class="CheckBoxBean"/>
-<jsp:useBean id="arrayLstChkBoxInputBean" scope="session" class="ArrayLstChkBoxInputBean"/>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
+<jsp:useBean id="arrayLstChkBoxInputBean" scope="session" class="bean.ArrayLstChkBoxInputBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
 <script language="JavaScript" type="text/JavaScript">
 var checkflag = "false";
 function check(field) 

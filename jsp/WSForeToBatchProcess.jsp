@@ -1,12 +1,12 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.util.*" %>
 <!--=============To get the Authentication==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<%@ page import="DateBean,SendMailBean,CodeUtil" %>
+<%@ page import="bean.DateBean,bean.SendMailBean,CodeUtil" %>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="sendMailBean" scope="page" class="SendMailBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="sendMailBean" scope="page" class="bean.SendMailBean"/>
 <html>
 <head>
 <title>Forecast Data Batch Process</title>

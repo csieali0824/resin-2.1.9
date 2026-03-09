@@ -6,8 +6,8 @@
 <%@ include file="/jsp/include/ConnBPCSDbexpPoolPage.jsp"%>
 <%@ include file="/jsp/include/ConnBPCSDshoesPoolPage.jsp"%>
 <!--=================================-->
-<%@ page import="QueryAllRepairBean2" %>
-<%@ page import="QryAllChkBoxEditBean,ComboBoxBean,ArrayComboBoxBean,DateBean"%>
+<%@ page import="bean.QueryAllRepairBean2" %>
+<%@ page import="bean.QryAllChkBoxEditBean,bean.ComboBoxBean,bean.ArrayComboBoxBean,bean.DateBean"%>
 <html>
 <head>
 <title>LCorder.jsp</title>
@@ -41,11 +41,11 @@ function searchRepNo(pageURL)
 }
 </script>
 <body background="../image/b01.jpg">
-<jsp:useBean id="queryAllRepairBean" scope="session" class="QueryAllRepairBean2"/>
-<jsp:useBean id="qryAllChkBoxEditBean" scope="page" class="QryAllChkBoxEditBean"/>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="queryAllRepairBean" scope="session" class="bean.QueryAllRepairBean2"/>
+<jsp:useBean id="qryAllChkBoxEditBean" scope="page" class="bean.QryAllChkBoxEditBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <FORM ACTION="../jsp/LCorderDel.jsp" METHOD="POST" NAME="MYFORM" onSubmit="return NeedConfirm()">
   <strong><font color="#0080C0" size="5">查詢所有LC記錄</font></strong> 
   <%

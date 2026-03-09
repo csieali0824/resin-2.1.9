@@ -1,14 +1,14 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" %>
-<%@ page import="ComboBoxBean,DateBean,ArrayComboBoxBean,ForecastInputBean,Array2DimensionInputBean" %>
+<%@ page import="bean.ComboBoxBean,bean.DateBean,bean.ArrayComboBoxBean,bean.ForecastInputBean,bean.Array2DimensionInputBean" %>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=============To get the Authentication==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<jsp:useBean id="forecastInputBean" scope="session" class="ForecastInputBean"/>
-<jsp:useBean id="array2DimensionInputBean" scope="session" class="Array2DimensionInputBean"/>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="forecastInputBean" scope="session" class="bean.ForecastInputBean"/>
+<jsp:useBean id="array2DimensionInputBean" scope="session" class="bean.Array2DimensionInputBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <%  
   forecastInputBean.setArray2DString(null);//將此bean值清空以為不同case可以重新運作
   array2DimensionInputBean.setArray2DString(null);//將此bean值清空以為不同case可以重新運作  

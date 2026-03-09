@@ -88,8 +88,8 @@
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<%@ page import="Array2DimensionInputBean"%>
-<jsp:useBean id="wfProcess2DStatusBean" scope="session" class="Array2DimensionInputBean"/>
+<%@ page import="bean.Array2DimensionInputBean"%>
+<jsp:useBean id="wfProcess2DStatusBean" scope="session" class="bean.Array2DimensionInputBean"/>
 </head>
 <%
    String notifyType=request.getParameter("NOTIFYTYPE"); // 傳入要處理的動作類型 

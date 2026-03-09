@@ -2,13 +2,13 @@
 <html>
 <head>
 <title>IQC Inspection Lot Process Page</title>
-<!--=============¥H¤U°Ï¬q¬°¦w¥þ»{ÃÒ¾÷¨î==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½wï¿½ï¿½ï¿½{ï¿½Ò¾ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½oï¿½sï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<%@ page import="CheckBoxBean,ComboBoxBean,Array2DimensionInputBean"%>
+<%@ page import="CheckBoxBean,bean.ComboBoxBean,bean.Array2DimensionInputBean"%>
 </head>
-<jsp:useBean id="array2DimQCProcessBean" scope="session" class="Array2DimensionInputBean"/>
+<jsp:useBean id="array2DimQCProcessBean" scope="session" class="bean.Array2DimensionInputBean"/>
 <script language="JavaScript" type="text/JavaScript">
 document.onclick=function(e)
 {
@@ -36,7 +36,7 @@ function setSubmit2(URL)
 
 </script>
 <jsp:useBean id="checkBoxBean" scope="page" class="CheckBoxBean"/>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
 
 <%
    String inspLotNo=request.getParameter("INSPLOTNO");
@@ -59,23 +59,23 @@ function setSubmit2(URL)
 <body>
 <%@ include file="/jsp/include/TSIQCDocHyperLinkPage.jsp"%>
 <BR>
-<!--=============¥H¤U°Ï¬q¬°¨ú±oIQCÀËÅç§å°ò¥»¸ê®Æ==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½oIQCï¿½ï¿½ï¿½ï¿½ï¿½ò¥»¸ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/TSIQCInspectLotBasicInfoPage.jsp"%>
 <!--=================================-->
 <HR>
-<FORM NAME="DISPLAYREPAIR" onsubmit='return submitCheck("¨ú®ø½T»{","¬O§_°e¥X","½Ð¿ï¾Ü°õ¦æ°Ê§@")' ACTION="../jsp/TSIQCInspectLotMProcess.jsp?INSPLOT_NO=<%=inspLotNo%>" METHOD="post">
+<FORM NAME="DISPLAYREPAIR" onsubmit='return submitCheck("ï¿½ï¿½ï¿½ï¿½ï¿½Tï¿½{","ï¿½Oï¿½_ï¿½eï¿½X","ï¿½Ð¿ï¿½Ü°ï¿½ï¿½ï¿½Ê§@")' ACTION="../jsp/TSIQCInspectLotMProcess.jsp?INSPLOT_NO=<%=inspLotNo%>" METHOD="post">
 
 <table cellSpacing="1" bordercolordark="#B5B89A" cellPadding="1" width="97%" align="center" bordercolorlight="#FFFFFF"  border="0">
     <tr bgcolor="#CCCC99"> 
     <td colspan="3"><font color="#000066">
-      ¤º®e©ú²Ó
+      ï¿½ï¿½ï¿½eï¿½ï¿½ï¿½ï¿½
       : <BR>
     <!--%
 	  try
       {   
-	    String oneDArray[]= {"Line no.","Inventory Item","Quantity","UOM", "Request Date","Remark","Product Manufactory"};  // ¥ý±N¤º®e©ú²Óªº¼ÐÀY,µ¹¤@ºû°}¦C		 	     			  
+	    String oneDArray[]= {"Line no.","Inventory Item","Quantity","UOM", "Request Date","Remark","Product Manufactory"};  // ï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½eï¿½ï¿½ï¿½Óªï¿½ï¿½ï¿½ï¿½Y,ï¿½ï¿½ï¿½@ï¿½ï¿½ï¿½}ï¿½C		 	     			  
     	array2DArrangedFactoryBean.setArrayString(oneDArray);
-		// ¥ý¨ú ¸Ó¸ß°Ý³æµ§¼Æ
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½Ó¸ß°Ý³æµ§ï¿½ï¿½
 	     int rowLength = 0;
 	     Statement stateCNT=con.createStatement();
          ResultSet rsCNT=stateCNT.executeQuery("select count(LINE_NO) from ORADDMAN.TSDELIVERY_NOTICE_DETAIL where DNDOCNO='"+dnDocNo+"' ");	
@@ -83,10 +83,10 @@ function setSubmit2(URL)
 	     rsCNT.close();
 	     stateCNT.close();
 	  
-	   //choice = new String[rowLength+1][2];  // µ¹©w¼È¦s¤Gºû°}¦Cªº¦C¼Æ
-	   String b[][]=new String[rowLength+1][7]; // «Å§i¤@¤Gºû°}¦C,¤À§O¬O(¥¼¤À°t²£¦a=¦C)X(¸ê®ÆÄæ¼Æ+1= ¦æ)
+	   //choice = new String[rowLength+1][2];  // ï¿½ï¿½ï¿½wï¿½È¦sï¿½Gï¿½ï¿½ï¿½}ï¿½Cï¿½ï¿½ï¿½Cï¿½ï¿½
+	   String b[][]=new String[rowLength+1][7]; // ï¿½Å§iï¿½@ï¿½Gï¿½ï¿½ï¿½}ï¿½C,ï¿½ï¿½ï¿½Oï¿½O(ï¿½ï¿½ï¿½ï¿½ï¿½tï¿½ï¿½ï¿½a=ï¿½C)X(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½+1= ï¿½ï¿½)
 	  
-	   //array2DEstimateFactoryBean.setArray2DString(oneDArray); // ¥ý§â¼ÐÀY¸m¤J¤Gºû²Ä¤@¦C
+	   //array2DEstimateFactoryBean.setArray2DString(oneDArray); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Yï¿½mï¿½Jï¿½Gï¿½ï¿½ï¿½Ä¤@ï¿½C
 	   //b[0][0]="Line no.";b[0][1]="Inventory Item";b[0][2]="Quantity";b[0][3]="UOM";b[0][4]="Request Date";b[0][5]="Remark";b[0][6]="Product Manufactory";
 	   out.println("<TABLE cellSpacing='0' bordercolordark='#99CCFF'  cellPadding='1' width='100%' align='center' borderColorLight='#ffEEff' border='1'>");
 	   out.println("<tr>");
@@ -95,7 +95,7 @@ function setSubmit2(URL)
 	   int k=0;
 	   
 	   String sqlEst = "";
-	   if (UserRoles.indexOf("admin")>=0) // ­Y¬OºÞ²z­û,¥i«ü¬£¥ô¤@¼t°Ï¥æ´Á
+	   if (UserRoles.indexOf("admin")>=0) // ï¿½Yï¿½Oï¿½Þ²zï¿½ï¿½,ï¿½iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½@ï¿½tï¿½Ï¥ï¿½ï¿½
 	   { sqlEst = "select LINE_NO, ITEM_SEGMENT1,ITEM_DESCRIPTION, QUANTITY, UOM, REQUEST_DATE, REMARK, ASSIGN_MANUFACT,FTACPDATE,PCACPDATE from ORADDMAN.TSDELIVERY_NOTICE_DETAIL where DNDOCNO='"+dnDocNo+"' and LSTATUSID = '"+frStatID+"' order by LINE_NO"; }
 	   else {   
 	          sqlEst = "select LINE_NO, ITEM_SEGMENT1,ITEM_DESCRIPTION, QUANTITY, UOM, REQUEST_DATE, REMARK, ASSIGN_MANUFACT,FTACPDATE,PCACPDATE from ORADDMAN.TSDELIVERY_NOTICE_DETAIL where DNDOCNO='"+dnDocNo+"' order by LINE_NO"; 
@@ -118,12 +118,12 @@ function setSubmit2(URL)
        rs.close();  
 	         
 	
-	   //out.println(array2DEstimateFactoryBean.getArray2DString()); // §â¤º®e¦L¥X¨Ó
+	   //out.println(array2DEstimateFactoryBean.getArray2DString()); // ï¿½â¤ºï¿½eï¿½Lï¿½Xï¿½ï¿½
 	    if (lineNo !=null && pcAcceptDate!=null)
 	    {
 	      String sql = "update ORADDMAN.TSDELIVERY_NOTICE_DETAIL set PCACPDATE=? where DNDOCNO='"+dnDocNo+"' and LINE_NO='"+lineNo+"' ";
 	      PreparedStatement pstmt=con.prepareStatement(sql);  
-          pstmt.setString(1,pcAcceptDate+dateBean.getHourMinuteSecond());  // ¤u¼t¥æ´Á¦w±Æ
+          pstmt.setString(1,pcAcceptDate+dateBean.getHourMinuteSecond());  // ï¿½uï¿½tï¿½ï¿½ï¿½ï¿½wï¿½ï¿½
 		  pstmt.executeUpdate(); 
           pstmt.close();
         }  
@@ -133,7 +133,7 @@ function setSubmit2(URL)
         out.println("Exception:"+e.getMessage());
        }
 	   
-	     String a[][]=array2DArrangedFactoryBean.getArray2DContent();//¨ú±o¥Ø«e°}¦C¤º®e 		    		                       		    		  	   
+	     String a[][]=array2DArrangedFactoryBean.getArray2DContent();//ï¿½ï¿½ï¿½oï¿½Ø«eï¿½}ï¿½Cï¿½ï¿½ï¿½e 		    		                       		    		  	   
          if (a!=null) 
 		 {		  
 		       
@@ -144,7 +144,7 @@ function setSubmit2(URL)
 </table>
 <table cellSpacing="1" bordercolordark="#B5B89A" cellPadding="1" width="97%" align="center" bordercolorlight="#FFFFFF" border="0">       
   <tr bgcolor="#CCCC99"> 
-      <td colspan="3">³B²z³Æµù: 
+      <td colspan="3">ï¿½Bï¿½zï¿½Æµï¿½: 
         <INPUT TYPE="TEXT" NAME="REMARK" SIZE=60 maxlength="60" value="<%=remark%>">
 		<INPUT type="hidden" name="WORKTIME" value="0">
         <INPUT TYPE="hidden" NAME="SOFTWAREVER" SIZE=60 >           
@@ -153,7 +153,7 @@ function setSubmit2(URL)
 </table>
 <BR>
 <table align="left"><tr><td colspan="3">
-   <strong><font color="#FF0000">°õ¦æ°Ê§@-&gt;</font></strong> 
+   <strong><font color="#FF0000">ï¿½ï¿½ï¿½ï¿½Ê§@-&gt;</font></strong> 
    <a name='#ACTION'>
     <%
 	  try
@@ -182,10 +182,10 @@ function setSubmit2(URL)
 	   
 	   rs=statement.executeQuery("select COUNT (*) from ORADDMAN.TSWORKFLOW x1,ORADDMAN.TSWFACTION x2 WHERE FORMID='QC' AND FROMSTATUSID='"+frStatID+"' AND x1.ACTIONID=x2.ACTIONID and  x1.LOCALE='"+locale+"'");
 	   rs.next();
-	   if (rs.getInt(1)>0) //§PÂ_­Y¨S¦³°Ê§@¥i¿ï¾Ü´N¤£¥X²{submit«ö¶s
+	   if (rs.getInt(1)>0) //ï¿½Pï¿½_ï¿½Yï¿½Sï¿½ï¿½ï¿½Ê§@ï¿½iï¿½ï¿½Ü´Nï¿½ï¿½ï¿½Xï¿½{submitï¿½ï¿½ï¿½s
 	   {
          out.println("<INPUT TYPE='submit' NAME='submit2' value='Submit'>");
-		 out.println("<INPUT TYPE='checkBox' NAME='SENDMAILOPTION' VALUE='YES' checked>");%>¶l¥ó³qª¾<%
+		 out.println("<INPUT TYPE='checkBox' NAME='SENDMAILOPTION' VALUE='YES' checked>");%>ï¿½lï¿½ï¿½qï¿½ï¿½<%
 	   } 
        rs.close();       
 	   statement.close();
@@ -195,11 +195,11 @@ function setSubmit2(URL)
         out.println("Exception:"+e.getMessage());
        }
        %></a></td></tr></table>
-<!-- ªí³æ°Ñ¼Æ --> 
+<!-- ï¿½ï¿½ï¿½Ñ¼ï¿½ --> 
 <input name="LSTATUSID" type="HIDDEN" value="<%=frStatID%>" >
 </FORM>
 <iframe width=124 height=153 name="gToday:supermini:agenda.js" id="gToday:supermini:agenda.js" src="../calendar/ipopeng.htm" scrolling="no" frameborder="0" style="visibility:hidden; z-index:65535; position:absolute; top:0px;"></iframe>
- <!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========--> 
+ <!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½==========--> 
  <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 </body>

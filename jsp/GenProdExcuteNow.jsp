@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" %>
-<%@ page import="DateBean" %>
+<%@ page import="bean.DateBean" %>
 <%@ page import="java.util.*" %>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
@@ -8,7 +8,7 @@
 <head>
 <title>GenProdExcute</title>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 
 <!--=================================-->
 </head>

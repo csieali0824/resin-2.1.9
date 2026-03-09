@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.math.BigDecimal,java.text.DecimalFormat" %>
-<%@ page import="DateBean"%>
+<%@ page import="bean.DateBean"%>
 <script language="JavaScript" type="text/JavaScript">
 function setSubmit(URL)
 {   
@@ -31,11 +31,11 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 11px }
 <!--=============以下區段為安全認證機制==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<%@ page import="DateBean" %>
+<%@ page import="bean.DateBean" %>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <meta http-equiv="Content-Type" content="text/html; charset=big5"></head>
 <body topmargin="0" bottommargin="0">    
 <FORM  METHOD="post" NAME="MYFORM">

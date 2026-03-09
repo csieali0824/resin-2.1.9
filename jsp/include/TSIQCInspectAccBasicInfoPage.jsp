@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*"%>
 <html>
-<%@ page import="DateBean" %>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<%@ page import="bean.DateBean" %>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <title></title>
 <STYLE TYPE='text/css'>  
 BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 12px }

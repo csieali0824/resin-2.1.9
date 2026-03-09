@@ -1,9 +1,9 @@
 <%@ page contentType="text/html; charset=utf-8" %>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<%@ page import="SalesDRQPageHeaderBean" %>
-<%@ page import="PageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<jsp:useBean id="pageHeader" scope="session" class="PageHeaderBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<%@ page import="bean.PageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
+<jsp:useBean id="pageHeader" scope="session" class="bean.PageHeaderBean"/>
 
 <jsp:setProperty name="rPH" property="pgHOME" value="回首頁"/>
 <jsp:setProperty name="rPH" property="pgAllRepLog" value="查詢所有維修案件"/>

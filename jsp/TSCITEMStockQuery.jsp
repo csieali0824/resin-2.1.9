@@ -4,7 +4,7 @@
 <%@ page import="jxl.*"%>
 <%@ page import="java.lang.Math.*"%>
 <%@ page import="java.text.*"%>
-<%@ page import="java.io.*,DateBean,ComboBoxAllBean,ComboBoxBean,"%>
+<%@ page import="java.io.*,bean.DateBean,bean.ComboBoxAllBean,bean.ComboBoxBean,"%>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=============以下區段為安全認證機制==========-->
@@ -13,9 +13,9 @@
 <html>
 <head>
 <title>TSC Stock Query</title>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="comboBoxAllBean" scope="page" class="ComboBoxAllBean"/>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="comboBoxAllBean" scope="page" class="bean.ComboBoxAllBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
 </head>
 <script language="JavaScript" type="text/JavaScript">
 function setSubmit(URL)

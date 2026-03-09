@@ -2,14 +2,14 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="java.util.*" %>
 <%@ page import="jxl.*" %>
-<%@ page import="WorkingDateBean" %>
+<%@ page import="bean.WorkingDateBean" %>
 <%@ page import="java.lang.Math.*" %>
 <%@ page import="java.text.*" %>
-<%@ page import="java.io.*,DateBean" %>
+<%@ page import="java.io.*,bean.DateBean" %>
 <%@ page import="modelN.ModelNCommonUtils" %>
 <%@ page import="com.jspsmart.upload.*" %>
 <%@ page errorPage="ExceptionHandler.jsp" %>
-<%@ page import="DateBean,ArrayCheckBoxBean,Array2DimensionInputBean" %>
+<%@ page import="bean.DateBean,bean.ArrayCheckBoxBean,bean.Array2DimensionInputBean" %>
 <%@ page import="com.mysql.jdbc.StringUtils" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="modelN.dto.DetailDto" %>
@@ -22,9 +22,9 @@
 <html>
 <head>
     <title>Excel Upload</title>
-    <jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+    <jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
     <jsp:useBean id="modelNCommonUtils" scope="session" class="modelN.ModelNCommonUtils"/>
-    <jsp:useBean id="arrayRFQDocumentInputBean" scope="session" class="Array2DimensionInputBean"/>
+    <jsp:useBean id="arrayRFQDocumentInputBean" scope="session" class="bean.Array2DimensionInputBean"/>
     <link rel="stylesheet" href="../jsp/css/modelN.css"> <!-- 引用外部 CSS -->
 </head>
 <script>

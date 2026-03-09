@@ -1,7 +1,7 @@
 <!-- 20150129 by Peggy,新增P/L list報表下載功能-->
 <!-- 20160805 by Peggy,add customer query condition-->
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" %>
-<%@ page import="ComboBoxBean,DateBean"%>
+<%@ page import="bean.ComboBoxBean,bean.DateBean"%>
 <!--=============以下區段為安全認證機制==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <html>
@@ -21,9 +21,9 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 12px }
 </STYLE>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
 <title>New BufferNet原始資料查詢</title>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="dateBeans" scope="page" class="DateBean"/>
-<jsp:useBean id="dateBeane" scope="page" class="DateBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="dateBeans" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="dateBeane" scope="page" class="bean.DateBean"/>
 <script language="JavaScript" type="text/JavaScript">
 function setsubmit(URL)
 {  

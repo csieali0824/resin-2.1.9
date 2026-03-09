@@ -1,8 +1,8 @@
 <!-- 20150205 Peggy,晶片種類,晶片尺吋,鍍層加入inactive_date is null or inactive_date > trunc(sysdate)條件-->
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*"%>
 <html>
-<%@ page import="DateBean" %>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<%@ page import="bean.DateBean" %>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <title></title>
 <STYLE TYPE='text/css'>  
 BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 12px }

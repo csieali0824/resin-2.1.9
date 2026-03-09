@@ -1,8 +1,8 @@
 <%@ page contentType="text/html; charset=utf-8"  language="java" import="java.sql.*,java.net.*,java.io.*,java.text.*,java.lang.*"%>
-<%@ page import="ComboBoxBean,DateBean,ArrayComboBoxBean,Array2DimensionInputBean,SalesDRQPageHeaderBean" %>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
+<%@ page import="bean.ComboBoxBean,bean.DateBean,bean.ArrayComboBoxBean,bean.Array2DimensionInputBean,bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
  <!--=============以下區段為安全認證機制==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
@@ -23,7 +23,7 @@ BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 12px }
   .text     { font-family: Tahoma,Georgia;  font-size: 12px }
   select   {  font-family:  Tahoma,Georgia; color: #000000; font-size: 12px}
 </STYLE>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
 <title>A01 OEM 審核</title>
 <script language="JavaScript" type="text/JavaScript">
 function setSubmit(URL)

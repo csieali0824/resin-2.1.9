@@ -4,7 +4,7 @@
 <%@ page import="jxl.*"%>
 <%@ page import="java.lang.Math.*"%>
 <%@ page import="java.text.*"%>
-<%@ page import="java.io.*,DateBean,ComboBoxAllBean"%>
+<%@ page import="java.io.*,bean.DateBean,bean.ComboBoxAllBean"%>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=============以下區段為安全認證機制==========-->
@@ -13,8 +13,8 @@
 <html>
 <head>
 <title>Slow Moving Stock Query</title>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="comboBoxAllBean" scope="page" class="ComboBoxAllBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="comboBoxAllBean" scope="page" class="bean.ComboBoxAllBean"/>
 </head>
 <script language="JavaScript" type="text/JavaScript">
 function setSubmit(URL)

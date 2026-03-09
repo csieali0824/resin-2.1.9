@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.util.*,DateBean" %>
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.util.*,bean.DateBean" %>
 <!--=============以下區段為安全認證機制==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=================================-->
@@ -12,7 +12,7 @@
 <title>LCinster.jsp</title>
 <meta http-equiv="Content-Type" content="text/html; charset=Big5">
 </head>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <body>
  <A HREF="/wins/WinsMainMenu.jsp">回首頁</A><br>
 <%

@@ -5,11 +5,11 @@
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<%@ page import="WorkingDateBean" %>
-<jsp:useBean id="workingDateBean" scope="page" class="WorkingDateBean"/>
+<%@ page import="bean.WorkingDateBean" %>
+<jsp:useBean id="workingDateBean" scope="page" class="bean.WorkingDateBean"/>
 <!--%@ include file="/jsp/include/PageHeaderSwitch.jsp"%-->
-<!--%@ page import="SalesDRQPageHeaderBean" %-->
-<!--jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/-->
+<!--%@ page import="bean.SalesDRQPageHeaderBean" %-->
+<!--jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/-->
 <html>
 <head>
 <STYLE TYPE='text/css'>

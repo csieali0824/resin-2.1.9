@@ -5,10 +5,10 @@
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<%@ page import="QryAllChkBoxEditBean" %>
+<%@ page import="bean.QryAllChkBoxEditBean" %>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean"%>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean"%>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
 <html>
 <head>
 <title>Query All Sales Person</title>
@@ -62,7 +62,7 @@ function setSubmit(URL)
 <input type="text" name="USERNAME" value=""><input type="button" name="search" value="查詢" onClick="setSubmit('../jsp/TSSalesPersonQueryAll.jsp')" >
 &nbsp;&nbsp;<A HREF="../jsp/TSSalesPersonInput.jsp"><jsp:getProperty name="rPH" property="pgNew"/><jsp:getProperty name="rPH" property="pgSalesMan"/></A>&nbsp;&nbsp;<A HREF="/Oradds/OraddsMainMenu.jsp"><jsp:getProperty name="rPH" property="pgHOME"/></A> 
 
-<jsp:useBean id="qryAllChkBoxEditBean" scope="page" class="QryAllChkBoxEditBean"/>
+<jsp:useBean id="qryAllChkBoxEditBean" scope="page" class="bean.QryAllChkBoxEditBean"/>
 <%  
 try
 {

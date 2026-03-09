@@ -1,5 +1,5 @@
-<%@ page import="PoolBean"%>
-<jsp:useBean id="cqPoolBean" scope="application" class="PoolBean"/>
+<%@ page import="bean.PoolBean"%>
+<jsp:useBean id="cqPoolBean" scope="application" class="bean.PoolBean"/>
 
 <%
  // Strat Connection for Oracle ClearQuest Server
@@ -21,7 +21,7 @@ try
   cqPoolBean.setBeanID("cqPoolBean");
   cqPoolBean.setUsingURL(request.getRequestURL().toString());
   conCQ=cqPoolBean.getConnection();	  
-  conCQ.setAutoCommit(false);//³]©wAutoCommit¬°false¥H¨¾¤îºô¸ô³s½u²§±`®Éµo¥Í¿ù»~
+  conCQ.setAutoCommit(false);//ï¿½]ï¿½wAutoCommitï¿½ï¿½falseï¿½Hï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½uï¿½ï¿½ï¿½`ï¿½Éµoï¿½Í¿ï¿½ï¿½~
 } //end of try
 catch (Exception e)
 {

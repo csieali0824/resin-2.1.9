@@ -9,12 +9,12 @@
 <!--=============以下區段為等待畫面==========-->
 <%@ include file="/jsp/IQCInclude/MProcessStatusBarStart.jsp"%>
 <!--=================================-->
-<%@ page import="CheckBoxBean,ComboBoxBean,Array2DimensionInputBean"%>
+<%@ page import="CheckBoxBean,bean.ComboBoxBean,bean.Array2DimensionInputBean"%>
 </head>
-<jsp:useBean id="arrIQC2DInspectingBean" scope="session" class="Array2DimensionInputBean"/>
-<jsp:useBean id="arrIQC2DWaferDiceBean" scope="session" class="Array2DimensionInputBean"/> <!--夾入晶片晶粒檢驗數據陣列內容-->
-<jsp:useBean id="arrIQC2DMMaterialBean" scope="session" class="Array2DimensionInputBean"/> <!--夾入主要原物料檢驗數據陣列內容-->
-<jsp:useBean id="arrIQC2DIMaterialBean" scope="session" class="Array2DimensionInputBean"/> <!--夾入間接原物料檢驗數據陣列內容-->
+<jsp:useBean id="arrIQC2DInspectingBean" scope="session" class="bean.Array2DimensionInputBean"/>
+<jsp:useBean id="arrIQC2DWaferDiceBean" scope="session" class="bean.Array2DimensionInputBean"/> <!--夾入晶片晶粒檢驗數據陣列內容-->
+<jsp:useBean id="arrIQC2DMMaterialBean" scope="session" class="bean.Array2DimensionInputBean"/> <!--夾入主要原物料檢驗數據陣列內容-->
+<jsp:useBean id="arrIQC2DIMaterialBean" scope="session" class="bean.Array2DimensionInputBean"/> <!--夾入間接原物料檢驗數據陣列內容-->
 <script language="JavaScript" type="text/JavaScript">
 var checkflag = "false";
 function check(field) 
@@ -145,7 +145,7 @@ function setSubmit2(URL)
 
 </script>
 <jsp:useBean id="checkBoxBean" scope="page" class="CheckBoxBean"/>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
 <%
 String inspLotNo=request.getParameter("INSPLOTNO");
 String lineNo=request.getParameter("LINENO");

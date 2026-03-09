@@ -13,7 +13,7 @@
 
 </body>
 </html>
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,RsBean,PoolBean,CheckBoxBean" %>
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,bean.RsBean,bean.PoolBean,CheckBoxBean" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
@@ -21,7 +21,7 @@
 </head>
 
 <body> 
-<jsp:useBean id="rsBean" scope="application" class="RsBean"/>
+<jsp:useBean id="rsBean" scope="application" class="bean.RsBean"/>
 <jsp:useBean id="checkBoxBean" scope="page" class="CheckBoxBean"/>
 <%
   

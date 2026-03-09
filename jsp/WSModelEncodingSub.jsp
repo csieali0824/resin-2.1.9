@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,RsBean" %>
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,bean.RsBean" %>
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
@@ -20,7 +20,7 @@
 </style>
 </head>
 
-  <jsp:useBean id="rsBean" scope="application" class="RsBean"/>
+  <jsp:useBean id="rsBean" scope="application" class="bean.RsBean"/>
 <STYLE type=text/css>
 A:link {
 	TEXT-DECORATION: none;

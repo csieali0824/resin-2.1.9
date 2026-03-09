@@ -5,8 +5,8 @@
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<%@ page import="QueryAllRepairBean2" %>
-<%@ page import="QryAllChkBoxEditBean" %>
+<%@ page import="bean.QueryAllRepairBean2" %>
+<%@ page import="bean.QryAllChkBoxEditBean" %>
 <html>
 <head>
 <title>GroupShow.jsp</title>
@@ -40,8 +40,8 @@ function searchRepNo(pageURL)
 }
 </script>
 <body>
-<jsp:useBean id="queryAllRepairBean" scope="session" class="QueryAllRepairBean2"/>
-<jsp:useBean id="qryAllChkBoxEditBean" scope="session" class="QryAllChkBoxEditBean"/>
+<jsp:useBean id="queryAllRepairBean" scope="session" class="bean.QueryAllRepairBean2"/>
+<jsp:useBean id="qryAllChkBoxEditBean" scope="session" class="bean.QryAllChkBoxEditBean"/>
 <FORM ACTION="../jsp/GroupDelS.jsp" METHOD="POST" NAME="MYFORM" onSubmit="return NeedConfirm()">
   &nbsp;<strong><font color="#0080C0" size="5">查詢所有群組記錄</font></strong> 
   <%   

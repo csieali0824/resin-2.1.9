@@ -24,12 +24,12 @@
   <% upBean.addUploadListener(fileMover); %>
 </jsp:useBean>
 
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<%@ page import="DateBean,ArrayCheckBoxBean,Array2DimensionInputBean" %>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="arrayCheckBoxBean" scope="session" class="ArrayCheckBoxBean"/>
-<jsp:useBean id="arrayRFQDocumentInputBean" scope="session" class="Array2DimensionInputBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
+<%@ page import="bean.DateBean,bean.ArrayCheckBoxBean,bean.Array2DimensionInputBean" %>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="arrayCheckBoxBean" scope="session" class="bean.ArrayCheckBoxBean"/>
+<jsp:useBean id="arrayRFQDocumentInputBean" scope="session" class="bean.Array2DimensionInputBean"/>
 
 
 <!--  File Mover Bean is instantiated before the uploadBean to that it can be used as a
@@ -124,7 +124,7 @@ String replace(String s, String one, String another) {
           session.setAttribute("REMARK","BufferNet Consignment Order");
           session.setAttribute("PREORDERTYPE","1114");
           session.setAttribute("ISMODELSELECTED","Y");
-          session.setAttribute("PROCESSAREA","001(¥b¾ÉÅé·~°È³¡-¼Ú¬w°Ï)");
+          session.setAttribute("PROCESSAREA","001(ï¿½bï¿½ï¿½ï¿½ï¿½~ï¿½È³ï¿½-ï¿½Ú¬wï¿½ï¿½)");
           session.setAttribute("CUSTOMERIDTMP","1411");
           session.setAttribute("INSERT","Y");
           session.setAttribute("FROMPAGE","TSCEBufferImport.jsp");
@@ -367,7 +367,7 @@ String replace(String s, String one, String another) {
           String Insert          = (String)session.getAttribute("INSERT");
           //String fromPage        = (String)session.getAttribute("FROMPAGE");
 
-  String q[][]=arrayRFQDocumentInputBean.getArray2DContent();//¨ú±o¥Ø«e°}¦C¤º®e 		
+  String q[][]=arrayRFQDocumentInputBean.getArray2DContent();//ï¿½ï¿½ï¿½oï¿½Ø«eï¿½}ï¿½Cï¿½ï¿½ï¿½e 		
   
   //if (q!=null) 
   //{//out.println("<BR>");		  

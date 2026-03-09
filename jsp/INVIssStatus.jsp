@@ -5,13 +5,13 @@
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<%@ page import="QryAllChkBoxEditBean,ComboBoxBean"%>
+<%@ page import="bean.QryAllChkBoxEditBean,bean.ComboBoxBean"%>
 <html>
 <head>
 <title>INVIssStatus.jsp</title>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="qryAllChkBoxEditBean" scope="session" class="QryAllChkBoxEditBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="qryAllChkBoxEditBean" scope="session" class="bean.QryAllChkBoxEditBean"/>
 </head>
 <%-- 下方的函數是用來控制是否刪除之確認動作 --%>
 <script language="JavaScript" type="text/JavaScript">

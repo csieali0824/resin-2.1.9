@@ -16,12 +16,12 @@
 <%@ page import="jxl.*" %>
 <%@ page import="java.lang.*" %>
 <%@ page import="java.io.File.*"%>
-<%@ page import="DateBean,Array2DimensionInputBean"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
+<%@ page import="bean.DateBean,bean.Array2DimensionInputBean"%>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="array2DimensionInputBean" scope="session" class="Array2DimensionInputBean"/>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="array2DimensionInputBean" scope="session" class="bean.Array2DimensionInputBean"/>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <script language="JavaScript" type="text/JavaScript">

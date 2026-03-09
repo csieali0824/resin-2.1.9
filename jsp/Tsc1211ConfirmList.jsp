@@ -1,15 +1,15 @@
 <!-- 20150129 by Peggy,新增P/L list報表下載功能-->
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,java.util.Base64" %>
-<%@ page import="ComboBoxBean,DateBean"%>
+<%@ page import="bean.ComboBoxBean,bean.DateBean"%>
 <!--=============以下區段為安全認證機制==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
 <title>TSC轉出訂單頁面</title>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="dateBeans" scope="page" class="DateBean"/>
-<jsp:useBean id="dateBeane" scope="page" class="DateBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="dateBeans" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="dateBeane" scope="page" class="bean.DateBean"/>
 <script language="JavaScript" type="text/JavaScript">
 function focuscolor(objid)
 {

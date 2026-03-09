@@ -1,11 +1,11 @@
 <%@ page language="java" import="java.sql.*"%>
 <%@ page import="java.text.*"%>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½oï¿½sï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
 <%
 String WIP_TYPE=request.getParameter("WIP_TYPE");
 if (WIP_TYPE == null) WIP_TYPE = "";
@@ -105,7 +105,7 @@ function sendToMainWindow(i_row)
 			//out.println(buttonContent);
 			out.println("<TR BGCOLOR='E3E3CF'><TD><INPUT TYPE=button NAME='button' VALUE='");%><jsp:getProperty name="rPH" property="pgFetch"/><%
 			out.println("' onClick='"+buttonContent+"'></TD>");		
-			for (int i=1;i<=colCount-3;i++) // ¤£Åã¥Ü²Ä¤@Äæ¸ê®Æ, ¬G for ¥Ñ 2¶}©l
+			for (int i=1;i<=colCount-3;i++) // ï¿½ï¿½ï¿½ï¿½Ü²Ä¤@ï¿½ï¿½ï¿½ï¿½, ï¿½G for ï¿½ï¿½ 2ï¿½}ï¿½l
 			{
 				String s=(String)rs.getString(i);
 				out.println("<TD align='left'><FONT SIZE=2  color='black'>"+((s==null)?"&nbsp;":s)+"</FONT>");
@@ -133,7 +133,7 @@ function sendToMainWindow(i_row)
 		rs.close();  
 		statement.close();
 
-	    if (queryCount==1) //­Y¨ú¨ìªº¬d¸ß¼Æ == 1
+	    if (queryCount==1) //ï¿½Yï¿½ï¿½ï¿½ìªºï¿½dï¿½ß¼ï¿½ == 1
 	    {
 	     %>
 		    <script LANGUAGE="JavaScript">	
@@ -149,9 +149,9 @@ function sendToMainWindow(i_row)
     }
 %>
  <BR>
-<!--%ªí³æ°Ñ¼Æ%-->
+<!--%ï¿½ï¿½ï¿½Ñ¼ï¿½%-->
 </FORM>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 <%@ include file="/jsp/include/ProgressStatusBarStop.jsp"%>

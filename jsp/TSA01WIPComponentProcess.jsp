@@ -5,13 +5,13 @@
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="DateBean,Array2DimensionInputBean"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="FrontWIPBean" scope="session" class="Array2DimensionInputBean"/>
-<jsp:useBean id="WaferBean" scope="session" class="Array2DimensionInputBean"/>
-<jsp:useBean id="WIPMISCBean" scope="session" class="Array2DimensionInputBean"/>
+<%@ page import="bean.DateBean,bean.Array2DimensionInputBean"%>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="FrontWIPBean" scope="session" class="bean.Array2DimensionInputBean"/>
+<jsp:useBean id="WaferBean" scope="session" class="bean.Array2DimensionInputBean"/>
+<jsp:useBean id="WIPMISCBean" scope="session" class="bean.Array2DimensionInputBean"/>
 <html>
 <head>
 <title>TS A01 WIP Process</title>

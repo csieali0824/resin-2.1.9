@@ -4,14 +4,14 @@
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<%@ page import="ArrayCheckBoxBean,ArrayCheckBox2DBean,ComboBoxBean"%>
+<%@ page import="bean.ArrayCheckBoxBean,bean.ArrayCheckBox2DBean,bean.ComboBoxBean"%>
 <html>
 <head>
 <title>Page for choose Action Code to determine this repair case</title>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
-<jsp:useBean id="comboBoxBean" scope="application" class="ComboBoxBean"/>
-<jsp:useBean id="regionArrayCheckBoxBean" scope="session" class="ArrayCheckBoxBean"/>
-<jsp:useBean id="countryArrayCheckBoxBean" scope="session" class="ArrayCheckBox2DBean"/>
+<jsp:useBean id="comboBoxBean" scope="application" class="bean.ComboBoxBean"/>
+<jsp:useBean id="regionArrayCheckBoxBean" scope="session" class="bean.ArrayCheckBoxBean"/>
+<jsp:useBean id="countryArrayCheckBoxBean" scope="session" class="bean.ArrayCheckBox2DBean"/>
 <!--=================================-->
 </head>
 <%-- 下方的函數是用來控制是否刪除之確認動作 --%>

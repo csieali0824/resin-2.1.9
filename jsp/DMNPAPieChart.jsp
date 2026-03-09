@@ -1,11 +1,11 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.io.*,java.sql.*,javax.sql.*,javax.naming.*,java.util.*,java.awt.*,java.awt.Dimension.*,com.jrefinery.data.*,com.jrefinery.chart.*,com.jrefinery.chart.ui.*,com.jrefinery.chart.data.*,org.jCharts.*,org.jCharts.chartData.*,org.jCharts.properties.*,org.jCharts.types.ChartType.*,org.jCharts.axisChart.*,org.jCharts.test.TestDataGenerator.*,org.jCharts.encoders.JPEGEncoder13.*,org.jCharts.properties.util.ChartFont.*,org.jCharts.encoders.ServletEncoderHelper.*" %>
-<%@ page import="QueryAllBean,ComboBoxAllBean,ComboBoxBean,DateBean,ArrayComboBoxBean" %>
+<%@ page import="bean.QueryAllBean,bean.ComboBoxAllBean,bean.ComboBoxBean,bean.DateBean,bean.ArrayComboBoxBean" %>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/ConnBPCSPoolPage.jsp/"%>
 
-<jsp:useBean id="queryAllBean" scope="application" class="QueryAllBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="queryAllBean" scope="application" class="bean.QueryAllBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <%
 	// 取得傳入參數
 	String sModelNo=request.getParameter("MODELNO");

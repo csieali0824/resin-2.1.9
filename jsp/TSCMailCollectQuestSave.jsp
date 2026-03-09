@@ -3,9 +3,9 @@
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<%@ page import="DateBean,SendMailBean,CodeUtil" %>
-<jsp:useBean id="sendMailBean" scope="page" class="SendMailBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<%@ page import="bean.DateBean,bean.SendMailBean,CodeUtil" %>
+<jsp:useBean id="sendMailBean" scope="page" class="bean.SendMailBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <html>
 <body>
 <form method='post'  name='form1'>

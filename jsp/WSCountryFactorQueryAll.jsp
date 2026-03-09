@@ -4,7 +4,7 @@
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<%@ page import="QryAllChkBoxEditBean" %>
+<%@ page import="bean.QryAllChkBoxEditBean" %>
 
 <html>
 <head>
@@ -42,7 +42,7 @@ function NeedConfirm()
 <input name="button" type=button onClick="this.value=check(this.form.CH)" value="SELECT ALL">
 <INPUT TYPE="submit" value="DELETE">
 &nbsp;&nbsp;<A HREF="WSCountryFactorEntry.jsp">Add New Country Factor</A>&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="/wins/WinsMainMenu.jsp">HOME</A>&nbsp;&nbsp;&nbsp;&nbsp; <A HREF="../jsp/WSForecastMenu.jsp">Back to submenu</A> 
-<jsp:useBean id="qryAllChkBoxEditBean" scope="page" class="QryAllChkBoxEditBean"/>
+<jsp:useBean id="qryAllChkBoxEditBean" scope="page" class="bean.QryAllChkBoxEditBean"/>
 <%  
   try
   {   

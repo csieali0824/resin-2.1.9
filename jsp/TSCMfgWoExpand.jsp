@@ -42,9 +42,9 @@
 	<%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 	<!--=============以下區段為取得連結池==========-->
 	<%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-	<%@ page import="CheckBoxBean,ComboBoxBean,Array2DimensionInputBean"%>
+	<%@ page import="CheckBoxBean,bean.ComboBoxBean,bean.Array2DimensionInputBean"%>
 </head>
-<jsp:useBean id="arrMFG2DWOExpandBean" scope="session" class="Array2DimensionInputBean"/>
+<jsp:useBean id="arrMFG2DWOExpandBean" scope="session" class="bean.Array2DimensionInputBean"/>
 <script language="JavaScript" type="text/JavaScript">
 	function submitCheck(ms1,ms2,ms3)
 	{ //alert("AAA");
@@ -149,7 +149,7 @@
 	}
 </script>
 <jsp:useBean id="checkBoxBean" scope="page" class="CheckBoxBean"/>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
 
 <%
 	String actionID = request.getParameter("ACTIONID");

@@ -1,5 +1,5 @@
-<%@ page contentType="text/html; charset=UTF-8" language="java" import="java.lang.*,java.util.*,java.text.*,java.io.*,java.sql.*,javax.sql.*,javax.naming.*,DateBean"%>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<%@ page contentType="text/html; charset=UTF-8" language="java" import="java.lang.*,java.util.*,java.text.*,java.io.*,java.sql.*,javax.sql.*,javax.naming.*,bean.DateBean"%>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <%
 	String id = request.getParameter("id");
 	 

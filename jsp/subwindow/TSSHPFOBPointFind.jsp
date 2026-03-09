@@ -1,10 +1,10 @@
 <%@ page language="java" import="java.sql.*"%>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½oï¿½sï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
 <%@ include file="/jsp/include/ProgressStatusBarStart.jsp"%>
 <%
  String primaryFlag=request.getParameter("PRIMARYFLAG");
@@ -96,7 +96,7 @@ function sendToMainWindow(primaryFlag)
 		 buttonContent="this.value=sendToMainWindow("+'"'+fobPoint+'"'+")";		
          out.println("<TR BGCOLOR='"+trBgColor+"'><TD><INPUT TYPE=button NAME='button' VALUE='");%><jsp:getProperty name="rPH" property="pgFetch"/><%
 		 out.println("' onClick='"+buttonContent+"'></TD>");		
-         for (int i=1;i<=colCount;i++) // ¤£Åã¥Ü²Ä¤@Äæ¸ê®Æ, ¬G for ¥Ñ 2¶}©l
+         for (int i=1;i<=colCount;i++) // ï¿½ï¿½ï¿½ï¿½Ü²Ä¤@ï¿½ï¿½ï¿½ï¿½, ï¿½G for ï¿½ï¿½ 2ï¿½}ï¿½l
          {
           String s=(String)rs.getString(i);
           out.println("<TD><FONT SIZE=2>"+s+"</TD>");
@@ -115,10 +115,10 @@ function sendToMainWindow(primaryFlag)
 	  statement.close();
      %>
   <BR>
-<!--%ªí³æ°Ñ¼Æ%-->
+<!--%ï¿½ï¿½ï¿½Ñ¼ï¿½%-->
 <INPUT TYPE="hidden" NAME="PRIMARYFLAG" SIZE=10 value="<%=primaryFlag%>" >
 </FORM>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 <%@ include file="/jsp/include/ProgressStatusBarStop.jsp"%>

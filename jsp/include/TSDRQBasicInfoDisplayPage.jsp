@@ -4,8 +4,8 @@
 <!-- 20160629 by Peggy,顯示customer po number-->
 <%@ page language="java" import="java.sql.*,java.text.*"%>
 <html>
-<%@ page import="DateBean" %>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<%@ page import="bean.DateBean" %>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <title>Sales Delivery Request Notice Data Display Page</title>
 <STYLE TYPE='text/css'>
 	BODY      { font-family: Tahoma,Georgia; color: #000000; font-size: 12px }

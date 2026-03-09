@@ -5,14 +5,14 @@
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=============Switch CharacterSet==========-->
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="PageHeaderBean,ComboBoxBean,ArrayComboBoxBean,DateBean,CheckBoxBean,ArrayCheckBoxBean" %>
-<jsp:useBean id="pageHeader" scope="session" class="PageHeaderBean"/>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<%@ page import="bean.PageHeaderBean,bean.ComboBoxBean,bean.ArrayComboBoxBean,bean.DateBean,CheckBoxBean,bean.ArrayCheckBoxBean" %>
+<jsp:useBean id="pageHeader" scope="session" class="bean.PageHeaderBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <jsp:useBean id="checkBoxBean" scope="page" class="CheckBoxBean"/>
-<jsp:useBean id="arrayCheckBoxBean" scope="session" class="ArrayCheckBoxBean"/> <!--此bean作用在存入Other Feature-->
-<jsp:useBean id="arrayCheckBoxBean4Ringer" scope="session" class="ArrayCheckBoxBean"/> <!--此bean作用在存入Other Feature-->
+<jsp:useBean id="arrayCheckBoxBean" scope="session" class="bean.ArrayCheckBoxBean"/> <!--此bean作用在存入Other Feature-->
+<jsp:useBean id="arrayCheckBoxBean4Ringer" scope="session" class="bean.ArrayCheckBoxBean"/> <!--此bean作用在存入Other Feature-->
 <%
   arrayCheckBoxBean.setArray2DString(null);//將此bean值清空以為不同case可以重新運作
   arrayCheckBoxBean4Ringer.setArray2DString(null);//將此bean值清空以為不同case可以重新運作

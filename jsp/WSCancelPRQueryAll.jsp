@@ -1,10 +1,10 @@
 <%@ page language="java" import="java.sql.*"  %>
-<!--=============¥H¤U°Ï¬q¬°¦w¥þ»{ÃÒ¾÷¨î==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½wï¿½ï¿½ï¿½{ï¿½Ò¾ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½oï¿½sï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<%@ page import="QueryAllEditBean,ComboBoxBean,ArrayComboBoxBean,DateBean"%>
+<%@ page import="QueryAllEditBean,bean.ComboBoxBean,bean.ArrayComboBoxBean,bean.DateBean"%>
 <html>
 <head>
 <title>Query All Sales Cancel PR </title>
@@ -14,7 +14,7 @@
 -->
 </style>
 </head>
-<%-- ¤U¤èªº¨ç¼Æ¬O¥Î¨Ó±±¨î¬O§_§R°£¤§½T»{°Ê§@ --%>
+<%-- ï¿½Uï¿½èªºï¿½ï¿½Æ¬Oï¿½Î¨Ó±ï¿½ï¿½ï¿½Oï¿½_ï¿½Rï¿½ï¿½ï¿½ï¿½ï¿½Tï¿½{ï¿½Ê§@ --%>
 <script language="JavaScript" type="text/JavaScript">
 var checkflag = "false";
 function check(field) 
@@ -36,10 +36,10 @@ function searchDocNo()
 }
 
 </script>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
 <jsp:useBean id="queryAllEditBean" scope="session" class="QueryAllEditBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <%   
   String searchString=request.getParameter("SEARCHSTRING");
   if (searchString==null) searchString="";
@@ -50,13 +50,13 @@ function searchDocNo()
   if (fromYear==null || fromYear.equals("--") || fromYear.equals("null")) fromYearString="2000"; else fromYearString=fromYear;
   String fromMonth=request.getParameter("FROMMONTH"); 
   if (fromMonth==null || fromMonth.equals("--") || fromMonth.equals("null")) fromMonthString="01"; else fromMonthString=fromMonth; 
-  queryDateFrom=fromYearString+fromMonthString;//³]¬°·j´M¦¬¥ó°_©l¤é´Áªº±ø¥ó
+  queryDateFrom=fromYearString+fromMonthString;//ï¿½]ï¿½ï¿½ï¿½jï¿½Mï¿½ï¿½ï¿½ï¿½_ï¿½lï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   String toYear=request.getParameter("TOYEAR");
   if (toYear==null || toYear.equals("--") || toYear.equals("null")) toYearString="3000"; else toYearString=toYear;
   String toMonth=request.getParameter("TOMONTH");
   if (toMonth==null || toMonth.equals("--") || toMonth.equals("null")) toMonthString="12"; else toMonthString=toMonth; 
-  queryDateTo=toYearString+toMonthString;//³]¬°·j´M¦¬¥óºI¤î¤é´Áªº±ø¥ó
-  int maxrow=0;//¬d¸ß¸ê®ÆÁ`µ§¼Æ 
+  queryDateTo=toYearString+toMonthString;//ï¿½]ï¿½ï¿½ï¿½jï¿½Mï¿½ï¿½ï¿½ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  int maxrow=0;//ï¿½dï¿½ß¸ï¿½ï¿½ï¿½`ï¿½ï¿½ï¿½ï¿½ 
   
   Statement statement=con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);   
   ResultSet rs=null;
@@ -65,14 +65,14 @@ function searchDocNo()
   {       
    if (status!=null && !status.equals("--"))
    {
-      if (searchString!=null && !searchString.equals("")) //¦pªG¦³·j´M¯S©w³æ¸¹«h¥t¤USQL
+      if (searchString!=null && !searchString.equals("")) //ï¿½pï¿½Gï¿½ï¿½ï¿½jï¿½Mï¿½Sï¿½wï¿½æ¸¹ï¿½hï¿½tï¿½USQL
 	  {	
 	    sql="select count(*) from PSALES_FORE_APP_HD where STATUS='"+status+"' and DOCNO like '"+searchString+"%' and RQYEAR||RQMONTH between '"+queryDateFrom+"' and '"+queryDateTo+"' and TYPE='999'";
 	  } else {
 	    sql="select count(*) from PSALES_FORE_APP_HD where STATUS='"+status+"' and RQYEAR||RQMONTH between '"+queryDateFrom+"' and '"+queryDateTo+"' and TYPE='999'";
 	  }
    } else {
-      if (searchString!=null && !searchString.equals("")) //¦pªG¦³·j´M¯S©w³æ¸¹«h¥t¤USQL
+      if (searchString!=null && !searchString.equals("")) //ï¿½pï¿½Gï¿½ï¿½ï¿½jï¿½Mï¿½Sï¿½wï¿½æ¸¹ï¿½hï¿½tï¿½USQL
 	  {
          sql="select count(*) from PSALES_FORE_APP_HD where DOCNO like '"+searchString+"%' and RQYEAR||RQMONTH between '"+queryDateFrom+"' and '"+queryDateTo+"' and TYPE='999'";
 	  } else {
@@ -80,11 +80,11 @@ function searchDocNo()
 	  }
    }      
    
-   //¨ú±o¸ê®ÆÁ`µ§¼Æ
-   if (UserRoles.indexOf("admin")>=0 || UserRoles.indexOf("MCUser")>=0) //­Y¬°Admin©ÎªÌª«ºÞMCUser«h¥i¬Ý¨ì¥þ³¡
+   //ï¿½ï¿½ï¿½oï¿½ï¿½ï¿½ï¿½`ï¿½ï¿½ï¿½ï¿½
+   if (UserRoles.indexOf("admin")>=0 || UserRoles.indexOf("MCUser")>=0) //ï¿½Yï¿½ï¿½Adminï¿½ÎªÌªï¿½ï¿½ï¿½MCUserï¿½hï¿½iï¿½Ý¨ï¿½ï¿½ï¿½ï¿½
    {	    
 	  rs=statement.executeQuery(sql);	 
-   } else {     //§_«h¥u¦³¤å¥ó«Ø¥ßªÌ©Î¤å¥ó¤wÃ±®Ö¤H­û©Î¤U¤@­ÓÃ±®Ö¤H­û¥i¥H¬Ý¨ì
+   } else {     //ï¿½_ï¿½hï¿½uï¿½ï¿½ï¿½ï¿½ï¿½Ø¥ßªÌ©Î¤ï¿½ï¿½wÃ±ï¿½Ö¤Hï¿½ï¿½ï¿½Î¤Uï¿½@ï¿½ï¿½Ã±ï¿½Ö¤Hï¿½ï¿½ï¿½iï¿½Hï¿½Ý¨ï¿½
 	  rs=statement.executeQuery(sql+" and (CREATEDBY='"+userID+"' or DOCNO in (select Unique DOCNO from PSALES_FORE_APP_HIST where WHO='"+userID+"'))");	 	 
    }   
    rs.next();   
@@ -219,14 +219,14 @@ catch (Exception e)
   {       
    if (status!=null && !status.equals("--"))
    {
-      if (searchString!=null && !searchString.equals("")) //¦pªG¦³·j´M¯S©w³æ¸¹«h¥t¤USQL
+      if (searchString!=null && !searchString.equals("")) //ï¿½pï¿½Gï¿½ï¿½ï¿½jï¿½Mï¿½Sï¿½wï¿½æ¸¹ï¿½hï¿½tï¿½USQL
 	  {	
 	    sql="select DOCNO,REGION,LOCALE_ENG_NAME as COUNTRY,STATUS,USERNAME||'('||NEXTPRCSMAN||')' as NEXTPRCSMAN,RQYEAR||'/'||RQMONTH as TARGET_DATE from PSALES_FORE_APP_HD,WSUSER,WSLOCALE where COUNTRY=LOCALE and STATUS='"+status+"' and NEXTPRCSMAN=WEBID(+) and DOCNO like '"+searchString+"%' and RQYEAR||RQMONTH between '"+queryDateFrom+"' and '"+queryDateTo+"' and TYPE='999'";
 	  } else {
 	    sql="select DOCNO,REGION,LOCALE_ENG_NAME as COUNTRY,STATUS,USERNAME||'('||NEXTPRCSMAN||')' as NEXTPRCSMAN,RQYEAR||'/'||RQMONTH as TARGET_DATE from PSALES_FORE_APP_HD,WSUSER,WSLOCALE where COUNTRY=LOCALE and STATUS='"+status+"' and NEXTPRCSMAN=WEBID(+) and RQYEAR||RQMONTH between '"+queryDateFrom+"' and '"+queryDateTo+"' and TYPE='999'";
 	  }
    } else {
-      if (searchString!=null && !searchString.equals("")) //¦pªG¦³·j´M¯S©w³æ¸¹«h¥t¤USQL
+      if (searchString!=null && !searchString.equals("")) //ï¿½pï¿½Gï¿½ï¿½ï¿½jï¿½Mï¿½Sï¿½wï¿½æ¸¹ï¿½hï¿½tï¿½USQL
 	  {
          sql="select DOCNO,REGION,LOCALE_ENG_NAME as COUNTRY,STATUS,USERNAME||'('||NEXTPRCSMAN||')' as NEXTPRCSMAN,RQYEAR||'/'||RQMONTH as TARGET_DATE from PSALES_FORE_APP_HD,WSUSER,WSLOCALE where COUNTRY=LOCALE and DOCNO like '"+searchString+"%' and NEXTPRCSMAN=WEBID(+) and RQYEAR||RQMONTH between '"+queryDateFrom+"' and '"+queryDateTo+"' and TYPE='999'";
 	  } else {
@@ -234,7 +234,7 @@ catch (Exception e)
 	  }
    }     
    
-   if (UserRoles.indexOf("admin")>=0 || UserRoles.indexOf("MCUser")>=0) //­Y¬°Admin©ÎªÌª«ºÞMCUser«h¥i¬Ý¨ì¥þ³¡
+   if (UserRoles.indexOf("admin")>=0 || UserRoles.indexOf("MCUser")>=0) //ï¿½Yï¿½ï¿½Adminï¿½ÎªÌªï¿½ï¿½ï¿½MCUserï¿½hï¿½iï¿½Ý¨ï¿½ï¿½ï¿½ï¿½
    {	    
 	  rs=statement.executeQuery(sql+" order by DOCNO DESC");	 
    } else {     
@@ -243,11 +243,11 @@ catch (Exception e)
    
    if (rowNumber==1 || rowNumber<0)
    {
-     rs.beforeFirst(); //²¾¦Ü²Ä¤@µ§¸ê®Æ¦C  
+     rs.beforeFirst(); //ï¿½ï¿½ï¿½Ü²Ä¤@ï¿½ï¿½ï¿½ï¿½Æ¦C  
    } else { 
-      if (rowNumber<=maxrow) //­Y¤p©óÁ`µ§¼Æ®É¤~Ä~Äò´«­¶
+      if (rowNumber<=maxrow) //ï¿½Yï¿½pï¿½ï¿½ï¿½`ï¿½ï¿½ï¿½Æ®É¤~ï¿½~ï¿½ò´«­ï¿½
 	  {
-        rs.absolute(rowNumber); //²¾¦Ü«ü©w¸ê®Æ¦C	 
+        rs.absolute(rowNumber); //ï¿½ï¿½ï¿½Ü«ï¿½ï¿½wï¿½ï¿½Æ¦C	 
 	  }	
    }
    	
@@ -263,7 +263,7 @@ catch (Exception e)
    out.println(queryAllEditBean.getRsString());   
    
    rs.close();  
-   //¨ú±oºû­×³B²zª¬ºA      
+   //ï¿½ï¿½ï¿½oï¿½ï¿½ï¿½×³Bï¿½zï¿½ï¿½ï¿½A      
   } //end of try
   catch (Exception e)
   {
@@ -277,7 +277,7 @@ catch (Exception e)
 <%
  statement.close();
 %>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 </html>

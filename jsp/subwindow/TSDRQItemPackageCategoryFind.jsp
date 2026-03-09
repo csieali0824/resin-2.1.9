@@ -1,9 +1,9 @@
 <%@ page language="java" import="java.sql.*"%>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½oï¿½sï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
 <%@ include file="/jsp/include/ProgressStatusBarStart.jsp"%>
 <%
 String itemDesc=request.getParameter("ITEM_DESC");
@@ -115,7 +115,7 @@ try
 	if (queryCount>0)
 	{
 		out.println("</TABLE>");						
-		if (queryCount==1) //­Y¨ú¨ìªº¬d¸ß¼Æ == 1
+		if (queryCount==1) //ï¿½Yï¿½ï¿½ï¿½ìªºï¿½dï¿½ß¼ï¿½ == 1
 		{
 			out.print("<script type=\"text/javascript\">"+buttonContent+"</script>"); 
 		}
@@ -128,7 +128,7 @@ catch (Exception e)
 %>
 <BR>
 </FORM>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <%@ include file="/jsp/include/ProgressStatusBarStop.jsp"%>
 </body>

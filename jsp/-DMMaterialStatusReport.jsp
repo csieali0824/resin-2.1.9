@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" %>
-<%@ page import="DateBean,java.text.DecimalFormat" %>
+<%@ page import="bean.DateBean,java.text.DecimalFormat" %>
 <!--=============To get the Authentication==========-->
 <%//@include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============以下區段為取得連結池==========-->
@@ -7,7 +7,7 @@
 <!--=============以下區段為處理完成開始==========-->
 <%@ include file="/jsp/include/ProgressStatusBarStart.jsp"%>
 
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 
 <html>
 <head>

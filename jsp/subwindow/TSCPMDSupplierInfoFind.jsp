@@ -1,14 +1,14 @@
-<!-- 20150317 Peggy,¥_·s¬ì3867¥u°µ´ú¸Õ-->
-<!-- 20151119 Peggy,AP.ap_supplier_sites_all¼W¥[ (b.INACTIVE_DATE IS NULL or trunc(b.INACTIVE_DATE)>trunc(sysdate)) and b.PURCHASING_SITE_FLAG='Y'±ø¥ó-->
-<!-- 20151225 Peggy,3083¤Ñ¤ôµØ¤Ñ·L¹q¤lªÑ¥÷¦³­­¤½¥q§ï¦W¬°4056¤Ñ¤ôµØ¤Ñ¹q¤l¶°¹Î-->
+<!-- 20150317 Peggy,ï¿½_ï¿½sï¿½ï¿½3867ï¿½uï¿½ï¿½ï¿½ï¿½ï¿½ï¿½-->
+<!-- 20151119 Peggy,AP.ap_supplier_sites_allï¿½Wï¿½[ (b.INACTIVE_DATE IS NULL or trunc(b.INACTIVE_DATE)>trunc(sysdate)) and b.PURCHASING_SITE_FLAG='Y'ï¿½ï¿½ï¿½ï¿½-->
+<!-- 20151225 Peggy,3083ï¿½Ñ¤ï¿½ï¿½Ø¤Ñ·Lï¿½qï¿½lï¿½Ñ¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½qï¿½ï¿½Wï¿½ï¿½4056ï¿½Ñ¤ï¿½ï¿½Ø¤Ñ¹qï¿½lï¿½ï¿½ï¿½ï¿½-->
 <%@ page language="java" import="java.sql.*"%>
 <%@ page import="java.text.*"%>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½oï¿½sï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
 <%
 String SupplierNo=request.getParameter("SUPPLIERNO");
 if (SupplierNo == null) SupplierNo = "";
@@ -38,13 +38,13 @@ function sendToMainWindow(VendorNo,VendorName,VendorContact,Currency,VendorSite,
 	window.opener.document.MYFORM.VENDOR_SITE_ID.value=VendorSiteID;                                  //add by Peggy 20120705
 	if (FUNCNAME=="F1001")
 	{
-		if (window.opener.document.MYFORM.WIPTYPE.value =="01" || window.opener.document.MYFORM.WIPTYPE.value =="03")  //modify by Peggy 20170712,add­«¤u	
+		if (window.opener.document.MYFORM.WIPTYPE.value =="01" || window.opener.document.MYFORM.WIPTYPE.value =="03")  //modify by Peggy 20170712,addï¿½ï¿½ï¿½u	
 		{
-			if ( VendorNo=="2012") //ª@¶§¬ìµL«Ê¸Ë,add by Peggy 20141110
+			if ( VendorNo=="2012") //ï¿½@ï¿½ï¿½ï¿½ï¿½Lï¿½Ê¸ï¿½,add by Peggy 20141110
 			{
 				window.opener.document.MYFORM.CHKASSEMBLY.checked =false;
 			}
-			else if (VendorNo=="3867")  //¥_·s¬ì¥u¦³´ú¸Õ,add by Peggy 20150317
+			else if (VendorNo=="3867")  //ï¿½_ï¿½sï¿½ï¿½uï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,add by Peggy 20150317
 			{
 				window.opener.document.MYFORM.CHKASSEMBLY.checked=false;
 				window.opener.document.MYFORM.CHKTESTING.checked=true;
@@ -91,7 +91,7 @@ function sendToMainWindow(VendorNo,VendorName,VendorContact,Currency,VendorSite,
 			}
 			else
 			{
-				if (Currency==="USD" || window.opener.document.MYFORM.WIPTYPE.value ==="03" || window.opener.document.MYFORM.WIPTYPE.value === "02")  //modify by Peggy 20120705,­«¤uªº³æ»ù³æ¦ì¬°K
+				if (Currency==="USD" || window.opener.document.MYFORM.WIPTYPE.value ==="03" || window.opener.document.MYFORM.WIPTYPE.value === "02")  //modify by Peggy 20120705,ï¿½ï¿½ï¿½uï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì¬°K
 				{
 					//window.opener.document.getElementById("td1").innerHTML = Currency+"/k";
 					window.opener.document.MYFORM.PRICE_UOM.value = "k";
@@ -103,7 +103,7 @@ function sendToMainWindow(VendorNo,VendorName,VendorContact,Currency,VendorSite,
 				}
 			}
 			window.opener.document.getElementById("td1").innerHTML = Currency+"/"+PriceUom;
-			if (PriceUom=="¤ù")
+			if (PriceUom=="ï¿½ï¿½")
 			{
 				window.opener.document.getElementById("td2").innerHTML = "("+PriceUom+")";
 			}
@@ -261,7 +261,7 @@ function sendToMainWindow(VendorNo,VendorName,VendorContact,Currency,VendorSite,
 			//out.println(buttonContent);
 			out.println("<TR BGCOLOR='E3E3CF'><TD><INPUT TYPE=button NAME='button' VALUE='");%><jsp:getProperty name="rPH" property="pgFetch"/><%
 			out.println("' onClick='"+buttonContent+"'></TD>");		
-			for (int i=1;i<=colCount-3;i++) // ¤£Åã¥Ü²Ä¤@Äæ¸ê®Æ, ¬G for ¥Ñ 2¶}©l
+			for (int i=1;i<=colCount-3;i++) // ï¿½ï¿½ï¿½ï¿½Ü²Ä¤@ï¿½ï¿½ï¿½ï¿½, ï¿½G for ï¿½ï¿½ 2ï¿½}ï¿½l
 			{
 				String s=(String)rs.getString(i);
 				out.println("<TD align='left'><FONT SIZE=2  color='black'>"+((s==null)?"&nbsp;":s)+"</FONT></TD>");
@@ -287,7 +287,7 @@ function sendToMainWindow(VendorNo,VendorName,VendorContact,Currency,VendorSite,
 		<input type="hidden" name="FUNCNAME" value="<%=FUNCNAME%>">
 		<input type="hidden" name="WIPTYPE" value="<%=WIPTYPE%>">
 		<%     
-	    if (queryCount==1) //­Y¨ú¨ìªº¬d¸ß¼Æ == 1
+	    if (queryCount==1) //ï¿½Yï¿½ï¿½ï¿½ìªºï¿½dï¿½ß¼ï¿½ == 1
 	    {
 			out.println("<script type=\"text/javascript\">sendToMainWindow("+'"'+VendorCode+'"'+','+'"'+VendorName+'"'+","+'"'+VendorContact+'"'+","+'"'+CurrencyCode+'"'+","+'"'+VendorSite+'"'+","+'"'+Price+'"'+","+'"'+VendorSiteID+'"'+","+'"'+PriceUom+'"'+","+'"'+PACKAGE_SPEC+'"'+","+'"'+TEST_SPEC+'"'+","+'"'+queryCount+'"'+","+'"'+FUNCNAME+'"'+")</script>"); 
 	     %>
@@ -297,13 +297,13 @@ function sendToMainWindow(VendorNo,VendorName,VendorContact,Currency,VendorSite,
 				window.opener.document.MYFORM.VENDOR_SITE_ID.value= document.SITEFORM.VENDORSITEID.value;        //add by Peggy 20120705
 				if (document.SITEFORM.FUNCNAME.value=="F1001")
 				{
-					if (window.opener.document.MYFORM.WIPTYPE.value =="01" || window.opener.document.MYFORM.WIPTYPE.value =="03")  //modify by Peggy 20170712,add ­«¤u
+					if (window.opener.document.MYFORM.WIPTYPE.value =="01" || window.opener.document.MYFORM.WIPTYPE.value =="03")  //modify by Peggy 20170712,add ï¿½ï¿½ï¿½u
 					{
-						if (document.SITEFORM.VENDORNO.value=="2012") //ª@¶§¬ìµL«Ê¸Ë,add by Peggy 20141110
+						if (document.SITEFORM.VENDORNO.value=="2012") //ï¿½@ï¿½ï¿½ï¿½ï¿½Lï¿½Ê¸ï¿½,add by Peggy 20141110
 						{
 							window.opener.document.MYFORM.CHKASSEMBLY.checked =false;
 						}	
-						else if (document.SITEFORM.VENDORNO.value =="3867")  //¥_·s¬ì¥u¦³´ú¸Õ,add by Peggy 20150317
+						else if (document.SITEFORM.VENDORNO.value =="3867")  //ï¿½_ï¿½sï¿½ï¿½uï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,add by Peggy 20150317
 						{
 							window.opener.document.MYFORM.CHKASSEMBLY.checked=false;
 							window.opener.document.MYFORM.CHKTESTING.checked=true;
@@ -354,7 +354,7 @@ function sendToMainWindow(VendorNo,VendorName,VendorContact,Currency,VendorSite,
 						}
 						else
 						{
-							if (document.SITEFORM.CURRENCYCODE.value =="USD" || window.opener.document.MYFORM.WIPTYPE.value=="03")  //modify by Peggy 20120705,­«¤uªº³æ»ù³æ¦ì¬°K
+							if (document.SITEFORM.CURRENCYCODE.value =="USD" || window.opener.document.MYFORM.WIPTYPE.value=="03")  //modify by Peggy 20120705,ï¿½ï¿½ï¿½uï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì¬°K
 							{
 								//window.opener.document.getElementById("td1").innerHTML = document.SITEFORM.CURRENCYCODE.value+"/k";
 								window.opener.document.MYFORM.PRICE_UOM.value = "k";
@@ -366,7 +366,7 @@ function sendToMainWindow(VendorNo,VendorName,VendorContact,Currency,VendorSite,
 							}
 						}
 						window.opener.document.getElementById("td1").innerHTML = document.SITEFORM.CURRENCYCODE.value+"/"+document.SITEFORM.PRICEUOM.value;
-						if (document.SITEFORM.PRICEUOM.value =="¤ù")
+						if (document.SITEFORM.PRICEUOM.value =="ï¿½ï¿½")
 						{
 							window.opener.document.getElementById("td2").innerHTML = "Q'ty("+document.SITEFORM.PRICEUOM.value+")";
 						}
@@ -398,9 +398,9 @@ function sendToMainWindow(VendorNo,VendorName,VendorContact,Currency,VendorSite,
 	statement.close();
 %>
  <BR>
-<!--%ªí³æ°Ñ¼Æ%-->
+<!--%ï¿½ï¿½ï¿½Ñ¼ï¿½%-->
 </FORM>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 <%@ include file="/jsp/include/ProgressStatusBarStop.jsp"%>

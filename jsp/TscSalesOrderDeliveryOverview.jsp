@@ -3,19 +3,19 @@
 <!--=============以下區段為安全認證機制==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%> 
-<%@ page import="SalesDRQPageHeaderBean,ComboBoxBean,DateBean,WorkingDateBean" %>
+<%@ page import="bean.SalesDRQPageHeaderBean,bean.ComboBoxBean,bean.DateBean,bean.WorkingDateBean" %>
 <%@ page import="java.util.Date"%> 	
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
 <title>TSC訂單已交未交量查詢</title>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="dateBeanF" scope="page" class="DateBean"/>
-<jsp:useBean id="dateBeanT" scope="page" class="DateBean"/>
-<jsp:useBean id="dateBeanS" scope="page" class="DateBean"/>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<jsp:useBean id="workingDateBean" scope="page" class="WorkingDateBean"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="dateBeanF" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="dateBeanT" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="dateBeanS" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
+<jsp:useBean id="workingDateBean" scope="page" class="bean.WorkingDateBean"/>
 <style type="text/css">
  .style1   {font-family:Arial; font-size:12px; background-color:#D7F4E6; color:#000000; text-align:left;}
  .style2   {font-family:Arial; font-size:12px; background-color:#CCCCCC; color:#000000; text-align:center;}

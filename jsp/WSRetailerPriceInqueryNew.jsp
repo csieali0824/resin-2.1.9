@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" %>
-<%@ page import="ArrayComboBoxBean,ComboBoxBean,DateBean,java.text.DecimalFormat" %>
+<%@ page import="bean.ArrayComboBoxBean,bean.ComboBoxBean,bean.DateBean,java.text.DecimalFormat" %>
 <!--=============To get the Authentication==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============以下區段為取得連結池==========-->
@@ -20,10 +20,10 @@ function rstart2(){
 	location.href='WSRetailerPriceCalculation.jsp';
 }
 </script>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="thisDateBean" scope="session" class="DateBean"/> <!--用來抓出目前為幾月-->
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="thisDateBean" scope="session" class="bean.DateBean"/> <!--用來抓出目前為幾月-->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">

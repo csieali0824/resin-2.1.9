@@ -1,21 +1,21 @@
 <%@ page language="java" import="java.sql.*"  %>
-<!--=============¥H¤U°Ï¬q¬°¦w¥þ»{ÃÒ¾÷¨î==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½wï¿½ï¿½ï¿½{ï¿½Ò¾ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=================================-->
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½oï¿½sï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<%@ page import="QueryAllRepairBean2" %>
-<jsp:useBean id="queryAllRepairBean" scope="application" class="QueryAllRepairBean2"/>
+<%@ page import="bean.QueryAllRepairBean2" %>
+<jsp:useBean id="queryAllRepairBean" scope="application" class="bean.QueryAllRepairBean2"/>
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
 <html>
 <head>
 <title>Query All Sales Delivery Requst Data for History Record</title>
 </head>
 <%
-int maxrow=0;//¬d¸ß¸ê®ÆÁ`µ§¼Æ 
+int maxrow=0;//ï¿½dï¿½ß¸ï¿½ï¿½ï¿½`ï¿½ï¿½ï¿½ï¿½ 
 int currentPageNumber=0,totalPageNumber=0;
 int rowNumber=0;
 String scrollRow=request.getParameter("SCROLLROW");
@@ -25,7 +25,7 @@ try
    Statement statement=con.createStatement();
    ResultSet rs=null;
    
-   //¨ú±o¸ê®ÆÁ`µ§¼Æ
+   //ï¿½ï¿½ï¿½oï¿½ï¿½ï¿½ï¿½`ï¿½ï¿½ï¿½ï¿½
     if (UserRoles.equals("admin"))
    {   
      rs=statement.executeQuery("select COUNT(*) from ORADDMAN.TSDELIVERY_NOTICE order by DNDOCNO");
@@ -97,9 +97,9 @@ try
    }
      if (rowNumber==1 || rowNumber<0)
    {
-     rs.beforeFirst(); //²¾¦Ü²Ä¤@µ§¸ê®Æ¦C  
+     rs.beforeFirst(); //ï¿½ï¿½ï¿½Ü²Ä¤@ï¿½ï¿½ï¿½ï¿½Æ¦C  
    } else {     
-      rs.absolute(rowNumber); //²¾¦Ü«ü©w¸ê®Æ¦C	 
+      rs.absolute(rowNumber); //ï¿½ï¿½ï¿½Ü«ï¿½ï¿½wï¿½ï¿½Æ¦C	 
    }
    	
    queryAllRepairBean.setPageURL("../jsp/TSSalesDRQHistoryDetail.jsp");
@@ -120,7 +120,7 @@ catch (Exception e)
   
  %>
 </body>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 </html>

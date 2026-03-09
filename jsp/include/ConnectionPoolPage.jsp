@@ -1,5 +1,5 @@
-<%@ page import="PoolBean"%>
-<jsp:useBean id="oraddspoolBean" scope="application" class="PoolBean"/>
+<%@ page import="bean.PoolBean"%>
+<jsp:useBean id="oraddspoolBean" scope="application" class="bean.PoolBean"/>
 <%
  // Strat Connection for Oracle AddOn System Server
 Connection con=null;

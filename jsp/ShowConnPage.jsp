@@ -1,5 +1,5 @@
-<%@ page import="PoolBean,IfxPoolBean"%>
-<jsp:useBean id="poolBean" scope="application" class="PoolBean"/>
+<%@ page import="bean.PoolBean,IfxPoolBean"%>
+<jsp:useBean id="poolBean" scope="application" class="bean.PoolBean"/>
 <%
 try
 {    

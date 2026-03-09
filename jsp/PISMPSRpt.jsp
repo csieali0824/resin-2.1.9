@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*"%>
-<%@ page import="java.io.*,DateBean" %>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="thisDateBean" scope="page" class="DateBean"/>
+<%@ page import="java.io.*,bean.DateBean" %>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="thisDateBean" scope="page" class="bean.DateBean"/>
 
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 

@@ -4,8 +4,8 @@
 <!--=============以下區段為取得連結池==========-->
 <!-- include file="/jsp/include/ConnBPCSPoolPage.jsp"%>-->
 <%@ include file="/jsp/include/ConnBPCSTestPoolPage.jsp"%>
-<%@ page import="DateBean" %>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<%@ page import="bean.DateBean" %>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <html>
 <head>
 <title> PO -> Receive Converter </title>

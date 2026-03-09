@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" %>
-<%@ page import="ComboBoxAllBean,DateBean,ArrayComboBoxBean,RsBean" %>
+<%@ page import="bean.ComboBoxAllBean,bean.DateBean,bean.ArrayComboBoxBean,bean.RsBean" %>
 <!--=============To get the Authentication==========-->
 <!--%@ include file="/jsp/include/AuthenticationPage.jsp"%-->
 <!--=================================-->
@@ -15,10 +15,10 @@ function setSubmit(URL)
  document.MYFORM.submit();
 }
 </script>
-<jsp:useBean id="rsBean" scope="session" class="RsBean"/>
-<jsp:useBean id="comboBoxAllBean" scope="page" class="ComboBoxAllBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="rsBean" scope="session" class="bean.RsBean"/>
+<jsp:useBean id="comboBoxAllBean" scope="page" class="bean.ComboBoxAllBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <html>
 <head>
 <title>POS System Sales Daily Audit Inquiry</title>

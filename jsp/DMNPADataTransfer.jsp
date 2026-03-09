@@ -1,7 +1,7 @@
 <!--transfer bpcs npa to wins npa-->
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*"  %>
-<%@ page import="DateBean" %>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<%@ page import="bean.DateBean" %>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <!--=============To get the Authentication==========-->
 <%//@include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============以下區段為取得連結池==========-->

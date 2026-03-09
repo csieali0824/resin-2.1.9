@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8" language="java"
          import="java.sql.*,java.net.*,java.io.*,java.text.*,java.lang.*" %>
-<%@ page import="ComboBoxBean,DateBean,WorkingDateBean,ArrayComboBoxBean,Array2DimensionInputBean" %>
+<%@ page import="bean.ComboBoxBean,bean.DateBean,bean.WorkingDateBean,bean.ArrayComboBoxBean,bean.Array2DimensionInputBean" %>
 <%@ page import="java.util.*" %>
 <%@ page import="com.mysql.jdbc.StringUtils" %>
 <%@ page import="tscc.TsccOrderToRfq" %>
@@ -11,17 +11,16 @@
     <!--=============以下區段為安全認證機制==========-->
     <%@ include file="/jsp/include/AuthenticationPage.jsp" %>
     <%@ include file="/jsp/include/ConnectionPoolPage.jsp" %>
-    <%@ include file="/jsp/include/PageHeaderSwitch.jsp" %>
-    <%@ page import="SalesDRQPageHeaderBean" %>
-    <jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-    <jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-    <jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-    <jsp:useBean id="arrayRFQDocumentInputBean" scope="session" class="Array2DimensionInputBean"/>
-    <jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-    <jsp:useBean id="workingDateBean" scope="page" class="WorkingDateBean"/>
+    <%@ page import="bean.SalesDRQPageHeaderBean" %>
+    <jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
+    <jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+    <jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+    <jsp:useBean id="arrayRFQDocumentInputBean" scope="session" class="bean.Array2DimensionInputBean"/>
+    <jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+    <jsp:useBean id="workingDateBean" scope="page" class="bean.WorkingDateBean"/>
     <jsp:useBean id="tsccOrderToRfq" class="tscc.TsccOrderToRfq"/>
     <link rel="stylesheet" href="../jsp/css/tsccOrderToRfq.css">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <body>
 <%
@@ -36,20 +35,20 @@
 
     if (!permission) {
 %>
-        <script>
-            alert("您無此業務區權限,請重新確認,謝謝!");
-            location.href = "../ORAddsMainMenu.jsp";
-        </script>
+<script>
+    alert("您無此業務區權限,請重新確認,謝謝!");
+    location.href = "../ORAddsMainMenu.jsp";
+</script>
 <%
         return; // 中斷 JSP 執行
     }
 
     if (StringUtils.isNullOrEmpty(headerId)) {
 %>
-        <script>
-            alert("Header ID can not empty!");
-            window.close();
-        </script>
+<script>
+    alert("Header ID can not empty!");
+    window.close();
+</script>
 <%
         return; // 中斷 JSP 執行
     }
@@ -58,18 +57,18 @@
         TsccOrderToRfq.filterDtoMap = new LinkedHashMap();
         tsccOrderToRfq.getTsccToRfqData(con, headerId, null, null);
     } catch (SQLException e) {
-    e.printStackTrace();
-    throw new RuntimeException(e);
+        e.printStackTrace();
+        throw new RuntimeException(e);
     }
 
-    if (!tsccOrderToRfq.errList.isEmpty()) { // todo 測事先把 ! 移除， 之後需還原，為了顯示error畫面
+    if (!tsccOrderToRfq.errList.isEmpty()) {
 %>
-        <script>
-            $(document).ready(function () {
-                valuesList = <%=tsccOrderToRfq.wrapAsJsonArray(tsccOrderToRfq.getErrorList()) %>;
-                renderErrorTable(valuesList);
-            });
-        </script>
+<script>
+    $(document).ready(function () {
+        valuesList = <%=tsccOrderToRfq.wrapAsJsonArray(tsccOrderToRfq.getErrorList()) %>;
+        renderErrorTable(valuesList);
+    });
+</script>
 <%
     } else {
         tsccOrderToRfq.redirect2TsccIntermediate(response, headerId);

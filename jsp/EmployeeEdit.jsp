@@ -1,9 +1,9 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,RsBean,CheckBoxBean,ComboBoxBean,ArrayListCheckBoxBean" %>
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*,bean.RsBean,CheckBoxBean,bean.ComboBoxBean,bean.ArrayListCheckBoxBean" %>
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<%@ page import="QryAllChkBoxEditBean,CheckBoxBeanNew" %>
+<%@ page import="bean.QryAllChkBoxEditBean,bean.CheckBoxBeanNew" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=big5">
@@ -11,12 +11,12 @@
 </head>
 
 <body>
-<jsp:useBean id="rsBean" scope="application" class="RsBean"/>
+<jsp:useBean id="rsBean" scope="application" class="bean.RsBean"/>
 <jsp:useBean id="checkBoxBean" scope="page" class="CheckBoxBean"/>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="arrayListCheckBoxBean" scope="page" class="ArrayListCheckBoxBean"/>
-<jsp:useBean id="qryAllChkBoxEditBean" scope="page" class="QryAllChkBoxEditBean"/>
-<jsp:useBean id="checkBoxBeanNew" scope="page" class="CheckBoxBeanNew"/>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="arrayListCheckBoxBean" scope="page" class="bean.ArrayListCheckBoxBean"/>
+<jsp:useBean id="qryAllChkBoxEditBean" scope="page" class="bean.QryAllChkBoxEditBean"/>
+<jsp:useBean id="checkBoxBeanNew" scope="page" class="bean.CheckBoxBeanNew"/>
 <form action="EmployeeUpdate.jsp" method="post" name="signform" onsubmit="return change_acton()">
 
   <table   border="1" bordercolor="#6699CC" align=center>

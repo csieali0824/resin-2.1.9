@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=ISO8859_1" %>
-<%@ page import="PageHeaderBean" %>
-<jsp:useBean id="pageHeader" scope="session" class="PageHeaderBean"/>
+<%@ page import="bean.PageHeaderBean" %>
+<jsp:useBean id="pageHeader" scope="session" class="bean.PageHeaderBean"/>
 
 <jsp:setProperty name="pageHeader" property="pgTitleName" value="PRODUCT INFORMATION"/>
 <jsp:setProperty name="pageHeader" property="pgSalesCode" value="Sales Code"/>

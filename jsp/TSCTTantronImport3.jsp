@@ -24,12 +24,12 @@
   <% upBean.addUploadListener(fileMover); %>
 </jsp:useBean>
 
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<%@ page import="DateBean,ArrayCheckBoxBean,Array2DimensionInputBean" %>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="arrayCheckBoxBean" scope="session" class="ArrayCheckBoxBean"/>
-<jsp:useBean id="arrayRFQDocumentInputBean" scope="session" class="Array2DimensionInputBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
+<%@ page import="bean.DateBean,bean.ArrayCheckBoxBean,bean.Array2DimensionInputBean" %>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="arrayCheckBoxBean" scope="session" class="bean.ArrayCheckBoxBean"/>
+<jsp:useBean id="arrayRFQDocumentInputBean" scope="session" class="bean.Array2DimensionInputBean"/>
 
 <!--  File Mover Bean is instantiated before the uploadBean to that it can be used as a
       listener for the upload Bean.
@@ -114,7 +114,7 @@ String replace(String s, String one, String another) {
          session.setAttribute("SPQCHECKED","N");
          session.setAttribute("CUSTOMERID","1023");
          session.setAttribute("CUSTOMERNO","1010");
-         session.setAttribute("CUSTOMERNAME","?¡M?W¢Xe?UaN¢D¡Ò|3--??¢Dq");
+         session.setAttribute("CUSTOMERNAME","?ï¿½M?Wï¿½Xe?UaNï¿½Dï¿½ï¿½|3--??ï¿½Dq");
          session.setAttribute("CUSTOMERPO", BufferOrderNo);
          session.setAttribute("CURR", BufferCurrency);
          session.setAttribute("CUSTACTIVE","A");
@@ -122,7 +122,7 @@ String replace(String s, String one, String another) {
          session.setAttribute("REMARK","Order Import from file");
          session.setAttribute("PREORDERTYPE","1020");
          session.setAttribute("ISMODELSELECTED","Y");
-         session.setAttribute("PROCESSAREA","006(¢Db?EAe¡P~¢XE3!-¢DxAW¢XI(Disty)");
+         session.setAttribute("PROCESSAREA","006(ï¿½Db?EAeï¿½P~ï¿½XE3!-ï¿½DxAWï¿½XI(Disty)");
          session.setAttribute("CUSTOMERIDTMP","1023");
          session.setAttribute("INSERT","Y");
 
@@ -417,7 +417,7 @@ String replace(String s, String one, String another) {
           String Insert          = (String)session.getAttribute("INSERT");
           //String fromPage        = (String)session.getAttribute("FROMPAGE");
 
-  String q[][]=arrayRFQDocumentInputBean.getArray2DContent();//¡Lu¡Óo¢DO?e¢X}|C?oRe 		
+  String q[][]=arrayRFQDocumentInputBean.getArray2DContent();//ï¿½Luï¿½ï¿½oï¿½DO?eï¿½X}|C?oRe 		
                        		    		  	   		   
   if (uploadFlag == null) 
   {  }

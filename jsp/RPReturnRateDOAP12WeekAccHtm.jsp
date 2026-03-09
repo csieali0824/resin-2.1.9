@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" %>
-<%@ page import="ComboBoxAllBean,DateBean,WorkingDateBean,MiscellaneousBean"%>
+<%@ page import="bean.ComboBoxAllBean,bean.DateBean,bean.WorkingDateBean,bean.MiscellaneousBean"%>
 <!--=============To get the Authentication==========-->
 <!--%@ include file="/jsp/include/AuthenticationPage.jsp"%-->
 <!--=============To get Connection from different DB==========-->
@@ -12,10 +12,10 @@
 <!--%@ include file="/jsp/include/ConnMESPoolPage.jsp"%-->
 <!--=============To get Connection from different DB==========-->
 <%@ include file="/jsp/include/ProgressStatusBarStart.jsp"%>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="comboBoxAllBean" scope="page" class="ComboBoxAllBean"/>
-<jsp:useBean id="workingDateBean" scope="page" class="WorkingDateBean"/>
-<jsp:useBean id="miscellaneousBean" scope="page" class="MiscellaneousBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="comboBoxAllBean" scope="page" class="bean.ComboBoxAllBean"/>
+<jsp:useBean id="workingDateBean" scope="page" class="bean.WorkingDateBean"/>
+<jsp:useBean id="miscellaneousBean" scope="page" class="bean.MiscellaneousBean"/>
 <html>
 <head>
 

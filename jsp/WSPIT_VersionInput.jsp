@@ -3,10 +3,10 @@
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============To ger the Connection Pool==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<%@ page import="ComboBoxBean,ArrayComboBoxBean,RsCountBean" %>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="rsCountBean" scope="application" class="RsCountBean"/>
+<%@ page import="bean.ComboBoxBean,bean.ArrayComboBoxBean,bean.RsCountBean" %>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="rsCountBean" scope="application" class="bean.RsCountBean"/>
 <script language="JavaScript" type="text/JavaScript"> 
  modelArray=new Array();		    
  productArray=new Array();

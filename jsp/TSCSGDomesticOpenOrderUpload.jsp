@@ -2,20 +2,20 @@
 <%@ page import="java.sql.*"%>
 <%@ page import="java.util.*"%>
 <%@ page import="jxl.*"%>
-<%@ page import="WorkingDateBean"%>
+<%@ page import="bean.WorkingDateBean"%>
 <%@ page import="java.lang.Math.*"%>
 <%@ page import="java.text.*"%>
-<%@ page import="java.io.*,DateBean"%>
+<%@ page import="java.io.*,bean.DateBean"%>
 <%@ page import="com.jspsmart.upload.*"%>
-<%@ page import="DateBean,Array2DimensionInputBean" %>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<%@ page import="bean.DateBean,bean.Array2DimensionInputBean" %>
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½oï¿½sï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=================================-->
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
 <jsp:useBean id="mySmartUpload" scope="page" class="com.jspsmart.upload.SmartUpload" />
 <html>
 <head>
@@ -129,7 +129,7 @@ int rec_cnt=0;
 			String arrylist [][] = new String[sht.getRows()-1][31];
 			
 			CallableStatement cs1 = con.prepareCall("{call mo_global.set_policy_context('S',?)}");
-			cs1.setString(1,"906");  // ¨ú·~°È­ûÁõÄÝParOrgID
+			cs1.setString(1,"906");  // ï¿½ï¿½ï¿½~ï¿½È­ï¿½ï¿½ï¿½ï¿½ï¿½ParOrgID
 			cs1.execute();
 			cs1.close();	
 									
@@ -141,15 +141,15 @@ int rec_cnt=0;
 				Amount="";K3CustName="";Remarks="";SamplerOrder="";Shipmethod="";ItemName="";ItemID="";
 				rec_cnt=0;
 				
-				//k3«Ø¥ß¤é´Á
+				//k3ï¿½Ø¥ß¤ï¿½ï¿½
 				jxl.Cell wcK3CreationDate = sht.getCell(0, i);          
 				K3CreationDate = (wcK3CreationDate.getContents()).trim();
 							
-				//k3³æ¾Ú½s¸¹
+				//k3ï¿½ï¿½Ú½sï¿½ï¿½
 				jxl.Cell wcK3OrderNo = sht.getCell(1, i);          
 				K3OrderNo = (wcK3OrderNo.getContents()).trim();
 				
-				//k3¦æ¸¹
+				//k3ï¿½æ¸¹
 				jxl.Cell wcK3OrderLineNo = sht.getCell(2, i);          
 				K3OrderLineNo = (wcK3OrderLineNo.getContents()).trim();
 				
@@ -189,43 +189,43 @@ int rec_cnt=0;
 				jxl.Cell wcAmout = sht.getCell(12, i);          
 				Amount = (wcAmout.getContents()).trim();
 				
-				//K3«È¤á¥N½X
+				//K3ï¿½È¤ï¿½Nï¿½X
 				jxl.Cell wcK3Cust = sht.getCell(13, i);          
 				K3Cust = (wcK3Cust.getContents()).trim();
 
-				//K3«È¤á¦WºÙ
+				//K3ï¿½È¤ï¿½Wï¿½ï¿½
 				jxl.Cell wcK3CustName = sht.getCell(14, i);          
 				K3CustName = (wcK3CustName.getContents()).trim();
 
-				//³Æµù
+				//ï¿½Æµï¿½
 				jxl.Cell wcRemarks = sht.getCell(15, i);          
 				Remarks = (wcRemarks.getContents()).trim();
 
-				//K3¨ÑÀ³°Ó¥N½X
+				//K3ï¿½ï¿½ï¿½ï¿½ï¿½Ó¥Nï¿½X
 				jxl.Cell wcK3Supplier = sht.getCell(16, i);          
 				K3Supplier = (wcK3Supplier.getContents()).trim();
 
-				//¼Ë«~³æ
+				//ï¿½Ë«~ï¿½ï¿½
 				jxl.Cell wcSampleOrder = sht.getCell(17, i);          
 				SamplerOrder = (wcSampleOrder.getContents()).trim();
 
-				//¥X³f¤è¦¡
+				//ï¿½Xï¿½fï¿½è¦¡
 				jxl.Cell wcShipmethod = sht.getCell(18, i);          
 				Shipmethod = (wcShipmethod.getContents()).trim();
 
-				//ºK­n
+				//ï¿½Kï¿½n
 				jxl.Cell wcComment = sht.getCell(19, i);          
 				Comment = (wcComment.getContents()).trim();
 
-				//K3°e³f¦a§}¥N½X
+				//K3ï¿½eï¿½fï¿½aï¿½}ï¿½Nï¿½X
 				jxl.Cell wcK3Address = sht.getCell(20, i);          
 				K3Address = (wcK3Address.getContents()).trim();
 
-				//K3°e³f¦a§}
+				//K3ï¿½eï¿½fï¿½aï¿½}
 				jxl.Cell wcK3AddressName = sht.getCell(21, i);          
 				K3AddressName = (wcK3AddressName.getContents()).trim();
 
-				//K3°e³f¦a§}ship to
+				//K3ï¿½eï¿½fï¿½aï¿½}ship to
 				jxl.Cell wcK3ShipTo = sht.getCell(22, i);          
 				K3ShipTo = (wcK3ShipTo.getContents()).trim();
 
@@ -361,7 +361,7 @@ int rec_cnt=0;
 				arrylist[i-1][26]=TEWPO;
 				arrylist[i-1][27]=K3PO;
 				arrylist[i-1][28]=K3PODATE;
-				//arrylist[i-1][29]=INTEW.replace("¬O","Y");
+				//arrylist[i-1][29]=INTEW.replace("ï¿½O","Y");
 				arrylist[i-1][29]=TEWPOPRICE;
 				arrylist[i-1][30]=TEWPOSSD;
 			}
@@ -470,10 +470,10 @@ int rec_cnt=0;
 		}
 	}
 %>
-<!--%ªí³æ°Ñ¼Æ%-->
+<!--%ï¿½ï¿½ï¿½Ñ¼ï¿½%-->
 </FORM>
 <iframe width=124 height=153 name="gToday:supermini:agenda.js" id="gToday:supermini:agenda.js" src="../calendar/ipopeng.htm" scrolling="no" frameborder="0" style="visibility:hidden; z-index:65535; position:absolute; top:0px;"></iframe>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 <%@ include file="/jsp/include/ProgressStatusBarStop.jsp"%>

@@ -1,9 +1,9 @@
-<%@ page contentType="text/html; charset=utf-8" language="java" import="java.util.*,java.text.*,java.io.*,java.sql.*,javax.sql.*,javax.naming.*,WriteLogToFileBean,DateBean,javax.xml.parsers.*"%>
+<%@ page contentType="text/html; charset=utf-8" language="java" import="java.util.*,java.text.*,java.io.*,java.sql.*,javax.sql.*,javax.naming.*,bean.WriteLogToFileBean,bean.DateBean,javax.xml.parsers.*"%>
 <%@ page import="org.w3c.dom.*" %>
 <%@ page import="org.xml.sax.*" %>
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<jsp:useBean id="writeLogToFileBean" scope="page" class="WriteLogToFileBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="writeLogToFileBean" scope="page" class="bean.WriteLogToFileBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <%
 
 String packingnumber = request.getParameter("packingnumber"); 

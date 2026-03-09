@@ -24,12 +24,12 @@
   <% upBean.addUploadListener(fileMover); %>
 </jsp:useBean>
 
-<%@ page import="SalesDRQPageHeaderBean" %>
-<jsp:useBean id="rPH" scope="application" class="SalesDRQPageHeaderBean"/>
-<%@ page import="DateBean,ArrayCheckBoxBean,Array2DimensionInputBean" %>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
-<jsp:useBean id="arrayCheckBoxBean" scope="session" class="ArrayCheckBoxBean"/>
-<jsp:useBean id="arrayRFQDocumentInputBean" scope="session" class="Array2DimensionInputBean"/>
+<%@ page import="bean.SalesDRQPageHeaderBean" %>
+<jsp:useBean id="rPH" scope="application" class="bean.SalesDRQPageHeaderBean"/>
+<%@ page import="bean.DateBean,bean.ArrayCheckBoxBean,bean.Array2DimensionInputBean" %>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
+<jsp:useBean id="arrayCheckBoxBean" scope="session" class="bean.ArrayCheckBoxBean"/>
+<jsp:useBean id="arrayRFQDocumentInputBean" scope="session" class="bean.Array2DimensionInputBean"/>
 
 <!--  File Mover Bean is instantiated before the uploadBean to that it can be used as a
       listener for the upload Bean.
@@ -92,14 +92,14 @@ String replace(String s, String one, String another) {
    
          Sheet sheet = rw.getSheet(0);
  
-         // ¨ú±o Wafer §å¸¹
+         // ï¿½ï¿½ï¿½o Wafer ï¿½å¸¹
 
          Cell   cellwaferlotno   = sheet.getCell(1,1);
          String WaferLotNo       = cellwaferlotno.getContents();
 
-         // ¨ú±o´ú¸Õ±ø¥ó
+         // ï¿½ï¿½ï¿½oï¿½ï¿½ï¿½Õ±ï¿½ï¿½ï¿½
 
-         // VF ­È
+         // VF ï¿½ï¿½
          Cell cellvf            = sheet.getCell(0,3);
          Cell cellif1a_vf       = sheet.getCell(0,4);
          Cell celltms1_vf       = sheet.getCell(0,5);
@@ -158,7 +158,7 @@ String replace(String s, String one, String another) {
 
          //out.println(VF+"-"+IF1A_VF_V+"-"+TMS1_VF_V+"-"+IF2A_VF_V+"-"+TMS2_VF_V+"-"+IF3A_VF_V+"-"+TMS3_VF_V+"-"+VF1LMV_VF_V+"-"+VF1HNV_VF_V+"-"+VF2LMV_VF_V+"-"+VF2HMV_VF_V+"-"+VF3LMV_VF_V+"-"+VF3HMV_VF_V);
 
-         // VZ ­È
+         // VZ ï¿½ï¿½
          Cell cellvz            = sheet.getCell(0,12);
          Cell celliz1ma_vz      = sheet.getCell(0,13);
          Cell celltms1_vz       = sheet.getCell(0,14);
@@ -370,7 +370,7 @@ String replace(String s, String one, String another) {
          String IR6LUA_IR5_V      = cellir6lua_ir5_v.getContents();
          String IR6HUA_IR5_V      = cellir6hua_ir5_v.getContents();
 
-         // ¸ü¤J¸ê®Æ®w ORADDMAN.TSCIQC_LOTDRAWING_HEADER
+         // ï¿½ï¿½ï¿½Jï¿½ï¿½Æ®w ORADDMAN.TSCIQC_LOTDRAWING_HEADER
 
 
         String sql="insert into ORADDMAN.TSCIQC_LOTDRAWING_HEADER("+
@@ -444,7 +444,7 @@ String replace(String s, String one, String another) {
                                  pstmt.close();
 
 
-         // ¨ú±o´ú¸Õ¼Æ¾Ú
+         // ï¿½ï¿½ï¿½oï¿½ï¿½ï¿½Õ¼Æ¾ï¿½
         
          Cell cellrecordno   = null;
          Cell celltesterno   = null;
@@ -565,7 +565,7 @@ String replace(String s, String one, String another) {
              arrayRFQDocumentInputBean.setArray2DString(b);
              arrayRFQDocumentInputBean.setArray2DCheck(b);	
 
-	 // ¨ú±o¸ü¤Jªº¦æ¼Æ
+	 // ï¿½ï¿½ï¿½oï¿½ï¿½ï¿½Jï¿½ï¿½ï¿½ï¿½ï¿½
 
          session.setAttribute("IMPORTRECORD",RecordNo);
 	     	
@@ -589,7 +589,7 @@ String replace(String s, String one, String another) {
 
   String ImportRecord = (String)session.getAttribute("IMPORTRECORD");
 
-  //String q[][]=arrayRFQDocumentInputBean.getArray2DContent();//¨ú±o¥Ø«e°}¦C¤º®e 		
+  //String q[][]=arrayRFQDocumentInputBean.getArray2DContent();//ï¿½ï¿½ï¿½oï¿½Ø«eï¿½}ï¿½Cï¿½ï¿½ï¿½e 		
  
   //if (q!=null) 
   //{//out.println("<BR>");		  

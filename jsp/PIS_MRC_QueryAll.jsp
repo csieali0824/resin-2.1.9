@@ -4,11 +4,11 @@
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<%@ page import="RsCountBean,ComboBoxAllBean,DateBean,ArrayComboBoxBean"%>
-<jsp:useBean id="rsCountBean" scope="application" class="RsCountBean"/>
-<jsp:useBean id="comboBoxAllBean" scope="page" class="ComboBoxAllBean"/>
-<jsp:useBean id="arrayComboBoxBean" scope="page" class="ArrayComboBoxBean"/>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<%@ page import="bean.RsCountBean,bean.ComboBoxAllBean,bean.DateBean,bean.ArrayComboBoxBean"%>
+<jsp:useBean id="rsCountBean" scope="application" class="bean.RsCountBean"/>
+<jsp:useBean id="comboBoxAllBean" scope="page" class="bean.ComboBoxAllBean"/>
+<jsp:useBean id="arrayComboBoxBean" scope="page" class="bean.ArrayComboBoxBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">

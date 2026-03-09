@@ -1,5 +1,5 @@
-<%@ page import="PoolBean"%>
-<jsp:useBean id="oradTst2poolBean" scope="application" class="PoolBean"/>
+<%@ page import="bean.PoolBean"%>
+<jsp:useBean id="oradTst2poolBean" scope="application" class="bean.PoolBean"/>
 <%
  // Strat Connection for Oracle AddOn System Server
 Connection conTst2=null;
@@ -19,7 +19,7 @@ try
   oradTst2poolBean.setBeanID("oradTst2poolBean");
   oradTst2poolBean.setUsingURL(request.getRequestURL().toString());
   conTst2=oradTst2poolBean.getConnection();	  
-  conTst2.setAutoCommit(false);//³]©wAutoCommit¬°false¥H¨¾¤îºô¸ô³s½u²§±`®Éµo¥Í¿ù»~
+  conTst2.setAutoCommit(false);//ï¿½]ï¿½wAutoCommitï¿½ï¿½falseï¿½Hï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½uï¿½ï¿½ï¿½`ï¿½Éµoï¿½Í¿ï¿½ï¿½~
 } //end of try
 catch (Exception e)
 {

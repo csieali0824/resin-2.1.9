@@ -3,8 +3,8 @@
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
 <!--=============To ger the Connection Pool==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
-<%@ page import="ComboBoxBean,ArrayComboBoxBean" %>
-<jsp:useBean id="comboBoxBean" scope="page" class="ComboBoxBean"/>
+<%@ page import="bean.ComboBoxBean,bean.ArrayComboBoxBean" %>
+<jsp:useBean id="comboBoxBean" scope="page" class="bean.ComboBoxBean"/>
 <html>
 <head>
 <title>PIT VERSION EDIT FORM</title>

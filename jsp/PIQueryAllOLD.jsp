@@ -1,13 +1,13 @@
 <%@ page language="java" import="java.sql.*"  %>
 <!--=============To get the Authentication==========-->
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<!--=============¥H¤U°Ï¬q¬°¨ú±o³sµ²¦À==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½oï¿½sï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=============Switch CharacterSet==========-->
 <%@ include file="/jsp/include/PageHeaderSwitch.jsp"%>
-<%@ page import="PageHeaderBean,QueryAllBean" %>
-<jsp:useBean id="pageHeader" scope="session" class="PageHeaderBean"/>
-<jsp:useBean id="queryAllBean" scope="page" class="QueryAllBean"/>
+<%@ page import="bean.PageHeaderBean,bean.QueryAllBean" %>
+<jsp:useBean id="pageHeader" scope="session" class="bean.PageHeaderBean"/>
+<jsp:useBean id="queryAllBean" scope="page" class="bean.QueryAllBean"/>
 <script language="JavaScript" type="text/JavaScript">
 function showImg(pc,wv)
 {   
@@ -103,7 +103,7 @@ function searchPI()
  %>
 </FORM>
 </body>
-<!--=============¥H¤U°Ï¬q¬°ÄÀ©ñ³sµ²¦À==========-->
+<!--=============ï¿½Hï¿½Uï¿½Ï¬qï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½==========-->
 <%@ include file="/jsp/include/ReleaseConnPage.jsp"%>
 <!--=================================-->
 </html>

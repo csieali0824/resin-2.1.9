@@ -1,11 +1,11 @@
 <%@ page contentType="image/jpeg; charset=big5" language="java" import="java.sql.*,java.io.*,java.text.*,java.util.*,java.awt.*,org.jfree.chart.ui.*,org.jfree.data.*,org.jfree.chart.*,org.jfree.chart.plot.*" %>
-<%@ page import="WorkingDateBean" %>
+<%@ page import="bean.WorkingDateBean" %>
 <%@ page import="java.awt.image.BufferedImage" %>
 <%@ page import="javax.imageio.ImageIO" %>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=================================-->
-<jsp:useBean id="workingDateBean" scope="page" class="WorkingDateBean"/>
+<jsp:useBean id="workingDateBean" scope="page" class="bean.WorkingDateBean"/>
 <html>
 <head>
 

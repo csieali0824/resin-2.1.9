@@ -1,10 +1,10 @@
 <!--20161021 Peggy,新增庫存說明欄位-->
 <!--20180917 Peggy,新增"製造/研發/品管領退料"申請交易-->
 <%@ page  contentType="text/html; charset=utf-8" language="java" import="java.lang.*,java.text.AttributedString,java.sql.*,java.math.BigDecimal,java.text.DecimalFormat,java.io.*,jxl.*,jxl.Workbook.*,jxl.write.*,jxl.format.*,java.awt.Image.*" %>
-<%@ page import="DateBean"%>
+<%@ page import="bean.DateBean"%>
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <%@ include file="/jsp/include/AuthenticationPage.jsp"%>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 <html>
 <head>
 <title>撿貨單</title>

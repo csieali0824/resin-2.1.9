@@ -4,7 +4,7 @@
 <%@ page import="jxl.*"%>
 <%@ page import="java.lang.Math.*"%>
 <%@ page import="java.text.*"%>
-<%@ page import="java.io.*,DateBean"%>
+<%@ page import="java.io.*,bean.DateBean"%>
 <!--=============以下區段為取得連結池==========-->
 <%@ include file="/jsp/include/ConnectionPoolPage.jsp"%>
 <!--=============以下區段為安全認證機制==========-->
@@ -13,7 +13,7 @@
 <html>
 <head>
 <title>Slow Moving Stock Query</title>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 </head>
 <STYLE TYPE='text/css'> 
  .style1   {font-family:Tahoma,Georgia; font-size:13px; background-color:#A9E1E7; color:#000000; text-align:left;}

@@ -4,8 +4,8 @@
 <%//@ include file="/jsp/include/ConnREPAIRPoolPage.jsp"%>
 <%@ include file="/jsp/include/ConnBPCSPoolPage.jsp"%>
 
-<%@ page import="DateBean" %>
-<jsp:useBean id="dateBean" scope="page" class="DateBean"/>
+<%@ page import="bean.DateBean" %>
+<jsp:useBean id="dateBean" scope="page" class="bean.DateBean"/>
 
 <html>
 <head>
