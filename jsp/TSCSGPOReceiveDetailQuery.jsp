@@ -417,6 +417,7 @@ try
 	int iCnt = 0;
 	sql = " SELECT X.*,X.RECEIVED_QTY+X.ALLOCATE_IN_QTY-(X.ALLOCATE_OUT_QTY+X.RETURN_QTY+X.SHIPPED_QTY+X.PICK_QTY) ONHAND "+
 	      " FROM (SELECT A.SG_STOCK_ID"+
+		  "       ,A.STOCK_FLAG"+
 		  "       ,A.ORGANIZATION_ID"+
           "       ,CASE A.ORGANIZATION_ID WHEN 907 THEN '¤º¾P' WHEN 908 THEN '¥~¾P' ELSE '??' END AS organization_name"+
           "       ,TRUNC(SYSDATE)-TRUNC(A.RECEIVED_DATE) STOCK_AGE"+
@@ -466,7 +467,8 @@ try
           "       AND A.PO_LINE_LOCATION_ID=B.LINE_LOCATION_ID(+)"+
           "       AND B.PO_LINE_ID=C.PO_LINE_ID(+)"+
           "       AND A.PO_HEADER_ID=D.PO_HEADER_ID(+)) X "+
-		  "       WHERE 1=1";
+		  "       WHERE 1=1"+
+	      "       AND X.STOCK_FLAG = 'S'";
 	/*sql = " select a.* from TSSG_ONHAND_V a"+
           " where a.TRANSACTION_DATE between to_date('" + (YearFr.equals("--") || YearFr.equals("")?"2020":YearFr)+(MonthFr.equals("--") || MonthFr.equals("")?"02":MonthFr)+(DayFr.equals("--") || DayFr.equals("")?"01":DayFr)+"','yyyymmdd')"+
  		  " AND to_date('" + (YearTo.equals("--") || YearTo.equals("")?dateBean.getYearString():YearTo)+(MonthTo.equals("--") || MonthTo.equals("")?dateBean.getMonthString():MonthTo)+(DayTo.equals("--") || DayTo.equals("")?dateBean.getDayString():DayTo)+"','yyyymmdd')+0.99999";*/

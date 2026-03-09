@@ -933,6 +933,7 @@ try
 				 ",(select * from oraddman.tscc_k3_cust_link_erp where active_flag='A') tkcl1"+
                  " where tso.received_date between to_date('"+SDATE+"','yyyymmdd') AND to_date('"+(!EDATE.equals("") && !EDATE.equals(SDATE)?EDATE:SDATE)+"','yyyymmdd')+0.99999"+
                  " and case tso.organization_id when 907 then 14980 when 908 then 20100 else 0 end = ac.customer_id(+)"+
+				 " AND TSO.STOCK_FLAG = 'S'"+
                  " and ac.customer_number= tkcl.erp_cust_number(+) "+
                  " and tso.from_sg_stock_id=tso1.sg_stock_id"+
 				 " and tso.organization_id<>tso1.organization_id"+ //add by Peggy 20231226

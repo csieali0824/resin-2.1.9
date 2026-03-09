@@ -192,7 +192,8 @@ try
           "       AND A.PO_LINE_LOCATION_ID=B.LINE_LOCATION_ID(+)"+
           "       AND B.PO_LINE_ID=C.PO_LINE_ID(+)"+
           "       AND A.PO_HEADER_ID=D.PO_HEADER_ID(+)) X "+
-		  "       WHERE 1=1";
+		  "       WHERE 1=1"+
+		  "       AND A.STOCK_FLAG = 'S'";
 	/*sql = " select a.* from TSSG_ONHAND_V a"+
           " where a.TRANSACTION_DATE between to_date('" + (YearFr.equals("--") || YearFr.equals("")?"2020":YearFr)+(MonthFr.equals("--") || MonthFr.equals("")?"02":MonthFr)+(DayFr.equals("--") || DayFr.equals("")?"01":DayFr)+"','yyyymmdd')"+
  		  " AND to_date('" + (YearTo.equals("--") || YearTo.equals("")?dateBean.getYearString():YearTo)+(MonthTo.equals("--") || MonthTo.equals("")?dateBean.getMonthString():MonthTo)+(DayTo.equals("--") || DayTo.equals("")?dateBean.getDayString():DayTo)+"','yyyymmdd')+0.99999";*/
