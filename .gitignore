@@ -69,3 +69,8 @@ report/
 .idea/sqlDataSources.xml
 .idea/dynamic.xml
 .idea/uiDesigner.xml
+
+# 忽略 Resin 編譯出來的 class 與暫存檔
+WEB-INF/work/
+WEB-INF/classes/
+out/
