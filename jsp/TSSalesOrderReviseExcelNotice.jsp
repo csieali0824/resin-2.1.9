@@ -1739,7 +1739,7 @@ try
 			if (request.getRequestURL().toString().toLowerCase().indexOf("tsrfq.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("rfq134.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("yewintra.") <0 && request.getRequestURL().toString().toLowerCase().indexOf("10.0.1.134") <0 && request.getRequestURL().toString().toLowerCase().indexOf("10.0.1.135") <0) //測試環境
 			{
 				remarks="(這是來自RFQ測試區的信件)";
-				message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("peggy.chen@ts.com.tw"));
+				message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("mars.wang@ts.com.tw"));
 			}
 			else
 			{
@@ -1845,7 +1845,7 @@ try
 					message.addRecipient(Message.RecipientType.TO, new javax.mail.internet.InternetAddress("janice.lin@ts.com.tw"));
 				}
 			}
-			message.addRecipient(Message.RecipientType.BCC, new javax.mail.internet.InternetAddress("peggy.chen@ts.com.tw"));
+			message.addRecipient(Message.RecipientType.BCC, new javax.mail.internet.InternetAddress("mars.wang@ts.com.tw"));
 
 			V_CUST_LIST="";
 			sql = " SELECT DISTINCT '('||ar.account_number||')'|| case when a.sales_group='TSCH-HK' or a.source_customer_id IN (15540) then case when instr(a.SOURCE_CUSTOMER_PO,'(')>0  then substr(a.SOURCE_CUSTOMER_PO,instr(a.SOURCE_CUSTOMER_PO,'(')+1,instr(a.SOURCE_CUSTOMER_PO,')',-1)-instr(a.SOURCE_CUSTOMER_PO,'(')-1) else a.SOURCE_CUSTOMER_PO end"+
@@ -1874,7 +1874,7 @@ try
 			strContent = "Request Notification,<p>Please login at:<a href="+'"'+strProgram+'"'+">"+strUrl+"</a> to confirm order revise.<p>"+
 						 "Include the following customer list in this request..<br>"+V_CUST_LIST;
 
-			message.setHeader("Subject", MimeUtility.encodeText((ACTTYPE.equals("REMINDER")?"Reminder-":"")+"工廠已回覆申請改單通知"+remarks, "UTF-8", null));
+			message.setHeader("Subject", MimeUtility.encodeText("Factory Reply on Change Order Request"+remarks, "UTF-8", null));
 			javax.mail.internet.MimeMultipart mp = new javax.mail.internet.MimeMultipart();
 			javax.mail.internet.MimeBodyPart mbp = new javax.mail.internet.MimeBodyPart();
 			mbp.setContent(strContent, "text/html;charset=UTF-8");
