@@ -359,11 +359,7 @@ if (!HEADER_ID.equals(""))
 					}
 					else if (rs.getString("TSCH_CUSTOMER_NUMBER").equals("26851"))
 					{
-						if (rs.getString("ORDER_TYPE").equals("1141")) {
-							bb[i][6] = "DHL";
-						} else {
-							bb[i][6] = "FEDEX ECNOMY";
-						}
+						bb[i][6] = "DHL";
 					}
 					else if (rs.getString("TSCH_CUSTOMER_NUMBER").equals("30032")) //add by Peggy 20210702
 					{
